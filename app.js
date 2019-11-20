@@ -12,6 +12,8 @@ var usersRouter = require('./routes/users');
 const session = require('express-session');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
 
+const port = process.env.PORT || 8080;
+
 var app = express();
 
 // session support is required to use ExpressOIDC
@@ -66,6 +68,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, () => {
+  console.log('Running on PORT: ' + port);
 });
 
 module.exports = app;
