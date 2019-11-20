@@ -16,7 +16,7 @@ var app = express();
 
 // session support is required to use ExpressOIDC
 app.use(session({
-  secret: 'this should be secure',
+  secret: `${process.env.SESSION_KEY}`,
   resave: true,
   saveUninitialized: false
 }));
