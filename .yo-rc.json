@@ -1,0 +1,25 @@
+{
+  "@devex/generator-jhipster-nova-teamcity": {
+    "novaApplicationType": "nodejs",
+    "teamcityUrl": "https://gwre-devexp-ci-production-devci.gwre-devops.net",
+    "teamcityParentProjectId": "DocumentationTools",
+    "awsRegion": "us-west-2",
+    "artifactoryUsername": "sys-doc",
+    "artifactoryConnectionId": "PROJECT_EXT_155",
+    "nodejsAppPortNumber": "8081",
+    "podName": "doctools",
+    "appGitUrl": "ssh://git@stash.guidewire.com/doctools/node-okta-container.git",
+    "teamcityKey": "sys-doc.rsa",
+    "k8sNamespace": "doctools",
+    "dockerImageForDeployment": "devex-docker-dev/atmosdeploy:0.12.10",
+    "dockerUrl": "artifactory.guidewire.com",
+    "artifactoryRepoName": "doctools-docker-dev",
+    "dockerImageForTestAndBuild": "devex-docker-dev/node",
+    "serviceAccountEmail": "doctools@guidewire.com",
+    "teamcityProjectId": "DocumentationTools_Nodeoktacontainer",
+    "teamcityVcsRootId": "DocumentationTools_Nodeoktacontainer_Vcsroot"
+  },
+  "generator-jhipster": {
+    "baseName": "nodeoktacontainer"
+  }
+}

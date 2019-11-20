@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: ${NAMESPACE}
+  name: nodeoktacontainer-ingress
+spec:
+  rules:
+  - host: nodeoktacontainer-${NAMESPACE}.${DEPLOY_ENV}.ccs.guidewire.net
+    http:
+      paths:
+      - backend:
+          serviceName: nodeoktacontainer-app
+          servicePort: 8081
+        path: /
