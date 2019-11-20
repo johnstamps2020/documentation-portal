@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 const session = require('express-session');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 
 var app = express();
 

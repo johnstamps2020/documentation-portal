@@ -17,7 +17,7 @@
       "refreshTokenWindowMinutes": 1440
     },
     "redirectUris": [
-      "http://localhost:8080/authorization-code/callback",
+      "http://localhost:8081/authorization-code/callback",
       "https://nodeoktacontainer-doctools.dev.ccs.guidewire.net/authorization-code/callback"
     ]
   },
