@@ -1,0 +1,440 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="About this task In this example, you add an extension field on the Claim entity called PercentComplete . You can use this field to search on claims that are 90% complete. Procedure Add an extension ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="task" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="t_fe3698788" /><meta name="DC.language" content="en-US" /><title>Add an optional search field</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="t_fe3698788" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="t_fe3698788__fe3698788">
+
+<h1 class="title topictitle1" id="t_fe3698788__fe3698788"><span class="ph">Add an optional search field</span></h1>
+<div class="body taskbody">
+<section class="section context"><div class="tasklabel"><h2 class="sectiontitle tasklabel">About this task</h2></div>
+<p class="p">In this example, you add an extension field on the <span class="keyword apiname">Claim</span> entity called <code class="ph codeph">PercentComplete</code>. You can use this field to search on claims that are 90% complete.</p>
+</section>
+<section><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step">
+        <span class="ph cmd">Add an extension field named <code class="ph codeph">PercentComplete</code> to the
+            <span class="keyword apiname">Claim</span> entity:</span>
+        <ol type="a" class="ol substeps">
+          <li class="li substep">
+            <span class="ph cmd">In the Studio <span class="keyword wintitle">Project</span> window, navigate to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Extensions</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Entity</span></span>.</span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">Double-click <span class="ph filepath">Claim.etx</span> to open
+              the entity extension if it exists, or right-click <span class="ph uicontrol">Entity</span> to create a new entity extension of the <span class="keyword apiname">Claim</span> entity. </span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="ph uicontrol">Field</span> drop-down, select <span class="ph uicontrol">column</span>. If
+                <span class="ph uicontrol">column</span> is selected already, click <span class="ph uicontrol">Add</span><span class="ph uicontrol">
+                <img class="image" height="12" src="add2.png" width="12" alt="" /></span>.</span>
+            <div class="itemgroup stepresult">
+              <p class="p">A new row appears at the bottom of the list on the left,
+                with <span class="ph uicontrol">column</span> as the <span class="ph uicontrol">Element</span> value.</p>
+            </div>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the list on the right, set the following
+              attribute values.</span>
+            <div class="itemgroup info">
+              <table class="table" id="t_fe3698788__fe3698809"><colgroup><col /><col /></colgroup><tbody class="tbody">
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">name</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">PercentComplete</code>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">type</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">percentagedec</code>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">null ok</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">true</code>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">desc</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">Percentage of claim that is complete</code>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody></table>
+            </div>
+          </li>
+        </ol>
+      </li><li class="li step">
+        <span class="ph cmd">Add a field named <code class="ph codeph">PercentComplete</code> as an extension to
+          the <span class="keyword apiname">ClaimSearchCriteria</span> entity:</span>
+        <ol type="a" class="ol substeps">
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="keyword wintitle">Project</span> window, navigate to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Extensions</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Entity</span></span>.</span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">Double-click
+                <span class="ph filepath">ClaimSearchCriteria.etx</span> to open the entity extension if it exists, or right-click
+                <span class="ph uicontrol">Entity</span> to create a new entity extension of the
+                <span class="keyword apiname">ClaimSearchCriteria</span> entity. </span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="ph uicontrol">Field</span> drop-down, select <span class="ph uicontrol">column</span>. If
+                <span class="ph uicontrol">column</span> is selected already, click <span class="ph uicontrol">Add</span><span class="ph uicontrol">
+                <img class="image" height="12" src="add2.png" width="12" alt="" /></span>.</span>
+            <div class="itemgroup stepresult">
+              <p class="p">A new row appears at the bottom of the list on the left,
+                with <span class="ph uicontrol">column</span> as the <span class="ph uicontrol">Element</span> value.</p>
+            </div>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the list on the right, set the following
+              attribute values.</span>
+            <div class="itemgroup info">
+              <table class="table" id="t_fe3698788__fe3714740"><colgroup><col /><col /></colgroup><tbody class="tbody">
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">name</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">PercentComplete</code>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">type</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">percentagedec</code>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">null ok</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">true</code>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">desc</span>
+                        </p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><code class="ph codeph">Percentage of claim that is complete</code>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody></table>
+            </div>
+          </li>
+        </ol>
+      </li><li class="li step">
+        <span class="ph cmd">Add a <code class="ph codeph">&lt;Criterion&gt;</code> element to the
+            <span class="ph filepath">search-config.xml</span> file for the extension field <code class="ph codeph">PercentComplete</code>. </span>
+        <ol type="a" class="ol substeps">
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="keyword wintitle">Project</span> window, navigate to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">search</span></span>, and then double-click <span class="ph filepath">search-config.xml</span> to open the file. </span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the XML editor, locate the
+                <code class="ph codeph">&lt;CriteriaDef&gt;</code> element for the <code class="ph codeph">ClaimSearchCriteria</code> with
+                <code class="ph codeph">Claim</code> as the target entity, and then add a <code class="ph codeph">&lt;Criterion&gt;</code> for the
+                <code class="ph codeph">PercentComplete</code> field. </span>
+            <div class="itemgroup info">
+              <pre class="pre codeblock"><code><strong class="ph b">&lt;CriteriaDef entity="ClaimSearchCriteria" targetEntity="Claim"&gt;</strong> 
+  &lt;Criterion property="ClaimNumber" matchType="eq"/&gt;
+  &lt;Criterion property="AssignedToUser" targetProperty="AssignedUser" matchType="eq"/&gt;
+  ...
+  &lt;!-- Example extension --&gt;
+  <strong class="ph b">&lt;Criterion property="PercentComplete" matchType="ge"/&gt;</strong>
+&lt;/CriteriaDef&gt;</code></pre>
+            </div>
+            <div class="itemgroup info">
+              <p class="p">Guidewire recommends that appropriate indexes be in place
+                whenever you change search criteria. For example, if <code class="ph codeph">PercentComplete</code> is the most
+                restrictive equality condition in your search implementation, consider adding an index with this
+                  <code class="ph codeph">PercentComplete</code> as the leading key column. </p>
+            </div>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">Within file <span class="ph filepath">search-config.xml</span>,
+              increment the file version number before you save the file. </span>
+            <div class="itemgroup info">
+              <pre class="pre codeblock"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;SearchConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="search-config.xsd"
+<strong class="ph b">        version="1"</strong>&gt;
+...</code></pre>
+            </div>
+            <div class="itemgroup info">
+              <p class="p">Guidewire recommends that you increment the version number
+                whenever you modify the <span class="ph filepath">search-config.xml</span> file, although doing so is not a
+                technical requirement. </p>
+            </div>
+          </li>
+        </ol>
+      </li><li class="li step">
+        <span class="ph cmd">Add a display key for the <code class="ph codeph">PercentComplete</code> fields: </span>
+        <ol type="a" class="ol substeps">
+          <li class="li substep">
+            <span class="ph cmd"><span class="ph">Navigate in the <span class="keyword wintitle">Project</span> window to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Localizations</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Resource Bundle 'display'</span></span> and double-click <span class="ph filepath">display.properties</span> to open
+    this file in the editor.</span> </span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">Find the group of display keys that begin with
+                <code class="ph codeph">JSP.ClaimSearch.Claims</code>, and then add the following line. </span>
+            <div class="itemgroup info">
+              <pre class="pre codeblock"><code>JSP.ClaimSearch.Claims.PercentComplete = Percent Complete</code></pre>
+            </div>
+            <div class="itemgroup stepresult">
+              <p class="p">The Display Keys editor displays the new line in gray
+                lettering to indicate that the display key is an unused property. </p>
+            </div>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">Repeat the preceding steps for each additional
+              language that you support in your installation of ClaimCenter. For <code class="ph codeph">_en_US</code>, substitute the
+              Java locale code of each additional language, and provide an appropriate localization of “Percent
+              complete”. </span>
+          </li>
+        </ol>
+      </li><li class="li step">
+        <span class="ph cmd">Add an editable field labeled <code class="ph codeph">Percent Complete</code> to
+          the configuration of the claim search page: </span>
+        <ol type="a" class="ol substeps">
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="keyword wintitle">Project</span> window, navigate to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Page Configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">pcf</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">search</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">claims</span></span>, and then double-click <span class="ph filepath">ClaimSearchOptionalInputSet.pcf</span> to open the
+              file. </span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">From the <span class="ph uicontrol">Toolbox</span> tab, search for <kbd class="ph userinput">Basic Inputs</kbd>. Then, drag the generic
+                <span class="ph uicontrol">Input</span> widget type onto the page canvas. </span>
+            <div class="itemgroup stepxmp">
+              <p class="p">For example, place the new <span class="ph uicontrol">Input</span> widget in the <span class="ph uicontrol">Optional parameters</span> section, directly under the <span class="ph uicontrol">Claim Status</span> field. </p>
+            </div>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="ph uicontrol">Properties</span> tab at the bottom of the screen, set the following values. </span>
+            <div class="itemgroup info">
+              <table class="table" id="t_fe3698788__fe3698923"><colgroup><col /><col /></colgroup><tbody class="tbody">
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">editable </span></p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><kbd class="ph userinput">true</kbd>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">id </span></p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><kbd class="ph userinput">Completion</kbd>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">label </span></p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><kbd class="ph userinput">displaykey.JSP.ClaimSearch.Claims.PercentComplete </kbd></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">required </span></p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><kbd class="ph userinput">false</kbd>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="entry">
+                        <p class="p"><span class="ph uicontrol">value </span></p>
+                      </td>
+                      <td class="entry">
+                        <p class="p"><kbd class="ph userinput">ClaimSearchCriteria.PercentComplete</kbd>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody></table>
+            </div>
+          </li>
+        </ol>
+      </li><li class="li step">
+        <span class="ph cmd">Restart Guidewire Studio. </span>
+      </li><li class="li step">
+        <span class="ph cmd">Regenerate the application SOAP and Java APIs and the <cite class="cite btbooktitle"><span class="keyword">Data Dictionary</span></cite>: </span>
+        <ol type="a" class="ol substeps">
+          <li class="li substep">
+            <span class="ph cmd">Open a command window and navigate to the
+              application directory. </span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">Type the following commands: </span>
+            <div class="itemgroup info">
+              <pre class="pre codeblock"><code>gwb genJavaApi
+gwb genDataDictionary</code></pre>
+            </div>
+          </li>
+        </ol>
+      </li><li class="li step">
+        <span class="ph cmd">Restart the application server. </span>
+      </li><li class="li step">
+        <span class="ph cmd">Log in to Guidewire ClaimCenter and navigate to the <span class="ph menucascade"><span class="ph uicontrol">Search Claims</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Advanced Search</span></span> page. Verify that your optional claim search field exists. </span>
+      </li></ol></section>
+<section class="section result"><div class="tasklabel"><h2 class="sectiontitle tasklabel">Results</h2></div><p class="p">The claim search page contains your new field as a searchable option. Separately, you must provide a way to 
+assign the percentage complete on claims. For example, you might provide a new field on one of the claim 
+screens.
+</p></section><section class="section postreq"><div class="tasklabel"><h2 class="sectiontitle tasklabel">What to do next</h2></div><p class="p seealso">See also
+</p><ul class="ul">
+<li seealso-li="yes" class="li html-only"><a class="xref" href="c_hn2195110.html#c_hn2195110">Command reference</a>
+</li></ul>
+
+
+</section></div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

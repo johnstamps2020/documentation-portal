@@ -1,0 +1,179 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="GenericCenter provides a user interface and APIs to create documents, download documents, and produce automated form letters. This topic discusses creating new documents from templates. In ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="c_fi2278128" /><meta name="DC.language" content="en-US" /><title>Document production</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="c_fi2278128" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="c_fi2278128__fi2278128">
+
+<h1 class="title topictitle1" id="c_fi2278128__fi2278128">Document production</h1>
+<div class="body conbody">
+<p class="p"><span class="keyword">GenericCenter</span>
+provides a user interface and APIs to create documents, download documents,
+and produce automated form letters. This topic discusses creating new
+documents from templates.</p>
+<p class="p">In PolicyCenter, the production
+of policy <dfn class="term">forms</dfn> for printing services
+are unrelated to document management as described in this topic. There
+is a separate PolicyCenter forms APIs that is specific to the PolicyCenter
+product model.</p>
+    <p class="p"><span class="keyword">GenericCenter</span> can create new documents from forms, form letters,
+      or other structured data. For example, notification emails, letters, or faxes created by
+      business rules to an insured customer. The resulting new document optionally can be attached
+      to business data objects. <span class="keyword">GenericCenter</span> can create some types of
+      new documents from a server-stored template without user intervention.</p>
+    <p class="p">In contrast to <span class="keyword">GenericCenter</span>, the ContactManager application
+      supports documents attached to vendor contacts only. This is part of the integration with
+      ClaimCenter, and not used in direct integrations with PolicyCenter or BillingCenter. For use
+      with ClaimCenter, the ContactManager application supports document upload for vendor contact
+      documents but does not support any document production.</p>
+    <p class="p">In <span class="keyword">GenericCenter</span>, users can create new documents from a template
+      and then attach them to a <span class="keyword">standardObject</span> or other <span class="keyword">GenericCenter</span> object. This is useful for generating forms or form
+      letters or any type of structured data in any file format. Or, in some cases <span class="keyword">GenericCenter</span> creates documents from a server-stored template without
+      user intervention. For example, <span class="keyword">GenericCenter</span> creates a PDF
+      document of an outgoing notification email and attaches it to the <span class="keyword">standardObject</span>.</p>
+    <p class="p">To support document production, you typically design a large number of templates that support
+      specific business needs by using the built-in types of document production types.</p>
+    <div class="p">For every document template, you must create two files.<dl class="dl" id="c_fi2278128__ul_ybp_wly_zhb">
+        
+          <dt class="dt dlterm">A document template source file</dt>
+          <dd class="dd">The source file of the appropriate type, such as a Microsoft Word document for a
+            Microsoft Word template. The file must be specially prepared according to its type such
+            that form fields are inserted in the correct places. Microsoft Word files must have form
+            fields configured from an appropriate data source. Microsoft Excel documents must have
+            named regions. PDF files must have form fields. Gosu templates must have embedded code
+            that uses the appropriate symbol names.</dd>
+        
+        
+          <dt class="dt dlterm">A document template descriptor file</dt>
+          <dd class="dd">The document template descriptor describes metadata about the template and how to
+            insert parameters into the template. The document template descriptor describes an
+            actual document template, such as a Microsoft Word mail merge template, an Adobe PDF
+            form, or a Gosu template.</dd>
+        
+      </dl></div>
+    <p class="p">The amount of configuration you need depends on how complex your templates are. For example,
+      if you have many parameters or need embedded Gosu code, configuration is more complex.</p>
+    <p class="p">Typical requirements are for document production with document templates and using the
+      built-in document production types. Only in rare cases do you need to create new document
+      production implementations. In these cases, you can create new document production types by
+      writing an implementation of the <code class="ph codeph">IDocumentProduction</code> plugin.</p>
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

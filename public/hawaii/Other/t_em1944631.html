@@ -1,0 +1,371 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="task" /><meta name="description" content="Guidewire recommends that you change the user name and password that ContactManager uses to authenticate with PolicyCenter." /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="t_em1944631" /><meta name="DC.language" content="en-US" />        
+      <title>Configure ContactManager-to-PolicyCenter authentication</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="t_em1944631" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="t_em1944631__em1944631">
+ <h1 class="title topictitle1" id="t_em1944631__em1944631">Configure ContactManager-to-PolicyCenter authentication</h1>
+    
+    <div class="body taskbody"><p class="shortdesc">
+        Guidewire recommends that you change the user name and password that ContactManager uses to authenticate with PolicyCenter.
+    </p>
+<section><div class="tasklabel"><h2 class="sectiontitle tasklabel">Procedure</h2></div><ol class="ol steps"><li class="li step stepexpand">
+<span class="ph cmd">Start the PolicyCenter server. </span>
+<div class="itemgroup info">
+<p class="p">At a command prompt, navigate to the PolicyCenter installation folder and enter the following command:</p>
+<pre class="pre codeblock"><code>gwb runServer</code></pre></div>
+</li><li class="li step stepexpand">
+<span class="ph cmd">Log in as a user who can create new PolicyCenter users and roles. 
+</span><div class="itemgroup stepxmp">For example, log in with user name <kbd class="ph userinput">su</kbd> and password <kbd class="ph userinput">gw</kbd>.
+</div>
+</li><li class="li step stepexpand">
+<span class="ph cmd">Create a user role with all the permissions that enable working with clients whose contact information is 
+stored in ContactManager. The permission codes in the base configuration are <code class="ph codeph">abcreate</code>, <code class="ph codeph">ctccreate</code>, 
+<code class="ph codeph">anytagcreate</code>, <code class="ph codeph">abdelete</code>, <code class="ph codeph">anytagdelete</code>, <code class="ph codeph">abedit</code>, <code class="ph codeph">anytagedit</code>, <code class="ph codeph">ctcedit</code>, and <code class="ph codeph">soapadmin</code>.
+</span><ol type="a" class="ol substeps">
+<li class="li substep">
+<span class="ph cmd">Click the <span class="ph uicontrol">Administration</span> tab, and then navigate to <span class="ph menucascade"><span class="ph uicontrol">Actions</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Roles</span></span>.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">On the <span class="keyword wintitle">Roles</span> screen, click <span class="ph uicontrol">New Role</span>.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">For <span class="ph uicontrol">Name</span> enter <kbd class="ph userinput">Client Data Admin</kbd>.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">For <span class="ph uicontrol">Type</span>, choose <span class="ph uicontrol">User Role</span>.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">For <span class="ph uicontrol">Description</span> enter <kbd class="ph userinput">Permissions for virtual user required by ContactManager for updating 
+contacts</kbd>.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">Under <span class="ph uicontrol">Permissions</span>, click <span class="ph uicontrol">Add</span>.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">Click the <span class="ph uicontrol">Permission</span> field and choose <span class="ph uicontrol">Create address book contacts</span> from the list.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">Repeat the process for the following permissions. For each permission, click <span class="ph uicontrol">Add</span> and choose the 
+permission from the drop-down list:
+</span><div class="itemgroup info">
+<ul class="ul">
+    <li class="li"><span class="ph uicontrol">Create contact with any tag</span></li> 
+<li class="li"><span class="ph uicontrol">Create local contacts</span> 
+</li>
+    <li class="li"><span class="ph uicontrol">Delete address book contacts</span> 
+</li>
+    <li class="li"><span class="ph uicontrol">Delete contact with any tag</span> 
+</li>
+    <li class="li"><span class="ph uicontrol">Edit address book contacts</span> 
+</li>
+    <li class="li"><span class="ph uicontrol">Edit contact with any tag</span> 
+</li>
+    <li class="li"><span class="ph uicontrol">Edit local contacts</span> 
+</li>
+    <li class="li"><span class="ph uicontrol">SOAP administration</span> 
+</li>
+</ul>
+</div>
+</li>
+<li class="li substep">
+<span class="ph cmd">Click <span class="ph uicontrol">Update</span> to create the new Client Data Admin role.
+</span></li>
+</ol>
+</li><li class="li step stepexpand">
+<span class="ph cmd">On the <span class="ph uicontrol">Administration</span> tab, navigate to <span class="ph menucascade"><span class="ph uicontrol">Actions</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">New User</span></span>.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Enter the following values for a new user named <kbd class="ph userinput">CMUpdatePC</kbd>:
+</span><div class="itemgroup info"><table class="table" id="t_em1944631__em1945705"><colgroup><col /><col /></colgroup><thead class="thead">
+<tr>
+<th class="entry" id="t_em1944631__em1945705__entry__1"><span class="first-in-cell">Name
+</span></th>
+<th class="entry" id="t_em1944631__em1945705__entry__2"><span class="first-in-cell">Value
+</span></th>
+</tr>
+</thead><tbody class="tbody">
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">First Name</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">CMUpdate
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Last Name</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">PC
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Username</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">CMUpdatePC
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Password</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">Xc8899Lm
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Confirm Password</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">Xc8899Lm
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Active</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">Yes
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Locked</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">No
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Vacation Status</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">At work
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">User Type</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">Other
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Primary Phone</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">Work
+</kbd></td>
+</tr>
+<tr>
+<td class="entry" headers="t_em1944631__em1945705__entry__1 "><span class="ph uicontrol">Work Phone</span> 
+</td>
+<td class="entry" headers="t_em1944631__em1945705__entry__2 "><kbd class="ph userinput">800-555-5555
+</kbd></td>
+</tr>
+</tbody></table></div>
+
+<div class="itemgroup info">
+<p class="p"><span class="ph uicontrol">Primary Phone</span> and <span class="ph uicontrol">Work Phone</span> are required for a new user, but they do not require real values for this particular 
+user.
+</p></div>
+</li><li class="li step stepexpand">
+<span class="ph cmd">Click the <span class="ph uicontrol">Roles</span> tab, and then click <span class="ph uicontrol">Add</span>.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Click the <span class="ph uicontrol">Name</span> field and choose <kbd class="ph userinput">Client Data Admin</kbd>.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Click <span class="ph uicontrol">Update</span>.
+</span></li><li class="li step stepexpand">
+                <span class="ph cmd">Start Guidewire Studio for ContactManager. </span>
+                <div class="itemgroup info">
+                    <p class="p">At a command prompt, navigate to the ContactManager installation folder and
+                        enter the following command: </p>
+                    <pre class="pre codeblock"><code>gwb studio</code></pre>
+                </div>
+            </li><li class="li step stepexpand">
+<span class="ph cmd">In the <span class="keyword wintitle">Project</span> window, navigate to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">gsrc</span></span>, and then navigate to 
+<span class="keyword apiname">wsi.remote.gw.webservice.pc.PCConfigurationProvider</span>. 
+</span></li><li class="li step stepexpand">
+    <span class="ph cmd">Double-click <span class="keyword apiname">PCConfigurationProvider</span> to open it in the editor.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Change the <code class="ph codeph">Username</code> and <code class="ph codeph">Password</code> definition in the <span class="keyword apiname">configure</span> method.
+</span><div class="itemgroup stepxmp">For example, define <code class="ph codeph">Username</code> and <code class="ph codeph">Password</code> to be <code class="ph codeph">CMUpdatepc</code> and <code class="ph codeph">Xc8899Lm</code>, as follows:
+<pre class="pre codeblock"><code>override function configure( serviceName : QName, 
+                             portName : QName, 
+                             config : WsdlConfig )  {
+  config.Guidewire.Authentication.Username = "CMUpdatePC"
+  config.Guidewire.Authentication.Password = "<code class="ph codeph">Xc8899Lm</code>"
+}</code></pre></div>
+</li><li class="li step stepexpand">
+                <span class="ph cmd">In the <span class="keyword wintitle">Project</span> window, the
+                        <span class="ph filepath">pc1000.wsc</span> web services collection is at the same level
+                    as the <span class="keyword apiname">PCConfigurationProvider</span> class. Double-click
+                        <span class="ph filepath">pc1000.wsc</span>. </span>
+                <div class="itemgroup info">
+                    <p class="p">Alternatively, you can press <kbd class="ph userinput">Ctrl+Shift+N</kbd> and enter
+                            <kbd class="ph userinput">pc1000</kbd>, and then double-click
+                            <span class="ph filepath">pc1000.wsc</span> in the search results. </p>
+                </div>
+            </li><li class="li step stepexpand">
+<span class="ph cmd">In the editor, select the following resource:
+</span><div class="itemgroup info">
+<pre class="pre codeblock"><code>${pc}/ws/gw/webservice/pc/pc1000/contact/ContactAPI?wsdl</code></pre></div>
+</li><li class="li step stepexpand">
+<span class="ph cmd">Ensure that the <span class="ph uicontrol">Settings</span> tab has the <span class="ph uicontrol">Setting Type</span> for <span class="ph uicontrol">ConfigurationProvider</span> set to 
+    <span class="keyword apiname">wsi.remote.gw.webservice.pc.PCConfigurationProvider</span>, the class you just edited.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">With PolicyCenter still running, above the <span class="ph uicontrol">Settings</span> tab, click <span class="ph uicontrol">Fetch <img class="image" height="13" src="ijstudio_fetch_btn.png" width="13" alt="" /></span> to update the web service’s WSDL file.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">When the update finishes, stop the ContactManager server and restart it to pick up this change.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Log in to PolicyCenter as a user with permission to work with the <span class="ph uicontrol">Contact</span> tab and with accounts, such as the 
+user <kbd class="ph userinput">aapplegate</kbd> with password <kbd class="ph userinput">gw</kbd>.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Add a contact stored in ContactManager to an active account. For example:
+</span><ol type="a" class="ol substeps">
+<li class="li substep">
+<span class="ph cmd">Open an active account, such as the sample data account S000212121 named Armstrong Cleaners, and, in 
+the Sidebar on the left under <span class="ph uicontrol">Actions</span>, click <span class="ph uicontrol">Contacts</span>. 
+</span><div class="itemgroup stepresult">The <span class="keyword wintitle">Account File Contacts</span> screen opens.
+</div>
+</li>
+<li class="li substep">
+<span class="ph cmd">Click <span class="ph menucascade"><span class="ph uicontrol">Create New Contact</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Additional Insured</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">From Address Book</span></span>. 
+</span></li>
+<li class="li substep">
+    <span class="ph cmd">Search for a contact who has the Client tag set in ContactManager, such as the sample <span class="keyword apiname">Person</span> contact Mark Stone.
+</span></li>
+<li class="li substep">
+<span class="ph cmd">Click <span class="ph uicontrol">Select</span> for a contact that the search results list says is stored in ContactManager. 
+</span><div class="itemgroup info">
+<p class="p">The value of the contact’s <span class="ph uicontrol">External</span> field must be <span class="ph uicontrol">Yes</span>.
+</p></div>
+</li>
+<li class="li substep">
+<span class="ph cmd">PolicyCenter adds the selected contact to the list of contacts on the <span class="keyword wintitle">Account File Contacts</span> screen.
+</span></li>
+</ol>
+</li><li class="li step stepexpand">
+<span class="ph cmd">Log in to ContactManager as a user who can work with contacts. 
+</span><div class="itemgroup stepxmp">For example, log in as the sample user <kbd class="ph userinput">aapplegate</kbd> with password <kbd class="ph userinput">gw</kbd>.
+</div>
+</li><li class="li step stepexpand">
+<span class="ph cmd">Make a change to the contact that you added to the account, such as entering a different primary phone 
+number, and then click <span class="ph uicontrol">Update</span> to save the change.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Back in PolicyCenter, on the <span class="keyword wintitle">Account File Contacts</span> screen, select a different contact from the one you added.
+</span></li><li class="li step stepexpand">
+<span class="ph cmd">Select the contact that you added previously.
+</span><div class="itemgroup stepresult">PolicyCenter updates the added contact’s data.
+</div>
+</li><li class="li step stepexpand">
+<span class="ph cmd">Ensure that the data has changed for that contact.
+</span></li></ol></section>
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

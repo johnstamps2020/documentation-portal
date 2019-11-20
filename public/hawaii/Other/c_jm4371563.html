@@ -1,0 +1,197 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Entity changes in messaging plugin code must be very limited. The restrictions listed below apply to code triggered by a MessageTransport or MessageReply plugin implementation. Design your messaging ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="c_jm4371563" /><meta name="DC.language" content="en-US" /><title>Messaging plugin restrictions for entity data changes</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="c_jm4371563" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+
+<h1 class="title topictitle1" id="ariaid-title1">Messaging plugin restrictions for entity data changes</h1>
+<div class="body conbody">
+<p class="p">Entity changes in messaging plugin code must
+be very limited. The restrictions listed below apply to code triggered
+by a <code class="ph codeph">MessageTransport</code>
+or <code class="ph codeph">MessageReply</code> plugin
+implementation. Design your messaging code carefully around these restrictions
+to avoid data corruption and logical errors that are difficult to diagnose.</p>
+<ul class="ul"><li class="li">A property is safe to change
+only if it is messaging-specific and users can never modify it from the
+user interface, even indirectly. Carefully consider the role of every
+property you might modify.</li><li class="li">With very few exceptions, it is not possible to create new objects messaging plugin code. In the
+                default configuration, only the following objects are safe to create within a
+                messaging plugin:<ul class="ul" id="c_jm4371563__ul_err_2s5_bhb">
+                    <li class="li"><code class="ph codeph">Activity</code> objects</li>
+                    <li class="li"><code class="ph codeph">Note</code> objects</li>
+                    <li class="li"><code class="ph codeph">Workflow</code> objects</li>
+                    <li class="li"><code class="ph codeph">WorkQueue</code> and <code class="ph codeph">WorkItem</code> objects</li>
+                    <li class="li"><code class="ph codeph">OutboundRecord</code> objects</li>
+                </ul>
+<p class="p">You cannot rely on pre-update rules or validation rules running for those
+                    objects.</p>
+                <p class="p">All other object types are dangerous and unsupported to add from within messaging
+                    plugins.</p><p class="p">If you modify the data model such that there are additional
+                    foreign keys on these objects, even these objects explicitly listed may be
+                    unsafe to add.</p></li><li class="li">Never delete objects.</li><li class="li">You must not rely on any
+entity data changes eventually triggering the following common rule sets.
+<ul class="ul"><li class="li">Pre-update rule
+set</li><li class="li">Validation
+rule set</li><li class="li">Event
+Fired rule set for the standard events <var class="keyword varname">ENTITY</var><code class="ph codeph">Added</code>, <var class="keyword varname">ENTITY</var><code class="ph codeph">Changed</code>, and <var class="keyword varname">ENTITY</var><code class="ph codeph">Removed</code> <p class="p">However, an Event Fired rule set is still
+triggered for events that you explicitly add. You can use the API <span class="keyword apiname">entity.addEvent</span> method to add
+events. <span class="keyword">GenericCenter</span> calls the
+Event Fired rule set once for each custom event for each messaging destination
+that listens for it.</p></li></ul>
+
+</li><li class="li">Never call business logic APIs
+that might change entity data, even in edge cases.</li><li class="li">From messaging plugin
+code, entity instance changes do not trigger concurrent data exceptions
+except in special rare cases. To avoid data integrity issues with concurrent
+changes, avoid changing data in these code locations.</li><li class="li">In some cases, consider
+adding or advancing a workflow as an alternative to direct data modifications
+from messaging code. The workflow can asynchronously perform code changes
+in a separate bundle outside your messaging-specific code.</li><li class="li">If you must update messaging-specific
+data, consider how absence of detecting concurrent data changes from
+messaging plugins might affect your extensions to the data model. For
+example, suppose you intend to modify an entity type to add a property
+with simple data. Instead, you could add a property with a foreign key
+to an instance of a custom entity type. First, create the instance of
+your custom entity type at an early part of the lifecycle of your main
+objects before the messaging code runs. As mentioned earlier, it is unsupported
+to create an entity instance in Event Fired rules or in messaging plugins.
+This restriction applies to all entity types, including custom entity
+types. In Event Fired rules or in messaging plugins, modify the messaging-specific
+entity instance. With this design, there is less chance of concurrent
+data change conflicts from a simple change on the main business entity
+instance from within the user interface.</li></ul>
+
+
+
+
+
+
+
+<p class="p">There also exists an optional feature to lock related
+objects during messaging actions. With locked data—usually the primary
+entity instance or the message—any attempt to access the locked data
+causes the accessing code to wait until the data is unlocked. For maximum
+data integrity, enable entity locking during messaging. For maximum performance,
+disable entity locking during messaging.</p>
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

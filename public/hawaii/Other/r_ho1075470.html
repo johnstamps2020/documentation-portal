@@ -1,0 +1,323 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="You can use any of the following options with the table_import command. You must always supply the -password option. Option Description -allreferencesallowed Allows references to existing ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="reference" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="r_ho1075470" /><meta name="DC.language" content="en-US" /><title>table_import command options</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="r_ho1075470" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="r_ho1075470__ho1075470">
+
+<h1 class="title topictitle1" id="r_ho1075470__ho1075470"><span class="keyword cmdname">table_import</span> command options</h1>
+<div class="body refbody">
+<section class="section">
+<p class="p">You can use any of the following options with the <span class="keyword cmdname">table_import</span> command. You must always supply the <code class="ph codeph">-password</code> option. </p>
+<table class="table" id="r_ho1075470__ho1741814"><colgroup><col /><col /></colgroup><thead class="thead">
+<tr>
+<th class="entry" id="r_ho1075470__ho1741814__entry__1"><p class="p">Option</p></th>
+<th class="entry" id="r_ho1075470__ho1741814__entry__2"><p class="p">Description</p></th>
+</tr>
+</thead><tbody class="tbody">
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-allreferencesallowed</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Allows references to existing non-administrative rows in all operational tables. <span class="ph">If there are rows in staging tables for <code class="ph codeph">CheckGroup</code> or <code class="ph codeph">CheckPortion</code>, you must use this command option.</span></p><div class="p">This option only applies with the following command options:<ul class="sl simple">
+                                        <li class="sli"><span class="keyword option">-integritycheck</span></li>
+                                        <li class="sli"><span class="keyword option">-integritycheckandload</span></li>
+                                    </ul>
+</div><p class="p">This option corresponds to the Boolean parameter
+                                        <span class="keyword parmname">allowRefsToExistingNonAdminRows</span> used by
+                                    the integrity check methods of the
+                                        <span class="keyword apiname">TableImportAPI</span> web service. Guidewire
+                                    recommends that you use this option or the equivalent API
+                                    parameter, set to <span class="keyword option">true</span> only if absolutely
+                                    necessary. <span class="ph">For example, use it in the rare case
+                                        that a policy period overlap exists between the existing
+                                        operational data and the data to load. </span></p><p class="p">This option can cause performance degradation during the check and load process, which would noticeably slow down the loading of staging table. </p><p class="p">See also <a class="xref" href="r_gc2368487.html#r_gc2368487">The load history detail report</a>.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword cmdname">-batch</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><div class="p">Runs the <span class="keyword cmdname">table_import</span> command in a batch process. This option only applies
+                                    with the following command options:<ul class="sl simple">
+                                        <li class="sli"><span class="keyword option">-deleteexcluded</span></li>
+                                        <li class="sli"><span class="keyword option">-encryptstagingtbls</span></li>
+                                        <li class="sli"><span class="keyword option">-integritycheck</span></li>
+                                        <li class="sli"><span class="keyword option">-integritycheckandload</span></li>
+                                        <li class="sli"><span class="keyword option">-populateexclusion</span></li>
+                                        <li class="sli"><span class="keyword option">-updatedatabasestatistics</span></li>
+                                    </ul>
+</div>
+    <div class="p">You can run <span class="keyword cmdname">table_import</span> in a batch process from any node in a <span class="keyword">GenericCenter</span> cluster. However, table
+                                    import batch processing must run physically on a server
+                                    designated as a <code class="ph codeph">batch</code> server. Therefore, in
+                                    running the command, provide the URL of a batch server and also
+                                    provide the user credentials for that batch server.<div class="note note note_note"><span class="note__title">Note:</span> 
+      The <span class="keyword option">-batch</span> option does not wait until the
+      started process completes before returning. Instead, it returns immediately and prints the ID
+      of the started process (PID). The process caller is responsible for waiting for the process to
+      complete before taking further action.</div></div></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph">-<span class="keyword option">clearerror</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Clears the error table. </p><p class="p">See also <a class="xref" href="r_gc2368487.html#r_gc2368487">The load history detail report</a>.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-clearexclusion</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Clears the exclusion table. </p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-clearstaging</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Clears the staging tables. Requires the server to be at the <code class="ph codeph">MAINTENANCE</code> run level. </p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-deleteexcluded</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Deletes rows from staging tables based on contents of exclusion table. </p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-encryptstagingtbls</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Instructs <span class="keyword">GenericCenter</span> to use the current encryption plugin implementation to encrypt those columns in the staging table marked for encryption. See also <a class="xref" href="c_jw2468732.html#c_jw2468732">Encryption features for staging tables</a>. </p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-encryptstagingtbls</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Do not use. While this command option is available, Guidewire does not support this command option in PolicyCenter.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-estimateorastats</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Executes queries for row counts on production tables and sets the database statistics. If you do
+                                    not use this option, the import command uses information in
+                                    database statistics to report approximate row counts. Use the
+                                        <code class="ph codeph">-estimateorastats</code> option only to load
+                                    production tables that are empty or have very few rows. Used
+                                    with the <span class="keyword parmname">-integritycheckandload</span> command
+                                    option.</p>
+                                <div class="p">This option only applies with the following command option:<ul class="ul" id="r_ho1075470__ul_ovk_2d1_g2b">
+                                        <li class="li"><span class="keyword option">-integritycheck</span></li>
+                                        <li class="li"><span class="keyword option">-integritycheckandload</span></li>
+                                    </ul>
+</div>
+                                <p class="p">This parameter corresponds to the Boolean parameter
+                                        <code class="ph codeph">updateDBStatisticsWithEstimates</code> used by the
+                                    integrity check methods of the <span class="keyword apiname">TableImportAPI</span>
+                                    web service.</p><p class="p">This command option applies to Oracle databases only.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-filepath</span>
+                                        <var class="keyword varname">filepath</var></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Path to target directory in which to download a report. Use with the
+                                        <span class="keyword cmdname">-getLoadHistoryReport</span> command option.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-getLoadHistoryReport</span>
+                                        <var class="keyword varname">reportID</var></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Downloads a compressed Zip version of the load history report as specified by the value of
+                                        <var class="keyword varname">reportID</var>. Does not require the server to
+                                    be at the <code class="ph codeph">MAINTENANCE</code> run level. Use the
+                                        <span class="keyword parmname">-listLoadHistoryReports</span> option to
+                                    determine the ID to use. Use the optional
+                                        <span class="keyword parmname">-filepath</span> parameter to specify the
+                                    target directory for the download.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-integritycheck</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><div class="p">Validates the contents of the staging tables. You can optionally specify:<ul class="sl simple">
+                                        <li class="sli"><span class="keyword option">-allreferencesallowed</span></li>
+                                        <li class="sli"><span class="keyword option">-clearerror</span></li>
+                                        <li class="sli"><span class="keyword option">-numthreadsintegritychecking</span></li>
+                                        <li class="sli"><span class="keyword option">-populateexclusion</span></li>
+                                    </ul>
+</div></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-integritycheckandload</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><div class="p">Validates the contents of the staging tables and populate operational tables. You can optionally
+                                    specify one of the following command options as well:<ul class="sl simple">
+                                        <li class="sli"><span class="keyword option">-allreferencesallowed</span></li>
+                                        <li class="sli"><span class="keyword option">-clearerror</span></li>
+                                        <li class="sli"><span class="keyword option">-estimateorastats</span></li>
+                                        <li class="sli"><span class="keyword option">-numthreadsintegritychecking</span></li>
+                                        <li class="sli"><span class="keyword option">-populateexclusion</span></li>
+                                        <li class="sli"><span class="keyword option">-zonedataonly</span></li>
+                                    </ul>
+</div></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-listLoadHistoryReports</span> [<var class="keyword varname">numReports</var>]</code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Lists the most recent load history reports. Optional parameter <var class="keyword varname">numReports</var> is the number of reports to list:</p><ul class="ul">
+<li class="li">If you supply a positive integer for <var class="keyword varname">numReports</var>, then <span class="keyword">GenericCenter</span> lists that number of most recent reports.</li><li class="li">If you do not supply a value for <var class="keyword varname">numReports</var>, then <span class="keyword">GenericCenter</span> lists all available reports.</li></ul>
+
+<p class="p">Does not require the server to be at the <code class="ph codeph">MAINTENANCE</code> run level. </p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-messagesinks</span> <var class="keyword varname">sinks</var>, ...</code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Deprecated. This option does nothing.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-numthreadsintegritychecking</span>
+                                        <var class="keyword varname">num</var></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Specifies the number of threads that <span class="keyword">GenericCenter</span> is to use in running database table integrity checks. The value of <var class="keyword varname">num</var> has the following meaning:</p><ul class="ul">
+<li class="li">Not specified – <span class="keyword">GenericCenter</span> assumes the number of threads to be one, no multithreading.</li><li class="li">1 – No multithreading, the default.</li><li class="li">2 - 100 – <span class="keyword">GenericCenter</span> runs the database integrity checks with the number of specified threads.</li><li class="li">&gt; 100 – <span class="keyword">GenericCenter</span> throws an exception.</li></ul>
+
+                                <div class="p">This option only applies with the following command options:<ul class="sl simple">
+                                        <li class="sli"><span class="keyword option">-integritycheck</span></li>
+                                        <li class="sli"><span class="keyword option">-integritycheckandload</span></li>
+                                    </ul>
+</div>
+    <div class="note note note_note"><span class="note__title">Note:</span> This value overrides any value set for attribute
+                                        <code class="ph codeph">num-threads-integrity-checking</code> on the
+                                    database <code class="ph codeph">&lt;loader&gt;</code> element in
+                                        <span class="ph filepath">database-config.xml</span>. See <a class="xref" href="r_hu1589916.html#r_hu1589916">The &lt;loader&gt; database configuration element</a>.</div></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-password</span> <var class="keyword varname">password</var></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Password (<var class="keyword varname">password</var>) to use to connect to the server. <span class="keyword">GenericCenter</span> requires the password.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-populateexclusion</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Populate the exclusion table with rows to exclude. </p><p class="p">See <a class="xref" href="r_gc2368487.html#r_gc2368487">The load history detail report</a>.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-server</span>
+                                        <var class="keyword varname">url</var></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><div class="p">Specifies a <span class="keyword">GenericCenter</span> server URL. Include the port number and
+                                    web application name, for example:<ul class="sl simple">
+                                        <li class="sli"><span class="ph filepath">http://<var class="keyword varname">serverName</var>:8080/cc</span><span class="ph filepath">http://<var class="keyword varname">serverName</var>:8180/pc</span><span class="ph filepath">http://<var class="keyword varname">serverName</var>:8580/bc</span></li>
+                                    </ul>
+</div>
+    <p class="p">If running the table import command in a batch process, see <span class="keyword cmdname">-batch</span> for more information.</p>
+                                </td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-updatedatabasestatistics</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Updates the database statistics on the staging tables. Run the table import command with this
+                                    option after populating the staging tables, but before using the
+                                        <span class="keyword option">-integritycheck</span> or
+                                        <span class="keyword option">-integritycheckandload</span> options.</p><p class="p">See <a class="xref" href="r_gc2368487.html#r_gc2368487">The load history detail report</a>.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword parmname">-user</span> <var class="keyword varname">user</var></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Specifies the user to use to run this process.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__1 "><p class="p"><code class="ph codeph"><span class="keyword option">-zonedataonly</span></code></p></td>
+<td class="entry" headers="r_ho1075470__ho1741814__entry__2 "><p class="p">Sets the import to load zone data only. Used with the <span class="keyword parmname">-integritycheckandload</span>
+                                    command option.</p></td>
+</tr>
+</tbody></table>
+
+</section>
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

@@ -1,0 +1,315 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="The TableImportAPI web service provides tools for importing non-administrative data from staging tables into operational tables in the GenericCenter database. The table_import command-line tool wraps ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="c_jr3454244" /><meta name="DC.language" content="en-US" /><title>Table import web service</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="c_jr3454244" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="c_jr3454244__jr3454244">
+
+<h1 class="title topictitle1" id="c_jr3454244__jr3454244">Table import web service</h1>
+<div class="body conbody">
+<p class="p">The <span class="keyword apiname">TableImportAPI</span>
+web service provides tools for importing non-administrative data from
+staging tables into operational tables in the <span class="keyword">GenericCenter</span> database. The <span class="keyword cmdname">table_import</span> command-line tool
+wraps this API to provide a straightforward way to use the web service.
+To import data from external sources, you first write a conversion tool
+to populate the staging tables. Next, you use methods from this web service
+to check the integrity of those tables. You cannot load data until these
+methods report no errors. Then, use one of the load methods to load data
+from the staging tables into operational tables. <span class="keyword">GenericCenter</span> uses bulk data import
+commands to perform the load.</p>
+<p class="p">Most of the methods for this web service
+require the server to be at the <code class="ph codeph">MAINTENANCE</code>
+run level. Before you use those methods, start the server at the <code class="ph codeph">MAINTENANCE</code> run level. Alternatively,
+use the <span class="keyword apiname">SystemToolsAPI</span>
+web service <span class="keyword apiname">setRunLevel</span> method to set the
+server run level to <code class="ph codeph">MAINTENANCE</code>.
+After the table import command completes, you can set the server run
+level to <code class="ph codeph">MULTIUSER</code>.</p>
+<p class="p">Some tasks are available as batch operations.
+Methods for batch operations return a process ID that you can check for
+completion of the task. Use these methods to avoid holding a web transaction
+open for an indefinite period of time. To check for completion of the
+batch process, you use the <span class="keyword apiname">MaintenanceToolsAPI</span>
+web service <span class="keyword apiname">batchProcessStatusByID</span>
+method. The method returns a <span class="keyword apiname">ProcessStatus</span>
+object. To check the progress of the batch process, use the following
+<code class="ph codeph">boolean</code> properties.</p>
+<ul class="ul">
+<li class="li"><code class="ph codeph">Starting</code> – The batch process
+is initializing.</li>
+<li class="li"><code class="ph codeph">Executing</code> – The batch process
+is running.</li>
+<li class="li"><code class="ph codeph">Complete</code> – The batch process
+has finished.</li>
+<li class="li"><code class="ph codeph">Success</code> – The batch process
+completed successfully.</li>
+</ul>
+
+<p class="p">The <span class="keyword apiname">ProcessStatus</span>
+object also provides more detailed information about the batch process.
+For example, the following code checks the status of an integrity check
+batch process.</p>
+<pre class="pre codeblock"><code>var tiApi = new TableImportAPI()
+var mtApi = new MaintenanceToolsAPI()
+// Authenticate the APIs here
+...
+var tiBatchProcess = tiApi.integrityCheckStagingTableContentsAsBatchProcess(false, false,false,1)
+...
+try {
+  // Check the status
+  var status = mtApi.batchProcessStatusByID(new () { :Pid = tiBatchProcess.Pid })
+  if (status.StartingOrExecuting) {
+...
+  } else {
+    print("Started at ${status.StartDate}, completed at ${status.DateCompleted}")
+    if (status.Success) {
+      print("Ran to completion, completing ${status.OpsCompleted} operation(s) with " +
+      "${status.FailedOps} failure(s)");
+    } else {
+      print("Failed to run to completion: ${status.FailureReason}. " +
+      "Completed ${status.OpsCompleted} operation(s) " +
+      "with ${status.FailedOps} failure(s) before terminating")
+    }
+...
+  }
+} catch (e) {
+  print("Failed to find process status: ${e.getClass()} " + e.Message)
+}</code></pre>
+<p class="p">For staging table actions that you can request from
+remote systems, refer to the following table.</p>
+<table class="table" id="c_jr3454244__jr3455604"><colgroup><col /><col /></colgroup><thead class="thead">
+<tr>
+<th class="entry" id="c_jr3454244__jr3455604__entry__1"><p class="p">Action</p></th>
+<th class="entry" id="c_jr3454244__jr3455604__entry__2"><p class="p"><span class="keyword apiname">TableImportAPI</span> method and
+Description</p></th>
+</tr>
+</thead><tbody class="tbody">
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Clear data from
+staging tables in the database</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">clearStagingTables</code> </p><p class="p">Before using a conversion tool to load new
+data from an external source to staging tables in the database, you typically
+clear the existing data from the staging tables. This synchronous method
+returns nothing.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Clear data from
+the error table in the database</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">clearErrorTable</code>
+              </p><p class="p">Before running integrity checks on data in
+the staging tables, you typically clear existing load errors from the
+database. This synchronous method returns nothing.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Clear data from
+the exclusion table in the database</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">clearExclusionTable</code> </p><p class="p">Before running integrity checks on data in
+the staging tables, you typically clear existing records from the exclusion
+table. This synchronous method returns nothing.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Perform checks on
+the staging tables to ensure that the data will load into operational
+tables</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">integrityCheckStagingTableContentsAsBatchProcess</code>
+</p><p class="p">Before you load staging table data into
+operational tables, your staging table data must pass the integrity checks
+that this method performs for <span class="keyword">GenericCenter</span>.
+This method creates entries in the error table for errors that it detects.
+This method returns a process ID that you can check for completion of
+the action.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Prepare to remove
+staging tables rows that cause integrity checks to fail</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">populateExclusionTableAsBatchProcess</code>
+</p><p class="p">You can choose to remove the rows from
+staging tables that cause integrity checks to fail if you do not want
+to correct the errors. Populating the exclusion table marks these rows
+for removal. This method returns a process ID that you can check for
+completion of the action.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Delete data specified
+by the exclusion table from the staging tables</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">deleteExcludedRowsFromStagingTablesAsBatchProcess</code>
+</p><p class="p">Before rerunning integrity checks on
+data in the staging tables, you can remove records that contain errors
+from the staging tables. This method returns a process ID that you can
+check for completion of the action.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Encrypt data in the
+staging tables before loading the data into operational tables</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">encryptDataOnStagingTablesAsBatchProcess</code>
+</p><p class="p">If you have database columns that are
+encrypted, you must encrypt the data values in the staging tables before
+you load the data into operational tables. This method returns a process
+ID that you can check for completion of the action.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Update database statistics
+on staging tables</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">updateStatisticsOnStagingTablesAsBatchProcess</code>
+</p><p class="p">To ensure the database performs the
+load operations effectively, update the statistics on the staging tables
+before loading the data into operational tables. For an Oracle databas,
+this method also updates the indexes on the staging tables. This method
+returns a process ID that you can check for completion of the action.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Load data from staging
+tables into operational tables after performing checks on the staging
+tables</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">integrityCheckStagingTableContentsAndLoadSourceTablesAsBatchProcess</code>
+</p><p class="p">Prior to loading the data from the staging
+tables to operational tables, this method reruns integrity checks. If
+the checks pass, this method loads all staging table data into operational
+tables. This process performs any required data conversions. For example,
+placeholder values for foreign keys are converted to actual key values.
+If this process encounters an unrecoverable error, it reverts the entire
+data load. If the load process succeeds, it clears all data from the
+staging tables. This method returns a process ID that you can check for
+completion of the action.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Load zone data from
+staging tables into operational tables after performing checks on the
+staging tables</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">integrityCheckZoneStagingTableContentsAndLoadZoneSourceTables</code>
+</p><p class="p">This method performs the same action
+as <code class="ph codeph">integrityCheckStagingTableContentsAndLoadSourceTables</code>,
+but loads only zone data. This synchronous method returns the result
+of the load operation.</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__1 "><p class="p">Get information about
+completed staging table operations</p></td>
+<td class="entry" headers="c_jr3454244__jr3455604__entry__2 "><p class="p"><code class="ph codeph">getLoadHistoryReportsInfo</code>
+</p><p class="p">This synchronous method returns a <code class="ph codeph">String</code> array containing
+summary information about the most recent calls to the <span class="keyword apiname">TableImportAPI</span> web service.
+The array members are in reverse chronological order. The number of operations
+is specified by the argument to this method. An argument of 0 returns
+all available history.</p></td>
+</tr>
+</tbody></table>
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

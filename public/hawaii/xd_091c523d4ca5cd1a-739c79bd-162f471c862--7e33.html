@@ -1,0 +1,305 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="The GUnit Test Framework enables the writing of tests to exercise the application's Gosu configuration code. Tests are written in Gosu. You can execute these tests from the command line to include the ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.relation" scheme="URI" content="Other/p-granite.html" /><meta name="DC.relation" scheme="URI" content="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37" /><meta name="DC.relation" scheme="URI" content="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33" /><meta name="DC.language" content="en-US" /><title>New and changed in Gosu in 10.0.0</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="" /><meta name="wh-toc-id" content="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33-d50e3496" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="./oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="./oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37" as="document" /><link rel="preload" href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30" as="document" /><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="index.html" class=" wh_logo not-hidden-xs "><img src="oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol xmlns:html="http://www.w3.org/1999/xhtml" class="d-print-none"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li><li><span class="topicref"><span class="title"><a href="Other/p-granite-maint.html">New and Changed Guide</a><span class="wh-tooltip"><p xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns:xhtml="http://www.w3.org/1999/xhtml" class="shortdesc"><span class="ph">Describes new features
+          and changes from prior <span class="keyword">GenericCenter</span> 
+          versions. Intended readers are business users and system administrators
+          who want an overview of new features and changes to features. Consult
+          the “Release Notes Archive” part of this document for changes in
+          prior maintenance releases.</span></p></span></span></span></li><li><span class="topicref" data-id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08"><span class="title"><a href="Other/p-granite.html">New and changed in 10.0.0</a></span></span></li><li class="active"><span class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33"><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33">New and changed in Gosu in 10.0.0</a></span></span></li></ol></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader">
+  
+<span class="navprev"><a class="link" href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37" title="New and changed in globalization in 10.0.0" aria-label="Previous topic: New and changed in globalization in 10.0.0" rel="prev"></a></span>  
+<span class="navnext"><a class="link" href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30" title="New and changed in installation and upgrade of GenericCenter 10.0.0" aria-label="Next topic: New and changed in installation and upgrade of GenericCenter 10.0.0" rel="next"></a></span>  </span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                        <nav role="navigation" id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-3 hidden-xs navbar hidden-print">
+                            <div class=" wh_publication_toc " data-tooltip-position="right" data-simplebar=""><div class="SearchNav"><form id="searchForm" method="get" role="search" action="search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div><script><!--
+											$(document).ready(function () {
+												$('#searchForm').submit(function (e) {
+													if ($('.wh_search_textfield').val().length < 1) {
+														e.preventDefault();
+													}
+												});
+											});
+										--></script></form><span class="closeNav fas fa-times"></span></div><ul role="tree" aria-label="Table of Contents"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="true"><span data-tocid="tocId-d50e2045" class="topicref" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action tocId-d50e2045-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-granite-maint.html" id="tocId-d50e2045-link">New and Changed Guide</a><span class="wh-tooltip"><p xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns:xhtml="http://www.w3.org/1999/xhtml" class="shortdesc"><span class="ph">Describes new features
+          and changes from prior <span class="keyword">GenericCenter</span> 
+          versions. Intended readers are business users and system administrators
+          who want an overview of new features and changes to features. Consult
+          the “Release Notes Archive” part of this document for changes in
+          prior maintenance releases.</span></p></span></span></span><ul role="group" class="navbar-nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6-d50e2300" class="topicref" data-id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6-d50e2300-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-granite-maint.html" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6-d50e2300-link">New and changed in 10.0 maintenance releases</a></span></span></li><li role="treeitem" aria-expanded="true"><span data-tocid="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08-d50e2569" class="topicref" data-id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08-d50e2569-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-granite.html" id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08-d50e2569-link">New and changed in 10.0.0</a></span></span><ul role="group" class="navbar-nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48-d50e2577" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48-d50e2577-link" class="wh-expand-btn"></span><span class="title"><a href="Other/c_new-and-changed-application.html" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48-d50e2577-link">New and changed in the application in 10.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45-d50e2972" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45-d50e2972-link">New and changed in system administration in 10.0.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04-d50e3082" class="topicref" data-id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04" id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04-d50e3082-link">New and changed in configuration in 10.0.0</a></span></span></li><li role="treeitem"><span data-tocid="tocId-d50e3347" class="topicref" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="g-designer.html" id="tocId-d50e3347-link">New and changed in Product Designer in 10.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37-d50e3379" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37-d50e3379-link">New and changed in globalization in 10.0.0</a></span></span></li><li role="treeitem" class="active"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33-d50e3496" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33-d50e3496-link">New and changed in Gosu in 10.0.0</a></span></span><ul role="group" class="navbar-nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false" line="138" class="dots-after"></li></ul></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30-d50e3595" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30-d50e3595-link">New and changed in installation and upgrade of <span xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns:xhtml="http://www.w3.org/1999/xhtml" class="keyword">GenericCenter</span> 10.0.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b-d50e3646" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b-d50e3646-link">New and changed in integration in 10.0.0</a></span></span></li></ul></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_pn1294946-d50e3759" class="topicref" data-id="c_pn1294946" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_pn1294946-d50e3759-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-ferrite-maint.html#c_pn1294946" id="c_pn1294946-d50e3759-link">New and changed in 9.0 maintenance releases</a></span></span></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_po1294946-d50e4558" class="topicref" data-id="c_po1294946" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_po1294946-d50e4558-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-ferrite.html#c_po1294946" id="c_po1294946-d50e4558-link">New and changed in 9.0.0</a></span></span></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_qm1294946-d50e6498" class="topicref" data-id="c_qm1294946" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_qm1294946-d50e6498-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-emerald-maint.html#c_qm1294946" id="c_qm1294946-d50e6498-link">New and changed in 8.0 maintenance releases</a></span></span></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_qn1303216-d50e7436" class="topicref" data-id="c_qn1303216" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_qn1303216-d50e7436-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-emerald.html#c_qn1303216" id="c_qn1303216-d50e7436-link">New and changed in 8.0.0</a></span></span></li><li role="treeitem"><span data-tocid="c_partrelnotes-d50e9252" class="topicref" data-id="c_partrelnotes" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="Other/c_part-relnotes.html#c_partrelnotes" id="c_partrelnotes-d50e9252-link">Release Notes Archive</a></span></span></li></ul></li></ul></div>
+                        </nav>
+                        <div class="collapse-toc col-lg-1 col-md-1 col-sm-1 hidden-xs"><span class="collapse-toc-button" style="cursor: pointer;"></span></div>
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1"><article class="nested0" aria-labelledby="ariaid-title1" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33">
+  <h1 class="title topictitle1" id="ariaid-title1">New and changed in Gosu in 10.0.0</h1>
+  <div class="body conbody"><p class="p"></p></div>
+<article class="topic concept nested1" aria-labelledby="ariaid-title2" xml:lang="en-US" lang="en-US" id="xd_0b871f8716860f9d--d8deb52-164296f82b6--7f3a">
+  <h2 class="title topictitle2" id="ariaid-title2">GUnit Test Framework</h2>
+  <div class="body conbody">
+    <p class="p">The GUnit Test Framework enables the writing of tests to exercise the application's Gosu configuration code.</p>
+    <p class="p">Tests are written in Gosu. You can execute these tests from the command line to include the tests in an automated
+      continuous integration work flow. You can also execute these tests from Guidewire Studio.</p>
+    <p class="p">For more information, refer to the GUnit section of the <em class="ph i">Testing Guide</em>.</p>
+  </div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title3" xml:lang="en-US" lang="en-US" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7b1a">
+  <h2 class="title topictitle2" id="ariaid-title3">Support for static imports</h2>
+  <div class="body conbody"><p class="p">Gosu now provides support for importing static features of Gosu and Java classes. The
+      syntax for a static import uses a <code class="ph codeph">#</code> symbol between the class name and the static features to
+      import. After importing the static features, you can use them in your code without qualifying them with their
+      path.</p>
+    <p class="p seealso">See also</p>
+    <ul class="ul" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7b1a__ul_zpd_szv_n2b">
+      <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/c_kg1514365.html#c_kg1514365">Importing static members</a></li>
+      
+    </ul>
+</div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title4" xml:lang="en-US" lang="en-US" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a38">
+  <h2 class="title topictitle2" id="ariaid-title4">New modifier <span class="keyword apiname">reified</span> for generic functions</h2>
+  <div class="body conbody">
+    <p class="p">In previous releases, the type parameter for a generic method was always reified, so type information was always
+      available at run time. This parameter is now reified only if the <code class="ph codeph">reified</code> keyword is a modifier on
+      the method definition.</p><p class="p">Gosu now requires the modifier <span class="keyword apiname">reified</span> on generic functions that have any of the following
+      characteristics, where <span class="keyword parmname">T</span> is the token for the type parameter of a generic type:</p>
+    <section class="section">
+      <ul class="ul" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a38__d762e18">
+        <li class="li">The method uses the <span class="keyword apiname">new</span> keyword to create an instance of <span class="keyword parmname">T</span>.</li>
+        <li class="li">The method uses the <span class="keyword apiname">new</span> keyword to create an instance of a generic type and includes the
+            <code class="ph codeph">&lt;T&gt;</code> qualifier on the type name.</li>
+        <li class="li">An expression in the method uses the generic type with the <span class="keyword apiname">typeis</span> or
+            <span class="keyword apiname">typeof</span> operator.</li>
+        <li class="li">The method contains code that uses <code class="ph codeph">as <span class="keyword parmname">T</span></code> to cast a value to the generic
+          type.</li>
+        <li class="li">The method overrides a reified method in a parent class or implements a reified method in an interface.</li>
+        <li class="li">The method calls another reified method and passes an argument of a generic type to that method.</li>
+      </ul>
+
+      <p class="p">The modifier <span class="keyword apiname">reified</span> is optional on a parameterized method that does not have any of these
+        characteristics.</p>
+      <p class="p">Gosu forbids the modifier <span class="keyword apiname">reified</span> on methods that are not generic.</p>
+    </section>
+    <section class="section">
+      <p class="p seealso">See also</p>
+      <ul class="ul" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a38__ul_zpl_g5z_k2b">
+        <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/c_reified-parameterized-methods.html#xd_aa8c6c5ac87215fa-5630bea7-164623e2565--7dd4">Generic methods that reify a type</a></li>
+        
+      </ul>
+
+    </section></div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title5" xml:lang="en-US" lang="en-US" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--79c1">
+  <h2 class="title topictitle2" id="ariaid-title5">Support for executing a Gosu program by another Gosu program</h2>
+  <div class="body conbody">
+    <div class="note important note_important"><span class="note__title">Important:</span> Not supported in Studio 2.0.3</div>
+    <p class="p">You can now run a Gosu program (.gsp file) from another Gosu program. Gosu provides
+      the <span class="keyword apiname">execute</span> and <span class="keyword apiname">executeWithArgs</span> static methods on program types to run the
+      program.</p>
+    <p class="p seealso">See also</p>
+    <ul class="ul" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--79c1__ul_h3t_xry_m2b">
+      <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/c_executing-programs.html#xd_0638eb9dcf93022f-7fa9a360-1648559bf13--7d5e">Executing a Gosu program from another Gosu program</a></li>
+      
+    </ul>
+
+  </div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title6" xml:lang="en-US" lang="en-US" id="xd_72ee972c746fdff7--1d770ae8-164065371e5--7f62">
+  <h2 class="title topictitle2" id="ariaid-title6">Support for empty <code class="ph codeph">vararg</code> arguments in calls to Java methods</h2>
+  <div class="body conbody"><p class="p">In previous releases, if you called a Java method that had a <code class="ph codeph">vararg</code> parameter, you had to provide an
+      empty list if you did not want to provide a value. Now, you do not have to pass that empty list.</p>
+    <div class="example">
+      <p class="p">Consider a Java method that has the following signature. The method has a single named parameter that is a
+          <code class="ph codeph">vararg</code>. The method accepts zero, one, or many <code class="ph codeph">String</code> arguments.</p>
+      <div class="p">
+        <pre class="pre codeblock"><code>public String makeOneString(String... args)</code></pre>
+      </div>
+      <div class="p">To pass values to this method, use code like the following
+        lines.<pre class="pre codeblock"><code>var noArgsResult  = makeOneString()               // No arguments
+var oneArgResult  = makeOneString({"one"})        // One argument value
+var twoArgsResult = makeOneString({"one", "two"}) // Two argument values</code></pre></div>
+      <p class="p seealso">See also</p>
+      <ul class="ul" id="xd_72ee972c746fdff7--1d770ae8-164065371e5--7f62__ul_osx_3zf_n2b">
+        <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/r_in1531260.html#r_in1531260">Notable differences between Gosu and Java</a></li>
+        
+      </ul>
+
+    </div></div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title7" xml:lang="en-US" lang="en-US" id="xd_72ee972c746fdff7--1d770ae8-164065371e5--7e9f">
+  <h2 class="title topictitle2" id="ariaid-title7">Support for class path in manifest in JAR file</h2>
+  <div class="body conbody"><p class="p">To provide support for long class paths, Gosu now recognizes the
+        <code class="ph codeph">Class-Path</code> header in the manifest of a JAR file. The class path in this header adds to the
+      existing class path that Gosu uses to find classes.</p>
+    <p class="p seealso">See also</p>
+    <ul class="ul" id="xd_72ee972c746fdff7--1d770ae8-164065371e5--7e9f__ul_xyy_k51_n2b">
+      <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/c_in1486843.html#c_in1486843">Running Gosu programs and calling other classes</a></li>
+      
+    </ul>
+</div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title8" xml:lang="en-US" lang="en-US" id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c66">
+  <h2 class="title topictitle2" id="ariaid-title8">Syntax has changed for numeric literal of short integer type</h2>
+  <div class="body conbody">
+    <div class="p">The Gosu syntax for short integer numeric literals has changed. Instead of using the
+        <code class="ph codeph">s</code> suffix, Gosu now requires the explicit specification <code class="ph codeph">as short</code>. Using the
+        <code class="ph codeph">s</code> suffix for a short integer numeric literal is a syntax error. For example, you must now use
+      the following assignment syntax:<pre class="pre codeblock"><code>var aShort = 4 as short</code></pre></div>
+    <p class="p">The following line is no longer valid:</p>
+    <div class="p">
+      <pre class="pre codeblock"><code>var aShort = 4s</code></pre>
+    </div>
+   </div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title9" xml:lang="en-US" lang="en-US" id="xd_0b871f8716860f9d--d8deb52-164296f82b6--7e05">
+  <h2 class="title topictitle2" id="ariaid-title9">Stricter property access validation</h2>
+  <div class="body conbody"><div class="p">Accessing properties in the following ways now causes compilation errors.<ul class="ul" id="xd_0b871f8716860f9d--d8deb52-164296f82b6--7e05__ul_fml_z5k_h2b">
+        <li class="li">Accessing a property on an internal class from outside the package</li>
+        <li class="li">Accessing a protected property on an abstract class from an anonymous instance</li>
+      </ul>
+</div></div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title10" xml:lang="en-US" lang="en-US" id="xd_0638eb9dcf93022f-7fa9a360-1648559bf13--7d18">
+  <h2 class="title topictitle2" id="ariaid-title10">Removed <code class="ph codeph">classpath</code> command</h2>
+  <div class="body conbody"><p class="p">Gosu does not support the <code class="ph codeph">classpath</code> command in Gosu program files. To provide a class path to a Gosu
+      program, set the path before running the program.</p>
+    <p class="p seealso">See also</p>
+    <ul class="ul" id="xd_0638eb9dcf93022f-7fa9a360-1648559bf13--7d18__ul_pwj_yl1_n2b">
+      <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/c_ko2241088.html#c_ko2241088">Command-prompt tool and options</a></li>
+      <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/c_in1486843.html#c_in1486843">Running Gosu programs and calling other classes</a></li>
+      
+    </ul>
+</div>
+</article><article class="topic concept nested1" aria-labelledby="ariaid-title11" xml:lang="en-US" lang="en-US" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--68e6">
+  <h2 class="title topictitle2" id="ariaid-title11">Getter and setter method syntax for properties is not supported</h2>
+  <div class="body conbody"><p class="p">In previous releases, for Java compatibility, Gosu supported using
+        <span class="keyword apiname">getXXX</span> and <span class="keyword apiname">setXXX</span> methods to get and set the value for a property
+        <code class="ph codeph">XXX</code> on a Gosu class. This syntax is not supported in release 10.0.0. You must use the dot
+      notation and the property name to get and set property values, as shown in the following code examples.</p>
+    <p class="p">The class <span class="keyword apiname">MyClass</span> has a property <span class="keyword apiname">MyProperty</span>.</p>
+    <pre class="pre codeblock"><code>class MyClass {
+  private var  _myPropertyValue : String
+
+  property get MyProperty() : String   {
+    return  _myPropertyValue
+  }
+  property set MyProperty(str : String)   {
+    _myPropertyValue = str
+  }
+}</code></pre>
+    <p class="p">The following code demonstrates valid and invalid syntax to access the property
+      <span class="keyword apiname">MyProperty</span>.</p>
+    <pre class="pre codeblock"><code>var c = new MyClass()
+c.MyProperty = "Yes"    // Sets to "Yes" by calling the set MyProperty property function
+c.setMyProperty("Java") // *Compiler error*
+print("Gosu Style " + c.MyProperty)      // Calls the get MyProperty property function
+print("Java Style " + c.getMyProperty()) // *Compiler error*</code></pre></div>
+</article></article></article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div class=" wh_topic_toc "><div class="wh_topic_label">On this page</div><ul><li class="topic-item"><a href="#xd_0b871f8716860f9d--d8deb52-164296f82b6--7f3a" data-tocid="xd_0b871f8716860f9d--d8deb52-164296f82b6--7f3a">GUnit Test Framework</a></li><li class="topic-item"><a href="#xd_f2d9111b437efd2a--57187018-163ae3f52fd--7b1a" data-tocid="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7b1a">Support for static imports</a></li><li class="topic-item"><a href="#xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a38" data-tocid="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a38">New modifier <span class="keyword apiname">reified</span> for generic functions</a></li><li class="topic-item"><a href="#xd_f2d9111b437efd2a--57187018-163ae3f52fd--79c1" data-tocid="xd_f2d9111b437efd2a--57187018-163ae3f52fd--79c1">Support for executing a Gosu program by another Gosu program</a></li><li class="topic-item"><a href="#xd_72ee972c746fdff7--1d770ae8-164065371e5--7f62" data-tocid="xd_72ee972c746fdff7--1d770ae8-164065371e5--7f62">Support for empty <code class="ph codeph">vararg</code> arguments in calls to Java methods</a></li><li class="topic-item"><a href="#xd_72ee972c746fdff7--1d770ae8-164065371e5--7e9f" data-tocid="xd_72ee972c746fdff7--1d770ae8-164065371e5--7e9f">Support for class path in manifest in JAR file</a></li><li class="topic-item"><a href="#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c66" data-tocid="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c66">Syntax has changed for numeric literal of short integer type</a></li><li class="topic-item"><a href="#xd_0b871f8716860f9d--d8deb52-164296f82b6--7e05" data-tocid="xd_0b871f8716860f9d--d8deb52-164296f82b6--7e05">Stricter property access validation</a></li><li class="topic-item"><a href="#xd_0638eb9dcf93022f-7fa9a360-1648559bf13--7d18" data-tocid="xd_0638eb9dcf93022f-7fa9a360-1648559bf13--7d18">Removed <code class="ph codeph">classpath</code> command</a></li><li class="topic-item"><a href="#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--68e6" data-tocid="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--68e6">Getter and setter method syntax for properties is not supported</a></li></ul></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

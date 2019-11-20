@@ -1,0 +1,448 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="New in GenericCenter 10.0.0 is the ability to track specific business events in the application logs. Business event logging A business event is an event of special interest in the GenericCenter ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.relation" scheme="URI" content="Other/p-granite.html" /><meta name="DC.relation" scheme="URI" content="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e46.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e46" /><meta name="DC.relation" scheme="URI" content="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45" /><meta name="DC.language" content="en-US" /><title>New and changed in system administration in 10.0.0</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="" /><meta name="wh-toc-id" content="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45-d50e2972" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="./oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="./oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="./oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="./oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="./oxygen-webhelp/app/topic-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e46.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e46" as="document" /><link rel="preload" href="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04" as="document" /><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="index.html" class=" wh_logo not-hidden-xs "><img src="oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "><ol xmlns:html="http://www.w3.org/1999/xhtml" class="d-print-none"><li><span class="home"><a href="index.html"><span>Home</span></a></span></li><li><span class="topicref"><span class="title"><a href="Other/p-granite-maint.html">New and Changed Guide</a><span class="wh-tooltip"><p xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns:xhtml="http://www.w3.org/1999/xhtml" class="shortdesc"><span class="ph">Describes new features
+          and changes from prior <span class="keyword">GenericCenter</span> 
+          versions. Intended readers are business users and system administrators
+          who want an overview of new features and changes to features. Consult
+          the “Release Notes Archive” part of this document for changes in
+          prior maintenance releases.</span></p></span></span></span></li><li><span class="topicref" data-id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08"><span class="title"><a href="Other/p-granite.html">New and changed in 10.0.0</a></span></span></li><li class="active"><span class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45"><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45">New and changed in system administration in 10.0.0</a></span></span></li></ol></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader">
+  
+<span class="navprev"><a class="link" href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e46.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e46" title="Changed in the application in 10.0.0" aria-label="Previous topic: Changed in the application in 10.0.0" rel="prev"></a></span>  
+<span class="navnext"><a class="link" href="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04" title="New and changed in configuration in 10.0.0" aria-label="Next topic: New and changed in configuration in 10.0.0" rel="next"></a></span>  </span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                        <nav role="navigation" id="wh_publication_toc" class="col-lg-3 col-md-3 col-sm-3 hidden-xs navbar hidden-print">
+                            <div class=" wh_publication_toc " data-tooltip-position="right" data-simplebar=""><div class="SearchNav"><form id="searchForm" method="get" role="search" action="search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div><script><!--
+											$(document).ready(function () {
+												$('#searchForm').submit(function (e) {
+													if ($('.wh_search_textfield').val().length < 1) {
+														e.preventDefault();
+													}
+												});
+											});
+										--></script></form><span class="closeNav fas fa-times"></span></div><ul role="tree" aria-label="Table of Contents"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="true"><span data-tocid="tocId-d50e2045" class="topicref" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action tocId-d50e2045-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-granite-maint.html" id="tocId-d50e2045-link">New and Changed Guide</a><span class="wh-tooltip"><p xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns:xhtml="http://www.w3.org/1999/xhtml" class="shortdesc"><span class="ph">Describes new features
+          and changes from prior <span class="keyword">GenericCenter</span> 
+          versions. Intended readers are business users and system administrators
+          who want an overview of new features and changes to features. Consult
+          the “Release Notes Archive” part of this document for changes in
+          prior maintenance releases.</span></p></span></span></span><ul role="group" class="navbar-nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6-d50e2300" class="topicref" data-id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6-d50e2300-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-granite-maint.html" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7ba6-d50e2300-link">New and changed in 10.0 maintenance releases</a></span></span></li><li role="treeitem" aria-expanded="true"><span data-tocid="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08-d50e2569" class="topicref" data-id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08" data-state="expanded"><span role="button" tabindex="0" aria-labelledby="button-collapse-action xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08-d50e2569-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-granite.html" id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c08-d50e2569-link">New and changed in 10.0.0</a></span></span><ul role="group" class="navbar-nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48-d50e2577" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48-d50e2577-link" class="wh-expand-btn"></span><span class="title"><a href="Other/c_new-and-changed-application.html" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e48-d50e2577-link">New and changed in the application in 10.0</a></span></span></li><li role="treeitem" class="active"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45-d50e2972" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45-d50e2972-link">New and changed in system administration in 10.0.0</a></span></span><ul role="group" class="navbar-nav nav-list"><span class="expand-button-action-labels"><span id="button-expand-action" aria-label="Expand"></span><span id="button-collapse-action" aria-label="Collapse"></span><span id="button-pending-action" aria-label="Pending"></span></span><li role="treeitem" aria-expanded="false" line="138" class="dots-after"></li></ul></li><li role="treeitem"><span data-tocid="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04-d50e3082" class="topicref" data-id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04" id="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04-d50e3082-link">New and changed in configuration in 10.0.0</a></span></span></li><li role="treeitem"><span data-tocid="tocId-d50e3347" class="topicref" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="g-designer.html" id="tocId-d50e3347-link">New and changed in Product Designer in 10.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37-d50e3379" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e37-d50e3379-link">New and changed in globalization in 10.0.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33-d50e3496" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e33-d50e3496-link">New and changed in Gosu in 10.0.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30-d50e3595" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e30-d50e3595-link">New and changed in installation and upgrade of <span xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns:xhtml="http://www.w3.org/1999/xhtml" class="keyword">GenericCenter</span> 10.0.0</a></span></span></li><li role="treeitem"><span data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b-d50e3646" class="topicref" data-id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b.html#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e2b-d50e3646-link">New and changed in integration in 10.0.0</a></span></span></li></ul></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_pn1294946-d50e3759" class="topicref" data-id="c_pn1294946" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_pn1294946-d50e3759-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-ferrite-maint.html#c_pn1294946" id="c_pn1294946-d50e3759-link">New and changed in 9.0 maintenance releases</a></span></span></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_po1294946-d50e4558" class="topicref" data-id="c_po1294946" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_po1294946-d50e4558-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-ferrite.html#c_po1294946" id="c_po1294946-d50e4558-link">New and changed in 9.0.0</a></span></span></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_qm1294946-d50e6498" class="topicref" data-id="c_qm1294946" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_qm1294946-d50e6498-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-emerald-maint.html#c_qm1294946" id="c_qm1294946-d50e6498-link">New and changed in 8.0 maintenance releases</a></span></span></li><li role="treeitem" aria-expanded="false"><span data-tocid="c_qn1303216-d50e7436" class="topicref" data-id="c_qn1303216" data-state="not-ready"><span role="button" tabindex="0" aria-labelledby="button-expand-action c_qn1303216-d50e7436-link" class="wh-expand-btn"></span><span class="title"><a href="Other/p-emerald.html#c_qn1303216" id="c_qn1303216-d50e7436-link">New and changed in 8.0.0</a></span></span></li><li role="treeitem"><span data-tocid="c_partrelnotes-d50e9252" class="topicref" data-id="c_partrelnotes" data-state="leaf"><span role="button" class="wh-expand-btn"></span><span class="title"><a href="Other/c_part-relnotes.html#c_partrelnotes" id="c_partrelnotes-d50e9252-link">Release Notes Archive</a></span></span></li></ul></li></ul></div>
+                        </nav>
+                        <div class="collapse-toc col-lg-1 col-md-1 col-sm-1 hidden-xs"><span class="collapse-toc-button" style="cursor: pointer;"></span></div>
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1"><article class="nested0" aria-labelledby="ariaid-title1" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e45">
+  <h1 class="title topictitle1" id="ariaid-title1">New and changed in system administration in 10.0.0</h1>
+  <div class="body conbody"><p class="p"></p></div>
+<article class="topic concept nested1" aria-labelledby="ariaid-title2" xml:lang="en-US" lang="en-US" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e44">
+  <h2 class="title topictitle2" id="ariaid-title2">New in system administration in 10.0.0</h2>
+  <div class="body conbody"><p class="p"></p></div>
+<article class="topic reference nested2" aria-labelledby="ariaid-title3" xml:lang="en-US" lang="en-US" id="xd_aa8c6c5ac87215fa-5630bea7-164623e2565--7f65">
+  <h3 class="title topictitle3" id="ariaid-title3">Intentional logging</h3>
+  <div class="body refbody">
+    <section class="section">
+      <p class="p">New in <span class="keyword">GenericCenter</span> 10.0.0 is the ability to track specific
+        business events in the application logs.</p>
+    </section>
+    <section class="section"><h4 class="title sectiontitle">Business event logging</h4>
+      <p class="p">A <dfn class="term">business event</dfn> is an event of special interest in the <span class="keyword">GenericCenter</span> application, such as a user logging into Guidewire
+          <span class="keyword">GenericCenter</span>. New in 10.0 is the ability to use special
+        event markers to capture information about certain significant events in the application and
+        output that information in multiple ways. A special event marker is an additional attribute
+        that prints to the log along with the log message. This additional information makes it
+        relatively easy to find and extract the log record associated with a special event.</p>
+      <p class="p">In Guidewire InsuranceSuite applications, <dfn class="term">intentional logging</dfn> is the act of
+        capturing information about specific business events or application metrics and outputting
+        that information to the <span class="keyword">GenericCenter</span> application logs. </p>
+    </section>
+    <section class="section"><h4 class="title sectiontitle">Profiler integration</h4>
+      <p class="p">Guidewire integrates intentional logging with Guidewire
+        Profiler. Thus, it is possible to generate markers for intentional logging automatically
+        while using Guidewire Profiler.</p>
+    </section>
+    <section class="section"><h4 class="title sectiontitle">Traceability IDs</h4>
+      <p class="p">New in logging in 10.0.0 is the use of traceability IDs. A <dfn class="term">Traceability ID</dfn> is
+        a <code class="ph codeph">String</code> UUID (Universally Unique Identifier) that Guidewire uses to track
+        a single user transaction or operation across multiple logging statements. The logging
+        statements can span calls across multiple applications in inter-application integration.</p>
+    </section>
+    <section class="section"><h4 class="title sectiontitle">Configuring intentional logging</h4>
+      <p class="p">See <a class="xref" href="xd_88692ccd77b0a96e--c1a9526-16231d1d963--7c04.html#xd_aa8c6c5ac87215fa-5630bea7-164623e2565--7f64">Intentional logging configuration</a> for more information.</p>
+    </section>
+  </div>
+</article><article class="topic concept nested2" aria-labelledby="ariaid-title4" xml:lang="en-US" lang="en-US" id="xd_28aee90f68224edd-4d6e5ba2-164f1a5dd6e--7dbc">
+  <h3 class="title topictitle3" id="ariaid-title4">Skip producer code checks on accounts with no active policies</h3>
+  <div class="body conbody">
+    <p class="p"></p>
+    <p class="p">To skip producer code checks on accounts with no active policies, use the
+        <code class="ph codeph">bypassProducerCodeCheckOnAccountsWithNoActivePolicies</code>  attribute in
+        <span class="ph filepath">security-config.xml</span>. When true, if all policies on the account are
+      expired, any agent (regardless of agency) can view the account, and can start a new submission
+      on that account. The account is treated as if there are no policies on it.</p>
+    <p class="p seealso">See also</p>
+    <ul class="ul" id="xd_28aee90f68224edd-4d6e5ba2-164f1a5dd6e--7dbc__ul_njh_nj5_r2b">
+      <li seealso-li="yes" class="li"><a class="xref" href="Other/r_ny1568399.html#r_ny1568399">Account producer code handler elements</a></li>
+    </ul>
+
+  </div>
+</article><article class="topic reference nested2" aria-labelledby="ariaid-title5" xml:lang="en-US" lang="en-US" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--7191">
+  <h3 class="title topictitle3" id="ariaid-title5">System property <code class="ph codeph">VerifyRuleImportDataModelCheckSum</code></h3>
+  <div class="body refbody">
+    <section class="section">
+      <p class="p">New in <span class="keyword">GenericCenter</span> 10.0.0 is system property
+          <code class="ph codeph">VerifyRuleImportDataModelCheckSum</code>. Use this system property to enable or
+        disable verification of the data model while importing business rules into a non-production
+        system. This is especially useful as a data model change in the importing environment can
+        prevent rule import. By disabling the data model verification, it becomes possible to import
+        the rules.</p>
+      <div class="p">System property <code class="ph codeph">VerifyRuleImportDataModelCheckSum</code> can be one of the
+        following Boolean values.<table class="table frame-all" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--7191__table_ypn_smf_bfb"><colgroup><col /><col /></colgroup><tbody class="tbody">
+              <tr>
+                <td class="entry"><code class="ph codeph">true</code></td>
+                <td class="entry"><span class="keyword">GenericCenter</span> enforces verification of the data
+                  model during rule import. The default is <code class="ph codeph">true</code>.</td>
+              </tr>
+              <tr>
+                <td class="entry"><code class="ph codeph">false</code></td>
+                <td class="entry"><span class="keyword">GenericCenter</span> does not enforce verification of
+                  the data model during rule import.</td>
+              </tr>
+            </tbody></table></div>
+      <div class="p">You can set system property <code class="ph codeph">VerifyRuleImportDataModelCheckSum</code> in the
+        following ways: <ul class="ul" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--7191__ul_xfw_n2h_bfb">
+          <li class="li">In <span class="keyword">GenericCenter</span> Studio, in the server JVM options.</li>
+          <li class="li">From a <span class="keyword">GenericCenter</span> command prompt, as you start the
+            application server.</li>
+        </ul>
+</div>
+      <p class="p seealso">See also</p>
+      <ul class="ul">
+        <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/r_VerifyRuleImportDataModelCheckSum1.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--7287">Importing rules after a data model change</a></li>
+        
+      </ul>
+
+    </section>
+  </div>
+</article><article class="topic concept nested2" aria-labelledby="ariaid-title6" xml:lang="en-US" lang="en-US" id="xd_be9036c187463fa9--5bcd93d1-167ce267672--798c">
+  <h3 class="title topictitle3" id="ariaid-title6">Work queues for asynchronous quoting</h3>
+  <div class="body conbody">
+    <p class="p">There are two new work queues associated with asynchronous
+      quoting.</p>
+    <p class="p seealso">See also</p>
+    <ul class="ul" id="xd_be9036c187463fa9--5bcd93d1-167ce267672--798c__ul_gzg_swf_kgb">
+      <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/r_AsyncRating_workqueue.html#xd_be9036c187463fa9--5bcd93d1-167ce267672--79cf">Asynchronous Rating work queue</a></li>
+      <li seealso-li="yes" class="li html-only"><a class="xref" href="Other/r_AsyncQuoting.html#xd_f037f79e2de1940b-6a0a7407-1618ba82746--7f5f">Asynchronous Quoting work queue</a></li>
+      
+      <li seealso-li="yes" class="li"><a class="xref" href="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e47.html#xd_5472a20373b961cd-4eb0bd54-15f5e6528c7--7e52">New in quoting and rating performance</a></li>
+    </ul>
+
+  </div>
+</article></article><article class="topic concept nested1" aria-labelledby="ariaid-title7" xml:lang="en-US" lang="en-US" id="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e43">
+  <h2 class="title topictitle2" id="ariaid-title7">Changed in system administration in 10.0.0</h2>
+  <div class="body conbody"><p class="p"></p></div>
+<article class="topic concept nested2" aria-labelledby="ariaid-title8" xml:lang="en-US" lang="en-US" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7ae5">
+  <h3 class="title topictitle3" id="ariaid-title8">Changes to the <code class="ph codeph">su</code> user and the <code class="ph codeph">superuser</code> role</h3>
+  <div class="body conbody">
+    <section class="section"><h4 class="title sectiontitle"><code class="ph codeph">superuser</code> role removed from <code class="ph codeph">su</code> user</h4>
+      <p class="p">In <span class="keyword">GenericCenter</span>
+        <span class="ph">10.0.0</span><span class="ph">10.0.1</span>, Guidewire has removed the <code class="ph codeph">superuser</code> role
+        from the Super User (<code class="ph codeph">su</code>) user. In the base configuration, Guidewire
+        configures user <code class="ph codeph">su</code> as an unrestricted user in configuration file
+        <span class="ph filepath">config.xml</span>. <span class="keyword">GenericCenter</span> does not
+        evaluate permissions for unrestricted users. As a consequence of <span class="keyword">GenericCenter</span> bypassing permission checking, the unrestricted user has
+        access to the entire <span class="keyword">GenericCenter</span> application. Thus, an
+        unrestricted user behaves as if it has all permissions.</p>
+    </section>
+    <section class="section"><h4 class="title sectiontitle"><code class="ph codeph">superuser</code> role deprecated</h4>
+      <p class="p">In <span class="keyword">GenericCenter</span>
+        <span class="ph">10.0.0</span><span class="ph">10.0.1</span>, Guidewire officially deprecates the <code class="ph codeph">superuser</code> role.
+        Guidewire has renamed this role in the <span class="keyword">GenericCenter</span> interface
+        to <span class="keyword wintitle">All Permissions (Deprecated)</span>. Guidewire intends to remove this role
+        completely in a future release.</p>
+      <div class="p">Guidewire recommends the following:
+        <ol class="ol" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7ae5__d1474e81">
+          <li class="li">Review all usages of the <code class="ph codeph">superuser</code> role in your <span class="keyword">GenericCenter</span> configuration.</li>
+          <li class="li">Determine what specific permissions are actually needed for each usage of the
+            <code class="ph codeph">superuser</code> role.</li>
+          <li class="li">Replace the <code class="ph codeph">superuser</code> role with an existing (or new) role that has
+            the necessary permissions.</li>
+          <li class="li">Ensure that there are no remaining usages in your installation of the deprecated
+            role.</li>
+        </ol></div>
+    </section>
+  </div>
+</article><article class="topic concept nested2" aria-labelledby="ariaid-title9" xml:lang="en-US" lang="en-US" id="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a7b">
+  <h3 class="title topictitle3" id="ariaid-title9">Changes to <span class="keyword">GenericCenter</span> logging</h3>    
+  <div class="body conbody">
+    <p class="p">In <span class="keyword">GenericCenter</span> 10.0, Guidewire has
+      changed how to configure and use application logging.</p>
+   
+
+    <section class="section"><h4 class="title sectiontitle">Logging API <span class="keyword apiname">slf4j</span></h4>
+      <p class="p">Guidewire now uses the <span class="keyword apiname">slf4j</span> API, in conjunction with Apache log4j-2
+        libraries and internal Guidewire libraries, to provide logging in the <span class="keyword">GenericCenter</span> application.</p>
+    </section>
+    <section class="section"><h4 class="title sectiontitle">Logging configuration file <span class="ph filepath">log4j2.xml</span></h4>
+      <div class="p">New in 10.0, Guidewire uses the XML-formated <span class="ph filepath">log4j2.xml</span> logging
+        configuration file to control the behavior of the logging activity in <span class="keyword">GenericCenter</span>. You access this file from the following location in
+        Guidewire Studio:<ul class="sl simple">
+          <li class="sli">
+            <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">logging</span></span></li>
+        </ul>
+</div>
+      <div class="p">Configuration file <span class="ph filepath">log4j2.xml</span> replaces the previous logging
+        configuration file <span class="ph filepath">logging.properties</span>. File
+          <span class="ph filepath">log4j2.xml</span> contains a number logger categories defined in the
+        following public class<span class="ph">es</span>: <ul class="sl simple">
+          <li class="sli">
+            <span class="keyword apiname">BCLoggerCategory</span></li>
+          <li class="sli">
+            <span class="keyword apiname">CCLoggerCategory</span></li>
+          <li class="sli">
+            <span class="keyword apiname">BizRulesLoggerCategory</span></li>
+          <li class="sli">
+            <span class="keyword apiname">PCLoggerCategory</span></li>
+          <li class="sli">
+            <span class="keyword apiname">BizRulesLoggerCategory</span></li>
+        </ul>
+</div>
+    </section>
+  </div>
+</article><article class="topic concept nested2" aria-labelledby="ariaid-title10" xml:lang="en-US" lang="en-US" id="xd_28aee90f68224edd-4d6e5ba2-164f1a5dd6e--7b84">
+  <h3 class="title topictitle3" id="ariaid-title10">Changes to Guidewire Profiler</h3>
+  <div class="body conbody"><div class="p">In <span class="keyword">GenericCenter</span> 10.0.0, Guidewire has
+      added the ability to profile Gosu servlets and REST API operations. To access Guidewire
+      Profiler, log into Guidewire <span class="keyword">GenericCenter</span> using an
+      administrative account and navigate to the following location:<ul class="sl simple">
+        <li class="sli">
+          <span class="ph menucascade"><span class="ph uicontrol">Server Tools</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Guidewire Profiler</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Configuration</span></span></li>
+      </ul>
+</div></div>
+</article><article class="topic concept nested2" aria-labelledby="ariaid-title11" xml:lang="en-US" lang="en-US" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d">
+  <h3 class="title topictitle3" id="ariaid-title11">Changes to <span class="keyword wintitle">SQL Server DMV Snapshot</span> screen</h3>
+  <div class="body conbody"><p class="p">In <span class="keyword">GenericCenter</span> 10.0.0, Guidewire has
+      changed the name and functionality of the (Server Tools) <span class="keyword wintitle">SQL Server DMV
+        Snapshot</span> screen. The new name of the screen is <span class="keyword wintitle">SQL Server Performance
+        Report</span>. This screen is only available if the database is SQL Server.</p>
+  <section class="section"><h4 class="title sectiontitle">The updated <span class="keyword wintitle">SQL Server Performance Report</span> screen </h4>
+    <div class="p">The renamed <span class="keyword wintitle">SQL Server Performance Report</span> screen can now generate
+        reports that include the following types of data, if specified:<table class="table frame-all" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b"><colgroup><col /><col /></colgroup><thead class="thead">
+              <tr>
+                <th class="entry" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__1"><span class="first-in-cell">Statistics data</span></th>
+                <th class="entry" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__2"><span class="first-in-cell">Description</span></th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__1 "><span class="first-in-cell">SQL Server Dynamic Management Views</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__2 ">
+                  <p class="p">SQL Server provides Dynamic Management Views as a tool to monitor, diagnose,
+                    and tune database performance. Each performance report contains DMV information.
+                      <span class="keyword">GenericCenter</span> automatically generates this type
+                    of data and provides the data in each report.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__1 "><span class="first-in-cell">SQL Server Query Store</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__2 ">
+                  <p class="p">SQL Server Query Store provides a set of tables separate from the Dynamic
+                    Management Views. Query Store persists data to disk, whereas DMV data is
+                    in-memory only and lost after a server restart. Thus, it is possible to obtain
+                    Query Store database statistics across server restarts.</p>
+                  <p class="p">You must enable SQL Server Query Store before you can generate statistics that
+                    use Query Store.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__1 "><span class="first-in-cell">Database statistics</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_g24_1yr_y2b__entry__2 "><span class="first-in-cell">This is the same information as available from the Server Tools
+                    </span><span class="keyword wintitle">Database Statistics</span> report.</td>
+              </tr>
+            </tbody></table></div>
+      <div class="p">The updated screen contains several options that you can select:<table class="table frame-all" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_p25_s1s_y2b"><colgroup><col /><col /></colgroup><thead class="thead">
+              <tr>
+                <th class="entry" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_p25_s1s_y2b__entry__1"><span class="first-in-cell">Option</span></th>
+                <th class="entry" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_p25_s1s_y2b__entry__2"><span class="first-in-cell">Action</span></th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_p25_s1s_y2b__entry__1 "><span class="ph uicontrol">Include Query Store Analysis</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_p25_s1s_y2b__entry__2 "><span class="first-in-cell">Select to include Query Store statistics in the SQL Server performance
+                  report. If you select this option, then you must also select a time interval for
+                  the Query Store data as well.</span></td>
+              </tr>
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_p25_s1s_y2b__entry__1 "><span class="ph uicontrol">Include database statistics</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_p25_s1s_y2b__entry__2 "><span class="first-in-cell">Select to include basic database statistics in the SQL Server performance
+                  report.</span></td>
+              </tr>
+            </tbody></table></div>
+    <p class="p">See <a class="xref html-only" href="Other/c_sql-server-performance-report.html#c_gc1617668">The SQL Server Performance Report screen</a> for more
+        information.</p>
+  </section>
+    <section class="section"><h4 class="title sectiontitle">Changes to <span class="keyword cmdname">system_tools</span></h4>
+      <div class="p">To support the updated SQL Server performance reporting, Guidewire has modified the
+          <span class="keyword cmdname">system_tools</span> command slightly. The following command options relate to
+        the SQL Server performance reports.<table class="table frame-all" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b"><colgroup><col /><col /><col /></colgroup><thead class="thead">
+              <tr>
+                <th class="entry" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__1"><span class="first-in-cell">Command option</span></th>
+                <th class="entry" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__2"><span class="first-in-cell">New or Changed</span></th>
+                <th class="entry" id="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__3"><span class="first-in-cell">Description</span></th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__1 "><span class="keyword option">-sqlListIntervals</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__2 "><span class="first-in-cell">New</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__3 "><span class="first-in-cell">Determine the IDs of the SQL Server performance report time intervals</span></td>
+              </tr>
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__1 "><span class="keyword option">-mssqlPerfRpt</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__2 "><span class="first-in-cell">Changed</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__3 "><span class="first-in-cell">Generate a performance report using the interval IDs</span></td>
+              </tr>
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__1 "><span class="keyword option">-listPerfReports</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__2 "><span class="first-in-cell">No change</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__3 "><span class="first-in-cell">Determine the ID of each generated report</span></td>
+              </tr>
+              <tr>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__1 "><span class="keyword option">-getPerfReport</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__2 "><span class="first-in-cell">No change</span></td>
+                <td class="entry" headers="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d__table_bkg_2cs_y2b__entry__3 "><span class="first-in-cell">Download an existing report to a local directory using its ID</span></td>
+              </tr>
+            </tbody></table></div>
+      <p class="p">See <a class="xref html-only" href="Other/r_system_tools-sql-server-reports.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--7b4b">About SQL Server reports and system tools</a> for more information.</p>
+    </section>
+  </div>
+</article><article class="topic concept nested2" aria-labelledby="ariaid-title12" xml:lang="en-US" lang="en-US" id="xd_eaa4cbd7d62a61a4-7be89a96-16a4552a0b1--7c4c">
+  <h3 class="title topictitle3" id="ariaid-title12">Increased network traffic for user interface updates</h3>
+  <div class="body conbody">
+    <p class="p"><span class="keyword">GenericCenter</span> 10 uses a new user interface library for
+      displaying application pages based on their PCF definitions. In previous releases, the
+        <span class="keyword">GenericCenter</span> server would send a compact, object-based
+      representation of a page to the client browser, and the browser would generate the HTML for
+      rendering the page. In <span class="keyword">GenericCenter</span> 10, the server generates the
+      full HTML and sends it to the browser. Because the HTML representation of the page is larger,
+      this results in increased network traffic whenever a page is rendered.</p>
+    <p class="p">On a fast network, you will most likely not notice any performance impact due to this change.
+      On slower networks, you may want to consider having your application server or load balancer
+      compress the traffic between the server and the client. Although compression may increase
+      latency, the significant reduction in network traffic may provide an overall performance
+      improvement.</p>
+  </div>
+</article></article></article></article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div class=" wh_topic_toc "><div class="wh_topic_label">On this page</div><ul><li class="topic-item"><a href="#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e44" data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e44">New in system administration in 10.0.0</a><ul><li class="topic-item"><a href="#xd_aa8c6c5ac87215fa-5630bea7-164623e2565--7f65" data-tocid="xd_aa8c6c5ac87215fa-5630bea7-164623e2565--7f65">Intentional logging</a></li><li class="topic-item"><a href="#xd_28aee90f68224edd-4d6e5ba2-164f1a5dd6e--7dbc" data-tocid="xd_28aee90f68224edd-4d6e5ba2-164f1a5dd6e--7dbc">Skip producer code checks on accounts with no active policies</a></li><li class="topic-item"><a href="#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--7191" data-tocid="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--7191">System property <code class="ph codeph">VerifyRuleImportDataModelCheckSum</code></a></li><li class="topic-item"><a href="#xd_be9036c187463fa9--5bcd93d1-167ce267672--798c" data-tocid="xd_be9036c187463fa9--5bcd93d1-167ce267672--798c">Work queues for asynchronous quoting</a></li></ul></li><li class="topic-item"><a href="#xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e43" data-tocid="xd_091c523d4ca5cd1a-739c79bd-162f471c862--7e43">Changed in system administration in 10.0.0</a><ul><li class="topic-item"><a href="#xd_f2d9111b437efd2a--57187018-163ae3f52fd--7ae5" data-tocid="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7ae5">Changes to the <code class="ph codeph">su</code> user and the <code class="ph codeph">superuser</code> role</a></li><li class="topic-item"><a href="#xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a7b" data-tocid="xd_f2d9111b437efd2a--57187018-163ae3f52fd--7a7b">Changes to <span class="keyword">GenericCenter</span> logging</a></li><li class="topic-item"><a href="#xd_28aee90f68224edd-4d6e5ba2-164f1a5dd6e--7b84" data-tocid="xd_28aee90f68224edd-4d6e5ba2-164f1a5dd6e--7b84">Changes to Guidewire Profiler</a></li><li class="topic-item"><a href="#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d" data-tocid="xd_5a76679976f54a56-7e307aff-1654fe9d0e2--781d">Changes to <span class="keyword wintitle">SQL Server DMV Snapshot</span> screen</a></li><li class="topic-item"><a href="#xd_eaa4cbd7d62a61a4-7be89a96-16a4552a0b1--7c4c" data-tocid="xd_eaa4cbd7d62a61a4-7be89a96-16a4552a0b1--7c4c">Increased network traffic for user interface updates</a></li></ul></li></ul></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 20, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>
