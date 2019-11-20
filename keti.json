@@ -16,7 +16,10 @@
       "refreshTokenLifetimeMinutes": 10080,
       "refreshTokenWindowMinutes": 1440
     },
-    "redirectUris": ["http://localhost:3000/authorization-code/callback"]
+    "redirectUris": [
+      "http://localhost:8080/authorization-code/callback",
+      "https://nodeoktacontainer-doctools.dev.ccs.guidewire.net/authorization-code/callback"
+    ]
   },
   "ownershipType": "GROUP",
   "ownerPod": "doctools"
