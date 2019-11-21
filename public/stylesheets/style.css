@@ -1,8 +1,57 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(http://bestanimations.com/Books/page-turning-book-animation-17.gif);
+  background-size: 64px;
+  background-repeat: repeat;
+  background-color: gray;
+}
 
 a {
-  color: #00B7FF; }
+  color: #00b7ff;
+}
+
+header {
+  height: 64px;
+  background-color: #3c4c5e;
+  color: white;
+}
+
+.mainLogo img {
+  height: 32px;
+  margin: 16px;
+  display: inline-block;
+}
+
+.appTitle {
+  display: inline-block;
+  font-size: 32px;
+  line-height: 32px;
+  margin: 16px;
+}
+
+main {
+  max-width: 700px;
+  margin: auto;
+  background-color: white;
+  padding: 3rem;
+}
+
+.hawaiiDocLink {
+  padding: 6rem;
+  border: solid 1px black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hawaiiDocLink:hover {
+  box-shadow: 5px 10px #888888;
+}
+
+.hawaiiDocLink a {
+  color: black;
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 64px;
+}
 
 /*# sourceMappingURL=style.css.map */

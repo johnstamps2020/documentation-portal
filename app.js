@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
+const favicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -32,6 +33,8 @@ const oidc = new ExpressOIDC({
   appBaseUrl: `${process.env.APP_BASE_URL}`,
   scope: 'openid profile'
 });
+
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -73,7 +76,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log('Running on PORT: ' + port);
+  console.log(`Listening to requests on http://localhost:${port}`);
 });
 
 module.exports = app;
