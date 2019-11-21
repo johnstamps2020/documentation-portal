@@ -1,0 +1,718 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="There are two types of checks in ClaimCenter. Standard checks The normal checks requested from ClaimCenter when using the Check Wizard in the user interface. You can also trigger them from business ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="c_oq3411995" /><meta name="DC.language" content="en-US" /><title>Check integration</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="c_oq3411995" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="c_oq3411995__oq3411995">
+
+<h1 class="title topictitle1" id="c_oq3411995__oq3411995">Check integration</h1>
+<div class="body conbody">
+<p class="p">There are two types of checks in ClaimCenter.</p>
+<dl class="dl">
+    
+        <dt class="dt dlterm">Standard checks</dt>
+        <dd class="dd">The normal checks requested from ClaimCenter when using the <span class="keyword wintitle">Check Wizard</span> in the user interface. 
+            You can also trigger them from business rules. Typically, you generate
+            checks in the user interface, triggering an approval process
+            of automated approval rules and human approvers. Eventually, ClaimCenter
+            sends checks to external systems to print and process. You can track
+            check status, and request a void or stop if necessary.</dd>
+    
+    
+        <dt class="dt dlterm">Manual checks</dt>
+        <dd class="dd">Checks that record physical checks written from a check book or checks written from a
+                    system external to the ClaimCenter application. In this case, ClaimCenter tracks
+                    the check for completeness only. Processing manual checks in ClaimCenter enables
+                    you to track checks in a central location with optional notification of other
+                    users or external systems. You can track check status, and request a void or
+                    stop if necessary. Manual checks can be assigned a Notifying status that
+                    indicates that printing the check is unnecessary.</dd>
+    
+</dl>
+<p class="p">Technically, checks are not transactions. However,
+in most ways ClaimCenter treats checks like other financial transactions
+entities, such as tracking them with a status code.</p>
+<p class="p">The following table describes check status codes. The columns on the right indicate whether the
+            status exists for standard checks or manual checks.</p>
+<table class="table" id="c_oq3411995__oq3066428"><colgroup><col /><col /><col /><col /></colgroup><thead class="thead">
+<tr>
+<th class="entry" id="c_oq3411995__oq3066428__entry__1"><p class="p">Check status</p></th>
+<th class="entry" id="c_oq3411995__oq3066428__entry__2"><p class="p">Meaning</p></th>
+<th class="entry" id="c_oq3411995__oq3066428__entry__3"><p class="p">Standard</p></th>
+<th class="entry" id="c_oq3411995__oq3066428__entry__4"><p class="p">Manual</p></th>
+</tr>
+</thead><tbody class="tbody">
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">null</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">An internal initial
+status.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">pendingapproval</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The check request is saved in ClaimCenter but is not yet approved. Manual checks do not need
+                                approval. However, you can customize this behavior if necessary.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">rejected</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The approver did not approve the check request. In the base configuration, manual checks do not
+                                need approval, but you can customize this behavior.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">awaitingsubmission</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The check is held
+in this status until the date reaches the check’s issuance date and
+a background processing task prepares the check for submission.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">requesting</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The standard check
+request is ready to be sent to an external system.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">requested</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The standard check was successfully sent to an external system.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">pendingvoid</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The check void request
+is ready to be sent to an external system.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">pendingstop</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">A check stop request
+is ready to be sent to an external system.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">pendingtransfer</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">A check transfer request
+is ready to be sent to an external system.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The check was issued in the external system. For manual checks, <cite class="cite">issued</cite> means
+                                specifically that the manual check notification was sent to an
+                                external system and successfully acknowledged.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The check cleared
+in the external system.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__1 "><p class="p"><code class="ph codeph">notifying</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__2 "><p class="p">The manual check notification is ready to be sent to an external system,  indicating that
+                                printing the check is unnecessary.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__3 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066428__entry__4 "><p class="p">Yes</p></td>
+</tr>
+</tbody></table>
+
+<p class="p">To detect standard check requests or manual checks, you can write event business rules that
+            listen for the <code class="ph codeph">CheckStatusChanged</code> event and check for changes to the
+                <var class="keyword varname">check</var><code class="ph codeph">.status</code> property. The following table
+            describes the possible status code transitions. The last two columns indicate whether
+            the transition exists for standard checks or manual checks.</p>
+<table class="table" id="c_oq3411995__oq3066543"><colgroup><col /><col /><col /><col /><col /></colgroup><thead class="thead">
+<tr>
+<th class="entry" id="c_oq3411995__oq3066543__entry__1"><p class="p">Original check status</p></th>
+<th class="entry" id="c_oq3411995__oq3066543__entry__2"><p class="p">Changed status</p></th>
+<th class="entry" id="c_oq3411995__oq3066543__entry__3"><p class="p">Status change description</p></th>
+<th class="entry" id="c_oq3411995__oq3066543__entry__4"><p class="p">Standard</p></th>
+<th class="entry" id="c_oq3411995__oq3066543__entry__5"><p class="p">Manual</p></th>
+</tr>
+</thead><tbody class="tbody">
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">null</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingapproval</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">For a new check, either approval rules triggered approval or the check exceeded authority limits.
+                                In the base configuration,  ClaimCenter auto-approves manual checks.
+                                You can customize this behavior with approval rules.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">awaitingsubmission</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A standard check reaches
+the end of the new check wizard and approval rules determine that no
+approval is necessary.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">notifying</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><span class="first-in-cell">A manual check makes this initial transition if the check does not require
+                            approval. In the base configuration, ClaimCenter auto-approves manual
+                            checks. You can customize this behavior with approval rules.</span></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">pendingapproval</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">awaitingsubmission</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">The approver approves
+the standard check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">rejected</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">The approver rejects
+the check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><dfn class="term">object
+deleted</dfn></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user deletes a check
+in the user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">notifying</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">The approver approves
+the manual check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">rejected</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">awaitingsubmission</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user’s edit to
+a check does not trigger approval.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingapproval</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user’s edit to a check triggers approval. In the base configuration, ClaimCenter auto-approves
+                                manual checks. You can customize this behavior with approval
+                                rules.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">notifying</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user edits a rejected
+check and the updated check does not require approval.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><dfn class="term">object
+deleted</dfn></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user deletes a check
+in the user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">awaitingsubmission</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">requesting</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">Automatically transitions to the new status by using the scheduled financials escalation batch
+                                process.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingapproval</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user’s edit to
+a check triggers approval.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><dfn class="term">object
+deleted</dfn></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user deletes a check
+in the user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">requesting</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">requested</code></p></td>
+    <td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">For a standard check only, this transition indicates that 
+        ClaimCenter received an acknowledgment
+        for the associated message for the <code class="ph codeph">requesting</code>
+        status. This transition requires you to call
+        <code class="ph codeph">check.acknowledgeSubmission</code> in your message
+        ACK code in your messaging plugins.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingtransfer</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to transfer a check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingvoid</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to void a check in the application user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingstop</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to stop a check in the application user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">denied</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">For single standard
+checks, this transaction works from the check method <span class="keyword apiname">denyCheck</span> (either SOAP API
+method or domain method).</p><p class="p">For single
+manual checks, this transition works only from the check method <span class="keyword apiname">denyCheck</span> called from messaging
+    plugins. It does not work from the SOAP API version of this method.</p><p class="p">This transaction  works only for single checks.
+The check cannot be part of a multipayee/grouped check, nor can it be a <code class="ph codeph">BulkInvoiceItem</code> check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">This transition is not allowed. The check must first have the status
+                                <code class="ph codeph">requested</code>.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">This transition is not allowed. The check must first have the status
+                                <code class="ph codeph">requested</code>.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">pendingvoid</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">voided</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check voided.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check was issued. The void was
+                                unsuccessful.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check cleared. The void was
+                                unsuccessful.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">stopped</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">This transition is not allowed.</p><p class="p">To simulate this transition,
+perform the following operations.</p><ol class="ol">
+<li class="li">Transition from <code class="ph codeph">PendingVoid</code> to <code class="ph codeph">Issued</code> by using the method <span class="keyword apiname">updateCheckStatus</span>, either the SOAP API
+                                    method or the identically named domain method.</li>
+    <li class="li">Request stop by using the <span class="keyword apiname">stopCheck</span> method (SOAP API or domain method).</li>
+    <li class="li">Use <code class="ph codeph">updateCheckStatus</code> again to transition from <code class="ph codeph">PendingStop</code> to <code class="ph codeph">Stopped</code>.</li>
+</ol>
+</td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">pendingstop</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">stopped</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check stopped.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check issued. The stop was
+                                unsuccessful.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check cleared. The stop was
+                                unsuccessful.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">voided</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">This transition is not allowed.</p><p class="p">To simulate this transition,
+perform the following operations.</p>
+    <ol class="ol">
+        <li class="li">Transition from <code class="ph codeph">PendingStop</code> to <code class="ph codeph">Cleared</code> by using the method <span class="keyword apiname">updateCheckStatus</span>, either the SOAP API method or the identically named domain method.</li>
+        <li class="li">Request void by using the <span class="keyword apiname">voidCheck</span> method (SOAP API or domain
+            method).</li>
+        <li class="li">Use <code class="ph codeph">updateCheckStatus</code> again to transition from <code class="ph codeph">PendingVoid</code> to <code class="ph codeph">Voided</code>.</li>
+    </ol></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">pendingtransfer</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">transferred</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">ClaimCenter received an acknowledgment for the associated message for the
+                                    <code class="ph codeph">pendingtransfer</code> status. This transition
+                                requires you to call <code class="ph codeph">check.acknowledgeTransfer()</code> in
+                                your message <code class="ph codeph">ACK</code> code in your messaging
+                                plugins.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingtransfer</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user requested a check transfer.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingvoid</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to void a check in the application user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingstop</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to stop a check in the application user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">SOAP API for a check
+status change that indicates the check cleared.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingtransfer</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to transfer a check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingvoid</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to void a check in the application user interface.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">requested</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingtransfer</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user attempted to transfer a check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check issued.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check cleared.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingvoid</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user requests a
+check void.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingstop</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user requests a
+check stop.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">denied</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">For single standard checks, this transaction works from the check method
+                                    <span class="keyword apiname">denyCheck</span> (either SOAP API method or domain
+                                method). This transition works only for single standard checks. The
+                                check cannot be part of a multipayee/grouped check, nor can it be a
+                                    <code class="ph codeph">BulkInvoiceItem</code> check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">--</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">notifying</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingtransfer</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user requested a check transfer.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">For a manual check only, this transition indicates that  ClaimCenter received an acknowledgment
+                                for the associated message for the <code class="ph codeph">requesting</code>
+                                status. This transition requires you to call
+                                    <code class="ph codeph">check.acknowledgeSubmission</code> in message
+                                acknowledgment code in your messaging plugins.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">The check must first
+have the status <code class="ph codeph">issued</code>.
+For manual checks, this transition happens if, from the SOAP API or domain
+method, calling <code class="ph codeph">updateCheckStatus</code>
+for a check status change indicates that the check cleared. </p><p class="p">For standard checks, this transition is not allowed.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingvoid</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user requested a check void.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">pendingstop</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">A user requested a check stop.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">denied</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">For single standard
+checks, this transition happens through the check method <span class="keyword apiname">denyCheck</span>, either through
+SOAP APIs or the domain method.</p><p class="p">For single
+manual checks, this transition works only from the check method <span class="keyword apiname">denyCheck</span> called from messaging
+plugins. It does not work from the SOAP API version of this method.</p><p class="p">This transition  works only for single checks. The check cannot be part of a multipayee/grouped
+                                check, nor can it be a <code class="ph codeph">BulkInvoiceItem</code> check.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">--</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">voided</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check issued.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check cleared.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "><p class="p"><code class="ph codeph">stopped</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">issued</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check issued.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+<tr>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__1 "></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__2 "><p class="p"><code class="ph codeph">cleared</code></p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__3 "><p class="p">From a SOAP API or a domain method, <code class="ph codeph">updateCheckStatus</code> was called for a check
+                                status change that indicates that the check cleared.</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__4 "><p class="p">Yes</p></td>
+<td class="entry" headers="c_oq3411995__oq3066543__entry__5 "><p class="p">Yes</p></td>
+</tr>
+</tbody></table>
+
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 21, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

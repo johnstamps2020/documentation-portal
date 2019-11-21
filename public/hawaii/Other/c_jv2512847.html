@@ -1,0 +1,256 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="The AddressFormatter class is used to convert addresses to localized strings for display as read-only address information. If you change, add, or delete columns of the Address entity, you must also ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="c_jv2512847" /><meta name="DC.language" content="en-US" /><title>Addresses and the AddressFormatter class</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="c_jv2512847" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="c_jv2512847__jv2512847">
+
+<h1 class="title topictitle1" id="c_jv2512847__jv2512847">Addresses and the <code class="ph codeph">AddressFormatter</code> class</h1>
+<div class="body conbody">
+<p class="p">The <span class="keyword apiname">AddressFormatter</span>
+class is used to convert addresses to localized strings for display as
+read-only address information. If you change, add, or delete columns
+of the <span class="keyword apiname">Address</span> entity,
+you must also update this class. Additionally, if you add a new country
+definition, you might need to update the switch statement in the <span class="keyword apiname">internalFormat</span> method of this
+class.</p>
+<p class="p">It is possible for BillingCenter
+to display read-only address information as a string in which the address
+values are separated by commas or by line-feeds. BillingCenter uses class
+<span class="keyword apiname">gw.address.AddressFormatter</span>
+to manage and format read-only strings. </p>
+<p class="p">There are two types
+of addresses in PolicyCenter:</p>
+<ul class="ul">
+<li class="li">Synchronized</li>
+<li class="li">Unsynchronized</li>
+</ul>
+
+<p class="p">Unsynchronized addresses apply
+to policy location addresses and policy addresses. An address is unsynchronized
+if the following are all true:</p>
+<ul class="ul">
+<li class="li">The address is
+part of a completed job (a promoted branch).</li>
+<li class="li">The associated
+account location address has changed since the job was completed. </li>
+</ul>
+
+<p class="p">Unsynchronized addresses are
+read-only. There are several ways to handle this situation:</p>
+<ul class="ul">
+<li class="li">Expand the unsynchronized
+address definition in the PCF to apply to the entire address. Currently,
+PolicyCenter does not treat the street address portion of the PCF as
+either synchronized or unsynchronized.</li>
+<li class="li">Format the
+display string by using the <span class="keyword apiname">gw.address.AddressFormatter</span>
+class.</li>
+</ul>
+
+    <p class="p">PolicyCenter
+        displays read-only address information in several different places. PolicyCenter
+        displays read-only address information as a string in which the address
+        values are separated by commas or by line-feeds. PolicyCenter uses class
+        <span class="keyword apiname">gw.address.AddressFormatter</span>
+        to manage and format read-only strings. </p>
+    <p class="p">BillingCenter uses <code class="ph codeph">addressFormatter</code> only to format
+        address information on the <span class="keyword wintitle">Contact
+            Search</span> screen. </p>
+    <p class="p">The <span class="keyword apiname">AddressFormatter</span>
+        class consists of two parts:</p>
+    <ul class="ul"><li class="li">The class contains variables
+        for all the address columns. You can extend the class to add new variables
+        if you extend the <span class="keyword apiname">Address</span>
+        entity with new columns.</li><li class="li">The class contains two
+            versions of the <span class="keyword apiname">format</span>
+            method with different signatures. <p class="p">The method parameters have the following meanings:</p></li></ul>
+
+    
+    <table class="table" id="c_jv2512847__jv2447233"><colgroup><col style="width:25%" /><col style="width:75%" /></colgroup><thead class="thead">
+                <tr>
+                    <th class="entry" id="c_jv2512847__jv2447233__entry__1"><p class="p">Parameter</p></th>
+                    <th class="entry" id="c_jv2512847__jv2447233__entry__2"><p class="p">Description</p></th>
+                </tr>
+            </thead><tbody class="tbody">
+                <tr>
+                    <td class="entry" headers="c_jv2512847__jv2447233__entry__1 "><p class="p"><code class="ph codeph">address</code></p></td>
+                    <td class="entry" headers="c_jv2512847__jv2447233__entry__2 "><p class="p">The address to format.</p></td>
+                </tr>
+                <tr>
+                    <td class="entry" headers="c_jv2512847__jv2447233__entry__1 "><p class="p"><code class="ph codeph">delimiter</code></p></td>
+                    <td class="entry" headers="c_jv2512847__jv2447233__entry__2 "><p class="p">Use this delimiter
+                        to separate the various string elements. If the delimiter is a comma,
+                        then the method also adds a space after the comma.</p></td>
+                </tr>
+                <tr>
+                    <td class="entry" headers="c_jv2512847__jv2447233__entry__1 "><p class="p"><code class="ph codeph">fields</code></p></td>
+                    <td class="entry" headers="c_jv2512847__jv2447233__entry__2 "><p class="p">The set of fields
+                        to include in the address.</p></td>
+                </tr>
+            </tbody></table>
+    
+    <p class="p">In BillingCenter, the following
+        Gosu enhancement calls <code class="ph codeph">AddressFormatter</code>:</p>
+    <pre class="pre codeblock"><code>ContactResultEnhancement.gsx</code></pre><p class="p">PolicyCenter
+    calls class <span class="keyword apiname">AddressFormatter</span>
+    from the following places:</p>
+    <ul class="ul">
+        <li class="li">From <code class="ph codeph">entity.Address.DisplayName</code>. Use the Entity Names
+                editor to modify the address string definition.</li>
+        <li class="li">From the
+            <span class="keyword apiname">Address.addressString</span>
+            method, defined in enhancement <code class="ph codeph">AddressEnhancement</code></li>
+        <li class="li">From the
+            <span class="keyword apiname">PolicyLocation.addressString</span>
+            method, defined in enhancement <code class="ph codeph">PolicyLocationEnhancement</code></li>
+        <li class="li">From the
+            <span class="keyword apiname">PolicyAddress.addressString</span>
+            method, defined in enhancement <code class="ph codeph">PolicyAddressEnhancement</code></li>
+    </ul>
+
+    <p class="p">Each of these uses creates a new <code class="ph codeph">AddressFormatter</code> instance, populates
+        the variables, and then returns <code class="ph codeph">AddressFormatter.addressString</code>.</p>
+    <p class="p">In particular:</p>
+    <ul class="ul">
+        <li class="li"><code class="ph codeph">Address.DisplayName</code> always passes
+            the same parameters. The other three uses just pass through the three
+            parameters that they receive. This method always return a comma-delimited
+            address string. However, this method is simpler to use because it requires
+            no additional parameters.</li>
+        <li class="li"><code class="ph codeph">Address.addressString</code> is the more
+            general form of usage with an address, especially if the delimiter value
+            is something other than a comma.</li>
+        <li class="li"><code class="ph codeph">PolicyLocation.addressString</code> and
+            <code class="ph codeph">PolicyAddress.addressString</code>
+            work in the same manner as the <span class="keyword apiname">Address.addressString</span>
+            method, except that they pass in the internally enhanced values for the
+            address values. Other code in these enhancements determines whether to
+            use the associated address values, or the internal values.</li>
+    </ul>
+
+    <p class="p seealso">See also</p>
+    <ul class="ul">
+        <li seealso-li="yes" class="li"><a class="xref" href="t_jv2437632.html#t_jv2437632">Additional country and address configurations</a></li>
+    </ul>
+    
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 21, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

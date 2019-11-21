@@ -1,0 +1,428 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="The Gosu language provides annotations that are defined in the gw.lang.* package. This package is always in scope, so the fully qualified annotation name is not required. The information in ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="reference" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="r_kk1471842" /><meta name="DC.language" content="en-US" /><title>Annotations provided by Gosu</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="r_kk1471842" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="r_kk1471842__kk1471842">
+  <h1 class="title topictitle1" id="r_kk1471842__kk1471842">Annotations provided by Gosu</h1>
+  <div class="body refbody">
+    <section class="section">
+      <p class="p">The Gosu language provides annotations that are defined in the <code class="ph codeph">gw.lang.*</code>
+        package. This package is always in scope, so the fully qualified annotation name is not
+        required. </p>
+      <p class="p">The information in annotations that provide documentation for a type appears in the Gosudoc
+        HTML page for the type. For example, web service endpoints use the <code class="ph codeph">@Param</code>,
+          <code class="ph codeph">@Returns</code>, and <code class="ph codeph">@Throws</code> annotations to document their
+        methods. Running the <span class="keyword cmdname">gwb gosudoc</span> command generates a Gosudoc HTML page
+        that contains the information from the annotations.</p>
+      <p class="p">The following table lists the general annotations:</p>
+      <table class="table" id="r_kk1471842__kk1605068"><colgroup><col /><col /><col /><col /></colgroup><thead class="thead">
+            <tr>
+              <th class="entry" id="r_kk1471842__kk1605068__entry__1"><span class="first-in-cell">Annotation</span></th>
+              <th class="entry" id="r_kk1471842__kk1605068__entry__2"><span class="first-in-cell">Description</span></th>
+              <th class="entry" id="r_kk1471842__kk1605068__entry__3"><span class="first-in-cell">Usage limits</span></th>
+              <th class="entry" id="r_kk1471842__kk1605068__entry__4"><span class="first-in-cell">Parameters</span></th>
+            </tr>
+          </thead><tbody class="tbody">
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@AutoCreate</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Annotates a property to indicate that if the property is null
+                and referenced on the left hand side of an assignment statement, a non-null value is
+                automatically created for it before continuing the evaluation of the left hand side
+                of the assignment. </span><p class="p">In the following example, if <code class="ph codeph">Address</code> is null,
+                  a new <code class="ph codeph">Address</code> entity instance is created and <code class="ph codeph">CA</code>
+                  is assigned to its <code class="ph codeph">State</code>
+                property.</p><pre class="pre codeblock"><code>person.Address.State = CA</code></pre>
+              </td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Methods only</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@AutoInsert</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Annotates a </span><span class="keyword apiname">List</span> property to indicate that if
+                the property is null and referenced on the left hand side of an assignment
+                statement, a non-null value is automatically added for it in the
+                  <span class="keyword apiname">List</span> before continuing the evaluation of the left hand side of
+                the assignment. <p class="p">In the following example, <code class="ph codeph">Hobbies</code> is a
+                    <span class="keyword apiname">List</span> property on <code class="ph codeph">Person</code> and annotated with
+                    <code class="ph codeph">@AutoInsert</code>. If the item at index 0 does not exist, an entity
+                  instance of the appropriate type is created and added to the list before
+                    <code class="ph codeph">Name</code> is
+                assigned.</p><pre class="pre codeblock"><code>person.Hobbies[0].Name = "Cycling"</code></pre></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Methods only</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@DataType</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Annotates properties on objects so that appropriate field validators
+                can be added. For example, the maximum number of characters for a first name can be
+                specified.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Gosu objects and entities.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "><span class="first-in-cell">In Studio, see the type and parameter definitions described in
+                the </span><span class="ph filepath">.dti</span> files contained in the <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">datatypes</span></span>  folder. </td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@Deprecated</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Specifies that a class, method, constructor, or property will no
+                longer be available in a future release. Begin rewriting code to avoid using this
+                class, method, constructor, property, or function parameter.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Can appear anywhere, but only once for any specific class,
+                method, constructor, property, or function argument.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "><span class="first-in-cell">A </span><code class="ph codeph">String</code> warning to display if this deprecated
+                class, method, or constructor is used.<div class="note note note_note"><span class="note__title">Note:</span> Guidewire also provides a
+                  <code class="ph codeph">@Deprecated</code> annotation that has the following parameters:<ul class="ul" id="r_kk1471842__ul_uvn_mh4_3gb">
+                    <li class="li"><code class="ph codeph">version:String</code></li>
+                    <li class="li"><code class="ph codeph">value:String</code></li>
+                  </ul>
+</div></td>
+            </tr>
+            
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@DoNotPublish</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Does not publicly publish the method to the external web
+                service.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@Exportable</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">A platform-level annotation indicating that the tagged property
+                is to be published as a public member of the declaring class.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@Param</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Specifies the documentation of a parameter. </span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Methods only</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 ">
+                <ul class="ul" id="r_kk1471842__ul_rxy_t2f_rfb">
+                  <li class="li"><code class="ph codeph">FieldName:String</code>: The name of the parameter.</li>
+                  <li class="li"><code class="ph codeph">FieldDescription:String</code>: Documentation in Javadoc format for
+                    the method’s parameter.</li>
+                </ul>
+
+              </td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@Params</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Adds an array of </span><code class="ph codeph">@Param</code> annotations to a
+                method. <p class="p">This annotation does not need to be explicitly declared because declaring
+                  a <code class="ph codeph">@Param</code> annotation automatically creates a
+                    <code class="ph codeph">@Params</code> annotation containing it.</p></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Methods only</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@PublishedName</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Provides an alternative name to replace the declared name in
+                  code.</span><div class="note note note_note"><span class="note__title">Note:</span> This annotation is deprecated</div></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@PublishInGosu</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Publishes the class in Gosu.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Classes only</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@Returns</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Specifies the documentation for the return result of the method. </span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Methods only, and only once for any specific method</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "><code class="ph codeph">value:String</code>: Documentation in Javadoc format
+                for the method’s return value.</td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@ShortCircuitingProperty</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">If a property getter has this annotation, member access
+                expressions having null values will short-circuit to zero. Boolean properties
+                currently always short-circuit to </span><code class="ph codeph">false</code>.<p class="p">For certain properties,
+                  such as <span class="keyword apiname">CoreIterableEnhancement.Count</span>, null values that were
+                  permitted in previous versions of Java might now result in a
+                    <span class="keyword apiname">NullPointerException</span> being thrown.</p></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@SuppressWarnings</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Tells the compiler to suppress warnings. Gosu provides limited
+                support for the Java annotation </span><code class="ph codeph">@SuppressWarnings</code>. </td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Declarations of a type, function, property, constructor, field,
+                or parameter.</span><div class="note note note_note"><span class="note__title">Note:</span> Local variables do not support this annotation.</div></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "><code class="ph codeph">value:String</code>: Indicates the warnings to
+                suppress. <ul class="ul" id="r_kk1471842__ul_kyy_t2f_rfb">
+                  <li class="li">Pass the argument <code class="ph codeph">"all"</code> to suppress all warnings.</li>
+                  <li class="li">Pass the argument <code class="ph codeph">"deprecation"</code> to suppress deprecation
+                    warnings.</li>
+                </ul>
+
+                <p class="p">For example, to suppress deprecation warnings in a Gosu class, on the line before
+                  the class declaration, add: <code class="ph codeph">@SuppressWarnings("deprecation")</code>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@Throws</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Specifies what exceptions might be thrown by this
+                method.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "><span class="first-in-cell">Methods only</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 ">
+                <ul class="ul" id="r_kk1471842__ul_byy_t2f_rfb">
+                  <li class="li"><code class="ph codeph">ExceptionType:Class</code>: An exception type</li>
+                  <li class="li"><code class="ph codeph">ExceptionDescription:String</code>: A description in Javadoc format
+                    of the circumstances that cause the exception to be thrown, and how to interpret
+                    that exception.</li>
+                </ul>
+
+              </td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__1 "><code class="ph codeph">@UnstableAPI</code></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__2 "><span class="first-in-cell">Marks a class, method, or parameter as unstable, indicating that
+                the API might change in a future version and its use is to be avoided if
+                possible.</span></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__3 "></td>
+              <td class="entry" headers="r_kk1471842__kk1605068__entry__4 "></td>
+            </tr>
+          </tbody></table>
+    </section>
+    <section class="section"><h2 class="title sectiontitle"><span class="ph">Internal annotations</span></h2>
+      
+      <p class="p">Some Gosu annotations are reserved for internal use. You might see
+        internal annotations in Gosu code that is provided in the base configuration. These
+        annotations are not supported for your use. The following table lists these internal
+        annotations so you can understand how they are used.</p>
+      <table class="table" id="r_kk1471842__kk1605122"><colgroup><col /><col /><col /></colgroup><thead class="thead">
+            <tr>
+              <th class="entry" id="r_kk1471842__kk1605122__entry__1">
+                <p class="p">Internal annotation</p>
+              </th>
+              <th class="entry" id="r_kk1471842__kk1605122__entry__2">
+                <p class="p">Description</p>
+              </th>
+              <th class="entry" id="r_kk1471842__kk1605122__entry__3">
+                <p class="p">Usage limits</p>
+              </th>
+            </tr>
+          </thead><tbody class="tbody">
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605122__entry__1 ">
+                <p class="p"><code class="ph codeph">@Export</code></p>
+              </td>
+              <td class="entry" headers="r_kk1471842__kk1605122__entry__2 ">
+                <p class="p">Lets a class be visible and editable in Studio.</p>
+              </td>
+              <td class="entry" headers="r_kk1471842__kk1605122__entry__3 "><span class="first-in-cell">Classes only</span></td>
+            </tr>
+            <tr>
+              <td class="entry" headers="r_kk1471842__kk1605122__entry__1 ">
+                <p class="p"><code class="ph codeph">@ReadOnly</code></p>
+              </td>
+              <td class="entry" headers="r_kk1471842__kk1605122__entry__2 ">
+                <p class="p">Lets a class be visible in Studio, but not editable. Studio does not permit
+                  copying a read-only class into the <span class="ph filepath">configuration</span> directory
+                  for modification.</p>
+              </td>
+              <td class="entry" headers="r_kk1471842__kk1605122__entry__3 "><span class="first-in-cell">Classes only</span></td>
+            </tr>
+          </tbody></table>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">No support for Java 8 type annotations</h2>
+      
+      <div class="note note note_note"><span class="note__title">Note:</span> See
+        https://blogs.oracle.com/java-platform-group/entry/java_8_s_new_type</div>
+      <div class="p">The Gosu compiler permits method parameter annotations. However, Gosu does not support
+        compiler or IDE behavior for the Java 8 Type annotations such as: <ul class="ul" id="r_kk1471842__ul_gzy_t2f_rfb">
+          <li class="li"><code class="ph codeph">@m</code></li>
+          <li class="li"><code class="ph codeph">@Nonnull</code></li>
+          <li class="li"><code class="ph codeph">@ReadOnly</code></li>
+          <li class="li"><code class="ph codeph">@Regex</code></li>
+          <li class="li"><code class="ph codeph">@Tainted</code></li>
+          <li class="li"><code class="ph codeph">@Untainted</code></li>
+        </ul>
+
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle"><span class="ph">Web service annotations</span></h2>
+      
+      <p class="p">Several annotations related to publishing web services are
+        available.</p>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Examples</h2>
+      
+      <p class="p">The following code uses several annotations:</p>
+      <pre class="pre codeblock"><code>package com.mycompany
+uses java.lang.Exception
+
+<span class="ph">@WsiWebService 
+</span>class Test {
+  @Param("Name", "The user's name. Must not be an empty string.")
+  @Returns("A friendly greeting with the user's name")
+  @Throws(Exception, "General exception if the string passed to us is empty or null")
+  public function FriendlyGreeting(Name : String) : String { 
+
+    if (Name == null or Name.length == 0) throw "Requires a non-empty string!"
+    return "Hello, " + Name + "!"
+  }
+}</code></pre>
+      
+      <p class="p">The following example specifies that a method is deprecated. A <dfn class="term">deprecated</dfn> API
+        component is temporarily available, but a future release will remove that component.
+        Refactor any code that uses deprecated APIs to ensure that your code is compatible with
+        future releases to simplify future upgrades. </p>
+      <pre class="pre codeblock"><code>package com.mycompany
+
+class MyClass {
+
+  @Deprecated("Don't use MyClass.myMethod(). Instead, use betterMethod().")
+  public function myMethod() {print("Hello")}
+
+  public function betterMethod() {print("Hello, World!")}
+}</code></pre>
+      <p class="p">The annotation class that you are implicitly using must be in the current Gosu scope. You
+        can ensure that it is in scope by fully qualifying the annotation. For example, if the
+          <code class="ph codeph">SomeAnnotation</code> annotation is defined within the package
+          <code class="ph codeph">com.mycompany.some.package</code>, specify the annotation as: </p>
+      <pre class="pre codeblock"><code>@com.mycompany.some.package.SomeAnnotation
+class SomeClass {
+  ...
+}</code></pre>
+      <p class="p">Alternatively, import the package by using the Gosu <code class="ph codeph">uses</code> statement and
+        then use the annotation more naturally and concisely by using only its name: </p>
+      <pre class="pre codeblock"><code>uses com.mycompany.some.package.SomeAnnotation.*
+
+@SomeAnnotation
+class SomeClass {
+  ...
+}</code></pre>
+    </section>
+    <section class="section">
+      <p class="p seealso">See also </p>
+      <ul class="ul">
+        <li seealso-li="yes" class="li html-only"><a class="xref" href="c_jt3699779.html#c_jt3699779">Publishing web services</a>
+        </li>
+        
+      </ul>
+
+    </section>
+  </div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 21, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

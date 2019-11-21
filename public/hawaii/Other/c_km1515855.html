@@ -1,0 +1,280 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="The XmlElement class represents an XML element and encapsulates the following components: The element name as a qualified name, a QName A backing type instance The nillness of the element Element ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="concept" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="c_km1515855" /><meta name="DC.language" content="en-US" /><title>Introduction to the XML element in Gosu</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="c_km1515855" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="c_km1515855__km1515855">
+
+<h1 class="title topictitle1" id="c_km1515855__km1515855">Introduction to the XML element in Gosu</h1>
+<div class="body conbody">
+<p class="p">The <span class="keyword apiname">XmlElement</span> class represents an XML element and encapsulates the following
+                              components:</p>
+<ul class="ul">
+<li class="li">The element name as a qualified
+name, a <code class="ph codeph">QName</code></li>
+<li class="li">A backing type instance</li>
+<li class="li">The nillness of the element</li>
+</ul>
+
+<section class="section"><h2 class="title sectiontitle">Element qualified name</h2><p class="p">The element’s name is a <code class="ph codeph">String</code> value that is a fully qualified name called a
+                                                  <dfn class="term">QName</dfn>. A QName represents a more
+                                        advanced definition of a name than a simple
+                                                  <code class="ph codeph">String</code> value. To define a QName,
+                                        use the <span class="keyword apiname">javax.xml.namespace.QName</span> class.
+                                        A <span class="keyword apiname">QName</span> object contains the following
+                                        components:</p>
+<ul class="ul">
+<li class="li">A <code class="ph codeph">String</code> value that represents the local part, also called the
+                                                  <code class="ph codeph">localPart</code>.</li>
+<li class="li">A <code class="ph codeph">String</code> value that represents the namespace URI in which the local part of the
+                                                  name is defined. For example, a namespace can have
+                                                  the value
+                                                  <code class="ph codeph">http://www.w3.org/2001/XMLSchema-instance</code>.</li>
+<li class="li">A suggested prefix name to use if Gosu serializes this element. This prefix is not guaranteed
+                                                  upon serialization because there might be
+                                                  conflicts.</li>
+</ul>
+
+<p class="p">For example, an XML file may contain an element name with the syntax of two parts separated by a
+                                        colon, such as <code class="ph codeph">veh:childelement</code>. The
+                                                  <code class="ph codeph">childelement</code> part of the name is
+                                        the local part. The prefix <code class="ph codeph">veh</code> is a
+                                        convenient shortcut representing the full URI of a namespace
+                                        previously declared in the XML document, as shown in the
+                                        following example: </p>
+<pre class="pre codeblock"><code>&lt;?xml version="1.0"?&gt;
+&lt;veh:root xmlns:veh="http://mycompany.com/schema/vehiclexsd"&gt;
+  &lt;veh:childelement/&gt;
+&lt;/veh:root&gt;</code></pre>
+<p class="p">This XML code specifies the following properties of
+the XML document:</p>
+<ul class="ul">
+<li class="li">The root element of the document
+has the name <code class="ph codeph">root</code> within
+the namespace <code class="ph codeph">http://mycompany.com/schema/vehiclexsd</code>.
+</li>
+<li class="li">The text <code class="ph codeph">xmlns:veh</code>, followed by the URI, means that elements can use the prefix
+                                                  <code class="ph codeph">veh:</code> to represent the longer URI
+                                                  (<code class="ph codeph">http://mycompany.com/schema/vehiclexsd</code>).</li>
+<li class="li">The root element has one child element that has the name <code class="ph codeph">childelement</code> and is
+                                                  within the namespace
+                                                  <code class="ph codeph">http://mycompany.com/schema/vehiclexsd</code>. </li>
+</ul>
+
+<p class="p">There are three constructors for <code class="ph codeph">QName</code>:</p>
+<ul class="ul"><li class="li">A constructor specifying the namespace URI, local part, and suggested
+                                                  prefix:<pre class="pre codeblock"><code>QName(String namespaceURI, String localPart, String prefix)</code></pre></li><li class="li">A constructor specifying the namespace URI and local
+                                                  part:<pre class="pre codeblock"><code>QName(String namespaceURI, String localPart)</code></pre></li><li class="li">A constructor specifying the local part only:<pre class="pre codeblock"><code>QName(String localPart)</code></pre></li></ul>
+
+
+
+<p class="p">You can set the namespace in the <span class="keyword apiname">QName</span> object to the empty namespace, which is
+                                        the constant
+                                                  <code class="ph codeph">javax.xml.XMLConstants.NULL_NS_URI</code>.
+                                        The recommended approach for creating
+                                                  <span class="keyword apiname">QName</span> objects in the empty
+                                        namespace is to use the <code class="ph codeph">QName(String
+                                                  localPart)</code> constructor.</p>
+<p class="p">To create multiple <span class="keyword apiname">QName</span> objects in the same namespace,
+you can use the optional utility class called <code class="ph codeph">XmlNamespace</code>. </p>
+<p class="p">Whenever you construct an <code class="ph codeph">XmlElement</code>, you must always specify a non-empty
+                                                  <span class="keyword apiname">QName</span>.</p>
+<p class="p">Other Gosu XML APIs use <span class="keyword apiname">QName</span> objects for other purposes.
+For example, attributes on an element are names defined within a namespace,
+even if it is the default namespace for the XML document or the empty
+namespace. Gosu natively represents both attribute names and element
+names as <span class="keyword apiname">QName</span> objects.</p></section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="section"><h2 class="title sectiontitle">Backing type instance</h2><p class="p">Each element contains a reference to a Gosu type that represents this specific element. To get
+                                        the backing type instance, use the element's
+                                                  <code class="ph codeph">TypeInstance</code> property. For XML
+                                        elements that Gosu created based on an XSD, Gosu sets this
+                                        backing type information automatically so it can be used in
+                                        a type-safe manner. </p>
+<p class="p">Whenever you construct an <code class="ph codeph">XmlElement</code>, an explicit backing type is optional. If
+                                        you are constructing the element from an XSD, Gosu
+                                        automatically sets the backing type based on the
+                                                  <code class="ph codeph">XmlElement</code> subclass. </p>
+<p class="p">You can use <code class="ph codeph">XmlElement</code> as untyped nodes without providing an XSD for your data
+                                        format. If you are not using an XSD and do not provide a
+                                        backing type, Gosu uses the default backing type
+                                                  <code class="ph codeph">gw.xml.xsd.w3c.xmlschema.types.complex.AnyType</code>.
+                                        All valid backing types are subclasses of
+                                                  <code class="ph codeph">AnyType</code>. </p>
+<p class="p">The backing type instance of an XML element is responsible for most of the element’s behavior but
+                                        does not contain the element’s name. It is important to be
+                                        aware of the functionality that a particular element's
+                                        backing type instance supports, especially when using an
+                                        XSD. </p></section>
+
+
+
+
+<section class="section"><h2 class="title sectiontitle">Nillness of an element</h2><div class="p">An XML element that has no child elements but has attributes is <code class="ph codeph">nil</code>.
+                                        Additionally, an XSD can define whether an element is
+                                        nillable, meaning it is allowed to be <code class="ph codeph">nil</code>.
+                                                  <div class="note note note_note"><span class="note__title">Note:</span> This state is not exactly the same as being
+                                                  <code class="ph codeph">null</code>. </div></div></section>
+
+<section class="section"><h2 class="title sectiontitle"><code class="ph codeph">XMLElement</code> constructor</h2><p class="p">The <code class="ph codeph">XmlElement</code> consructor that accepts a <code class="ph codeph">String</code> parameter is
+                                        convenient, because it is equivalent to passing a new
+                                                  <span class="keyword apiname">QName</span> object with that
+                                                  <code class="ph codeph">String</code> as a single argument to a
+                                                  <code class="ph codeph">QName</code> constructor. In this case,
+                                        the namespace and prefix in the <code class="ph codeph">QName</code> are
+                                                  <code class="ph codeph">null</code>.</p>
+<p class="p">The following code creates an in-memory
+Gosu object that represents an XML element <code class="ph codeph">&lt;Root&gt;</code> in the empty namespace:</p>
+<pre class="pre codeblock"><code>var el = new XmlElement( "Root" )</code></pre><p class="p">In this case, the <code class="ph codeph">el.TypeInstance</code> property returns an instance of the default
+                                        type
+                                                  <code class="ph codeph">gw.xsd.w3c.xmlschema.types.complex.AnyType</code>.
+                                        If you instantiate a type instance, Guidewire recommends
+                                        that you use a more specific subclass of
+                                                  <code class="ph codeph">AnyType</code>, specifying either an
+                                        XSD-based type or a simple type.</p>
+<p class="p seealso">See also</p>
+<ul class="ul">
+<li seealso-li="yes" class="li"><a class="xref" href="c_km1679920.html#c_km1679920">Creating many qualified names in the same namespace</a></li>
+<li seealso-li="yes" class="li"><a class="xref" href="c_km2050716.html#c_km2050716">Getting data from an XML element</a></li>
+<li seealso-li="yes" class="li"><a class="xref" href="c_km1594523.html#c_km1594523">Accessing the nillness of an element</a></li>
+</ul>
+</section>
+
+
+
+
+
+</div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 21, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>

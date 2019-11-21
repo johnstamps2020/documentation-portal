@@ -1,0 +1,234 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:whc="http://www.oxygenxml.com/webhelp/components" xml:lang="en-us" lang="en-us">
+    <head><link rel="shortcut icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><link rel="icon" href="../oxygen-webhelp/template/resources/images/webpagelogo.ico"><!----></link><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="The purpose of the useoraclestatspreferences attribute on the &lt;databasestatistics&gt; element in file database-config.xml is twofold: To set the table statistics preferences according to those set for ..." /><meta charset="UTF-8" /><meta name="copyright" content="(C) Copyright 2019" /><meta name="DC.rights.owner" content="(C) Copyright 2019" /><meta name="DC.type" content="reference" /><meta name="DC.format" content="HTML5" /><meta name="DC.identifier" content="xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7fc3" /><meta name="DC.language" content="en-US" /><title>Using Oracle AutoTask for statistics generation</title><!--  Generated with Oxygen version 21.1, build number 2019083011.  --><meta name="wh-path2root" content="../" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/arial-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-regular.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-light-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-extralight-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-black-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/AvenirNextLTPro-Regular.woff" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/fonts/cour.woff2" as="font" /><link rel="preload" href="../oxygen-webhelp/template/resources/js/simplebar.js" as="script" /><link rel="preload" href="../oxygen-webhelp/template/resources/css/simplebar.min.css" as="style" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/dharmachakra.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/chevron-right.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/share-alt.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/print-solid.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/times.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/angle-double-left.svg" as="image" /><link rel="preload" href="../oxygen-webhelp/template/resources/images/note.svg" as="image" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css?buildId=20191106" /><link rel="stylesheet" href="../oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css?buildId=20191106" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/app/topic-page.css?buildId=2019083011" /><script type="text/javascript" src="../oxygen-webhelp/lib/jquery/jquery-3.4.1.min.js?buildId=20191106"><!----></script><script data-main="../oxygen-webhelp/app/topic-page.js" src="../oxygen-webhelp/lib/requirejs/require.js"></script><link rel="preload" href="" as="document" /><link rel="preload" href="" as="document" /><link rel="stylesheet" type="text/css" href="../oxygen-webhelp/template/resources/css/Guidewire-whr.css?buildId=2019083011" /></head>
+    
+    <body id="xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7fc3" class="wh_topic_page frmBody">
+        <a href="#wh_topic_body" class="sr-only sr-only-focusable">Jump to main content</a>
+        <!-- EXM-36950 - Expand the args.hdr parameter here -->
+        
+        
+        
+        <header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <a href="../index.html" class=" wh_logo not-hidden-xs "><img src="../oxygen-webhelp/template/resources/images/Guidewire_mini_logo.jpg" alt="Hawaii Documentation Demo" /></a>
+                    <div class=" wh_publication_title "><a href="../index.html"><span class="title">Hawaii Documentation Demo</span></a></div>
+                    
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+				
+                
+                
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<div class=" wh_search_input "><form id="searchForm" method="get" role="search" action="../search.html"><div><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required" /><button type="submit" class="wh_search_button" aria-label="Search"><span>Search</span></button></div></form></div>
+			<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!--<span id="accountInfo"></span>-->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>
+        
+        <!--<whc:webhelp_search_input/>-->
+        
+        <div class="container-fluid">
+            <div class="row navbar navbar-fixed-top" id="affix2">
+                <nav class="wh_tools hidden-print">
+                    <span class="openNav" type="button" aria-expanded="true"><i class="fas fa-bars"></i></span>
+                    <div data-tooltip-position="bottom" class=" wh_breadcrumb "></div>
+                    <div class="wh_right_tools hidden-sm hidden-xs">
+                        <div class=" wh_navigation_links "><span id="topic_navigation_links_header" class="navheader"></span></div>
+                        <button class="wh_hide_highlight" aria-label="Toggle search highlights" title="Toggle search highlights"></button>
+                        <!--<whc:webhelp_expand_collapse_sections/>-->
+                        <span class=" shareLink share "><a class="button fas fa-share-alt" data-sharer="email" data-title="" data-url="" data-subject="" data-to="" title="Share this page" aria-label="Share this page" href=""></a></span>
+                        <!-- <whc:webhelp_pdf_link class="pdf"/> -->
+                        <span class=" whPrintLink print "><button class="fas fa-print fa-1x" onClick="window.print()" title="Print this page" aria-label="Print this page"></button></span>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="wh_content_area">
+                <div class="row justify-content-lg-end">
+                    
+                    
+                    <div id="wh_topic_body" class="col-lg-6 col-md-9 col-sm-9 col-xs-12"><!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                        <div class=" wh_topic_content body "><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Using Oracle AutoTask for statistics generation</h1>
+  <div class="body refbody">
+    <section class="section">
+      <div class="p">The purpose of the <code class="ph codeph">useoraclestatspreferences</code> attribute on the
+          <code class="ph codeph">&lt;databasestatistics&gt;</code> element in file
+          <code class="ph codeph">database-config.xml</code> is twofold:<ul class="ul" id="xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7fc3__ul_pf4_4z5_gbb">
+          <li class="li">To set the table statistics preferences according to those set for Oracle in file
+              <code class="ph codeph">database-config</code>.</li>
+          <li class="li">To have the Oracle AutoTask infrastructure manage the task of collecting table
+            statistics, based on preferences that Guidewire sets in the base configuration.</li>
+        </ul>
+</div>
+      <div class="p">To set Oracle to collect table statistics, set this attribute value to
+          <code class="ph codeph">true</code>, for
+        example:<pre class="pre codeblock"><code>&lt;database name="ExampleDatabase" dbtype="oracle" env="oracle" printcommands="true"&gt;
+  &lt;databasestatistics databasedegree="4" useoraclestatspreferences="true"&gt;
+  ...</code></pre></div>
+      <p class="p">Any change to this attribute value takes effect only during an upgrade, either a full
+        upgrade or a rolling (configuration) upgrade. To force <span class="keyword">GenericCenter</span> to recognize the change without an application upgrade,
+        increment the application metadata version and restart the application server.</p>
+      <div class="p">After you set this attribute to <code class="ph codeph">true</code>, the next application upgrade does
+        the following:<ul class="ul" id="xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7fc3__ul_tcy_gq4_gbb">
+          <li class="li">It clears all existing preferences for table statistics.</li>
+          <li class="li">It resets the preferences for table statistics to those currently defined for Oracle
+            table statistics in <code class="ph codeph">database-config.xml</code>.</li>
+          <li class="li">It creates a new tab named <span class="ph uicontrol">Oracle Statistics Preferences</span> in the
+            Server Tools <span class="ph menucascade"><span class="ph uicontrol">Info Pages</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Database Catalog Statistics Information</span></span> screen.</li>
+        </ul>
+</div>
+      <p class="p">To confirm that the application upgrade set the database statistics preferences, review the
+          <span class="ph uicontrol">Oracle Statistics Preferences</span> tab and verify the preferences.</p>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Enabling Oracle AutoTask</h2>after you set this parameter to
+        <code class="ph codeph">true</code> for the first time, do the following:<ul class="ul" id="xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7fc3__ul_yzf_hjk_hbb">
+        <li class="li">Ensure that the statistics target setting has the default value of
+          <code class="ph codeph">AUTO</code>.</li>
+        <li class="li">Ensure that you enable Oracle AutoTask for statistics collection.</li>
+      </ul>
+<div class="p">
+        <pre class="pre codeblock"><code>EXEC dbms_stats.set_global_prefs('AUTOSTATS_TARGET','AUTO');
+EXEC dbms_auto_task_admin.enable(client_name =&gt; 'auto optimizer stats collection', operation =&gt; NULL, 
+      window_name =&gt; NULL);</code></pre>
+      </div></section>
+    <section class="section"><h2 class="title sectiontitle">Gathering new statistics</h2>
+      
+      <div class="p">If you enabled the database before you set <code class="ph codeph">useoraclestatspreferences</code> to
+          <code class="ph codeph">true</code>, you need to delete the existing schema statistics and gather new
+        statics. The Oracle DBA can use the following SQL commands for this
+        task.<pre class="pre codeblock"><code>EXEC dbms_stats.delete_schema_stats('<var class="keyword varname">BCUSER</var>');
+EXEC DBMS_STATS.GATHER_SCHEMA_STATS(ownname=&gt;'<var class="keyword varname">BCUSER</var>', options=&gt;'GATHER');</code></pre><pre class="pre codeblock"><code>EXEC dbms_stats.delete_schema_stats('<var class="keyword varname">CCUSER</var>');
+EXEC DBMS_STATS.GATHER_SCHEMA_STATS(ownname=&gt;'<var class="keyword varname">CCUSER</var>', options=&gt;'GATHER');</code></pre><pre class="pre codeblock"><code>EXEC dbms_stats.delete_schema_stats('<var class="keyword varname">PCUSER</var>');
+EXEC DBMS_STATS.GATHER_SCHEMA_STATS(ownname=&gt;'<var class="keyword varname">PCUSER</var>', options=&gt;'GATHER');</code></pre></div>
+      <div class="note note note_note"><span class="note__title">Note:</span> Replace <var class="keyword varname">BCUSER</var> with the actual BillingCenter database
+        user.</div>
+      <div class="note note note_note"><span class="note__title">Note:</span> Replace <var class="keyword varname">CCUSER</var> with the actual ClaimCenter database
+        user.</div>
+      <div class="note note note_note"><span class="note__title">Note:</span> Replace <var class="keyword varname">PCUSER</var> with the actual PolicyCenter database
+        user.</div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">After the application upgrade</h2>
+      
+      <p class="p">After you perform an application upgrade with <code class="ph codeph">useoraclestatspreferences</code>
+        set to <code class="ph codeph">true</code>, there is no longer any need to run <code class="ph codeph">DBStats</code>
+        batch processing. At this point, Oracle AutoTask automatically handles statistics collection
+        during the maintenance windows defined for the database. To disable <code class="ph codeph">DBStats</code>
+        batch processing, remove its schedule from <code class="ph codeph">scheduler-config.xml</code>.</p>
+      
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Future application upgrades</h2>
+      <div class="p">For future application upgrades, Guidewire recommends that you consider setting the
+          <code class="ph codeph">updatestatistics</code> attribute on the <code class="ph codeph">&lt;upgrade&gt;</code>
+        element in <code class="ph codeph">database-config.xml</code> to <code class="ph codeph">true</code>, for
+        example:<pre class="pre codeblock"><code>&lt;upgrade degree-parallel-ddl="6" degree-of-parallelism="6" ora-parallel-dml="enable_all" 
+      updatestatistics="true"&gt;</code></pre></div>
+      <p class="p">Setting the <code class="ph codeph">updatestatistics</code> attribute to <code class="ph codeph">true</code> allows the
+          <span class="keyword">GenericCenter</span> upgrader to create any additional histograms
+        required by the new application version.</p>
+      <div class="p">For more information, refer to the following Oracle documentation:<ul class="ul" id="xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7fc3__ul_q3d_dxt_gbb">
+          <li class="li"><cite class="cite">Oracle Database Administrator’s Guide</cite>, "<a class="xref" href="https://docs.oracle.com/database/121/TGSQL/tgsql_stats.htm#TGSQL389" target="_blank">Managing Automated Database Maintenance
+            Tasks</a>"</li>
+          <li class="li"><cite class="cite">Oracle Database SQL Tuning Guide</cite>, "<a class="xref" href="https://docs.oracle.com/database/121/TGSQL/tgsql_stats.htm#TGSQL389" target="_blank">Managing Optimizer Statistics: Basic
+            Topics</a>"</li>
+        </ul>
+</div>
+      
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Resetting <code class="ph codeph">useoraclestatspreferences</code></h2>
+      
+      <p class="p">Any change to the <code class="ph codeph">useoraclestatspreferences</code> attribute in
+          <span class="ph filepath">database-config.xml</span> (from <code class="ph codeph">false</code> to
+          <code class="ph codeph">true</code> or from <code class="ph codeph">true</code> to <code class="ph codeph">false</code>) takes
+        effect only after an upgrade, either a full upgrade or a rolling (configuration) upgrade.
+        However, if you reset this attribute from <code class="ph codeph">true</code> to <code class="ph codeph">false</code>,
+          <span class="keyword">GenericCenter</span> throws an exception during the next upgrade and
+        prevents the upgrade from continuing due to locked table statistics in the Oracle database.
+        Review the details of the exception provided in the server log to determine which table
+        statistics need to be unlocked. See <a class="xref" href="t_revert_to_DBStats.html#xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7f08" title="You must perform a sequence of manual steps if you want to revert to using the table statistics preferences set in database-config.xml rather than using Oracle AutoTask infrastructure to manage the task of collecting table statistics.">Revert to DBStats batch processing for database statistics</a>
+        for information on how to unlock the table statistics.</p>
+    </section>
+    <section class="section">
+      <p class="p seealso">See also
+      </p><ul class="ul">
+        <li seealso-li="yes" class="li"><a class="xref" href="Oracle-Statistics-Preferences.html#xd_99c83c1c1ad989e6-2171d790-15e95a5a80d--7f4e">The Oracle Statistics Preferences tab</a></li>
+      </ul>
+
+      
+    </section>
+
+  </div>
+</article></main></div>
+                        
+                        
+                        
+                    </div>
+                    
+                        <nav role="navigation" id="wh_topic_toc" class="col-lg-2 hidden-sm hidden-xs navbar hidden-print"> <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                            <div></div>
+                        </nav>
+                    
+                </div>
+            </div>
+        </div> 
+        <nav class="navbar navbar-default wh_footer navbar-bottom">
+  <div class=" footer-container text-center ">
+    <p><span class="footercopyright">© 2019 Guidewire Software, Inc.</span><span class="footerDate">Published November 21, 2019</span></p>
+  </div>
+</nav>
+        
+        <div id="go2top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </div>
+        
+        <!-- The modal container for images -->
+        <div id="modal_img_large" class="modal">
+            <span class="close glyphicon glyphicon-remove"></span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal-img" />
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        
+        <!-- <script src="${oxygen-webhelp-assets-dir}/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+        
+    </body>
+</html>
