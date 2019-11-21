@@ -81,7 +81,6 @@ object Test : BuildType({
     triggers {
         vcs {
             branchFilter = "+:*"
-            triggerRules = "-:user=doctools:**"
         }
     }
 
