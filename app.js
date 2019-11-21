@@ -26,6 +26,7 @@ app.use(session({
 console.log("------------- START ENV DEBUG -------------");
 console.log("OKTA_DOMAIN", process.env.OKTA_DOMAIN);
 console.log("APP_BASE_URL", process.env.APP_BASE_URL);
+console.log("APP_CHECKSUM", process.env.APP_CHECKSUM);
 console.log("------------- END ENV DEBUG -------------");
 
 const oidc = new ExpressOIDC({
