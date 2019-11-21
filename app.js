@@ -23,17 +23,11 @@ app.use(session({
   saveUninitialized: false
 }));
 
-console.log("------------- START ENV DEBUG -------------");
-console.log("OKTA_DOMAIN", process.env.OKTA_DOMAIN);
-console.log("APP_BASE_URL", process.env.APP_BASE_URL);
-console.log("Systems: NOMINAL");
-console.log("------------- END ENV DEBUG -------------");
-
 const oidc = new ExpressOIDC({
   issuer: `${process.env.OKTA_DOMAIN}`,
   client_id: `${process.env.OKTA_CLIENT_ID}`,
   client_secret: `${process.env.OKTA_CLIENT_SECRET}`,
-  appBaseUrl: `https://${process.env.APP_BASE_URL}`,
+  appBaseUrl: `${process.env.APP_BASE_URL}`,
   scope: 'openid profile'
 });
 
