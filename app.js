@@ -23,6 +23,8 @@ app.use(session({
   saveUninitialized: false
 }));
 
+console.log("Something is wrong with my config");
+
 const oidc = new ExpressOIDC({
   issuer: `${process.env.OKTA_DOMAIN}`,
   client_id: `${process.env.OKTA_CLIENT_ID}`,
