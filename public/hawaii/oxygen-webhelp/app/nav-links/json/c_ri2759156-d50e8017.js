@@ -1,1 +1,0 @@
-define({"topics" : [{"title":"File <span class=\"ph filepath\">currencies.xml</span> split into multiple <span class=\"ph filepath\">currency.xml</span> files","href":"Other\/c_ri2863566.html#c_ri2863566","attributes": {"data-id":"c_ri2863566",},"menu": {"hasChildren":false,},"tocID":"c_ri2863566-d50e8025","topics":[]}]});
