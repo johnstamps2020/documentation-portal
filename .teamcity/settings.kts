@@ -148,14 +148,14 @@ object DeployDev : BuildType({
         }
     }
 
-    dependencies {
-        snapshot(Test) {
-            onDependencyFailure = FailureAction.FAIL_TO_START
-        }
-        snapshot(Checkmarx) {
-            onDependencyFailure = FailureAction.FAIL_TO_START
-        }
-    }
+    // dependencies {
+    //     snapshot(Test) {
+    //         onDependencyFailure = FailureAction.FAIL_TO_START
+    //     }
+    //     snapshot(Checkmarx) {
+    //         onDependencyFailure = FailureAction.FAIL_TO_START
+    //     }
+    // }
 })
 
 object DeployInt : BuildType({
