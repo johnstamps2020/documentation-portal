@@ -72,24 +72,20 @@ app.get('/:docKey', (req, res, next) => {
         })
         .createReadStream();
 
-    fileStream.on('error', (err) => {
+    fileStream.on('error', err => {
         console.error(err);
     });
 
+    res.setHeader('Content-Type', 'html/text')
+
     fileStream
         .pipe(res)
-        .on('error', (err) => {
+        .on('error', err => {
             console.error('File Stream:', err);
         })
         .on('close', () => {
             console.log('Done.');
         });
-
-    // .then((result) => {
-    //   result.pipe(res);
-    // }).catch((err) => {
-    //   console.log(err);
-    // });
 });
 
 // catch 404 and forward to error handler
