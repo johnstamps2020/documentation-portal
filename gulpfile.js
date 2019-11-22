@@ -1,8 +1,5 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-const gulpMocha = require('gulp-mocha');
-const env = require('gulp-env');
-// const supertest = require('supertest');
 
 gulp.task('default', () => {
     return new Promise((resolve, reject) => {
@@ -16,7 +13,8 @@ gulp.task('default', () => {
         })
             .on('restart', () => {
                 console.log('Restarting');
-            });
+            })
+            .on('error', console.error.bind(console));
         resolve();
     });
 
