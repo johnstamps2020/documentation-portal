@@ -72,37 +72,20 @@ app.get('/:docKey', (req, res, next) => {
         })
         .createReadStream();
 
+    fileStream.on('error', err => {
+        console.error(err);
+    });
+
+    res.setHeader('Content-Length', Buffer.byteLength(fileStream));
+    res.setHeader('Content-Type', 'text/html');
+
     fileStream
+        .pipe(res)
         .on('error', err => {
-            console.error(err);
+            console.error('File Stream:', err);
         })
-        .on('response', s3response => {
-            res.setHeader(
-                'Content-Length',
-                s3response.headers['content-length']
-            );
-            res.setHeader('Content-Type', s3response.headers['content-type']);
-
-            if (req.fresh) {
-                res.statusCode = 304;
-                res.end();
-                return;
-            }
-
-            if (req.method === 'HEAD') {
-                res.statusCode = 200;
-                res.end();
-                return;
-            }
-
-            s3response
-                .pipe(res)
-                .on('error', err => {
-                    console.error('File Stream:', err);
-                })
-                .on('close', () => {
-                    console.log('Done.');
-                });
+        .on('close', () => {
+            console.log('Done.');
         });
 });
 
