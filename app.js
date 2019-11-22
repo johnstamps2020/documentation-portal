@@ -76,11 +76,27 @@ app.get('/:docKey', (req, res, next) => {
         .on('error', err => {
             console.error(err);
         })
-        .on('response', s3response  => {
-            res.setHeader('Content-Length', s3response .headers['content-length']);
-            res.setHeader('Content-Type', s3response .headers['content-type']);
+        .on('response', s3response => {
+            res.setHeader(
+                'Content-Length',
+                s3response.headers['content-length']
+            );
+            res.setHeader('Content-Type', s3response.headers['content-type']);
 
-            s3response .pipe(res)
+            if (req.fresh) {
+                res.statusCode = 304;
+                res.end();
+                return;
+            }
+
+            if (req.method === 'HEAD') {
+                res.statusCode = 200;
+                res.end();
+                return;
+            }
+
+            s3response
+                .pipe(res)
                 .on('error', err => {
                     console.error('File Stream:', err);
                 })
