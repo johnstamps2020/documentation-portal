@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "@okta/oidc-middleware": "^2.1.0",
-    "aws-sdk": "^2.577.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
@@ -18,6 +17,7 @@
     "gulp-mocha": "^7.0.2",
     "gulp-nodemon": "^2.4.2",
     "http-errors": "~1.6.3",
+    "http-proxy-middleware": "^0.20.0",
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
     "serve-favicon": "^2.5.0"

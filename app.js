@@ -6,13 +6,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const AWS = require('aws-sdk');
+const proxy = require('http-proxy-middleware');
 const s3 = new AWS.S3({
-    region: 'us-west-2',
+  apiVersion: '2006-03-01',
 });
 
-const fs = require('fs');
-
 const sourceBucket = 'tenant-doctools-dev-builds';
+const keyRoot = 'orange-bar/webhelp-light/heads/master';
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -26,19 +26,19 @@ const app = express();
 
 // session support is required to use ExpressOIDC
 app.use(
-    session({
-        secret: `${process.env.SESSION_KEY}`,
-        resave: true,
-        saveUninitialized: false,
-    })
+  session({
+    secret: `${process.env.SESSION_KEY}`,
+    resave: true,
+    saveUninitialized: false,
+  })
 );
 
 const oidc = new ExpressOIDC({
-    issuer: `${process.env.OKTA_DOMAIN}`,
-    client_id: `${process.env.OKTA_CLIENT_ID}`,
-    client_secret: `${process.env.OKTA_CLIENT_SECRET}`,
-    appBaseUrl: `${process.env.APP_BASE_URL}`,
-    scope: 'openid profile',
+  issuer: `${process.env.OKTA_DOMAIN}`,
+  client_id: `${process.env.OKTA_CLIENT_ID}`,
+  client_secret: `${process.env.OKTA_CLIENT_SECRET}`,
+  appBaseUrl: `${process.env.APP_BASE_URL}`,
+  scope: 'openid profile',
 });
 
 // view engine setup
@@ -54,62 +54,41 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
-    sassMiddleware({
-        src: path.join(__dirname, 'public'),
-        dest: path.join(__dirname, 'public'),
-        indentedSyntax: true, // true = .sass and false = .scss
-        sourceMap: true,
-    })
+  sassMiddleware({
+    src: path.join(__dirname, 'public'),
+    dest: path.join(__dirname, 'public'),
+    indentedSyntax: true, // true = .sass and false = .scss
+    sourceMap: true,
+  })
 );
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/*', (req, res, next) => {
-    const docKey = req.url;
-    console.log(`Fetching ${docKey} from AWS`);
-    const fileStream = s3
-        .getObject({
-            Bucket: sourceBucket,
-            Key: `${docKey}`,
-        })
-        .createReadStream();
+const proxyOptions = {
+  target: `https://ditaot.internal.dev.ccs.guidewire.net`,
+  changeOrigin: true,
+};
+const docProxy = proxy(proxyOptions);
 
-    fileStream.on('error', err => {
-        console.error(err);
-    });
-
-    // console.log(JSON.stringify(Buffer.byteLength(fileStream)));
-
-    // res.setHeader('Content-Length', Buffer.byteLength(fileStream));
-    // res.setHeader('Content-Type', 'text/html');
-
-    fileStream
-        .pipe(res)
-        .on('error', err => {
-            console.error('File Stream:', err);
-        })
-        .on('close', () => {
-            console.log('Done.');
-        });
-});
+app.use('/', docProxy);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-    next(createError(404));
+  next(createError(404));
 });
 
 // error handler
 app.use((err, req, res, next) => {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 app.listen(port, () => {
-    console.log('Running on PORT: ' + port);
+  console.log('Running on PORT: ' + port);
 });
 
 module.exports = app;
