@@ -72,19 +72,21 @@ app.get('/:docKey', (req, res, next) => {
         })
         .createReadStream();
 
-    fileStream.on('error', err => {
-        console.error(err);
-    });
-
-    res.setHeader('Content-Type', 'html/text')
-
     fileStream
-        .pipe(res)
         .on('error', err => {
-            console.error('File Stream:', err);
+            console.error(err);
         })
-        .on('close', () => {
-            console.log('Done.');
+        .on('response', s3response  => {
+            res.setHeader('Content-Length', s3response .headers['content-length']);
+            res.setHeader('Content-Type', s3response .headers['content-type']);
+
+            s3response .pipe(res)
+                .on('error', err => {
+                    console.error('File Stream:', err);
+                })
+                .on('close', () => {
+                    console.log('Done.');
+                });
         });
 });
 
