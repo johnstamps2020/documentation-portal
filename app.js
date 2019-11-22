@@ -5,17 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-const AWS = require('aws-sdk');
 const proxy = require('http-proxy-middleware');
-const s3 = new AWS.S3({
-  apiVersion: '2006-03-01',
-});
-
-const sourceBucket = 'tenant-doctools-dev-builds';
-const keyRoot = 'orange-bar/webhelp-light/heads/master';
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
 const session = require('express-session');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
