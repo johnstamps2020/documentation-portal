@@ -76,7 +76,9 @@ app.get('/:docKey', (req, res, next) => {
         console.error(err);
     });
 
-    res.setHeader('Content-Length', Buffer.byteLength(fileStream));
+    // console.log(JSON.stringify(Buffer.byteLength(fileStream)));
+
+    // res.setHeader('Content-Length', Buffer.byteLength(fileStream));
     res.setHeader('Content-Type', 'text/html');
 
     fileStream
