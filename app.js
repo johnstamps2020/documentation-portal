@@ -51,6 +51,7 @@ app.use(
     sourceMap: true,
   })
 );
+// serve docs from the public folder
 // app.use(express.static(path.join(__dirname, 'public')));
 
 const proxyOptions = {
