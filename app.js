@@ -10,8 +10,9 @@ const s3 = new AWS.S3({
     region: 'us-west-2',
 });
 
+const fs = require('fs');
+
 const sourceBucket = 'tenant-doctools-dev-builds';
-const docRootOnBucket = 'compressed-webhelp';
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -68,7 +69,7 @@ app.get('/:docKey', (req, res, next) => {
     const fileStream = s3
         .getObject({
             Bucket: sourceBucket,
-            Key: `${docRootOnBucket}/${docKey}`,
+            Key: `${docKey}`,
         })
         .createReadStream();
 
@@ -79,7 +80,7 @@ app.get('/:docKey', (req, res, next) => {
     // console.log(JSON.stringify(Buffer.byteLength(fileStream)));
 
     // res.setHeader('Content-Length', Buffer.byteLength(fileStream));
-    res.setHeader('Content-Type', 'text/html');
+    // res.setHeader('Content-Type', 'text/html');
 
     fileStream
         .pipe(res)
