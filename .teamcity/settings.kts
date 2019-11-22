@@ -137,6 +137,7 @@ object DeployDev : BuildType({
     params {
         param("deploy-env", "dev")
         param("deploy-version", "latest")
+        param("doc-s3-url", "https://ditaot.internal.dev.ccs.guidewire.net")
         text("namespace", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
     }
 
@@ -305,6 +306,7 @@ object BuildDockerImage : Template({
                 echo OKTA_CLIENT_SECRET="%env.OKTA_CLIENT_SECRET%" >> .env
                 echo APP_BASE_URL="https://nodeoktacontainer-%namespace%.%deploy-env%.ccs.guidewire.net" >> .env
                 echo SESSION_KEY="%env.SESSION_KEY%" >> .env
+                echo DOC_S3_URL="%doc-s3-url%" >> .env
                 if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
                     export BRANCH_NAME=latest
                 else 

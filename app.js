@@ -55,7 +55,7 @@ app.use(
 // app.use(express.static(path.join(__dirname, 'public')));
 
 const proxyOptions = {
-  target: `https://ditaot.internal.dev.ccs.guidewire.net`,
+  target: `${process.env.DOC_S3_URL}`,
   changeOrigin: true,
 };
 const docProxy = proxy(proxyOptions);
