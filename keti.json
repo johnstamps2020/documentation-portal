@@ -9,6 +9,9 @@
       "REFRESH_TOKEN",
       "AUTHORIZATION_CODE"
     ],
+    "groups": [
+      "NODE_Hawaii_Docs_Web:WebUsers"
+    ],
     "responseTypes": ["TOKEN", "CODE", "ID_TOKEN"],
     "clientAuthenticationType": "CLIENT_SECRET_BASIC",
     "tokenValidity": {
