@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const proxy = require('http-proxy-middleware');
+const favicon = require('serve-favicon');
 
 const session = require('express-session');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
@@ -38,6 +39,8 @@ app.set('view engine', 'ejs');
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oidc.router);
 app.use(oidc.ensureAuthenticated());
+
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
 app.use(logger('dev'));
 app.use(express.json());
