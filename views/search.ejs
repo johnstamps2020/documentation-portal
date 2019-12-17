@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../stylesheets/search.css" />
+    <title>Search Results - Guidewire Documentation</title>
+  </head>
+  <body>
+    <header class="pageHeader">
+      <a href="/">
+        <img class="pageLogo" src="assets/img/guidewire-logo.jpg" />
+        <span class="pageTitle">Guidewire Documentation</span>
+      </a>
+    </header>
+    <div class="searchBar">
+      <input
+        id="searchField"
+        class="searchField"
+        type="text"
+        value="<%= query %>"
+      />
+      <button id="searchButton" class="searchButton"></button>
+    </div>
+    <div class="docPanelContainer container">
+      <div class="row">
+        <div class="col">
+          <h1>Search results for "<%= query %>"</h1>
+          <div class="resultsSubheading">
+            Displaying 10 out of <%= totalNumOfResults %> (page <%= currentPage
+            %> of <%= pages %>)
+          </div>
+          <div class="searchResults" id="searchResults">
+            <% searchResults.forEach(result => { %>
+            <h2>
+              <a href="<%= result.ref %>"><%= result.title %></a>
+            </h2>
+            <p><%= result.body %></p>
+            <% }) %>
+          </div>
+          <% if (pages > 0) { %>
+          <ul class="pagination text-center">
+            <% if (currentPage == 1) { %>
+            <li class="disabled"><a>First</a></li>
+            <% } else { %>
+            <li>
+              <a href="/search?q=<%= encodeURI(query) %>&amp;page=1">First</a>
+            </li>
+            <% } %> <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
+            4 : 1) %> <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+            <% } %> <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
+            { %> <% if (i == currentPage) { %>
+            <li class="disabled"><%= i %></li>
+            <% } else { %>
+            <li>
+              <a href="/search?q=<%= encodeURI(query) %>&amp;page=<%= i %>"
+                ><%= i %></a
+              >
+            </li>
+            <% } %> <% if (i == Number(currentPage) + 4 && i < pages) { %>
+            <li class="disabled"><a>...</a></li>
+            <% } %> <% } %> <% if (currentPage == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+            <% } else { %>
+            <li>
+              <a href="/search?q=<%= encodeURI(query) %>&amp;page=<%= pages %>"
+                >Last</a
+              >
+            </li>
+            <% } %>
+          </ul>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <script>
+      const searchButton = document.getElementById('searchButton');
+      if (searchButton) {
+        searchButton.addEventListener('click', function(event) {
+          window.location.href =
+            '/search?q=' +
+            encodeURI(document.getElementById('searchField').value);
+        });
+      } else {
+        console.log('~Cannot find search button');
+      }
+
+      const searchInput = document.getElementById('searchField');
+      if (searchInput) {
+        searchInput.addEventListener('keyup', function(event) {
+          if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById('searchButton').click();
+          }
+        });
+      } else {
+        console.log('~Cannot find search input');
+      }
+    </script>
+  </body>
+  <footer class="pageFooter">
+    <span class="footerCopyright">© Guidewire Software, Inc.</span>
+  </footer>
+</html>

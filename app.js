@@ -7,6 +7,8 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const proxy = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
+const elasticlunr = require('elasticlunr');
+const docJson = require('./public/documents.json');
 
 const session = require('express-session');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
@@ -14,6 +16,15 @@ const { ExpressOIDC } = require('@okta/oidc-middleware');
 const port = process.env.PORT || 8081;
 
 const app = express();
+
+const searchIndex = elasticlunr();
+searchIndex.addField('title');
+searchIndex.addField('body');
+searchIndex.setRef('id');
+
+docJson.forEach(doc => {
+  searchIndex.addDoc(doc);
+});
 
 // session support is required to use ExpressOIDC
 app.use(
@@ -40,7 +51,7 @@ app.set('view engine', 'ejs');
 app.use(oidc.router);
 app.use(oidc.ensureAuthenticated());
 
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -55,13 +66,54 @@ app.use(
   })
 );
 // serve docs from the public folder
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const proxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
   changeOrigin: true,
+  onOpen: proxySocket => {
+    proxySocket.on('data', hybiParseAndLogMessage);
+  },
 };
 const docProxy = proxy(proxyOptions);
+
+app.use('/search', (req, res, next) => {
+  const resultsPerPage = 10;
+  const currentPage = req.query.page || 1;
+  const searchResults = searchIndex.search(req.query.q, {
+    fields: {
+      title: { boost: 2 },
+      body: { boost: 1 },
+    },
+  });
+
+  const totalNumOfResults = searchResults.length;
+
+  const resultWindow = searchResults.slice(
+    resultsPerPage * (currentPage - 1),
+    resultsPerPage * currentPage <= totalNumOfResults - 1
+      ? resultsPerPage * currentPage
+      : totalNumOfResults - 1
+  );
+
+  const resultsToDisplay = resultWindow.map(result => {
+    const doc = searchIndex.documentStore.getDoc(result.ref);
+    return {
+      ref: result.ref,
+      score: result.score,
+      title: doc.title,
+      body: doc.body.substr(0, 300),
+    };
+  });
+
+  res.render('search', {
+    query: decodeURI(req.query.q),
+    currentPage: currentPage,
+    pages: Math.ceil(totalNumOfResults / resultsPerPage),
+    totalNumOfResults: totalNumOfResults,
+    searchResults: resultsToDisplay,
+  });
+});
 
 app.use('/', docProxy);
 

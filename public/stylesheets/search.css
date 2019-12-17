@@ -1,0 +1,20 @@
+.resultList li {
+    list-style-type: none;
+}
+
+.resultList h2 {
+    font-size: 1.3rem;
+}
+
+.searchResults {
+    padding-top: 3rem;
+}
+
+.pagination li {
+    padding: 6px;
+}
+
+.pagination li.disabled a,
+.pagination li.disabled {
+    color: gray !important;
+}
