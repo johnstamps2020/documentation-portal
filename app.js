@@ -22,8 +22,20 @@ searchIndex.addField('title');
 searchIndex.addField('body');
 searchIndex.setRef('id');
 
-docJson.forEach(doc => {
-  searchIndex.addDoc(doc);
+const JSONStream = require('JSONStream');
+const fs = require('fs');
+
+const stream = fs.createReadStream('./public/documents.json', {encoding: 'utf8'});
+const parser = JSONStream.parse('*');
+
+stream.pipe(parser);
+
+parser.on('data', obj => {
+  searchIndex.addDoc(obj);
+});
+
+parser.on('end', () => {
+  console.log('FINISHED LOADING SEARCH INDEX FROM FILE');
 });
 
 // session support is required to use ExpressOIDC
