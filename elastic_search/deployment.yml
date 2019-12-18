@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docsearch-app-deployment
+  namespace: doctools
+spec:
+  selector:
+    matchLabels:
+      app: docsearch-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: docsearch-app
+      annotations:
+        iam.amazonaws.com/role: arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer
+    spec:
+      containers:
+      - name: docsearch
+        image: artifactory.guidewire.com/doctools-docker-dev/docsearch:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9200
+        env:
+        - name: REFRESH_IMAGE
+          value: 'BUILD_TIME'
+        resources:
+          requests:
+            memory: "5Gi"
+            cpu: "1"
+          limits:
+            memory: "5Gi"
+            cpu: "1"
+      imagePullSecrets:
+      - name: artifactory-secret
+      

@@ -306,6 +306,7 @@ object BuildDockerImage : Template({
                 echo OKTA_CLIENT_SECRET="%env.OKTA_CLIENT_SECRET%" >> .env
                 echo APP_BASE_URL="https://nodeoktacontainer-%namespace%.%deploy-env%.ccs.guidewire.net" >> .env
                 echo SESSION_KEY="%env.SESSION_KEY%" >> .env
+                echo ELASTIC_SEARCH_URL=https://docsearch-doctools.dev.ccs.guidewire.net:9200 >> .env
                 echo DOC_S3_URL="%doc-s3-url%" >> .env
                 if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
                     export BRANCH_NAME=latest

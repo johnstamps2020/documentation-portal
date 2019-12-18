@@ -112,6 +112,8 @@ app.use('/search', (req, res, next) => {
       totalNumOfResults: totalNumOfResults,
       searchResults: resultsToDisplay,
     });
+  }).catch(err => {
+    console.log(err);
   });
 });
 

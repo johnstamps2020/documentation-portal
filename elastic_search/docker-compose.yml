@@ -1,12 +1,12 @@
 version: '2.2'
 services:
-  es01:
+  docsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
-    container_name: es01
+    container_name: docsearch
     environment:
-      - node.name=es01
+      - node.name=docsearch
       - cluster.name=es-docker-cluster
-      - cluster.initial_master_nodes=es01
+      - cluster.initial_master_nodes=docsearch
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
