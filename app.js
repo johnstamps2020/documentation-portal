@@ -7,36 +7,14 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const proxy = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
-const elasticlunr = require('elasticlunr');
-const docJson = require('./public/documents.json');
 
 const session = require('express-session');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
 
 const port = process.env.PORT || 8081;
 
+const elasticClient = require('./elastic_search/elasticClient');
 const app = express();
-
-const searchIndex = elasticlunr();
-searchIndex.addField('title');
-searchIndex.addField('body');
-searchIndex.setRef('id');
-
-const JSONStream = require('JSONStream');
-const fs = require('fs');
-
-const stream = fs.createReadStream('./public/documents.json', {encoding: 'utf8'});
-const parser = JSONStream.parse('*');
-
-stream.pipe(parser);
-
-parser.on('data', obj => {
-  searchIndex.addDoc(obj);
-});
-
-parser.on('end', () => {
-  console.log('FINISHED LOADING SEARCH INDEX FROM FILE');
-});
 
 // session support is required to use ExpressOIDC
 app.use(
@@ -89,41 +67,53 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 
+const runSearch = async function(searchQuery, startIndex, resultsPerPage) {
+  const { body } = await elasticClient.search({
+    index: 'gw-docs',
+    from: startIndex,
+    size: resultsPerPage,
+    body: {
+      query: {
+        multi_match: {
+          query: searchQuery,
+          fields: ['title^3', 'body'],
+        },
+      },
+    },
+  });
+  console.log(body);
+  return {
+    numberOfHits: body.hits.total.value,
+    hits: body.hits.hits,
+  };
+};
+
 app.use('/search', (req, res, next) => {
   const resultsPerPage = 10;
   const currentPage = req.query.page || 1;
-  const searchResults = searchIndex.search(req.query.q, {
-    fields: {
-      title: { boost: 2 },
-      body: { boost: 1 },
-    },
-  });
+  const startIndex = resultsPerPage * (currentPage - 1);
+  runSearch(req.query.q, startIndex, resultsPerPage).then(results => {
+    const totalNumOfResults = results.numberOfHits;
 
-  const totalNumOfResults = searchResults.length;
+    const resultsToDisplay = results.hits.map(result => {
+      const doc = result._source;
+      return {
+        ref: doc.id,
+        score: result._score,
+        title: doc.title,
+        body: doc.body.substr(0, 300),
+      };
+    });
 
-  const resultWindow = searchResults.slice(
-    resultsPerPage * (currentPage - 1),
-    resultsPerPage * currentPage <= totalNumOfResults - 1
-      ? resultsPerPage * currentPage
-      : totalNumOfResults - 1
-  );
-
-  const resultsToDisplay = resultWindow.map(result => {
-    const doc = searchIndex.documentStore.getDoc(result.ref);
-    return {
-      ref: result.ref,
-      score: result.score,
-      title: doc.title,
-      body: doc.body.substr(0, 300),
-    };
-  });
-
-  res.render('search', {
-    query: decodeURI(req.query.q),
-    currentPage: currentPage,
-    pages: Math.ceil(totalNumOfResults / resultsPerPage),
-    totalNumOfResults: totalNumOfResults,
-    searchResults: resultsToDisplay,
+    res.render('search', {
+      query: decodeURI(req.query.q),
+      currentPage: currentPage,
+      pages: Math.ceil(totalNumOfResults / resultsPerPage),
+      totalNumOfResults: totalNumOfResults,
+      searchResults: resultsToDisplay,
+    });
+  }).catch(err => {
+    console.log(err);
   });
 });
 
