@@ -1,38 +1,50 @@
-Steps to get the service up and running
+# Getting the service up and running
 
-Compose and tag the image
+1. Log into Atmos CLI and select the dev environment. For instructions, see [https://atmos.internal.guidewire.net/docs/dev/atmos-cli/](https://atmos.internal.guidewire.net/docs/dev/atmos-cli/)
+
+1. Compose the image.
+
 ```bash
-docker-compose
+docker-compose up --no-start
 ```
 
-Tag the image
+1. Tag the image.
+
 ```bash
-docker tag docker.elastic.co/elasticsearch/elasticsearch:7.5.0 artifactory.guidewire.com/doctools-docker-dev/docsearch
+docker tag docker.elastic.co/elasticsearch/elasticsearch:7.5.0 artifactory.guidewire.com/doctools-docker-dev/docsearch:latest
 ```
 
-Log into Artifactory as `doc-service`
+1. Log into Artifactory as `sys-doc`.
+
 ```bash
 docker login artifactory.guidewire.com
 ```
 
-Push image to Artifactory
+1. Push image to Artifactory
+
 ```bash
 docker push artifactory.guidewire.com/doctools-docker-dev/docsearch:latest
 ```
 
-Deploy the service from docker:
+1. Create the deployment in Kubernetes.
 
 ```bash
 kubectl apply -f deployment.yml
 ```
 
-Deploy the ingress for the service
+1. Create a service for the deployment.
+
+```bash
+kubectl apply -f service.yml
+```
+
+1. Deploy the ingress for the service.
 
 ```bash
 kubectl apply -f ingress.yml
 ```
 
-Set up the env:
+1. Set up the env:
 
 ```bash
 ELASTIC_SEARCH_URL=https://docsearch-doctools.dev.ccs.guidewire.net:9200

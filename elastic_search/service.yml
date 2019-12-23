@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: docsearch-app
+  namespace: doctools
+  labels:
+    app: docsearch-app
+spec:
+  ports:
+    - name: http
+      port: 9200
+  selector:
+    app: docsearch-app
