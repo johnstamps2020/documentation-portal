@@ -8,6 +8,7 @@
 kubectl apply -f deployment.yml
 ```
 
+# TODO: This step needs checking
 1. Set up the env:
 
 ```bash
