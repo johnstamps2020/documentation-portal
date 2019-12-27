@@ -27,17 +27,17 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: docsearch-app-deployment
+  name: docsearch
   namespace: doctools
 spec:
   selector:
     matchLabels:
-      app: docsearch-app-deployment
+      app: docsearch
   replicas: 1
   template:
     metadata:
       labels:
-        app: docsearch-app-deployment
+        app: docsearch
     spec:
       securityContext:
         fsGroup: 1000
@@ -84,14 +84,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: docsearch-app-deployment
+  name: docsearch
   namespace: doctools
   labels:
-    app: docsearch-app-deployment
+    app: docsearch
 spec:
   type: ClusterIP
   selector:
-    app: docsearch-app-deployment
+    app: docsearch
   ports:
     - name: http
       port: 9200
