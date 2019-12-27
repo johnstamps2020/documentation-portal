@@ -1,3 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docsearch-app-config
+  namespace: doctools
+data:
+  discovery_type: single-node
+  cluster_name: es-dev
+  elasticsearch.yml: |
+    cluster.name: es-dev
+    network.host: 0.0.0.0
+    path.data: /usr/share/elasticsearch/data
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: docsearch-app-pv-claim
+  namespace: doctools
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,31 +32,70 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: docsearch-app
+      app: docsearch-app-deployment
   replicas: 1
   template:
     metadata:
       labels:
-        app: docsearch-app
-      annotations:
-        iam.amazonaws.com/role: arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer
+        app: docsearch-app-deployment
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
-      - name: docsearch
-        image: artifactory.guidewire.com/doctools-docker-dev/docsearch:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 9200
-        env:
-        - name: REFRESH_IMAGE
-          value: 'BUILD_TIME'
-        resources:
-          requests:
-            memory: "5Gi"
-            cpu: "1"
-          limits:
-            memory: "5Gi"
-            cpu: "1"
-      imagePullSecrets:
-      - name: artifactory-secret
-      
+        - name: docsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: discovery.type
+              valueFrom:
+                configMapKeyRef:
+                  name: docsearch-app-config
+                  key: discovery_type
+            - name: cluster_name
+              valueFrom:
+                configMapKeyRef:
+                  name: docsearch-app-config
+                  key: cluster_name
+          ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /usr/share/elasticsearch/data
+              name: elasticsearch-storage
+            - mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+              name: docsearch-app-config
+              subPath: elasticsearch.yml
+
+      volumes:
+        - name: elasticsearch-storage
+          persistentVolumeClaim:
+            claimName: docsearch-app-pv-claim
+        - name: docsearch-app-config
+          configMap:
+            name: docsearch-app-config
+            items:
+              - key: elasticsearch.yml
+                path: elasticsearch.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docsearch-app-deployment
+  namespace: doctools
+  labels:
+    app: docsearch-app-deployment
+spec:
+  type: ClusterIP
+  selector:
+    app: docsearch-app-deployment
+  ports:
+    - name: http
+      port: 9200
+      protocol: TCP
+    - name: transport
+      port: 9300
+      protocol: TCP

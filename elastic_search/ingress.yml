@@ -9,6 +9,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: docsearch-app
+          serviceName: docsearch-app-deployment
           servicePort: 9200
         path: /
