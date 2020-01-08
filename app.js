@@ -94,6 +94,13 @@ app.use('/search', (req, res, next) => {
   const startIndex = resultsPerPage * (currentPage - 1);
   runSearch(req.query.q, startIndex, resultsPerPage).then(results => {
     const totalNumOfResults = results.numberOfHits;
+    const body = () => {
+      if (doc.body) {
+        return doc.body.substr(0, 300);
+      }
+
+      return 'DOCUMENT HAS NO CONTENT';
+    };
 
     const resultsToDisplay = results.hits.map(result => {
       const doc = result._source;
@@ -101,7 +108,7 @@ app.use('/search', (req, res, next) => {
         ref: doc.id,
         score: result._score,
         title: doc.title,
-        body: doc.body.substr(0, 300),
+        body: body,
       };
     });
 
