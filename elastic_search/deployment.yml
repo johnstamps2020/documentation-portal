@@ -99,3 +99,18 @@ spec:
     - name: transport
       port: 9300
       protocol: TCP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: doctools
+  name: docsearch-ingress
+spec:
+  rules:
+  - host: docsearch-doctools.dev.ccs.guidewire.net
+    http:
+      paths:
+      - backend:
+          serviceName: docsearch
+          servicePort: 9200
+        path: /
