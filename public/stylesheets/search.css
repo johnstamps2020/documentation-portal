@@ -18,3 +18,7 @@
 .pagination li.disabled {
     color: gray !important;
 }
+
+.filterSearchResults h2 {
+    font-size: 1rem;
+}

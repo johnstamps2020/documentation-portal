@@ -67,16 +67,44 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 
-const runSearch = async function(searchQuery, startIndex, resultsPerPage) {
+const runSearch = async function(
+  searchQuery,
+  platformArray,
+  productArray,
+  versionArray,
+  startIndex,
+  resultsPerPage
+) {
   const { body } = await elasticClient.search({
     index: 'gw-docs',
     from: startIndex,
     size: resultsPerPage,
     body: {
       query: {
-        multi_match: {
-          query: searchQuery,
-          fields: ['title^3', 'body'],
+        bool: {
+          must: {
+            multi_match: {
+              query: searchQuery,
+              fields: ['title^3', 'body'],
+            },
+          },
+          filter: [
+            {
+              terms: {
+                platform: platformArray,
+              },
+            },
+            {
+              terms: {
+                product: productArray,
+              },
+            },
+            {
+              terms: {
+                version: versionArray,
+              },
+            },
+          ],
         },
       },
     },
@@ -88,36 +116,55 @@ const runSearch = async function(searchQuery, startIndex, resultsPerPage) {
 };
 
 app.use('/search', (req, res, next) => {
+  const getArrayFromParam = param => {
+    return decodeURI(param).split(' ');
+  };
+
   const resultsPerPage = 10;
   const currentPage = req.query.page || 1;
   const startIndex = resultsPerPage * (currentPage - 1);
-  runSearch(req.query.q, startIndex, resultsPerPage).then(results => {
-    const totalNumOfResults = results.numberOfHits;
+  runSearch(
+    req.query.q,
+    getArrayFromParam(req.query.platform),
+    getArrayFromParam(req.query.product),
+    getArrayFromParam(req.query.version),
+    startIndex,
+    resultsPerPage
+  )
+    .then(results => {
+      const totalNumOfResults = results.numberOfHits;
 
-    const resultsToDisplay = results.hits.map(result => {
-      const doc = result._source;
-      let body = 'DOCUMENT HAS NO CONTENT'
-      if (doc.body) {
-        body = doc.body.substr(0, 300);
-      }
-      return {
-        ref: doc.id,
-        score: result._score,
-        title: doc.title,
-        body: body,
-      };
-    });
+      const resultsToDisplay = results.hits.map(result => {
+        const doc = result._source;
+        const getBlurb = body => {
+          if (body) {
+            return body.substr(0, 300) + '...';
+          }
+          return 'DOCUMENT HAS NO CONTENT';
+        };
 
-    res.render('search', {
-      query: decodeURI(req.query.q),
-      currentPage: currentPage,
-      pages: Math.ceil(totalNumOfResults / resultsPerPage),
-      totalNumOfResults: totalNumOfResults,
-      searchResults: resultsToDisplay,
+        return {
+          ref: doc.id,
+          score: result._score,
+          title: doc.title,
+          body: getBlurb(doc.body),
+          platform: doc.platform,
+          product: doc.product,
+          version: doc.version,
+        };
+      });
+
+      res.render('search', {
+        query: decodeURI(req.query.q),
+        currentPage: currentPage,
+        pages: Math.ceil(totalNumOfResults / resultsPerPage),
+        totalNumOfResults: totalNumOfResults,
+        searchResults: resultsToDisplay,
+      });
+    })
+    .catch(err => {
+      console.log(JSON.stringify(err, null, 4));
     });
-  }).catch(err => {
-    console.log(err);
-  });
 });
 
 app.use('/', docProxy);
