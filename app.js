@@ -81,7 +81,6 @@ const runSearch = async function(searchQuery, startIndex, resultsPerPage) {
       },
     },
   });
-  console.log(body);
   return {
     numberOfHits: body.hits.total.value,
     hits: body.hits.hits,
