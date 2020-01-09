@@ -88,7 +88,7 @@ const runSearch = async function(
               fields: ['title^3', 'body'],
             },
           },
-          filter: [
+          should: [
             {
               terms: {
                 platform: platformArray,
@@ -105,6 +105,7 @@ const runSearch = async function(
               },
             },
           ],
+          minimum_should_match: 0,
         },
       },
     },
