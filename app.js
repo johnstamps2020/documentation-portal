@@ -67,6 +67,10 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 
+const getUniqueValues = async function(fieldName) {
+  return undefined;
+};
+
 const runSearch = async function(
   searchQuery,
   platformArray,
@@ -75,39 +79,35 @@ const runSearch = async function(
   startIndex,
   resultsPerPage
 ) {
+  let query = {
+    bool: {
+      must: {
+        multi_match: {
+          query: searchQuery,
+          fields: ['title^3', 'body'],
+        },
+      },
+    },
+  };
+
+  if (platformArray || productArray || versionArray) {
+    const searchFilter = Object.entries({
+      platform: platformArray,
+      product: productArray,
+      version: versionArray,
+    })
+      .map(([key, value]) => value && { terms: { [key]: value } })
+      .filter(Boolean);
+
+    query.bool.filter = searchFilter;
+  }
+
   const { body } = await elasticClient.search({
     index: 'gw-docs',
     from: startIndex,
     size: resultsPerPage,
     body: {
-      query: {
-        bool: {
-          must: {
-            multi_match: {
-              query: searchQuery,
-              fields: ['title^3', 'body'],
-            },
-          },
-          should: [
-            {
-              terms: {
-                platform: platformArray,
-              },
-            },
-            {
-              terms: {
-                product: productArray,
-              },
-            },
-            {
-              terms: {
-                version: versionArray,
-              },
-            },
-          ],
-          minimum_should_match: 0,
-        },
-      },
+      query: query,
     },
   });
   return {
@@ -118,6 +118,9 @@ const runSearch = async function(
 
 app.use('/search', (req, res, next) => {
   const getArrayFromParam = param => {
+    if (!param) {
+      return undefined;
+    }
     return decodeURI(param).split(' ');
   };
 
@@ -155,12 +158,45 @@ app.use('/search', (req, res, next) => {
         };
       });
 
+      const getSelectedValues = fieldName => {
+        if (req.query[fieldName]) {
+          return getArrayFromParam(req.query[fieldName]);
+        }
+        return undefined;
+      };
+
+      const getUniqueValues = fieldName => {
+        let uniqueValues = new Array();
+
+        resultsToDisplay.forEach(result => {
+          let value = {
+            label: result[fieldName],
+            checked: true,
+          };
+
+          if (getSelectedValues(fieldName)) {
+            if (!getSelectedValues(fieldName).includes(value.label)) {
+              value.checked = false;
+            }
+          }
+
+          if (!uniqueValues.some(e => e.label === value.label)) {
+            uniqueValues.push(value);
+          }
+        });
+
+        return uniqueValues;
+      };
+
       res.render('search', {
         query: decodeURI(req.query.q),
         currentPage: currentPage,
         pages: Math.ceil(totalNumOfResults / resultsPerPage),
         totalNumOfResults: totalNumOfResults,
         searchResults: resultsToDisplay,
+        availablePlatforms: getUniqueValues('platform'),
+        availableProducts: getUniqueValues('product'),
+        availableVersions: getUniqueValues('version'),
       });
     })
     .catch(err => {

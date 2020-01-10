@@ -26,12 +26,23 @@
     <div class="docPanelContainer container">
       <div class="row">
         <div class="col filterSearchResults">
-          <h2>Filter by platform</h2>
-          <ul id="platformFilter"></ul>
-          <h2>Filter by product</h2>
-          <ul id="productFilter"></ul>
-          <h2>Filter by version</h2>
-          <ul id="versionFilter"></ul>
+          <% [ { values: availablePlatforms, name: 'platform' }, { values:
+          availableProducts, name: 'product' }, { values: availableVersions,
+          name: 'version' }, ].forEach(filter => { %>
+          <h2>Filter by <%= filter.name %></h2>
+          <% filter.values.forEach(checkboxValue => { %>
+          <div class="checkboxRow">
+            <input
+              type="checkbox"
+              class="filterCheckbox"
+              name="<%= filter.name %>"
+              value="<%= checkboxValue.label %>"
+              checked="<%= checkboxValue.checked %>"
+            /><label for="<%= checkboxValue.label %>" class="checkboxLabel"
+              ><%= checkboxValue.label %></label
+            >
+          </div>
+          <% }) %> <% }) %>
         </div>
         <div class="col-sm-10">
           <h1>Search results for "<%= query %>"</h1>
@@ -59,7 +70,7 @@
             <li class="disabled"><a>First</a></li>
             <% } else { %>
             <li>
-              <a href="/search?q=<%= encodeURI(query) %>&amp;page=1">First</a>
+              <button onclick="setGetParameter('page', '1')">First</button>
             </li>
             <% } %> <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
             4 : 1) %> <% if (i !== 1) { %>
@@ -69,9 +80,9 @@
             <li class="disabled"><%= i %></li>
             <% } else { %>
             <li>
-              <a href="/search?q=<%= encodeURI(query) %>&amp;page=<%= i %>"
-                ><%= i %></a
-              >
+              <button onclick="setGetParameter('page', <%= i %>)">
+                <%= i %>
+              </button>
             </li>
             <% } %> <% if (i == Number(currentPage) + 4 && i < pages) { %>
             <li class="disabled"><a>...</a></li>
@@ -79,9 +90,9 @@
             <li class="disabled"><a>Last</a></li>
             <% } else { %>
             <li>
-              <a href="/search?q=<%= encodeURI(query) %>&amp;page=<%= pages %>"
-                >Last</a
-              >
+              <button onclick="setGetParameter('page', <%= pages %>)">
+                Last
+              </button>
             </li>
             <% } %>
           </ul>
@@ -90,12 +101,60 @@
       </div>
     </div>
     <script>
+      function setGetParameter(paramName, paramValue) {
+        var url = window.location.href;
+        var hash = location.hash;
+        url = url.replace(hash, '');
+        if (url.indexOf(paramName + '=') >= 0) {
+          var prefix = url.substring(0, url.indexOf(paramName + '='));
+          var suffix = url.substring(url.indexOf(paramName + '='));
+          suffix = suffix.substring(suffix.indexOf('=') + 1);
+          suffix =
+            suffix.indexOf('&') >= 0
+              ? suffix.substring(suffix.indexOf('&'))
+              : '';
+              if (paramValue.length > 0) {
+                url = prefix + paramName + '=' + paramValue + suffix;
+              } else {
+                url = prefix.substring(0, prefix.length - 1) + suffix;
+              }
+        } else {
+          if (paramValue.length > 0 && url.indexOf('?') < 0) url += '?' + paramName + '=' + paramValue;
+          else url += '&' + paramName + '=' + paramValue;
+        }
+        window.location.href = url + hash;
+      }
+
+      function updateFilters(e) {
+        console.log('name', e.target.name);
+        console.log('value', e.target.value);
+        console.log('neighbors', document.getElementsByName(e.target.name));
+
+        const neighbors = document.getElementsByName(e.target.name);
+        let selectedValues = new Array();
+        Array.prototype.forEach.call(neighbors, function(cb) {
+          if (cb.checked) {
+            selectedValues.push(cb.value);
+          }
+        });
+
+        setGetParameter(e.target.name, encodeURI(selectedValues.join(' ')));
+      }
+
+      const allBoxes = document.getElementsByClassName('filterCheckbox');
+      if (allBoxes) {
+        Array.prototype.forEach.call(allBoxes, function(box) {
+          box.addEventListener('change', updateFilters, false);
+        });
+      }
+
       const searchButton = document.getElementById('searchButton');
       if (searchButton) {
         searchButton.addEventListener('click', function(event) {
-          window.location.href =
-            '/search?q=' +
-            encodeURI(document.getElementById('searchField').value);
+          setGetParameter(
+            'q',
+            encodeURI(document.getElementById('searchField').value)
+          );
         });
       } else {
         console.log('~Cannot find search button');
