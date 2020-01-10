@@ -67,8 +67,20 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 
-const getUniqueValues = async function(fieldName) {
-  return undefined;
+const getAllowedFilterValues = async function(fieldName) {
+  const { body } = await elasticClient.search({
+    index: 'gw-docs',
+    size: 0,
+    body: {
+      aggs: {
+        allowedForField: {
+          terms: { field: fieldName },
+        },
+      },
+    },
+  });
+
+  return body.aggregations.allowedForField.buckets.map(bucket => bucket.key);
 };
 
 const runSearch = async function(
@@ -110,9 +122,16 @@ const runSearch = async function(
       query: query,
     },
   });
+  const allowedPlatformValues = await getAllowedFilterValues('platform');
+  const allowedProductValues = await getAllowedFilterValues('product');
+  const allowedVersionValues = await getAllowedFilterValues('version');
+
   return {
     numberOfHits: body.hits.total.value,
     hits: body.hits.hits,
+    allowedPlatformValues: allowedPlatformValues,
+    allowedProductValues: allowedProductValues,
+    allowedVersionValues: allowedVersionValues,
   };
 };
 
@@ -165,28 +184,29 @@ app.use('/search', (req, res, next) => {
         return undefined;
       };
 
-      const getUniqueValues = fieldName => {
-        let uniqueValues = new Array();
-
-        resultsToDisplay.forEach(result => {
+      const getFilterStatesFromUrl = (valueSet, fieldName) => {
+        let valuesWithStates = new Array();
+        valueSet.forEach(result => {
           let value = {
-            label: result[fieldName],
-            checked: true,
+            label: result,
+            checked: false,
           };
 
           if (getSelectedValues(fieldName)) {
-            if (!getSelectedValues(fieldName).includes(value.label)) {
-              value.checked = false;
+            if (getSelectedValues(fieldName).includes(value.label)) {
+              value.checked = true;
             }
           }
 
-          if (!uniqueValues.some(e => e.label === value.label)) {
-            uniqueValues.push(value);
+          if (!valuesWithStates.some(e => e.label === value.label)) {
+            valuesWithStates.push(value);
           }
         });
 
-        return uniqueValues;
-      };
+        console.log('VALUES WITH STATES', valuesWithStates);
+
+        return valuesWithStates;
+      }
 
       res.render('search', {
         query: decodeURI(req.query.q),
@@ -194,13 +214,13 @@ app.use('/search', (req, res, next) => {
         pages: Math.ceil(totalNumOfResults / resultsPerPage),
         totalNumOfResults: totalNumOfResults,
         searchResults: resultsToDisplay,
-        availablePlatforms: getUniqueValues('platform'),
-        availableProducts: getUniqueValues('product'),
-        availableVersions: getUniqueValues('version'),
+        availablePlatforms: getFilterStatesFromUrl(results.allowedPlatformValues, 'platform'),
+        availableProducts: getFilterStatesFromUrl(results.allowedProductValues, 'product'),
+        availableVersions: getFilterStatesFromUrl(results.allowedVersionValues, 'version'),
       });
     })
     .catch(err => {
-      console.log(JSON.stringify(err, null, 4));
+      console.log(err);
     });
 });
 

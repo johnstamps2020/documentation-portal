@@ -37,7 +37,9 @@
               class="filterCheckbox"
               name="<%= filter.name %>"
               value="<%= checkboxValue.label %>"
-              checked="<%= checkboxValue.checked %>"
+              <% if (checkboxValue.checked) { %>
+                checked="true"
+              <% } %>
             /><label for="<%= checkboxValue.label %>" class="checkboxLabel"
               ><%= checkboxValue.label %></label
             >
