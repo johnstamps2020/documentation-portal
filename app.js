@@ -67,58 +67,161 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 
-const runSearch = async function(searchQuery, startIndex, resultsPerPage) {
+const getAllowedFilterValues = async function(fieldName) {
   const { body } = await elasticClient.search({
     index: 'gw-docs',
-    from: startIndex,
-    size: resultsPerPage,
+    size: 0,
     body: {
-      query: {
+      aggs: {
+        allowedForField: {
+          terms: { field: fieldName },
+        },
+      },
+    },
+  });
+
+  return body.aggregations.allowedForField.buckets.map(bucket => bucket.key);
+};
+
+const runSearch = async function(
+  searchQuery,
+  platformArray,
+  productArray,
+  versionArray,
+  startIndex,
+  resultsPerPage
+) {
+  let query = {
+    bool: {
+      must: {
         multi_match: {
           query: searchQuery,
           fields: ['title^3', 'body'],
         },
       },
     },
+  };
+
+  if (platformArray || productArray || versionArray) {
+    const searchFilter = Object.entries({
+      platform: platformArray,
+      product: productArray,
+      version: versionArray,
+    })
+      .map(([key, value]) => value && { terms: { [key]: value } })
+      .filter(Boolean);
+
+    query.bool.filter = searchFilter;
+  }
+
+  const { body } = await elasticClient.search({
+    index: 'gw-docs',
+    from: startIndex,
+    size: resultsPerPage,
+    body: {
+      query: query,
+    },
   });
-  console.log(body);
+  const allowedPlatformValues = await getAllowedFilterValues('platform');
+  const allowedProductValues = await getAllowedFilterValues('product');
+  const allowedVersionValues = await getAllowedFilterValues('version');
+
   return {
     numberOfHits: body.hits.total.value,
     hits: body.hits.hits,
+    allowedPlatformValues: allowedPlatformValues,
+    allowedProductValues: allowedProductValues,
+    allowedVersionValues: allowedVersionValues,
   };
 };
 
 app.use('/search', (req, res, next) => {
+  const getArrayFromParam = param => {
+    if (!param) {
+      return undefined;
+    }
+    return decodeURI(param).split(' ');
+  };
+
   const resultsPerPage = 10;
   const currentPage = req.query.page || 1;
   const startIndex = resultsPerPage * (currentPage - 1);
-  runSearch(req.query.q, startIndex, resultsPerPage).then(results => {
-    const totalNumOfResults = results.numberOfHits;
+  runSearch(
+    req.query.q,
+    getArrayFromParam(req.query.platform),
+    getArrayFromParam(req.query.product),
+    getArrayFromParam(req.query.version),
+    startIndex,
+    resultsPerPage
+  )
+    .then(results => {
+      const totalNumOfResults = results.numberOfHits;
 
-    const resultsToDisplay = results.hits.map(result => {
-      const doc = result._source;
-      let body = 'DOCUMENT HAS NO CONTENT'
-      if (doc.body) {
-        body = doc.body.substr(0, 300);
-      }
-      return {
-        ref: doc.id,
-        score: result._score,
-        title: doc.title,
-        body: body,
+      const resultsToDisplay = results.hits.map(result => {
+        const doc = result._source;
+        const getBlurb = body => {
+          if (body) {
+            return body.substr(0, 300) + '...';
+          }
+          return 'DOCUMENT HAS NO CONTENT';
+        };
+
+        return {
+          ref: doc.id,
+          score: result._score,
+          title: doc.title,
+          body: getBlurb(doc.body),
+          platform: doc.platform,
+          product: doc.product,
+          version: doc.version,
+        };
+      });
+
+      const getSelectedValues = fieldName => {
+        if (req.query[fieldName]) {
+          return getArrayFromParam(req.query[fieldName]);
+        }
+        return undefined;
       };
-    });
 
-    res.render('search', {
-      query: decodeURI(req.query.q),
-      currentPage: currentPage,
-      pages: Math.ceil(totalNumOfResults / resultsPerPage),
-      totalNumOfResults: totalNumOfResults,
-      searchResults: resultsToDisplay,
+      const getFilterStatesFromUrl = (valueSet, fieldName) => {
+        let valuesWithStates = new Array();
+        valueSet.forEach(result => {
+          let value = {
+            label: result,
+            checked: false,
+          };
+
+          if (getSelectedValues(fieldName)) {
+            if (getSelectedValues(fieldName).includes(value.label)) {
+              value.checked = true;
+            }
+          }
+
+          if (!valuesWithStates.some(e => e.label === value.label)) {
+            valuesWithStates.push(value);
+          }
+        });
+
+        console.log('VALUES WITH STATES', valuesWithStates);
+
+        return valuesWithStates;
+      }
+
+      res.render('search', {
+        query: decodeURI(req.query.q),
+        currentPage: currentPage,
+        pages: Math.ceil(totalNumOfResults / resultsPerPage),
+        totalNumOfResults: totalNumOfResults,
+        searchResults: resultsToDisplay,
+        availablePlatforms: getFilterStatesFromUrl(results.allowedPlatformValues, 'platform'),
+        availableProducts: getFilterStatesFromUrl(results.allowedProductValues, 'product'),
+        availableVersions: getFilterStatesFromUrl(results.allowedVersionValues, 'version'),
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  }).catch(err => {
-    console.log(err);
-  });
 });
 
 app.use('/', docProxy);

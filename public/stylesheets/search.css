@@ -18,3 +18,26 @@
 .pagination li.disabled {
     color: gray !important;
 }
+
+.pagination button {
+    background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.filterSearchResults h2 {
+    font-size: 1rem;
+}
+
+.checkboxRow {
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin-left: 6px;
+}
+
+.checkboxLabel {
+    margin-left: 6px;
+}
