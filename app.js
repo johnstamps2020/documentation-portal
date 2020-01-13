@@ -191,7 +191,7 @@ app.use('/search', async (req, res, next) => {
         docTags.push(doc[key]);
       }
     }
-    console.log('DOC FILTER TAGS', JSON.stringify(docTags, null, 4));
+    
     const getBlurb = body => {
       if (body) {
         return body.substr(0, 300) + '...';
