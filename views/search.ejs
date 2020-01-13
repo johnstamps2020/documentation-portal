@@ -26,9 +26,7 @@
     <div class="docPanelContainer container">
       <div class="row">
         <div class="col filterSearchResults">
-          <% [ { values: availablePlatforms, name: 'platform' }, { values:
-          availableProducts, name: 'product' }, { values: availableVersions,
-          name: 'version' }, ].forEach(filter => { %>
+          <% filters.forEach(filter => { %>
           <h2>Filter by <%= filter.name %></h2>
           <% filter.values.forEach(checkboxValue => { %>
           <div class="checkboxRow">

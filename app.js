@@ -84,7 +84,7 @@ const getAllowedFilterValues = async function(fieldName) {
   return body.aggregations.allowedForField.buckets.map(bucket => bucket.key);
 };
 
-const getAllowedFilters = async function() {
+const getAllowedFilters = async function(urlParams) {
   const { body } = await elasticClient.indices.getMapping({
     index: searchIndexName,
   });
@@ -93,9 +93,17 @@ const getAllowedFilters = async function() {
   let filtersWithValues = [];
   for (const key in filters) {
     if (filters[key].type === 'keyword') {
+      const allowedFilterValues = await getAllowedFilterValues(key);
+      const filterValuesWithStates = allowedFilterValues.map(value => {
+        const checked = decodeURI(urlParams[key]).split(' ').includes(value);
+        return {
+          label: value,
+          checked: checked
+        }
+      });
       filtersWithValues.push({
         name: key,
-        values: await getAllowedFilterValues(key),
+        values: filterValuesWithStates,
       });
     }
   }
@@ -163,7 +171,7 @@ app.use('/search', async (req, res, next) => {
     return decodeURI(param).split(' ');
   };
 
-  const allowedFilters = await getAllowedFilters();
+  const allowedFilters = await getAllowedFilters(req.query);
   console.log('ALLOWED FILTERS', JSON.stringify(allowedFilters, null, 4));
 
   const resultsPerPage = 10;
@@ -200,55 +208,13 @@ app.use('/search', async (req, res, next) => {
     };
   });
 
-  const getSelectedValues = fieldName => {
-    if (req.query[fieldName]) {
-      return getArrayFromParam(req.query[fieldName]);
-    }
-    return undefined;
-  };
-
-  const getFilterStatesFromUrl = (valueSet, fieldName) => {
-    let valuesWithStates = new Array();
-    valueSet.forEach(result => {
-      let value = {
-        label: result,
-        checked: false,
-      };
-
-      if (getSelectedValues(fieldName)) {
-        if (getSelectedValues(fieldName).includes(value.label)) {
-          value.checked = true;
-        }
-      }
-
-      if (!valuesWithStates.some(e => e.label === value.label)) {
-        valuesWithStates.push(value);
-      }
-    });
-
-    console.log('VALUES WITH STATES', valuesWithStates);
-
-    return valuesWithStates;
-  };
-
   res.render('search', {
     query: decodeURI(req.query.q),
     currentPage: currentPage,
     pages: Math.ceil(totalNumOfResults / resultsPerPage),
     totalNumOfResults: totalNumOfResults,
     searchResults: resultsToDisplay,
-    availablePlatforms: getFilterStatesFromUrl(
-      results.allowedPlatformValues,
-      'platform'
-    ),
-    availableProducts: getFilterStatesFromUrl(
-      results.allowedProductValues,
-      'product'
-    ),
-    availableVersions: getFilterStatesFromUrl(
-      results.allowedVersionValues,
-      'version'
-    ),
+    filters: allowedFilters,
   });
 });
 
