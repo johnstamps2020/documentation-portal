@@ -14,6 +14,7 @@ const { ExpressOIDC } = require('@okta/oidc-middleware');
 const port = process.env.PORT || 8081;
 
 const elasticClient = require('./elastic_search/elasticClient');
+const searchIndexName = 'gw-docs';
 const app = express();
 
 // session support is required to use ExpressOIDC
@@ -69,7 +70,7 @@ const docProxy = proxy(proxyOptions);
 
 const getAllowedFilterValues = async function(fieldName) {
   const { body } = await elasticClient.search({
-    index: 'gw-docs',
+    index: searchIndexName,
     size: 0,
     body: {
       aggs: {
@@ -115,7 +116,7 @@ const runSearch = async function(
   }
 
   const { body } = await elasticClient.search({
-    index: 'gw-docs',
+    index: searchIndexName,
     from: startIndex,
     size: resultsPerPage,
     body: {
