@@ -84,6 +84,25 @@ const getAllowedFilterValues = async function(fieldName) {
   return body.aggregations.allowedForField.buckets.map(bucket => bucket.key);
 };
 
+const getAllowedFilters = async function() {
+  const { body } = await elasticClient.indices.getMapping({
+    index: searchIndexName,
+  });
+
+  const filters = body[searchIndexName].mappings.properties;
+  let filtersWithValues = [];
+  for (const key in filters) {
+    if (filters[key].type === 'keyword') {
+      filtersWithValues.push({
+        name: key,
+        values: await getAllowedFilterValues(key),
+      });
+    }
+  }
+
+  return filtersWithValues;
+};
+
 const runSearch = async function(
   searchQuery,
   platformArray,
@@ -136,13 +155,16 @@ const runSearch = async function(
   };
 };
 
-app.use('/search', (req, res, next) => {
+app.use('/search', async (req, res, next) => {
   const getArrayFromParam = param => {
     if (!param) {
       return undefined;
     }
     return decodeURI(param).split(' ');
   };
+
+  const allowedFilters = await getAllowedFilters();
+  console.log('ALLOWED FILTERS', JSON.stringify(allowedFilters, null, 4));
 
   const resultsPerPage = 10;
   const currentPage = req.query.page || 1;
@@ -207,7 +229,7 @@ app.use('/search', (req, res, next) => {
         console.log('VALUES WITH STATES', valuesWithStates);
 
         return valuesWithStates;
-      }
+      };
 
       res.render('search', {
         query: decodeURI(req.query.q),
@@ -215,9 +237,18 @@ app.use('/search', (req, res, next) => {
         pages: Math.ceil(totalNumOfResults / resultsPerPage),
         totalNumOfResults: totalNumOfResults,
         searchResults: resultsToDisplay,
-        availablePlatforms: getFilterStatesFromUrl(results.allowedPlatformValues, 'platform'),
-        availableProducts: getFilterStatesFromUrl(results.allowedProductValues, 'product'),
-        availableVersions: getFilterStatesFromUrl(results.allowedVersionValues, 'version'),
+        availablePlatforms: getFilterStatesFromUrl(
+          results.allowedPlatformValues,
+          'platform'
+        ),
+        availableProducts: getFilterStatesFromUrl(
+          results.allowedProductValues,
+          'product'
+        ),
+        availableVersions: getFilterStatesFromUrl(
+          results.allowedVersionValues,
+          'version'
+        ),
       });
     })
     .catch(err => {
