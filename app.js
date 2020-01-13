@@ -84,7 +84,7 @@ const getAllowedFilterValues = async function(fieldName) {
   return body.aggregations.allowedForField.buckets.map(bucket => bucket.key);
 };
 
-const getAllowedFilters = async function(urlParams) {
+const getFilters = async function(urlParams) {
   const { body } = await elasticClient.indices.getMapping({
     index: searchIndexName,
   });
@@ -113,6 +113,7 @@ const getAllowedFilters = async function(urlParams) {
 
 const runSearch = async function(
   searchQuery,
+  filters,
   platformArray,
   productArray,
   versionArray,
@@ -165,14 +166,14 @@ app.use('/search', async (req, res, next) => {
     return decodeURI(param).split(' ');
   };
 
-  const allowedFilters = await getAllowedFilters(req.query);
-  console.log('ALLOWED FILTERS', JSON.stringify(allowedFilters, null, 4));
+  const filters = await getFilters(req.query);
 
   const resultsPerPage = 10;
   const currentPage = req.query.page || 1;
   const startIndex = resultsPerPage * (currentPage - 1);
   const results = await runSearch(
     req.query.q,
+    filters,
     getArrayFromParam(req.query.platform),
     getArrayFromParam(req.query.product),
     getArrayFromParam(req.query.version),
@@ -184,6 +185,13 @@ app.use('/search', async (req, res, next) => {
 
   const resultsToDisplay = results.hits.map(result => {
     const doc = result._source;
+    let docTags = [];
+    for (const key in doc) {
+      if (filters.some(filter => filter.name === key)) {
+        docTags.push(doc[key]);
+      }
+    }
+    console.log('DOC FILTER TAGS', JSON.stringify(docTags, null, 4));
     const getBlurb = body => {
       if (body) {
         return body.substr(0, 300) + '...';
@@ -196,9 +204,7 @@ app.use('/search', async (req, res, next) => {
       score: result._score,
       title: doc.title,
       body: getBlurb(doc.body),
-      platform: doc.platform,
-      product: doc.product,
-      version: doc.version,
+      docTags: docTags,
     };
   });
 
@@ -208,7 +214,7 @@ app.use('/search', async (req, res, next) => {
     pages: Math.ceil(totalNumOfResults / resultsPerPage),
     totalNumOfResults: totalNumOfResults,
     searchResults: resultsToDisplay,
-    filters: allowedFilters,
+    filters: filters,
   });
 });
 

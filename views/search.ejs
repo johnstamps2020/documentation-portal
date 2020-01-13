@@ -57,9 +57,9 @@
                 ><%= result.title %></a>
             </h2>
             <div class="resultBadges">
-              <span class="badge badge-light"><%= result.platform %></span>
-              <span class="badge badge-light"><%= result.product %></span>
-              <span class="badge badge-light"><%= result.version %></span>
+              <% result.docTags.forEach(tag => { %>
+                <span class="badge badge-light"><%= tag %></span>
+              <% }) %>
             </div>
             <p><%= result.body %></p>
             <% }) %>
