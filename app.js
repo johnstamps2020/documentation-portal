@@ -169,91 +169,87 @@ app.use('/search', async (req, res, next) => {
   const resultsPerPage = 10;
   const currentPage = req.query.page || 1;
   const startIndex = resultsPerPage * (currentPage - 1);
-  runSearch(
+  const results = await runSearch(
     req.query.q,
     getArrayFromParam(req.query.platform),
     getArrayFromParam(req.query.product),
     getArrayFromParam(req.query.version),
     startIndex,
     resultsPerPage
-  )
-    .then(results => {
-      const totalNumOfResults = results.numberOfHits;
+  );
 
-      const resultsToDisplay = results.hits.map(result => {
-        const doc = result._source;
-        const getBlurb = body => {
-          if (body) {
-            return body.substr(0, 300) + '...';
-          }
-          return 'DOCUMENT HAS NO CONTENT';
-        };
+  const totalNumOfResults = results.numberOfHits;
 
-        return {
-          ref: doc.id,
-          score: result._score,
-          title: doc.title,
-          body: getBlurb(doc.body),
-          platform: doc.platform,
-          product: doc.product,
-          version: doc.version,
-        };
-      });
+  const resultsToDisplay = results.hits.map(result => {
+    const doc = result._source;
+    const getBlurb = body => {
+      if (body) {
+        return body.substr(0, 300) + '...';
+      }
+      return 'DOCUMENT HAS NO CONTENT';
+    };
 
-      const getSelectedValues = fieldName => {
-        if (req.query[fieldName]) {
-          return getArrayFromParam(req.query[fieldName]);
+    return {
+      ref: doc.id,
+      score: result._score,
+      title: doc.title,
+      body: getBlurb(doc.body),
+      platform: doc.platform,
+      product: doc.product,
+      version: doc.version,
+    };
+  });
+
+  const getSelectedValues = fieldName => {
+    if (req.query[fieldName]) {
+      return getArrayFromParam(req.query[fieldName]);
+    }
+    return undefined;
+  };
+
+  const getFilterStatesFromUrl = (valueSet, fieldName) => {
+    let valuesWithStates = new Array();
+    valueSet.forEach(result => {
+      let value = {
+        label: result,
+        checked: false,
+      };
+
+      if (getSelectedValues(fieldName)) {
+        if (getSelectedValues(fieldName).includes(value.label)) {
+          value.checked = true;
         }
-        return undefined;
-      };
+      }
 
-      const getFilterStatesFromUrl = (valueSet, fieldName) => {
-        let valuesWithStates = new Array();
-        valueSet.forEach(result => {
-          let value = {
-            label: result,
-            checked: false,
-          };
-
-          if (getSelectedValues(fieldName)) {
-            if (getSelectedValues(fieldName).includes(value.label)) {
-              value.checked = true;
-            }
-          }
-
-          if (!valuesWithStates.some(e => e.label === value.label)) {
-            valuesWithStates.push(value);
-          }
-        });
-
-        console.log('VALUES WITH STATES', valuesWithStates);
-
-        return valuesWithStates;
-      };
-
-      res.render('search', {
-        query: decodeURI(req.query.q),
-        currentPage: currentPage,
-        pages: Math.ceil(totalNumOfResults / resultsPerPage),
-        totalNumOfResults: totalNumOfResults,
-        searchResults: resultsToDisplay,
-        availablePlatforms: getFilterStatesFromUrl(
-          results.allowedPlatformValues,
-          'platform'
-        ),
-        availableProducts: getFilterStatesFromUrl(
-          results.allowedProductValues,
-          'product'
-        ),
-        availableVersions: getFilterStatesFromUrl(
-          results.allowedVersionValues,
-          'version'
-        ),
-      });
-    })
-    .catch(err => {
-      console.log(err);
+      if (!valuesWithStates.some(e => e.label === value.label)) {
+        valuesWithStates.push(value);
+      }
     });
+
+    console.log('VALUES WITH STATES', valuesWithStates);
+
+    return valuesWithStates;
+  };
+
+  res.render('search', {
+    query: decodeURI(req.query.q),
+    currentPage: currentPage,
+    pages: Math.ceil(totalNumOfResults / resultsPerPage),
+    totalNumOfResults: totalNumOfResults,
+    searchResults: resultsToDisplay,
+    availablePlatforms: getFilterStatesFromUrl(
+      results.allowedPlatformValues,
+      'platform'
+    ),
+    availableProducts: getFilterStatesFromUrl(
+      results.allowedProductValues,
+      'product'
+    ),
+    availableVersions: getFilterStatesFromUrl(
+      results.allowedVersionValues,
+      'version'
+    ),
+  });
 });
 
 app.use('/', docProxy);
