@@ -150,16 +150,10 @@ const runSearch = async function(
       query: query,
     },
   });
-  const allowedPlatformValues = await getAllowedFilterValues('platform');
-  const allowedProductValues = await getAllowedFilterValues('product');
-  const allowedVersionValues = await getAllowedFilterValues('version');
 
   return {
     numberOfHits: body.hits.total.value,
     hits: body.hits.hits,
-    allowedPlatformValues: allowedPlatformValues,
-    allowedProductValues: allowedProductValues,
-    allowedVersionValues: allowedVersionValues,
   };
 };
 
