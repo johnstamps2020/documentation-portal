@@ -46,15 +46,6 @@ project {
     template(BuildDockerImage)
     template(Deploy)
     buildTypesOrder = arrayListOf(Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
-
-    features {
-        feature {
-            type = "JetBrains.SharedResources"
-            param("quota", "1")
-            param("name", "PROJECT_VERSION")
-            param("type", "quoted")
-        }
-    }
 }
 
 object Test : BuildType({
@@ -81,6 +72,7 @@ object Test : BuildType({
     triggers {
         vcs {
             branchFilter = "+:*"
+            triggerRules = "-:user=doctools:**"
         }
     }
 
@@ -144,16 +136,17 @@ object DeployDev : BuildType({
     templates(BuildDockerImage, Deploy)
     name = "Deploy to Dev"
 
+    maxRunningBuilds = 1
+
     vcs {
         root(vcsroot)
         cleanCheckout = true
     }
 
     params {
-        param("deploy-env", "dev")
-        param("deploy-version", "latest")
-        param("doc-s3-url", "https://ditaot.internal.dev.ccs.guidewire.net")
-        text("namespace", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
+        param("env.DEPLOY_ENV", "dev")
+        param("env.TAG_VERSION", "latest")
+        text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
     }
 
     triggers {
@@ -183,9 +176,9 @@ object DeployInt : BuildType({
     }
 
     params {
-        param("deploy-env", "int")
-        text("deploy-version", "", label = "Deploy Version", display = ParameterDisplay.PROMPT, allowEmpty = false)
-        text("namespace", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
+        param("env.DEPLOY_ENV", "int")
+        text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT, regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+        text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
     }
 })
 
@@ -199,9 +192,9 @@ object DeployStaging : BuildType({
     }
 
     params {
-        param("deploy-env", "staging")
-        text("deploy-version", "", label = "Deploy Version", display = ParameterDisplay.PROMPT, allowEmpty = false)
-        text("namespace", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
+        param("env.DEPLOY_ENV", "staging")
+        text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT, regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+        text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
     }
 })
 
@@ -215,9 +208,12 @@ object DeployProd : BuildType({
     }
 
     params {
-        param("deploy-env", "us-east-2")
-        text("deploy-version", "", label = "Deploy Version", display = ParameterDisplay.PROMPT, allowEmpty = false)
-        text("namespace", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
+        param("env.DEPLOY_ENV", "us-east-2")
+        param("env.AWS_ACCESS_KEY_ID", "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%")
+        param("env.AWS_SECRET_ACCESS_KEY", "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%")
+        param("env.AWS_DEFAULT_REGION", "%env.ATMOS_PROD_AWS_DEFAULT_REGIO%")
+        text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT, regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+        text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
     }
 
     steps {
@@ -226,29 +222,25 @@ object DeployProd : BuildType({
             id = "PUSH_TO_ECR"
             scriptContent = """
                 set -xe
-                export TAG_VERSION="v%deploy-version%"
-                docker login -u ${'$'}{ARTIFACTORY_USERNAME} -p ${'$'}{ARTIFACTORY_PASSWORD} artifactory.guidewire.com
-                docker pull artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{TAG_VERSION}
-                docker tag artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{TAG_VERSION} 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-nodeoktacontainer:${'$'}{TAG_VERSION}
-                docker logout artifactory.guidewire.com
-                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                docker pull artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:v%env.TAG_VERSION%
+                docker tag artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:v%env.TAG_VERSION% 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-nodeoktacontainer:v%env.TAG_VERSION%
                 eval $(aws ecr get-login --no-include-email | sed 's|https://||')
-                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-nodeoktacontainer:${'$'}{TAG_VERSION}
+                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-nodeoktacontainer:v%env.TAG_VERSION%
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
             dockerPull = true
         }
-        stepsOrder = arrayListOf("PUSH_TO_ECR", "DEPLOY_TO_K8S", "ACCEPTANCE_TESTS")
+        stepsOrder = arrayListOf("PUSH_TO_ECR", "DEPLOY_TO_K8S", "CHECK_PODS_STATUS", "ACCEPTANCE_TESTS")
     }
 })
 
 object Release : BuildType({
     name = "Release New Version"
     description = "Publish a release to Artifactory Docker Registry"
+
+    maxRunningBuilds = 1
 
     vcs {
         root(vcsrootmasteronly)
@@ -273,14 +265,13 @@ object Release : BuildType({
                 git push --tags
 
                 export TAG_VERSION=${'$'}(git describe --tag)
-                docker login -u ${'$'}{ARTIFACTORY_USERNAME} -p ${'$'}{ARTIFACTORY_PASSWORD} artifactory.guidewire.com
                 docker build -t nodeoktacontainer .
                 docker tag nodeoktacontainer:latest artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{TAG_VERSION}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
             dockerPull = true
         }
     }
@@ -294,11 +285,6 @@ object Release : BuildType({
         sshAgent {
             teamcitySshKey = "sys-doc.rsa"
         }
-        feature {
-            type = "JetBrains.SharedResources"
-            param("locks-param", "PROJECT_VERSION readLock")
-        }
-
     }
 })
 
@@ -328,14 +314,13 @@ object BuildDockerImage : Template({
                 else 
                     export BRANCH_NAME=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
                 fi
-                docker login -u ${'$'}{ARTIFACTORY_USERNAME} -p ${'$'}{ARTIFACTORY_PASSWORD} artifactory.guidewire.com
                 docker build -t nodeoktacontainer .
                 docker tag nodeoktacontainer artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{BRANCH_NAME}
                 docker push artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{BRANCH_NAME}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
             dockerPull = true
         }
     }
@@ -359,19 +344,12 @@ object Deploy : Template({
             scriptContent = """
                 #!/bin/bash 
                 set -xe
-                export DEPLOY_ENV="%deploy-env%"
-                if [[ "%deploy-env%" == "dev" ]]; then
-                    export TAG_VERSION="%deploy-version%"
-                    if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
-                        export TAG_VERSION="latest"
-                    else 
+                if [[ "%env.DEPLOY_ENV%" == "dev" ]]; then
+                    if [[ "%teamcity.build.branch%" != "master" ]] && [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
                         export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
                     fi
-                else
-                    export TAG_VERSION="%deploy-version%"
-                fi                
-                export NAMESPACE="%namespace%"
-                if [[ "%deploy-env%" == "us-east-2" ]]; then
+                fi           
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
@@ -381,6 +359,42 @@ object Deploy : Template({
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 fi
                 sh ci/deployKubernetes.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            dockerPull = true
+        }
+        script {
+            name = "Check new Pods Status"
+            id = "CHECK_PODS_STATUS"
+            scriptContent = """
+                #!/bin/bash
+                set -e
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                fi
+                aws eks update-kubeconfig --name atmos-%env.DEPLOY_ENV%
+                sleep 10
+                TIME="0"
+                while true; do
+                    if [[ "${'$'}TIME" == "10" ]]; then
+                        break
+                    fi
+                    FAIL_PODS=`kubectl get pods -l app=nodeoktacontainer-app --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
+                    if [[ ! -z "${'$'}FAIL_PODS" ]]; then
+                        echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
+                        echo "${'$'}FAIL_PODS" && false
+                    fi
+                    sleep 10
+                    TIME=${'$'}[${'$'}TIME+1]
+                done 
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
