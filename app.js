@@ -95,11 +95,13 @@ const getFilters = async function(urlParams) {
     if (filters[key].type === 'keyword') {
       const allowedFilterValues = await getAllowedFilterValues(key);
       const filterValuesWithStates = allowedFilterValues.map(value => {
-        const checked = decodeURI(urlParams[key]).split(' ').includes(value);
+        const checked = decodeURI(urlParams[key])
+          .split(' ')
+          .includes(value);
         return {
           label: value,
-          checked: checked
-        }
+          checked: checked,
+        };
       });
       filtersWithValues.push({
         name: key,
@@ -114,9 +116,6 @@ const getFilters = async function(urlParams) {
 const runSearch = async function(
   searchQuery,
   filters,
-  platformArray,
-  productArray,
-  versionArray,
   startIndex,
   resultsPerPage
 ) {
@@ -131,16 +130,25 @@ const runSearch = async function(
     },
   };
 
-  if (platformArray || productArray || versionArray) {
-    const searchFilter = Object.entries({
-      platform: platformArray,
-      product: productArray,
-      version: versionArray,
-    })
-      .map(([key, value]) => value && { terms: { [key]: value } })
-      .filter(Boolean);
+  let selectedFilters = [];
+  filters.forEach(filter => {
+    if (filter.values.some(value => value.checked)) {
+      selectedFilters.push({
+        terms: {
+          [filter.name]: filter.values
+            .map(value => {
+              if (value.checked) {
+                return value.label;
+              }
+            })
+            .filter(Boolean),
+        },
+      });
+    }
+  });
 
-    query.bool.filter = searchFilter;
+  if (selectedFilters.length > 0) {
+    query.bool.filter = selectedFilters;
   }
 
   const { body } = await elasticClient.search({
@@ -159,13 +167,6 @@ const runSearch = async function(
 };
 
 app.use('/search', async (req, res, next) => {
-  const getArrayFromParam = param => {
-    if (!param) {
-      return undefined;
-    }
-    return decodeURI(param).split(' ');
-  };
-
   const filters = await getFilters(req.query);
 
   const resultsPerPage = 10;
@@ -174,9 +175,6 @@ app.use('/search', async (req, res, next) => {
   const results = await runSearch(
     req.query.q,
     filters,
-    getArrayFromParam(req.query.platform),
-    getArrayFromParam(req.query.product),
-    getArrayFromParam(req.query.version),
     startIndex,
     resultsPerPage
   );
@@ -191,7 +189,7 @@ app.use('/search', async (req, res, next) => {
         docTags.push(doc[key]);
       }
     }
-    
+
     const getBlurb = body => {
       if (body) {
         return body.substr(0, 300) + '...';
