@@ -14,6 +14,7 @@ const { ExpressOIDC } = require('@okta/oidc-middleware');
 const port = process.env.PORT || 8081;
 
 const elasticClient = require('./elastic_search/elasticClient');
+const searchIndexName = 'gw-docs';
 const app = express();
 
 // session support is required to use ExpressOIDC
@@ -69,7 +70,7 @@ const docProxy = proxy(proxyOptions);
 
 const getAllowedFilterValues = async function(fieldName) {
   const { body } = await elasticClient.search({
-    index: 'gw-docs',
+    index: searchIndexName,
     size: 0,
     body: {
       aggs: {
@@ -83,11 +84,38 @@ const getAllowedFilterValues = async function(fieldName) {
   return body.aggregations.allowedForField.buckets.map(bucket => bucket.key);
 };
 
+const getFilters = async function(urlParams) {
+  const { body } = await elasticClient.indices.getMapping({
+    index: searchIndexName,
+  });
+
+  const filters = body[searchIndexName].mappings.properties;
+  let filtersWithValues = [];
+  for (const key in filters) {
+    if (filters[key].type === 'keyword') {
+      const allowedFilterValues = await getAllowedFilterValues(key);
+      const filterValuesWithStates = allowedFilterValues.map(value => {
+        const checked = decodeURI(urlParams[key])
+          .split(' ')
+          .includes(value);
+        return {
+          label: value,
+          checked: checked,
+        };
+      });
+      filtersWithValues.push({
+        name: key,
+        values: filterValuesWithStates,
+      });
+    }
+  }
+
+  return filtersWithValues;
+};
+
 const runSearch = async function(
   searchQuery,
-  platformArray,
-  productArray,
-  versionArray,
+  filters,
   startIndex,
   resultsPerPage
 ) {
@@ -102,126 +130,90 @@ const runSearch = async function(
     },
   };
 
-  if (platformArray || productArray || versionArray) {
-    const searchFilter = Object.entries({
-      platform: platformArray,
-      product: productArray,
-      version: versionArray,
-    })
-      .map(([key, value]) => value && { terms: { [key]: value } })
-      .filter(Boolean);
+  let selectedFilters = [];
+  filters.forEach(filter => {
+    if (filter.values.some(value => value.checked)) {
+      selectedFilters.push({
+        terms: {
+          [filter.name]: filter.values
+            .map(value => {
+              if (value.checked) {
+                return value.label;
+              }
+            })
+            .filter(Boolean),
+        },
+      });
+    }
+  });
 
-    query.bool.filter = searchFilter;
+  if (selectedFilters.length > 0) {
+    query.bool.filter = selectedFilters;
   }
 
   const { body } = await elasticClient.search({
-    index: 'gw-docs',
+    index: searchIndexName,
     from: startIndex,
     size: resultsPerPage,
     body: {
       query: query,
     },
   });
-  const allowedPlatformValues = await getAllowedFilterValues('platform');
-  const allowedProductValues = await getAllowedFilterValues('product');
-  const allowedVersionValues = await getAllowedFilterValues('version');
 
   return {
     numberOfHits: body.hits.total.value,
     hits: body.hits.hits,
-    allowedPlatformValues: allowedPlatformValues,
-    allowedProductValues: allowedProductValues,
-    allowedVersionValues: allowedVersionValues,
   };
 };
 
-app.use('/search', (req, res, next) => {
-  const getArrayFromParam = param => {
-    if (!param) {
-      return undefined;
-    }
-    return decodeURI(param).split(' ');
-  };
+app.use('/search', async (req, res, next) => {
+  const filters = await getFilters(req.query);
 
   const resultsPerPage = 10;
   const currentPage = req.query.page || 1;
   const startIndex = resultsPerPage * (currentPage - 1);
-  runSearch(
+  const results = await runSearch(
     req.query.q,
-    getArrayFromParam(req.query.platform),
-    getArrayFromParam(req.query.product),
-    getArrayFromParam(req.query.version),
+    filters,
     startIndex,
     resultsPerPage
-  )
-    .then(results => {
-      const totalNumOfResults = results.numberOfHits;
+  );
 
-      const resultsToDisplay = results.hits.map(result => {
-        const doc = result._source;
-        const getBlurb = body => {
-          if (body) {
-            return body.substr(0, 300) + '...';
-          }
-          return 'DOCUMENT HAS NO CONTENT';
-        };
+  const totalNumOfResults = results.numberOfHits;
 
-        return {
-          ref: doc.id,
-          score: result._score,
-          title: doc.title,
-          body: getBlurb(doc.body),
-          platform: doc.platform,
-          product: doc.product,
-          version: doc.version,
-        };
-      });
-
-      const getSelectedValues = fieldName => {
-        if (req.query[fieldName]) {
-          return getArrayFromParam(req.query[fieldName]);
-        }
-        return undefined;
-      };
-
-      const getFilterStatesFromUrl = (valueSet, fieldName) => {
-        let valuesWithStates = new Array();
-        valueSet.forEach(result => {
-          let value = {
-            label: result,
-            checked: false,
-          };
-
-          if (getSelectedValues(fieldName)) {
-            if (getSelectedValues(fieldName).includes(value.label)) {
-              value.checked = true;
-            }
-          }
-
-          if (!valuesWithStates.some(e => e.label === value.label)) {
-            valuesWithStates.push(value);
-          }
-        });
-
-        console.log('VALUES WITH STATES', valuesWithStates);
-
-        return valuesWithStates;
+  const resultsToDisplay = results.hits.map(result => {
+    const doc = result._source;
+    let docTags = [];
+    for (const key in doc) {
+      if (filters.some(filter => filter.name === key)) {
+        docTags.push(doc[key]);
       }
+    }
 
-      res.render('search', {
-        query: decodeURI(req.query.q),
-        currentPage: currentPage,
-        pages: Math.ceil(totalNumOfResults / resultsPerPage),
-        totalNumOfResults: totalNumOfResults,
-        searchResults: resultsToDisplay,
-        availablePlatforms: getFilterStatesFromUrl(results.allowedPlatformValues, 'platform'),
-        availableProducts: getFilterStatesFromUrl(results.allowedProductValues, 'product'),
-        availableVersions: getFilterStatesFromUrl(results.allowedVersionValues, 'version'),
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    const getBlurb = body => {
+      if (body) {
+        return body.substr(0, 300) + '...';
+      }
+      return 'DOCUMENT HAS NO CONTENT';
+    };
+
+    return {
+      ref: doc.id,
+      score: result._score,
+      title: doc.title,
+      body: getBlurb(doc.body),
+      docTags: docTags,
+    };
+  });
+
+  res.render('search', {
+    query: decodeURI(req.query.q),
+    currentPage: currentPage,
+    pages: Math.ceil(totalNumOfResults / resultsPerPage),
+    totalNumOfResults: totalNumOfResults,
+    searchResults: resultsToDisplay,
+    filters: filters,
+  });
 });
 
 app.use('/', docProxy);
