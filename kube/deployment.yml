@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: nodeoktacontainer-app
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -45,13 +45,3 @@ spec:
             cpu: "1"
       imagePullSecrets:
       - name: artifactory-secret
----
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: nodeoktacontainer-pdb
-spec:
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: nodeoktacontainer-app
