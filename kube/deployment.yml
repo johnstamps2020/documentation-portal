@@ -25,7 +25,6 @@ spec:
           httpGet:
             path: /alive
             port: 8081
-            scheme: HTTPS
           initialDelaySeconds: 15
           periodSeconds: 15
         env:
