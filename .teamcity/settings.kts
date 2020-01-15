@@ -307,8 +307,8 @@ object BuildDockerImage : Template({
                 echo OKTA_CLIENT_SECRET="%env.OKTA_CLIENT_SECRET%" >> .env
                 echo APP_BASE_URL="https://nodeoktacontainer-%env.NAMESPACE%.%env.DEPLOY_ENV%.ccs.guidewire.net" >> .env
                 echo SESSION_KEY="%env.SESSION_KEY%" >> .env
-                echo ELASTIC_SEARCH_URL=http://docsearch.doctools:9200/ >> .env
-                echo DOC_S3_URL="%env.DOC_S3_URL%" >> .env
+                echo ELASTIC_SEARCH_URL=https://docsearch-doctools.dev.ccs.guidewire.net >> .env
+                echo DOC_S3_URL=https://ditaot.internal.dev.ccs.guidewire.net >> .env
                 if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
                     export BRANCH_NAME=latest
                 else 
