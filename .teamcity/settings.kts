@@ -305,10 +305,10 @@ object BuildDockerImage : Template({
                 echo OKTA_DOMAIN="%env.OKTA_DOMAIN%" >> .env
                 echo OKTA_CLIENT_ID="%env.OKTA_CLIENT_ID%" >> .env
                 echo OKTA_CLIENT_SECRET="%env.OKTA_CLIENT_SECRET%" >> .env
-                echo APP_BASE_URL="https://nodeoktacontainer-%namespace%.%deploy-env%.ccs.guidewire.net" >> .env
+                echo APP_BASE_URL="https://nodeoktacontainer-%env.NAMESPACE%.%env.DEPLOY_ENV%.ccs.guidewire.net" >> .env
                 echo SESSION_KEY="%env.SESSION_KEY%" >> .env
                 echo ELASTIC_SEARCH_URL=http://docsearch.doctools:9200/ >> .env
-                echo DOC_S3_URL="%doc-s3-url%" >> .env
+                echo DOC_S3_URL="%env.DOC_S3_URL%" >> .env
                 if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
                     export BRANCH_NAME=latest
                 else 
