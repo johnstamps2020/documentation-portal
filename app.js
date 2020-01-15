@@ -38,6 +38,10 @@ const oidc = new ExpressOIDC({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use('/alive', (req, res, next) => {
+  res.sendStatus(200);
+});
+
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oidc.router);
 app.use(oidc.ensureAuthenticated());
