@@ -12,6 +12,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "^4.16.4",
+    "express-http-context": "^1.2.3",
     "express-session": "^1.17.0",
     "gulp": "^4.0.2",
     "gulp-env": "^0.4.0",
@@ -22,7 +23,11 @@
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
     "prettier": "^1.19.1",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.2.1",
+    "zipkin": "^0.19.1",
+    "zipkin-instrumentation-express": "^0.19.1",
+    "zipkin-transport-http": "^0.19.1"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
