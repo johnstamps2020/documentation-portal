@@ -7,12 +7,35 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const proxy = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
-
 const session = require('express-session');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
+const httpContext = require('express-http-context');
+const zipkinMiddleware = require('zipkin-instrumentation-express')
+  .expressMiddleware;
+const addZipkinHeaders = require('zipkin').Request.addZipkinHeaders;
+const { HttpLogger } = require('zipkin-transport-http');
+const {
+  Tracer,
+  ExplicitContext,
+  BatchRecorder,
+  jsonEncoder: { JSON_V2 },
+} = require('zipkin');
+const appLogger = require('./logger');
+
+const ctxImpl = new ExplicitContext();
+const zipkinUrl = process.env.ZIPKIN_URL;
+console.log('ZipkinUrl: ' + zipkinUrl);
+const recorder = new BatchRecorder({
+  logger: new HttpLogger({
+    endpoint: zipkinUrl,
+    jsonEncoder: JSON_V2,
+  }),
+});
+
+const localServiceName = 'DocumentationPortal';
+const tracer = new Tracer({ ctxImpl, recorder, localServiceName });
 
 const port = process.env.PORT || 8081;
-
 const elasticClient = require('./elastic_search/elasticClient');
 const searchIndexName = 'gw-docs';
 const app = express();
@@ -62,6 +85,37 @@ app.use(
 );
 // serve docs from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(httpContext.middleware);
+app.use(zipkinMiddleware({ tracer }));
+const xB3TraceId = 'x-b3-traceid';
+const xB3ParentSpanId = 'x-b3-parentspanid';
+const xB3SpanId = 'x-b3-spanid';
+const xB3Flags = 'x-b3-flags';
+const xB3Sampled = 'x-b3-sampled';
+
+// add incoming trace headers to the context.
+app.use(function(req, res, next) {
+  const traceId = ctxImpl.getContext().traceId;
+  const parentId = ctxImpl.getContext().parentId;
+  const spanId = ctxImpl.getContext().spanId;
+  const flags = ctxImpl.getContext().flags;
+  const sampled = ctxImpl.getContext().sampled;
+  httpContext.set(xB3TraceId, traceId);
+  httpContext.set(xB3ParentSpanId, parentId);
+  httpContext.set(xB3SpanId, spanId);
+  httpContext.set(xB3Flags, flags);
+  httpContext.set(xB3Sampled, sampled);
+  addZipkinHeaders(req, ctxImpl.getContext());
+
+  res.setHeader(xB3TraceId, traceId);
+  res.setHeader(xB3ParentSpanId, parentId);
+  res.setHeader(xB3SpanId, spanId);
+  res.setHeader(xB3Flags, xB3Flags);
+  res.setHeader(xB3Sampled, sampled);
+
+  next();
+});
 
 const proxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
@@ -171,53 +225,66 @@ const runSearch = async function(
 };
 
 app.use('/search', async (req, res, next) => {
-  const filters = await getFilters(req.query);
-
-  const resultsPerPage = 10;
-  const currentPage = req.query.page || 1;
-  const startIndex = resultsPerPage * (currentPage - 1);
-  const results = await runSearch(
-    req.query.q,
-    filters,
-    startIndex,
-    resultsPerPage
-  );
-
-  const totalNumOfResults = results.numberOfHits;
-
-  const resultsToDisplay = results.hits.map(result => {
-    const doc = result._source;
-    let docTags = [];
-    for (const key in doc) {
-      if (filters.some(filter => filter.name === key)) {
-        docTags.push(doc[key]);
-      }
+  try {
+    if (!req.query) {
+      next(new Error('Query string no specified'));
     }
+    
+    const filters = await getFilters(req.query);
 
-    const getBlurb = body => {
-      if (body) {
-        return body.substr(0, 300) + '...';
+    const resultsPerPage = 10;
+    const currentPage = req.query.page || 1;
+    const startIndex = resultsPerPage * (currentPage - 1);
+    const results = await runSearch(
+      req.query.q,
+      filters,
+      startIndex,
+      resultsPerPage
+    );
+
+    const totalNumOfResults = results.numberOfHits;
+
+    const resultsToDisplay = results.hits.map(result => {
+      const doc = result._source;
+      let docTags = [];
+      for (const key in doc) {
+        if (filters.some(filter => filter.name === key)) {
+          docTags.push(doc[key]);
+        }
       }
-      return 'DOCUMENT HAS NO CONTENT';
-    };
 
-    return {
-      ref: doc.id,
-      score: result._score,
-      title: doc.title,
-      body: getBlurb(doc.body),
-      docTags: docTags,
-    };
-  });
+      const getBlurb = body => {
+        if (body) {
+          return body.substr(0, 300) + '...';
+        }
+        return 'DOCUMENT HAS NO CONTENT';
+      };
 
-  res.render('search', {
-    query: decodeURI(req.query.q),
-    currentPage: currentPage,
-    pages: Math.ceil(totalNumOfResults / resultsPerPage),
-    totalNumOfResults: totalNumOfResults,
-    searchResults: resultsToDisplay,
-    filters: filters,
-  });
+      return {
+        ref: doc.id,
+        score: result._score,
+        title: doc.title,
+        body: getBlurb(doc.body),
+        docTags: docTags,
+      };
+    });
+
+    res.render('search', {
+      query: decodeURI(req.query.q),
+      currentPage: currentPage,
+      pages: Math.ceil(totalNumOfResults / resultsPerPage),
+      totalNumOfResults: totalNumOfResults,
+      searchResults: resultsToDisplay,
+      filters: filters,
+    });
+  } catch (err) {
+    console.log('HEADERS', req.headers);
+    appLogger.log({
+      level: 'error',
+      message: `Exception while running search: ${err}`,
+    });
+    next(err);
+  }
 });
 
 app.use('/', docProxy);
