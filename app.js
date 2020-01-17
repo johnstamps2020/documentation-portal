@@ -21,6 +21,7 @@ const {
   jsonEncoder: { JSON_V2 },
 } = require('zipkin');
 const appLogger = require('./logger');
+const localServiceName = require(__dirname + '/package.json').name;
 
 const ctxImpl = new ExplicitContext();
 const zipkinUrl = process.env.ZIPKIN_URL;
@@ -32,7 +33,6 @@ const recorder = new BatchRecorder({
   }),
 });
 
-const localServiceName = 'DocumentationPortal';
 const tracer = new Tracer({ ctxImpl, recorder, localServiceName });
 
 const port = process.env.PORT || 8081;
@@ -229,7 +229,7 @@ app.use('/search', async (req, res, next) => {
     if (!req.query) {
       next(new Error('Query string no specified'));
     }
-    
+
     const filters = await getFilters(req.query);
 
     const resultsPerPage = 10;
@@ -278,7 +278,6 @@ app.use('/search', async (req, res, next) => {
       filters: filters,
     });
   } catch (err) {
-    console.log('HEADERS', req.headers);
     appLogger.log({
       level: 'error',
       message: `Exception while running search: ${err}`,
