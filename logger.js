@@ -1,6 +1,6 @@
 const ns = require('express-http-context').ns;
 const { createLogger, format, transports } = require('winston');
-const applicationName = require(__dirname + '/package.json').name
+const applicationName = require(__dirname + '/package.json').name;
 
 const { combine, errors, splat, json } = format;
 
@@ -26,7 +26,9 @@ const logger = createLogger({
     splat(),
     json()
   ),
-  transports: [new transports.Console()],
+  transports: [new transports.Console({ json: true, timestamp: true })],
+  exceptionHandlers: [new transports.Console({ json: true, timestamp: true })],
+  exitOnError: false,
 });
 
 module.exports = logger;
