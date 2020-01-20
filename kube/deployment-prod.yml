@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeoktacontainer-app-deployment
+  name: docportal-app-deployment
   namespace: ${NAMESPACE}
 spec:
   selector:
     matchLabels:
-      app: nodeoktacontainer-app
+      app: docportal-app
   replicas: 1
   template:
     metadata:
       labels:
-        app: nodeoktacontainer-app
+        app: docportal-app
       annotations:
         iam.amazonaws.com/role: arn:aws:iam::710503867599:role/aws_gwre-ccs-dev_tenant_doctools_developer
     spec:
       containers:
-      - name: nodeoktacontainer
-        image: 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-nodeoktacontainer:${TAG_VERSION}
+      - name: docportal
+        image: 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:${TAG_VERSION}
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

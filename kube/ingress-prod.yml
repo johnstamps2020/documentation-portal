@@ -2,20 +2,20 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   namespace: ${NAMESPACE}
-  name: nodeoktacontainer-ingress
+  name: docportal-ingress
 spec:
   rules:
-  - host: nodeoktacontainer-${NAMESPACE}.us-east-2.service.guidewire.net
+  - host: docportal-${NAMESPACE}.us-east-2.service.guidewire.net
     http:
       paths:
       - backend:
-          serviceName: nodeoktacontainer-app
+          serviceName: docportal-app
           servicePort: 8081
         path: /
-  - host: nodeoktacontainer-${NAMESPACE}.internal.us-east-2.service.guidewire.net
+  - host: docportal-${NAMESPACE}.internal.us-east-2.service.guidewire.net
     http:
       paths:
       - backend:
-          serviceName: nodeoktacontainer-app
+          serviceName: docportal-app
           servicePort: 8081
         path: /

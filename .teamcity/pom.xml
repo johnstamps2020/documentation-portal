@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <name>nodeoktacontainerConfig DSL Script</name>
-  <groupId>nodeoktacontainer</groupId>
-  <artifactId>nodeoktacontainer</artifactId>
+  <name>docportalConfig DSL Script</name>
+  <groupId>docportal</groupId>
+  <artifactId>docportal</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <parent>
