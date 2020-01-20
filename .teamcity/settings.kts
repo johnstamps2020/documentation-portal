@@ -222,10 +222,10 @@ object DeployProd : BuildType({
             id = "PUSH_TO_ECR"
             scriptContent = """
                 set -xe
-                docker pull artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:v%env.TAG_VERSION%
-                docker tag artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:v%env.TAG_VERSION% 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-nodeoktacontainer:v%env.TAG_VERSION%
+                docker pull artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION%
+                docker tag artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION% 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
                 eval $(aws ecr get-login --no-include-email | sed 's|https://||')
-                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-nodeoktacontainer:v%env.TAG_VERSION%
+                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -265,9 +265,9 @@ object Release : BuildType({
                 git push --tags
 
                 export TAG_VERSION=${'$'}(git describe --tag)
-                docker build -t nodeoktacontainer .
-                docker tag nodeoktacontainer:latest artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{TAG_VERSION}
-                docker push artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{TAG_VERSION}
+                docker build -t docportal .
+                docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
+                docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -305,7 +305,7 @@ object BuildDockerImage : Template({
                 echo OKTA_DOMAIN="%env.OKTA_DOMAIN%" >> .env
                 echo OKTA_CLIENT_ID="%env.OKTA_CLIENT_ID%" >> .env
                 echo OKTA_CLIENT_SECRET="%env.OKTA_CLIENT_SECRET%" >> .env
-                echo APP_BASE_URL="https://nodeoktacontainer-%env.NAMESPACE%.%env.DEPLOY_ENV%.ccs.guidewire.net" >> .env
+                echo APP_BASE_URL="https://docportal-%env.NAMESPACE%.%env.DEPLOY_ENV%.ccs.guidewire.net" >> .env
                 echo SESSION_KEY="%env.SESSION_KEY%" >> .env
                 echo ELASTIC_SEARCH_URL=https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net >> .env
                 echo DOC_S3_URL=https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net >> .env
@@ -315,9 +315,9 @@ object BuildDockerImage : Template({
                 else 
                     export BRANCH_NAME=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
                 fi
-                docker build -t nodeoktacontainer .
-                docker tag nodeoktacontainer artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{BRANCH_NAME}
-                docker push artifactory.guidewire.com/doctools-docker-dev/nodeoktacontainer:${'$'}{BRANCH_NAME}
+                docker build -t docportal .
+                docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
+                docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -388,7 +388,7 @@ object Deploy : Template({
                     if [[ "${'$'}TIME" == "10" ]]; then
                         break
                     fi
-                    FAIL_PODS=`kubectl get pods -l app=nodeoktacontainer-app --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
+                    FAIL_PODS=`kubectl get pods -l app=docportal-app --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
                     if [[ ! -z "${'$'}FAIL_PODS" ]]; then
                         echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
                         echo "${'$'}FAIL_PODS" && false

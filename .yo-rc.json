@@ -16,10 +16,10 @@
     "artifactoryRepoName": "doctools-docker-dev",
     "dockerImageForTestAndBuild": "devex-docker-dev/node",
     "serviceAccountEmail": "doctools@guidewire.com",
-    "teamcityProjectId": "DocumentationTools_Nodeoktacontainer",
-    "teamcityVcsRootId": "DocumentationTools_Nodeoktacontainer_Vcsroot"
+    "teamcityProjectId": "DocumentationTools_docportal",
+    "teamcityVcsRootId": "DocumentationTools_docportal_Vcsroot"
   },
   "generator-jhipster": {
-    "baseName": "nodeoktacontainer"
+    "baseName": "docportal"
   }
 }
