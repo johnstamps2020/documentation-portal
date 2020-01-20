@@ -227,7 +227,7 @@ const runSearch = async function(
 app.use('/search', async (req, res, next) => {
   try {
     if (!req.query || !req.query.q) {
-      next(new Error('Query string no specified'));
+      next(new Error('Query string not specified'));
     }
 
     const filters = await getFilters(req.query);
