@@ -226,7 +226,7 @@ const runSearch = async function(
 
 app.use('/search', async (req, res, next) => {
   try {
-    if (!req.query) {
+    if (!req.query || !req.query.q) {
       next(new Error('Query string no specified'));
     }
 
