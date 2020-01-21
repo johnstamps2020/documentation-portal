@@ -190,7 +190,7 @@ object DeployStaging : BuildType({
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.DEPLOY_ENV", "staging")
         text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
-              regex = """^v([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+              regex = """^(v[0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
     }
 
     vcs {
