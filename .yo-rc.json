@@ -8,7 +8,7 @@
     "artifactoryConnectionId": "PROJECT_EXT_155",
     "nodejsAppPortNumber": "8081",
     "podName": "doctools",
-    "appGitUrl": "ssh://git@stash.guidewire.com/doctools/node-okta-container.git",
+    "appGitUrl": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
     "teamcityKey": "sys-doc.rsa",
     "k8sNamespace": "doctools",
     "dockerImageForDeployment": "devex-docker-dev/atmosdeploy:0.12.10",
