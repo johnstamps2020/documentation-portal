@@ -433,7 +433,7 @@ object Deploy : Template({
 
 object vcsrootmasteronly : GitVcsRoot({
     name = "vcsrootmasteronly"
-    url = "ssh://git@stash.guidewire.com/doctools/node-okta-container.git"
+    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
     branchSpec = "+:refs/heads/master"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
