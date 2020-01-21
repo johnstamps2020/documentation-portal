@@ -313,14 +313,7 @@ object BuildDockerImage : Template({
             scriptContent = """
                 #!/bin/bash 
                 set -xe
-                echo OKTA_DOMAIN="%env.OKTA_DOMAIN%" >> .env
-                echo OKTA_CLIENT_ID="%env.OKTA_CLIENT_ID%" >> .env
-                echo OKTA_CLIENT_SECRET="%env.OKTA_CLIENT_SECRET%" >> .env
-                echo APP_BASE_URL="https://docportal-%env.NAMESPACE%.%env.DEPLOY_ENV%.ccs.guidewire.net" >> .env
-                echo SESSION_KEY="%env.SESSION_KEY%" >> .env
-                echo ELASTIC_SEARCH_URL=https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net >> .env
-                echo DOC_S3_URL=https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net >> .env
-                echo ZIPKIN_URL=https://zipkin.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/api/v2/spans >> .env
+                
                 if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
                     export BRANCH_NAME=latest
                 else 

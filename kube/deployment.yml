@@ -36,6 +36,22 @@ spec:
         env:
         - name: REFRESH_IMAGE
           value: 'BUILD_TIME'
+        - name: OKTA_DOMAIN
+          value: ${OKTA_DOMAIN}
+        - name: OKTA_CLIENT_ID
+          value: ${OKTA_CLIENT_ID}
+        - name: OKTA_CLIENT_SECRET
+          value: ${OKTA_CLIENT_SECRET}
+        - name: APP_BASE_URL
+          value: https://docportal-${NAMESPACE}.${DEPLOY_ENV}.ccs.guidewire.net
+        - name: SESSION_KEY
+          value: ${SESSION_KEY}
+        - name: ELASTIC_SEARCH_URL
+          value: https://docsearch-doctools.${DEPLOY_ENV}.ccs.guidewire.net
+        - name: DOC_S3_URL
+          value: https://ditaot.internal.${DEPLOY_ENV}.ccs.guidewire.net
+        - name: ZIPKIN_URL
+          value: https://zipkin.internal.${DEPLOY_ENV}.ccs.guidewire.net/api/v2/spans
         resources:
           requests:
             memory: "1Gi"
