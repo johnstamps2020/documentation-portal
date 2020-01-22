@@ -43,7 +43,7 @@ spec:
         - name: OKTA_CLIENT_SECRET
           value: ${OKTA_CLIENT_SECRET}
         - name: APP_BASE_URL
-          value: https://docportal-${NAMESPACE}.${DEPLOY_ENV}.ccs.guidewire.net
+          value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net
         - name: SESSION_KEY
           value: ${SESSION_KEY}
         - name: ELASTIC_SEARCH_URL
