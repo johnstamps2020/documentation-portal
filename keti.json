@@ -21,10 +21,10 @@
     },
     "redirectUris": [
       "http://localhost:8081/authorization-code/callback",
-      "https://docportal-doctools.dev.ccs.guidewire.net/authorization-code/callback",
-      "https://docportal-doctools.int.ccs.guidewire.net/authorization-code/callback",
-      "https://docportal-doctools.staging.ccs.guidewire.net/authorization-code/callback",
-      "https://docportal-doctools.prod.ccs.guidewire.net/authorization-code/callback"
+      "https://docs.dev.ccs.guidewire.net/authorization-code/callback",
+      "https://docs.int.ccs.guidewire.net/authorization-code/callback",
+      "https://docs.staging.ccs.guidewire.net/authorization-code/callback",
+      "https://docs.prod.ccs.guidewire.net/authorization-code/callback"
     ]
   },
   "ownershipType": "GROUP",

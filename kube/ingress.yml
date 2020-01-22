@@ -5,7 +5,7 @@ metadata:
   name: docportal-ingress
 spec:
   rules:
-  - host: docportal-${NAMESPACE}.${DEPLOY_ENV}.ccs.guidewire.net
+  - host: docs.${DEPLOY_ENV}.ccs.guidewire.net
     http:
       paths:
       - backend:
