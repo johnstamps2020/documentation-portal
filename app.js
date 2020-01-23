@@ -293,6 +293,14 @@ app.use((req, res, next) => {
   next(createError(404));
 });
 
+// handles unauthorized errors
+app.use((err, req, res, next) => {
+  if(err.httpStatusCode === 304){
+    res.status(304).render('unauthorized');
+  }
+  next(err);
+})
+
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
