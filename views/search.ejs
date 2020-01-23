@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../stylesheets/search.css" />
-    <title>Search Results - Guidewire Documentation</title>
-  </head>
+  <% include parts/head %>
   <body>
-    <header class="pageHeader">
-      <a href="/">
-        <img class="pageLogo" src="assets/img/guidewire-logo.jpg" />
-        <span class="pageTitle">Guidewire Documentation</span>
-      </a>
-    </header>
+    <% include parts/header %>
     <div class="searchBar">
       <input
         id="searchField"
@@ -173,7 +162,5 @@
       }
     </script>
   </body>
-  <footer class="pageFooter">
-    <span class="footerCopyright">© Guidewire Software, Inc.</span>
-  </footer>
+  <% include parts/footer %>
 </html>

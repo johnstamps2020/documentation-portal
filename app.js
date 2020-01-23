@@ -224,6 +224,10 @@ const runSearch = async function(
   };
 };
 
+app.use('/unauthorized', (req, res) => {
+  res.render('unauthorized');
+});
+
 app.use('/search', async (req, res, next) => {
   try {
     if (!req.query || !req.query.q) {
@@ -295,11 +299,11 @@ app.use((req, res, next) => {
 
 // handles unauthorized errors
 app.use((err, req, res, next) => {
-  if(err.httpStatusCode === 304){
-    res.status(304).render('unauthorized');
+  if (err.httpStatusCode === 304) {
+    res.status(304).redirect('/unauthorized');
   }
   next(err);
-})
+});
 
 // error handler
 app.use((err, req, res, next) => {
