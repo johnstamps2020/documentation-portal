@@ -131,7 +131,7 @@ object DeployInt : BuildType({
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.DEPLOY_ENV", "int")
         text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
-              regex = """^v([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+              regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
     }
 
     vcs {
@@ -153,7 +153,7 @@ object DeployProd : BuildType({
         param("env.ATMOS_PROD_AWS_DEFAULT_REGIO", "us-west-2")
         param("env.AWS_DEFAULT_REGION", "%env.ATMOS_PROD_AWS_DEFAULT_REGIO%")
         text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
-              regex = """^v([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+              regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
     }
 
     vcs {
@@ -190,7 +190,7 @@ object DeployStaging : BuildType({
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.DEPLOY_ENV", "staging")
         text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
-              regex = """^v([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+              regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
     }
 
     vcs {
@@ -354,6 +354,8 @@ object Deploy : Template({
                     if [[ "%teamcity.build.branch%" != "master" ]] && [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
                         export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
                     fi
+                else
+                    export TAG_VERSION=v${'$'}TAG_VERSION
                 fi           
                 if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
