@@ -168,10 +168,10 @@ object DeployProd : BuildType({
             id = "PUSH_TO_ECR"
             scriptContent = """
                 set -xe
-                docker pull artifactory.guidewire.com/doctools-docker-dev/docportal:%env.TAG_VERSION%
-                docker tag artifactory.guidewire.com/doctools-docker-dev/docportal:%env.TAG_VERSION% 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:%env.TAG_VERSION%
+                docker pull artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION%
+                docker tag artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION% 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
                 eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
-                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:%env.TAG_VERSION%
+                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
