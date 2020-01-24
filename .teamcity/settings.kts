@@ -361,7 +361,9 @@ object Deploy : Template({
                     if [[ "%teamcity.build.branch%" != "master" ]] && [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
                         export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
                     fi
-                fi           
+                else
+                    export TAG_VERSION=v${'$'}TAG_VERSION
+                fi
                 if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
