@@ -16,5 +16,8 @@ changeBuildType(RelativeId("DeployProd")) {
         update {
             param("env.AWS_ACCESS_KEY_ID", "credentialsJSON:3b961b44-5321-4a83-a5f5-eb34fb064dcc")
         }
+        remove {
+            param("env.AWS_DEFAULT_REGION", "%env.ATMOS_PROD_AWS_DEFAULT_REGION%")
+        }
     }
 }
