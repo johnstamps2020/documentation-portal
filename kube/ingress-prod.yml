@@ -12,7 +12,7 @@ spec:
           serviceName: docportal-app
           servicePort: 8081
         path: /
-  - host: docs.internal.us-east-2.service.guidewire.net
+  - host: docs.us-east-2.service.guidewire.net
     http:
       paths:
       - backend:
