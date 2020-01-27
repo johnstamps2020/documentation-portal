@@ -24,7 +24,7 @@
       "https://docs.dev.ccs.guidewire.net/authorization-code/callback",
       "https://docs.int.ccs.guidewire.net/authorization-code/callback",
       "https://docs.staging.ccs.guidewire.net/authorization-code/callback",
-      "https://docs.prod.ccs.guidewire.net/authorization-code/callback"
+      "https://docs.us-east-2.service.guidewire.net/authorization-code/callback"
     ]
   },
   "ownershipType": "GROUP",
