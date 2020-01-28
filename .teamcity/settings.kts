@@ -147,7 +147,6 @@ object DeployProd : BuildType({
 
     params {
         param("env.DEPLOY_ENV", "us-east-2")
-        param("env.AWS_SECRET_ACCESS_KEY", "credentialsJSON:8c32ef05-72e7-4262-ad01-59e17cf3b48c")
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.AWS_ACCESS_KEY_ID", "credentialsJSON:12f70400-8b00-4bac-a368-f7d68bc99fa7")
         param("env.ATMOS_PROD_AWS_DEFAULT_REGION", "us-west-2")
