@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -24,6 +26,36 @@ changeBuildType(RelativeId("DeployProd")) {
         }
         add {
             param("env.AWS_DEFAULT_REGION_PROD", "%env.ATMOS_PROD_AWS_DEFAULT_REGION%")
+        }
+    }
+
+    expectSteps {
+        script {
+            name = "Push Docker Image to ECR"
+            id = "PUSH_TO_ECR"
+            scriptContent = """
+                set -xe
+                docker pull artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION%
+                docker tag artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION% 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
+                eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
+                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+        }
+    }
+    steps {
+        update<ScriptBuildStep>(0) {
+            id = "PUSH_TO_ECR"
+            scriptContent = """
+                set -xe
+                docker pull artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION%
+                docker tag artifactory.guidewire.com/doctools-docker-dev/docportal:v%env.TAG_VERSION% 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
+                eval ${'$'}(aws ecr get-login --no-include-email --region us-east-2 | sed 's|https://||')
+                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
+            """.trimIndent()
         }
     }
 }
