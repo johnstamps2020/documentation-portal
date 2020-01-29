@@ -150,6 +150,8 @@ object DeployProd : BuildType({
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+        param("env.AWS_ACCESS_KEY_ID", "env.ATMOS_PROD_AWS_ACCESS_KEY_ID")
+        param("env.AWS_SECRET_ACCESS_KEY", "env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY")
     }
 
     vcs {
