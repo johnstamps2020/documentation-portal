@@ -10,11 +10,8 @@ accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("DeployProd")) {
     params {
-        expect {
+        remove {
             param("env.AWS_ACCESS_KEY_ID", "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%")
-        }
-        update {
-            param("env.AWS_ACCESS_KEY_ID", "credentialsJSON:12f70400-8b00-4bac-a368-f7d68bc99fa7")
         }
         expect {
             param("env.AWS_SECRET_ACCESS_KEY", "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%")
