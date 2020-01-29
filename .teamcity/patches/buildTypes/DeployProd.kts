@@ -11,6 +11,9 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("DeployProd")) {
     params {
         remove {
+            param("env.ATMOS_PROD_AWS_DEFAULT_REGION", "us-west-2")
+        }
+        remove {
             param("env.AWS_ACCESS_KEY_ID", "credentialsJSON:12f70400-8b00-4bac-a368-f7d68bc99fa7")
         }
         remove {
