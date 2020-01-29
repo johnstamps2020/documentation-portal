@@ -24,8 +24,11 @@ changeBuildType(RelativeId("DeployProd")) {
         remove {
             param("env.AWS_DEFAULT_REGION", "%env.ATMOS_PROD_AWS_DEFAULT_REGION%")
         }
-        remove {
+        expect {
             param("env.AWS_SECRET_ACCESS_KEY", "credentialsJSON:8c32ef05-72e7-4262-ad01-59e17cf3b48c")
+        }
+        update {
+            param("env.AWS_SECRET_ACCESS_KEY", "credentialsJSON:002e0561-93fc-46ab-8849-26fc382f895a")
         }
         add {
             param("env.AWS_DEFAULT_REGION_PROD", "us-east-2")
