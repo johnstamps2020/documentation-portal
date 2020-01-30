@@ -1,5 +1,5 @@
 {
-  "name": "NODE_Hawaii_Docs_Web",
+  "name": "Documentation_portal",
   "authType": "OIDC",
   "authSettings": {
     "applicationType": "WEB",
@@ -10,7 +10,7 @@
       "AUTHORIZATION_CODE"
     ],
     "groups": [
-      "NODE_Hawaii_Docs_Web:WebUsers"
+      "Documentation_portal:WebUsers"
     ],
     "responseTypes": ["TOKEN", "CODE", "ID_TOKEN"],
     "clientAuthenticationType": "CLIENT_SECRET_BASIC",
@@ -20,10 +20,7 @@
       "refreshTokenWindowMinutes": 1440
     },
     "redirectUris": [
-      "http://localhost:8081/authorization-code/callback",
-      "https://docs.dev.ccs.guidewire.net/authorization-code/callback",
-      "https://docs.int.ccs.guidewire.net/authorization-code/callback",
-      "https://docs.staging.ccs.guidewire.net/authorization-code/callback"
+      "https://docs.us-east-2.service.guidewire.net/authorization-code/callback"
     ]
   },
   "ownershipType": "GROUP",
