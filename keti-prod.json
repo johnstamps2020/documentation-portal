@@ -1,5 +1,5 @@
 {
-  "name": "Documentation_portal",
+  "name": "NODE_Hawaii_Docs_Web",
   "authType": "OIDC",
   "authSettings": {
     "applicationType": "WEB",
@@ -10,7 +10,7 @@
       "AUTHORIZATION_CODE"
     ],
     "groups": [
-      "Documentation_portal:WebUsers"
+      "NODE_Hawaii_Docs_Web:WebUsers"
     ],
     "responseTypes": ["TOKEN", "CODE", "ID_TOKEN"],
     "clientAuthenticationType": "CLIENT_SECRET_BASIC",

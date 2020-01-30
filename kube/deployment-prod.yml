@@ -37,11 +37,11 @@ spec:
           - name: REFRESH_IMAGE
             value: 'BUILD_TIME'
           - name: OKTA_DOMAIN
-            value: ${KETI_DOMAIN_PROD}
+            value: ${OKTA_DOMAIN_PROD}
           - name: OKTA_CLIENT_ID
-            value: ${KETI_CLIENT_ID_PROD}
+            value: ${OKTA_CLIENT_ID_PROD}
           - name: OKTA_CLIENT_SECRET
-            value: ${KETI_CLIENT_SECRET_PROD}
+            value: ${OKTA_CLIENT_SECRET_PROD}
           - name: APP_BASE_URL
             value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net
           - name: SESSION_KEY
