@@ -153,6 +153,9 @@ object DeployProd : BuildType({
         param("env.AWS_ACCESS_KEY_ID", "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%")
         param("env.AWS_SECRET_ACCESS_KEY", "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%")
         param("env.AWS_DEFAULT_REGION", "%env.ATMOS_PROD_AWS_DEFAULT_REGION%")
+        param("env.OKTA_CLIENT_ID", "%env.KETI_CLIENT_ID_PROD%")
+        param("env.OKTA_CLIENT_SECRET", "%env.KETI_CLIENT_SECRET_PROD%")
+        param("env.OKTA_DOMAIN", "%env.KETI_DOMAIN_PROD%")
     }
 
     vcs {
