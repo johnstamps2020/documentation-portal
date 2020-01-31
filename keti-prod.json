@@ -4,12 +4,12 @@
   "authSettings": {
     "applicationType": "WEB",
     "grantTypes": [
-      "CLIENT_CREDENTIALS",
-      "IMPLICIT",
       "REFRESH_TOKEN",
       "AUTHORIZATION_CODE"
     ],
-    "responseTypes": ["TOKEN", "CODE", "ID_TOKEN"],
+    "responseTypes": [
+      "CODE"
+    ],
     "clientAuthenticationType": "CLIENT_SECRET_BASIC",
     "tokenValidity": {
       "accessTokenLifetimeMinutes": 60,
@@ -21,5 +21,5 @@
     ]
   },
   "ownershipType": "GROUP",
-  "ownerPod": "doctools"
+  "ownerPod": "ccs-auth-provisioning.admin"
 }
