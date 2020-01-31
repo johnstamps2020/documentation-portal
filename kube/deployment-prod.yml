@@ -37,11 +37,11 @@ spec:
           - name: REFRESH_IMAGE
             value: 'BUILD_TIME'
           - name: OKTA_DOMAIN
-            value: ${OKTA_DOMAIN}
+            value: ${OKTA_DOMAIN_PROD}
           - name: OKTA_CLIENT_ID
-            value: ${OKTA_CLIENT_ID}
+            value: ${OKTA_CLIENT_ID_PROD}
           - name: OKTA_CLIENT_SECRET
-            value: ${OKTA_CLIENT_SECRET}
+            value: ${OKTA_CLIENT_SECRET_PROD}
           - name: APP_BASE_URL
             value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net
           - name: SESSION_KEY
@@ -49,7 +49,7 @@ spec:
           - name: ELASTIC_SEARCH_URL
             value: https://docsearch-doctools.${DEPLOY_ENV}.ccs.guidewire.net
           - name: DOC_S3_URL
-            value: https://ditaot.internal.${DEPLOY_ENV}.ccs.guidewire.net
+            value: https://ditaot.${DEPLOY_ENV}.ccs.guidewire.net
           - name: ZIPKIN_URL
             value: https://zipkin.internal.${DEPLOY_ENV}.ccs.guidewire.net/api/v2/spans
         resources:
