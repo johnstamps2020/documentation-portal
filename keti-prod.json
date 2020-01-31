@@ -1,3 +1,7 @@
+// The owner pod is set to the CCS provisioning admin because a dev pod cannot register their app themselves in the production environment.
+// They need to ask the Keti team to do it. You cannot set the owner pod to a pod that you are not part of so the Keti team needs to set
+// the owner pod to their pod.
+
 {
   "name": "Documentation_portal",
   "authType": "OIDC",
