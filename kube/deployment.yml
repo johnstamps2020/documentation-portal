@@ -47,7 +47,7 @@ spec:
         - name: SESSION_KEY
           value: ${SESSION_KEY}
         - name: ELASTIC_SEARCH_URL
-          value: https://docsearch-doctools.${DEPLOY_ENV}.ccs.guidewire.net
+          value: http://docsearch-${DEPLOY_ENV}.doctools:9200
         - name: DOC_S3_URL
           value: https://ditaot.internal.${DEPLOY_ENV}.ccs.guidewire.net
         - name: ZIPKIN_URL
