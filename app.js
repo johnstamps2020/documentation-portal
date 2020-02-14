@@ -273,13 +273,32 @@ app.use('/search', async (req, res, next) => {
       };
     });
 
+    const retrievedTags = [];
+    
+    resultsToDisplay.forEach(result => {
+      result.docTags.forEach(tag => {
+        if (!retrievedTags.includes(tag)) {
+          retrievedTags.push(tag);
+        }
+      });
+    })
+
+    const filtersToDisplay = filters.map(filter => {
+      const filteredValues = filter.values.filter(val => val.checked || retrievedTags.includes(val.label));
+      if (filteredValues.length > 0) {
+        const filteredFilter = filter;
+        filter.values = filteredValues;
+        return filteredFilter;
+      }
+    })
+
     res.render('search', {
       query: decodeURI(req.query.q),
       currentPage: currentPage,
       pages: Math.ceil(totalNumOfResults / resultsPerPage),
       totalNumOfResults: totalNumOfResults,
       searchResults: resultsToDisplay,
-      filters: filters,
+      filters: filtersToDisplay,
     });
   } catch (err) {
     appLogger.log({
