@@ -154,7 +154,7 @@ const getFilters = async function(urlParams) {
       const allowedFilterValues = await getAllowedFilterValues(key);
       const filterValuesWithStates = allowedFilterValues.map(value => {
         const checked = decodeURI(urlParams[key])
-          .split(' ')
+          .split(',')
           .includes(value);
         return {
           label: value,
