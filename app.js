@@ -290,7 +290,9 @@ app.use('/search', async (req, res, next) => {
         filter.values = filteredValues;
         return filteredFilter;
       }
-    })
+    }).filter(f => f);
+
+    console.log('filters to display', filtersToDisplay);
 
     res.render('search', {
       query: decodeURI(req.query.q),
