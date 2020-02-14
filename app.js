@@ -154,7 +154,7 @@ const getFilters = async function(urlParams) {
       const allowedFilterValues = await getAllowedFilterValues(key);
       const filterValuesWithStates = allowedFilterValues.map(value => {
         const checked = decodeURI(urlParams[key])
-          .split(' ')
+          .split(',')
           .includes(value);
         return {
           label: value,
@@ -290,7 +290,9 @@ app.use('/search', async (req, res, next) => {
         filter.values = filteredValues;
         return filteredFilter;
       }
-    })
+    }).filter(f => f);
+
+    console.log('filters to display', filtersToDisplay);
 
     res.render('search', {
       query: decodeURI(req.query.q),

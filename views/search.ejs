@@ -127,7 +127,7 @@
           }
         });
 
-        setGetParameter(e.target.name, encodeURI(selectedValues.join(' ')));
+        setGetParameter(e.target.name, encodeURI(selectedValues.join(',')));
       }
 
       const allBoxes = document.getElementsByClassName('filterCheckbox');
