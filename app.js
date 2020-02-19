@@ -126,38 +126,81 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 
-const getAllowedFilterValues = async function(fieldName) {
-  const { body } = await elasticClient.search({
+const getAllowedFilterValues = async function(fieldName, query) {
+  const requestBody = {
     index: searchIndexName,
     size: 0,
     body: {
       aggs: {
         allowedForField: {
-          terms: { field: fieldName },
+          filter: query,
+          aggs: {
+            keywordFilter: { terms: { field: fieldName } },
+          },
         },
       },
     },
-  });
+  };
 
-  return body.aggregations.allowedForField.buckets.map(bucket => bucket.key);
+  const result = await elasticClient.search(requestBody);
+
+  return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
+    bucket => {
+      return { label: bucket.key, doc_count: bucket.doc_count };
+    }
+  );
 };
 
-const getFilters = async function(urlParams) {
-  const { body } = await elasticClient.indices.getMapping({
+app.use('/unauthorized', (req, res) => {
+  res.render('unauthorized');
+});
+
+const runFilteredSearch = async (urlParams, startIndex, resultsPerPage) => {
+  let queryBody = {
+    bool: {
+      must: {
+        multi_match: {
+          query: urlParams.q,
+          fields: ['title^3', 'body'],
+        },
+      },
+    },
+  };
+
+  const mappingResults = await elasticClient.indices.getMapping({
     index: searchIndexName,
   });
 
-  const filters = body[searchIndexName].mappings.properties;
+  const mappings = mappingResults.body[searchIndexName].mappings.properties;
+
+  let selectedFilters = [];
+  for (const param in urlParams) {
+    if (mappings[param] && mappings[param].type == 'keyword') {
+      const values = decodeURI(urlParams[param]).split(',');
+      const queryFilter = {
+        terms: {
+          [param]: values,
+        },
+      };
+      selectedFilters.push(queryFilter);
+    }
+  }
+
+  if (selectedFilters.length > 0) {
+    queryBody.bool.filter = selectedFilters;
+  }
+
   let filtersWithValues = [];
-  for (const key in filters) {
-    if (filters[key].type === 'keyword') {
-      const allowedFilterValues = await getAllowedFilterValues(key);
+  for (const key in mappings) {
+    if (mappings[key].type === 'keyword') {
+      const allowedFilterValues = await getAllowedFilterValues(key, queryBody);
       const filterValuesWithStates = allowedFilterValues.map(value => {
         const checked = decodeURI(urlParams[key])
           .split(',')
-          .includes(value);
+          .includes(value.label);
         return {
-          label: value,
+          label: value.label,
+          doc_count: value.doc_count,
           checked: checked,
         };
       });
@@ -168,65 +211,21 @@ const getFilters = async function(urlParams) {
     }
   }
 
-  return filtersWithValues;
-};
-
-const runSearch = async function(
-  searchQuery,
-  filters,
-  startIndex,
-  resultsPerPage
-) {
-  let query = {
-    bool: {
-      must: {
-        multi_match: {
-          query: searchQuery,
-          fields: ['title^3', 'body'],
-        },
-      },
-    },
-  };
-
-  let selectedFilters = [];
-  filters.forEach(filter => {
-    if (filter.values.some(value => value.checked)) {
-      selectedFilters.push({
-        terms: {
-          [filter.name]: filter.values
-            .map(value => {
-              if (value.checked) {
-                return value.label;
-              }
-            })
-            .filter(Boolean),
-        },
-      });
-    }
-  });
-
-  if (selectedFilters.length > 0) {
-    query.bool.filter = selectedFilters;
-  }
-
-  const { body } = await elasticClient.search({
+  const searchResults = await elasticClient.search({
     index: searchIndexName,
     from: startIndex,
     size: resultsPerPage,
     body: {
-      query: query,
+      query: queryBody,
     },
   });
 
   return {
-    numberOfHits: body.hits.total.value,
-    hits: body.hits.hits,
+    numberOfHits: searchResults.body.hits.total.value,
+    hits: searchResults.body.hits.hits,
+    filters: filtersWithValues,
   };
 };
-
-app.use('/unauthorized', (req, res) => {
-  res.render('unauthorized');
-});
 
 app.use('/search', async (req, res, next) => {
   try {
@@ -234,17 +233,16 @@ app.use('/search', async (req, res, next) => {
       next(new Error('Query string not specified'));
     }
 
-    const filters = await getFilters(req.query);
-
     const resultsPerPage = 10;
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
-    const results = await runSearch(
-      req.query.q,
-      filters,
+    const results = await runFilteredSearch(
+      req.query,
       startIndex,
       resultsPerPage
     );
+
+    const filters = results.filters;
 
     const totalNumOfResults = results.numberOfHits;
 
@@ -274,25 +272,14 @@ app.use('/search', async (req, res, next) => {
     });
 
     const retrievedTags = [];
-    
+
     resultsToDisplay.forEach(result => {
       result.docTags.forEach(tag => {
         if (!retrievedTags.includes(tag)) {
           retrievedTags.push(tag);
         }
       });
-    })
-
-    const filtersToDisplay = filters.map(filter => {
-      const filteredValues = filter.values.filter(val => val.checked || retrievedTags.includes(val.label));
-      if (filteredValues.length > 0) {
-        const filteredFilter = filter;
-        filter.values = filteredValues;
-        return filteredFilter;
-      }
-    }).filter(f => f);
-
-    console.log('filters to display', filtersToDisplay);
+    });
 
     res.render('search', {
       query: decodeURI(req.query.q),
@@ -300,7 +287,7 @@ app.use('/search', async (req, res, next) => {
       pages: Math.ceil(totalNumOfResults / resultsPerPage),
       totalNumOfResults: totalNumOfResults,
       searchResults: resultsToDisplay,
-      filters: filtersToDisplay,
+      filters: filters,
     });
   } catch (err) {
     appLogger.log({
