@@ -145,7 +145,9 @@ const getAllowedFilterValues = async function(fieldName, query) {
   const result = await elasticClient.search(requestBody);
 
   return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
-    bucket => bucket.key
+    bucket => {
+      return { label: bucket.key, doc_count: bucket.doc_count };
+    }
   );
 };
 
@@ -195,9 +197,10 @@ const runFilteredSearch = async (urlParams, startIndex, resultsPerPage) => {
       const filterValuesWithStates = allowedFilterValues.map(value => {
         const checked = decodeURI(urlParams[key])
           .split(',')
-          .includes(value);
+          .includes(value.label);
         return {
-          label: value,
+          label: value.label,
+          doc_count: value.doc_count,
           checked: checked,
         };
       });

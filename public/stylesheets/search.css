@@ -41,3 +41,8 @@
 .checkboxLabel {
     margin-left: 6px;
 }
+
+.docCount {
+    float: right;
+    color: gray;
+}
