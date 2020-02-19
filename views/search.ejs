@@ -102,7 +102,7 @@
             suffix.indexOf('&') >= 0
               ? suffix.substring(suffix.indexOf('&'))
               : '';
-              if (paramValue.length > 0) {
+              if (('' + paramValue).length > 0) {
                 url = prefix + paramName + '=' + paramValue + suffix;
               } else {
                 url = prefix.substring(0, prefix.length - 1) + suffix;
