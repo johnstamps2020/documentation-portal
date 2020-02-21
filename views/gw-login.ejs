@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    @media only screen and (max-width: 600px) {
+        html, body {
+            --landing-title-container-height: 150px !important;
+            --search-field-width: 400px !important;
+        }
+    }
+
+    html, body {
+        --footer-height: 50px;
+        --header-height: 48px;
+        --landing-title-container-height: 200px;
+        --search-bar-height: 100px;
+        --search-field-width: 600px;
+        --search-button-width: 35px;
+        --sub-header-bg-color: #384346;
+        --GW-COLOR-BRAND-1: #00739D;
+        height: 100%;
+    }
+
+    /* Bootstrap overrides */
+
+    a {
+        color: var(--GW-COLOR-BRAND-1) !important;
+    }
+
+    body {
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif !important;
+    }
+
+
+</style>
+<body>
+<h1>Log in</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">Select which credentials you want to use</div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <li><a href="login">Guidewire Identity Hub</a></li>
+            <li><a href="#">Guidewire Community for Partners</a></li>
+            <li><a href="#">Guidewire Community for Customers</a></li>
+        </div>
+    </div>
+</div>
+</body>
+</html>
