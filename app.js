@@ -49,13 +49,15 @@ app.use(
   })
 );
 
-const oidc = new ExpressOIDC({
+const oktaOIDC = new ExpressOIDC({
   issuer: `${process.env.OKTA_DOMAIN}`,
   client_id: `${process.env.OKTA_CLIENT_ID}`,
   client_secret: `${process.env.OKTA_CLIENT_SECRET}`,
   appBaseUrl: `${process.env.APP_BASE_URL}`,
   scope: 'openid profile',
 });
+
+const gwLoginRouter = require('./routes/gw-login');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -65,9 +67,17 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
+app.use('/gw-login', gwLoginRouter);
+
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
-app.use(oidc.router);
-app.use(oidc.ensureAuthenticated());
+app.use(oktaOIDC.router);
+app.use((req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect('gw-login');
+  }
+});
 
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
