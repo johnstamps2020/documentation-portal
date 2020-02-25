@@ -55,6 +55,9 @@ const oktaOIDC = new ExpressOIDC({
 });
 
 const gwLoginRouter = require('./routes/gw-login');
+const partnersLoginRouter = require('./routes/partners-login');
+const customersLoginRouter = require('./routes/customers-login');
+
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
 
@@ -67,6 +70,8 @@ app.use('/alive', (req, res, next) => {
 });
 
 app.use('/gw-login', gwLoginRouter);
+app.use('/partners-login', partnersLoginRouter);
+app.use('/customers-login', customersLoginRouter);
 
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oktaOIDC.router);
