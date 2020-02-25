@@ -75,7 +75,7 @@ app.use((req, res, next) => {
   if (req.isAuthenticated()) {
     next();
   } else {
-    res.redirect('gw-login');
+    res.redirect('/gw-login');
   }
 });
 
