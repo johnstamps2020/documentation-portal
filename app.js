@@ -75,7 +75,7 @@ app.use((req, res, next) => {
   if (req.isAuthenticated()) {
     next();
   } else {
-    res.redirect('gw-login');
+    res.redirect('/gw-login');
   }
 });
 
@@ -165,12 +165,17 @@ app.use('/unauthorized', (req, res) => {
   res.render('unauthorized');
 });
 
-const runFilteredSearch = async (urlParams, startIndex, resultsPerPage) => {
+const runFilteredSearch = async (
+  searchPhrase,
+  urlParams,
+  startIndex,
+  resultsPerPage
+) => {
   let queryBody = {
     bool: {
       must: {
         multi_match: {
-          query: urlParams.q,
+          query: searchPhrase,
           fields: ['title^3', 'body'],
         },
       },
@@ -239,14 +244,12 @@ const runFilteredSearch = async (urlParams, startIndex, resultsPerPage) => {
 
 app.use('/search', async (req, res, next) => {
   try {
-    if (!req.query || !req.query.q) {
-      next(new Error('Query string not specified'));
-    }
-
+    const searchPhrase = decodeURI(req.query.q);
     const resultsPerPage = 10;
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
     const results = await runFilteredSearch(
+      searchPhrase,
       req.query,
       startIndex,
       resultsPerPage
@@ -292,7 +295,7 @@ app.use('/search', async (req, res, next) => {
     });
 
     res.render('search', {
-      query: decodeURI(req.query.q),
+      query: searchPhrase,
       currentPage: currentPage,
       pages: Math.ceil(totalNumOfResults / resultsPerPage),
       totalNumOfResults: totalNumOfResults,

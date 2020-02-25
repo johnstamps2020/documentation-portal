@@ -1,50 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
+  <style>
     @media only screen and (max-width: 600px) {
-        html, body {
-            --landing-title-container-height: 150px !important;
-            --search-field-width: 400px !important;
-        }
+      html,
+      body {
+        --landing-title-container-height: 150px !important;
+        --search-field-width: 400px !important;
+      }
     }
 
-    html, body {
-        --footer-height: 50px;
-        --header-height: 48px;
-        --landing-title-container-height: 200px;
-        --search-bar-height: 100px;
-        --search-field-width: 600px;
-        --search-button-width: 35px;
-        --sub-header-bg-color: #384346;
-        --GW-COLOR-BRAND-1: #00739D;
-        height: 100%;
+    html,
+    body {
+      --footer-height: 50px;
+      --header-height: 48px;
+      --landing-title-container-height: 200px;
+      --search-bar-height: 100px;
+      --search-field-width: 600px;
+      --search-button-width: 35px;
+      --sub-header-bg-color: #384346;
+      --GW-COLOR-BRAND-1: #00739d;
+      --logo-height: 24px;
+      height: 100%;
     }
 
-    /* Bootstrap overrides */
+    .loginLinks {
+      margin-top: 3rem;
+      font-size: 1.5rem;
+    }
 
-    a {
-        color: var(--GW-COLOR-BRAND-1) !important;
+    .loginLinks a {
+      color: white !important;
+      text-decoration: none;
+      width: 100%;
+      border: none;
+      display: block;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      text-align: center;
+      margin-top: 1rem;
+      background-color: gray;
+    }
+
+    .loginLinks a:hover {
+      background-color: black;
     }
 
     body {
-        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif !important;
+      font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif !important;
     }
 
+    .pageHeader {
+      height: var(--header-height);
+      background-color: var(--GW-COLOR-BRAND-1);
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
 
-</style>
-<body>
-<h1>Log in</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-sm">Select which credentials you want to use</div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <li><a href="login">Guidewire Identity Hub</a></li>
-            <li><a href="#">Guidewire Community for Partners</a></li>
-            <li><a href="#">Guidewire Community for Customers</a></li>
+    .pageLogo {
+      position: relative;
+      margin-top: 12px;
+      margin-left: 20px;
+      height: var(--logo-height);
+      border: 1px solid var(--GW-COLOR-BRAND-1);
+    }
+
+    .homeContainer {
+      min-height: calc(100% - var(--header-height) - var(--search-bar-height));
+    }
+
+    .landingTitle {
+      font-size: 24pt;
+      margin-left: 16px;
+    }
+
+    .docPanelContainer {
+      padding: 20px;
+      min-height: calc(
+        100% - var(--footer-height) - var(--header-height) -
+          var(--search-bar-height) - var(--landing-title-container-height)
+      );
+    }
+
+    .container {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
+  </style>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="homeContainer container">
+      <div class="pageHeader">
+        <div>
+          <img
+            class="pageLogo"
+            src="data:image/jpg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABkAAD/4QMvaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0NSA3OS4xNjM0OTksIDIwMTgvMDgvMTMtMTY6NDA6MjIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCQzUwNzk3OTVDNkQxMUU5OEMyRUU2RTAwNTQzMDZEOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCQzUwNzk3QTVDNkQxMUU5OEMyRUU2RTAwNTQzMDZEOCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkJDNTA3OTc3NUM2RDExRTk4QzJFRTZFMDA1NDMwNkQ4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkJDNTA3OTc4NUM2RDExRTk4QzJFRTZFMDA1NDMwNkQ4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQICAgICAgICAgICAwMDAwMDAwMDAwEBAQEBAQECAQECAgIBAgIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMD/8AAEQgAGAAYAwERAAIRAQMRAf/EAIUAAAIDAAAAAAAAAAAAAAAAAAgJAQMKAQEAAgMAAAAAAAAAAAAAAAAHAQYAAggQAAAGAgADBgcBAAAAAAAAAAECBAUGBwMIABEJIRIWtjgKE1YXd5fXeBoRAAIBAwICCAYDAAAAAAAAAAECAxEEBQAGIQcxQRITU5OzCFEj09R1Nhc3GP/aAAwDAQACEQMRAD8A2ibebb1Bo7UjZbluNMtWRBbL2WCJUkDY216dsbu9tr05ojGQuTywpsbeRMw5wOcMwmKYSABB5iIWvam1cvvXLNicS8Qu1iaQmVmVeyrKp4hWNasOr48dUHmDzA2/yxwCZ/cEdw2Pa4WACBFdgzJI44O8YC0jbj2umgpx0s3/AEOaEfKWxX44h/7J4SP4A334uP8ANk+joT/1/wAqfAy/kQfdagfcN6EiAh4T2KDmAhz+nEP7OYfcnjP4B334uP8ANk+jqP8AX3KnwMv5EH3WrPcQ+gyK/wBGVz5QsniPb/8AvUv4+X1Idbe8D+qoPzEHoXWl6dP6jei/MNR6mke2MlpVBfziE38epJZsRMoLIMIpbFlyKMg4RZrsdgQNY5Iembz4vhpMQZsJiZR7xjmMKBv7Oc4rPdl3bbVjvGwK933RS1jkXjFGXo7RMT8wtWrGhqOgU0P8odo+2/J8vMffb9lxy7rfv+/EuQngcUuZli7USXEar8kR0ooqKMakk6ahVXSz6Od5xrPMqbrKGWfFEzsrYVEig1+XDJGfA9IU6NUsasq9rtNQmIvSpnDBkyYhN3ykzEEQ5GDgwynNDm9hLgWmXuZra6KBgklrboxUkgNQwg0JBFfiDp3wfIb26bmszkNvWFve2KyFDJDf3kihwFYqWW6I7QVlJHTRgevRe776Wx/fSj2mlZBYTvXLe2z+PWAR/YGltfVedQwtEiasbaZI5KU6cEykshMc2Qpu8UcRQDsEeKjsbeNxsbNvmbeBbiRoGi7LMVADMjVqAeI7FKU69IvNXltZ81NtR7cvLp7SBLtJ+2ihySkcqBaFl4Hva1BrVR1E6QLsr0Aq2oXXu7Lsb9lp7I11T1fNbBRsCyCRhGjelUVYFzwnbFatM7HUJEq7MkLjyZSFMfGUwmABEAAXfbnPjJZzP2WGkx0Mcd1cxxFhKxKh2CkgFeJFagdeuT95+0rA7Y2lktxw5e4llsbKadUMCgMY0LBSe9NASKE0NPgejR9e3c9B8o/o6xfKNbcUT3A/vMX4+L1JtKns/wD6rn/MT+ha6//Z"
+          />
+          <span class="landingTitle">Login required</span>
         </div>
+      </div>
+      <div class="loginLinks">
+        <div><a href="login">Guidewire Identity Hub</a></div>
+        <div><a href="#">Guidewire Community for Partners</a></div>
+        <div><a href="#">Guidewire Community for Customers</a></div>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
