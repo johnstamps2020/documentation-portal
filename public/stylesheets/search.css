@@ -1,48 +1,52 @@
 .resultList li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .resultList h2 {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
 .searchResults {
-    padding-top: 3rem;
+  padding-top: 3rem;
 }
 
 .pagination li {
-    padding: 6px;
+  padding: 6px;
 }
 
 .pagination li.disabled a,
 .pagination li.disabled {
-    color: gray !important;
+  color: gray !important;
 }
 
 .pagination button {
-    background: none!important;
+  background: none !important;
   border: none;
-  padding: 0!important;
+  padding: 0 !important;
   color: #069;
   text-decoration: underline;
   cursor: pointer;
 }
 
 .filterSearchResults h2 {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .checkboxRow {
-    font-size: 0.9rem;
-    line-height: 1rem;
-    margin-left: 6px;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  margin-left: 6px;
 }
 
 .checkboxLabel {
-    margin-left: 6px;
+  margin-left: 6px;
 }
 
 .docCount {
+  float: right;
+  color: gray;
+}
+
+.paginationWrapper {
     float: right;
-    color: gray;
 }

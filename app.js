@@ -20,7 +20,6 @@ const {
   BatchRecorder,
   jsonEncoder: { JSON_V2 },
 } = require('zipkin');
-const appLogger = require('./logger');
 const localServiceName = require(__dirname + '/package.json').name;
 
 const ctxImpl = new ExplicitContext();
@@ -36,8 +35,6 @@ const recorder = new BatchRecorder({
 const tracer = new Tracer({ ctxImpl, recorder, localServiceName });
 
 const port = process.env.PORT || 8081;
-const elasticClient = require('./elastic_search/elasticClient');
-const searchIndexName = 'gw-docs';
 const app = express();
 
 // session support is required to use ExpressOIDC
@@ -58,6 +55,8 @@ const oktaOIDC = new ExpressOIDC({
 });
 
 const gwLoginRouter = require('./routes/gw-login');
+const searchRouter = require('./routes/search');
+const unauthorizedRouter = require('./routes/unauthorized');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -136,180 +135,9 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 
-const getAllowedFilterValues = async function(fieldName, query) {
-  const requestBody = {
-    index: searchIndexName,
-    size: 0,
-    body: {
-      aggs: {
-        allowedForField: {
-          filter: query,
-          aggs: {
-            keywordFilter: { terms: { field: fieldName } },
-          },
-        },
-      },
-    },
-  };
+app.use('/unauthorized', unauthorizedRouter);
 
-  const result = await elasticClient.search(requestBody);
-
-  return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
-    bucket => {
-      return { label: bucket.key, doc_count: bucket.doc_count };
-    }
-  );
-};
-
-app.use('/unauthorized', (req, res) => {
-  res.render('unauthorized');
-});
-
-const runFilteredSearch = async (
-  searchPhrase,
-  urlParams,
-  startIndex,
-  resultsPerPage
-) => {
-  let queryBody = {
-    bool: {
-      must: {
-        multi_match: {
-          query: searchPhrase,
-          fields: ['title^3', 'body'],
-        },
-      },
-    },
-  };
-
-  const mappingResults = await elasticClient.indices.getMapping({
-    index: searchIndexName,
-  });
-
-  const mappings = mappingResults.body[searchIndexName].mappings.properties;
-
-  let selectedFilters = [];
-  for (const param in urlParams) {
-    if (mappings[param] && mappings[param].type == 'keyword') {
-      const values = decodeURI(urlParams[param]).split(',');
-      const queryFilter = {
-        terms: {
-          [param]: values,
-        },
-      };
-      selectedFilters.push(queryFilter);
-    }
-  }
-
-  if (selectedFilters.length > 0) {
-    queryBody.bool.filter = selectedFilters;
-  }
-
-  let filtersWithValues = [];
-  for (const key in mappings) {
-    if (mappings[key].type === 'keyword') {
-      const allowedFilterValues = await getAllowedFilterValues(key, queryBody);
-      const filterValuesWithStates = allowedFilterValues.map(value => {
-        const checked = decodeURI(urlParams[key])
-          .split(',')
-          .includes(value.label);
-        return {
-          label: value.label,
-          doc_count: value.doc_count,
-          checked: checked,
-        };
-      });
-      filtersWithValues.push({
-        name: key,
-        values: filterValuesWithStates,
-      });
-    }
-  }
-
-  const searchResults = await elasticClient.search({
-    index: searchIndexName,
-    from: startIndex,
-    size: resultsPerPage,
-    body: {
-      query: queryBody,
-    },
-  });
-
-  return {
-    numberOfHits: searchResults.body.hits.total.value,
-    hits: searchResults.body.hits.hits,
-    filters: filtersWithValues,
-  };
-};
-
-app.use('/search', async (req, res, next) => {
-  try {
-    const searchPhrase = decodeURI(req.query.q);
-    const resultsPerPage = 10;
-    const currentPage = req.query.page || 1;
-    const startIndex = resultsPerPage * (currentPage - 1);
-    const results = await runFilteredSearch(
-      searchPhrase,
-      req.query,
-      startIndex,
-      resultsPerPage
-    );
-
-    const filters = results.filters;
-
-    const totalNumOfResults = results.numberOfHits;
-
-    const resultsToDisplay = results.hits.map(result => {
-      const doc = result._source;
-      let docTags = [];
-      for (const key in doc) {
-        if (filters.some(filter => filter.name === key)) {
-          docTags.push(doc[key]);
-        }
-      }
-
-      const getBlurb = body => {
-        if (body) {
-          return body.substr(0, 300) + '...';
-        }
-        return 'DOCUMENT HAS NO CONTENT';
-      };
-
-      return {
-        ref: doc.id,
-        score: result._score,
-        title: doc.title,
-        body: getBlurb(doc.body),
-        docTags: docTags,
-      };
-    });
-
-    const retrievedTags = [];
-
-    resultsToDisplay.forEach(result => {
-      result.docTags.forEach(tag => {
-        if (!retrievedTags.includes(tag)) {
-          retrievedTags.push(tag);
-        }
-      });
-    });
-
-    res.render('search', {
-      query: searchPhrase,
-      currentPage: currentPage,
-      pages: Math.ceil(totalNumOfResults / resultsPerPage),
-      totalNumOfResults: totalNumOfResults,
-      searchResults: resultsToDisplay,
-      filters: filters,
-    });
-  } catch (err) {
-    appLogger.log({
-      level: 'error',
-      message: `Exception while running search: ${err}`,
-    });
-    next(err);
-  }
-});
+app.use('/search', searchRouter);
 
 app.use('/', docProxy);
 
