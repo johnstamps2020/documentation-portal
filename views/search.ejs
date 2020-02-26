@@ -36,8 +36,16 @@
         <div class="col-sm-9">
           <h1>Search results for "<%= query %>"</h1>
           <div class="resultsSubheading">
-            Displaying <%= searchResults.length %> out of <%= totalNumOfResults
-            %> results (page <%= currentPage %> of <%= pages %>)
+            <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
+            %> results (page <%= currentPage %> of <%= pages %>)</span>
+            <span class="paginationWrapper">
+              <span>View items:</span>
+              <select id="pagination">
+                <% ['10', '25', '50', '100'].forEach(rpp => { %>
+                  <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
+                <% }) %>
+              </select>
+            </span>
           </div>
           <div class="searchResults" id="searchResults">
             <% searchResults.forEach(result => { %>
@@ -59,7 +67,7 @@
             <li class="disabled"><a>First</a></li>
             <% } else { %>
             <li>
-              <button onclick="setGetParameter('page', '1')">First</button>
+              <button onclick="setUrlParam('page', '1')">First</button>
             </li>
             <% } %> <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
             4 : 1) %> <% if (i !== 1) { %>
@@ -69,7 +77,7 @@
             <li class="disabled"><%= i %></li>
             <% } else { %>
             <li>
-              <button onclick="setGetParameter('page', <%= i %>)">
+              <button onclick="setUrlParam('page', <%= i %>)">
                 <%= i %>
               </button>
             </li>
@@ -79,7 +87,7 @@
             <li class="disabled"><a>Last</a></li>
             <% } else { %>
             <li>
-              <button onclick="setGetParameter('page', <%= pages %>)">
+              <button onclick="setUrlParam('page', <%= pages %>)">
                 Last
               </button>
             </li>
@@ -90,7 +98,7 @@
       </div>
     </div>
     <script>
-      function setGetParameter(paramName, paramValue) {
+      function setUrlParam(paramName, paramValue) {
         const url = new URL(window.location.href);
         const queryString = url.search;
         const searchParams = new URLSearchParams(queryString);
@@ -123,7 +131,19 @@
           }
         });
 
-        setGetParameter(e.target.name, encodeURI(selectedValues.join(',')));
+        setUrlParam(e.target.name, encodeURI(selectedValues.join(',')));
+      }
+
+      const pagination = document.getElementById('pagination');
+      if (pagination) {
+        pagination.addEventListener('change', function(e) {
+          const selectTag = e.target;
+          console.log(selectTag);
+          if (selectTag.selectedIndex !== -1) {
+            const selectedValue = selectTag.options[selectTag.selectedIndex].value;
+            setUrlParam('pagination', selectedValue);
+          }
+        });
       }
 
       const allBoxes = document.getElementsByClassName('filterCheckbox');
@@ -136,7 +156,7 @@
       const searchButton = document.getElementById('searchButton');
       if (searchButton) {
         searchButton.addEventListener('click', function(event) {
-          setGetParameter(
+          setUrlParam(
             'q',
             encodeURI(document.getElementById('searchField').value)
           );

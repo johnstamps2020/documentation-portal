@@ -245,7 +245,10 @@ const runFilteredSearch = async (
 app.use('/search', async (req, res, next) => {
   try {
     const searchPhrase = decodeURI(req.query.q);
-    const resultsPerPage = 10;
+    let resultsPerPage = 10;
+    if (req.query.pagination) {
+      resultsPerPage = req.query.pagination;
+    }
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
     const results = await runFilteredSearch(
@@ -299,6 +302,7 @@ app.use('/search', async (req, res, next) => {
       currentPage: currentPage,
       pages: Math.ceil(totalNumOfResults / resultsPerPage),
       totalNumOfResults: totalNumOfResults,
+      resultsPerPage: resultsPerPage,
       searchResults: resultsToDisplay,
       filters: filters,
     });
