@@ -65,7 +65,7 @@ router.post(
     console.log(req.user);
     console.log('-----------------------------');
     console.log('Log in Callback Success');
-    res.redirect('/search');
+    res.redirect('/');
   }
 );
 
