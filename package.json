@@ -29,7 +29,8 @@
     "winston": "^3.2.1",
     "zipkin": "^0.19.1",
     "zipkin-instrumentation-express": "^0.19.1",
-    "zipkin-transport-http": "^0.19.1"
+    "zipkin-transport-http": "^0.19.1",
+    "body-parser": "^1.19.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"

@@ -31,11 +31,17 @@ const recorder = new BatchRecorder({
     jsonEncoder: JSON_V2,
   }),
 });
+const passport = require('passport');
+const saml = require('passport-saml');
 
 const tracer = new Tracer({ ctxImpl, recorder, localServiceName });
 
 const port = process.env.PORT || 8081;
 const app = express();
+
+var server = app.listen(4300, function() {
+  console.log('Listening on port %d', server.address().port);
+});
 
 // session support is required to use ExpressOIDC
 app.use(
