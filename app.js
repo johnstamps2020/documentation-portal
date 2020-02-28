@@ -31,8 +31,6 @@ const recorder = new BatchRecorder({
     jsonEncoder: JSON_V2,
   }),
 });
-const passport = require('passport');
-const saml = require('passport-saml');
 
 const tracer = new Tracer({ ctxImpl, recorder, localServiceName });
 

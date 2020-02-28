@@ -30,6 +30,13 @@ const partnersSamlStrategy = new saml.Strategy(
 );
 
 passport.use('partnersSamlStrategy', partnersSamlStrategy);
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
 router.use(passport.initialize({}));
 router.use(passport.session({}));
 
@@ -57,7 +64,8 @@ router.post(
     console.log('login call back dumps');
     console.log(req.user);
     console.log('-----------------------------');
-    res.send('Log in Callback Success');
+    console.log('Log in Callback Success');
+    res.redirect('/search');
   }
 );
 
