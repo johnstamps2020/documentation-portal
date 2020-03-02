@@ -41,6 +41,8 @@ const runFilteredSearch = async (
       must: {
         multi_match: {
           query: searchPhrase,
+          type: 'best_fields',
+          operator: 'and',
           fields: ['title^3', 'body'],
         },
       },
