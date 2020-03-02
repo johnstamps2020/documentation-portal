@@ -12,7 +12,7 @@ router.use(bodyParser.json());
 
 const partnersSamlStrategy = new saml.Strategy(
   {
-    callbackUrl: 'http://localhost/partners-login/callback',
+    path: '/partners-login/callback',
     entryPoint: 'http://localhost:8080/simplesaml/saml2/idp/SSOService.php',
     issuer: 'saml-poc',
     identifierFormat: null,
