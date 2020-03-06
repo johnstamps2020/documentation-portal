@@ -267,6 +267,7 @@ object Test : BuildType({
             name = "Test"
             scriptContent = """
                 set -e
+                export APP_BASE_URL=http://localhost:8081
                 npm install
                 npm test
             """.trimIndent()
