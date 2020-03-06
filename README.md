@@ -12,7 +12,6 @@
 |_|   \___/|_|   \__\__,_|_|
 ```
 
-# Documentation portal
 This is a simple Node.js app which enforces Okta authentication.
 
 ## Setup
