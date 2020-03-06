@@ -11,7 +11,7 @@ router.use(bodyParser.json());
 
 const customersSamlStrategy = new saml.Strategy(
   {
-    path: '/customers-login/callback',
+    callbackUrl: `${process.env.APP_BASE_URL}` + '/customers-login/callback',
     entryPoint: `${process.env.CUSTOMERS_LOGIN_URL}`,
     issuer: `${process.env.CUSTOMERS_LOGIN_ENTITY_ID}`,
     cert: `${process.env.CUSTOMERS_LOGIN_CERT}`,
