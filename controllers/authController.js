@@ -1,6 +1,8 @@
 require('dotenv').config();
 const { ExpressOIDC } = require('@okta/oidc-middleware');
 
+const loginGatewayRoute = '/gw-login';
+
 const oktaOIDC = new ExpressOIDC({
   issuer: `${process.env.OKTA_DOMAIN}`,
   client_id: `${process.env.OKTA_CLIENT_ID}`,
@@ -14,8 +16,8 @@ const authGateway = (req, res, next) => {
   if (req.isAuthenticated()) {
     next();
   } else {
-    res.redirect('/gw-login');
+    res.redirect(loginGatewayRoute);
   }
 };
 
-module.exports = { oktaOIDC, authGateway };
+module.exports = { oktaOIDC, authGateway, loginGatewayRoute };
