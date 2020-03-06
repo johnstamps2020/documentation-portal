@@ -50,3 +50,7 @@
 .paginationWrapper {
     float: right;
 }
+
+a {
+  color: var(--GW-COLOR-BRAND-1);
+}
