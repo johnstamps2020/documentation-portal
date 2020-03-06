@@ -15,7 +15,7 @@ const customersSamlStrategy = new saml.Strategy(
     entryPoint: `${process.env.CUSTOMERS_LOGIN_URL}`,
     issuer: `${process.env.CUSTOMERS_LOGIN_ENTITY_ID}`,
     cert: `${process.env.CUSTOMERS_LOGIN_CERT}`,
-    identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress',
+    identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
     validateInResponseTo: true,
   },
   function(profile, done) {
