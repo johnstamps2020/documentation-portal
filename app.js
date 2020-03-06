@@ -8,7 +8,6 @@ const sassMiddleware = require('node-sass-middleware');
 const proxy = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
 const session = require('express-session');
-const { ExpressOIDC } = require('@okta/oidc-middleware');
 const httpContext = require('express-http-context');
 const zipkinMiddleware = require('zipkin-instrumentation-express')
   .expressMiddleware;
@@ -46,14 +45,6 @@ app.use(
   })
 );
 
-const oktaOIDC = new ExpressOIDC({
-  issuer: `${process.env.OKTA_DOMAIN}`,
-  client_id: `${process.env.OKTA_CLIENT_ID}`,
-  client_secret: `${process.env.OKTA_CLIENT_SECRET}`,
-  appBaseUrl: `${process.env.APP_BASE_URL}`,
-  scope: 'openid profile',
-});
-
 const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
@@ -73,15 +64,11 @@ app.use('/gw-login', gwLoginRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
 
+const oktaOIDC = require('./controllers/authController').oktaOIDC;
+const authGateway = require('./controllers/authController').authGateway;
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oktaOIDC.router);
-app.use((req, res, next) => {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect('/gw-login');
-  }
-});
+app.use(authGateway);
 
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
