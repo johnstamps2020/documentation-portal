@@ -11,6 +11,6 @@ describe('OKTA authentication', () => {
     });
     const response = httpMocks.createResponse();
     unitUnderTest(request, response);
-    assert.equal(response.statusCode, 3032);
+    assert.equal(response.statusCode, 302);
   });
 });
