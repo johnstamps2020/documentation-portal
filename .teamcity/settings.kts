@@ -268,6 +268,7 @@ object Test : BuildType({
             scriptContent = """
                 set -e
                 export APP_BASE_URL=http://localhost:8081
+                export ELASTIC_SEARCH_URL=https://docsearch-doctools.dev.ccs.guidewire.net
                 npm install
                 npm test
             """.trimIndent()
