@@ -16,48 +16,61 @@ spec:
         iam.amazonaws.com/role: arn:aws:iam::710503867599:role/aws_gwre-ccs-prod_tenant_doctools_developer
     spec:
       containers:
-      - name: docportal
-        image: 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:${TAG_VERSION}
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8081
-        livenessProbe:
-          httpGet:
-            path: /alive
-            port: 8081
-          initialDelaySeconds: 60
-          periodSeconds: 45
-        readinessProbe:
-          httpGet:
-            path: /alive
-            port: 8081
-          initialDelaySeconds: 150
-          periodSeconds: 45
-        env:
-          - name: REFRESH_IMAGE
-            value: 'BUILD_TIME'
-          - name: OKTA_DOMAIN
-            value: ${OKTA_DOMAIN_PROD}
-          - name: OKTA_CLIENT_ID
-            value: ${OKTA_CLIENT_ID_PROD}
-          - name: OKTA_CLIENT_SECRET
-            value: ${OKTA_CLIENT_SECRET_PROD}
-          - name: APP_BASE_URL
-            value: https://docs.${DEPLOY_ENV}.service.guidewire.net
-          - name: SESSION_KEY
-            value: ${SESSION_KEY}
-          - name: ELASTIC_SEARCH_URL
-            value: http://docsearch-us-east-2.doctools:9200
-          - name: DOC_S3_URL
-            value: https://ditaot.internal.${DEPLOY_ENV}.service.guidewire.net
-          - name: ZIPKIN_URL
-            value: https://zipkin.internal.${DEPLOY_ENV}.service.guidewire.net/api/v2/spans
-        resources:
-          requests:
-            memory: "1Gi"
-            cpu: "1"
-          limits:
-            memory: "1Gi"
-            cpu: "1"
+        - name: docportal
+          image: 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:${TAG_VERSION}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          livenessProbe:
+            httpGet:
+              path: /alive
+              port: 8081
+            initialDelaySeconds: 60
+            periodSeconds: 45
+          readinessProbe:
+            httpGet:
+              path: /alive
+              port: 8081
+            initialDelaySeconds: 150
+            periodSeconds: 45
+          env:
+            - name: REFRESH_IMAGE
+              value: 'BUILD_TIME'
+            - name: OKTA_DOMAIN
+              value: ${OKTA_DOMAIN_PROD}
+            - name: OKTA_CLIENT_ID
+              value: ${OKTA_CLIENT_ID_PROD}
+            - name: OKTA_CLIENT_SECRET
+              value: ${OKTA_CLIENT_SECRET_PROD}
+            - name: APP_BASE_URL
+              value: https://docs.${DEPLOY_ENV}.service.guidewire.net
+            - name: SESSION_KEY
+              value: ${SESSION_KEY}
+            - name: ELASTIC_SEARCH_URL
+              value: http://docsearch-us-east-2.doctools:9200
+            - name: DOC_S3_URL
+              value: https://ditaot.internal.${DEPLOY_ENV}.service.guidewire.net
+            - name: ZIPKIN_URL
+              value: https://zipkin.internal.${DEPLOY_ENV}.service.guidewire.net/api/v2/spans
+            - name: PARTNERS_LOGIN_URL
+              value: ''
+            - name: PARTNERS_LOGIN_CERT
+              value: ''
+            - name: PARTNERS_LOGIN_ENTITY_ID
+              value: ''
+            - name: CUSTOMERS_LOGIN_URL
+              value: ''
+            - name: CUSTOMERS_LOGIN_CERT
+              value: ''
+            - name: CUSTOMERS_LOGIN_ENTITY_ID
+              value: ''
+
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
       imagePullSecrets:
         - name: artifactory-secret
