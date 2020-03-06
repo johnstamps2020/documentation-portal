@@ -22,18 +22,3 @@ gulp.task('default', () => {
     resolve();
   });
 });
-
-gulp.task('test', () => {
-  return new Promise((resolve, reject) => {
-    const testResults = gulp
-      .src('test/**/*.test.js', { read: false })
-      .pipe(mocha({ reporter: 'spec' }))
-      .on('error', () => {
-        console.log('TEST PIPELINE FAILED');
-        console.error.bind(console);
-        reject();
-      });
-    console.log(testResults);
-    resolve();
-  });
-});
