@@ -11,7 +11,7 @@ router.use(bodyParser.json());
 
 const partnersSamlStrategy = new saml.Strategy(
   {
-    path: '/partners-login/callback',
+    callbackUrl: `${process.env.APP_BASE_URL}` + '/partners-login/callback',
     entryPoint: `${process.env.PARTNERS_LOGIN_URL}`,
     issuer: `${process.env.PARTNERS_LOGIN_ENTITY_ID}`,
     cert: `${process.env.PARTNERS_LOGIN_CERT}`,
