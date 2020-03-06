@@ -12,7 +12,7 @@ const context = format(info => ({
     'X-B3-ParentSpanId': ns.get('x-b3-parentspanid'),
     'X-B3-SpanId': ns.get('x-b3-spanid'),
     'X-B3-TraceId': ns.get('x-b3-traceid'),
-    'X-B3-Sampled': `${ns.get('x-b3-sampled').value}`,
+    'X-B3-Sampled': `${ns.get('x-b3-sampled') ? ns.get('x-b3-sampled').value : undefined}`,
   },
 }));
 
