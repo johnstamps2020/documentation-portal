@@ -222,16 +222,17 @@ object Release : BuildType({
             name = "Bump And Tag Version"
             scriptContent = """
                 set -xe
-                cd server/
                 git config --global user.email "doctools@guidewire.com"
                 git config --global user.name "sys-doc"
                 git fetch --tags
+                cd server/
                 npm version %semver-scope%
+                cd ..
                 git push origin master
                 git push --tags
                 
                 export TAG_VERSION=${'$'}(git describe --tag)
-                docker build -t docportal .
+                docker build -t docportal ./server
                 docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
             """.trimIndent()
