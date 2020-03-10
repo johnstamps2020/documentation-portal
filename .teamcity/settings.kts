@@ -282,7 +282,7 @@ object Test : BuildType({
     triggers {
         vcs {
             triggerRules = """
-                "+:server/**"
+                +:server/**
                 -:user=doctools:**
             """.trimIndent()
         }
