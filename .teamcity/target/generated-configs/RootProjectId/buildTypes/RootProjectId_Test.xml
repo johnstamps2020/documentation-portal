@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Test</name>
+  <description />
+  <settings>
+    <options>
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_1" name="Test" type="simpleRunner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="artifactory.guidewire.com/devex-docker-dev/node" />
+          <param name="plugin.docker.pull.enabled" value="true" />
+          <param name="script.content"><![CDATA[set -e
+npm install
+npm test]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="SettingsRootId" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_1" type="vcsTrigger">
+        <parameters>
+          <param name="triggerRules" value="-:user=doctools:**" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="DockerSupport">
+        <parameters>
+          <param name="login2registry" value="PROJECT_EXT_155" />
+          <param name="loginCheckbox" value="on" />
+        </parameters>
+      </extension>
+      <extension id="BUILD_EXT_2" type="commit-status-publisher">
+        <parameters>
+          <param name="publisherId" value="atlassianStashPublisher" />
+          <param name="secure:stashPassword" value="credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab" />
+          <param name="stashBaseUrl" value="https://stash.guidewire.com" />
+          <param name="stashUsername" value="%env.ARTIFACTORY_USERNAME%" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+
