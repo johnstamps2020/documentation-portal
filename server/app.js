@@ -23,7 +23,7 @@ const localServiceName = require(__dirname + '/package.json').name;
 
 const ctxImpl = new ExplicitContext();
 const zipkinUrl = process.env.ZIPKIN_URL;
-console.log('ZipkinUrl: ' + zipkinUrl);
+console.log('Zipkin URL: ' + zipkinUrl);
 const recorder = new BatchRecorder({
   logger: new HttpLogger({
     endpoint: zipkinUrl,
