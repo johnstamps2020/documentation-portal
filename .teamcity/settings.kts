@@ -231,7 +231,7 @@ object Release : BuildType({
                 git push --tags
                 
                 export TAG_VERSION=${'$'}(git describe --tag)
-                docker build -t docportal ./server
+                docker build -t docportal .
                 docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
             """.trimIndent()
