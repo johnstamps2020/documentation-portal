@@ -227,11 +227,13 @@ object Release : BuildType({
                 git fetch --tags
 
                 cd server/
-                npm version %semver-scope%
+                export TAG_VERSION=${'$'}(npm version %semver-scope%)
+                git add .
+                git commit -m "push changes to ${'$'}{TAG_VERSION}"
+                git tag -a ${'$'}{TAG_VERSION} -m "create new %semver-scope% version ${'$'}{TAG_VERSION}"
                 git push origin master
                 git push --tags
                 
-                export TAG_VERSION=${'$'}(git describe --tag)
                 docker build -t docportal .
                 docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
