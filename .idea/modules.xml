@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/node-okta-container.iml" filepath="$PROJECT_DIR$/.idea/node-okta-container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.teamcity/DocumentationTools_Nodeoktacontainer_dsl.iml" filepath="$PROJECT_DIR$/.teamcity/DocumentationTools_Nodeoktacontainer_dsl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/apps.iml" filepath="$PROJECT_DIR$/apps/apps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
     </modules>
   </component>
 </project>

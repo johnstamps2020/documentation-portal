@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><toc xmlns:toc="http://www.oxygenxml.com/ns/webhelp/toc" xmlns="http://www.oxygenxml.com/ns/webhelp/toc" xmlns:xhtml="http://www.w3.org/1999/xhtml"><title><span xmlns="http://www.w3.org/1999/xhtml" class="booktitle">  <span class="ph mainbooktitle">Guidewire Cloud Platform for <span class="keyword">Developers</span></span>  </span></title><topicmeta>
+        <searchtitle class="- map/searchtitle ">Guidewire Cloud Platform Guide for <keyword audience="gw-dev ins-dev" class="- topic/keyword " keyref="audience">Developers</keyword></searchtitle>
+        <prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo>
+    </topicmeta><topic otherprops="" href="topics/c_guidewire-cloud-platform.html" data-id="c_ci_cd_environment" wh-toc-id="c_ci_cd_environment-d49e90"><title>Cloud Console Guide</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_ci_cd_environment"></resourceid><navtitle class="- topic/navtitle ">Cloud Console Guide</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Cloud Console Guide</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta><topic otherprops="" href="topics/c_initial-provisioning.html" data-id="c_base-provisioning" wh-toc-id="c_base-provisioning-d49e108"><title>Initial provisioning</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_base-provisioning"></resourceid><navtitle class="- topic/navtitle ">Initial provisioning</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Initial provisioning</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta><topic otherprops="" href="topics/c_provisioning-bitbucket.html" chunk="select-branch" data-id="c_provisioning_bitbucket" wh-toc-id="c_provisioning_bitbucket-d49e126"><title>Bitbucket</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_provisioning_bitbucket"></resourceid><navtitle class="- topic/navtitle ">Bitbucket</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Bitbucket</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta><topic otherprops="" href="topics/c_bitbucket-repository.html" data-id="c_provisioning_bitbucket_repository" wh-toc-id="c_provisioning_bitbucket_repository-d49e144"><title>Bitbucket repository</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_provisioning_bitbucket_repository"></resourceid><navtitle class="- topic/navtitle ">Bitbucket repository</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Bitbucket repository</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic></topic><topic otherprops="" href="topics/c_provisioning-cloud-console.html" data-id="c_provisioning_cloud_console" wh-toc-id="c_provisioning_cloud_console-d49e162"><title>Guidewire Cloud Console</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_provisioning_cloud_console"></resourceid><navtitle class="- topic/navtitle ">Guidewire Cloud Console</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Guidewire Cloud Console</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic></topic><topic otherprops="" href="topics/c_developer-workstation-setup.html" data-id="c_developer_workstation_setup" wh-toc-id="c_developer_workstation_setup-d49e180"><title>Developer workstation</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_developer_workstation_setup"></resourceid><navtitle class="- topic/navtitle ">Developer workstation</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Developer workstation</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta><topic otherprops="" href="topics/t_set-up-developer-workstation.html" data-id="t_set-up-developer-workstation" wh-toc-id="t_set-up-developer-workstation-d49e198"><title>Setting up the developer workstation</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_set-up-developer-workstation"></resourceid><navtitle class="- topic/navtitle ">Setting up the developer workstation</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Setting up the developer workstation</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic></topic><topic otherprops="" href="topics/c_projects.html" data-id="c_projects" wh-toc-id="c_projects-d49e216"><title>Accessing projects</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_projects"></resourceid><navtitle class="- topic/navtitle ">Accessing projects</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Accessing projects</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/c_provisioning-environments.html" data-id="c_adding_environments" wh-toc-id="c_adding_environments-d49e234"><title>Provisioning environments</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_adding_environments"></resourceid><navtitle class="- topic/navtitle ">Provisioning environments</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Provisioning environments</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta><topic otherprops="" href="topics/t_add-environment.html" data-id="t_add-environment" wh-toc-id="t_add-environment-d49e252"><title>Adding environments</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_add-environment"></resourceid><navtitle class="- topic/navtitle ">Adding environments</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Adding environments</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/t_delete-environment.html" data-id="t_delete_environment" wh-toc-id="t_delete_environment-d49e270"><title>Deleting environments</title><shortdesc><p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can delete an environment when you no longer need it. </p></shortdesc><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_delete_environment"></resourceid><navtitle class="- topic/navtitle ">Deleting environments</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Deleting environments</linktext><?ditaot genshortdesc?><shortdesc class="- map/shortdesc ">You can delete an environment when you no longer need it. </shortdesc><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic></topic><topic otherprops="" href="topics/t_accessing-bitbucket.html" data-id="t_accessing-bitbucket" wh-toc-id="t_accessing-bitbucket-d49e291"><title>Accessing Bitbucket</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_accessing-bitbucket"></resourceid><navtitle class="- topic/navtitle ">Accessing Bitbucket</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Accessing Bitbucket</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/c_accessing-teamcity.html" data-id="c_accessing-teamcity" wh-toc-id="c_accessing-teamcity-d49e309"><title>Accessing TeamCity</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_accessing-teamcity"></resourceid><navtitle class="- topic/navtitle ">Accessing TeamCity</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Accessing TeamCity</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/t_deploy-build-manual.html" data-id="t_deploy_build_manual" wh-toc-id="t_deploy_build_manual-d49e327"><title>Deploying builds</title><shortdesc><p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc"> You can manually deploy a build. </p></shortdesc><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_deploy_build_manual"></resourceid><navtitle class="- topic/navtitle ">Deploying builds</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Deploying builds</linktext><?ditaot genshortdesc?><shortdesc class="- map/shortdesc "> You can manually deploy a build. </shortdesc><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/c_accessing-deployed-applications.html" data-id="c_accessing-deployed-applications" wh-toc-id="c_accessing-deployed-applications-d49e348"><title>Accessing deployed applications</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_accessing-deployed-applications"></resourceid><navtitle class="- topic/navtitle ">Accessing deployed applications</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Accessing deployed applications</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/t_clear-deployment.html" data-id="t_clear_deployment" wh-toc-id="t_clear_deployment-d49e366"><title>Undeploying applications</title><shortdesc><p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can undeploy all applications in an environment. </p></shortdesc><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_clear_deployment"></resourceid><navtitle class="- topic/navtitle ">Undeploying applications</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Undeploying applications</linktext><?ditaot genshortdesc?><shortdesc class="- map/shortdesc ">You can undeploy all applications in an environment. </shortdesc><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/t_filter-logs.html" data-id="t_filter-logs" wh-toc-id="t_filter-logs-d49e387"><title>Querying logs</title><shortdesc><p xmlns="http://www.w3.org/1999/xhtml" class="shortdesc">You can access logs for deployed applications from Guidewire Cloud Console. In Sumo         Logic, you can view logs for a specific deployed application.</p></shortdesc><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_filter-logs"></resourceid><navtitle class="- topic/navtitle ">Querying logs</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Querying logs</linktext><?ditaot genshortdesc?><shortdesc class="- map/shortdesc ">You can access logs for deployed applications from Guidewire Cloud Console. In Sumo         Logic, you can view logs for a specific deployed application.</shortdesc><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/c_whitelisting-ips.html" data-id="c_whitelisting-ips" wh-toc-id="c_whitelisting-ips-d49e409"><title>Whitelisting IP addresses</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_whitelisting-ips"></resourceid><navtitle class="- topic/navtitle ">Whitelisting IP addresses</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Whitelisting IP addresses</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta><topic otherprops="" href="topics/t_whitelist-ips.html" data-id="whitelist-ips" wh-toc-id="whitelist-ips-d49e427"><title>Adding IP addresses to the whitelist</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="whitelist-ips"></resourceid><navtitle class="- topic/navtitle ">Adding IP addresses to the whitelist</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Adding IP addresses to the whitelist</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/t_remove-whitelist-ips.html" data-id="t_remove-whitelist-ips" wh-toc-id="t_remove-whitelist-ips-d49e445"><title>Removing IP addresses from the whitelist</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="t_remove-whitelist-ips"></resourceid><navtitle class="- topic/navtitle ">Removing IP addresses from the whitelist</navtitle><?ditaot gentext?><linktext class="- map/linktext ">Removing IP addresses from the whitelist</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic></topic></topic><topic otherprops="" href="topics/c_new-and-changed.html" data-id="concept_gdr_zxf_3kb" wh-toc-id="concept_gdr_zxf_3kb-d49e463"><title>New and Changed Guide</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="concept_gdr_zxf_3kb"></resourceid><navtitle class="- topic/navtitle ">New and Changed Guide</navtitle><?ditaot gentext?><linktext class="- map/linktext ">New and Changed Guide</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta><topic otherprops="" href="topics/c_new-and-changed-24-02-2020.html" data-id="c_new-and-changed-02-03-2020" wh-toc-id="c_new-and-changed-02-03-2020-d49e481"><title>New and Changed in Cloud Console 24/02/2020</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_new-and-changed-02-03-2020"></resourceid><navtitle class="- topic/navtitle ">New and Changed in Cloud Console 24/02/2020</navtitle><?ditaot gentext?><linktext class="- map/linktext ">New and Changed in Cloud Console 24/02/2020</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/c_new-and-changed-31-01-2020.html" data-id="c_new-and-changed-31-01-2020" wh-toc-id="c_new-and-changed-31-01-2020-d49e499"><title>New and Changed in Cloud Console 31/01/2020</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_new-and-changed-31-01-2020"></resourceid><navtitle class="- topic/navtitle ">New and Changed in Cloud Console 31/01/2020</navtitle><?ditaot gentext?><linktext class="- map/linktext ">New and Changed in Cloud Console 31/01/2020</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic><topic otherprops="" href="topics/c_new-and-changed-09-01-2020.html" data-id="c_new-and-changed-09-01-2020" wh-toc-id="c_new-and-changed-09-01-2020-d49e517"><title>New and Changed in Cloud Console 09/01/2020</title><topicmeta><resourceid class="- topic/resourceid " oxy-source="topic" appid="c_new-and-changed-09-01-2020"></resourceid><navtitle class="- topic/navtitle ">New and Changed in Cloud Console 09/01/2020</navtitle><?ditaot gentext?><linktext class="- map/linktext ">New and Changed in Cloud Console 09/01/2020</linktext><prodinfo class="- topic/prodinfo ">
+            <prodname class="- topic/prodname ">Guidewire Cloud Platform</prodname>
+            <vrmlist class="- topic/vrmlist ">
+                <vrm class="- topic/vrm " modification="0" release="0" version="1"></vrm>
+            </vrmlist>
+        </prodinfo></topicmeta></topic></topic></toc>

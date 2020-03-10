@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<header class="navbar navbar-default wh_header navbar-fixed-top" id="affix1" 
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:whc="http://www.oxygenxml.com/webhelp/components">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    <whc:include_html href="${webhelp.fragment.before.logo_and_title}"/>
+                    <!--
+                            This component will be generated when the next parameters are specified in the transformation scenario:
+                            'webhelp.logo.image' and 'webhelp.logo.image.target.url'.
+                            See: http://oxygenxml.com/doc/versions/17.1/ug-editor/#topics/dita_webhelp_output.html.
+                    -->
+                    <whc:webhelp_logo class="not-hidden-xs"/>
+                    <whc:webhelp_publication_title/>
+                    <whc:include_html href="${webhelp.fragment.after.logo_and_title}"/>
+                </div>
+                
+                <!-- The menu button for mobile devices is copied in the output only when the 'webhelp.show.top.menu' parameter is set to 'yes' -->
+                <button type="button" data-target="#wh_top_menu_and_indexterms_link" id="wh_menu_mobile_button" data-toggle="collapse" class="navbar-toggle collapsed wh_toggle_button"
+                    aria-expanded="false" aria-label="${i18n(toggle.menu)}">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                <whc:include_html href="${webhelp.fragment.before.top_menu}"/>
+				<whc:webhelp_top_menu />
+                <whc:webhelp_indexterms_link/>
+                <whc:include_html href="${webhelp.fragment.after.top_menu}"/>
+            </div>
+			<!-- <div class="publicationDropDown">This Publication</div> -->
+			<whc:webhelp_search_input/>
+			<!--<div id="userAccount">
+			<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span>
+            <!-\-<span id="accountInfo"></span>-\->            
+            <span class="dropdown" id="show_profile" style="display: none;">
+                <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fas fa-dharmachakra"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="avatar_userName"></li>
+                    <li class="divider" id="divider-admin"></li>
+                    <li><a href="#" id="bt_editProfile">Edit</a></li>
+                    <li><a href="#" id="bt_logOff">Logout</a></li>
+                </ul>
+            </span>
+            
+            </div>-->
+			<!-- <div class="Login">
+				<span>
+				<i class="fas fa-dharmachakra" id="bt_logIn"></i>
+			</span></div> -->
+        </div>
+    </div>
+</header>

@@ -1,0 +1,2665 @@
+/*
+ * ==============================================
+ * Skin for oXygen generated WebHelp.
+ * ==============================================
+ */
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Fonts.
+ *  
+ */
+@import "simplebar.min.css";
+@font-face {
+    font-family: 'arial';
+    src: url('../fonts/arial-webfont.woff2') format('woff2'), url('../fonts/arial-webfont.ttf');
+    font-style: normal;
+}
+@font-face {
+  font-family: 'Arial Narrow';
+  font-style: normal;
+  src: url(../fonts/ARIALN.TTF);
+}
+@font-face {
+  font-family: 'Consolas';
+  font-style: normal;
+  src: url(../fonts/consola.ttf);
+}
+
+@font-face {
+  font-family: 'Courier New';
+  font-style: normal;
+  src: url('../fonts/cour.woff2') format('woff2'), url(../fonts/cour.ttf);
+}
+@font-face {
+  font-family: 'helvetica';
+  font-style: normal;
+  src: url(../fonts/HELR45W.ttf);
+}
+@font-face {
+  font-family: 'Hiragino Kaku Gothic Pro';
+  font-style: normal;
+  src: url(../fonts/hiragino-kaku-gothic-pro-w3.otf) format('otf');
+}
+@font-face {
+  font-family: 'Hiragino Kaku Gothic ProN';
+  font-style: normal;
+  src: url(../fonts/hiragino-kaku-gothic-pro-w3.otf) format('otf');
+}
+@font-face {
+  font-family: 'Lucida Grande';
+  font-style: normal;
+  src: url(../fonts/LucidaGrande.ttf);
+}
+@font-face {
+  font-family: 'Lucida Sans Typewriter';
+  font-style: normal;
+  src: url(../fonts/LTYPE.TTF);
+}
+@font-face {
+  font-family: 'Lucida sans Unicode';
+  font-style: normal;
+  src: url(../fonts/lucidaSansUnicode.ttf);
+}
+@font-face {
+  font-family: 'Meiryo';
+  font-style: normal;
+  src: url(../fonts/meiryo.ttc) format('ttc');
+}
+@font-face {
+  font-family: 'MS Gothic';
+  font-style: normal;
+  src: url(../fonts/msgothic.ttc) format('ttc');
+}
+@font-face {
+  font-family: 'Osaka-mono';
+  font-style: normal;
+  src: url(../fonts/ARIALN.TTF);
+}
+@font-face {
+  font-family: 'Trebuchet MS';
+  font-style: normal;
+  src: url(../fonts/trebuc.ttf);
+}
+@font-face {
+  font-family: 'verdana';
+  font-style: normal;
+  src: url(../fonts/VERDANA.TTF);
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  src: url('../fonts/sourcesanspro-regular.woff2') format('woff2'), url(../fonts/SourceSansPro-Regular.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  font-style: normal;
+  src: url('../fonts/sourcesanspro-light-webfont.woff2') format('woff2'), url(../fonts/SourceSansPro-Light.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro ExtraLight';
+  font-style: normal;
+  src: url('../fonts/sourcesanspro-extralight-webfont.woff2') format('woff2'), url(../fonts/SourceSansPro-ExtraLight.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro Black';
+  font-style: normal;
+  src: url(../fonts/SourceSansPro-Black.ttf);
+}
+@font-face {
+  font-family: 'Source Sans Pro Semibold';
+  font-style: normal;
+  src: url('../fonts/sourcesanspro-semibold-webfont.woff2') format('woff2'), url(../fonts/SourceSansPro-SemiBold.ttf);
+}
+@font-face {
+  font-family: 'AvenirNext LT Pro Regular';
+  font-stretch: normal;
+  src: url('../fonts/AvenirNextLTPro-Regular.woff') format('woff'), url(../fonts/AvenirNextLTPro-Regular.ttf);
+}
+
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Starting to incorporate styling from UX Design team
+ *  
+ */
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  counter-reset: my-sec-counter; /* [JIRA] (DOCS-239) Web Help Feedback - Procedures are missing numbered steps */
+}
+html, body {
+  min-width: 100%;
+  /*! max-width:1440px; */
+  font-family: "Source Sans Pro", Arial;
+  font-size: 16px;
+}
+body.wh_main_page {
+  font-family: "Source Sans Pro", Arial;
+  margin: auto;
+  font-size: 16px;
+}
+div.container-fluid {
+  max-width: 98%;
+  margin: auto;
+  padding: unset;
+}
+.navbar.navbar-default.wh_header {
+  /*! border: 1px solid #00739d; */
+  width: unset;
+  /*! max-width: 1440px; */
+  margin: auto;
+  padding: unset;
+  background: #00739d;
+  position: sticky;/* DOCS-427 WebHelp upgrade bootstrap issues **/
+  position: -webkit-sticky;
+  top: 0px;/* DOCS-427 WebHelp upgrade bootstrap issues **/
+}
+.wh_header_flex_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #00739d;
+  max-height: 48px;
+  /*! max-width: 1440px; */
+  height: 48px;
+}
+.wh_logo {
+  display: inline-block;
+  vertical-align: baseline;
+  /*! margin-left: 15px; */
+}
+.wh_publication_title > a, .wh_publication_title > a:hover, .wh_publication_title > a:active {
+  font-family: 'AvenirNext LT Pro Regular';
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  text-align: left;
+  text-decoration: none;
+  margin: 1em 0px;
+  margin-left: 15px;
+}
+.wh_tools.hidden-print {
+  margin: auto;
+  /*! margin-left:-18px; */
+  /*! margin-right:-4px; */
+  width: inherit;
+  /*! max-width: 1440px; */
+  height: 48px;
+  /*  opacity: 0.71; */
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  background-color: rgba(74, 144, 226, 0.1);
+  z-index: 999;
+  /*! margin: 100%; */
+}
+div.container-fluid div.row {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+div.wh_right_tools.hidden-sm.hidden-xs {
+  margin-right: 0.6rem; /*DOCS-427 WebHelp upgrade bootstrap issues*/
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+.fas.fa-print.fa-1x {
+  /* background-image: unset; */
+  background-color: transparent;
+  border: unset;
+}
+.shareLink.share {
+  margin-right: .6em;
+  margin-left: .8em;
+  margin-top: 0.3em;
+}
+.downloadPDF.pdf {
+  margin-right: .6em;
+  margin-left: .8em;
+  margin-top: 0.5em;
+}
+#topic_navigation_links_header {
+  margin-right: 1em;
+}
+.wh_navigation_links {
+  border-right: 1px solid grey;
+  width:92px;
+  min-width:92px;
+  max-width:92px;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * End of styling from UX Design team
+ *  
+ */
+/*
+     * ------------------------------------------------------------------
+     *
+     * Fight with bootstrap
+     *
+     */
+.navbar-brand {
+  height: auto;
+}
+.navbar {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  min-height: 43px;
+}
+.wh_header {
+  background: transparent; /* [JIRA] (DOCS-263) Fix console errors */
+  padding-top: 0em;
+  padding-bottom: 0em;
+  color: #ffffff;
+}
+
+a {
+    color: #00739d;
+}
+
+a:active {
+    color: #004e6a
+}
+
+a:hover {
+    color: #006083;
+    text-decoration: underline;
+}
+
+.border-left {
+    border-left: none!important;
+}
+
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Menu
+ *  
+ */
+.wh_top_menu {
+  text-transform: capitalize;
+  background-color: #ECF2F9;
+  color: #fff;
+  margin: .4em 0;
+  font-size: 0.9em;
+  display: none;
+}
+.wh_top_menu a {
+  color: #000;
+  line-height: 2em;
+}
+.wh_top_menu a:hover {
+  color: #fff;
+}
+/* The submenus */
+.wh_top_menu ul ul {
+  background-color: #ECF2F9;
+  color: #fff;
+}
+.wh_top_menu ul li:hover {
+  background-color: #295193;
+  color: #fff;
+}
+.wh_top_menu ul ul li a:hover {
+  background: #295193;
+  color: #fff;
+}
+.wh_top_menu ul ul li {
+  border-top-color: #000;
+  width: 270px;
+  text-transform: capitalize;
+}
+.wh_top_menu ul ul li.has-children:after {}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Link to the index.
+ * 
+ */
+.wh_indexterms_link a span {
+  display: none;
+}
+.wh_indexterms_link a:before {
+  color: #fff;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Breadcrumb
+ *  
+ */
+/*Start DOCS-483-Change-breadcrumb-font-size-vertically-alignment*/
+.wh_breadcrumb {
+  margin-left: 0.2rem;/*DOCS-427 WebHelp upgrade bootstrap issues*/
+  width:90%;
+  max-width: 90%;
+  display: inline-block;
+  position: relative;
+  left: 8px;
+  top: 0%;
+  height: 48px;
+  display: table;
+  line-height:1.15;
+}
+.wh_breadcrumb ol {
+  font-size: .96em;
+  display: table-cell;
+  vertical-align: middle;
+}
+/*End DOCS-483-Change-breadcrumb-font-size-vertically-alignment*/
+.wh_breadcrumb ol a {
+  color: inherit;
+}
+.wh_breadcrumb ol .active {
+  color: #5185cb;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Tools and navigation
+ * 
+ */
+.wh_tools {
+  background-color: #ECF2F9;
+  margin: 1em 0 2em;
+}
+.wh_print_link, .wh_navigation_links, .wh_navigation_links .navnext, .wh_navigation_links .navprev {
+  margin-right: .6em;
+  margin-left: .6em;
+  margin-top: 0.3em;
+}
+.webhelp_expand_collapse_sections, .wh_hide_highlight, .wh_print_link button, .wh_navigation_links a, .wh_navigation_links a:hover, .wh_navigation_links a:active, .wh_navigation_links a:visited, .wh_print_link a:before, .wh_navigation_links a:before, .wh_navigation_links a:hover:before, .wh_navigation_links a:active:before, .wh_navigation_links a:visited:before {
+  /*color: #347bb7;*/
+  text-decoration: none;
+}
+.wh_navigation_links .navnext {
+  /*! margin-left:8px; */
+}
+.wh_topic_toc {
+  border-left: 1px solid #cfe2f5;
+  margin-left: 0;
+  padding-left: .5em;
+  margin-top: 1em;
+  overflow-wrap: break-word;
+  width: auto;
+  margin: unset;
+  padding: unset;
+  max-width: 246px;
+}
+
+.wh_booktitle {
+  margin-top: 2em;
+  font-size: 2.250em;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1em;
+  color: #1f1f1f;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Categories
+ * 
+ */
+.wh_categories {
+  column-count: 2;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.wh_category {
+  margin-bottom: 2em;
+  display: block;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.wh_category ul {
+  list-style: none;
+}
+
+.wh_category_header {
+  font-size: 20px;
+}
+
+.wh_category_header div {
+  display: inline-block;
+}
+
+.wh_category_header .fas,
+.wh_category_header .far {
+  margin-right: 0.5em;
+}
+
+.wh_category_header_text {
+  font-weight: 700;
+  color: #1f1f1f;
+  margin-bottom: 9px;
+}
+
+.wh_category_item {
+  margin-top: 0.5em;
+}
+
+div.wh_publication_toc form#searchForm {
+  display: none;
+}
+#searchForm {
+  position: relative;
+  /*! top: 50%; */
+  /*! left:50%; */
+  /*! transform: translate(-50%, -50%); */
+  max-width: 684px !important;
+}
+#searchForm > div {
+  position: relative;
+  margin: auto;
+  width: 98%;
+  max-width: 684px !important;
+}
+.wh_search_input {
+  display: inline-block;
+  /*! margin:auto; */
+  /*! position: fixed; *//* DOCS-427 WebHelp upgrade bootstrap issues **/
+  padding: 15px 0;
+  margin-left: 40px;
+  margin-right: 20px;
+  /*! height: 99px; */
+  /*! background-color: #384346; */
+  width: 350px;
+  right: 28px;
+}
+.wh_welcome:not(:empty) {
+  font-size: 2.9em;
+  margin: 0 auto;
+  font-family: arial, helvetica, verdana, "Lucida Grande", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", Meiryo;
+  padding: 0 0 0.5em 0;
+  text-shadow: none;
+  font-weight: 300;
+  line-height: 1.2em;
+}
+.wh_main_page .wh_search_input {
+  /*! background: #384346; */
+  /*! max-width: 1440px; */
+  /*! height: 99px; */
+  /*! margin: auto; */
+  padding: unset;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+.wh_search_textfield {
+  border-radius: 0px;
+  padding: 0 .5em;
+  /* position: relative; */
+  height: 2.4em;
+  padding-left: 48px;
+  HEIGHT: 35PX;
+}
+.wh_search_button {
+  color: #475e66;
+  height: 35px;
+  left: 0px;
+  background-color: #ffffff;
+  padding-left: 21px;
+  padding-top: 6px;
+  padding-bottom: 0.5em;
+}
+/* Search autocomplete icons */
+.search-autocomplete-proposal-type-history a, .search-autocomplete-proposal-type-history a:hover, .search-autocomplete-proposal-type-history a:visited, .search-autocomplete-proposal-type-history a:active {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.8em;
+}
+.ui-state-active .search-autocomplete-proposal-type-history a, .ui-state-active .search-autocomplete-proposal-type-history a:hover, .ui-state-active .search-autocomplete-proposal-type-history a:visited, .ui-state-active .search-autocomplete-proposal-type-history a:active {
+  color: #fff;
+}
+/* Active search page */
+#wh-search-pagination > ul > li.active > a {
+  background-color: #346ec5;
+}
+/* Start [JIRA] (DOCS-230) WebHelp Feedback - Two search bars display when viewing search results */
+.wh_search_results {
+	margin-top: 80px;
+}
+/* End [JIRA] (DOCS-230) WebHelp Feedback - Two search bars display when viewing search results */
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Publication TOC
+ * 
+ */
+ /* Start DOCS-227 WebHelp: Remove horizontal scrollbar from left-nav. */
+ .wh_publication_toc span.wh-tooltip{
+	display: none  !important;
+}
+/* End DOCS-227 WebHelp: Remove horizontal scrollbar from left-nav. */
+
+/* Start DOCS-257 WebHelp Feedback - odd text from breadcrumbs */
+.wh_breadcrumb span.wh-tooltip{
+	display: none  !important;
+}
+/* End DOCS-257 WebHelp Feedback - odd text from breadcrumbs */
+
+#wh_publication_toc {
+  padding-right: .15em;
+  height: calc(100vh - 142px);
+  height: -webkit-calc(100vh - 142px);
+  height: expression(100vh - 142px);
+  overflow-y: hidden;
+  overflow-x: hidden;
+  padding-left: 0.5em;
+  z-index: 0; 
+  font-size: 0.96em;
+  margin-left: 10px; 
+  display:block; 
+/*   position: sticky;
+  position: -webkit-sticky; 
+  top: 114px;*/
+}
+
+ /*Start DOCS-359 */
+.wh_publication_toc .wh-expand-btn::before {
+	display: inline-block;
+	/*! font-family: "Glyphicons Halflings", serif; *//* DOCS-427 WebHelp upgrade bootstrap issues **/
+	font-size: .6em;
+	font-weight: lighter;
+	font-style: normal;
+	width: 10px;
+	height: 10px;
+	margin-right: 4px;
+	border: 2px solid transparent;
+	opacity: 0.5;
+    margin-left: 10px;/* DOCS-427 WebHelp upgrade bootstrap issues **/
+}
+.wh_publication_toc .active > .topicref a {
+	font-weight: 600;
+	font-size:96%;
+}
+ /*End DOCS-359 */
+.wh_publication_toc {
+	position:fixed;
+	/* top:125px; */
+	height: calc(100vh - 142px);
+	height: -webkit-calc(100vh - 142px);
+	height: expression(100vh - 142px);
+	width:calc(100vw - 77%);
+	width: -webkit-calc(100vw - 77%);
+	width: expression(100vw - 77%);
+	max-width:361px;
+	padding-right: 20px;
+   border-right: 1px solid #cfe2f5;
+}
+.wh_publication_toc ul[aria-label="Table of Contents"]{
+	margin-top:8px;
+	margin-collapse:discard;
+	-webkit-margin-collapse:discard;
+}
+.wh_publication_toc .active > .topicref a {
+  color: #5185cb;
+}
+.wh_publication_toc span, .wh_publication_toc a, .wh_publication_toc a:visited {
+  color: black;
+}
+.wh_publication_toc a:hover {
+  text-decoration: underline;
+  color: red;
+}
+.wh_publication_toc ul li, #wh_topic_toc ul li {
+  margin-top: 5px;
+}
+.wh_publication_toc li{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.wh_publication_toc .topicref a *, .wh_breadcrumb *, .title *, #wh_topic_toc li.topic-item a code {
+  color: inherit !important;
+  background-color: transparent !important;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+div.collapse-toc {
+  float: left;
+  /*! width: 1%; */
+  height: calc(100vh - 60px);
+	height: -webkit-calc(100% - 60px);
+	height: -moz-calc(100% - 60px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  max-width: 16px;
+  padding: unset;
+  margin: unset;
+  margin-left: 0.2em;
+}
+.collapse-toc-button {
+  width: 15px;
+  height: 40px;
+  background-image: url("../images/angle-double-left.svg");
+  background-repeat: no-repeat;
+  margin-left: 0.5em;
+  position: fixed;
+  z-index: 99999;
+}
+
+.collapse-toc-button.collapsed {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+
+
+/* @media screen and (-webkit-min-device-pixel-ratio:0) {
+  div.collapse-toc span.button {
+	width: 10px;
+	height: 40px;
+	background-image: url("../images/circle.svg");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 10px;
+	margin-left: 0.2em;
+	position:fixed;
+	top:calc(100vh - 50%);
+	z-index:99999;
+}
+ */
+#myInput {
+  display: none;
+  width: 90%;
+  margin: 0 5% 0 5%;
+}
+#wh_topic_body {
+  margin-bottom: 5em;
+  width: 775px;
+  padding-left: 24px;
+}
+/* Publication TOC tooltip */
+.wh_breadcrumb .topicref .wh-tooltip, .wh_publication_toc .topicref .wh-tooltip {
+  background-color: #5185cb;
+  color: #fff;
+  font-size: 1.4rem;
+}
+.wh_breadcrumb .topicref .wh-tooltip a, .wh_publication_toc .topicref .wh-tooltip a {
+  color: #fff;
+  text-decoration: underline;
+}
+/* Tooltip arrow. */
+[data-tooltip-position="left"] .topicref .wh-tooltip::before {
+  border-left-color: #5185cb;
+}
+[data-tooltip-position="right"] .topicref .wh-tooltip::before {
+  border-right-color: #5185cb;
+}
+[data-tooltip-position="bottom"] .topicref .wh-tooltip::before {
+  border-bottom-color: #5185cb;
+}
+[data-tooltip-position="top"] .topicref .wh-tooltip::before {
+  border-top-color: #5185cb;
+}
+/*
+ * ------------------------------------------------------------------
+ *
+ * Footer
+ * 
+ */
+.wh_footer {
+  margin-top: auto;
+  background: #fff;
+  text-align: center;
+  -webkit-box-shadow: 0 -2px 2px rgba(0, 0, 0, .05);
+  box-shadow: 0 -2px 2px rgba(0, 0, 0, .05);
+  padding: 7px 15px;
+  /* position: relative; */
+  z-index: 10;
+  display:block;
+}
+.wh_footer p {
+  margin: unset;
+  font-size: .8em;
+}
+.footercopyright {
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+}
+.footerDate {
+  margin-left: 1em;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+}
+.footerlegal {
+  margin-left: 1em;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+}
+.wh_footer a {
+  color: #26A9E0;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Topic content
+ * 
+ */
+.wh_content_area {
+  /*! margin-top: 100px; *//* DOCS-427 WebHelp upgrade bootstrap issues **/
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1440px; /*DOCS-323-WebHelp-Feedback-Adjust-column-widths*/
+}
+.wh_topic_content, .wh_content_area {
+  color: #000000;
+  margin-bottom: 10px;
+}
+.wh_main_page .wh_content_area {
+  margin: auto;
+}
+.nested0 {
+  margin-top: 0em;
+}
+/* Start [JIRA] (DOCS-252) Title font is skinny and does not enough leading if it wraps */
+.wh_topic_content .title.topictitle1 {
+  font-family: 'Source Sans Pro Light';
+  font-size: 2.250em;
+  font-weight: bold; /*[JIRA] (DOCS-252) Title font is skinny and does not enough leading if it wraps */
+  font-style: normal;
+  font-stretch: normal;
+  /*! line-height: 0.89; */ /*[JIRA] (DOCS-252) Title font is skinny and does not enough leading if it wraps */
+  letter-spacing: normal;
+  color: #1f1f1f;
+}
+.topictitle2, .topictitle3, .topictitle4 {
+  font-family: 'Source Sans Pro Light';
+  font-weight: bold; /*[JIRA] (DOCS-252) Title font is skinny and does not enough leading if it wraps */
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.14;
+  letter-spacing: normal;
+  color: #1f1f1f;
+  margin-bottom: 0.4em;
+}
+/* End [JIRA] (DOCS-252) Title font is skinny and does not enough leading if it wraps */
+.topictitle2 {
+  font-size: 1.75em;
+}
+.topictitle3 {
+  font-size: 1.6em;
+}
+.topictitle4 {
+  font-size: 1.4em;
+  }
+.wh_related_links, .wh_child_links, .wh_topic_content .related-links {
+  border-top: 1px solid #ccc;
+  padding-top: 7px;
+  margin-top: 0;
+}
+.wh_related_links, .wh_topic_content .related-links {
+  padding: .5em 1.5em;
+}
+.wh_child_links {
+  padding: 1.5em;
+}
+/* Start [JIRA] (DOCS-311) Related topics" lists need better formatting */
+.related-links strong {
+  font-weight: 600;
+  color: #000000;
+  font-size: 20px;
+}
+/* End [JIRA] (DOCS-311) Related topics" lists need better formatting */
+
+/* Start [JIRA] (DOCS-311) Related topics" lists need better formatting */
+.related_link{
+  /*! margin-left: 10px; */
+  font-size: 1em;
+  margin-left: 1.1em;
+}
+/* End [JIRA] (DOCS-311) Related topics" lists need better formatting */
+.filepath {
+  color: inherit !important;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Search results.
+ * 
+ */
+.searchresult {
+  list-style: none;
+}
+.searchresult li a {
+  color: #346ec5;
+}
+.searchresult .shortdesclink {
+  margin: .3em .5em 0 0;
+}
+.wh_search_expression {
+  font-weight: bold;
+}
+/* Search relative path */
+.searchresult li .relativePath a {
+  color: #006621;
+  display: none;
+}
+/* search page search bar */
+body.wh_search_page div.wh_search_input.navbar-form.search {
+  margin-top: 4em;
+  border: 1px solid #ddd;
+  max-width: 60%;
+  padding: unset;
+  margin-bottom: 1em;
+  position: relative;
+  left: 30%;
+  right: 50%;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Index terms.
+ * 
+ */
+.wh_index_terms span.wh_first_letter {
+  color: #346ec5;
+}
+.wh_index_terms #indexList {
+  padding: 0;
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Tree TOC for the main page.
+ * 
+ */
+.wh_main_page_toc {}
+.wh_main_page_toc .expanded, .wh_main_page_toc .wh_main_page_toc_accordion_header:hover, .wh_main_page_toc > .wh_main_page_toc_entry:hover, .wh_main_page_toc_accordion_entries {
+  background-color: #F2F8FF;
+}
+/**
+ *
+ * Styles used for RTL pages
+ *
+ */
+html[dir='rtl'] .wh_top_menu ul li:hover > ul {
+  max-width: 270px;
+}
+.wh_top_menu ol, .wh_top_menu ul {
+  padding-left: 5px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.linklist {
+  margin-bottom: 0em;
+  list-style: none;
+  padding-left: 0px;
+  list-style-type: disc;/* [JIRA] (DOCS-311) Related topics" lists need better formatting */
+}
+
+nav #wh_topic_toc {
+  position: relative;
+  font-size: 14px;
+}
+.wh_topic_toc {
+  position: fixed;
+}
+.current_node {
+  font-weight: normal;
+  text-decoration: none;
+}
+.current_node:before {
+  font-weight: bolder;
+  text-decoration: none;
+  content: "|\00a0\00a0";
+  margin-left: -10px;
+}
+.wh_topic_toc .wh_topic_label {
+  font-weight: 600;
+  margin-left: 20px;
+  margin-bottom: 1em;
+}
+#wh_topic_toc ul li {
+  margin-left: 20px;
+}#wh_topic_toc {
+	display: block/* IE */ ;
+	font-size: 0.96em;
+}
+.sthead th {
+  border-bottom: 1px solid black;
+}
+.simpletable tbody .stentry {
+  border-bottom: 1px solid gray;
+}
+div.pdf-link {
+  width: 10%;
+  text-align: left;
+  float: left;
+}
+/*span.pdf-icon a img{
+    width: 25px;
+}*/
+.fa-users-cog {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/users-cog-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-cogs {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/cogs-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-book {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/book-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-code {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/code-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-cubes {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/cubes-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-object-group {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/object-group-regular.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-book-open {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/book-open-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-tools {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/tools-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-sticky-note {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/sticky-note-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-sticky-note {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/sticky-note-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-wrench {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/wrench-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-dharmachakra:hover {
+  cursor: pointer;
+  /* fill:#F40606; */
+}
+.fa-dharmachakra {
+  display: block;
+  text-indent: -9999px;
+  width: 1em;
+  height: 1em;
+  background: url('../images/dharmachakra.svg');
+  background-size: 1em 1em;
+}
+.fa-bars {
+  display: block;
+  text-indent: -9999px;
+  width: 1em;
+  height: 1em;
+  background: url('../images/bars.svg');
+  background-size: 1em 1em;
+}
+.fa-times {
+  display: block;
+  text-indent: -9999px;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/times.svg');
+  background-size: 1.0em 1.0em;
+}
+.fa-file-note {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/file-alt-regular.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-lightbulb {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/lightbulb-regular.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.fa-puzzle-piece {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/puzzle-piece-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
+.navprev a {
+  display: block;
+  text-indent: -9999px;
+  width: 1em;
+  height: 1em;
+  background: url('../images/chevron-left.svg');
+  background-size: 1em 1em;
+}
+.navnext a {
+  display: block;
+  text-indent: -9999px;
+  width: 1em;
+  height: 1em;
+  background: url('../images/chevron-right.svg');
+  background-size: 1em 1em;
+}
+.wh_hide_highlight::after{
+	display: block;
+	text-indent: -9999px;
+	width: 1em;
+	height: 1em;
+	background: url('../images/highlighter-solid.svg');
+	background-size: 1em 1em;
+	margin:.2em 0.4em 0em;
+}
+.fa-share-alt {
+  display: block;
+  text-indent: -9999px;
+  width: 1em;
+  height: 1em;
+  background: url('../images/share-alt.svg');
+  background-size: 1em 1em;
+}
+.fa-file-pdf {
+  /* start DOCS-357 */
+  display: inline-block;
+  margin-left: 6px;
+  /* end DOCS-357 */
+  text-indent: -9999px;
+  width: 1.250em;
+  height: 1.250em;
+  background: url('../images/file-pdf-regular.svg');
+  background-size: 1.250em 1.250em;
+}
+.fa-file-pdf:hover {
+  background: url('../images/file-pdf-regular-red.svg');
+  background-size: 1.250em 1.250em;
+}
+.fa-print {
+  display: block;
+  text-indent: -9999px;
+  width: 1em;
+  height: 1em;
+  background: url('../images/print-solid.svg');
+  background-size: 1em 1em;
+}
+.fa-print:hover {
+  cursor: pointer;
+}
+.fa-angle-double-left {
+	display: block;
+	text-indent: -9999px;
+	width: 1em;
+	height: 1em;
+	background: url('../images/angle-double-left-solid.svg');
+	background-size: 1em 1em;
+	float: right;
+	margin-right: 10px;
+}
+
+.whPrintLink.print {
+  margin-left: .8em;
+  margin-top: 0.3em;
+}
+.wh_breadcrumb li:not(:last-of-type):after {
+  content: ">";
+  padding: 0 5px;
+}
+#affix1 {
+  z-index: 2 !important;
+}
+#affix2 {
+  /*! margin-top: 48px; *//* DOCS-427 WebHelp upgrade bootstrap issues **/
+  z-index: 1 !important;
+  position: sticky;/* DOCS-427 WebHelp upgrade bootstrap issues **/
+  position: -webkit-sticky;
+  top: 48px;/* DOCS-427 WebHelp upgrade bootstrap issues **/
+  padding:0rem;
+}
+.fixWh_topic_bodyforToggle {
+  width: 96% !important;
+}
+/* Start DOCS-323 */
+.fixcollapse-tocforToggle {
+  justify-content:end;
+  padding-right:0px;
+  margin-right:0px;
+}
+/* End DOCS-323 */
+nav.wh_tools.hidden-print {
+  /* margin-left:-20px;margin-right:-4px; */
+  background-color: #f2f7fd !important;
+}
+html body.wh_main_page div#content.wh_content_area div.container-fluid.wh_content_flex_container {
+  width:96%;
+  max-width: 52.813em;
+  /* margin-top:60px; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+.openNav {
+  margin-left: 2.5em !important;
+  display: none;
+}
+.closeNav {
+  float: right;
+  margin: 0.6em;
+  display: none;
+}
+
+/* login modal customization */
+#loginData .modal-dialog {
+  height: 28.313em;
+  width: 29.000em;
+}
+.modal-content {
+  width: 100%;
+  border-radius: 0px;
+}
+.loginBanner {
+  margin: auto;
+  text-align: center;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+.login_logo {
+  display: block;
+  width: 15.000em;
+  height: 2.375em;
+  background: url('../images/guidewire_logo.svg');
+  background-size: 15.000em 2.375em;
+  /*! margin:auto; */
+  margin-top: 2em;
+}
+.login_bookTitle {
+  font-family: 'AvenirNext LT Pro Regular';
+  font-size: 1.250em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.25;
+  letter-spacing: 0.3px;
+  color: #00739d;
+  margin-top: 0.3em;
+  text-align: left;
+}
+.login_text {
+  font-family: 'Source Sans Pro';
+  font-size: 0.875em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #666666;
+  margin-top: 1em;
+  text-align: left;
+}
+.form-group {
+  width: 70%;
+  margin: auto;
+  font-family: 'Source Sans Pro';
+  font-size: 0.750em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #666666;
+}
+#loginFormData .form-group:nth-child(3) {
+  margin-top: 1em;
+}
+.loginAlternative {
+  width: 70% !important;
+  margin: auto;
+  text-align: right;
+}
+#link_lostPwd {
+  display: block;
+  font-family: 'Source Sans Pro';
+  font-size: 0.750em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #00abe9;
+  margin: auto;
+  float: none !important;
+  margin-top: .9em;
+  margin-bottom: 2em;
+}
+#loginFormData input {
+  margin: 0em;
+  /* border: unset ;*/
+  background-color: transparent; /* [JIRA] (DOCS-263) Fix console errors */
+  border-radius: unset;
+  border-bottom: 1px solid #dbdbdb;
+}
+.btn-default {
+  font-family: 'Source Sans Pro';
+  font-size: 0.8em;
+  text-shadow: none;
+  color: white;
+  width: 152px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: #00739d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00739d), to(#00739d));
+  background-image: -webkit-linear-gradient(top, #00739d 0, #00739d 100%);
+  background-image: -o-linear-gradient(top, #00739d 0, #00739d 100%);
+  background-image: linear-gradient(to bottom, #00739d 0, #00739d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-default:hover {
+  color: white;
+  background-color: #00739d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00739d), to(#00739d));
+  background-image: -webkit-linear-gradient(top, #00739d 0, #00739d 100%);
+  background-image: -o-linear-gradient(top, #00739d 0, #00739d 100%);
+  background-image: linear-gradient(to bottom, #00739d 0, #00739d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.close {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: #0e0000;
+  font-size: 30px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  font-weight: 100;
+  opacity: .4;
+  text-shadow: none;
+}
+
+#modal_img_large span.close.glyphicon.glyphicon-remove{
+  color:#ffffff;
+}
+.userAccount .dropdown .btn-default {
+  width: unset;
+  display: block;
+  text-indent: -9999px;
+  width: 20px;
+  height: 20px;
+  background: url('../images/dharmachakra.svg');
+  background-size: 20px 1.8em;
+  border: none;
+}
+.wh_search_input.navbar-form.wh_main_page_search {
+  display:block/* IE */ ; /*DOCS-427 WebHelp upgrade bootstrap issues **/
+  margin-left: unset;
+  margin-right: unset;
+  margin-left: 0px /* IE */ ;
+  margin-right: 0px /* IE */ ;
+  margin-top: 48px;
+  margin-top: 0px /* IE */ ;
+  width: auto;
+  height: 99px;
+  background-color: #384346;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px;
+  z-index: 2 !important;
+}
+.wh_main_page .wh_search_input {
+  display: none;
+}
+.wh_main_page_search #searchForm {
+  /*! margin-top: 24px !important; *//* DOCS-427 WebHelp upgrade bootstrap issues **/
+  /* margin:unset;
+	margin:auto;
+  position: absolute; */
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#bt_logIn {
+  margin-top: -4px;
+}
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+  background-color: #e8e8e8;
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+  background-image: -o-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e8e8e8));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f5f5f5), to(#e8e8e8));
+  background-image: linear-gradient(to bottom, #f5f5f5 0, #e8e8e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+  background-repeat: repeat-x;
+}
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+  body {
+    font-size: 14px;
+  }
+  .openNav {
+    display: none;
+  }
+  .wh_breadcrumb {
+    max-width: 800px;
+  }
+  .fa-print {
+    display: block;
+    text-indent: -9999px;
+    width: 1.2em;
+    height: 1.2em;
+    background: url('../images/print-solid.svg');
+    background-size: 1.2em 1.2em;
+  }
+  .fa-share-alt {
+    display: block;
+    text-indent: -9999px;
+    width: 1.2em;
+    height: 1.2em;
+    background: url('../images/share-alt.svg');
+    background-size: 1.2em 1.2em;
+  }
+  .navprev a {
+    display: block;
+    text-indent: -9999px;
+    width: 1.4em;
+    height: 1.4em;
+    background: url('../images/chevron-left.svg');
+    background-size: 1.4em 1.4em;
+  }
+  .navnext a {
+    display: block;
+    text-indent: -9999px;
+    width: 1.4em;
+    height: 1.4em;
+    background: url('../images/chevron-right.svg');
+    background-size: 1.4em 1.4em;
+  }
+  .wh_hide_highlight:after{
+	display: block;
+	text-indent: -9999px;
+	width: 1.4em;
+	height: 1.4em;
+	background: url('../images/highlighter-solid.svg');
+	background-size: 1.4em 1.4em;
+	margin:.2em 0.4em 0em;
+}
+  .fa-bars {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/bars.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .wh_content_area {
+    /*! margin-top: 100px; *//* Start DOCS-427 WebHelp upgrade bootstrap issues **/
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 950px) {
+  body {
+    /* background-color:#a7c0a7; */
+    font-size: 12.6px;
+  }
+  .SearchNav {
+    display: -webkit-flex; /* Safari */
+    display: -ms-flex: 1; /* IE 10 */
+    display: flex;
+  }
+  .openNav {
+    display: block;
+  }
+  .closeNav {
+    float: right;
+    margin: 0.3em;
+    display: block;
+    font-size: x-large;
+    margin-left: .6em;
+    margin-top: .6em;
+    margin-bottom: 10px;
+  }
+  #wh_publication_toc {
+    width: 0px;
+	height: 100vh;
+    overflow-x: hidden;
+    position: fixed;
+    top: 48px;
+    z-index: 12 !important;
+  }
+  .wh_publication_toc {
+    width: 0px;
+    overflow-x: hidden;
+    position: fixed;
+    top: 48px !important;
+	padding-right: 0px;
+	height: calc(100vh);
+	height: -webkit-calc(100vh);
+	height: expression(100vh);
+    left: 0px;
+  }
+  .wh_publication_toc ul li {
+    margin-top: 0em;
+  }
+  .wh_publication_toc ul ul {
+    padding-left: 0em !important;
+    padding-top: .6em !important;
+  }
+  .wh_publication_toc ul li {
+    border-top: solid 1px #d9dde1;
+    padding-top: 5px;
+    font-size: 14px;
+  }
+  .wh_publication_toc ul[aria-label="Table of Contents"] > li .title{
+	  color:rgba(31, 31, 31, 0.75);
+	  font-family: 'Source Sans Pro';
+	  font-weight:900;
+	  font-size:16px;
+  }
+  .wh_publication_toc ul[aria-label="Table of Contents"] > li li .title{
+	  color:#4a4a4a;
+	  font-weight:600;
+	  font-size:14px;
+  }
+  .wh_publication_toc ul[aria-label="Table of Contents"] > li li li .title{
+	  color:#4a4a4a;
+	  font-family: 'Source Sans Pro Semibold';
+	  font-weight:500;
+	  font-size:14px;
+	padding-left:10px;
+  }
+  .wh_publication_toc ul[aria-label="Table of Contents"] > li li li li .title{
+	  font-family: 'Source Sans Pro';
+	  font-weight:400;
+	  font-size:14px;
+	  padding-left:20px;
+  }
+  .wh_publication_toc ul[aria-label="Table of Contents"] > li li li li li .title{
+	 font-family: 'Source Sans Pro ExtraLight';
+	 font-weight:500;
+	 font-size:14px;
+	 padding-left:30px;
+  }
+   .wh_publication_toc ul[aria-label="Table of Contents"] > li li li li li li .title{
+	 font-weight:500;
+	 font-size:14px;
+	 padding-left:40px;
+  }
+  .wh_publication_toc .active > .topicref a {
+	color: #000000 !important;
+}
+  .wh_publication_toc ul[aria-label="Table of Contents"] > li:first-of-type {
+	  border-top:0px;
+}
+  .wh-expand-btn {
+	height: 21px;
+}
+.wh_publication_toc span[data-state="not-ready"] > .wh-expand-btn::before, .wh_publication_toc span[data-state="collapsed"] > .wh-expand-btn::before {
+	content: "q";
+	line-height: 17px;
+}
+  .wh_publication_toc .topicref {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-left: 0.6em;
+  }
+  .wh_publication_toc li.active span:first-child {
+    border-left: 0px;
+    margin-right: 0px;
+  }
+  .addNavSide {
+    border-left: solid 4px #00739d;
+  }
+  .wh_publication_toc .wh-expand-btn::before {
+    display: inline-block;
+    /* font-family: "Glyphicons Halflings", serif; */
+    font-size: 1.6em;
+    font-weight: lighter;
+    font-style: normal;
+    width: 12px;
+    height: 12px;
+    margin-right: 1.2em;
+    border: 2px solid transparent;
+    opacity: 0.5;
+    color: #979797;
+  }
+  div.wh_header_flex_container div.wh_search_input {
+    display: none;
+  }
+  .collapse-toc-button {
+    display: none !important;
+  }
+  #userAccount, .collapse-toc {
+    display: none;
+  }
+  .fa-print {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/print-solid.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .fa-share-alt {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/share-alt.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .navprev a {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/chevron-left.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .navnext a {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/chevron-right.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .wh_hide_highlight::after{
+	display: block;
+	text-indent: -9999px;
+	width: 1.6em;
+	height: 1.6em;
+	background: url('../images/highlighter-solid.svg');
+	background-size: 1.6em 1.6em;
+	margin:.2em 0.4em 0em;
+}
+  .fa-bars {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/bars.svg');
+    background-size: 1.6em 1.6em;
+    margin-top: 1.2em;
+  }
+  .wh_breadcrumb {
+    display: none;
+  }
+  .fixWh_topic_bodyforToggle {
+    display: block;
+    width: 322px !important;
+    background-color: #ffffff;
+  }
+  .fixWh_topic_bodyforToggle {
+    width: auto;
+  }
+  div.wh_right_tools.hidden-sm.hidden-xs {
+    margin-right: 2.0em;
+    display: -webkit-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+  }
+  #topic_navigation_links_header {
+    margin-right: 0em;
+  }
+  .wh_navigation_links {
+    border-right: 0px solid grey;
+  }
+  nav#wh_publication_toc.col-lg-3.col-md-3.col-sm-3.hidden-xs {
+    display: block !important;
+  }
+  .wh_content_area {
+    /*margin-top: 100px; *//* Start DOCS-427 WebHelp upgrade bootstrap issues **/
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  div.wh_publication_toc form#searchForm {
+    display: block;
+    border: solid 1px #979797;
+    background-color: #f6f6f7;
+    width: 75%;
+    max-width: 241px;
+    height: auto;
+    margin-left: 23px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wh_search_button {
+    padding: 0 .5em;
+    color: #475e66;
+    height: 35PX;
+    left: 0px;
+    background-color: #ffffff;
+    /* padding-left: 21px; */
+    /*! padding-top: 6px; */
+    font-size: 16px;
+    padding-left: unset;
+  }
+  .wh_search_textfield {
+    border-radius: 0px;
+    padding: 0 .5em;
+    /* position: relative; */
+    height: 2.4em;
+    padding-left: 35px;
+    HEIGHT: 35PX;
+  }
+  .col-lg-2{
+	  width:auto;
+  }
+}
+@media only screen and (max-width : 768px) {
+	.wh_logo_and_publication_title_container {
+		height: 48px;
+		margin-left:1em;
+	}
+	.wh_search_button {
+        display: block;
+    }
+	body.wh_search_page div.wh_search_input.navbar-form.search {
+		margin-top:5em;
+		left:15%;
+		right:25%;
+	}
+	.wh_booktitle {
+  text-align: center;
+}
+.wh_categories {
+	column-count: 1;
+}
+  body {
+    /* background-color:#a7c0a7; */
+    font-size: 12.6px;
+  }
+  .openNav {
+    display: block;
+  }
+  .closeNav {
+    float: right;
+    margin: 0.3em;
+    display: block;
+    font-size: x-large;
+    margin-left: .6em;
+    margin-top: .6em;
+    margin-bottom: 10px;
+  }
+  .wh_publication_toc, #wh_publication_toc {
+    width: 0px;
+    overflow-x: hidden;
+    position: fixed;
+    top: 48px;
+  }
+  .wh_publication_toc ul li {
+    margin-top: 0em;
+  }
+  .wh_publication_toc ul ul {
+    padding-left: 0em !important;
+    padding-top: .6em !important;
+  }
+  .wh_publication_toc ul li {
+    border-top: solid 1px #d9dde1;
+    padding-top: 4px;
+  }
+  .wh_publication_toc .topicref {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-left: 0.6em;
+  }
+  .wh_publication_toc li.active span:first-child {
+    border-left: 0px;
+    margin-right: 0px;
+  }
+  .wh_publication_toc .wh-expand-btn::before {
+    display: inline-block;
+    /* font-family: "Glyphicons Halflings", serif; */
+    font-size: 1.2em;
+    font-weight: lighter;
+    font-style: normal;
+    width: 12px;
+    height: 12px;
+    margin-right: 1.2em;
+    border: 2px solid transparent;
+    opacity: 0.5;
+    color: #979797;
+  }
+  div.wh_header_flex_container div.wh_search_input {
+    display: none;
+  }
+  .collapse-toc-button {
+    display: none;
+  }
+  #userAccount, .collapse-toc {
+    display: none;
+  }
+  .fa-print {
+    display: none;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/print-solid.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .fa-share-alt {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/share-alt.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .navprev a {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/chevron-left.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .navnext a {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/chevron-right.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .wh_hide_highlight::after{
+	display: block;
+	text-indent: -9999px;
+	width: 1.6em;
+	height: 1.6em;
+	background: url('../images/highlighter-solid.svg');
+	background-size: 1.6em 1.6em;
+	margin:.2em 0.4em 0em;
+}
+  .fa-bars {
+    display: block;
+    text-indent: -9999px;
+    width: 1.6em;
+    height: 1.6em;
+    background: url('../images/bars.svg');
+    background-size: 1.6em 1.6em;
+  }
+  .wh_breadcrumb {
+    display: none;
+  }
+  .fixWh_topic_bodyforToggle {
+    display: block;
+    width: 322px !important;
+    background-color: #ffffff;
+  }
+  .fixWh_topic_bodyforToggle {
+    width: auto;
+  }
+  .wh_content_area {
+    /* margin-top: 100px; *//* Start DOCS-427 WebHelp upgrade bootstrap issues **/
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  div.wh_publication_toc form#searchForm {
+    display: block;
+    border: solid 1px #979797;
+    background-color: #f6f6f7;
+    width: 75%;
+    max-width: 241px;
+    height: auto;
+    margin-left: 23px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+	body.wh_search_page div.wh_search_input.navbar-form.search {
+		left:10%;
+		right:15%;
+	}
+}
+.demo1 {
+  width: 250px;
+  height: 500px;
+  font-size: 10px;
+}
+/* Search result CSS */
+#results {
+  max-width: 90%;
+}
+.searchresult li[id^=foundResult] {
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 40px;
+  position: relative;
+}
+/* .searchItemAdditionalData{
+	display:none;
+} */
+.wh-search-pagination {
+  margin-bottom: 5em;
+}
+/* Start DOCS-311 Related topics" lists need better formatting */
+p.seealso {
+  font-size:20px;
+  font-weight: 600;
+  margin-bottom:0px;
+}
+p.seealso ~ ul.ul{
+	padding-left:18px;
+}
+li.li[seealso-li="yes"] {
+	margin-left:1.1em;
+	/* text-decoration:underline dotted #00739d; */
+	margin:unset;
+	padding:unset;
+	line-height: 1.42857143;
+}
+li.li[seealso-li="yes"]::marker{
+	font-size:0.9em;
+}
+/* End DOCS-311 Related topics" lists need better formatting */
+table.outputClassTable {
+  margin: unset;
+  margin-left: 20px;
+  /*! margin-top:0.6em; */
+  -webkit-margin-start: 5px;
+  margin-top: 0px;
+  margin-bottom: inherit;
+}
+table.outputClassTable tbody td, table.outputClassTable tbody td li.li {
+  /*! padding-top: 0px; */
+  /*! padding-bottom: 0px; */
+  /*! margin-top:0.25em; */
+  margin-bottom: 0.35em;
+  vertical-align: top;
+  -ms-wrap-margin: 0px;
+}
+table.outputClassTable tbody td, table.outputClassTable tbody td li.li * {
+  -ms-wrap-margin: 0px;
+  -webkit-margin-start: -4px;
+}
+table.outputClassTable tr:last-child td {
+  padding-bottom: 0.3em !important;
+}
+table.outputClassTable {
+  margin-left: 1em;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+table.outputClassTable tr {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  line-height: 10px;
+  padding: 0px;
+}
+table.outputClassTable td {
+  vertical-align: top;
+  padding: 2px 2px;
+}
+table.outputClassTable .sli {
+  list-style-type: none;
+  padding: 3px 5px;
+}
+.simpletable-container {
+  margin: 0em auto;
+}
+.stepexpand {
+  margin-bottom: .1em;
+  margin-top: .1em;
+  padding-left: 10px;
+}
+.li.substep.substepexpand {
+	padding-left: 10px;
+}
+.substepexpand {
+  margin-bottom: .1em;
+  margin-top: .1em;
+}
+.ol.substeps {
+  margin-bottom: 1em;
+}
+.li.substep {
+	padding-left: 10px;
+}
+ul .li::marker {
+	font-size: 10px;
+}
+.li {
+	padding-left: 10px;
+    padding-bottom: 0.5em;
+}
+
+/*  MCG: DOCS-285 */
+.li.stepsection {
+    font-weight:bold;
+    display:block;
+    padding-left:25px;
+    margin-top:-16px
+}
+
+/* MCG Add margin-top and margin-bottom. Remove border-left and border-right */
+table {
+  border-collapse: collapse;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  border-left: none;
+  border-right: none;
+}
+th {
+  border-top: .5pt solid;
+  border-bottom: .5pt solid;
+  border-right: 0px;
+  border-left: 0px;
+  font-family: Arial;
+  font-size: 1em;
+  text-align: left;
+}
+/* MCG increase space between adjacent tables */
+div.tablenoborder + div.tablenoborder {
+  margin-top: 2em;
+}
+.choicetable .p:first-child {
+  margin-top: 0px !important;
+}
+/* MCG Add margin-top to choicetable */
+.choicetable {
+  margin-top: .5em;
+}
+td > .p:first-child {
+  margin-top: 0px !important;
+}
+td > ul:first-child {
+  margin-top: 0px !important;
+}
+td > ol:first-child {
+  margin-top: 0px !important;
+}
+/* MCG don't set margin below last paragraph or list in a table cell. Let cell padding handle that.*/
+td > .p:last-child {
+  margin-bottom: 0px !important;
+}
+td > ul:last-child {
+  margin-bottom: 0px !important;
+}
+td > ol:last-child {
+  margin-bottom: 0px !important;
+}
+/* Start DOCS-333-Table-contents-should-be-clearly-distinct*/
+table{
+	border-bottom: 1px solid #000000;
+	margin-bottom: 2em !important;
+}
+/* End DOCS-333-Table-contents-should-be-clearly-distinct*/
+.ph.yes-in-table {
+  color: orange;
+  font-size: 2em;
+}
+.note {
+  padding: 8px 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 15px auto;
+}
+/*Start DOCS-359 */
+.border-left:before {
+display:block;
+position: absolute;
+	left: 4px;
+  font-weight: bolder;
+  text-decoration: none;
+  content: " ";
+  margin-left: -4px;
+  color: #00739d;
+  font-family: Source Sans Pro Black;
+  font-size: larger;
+}
+/*End DOCS-359 */
+/*
+ * ------------------------------------------------------------------
+ *  
+ *  
+ *  Updated Classes
+ *  
+ */
+.collapse-toc-button {
+  display: block;
+	margin-top: calc(100vh/2 - 60px);
+	margin-top: -webkit-calc(100vh/2 - 60px);
+	margin-top: -moz-calc(100vh/2 - 60px);
+}
+
+
+
+@media only screen and (max-width : 951px) {
+	#textToSearch {
+		padding-left:44px !important;
+	}
+	
+	.border-left:before {
+		display:none;
+	}
+}
+
+@media only screen and (max-width : 575px) {
+	.container-fluid .wh_content_area .justify-content-lg-end{
+		flex-wrap:initial;
+	}
+}
+@media only screen and (max-width : 480px) {
+
+	
+	
+	div.wh_right_tools.hidden-sm.hidden-xs {
+		margin-right:3.5em;
+	}
+}
+
+
+/*
+	 * ------------------------------------------------------------------
+	 *  
+	 * Firefox
+	 *  
+	 */
+@-moz-document url-prefix() {
+  .collapse-toc-button {
+    margin-top: 0;
+  }
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ *  
+ *  Safari
+ *  
+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  /* Main page */ ::i-block-chrome, .wh_logo_and_publication_title_container {
+    position: absolute;
+    left: 20px;
+    top: -4px;
+  }
+  ::i-block-chrome, .wh_logo {
+    width: 24px;
+    margin-right: -12px;
+    position: relative;
+    top: -5px;
+  }
+  ::i-block-chrome, .wh_publication_title {
+    position: relative;
+    top: -2px;
+  }
+  ::i-block-chrome, .wh_search_input.navbar-form.wh_main_page_search {
+    display: block;
+    padding-bottom: 90px;
+    padding-right: 47%;
+    width: 100%;
+    position: relative;
+    top: 42px;
+    left: 0px;
+    z-index: 1 !important;
+  }
+  ::i-block-chrome, .wh_booktitle {
+    position: relative;
+    top: 140px;
+  }
+  /* wh_topic_page */ ::i-block-chrome, .wh_search_input {
+    display: inline-block;
+    position: fixed;
+    right: 30px;
+    top: -11px;
+  }
+  ::i-block-chrome, .openNav {
+    padding-top: 14px;
+  }
+  ::i-block-chrome, div.wh_right_tools.hidden-sm.hidden-xs {
+    margin-right: 2.0em;
+    display: block;
+    text-align: center;
+    height: 100%;
+  }
+  ::i-block-chrome, .shareLink.share {
+    display: inline-block;
+  }
+  ::i-block-chrome, .whPrintLink.print {
+    display: inline-block;
+  }
+  ::i-block-chrome, .fa-dharmachakra {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  ::i-block-chrome, .wh_breadcrumb {
+    margin-top: 4px;
+  }
+  .collapse-toc-button {
+    display: block;
+	height: 40px;
+   /*  margin-top: 200px; */
+  }
+}
+/*
+ * ------------------------------------------------------------------
+ *  
+ * IE10&11
+ *  
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	#affix1{
+	display: block;
+    width: 100%;
+	position:fixed;
+    left: 0px;
+    z-index: 1 !important;
+	}
+	.wh_logo_and_publication_title_container{
+		margin-left:-30px;
+	}
+	#affix2{
+	display: block;
+    width: 100%;
+	position:fixed;
+    left: 20px;
+    z-index: 1 !important;
+	}
+	.justify-content-lg-end{
+		display:flex;
+		-ms-flex-wrap:nowrap;
+		flex-wrap:nowrap;
+	}
+  .WH_HEADER_FLEX_CONTAINER #SEARCHFORM {
+    TOP: -2.16EM;
+    WIDTH: 300PX;
+  }
+  .WH_SEARCH_TEXTFIELD {
+    HEIGHT: 35PX;
+    PADDING-LEFT: 44PX;
+  }
+  .WH_SEARCH_BUTTON {
+    HEIGHT: 35PX;
+    PADDING-LEFT: 21PX;
+  }
+  /* ADDED CLASSES */
+  .wh_search_input.navbar-form.wh_main_page_search {
+    display: block;
+    /* padding-bottom: 55px; */
+    width: 100%;
+    /* position: relative; */
+    top: 48px;
+    left: 0px;
+    z-index: 1 !important;
+  }
+  .wh_search_input {
+    display: inline-block;
+    position: fixed;
+    right: 30px;
+    top: -8px;
+  }
+  .wh_search_textfield {
+    color: #999999;
+  }
+  .openNav {
+    padding-top: 14px;
+  }
+  div.wh_right_tools.hidden-sm.hidden-xs {
+   /*  margin-right: 2.0em;
+    display: block; */
+    text-align: center;
+    height: 100%;
+  }
+  .shareLink.share {
+    display: inline-block;
+  }
+  .whPrintLink.print {
+    display: inline-block;
+  }
+  .fa-dharmachakra {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .wh_breadcrumb {
+    margin-top: 4px;
+  }
+  .collapse-toc-button {
+    display: block;
+	height: 40px;
+    /* margin-top: 200px; */
+  }
+  /* ADDED CLASSES */
+  .wh_content_area{
+	 margin-top:100px !important; 
+  }
+  #content{
+	 margin-top:138px !important; 
+  }
+  .wh_publication_toc .topicref {
+    display: flex;
+    align-items: flex-start;
+}
+.fas.fa-print.fa-1x{
+	border:0px;
+}
+}
+table, caption, .wh_expand_btn {
+  margin-top: 0px;
+}
+/* Start [JIRA] (DOCS-310) cmdname showing up as body font, not fixed-width   */
+.parmname,.cmdname, code {
+	font-weight: normal;
+	font-family: monospace;
+	background: transparent; /*[JIRA] (DOCS-263) Fix console errors */
+	font-size: 90%;
+	padding: unset;
+} 
+
+code {
+  font-weight: normal;
+  font-family: monospace;
+  background: transparent; /* [JIRA] (DOCS-263) Fix console errors */
+  font-size: 90%;
+  padding: unset;
+}
+/* Start [JIRA] (DOCS-310) cmdname showing up as body font, not fixed-width   */
+.article ul {
+  list-style: none;
+  padding-left: 10px;
+}
+.article ul li {
+  position: relative;
+  padding-left: px;
+}
+.article ul li:before {
+  content: '•';
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+.article ul p {
+  margin-bottom: 0;
+}
+.article ul code {
+  margin: 8px 0 6px;
+}
+
+.article ul ul {
+  margin-top: 0px
+}
+.article ul ul li:before {
+  content: '⁃';
+}
+.article ol {
+  list-style: none;
+  padding-left: 10px;
+  counter-reset: ol-section;
+}
+.article ol li {
+  position: relative;
+  padding-left: 25px;
+}
+.article ol > li:before {
+  counter-increment: ol-section;
+  content: counters(ol-section, ".") ".";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.article ol code {
+  margin-top: 7px;
+}
+.article ol ul {
+  margin-top: 0px;
+}
+.article ol ul li:before {
+  content: '⁃';
+}
+.article ol ol {
+  list-style: none;
+  counter-reset: ol-chapter;
+}
+.article ol ol li:before {
+  counter-increment: ol-chapter;
+  content: counter(ol-chapter, lower-alpha) '.';
+}
+.article ol table, .article ul table {
+  margin: 11px 0 25px;
+}
+.article ol img, .article ul img {
+  margin: 8px 0 15px;
+}
+.article ol ul li:before {
+  content: '⁃';
+}
+.article ol ol {
+  list-style: none;
+  counter-reset: ol-chapter;
+}
+.article ol ol li:before {
+  counter-increment: ol-chapter;
+  content: counter(ol-chapter, lower-alpha) '.';
+}
+.article ol:not[start] {
+  counter-reset: ol-section;
+}
+.article ol[start] {
+  counter-reset: unset;
+}
+/* End [JIRA] (DOCS-239) Web Help Feedback - Procedures are missing numbered steps */
+
+#rightDiv {
+  display: none;
+}
+.ui-resizable-e {
+  cursor: e-resize;
+  width: 11px;
+  right: -5px;
+  top: 0;
+  height: 100%;
+}
+.ui-resizable-handle {
+  font-size: 14px;
+  display: block;
+  -ms-touch-action: none;
+  touch-action: none;
+  z-index: 999 !important;
+  right: .21em;
+}
+kbd {
+  padding: unset;
+  font-family: monospace;
+  font-size: 90%;
+  color: black;
+  background-color: transparent;
+  border-radius: 0px;
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+}
+code, kbd, pre, samp, .apiname {
+  font-family: monospace;
+}
+/* #myList span.wh-tooltip p{
+	font-size:.5em;
+	border:1px solid red;
+	
+} */
+/* DOCS-427 WebHelp upgrade bootstrap issues **/
+#wh_top_menu_and_indexterms_link {
+	flex-basis: auto;/* DOCS-427 WebHelp upgrade bootstrap issues **/
+}
+/* Start DOCS-444 Remove all the bottom borders from titles */
+table > caption, .topic > .title, .sectiontitle:not(.tasklabel), .wh_term_group > .wh_first_letter {
+	padding-left: unset;
+	border-bottom: 0px;
+}/* End DOCS-444 Remove all the bottom borders from titles */
+
+.tasklabel,
+.sectiontitle { 
+  font-size: 1.3em; 
+}
+
+[type="reset"], [type="submit"], button, html [type="button"] {
+	-webkit-appearance: inherit;
+}
+
+.ph.line-through {
+  text-decoration: line-through;
+}
+div.note > span.note__title_x {
+	font-weight: bold;
+}
+
+.search-breadcrumb li:first-of-type a {
+	padding-left: 0em;
+}
+.search-breadcrumb li:not(:last-of-type) .title:after {
+    display: inline-block;
+    content: ">";
+    margin-left: 0.1em;
+    margin-right: 1.2em;  
+    border-style: none;
+    border-color:transparent;
+    border-width: 0em;
+}
+
+.search-breadcrumb li .title::before{
+   border-style: none;
+    border-color:transparent;
+    border-width: 0em;
+}
+
+
+@media only screen and (min-width : 1200px) {
+.col-lg-6 {
+	-ms-flex: 1 0 53%;
+	flex: 1 0 53%;
+	max-width: 53%;
+}
+.col-lg-6_5{
+	-ms-flex: 1 0 79%;
+	flex: 1 0 79%;
+	max-width: 79%;
+}
+  .col-lg-2 {
+	-ms-flex: 1 0 19%;
+	flex: 1 0 19%;
+	max-width: 19%;
+	}
+}
+@media only screen and (min-width : 951px) {
+  .col-lg-6 {
+	-ms-flex: 1 0 53%;
+	flex: 1 0 53%;
+	max-width: 53%;
+}
+.col-lg-6_5{
+	-ms-flex: 1 0 79% !important;
+	flex: 1 0 79% !important;
+	max-width: 79% !important;
+}
+.col-lg-2 {
+	-ms-flex: 1 0 19%;
+	flex: 1 0 19%;
+	max-width: 19%;
+	}
+}
+
+/*DOCS-317 Making the blue bar longer to roll over toc tiles*/ 
+
+.wh_publication_toc{
+	margin-left:-4px;
+}
+.wh_publication_toc ul ul {
+	padding-left: 4px;
+}
+.wh_publication_toc .active > .topicref {
+	margin-left:-4px;
+	border-left: 3px solid #00739d;
+}
+.wh_publication_toc ul li span.topicref{
+  padding-left: 16px;
+}
+.wh_publication_toc ul ul li span.topicref{
+  padding-left: 26px;
+}
+.wh_publication_toc ul ul ul li span.topicref{
+  padding-left: 36px;
+}
+.wh_publication_toc ul ul ul ul li span.topicref{
+  padding-left: 46px;
+}
+.wh_publication_toc ul ul ul ul li li span.topicref{
+  padding-left: 56px;
+}
+.wh_publication_toc ul ul ul ul ul li li span.topicref{
+  padding-left: 66px;
+}
+
+
+.title .apiname {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .cmdname {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .codeph {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .filepath {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .option {font-family:inherit; font-size:inherit; font-weight:inherit; font-style:inherit;}
+.title .parmname {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .msgph {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .uicontrol {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .menucascade {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .userinput {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .tt {font-family:inherit; font-size:inherit; font-weight:inherit}
+.title .varname {font-family:inherit; font-size:inherit; font-style:inherit; font-weight:inherit}
+.title .wintitle {font-family:inherit; font-size:inherit; font-weight:inherit}
+
+div.wh_topic_toc .apiname, div.wh_topic_toc .cmdname, div.wh_topic_toc .codeph,
+div.wh_topic_toc .filepath, div.wh_topic_toc .option, div.wh_topic_toc .parmname,
+div.wh_topic_toc .msgph, div.wh_topic_toc .uicontrol, div.wh_topic_toc .menucascade,
+div.wh_topic_toc .userinput, div.wh_topic_toc .tt, div.wh_topic_toc .varname, div.wh_topic_toc .wintitle{
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    font-style: inherit;
+}

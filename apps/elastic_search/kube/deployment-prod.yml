@@ -1,0 +1,116 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docsearch-app-config-${DEPLOY_ENV}
+  namespace: doctools
+data:
+  discovery_type: single-node
+  cluster_name: es-${DEPLOY_ENV}
+  elasticsearch.yml: |
+    cluster.name: es-${DEPLOY_ENV}
+    network.host: 0.0.0.0
+    path.data: /usr/share/elasticsearch/data
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: docsearch-app-pv-claim-${DEPLOY_ENV}
+  namespace: doctools
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docsearch-${DEPLOY_ENV}
+  namespace: doctools
+spec:
+  selector:
+    matchLabels:
+      app: docsearch-${DEPLOY_ENV}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: docsearch-${DEPLOY_ENV}
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: docsearch-${DEPLOY_ENV}
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: discovery.type
+              valueFrom:
+                configMapKeyRef:
+                  name: docsearch-app-config-${DEPLOY_ENV}
+                  key: discovery_type
+            - name: cluster_name
+              valueFrom:
+                configMapKeyRef:
+                  name: docsearch-app-config-${DEPLOY_ENV}
+                  key: cluster_name
+          ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /usr/share/elasticsearch/data
+              name: elasticsearch-storage
+            - mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+              name: docsearch-app-config-${DEPLOY_ENV}
+              subPath: elasticsearch.yml
+
+      volumes:
+        - name: elasticsearch-storage
+          persistentVolumeClaim:
+            claimName: docsearch-app-pv-claim-${DEPLOY_ENV}
+        - name: docsearch-app-config-${DEPLOY_ENV}
+          configMap:
+            name: docsearch-app-config-${DEPLOY_ENV}
+            items:
+              - key: elasticsearch.yml
+                path: elasticsearch.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docsearch-${DEPLOY_ENV}
+  namespace: doctools
+  labels:
+    app: docsearch-${DEPLOY_ENV}
+spec:
+  type: ClusterIP
+  selector:
+    app: docsearch-${DEPLOY_ENV}
+  ports:
+    - name: http
+      port: 9200
+      protocol: TCP
+    - name: transport
+      port: 9300
+      protocol: TCP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: doctools
+  name: docsearch-ingress-${DEPLOY_ENV}
+spec:
+  rules:
+  - host: docsearch-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
+    http:
+      paths:
+      - backend:
+          serviceName: docsearch-${DEPLOY_ENV}
+          servicePort: 9200
+        path: /
