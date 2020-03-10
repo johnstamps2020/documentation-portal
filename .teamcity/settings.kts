@@ -222,6 +222,7 @@ object Release : BuildType({
             name = "Bump And Tag Version"
             scriptContent = """
                 set -xe
+                cd server/
                 git config --global user.email "doctools@guidewire.com"
                 git config --global user.name "sys-doc"
                 git fetch --tags
@@ -281,6 +282,7 @@ object Test : BuildType({
     triggers {
         vcs {
             triggerRules = """
+                +:.teamcity/settings.kts
                 +:server/**
                 -:user=doctools:**
             """.trimIndent()
