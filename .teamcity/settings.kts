@@ -224,6 +224,7 @@ object Release : BuildType({
                 set -xe
                 git config --global user.email "doctools@guidewire.com"
                 git config --global user.name "sys-doc"
+                npm config set sign-git-tag true
                 git fetch --tags
 
                 cd server/
