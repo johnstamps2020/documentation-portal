@@ -6,14 +6,14 @@ aws eks update-kubeconfig --name atmos-${DEPLOY_ENV}
 echo $(kubectl get pods --namespace=${NAMESPACE})
 
 if [[ "$DEPLOY_ENV" == "us-east-2" ]]; then
-    eval "echo \"$(cat kube/deployment-prod.yml)\"" > deployment.yml
-    eval "echo \"$(cat kube/ingress-prod.yml)\"" > ingress.yml
+    eval "echo \"$(cat server/kube/deployment-prod.yml)\"" > deployment.yml
+    eval "echo \"$(cat server/kube/ingress-prod.yml)\"" > ingress.yml
 else
-    eval "echo \"$(cat kube/deployment.yml)\"" > deployment.yml
-    eval "echo \"$(cat kube/ingress.yml)\"" > ingress.yml
+    eval "echo \"$(cat server/kube/deployment.yml)\"" > deployment.yml
+    eval "echo \"$(cat server/kube/ingress.yml)\"" > ingress.yml
 fi
 
-eval "echo \"$(cat kube/service.yml)\"" > service.yml
+eval "echo \"$(cat server/kube/service.yml)\"" > service.yml
 
 kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${NAMESPACE} || \
 kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=${ARTIFACTORY_USERNAME} --docker-password=${ARTIFACTORY_PASSWORD} --namespace=${NAMESPACE}
