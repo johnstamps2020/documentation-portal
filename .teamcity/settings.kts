@@ -227,9 +227,7 @@ object Release : BuildType({
                 git fetch --tags
 
                 cd server/
-                npm version %semver-scope%
-                git add .
-                git commit -m "tag a new version"
+                npm version %semver-scope% --git-tag-version=true
                 git push origin master
                 git push --tags
                 
