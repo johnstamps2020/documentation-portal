@@ -1,0 +1,27 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: docportal-content-${DEPLOY_ENV}
+  namespace: doctools
+spec:
+  type: ExternalName
+  externalName: tenant-doctools-prod-builds.s3-website.us-east-2.amazonaws.com
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: doctools
+  name: doctools-${DEPLOY_ENV}-builds-ingress
+  annotations:
+    ingress.kubernetes.io/config-backend: |
+      http-request set-header Host tenant-doctools-prod-builds.s3-website.us-east-2.amazonaws.com
+spec:
+  rules:
+    - host: "ditaot.internal.${DEPLOY_ENV}.service.guidewire.net"
+      http:
+        paths:
+          - backend:
+              serviceName: docportal-content-${DEPLOY_ENV}
+              servicePort: 80
+            path: /
