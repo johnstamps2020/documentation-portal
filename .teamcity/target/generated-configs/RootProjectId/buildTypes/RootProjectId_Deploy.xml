@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Deploy</name>
+  <settings>
+    <parameters />
+    <build-runners>
+      <runner id="DEPLOY_TO_K8S" name="Deploy to Kubernetes" type="simpleRunner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="plugin.docker.pull.enabled" value="true" />
+          <param name="plugin.docker.run.parameters" value="-v /var/run/docker.sock:/var/run/docker.sock -v $pwd:/app:ro" />
+          <param name="script.content"><![CDATA[#!/bin/bash 
+set -xe
+if [[ "%env.DEPLOY_ENV%" == "dev" ]]; then
+    if [[ "%teamcity.build.branch%" != "master" ]] && [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
+        export TAG_VERSION=$(echo "%teamcity.build.branch%" | tr -d /)
+    fi
+else
+    export TAG_VERSION=v$TAG_VERSION
+fi
+if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+    export AWS_ACCESS_KEY_ID="$ATMOS_PROD_AWS_ACCESS_KEY_ID"
+    export AWS_SECRET_ACCESS_KEY="$ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+    export AWS_DEFAULT_REGION="$ATMOS_PROD_AWS_DEFAULT_REGION"
+else
+    export AWS_ACCESS_KEY_ID="$ATMOS_DEV_AWS_ACCESS_KEY_ID"
+    export AWS_SECRET_ACCESS_KEY="$ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+    export AWS_DEFAULT_REGION="$ATMOS_DEV_AWS_DEFAULT_REGION"
+fi
+sh ci/deployKubernetes.sh]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="CHECK_PODS_STATUS" name="Check new Pods Status" type="simpleRunner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="plugin.docker.pull.enabled" value="true" />
+          <param name="plugin.docker.run.parameters" value="-v /var/run/docker.sock:/var/run/docker.sock -v $pwd:/app:ro" />
+          <param name="script.content"><![CDATA[#!/bin/bash
+set -e
+if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+    export AWS_ACCESS_KEY_ID="$ATMOS_PROD_AWS_ACCESS_KEY_ID"
+    export AWS_SECRET_ACCESS_KEY="$ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+    export AWS_DEFAULT_REGION="$ATMOS_PROD_AWS_DEFAULT_REGION"
+else
+    export AWS_ACCESS_KEY_ID="$ATMOS_DEV_AWS_ACCESS_KEY_ID"
+    export AWS_SECRET_ACCESS_KEY="$ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+    export AWS_DEFAULT_REGION="$ATMOS_DEV_AWS_DEFAULT_REGION"
+fi
+aws eks update-kubeconfig --name atmos-%env.DEPLOY_ENV%
+sleep 10
+TIME="0"
+while true; do
+    if [[ "$TIME" == "10" ]]; then
+        break
+    fi
+    FAIL_PODS=`kubectl get pods -l app=docportal-app --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
+    if [[ ! -z "$FAIL_PODS" ]]; then
+        echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
+        echo "$FAIL_PODS" && false
+    fi
+    sleep 10
+    TIME=$[$TIME+1]
+done]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="ACCEPTANCE_TESTS" name="Acceptance Tests" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="echo &quot;Acceptance tests should go here. Update this step to add your own acceptance tests.&quot;" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="TEMPLATE_BUILD_EXT_2" type="DockerSupport">
+        <parameters>
+          <param name="login2registry" value="PROJECT_EXT_155" />
+          <param name="loginCheckbox" value="on" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</template>
+
