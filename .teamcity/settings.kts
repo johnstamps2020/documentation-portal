@@ -85,6 +85,7 @@ object Checkmarx : BuildType({
 
     triggers {
         vcs {
+            triggerRules = "+:server/**"
         }
     }
 })
@@ -230,7 +231,7 @@ object Release : BuildType({
                 git push --tags
                 
                 export TAG_VERSION=${'$'}(git describe --tag)
-                docker build -t docportal .
+                docker build -t docportal ./server
                 docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
             """.trimIndent()
@@ -269,6 +270,7 @@ object Test : BuildType({
                 set -e
                 export APP_BASE_URL=http://localhost:8081
                 export ELASTIC_SEARCH_URL=https://docsearch-doctools.dev.ccs.guidewire.net
+                cd server/
                 npm install
                 npm test
             """.trimIndent()
@@ -279,7 +281,10 @@ object Test : BuildType({
 
     triggers {
         vcs {
-            triggerRules = "-:user=doctools:**"
+            triggerRules = """
+                "+:server/**"
+                -:user=doctools:**
+            """.trimIndent()
         }
     }
 
@@ -328,7 +333,7 @@ object BuildDockerImage : Template({
                 else 
                     export BRANCH_NAME=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
                 fi
-                docker build -t docportal .
+                docker build -t docportal ./server
                 docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
             """.trimIndent()
@@ -375,7 +380,7 @@ object Deploy : Template({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 fi
-                sh ci/deployKubernetes.sh
+                sh server/ci/deployKubernetes.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
