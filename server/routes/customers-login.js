@@ -13,7 +13,7 @@ const customersSamlStrategy = new saml.Strategy(
   {
     callbackUrl: `${process.env.APP_BASE_URL}` + '/customers-login/callback',
     entryPoint: `${process.env.CUSTOMERS_LOGIN_URL}`,
-    issuer: `${process.env.CUSTOMERS_LOGIN_ENTITY_ID}`,
+    issuer: `${process.env.CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}`,
     cert: `${process.env.CUSTOMERS_LOGIN_CERT}`,
     identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
     validateInResponseTo: true,

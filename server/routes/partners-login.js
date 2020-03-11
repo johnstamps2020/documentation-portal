@@ -13,7 +13,7 @@ const partnersSamlStrategy = new saml.Strategy(
   {
     callbackUrl: `${process.env.APP_BASE_URL}` + '/partners-login/callback',
     entryPoint: `${process.env.PARTNERS_LOGIN_URL}`,
-    issuer: `${process.env.PARTNERS_LOGIN_ENTITY_ID}`,
+    issuer: `${process.env.PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}`,
     cert: `${process.env.PARTNERS_LOGIN_CERT}`,
     identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
     validateInResponseTo: true,

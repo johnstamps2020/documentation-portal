@@ -56,13 +56,13 @@ spec:
               value: 'http://example.com'
             - name: PARTNERS_LOGIN_CERT
               value: 'secureCert'
-            - name: PARTNERS_LOGIN_ENTITY_ID
+            - name: PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
               value: 'partners'
             - name: CUSTOMERS_LOGIN_URL
               value: 'http://example.com'
             - name: CUSTOMERS_LOGIN_CERT
               value: 'secureCert'
-            - name: CUSTOMERS_LOGIN_ENTITY_ID
+            - name: CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
               value: 'customers'
 
           resources:
