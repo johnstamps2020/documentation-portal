@@ -16,8 +16,7 @@ const partnersSamlStrategy = new saml.Strategy(
     issuer: `${process.env.PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}`,
     cert: `${process.env.PARTNERS_LOGIN_CERT}`,
     identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
-    validateInResponseTo: false,
-    disableRequestedAuthnContext: true,
+    validateInResponseTo: true,
   },
   function(profile, done) {
     return done(null, profile);
