@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <name>DocumentationTools_Nodeoktacontainer Config DSL Script</name>
-  <groupId>DocumentationTools_Nodeoktacontainer</groupId>
-  <artifactId>DocumentationTools_Nodeoktacontainer_dsl</artifactId>
+  <name>DocumentationTools_Documentationportal Config DSL Script</name>
+  <groupId>DocumentationTools_Documentationportal</groupId>
+  <artifactId>DocumentationTools_Documentationportal_dsl</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <parent>
@@ -75,6 +75,12 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20190722</version>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>configs-dsl-kotlin</artifactId>

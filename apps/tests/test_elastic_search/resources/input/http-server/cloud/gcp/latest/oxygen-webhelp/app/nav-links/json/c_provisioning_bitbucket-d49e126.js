@@ -1,0 +1,1 @@
+define({"topics" : [{"title":"Bitbucket repository","href":"topics\/c_bitbucket-repository.html","attributes": {"data-id":"c_provisioning_bitbucket_repository",},"menu": {"hasChildren":false,},"tocID":"c_provisioning_bitbucket_repository-d49e144","topics":[]}]});

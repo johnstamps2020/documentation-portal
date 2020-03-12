@@ -97,9 +97,3 @@ typings/
 .dynamodb/
 
 # End of https://www.gitignore.io/api/node
-/.teamcity/target/
-/.idea/workspace.xml
-/.idea/tasks.xml
-/.idea/usage.statistics.xml
-/.idea/shelf/
-/.idea/$CACHE_FILE$
