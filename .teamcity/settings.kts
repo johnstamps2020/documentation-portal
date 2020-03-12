@@ -48,7 +48,6 @@ project {
 
     template(Deploy)
     template(BuildDockerImage)
-    template(BuildLandingPages)
     template(BuildAndUploadToS3)
     template(AddFilesFromXDocsToBitbucket)
 
@@ -105,7 +104,7 @@ object Helpers {
                 vcs {
                     id = "vcsTrigger"
                     triggerRules = """
-                -:root=DocumentationTools_DocumentationPortalContent_DocumentationPortalContent:**
+                -:root=DocumentationTools_Nodeoktacontainer_vcsrootmasteronly:**
                 -:root=${DitaOt331.id}:**
                 -:root=DocumentationTools_DitaOtPlugins:**
             """.trimIndent()
@@ -623,7 +622,7 @@ object LoadSearchIndex : BuildType({
 
 
     vcs {
-        root(AbsoluteId("DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"))
+        root(AbsoluteId("DocumentationTools_Nodeoktacontainer_vcsrootmasteronly"))
     }
 
     steps {
@@ -674,23 +673,6 @@ object LoadSearchIndex : BuildType({
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
             }
-        }
-    }
-})
-
-object BuildLandingPagesDev : BuildType({
-    templates(BuildLandingPages)
-    name = "Build landing pages dev"
-
-    params {
-        text("S3_BUCKET_NAME", "tenant-doctools-dev-builds", allowEmpty = false)
-        text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
-    }
-
-    triggers {
-        vcs {
-            id = "vcsTrigger"
-            branchFilter = ""
         }
     }
 })
@@ -771,16 +753,6 @@ object AddDataManagementDHICFilesFromXDocsToBitbucket : BuildType({
 
     vcs {
         root(DataManagementDHIC, "+:. => %SOURCES_ROOT%")
-    }
-})
-
-object BuildLandingPagesStaging : BuildType({
-    templates(BuildLandingPages)
-    name = "Build landing pages staging"
-
-    params {
-        text("S3_BUCKET_NAME", "tenant-doctools-staging-builds", allowEmpty = false)
-        text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
     }
 })
 
@@ -1011,7 +983,7 @@ object BuildAndUploadToS3 : Template({
 
     vcs {
         root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
-        root(AbsoluteId("DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"), "+:. => %env.TOOLS_ROOT%")
+        root(AbsoluteId("DocumentationTools_Nodeoktacontainer_vcsrootmasteronly"), "+:. => %env.TOOLS_ROOT%")
         root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
 
         cleanCheckout = true
@@ -1077,66 +1049,6 @@ object BuildAndUploadToS3 : Template({
     }
 })
 
-object BuildLandingPages : Template({
-    name = "Build landing pages template"
-
-    params {
-        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", allowEmpty = false)
-        text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
-    }
-
-    vcs {
-        root(AbsoluteId("DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"))
-
-        cleanCheckout = true
-    }
-
-    steps {
-        dockerCommand {
-            name = "Build a Docker image for running the builder"
-            id = "RUNNER_1"
-            commandType = build {
-                source = path {
-                    path = "Dockerfile"
-                }
-                namesAndTags = "runner-image"
-                commandArgs = "--pull"
-            }
-        }
-        script {
-            name = "Build the portal"
-            id = "RUNNER_2"
-            scriptContent = """
-                cd apps
-                make build-pages
-            """.trimIndent()
-            dockerImage = "runner-image"
-            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
-        }
-        script {
-            name = "Publish to S3"
-            id = "RUNNER_3"
-            scriptContent = "aws s3 sync ./apps/landing_pages/out s3://%env.S3_BUCKET_NAME%"
-        }
-    }
-
-    features {
-        commitStatusPublisher {
-            id = "BUILD_EXT_1"
-            vcsRootExtId = "DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"
-            publisher = bitbucketServer {
-                url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:01a9d262-c4a1-4c6a-9341-70e3999e329b"
-            }
-        }
-        sshAgent {
-            id = "BUILD_EXT_2"
-            teamcitySshKey = "dita-ot.rsa"
-        }
-    }
-})
-
 object Server : Project({
     name = "Server"
 
@@ -1175,7 +1087,6 @@ object DeployToDev_AddFilesFromXDocsToBitbucketDev : Project({
 object DeployToDev : Project({
     name = "Deploy to dev"
 
-    buildType(BuildLandingPagesDev)
     val (roots, builds) = Helpers.getBuildsFromConfig("dev", "config/gw-docs-dev.json")
     roots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
@@ -1183,8 +1094,6 @@ object DeployToDev : Project({
 
 object DeployToStaging : Project({
     name = "Deploy to staging"
-
-    buildType(BuildLandingPagesStaging)
 
     val (roots, builds) = Helpers.getBuildsFromConfig("staging", "config/gw-docs-staging.json")
     roots.forEach(this::vcsRoot)
