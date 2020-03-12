@@ -1,4 +1,4 @@
-/.teamcity/target/
+.teamcity/target/
 .vscode
 
 *.swp

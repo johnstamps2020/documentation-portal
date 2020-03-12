@@ -1,12 +1,16 @@
-import jetbrains.buildServer.configs.kotlin.v2018_2.*
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.commitStatusPublisher
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.dockerSupport
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.sshAgent
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.finishBuildTrigger
-import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.vcs
-import jetbrains.buildServer.configs.kotlin.v2018_2.vcs.GitVcsRoot
+import jetbrains.buildServer.configs.kotlin.v10.toExtId
+import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPublisher
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
+import org.json.JSONArray
+import java.io.File
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -35,19 +39,213 @@ version = "2019.2"
 project {
 
     vcsRoot(vcsrootmasteronly)
-
-    buildType(Checkmarx)
-    buildType(DeployProd)
-    buildType(Test)
-    buildType(DeployInt)
-    buildType(DeployStaging)
-    buildType(DeployDev)
-    buildType(Release)
+    vcsRoot(DitaOt331)
+    vcsRoot(Insurancesuite9)
+    vcsRoot(Insurancesuite10)
+    vcsRoot(InsurancesuiteCloud)
+    vcsRoot(Digital11)
+    vcsRoot(DataManagementDHIC)
 
     template(Deploy)
     template(BuildDockerImage)
+    template(BuildLandingPages)
+    template(BuildAndUploadToS3)
+    template(AddFilesFromXDocsToBitbucket)
+
     buildTypesOrder = arrayListOf(Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
+
+    params {
+        param("env.NAMESPACE", "doctools")
+    }
+
+    subProject(Server)
+    subProject(Content)
 }
+
+object Helpers {
+    fun getBuildsFromConfig(env: String, configPath: String): Pair<MutableList<VcsRoot>, MutableList<jetbrains.buildServer.configs.kotlin.v2019_2.BuildType>> {
+        class CreateVcsRoot(git_path: String, my_id: String) : jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
+            id = RelativeId(my_id)
+            name = my_id
+            url = git_path
+            authMethod = uploadedKey {
+                uploadedKey = "sys-doc.rsa"
+            }
+        })
+
+        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : jetbrains.buildServer.configs.kotlin.v2019_2.BuildType({
+            templates(BuildAndUploadToS3)
+
+            id = RelativeId(build_id)
+            name = vsc_root_id + " - " + ditaval_file.replace(".ditaval", "").replace("-", " ") + " Dev"
+
+
+            params {
+                text("SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("FORMAT", "webhelp_Guidewire", allowEmpty = false)
+                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
+                text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
+                text("INPUT_PATH", input_path, allowEmpty = false)
+                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
+                text("PUBLISH_PATH", publish_path, allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
+                text("CRAWLER_START_URLS", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
+                text("CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
+                text("INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
+                text("INDEXER_DOCUMENT_KEYS", "%PUBLISH_PATH%", allowEmpty = false)
+            }
+
+            vcs {
+                root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
+            }
+
+            triggers {
+                vcs {
+                    id = "vcsTrigger"
+                    triggerRules = """
+                -:root=DocumentationTools_DocumentationPortalContent_DocumentationPortalContent:**
+                -:root=${DitaOt331.id}:**
+                -:root=DocumentationTools_DitaOtPlugins:**
+            """.trimIndent()
+
+                }
+            }
+        })
+
+        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : jetbrains.buildServer.configs.kotlin.v2019_2.BuildType({
+            templates(BuildAndUploadToS3)
+
+            id = RelativeId(build_id)
+            name = vsc_root_id + " - " + ditaval_file.replace(".ditaval", "").replace("-", " ") + " Staging"
+
+            params {
+                text("SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("FORMAT", "webhelp_Guidewire", allowEmpty = false)
+                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
+                text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
+                text("INPUT_PATH", input_path, allowEmpty = false)
+                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
+                text("PUBLISH_PATH", publish_path, allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+                text("CRAWLER_START_URLS", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
+                text("CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
+                text("INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
+                text("INDEXER_DOCUMENT_KEYS", "%PUBLISH_PATH%", allowEmpty = false)
+            }
+
+            vcs {
+                root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
+            }
+        })
+
+        val config = JSONArray(File(configPath).readText(Charsets.UTF_8))
+
+        val builds = mutableListOf<jetbrains.buildServer.configs.kotlin.v2019_2.BuildType>()
+        val roots = mutableListOf<VcsRoot>()
+
+        for (i in 0 until config.length()) {
+            val configSet = config.getJSONObject(i)
+            if (configSet.has("docPackages")) {
+                val docPackages = configSet.getJSONArray("docPackages")
+                for (l in 0 until docPackages.length()) {
+                    val docPackage = docPackages.getJSONObject(l)
+                    val docs = docPackage.getJSONArray("docs")
+                    for (j in 0 until docs.length()) {
+                        val doc = docs.getJSONObject(j)
+                        val releases = doc.getJSONArray("releases")
+                        for (k in 0 until releases.length()) {
+                            val release = releases.getJSONObject(k)
+                            if (release.has("build")) {
+                                val build = release.getJSONObject("build")
+                                val type = build.get("type")
+                                if (type == "dita") {
+                                    val filter: String = build.get("filter").toString()
+                                    val root: String = build.get("root").toString()
+                                    val src: String = build.get("src").toString()
+                                    val publishPath: String = release.get("url").toString()
+                                    val vscRootId = (publishPath + filter.replace(".ditaval", "") + env).toExtId()
+                                    val buildId = vscRootId + "build" + env
+                                    roots.add(CreateVcsRoot(src, vscRootId))
+                                    if (env == "dev") {
+                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env, publishPath, vscRootId))
+                                    }
+
+                                    if (env == "staging") {
+                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env, publishPath, vscRootId))
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return Pair(roots, builds)
+    }
+}
+
+object vcsrootmasteronly : GitVcsRoot({
+    name = "vcsrootmasteronly"
+    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+    branchSpec = "+:refs/heads/master"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object DitaOt331 : GitVcsRoot({
+    name = "dita-ot-331"
+    url = "ssh://git@stash.guidewire.com/doctools/dita-ot-331.git"
+    branchSpec = "+:refs/*"
+    authMethod = uploadedKey {
+        uploadedKey = "dita-ot.rsa"
+    }
+})
+
+object Insurancesuite9 : GitVcsRoot({
+    name = "insurancesuite-9"
+    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object Insurancesuite10 : GitVcsRoot({
+    name = "insurancesuite-10"
+    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object InsurancesuiteCloud : GitVcsRoot({
+    name = "insurancesuite-cloud"
+    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object Digital11 : GitVcsRoot({
+    name = "digital-11"
+    url = "ssh://git@stash.guidewire.com/docsources/digital-11x.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object DataManagementDHIC : GitVcsRoot({
+    name = "datamanagement-dh-ic"
+    url = "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
 
 object Checkmarx : BuildType({
     name = "Checkmarx"
@@ -306,6 +504,305 @@ object Test : BuildType({
     }
 })
 
+object DeployASearchService : BuildType({
+    name = "Deploy a search service"
+    description = "Creates or updates an S3 ingress for a selected environment"
+
+    params {
+        select("env.DEPLOY_ENV", "", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "us-east-2"))
+    }
+
+    vcs {
+        root(jetbrains.buildServer.configs.kotlin.v2019_2.DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Deploy to Kubernetes"
+            id = "DEPLOY_TO_K8S"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=apps/elastic_search/kube/deployment-prod.yml
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=apps/elastic_search/kube/deployment.yml
+                fi
+                sh ci/deployKubernetes.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
+    features {
+        dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object DeployAnIngress : BuildType({
+    name = "Deploy an S3 ingress"
+    description = "Creates or updates an S3 ingress for a selected environment"
+
+    params {
+        select("env.DEPLOY_ENV", "", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "us-east-2"))
+    }
+
+    vcs {
+        root(jetbrains.buildServer.configs.kotlin.v2019_2.DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Deploy to Kubernetes"
+            id = "DEPLOY_TO_K8S"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=S3/kube/ingress-prod.yml
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=S3/kube/ingress.yml
+                fi
+                sh ci/deployKubernetes.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
+    features {
+        dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object LoadSearchIndex : BuildType({
+    name = "Delete and load THE ENTIRE search index"
+
+    params {
+        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
+        text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+        text("env.CRAWLER_START_URLS", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.CRAWLER_START_URLS_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net portal2.guidewire.com", allowEmpty = false)
+        text("env.CRAWLER_ALLOWED_DOMAINS_PROD", "ditaot.internal.us-east-2.service.guidewire.net portal2.guidewire.com", allowEmpty = false)
+        text("env.INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.INDEXER_SEARCH_APP_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
+        text("env.INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
+        text("env.INDEXER_DOCUMENT_KEYS", "")
+        select("env.DEPLOY_ENV", "", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod"))
+    }
+
+
+    vcs {
+        root(AbsoluteId("DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"))
+    }
+
+    steps {
+        dockerCommand {
+            name = "Build a Python Docker image"
+            commandType = build {
+                source = path {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "python-runner"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+
+        script {
+            name = "Collect documents and load index"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export CRAWLER_START_URLS="${'$'}{CRAWLER_START_URLS_PROD}"
+                    export CRAWLER_ALLOWED_DOMAINS="${'$'}{CRAWLER_ALLOWED_DOMAINS_PROD}"
+                    export INDEXER_SEARCH_APP_URLS="${'$'}{INDEXER_SEARCH_APP_URLS_PROD}"
+                fi
+
+                if [[ "%env.DEPLOY_ENV%" == "staging" ]] || [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export CONFIG_FILE="${'$'}{CONFIG_FILE_STAGING}"
+                fi
+
+                cd apps
+                make collect-documents
+                make load-index
+            """.trimIndent()
+            dockerImage = "python-runner"
+            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+        }
+
+        script {
+            name = "Publish to S3"
+            scriptContent = "aws s3 sync ./apps/elastic_search/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%"
+        }
+
+    }
+
+    features {
+        dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object BuildLandingPagesDev : BuildType({
+    templates(BuildLandingPages)
+    name = "Build landing pages dev"
+
+    params {
+        text("S3_BUCKET_NAME", "tenant-doctools-dev-builds", allowEmpty = false)
+        text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
+    }
+
+    triggers {
+        vcs {
+            id = "vcsTrigger"
+            branchFilter = ""
+        }
+    }
+})
+
+object AddIS9xFilesFromXDocsToBitbucket : BuildType({
+    templates(AddFilesFromXDocsToBitbucket)
+    name = "Add IS9x files from XDocs to Bitbucket"
+    description = "Exports DITA files from XDocs and adds them to Bitbucket"
+
+    params {
+        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap", allowEmpty = false)
+        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("SOURCES_ROOT", "src_root", allowEmpty = false)
+    }
+
+    vcs {
+        root(Insurancesuite9, "+:. => %SOURCES_ROOT%")
+    }
+})
+
+object AddIS10xFilesFromXDocsToBitbucket : BuildType({
+    templates(AddFilesFromXDocsToBitbucket)
+    name = "Add IS10x files from XDocs to Bitbucket"
+    description = "Exports DITA files from XDocs and adds them to Bitbucket"
+
+    params {
+        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap", allowEmpty = false)
+        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("SOURCES_ROOT", "src_root", allowEmpty = false)
+    }
+
+    vcs {
+        root(Insurancesuite10, "+:. => %SOURCES_ROOT%")
+    }
+})
+
+object AddIsCloudFilesFromXDocsToBitBucket : BuildType({
+    templates(AddFilesFromXDocsToBitbucket)
+    name = "Add IS cloud files from XDocs to BitBucket"
+
+    params {
+        text("EXPORT_PATH_IDS", "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval", allowEmpty = false)
+        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("SOURCES_ROOT", "src_root", allowEmpty = false)
+    }
+
+    vcs {
+        root(InsurancesuiteCloud, "+:. => %SOURCES_ROOT%")
+    }
+})
+
+object AddDigital11xFilesFromXDocsToBitbucket : BuildType({
+    templates(AddFilesFromXDocsToBitbucket)
+    name = "Add Digital11x files from XDocs to Bitbucket"
+    description = "Exports DITA files from XDocs and adds them to Bitbucket"
+
+    params {
+        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-cb.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-sf.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-sf.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap", allowEmpty = false)
+        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("SOURCES_ROOT", "src_root", allowEmpty = false)
+    }
+
+    vcs {
+        root(Digital11, "+:. => %SOURCES_ROOT%")
+    }
+})
+
+object AddDataManagementDHICFilesFromXDocsToBitbucket : BuildType({
+    templates(AddFilesFromXDocsToBitbucket)
+    name = "Add DataManagementDHIC files from XDocs to Bitbucket"
+    description = "Exports DITA files from XDocs and adds them to Bitbucket"
+
+    params {
+        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval /Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap", allowEmpty = false)
+        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("SOURCES_ROOT", "src_root", allowEmpty = false)
+    }
+
+    vcs {
+        root(DataManagementDHIC, "+:. => %SOURCES_ROOT%")
+    }
+})
+
+object BuildLandingPagesStaging : BuildType({
+    templates(BuildLandingPages)
+    name = "Build landing pages staging"
+
+    params {
+        text("S3_BUCKET_NAME", "tenant-doctools-staging-builds", allowEmpty = false)
+        text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+    }
+})
+
+object CopyContentFromStagingToProd : BuildType({
+    name = "Copy content from Staging to Prod"
+
+    steps {
+        script {
+            name = "Copy from S3 on staging to S3 on Prod"
+            scriptContent = """
+                aws s3 sync s3://tenant-doctools-staging-builds stage/ --delete
+                
+                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                
+                aws s3 sync stage/ s3://tenant-doctools-prod-builds --delete
+            """.trimIndent()
+        }
+    }
+})
+
 object BuildDockerImage : Template({
     name = "Build Docker Image"
 
@@ -434,11 +931,268 @@ object Deploy : Template({
     }
 })
 
-object vcsrootmasteronly : GitVcsRoot({
-    name = "vcsrootmasteronly"
-    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
-    branchSpec = "+:refs/heads/master"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
+object AddFilesFromXDocsToBitbucket : Template({
+    name = "Add files from XDocs to Bitbucket template"
+
+    maxRunningBuilds = 1
+
+    params {
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", label = "Git clone directory", description = "Directory for the repo cloned from Bitbucket", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.EXPORT_PATH_IDS", "%EXPORT_PATH_IDS%", allowEmpty = false)
+        text("env.XDOCS_EXPORT_DIR", "%XDOCS_EXPORT_DIR%", allowEmpty = false)
     }
+
+    vcs {
+        root(AbsoluteId("DocumentationTools_XDocsClient"))
+
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Export files from XDocs"
+            id = "RUNNER_2621"
+            workingDir = "LocalClient/sample/local/bin"
+            scriptContent = """
+                chmod 777 runExport.sh
+                for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
+            """.trimIndent()
+        }
+        script {
+            name = "Add exported files to Bitbucket"
+            id = "RUNNER_2622"
+            scriptContent = """
+                set -xe
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "%serviceAccountUsername%"
+                cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
+                cd %env.SOURCES_ROOT%
+                git add -A
+                if git status | grep "Changes to be committed"
+                then
+                  git commit -m "[TeamCity] Adds files exported from XDocs"
+                  git push origin master
+                else
+                  echo "No changes to commit"
+                fi
+            """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            id = "ssh-agent-build-feature"
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+})
+
+object BuildAndUploadToS3 : Template({
+    name = "Build DITA and upload to S3 template"
+
+    maxRunningBuilds = 1
+
+    params {
+        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", description = "Set to dev, int or staging", allowEmpty = false)
+        text("env.INPUT_PATH", "%INPUT_PATH%", allowEmpty = false)
+        text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
+        text("env.FORMAT", "%FORMAT%", allowEmpty = false)
+        text("env.DITAVAL_FILE", "%DITAVAL_FILE%", allowEmpty = false)
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+        text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
+        text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
+        text("env.CRAWLER_START_URLS", "%CRAWLER_START_URLS%", allowEmpty = false)
+        text("env.CRAWLER_ALLOWED_DOMAINS", "%CRAWLER_ALLOWED_DOMAINS%", allowEmpty = false)
+        text("env.INDEXER_SEARCH_APP_URLS", "%INDEXER_SEARCH_APP_URLS%", allowEmpty = false)
+        text("env.INDEXER_INDEX_NAME", "%INDEXER_INDEX_NAME%", allowEmpty = false)
+        text("env.INDEXER_INDEX_FILE", "%INDEXER_INDEX_FILE%", allowEmpty = false)
+        text("env.INDEXER_DOCUMENT_KEYS", "%INDEXER_DOCUMENT_KEYS%")
+    }
+
+    vcs {
+        root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
+        root(AbsoluteId("DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"), "+:. => %env.TOOLS_ROOT%")
+        root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
+
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run build"
+            id = "RUNNER_2108"
+            scriptContent = """
+                chmod -R 777 ./
+                %env.DITA_OT_331_DIR%/bin/dita --install
+                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes
+            """.trimIndent()
+        }
+        script {
+            name = "Upload to the S3 bucket"
+            id = "RUNNER_2633"
+            scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
+        }
+        dockerCommand {
+            name = "Build a Python Docker image"
+            id = "RUNNER_2634"
+            commandType = build {
+                source = path {
+                    path = "%env.TOOLS_ROOT%/Dockerfile"
+                }
+                namesAndTags = "python-runner"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+        script {
+            name = "Collect documents and load index"
+            id = "RUNNER_2635"
+            workingDir = "%env.TOOLS_ROOT%"
+            scriptContent = """
+                cd apps
+                make collect-documents
+                make load-index
+            """.trimIndent()
+            dockerImage = "python-runner"
+            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            id = "BUILD_EXT_329"
+            vcsRootExtId = "${DitaOt331.id}"
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:f3725fe9-10cc-4523-b516-42ba824033b2"
+            }
+        }
+        dockerSupport {
+            id = "DockerSupport"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object BuildLandingPages : Template({
+    name = "Build landing pages template"
+
+    params {
+        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", allowEmpty = false)
+        text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
+    }
+
+    vcs {
+        root(AbsoluteId("DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"))
+
+        cleanCheckout = true
+    }
+
+    steps {
+        dockerCommand {
+            name = "Build a Docker image for running the builder"
+            id = "RUNNER_1"
+            commandType = build {
+                source = path {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "runner-image"
+                commandArgs = "--pull"
+            }
+        }
+        script {
+            name = "Build the portal"
+            id = "RUNNER_2"
+            scriptContent = """
+                cd apps
+                make build-pages
+            """.trimIndent()
+            dockerImage = "runner-image"
+            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Publish to S3"
+            id = "RUNNER_3"
+            scriptContent = "aws s3 sync ./apps/landing_pages/out s3://%env.S3_BUCKET_NAME%"
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            id = "BUILD_EXT_1"
+            vcsRootExtId = "DocumentationTools_DocumentationPortalContent_DocumentationPortalContent"
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:01a9d262-c4a1-4c6a-9341-70e3999e329b"
+            }
+        }
+        sshAgent {
+            id = "BUILD_EXT_2"
+            teamcitySshKey = "dita-ot.rsa"
+        }
+    }
+})
+
+object Server : Project({
+    name = "Server"
+
+    buildType(Checkmarx)
+    buildType(DeployProd)
+    buildType(Test)
+    buildType(DeployInt)
+    buildType(DeployStaging)
+    buildType(DeployDev)
+    buildType(Release)
+})
+
+object Content : Project({
+    name = "Content"
+
+    buildType(DeployAnIngress)
+    buildType(LoadSearchIndex)
+    buildType(DeployASearchService)
+    subProject(DeployToStaging)
+    subProject(DeployToDev_AddFilesFromXDocsToBitbucketDev)
+    subProject(DeployToDev)
+    subProject(DeployToProd)
+
+})
+
+object DeployToDev_AddFilesFromXDocsToBitbucketDev : Project({
+    name = "Add files from XDocs to Bitbucket"
+
+    buildType(AddIS9xFilesFromXDocsToBitbucket)
+    buildType(AddIS10xFilesFromXDocsToBitbucket)
+    buildType(AddIsCloudFilesFromXDocsToBitBucket)
+    buildType(AddDigital11xFilesFromXDocsToBitbucket)
+    buildType(AddDataManagementDHICFilesFromXDocsToBitbucket)
+})
+
+object DeployToDev : Project({
+    name = "Deploy to dev"
+
+    buildType(BuildLandingPagesDev)
+    val (roots, builds) = Helpers.getBuildsFromConfig("dev", "config/gw-docs-dev.json")
+    roots.forEach(this::vcsRoot)
+    builds.forEach(this::buildType)
+})
+
+object DeployToStaging : Project({
+    name = "Deploy to staging"
+
+    buildType(BuildLandingPagesStaging)
+
+    val (roots, builds) = Helpers.getBuildsFromConfig("staging", "config/gw-docs-staging.json")
+    roots.forEach(this::vcsRoot)
+    builds.forEach(this::buildType)
+})
+
+object DeployToProd : Project({
+    name = "Deploy to Prod"
+
+    buildType(CopyContentFromStagingToProd)
 })
