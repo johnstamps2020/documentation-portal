@@ -53,17 +53,17 @@ spec:
             - name: ZIPKIN_URL
               value: https://zipkin.internal.${DEPLOY_ENV}.service.guidewire.net/api/v2/spans
             - name: PARTNERS_LOGIN_URL
-              value: ''
+              value: 'http://example.com'
             - name: PARTNERS_LOGIN_CERT
-              value: ''
-            - name: PARTNERS_LOGIN_ENTITY_ID
-              value: ''
+              value: 'secureCert'
+            - name: PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
+              value: 'partners'
             - name: CUSTOMERS_LOGIN_URL
-              value: ''
+              value: 'http://example.com'
             - name: CUSTOMERS_LOGIN_CERT
-              value: ''
-            - name: CUSTOMERS_LOGIN_ENTITY_ID
-              value: ''
+              value: 'secureCert'
+            - name: CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
+              value: 'customers'
 
           resources:
             requests:
