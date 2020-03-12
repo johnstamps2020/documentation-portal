@@ -1038,9 +1038,10 @@ object BuildAndUploadToS3 : Template({
             vcsRootExtId = "${DitaOt331.id}"
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:f3725fe9-10cc-4523-b516-42ba824033b2"
+                userName = "%env.ARTIFACTORY_USERNAME%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
             }
+
         }
         dockerSupport {
             id = "DockerSupport"
