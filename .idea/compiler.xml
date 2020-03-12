@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="DocumentationTools_Nodeoktacontainer_dsl" />
+        <module name="DocumentationTools_Documentationportal_dsl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DocumentationTools_Nodeoktacontainer_dsl" target="1.5" />
+      <module name="DocumentationTools_Documentationportal_dsl" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
