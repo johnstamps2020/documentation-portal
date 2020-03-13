@@ -688,7 +688,7 @@ object LoadSearchIndex : BuildType({
 })
 
 object TestContent : BuildType({
-    name = "Test documentation-portal-content"
+    name = "Test content"
 
     vcs {
         root(AbsoluteId("DocumentationTools_DocumentationPortalContent"))
