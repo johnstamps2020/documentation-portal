@@ -40,6 +40,7 @@ version = "2019.2"
 project {
 
     vcsRoot(vcsrootmasteronly)
+    vcsRoot(vcsroot)
     vcsRoot(DitaOt331)
     vcsRoot(Insurancesuite9)
     vcsRoot(Insurancesuite10)
@@ -200,6 +201,15 @@ object vcsrootmasteronly : GitVcsRoot({
     name = "vcsrootmasteronly"
     url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
     branchSpec = "+:refs/heads/master"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object vcsroot : GitVcsRoot({
+    name = "vcsroot"
+    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+    branchSpec = "+:refs/heads/*"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
@@ -688,7 +698,7 @@ object LoadSearchIndex : BuildType({
 })
 
 object TestContent : BuildType({
-    name = "Test content"
+    name = "Test"
 
     vcs {
         root(AbsoluteId("DocumentationTools_DocumentationPortalContent"))
