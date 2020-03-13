@@ -764,7 +764,6 @@ object TestContent : BuildType({
 
     features {
         commitStatusPublisher {
-            vcsRootExtId = "${vcsroot.id}"
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
                 userName = "%serviceAccountUsername%"
