@@ -715,7 +715,7 @@ object TestContent : BuildType({
             name = "Build a Docker image for running the Python apps"
             commandType = build {
                 source = file {
-                    path = "Dockerfile"
+                    path = "apps/Dockerfile"
                 }
                 namesAndTags = "python-runner-image"
                 commandArgs = "--pull"
