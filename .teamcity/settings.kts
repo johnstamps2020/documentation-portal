@@ -701,7 +701,7 @@ object TestContent : BuildType({
     name = "Test"
 
     vcs {
-        root(AbsoluteId("DocumentationTools_DocumentationPortalContent"))
+        root(vcsroot)
 
         cleanCheckout = true
     }
@@ -764,7 +764,7 @@ object TestContent : BuildType({
 
     features {
         commitStatusPublisher {
-            vcsRootExtId = "DocumentationTools_DocumentationPortalContent"
+            vcsRootExtId = "${vcsroot.id}"
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
                 userName = "%serviceAccountUsername%"
