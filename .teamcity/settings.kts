@@ -721,15 +721,7 @@ object TestContent : BuildType({
                 commandArgs = "--pull"
             }
         }
-        script {
-            name = "Run tests for building pages"
-            scriptContent = """
-                cd apps
-                make test-build-pages
-            """.trimIndent()
-            dockerImage = "python-runner"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
+
         script {
             name = "Run tests for collecting documents"
             scriptContent = """
