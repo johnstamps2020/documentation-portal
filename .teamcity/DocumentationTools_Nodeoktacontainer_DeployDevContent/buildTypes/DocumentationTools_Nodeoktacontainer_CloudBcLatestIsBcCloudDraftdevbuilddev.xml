@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>CloudBcLatestIsBcCloudDraftdev - IS BC Cloud Draft Dev</name>
+  <description />
+  <settings ref="DocumentationTools_Nodeoktacontainer_BuildAndUploadToS3">
+    <parameters>
+      <param name="CONFIG_FILE" value="%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json" spec="text validationMode='not_empty'" />
+      <param name="CRAWLER_ALLOWED_DOMAINS" value="ditaot.internal.dev.ccs.guidewire.net" spec="text validationMode='not_empty'" />
+      <param name="CRAWLER_START_URLS" value="https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%" spec="text validationMode='not_empty'" />
+      <param name="DITAVAL_FILE" value="IS-BC-Cloud-Draft.ditaval" spec="text validationMode='not_empty'" />
+      <param name="FORMAT" value="webhelp_Guidewire" spec="text validationMode='not_empty'" />
+      <param name="INDEXER_DOCUMENT_KEYS" value="%PUBLISH_PATH%" spec="text validationMode='not_empty'" />
+      <param name="INDEXER_INDEX_FILE" value="elastic_search/documents.json" spec="text validationMode='not_empty'" />
+      <param name="INDEXER_INDEX_NAME" value="gw-docs" spec="text validationMode='not_empty'" />
+      <param name="INDEXER_SEARCH_APP_URLS" value="https://docsearch-doctools.dev.ccs.guidewire.net" spec="text validationMode='not_empty'" />
+      <param name="INPUT_PATH" value="_superbook.ditamap" spec="text validationMode='not_empty'" />
+      <param name="PUBLISH_PATH" value="cloud/bc/latest/" spec="text validationMode='not_empty'" />
+      <param name="S3_BUCKET_NAME" value="tenant-doctools-dev-builds" spec="text validationMode='not_empty'" />
+      <param name="SOURCES_ROOT" value="src_root" spec="text validationMode='not_empty'" />
+      <param name="TOOLS_ROOT" value="tools_root" spec="text validationMode='not_empty'" />
+    </parameters>
+    <build-runners />
+    <vcs-settings>
+      <vcs-entry-ref root-id="DocumentationTools_Nodeoktacontainer_CloudBcLatestIsBcCloudDraftdev">
+        <checkout-rule rule="+:. =&gt; %SOURCES_ROOT%" />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="branchFilter" value="+:*" />
+          <param name="enableQueueOptimization" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+          <param name="triggerRules"><![CDATA[-:root=DocumentationTools_DocumentationPortal_Vcsrootmasteronly:**
+-:root=DocumentationTools_Nodeoktacontainer_DitaOt331:**
+-:root=DocumentationTools_DitaOtPlugins:**]]></param>
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <dependencies>
+      <depend-on sourceBuildTypeId="DocumentationTools_Nodeoktacontainer_TestContent">
+        <options>
+          <option name="take-started-build-with-same-revisions" value="true" />
+          <option name="take-successful-builds-only" value="true" />
+        </options>
+      </depend-on>
+    </dependencies>
+    <cleanup />
+  </settings>
+</build-type>
+
