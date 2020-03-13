@@ -5,6 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
@@ -62,7 +63,7 @@ project {
 }
 
 object Helpers {
-    fun getBuildsFromConfig(env: String, configPath: String): Pair<MutableList<VcsRoot>, MutableList<jetbrains.buildServer.configs.kotlin.v2019_2.BuildType>> {
+    fun getBuildsFromConfig(env: String, configPath: String): Pair<MutableList<VcsRoot>, MutableList<BuildType>> {
         class CreateVcsRoot(git_path: String, my_id: String) : jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
             id = RelativeId(my_id)
             name = my_id
@@ -72,7 +73,7 @@ object Helpers {
             }
         })
 
-        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : jetbrains.buildServer.configs.kotlin.v2019_2.BuildType({
+        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -111,9 +112,16 @@ object Helpers {
 
                 }
             }
+
+            dependencies {
+                snapshot(TestContent) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
         })
 
-        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : jetbrains.buildServer.configs.kotlin.v2019_2.BuildType({
+        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -143,7 +151,7 @@ object Helpers {
 
         val config = JSONArray(File(configPath).readText(Charsets.UTF_8))
 
-        val builds = mutableListOf<jetbrains.buildServer.configs.kotlin.v2019_2.BuildType>()
+        val builds = mutableListOf<BuildType>()
         val roots = mutableListOf<VcsRoot>()
 
         for (i in 0 until config.length()) {
@@ -505,17 +513,17 @@ object Test : BuildType({
     }
 })
 
-object DeployASearchService : BuildType({
+object DeploySearchService : BuildType({
     name = "Deploy a search service"
     description = "Creates or updates an S3 ingress for a selected environment"
 
     params {
-        select("env.DEPLOY_ENV", "", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.PROMPT,
+        select("env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "us-east-2"))
     }
 
     vcs {
-        root(jetbrains.buildServer.configs.kotlin.v2019_2.DslContext.settingsRoot)
+        root(DslContext.settingsRoot)
     }
 
     steps {
@@ -539,7 +547,7 @@ object DeployASearchService : BuildType({
                 sh ci/deployKubernetes.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
-            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
@@ -554,17 +562,17 @@ object DeployASearchService : BuildType({
     }
 })
 
-object DeployAnIngress : BuildType({
+object DeployS3Ingress : BuildType({
     name = "Deploy an S3 ingress"
     description = "Creates or updates an S3 ingress for a selected environment"
 
     params {
-        select("env.DEPLOY_ENV", "", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.PROMPT,
+        select("env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "us-east-2"))
     }
 
     vcs {
-        root(jetbrains.buildServer.configs.kotlin.v2019_2.DslContext.settingsRoot)
+        root(DslContext.settingsRoot)
     }
 
     steps {
@@ -588,7 +596,7 @@ object DeployAnIngress : BuildType({
                 sh ci/deployKubernetes.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
-            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
@@ -618,7 +626,7 @@ object LoadSearchIndex : BuildType({
         text("env.INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
         text("env.INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
         text("env.INDEXER_DOCUMENT_KEYS", "")
-        select("env.DEPLOY_ENV", "", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.PROMPT,
+        select("env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
     }
 
@@ -660,7 +668,7 @@ object LoadSearchIndex : BuildType({
                 make load-index
             """.trimIndent()
             dockerImage = "python-runner"
-            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
         script {
@@ -675,6 +683,86 @@ object LoadSearchIndex : BuildType({
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
             }
+        }
+    }
+})
+
+object TestContent : BuildType({
+    name = "Test documentation-portal-content"
+
+    vcs {
+        root(AbsoluteId("DocumentationTools_DocumentationPortalContent"))
+
+        cleanCheckout = true
+    }
+
+    steps {
+        dockerCompose {
+            name = "Compose services"
+            file = "apps/tests/test_elastic_search/resources/docker-compose.yml"
+        }
+        dockerCommand {
+            name = "Build a Docker image for running the Python apps"
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "python-runner-image"
+                commandArgs = "--pull"
+            }
+        }
+        script {
+            name = "Run tests for building pages"
+            scriptContent = """
+                cd apps
+                make test-build-pages
+            """.trimIndent()
+            dockerImage = "python-runner-image"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Run tests for collecting documents"
+            scriptContent = """
+                cd apps
+                make test-collect-documents
+            """.trimIndent()
+            dockerImage = "python-runner-image"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--network=host"
+        }
+        script {
+            name = "Run tests for loading index"
+            scriptContent = """
+                cd apps
+                make test-load-index
+            """.trimIndent()
+            dockerImage = "python-runner-image"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--network=host"
+        }
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:.teamcity/settings.kts
+                +:apps/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            vcsRootExtId = "DocumentationTools_DocumentationPortalContent"
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "zxx02d98e2c9ff7a3fe236631b550fc8db9b0a9c655f3a18e4b775d03cbe80d301b"
+            }
+        }
+        sshAgent {
+            teamcitySshKey = "dita-ot.rsa"
         }
     }
 })
@@ -911,7 +999,7 @@ object AddFilesFromXDocsToBitbucket : Template({
     maxRunningBuilds = 1
 
     params {
-        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", label = "Git clone directory", description = "Directory for the repo cloned from Bitbucket", display = jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", label = "Git clone directory", description = "Directory for the repo cloned from Bitbucket", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.EXPORT_PATH_IDS", "%EXPORT_PATH_IDS%", allowEmpty = false)
         text("env.XDOCS_EXPORT_DIR", "%XDOCS_EXPORT_DIR%", allowEmpty = false)
     }
@@ -1028,7 +1116,7 @@ object BuildAndUploadToS3 : Template({
                 make load-index
             """.trimIndent()
             dockerImage = "python-runner"
-            dockerImagePlatform = jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep.ImagePlatform.Linux
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
 
@@ -1056,29 +1144,36 @@ object Server : Project({
     name = "Server"
 
     buildType(Checkmarx)
-    buildType(DeployProd)
     buildType(Test)
     buildType(DeployInt)
     buildType(DeployStaging)
     buildType(DeployDev)
     buildType(Release)
+    buildType(DeployProd)
 })
 
 object Content : Project({
     name = "Content"
 
-    buildType(DeployAnIngress)
     buildType(LoadSearchIndex)
-    buildType(DeployASearchService)
-    subProject(DeployToStaging)
-    subProject(DeployToDev_AddFilesFromXDocsToBitbucketDev)
-    subProject(DeployToDev)
-    subProject(DeployToProd)
+    subProject(DeployServices)
+    subProject(AddFilesFromXDocsToBitbucketActiveBranch)
+    buildType(TestContent)
+    subProject(DeployDevContent)
+    subProject(DeployStagingContent)
+    subProject(DeployProdContent)
 
 })
 
-object DeployToDev_AddFilesFromXDocsToBitbucketDev : Project({
-    name = "Add files from XDocs to Bitbucket"
+object DeployServices : Project({
+    name = "Deploy services"
+
+    buildType(DeployS3Ingress)
+    buildType(DeploySearchService)
+})
+
+object AddFilesFromXDocsToBitbucketActiveBranch : Project({
+    name = "Add files from XDocs to Bitbucket (active branch)"
 
     buildType(AddIS9xFilesFromXDocsToBitbucket)
     buildType(AddIS10xFilesFromXDocsToBitbucket)
@@ -1087,23 +1182,23 @@ object DeployToDev_AddFilesFromXDocsToBitbucketDev : Project({
     buildType(AddDataManagementDHICFilesFromXDocsToBitbucket)
 })
 
-object DeployToDev : Project({
-    name = "Deploy to dev"
+object DeployDevContent : Project({
+    name = "Deploy to Dev"
 
     val (roots, builds) = Helpers.getBuildsFromConfig("dev", "config/gw-docs-dev.json")
     roots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
 })
 
-object DeployToStaging : Project({
-    name = "Deploy to staging"
+object DeployStagingContent : Project({
+    name = "Deploy to Staging"
 
     val (roots, builds) = Helpers.getBuildsFromConfig("staging", "config/gw-docs-staging.json")
     roots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
 })
 
-object DeployToProd : Project({
+object DeployProdContent : Project({
     name = "Deploy to Prod"
 
     buildType(CopyContentFromStagingToProd)
