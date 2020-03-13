@@ -727,7 +727,7 @@ object TestContent : BuildType({
                 cd apps
                 make test-build-pages
             """.trimIndent()
-            dockerImage = "python-runner-image"
+            dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
         script {
@@ -736,7 +736,7 @@ object TestContent : BuildType({
                 cd apps
                 make test-collect-documents
             """.trimIndent()
-            dockerImage = "python-runner-image"
+            dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--network=host"
         }
@@ -746,7 +746,7 @@ object TestContent : BuildType({
                 cd apps
                 make test-load-index
             """.trimIndent()
-            dockerImage = "python-runner-image"
+            dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--network=host"
         }
