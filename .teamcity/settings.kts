@@ -106,7 +106,7 @@ object Helpers {
                 vcs {
                     id = "vcsTrigger"
                     triggerRules = """
-                -:root=DocumentationTools_Nodeoktacontainer_vcsrootmasteronly:**
+                -:root=${vcsrootmasteronly.id}:**
                 -:root=${DitaOt331.id}:**
                 -:root=DocumentationTools_DitaOtPlugins:**
             """.trimIndent()
@@ -642,7 +642,7 @@ object LoadSearchIndex : BuildType({
 
 
     vcs {
-        root(AbsoluteId("DocumentationTools_Nodeoktacontainer_vcsrootmasteronly"))
+        root(vcsrootmasteronly)
     }
 
     steps {
@@ -1083,7 +1083,7 @@ object BuildAndUploadToS3 : Template({
 
     vcs {
         root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
-        root(AbsoluteId("DocumentationTools_Nodeoktacontainer_vcsrootmasteronly"), "+:. => %env.TOOLS_ROOT%")
+        root(vcsrootmasteronly, "+:. => %env.TOOLS_ROOT%")
         root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
 
         cleanCheckout = true
