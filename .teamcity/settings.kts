@@ -649,8 +649,8 @@ object LoadSearchIndex : BuildType({
         dockerCommand {
             name = "Build a Python Docker image"
             commandType = build {
-                source = path {
-                    path = "Dockerfile"
+                source = file {
+                    path = "apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -715,28 +715,20 @@ object TestContent : BuildType({
             name = "Build a Docker image for running the Python apps"
             commandType = build {
                 source = file {
-                    path = "Dockerfile"
+                    path = "apps/Dockerfile"
                 }
-                namesAndTags = "python-runner-image"
+                namesAndTags = "python-runner"
                 commandArgs = "--pull"
             }
         }
-        script {
-            name = "Run tests for building pages"
-            scriptContent = """
-                cd apps
-                make test-build-pages
-            """.trimIndent()
-            dockerImage = "python-runner-image"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
+
         script {
             name = "Run tests for collecting documents"
             scriptContent = """
                 cd apps
                 make test-collect-documents
             """.trimIndent()
-            dockerImage = "python-runner-image"
+            dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--network=host"
         }
@@ -746,7 +738,7 @@ object TestContent : BuildType({
                 cd apps
                 make test-load-index
             """.trimIndent()
-            dockerImage = "python-runner-image"
+            dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--network=host"
         }
@@ -764,7 +756,6 @@ object TestContent : BuildType({
 
     features {
         commitStatusPublisher {
-            vcsRootExtId = "${vcsroot.id}"
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
                 userName = "%serviceAccountUsername%"
@@ -1108,8 +1099,8 @@ object BuildAndUploadToS3 : Template({
             name = "Build a Python Docker image"
             id = "RUNNER_2634"
             commandType = build {
-                source = path {
-                    path = "%env.TOOLS_ROOT%/Dockerfile"
+                source = file {
+                    path = "%env.TOOLS_ROOT%/apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
