@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Deploy a search service</name>
+  <description>Creates or updates an S3 ingress for a selected environment</description>
+  <settings>
+    <parameters>
+      <param name="env.DEPLOY_ENV" value="" spec="select display='prompt' data_1='dev' data_2='int' data_3='staging' data_4='us-east-2'" />
+    </parameters>
+    <build-runners>
+      <runner id="DEPLOY_TO_K8S" name="Deploy to Kubernetes" type="simpleRunner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="plugin.docker.pull.enabled" value="true" />
+          <param name="plugin.docker.run.parameters" value="-v /var/run/docker.sock:/var/run/docker.sock -v $pwd:/app:ro" />
+          <param name="script.content"><![CDATA[#!/bin/bash 
+set -xe
+if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+    export AWS_ACCESS_KEY_ID="$ATMOS_PROD_AWS_ACCESS_KEY_ID"
+    export AWS_SECRET_ACCESS_KEY="$ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+    export AWS_DEFAULT_REGION="$ATMOS_PROD_AWS_DEFAULT_REGION"
+    export KUBE_FILE=apps/elastic_search/kube/deployment-prod.yml
+else
+    export AWS_ACCESS_KEY_ID="$ATMOS_DEV_AWS_ACCESS_KEY_ID"
+    export AWS_SECRET_ACCESS_KEY="$ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+    export AWS_DEFAULT_REGION="$ATMOS_DEV_AWS_DEFAULT_REGION"
+    export KUBE_FILE=apps/elastic_search/kube/deployment.yml
+fi
+sh ci/deployKubernetes.sh]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="DocumentationTools_DocumentationPortal_Vcsroot" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="DockerSupport">
+        <parameters>
+          <param name="login2registry" value="PROJECT_EXT_155" />
+          <param name="loginCheckbox" value="on" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+

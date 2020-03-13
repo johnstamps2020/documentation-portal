@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Add DataManagementDHIC files from XDocs to Bitbucket</name>
+  <description>Exports DITA files from XDocs and adds them to Bitbucket</description>
+  <settings ref="DocumentationTools_Nodeoktacontainer_AddFilesFromXDocsToBitbucket">
+    <parameters>
+      <param name="EXPORT_PATH_IDS" value="/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval /Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap" spec="text validationMode='not_empty'" />
+      <param name="SOURCES_ROOT" value="src_root" spec="text validationMode='not_empty'" />
+      <param name="XDOCS_EXPORT_DIR" value="%system.teamcity.build.tempDir%/xdocs_export_dir" spec="text validationMode='not_empty'" />
+    </parameters>
+    <build-runners />
+    <vcs-settings>
+      <vcs-entry-ref root-id="DocumentationTools_Nodeoktacontainer_DataManagementDHIC">
+        <checkout-rule rule="+:. =&gt; %SOURCES_ROOT%" />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

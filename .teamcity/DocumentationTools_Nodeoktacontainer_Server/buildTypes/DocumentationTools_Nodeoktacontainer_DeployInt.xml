@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Deploy to Int</name>
+  <description />
+  <settings ref="DocumentationTools_Nodeoktacontainer_Deploy">
+    <options>
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters>
+      <param name="env.DEPLOY_ENV" value="int" />
+      <param name="env.NAMESPACE" value="doctools" spec="text label='Namespace' display='prompt' validationMode='not_empty'" />
+      <param name="env.TAG_VERSION" value="" spec="text label='Deploy Version' display='prompt' validationMode='regex' regexp='^(|[0-9|]+\.|[0-9|]+\.|[0-9|]+)$' validationMessage='Invalid SemVer Format'" />
+    </parameters>
+    <build-runners />
+    <vcs-settings>
+      <vcs-entry-ref root-id="DocumentationTools_DocumentationPortal_Vcsrootmasteronly" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

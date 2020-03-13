@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Build DITA and upload to S3 template</name>
+  <settings>
+    <options>
+      <option name="cleanBuild" value="true" />
+      <option name="maximumNumberOfBuilds" value="1" />
+    </options>
+    <parameters>
+      <param name="env.CONFIG_FILE" value="%CONFIG_FILE%" spec="text validationMode='not_empty'" />
+      <param name="env.CRAWLER_ALLOWED_DOMAINS" value="%CRAWLER_ALLOWED_DOMAINS%" spec="text validationMode='not_empty'" />
+      <param name="env.CRAWLER_START_URLS" value="%CRAWLER_START_URLS%" spec="text validationMode='not_empty'" />
+      <param name="env.DITAVAL_FILE" value="%DITAVAL_FILE%" spec="text validationMode='not_empty'" />
+      <param name="env.FORMAT" value="%FORMAT%" spec="text validationMode='not_empty'" />
+      <param name="env.INDEXER_DOCUMENT_KEYS" value="%INDEXER_DOCUMENT_KEYS%" spec="text validationMode='regex'" />
+      <param name="env.INDEXER_INDEX_FILE" value="%INDEXER_INDEX_FILE%" spec="text validationMode='not_empty'" />
+      <param name="env.INDEXER_INDEX_NAME" value="%INDEXER_INDEX_NAME%" spec="text validationMode='not_empty'" />
+      <param name="env.INDEXER_SEARCH_APP_URLS" value="%INDEXER_SEARCH_APP_URLS%" spec="text validationMode='not_empty'" />
+      <param name="env.INPUT_PATH" value="%INPUT_PATH%" spec="text validationMode='not_empty'" />
+      <param name="env.PUBLISH_PATH" value="%PUBLISH_PATH%" spec="text validationMode='not_empty'" />
+      <param name="env.S3_BUCKET_NAME" value="%S3_BUCKET_NAME%" spec="text description='Set to dev, int or staging' validationMode='not_empty'" />
+      <param name="env.SOURCES_ROOT" value="%SOURCES_ROOT%" spec="text validationMode='not_empty'" />
+      <param name="env.TOOLS_ROOT" value="%TOOLS_ROOT%" spec="text validationMode='not_empty'" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_2108" name="Run build" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[chmod -R 777 ./
+%env.DITA_OT_331_DIR%/bin/dita --install
+%env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_2633" name="Upload to the S3 bucket" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_2634" name="Build a Python Docker image" type="DockerCommand">
+        <parameters>
+          <param name="command.args" value="--pull" />
+          <param name="docker.command.type" value="build" />
+          <param name="docker.image.namesAndTags" value="python-runner" />
+          <param name="docker.push.remove.image" value="true" />
+          <param name="dockerImage.platform" value="linux" />
+          <param name="dockerfile.path" value="%env.TOOLS_ROOT%/Dockerfile" />
+          <param name="dockerfile.source" value="PATH" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_2635" name="Collect documents and load index" type="simpleRunner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="python-runner" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="script.content"><![CDATA[cd apps
+make collect-documents
+make load-index]]></param>
+          <param name="teamcity.build.workingDir" value="%env.TOOLS_ROOT%" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="DocumentationTools_Nodeoktacontainer_DitaOt331">
+        <checkout-rule rule="+:. =&gt; ./%env.DITA_OT_331_DIR%" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="DocumentationTools_DocumentationPortal_Vcsrootmasteronly">
+        <checkout-rule rule="+:. =&gt; %env.TOOLS_ROOT%" />
+      </vcs-entry-ref>
+      <vcs-entry-ref root-id="DocumentationTools_DitaOtPlugins">
+        <checkout-rule rule="+:. =&gt; ./%env.DITA_OT_PLUGINS_DIR%" />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="BUILD_EXT_329" type="commit-status-publisher">
+        <parameters>
+          <param name="publisherId" value="atlassianStashPublisher" />
+          <param name="secure:stashPassword" value="credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab" />
+          <param name="stashBaseUrl" value="https://stash.guidewire.com" />
+          <param name="stashUsername" value="%env.ARTIFACTORY_USERNAME%" />
+          <param name="vcsRootId" value="DocumentationTools_Nodeoktacontainer_DitaOt331" />
+        </parameters>
+      </extension>
+      <extension id="DockerSupport" type="DockerSupport">
+        <parameters>
+          <param name="login2registry" value="PROJECT_EXT_155" />
+          <param name="loginCheckbox" value="on" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</template>
+
