@@ -649,8 +649,8 @@ object LoadSearchIndex : BuildType({
         dockerCommand {
             name = "Build a Python Docker image"
             commandType = build {
-                source = path {
-                    path = "Dockerfile"
+                source = file {
+                    path = "apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -717,7 +717,7 @@ object TestContent : BuildType({
                 source = file {
                     path = "apps/Dockerfile"
                 }
-                namesAndTags = "python-runner-image"
+                namesAndTags = "python-runner"
                 commandArgs = "--pull"
             }
         }
@@ -1107,8 +1107,8 @@ object BuildAndUploadToS3 : Template({
             name = "Build a Python Docker image"
             id = "RUNNER_2634"
             commandType = build {
-                source = path {
-                    path = "%env.TOOLS_ROOT%/Dockerfile"
+                source = file {
+                    path = "%env.TOOLS_ROOT%/apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
