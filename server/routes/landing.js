@@ -13,7 +13,7 @@ const configureRouter = async () => {
   config.forEach(landing => {
     console.log('adding route', landing.route);
     router.get(landing.route, (req, res) => {
-      res.render(landing.view, landing.docPackages);
+      res.render(landing.view, {docPackages: landing.docPackages});
     });
   });
 };
