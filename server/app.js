@@ -48,7 +48,7 @@ app.use(
 const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
-
+const landingRouter = require('./routes/landing');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
 
@@ -118,6 +118,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+app.use('/unauthorized', unauthorizedRouter);
+app.use('/search', searchRouter);
+app.use('/', landingRouter);
+
 const proxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
   changeOrigin: true,
@@ -126,12 +131,8 @@ const proxyOptions = {
   },
 };
 const docProxy = proxy(proxyOptions);
-
-app.use('/unauthorized', unauthorizedRouter);
-
-app.use('/search', searchRouter);
-
 app.use('/', docProxy);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
