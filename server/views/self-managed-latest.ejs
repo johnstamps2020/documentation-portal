@@ -14,17 +14,24 @@
     <div class="docPanelContainer container">
         <div class="row">
             <% docPackages.forEach(docPackage => { -%>
-                <div class="docPanel col-md">
-                    <span class="docPanelTitle"><%= docPackage.categoryName %></span>
-                    <% docPackage.docs.forEach(doc => { -%>
-                        <% if (doc.releases) { -%>
-                            <div>
-                                <% doc.releases.forEach(release => { -%>
-                                    <span class="docPanelLink"><a href="<%= release.url %>"><%= doc.title %></a></span>
-                                <% }) %>
+                <div class="col-md">
+                    <div class="card border-light mb-3" style="max-width: 18rem;">
+                        <h4 class="card-header bg-transparent"><%= docPackage.categoryName %></h4>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <% docPackage.docs.forEach(doc => { -%>
+                                    <% if (doc.releases) { -%>
+                                        <div>
+                                            <% doc.releases.forEach(release => { -%>
+                                                <span class="docPanelLink"><a
+                                                            href="<%= release.url %>"><%= doc.title %></a></span>
+                                            <% }) %>
+                                        </div>
+                                    <% } -%>
+                                <% }) -%>
                             </div>
-                        <% } -%>
-                    <% }) -%>
+                        </div>
+                    </div>
                 </div>
             <% }) -%>
         </div>
