@@ -1,0 +1,213 @@
+@media only screen and (max-width: 600px) {
+    html, body {
+        --landing-title-container-height: 150px !important;
+        --search-field-width: 400px !important;
+    }
+
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url(../fonts/SourceSansPro-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'AvenirNext LT Pro Regular';
+    src: url(../fonts/AvenirNextLTPro-Regular.ttf);
+}
+
+html, body {
+    --footer-height: 50px;
+    --header-height: 48px;
+    --landing-title-container-height: 200px;
+    --search-bar-height: 100px;
+    --search-field-width: 600px;
+    --search-button-width: 35px;
+    --sub-header-bg-color: #384346;
+    --GW-COLOR-BRAND-1: #00739D;
+    height: 100%;
+}
+
+.homeContainer {
+    min-height: calc(100% - var(--header-height) - var(--search-bar-height));
+}
+
+.docPanelContainer {
+    padding: 20px;
+    min-height: calc(100% - var(--footer-height) - var(--header-height) - var(--search-bar-height) - var(--landing-title-container-height));
+}
+
+.docPanel {
+    padding: 1.5rem;
+    margin: 1.25rem;
+    border-left: solid 4px var(--GW-COLOR-BRAND-1);
+    background-color: #F8F9FA;
+}
+
+.docPanelTransparent {
+    padding: 1.5rem;
+    margin: 1.25rem;
+}
+
+.docPanel a, .docPanelTransparent a {
+    color: var(--GW-COLOR-BRAND-1);
+}
+
+.docPanelTitle {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.docPanelDescription {
+    display: block;
+}
+
+.docPanelLink {
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.pageHeader {
+    height: var(--header-height);
+    background-color: var(--GW-COLOR-BRAND-1);
+}
+
+.pageLogo {
+    position: relative;
+    margin-top: 12px;
+    margin-left: 20px;
+    height: 24px;
+}
+
+.pageTitle {
+    position: absolute;
+    margin-top: 12px;
+    margin-left: 20px;
+    font-family: "AvenirNext LT Pro Regular";
+    font-size: 1.25rem;
+    color: #ffffff;
+
+}
+
+.searchBar {
+    height: var(--search-bar-height);
+    background-color: var(--sub-header-bg-color);
+    position: relative;
+}
+
+.searchField {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-left: 6px;
+    padding-right: calc(var(--search-button-width) + 1px);
+    transform: translate(-50%, -50%);
+    height: 35px;
+    width: var(--search-field-width);
+}
+
+.searchButton {
+    position: relative;
+    background: url(../images/search.svg) no-repeat center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: calc((var(--search-field-width) - var(--search-button-width)) / 2);
+    background-size: 1.25rem;
+    height: 35px;
+    width: var(--search-button-width);
+    border: none;
+}
+
+.resultList li {
+    list-style-type: none;
+}
+
+.resultList h2 {
+    font-size: 1.3rem;
+}
+
+.searchResults {
+    padding-top: 3rem;
+}
+
+.pageFooter {
+    font-weight: 600;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    border-top: #b9bbbe solid 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: var(--footer-height);
+}
+
+.gw-jumbotron {
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+.gw-jumbotron a {
+    color: var(--GW-COLOR-BRAND-1);
+}
+
+@media (min-width: 576px) {
+    .gw-jumbotron {
+        padding: 1rem 1rem;
+    }
+}
+
+/* Bootstrap overrides */
+
+body {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif !important;
+}
+
+.pagination li {
+    padding: 6px;
+}
+
+.pagination li.disabled a,
+.pagination li.disabled {
+    color: gray !important;
+}
+
+.pagination button {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.filterSearchResults h2 {
+    font-size: 1rem;
+}
+
+.checkboxRow {
+    font-size: 0.9rem;
+    line-height: 1rem;
+    margin-left: 6px;
+}
+
+.checkboxLabel {
+    margin-left: 6px;
+}
+
+.docCount {
+    float: right;
+    color: gray;
+}
+
+.paginationWrapper {
+    float: right;
+}
+
+a {
+    color: var(--GW-COLOR-BRAND-1);
+}

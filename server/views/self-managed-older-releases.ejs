@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include parts/head %>
+<body>
+<% include parts/header %>
+<% include parts/search-bar %>
+<div class="homeContainer">
+    <div class="gw-jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Self-managed products</h1>
+            <a class="btn btn-link" href="/" role="button">Cloud products &gt;</a>
+        </div>
+    </div>
+    <div class="docPanelContainer container">
+        <div class="row">
+            <% docPackages.forEach(docPackage => { -%>
+                <div class="docPanelTransparent col-md">
+                    <span class="docPanelTitle"><%= docPackage.categoryName %></span>
+                    <% docPackage.docs.forEach(doc => { -%>
+                        <% if (doc.releases) { -%>
+                            <p>
+                                <button class="btn btn-light dropdown-toggle" type="button"
+                                        data-toggle="collapse"
+                                        data-target="#<%= doc.title.replace(" ", "") %>Releases"
+                                        aria-expanded="false"
+                                        aria-controls="<%= doc.title.replace(" ", "") %>Releases">
+                                    <%= doc.title %>
+                                </button>
+                            </p>
+                            <div class="collapse" id="<%= doc.title.replace(" ", "") %>Releases">
+                                <ul class="list-unstyled card-columns">
+                                    <% doc.releases.forEach(release => { -%>
+                                        <li><a href="<%= release.url %>"><%= release.version %></a></li>
+                                    <% }) %>
+                                </ul>
+                            </div>
+                        <% } -%>
+                    <% }) -%>
+                </div>
+            <% }) -%>
+        </div>
+        <div class="row">
+            <div class="col-md text-center">
+                <a href="/self-managed-latest" class="btn-sm btn-dark" role="button">See latest releases</a>
+            </div>
+        </div>
+    </div>
+</div>
+<% include parts/footer %>
+</body>
+</html>

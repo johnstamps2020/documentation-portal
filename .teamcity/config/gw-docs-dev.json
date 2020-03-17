@@ -1,6 +1,7 @@
 [
   {
-    "template": "index.html",
+    "view": "home",
+    "route": "/",
     "platform": "Cloud",
     "docPackages": [
       {
@@ -80,7 +81,8 @@
     ]
   },
   {
-    "template": "self-managed-latest.html",
+    "view": "self-managed-latest",
+    "route": "/self-managed-latest",
     "platform": "Self-managed",
     "docPackages": [
       {
@@ -323,7 +325,8 @@
     ]
   },
   {
-    "template": "self-managed-older-releases.html",
+    "view": "self-managed-older-releases",
+    "route": "/self-managed-older-releases",
     "platform": "Self-managed",
     "docPackages": [
       {

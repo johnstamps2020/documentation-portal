@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include parts/head %>
+<body>
+<% include parts/header %>
+<% include parts/search-bar %>
+<div class="homeContainer">
+    <div class="gw-jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Self-managed products</h1>
+            <a class="btn btn-link" href="/" role="button">Cloud products &gt;</a>
+        </div>
+    </div>
+    <div class="docPanelContainer container">
+        <div class="row">
+            <% docPackages.forEach(docPackage => { -%>
+                <div class="docPanel col-md">
+                    <span class="docPanelTitle"><%= docPackage.categoryName %></span>
+                    <% docPackage.docs.forEach(doc => { -%>
+                        <% if (doc.releases) { -%>
+                            <div>
+                                <% doc.releases.forEach(release => { -%>
+                                    <span class="docPanelLink"><a href="<%= release.url %>"><%= doc.title %></a></span>
+                                <% }) %>
+                            </div>
+                        <% } -%>
+                    <% }) -%>
+                </div>
+            <% }) -%>
+        </div>
+        <div class="row">
+            <div class="col-md text-center">
+                <a href="/self-managed-older-releases" class="btn-sm btn-dark" role="button">See older releases</a>
+            </div>
+        </div>
+    </div>
+</div>
+<% include parts/footer %>
+</body>
+</html>
