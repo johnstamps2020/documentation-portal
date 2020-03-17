@@ -14,28 +14,34 @@
     <div class="docPanelContainer container">
         <div class="row">
             <% docPackages.forEach(docPackage => { -%>
-                <div class="docPanelTransparent col-md">
-                    <span class="docPanelTitle"><%= docPackage.categoryName %></span>
-                    <% docPackage.docs.forEach(doc => { -%>
-                        <% if (doc.releases) { -%>
-                            <p>
-                                <button class="btn btn-light dropdown-toggle" type="button"
-                                        data-toggle="collapse"
-                                        data-target="#<%= doc.title.replace(" ", "") %>Releases"
-                                        aria-expanded="false"
-                                        aria-controls="<%= doc.title.replace(" ", "") %>Releases">
-                                    <%= doc.title %>
-                                </button>
-                            </p>
-                            <div class="collapse" id="<%= doc.title.replace(" ", "") %>Releases">
-                                <ul class="list-unstyled card-columns">
-                                    <% doc.releases.forEach(release => { -%>
-                                        <li><a href="<%= release.url %>"><%= release.version %></a></li>
-                                    <% }) %>
-                                </ul>
+                <div class="col-md">
+                    <div class="card border-light mb-3">
+                        <h4 class="card-header bg-transparent"><%= docPackage.categoryName %></h4>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <% docPackage.docs.forEach(doc => { -%>
+                                    <% if (doc.releases) { -%>
+                                        <p>
+                                            <button class="btn btn-light dropdown-toggle" type="button"
+                                                    data-toggle="collapse"
+                                                    data-target="#<%= doc.title.replace(" ", "") %>Releases"
+                                                    aria-expanded="false"
+                                                    aria-controls="<%= doc.title.replace(" ", "") %>Releases">
+                                                <%= doc.title %>
+                                            </button>
+                                        </p>
+                                        <div class="collapse" id="<%= doc.title.replace(" ", "") %>Releases">
+                                            <ul class="list-unstyled card-columns">
+                                                <% doc.releases.forEach(release => { -%>
+                                                    <li><a href="<%= release.url %>"><%= release.version %></a></li>
+                                                <% }) %>
+                                            </ul>
+                                        </div>
+                                    <% } -%>
+                                <% }) -%>
                             </div>
-                        <% } -%>
-                    <% }) -%>
+                        </div>
+                    </div>
                 </div>
             <% }) -%>
         </div>
