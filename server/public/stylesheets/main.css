@@ -1,4 +1,3 @@
-
 @media only screen and (max-width: 600px) {
     html, body {
         --landing-title-container-height: 150px !important;
@@ -29,6 +28,7 @@ html, body {
     --GW-COLOR-BRAND-1: #00739D;
     height: 100%;
 }
+
 .homeContainer {
     min-height: calc(100% - var(--header-height) - var(--search-bar-height));
 }
@@ -155,6 +155,7 @@ html, body {
     background-color: #e9ecef;
     border-radius: .3rem;
 }
+
 .gw-jumbotron a {
     color: var(--GW-COLOR-BRAND-1);
 }
