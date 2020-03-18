@@ -1,3 +1,4 @@
+
 @media only screen and (max-width: 600px) {
     html, body {
         --landing-title-container-height: 150px !important;
@@ -16,6 +17,7 @@
     src: url(../fonts/AvenirNextLTPro-Regular.ttf);
 }
 
+
 html, body {
     --footer-height: 50px;
     --header-height: 48px;
@@ -27,7 +29,6 @@ html, body {
     --GW-COLOR-BRAND-1: #00739D;
     height: 100%;
 }
-
 .homeContainer {
     min-height: calc(100% - var(--header-height) - var(--search-bar-height));
 }
@@ -133,6 +134,10 @@ html, body {
     padding-top: 3rem;
 }
 
+.searchResults a {
+    color: var(--GW-COLOR-BRAND-1);
+}
+
 .pageFooter {
     font-weight: 600;
     color: #999;
@@ -150,7 +155,6 @@ html, body {
     background-color: #e9ecef;
     border-radius: .3rem;
 }
-
 .gw-jumbotron a {
     color: var(--GW-COLOR-BRAND-1);
 }
@@ -160,6 +164,7 @@ html, body {
         padding: 1rem 1rem;
     }
 }
+
 
 .pagination li {
     padding: 6px;
@@ -206,10 +211,6 @@ html, body {
 
 body {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif !important;
-}
-
-a {
-    color: var(--GW-COLOR-BRAND-1);
 }
 
 .list-unstyled a {
