@@ -314,6 +314,8 @@ object DeployDev : BuildType({
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.DEPLOY_ENV", "dev")
         param("env.TAG_VERSION", "latest")
+        param("env.PARTNERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/partners/idp/endpoint/HttpRedirect")
+        param("env.CUSTOMERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/customers/idp/endpoint/HttpRedirect")
     }
 
     vcs {
@@ -406,6 +408,8 @@ object DeployStaging : BuildType({
         param("env.DEPLOY_ENV", "staging")
         text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+        param("env.PARTNERS_LOGIN_URL", "https://uat-guidewire.cs59.force.com/partners/idp/endpoint/HttpRedirect")
+        param("env.CUSTOMERS_LOGIN_URL", "https://uat-guidewire.cs59.force.com/customers/idp/endpoint/HttpRedirect")
     }
 
     vcs {
