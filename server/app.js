@@ -64,13 +64,14 @@ app.use('/gw-login', gwLoginRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
 
+// serve docs from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 const oktaOIDC = require('./controllers/authController').oktaOIDC;
 const authGateway = require('./controllers/authController').authGateway;
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oktaOIDC.router);
 app.use(authGateway);
-
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -84,8 +85,6 @@ app.use(
     sourceMap: true,
   })
 );
-// serve docs from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(httpContext.middleware);
 app.use(zipkinMiddleware({ tracer }));

@@ -33,9 +33,18 @@ html, body {
     min-height: calc(100% - var(--header-height) - var(--search-bar-height));
 }
 
+.homeContainerNoSearch {
+    min-height: calc(100% - var(--header-height));
+}
+
 .docPanelContainer {
     padding: 20px;
     min-height: calc(100% - var(--footer-height) - var(--header-height) - var(--search-bar-height) - var(--landing-title-container-height));
+}
+
+.docPanelContainerNoSearch {
+    padding: 20px;
+    min-height: calc(100% - var(--footer-height) - var(--header-height) - var(--landing-title-container-height));
 }
 
 .docPanel {
@@ -214,6 +223,6 @@ body {
     font-family: "Source Sans Pro", Helvetica, Arial, sans-serif !important;
 }
 
-.list-unstyled a {
+.list-unstyled a, .card-header a {
     color: var(--GW-COLOR-BRAND-1);
 }
