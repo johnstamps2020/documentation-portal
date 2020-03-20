@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-echo "PARTNERS LOGIN" ${PARTNERS_LOGIN_URL}
+echo "OKTA_DOMAIN" ${OKTA_DOMAIN}
 aws eks update-kubeconfig --name atmos-${DEPLOY_ENV}
 
 echo $(kubectl get pods --namespace=${NAMESPACE})
