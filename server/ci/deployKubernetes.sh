@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eux
 
+echo "PARTNERS LOGIN" ${PARTNERS_LOGIN_URL}
 aws eks update-kubeconfig --name atmos-${DEPLOY_ENV}
 
 echo $(kubectl get pods --namespace=${NAMESPACE})
@@ -19,7 +20,6 @@ kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjs
 kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=${ARTIFACTORY_USERNAME} --docker-password=${ARTIFACTORY_PASSWORD} --namespace=${NAMESPACE}
 
 sed -ie "s/BUILD_TIME/$(date)/g" deployment.yml
-echo "PARTNERS LOGIN" ${PARTNERS_LOGIN_URL}
 kubectl apply -f deployment.yml --namespace=${NAMESPACE}
 kubectl apply -f service.yml --namespace=${NAMESPACE}
 kubectl apply -f ingress.yml --namespace=${NAMESPACE}
