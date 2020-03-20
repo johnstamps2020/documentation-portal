@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eux
 
-echo "OKTA_DOMAIN" ${OKTA_DOMAIN}
 aws eks update-kubeconfig --name atmos-${DEPLOY_ENV}
 
 echo $(kubectl get pods --namespace=${NAMESPACE})
