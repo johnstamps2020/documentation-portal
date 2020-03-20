@@ -316,6 +316,7 @@ object DeployDev : BuildType({
         param("env.TAG_VERSION", "latest")
         param("env.PARTNERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/partners/idp/endpoint/HttpRedirect")
         param("env.CUSTOMERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/customers/idp/endpoint/HttpRedirect")
+        param("env.CONFIG_FILENAME", "gw-docs-dev.json")
     }
 
     vcs {
@@ -428,6 +429,7 @@ object Release : BuildType({
     params {
         select("semver-scope", "patch", label = "Version Scope", display = ParameterDisplay.PROMPT,
                 options = listOf("Patch" to "patch", "Minor" to "minor", "Major" to "major"))
+        param("env.CONFIG_FILENAME", "gw-docs-staging.json")
     }
 
     vcs {
@@ -445,6 +447,7 @@ object Release : BuildType({
                 git config --global user.name "sys-doc"
                 git fetch --tags
 
+                cp ./.teamcity/config/${'$'}{CONFIG_FILENAME} ./server/config.json
                 cd server/
                 export TAG_VERSION=${'$'}(npm version %semver-scope%)
                 git add .
@@ -891,6 +894,7 @@ object BuildDockerImage : Template({
                 else 
                     export BRANCH_NAME=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
                 fi
+                cp ./.teamcity/config/${'$'}{CONFIG_FILENAME} ./server/config.json
                 docker build -t docportal ./server
                 docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
