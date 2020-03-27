@@ -30,11 +30,11 @@ html, body {
 }
 
 .homeContainer {
-    min-height: calc(100% - var(--header-height) - var(--search-bar-height));
+    min-height: calc(100% - var(--header-height) - var(--search-bar-height) - var(--footer-height));
 }
 
 .homeContainerNoSearch {
-    min-height: calc(100% - var(--header-height));
+    min-height: calc(100% - var(--header-height) - var(--footer-height));
 }
 
 .docPanelContainer {
