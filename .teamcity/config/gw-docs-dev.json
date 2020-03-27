@@ -54,6 +54,54 @@
                 }
               }
             ]
+          },
+          {
+            "title": "BillingCenter Upgrade Guide",
+            "product": "BillingCenter Upgrade Guide",
+            "releases": [
+              {
+                "version": "latest",
+                "url": "self-managed/upgrade/bc/latest",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git ",
+                  "filter": "IS-BC-Cloud-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "ClaimCenter Upgrade Guide",
+            "product": "ClaimCenter Upgrade Guide",
+            "releases": [
+              {
+                "version": "latest",
+                "url": "self-managed/upgrade/cc/latest",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git ",
+                  "filter": "IS-CC-Cloud-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "PolicyCenter Upgrade Guide",
+            "product": "PolicyCenter Upgrade Guide",
+            "releases": [
+              {
+                "version": "latest",
+                "url": "self-managed/upgrade/pc/latest",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git ",
+                  "filter": "IS-PC-Cloud-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
+              }
+            ]
           }
         ]
       },
