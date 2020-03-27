@@ -1,25 +1,19 @@
 [
   {
-    "view": "home",
+    "view": "self-managed-latest",
     "route": "/",
-    "platform": "Cloud",
+    "platform": "Self-managed",
     "docPackages": [
       {
-        "categoryName": "InsuranceSuite",
+        "categoryName": "Core",
         "docs": [
           {
             "title": "BillingCenter",
             "product": "BillingCenter",
             "releases": [
               {
-                "version": "latest",
-                "url": "cloud/bc/latest/",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-                  "filter": "IS-BC-Cloud-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
+                "version": "10.0.3",
+                "url": "self-managed/bc/1003"
               }
             ]
           },
@@ -28,14 +22,8 @@
             "product": "ClaimCenter",
             "releases": [
               {
-                "version": "latest",
-                "url": "cloud/cc/latest/",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-                  "filter": "IS-CC-Cloud-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
+                "version": "10.0.3",
+                "url": "self-managed/cc/1003"
               }
             ]
           },
@@ -44,143 +32,8 @@
             "product": "PolicyCenter",
             "releases": [
               {
-                "version": "latest",
-                "url": "cloud/pc/latest/",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-                  "filter": "IS-PC-Cloud-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "categoryName": "Cloud",
-        "docs": [
-          {
-            "title": "Guidewire Cloud Platform",
-            "product": "Guidewire Cloud Platform",
-            "releases": [
-              {
-                "version": "latest",
-                "url": "cloud/gcp/latest/",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/doc/orange-bar-docs.git",
-                  "filter": "assets/insurer-developer.ditaval",
-                  "root": "guidewire_cloud_platform_guide.ditamap"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "view": "self-managed-latest",
-    "route": "/self-managed-latest",
-    "platform": "Self-managed",
-    "docPackages": [
-      {
-        "categoryName": "Core",
-        "docs": [
-          {
-            "title": "BillingCenter 10",
-            "product": "BillingCenter",
-            "releases": [
-              {
-                "version": "10.x",
-                "url": "self-managed/bc/10x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-                  "filter": "IS-BC-OnPrem-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
-              }
-            ]
-          },
-          {
-            "title": "ClaimCenter 10",
-            "product": "ClaimCenter",
-            "releases": [
-              {
-                "version": "10.x",
-                "url": "self-managed/cc/10x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-                  "filter": "IS-CC-OnPrem-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
-              }
-            ]
-          },
-          {
-            "title": "PolicyCenter 10",
-            "product": "PolicyCenter",
-            "releases": [
-              {
-                "version": "10.x",
-                "url": "self-managed/pc/10x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-                  "filter": "IS-PC-OnPrem-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
-              }
-            ]
-          },
-          {
-            "title": "BillingCenter 9",
-            "product": "BillingCenter",
-            "releases": [
-              {
-                "version": "9.x",
-                "url": "self-managed/bc/9x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-                  "filter": "IS-BC-OnPrem-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
-              }
-            ]
-          },
-          {
-            "title": "ClaimCenter 9",
-            "product": "ClaimCenter",
-            "releases": [
-              {
-                "version": "9.x",
-                "url": "self-managed/cc/9x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-                  "filter": "IS-CC-OnPrem-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
-              }
-            ]
-          },
-          {
-            "title": "PolicyCenter 9",
-            "product": "PolicyCenter",
-            "releases": [
-              {
-                "version": "9.x",
-                "url": "self-managed/pc/9x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-                  "filter": "IS-PC-OnPrem-Release.ditaval",
-                  "root": "_superbook.ditamap"
-                }
+                "version": "10.0.3",
+                "url": "self-managed/pc/1003"
               }
             ]
           },
@@ -190,7 +43,7 @@
             "releases": [
               {
                 "version": "144.1",
-                "url": "https://docs.guidewire.com/bundle?value=14"
+                "url": "self-managed/um/1441"
               }
             ]
           }
@@ -204,14 +57,8 @@
             "product": "DataHub",
             "releases": [
               {
-                "version": "10.x",
-                "url": "self-managed/dh/10x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-                  "filter": "DataHub-RELEASE.ditaval",
-                  "root": "DM_all.ditamap"
-                }
+                "version": "10.2.0",
+                "url": "self-managed/dh/1020"
               }
             ]
           },
@@ -220,14 +67,8 @@
             "product": "InfoCenter",
             "releases": [
               {
-                "version": "10.x",
-                "url": "self-managed/ic/10x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-                  "filter": "InfoCenter-RELEASE.ditaval",
-                  "root": "DM_all.ditamap"
-                }
+                "version": "10.2.0",
+                "url": "self-managed/ic/1020"
               }
             ]
           },
@@ -237,7 +78,7 @@
             "releases": [
               {
                 "version": "Latest",
-                "url": "https://docs.guidewire.com/bundle?value=24"
+                "url": "self-managed/la/latest"
               }
             ]
           },
@@ -247,7 +88,7 @@
             "releases": [
               {
                 "version": "Latest",
-                "url": "https://docs.guidewire.com/bundle?value=26"
+                "url": "self-managed/pa/latest"
               }
             ]
           }
@@ -257,18 +98,22 @@
         "categoryName": "Digital",
         "docs": [
           {
+            "title": "CustomerEngage Account Management",
+            "product": "CustomerEngage Account Management",
+            "releases": [
+              {
+                "version": "10.0.1",
+                "url": "self-managed/dx/ce-am/1001"
+              }
+            ]
+          },
+          {
             "title": "CustomerEngage Quote and Buy",
             "product": "CustomerEngage Quote and Buy",
             "releases": [
               {
-                "version": "11.x",
-                "url": "self-managed/dx/ce-qb/11x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-                  "filter": "Digital-ce-qb.ditaval",
-                  "root": "DX_superbook.ditamap"
-                }
+                "version": "10.0.1",
+                "url": "self-managed/dx/ce-qb/1001"
               }
             ]
           },
@@ -277,30 +122,8 @@
             "product": "Producer Engage",
             "releases": [
               {
-                "version": "11.x",
-                "url": "self-managed/dx/pe/11x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-                  "filter": "Digital-pe.ditaval",
-                  "root": "DX_superbook.ditamap"
-                }
-              }
-            ]
-          },
-          {
-            "title": "Guidewire for Salesforce",
-            "product": "Guidewire for Salesforce",
-            "releases": [
-              {
-                "version": "3.x",
-                "url": "self-managed/dx/pe-sf/3x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-                  "filter": "Digital-pe-sf.ditaval",
-                  "root": "DX_superbook.ditamap"
-                }
+                "version": "10.0.1",
+                "url": "self-managed/dx/pe/1001"
               }
             ]
           },
@@ -309,14 +132,18 @@
             "product": "ServiceRepEngage",
             "releases": [
               {
-                "version": "11.x",
-                "url": "self-managed/dx/sre/11x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-                  "filter": "Digital-sre.ditaval",
-                  "root": "DX_superbook.ditamap"
-                }
+                "version": "10.0.1",
+                "url": "self-managed/dx/sre/1001"
+              }
+            ]
+          },
+          {
+            "title": "VendorEngage",
+            "product": "VendorEngage",
+            "releases": [
+              {
+                "version": "10.0.1",
+                "url": "self-managed/dx/ve/1001"
               }
             ]
           }
@@ -337,56 +164,52 @@
             "product": "BillingCenter",
             "releases": [
               {
-                "version": "10.0.3",
-                "url": "self-managed/bc/1003"
-              },
-              {
                 "version": "10.0.2",
-                "url": "self-managed/bc/1002"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.2/"
               },
               {
                 "version": "10.0.1",
-                "url": "self-managed/bc/1001"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.1/"
               },
               {
                 "version": "10.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.0/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.0/"
               },
               {
                 "version": "9.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.8/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.8/"
               },
               {
                 "version": "9.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.7/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.7/"
               },
               {
                 "version": "9.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.6/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.6/"
               },
               {
                 "version": "9.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.5/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.5/"
               },
               {
                 "version": "9.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.4/doc/"
               },
               {
                 "version": "9.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.3/doc/"
               },
               {
                 "version": "9.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.2/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.2/doc/"
               },
               {
                 "version": "9.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.1/doc/"
               },
               {
                 "version": "9.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.0/doc/"
               },
               {
                 "version": "8.0.7",
@@ -499,200 +322,196 @@
             "product": "ClaimCenter",
             "releases": [
               {
-                "version": "10.0.3",
-                "url": "self-managed/cc/1003"
-              },
-              {
                 "version": "10.0.2",
-                "url": "self-managed/cc/1002"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.2/"
               },
               {
                 "version": "10.0.1",
-                "url": "self-managed/cc/1001"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.1/"
               },
               {
                 "version": "10.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.0/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.0/"
               },
               {
                 "version": "9.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.8/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.8/"
               },
               {
                 "version": "9.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.7/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.7/"
               },
               {
                 "version": "9.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.6/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.6/"
               },
               {
                 "version": "9.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.5/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.5/"
               },
               {
                 "version": "9.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.4/doc/"
               },
               {
                 "version": "9.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.3/doc/"
               },
               {
                 "version": "9.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.2/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.2/doc/"
               },
               {
                 "version": "9.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.1/doc/"
               },
               {
                 "version": "9.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.0/doc/"
               },
               {
                 "version": "8.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.7/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.7/doc/"
               },
               {
                 "version": "8.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.6/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.6/doc/"
               },
               {
                 "version": "8.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.5/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.5/doc/"
               },
               {
                 "version": "8.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.4/doc/"
               },
               {
                 "version": "8.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.3/doc/"
               },
               {
                 "version": "8.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.2/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.2/doc/"
               },
               {
                 "version": "8.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.1/doc/"
               },
               {
                 "version": "8.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.0/doc/"
               },
               {
                 "version": "7.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.8/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.8/doc/"
               },
               {
                 "version": "7.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.7/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.7/doc/"
               },
               {
                 "version": "7.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.6/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.6/doc/"
               },
               {
                 "version": "7.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.5/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.5/doc/"
               },
               {
                 "version": "7.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.4/doc/"
               },
               {
                 "version": "7.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.3/doc/"
               },
               {
                 "version": "7.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.2/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.2/doc/"
               },
               {
                 "version": "7.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.1/doc/"
               },
               {
                 "version": "7.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.0/doc/"
               },
               {
                 "version": "6.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.8/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.8/doc/"
               },
               {
                 "version": "6.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.7/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.7/doc/"
               },
               {
                 "version": "6.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.6/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.6/doc/"
               },
               {
                 "version": "6.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.5/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.5/doc/"
               },
               {
                 "version": "6.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.4/doc/"
               },
               {
                 "version": "6.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.3/doc/"
               },
               {
                 "version": "6.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.2/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.2/"
               },
               {
                 "version": "6.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.1/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.1/"
               },
               {
                 "version": "6.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.0/doc/"
               },
               {
                 "version": "5.0.9",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.9/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.9/doc/"
               },
               {
                 "version": "5.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.8/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.8/doc/"
               },
               {
                 "version": "5.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.7/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.7/"
               },
               {
                 "version": "5.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.6/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.6/"
               },
               {
                 "version": "5.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.5/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.5/"
               },
               {
                 "version": "5.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.4/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.4/"
               },
               {
                 "version": "5.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.3/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.3/"
               },
               {
                 "version": "5.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.2/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.2/"
               },
               {
                 "version": "5.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.1/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.1/"
               },
               {
                 "version": "5.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.0/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.0/"
               }
             ]
           },
@@ -701,160 +520,156 @@
             "product": "PolicyCenter",
             "releases": [
               {
-                "version": "10.0.3",
-                "url": "self-managed/pc/1003"
-              },
-              {
                 "version": "10.0.2",
-                "url": "self-managed/pc/1002"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.2/"
               },
               {
                 "version": "10.0.1",
-                "url": "self-managed/pc/1001"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.1/"
               },
               {
                 "version": "10.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.0/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.0/"
               },
               {
                 "version": "9.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.8/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.8/"
               },
               {
                 "version": "9.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.7/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.7/"
               },
               {
                 "version": "9.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.6/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.6/"
               },
               {
                 "version": "9.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.5/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.5/"
               },
               {
                 "version": "9.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.4/doc/"
               },
               {
                 "version": "9.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.3/doc/"
               },
               {
                 "version": "9.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.2/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.2/doc/"
               },
               {
                 "version": "9.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.1/doc/"
               },
               {
                 "version": "9.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.0/doc/"
               },
               {
                 "version": "8.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.8/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.8/doc/"
               },
               {
                 "version": "8.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.7/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.7/doc/"
               },
               {
                 "version": "8.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.6/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.6/doc/"
               },
               {
                 "version": "8.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.5/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.5/doc/"
               },
               {
                 "version": "8.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.4/doc/"
               },
               {
                 "version": "8.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.3/doc/"
               },
               {
                 "version": "8.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.2/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.2/doc/"
               },
               {
                 "version": "8.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.1/doc/"
               },
               {
                 "version": "8.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.0/doc/"
               },
               {
                 "version": "7.0.9",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.9/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.9/doc/"
               },
               {
                 "version": "7.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.8/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.8/doc/"
               },
               {
                 "version": "7.0.7",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.7/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.7/doc/"
               },
               {
                 "version": "7.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.6/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.6/doc/"
               },
               {
                 "version": "7.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.5/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.5/doc/"
               },
               {
                 "version": "7.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.4/doc/"
               },
               {
                 "version": "7.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.3/doc/"
               },
               {
                 "version": "7.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.2/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.2/doc/"
               },
               {
                 "version": "7.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.1/doc/"
               },
               {
                 "version": "7.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.0/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.0/doc/"
               },
               {
                 "version": "4.0.6",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.6/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.6/doc/"
               },
               {
                 "version": "4.0.5",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.5/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.5/doc/"
               },
               {
                 "version": "4.0.4",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.4/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.4/doc/"
               },
               {
                 "version": "4.0.3",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.3/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.3/doc/"
               },
               {
                 "version": "4.0.2",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.2/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.2/"
               },
               {
                 "version": "4.0.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.1/doc/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.1/doc/"
               },
               {
                 "version": "4.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.0/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.0/"
               }
             ]
           }
@@ -869,43 +684,43 @@
             "releases": [
               {
                 "version": "10.1.0",
-                "url": "https://docs.guidewire.com/bundle?value=16&version=18"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1010/DataHub/"
               },
               {
                 "version": "10.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1000/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1000/DataHub/"
               },
               {
                 "version": "9.3.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/930/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/930/DataHub/"
               },
               {
                 "version": "9.2.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/920/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/920/DataHub/"
               },
               {
                 "version": "9.1.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/910/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/910/DataHub/"
               },
               {
                 "version": "9.0.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/900/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/900/DataHub/"
               },
               {
                 "version": "8.3.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/830/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/830/DataHub/"
               },
               {
                 "version": "8.2.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/820/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/820/DataHub/"
               },
               {
                 "version": "8.1.1",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/811/DataHub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/811/DataHub/"
               },
               {
                 "version": "8.1.0",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/810/datahub/index.html"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/810/datahub/"
               }
             ]
           },
@@ -915,7 +730,7 @@
             "releases": [
               {
                 "version": "10.1.0",
-                "url": "https://docs.guidewire.com/bundle?value=20&version=22"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1010/InfoCenter/"
               },
               {
                 "version": "10.0.0",
@@ -970,7 +785,7 @@
             "releases": [
               {
                 "version": "10.0.0",
-                "url": "https://docs.guidewire.com/bundle?value=29&version=31"
+                "url": "#"
               },
               {
                 "version": "8.1.0",
@@ -996,7 +811,7 @@
             "releases": [
               {
                 "version": "10.0.0",
-                "url": "https://docs.guidewire.com/bundle?value=33&version=35"
+                "url": "#"
               },
               {
                 "version": "8.1.0",
@@ -1022,7 +837,7 @@
             "releases": [
               {
                 "version": "10.0.0",
-                "url": "https://docs.guidewire.com/bundle?value=37&version=39"
+                "url": "#"
               },
               {
                 "version": "8.1.0",
@@ -1048,7 +863,7 @@
             "releases": [
               {
                 "version": "10.0.0",
-                "url": "https://docs.guidewire.com/bundle?value=41&version=43"
+                "url": "#"
               },
               {
                 "version": "8.1.0",
@@ -1074,7 +889,7 @@
             "releases": [
               {
                 "version": "10.0.0",
-                "url": "https://docs.guidewire.com/bundle?value=45&version=47"
+                "url": "#"
               },
               {
                 "version": "8.1.0",
