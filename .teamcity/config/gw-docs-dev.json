@@ -81,7 +81,7 @@
     ]
   },
   {
-    "view": "self-managed-latest",
+    "view": "self-managed-latest-dev",
     "route": "/self-managed-latest",
     "platform": "Self-managed",
     "docPackages": [
@@ -325,7 +325,7 @@
     ]
   },
   {
-    "view": "self-managed-older-releases",
+    "view": "self-managed-older-releases-dev",
     "route": "/self-managed-older-releases",
     "platform": "Self-managed",
     "docPackages": [
