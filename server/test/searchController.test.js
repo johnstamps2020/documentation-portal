@@ -3,20 +3,25 @@ const httpMocks = require('node-mocks-http');
 const assert = require('assert');
 
 const queryPhrase = 'billing';
-describe(`Search for phrase ${queryPhrase}`, async () => {
+describe(`Search for phrase ${queryPhrase}`, async function() {
+  this.timeout(8000);
   let results, request, response;
 
   before(async () => {
-    request = httpMocks.createRequest({
-      method: 'GET',
-      url: '/',
-      query: {
-        q: queryPhrase,
-      },
-    });
-    response = httpMocks.createResponse();
-    await searchController(request, response);
-    results = response._getRenderData();
+    try {
+      request = httpMocks.createRequest({
+        method: 'GET',
+        url: '/',
+        query: {
+          q: queryPhrase,
+        },
+      });
+      response = httpMocks.createResponse();
+      await searchController(request, response);
+      results = response._getRenderData();
+    } catch (err) {
+      console.log(err);
+    }
   });
 
   it('Should return more than 0 results', async () => {
@@ -24,12 +29,12 @@ describe(`Search for phrase ${queryPhrase}`, async () => {
 
     if (results.pages > 1) {
       describe('If the results contain more then one page', async () => {
-          it('a request for the second page should return different results', async () => {
-              request.query.page = 2;
-              await searchController(request, response);
-              const results2 = response._getRenderData();
-              assert(results.searchResults[0] !== results2.searchResults[0]);
-          });
+        it('a request for the second page should return different results', async () => {
+          request.query.page = 2;
+          await searchController(request, response);
+          const results2 = response._getRenderData();
+          assert(results.searchResults[0] !== results2.searchResults[0]);
+        });
       });
     }
   });
@@ -37,5 +42,4 @@ describe(`Search for phrase ${queryPhrase}`, async () => {
   it('Should return filters', () => {
     assert(results.filters.length > 0);
   });
-  
 });
