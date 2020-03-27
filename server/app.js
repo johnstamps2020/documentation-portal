@@ -51,6 +51,7 @@ const customersLoginRouter = require('./routes/customers-login');
 const landingRouter = require('./routes/landing');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
+const supportRouter = require('./routes/support');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -121,6 +122,7 @@ app.use(function(req, res, next) {
 
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
+app.use('/support', supportRouter);
 app.use('/', landingRouter);
 
 const proxyOptions = {

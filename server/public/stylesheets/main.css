@@ -30,11 +30,11 @@ html, body {
 }
 
 .homeContainer {
-    min-height: calc(100% - var(--header-height) - var(--search-bar-height));
+    min-height: calc(100% - var(--header-height) - var(--search-bar-height) - var(--footer-height));
 }
 
 .homeContainerNoSearch {
-    min-height: calc(100% - var(--header-height));
+    min-height: calc(100% - var(--header-height) - var(--footer-height));
 }
 
 .docPanelContainer {
@@ -225,4 +225,11 @@ body {
 
 .list-unstyled a, .card-header a {
     color: var(--GW-COLOR-BRAND-1);
+}
+
+.footerLink {
+    margin-left: 1em;
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
 }
