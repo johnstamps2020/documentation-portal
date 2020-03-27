@@ -23,13 +23,13 @@
                                         <p>
                                             <button class="btn btn-light dropdown-toggle" type="button"
                                                     data-toggle="collapse"
-                                                    data-target="#<%= doc.title.replace(" ", "") %>Releases"
+                                                    data-target="#<%= doc.title.replace(/\s/g,'') %>Releases"
                                                     aria-expanded="false"
-                                                    aria-controls="<%= doc.title.replace(" ", "") %>Releases">
+                                                    aria-controls="<%= doc.title.replace(/\s/g,'') %>Releases">
                                                 <%= doc.title %>
                                             </button>
                                         </p>
-                                        <div class="collapse" id="<%= doc.title.replace(" ", "") %>Releases">
+                                        <div class="collapse" id="<%= doc.title.replace(/\s/g,'') %>Releases">
                                             <ul class="list-unstyled card-columns">
                                                 <% doc.releases.forEach(release => { -%>
                                                     <li><a href="<%= release.url %>"><%= release.version %></a></li>
