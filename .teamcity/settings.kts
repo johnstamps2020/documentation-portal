@@ -44,6 +44,7 @@ project {
     vcsRoot(DitaOt331)
     vcsRoot(Insurancesuite9)
     vcsRoot(Insurancesuite10)
+    vcsRoot(InsuranceSuiteUpgradeGuide2x)
     vcsRoot(InsurancesuiteCloud)
     vcsRoot(Digital11)
     vcsRoot(DataManagementDHIC)
@@ -235,6 +236,14 @@ object Insurancesuite9 : GitVcsRoot({
 object Insurancesuite10 : GitVcsRoot({
     name = "insurancesuite-10"
     url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object InsuranceSuiteUpgradeGuide2x : GitVcsRoot({
+    name = "insurancesuite-upgrade-guide-2x"
+    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
@@ -807,6 +816,22 @@ object AddIS10xFilesFromXDocsToBitbucket : BuildType({
     }
 })
 
+object AddISUpgradeGuide2xFilesFromXDocsToBitbucket : BuildType({
+    templates(AddFilesFromXDocsToBitbucket)
+    name = "Add IS Upgrade Guide 2x files from XDocs to Bitbucket"
+    description = "Exports DITA files from XDocs and adds them to Bitbucket"
+
+    params {
+        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap", allowEmpty = false)
+        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("SOURCES_ROOT", "src_root", allowEmpty = false)
+    }
+
+    vcs {
+        root(InsuranceSuiteUpgradeGuide2x, "+:. => %SOURCES_ROOT%")
+    }
+})
+
 object AddIsCloudFilesFromXDocsToBitBucket : BuildType({
     templates(AddFilesFromXDocsToBitbucket)
     name = "Add IS cloud files from XDocs to BitBucket"
@@ -1186,6 +1211,7 @@ object AddFilesFromXDocsToBitbucketActiveBranch : Project({
 
     buildType(AddIS9xFilesFromXDocsToBitbucket)
     buildType(AddIS10xFilesFromXDocsToBitbucket)
+    buildType(AddISUpgradeGuide2xFilesFromXDocsToBitbucket)
     buildType(AddIsCloudFilesFromXDocsToBitBucket)
     buildType(AddDigital11xFilesFromXDocsToBitbucket)
     buildType(AddDataManagementDHICFilesFromXDocsToBitbucket)

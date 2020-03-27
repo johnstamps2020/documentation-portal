@@ -137,6 +137,54 @@
             ]
           },
           {
+            "title": "BillingCenter Upgrade Guide 2x",
+            "product": "BillingCenter Upgrade Guide 2x",
+            "releases": [
+              {
+                "version": "2.x",
+                "url": "self-managed/upgrade/bc/2x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git ",
+                  "filter": "IS-BC-OnPrem-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "ClaimCenter Upgrade Guide 2x",
+            "product": "ClaimCenter Upgrade Guide 2x",
+            "releases": [
+              {
+                "version": "2.x",
+                "url": "self-managed/upgrade/cc/2x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git ",
+                  "filter": "IS-CC-OnPrem-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "PolicyCenter Upgrade Guide 2x",
+            "product": "PolicyCenter Upgrade Guide 2x",
+            "releases": [
+              {
+                "version": "2.x",
+                "url": "self-managed/upgrade/pc/2x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git ",
+                  "filter": "IS-PC-OnPrem-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
             "title": "BillingCenter 9",
             "product": "BillingCenter",
             "releases": [
