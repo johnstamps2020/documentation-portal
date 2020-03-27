@@ -226,3 +226,10 @@ body {
 .list-unstyled a, .card-header a {
     color: var(--GW-COLOR-BRAND-1);
 }
+
+.footerLink {
+    margin-left: 1em;
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
+}
