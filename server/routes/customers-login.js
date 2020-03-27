@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var passport = require('passport');
-var saml = require('passport-saml');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const saml = require('passport-saml');
 
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({ extended: false }));
