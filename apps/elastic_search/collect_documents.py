@@ -2,6 +2,7 @@ import io
 import json
 import os
 import re
+from urllib.parse import urljoin
 from pathlib import Path
 
 import custom_utils.utils as custom_utils
@@ -36,7 +37,7 @@ def get_start_urls():
                 for package in doc_set.get('docPackages'):
                     for doc in package.get('docs'):
                         for release in doc.get('releases'):
-                            urls.append(f'{os.environ.get("CRAWLER_BASE_URL", None)}/{release.get("url")}')
+                            urls.append(urljoin(os.environ.get("CRAWLER_BASE_URL", None), release.get("url")))
     elif os.environ.get('CRAWLER_START_URLS', None) is not None:
         urls = os.environ['CRAWLER_START_URLS'].split(' ')
 
