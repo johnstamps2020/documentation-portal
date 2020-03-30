@@ -645,8 +645,8 @@ object LoadSearchIndex : BuildType({
     params {
         text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
         text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
-        text("env.CRAWLER_START_URLS", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.CRAWLER_START_URLS_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.CRAWLER_BASE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.CRAWLER_BASE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net portal2.guidewire.com", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS_PROD", "ditaot.internal.us-east-2.service.guidewire.net portal2.guidewire.com", allowEmpty = false)
         text("env.INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -682,7 +682,7 @@ object LoadSearchIndex : BuildType({
                 #!/bin/bash
                 set -xe
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export CRAWLER_START_URLS="${'$'}{CRAWLER_START_URLS_PROD}"
+                    export CRAWLER_BASE_URL="${'$'}{CRAWLER_BASE_URL_PROD}"
                     export CRAWLER_ALLOWED_DOMAINS="${'$'}{CRAWLER_ALLOWED_DOMAINS_PROD}"
                     export INDEXER_SEARCH_APP_URLS="${'$'}{INDEXER_SEARCH_APP_URLS_PROD}"
                 fi
