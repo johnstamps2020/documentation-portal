@@ -13,7 +13,7 @@ current_dir = Path(__file__).parent
 resources = current_dir / 'resources'
 expected = resources / 'expected'
 config = collector.config
-start_urls = collector.start_urls
+start_urls = collector.get_start_urls()
 allowed_domains = collector.allowed_domains
 feed_file = collector.feed_file
 broken_links_report = collector.broken_links_report
@@ -30,7 +30,7 @@ def test_normalize_text():
 
 def test_feed_file():
     assert feed_file.exists()
-    with open(feed_file, 'r') as f:
+    with open(feed_file) as f:
         index_entries = [json.loads(line) for line in f]
     assert len(index_entries) == 29
 

@@ -9,8 +9,11 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
+# If you want to crawl a list of specific URLs, provide the CRAWLER_START_URLS env in the build.
+# If you want to build a list of URLs to crawl from the config file, provide the CRAWLER_BASE_URL env in the build.
+# The base URL will be joined with the path for each document from the config file to build a list of full URLs.
+# If you provide the CRAWLER_BASE_URL env, the CRAWLER_START_URLS env variable is ignored, even if it has a value.
 config = Path(os.environ['CONFIG_FILE'])
-start_urls = os.environ['CRAWLER_START_URLS'].split(' ')
 allowed_domains = os.environ['CRAWLER_ALLOWED_DOMAINS'].split(' ')
 
 current_dir = Path(__file__).parent
@@ -20,6 +23,24 @@ out_dir = current_dir / 'out'
 broken_links_template_file = 'broken-links.html'
 broken_links_report = out_dir / broken_links_template_file
 broken_links = []
+
+
+def get_start_urls():
+    urls = []
+    if os.environ.get('CRAWLER_BASE_URL', None) is not None:
+        with open(config) as config_file:
+            config_file_content = json.load(config_file)
+
+        for doc_set in config_file_content:
+            if doc_set.get('docPackages') is not None:
+                for package in doc_set.get('docPackages'):
+                    for doc in package.get('docs'):
+                        for release in doc.get('releases'):
+                            urls.append(f'{os.environ.get("CRAWLER_BASE_URL", None)}/{release.get("url")}')
+    elif os.environ.get('CRAWLER_START_URLS', None) is not None:
+        urls = os.environ['CRAWLER_START_URLS'].split(' ')
+
+    return urls
 
 
 def normalize_text(input_text: str):
@@ -71,21 +92,13 @@ def crawl_pages(spider_class: type(scrapy.Spider), **kwargs):
     custom_utils.write_content_to_file(broken_links_page_content, broken_links_report)
 
 
-class DocPortalSpider(scrapy.Spider):
-    handle_httpstatus_list = [404]
-    name = 'Doc portal light spider'
-    custom_settings = {
-        'LOG_LEVEL': 'INFO',
-        'FEED_FORMAT': 'jsonlines',
-        'FEED_URI': f'{feed_file}',
-    }
-
-    with open(config, 'r') as config_file:
-        config_file_content = json.load(config_file)
+def create_keyword_map(config_file: Path()):
+    with open(config_file) as cf:
+        cf_content = json.load(cf)
 
     keyword_map = {}
 
-    for doc_set in config_file_content:
+    for doc_set in cf_content:
         if doc_set.get('docPackages') is not None:
             platform = doc_set.get('platform')
             for package in doc_set.get('docPackages'):
@@ -97,6 +110,18 @@ class DocPortalSpider(scrapy.Spider):
                             "product": product,
                             "version": release.get('version')
                         }
+
+    return keyword_map
+
+
+class DocPortalSpider(scrapy.Spider):
+    handle_httpstatus_list = [404]
+    name = 'Doc portal light spider'
+    custom_settings = {
+        'LOG_LEVEL': 'INFO',
+        'FEED_FORMAT': 'jsonlines',
+        'FEED_URI': f'{feed_file}',
+    }
 
     def parse(self, response, **cb_kwargs):
 
@@ -113,7 +138,9 @@ class DocPortalSpider(scrapy.Spider):
             page_object_id = response.url.replace(re.match(regex, response.url).group(0), '')
             page_object['id'] = page_object_id
 
-            for url, keywords in self.keyword_map.items():
+            url_keywords_map = create_keyword_map(config)
+
+            for url, keywords in url_keywords_map.items():
                 if url in page_object_id:
                     for name, value in keywords.items():
                         page_object[name] = value
@@ -145,4 +172,6 @@ class DocPortalSpider(scrapy.Spider):
 
 
 if __name__ == '__main__':
-    crawl_pages(DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains)
+    start_urls = get_start_urls()
+    crawl_pages(DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains,
+                keyword_map=create_keyword_map(config))
