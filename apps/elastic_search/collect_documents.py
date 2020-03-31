@@ -146,7 +146,7 @@ class DocPortalSpider(scrapy.Spider):
         if response.status == 404:
             broken_links.append(
                 {
-                    'origin_url': cb_kwargs.get('origin_url'), 'url': response.url
+                    'origin_url': cb_kwargs.get('origin_url', 'No origin URL'), 'url': response.url
                 }
             )
         else:
