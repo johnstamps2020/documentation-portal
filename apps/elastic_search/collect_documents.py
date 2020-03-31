@@ -16,7 +16,7 @@ allowed_domains = os.environ['CRAWLER_ALLOWED_DOMAINS'].split(' ')
 referer = os.environ.get('CRAWLER_REFERER', None)
 
 current_dir = Path(__file__).parent
-feed_file = current_dir / 'documents2.json'
+feed_file = current_dir / 'documents.json'
 template_dir = current_dir / 'src' / 'templates'
 out_dir = current_dir / 'out'
 broken_links_template_file = 'broken-links.html'
