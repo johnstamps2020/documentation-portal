@@ -207,4 +207,4 @@ if __name__ == '__main__':
     required_metadata_exists_result = check_required_metadata(feed_file, required_attrs)
     if required_metadata_exists_result is not None:
         logging.warning(
-            f'The following objects  the {", ".join(required_attrs)} attributes:\n{required_metadata_exists_result}')
+            f'The following objects are missing some of the {", ".join(required_attrs)} attributes:\n{required_metadata_exists_result}')
