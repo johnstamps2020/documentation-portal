@@ -649,6 +649,8 @@ object LoadSearchIndex : BuildType({
         text("env.CRAWLER_BASE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net portal2.guidewire.com", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS_PROD", "ditaot.internal.us-east-2.service.guidewire.net portal2.guidewire.com", allowEmpty = false)
+        text("env.CRAWLER_REFERER", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net")
+        text("env.CRAWLER_REFERER_PROD", "https://docs.us-east-2.service.guidewire.net")
         text("env.INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.INDEXER_SEARCH_APP_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
@@ -684,6 +686,7 @@ object LoadSearchIndex : BuildType({
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export CRAWLER_BASE_URL="${'$'}{CRAWLER_BASE_URL_PROD}"
                     export CRAWLER_ALLOWED_DOMAINS="${'$'}{CRAWLER_ALLOWED_DOMAINS_PROD}"
+                    export CRAWLER_REFERER="${'$'}{CRAWLER_REFERER_PROD}"                    
                     export INDEXER_SEARCH_APP_URLS="${'$'}{INDEXER_SEARCH_APP_URLS_PROD}"
                 fi
 
