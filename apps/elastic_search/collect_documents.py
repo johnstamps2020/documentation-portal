@@ -1,5 +1,6 @@
 import io
 import json
+import logging
 import os
 import re
 from urllib.parse import urljoin
@@ -10,13 +11,9 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
-# If you want to crawl a list of specific URLs, provide the CRAWLER_START_URLS env in the build.
-# If you want to build a list of URLs to crawl from the config file, provide the CRAWLER_BASE_URL env in the build.
-# The base URL will be joined with the path for each document from the config file to build a list of full URLs.
-# If you provide the CRAWLER_BASE_URL env, the CRAWLER_START_URLS env variable is ignored, even if it has a value.
 config = Path(os.environ['CONFIG_FILE'])
 allowed_domains = os.environ['CRAWLER_ALLOWED_DOMAINS'].split(' ')
-referer = os.environ['CRAWLER_REFERER']
+referer = os.environ.get('CRAWLER_REFERER', None)
 
 current_dir = Path(__file__).parent
 feed_file = current_dir / 'documents2.json'
@@ -28,6 +25,12 @@ broken_links = []
 
 
 def get_start_urls():
+    """
+    If you want to crawl a list of specific URLs, provide the CRAWLER_START_URLS env in the build.
+    If you want to build a list of URLs to crawl from the config file, provide the CRAWLER_BASE_URL env in the build.
+    The base URL will be joined with the path for each document from the config file to build a list of full URLs.
+    If you provide the CRAWLER_BASE_URL env, the CRAWLER_START_URLS env variable is ignored, even if it has a value.
+    """
     urls = []
     if os.environ.get('CRAWLER_BASE_URL', None) is not None:
         with open(config) as config_file:
@@ -116,6 +119,18 @@ def create_keyword_map(config_file: Path()):
     return keyword_map
 
 
+def check_required_metadata(file_with_data: Path(), required_attributes: list):
+    objects_with_invalid_metadata = []
+    with open(file_with_data) as f:
+        for line in f.readlines():
+            json_object = json.loads(line)
+            if not all(attr in json_object.keys() for attr in required_attributes):
+                objects_with_invalid_metadata.append(line)
+    if objects_with_invalid_metadata is True:
+        return objects_with_invalid_metadata
+    return None
+
+
 class DocPortalSpider(scrapy.Spider):
     handle_httpstatus_list = [404]
     name = 'Doc portal light spider'
@@ -188,11 +203,8 @@ if __name__ == '__main__':
     start_urls = get_start_urls()
     crawl_pages(DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains,
                 keyword_map=create_keyword_map(config))
-
-    required_attributes = ['product', 'platform', 'version']
-    with open(feed_file) as ff:
-        ff_content = ff.readlines()
-        for line in ff_content:
-            json_object = json.loads(line)
-            if not all(attr in json_object.keys() for attr in required_attributes):
-                print(f'Object does not contain required attributes {line}')
+    required_attrs = ['platform', 'product', 'version']
+    required_metadata_exists_result = check_required_metadata(feed_file, required_attrs)
+    if required_metadata_exists_result is not None:
+        logging.warning(
+            f'The following objects  the {", ".join(required_attrs)} attributes:\n{required_metadata_exists_result}')
