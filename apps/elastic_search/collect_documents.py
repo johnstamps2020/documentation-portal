@@ -16,9 +16,10 @@ from scrapy.utils.project import get_project_settings
 # If you provide the CRAWLER_BASE_URL env, the CRAWLER_START_URLS env variable is ignored, even if it has a value.
 config = Path(os.environ['CONFIG_FILE'])
 allowed_domains = os.environ['CRAWLER_ALLOWED_DOMAINS'].split(' ')
+referer = os.environ['CRAWLER_REFERER']
 
 current_dir = Path(__file__).parent
-feed_file = current_dir / 'documents.json'
+feed_file = current_dir / 'documents2.json'
 template_dir = current_dir / 'src' / 'templates'
 out_dir = current_dir / 'out'
 broken_links_template_file = 'broken-links.html'
@@ -122,6 +123,7 @@ class DocPortalSpider(scrapy.Spider):
         'LOG_LEVEL': 'INFO',
         'FEED_FORMAT': 'jsonlines',
         'FEED_URI': f'{feed_file}',
+        'DEFAULT_REQUEST_HEADERS': {'Referer': referer}
     }
 
     def parse(self, response, **cb_kwargs):
@@ -142,7 +144,11 @@ class DocPortalSpider(scrapy.Spider):
             url_keywords_map = create_keyword_map(config)
 
             for url, keywords in url_keywords_map.items():
-                if url in page_object_id:
+                relative_url = url
+                domain_name = re.match(regex, url)
+                if domain_name is not None:
+                    relative_url = url.replace(domain_name.group(0), '')
+                if relative_url in page_object_id:
                     for name, value in keywords.items():
                         page_object[name] = value
                     continue
@@ -151,15 +157,21 @@ class DocPortalSpider(scrapy.Spider):
             for title_element in title_elements:
                 page_object['title'] = title_element.xpath('text()').get()
 
+            dita_default_selector = response.xpath('//*[contains(@class, "body")]')
+            dita_chunk_selector = response.xpath('//*[contains(@class, "nested0")]')
+            framemaker_default_selector = response.xpath('//body')
             body_elements = []
-            if response.xpath('//*[contains(@class, "body")]'):
-                body_elements = response.xpath('//*[contains(@class, "body")]')
-            elif response.xpath('//*[contains(@class, "nested0")]'):
-                body_elements = response.xpath('//*[contains(@class, "nested0")]')
+            if dita_default_selector:
+                body_elements = dita_default_selector
+            elif dita_chunk_selector:
+                body_elements = dita_chunk_selector
+            elif framemaker_default_selector:
+                body_elements = framemaker_default_selector
 
+            page_object['body'] = ''
             for body_element in body_elements:
                 raw_body = ' '.join(body_element.xpath('.//*/text()').getall())
-                page_object['body'] = normalize_text(raw_body)
+                page_object['body'] += normalize_text(raw_body)
 
             yield page_object
 
@@ -176,3 +188,11 @@ if __name__ == '__main__':
     start_urls = get_start_urls()
     crawl_pages(DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains,
                 keyword_map=create_keyword_map(config))
+
+    required_attributes = ['product', 'platform', 'version']
+    with open(feed_file) as ff:
+        ff_content = ff.readlines()
+        for line in ff_content:
+            json_object = json.loads(line)
+            if not all(attr in json_object.keys() for attr in required_attributes):
+                print(f'Object does not contain required attributes {line}')
