@@ -154,6 +154,7 @@ class DocPortalSpider(scrapy.Spider):
 
             regex = re.compile('^[^/]*//[^/]*')
             page_object_id = response.url.replace(re.match(regex, response.url).group(0), '')
+            page_object['href'] = response.url
             page_object['id'] = page_object_id
 
             url_keywords_map = create_keyword_map(config)
