@@ -175,7 +175,7 @@ class DocPortalSpider(scrapy.Spider):
 
             dita_default_selector = response.xpath('//*[contains(@class, "body")]')
             dita_chunk_selector = response.xpath('//*[contains(@class, "nested0")]')
-            framemaker_default_selector = response.xpath('//body')
+            framemaker_default_selector = response.xpath('//body/blockquote')
             body_elements = []
             if dita_default_selector:
                 body_elements = dita_default_selector
@@ -193,7 +193,7 @@ class DocPortalSpider(scrapy.Spider):
 
         for next_page in response.xpath('//a[@href]'):
             next_page_href = next_page.attrib.get('href')
-            if next_page_href.endswith('.pdf'):
+            if next_page_href.endswith('.pdf') or next_page_href.endswith('.txt'):
                 continue
             next_page_abs_url = response.urljoin(next_page_href)
             if any(url in next_page_abs_url for url in self.start_urls):
