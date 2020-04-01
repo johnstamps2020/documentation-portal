@@ -36,9 +36,9 @@ main_index_settings = {
 
 elastic_del_query_template = Template("""{
     "query": {
-        "wildcard": {
+        "regexp": {
             "id": {
-                "value": "/${path_to_delete}*"
+                "value": "${path_to_delete}"
             }
         },
     }
