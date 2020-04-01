@@ -13,7 +13,7 @@ const getAllowedFilterValues = async function(fieldName, query) {
         allowedForField: {
           filter: query,
           aggs: {
-            keywordFilter: { terms: { field: fieldName } },
+            keywordFilter: { terms: { field: fieldName, size: 50 } },
           },
         },
       },
