@@ -202,14 +202,13 @@ html, body {
     font-size: 0.9rem;
     line-height: 1rem;
     margin-left: 6px;
-}
-
-.checkboxLabel {
-    margin-left: 6px;
+    display: grid;
+    grid-template-columns: 24px auto 12px;
+    align-items: center;
+    align-content: space-around;
 }
 
 .docCount {
-    float: right;
     color: gray;
 }
 
