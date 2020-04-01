@@ -147,7 +147,7 @@ const searchController = async (req, res, next) => {
       console.log(doc);
 
       return {
-        ref: doc.id,
+        href: doc.href,
         score: result._score,
         title: doc.title,
         body: getBlurb(doc.body),
