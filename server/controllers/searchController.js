@@ -144,6 +144,8 @@ const searchController = async (req, res, next) => {
         return 'DOCUMENT HAS NO CONTENT';
       };
 
+      console.log(doc);
+
       return {
         ref: doc.id,
         score: result._score,
