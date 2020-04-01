@@ -4,11 +4,14 @@ const assert = require('assert');
 const sinon = require('sinon');
 
 describe('OKTA authentication', () => {
-  const loginGatewayRoute = require('../controllers/authController').loginGatewayRoute;
+  const targetRoute = '/some/route';
+  const loginGatewayRoute = require('../controllers/authController')
+    .loginGatewayRoute;
   const request = httpMocks.createRequest({
     method: 'GET',
-    url: '/',
+    url: targetRoute,
     isAuthenticated: () => false,
+    session: {},
   });
   const response = httpMocks.createResponse();
 
@@ -24,8 +27,9 @@ describe('OKTA authentication', () => {
 
   it('A request with authentication should call the next() route', () => {
     request.isAuthenticated = () => true;
-    const spy = sinon.spy();
-    authGateway(request, response, spy);
-    assert.equal(spy.called, true);
+    const nextSpy = sinon.spy();
+    authGateway(request, response, nextSpy);
+    assert(!nextSpy.called);
+    assert.equal(response._getRedirectUrl(), targetRoute);
   });
 });
