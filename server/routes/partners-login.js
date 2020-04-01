@@ -11,7 +11,8 @@ router.use(bodyParser.json());
 
 const partnersSamlStrategy = new saml.Strategy(
   {
-    callbackUrl: `${process.env.PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}` + '/callback',
+    callbackUrl:
+      `${process.env.PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}` + '/callback',
     entryPoint: `${process.env.PARTNERS_LOGIN_URL}`,
     issuer: `${process.env.PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}`,
     cert: `${process.env.PARTNERS_LOGIN_CERT}`,
@@ -59,7 +60,10 @@ router.post(
     console.log(req.user);
     console.log('-----------------------------');
     console.log('Login callback success');
-    res.redirect('/');
+
+    const redirectTo = req.session.redirectTo || '/';
+    delete req.session.redirectTo;
+    res.redirect(redirectTo);
   }
 );
 
