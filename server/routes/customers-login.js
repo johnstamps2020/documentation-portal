@@ -39,8 +39,6 @@ router.use(passport.session({}));
 router.get(
   '/',
   function(req, res, next) {
-    console.log('----------------------');
-    console.log('/Start login handler');
     next();
   },
   passport.authenticate('customersSamlStrategy')
@@ -49,17 +47,10 @@ router.get(
 router.post(
   '/callback',
   function(req, res, next) {
-    console.log('-----------------------------');
-    console.log('/Start login callback ');
     next();
   },
   passport.authenticate('customersSamlStrategy'),
   function(req, res) {
-    console.log('-----------------------------');
-    console.log('Login call back dumps');
-    console.log(req.user);
-    console.log('-----------------------------');
-    console.log('Login callback success');
 
     const redirectTo = req.session.redirectTo || '/';
     delete req.session.redirectTo;
