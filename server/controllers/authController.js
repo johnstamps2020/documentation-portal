@@ -11,11 +11,17 @@ const oktaOIDC = new ExpressOIDC({
   scope: 'openid profile',
 });
 
-
 const authGateway = (req, res, next) => {
   if (req.isAuthenticated() || process.env.DEV === 'yes') {
-    next();
+    if (req.session.redirectTo) {
+      const redirectTo = req.session.redirectTo;
+      delete req.session.redirectTo;
+      res.redirect(redirectTo);
+    } else {
+      next();
+    }
   } else {
+    req.session.redirectTo = req.path;
     res.redirect(loginGatewayRoute);
   }
 };

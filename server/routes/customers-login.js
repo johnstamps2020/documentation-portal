@@ -11,7 +11,8 @@ router.use(bodyParser.json());
 
 const customersSamlStrategy = new saml.Strategy(
   {
-    callbackUrl: `${process.env.CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}` + '/callback',
+    callbackUrl:
+      `${process.env.CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}` + '/callback',
     entryPoint: `${process.env.CUSTOMERS_LOGIN_URL}`,
     issuer: `${process.env.CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}`,
     cert: `${process.env.CUSTOMERS_LOGIN_CERT}`,
@@ -38,8 +39,6 @@ router.use(passport.session({}));
 router.get(
   '/',
   function(req, res, next) {
-    console.log('----------------------');
-    console.log('/Start login handler');
     next();
   },
   passport.authenticate('customersSamlStrategy')
@@ -48,18 +47,14 @@ router.get(
 router.post(
   '/callback',
   function(req, res, next) {
-    console.log('-----------------------------');
-    console.log('/Start login callback ');
     next();
   },
   passport.authenticate('customersSamlStrategy'),
   function(req, res) {
-    console.log('-----------------------------');
-    console.log('Login call back dumps');
-    console.log(req.user);
-    console.log('-----------------------------');
-    console.log('Login callback success');
-    res.redirect('/');
+
+    const redirectTo = req.session.redirectTo || '/';
+    delete req.session.redirectTo;
+    res.redirect(redirectTo);
   }
 );
 
