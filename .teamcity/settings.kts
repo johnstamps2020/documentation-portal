@@ -96,7 +96,7 @@ object Helpers {
                 text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
                 text("INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
-                text("INDEXER_DOCUMENT_KEYS", "%PUBLISH_PATH%", allowEmpty = false)
+                text("INDEXER_DOCUMENT_KEYS", "/%PUBLISH_PATH%.*", allowEmpty = false)
             }
 
             vcs {
@@ -143,7 +143,7 @@ object Helpers {
                 text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
                 text("INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
-                text("INDEXER_DOCUMENT_KEYS", "%PUBLISH_PATH%", allowEmpty = false)
+                text("INDEXER_DOCUMENT_KEYS", "/%PUBLISH_PATH%.*", allowEmpty = false)
             }
 
             vcs {
@@ -655,9 +655,12 @@ object LoadSearchIndex : BuildType({
         text("env.INDEXER_SEARCH_APP_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
         text("env.INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
-        text("env.INDEXER_DOCUMENT_KEYS", "")
-        select("env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
+        text("env.INDEXER_DOCUMENT_KEYS", "@&~(/portal/secure/doc.+)")
+        text("env.INDEXER_DOCUMENT_KEYS_PORTAL2", "/portal/secure/doc.*")
+        select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want reindex documents", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
+        select("env.DOC_SERVER", "", label = "Documentation server", description = "Select where the documents that you want reindex are hosted", display = ParameterDisplay.PROMPT,
+                options = listOf("s3", "portal2"))
     }
 
 
@@ -693,6 +696,11 @@ object LoadSearchIndex : BuildType({
                 if [[ "%env.DEPLOY_ENV%" == "staging" ]] || [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export CONFIG_FILE="${'$'}{CONFIG_FILE_STAGING}"
                 fi
+                
+                if [[ "%env.DOC_SERVER%" == "portal2" ]]; then
+                    export INDEXER_DOCUMENT_KEYS="${'$'}{INDEXER_DOCUMENT_KEYS_PORTAL2}"
+                fi
+                
 
                 cd apps
                 make collect-documents
