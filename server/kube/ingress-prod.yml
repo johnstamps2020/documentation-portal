@@ -5,14 +5,14 @@ metadata:
   name: docportal-ingress
 spec:
   rules:
-  - host: docs.us-east-2.service.guidewire.net
+  - host: docstest.guidewire.com
     http:
       paths:
       - backend:
           serviceName: docportal-app
           servicePort: 8081
         path: /
-  - host: docs.us-east-2.service.guidewire.net
+  - host: docstest.guidewire.com
     http:
       paths:
       - backend:
