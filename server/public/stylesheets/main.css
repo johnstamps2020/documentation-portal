@@ -24,8 +24,13 @@ html, body {
     --search-bar-height: 100px;
     --search-field-width: 600px;
     --search-button-width: 35px;
-    --sub-header-bg-color: #384346;
     --GW-COLOR-BRAND-1: #00739D;
+    --GW-COLOR-BRAND-1-HOVER: #006083;
+    --GW-COLOR-BRAND-2: #3C4C5E;
+    --GW-COLOR-TEXT-1: #28333F;
+    --GW-COLOR-BKGD-1: #FAFAFA;
+    --GW-COLOR-BKGD-2: #E9F9FF;
+    background-color: var(--GW-COLOR-BKGD-1);
     height: 100%;
 }
 
@@ -40,11 +45,14 @@ html, body {
 .docPanelContainer {
     padding: 20px;
     min-height: calc(100% - var(--footer-height) - var(--header-height) - var(--search-bar-height) - var(--landing-title-container-height));
+    background-color: var(--GW-COLOR-BKGD-1);
+
 }
 
 .docPanelContainerNoSearch {
     padding: 20px;
     min-height: calc(100% - var(--footer-height) - var(--header-height) - var(--landing-title-container-height));
+    background-color: var(--GW-COLOR-BKGD-1);
 }
 
 .docPanel {
@@ -61,6 +69,9 @@ html, body {
 
 .docPanel a, .docPanelTransparent a, .docPanelLink a {
     color: var(--GW-COLOR-BRAND-1);
+}
+a:hover {
+    color:var(--GW-COLOR-BRAND-1-HOVER);
 }
 
 .docPanelLink {
@@ -97,13 +108,12 @@ html, body {
     margin-left: 20px;
     font-family: "AvenirNext LT Pro Regular";
     font-size: 1.25rem;
-    color: #ffffff;
-
+    color: var(--GW-COLOR-TEXT-1);
 }
 
 .searchBar {
     height: var(--search-bar-height);
-    background-color: var(--sub-header-bg-color);
+    background-color: var(--GW-COLOR-BRAND-2);
     position: relative;
 }
 
@@ -161,7 +171,7 @@ html, body {
 .gw-jumbotron {
     padding: 0.5rem 0.5rem;
     margin-bottom: 2rem;
-    background-color: #e9ecef;
+    background-color: var(--GW-COLOR-BRAND-2);
     border-radius: .3rem;
 }
 
@@ -224,6 +234,10 @@ body {
 
 .list-unstyled a, .card-header a {
     color: var(--GW-COLOR-BRAND-1);
+}
+
+.list-unstyled a:hover, .card-header a:hover {
+    color: var(--GW-COLOR-BRAND-1-HOVER);
 }
 
 .footerLink {
