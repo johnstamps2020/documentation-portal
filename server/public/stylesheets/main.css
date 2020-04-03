@@ -184,6 +184,7 @@ a:hover {
 
 h1.display-4 {
     color: var(--GW-COLOR-TEXT-1);
+    font-size: 3em;
 }
 
 @media (min-width: 576px) {
