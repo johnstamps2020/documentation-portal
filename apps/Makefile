@@ -48,4 +48,4 @@ test-config:
         && poetry config virtualenvs.create false \
         && poetry install \
         && cd .. \
-        && python -m pytest -v ./tests/test_config/test_server_config.py
+        && python -m pytest -vx ./tests/test_config/test_server_config.py

@@ -1,17 +1,31 @@
+import custom_utils.utils as custom_utils
 import os
 import sys
 import json
+import pytest
 from pathlib import Path
 local_modules_path = os.path.abspath(Path(__file__).parent.parent.parent)
 sys.path.insert(0, local_modules_path)
-import custom_utils.utils as custom_utils
 
 root_dir = Path(__file__).parent.parent.parent.parent
+views_dir = root_dir / 'server' / 'views'
+
 dev_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-dev.json'
 staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
 config_paths = [dev_config_path, staging_config_path]
 
-views_dir = root_dir / 'server' / 'views'
+
+def test_config_exists():
+    missing_files = []
+    for config_path in config_paths:
+        if not config_path.exists():
+            missing_files.append(config_path)
+    print(missing_files)
+    try:
+        assert not missing_files
+    except AssertionError:
+        raise AssertionError(f'Cannot find config files:\n    {missing_files}')
+
 
 def test_config_views_exist():
     missing_views = []
@@ -23,7 +37,7 @@ def test_config_views_exist():
             if not os.path.exists(path_to_view):
                 missing_views.append(view_in_config)
     try:
-        assert len(missing_views) == 0
+        assert not missing_views
     except AssertionError:
         raise AssertionError(f'Missing some views: {missing_views}')
 
