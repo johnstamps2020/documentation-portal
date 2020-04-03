@@ -28,6 +28,7 @@ html, body {
     --GW-COLOR-BRAND-1-HOVER: #006083;
     --GW-COLOR-BRAND-2: #3C4C5E;
     --GW-COLOR-TEXT-1: #28333F;
+    --GW-COLOR-TEXT-3: ##FFFFFF;
     --GW-COLOR-BKGD-1: #FAFAFA;
     --GW-COLOR-BKGD-2: #E9F9FF;
     background-color: var(--GW-COLOR-BKGD-1);
@@ -108,7 +109,7 @@ a:hover {
     margin-left: 20px;
     font-family: "AvenirNext LT Pro Regular";
     font-size: 1.25rem;
-    color: var(--GW-COLOR-BKGD-1);
+    color: var(--GW-COLOR-TEXT-3);
 }
 
 .searchBar {
@@ -171,7 +172,7 @@ a:hover {
 .gw-jumbotron {
     padding: 0.5rem 0.5rem;
     margin-bottom: 2rem;
-    background-color: var(--GW-COLOR-BRAND-2);
+    background-color: var(--GW-COLOR-BKGD-2);
     border-radius: .3rem;
 }
 
