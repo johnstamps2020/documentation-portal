@@ -73,6 +73,9 @@ html, body {
 .docPanel a, .docPanelTransparent a, .docPanelLink a {
     color: var(--GW-COLOR-BRAND-1);
 }
+.docPanel a:hover, .docPanelTransparent a:hover, .docPanelLink a:hover {
+    color: var(--GW-COLOR-BRAND-1-HOVER) !important;
+}
 a:hover {
     color:var(--GW-COLOR-BRAND-1-HOVER);
 }
