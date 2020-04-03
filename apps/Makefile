@@ -1,4 +1,4 @@
-.PHONY: collect-documents load-index test-elastic-search test-landing-pages
+.PHONY: collect-documents load-index test-elastic-search test-landing-pages test-config
 
 PATH := $(PATH):$(HOME)/.poetry/bin
 
@@ -42,3 +42,10 @@ test-load-index:
         && poetry install \
         && cd .. \
         && python -m pytest -v ./tests/test_elastic_search/test_load_index.py
+
+test-config:
+	cd ./elastic_search/ \
+        && poetry config virtualenvs.create false \
+        && poetry install \
+        && cd .. \
+        && python -m pytest -vx ./tests/test_config/test_server_config.py

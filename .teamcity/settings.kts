@@ -54,12 +54,11 @@ project {
     template(BuildAndUploadToS3)
     template(AddFilesFromXDocsToBitbucket)
 
-    buildTypesOrder = arrayListOf(Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
-
     params {
         param("env.NAMESPACE", "doctools")
     }
 
+    buildType(TestConfig)
     subProject(Server)
     subProject(Content)
 }
@@ -117,6 +116,9 @@ object Helpers {
 
             dependencies {
                 snapshot(TestContent) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestConfig) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
@@ -345,6 +347,9 @@ object DeployDev : BuildType({
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
         snapshot(Test) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+        snapshot(TestConfig) {
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
@@ -799,6 +804,63 @@ object TestContent : BuildType({
     }
 })
 
+object TestConfig : BuildType({
+    name = "Test config"
+
+    vcs {
+        root(vcsroot)
+
+        cleanCheckout = true
+    }
+
+    steps {
+        dockerCommand {
+            name = "Build a Docker image for running the Python apps"
+            commandType = build {
+                source = file {
+                    path = "apps/Dockerfile"
+                }
+                namesAndTags = "python-runner"
+                commandArgs = "--pull"
+            }
+        }
+
+        script {
+            name = "Run tests for server config"
+            scriptContent = """
+                cd apps
+                make test-config
+            """.trimIndent()
+            dockerImage = "python-runner"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--network=host"
+        }
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:.teamcity/config/**/*.json
+
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "zxx02d98e2c9ff7a3fe236631b550fc8db9b0a9c655f3a18e4b775d03cbe80d301b"
+            }
+        }
+        sshAgent {
+            teamcitySshKey = "dita-ot.rsa"
+        }
+    }
+})
+
 object AddIS9xFilesFromXDocsToBitbucket : BuildType({
     templates(AddFilesFromXDocsToBitbucket)
     name = "Add IS9x files from XDocs to Bitbucket"
@@ -1199,6 +1261,8 @@ object Server : Project({
     buildType(DeployDev)
     buildType(Release)
     buildType(DeployProd)
+
+    buildTypesOrder = arrayListOf(Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
 })
 
 object Content : Project({
