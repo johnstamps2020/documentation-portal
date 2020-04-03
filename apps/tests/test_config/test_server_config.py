@@ -22,7 +22,7 @@ def load_json_file(file_path: Path()):
 def test_config_exists():
     missing_files = []
     for config_path in config_paths:
-        if not os.path.exists(config_path):
+        if not config_path.exists():
             missing_files.append(config_path)
     try:
         assert len(missing_files) == 0
