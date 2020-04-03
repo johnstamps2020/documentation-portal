@@ -2,7 +2,10 @@ import os
 import sys
 import json
 from pathlib import Path
+local_modules_path = os.path.abspath(Path(__file__).parent.parent.parent)
+sys.path.insert(0, local_modules_path)
 
+import custom_utils.utils as custom_utils
 root_dir = Path(__file__).parent.parent.parent.parent
 dev_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-dev.json'
 staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
