@@ -163,6 +163,10 @@ a:hover {
     color: var(--GW-COLOR-BRAND-1);
 }
 
+.card{
+    background-color:var(--GW-COLOR-BKGD-1) !important;
+}
+
 .pageFooter {
     font-weight: 600;
     color: #999;
