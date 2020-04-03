@@ -28,7 +28,7 @@ html, body {
     --GW-COLOR-BRAND-1-HOVER: #006083;
     --GW-COLOR-BRAND-2: #3C4C5E;
     --GW-COLOR-TEXT-1: #28333F;
-    --GW-COLOR-TEXT-3: ##FFFFFF;
+    --GW-COLOR-TEXT-3: #FFFFFF;
     --GW-COLOR-BKGD-1: #FAFAFA;
     --GW-COLOR-BKGD-2: #E9F9FF;
     background-color: var(--GW-COLOR-BKGD-1);
@@ -180,6 +180,10 @@ a:hover {
 
 .gw-jumbotron a {
     color: var(--GW-COLOR-BRAND-1);
+}
+
+h1.display-4 {
+    color: var(--GW-COLOR-TEXT-1);
 }
 
 @media (min-width: 576px) {
