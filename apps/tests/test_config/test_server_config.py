@@ -34,7 +34,7 @@ def test_config_views_exist():
         views_in_config = [x.get('view') for x in config_json]
         for view_in_config in views_in_config:
             path_to_view = views_dir / f'{view_in_config}.ejs'
-            if not os.path.exists(path_to_view):
+            if not path_to_view.exists():
                 missing_views.append(view_in_config)
     try:
         assert not missing_views
