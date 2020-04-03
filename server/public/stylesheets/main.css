@@ -37,10 +37,12 @@ html, body {
 
 .homeContainer {
     min-height: calc(100% - var(--header-height) - var(--search-bar-height) - var(--footer-height));
+    background-color: var(--GW-COLOR-BKGD-1);
 }
 
 .homeContainerNoSearch {
     min-height: calc(100% - var(--header-height) - var(--footer-height));
+    background-color: var(--GW-COLOR-BKGD-1);
 }
 
 .docPanelContainer {
