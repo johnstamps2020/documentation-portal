@@ -36,16 +36,6 @@
                 "url": "self-managed/pc/1003"
               }
             ]
-          },
-          {
-            "title": "Underwriting Management",
-            "product": "Underwriting Management",
-            "releases": [
-              {
-                "version": "144.1",
-                "url": "self-managed/um/1441"
-              }
-            ]
           }
         ]
       },
@@ -69,26 +59,6 @@
               {
                 "version": "10.2.0",
                 "url": "self-managed/ic/1020"
-              }
-            ]
-          },
-          {
-            "title": "Live Analytics",
-            "product": "Live Analytics",
-            "releases": [
-              {
-                "version": "Latest",
-                "url": "self-managed/la/latest"
-              }
-            ]
-          },
-          {
-            "title": "Predictive Analytics",
-            "product": "Predictive Analytics",
-            "releases": [
-              {
-                "version": "Latest",
-                "url": "self-managed/pa/latest"
               }
             ]
           }
@@ -177,7 +147,7 @@
               },
               {
                 "version": "9.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.8/"
+                "url": "self-managed/bc/908"
               },
               {
                 "version": "9.0.7",
@@ -335,7 +305,7 @@
               },
               {
                 "version": "9.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.8/"
+                "url": "self-managed/cc/908"
               },
               {
                 "version": "9.0.7",
@@ -533,7 +503,7 @@
               },
               {
                 "version": "9.0.8",
-                "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.8/"
+                "url": "self-managed/pc/908"
               },
               {
                 "version": "9.0.7",
