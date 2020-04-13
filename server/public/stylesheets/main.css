@@ -104,16 +104,16 @@ a:hover {
 .pageLogo {
     position: relative;
     margin-top: 12px;
-    margin-left: 20px;
+    margin-left: 10px;
     height: 24px;
 }
 
 .pageTitle {
     position: absolute;
     margin-top: 12px;
-    margin-left: 20px;
+    margin-left: 15px;
     font-family: "AvenirNext LT Pro Regular";
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--GW-COLOR-TEXT-3);
 }
 
