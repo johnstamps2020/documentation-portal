@@ -1,7 +1,7 @@
-@media only screen and (max-width: 600px) {
-    html, body {
+@media only screen and (max-width: 576px) {
+    :root {
         --landing-title-container-height: 150px !important;
-        --search-field-width: 400px !important;
+        --search-field-width: 95% !important;
     }
 
 }
@@ -17,7 +17,7 @@
 }
 
 
-html, body {
+:root {
     --footer-height: 50px;
     --header-height: 48px;
     --landing-title-container-height: 200px;
