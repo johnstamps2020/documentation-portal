@@ -656,7 +656,7 @@ object LoadSearchIndex : BuildType({
         text("env.CRAWLER_ALLOWED_DOMAINS_PROD", "ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS_PORTAL2", "portal2.guidewire.com", allowEmpty = false)
         text("env.CRAWLER_REFERER", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net")
-        text("env.CRAWLER_REFERER_PROD", "https://docstest.guidewire.com")
+        text("env.CRAWLER_REFERER_PROD", "https://docs.guidewire.com")
         text("env.INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.INDEXER_SEARCH_APP_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
