@@ -134,6 +134,10 @@
             "product": "BillingCenter",
             "releases": [
               {
+                  "version": "10.0.3",
+                  "url": "self-managed/bc/1003"
+              },
+              {
                 "version": "10.0.2",
                 "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.2/"
               },
@@ -291,6 +295,10 @@
             "title": "ClaimCenter",
             "product": "ClaimCenter",
             "releases": [
+              {
+                  "version": "10.0.3",
+                  "url": "self-managed/cc/1003"
+              },
               {
                 "version": "10.0.2",
                 "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.2/"
@@ -490,6 +498,10 @@
             "product": "PolicyCenter",
             "releases": [
               {
+                  "version": "10.0.3",
+                  "url": "self-managed/pc/1003"
+              },
+              {
                 "version": "10.0.2",
                 "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.2/"
               },
@@ -653,6 +665,10 @@
             "product": "DataHub",
             "releases": [
               {
+                "version": "10.2.0",
+                "url": "self-managed/dh/1020"
+              },
+              {
                 "version": "10.1.0",
                 "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1010/DataHub/"
               },
@@ -697,7 +713,11 @@
           {
             "title": "InfoCenter",
             "product": "InfoCenter",
-            "releases": [
+            "releases": [   
+              {
+                "version": "10.2.0",
+                "url": "self-managed/ic/1020"
+              },
               {
                 "version": "10.1.0",
                 "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1010/InfoCenter/"
@@ -754,8 +774,12 @@
             "product": "CustomerEngage Account Management",
             "releases": [
               {
+                "version": "10.0.1",
+                "url": "self-managed/dx/ce-am/1001"
+              },
+              {
                 "version": "10.0.0",
-                "url": "#"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_AccountManagement1000_Docs/"
               },
               {
                 "version": "8.1.0",
@@ -780,8 +804,12 @@
             "product": "CustomerEngage Quote and Buy",
             "releases": [
               {
+                "version": "10.0.1",
+                "url": "self-managed/dx/ce-qb/1001"
+              },
+              {
                 "version": "10.0.0",
-                "url": "#"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_QuoteAndBuy1000_Docs/"
               },
               {
                 "version": "8.1.0",
@@ -806,8 +834,12 @@
             "product": "Producer Engage",
             "releases": [
               {
+                "version": "10.0.1",
+                "url": "self-managed/dx/pe/1001"
+              },
+              {
                 "version": "10.0.0",
-                "url": "#"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ProducerEngage1000_Docs/"
               },
               {
                 "version": "8.1.0",
@@ -832,8 +864,12 @@
             "product": "ServiceRepEngage",
             "releases": [
               {
+                "version": "10.0.1",
+                "url": "self-managed/dx/sre/1001"
+              },
+              {
                 "version": "10.0.0",
-                "url": "#"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ServiceRepEngage1000_Docs/"
               },
               {
                 "version": "8.1.0",
@@ -858,8 +894,12 @@
             "product": "VendorEngage",
             "releases": [
               {
+                "version": "10.0.1",
+                "url": "self-managed/dx/ve/1001"
+              },
+              {
                 "version": "10.0.0",
-                "url": "#"
+                "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/VendorEngage1000_Docs/"
               },
               {
                 "version": "8.1.0",
