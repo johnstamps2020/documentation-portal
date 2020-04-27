@@ -153,14 +153,14 @@ class DocPortalSpider(scrapy.Spider):
             regex = re.compile('^[^/]*//[^/]*')
             page_object_id = response.url.replace(
                 re.match(regex, response.url).group(0), '')
-            
+
             page_object['href'] = response.url
-            if response.url.startswith('ditaot.internal'):
-                current_domain = urlparse(response.url).netloc
+            current_domain = urlparse(response.url).netloc
+            if current_domain.startswith('ditaot.internal'):
                 target_domain = urlparse(referer).netloc
                 resulting_address = response.url.replace(current_domain, target_domain)
                 page_object['href'] = resulting_address
-            
+
             page_object['id'] = page_object_id
 
             url_keywords_map = create_keyword_map(config)
