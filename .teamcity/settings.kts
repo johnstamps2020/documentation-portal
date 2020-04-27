@@ -767,7 +767,6 @@ object TestContent : BuildType({
             """.trimIndent()
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--network=host"
         }
         script {
             name = "Run tests for loading index"
@@ -777,7 +776,6 @@ object TestContent : BuildType({
             """.trimIndent()
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--network=host"
         }
     }
 
