@@ -90,7 +90,7 @@ object Helpers {
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
                 text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
-                text("CRAWLER_START_URLS", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
+                text("CRAWLER_START_URL", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
                 text("CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
@@ -140,7 +140,7 @@ object Helpers {
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
                 text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
-                text("CRAWLER_START_URLS", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
+                text("CRAWLER_START_URL", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
                 text("CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
@@ -650,8 +650,9 @@ object LoadSearchIndex : BuildType({
     params {
         text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
         text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
-        text("env.CRAWLER_BASE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.CRAWLER_BASE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.CRAWLER_START_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.CRAWLER_START_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.BUILD_START_URLS_FROM_CONFIG", "yes")
         text("env.CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS_PROD", "ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS_PORTAL2", "portal2.guidewire.com", allowEmpty = false)
@@ -693,7 +694,7 @@ object LoadSearchIndex : BuildType({
                 #!/bin/bash
                 set -xe
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export CRAWLER_BASE_URL="${'$'}{CRAWLER_BASE_URL_PROD}"
+                    export CRAWLER_START_URL="${'$'}{CRAWLER_START_URL_PROD}"
                     export CRAWLER_ALLOWED_DOMAINS="${'$'}{CRAWLER_ALLOWED_DOMAINS_PROD}"
                     export CRAWLER_REFERER="${'$'}{CRAWLER_REFERER_PROD}"                    
                     export INDEXER_SEARCH_APP_URLS="${'$'}{INDEXER_SEARCH_APP_URLS_PROD}"
@@ -766,7 +767,6 @@ object TestContent : BuildType({
             """.trimIndent()
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--network=host"
         }
         script {
             name = "Run tests for loading index"
@@ -776,7 +776,6 @@ object TestContent : BuildType({
             """.trimIndent()
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--network=host"
         }
     }
 
@@ -1174,7 +1173,7 @@ object BuildAndUploadToS3 : Template({
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
         text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
         text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
-        text("env.CRAWLER_START_URLS", "%CRAWLER_START_URLS%", allowEmpty = false)
+        text("env.CRAWLER_START_URL", "%CRAWLER_START_URL%", allowEmpty = false)
         text("env.CRAWLER_ALLOWED_DOMAINS", "%CRAWLER_ALLOWED_DOMAINS%", allowEmpty = false)
         text("env.INDEXER_SEARCH_APP_URLS", "%INDEXER_SEARCH_APP_URLS%", allowEmpty = false)
         text("env.INDEXER_INDEX_NAME", "%INDEXER_INDEX_NAME%", allowEmpty = false)

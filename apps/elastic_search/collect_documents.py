@@ -3,7 +3,7 @@ import json
 import logging
 import os
 import re
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 from pathlib import Path
 
 import custom_utils.utils as custom_utils
@@ -14,6 +14,7 @@ from scrapy.utils.project import get_project_settings
 config = Path(os.environ['CONFIG_FILE'])
 allowed_domains = os.environ['CRAWLER_ALLOWED_DOMAINS'].split(' ')
 referer = os.environ.get('CRAWLER_REFERER', None)
+start_url = os.environ.get('CRAWLER_START_URL')
 
 current_dir = Path(__file__).parent
 feed_file = current_dir / 'documents.json'
@@ -25,14 +26,9 @@ broken_links = []
 
 
 def get_start_urls():
-    """
-    If you want to crawl a list of specific URLs, provide the CRAWLER_START_URLS env in the build.
-    If you want to build a list of URLs to crawl from the config file, provide the CRAWLER_BASE_URL env in the build.
-    The base URL will be joined with the path for each document from the config file to build a list of full URLs.
-    If you provide the CRAWLER_BASE_URL env, the CRAWLER_START_URLS env variable is ignored, even if it has a value.
-    """
-    urls = []
-    if os.environ.get('CRAWLER_BASE_URL', None) is not None:
+    urls = [start_url]
+    if os.environ.get('BUILD_START_URLS_FROM_CONFIG', 'no').lower() == 'yes':
+        urls = []
         with open(config) as config_file:
             config_file_content = json.load(config_file)
 
@@ -41,16 +37,16 @@ def get_start_urls():
                 for package in doc_set.get('docPackages'):
                     for doc in package.get('docs'):
                         for release in doc.get('releases'):
-                            urls.append(urljoin(os.environ.get("CRAWLER_BASE_URL", None), release.get("url")))
-    elif os.environ.get('CRAWLER_START_URLS', None) is not None:
-        urls = os.environ['CRAWLER_START_URLS'].split(' ')
+                            urls.append(urljoin(start_url, release.get("url")))
 
     return urls
 
 
 def normalize_text(input_text: str):
-    input_text_no_whitespace = input_text.replace('\n', ' ').replace('\t', ' ').replace('\r', '').strip()
-    input_text_no_multiple_spaces = re.sub('[ ]{2,}', ' ', input_text_no_whitespace)
+    input_text_no_whitespace = input_text.replace(
+        '\n', ' ').replace('\t', ' ').replace('\r', '').strip()
+    input_text_no_multiple_spaces = re.sub(
+        '[ ]{2,}', ' ', input_text_no_whitespace)
     topic_text_no_empty_lines = filter(lambda x: not x.isspace(),
                                        io.StringIO(input_text_no_multiple_spaces).readlines())
     normalized_text = ' '.join(topic_text_no_empty_lines)
@@ -74,7 +70,8 @@ def group_broken_links_by_origin(links: list):
             if link.get('origin_url') == grouped_link.get('origin_url'):
                 grouped_link['urls'].append(link.get('url'))
 
-    sorted_grouped_links = sorted(grouped_links, key=lambda x: x['origin_url'], reverse=False)
+    sorted_grouped_links = sorted(
+        grouped_links, key=lambda x: x['origin_url'], reverse=False)
     for link in sorted_grouped_links:
         link['urls'] = sorted(link['urls'])
 
@@ -94,7 +91,8 @@ def crawl_pages(spider_class: type(scrapy.Spider), **kwargs):
                                                                           broken_links),
                                                                       page_title='Broken links report')
     custom_utils.prepare_out_dir(out_dir)
-    custom_utils.write_content_to_file(broken_links_page_content, broken_links_report)
+    custom_utils.write_content_to_file(
+        broken_links_page_content, broken_links_report)
 
 
 def create_keyword_map(config_file: Path()):
@@ -153,8 +151,16 @@ class DocPortalSpider(scrapy.Spider):
             page_object = {}
 
             regex = re.compile('^[^/]*//[^/]*')
-            page_object_id = response.url.replace(re.match(regex, response.url).group(0), '')
+            page_object_id = response.url.replace(
+                re.match(regex, response.url).group(0), '')
+
             page_object['href'] = response.url
+            current_domain = urlparse(response.url).netloc
+            if current_domain.startswith('ditaot.internal'):
+                target_domain = urlparse(referer).netloc
+                resulting_address = response.url.replace(current_domain, target_domain)
+                page_object['href'] = resulting_address
+
             page_object['id'] = page_object_id
 
             url_keywords_map = create_keyword_map(config)
@@ -173,8 +179,10 @@ class DocPortalSpider(scrapy.Spider):
             for title_element in title_elements:
                 page_object['title'] = title_element.xpath('text()').get()
 
-            dita_default_selector = response.xpath('//*[contains(@class, "body")]')
-            dita_chunk_selector = response.xpath('//*[contains(@class, "nested0")]')
+            dita_default_selector = response.xpath(
+                '//*[contains(@class, "body")]')
+            dita_chunk_selector = response.xpath(
+                '//*[contains(@class, "nested0")]')
             framemaker_default_selector = response.xpath('//body/blockquote')
             body_elements = []
             if dita_default_selector:
@@ -205,7 +213,8 @@ if __name__ == '__main__':
     crawl_pages(DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains,
                 keyword_map=create_keyword_map(config))
     required_attrs = ['platform', 'product', 'version']
-    required_metadata_exists_result = check_required_metadata(feed_file, required_attrs)
+    required_metadata_exists_result = check_required_metadata(
+        feed_file, required_attrs)
     if required_metadata_exists_result is not None:
         logging.warning(
             f'The following objects are missing some of the {", ".join(required_attrs)} attributes:\n{required_metadata_exists_result}')
