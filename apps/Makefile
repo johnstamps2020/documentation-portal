@@ -24,7 +24,7 @@ create-test-environment:
 
 test-collect-documents:
 	export CONFIG_FILE=./tests/test_elastic_search/resources/input/config/gw-docs.json \
-		&& export CRAWLER_START_URLS=http://localhost/ \
+		&& export CRAWLER_START_URL=http://localhost/ \
 		&& export CRAWLER_ALLOWED_DOMAINS=localhost \
         && cd ./elastic_search/ \
         && poetry config virtualenvs.create false \
