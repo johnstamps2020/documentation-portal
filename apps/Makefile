@@ -18,7 +18,8 @@ load-index:
 
 # An Elasticsearch instance is needed for test-load-index task. An http server instance is needed for test-collect-documents task.
 # In TeamCity, the instances are built with a TeamCity plugin.
-# If you have Docker Compose installed, you can use this task to create an Elasticsearch instance before running test-load-index locally.
+# If you have Docker Compose installed, you can use this task to create an Elasticsearch instance before running
+# test-collect-documents and test-load-index locally.
 create-test-environment:
 	export TEST_ENVIRONMENT_DOCKER_NETWORK=bridge \
 		&& docker-compose -f ./tests/test_elastic_search/resources/docker-compose.yml build \
