@@ -10,13 +10,12 @@ gwUrl.searchParams.set('response_type', 'code');
 gwUrl.searchParams.set('response_mode', 'fragment');
 gwUrl.searchParams.set(
   'redirect_uri',
-  encodeURIComponent(`${process.env.APP_BASE_URL}/authorization-code/callback`)
+  encodeURIComponent(`https://docs.guidewire.com/authorization-code/callback`)
 );
 gwUrl.searchParams.set('state', 'WM6D');
 gwUrl.searchParams.set('nonce', 'YsG76jo');
 
 router.get('/', function(req, res, next) {
-  console.log('WE WILL REDIRECT TO', gwUrl);
   res.redirect(gwUrl);
 });
 
