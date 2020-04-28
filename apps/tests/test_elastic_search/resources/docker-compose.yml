@@ -1,6 +1,7 @@
 version: '3'
 services:
   docsearch:
+    network_mode: bridge
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
     environment:
       - cluster.name=es-docker-cluster
@@ -16,6 +17,7 @@ services:
       - "9200:9200"
       - "9300:9300"
   http-server:
+    network_mode: bridge
     build:
       context: input/http-server
       dockerfile: Dockerfile
