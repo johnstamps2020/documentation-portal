@@ -20,7 +20,9 @@ load-index:
 # In TeamCity, the instances are built with a TeamCity plugin.
 # If you have Docker Compose installed, you can use this task to create an Elasticsearch instance before running test-load-index locally.
 create-test-environment:
-	docker-compose -f ./tests/test_elastic_search/resources/docker-compose.yml up -d
+	export TEST_ENVIRONMENT_DOCKER_NETWORK=bridge \
+		&& docker-compose -f ./tests/test_elastic_search/resources/docker-compose.yml build \
+		&& docker-compose -f ./tests/test_elastic_search/resources/docker-compose.yml up -d
 
 test-collect-documents:
 	export CONFIG_FILE=./tests/test_elastic_search/resources/input/config/gw-docs.json \

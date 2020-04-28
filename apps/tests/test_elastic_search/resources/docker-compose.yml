@@ -1,7 +1,11 @@
+# We use an env for the network mode because for Linux agents in TeamCity we need to use the 'host' mode
+# (the 'bridge' mode doesn't work in our test env on TeamCity agents).
+# For running tests locally, for example on Mac with Docker Desktop, we need to use the 'bridge' mode
+# (the 'host' mode works only on Linux).
 version: '3'
 services:
   docsearch:
-    network_mode: bridge
+    network_mode: ${TEST_ENVIRONMENT_DOCKER_NETWORK}
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
     environment:
       - cluster.name=es-docker-cluster
@@ -17,7 +21,7 @@ services:
       - "9200:9200"
       - "9300:9300"
   http-server:
-    network_mode: bridge
+    network_mode: ${TEST_ENVIRONMENT_DOCKER_NETWORK}
     build:
       context: input/http-server
       dockerfile: Dockerfile

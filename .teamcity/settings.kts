@@ -737,6 +737,10 @@ object LoadSearchIndex : BuildType({
 object TestContent : BuildType({
     name = "Test"
 
+    params {
+        text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
+    }
+
     vcs {
         root(vcsroot)
 
