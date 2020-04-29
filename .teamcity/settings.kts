@@ -42,6 +42,7 @@ project {
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
     vcsRoot(DitaOt331)
+    vcsRoot(Insurancenow20201x)
     vcsRoot(Insurancesuite9)
     vcsRoot(Insurancesuite10)
     vcsRoot(InsuranceSuiteUpgradeGuide2x)
@@ -224,6 +225,14 @@ object DitaOt331 : GitVcsRoot({
     branchSpec = "+:refs/*"
     authMethod = uploadedKey {
         uploadedKey = "dita-ot.rsa"
+    }
+})
+
+object Insurancenow20201x : GitVcsRoot({
+    name = "insurancenow-2020-1x"
+    url = "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
     }
 })
 
@@ -861,6 +870,22 @@ object TestConfig : BuildType({
         sshAgent {
             teamcitySshKey = "dita-ot.rsa"
         }
+    }
+})
+
+object AddIN20201xFilesFromXDocsToBitbucket : BuildType({
+    templates(AddFilesFromXDocsToBitbucket)
+    name = "Add IN 2020.1x files from XDocs to Bitbucket"
+    description = "Exports DITA files from XDocs and adds them to Bitbucket"
+
+    params {
+    text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap", allowEmpty = false)
+        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("SOURCES_ROOT", "src_root", allowEmpty = false)
+    }
+
+    vcs {
+        root(Insurancenow20201x, "+:. => %SOURCES_ROOT%")
     }
 })
 
