@@ -23,13 +23,15 @@ const authGateway = (req, res, next) => {
     } else {
       next();
     }
-  } else if (req.query.authSource === gwCommunityCustomerParam) {
-    res.redirect('/customers-login');
-  } else if (req.query.authSource === gwCommunityPartnerParam) {
-    res.redirect('/partners-login');
   } else {
     req.session.redirectTo = req.path;
-    res.redirect(loginGatewayRoute);
+    if (req.query.authSource === gwCommunityCustomerParam) {
+      res.redirect('/customers-login');
+    } else if (req.query.authSource === gwCommunityPartnerParam) {
+      res.redirect('/partners-login');
+    } else {
+      res.redirect(loginGatewayRoute);
+    }
   }
 };
 
