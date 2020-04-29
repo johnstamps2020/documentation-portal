@@ -720,7 +720,7 @@ object LoadSearchIndex : BuildType({
 
         script {
             name = "Publish to S3"
-            scriptContent = "aws s3 sync ./apps/elastic_search/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%"
+            scriptContent = "aws s3 sync ./apps/elastic_search/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_SERVER%"
         }
 
     }
