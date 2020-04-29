@@ -3,6 +3,9 @@ const { ExpressOIDC } = require('@okta/oidc-middleware');
 
 const loginGatewayRoute = '/gw-login';
 
+const gwCommunityCustomerParam = 'guidewire-customer';
+const gwCommunityPartnerParam = 'guidewire-partner';
+
 const oktaOIDC = new ExpressOIDC({
   issuer: `${process.env.OKTA_DOMAIN}`,
   client_id: `${process.env.OKTA_CLIENT_ID}`,
@@ -20,6 +23,10 @@ const authGateway = (req, res, next) => {
     } else {
       next();
     }
+  } else if (req.query.authSource === gwCommunityCustomerParam) {
+    res.redirect('/customers-login');
+  } else if (req.query.authSource === gwCommunityPartnerParam) {
+    res.redirect('/partners-login');
   } else {
     req.session.redirectTo = req.path;
     res.redirect(loginGatewayRoute);
