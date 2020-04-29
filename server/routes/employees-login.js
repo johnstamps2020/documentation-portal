@@ -7,7 +7,6 @@ gwUrl.searchParams.set('idp', process.env.OKTA_IDP);
 gwUrl.searchParams.set('client_id', process.env.OKTA_CLIENT_ID);
 gwUrl.searchParams.set('scope', 'openid profile');
 gwUrl.searchParams.set('response_type', 'code');
-gwUrl.searchParams.set('response_mode', 'fragment');
 gwUrl.searchParams.set(
   'redirect_uri',
   encodeURI(`${process.env.APP_BASE_URL}/authorization-code/callback`)
