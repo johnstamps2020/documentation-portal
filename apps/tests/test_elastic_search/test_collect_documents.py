@@ -13,12 +13,13 @@ current_dir = Path(__file__).parent
 resources = current_dir / 'resources'
 expected = resources / 'expected'
 config = collector.config
-start_urls = collector.get_start_urls()
+start_url = collector.get_start_urls(collector.start_url)
 allowed_domains = collector.allowed_domains
 feed_file = collector.feed_file
-broken_links_report = collector.broken_links_report
 
-collector.crawl_pages(collector.DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains)
+broken_links_report = collector.resolve_broken_links_report_path(start_url, collector.out_dir,
+                                                                 collector.broken_links_template_file)
+collector.crawl_pages(collector.DocPortalSpider, start_urls=start_url, allowed_domains=allowed_domains)
 
 
 def test_normalize_text():

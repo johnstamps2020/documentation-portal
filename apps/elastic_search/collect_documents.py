@@ -31,8 +31,8 @@ def resolve_broken_links_report_path(start_url: str, output_dir: Path(), report_
     return broken_links_report_path
 
 
-def get_start_urls():
-    urls = [start_url]
+def get_start_urls(root_url: str):
+    urls = [root_url]
     if os.environ.get('BUILD_START_URLS_FROM_CONFIG', 'no').lower() == 'yes':
         urls = []
         with open(config) as config_file:
@@ -43,7 +43,7 @@ def get_start_urls():
                 for package in doc_set.get('docPackages'):
                     for doc in package.get('docs'):
                         for release in doc.get('releases'):
-                            urls.append(urljoin(start_url, release.get("url")))
+                            urls.append(urljoin(root_url, release.get("url")))
 
     return urls
 
@@ -216,7 +216,7 @@ class DocPortalSpider(scrapy.Spider):
 
 
 if __name__ == '__main__':
-    start_urls = get_start_urls()
+    start_urls = get_start_urls(start_url)
     crawl_pages(DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains,
                 keyword_map=create_keyword_map(config))
     required_attrs = ['platform', 'product', 'version']
