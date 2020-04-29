@@ -13,13 +13,11 @@ current_dir = Path(__file__).parent
 resources = current_dir / 'resources'
 expected = resources / 'expected'
 config = collector.config
-start_url = collector.start_url
+start_urls = collector.get_start_urls()
 allowed_domains = collector.allowed_domains
 feed_file = collector.feed_file
+broken_links_report = collector.broken_links_report
 
-broken_links_report = collector.resolve_broken_links_report_path(start_url, collector.out_dir,
-                                                                 collector.broken_links_template_file)
-start_urls = collector.get_start_urls(start_url)
 collector.crawl_pages(collector.DocPortalSpider, start_urls=start_urls, allowed_domains=allowed_domains)
 
 
