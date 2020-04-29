@@ -5,6 +5,28 @@
     "platform": "Cloud",
     "docPackages": [
       {
+          "categoryName" : "InsuranceNow",
+          "docs": [
+              {
+                "title": "InsuranceNow",
+                "product": "InsuranceNow",
+                "releases": [
+                    {
+                        "version": "latest",
+                        "url": "cloud/in/latest",
+                        "build": {
+                            "type": "dita",
+                            "src": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
+                            "filter": "GW-Generic-Draft.ditaval",
+                            "root": "_superbook.ditamap"
+                        }
+                    }
+                ]
+              }
+          ]
+      },
+      
+      {
         "categoryName": "InsuranceSuite",
         "docs": [
           {
