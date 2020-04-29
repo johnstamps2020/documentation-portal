@@ -3,13 +3,14 @@ import json
 import logging
 import os
 import re
-from urllib.parse import urljoin, urlparse
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 
-import custom_utils.utils as custom_utils
 import scrapy
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
+
+import custom_utils.utils as custom_utils
 
 config = Path(os.environ['CONFIG_FILE'])
 allowed_domains = os.environ['CRAWLER_ALLOWED_DOMAINS'].split(' ')
@@ -21,8 +22,13 @@ feed_file = current_dir / 'documents.json'
 template_dir = current_dir / 'src' / 'templates'
 out_dir = current_dir / 'out'
 broken_links_template_file = 'broken-links.html'
-broken_links_report = out_dir / broken_links_template_file
 broken_links = []
+
+
+def resolve_broken_links_report_path(start_url: str, output_dir: Path(), report_file_name: Path()):
+    sub_dir = urlparse(start_url).netloc.split('.')[0]
+    broken_links_report_path = output_dir / sub_dir / report_file_name
+    return broken_links_report_path
 
 
 def get_start_urls():
@@ -90,7 +96,8 @@ def crawl_pages(spider_class: type(scrapy.Spider), **kwargs):
                                                                       broken_links=group_broken_links_by_origin(
                                                                           broken_links),
                                                                       page_title='Broken links report')
-    custom_utils.prepare_out_dir(out_dir)
+    broken_links_report = resolve_broken_links_report_path(start_url, out_dir, broken_links_template_file)
+    custom_utils.prepare_out_dir(broken_links_report.parent)
     custom_utils.write_content_to_file(
         broken_links_page_content, broken_links_report)
 
