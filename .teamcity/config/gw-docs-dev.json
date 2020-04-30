@@ -147,6 +147,123 @@
             ]
           }
         ]
+      },
+      {
+        "categoryName": "Digital",
+        "docs": [
+          {
+            "title": "Data Integrations",
+            "product": "Data Integrations",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/di/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-di-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Data Integrations - Claims",
+            "product": "Data Integrations - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/di-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-di-c-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital",
+            "product": "Embedded Digital",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/ed/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-ed-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital - Claims",
+            "product": "Embedded Digital - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/ed-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-ed-c-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "ProducerEngage",
+            "product": "ProducerEngage",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/pe/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-pe-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand",
+            "product": "View on Demand",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/vod/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-vod-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand - Claims",
+            "product": "View on Demand - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/vod-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-vod-c-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -301,16 +418,6 @@
                 }
               }
             ]
-          },
-          {
-            "title": "Underwriting Management",
-            "product": "Underwriting Management",
-            "releases": [
-              {
-                "version": "144.1",
-                "url": "https://docs.guidewire.com/bundle?value=14"
-              }
-            ]
           }
         ]
       },
@@ -348,26 +455,6 @@
                 }
               }
             ]
-          },
-          {
-            "title": "Live Analytics",
-            "product": "Live Analytics",
-            "releases": [
-              {
-                "version": "Latest",
-                "url": "https://docs.guidewire.com/bundle?value=24"
-              }
-            ]
-          },
-          {
-            "title": "Predictive Analytics",
-            "product": "Predictive Analytics",
-            "releases": [
-              {
-                "version": "Latest",
-                "url": "https://docs.guidewire.com/bundle?value=26"
-              }
-            ]
           }
         ]
       },
@@ -391,8 +478,72 @@
             ]
           },
           {
-            "title": "Producer Engage",
-            "product": "Producer Engage",
+            "title": "Data Integrations",
+            "product": "Data Integrations",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/di/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-di-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Data Integrations - Claims",
+            "product": "Data Integrations - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/di-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-di-c-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital",
+            "product": "Embedded Digital",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/ed/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-ed-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital - Claims",
+            "product": "Embedded Digital - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/ed-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-ed-c-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "ProducerEngage",
+            "product": "ProducerEngage",
             "releases": [
               {
                 "version": "11.x",
@@ -400,23 +551,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-                  "filter": "Digital-pe.ditaval",
-                  "root": "DX_superbook.ditamap"
-                }
-              }
-            ]
-          },
-          {
-            "title": "Guidewire for Salesforce",
-            "product": "Guidewire for Salesforce",
-            "releases": [
-              {
-                "version": "3.x",
-                "url": "self-managed/dx/pe-sf/3x",
-                "build": {
-                  "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-                  "filter": "Digital-pe-sf.ditaval",
+                  "filter": "Digital-pe-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
               }
@@ -433,6 +568,38 @@
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
                   "filter": "Digital-sre.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand",
+            "product": "View on Demand",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/vod/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-vod-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand - Claims",
+            "product": "View on Demand - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/vod-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-vod-c-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
               }
