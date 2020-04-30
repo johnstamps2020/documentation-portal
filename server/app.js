@@ -62,6 +62,10 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
+app.use('/referer', (req, res) => {
+  res.send(`${req.get('referer')} <br/> ${req.get('origin')}`);
+});
+
 app.use('/gw-login', gwLoginRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
@@ -121,7 +125,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/support', supportRouter);
@@ -136,7 +139,6 @@ const proxyOptions = {
 };
 const docProxy = proxy(proxyOptions);
 app.use('/', docProxy);
-
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
