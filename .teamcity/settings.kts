@@ -958,13 +958,13 @@ object AddDigital11xFilesFromXDocsToBitbucket : BuildType({
     templates(AddFilesFromXDocsToBitbucket)
     name = "Add Digital11x files from XDocs to Bitbucket"
     description = "Exports DITA files from XDocs and adds them to Bitbucket"
-
+    
     params {
-        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-cb.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-sf.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-sf.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap", allowEmpty = false)
+        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap", allowEmpty = false)
         text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
         text("SOURCES_ROOT", "src_root", allowEmpty = false)
     }
-
+    
     vcs {
         root(Digital11, "+:. => %SOURCES_ROOT%")
     }
