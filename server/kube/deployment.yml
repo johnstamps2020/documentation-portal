@@ -42,8 +42,6 @@ spec:
               value: ${OKTA_CLIENT_ID}
             - name: OKTA_CLIENT_SECRET
               value: ${OKTA_CLIENT_SECRET}
-            - name: OKTA_IDP
-              value: ${OKTA_IDP}
             - name: APP_BASE_URL
               value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net
             - name: SESSION_KEY
