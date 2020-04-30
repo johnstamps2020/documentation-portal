@@ -1316,6 +1316,7 @@ object DeployServices : Project({
 object AddFilesFromXDocsToBitbucketActiveBranch : Project({
     name = "Add files from XDocs to Bitbucket (active branch)"
 
+    buildType(AddIN20201xFilesFromXDocsToBitbucket)
     buildType(AddIS9xFilesFromXDocsToBitbucket)
     buildType(AddIS10xFilesFromXDocsToBitbucket)
     buildType(AddISUpgradeGuide2xFilesFromXDocsToBitbucket)
