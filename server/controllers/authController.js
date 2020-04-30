@@ -15,7 +15,6 @@ const oktaOIDC = new ExpressOIDC({
 });
 
 const authGateway = (req, res, next) => {
-  console.log(req.get('referer'));
   if (req.isAuthenticated() || process.env.DEV === 'yes') {
     if (req.session.redirectTo) {
       const redirectTo = req.session.redirectTo;
