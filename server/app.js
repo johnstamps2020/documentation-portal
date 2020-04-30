@@ -48,7 +48,6 @@ app.use(
 const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
-const employeesLoginRouter = require('./routes/employees-login');
 const landingRouter = require('./routes/landing');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
@@ -65,7 +64,6 @@ app.use('/alive', (req, res, next) => {
 app.use('/gw-login', gwLoginRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
-app.use('/employees-login', employeesLoginRouter);
 
 // serve docs from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
