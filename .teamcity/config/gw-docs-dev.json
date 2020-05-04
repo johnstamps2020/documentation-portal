@@ -143,11 +143,10 @@
             "releases": [
               {
                 "version": "latest",
-                "url": "cloud/gcp/latest/",
+                "url": "cloud/gwcp/latest/",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/doc/orange-bar-docs.git",
-                  "filter": "assets/insurer-developer.ditaval",
+                  "src": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git",
                   "root": "guidewire_cloud_platform_guide.ditamap"
                 }
               }
