@@ -79,7 +79,7 @@ object Helpers {
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
-            name = vsc_root_id + " - " + ditaval_file.replace(".ditaval", "").replace("-", " ") + " Dev"
+            name = vsc_root_id + " - " + ditaval_file.replace(".ditaval", "").replace("-", " ") + " " + build_env
 
 
             params {
@@ -182,7 +182,7 @@ object Helpers {
                                     val vscRootId = (publishPath + filter.replace(".ditaval", "") + env).toExtId()
                                     val buildId = vscRootId + "build" + env
                                     roots.add(CreateVcsRoot(src, vscRootId))
-                                    if (env == "dev") {
+                                    if (env == "dev" || env == "int") {
                                         builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env, publishPath, vscRootId))
                                     }
 
@@ -1315,6 +1315,7 @@ object Content : Project({
     subProject(AddFilesFromXDocsToBitbucketActiveBranch)
     buildType(TestContent)
     subProject(DeployDevContent)
+    subProject(DeployIntContent)
     subProject(DeployStagingContent)
     subProject(DeployProdContent)
 
@@ -1342,6 +1343,14 @@ object DeployDevContent : Project({
     name = "Deploy to Dev"
 
     val (roots, builds) = Helpers.getBuildsFromConfig("dev", "config/gw-docs-dev.json")
+    roots.forEach(this::vcsRoot)
+    builds.forEach(this::buildType)
+})
+
+object DeployIntContent : Project({
+    name = "Deploy to Int"
+
+    val (roots, builds) = Helpers.getBuildsFromConfig("int", "config/gw-docs-int.json")
     roots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
 })
