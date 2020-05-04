@@ -5,27 +5,28 @@
     "platform": "Cloud",
     "docPackages": [
       {
-          "categoryName" : "InsuranceNow",
-          "docs": [
+        "categoryName" : "InsuranceNow",
+        "docs": [
+          {
+            "title": "InsuranceNow",
+            "product": "InsuranceNow",
+            "releases": [
               {
-                "title": "InsuranceNow",
-                "product": "InsuranceNow",
-                "releases": [
-                    {
-                        "version": "latest",
-                        "url": "cloud/in/latest",
-                        "build": {
-                            "type": "dita",
-                            "src": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
-                            "filter": "GW-Generic-Draft.ditaval",
-                            "root": "_superbook.ditamap"
-                        }
-                    }
-                ]
+                "version": "latest",
+                "url": "cloud/in/latest",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap",
+                  "filter": "GW-Generic-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
               }
-          ]
+            ]
+          }
+        ]
       },
-      
+
       {
         "categoryName": "InsuranceSuite",
         "docs": [
@@ -39,6 +40,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+                  "xdocsPathIds": "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
                   "filter": "IS-BC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -55,6 +57,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+                  "xdocsPathIds": "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
                   "filter": "IS-CC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -71,6 +74,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+                  "xdocsPathIds": "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
                   "filter": "IS-PC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -87,6 +91,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-BC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -103,6 +108,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-CC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -119,6 +125,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-PC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -147,6 +154,123 @@
             ]
           }
         ]
+      },
+      {
+        "categoryName": "Digital",
+        "docs": [
+          {
+            "title": "Data Integrations",
+            "product": "Data Integrations",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/di/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-di-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Data Integrations - Claims",
+            "product": "Data Integrations - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/di-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-di-c-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital",
+            "product": "Embedded Digital",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/ed/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-ed-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital - Claims",
+            "product": "Embedded Digital - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/ed-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-ed-c-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "ProducerEngage",
+            "product": "ProducerEngage",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/pe/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-pe-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand",
+            "product": "View on Demand",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/vod/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-vod-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand - Claims",
+            "product": "View on Demand - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "cloud/dx/vod-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "filter": "Digital-vod-c-MgSvcs.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -168,6 +292,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap",
                   "filter": "IS-BC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -184,6 +309,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap",
                   "filter": "IS-CC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -200,6 +326,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap",
                   "filter": "IS-PC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -216,6 +343,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-BC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -232,6 +360,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-CC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -248,6 +377,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-PC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -264,6 +394,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap",
                   "filter": "IS-BC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -280,6 +411,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap",
                   "filter": "IS-CC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -296,19 +428,10 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap",
                   "filter": "IS-PC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
-              }
-            ]
-          },
-          {
-            "title": "Underwriting Management",
-            "product": "Underwriting Management",
-            "releases": [
-              {
-                "version": "144.1",
-                "url": "https://docs.guidewire.com/bundle?value=14"
               }
             ]
           }
@@ -327,6 +450,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval /Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
                   "filter": "DataHub-DRAFT.ditaval",
                   "root": "DM_all.ditamap"
                 }
@@ -343,29 +467,10 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval /Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
                   "filter": "InfoCenter-DRAFT.ditaval",
                   "root": "DM_all.ditamap"
                 }
-              }
-            ]
-          },
-          {
-            "title": "Live Analytics",
-            "product": "Live Analytics",
-            "releases": [
-              {
-                "version": "Latest",
-                "url": "https://docs.guidewire.com/bundle?value=24"
-              }
-            ]
-          },
-          {
-            "title": "Predictive Analytics",
-            "product": "Predictive Analytics",
-            "releases": [
-              {
-                "version": "Latest",
-                "url": "https://docs.guidewire.com/bundle?value=26"
               }
             ]
           }
@@ -384,7 +489,76 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-ce-qb.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Data Integrations",
+            "product": "Data Integrations",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/di/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-di-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Data Integrations - Claims",
+            "product": "Data Integrations - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/di-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-di-c-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital",
+            "product": "Embedded Digital",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/ed/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-ed-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Embedded Digital - Claims",
+            "product": "Embedded Digital - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/ed-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-ed-c-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
               }
@@ -400,6 +574,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-pe.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -416,6 +591,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-sf.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-pe-sf.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -432,7 +608,42 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-sre.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand",
+            "product": "View on Demand",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/vod/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-vod-OnPrem.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "View on Demand - Claims",
+            "product": "View on Demand - Claims",
+            "releases": [
+              {
+                "version": "11.x",
+                "url": "self-managed/dx/vod-c/11x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-vod-c-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
               }

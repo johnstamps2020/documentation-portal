@@ -17,6 +17,7 @@
                         "build": {
                             "type": "dita",
                             "src": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
+                            "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap",
                             "filter": "GW-Generic-Draft.ditaval",
                             "root": "_superbook.ditamap"
                         }
@@ -39,6 +40,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+                  "xdocsPathIds": "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
                   "filter": "IS-BC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -55,6 +57,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+                  "xdocsPathIds": "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
                   "filter": "IS-CC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -71,6 +74,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+                  "xdocsPathIds": "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
                   "filter": "IS-PC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -87,6 +91,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-BC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -103,6 +108,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-CC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -119,6 +125,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-PC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -285,6 +292,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap",
                   "filter": "IS-BC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -301,6 +309,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap",
                   "filter": "IS-CC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -317,6 +326,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap",
                   "filter": "IS-PC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -333,6 +343,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-BC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -349,6 +360,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-CC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -365,6 +377,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-PC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -381,6 +394,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap",
                   "filter": "IS-BC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -397,6 +411,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap",
                   "filter": "IS-CC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -413,6 +428,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap",
                   "filter": "IS-PC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -434,6 +450,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval /Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
                   "filter": "DataHub-DRAFT.ditaval",
                   "root": "DM_all.ditamap"
                 }
@@ -450,6 +467,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval /Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
                   "filter": "InfoCenter-DRAFT.ditaval",
                   "root": "DM_all.ditamap"
                 }
@@ -471,6 +489,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-ce-qb.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -487,6 +506,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-di-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -503,6 +523,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-di-c-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -519,6 +540,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-ed-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -535,6 +557,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-ed-c-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -542,8 +565,8 @@
             ]
           },
           {
-            "title": "ProducerEngage",
-            "product": "ProducerEngage",
+            "title": "Producer Engage",
+            "product": "Producer Engage",
             "releases": [
               {
                 "version": "11.x",
@@ -551,7 +574,25 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-                  "filter": "Digital-pe-OnPrem.ditaval",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-pe.ditaval",
+                  "root": "DX_superbook.ditamap"
+                }
+              }
+            ]
+          },
+          {
+            "title": "Guidewire for Salesforce",
+            "product": "Guidewire for Salesforce",
+            "releases": [
+              {
+                "version": "3.x",
+                "url": "self-managed/dx/pe-sf/3x",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-sf.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
+                  "filter": "Digital-pe-sf.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
               }
@@ -567,6 +608,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-sre.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -583,6 +625,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-vod-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
@@ -599,6 +642,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap",
                   "filter": "Digital-vod-c-OnPrem.ditaval",
                   "root": "DX_superbook.ditamap"
                 }
