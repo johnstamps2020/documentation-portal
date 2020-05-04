@@ -147,6 +147,7 @@
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git",
+                  "filter": "",
                   "root": "guidewire_cloud_platform_guide.ditamap"
                 }
               }
