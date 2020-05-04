@@ -75,7 +75,7 @@ object Helpers {
             }
         })
 
-        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -124,9 +124,13 @@ object Helpers {
                 }
             }
 
+            if (export_build_id != "") {
+                dependencies.snapshot(RelativeId(export_build_id)){}
+            }
+
         })
 
-        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -151,6 +155,27 @@ object Helpers {
 
             vcs {
                 root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
+            }
+
+            if (export_build_id != "") {
+                dependencies.snapshot(RelativeId(export_build_id)){}
+            }
+        })
+
+        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, export_path_ids: String, vcs_root_id: String) : BuildType({
+            templates(AddFilesFromXDocsToBitbucket)
+
+            id = RelativeId(build_id)
+            name = "Export files from XDocs and add to $vcs_root_id"
+
+            params {
+                text("EXPORT_PATH_IDS", export_path_ids, allowEmpty = false)
+                text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+                text("SOURCES_ROOT", "src_root", allowEmpty = false)
+            }
+
+            vcs {
+                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
         })
 
@@ -179,15 +204,24 @@ object Helpers {
                                     val root: String = build.get("root").toString()
                                     val src: String = build.get("src").toString()
                                     val publishPath: String = release.get("url").toString()
-                                    val vscRootId = (publishPath + filter.replace(".ditaval", "") + env).toExtId()
-                                    val buildId = vscRootId + "build" + env
-                                    roots.add(CreateVcsRoot(src, vscRootId))
+                                    val vcsRootId = (publishPath + filter.replace(".ditaval", "") + env).toExtId()
+                                    val buildId = vcsRootId + "build" + env
+
+                                    roots.add(CreateVcsRoot(src, vcsRootId))
+
+                                    var exportBuildId: String = ""
+                                    if (build.has("xdocsPathIds")) {
+                                        val xdocsPathIds: String = build.get("xdocsPathIds").toString()
+                                        exportBuildId = "export$buildId"
+                                        builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, xdocsPathIds, vcsRootId))
+                                    }
+
                                     if (env == "dev" || env == "int") {
-                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env, publishPath, vscRootId))
+                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env, publishPath, vcsRootId, exportBuildId))
                                     }
 
                                     if (env == "staging") {
-                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env, publishPath, vscRootId))
+                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env, publishPath, vcsRootId, exportBuildId))
                                     }
                                 }
                             }
@@ -887,117 +921,6 @@ object TestConfig : BuildType({
     }
 })
 
-object AddIN20201xFilesFromXDocsToBitbucket : BuildType({
-    templates(AddFilesFromXDocsToBitbucket)
-    name = "Add IN 2020.1x files from XDocs to Bitbucket"
-    description = "Exports DITA files from XDocs and adds them to Bitbucket"
-
-    params {
-        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap", allowEmpty = false)
-        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
-        text("SOURCES_ROOT", "src_root", allowEmpty = false)
-    }
-
-    vcs {
-        root(Insurancenow20201x, "+:. => %SOURCES_ROOT%")
-    }
-})
-
-object AddIS9xFilesFromXDocsToBitbucket : BuildType({
-    templates(AddFilesFromXDocsToBitbucket)
-    name = "Add IS9x files from XDocs to Bitbucket"
-    description = "Exports DITA files from XDocs and adds them to Bitbucket"
-
-    params {
-        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval /Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap", allowEmpty = false)
-        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
-        text("SOURCES_ROOT", "src_root", allowEmpty = false)
-    }
-
-    vcs {
-        root(Insurancesuite9, "+:. => %SOURCES_ROOT%")
-    }
-})
-
-object AddIS10xFilesFromXDocsToBitbucket : BuildType({
-    templates(AddFilesFromXDocsToBitbucket)
-    name = "Add IS10x files from XDocs to Bitbucket"
-    description = "Exports DITA files from XDocs and adds them to Bitbucket"
-
-    params {
-        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval /Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap", allowEmpty = false)
-        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
-        text("SOURCES_ROOT", "src_root", allowEmpty = false)
-    }
-
-    vcs {
-        root(Insurancesuite10, "+:. => %SOURCES_ROOT%")
-    }
-})
-
-object AddISUpgradeGuide2xFilesFromXDocsToBitbucket : BuildType({
-    templates(AddFilesFromXDocsToBitbucket)
-    name = "Add IS Upgrade Guide 2x files from XDocs to Bitbucket"
-    description = "Exports DITA files from XDocs and adds them to Bitbucket"
-
-    params {
-        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap", allowEmpty = false)
-        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
-        text("SOURCES_ROOT", "src_root", allowEmpty = false)
-    }
-
-    vcs {
-        root(InsuranceSuiteUpgradeGuide2x, "+:. => %SOURCES_ROOT%")
-    }
-})
-
-object AddIsCloudFilesFromXDocsToBitBucket : BuildType({
-    templates(AddFilesFromXDocsToBitbucket)
-    name = "Add IS cloud files from XDocs to BitBucket"
-
-    params {
-        text("EXPORT_PATH_IDS", "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval", allowEmpty = false)
-        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
-        text("SOURCES_ROOT", "src_root", allowEmpty = false)
-    }
-
-    vcs {
-        root(InsurancesuiteCloud, "+:. => %SOURCES_ROOT%")
-    }
-})
-
-object AddDigital11xFilesFromXDocsToBitbucket : BuildType({
-    templates(AddFilesFromXDocsToBitbucket)
-    name = "Add Digital11x files from XDocs to Bitbucket"
-    description = "Exports DITA files from XDocs and adds them to Bitbucket"
-    
-    params {
-        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve.ditaval /Content/doc/digital/11.x/active/DX_superbook.ditamap", allowEmpty = false)
-        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
-        text("SOURCES_ROOT", "src_root", allowEmpty = false)
-    }
-    
-    vcs {
-        root(Digital11, "+:. => %SOURCES_ROOT%")
-    }
-})
-
-object AddDataManagementDHICFilesFromXDocsToBitbucket : BuildType({
-    templates(AddFilesFromXDocsToBitbucket)
-    name = "Add DataManagementDHIC files from XDocs to Bitbucket"
-    description = "Exports DITA files from XDocs and adds them to Bitbucket"
-
-    params {
-        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval /Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap", allowEmpty = false)
-        text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
-        text("SOURCES_ROOT", "src_root", allowEmpty = false)
-    }
-
-    vcs {
-        root(DataManagementDHIC, "+:. => %SOURCES_ROOT%")
-    }
-})
-
 object CopyContentFromStagingToProd : BuildType({
     name = "Copy content from Staging to Prod"
 
@@ -1312,7 +1235,6 @@ object Content : Project({
 
     buildType(LoadSearchIndex)
     subProject(DeployServices)
-    subProject(AddFilesFromXDocsToBitbucketActiveBranch)
     buildType(TestContent)
     subProject(DeployDevContent)
     subProject(DeployIntContent)
@@ -1326,18 +1248,6 @@ object DeployServices : Project({
 
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
-})
-
-object AddFilesFromXDocsToBitbucketActiveBranch : Project({
-    name = "Add files from XDocs to Bitbucket (active branch)"
-
-    buildType(AddIN20201xFilesFromXDocsToBitbucket)
-    buildType(AddIS9xFilesFromXDocsToBitbucket)
-    buildType(AddIS10xFilesFromXDocsToBitbucket)
-    buildType(AddISUpgradeGuide2xFilesFromXDocsToBitbucket)
-    buildType(AddIsCloudFilesFromXDocsToBitBucket)
-    buildType(AddDigital11xFilesFromXDocsToBitbucket)
-    buildType(AddDataManagementDHICFilesFromXDocsToBitbucket)
 })
 
 object DeployDevContent : Project({
