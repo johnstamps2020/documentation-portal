@@ -130,7 +130,7 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -155,6 +155,10 @@ object Helpers {
 
             vcs {
                 root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
+            }
+
+            if (export_build_id != "") {
+                dependencies.snapshot(RelativeId(export_build_id)){}
             }
         })
 
@@ -217,7 +221,7 @@ object Helpers {
                                     }
 
                                     if (env == "staging") {
-                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env, publishPath, vcsRootId))
+                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env, publishPath, vcsRootId, exportBuildId))
                                     }
                                 }
                             }
