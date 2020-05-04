@@ -365,22 +365,34 @@ object DeployDev : BuildType({
 })
 
 object DeployInt : BuildType({
-    templates(Deploy)
+    templates(BuildDockerImage, Deploy)
     name = "Deploy to Int"
+
+    maxRunningBuilds = 1
 
     params {
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.DEPLOY_ENV", "int")
-        text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
-        param("env.PARTNERS_LOGIN_URL", "https://uat-guidewire.cs59.force.com/partners/idp/endpoint/HttpRedirect")
-        param("env.CUSTOMERS_LOGIN_URL", "https://uat-guidewire.cs59.force.com/customers/idp/endpoint/HttpRedirect")
+        param("env.TAG_VERSION", "latest-int")
+        param("env.PARTNERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/partners/idp/endpoint/HttpRedirect")
+        param("env.CUSTOMERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/customers/idp/endpoint/HttpRedirect")
+        param("env.CONFIG_FILENAME", "gw-docs-int.json")
     }
 
     vcs {
-        root(vcsrootmasteronly)
-
         cleanCheckout = true
+    }
+
+    dependencies {
+        snapshot(Checkmarx) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+        snapshot(Test) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+        snapshot(TestConfig) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
     }
 })
 
@@ -881,7 +893,7 @@ object AddIN20201xFilesFromXDocsToBitbucket : BuildType({
     description = "Exports DITA files from XDocs and adds them to Bitbucket"
 
     params {
-    text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap", allowEmpty = false)
+        text("EXPORT_PATH_IDS", "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap", allowEmpty = false)
         text("XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
         text("SOURCES_ROOT", "src_root", allowEmpty = false)
     }
@@ -1022,14 +1034,14 @@ object BuildDockerImage : Template({
                 #!/bin/bash 
                 set -xe
                 if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
-                    export BRANCH_NAME=latest
+                    export TAG_VERSION=${'$'}{TAG_VERSION}
                 else 
-                    export BRANCH_NAME=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
+                    export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${'$'}{DEPLOY_ENV}
                 fi
                 cp ./.teamcity/config/${'$'}{CONFIG_FILENAME} ./server/config.json
                 docker build -t docportal ./server
-                docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
-                docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{BRANCH_NAME}
+                docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
+                docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1060,7 +1072,7 @@ object Deploy : Template({
                 set -xe
                 if [[ "%env.DEPLOY_ENV%" == "dev" ]]; then
                     if [[ "%teamcity.build.branch%" != "master" ]] && [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
-                        export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)
+                        export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${'$'}{DEPLOY_ENV}
                     fi
                 else
                     export TAG_VERSION=v${'$'}TAG_VERSION
