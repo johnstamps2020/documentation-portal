@@ -997,6 +997,8 @@ object Deploy : Template({
                     if [[ "%teamcity.build.branch%" != "master" ]] && [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
                         export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${'$'}{DEPLOY_ENV}
                     fi
+                elif [[ "%env.DEPLOY_ENV%" == "dev" ]]; then
+                    export TAG_VERSION=${'$'}TAG_VERSION
                 else
                     export TAG_VERSION=v${'$'}TAG_VERSION
                 fi
