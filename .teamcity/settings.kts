@@ -125,7 +125,7 @@ object Helpers {
             }
 
             if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)){}
+                dependencies.snapshot(RelativeId(export_build_id)){onDependencyFailure = FailureAction.FAIL_TO_START}
             }
 
         })
@@ -158,7 +158,7 @@ object Helpers {
             }
 
             if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)){}
+                dependencies.snapshot(RelativeId(export_build_id)){onDependencyFailure = FailureAction.FAIL_TO_START}
             }
         })
 
