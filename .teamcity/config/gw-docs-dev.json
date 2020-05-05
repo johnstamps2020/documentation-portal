@@ -89,8 +89,8 @@
                 "url": "self-managed/upgrade/bc/latest",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
-                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-BC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -106,8 +106,8 @@
                 "url": "self-managed/upgrade/cc/latest",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
-                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-CC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -123,8 +123,8 @@
                 "url": "self-managed/upgrade/pc/latest",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
-                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval /Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-PC-Cloud-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -333,16 +333,16 @@
             ]
           },
           {
-            "title": "BillingCenter Upgrade Guide 2x",
-            "product": "BillingCenter Upgrade Guide 2x",
+            "title": "BillingCenter Upgrade Guide 3x",
+            "product": "BillingCenter Upgrade Guide 3x",
             "releases": [
               {
-                "version": "2.x",
-                "url": "self-managed/upgrade/bc/2x",
+                "version": "3.x",
+                "url": "self-managed/upgrade/bc/3x",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
-                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-BC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -350,16 +350,16 @@
             ]
           },
           {
-            "title": "ClaimCenter Upgrade Guide 2x",
-            "product": "ClaimCenter Upgrade Guide 2x",
+            "title": "ClaimCenter Upgrade Guide 3x",
+            "product": "ClaimCenter Upgrade Guide 3x",
             "releases": [
               {
-                "version": "2.x",
-                "url": "self-managed/upgrade/cc/2x",
+                "version": "3.x",
+                "url": "self-managed/upgrade/cc/3x",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
-                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-CC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
@@ -367,16 +367,16 @@
             ]
           },
           {
-            "title": "PolicyCenter Upgrade Guide 2x",
-            "product": "PolicyCenter Upgrade Guide 2x",
+            "title": "PolicyCenter Upgrade Guide 3x",
+            "product": "PolicyCenter Upgrade Guide 3x",
             "releases": [
               {
-                "version": "2.x",
-                "url": "self-managed/upgrade/pc/2x",
+                "version": "3.x",
+                "url": "self-managed/upgrade/pc/3x",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git",
-                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/2.x/active/upgrade-guide/_superbook.ditamap",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval /Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
                   "filter": "IS-PC-OnPrem-Draft.ditaval",
                   "root": "_superbook.ditamap"
                 }
