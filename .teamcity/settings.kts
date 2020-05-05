@@ -42,13 +42,6 @@ project {
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
     vcsRoot(DitaOt331)
-    vcsRoot(Insurancenow20201x)
-    vcsRoot(Insurancesuite9)
-    vcsRoot(Insurancesuite10)
-    vcsRoot(InsuranceSuiteUpgradeGuide2x)
-    vcsRoot(InsurancesuiteCloud)
-    vcsRoot(Digital11)
-    vcsRoot(DataManagementDHIC)
 
     template(Deploy)
     template(BuildDockerImage)
@@ -259,62 +252,6 @@ object DitaOt331 : GitVcsRoot({
     branchSpec = "+:refs/*"
     authMethod = uploadedKey {
         uploadedKey = "dita-ot.rsa"
-    }
-})
-
-object Insurancenow20201x : GitVcsRoot({
-    name = "insurancenow-2020-1x"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object Insurancesuite9 : GitVcsRoot({
-    name = "insurancesuite-9"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object Insurancesuite10 : GitVcsRoot({
-    name = "insurancesuite-10"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object InsuranceSuiteUpgradeGuide2x : GitVcsRoot({
-    name = "insurancesuite-upgrade-guide-2x"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object InsurancesuiteCloud : GitVcsRoot({
-    name = "insurancesuite-cloud"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object Digital11 : GitVcsRoot({
-    name = "digital-11"
-    url = "ssh://git@stash.guidewire.com/docsources/digital-11x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object DataManagementDHIC : GitVcsRoot({
-    name = "datamanagement-dh-ic"
-    url = "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
     }
 })
 
