@@ -87,7 +87,7 @@
             "releases": [
               {
                 "version": "latest",
-                "url": "self-managed/upgrade/bc/latest",
+                "url": "cloud/upgrade/bc/latest",
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
@@ -104,7 +104,7 @@
             "releases": [
               {
                 "version": "latest",
-                "url": "self-managed/upgrade/cc/latest",
+                "url": "cloud/upgrade/cc/latest",
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
@@ -121,7 +121,7 @@
             "releases": [
               {
                 "version": "latest",
-                "url": "self-managed/upgrade/pc/latest",
+                "url": "cloud/upgrade/pc/latest",
                 "build": {
                   "type": "dita",
                   "src": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
