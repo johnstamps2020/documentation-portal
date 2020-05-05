@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -68,7 +69,9 @@ object Helpers {
             }
         })
 
-        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String,
+                                            build_env: String, publish_path: String, vsc_root_id: String,
+                                            export_build_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -96,15 +99,14 @@ object Helpers {
                 root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
             }
 
-            triggers {
-                vcs {
+            if (export_build_id == "") {
+                triggers.vcs {
                     id = "vcsTrigger"
                     triggerRules = """
-                -:root=${vcsrootmasteronly.id}:**
-                -:root=${DitaOt331.id}:**
-                -:root=DocumentationTools_DitaOtPlugins:**
-            """.trimIndent()
-
+                        -:root=${vcsrootmasteronly.id}:**
+                        -:root=${DitaOt331.id}:**
+                        -:root=DocumentationTools_DitaOtPlugins:**
+                    """.trimIndent()
                 }
             }
 
@@ -118,7 +120,7 @@ object Helpers {
             }
 
             if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)){onDependencyFailure = FailureAction.FAIL_TO_START}
+                dependencies.snapshot(RelativeId(export_build_id)) { onDependencyFailure = FailureAction.FAIL_TO_START }
             }
 
         })
@@ -151,11 +153,12 @@ object Helpers {
             }
 
             if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)){onDependencyFailure = FailureAction.FAIL_TO_START}
+                dependencies.snapshot(RelativeId(export_build_id)) { onDependencyFailure = FailureAction.FAIL_TO_START }
             }
         })
 
-        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, export_path_ids: String, vcs_root_id: String) : BuildType({
+        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, export_path_ids: String,
+                                                      vcs_root_id: String, startHour: Int, startMinute: Int) : BuildType({
             templates(AddFilesFromXDocsToBitbucket)
 
             id = RelativeId(build_id)
@@ -170,12 +173,34 @@ object Helpers {
             vcs {
                 root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
+
+            triggers {
+                schedule {
+                    schedulingPolicy = daily {
+                        hour = startHour
+                        minute = startMinute
+                    }
+                    branchFilter = ""
+                    triggerBuild = always()
+                    withPendingChangesOnly = false
+                }
+            }
         })
+
+        fun getScheduleWindow(index: Int): Pair<Int, Int> {
+            val startTime: Int = 0
+            val interval: Int = 7
+            val hour = startTime + ((interval * index) / 60)
+            val minute = startTime + ((interval * index) % 60)
+
+            return Pair(hour, minute)
+        }
 
         val config = JSONArray(File(configPath).readText(Charsets.UTF_8))
 
         val builds = mutableListOf<BuildType>()
         val roots = mutableListOf<VcsRoot>()
+        var scheduleIndex = 0
 
         for (i in 0 until config.length()) {
             val configSet = config.getJSONObject(i)
@@ -206,15 +231,22 @@ object Helpers {
                                     if (build.has("xdocsPathIds")) {
                                         val xdocsPathIds: String = build.get("xdocsPathIds").toString()
                                         exportBuildId = "export$buildId"
-                                        builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, xdocsPathIds, vcsRootId))
+
+                                        val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
+                                        scheduleIndex++
+
+                                        builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId,
+                                                xdocsPathIds, vcsRootId, availableHour, availableMinute))
                                     }
 
                                     if (env == "dev" || env == "int") {
-                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env, publishPath, vcsRootId, exportBuildId))
+                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env,
+                                                publishPath, vcsRootId, exportBuildId))
                                     }
 
                                     if (env == "staging") {
-                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env, publishPath, vcsRootId, exportBuildId))
+                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env,
+                                                publishPath, vcsRootId, exportBuildId))
                                     }
                                 }
                             }
