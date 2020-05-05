@@ -45,7 +45,7 @@ project {
     vcsRoot(Insurancenow20201x)
     vcsRoot(Insurancesuite9)
     vcsRoot(Insurancesuite10)
-    vcsRoot(InsuranceSuiteUpgradeGuide2x)
+    vcsRoot(InsuranceSuiteUpgradeGuide3x)
     vcsRoot(InsurancesuiteCloud)
     vcsRoot(Digital11)
     vcsRoot(DataManagementDHIC)
@@ -286,9 +286,9 @@ object Insurancesuite10 : GitVcsRoot({
     }
 })
 
-object InsuranceSuiteUpgradeGuide2x : GitVcsRoot({
-    name = "insurancesuite-upgrade-guide-2x"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-2x.git"
+object InsuranceSuiteUpgradeGuide3x : GitVcsRoot({
+    name = "insurancesuite-upgrade-guide-3x"
+    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
