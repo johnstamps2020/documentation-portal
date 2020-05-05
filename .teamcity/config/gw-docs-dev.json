@@ -5,28 +5,27 @@
     "platform": "Cloud",
     "docPackages": [
       {
-          "categoryName" : "InsuranceNow",
-          "docs": [
+        "categoryName": "InsuranceNow",
+        "docs": [
+          {
+            "title": "InsuranceNow",
+            "product": "InsuranceNow",
+            "releases": [
               {
-                "title": "InsuranceNow",
-                "product": "InsuranceNow",
-                "releases": [
-                    {
-                        "version": "latest",
-                        "url": "cloud/in/latest",
-                        "build": {
-                            "type": "dita",
-                            "src": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
-                            "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap",
-                            "filter": "GW-Generic-Draft.ditaval",
-                            "root": "_superbook.ditamap"
-                        }
-                    }
-                ]
+                "version": "latest",
+                "url": "cloud/in/latest",
+                "build": {
+                  "type": "dita",
+                  "src": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
+                  "xdocsPathIds": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval /Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap",
+                  "filter": "GW-Generic-Draft.ditaval",
+                  "root": "_superbook.ditamap"
+                }
               }
-          ]
+            ]
+          }
+        ]
       },
-      
       {
         "categoryName": "InsuranceSuite",
         "docs": [
@@ -143,11 +142,11 @@
             "releases": [
               {
                 "version": "latest",
-                "url": "cloud/gcp/latest/",
+                "url": "cloud/gwcp/latest/",
                 "build": {
                   "type": "dita",
-                  "src": "ssh://git@stash.guidewire.com/doc/orange-bar-docs.git",
-                  "filter": "assets/insurer-developer.ditaval",
+                  "src": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git",
+                  "filter": "IS-PC-Cloud-Draft.ditaval",
                   "root": "guidewire_cloud_platform_guide.ditamap"
                 }
               }

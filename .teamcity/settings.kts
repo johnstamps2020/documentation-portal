@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -42,13 +43,6 @@ project {
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
     vcsRoot(DitaOt331)
-    vcsRoot(Insurancenow20201x)
-    vcsRoot(Insurancesuite9)
-    vcsRoot(Insurancesuite10)
-    vcsRoot(InsuranceSuiteUpgradeGuide3x)
-    vcsRoot(InsurancesuiteCloud)
-    vcsRoot(Digital11)
-    vcsRoot(DataManagementDHIC)
 
     template(Deploy)
     template(BuildDockerImage)
@@ -75,7 +69,9 @@ object Helpers {
             }
         })
 
-        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String,
+                                            build_env: String, publish_path: String, vsc_root_id: String,
+                                            export_build_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -103,15 +99,14 @@ object Helpers {
                 root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
             }
 
-            triggers {
-                vcs {
+            if (export_build_id == "") {
+                triggers.vcs {
                     id = "vcsTrigger"
                     triggerRules = """
-                -:root=${vcsrootmasteronly.id}:**
-                -:root=${DitaOt331.id}:**
-                -:root=DocumentationTools_DitaOtPlugins:**
-            """.trimIndent()
-
+                        -:root=${vcsrootmasteronly.id}:**
+                        -:root=${DitaOt331.id}:**
+                        -:root=DocumentationTools_DitaOtPlugins:**
+                    """.trimIndent()
                 }
             }
 
@@ -125,7 +120,7 @@ object Helpers {
             }
 
             if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)){onDependencyFailure = FailureAction.FAIL_TO_START}
+                dependencies.snapshot(RelativeId(export_build_id)) { onDependencyFailure = FailureAction.FAIL_TO_START }
             }
 
         })
@@ -158,11 +153,12 @@ object Helpers {
             }
 
             if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)){onDependencyFailure = FailureAction.FAIL_TO_START}
+                dependencies.snapshot(RelativeId(export_build_id)) { onDependencyFailure = FailureAction.FAIL_TO_START }
             }
         })
 
-        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, export_path_ids: String, vcs_root_id: String) : BuildType({
+        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, export_path_ids: String,
+                                                      vcs_root_id: String, startHour: Int, startMinute: Int) : BuildType({
             templates(AddFilesFromXDocsToBitbucket)
 
             id = RelativeId(build_id)
@@ -177,12 +173,34 @@ object Helpers {
             vcs {
                 root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
+
+            triggers {
+                schedule {
+                    schedulingPolicy = daily {
+                        hour = startHour
+                        minute = startMinute
+                    }
+                    branchFilter = ""
+                    triggerBuild = always()
+                    withPendingChangesOnly = false
+                }
+            }
         })
+
+        fun getScheduleWindow(index: Int): Pair<Int, Int> {
+            val startTime: Int = 0
+            val interval: Int = 7
+            val hour = startTime + ((interval * index) / 60)
+            val minute = startTime + ((interval * index) % 60)
+
+            return Pair(hour, minute)
+        }
 
         val config = JSONArray(File(configPath).readText(Charsets.UTF_8))
 
         val builds = mutableListOf<BuildType>()
         val roots = mutableListOf<VcsRoot>()
+        var scheduleIndex = 0
 
         for (i in 0 until config.length()) {
             val configSet = config.getJSONObject(i)
@@ -213,15 +231,22 @@ object Helpers {
                                     if (build.has("xdocsPathIds")) {
                                         val xdocsPathIds: String = build.get("xdocsPathIds").toString()
                                         exportBuildId = "export$buildId"
-                                        builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, xdocsPathIds, vcsRootId))
+
+                                        val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
+                                        scheduleIndex++
+
+                                        builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId,
+                                                xdocsPathIds, vcsRootId, availableHour, availableMinute))
                                     }
 
                                     if (env == "dev" || env == "int") {
-                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env, publishPath, vcsRootId, exportBuildId))
+                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env,
+                                                publishPath, vcsRootId, exportBuildId))
                                     }
 
                                     if (env == "staging") {
-                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env, publishPath, vcsRootId, exportBuildId))
+                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env,
+                                                publishPath, vcsRootId, exportBuildId))
                                     }
                                 }
                             }
@@ -259,62 +284,6 @@ object DitaOt331 : GitVcsRoot({
     branchSpec = "+:refs/*"
     authMethod = uploadedKey {
         uploadedKey = "dita-ot.rsa"
-    }
-})
-
-object Insurancenow20201x : GitVcsRoot({
-    name = "insurancenow-2020-1x"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object Insurancesuite9 : GitVcsRoot({
-    name = "insurancesuite-9"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object Insurancesuite10 : GitVcsRoot({
-    name = "insurancesuite-10"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object InsuranceSuiteUpgradeGuide3x : GitVcsRoot({
-    name = "insurancesuite-upgrade-guide-3x"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object InsurancesuiteCloud : GitVcsRoot({
-    name = "insurancesuite-cloud"
-    url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object Digital11 : GitVcsRoot({
-    name = "digital-11"
-    url = "ssh://git@stash.guidewire.com/docsources/digital-11x.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object DataManagementDHIC : GitVcsRoot({
-    name = "datamanagement-dh-ic"
-    url = "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
     }
 })
 
@@ -997,6 +966,8 @@ object Deploy : Template({
                     if [[ "%teamcity.build.branch%" != "master" ]] && [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
                         export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${'$'}{DEPLOY_ENV}
                     fi
+                elif [[ "%env.DEPLOY_ENV%" == "int" ]]; then
+                    export TAG_VERSION=${'$'}TAG_VERSION
                 else
                     export TAG_VERSION=v${'$'}TAG_VERSION
                 fi
