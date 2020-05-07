@@ -13,20 +13,16 @@
     </div>
     <div class="docPanelContainer container">
         <div class="row">
-            <% docPackages.forEach(docPackage => { -%>
-                <% docPackage.docs.forEach(doc => { -%>
-                    <% if (doc.releases) { -%>
-                        <div class="docPanel col-sm-5">
-                            <% doc.releases.forEach(release => { -%>
-                                <span class="docPanelTitle"><a
-                                            href="<%= release.url %>"><%= doc.title %></a></span>
-                                <% if (doc.docDescription) { -%>
-                                    <span class="docPanelDescription"><%= doc.docDescription %></span>
-                                <% } -%>
-                            <% }) -%>
-                        </div>
-                    <% } -%>
-                <% }) -%>
+            <% docs.forEach(doc => { -%>
+                <% if (doc.metadata.platform === "Cloud") { -%>
+                    <div class="docPanel col-sm-5">
+                        <span class="docPanelTitle"><a
+                            href="<%= doc.url %>"><%= doc.title %></a></span>
+                        <% if (doc.docDescription) { -%>
+                            <span class="docPanelDescription"><%= doc.docDescription %></span>
+                        <% } -%>
+                    </div>
+                <% } -%>
             <% }) -%>
         </div>
     </div>
