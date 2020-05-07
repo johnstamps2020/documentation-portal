@@ -12,6 +12,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 
 /*
@@ -198,63 +199,48 @@ object Helpers {
             return Pair(hour, minute)
         }
 
-        val config = JSONArray(File(configPath).readText(Charsets.UTF_8))
+        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
 
         val builds = mutableListOf<BuildType>()
         val roots = mutableListOf<VcsRoot>()
         var scheduleIndex = 0
 
-        for (i in 0 until config.length()) {
-            val configSet = config.getJSONObject(i)
-            if (configSet.has("docPackages")) {
-                val docPackages = configSet.getJSONArray("docPackages")
-                for (l in 0 until docPackages.length()) {
-                    val docPackage = docPackages.getJSONObject(l)
-                    val docs = docPackage.getJSONArray("docs")
-                    for (j in 0 until docs.length()) {
-                        val doc = docs.getJSONObject(j)
-                        val releases = doc.getJSONArray("releases")
-                        for (k in 0 until releases.length()) {
-                            val release = releases.getJSONObject(k)
-                            if (release.has("build")) {
-                                val build = release.getJSONObject("build")
-                                val type = build.get("type")
-                                if (type == "dita") {
-                                    val filter: String = build.get("filter").toString()
-                                    val root: String = build.get("root").toString()
-                                    val src: String = build.get("src").toString()
-                                    val publishPath: String = release.get("url").toString()
-                                    val vcsRootId = (publishPath + filter.replace(".ditaval", "") + env).toExtId()
-                                    val buildId = vcsRootId + "build" + env
+        val sourceConfigs = config.getJSONArray("sources")
+        for (i in 0 until sourceConfigs.length()) {
+            val source = sourceConfigs.getJSONObject(i)
+            val gitUrl: String = source.get("gitUrl").toString()
+            val sourceId: String = source.get("id").toString()
+            roots.add(CreateVcsRoot(gitUrl, sourceId))
 
-                                    roots.add(CreateVcsRoot(src, vcsRootId))
+            if (source.has("xdocsPathIds")) {
+                val exportBuildId: String = source.get("id").toString() + "-export"
+                val xdocsPathIds: String = source.getJSONArray("xdocsPathIds").joinToString(" ")
+                val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
+                scheduleIndex++
 
-                                    var exportBuildId: String = ""
-                                    if (build.has("xdocsPathIds")) {
-                                        val xdocsPathIds: String = build.get("xdocsPathIds").toString()
-                                        exportBuildId = "export$buildId"
+                builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId,
+                        xdocsPathIds, sourceId, availableHour, availableMinute))
+            }
+        }
 
-                                        val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
-                                        scheduleIndex++
+        val buildConfigs = config.getJSONArray("builds")
+        for (i in 0 until buildConfigs.length()) {
+            val build = buildConfigs.getJSONObject(i)
+            val buildId: String = build.get("id").toString()
+            val filter: String = build.get("filter").toString()
+            val root: String = build.get("root").toString()
+            val publishPath: String = build.get("url").toString()
+            val vcsRootId: String = build.get("src").toString()
+            val exportBuildId = "$vcsRootId-export"
 
-                                        builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId,
-                                                xdocsPathIds, vcsRootId, availableHour, availableMinute))
-                                    }
+            if (env == "dev" || env == "int") {
+                builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env,
+                        publishPath, vcsRootId, exportBuildId))
+            }
 
-                                    if (env == "dev" || env == "int") {
-                                        builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env,
-                                                publishPath, vcsRootId, exportBuildId))
-                                    }
-
-                                    if (env == "staging") {
-                                        builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env,
-                                                publishPath, vcsRootId, exportBuildId))
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if (env == "staging") {
+                builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env,
+                        publishPath, vcsRootId, exportBuildId))
             }
         }
 
