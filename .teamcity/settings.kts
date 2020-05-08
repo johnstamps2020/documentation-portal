@@ -1,4 +1,3 @@
-import jetbrains.buildServer.configs.kotlin.v10.toExtId
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
@@ -11,7 +10,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
@@ -70,13 +68,13 @@ object Helpers {
             }
         })
 
-        class BuildAndUploadToS3AbstractDev(build_id: String, ditaval_file: String, input_path: String,
+        class BuildAndUploadToS3AbstractDev(build_id: String, build_name: String, ditaval_file: String, input_path: String,
                                             build_env: String, publish_path: String, vsc_root_id: String,
                                             export_build_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
-            name = vsc_root_id + " - " + ditaval_file.replace(".ditaval", "").replace("-", " ") + " " + build_env
+            name = build_name
 
 
             params {
@@ -127,11 +125,11 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3AbstractStaging(build_id: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractStaging(build_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
-            name = vsc_root_id + " - " + ditaval_file.replace(".ditaval", "").replace("-", " ") + " Staging"
+            name = build_name
 
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
@@ -160,12 +158,12 @@ object Helpers {
             }
         })
 
-        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, export_path_ids: String,
+        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String,
                                                       vcs_root_id: String, startHour: Int, startMinute: Int) : BuildType({
             templates(AddFilesFromXDocsToBitbucket)
 
             id = RelativeId(build_id)
-            name = "Export files from XDocs and add to $vcs_root_id"
+            name = "Export $source_title from XDocs and add to git"
 
             params {
                 text("EXPORT_PATH_IDS", export_path_ids, allowEmpty = false)
@@ -210,6 +208,7 @@ object Helpers {
             val source = sourceConfigs.getJSONObject(i)
             val gitUrl: String = source.get("gitUrl").toString()
             val sourceId: String = source.get("id").toString()
+            val sourceTitle: String = source.get("title").toString()
             roots.add(CreateVcsRoot(gitUrl, sourceId))
 
             if (source.has("xdocsPathIds")) {
@@ -219,7 +218,7 @@ object Helpers {
                 scheduleIndex++
 
                 builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId,
-                        xdocsPathIds, sourceId, availableHour, availableMinute))
+                        sourceTitle, xdocsPathIds, sourceId, availableHour, availableMinute))
             }
         }
 
@@ -229,6 +228,14 @@ object Helpers {
             if (doc.has("build")) {
                 val buildId: String = doc.get("id").toString()
                 val publishPath: String = doc.get("url").toString()
+                val title: String = doc.get("title").toString()
+
+                val metadata = doc.getJSONObject("metadata")
+                val platform: String? = metadata.get("platform").toString()
+                val product: String? = metadata.get("product").toString()
+                val version: String? = metadata.get("version").toString()
+
+                val buildName = "Build $title $platform $version"
 
                 val build: JSONObject = doc.getJSONObject("build")
                 val filter: String = build.get("filter").toString()
@@ -237,12 +244,12 @@ object Helpers {
                 val exportBuildId = "$vcsRootId-export"
 
                 if (env == "dev" || env == "int") {
-                    builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env,
+                    builds.add(BuildAndUploadToS3AbstractDev(buildId, buildName, filter, root, env,
                             publishPath, vcsRootId, exportBuildId))
                 }
 
                 if (env == "staging") {
-                    builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env,
+                    builds.add(BuildAndUploadToS3AbstractStaging(buildId, buildName, filter, root, env,
                             publishPath, vcsRootId, exportBuildId))
                 }
             }

@@ -76,10 +76,13 @@
       "description": "A source where we can get files from, for example Git, XDocs, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "sourceType", "gitUrl"],
+      "required": ["id", "title", "sourceType", "gitUrl"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/title"
         },
         "sourceType": {
           "description": "The type of the source",
