@@ -240,7 +240,7 @@ object Helpers {
                 val filter: String = build.get("filter").toString()
                 val root: String = build.get("root").toString()
                 val vcsRootId: String = build.get("src").toString()
-                val exportBuildId = "$vcsRootId-export"
+                val exportBuildId = vcsRootId + "export"
 
                 if (env == "dev" || env == "int") {
                     builds.add(BuildAndUploadToS3AbstractDev(buildId, buildName, filter, root, env,
