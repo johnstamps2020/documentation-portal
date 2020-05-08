@@ -39,8 +39,6 @@
                                                 return parseInt(item.metadata.version.replace(/\./g, ''));
                                             });
                                             const latestVersion = Math.max(...versionsInProductGroup);
-                                            console.log('VERSIONS IN GROUP', versionsInProductGroup);
-
                                             const doc = productReleases.find(item => parseInt(item.metadata.version.replace(/\./g, '')) === latestVersion);
                                             -%>
                                             <div>

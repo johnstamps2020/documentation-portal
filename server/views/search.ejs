@@ -121,9 +121,6 @@
       }
 
       function updateFilters(e) {
-        console.log('name', e.target.name);
-        console.log('value', e.target.value);
-        console.log('neighbors', document.getElementsByName(e.target.name));
 
         const neighbors = document.getElementsByName(e.target.name);
         let selectedValues = new Array();
@@ -140,7 +137,6 @@
       if (pagination) {
         pagination.addEventListener('change', function(e) {
           const selectTag = e.target;
-          console.log(selectTag);
           if (selectTag.selectedIndex !== -1) {
             const selectedValue = selectTag.options[selectTag.selectedIndex].value;
             setUrlParam('pagination', selectedValue);
