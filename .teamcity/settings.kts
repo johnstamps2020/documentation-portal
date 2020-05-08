@@ -189,8 +189,8 @@ object Helpers {
         })
 
         fun getScheduleWindow(index: Int): Pair<Int, Int> {
-            val startTime: Int = 0
-            val interval: Int = 7
+            val startTime = 0
+            val interval = 7
             val hour = startTime + ((interval * index) / 60)
             val minute = startTime + ((interval * index) % 60)
 
@@ -232,7 +232,6 @@ object Helpers {
 
                 val metadata = doc.getJSONObject("metadata")
                 val platform: String? = metadata.get("platform").toString()
-                val product: String? = metadata.get("product").toString()
                 val version: String? = metadata.get("version").toString()
 
                 val buildName = "Build $title $platform $version"
