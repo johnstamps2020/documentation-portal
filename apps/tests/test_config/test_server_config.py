@@ -47,7 +47,8 @@ def test_config_views_exist():
 def test_routes_are_unique():
     def test_routes_are_unique_in_file(config_path: str):
         config_json = custom_utils.load_json_file(config_path)
-        routes = [x.get('route') for x in config_json]
+        page_config = config_json['pages']
+        routes = [x.get('route') for x in page_config]
         unique_routes = set(routes)
         try:
             assert sorted(routes) == sorted(unique_routes)
