@@ -1,0 +1,177 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://docs.guidewire.com/config.schema.json",
+  "title": "Config",
+  "description": "A config for the doc-portal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "description": "A link to the JSON schema",
+      "type": "string"
+    },
+    "sources": {
+      "description": "A list of sources where we can get files for builds",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/source"
+      }
+    },
+    "docs": {
+      "description": "A list of available docs, along with urls, metadata, and optional build information",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/doc"
+      }
+    },
+    "pages": {
+      "description": "A list of landing pages to show on the website",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/page"
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "description": "A unique ID",
+      "type": "string"
+    },
+    "title": {
+      "description": "A human-readable title, for displaying to humans in various human scenarios. All of us humans know what it is. Right, fellow humans?",
+      "type": "string"
+    },
+    "pageType": {
+      "description": "The type of HTML page this build generates. This is useful for crawling.",
+      "type": "string",
+      "enum": ["oxygenWebhelp", "portal2"]
+    },
+    "metadata": {
+      "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "product": {
+          "description": "The name of the product",
+          "type": "string",
+          "examples": ["PolicyCenter", "Jutro", "DataHub"]
+        },
+        "platform": {
+          "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
+          "type": "string",
+          "enum": ["Self-managed", "Cloud"]
+        },
+        "version": {
+          "description": "A version number, or a word like 'latest'",
+          "type": "string"
+        },
+        "category": {
+          "description": "A product category",
+          "type": "string",
+          "examples": ["Core", "Data", "Digital"]
+        }
+      }
+    },
+    "source": {
+      "description": "A source where we can get files from, for example Git, XDocs, etc.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "sourceType", "gitUrl"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/title"
+        },
+        "sourceType": {
+          "description": "The type of the source",
+          "type": "string",
+          "enum": ["git", "xdocs"]
+        },
+        "gitUrl": {
+          "description": "All sources need to be associated with a git repo, so that we can export them for build",
+          "type": "string"
+        },
+        "xdocsPathIds": {
+          "description": "A list of pathIds to be exported from XDocs",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "doc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "url", "metadata", "pageType"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/title"
+        },
+        "url": {
+          "description": "The url of the resource we're linking to. Can be relative to the root, or an absolute URL that starts with https://",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/metadata"
+        },
+        "pageType": {
+          "$ref": "#/definitions/pageType"
+        },
+        "build": {
+          "$ref": "#/definitions/build"
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["view", "route"],
+      "properties": {
+        "view": {
+          "description": "The name of the view to use on the server",
+          "type": "string"
+        },
+        "route": {
+          "description": "The address on the server, relative to the root",
+          "type": "string",
+          "examples": ["/", "/self-managed/all-releases", "/audiences"]
+        }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["buildType", "filter", "root", "src"],
+      "properties": {
+        "buildType": {
+          "description": "The build type to apply",
+          "type": "string",
+          "enum": ["dita"]
+        },
+        "filter": {
+          "description": "The name of the ditaval file to use in the build, including the extension",
+          "type": "string",
+          "examples": [
+            "operator.ditaval",
+            "IS-BC-Cloud-Draft.ditaval",
+            "audience.xml"
+          ]
+        },
+        "root": {
+          "description": "The filename of the ditamap to use, including the extension",
+          "examples": ["_superbook.ditamap", "flowers.ditamap", "webhelp.xml"]
+        },
+        "src": {
+          "description": "Refers to the ID of an item in the 'sources' array in this config.",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

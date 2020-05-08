@@ -13,31 +13,47 @@
     </div>
     <div class="docPanelContainer container">
         <div class="row">
-            <% docPackages.forEach(docPackage => { -%>
+        <%  let groups = docs.reduce((r, a) => {
+                if (a.metadata.platform === 'Self-managed') {
+                    r[a.metadata.category] = [...r[a.metadata.category] || [], a];
+                }
+                return r;
+            }, {});
+            const groupArray = Object.entries(groups);
+            groupArray.forEach(group => {
+                const groupName = group[0];
+                const groupItems = group[1]; -%>
                 <div class="col-md">
                     <div class="card border-light mb-3">
-                        <h4 class="card-header bg-transparent"><%= docPackage.categoryName %></h4>
+                        <h4 class="card-header bg-transparent"><%= groupName %></h4>
                         <div class="card-body">
                             <div class="card-text">
-                                <% docPackage.docs.forEach(doc => { -%>
-                                    <% if (doc.releases) { -%>
-                                        <p>
-                                            <button class="btn btn-light dropdown-toggle" type="button"
-                                                    data-toggle="collapse"
-                                                    data-target="#<%= doc.title.replace(/\s/g,'') %>Releases"
-                                                    aria-expanded="false"
-                                                    aria-controls="<%= doc.title.replace(/\s/g,'') %>Releases">
-                                                <%= doc.title %>
-                                            </button>
-                                        </p>
-                                        <div class="collapse" id="<%= doc.title.replace(/\s/g,'') %>Releases">
-                                            <ul class="list-unstyled card-columns">
-                                                <% doc.releases.forEach(release => { -%>
-                                                    <li><a href="<%= release.url %>"><%= release.version %></a></li>
-                                                <% }) %>
-                                            </ul>
-                                        </div>
-                                    <% } -%>
+                                <%  const products = groupItems.reduce((r, a) => {
+                                        r[a.metadata.product] = [...r[a.metadata.product] || [], a];
+                                        return r;
+                                    }, {});
+                                    const productArray = Object.entries(products);
+                                    productArray.forEach(product => {
+                                        const productTitle = product[0].trim();
+                                        const productId = `${productTitle.replace(/\s/g,'')}Releases`
+                                        const productReleases = product[1];
+                                -%>
+                                    <p>
+                                        <button class="btn btn-light dropdown-toggle" type="button"
+                                                data-toggle="collapse"
+                                                data-target="#<%= productId %>"
+                                                aria-expanded="false"
+                                                aria-controls="<%= productId %>">
+                                            <%= productTitle %>
+                                        </button>
+                                    </p>
+                                    <div class="collapse" id="<%= productId %>">
+                                        <ul class="list-unstyled card-columns">
+                                            <% productReleases.forEach(release => { -%>
+                                                <li><a href="<%= release.url %>"><%= release.metadata.version %></a></li>
+                                            <% }) %>
+                                        </ul>
+                                    </div>
                                 <% }) -%>
                             </div>
                         </div>
