@@ -1,89 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include parts/head %>
-<body>
-<% include parts/header %>
-<div class="homeContainerNoSearch">
-    <div class="gw-jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Log in</h1>
+  <% include parts/head %>
+  <body>
+    <% include parts/header %>
+    <div class="homeContainerNoSearch">
+      <div class="container">
+        <div class="gw-jumbotron jumbotron-fluid loginJumbotron">
+          <div class="container">
+            <h1 class="display-4">Welcome to docs!</h1>
+            <div class="loginSubtitle">
+              Log in using one of the following methods.
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="docPanelContainerNoSearch container">
-        <div class="accordion" id="gwLoginAccordion">
-            <div class="card">
-                <div class="card-header" id="partnerHeading">
-                    <h2 class="display-8 mb-0 p-1">
-                        <a class="text-decoration-none dropdown-toggle" data-toggle="collapse" href="#partnerLogin"
-                           aria-expanded="false" aria-controls="partnerLogin">
-                            Partner
-                        </a>
-                    </h2>
+        <div class="docPanelContainerNoSearch">
+          <div class="row">
+            <div class="col-md">
+              <div class="loginCard">
+                <div class="loginCardTitle">Guidewire Cloud</div>
+                <div class="loginCardDescription">
+                  If you have an account on Guidewire Cloud
                 </div>
-                <div id="partnerLogin" class="collapse" aria-labelledby="partnerHeading"
-                     data-parent="#gwLoginAccordion">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md">
-                                <a class="mb-2 btn btn-lg btn-block btn-dark" href="/login" role="button">Guidewire
-                                    Cloud Platform</a>
-                            </div>
-                            <div class="col-md">
-                                <a class="mb-2 btn btn-lg btn-block btn-dark" href="/partners-login" role="button">Guidewire
-                                    Community</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a
+                  class="loginButton"
+                  href="/login"
+                  aria-expanded="false"
+                  aria-controls="partnerLogin"
+                  >Log in</a
+                >
+              </div>
             </div>
-            <div class="card">
-                <div class="card-header" id="customerHeading">
-                    <h2 class="display-8 mb-0 p-1">
-                        <a class="text-decoration-none dropdown-toggle" type="button" data-toggle="collapse"
-                           href="#customerLogin" aria-expanded="false" aria-controls="customerLogin">
-                            Customer
-                        </a>
-                    </h2>
+            <div class="col-md">
+              <div class="loginCard">
+                <div class="loginCardTitle">
+                  Guidewire Community for Customers
                 </div>
-                <div id="customerLogin" class="collapse" aria-labelledby="customerHeading"
-                     data-parent="#gwLoginAccordion">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md">
-                                <a class="mb-2 btn btn-lg btn-block btn-dark" href="/login" role="button">Guidewire
-                                    Cloud Platform</a>
-                            </div>
-                            <div class="col-md">
-                                <a class="mb-2 btn btn-lg btn-block btn-dark" href="/customers-login"
-                                   role="button">Guidewire Community</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="loginCardDescription">
+                  If you access to customers.guidewire.com
                 </div>
+                <a
+                  class="loginButton"
+                  href="/customers-login"
+                  aria-expanded="false"
+                  aria-controls="partnerLogin"
+                  >Log in</a
+                >
+              </div>
             </div>
-            <div class="card">
-                <div class="card-header" id="employeeHeading">
-                    <h2 class="display-8 mb-0 p-1">
-                        <a class="text-decoration-none dropdown-toggle" type="button" data-toggle="collapse"
-                           href="#employeeLogin" aria-expanded="false" aria-controls="employeeLogin">
-                            Employee
-                        </a>
-                    </h2>
+            <div class="col-md">
+              <div class="loginCard">
+                <div class="loginCardTitle">
+                  Guidewire Community for Partners
                 </div>
-                <div id="employeeLogin" class="collapse" aria-labelledby="employeeHeading"
-                     data-parent="#gwLoginAccordion">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md">
-                                <a class="mb-2 btn btn-lg btn-block btn-dark" href="/login" role="button">Okta</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="loginCardDescription">
+                  If you access to partners.guidewire.com
                 </div>
+                <a
+                  class="loginButton"
+                  href="/partners-login"
+                  aria-expanded="false"
+                  aria-controls="partnerLogin"
+                  >Log in</a
+                >
+              </div>
             </div>
+          </div>
+          <div class="row employeeLogin">
+            <div class="col">
+              Guidewire employee? <a href="/login">Click here</a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<% include parts/footer %>
-</body>
+    <% include parts/footer %>
+  </body>
 </html>
