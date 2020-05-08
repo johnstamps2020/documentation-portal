@@ -223,24 +223,28 @@ object Helpers {
             }
         }
 
-        val buildConfigs = config.getJSONArray("builds")
-        for (i in 0 until buildConfigs.length()) {
-            val build = buildConfigs.getJSONObject(i)
-            val buildId: String = build.get("id").toString()
-            val filter: String = build.get("filter").toString()
-            val root: String = build.get("root").toString()
-            val publishPath: String = build.get("url").toString()
-            val vcsRootId: String = build.get("src").toString()
-            val exportBuildId = "$vcsRootId-export"
+        val docConfigs = config.getJSONArray("docs")
+        for (i in 0 until docConfigs.length()) {
+            val doc = docConfigs.getJSONObject(i)
+            if (doc.has("build")) {
+                val buildId: String = doc.get("id").toString()
+                val publishPath: String = doc.get("url").toString()
 
-            if (env == "dev" || env == "int") {
-                builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env,
-                        publishPath, vcsRootId, exportBuildId))
-            }
+                val build: JSONObject = doc.getJSONObject("build")
+                val filter: String = build.get("filter").toString()
+                val root: String = build.get("root").toString()
+                val vcsRootId: String = build.get("src").toString()
+                val exportBuildId = "$vcsRootId-export"
 
-            if (env == "staging") {
-                builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env,
-                        publishPath, vcsRootId, exportBuildId))
+                if (env == "dev" || env == "int") {
+                    builds.add(BuildAndUploadToS3AbstractDev(buildId, filter, root, env,
+                            publishPath, vcsRootId, exportBuildId))
+                }
+
+                if (env == "staging") {
+                    builds.add(BuildAndUploadToS3AbstractStaging(buildId, filter, root, env,
+                            publishPath, vcsRootId, exportBuildId))
+                }
             }
         }
 
