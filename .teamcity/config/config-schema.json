@@ -4,7 +4,12 @@
   "title": "Config",
   "description": "A config for the doc-portal",
   "type": "object",
+  "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "description": "A link to the JSON schema",
+      "type": "string"
+    },
     "sources": {
       "description": "A list of sources where we can get files for builds",
       "type": "array",
@@ -12,11 +17,11 @@
         "$ref": "#/definitions/source"
       }
     },
-    "builds": {
-      "description": "A list of builds with metadata to run",
+    "docs": {
+      "description": "A list of available docs, along with urls, metadata, and optional build information",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/build"
+        "$ref": "#/definitions/doc"
       }
     },
     "pages": {
@@ -24,13 +29,6 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/page"
-      }
-    },
-    "links": {
-      "description": "A list of static links with metadata",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/link"
       }
     }
   },
@@ -101,7 +99,7 @@
         }
       }
     },
-    "link": {
+    "doc": {
       "type": "object",
       "additionalProperties": false,
       "required": ["id", "url", "metadata", "pageType"],
@@ -121,6 +119,9 @@
         },
         "pageType": {
           "$ref": "#/definitions/pageType"
+        },
+        "build": {
+          "$ref": "#/definitions/build"
         }
       }
     },
@@ -143,35 +144,12 @@
     "build": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "id",
-        "title",
-        "metadata",
-        "buildType",
-        "pageType",
-        "filter",
-        "root",
-        "src",
-        "url"
-      ],
+      "required": ["buildType", "filter", "root", "src"],
       "properties": {
-        "id": {
-          "$ref": "#/definitions/id"
-        },
-        "title": {
-          "description": "A human-readable title, for displaying to humans in various human scenarios. All of us humans know what it is. Right, fellow humans?",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/metadata"
-        },
         "buildType": {
           "description": "The build type to apply",
           "type": "string",
           "enum": ["dita"]
-        },
-        "pageType": {
-          "$ref": "#/definitions/pageType"
         },
         "filter": {
           "description": "The name of the ditaval file to use in the build, including the extension",
@@ -189,11 +167,6 @@
         "src": {
           "description": "Refers to the ID of an item in the 'sources' array in this config.",
           "type": "string"
-        },
-        "url": {
-          "description": "The URL where the build is going to be available on the site, relative to the root. Do not include the left-most slash",
-          "type": "string",
-          "examples": ["cloud/in/latest", "self-managed/bc/1003"]
         }
       }
     }
