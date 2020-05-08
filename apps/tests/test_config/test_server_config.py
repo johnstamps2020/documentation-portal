@@ -11,8 +11,9 @@ root_dir = Path(__file__).parent.parent.parent.parent
 views_dir = root_dir / 'server' / 'views'
 
 dev_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-dev.json'
+int_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-int.json'
 staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
-config_paths = [dev_config_path, staging_config_path]
+config_paths = [dev_config_path, int_config_path, staging_config_path]
 
 
 def test_config_exists():
@@ -31,7 +32,8 @@ def test_config_views_exist():
     missing_views = []
     for config_path in config_paths:
         config_json = custom_utils.load_json_file(config_path)
-        views_in_config = [x.get('view') for x in config_json]
+        page_config = config_json['pages']
+        views_in_config = [x.get('view') for x in page_config]
         for view_in_config in views_in_config:
             path_to_view = views_dir / f'{view_in_config}.ejs'
             if not path_to_view.exists():
