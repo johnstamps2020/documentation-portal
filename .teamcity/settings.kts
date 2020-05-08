@@ -69,8 +69,7 @@ object Helpers {
         })
 
         class BuildAndUploadToS3AbstractDev(build_id: String, build_name: String, ditaval_file: String, input_path: String,
-                                            build_env: String, publish_path: String, vsc_root_id: String,
-                                            export_build_id: String) : BuildType({
+                                            build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -99,15 +98,14 @@ object Helpers {
                 root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
             }
 
-            if (export_build_id == "") {
-                triggers.vcs {
-                    id = "vcsTrigger"
+            triggers {
+                vcs {
                     triggerRules = """
                         -:root=${vcsrootmasteronly.id}:**
                         -:root=${DitaOt331.id}:**
                         -:root=DocumentationTools_DitaOtPlugins:**
                     """.trimIndent()
-                }
+                        }
             }
 
             dependencies {
@@ -119,13 +117,11 @@ object Helpers {
                 }
             }
 
-            if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)) { onDependencyFailure = FailureAction.FAIL_TO_START }
-            }
-
         })
 
-        class BuildAndUploadToS3AbstractStaging(build_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vsc_root_id: String, export_build_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractStaging(build_id: String, build_name: String, ditaval_file: String,
+                                                input_path: String, build_env: String, publish_path: String,
+                                                vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
             id = RelativeId(build_id)
@@ -151,10 +147,6 @@ object Helpers {
 
             vcs {
                 root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
-            }
-
-            if (export_build_id != "") {
-                dependencies.snapshot(RelativeId(export_build_id)) { onDependencyFailure = FailureAction.FAIL_TO_START }
             }
         })
 
@@ -240,16 +232,15 @@ object Helpers {
                 val filter: String = build.get("filter").toString()
                 val root: String = build.get("root").toString()
                 val vcsRootId: String = build.get("src").toString()
-                val exportBuildId = vcsRootId + "export"
 
                 if (env == "dev" || env == "int") {
                     builds.add(BuildAndUploadToS3AbstractDev(buildId, buildName, filter, root, env,
-                            publishPath, vcsRootId, exportBuildId))
+                            publishPath, vcsRootId))
                 }
 
                 if (env == "staging") {
                     builds.add(BuildAndUploadToS3AbstractStaging(buildId, buildName, filter, root, env,
-                            publishPath, vcsRootId, exportBuildId))
+                            publishPath, vcsRootId))
                 }
             }
         }

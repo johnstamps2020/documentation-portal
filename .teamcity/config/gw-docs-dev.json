@@ -2778,7 +2778,7 @@
     },
     {
       "id": "cloudgwcplatestratjqyws",
-      "title": "Guidewire Cloud PLatform",
+      "title": "Guidewire Cloud Platform",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git"
     },
