@@ -1,14 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
 @media only screen and (max-width: 576px) {
   html,
   body {
     --landing-title-container-height: 150px !important;
     --search-field-width: 95% !important;
   }
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url(../fonts/SourceSansPro-Regular.ttf);
 }
 
 @font-face {
@@ -32,6 +29,8 @@ body {
   --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
   --GW-COLOR-BKGD-1: #fafafa;
   --GW-COLOR-BKGD-2: #e9f9ff;
+  --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
+  --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
   background-color: var(--GW-COLOR-BKGD-1);
   height: 100%;
 }
@@ -134,7 +133,7 @@ a:hover {
   height: var(--search-bar-height);
   background-color: var(--GW-COLOR-TEXT-3);
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
+  box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
 }
 
 .searchField {
@@ -187,7 +186,9 @@ a:hover {
   min-height: var(--footer-height);
   color: var(--GW-COLOR-TEXT-3);
   background-color: var(--GW-COLOR-TEXT-1);
-  padding: 16px;
+  padding: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .footerCopyright {
@@ -204,7 +205,7 @@ a:hover {
 }
 
 .footerLink a {
-  margin-right: 1em;
+  margin-right: 32px;
   font-size: 14px;
   font-weight: 600;
   color: var(--GW-COLOR-TEXT-3);
@@ -228,6 +229,10 @@ a:hover {
 
 .gw-jumbotron a:hover {
   color: var(--GW-COLOR-BRAND-1-HOVER);
+}
+
+.display-4 {
+  font-weight: 600 !important;
 }
 
 h1.display-4 {
@@ -308,17 +313,19 @@ body {
 }
 
 .loginCard {
-  --login-card-width: 330px;
-  --login-button-width: 132px;
-  --login-card-padding: 32px;
-  max-width: var(--login-card-width);
-  height: 350px;
-  padding: var(--login-card-padding);
+  max-width: 330px;
+  min-height: 300px;
+  padding: 32px;
   color: var(--GW-COLOR-TEXT-1);
   background-color: #ffffff;
-  box-shadow: 0 1px 4px 0 rgba(40, 51, 63, 0.24);
+  box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+  box-sizing: border-box;
   text-align: center;
   margin-bottom: 32px;
+}
+
+.loginCard:hover {
+  box-shadow: var(--GW-BOX-SHADOW-OUTER-3);
 }
 
 .loginCardTitle {
@@ -334,8 +341,7 @@ body {
   font-size: 16px;
   letter-spacing: 0;
   line-height: 20px;
-  margin: 32px;
-  margin-top: 40px;
+  margin-top: 16px;
   height: 3rem;
 }
 
@@ -346,21 +352,22 @@ body {
   background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
   box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
   display: block;
-  width: var(--login-button-width);
+  width: 132px;
   height: 48px;
   padding: 8px;
   margin: auto;
-  margin-top: 64px;
+  margin-top: 32px;
 }
 
 .loginButton:hover {
-    text-decoration: none;
-    color: var(--GW-COLOR-TEXT-3);
+  text-decoration: none;
+  color: var(--GW-COLOR-TEXT-3);
+  background: var(--GW-COLOR-BRAND-1-HOVER);
 }
 
 .employeeLogin {
-    text-align: center;
-    margin-top: 32px;
+  text-align: center;
+  margin-top: 32px;
 }
 
 .employeeLogin a {
