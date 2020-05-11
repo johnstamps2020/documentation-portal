@@ -20,7 +20,7 @@ body {
   --landing-title-container-height: 200px;
   --search-bar-height: 104px;
   --search-field-width: 600px;
-  --search-button-width: 35px;
+  --search-button-width: 16px;
   --GW-COLOR-BRAND-1: #00739d;
   --GW-COLOR-BRAND-1-HOVER: #006083;
   --GW-COLOR-BRAND-2: #3c4c5e;
@@ -134,30 +134,33 @@ a:hover {
   background-color: var(--GW-COLOR-TEXT-3);
   position: relative;
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+  vertical-align: middle;
+}
+
+.searchFieldWrapper {
+  display: block;
+  width: var(--search-field-width);
+  margin: auto;
+}
+
+.searchFieldWrapper * {
+  vertical-align: middle;
 }
 
 .searchField {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  width: 100%;
   padding-left: 6px;
-  padding-right: calc(var(--search-button-width) + 1px);
-  transform: translate(-50%, -50%);
-  height: 35px;
-  width: var(--search-field-width);
+  padding-right: calc(var(--search-button-width) + 16px);
+  height: 40px;
 }
 
 .searchButton {
-  position: relative;
-  background: url(../images/search.svg) no-repeat center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-left: calc(
-    (var(--search-field-width) - var(--search-button-width)) / 2
-  );
-  background-size: 1.25rem;
-  height: 35px;
+  background-image: url(../images/search.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: calc(-1 * var(--search-button-width) - 16px);
+  height: 24px;
   width: var(--search-button-width);
   border: none;
 }
