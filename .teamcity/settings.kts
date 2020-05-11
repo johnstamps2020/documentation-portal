@@ -59,12 +59,16 @@ project {
 
 object Helpers {
     fun getBuildsFromConfig(env: String, configPath: String): Pair<MutableList<VcsRoot>, MutableList<BuildType>> {
-        class CreateVcsRoot(git_path: String, my_id: String) : jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
-            id = RelativeId(my_id)
-            name = my_id
+        class CreateVcsRoot(git_path: String, vcs_root_id: String, branch_name: String) : jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
+            id = RelativeId(vcs_root_id)
+            name = vcs_root_id
             url = git_path
             authMethod = uploadedKey {
                 uploadedKey = "sys-doc.rsa"
+            }
+
+            if (branch_name != "") {
+                branchSpec = "+:refs/heads/$branch_name"
             }
         })
 
@@ -201,7 +205,11 @@ object Helpers {
             val gitUrl: String = source.get("gitUrl").toString()
             val sourceId: String = source.get("id").toString()
             val sourceTitle: String = source.get("title").toString()
-            roots.add(CreateVcsRoot(gitUrl, sourceId))
+            var branchName = ""
+            if (source.has("branch")) {
+                branchName = source.getString("branch")
+            }
+            roots.add(CreateVcsRoot(gitUrl, sourceId, branchName))
 
             if (source.has("xdocsPathIds")) {
                 val exportBuildId: String = source.get("id").toString() + "export"
