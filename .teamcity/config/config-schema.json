@@ -41,11 +41,6 @@
       "description": "A human-readable title, for displaying to humans in various human scenarios. All of us humans know what it is. Right, fellow humans?",
       "type": "string"
     },
-    "pageType": {
-      "description": "The type of HTML page this build generates. This is useful for crawling.",
-      "type": "string",
-      "enum": ["oxygenWebhelp", "portal2"]
-    },
     "metadata": {
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
@@ -110,7 +105,7 @@
     "doc": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "url", "metadata", "pageType"],
+      "required": ["id", "url", "metadata"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -124,9 +119,6 @@
         },
         "metadata": {
           "$ref": "#/definitions/metadata"
-        },
-        "pageType": {
-          "$ref": "#/definitions/pageType"
         },
         "build": {
           "$ref": "#/definitions/build"
