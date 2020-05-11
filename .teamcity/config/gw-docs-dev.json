@@ -154,6 +154,24 @@
       }
     },
     {
+      "id": "cloudumbrelladocs",
+      "title": "Guidewire Cloud Platform for Umbrella Corporation",
+      "url": "test/umbrella/1.0/",
+      "pageType": "oxygenWebhelp",
+      "metadata": {
+        "product": "Guidewire Cloud Platform",
+        "platform": "Cloud",
+        "version": "latest",
+        "category": "Cloud"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Draft.ditaval",
+        "root": "guidewire_cloud_platform_guide.ditamap",
+        "src": "gcpbranchtest"
+      }
+    },
+    {
       "id": "clouddxdixjfnorydk",
       "title": "Data Integrations",
       "url": "cloud/dx/di/11x",
@@ -2781,6 +2799,13 @@
       "title": "Guidewire Cloud Platform",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git"
+    },
+    {
+      "id": "gcpbranchtest",
+      "title": "Guidewire Cloud Platform for Umbrella Corp",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git",
+      "branch": "release-1.x"
     },
     {
       "id": "clouddxdixviadzhsq",
