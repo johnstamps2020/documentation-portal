@@ -1,9 +1,8 @@
-import custom_utils.utils as custom_utils
+import json
 import os
 import sys
-import json
-import pytest
 from pathlib import Path
+
 local_modules_path = os.path.abspath(Path(__file__).parent.parent.parent)
 sys.path.insert(0, local_modules_path)
 
@@ -14,6 +13,11 @@ dev_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-dev.json'
 int_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-int.json'
 staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
 config_paths = [dev_config_path, int_config_path, staging_config_path]
+
+
+def load_json_file(file_path: Path()):
+    with open(file_path, 'r') as config_file:
+        return json.load(config_file)
 
 
 def test_config_exists():
@@ -31,7 +35,7 @@ def test_config_exists():
 def test_config_views_exist():
     missing_views = []
     for config_path in config_paths:
-        config_json = custom_utils.load_json_file(config_path)
+        config_json = load_json_file(config_path)
         page_config = config_json['pages']
         views_in_config = [x.get('view') for x in page_config]
         for view_in_config in views_in_config:
@@ -46,7 +50,7 @@ def test_config_views_exist():
 
 def test_routes_are_unique():
     def test_routes_are_unique_in_file(config_path: str):
-        config_json = custom_utils.load_json_file(config_path)
+        config_json = load_json_file(config_path)
         page_config = config_json['pages']
         routes = [x.get('route') for x in page_config]
         unique_routes = set(routes)

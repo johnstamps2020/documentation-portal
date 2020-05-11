@@ -1,4 +1,19 @@
-<form class="searchBar" action="/search">
-    <input name="q" id="searchField" class="searchField" type="text"/>
-    <button id="searchButton" class="searchButton"></button>
+<form class="searchBar row align-items-center" action="/search">
+  <div class="col">
+    <div class="searchFieldWrapper">
+      <input
+        name="q"
+        id="searchField"
+        class="searchField"
+        type="text"
+        placeholder="Search Guidewire documentation"
+        aria-label="Search Guidewire documentation"
+      />
+      <button
+        id="searchButton"
+        class="searchButton"
+        aria-label="Search"
+      ></button>
+    </div>
+  </div>
 </form>
