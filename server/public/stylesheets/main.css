@@ -341,14 +341,14 @@ body {
 
 .loginButton {
   color: var(--GW-COLOR-TEXT-3);
-  padding: 16px;
   border-radius: 4px;
   font-size: 20px;
   background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
   box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
   display: block;
   width: var(--login-button-width);
-  bottom: 32px;
+  height: 48px;
+  padding: 8px;
   margin: auto;
   margin-top: 64px;
 }
@@ -361,4 +361,8 @@ body {
 .employeeLogin {
     text-align: center;
     margin-top: 32px;
+}
+
+.employeeLogin a {
+  color: var(--GW-COLOR-BRAND-1);
 }
