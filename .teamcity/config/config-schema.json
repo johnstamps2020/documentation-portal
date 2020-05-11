@@ -99,6 +99,11 @@
           "items": {
             "type": "string"
           }
+        },
+        "branch": {
+          "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",
+          "type": "string",
+          "examples": ["release-1.0", "usaa-experimental"]
         }
       }
     },
