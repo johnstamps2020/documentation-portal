@@ -23,6 +23,7 @@ body {
   --search-button-width: 16px;
   --GW-COLOR-BRAND-1: #00739d;
   --GW-COLOR-BRAND-1-HOVER: #006083;
+  --GW-COLOR-BRAND-1-ACTIVE: #004E6A;
   --GW-COLOR-BRAND-2: #3c4c5e;
   --GW-COLOR-TEXT-1: #28333f;
   --GW-COLOR-TEXT-3: #ffffff;
@@ -89,7 +90,11 @@ body {
   color: var(--GW-COLOR-BRAND-1-HOVER) !important;
 }
 a:hover {
-  color: var(--GW-COLOR-BRAND-1-HOVER);
+  color: var(--GW-COLOR-BRAND-1-HOVER) !important;
+}
+
+a:active {
+  color: var(--GW-COLOR-BRAND-1-ACTIVE);
 }
 
 .docPanelLink {
