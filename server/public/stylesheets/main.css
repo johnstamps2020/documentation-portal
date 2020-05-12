@@ -369,7 +369,7 @@ body {
 
 .loginButton:hover {
   text-decoration: none;
-  color: var(--GW-COLOR-TEXT-3);
+  color: var(--GW-COLOR-TEXT-3) !important;
   background: var(--GW-COLOR-BRAND-1-HOVER);
 }
 
