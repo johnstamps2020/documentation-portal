@@ -46,6 +46,7 @@ header {
 .wh_logo {
   display: inline-block;
   background-image: url('/images/guidewire-logo.svg') !important;
+  border-right: solid 1px var(--GW-COLOR-BRAND-2);
   margin-left: 23px;
   width: 270px;
   height: 32px;
