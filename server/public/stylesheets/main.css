@@ -4,13 +4,7 @@
   html,
   body {
     --landing-title-container-height: 150px !important;
-    --search-field-width: 95% !important;
   }
-}
-
-@font-face {
-  font-family: 'AvenirNext LT Pro Regular';
-  src: url(../fonts/AvenirNextLTPro-Regular.ttf);
 }
 
 html,
@@ -19,12 +13,14 @@ body {
   --header-height: 64px;
   --landing-title-container-height: 200px;
   --search-bar-height: 104px;
-  --search-field-width: 600px;
+  --search-field-width: 360px;
   --search-button-width: 16px;
   --GW-COLOR-BRAND-1: #00739d;
   --GW-COLOR-BRAND-1-HOVER: #006083;
-  --GW-COLOR-BRAND-1-ACTIVE: #004E6A;
+  --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
   --GW-COLOR-BRAND-2: #3c4c5e;
+  --GW-COLOR-BRAND-2-HOVER: #46596e;
+  --GW-COLOR-BRAND-2-ACTIVE: #50657d;
   --GW-COLOR-TEXT-1: #28333f;
   --GW-COLOR-TEXT-3: #ffffff;
   --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
@@ -116,58 +112,93 @@ a:active {
 .pageHeader {
   height: var(--header-height);
   background-color: var(--GW-COLOR-BRAND-2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .pageLogo {
-  position: relative;
-  left: 32px;
-  top: 15px;
+  margin-left: 32px;
   height: 32px;
 }
 
-.pageTitle {
-  position: absolute;
-  margin-top: 12px;
-  margin-left: 15px;
-  font-family: 'AvenirNext LT Pro Regular';
-  font-size: 1.125rem;
-  color: var(--GW-COLOR-TEXT-3);
+.searchBoxContainer {
+  margin: auto;
+  height: 32px;
 }
 
-.searchBar {
-  height: var(--search-bar-height);
-  background-color: var(--GW-COLOR-TEXT-3);
-  position: relative;
-  box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+.searchBoxContainer * {
   vertical-align: middle;
 }
 
 .searchFieldWrapper {
-  display: block;
-  width: var(--search-field-width);
-  margin: auto;
+  background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
+  border-style: solid;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
-.searchFieldWrapper * {
-  vertical-align: middle;
+.searchFieldWrapper:focus-within {
+  outline-color: red;
 }
 
 .searchField {
-  width: 100%;
-  padding-left: 6px;
-  padding-right: calc(var(--search-button-width) + 16px);
-  height: 40px;
+  color: var(--GW-COLOR-TEXT-3);
+  background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  border: none;
+  width: var(--search-field-width);
+  height: 32px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--GW-COLOR-TEXT-3);
+  transition: background-color 5000s ease-in-out 0s;
+
+  color: var(--GW-COLOR-TEXT-3);
+  background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  border: none;
+  outline: none;
+  width: var(--search-field-width);
+  height: 32px;
 }
 
 .searchButton {
+  border: none;
+  margin-left: 12px;
   background-image: url(../images/search.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  margin-left: calc(-1 * var(--search-button-width) - 16px);
+  background-color: transparent;
   height: 24px;
   width: var(--search-button-width);
-  border: none;
+}
+
+.searchField::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--GW-COLOR-TEXT-3);
+  opacity: 1; /* Firefox */
+}
+
+.searchField:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--GW-COLOR-TEXT-3);
+}
+
+.searchField::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--GW-COLOR-TEXT-3);
 }
 
 .resultList li {
