@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 580px) {
   html,
   body {
     --landing-title-container-height: 150px !important;
+    --header-height: 128px !important;
+    --search-field-width: 80% !important;
+  }
+  
+  .logoWrapper {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 269px !important;
+  }
+
+  .pageLogo {
+    margin: 0 !important;
   }
 }
 
@@ -110,11 +122,12 @@ a:active {
 }
 
 .pageHeader {
-  height: var(--header-height);
+  min-height: var(--header-height);
   background-color: var(--GW-COLOR-BRAND-2);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+}
+
+.logoWrapper {
+  margin-top: 16px;
 }
 
 .pageLogo {
@@ -123,7 +136,7 @@ a:active {
 }
 
 .searchBoxContainer {
-  margin: auto;
+  margin-top: 16px;
   height: 32px;
 }
 
@@ -139,6 +152,8 @@ a:active {
   font-size: 14px;
   padding-left: 14px;
   padding-right: 14px;
+  width: var(--search-field-width);
+  margin: auto;
 }
 
 .searchFieldWrapper:focus-within {
@@ -148,8 +163,8 @@ a:active {
 .searchField {
   color: var(--GW-COLOR-TEXT-3);
   background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  width: calc(100% - var(--search-button-width) - 16px);
   border: none;
-  width: var(--search-field-width);
   height: 32px;
 }
 

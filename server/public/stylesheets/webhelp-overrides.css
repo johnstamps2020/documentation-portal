@@ -1,0 +1,84 @@
+html,
+body {
+  --footer-height: 84px;
+  --header-height: 64px;
+  --landing-title-container-height: 200px;
+  --search-bar-height: 104px;
+  --search-field-width: 360px;
+  --search-button-width: 16px;
+  --GW-COLOR-BRAND-1: #00739d;
+  --GW-COLOR-BRAND-1-HOVER: #006083;
+  --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
+  --GW-COLOR-BRAND-2: #3c4c5e;
+  --GW-COLOR-BRAND-2-HOVER: #46596e;
+  --GW-COLOR-BRAND-2-ACTIVE: #50657d;
+  --GW-COLOR-TEXT-1: #28333f;
+  --GW-COLOR-TEXT-3: #ffffff;
+  --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
+  --GW-COLOR-BKGD-1: #fafafa;
+  --GW-COLOR-BKGD-2: #e9f9ff;
+  --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
+  --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
+  background-color: var(--GW-COLOR-BKGD-1);
+  height: 100%;
+}
+
+header {
+  min-height: var(--header-height) !important;
+  background-color: var(--GW-COLOR-BRAND-2) !important;
+}
+
+.wh_search_input.navbar-form.wh_main_page_search {
+    height: var(--search-bar-height) !important;
+}
+
+.wh_content_area {
+  min-height: calc(
+    100% - var(--header-height) - var(--search-bar-height) -
+      var(--footer-height)
+  );
+}
+
+.wh_header_flex_container {
+  background: transparent !important;
+}
+
+.wh_logo {
+  display: inline-block;
+  background-image: url('/images/guidewire-logo.svg') !important;
+  margin-left: 23px;
+  width: 270px;
+  height: 32px;
+}
+
+.wh_logo img {
+  display: none;
+}
+
+.wh_publication_title {
+  display: none;
+}
+
+.wh_footer {
+  min-height: var(--footer-height) !important;
+  background-color: var(--GW-COLOR-TEXT-1) !important;
+  padding: 32px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+.footercopyright,
+.footerDate,
+.footerLink a {
+  color: var(--GW-COLOR-TEXT-3) !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  display: inline-block;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-right: 32px;
+}
+
+.footer-container .text-center {
+  text-align: left !important;
+}
