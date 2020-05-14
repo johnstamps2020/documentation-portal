@@ -148,7 +148,7 @@ a:active {
   background-color: var(--GW-COLOR-BRAND-2-HOVER);
   border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
   border-style: solid;
-  border-radius: 4px;
+  border-radius: 1px;
   font-size: 14px;
   padding-left: 14px;
   padding-right: 14px;
@@ -165,26 +165,6 @@ a:active {
   background-color: var(--GW-COLOR-BRAND-2-HOVER);
   width: calc(100% - var(--search-button-width) - 16px);
   border: none;
-  height: 32px;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--GW-COLOR-TEXT-3);
-  transition: background-color 5000s ease-in-out 0s;
-
-  color: var(--GW-COLOR-TEXT-3);
-  background-color: var(--GW-COLOR-BRAND-2-HOVER);
-  border: none;
-  outline: none;
-  width: var(--search-field-width);
   height: 32px;
 }
 
@@ -401,7 +381,6 @@ body {
 
 .loginButton {
   color: var(--GW-COLOR-TEXT-3);
-  border-radius: 4px;
   font-size: 20px;
   background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
   box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
