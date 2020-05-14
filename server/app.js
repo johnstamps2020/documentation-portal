@@ -61,6 +61,7 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
+app.use('/support', supportRouter);
 app.use('/gw-login', gwLoginRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
@@ -122,7 +123,6 @@ app.use(function(req, res, next) {
 
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
-app.use('/support', supportRouter);
 app.use('/', landingRouter);
 
 const proxyOptions = {
