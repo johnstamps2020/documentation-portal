@@ -148,7 +148,8 @@ a:active {
   background-color: var(--GW-COLOR-BRAND-2-HOVER);
   border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
   border-style: solid;
-  border-radius: 1px;
+  border-width: 1px;
+  border-radius: 4px;
   font-size: 14px;
   padding-left: 14px;
   padding-right: 14px;
@@ -381,6 +382,7 @@ body {
 
 .loginButton {
   color: var(--GW-COLOR-TEXT-3);
+  border-radius: 4px;
   font-size: 20px;
   background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
   box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
