@@ -90,7 +90,7 @@ object Helpers {
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
                 text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_S3_URL", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
                 text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
@@ -139,7 +139,7 @@ object Helpers {
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
                 text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_S3_URL", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
                 text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
@@ -697,7 +697,7 @@ object LoadSearchIndex : BuildType({
         }
 
         script {
-            name = "Collect documents and load index"
+            name = "Crawl the documents and update the index"
             scriptContent = """
                 #!/bin/bash
                 set -xe
