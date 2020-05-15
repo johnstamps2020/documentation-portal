@@ -72,6 +72,26 @@ object Helpers {
             }
         })
 
+        class UploadToS3AbstractProd(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String) : BuildType({
+            id = RelativeId("${doc_id}toprod")
+            name = "Copy $title $doc_platform $doc_version from Staging to Prod ($doc_id)"
+
+            steps {
+                script {
+                    name = "Copy from S3 on staging to S3 on Prod"
+                    scriptContent = """
+                aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path stage/$relative_copy_path/ --delete
+                
+                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                
+                aws s3 sync stage/$relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
+            """.trimIndent()
+                }
+            }
+        })
+
         class BuildAndUploadToS3AbstractDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
                                             build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3)
@@ -222,20 +242,20 @@ object Helpers {
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
             if (doc.has("build")) {
-                val buildId: String = doc.get("id").toString()
-                val publishPath: String = doc.get("url").toString()
-                val title: String = doc.get("title").toString()
+                val buildId = doc.getString("id")
+                val publishPath = doc.getString("url")
+                val title = doc.getString("title")
 
                 val metadata = doc.getJSONObject("metadata")
-                val platform: String? = metadata.get("platform").toString()
-                val version: String? = metadata.get("version").toString()
+                val platform = metadata.getString("platform")
+                val version = metadata.getString("version")
 
                 val buildName = "Build $title $platform $version"
 
                 val build: JSONObject = doc.getJSONObject("build")
-                val filter: String = build.get("filter").toString()
-                val root: String = build.get("root").toString()
-                val vcsRootId: String = build.get("src").toString()
+                val filter = build.getString("filter")
+                val root = build.getString("root")
+                val vcsRootId = build.getString("src")
 
                 if (env == "dev" || env == "int") {
                     builds.add(BuildAndUploadToS3AbstractDev(buildId, buildName, filter, root, env,
@@ -245,6 +265,10 @@ object Helpers {
                 if (env == "staging") {
                     builds.add(BuildAndUploadToS3AbstractStaging(buildId, buildName, filter, root, env,
                             publishPath, vcsRootId))
+                }
+
+                if (env == "prod") {
+                    builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform))
                 }
             }
         }
@@ -1211,4 +1235,6 @@ object DeployProdContent : Project({
     name = "Deploy to Prod"
 
     buildType(CopyContentFromStagingToProd)
+    val (roots, builds) = Helpers.getBuildsFromConfig("prod", "config/gw-docs-staging.json")
+    builds.forEach(this::buildType)
 })
