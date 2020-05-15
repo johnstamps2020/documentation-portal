@@ -2141,8 +2141,8 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
       ]
     }
   ]
