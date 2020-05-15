@@ -3,30 +3,33 @@
   <% include parts/head %>
   <body>
     <% include parts/header %>
-    <div class="docPanelContainer container">
+    <div>
       <div class="row">
         <div class="col filterSearchResults">
-          <% filters.forEach(filter => { %>
-          <h2>Filter by <%= filter.name %></h2>
-          <% filter.values.forEach(checkboxValue => { %>
-          <div class="checkboxRowContainer">
-            <label class="checkboxRow">
-              <input
-                type="checkbox"
-                class="filterCheckbox"
-                name="<%= filter.name %>"
-                value="<%= checkboxValue.label %>"
-                <% if (checkboxValue.checked) { %>
-                  checked="true"
-                <% } %>
-              />
-              <span class="checkboxLabelText"><%= checkboxValue.label %></span>
-              <span class="docCount"><%= checkboxValue.doc_count %></span>
-            </label>
+          <div class="container allFiltersWrapper">
+            <% filters.forEach(filter => { %>
+                <h2>Filter by <%= filter.name %></h2>
+                <% filter.values.forEach(checkboxValue => { %>
+                <div class="checkboxRowContainer">
+                  <label class="checkboxRow">
+                    <input
+                    type="checkbox"
+                    class="filterCheckbox"
+                    name="<%= filter.name %>"
+                    value="<%= checkboxValue.label %>"
+                    <% if (checkboxValue.checked) { %>
+                    checked="true"
+                    <% } %>
+                    />
+                    <span class="checkboxLabelText"><%= checkboxValue.label %></span>
+                    <span class="docCount"><%= checkboxValue.doc_count %></span>
+                  </label>
+                </div>
+            <% }) %> <% }) %>
           </div>
-          <% }) %> <% }) %>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 docPanelContainer">
+          <div class="resultWrapper">
           <h1>Search results for "<%= query %>"</h1>
           <div class="resultsSubheading">
             <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
@@ -88,6 +91,8 @@
           </ul>
           <% } %>
         </div>
+      </div>
+      <div class="col">&nbsp;</div>
       </div>
     </div>
     <script>
