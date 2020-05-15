@@ -72,11 +72,11 @@ object Helpers {
             }
         })
 
-        class BuildAndUploadToS3AbstractDev(build_id: String, build_name: String, ditaval_file: String, input_path: String,
+        class BuildAndUploadToS3AbstractDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
                                             build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
-            id = RelativeId(build_id)
+            id = RelativeId(doc_id)
             name = build_name
 
 
@@ -89,13 +89,11 @@ object Helpers {
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
                 text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
-                text("CRAWLER_START_URL", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
-                text("CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("CRAWLER_REFERER", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
-                text("INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
-                text("INDEXER_DOCUMENT_KEYS", "/%PUBLISH_PATH%.*", allowEmpty = false)
+                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_S3_URL", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_ID", doc_id, allowEmpty = false)
+                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEX_NAME", "gw-docs", allowEmpty = false)
             }
 
             vcs {
@@ -109,7 +107,7 @@ object Helpers {
                         -:root=${DitaOt331.id}:**
                         -:root=DocumentationTools_DitaOtPlugins:**
                     """.trimIndent()
-                        }
+                }
             }
 
             dependencies {
@@ -123,12 +121,12 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3AbstractStaging(build_id: String, build_name: String, ditaval_file: String,
+        class BuildAndUploadToS3AbstractStaging(doc_id: String, build_name: String, ditaval_file: String,
                                                 input_path: String, build_env: String, publish_path: String,
                                                 vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3)
 
-            id = RelativeId(build_id)
+            id = RelativeId(doc_id)
             name = build_name
 
             params {
@@ -140,13 +138,11 @@ object Helpers {
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
                 text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
-                text("CRAWLER_START_URL", "https://%CRAWLER_ALLOWED_DOMAINS%/%PUBLISH_PATH%", allowEmpty = false)
-                text("CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("CRAWLER_REFERER", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
-                text("INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
-                text("INDEXER_DOCUMENT_KEYS", "/%PUBLISH_PATH%.*", allowEmpty = false)
+                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_S3_URL", "ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_ID", doc_id, allowEmpty = false)
+                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEX_NAME", "gw-docs", allowEmpty = false)
             }
 
             vcs {
@@ -593,12 +589,12 @@ object DeploySearchService : BuildType({
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=apps/elastic_search/kube/deployment-prod.yml
+                    export KUBE_FILE=search_indexer/kube/deployment-prod.yml
                 else
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=apps/elastic_search/kube/deployment.yml
+                    export KUBE_FILE=search_indexer/kube/deployment.yml
                 fi
                 sh ci/deployKubernetes.sh
             """.trimIndent()
@@ -673,24 +669,13 @@ object LoadSearchIndex : BuildType({
     params {
         text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
         text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
-        text("env.CRAWLER_START_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.CRAWLER_START_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text("env.BUILD_START_URLS_FROM_CONFIG", "yes")
-        text("env.CRAWLER_ALLOWED_DOMAINS", "ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.CRAWLER_ALLOWED_DOMAINS_PROD", "ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text("env.CRAWLER_ALLOWED_DOMAINS_PORTAL2", "portal2.guidewire.com", allowEmpty = false)
-        text("env.CRAWLER_REFERER", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net")
-        text("env.CRAWLER_REFERER_PROD", "https://docs.guidewire.com")
-        text("env.INDEXER_SEARCH_APP_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.INDEXER_SEARCH_APP_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text("env.INDEXER_INDEX_NAME", "gw-docs", allowEmpty = false)
-        text("env.INDEXER_INDEX_FILE", "elastic_search/documents.json", allowEmpty = false)
-        text("env.INDEXER_DOCUMENT_KEYS", "@&~(/portal/secure/doc.+)")
-        text("env.INDEXER_DOCUMENT_KEYS_PORTAL2", "/portal/secure/doc.*")
+        text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
         select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want reindex documents", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
-        select("env.DOC_SERVER", "", label = "Documentation server", description = "Select where the documents that you want reindex are hosted", display = ParameterDisplay.PROMPT,
-                options = listOf("s3", "portal2"))
     }
 
 
@@ -703,7 +688,7 @@ object LoadSearchIndex : BuildType({
             name = "Build a Python Docker image"
             commandType = build {
                 source = file {
-                    path = "apps/Dockerfile"
+                    path = "search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -717,25 +702,16 @@ object LoadSearchIndex : BuildType({
                 #!/bin/bash
                 set -xe
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export CRAWLER_START_URL="${'$'}{CRAWLER_START_URL_PROD}"
-                    export CRAWLER_ALLOWED_DOMAINS="${'$'}{CRAWLER_ALLOWED_DOMAINS_PROD}"
-                    export CRAWLER_REFERER="${'$'}{CRAWLER_REFERER_PROD}"                    
-                    export INDEXER_SEARCH_APP_URLS="${'$'}{INDEXER_SEARCH_APP_URLS_PROD}"
+                    export DOC_S3_URL="${'$'}{DOC_S3_URL_PROD}"
+                    export ELASTICSEARCH_URLS="${'$'}{ELASTICSEARCH_URLS_PROD}"
                 fi
 
                 if [[ "%env.DEPLOY_ENV%" == "staging" ]] || [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export CONFIG_FILE="${'$'}{CONFIG_FILE_STAGING}"
                 fi
-                
-                if [[ "%env.DOC_SERVER%" == "portal2" ]]; then
-                    export INDEXER_DOCUMENT_KEYS="${'$'}{INDEXER_DOCUMENT_KEYS_PORTAL2}"
-                    export CRAWLER_ALLOWED_DOMAINS="${'$'}{CRAWLER_ALLOWED_DOMAINS_PORTAL2}"
-                fi
-                
 
-                cd apps
-                make collect-documents
-                make load-index
+                cd search_indexer
+                make run-doc-crawler
             """.trimIndent()
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -743,7 +719,7 @@ object LoadSearchIndex : BuildType({
 
         script {
             name = "Publish to S3"
-            scriptContent = "aws s3 sync ./apps/elastic_search/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_SERVER%"
+            scriptContent = "aws s3 sync ./search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%"
         }
 
     }
@@ -773,13 +749,13 @@ object TestContent : BuildType({
     steps {
         dockerCompose {
             name = "Compose services"
-            file = "apps/tests/test_elastic_search/resources/docker-compose.yml"
+            file = "search_indexer/tests/test_doc_crawler/resources/docker-compose.yml"
         }
         dockerCommand {
-            name = "Build a Docker image for running the Python apps"
+            name = "Build a Docker image for running the Python search_indexer"
             commandType = build {
                 source = file {
-                    path = "apps/Dockerfile"
+                    path = "search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -787,19 +763,10 @@ object TestContent : BuildType({
         }
 
         script {
-            name = "Run tests for collecting documents"
-            scriptContent = """
-                cd apps
-                make test-collect-documents
-            """.trimIndent()
-            dockerImage = "python-runner"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-        script {
             name = "Run tests for loading index"
             scriptContent = """
-                cd apps
-                make test-load-index
+                cd search_indexer
+                make test-doc-crawler
             """.trimIndent()
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -810,7 +777,7 @@ object TestContent : BuildType({
         vcs {
             triggerRules = """
                 +:.teamcity/settings.kts
-                +:apps/**
+                +:search_indexer/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -844,7 +811,7 @@ object TestConfig : BuildType({
             name = "Build a Docker image for running the Python apps"
             commandType = build {
                 source = file {
-                    path = "apps/Dockerfile"
+                    path = "search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -854,7 +821,7 @@ object TestConfig : BuildType({
         script {
             name = "Run tests for server config"
             scriptContent = """
-                cd apps
+                cd search_indexer
                 make test-config
             """.trimIndent()
             dockerImage = "python-runner"
@@ -1107,13 +1074,11 @@ object BuildAndUploadToS3 : Template({
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
         text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
         text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
-        text("env.CRAWLER_START_URL", "%CRAWLER_START_URL%", allowEmpty = false)
-        text("env.CRAWLER_ALLOWED_DOMAINS", "%CRAWLER_ALLOWED_DOMAINS%", allowEmpty = false)
-        text("env.CRAWLER_REFERER", "%CRAWLER_REFERER%", allowEmpty = false)
-        text("env.INDEXER_SEARCH_APP_URLS", "%INDEXER_SEARCH_APP_URLS%", allowEmpty = false)
-        text("env.INDEXER_INDEX_NAME", "%INDEXER_INDEX_NAME%", allowEmpty = false)
-        text("env.INDEXER_INDEX_FILE", "%INDEXER_INDEX_FILE%", allowEmpty = false)
-        text("env.INDEXER_DOCUMENT_KEYS", "%INDEXER_DOCUMENT_KEYS%")
+        text("env.APP_BASE_URL", "%APP_BASE_URL%", allowEmpty = false)
+        text("env.DOC_S3_URL", "%DOC_S3_URL%", allowEmpty = false)
+        text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS", "%ELASTICSEARCH_URLS%", allowEmpty = false)
+        text("env.INDEX_NAME", "%INDEX_NAME%", allowEmpty = false)
     }
 
     vcs {
@@ -1144,7 +1109,7 @@ object BuildAndUploadToS3 : Template({
             id = "RUNNER_2634"
             commandType = build {
                 source = file {
-                    path = "%env.TOOLS_ROOT%/apps/Dockerfile"
+                    path = "%env.TOOLS_ROOT%/search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -1152,13 +1117,12 @@ object BuildAndUploadToS3 : Template({
             param("dockerImage.platform", "linux")
         }
         script {
-            name = "Collect documents and load index"
+            name = "Crawl the document and update the index"
             id = "RUNNER_2635"
             workingDir = "%env.TOOLS_ROOT%"
             scriptContent = """
-                cd apps
-                make collect-documents
-                make load-index
+                cd search_indexer
+                make run-doc-crawler
             """.trimIndent()
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
