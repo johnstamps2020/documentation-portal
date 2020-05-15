@@ -1,17 +1,22 @@
-/* CSS for portal only. Do not put changes for webhelp in here  */
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 580px) {
   html,
   body {
     --landing-title-container-height: 150px !important;
-    --search-field-width: 95% !important;
+    --header-height: 128px !important;
+    --search-field-width: 80% !important;
   }
-}
 
-@font-face {
-  font-family: 'AvenirNext LT Pro Regular';
-  src: url(../fonts/AvenirNextLTPro-Regular.ttf);
+  .logoWrapper {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 269px !important;
+  }
+
+  .pageLogo {
+    margin: 0 !important;
+  }
 }
 
 html,
@@ -20,21 +25,39 @@ body {
   --header-height: 64px;
   --landing-title-container-height: 200px;
   --search-bar-height: 104px;
-  --search-field-width: 600px;
+  --search-field-width: 360px;
   --search-button-width: 16px;
   --GW-COLOR-BRAND-1: #00739d;
   --GW-COLOR-BRAND-1-HOVER: #006083;
-  --GW-COLOR-BRAND-1-ACTIVE: #004E6A;
+  --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
   --GW-COLOR-BRAND-2: #3c4c5e;
+  --GW-COLOR-BRAND-2-HOVER: #46596e;
+  --GW-COLOR-BRAND-2-ACTIVE: #50657d;
   --GW-COLOR-TEXT-1: #28333f;
+  --GW-COLOR-TEXT-2: #657580;
   --GW-COLOR-TEXT-3: #ffffff;
   --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
   --GW-COLOR-BKGD-1: #fafafa;
   --GW-COLOR-BKGD-2: #e9f9ff;
   --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
   --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
+  --GW-COLOR-ALERT-INFO: #4074CE;
   background-color: var(--GW-COLOR-BKGD-1);
   height: 100%;
+}
+
+.docPanelContainer h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 49px;
+}
+
+.docPanelContainer h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 40px;
 }
 
 .homeContainer {
@@ -115,60 +138,83 @@ a:active {
 }
 
 .pageHeader {
-  height: var(--header-height);
+  min-height: var(--header-height);
   background-color: var(--GW-COLOR-BRAND-2);
 }
 
+.logoWrapper {
+  margin-top: 16px;
+}
+
 .pageLogo {
-  position: relative;
-  left: 32px;
-  top: 15px;
+  margin-left: 32px;
   height: 32px;
 }
 
-.pageTitle {
-  position: absolute;
-  margin-top: 12px;
-  margin-left: 15px;
-  font-family: 'AvenirNext LT Pro Regular';
-  font-size: 1.125rem;
-  color: var(--GW-COLOR-TEXT-3);
+.searchBoxContainer {
+  margin-top: 16px;
+  height: 32px;
 }
 
-.searchBar {
-  height: var(--search-bar-height);
-  background-color: var(--GW-COLOR-TEXT-3);
-  position: relative;
-  box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+.searchBoxContainer * {
   vertical-align: middle;
 }
 
+.loginPage .searchFieldWrapper {
+  display: none;
+}
+
 .searchFieldWrapper {
-  display: block;
+  background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-left: 14px;
+  padding-right: 14px;
   width: var(--search-field-width);
   margin: auto;
 }
 
-.searchFieldWrapper * {
-  vertical-align: middle;
+.searchFieldWrapper:focus-within {
+  outline-color: red;
 }
 
 .searchField {
-  width: 100%;
-  padding-left: 6px;
-  padding-right: calc(var(--search-button-width) + 16px);
-  height: 40px;
+  color: var(--GW-COLOR-TEXT-3);
+  background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  width: calc(100% - var(--search-button-width) - 16px);
+  border: none;
+  height: 32px;
 }
 
 .searchButton {
+  border: none;
+  margin-left: 12px;
   background-image: url(../images/search.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  margin-left: calc(-1 * var(--search-button-width) - 16px);
+  background-color: transparent;
   height: 24px;
   width: var(--search-button-width);
-  border: none;
+}
+
+.searchField::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--GW-COLOR-TEXT-3);
+  opacity: 1; /* Firefox */
+}
+
+.searchField:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--GW-COLOR-TEXT-3);
+}
+
+.searchField::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--GW-COLOR-TEXT-3);
 }
 
 .resultList li {
@@ -274,26 +320,54 @@ h1.display-4 {
   cursor: pointer;
 }
 
+.allFiltersWrapper {
+  padding: 24px;
+}
+
+.filterSearchResults {
+  box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+  z-index: 7;
+}
+
 .filterSearchResults h2 {
-  font-size: 1rem;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin-top: 16px;
 }
 
 .checkboxRow {
-  font-size: 0.9rem;
-  line-height: 1rem;
-  margin-left: 6px;
-  display: grid;
-  grid-template-columns: 24px auto 12px;
-  align-items: center;
-  align-content: space-around;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+  width: 100%;
+  color: var(--GW-COLOR-TEXT-1);
+}
+
+.filterCheckbox {
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
 }
 
 .docCount {
-  color: gray;
+  float: right;
+  color: var(--GW-COLOR-TEXT-2);
 }
 
 .paginationWrapper {
   float: right;
+}
+
+.resultWrapper {
+  padding: 36px;
+  padding-left: 64px;
+}
+
+.resultWrapper .badge-light {
+  background-color: var(--GW-COLOR-ALERT-INFO);
+  color: var(--GW-COLOR-TEXT-3);
 }
 
 /* Bootstrap overrides */
