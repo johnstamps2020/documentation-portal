@@ -77,7 +77,7 @@
         "buildType": "dita",
         "filter": "DataHub-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "selfmanageddhxcfudhkidflkjdfaldskjpew"
+        "src": "exportfadatastuffforintandprod"
       }
     },
     {
@@ -94,7 +94,7 @@
         "buildType": "dita",
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "selfmanageddhxcfudhkidflkjdfaldskjpew"
+        "src": "exportfadatastuffforintandprod"
       }
     },
     {
@@ -2135,7 +2135,7 @@
   ],
   "sources": [
     {
-      "id": "selfmanageddhxcfudhkidflkjdfaldskjpew",
+      "id": "exportfadatastuffforintandprod",
       "title": "Data Management",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
