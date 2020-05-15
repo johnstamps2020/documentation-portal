@@ -41,7 +41,7 @@ body {
   --GW-COLOR-BKGD-2: #e9f9ff;
   --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
   --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
-  --GW-COLOR-ALERT-INFO: #4074CE;
+  --GW-COLOR-ALERT-INFO: #4074ce;
   background-color: var(--GW-COLOR-BKGD-1);
   height: 100%;
 }
@@ -61,10 +61,7 @@ body {
 }
 
 .homeContainer {
-  min-height: calc(
-    100% - var(--header-height) - var(--search-bar-height) -
-      var(--footer-height)
-  );
+  min-height: calc(100% - var(--header-height) - var(--footer-height));
   background-color: var(--GW-COLOR-BKGD-1);
 }
 
