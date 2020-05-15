@@ -64,6 +64,40 @@
       }
     },
     {
+      "id": "selfmanageddhaithitzz",
+      "title": "DataHub",
+      "url": "self-managed/dh/1030",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": "DataHub",
+        "version": "10.3.0",
+        "category": "Data"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "DataHub-RELEASE.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "exportfadatastuffforintandprod"
+      }
+    },
+    {
+      "id": "selfmanagediclovarpzz",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1030",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": "InfoCenter",
+        "version": "10.3.0",
+        "category": "Data"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "InfoCenter-RELEASE.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "exportfadatastuffforintandprod"
+      }
+    },
+    {
       "id": "selfmanageddxceamagmqaagu",
       "title": "CustomerEngage Account Management",
       "url": "self-managed/dx/ce-am/1001",
@@ -2099,5 +2133,17 @@
       }
     }
   ],
-  "sources": []
+  "sources": [
+    {
+      "id": "exportfadatastuffforintandprod",
+      "title": "Data Management",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
+      ]
+    }
+  ]
 }

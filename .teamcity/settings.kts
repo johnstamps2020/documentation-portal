@@ -227,7 +227,7 @@ object Helpers {
             }
             roots.add(CreateVcsRoot(gitUrl, sourceId, branchName))
 
-            if (source.has("xdocsPathIds")) {
+            if (source.has("xdocsPathIds") && env != "prod") {
                 val exportBuildId: String = source.get("id").toString() + "export"
                 val xdocsPathIds: String = source.getJSONArray("xdocsPathIds").joinToString(" ")
                 val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
