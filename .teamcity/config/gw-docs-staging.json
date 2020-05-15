@@ -42,28 +42,6 @@
       }
     },
     {
-      "id": "selfmanageddhaithituu",
-      "title": "DataHub",
-      "url": "self-managed/dh/1020",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "DataHub",
-        "version": "10.2.0",
-        "category": "Data"
-      }
-    },
-    {
-      "id": "selfmanagediclovarpxb",
-      "title": "InfoCenter",
-      "url": "self-managed/ic/1020",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "InfoCenter",
-        "version": "10.2.0",
-        "category": "Data"
-      }
-    },
-    {
       "id": "selfmanageddhaithitzz",
       "title": "DataHub",
       "url": "self-managed/dh/1030",
@@ -95,6 +73,28 @@
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportfadatastuffforintandprod"
+      }
+    },
+    {
+      "id": "selfmanageddhaithituu",
+      "title": "DataHub",
+      "url": "self-managed/dh/1020",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": "DataHub",
+        "version": "10.2.0",
+        "category": "Data"
+      }
+    },
+    {
+      "id": "selfmanagediclovarpxb",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1020",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": "InfoCenter",
+        "version": "10.2.0",
+        "category": "Data"
       }
     },
     {
@@ -150,17 +150,6 @@
         "product": "VendorEngage",
         "version": "10.0.1",
         "category": "Digital"
-      }
-    },
-    {
-      "id": "selfmanagedbcrsynyswt",
-      "title": "BillingCenter",
-      "url": "self-managed/bc/1003",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "BillingCenter",
-        "version": "10.0.3",
-        "category": "Core"
       }
     },
     {
@@ -578,17 +567,6 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.0",
-        "category": "Core"
-      }
-    },
-    {
-      "id": "selfmanagedccxowfgkpv",
-      "title": "ClaimCenter",
-      "url": "self-managed/cc/1003",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "ClaimCenter",
-        "version": "10.0.3",
         "category": "Core"
       }
     },
@@ -1121,17 +1099,6 @@
       }
     },
     {
-      "id": "selfmanagedpcuiibiude",
-      "title": "PolicyCenter",
-      "url": "self-managed/pc/1003",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "PolicyCenter",
-        "version": "10.0.3",
-        "category": "Core"
-      }
-    },
-    {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterzvxwgqku",
       "title": "PolicyCenter",
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.2/",
@@ -1550,17 +1517,6 @@
       }
     },
     {
-      "id": "selfmanageddhteriyprf",
-      "title": "DataHub",
-      "url": "self-managed/dh/1020",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "DataHub",
-        "version": "10.2.0",
-        "category": "Data"
-      }
-    },
-    {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubyluzrolx",
       "title": "DataHub",
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1010/DataHub/",
@@ -1667,17 +1623,6 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "8.1.0",
-        "category": "Data"
-      }
-    },
-    {
-      "id": "selfmanagedichsigfaby",
-      "title": "InfoCenter",
-      "url": "self-managed/ic/1020",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "InfoCenter",
-        "version": "10.2.0",
         "category": "Data"
       }
     },
@@ -1803,17 +1748,6 @@
       }
     },
     {
-      "id": "selfmanageddxceamwufcopyd",
-      "title": "CustomerEngage Account Management",
-      "url": "self-managed/dx/ce-am/1001",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "CustomerEngage Account Management",
-        "version": "10.0.1",
-        "category": "Digital"
-      }
-    },
-    {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
       "title": "CustomerEngage Account Management",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_AccountManagement1000_Docs/",
@@ -1865,17 +1799,6 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Account Management",
         "version": "7.0.0",
-        "category": "Digital"
-      }
-    },
-    {
-      "id": "selfmanageddxceqbmfufklvl",
-      "title": "CustomerEngage Quote and Buy",
-      "url": "self-managed/dx/ce-qb/1001",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "CustomerEngage Quote and Buy",
-        "version": "10.0.1",
         "category": "Digital"
       }
     },
@@ -1935,17 +1858,6 @@
       }
     },
     {
-      "id": "selfmanageddxpeyiuyemyg",
-      "title": "Producer Engage",
-      "url": "self-managed/dx/pe/1001",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "Producer Engage",
-        "version": "10.0.1",
-        "category": "Digital"
-      }
-    },
-    {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
       "title": "Producer Engage",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ProducerEngage1000_Docs/",
@@ -2001,17 +1913,6 @@
       }
     },
     {
-      "id": "selfmanageddxsreavqkhzul",
-      "title": "ServiceRepEngage",
-      "url": "self-managed/dx/sre/1001",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "ServiceRepEngage",
-        "version": "10.0.1",
-        "category": "Digital"
-      }
-    },
-    {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
       "title": "ServiceRepEngage",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ServiceRepEngage1000_Docs/",
@@ -2063,17 +1964,6 @@
         "platform": "Self-managed",
         "product": "ServiceRepEngage",
         "version": "7.0.0",
-        "category": "Digital"
-      }
-    },
-    {
-      "id": "selfmanageddxvetdbbwftb",
-      "title": "VendorEngage",
-      "url": "self-managed/dx/ve/1001",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": "VendorEngage",
-        "version": "10.0.1",
         "category": "Digital"
       }
     },
