@@ -77,7 +77,7 @@
         "buildType": "dita",
         "filter": "DataHub-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "selfmanageddhxcfudhkid"
+        "src": "selfmanageddhxcfudhkidflkjdfaldskjpew"
       }
     },
     {
@@ -94,7 +94,7 @@
         "buildType": "dita",
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "selfmanageddhxcfudhkid"
+        "src": "selfmanageddhxcfudhkidflkjdfaldskjpew"
       }
     },
     {
@@ -2135,13 +2135,13 @@
   ],
   "sources": [
     {
-      "id": "selfmanageddhxcfudhkid",
+      "id": "selfmanageddhxcfudhkidflkjdfaldskjpew",
       "title": "Data Management",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
         "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
       ]
     }
