@@ -144,6 +144,10 @@ a:active {
   vertical-align: middle;
 }
 
+.loginPage .searchFieldWrapper {
+  display: none;
+}
+
 .searchFieldWrapper {
   background-color: var(--GW-COLOR-BRAND-2-HOVER);
   border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
