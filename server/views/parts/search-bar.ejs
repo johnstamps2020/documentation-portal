@@ -1,13 +1,19 @@
-<form action="/search">
-  <div class="searchFieldWrapper">
-    <input
-      name="q"
-      id="searchField"
-      class="searchField"
-      type="search"
-      placeholder="Search Guidewire Documentation"
-      aria-label="Search Guidewire Documentation"
-    />
-    <button type="submit" class="searchButton" aria-label="Search"><i class="fa fa-search"></i></button>
+<form class="searchBar row align-items-center" action="/search">
+  <div class="col">
+    <div class="searchFieldWrapper">
+      <input
+        name="q"
+        id="searchField"
+        class="searchField"
+        type="text"
+        placeholder="Search Guidewire documentation"
+        aria-label="Search Guidewire documentation"
+      />
+      <button
+        id="searchButton"
+        class="searchButton"
+        aria-label="Search"
+      ></button>
+    </div>
   </div>
 </form>
