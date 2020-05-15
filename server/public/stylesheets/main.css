@@ -7,7 +7,7 @@
     --header-height: 128px !important;
     --search-field-width: 80% !important;
   }
-  
+
   .logoWrapper {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -34,14 +34,30 @@ body {
   --GW-COLOR-BRAND-2-HOVER: #46596e;
   --GW-COLOR-BRAND-2-ACTIVE: #50657d;
   --GW-COLOR-TEXT-1: #28333f;
+  --GW-COLOR-TEXT-2: #657580;
   --GW-COLOR-TEXT-3: #ffffff;
   --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
   --GW-COLOR-BKGD-1: #fafafa;
   --GW-COLOR-BKGD-2: #e9f9ff;
   --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
   --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
+  --GW-COLOR-ALERT-INFO: #4074CE;
   background-color: var(--GW-COLOR-BKGD-1);
   height: 100%;
+}
+
+.docPanelContainer h1 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 49px;
+}
+
+.docPanelContainer h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 40px;
 }
 
 .homeContainer {
@@ -304,26 +320,54 @@ h1.display-4 {
   cursor: pointer;
 }
 
+.allFiltersWrapper {
+  padding: 24px;
+}
+
+.filterSearchResults {
+  box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+  z-index: 7;
+}
+
 .filterSearchResults h2 {
-  font-size: 1rem;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin-top: 16px;
 }
 
 .checkboxRow {
-  font-size: 0.9rem;
-  line-height: 1rem;
-  margin-left: 6px;
-  display: grid;
-  grid-template-columns: 24px auto 12px;
-  align-items: center;
-  align-content: space-around;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+  width: 100%;
+  color: var(--GW-COLOR-TEXT-1);
+}
+
+.filterCheckbox {
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
 }
 
 .docCount {
-  color: gray;
+  float: right;
+  color: var(--GW-COLOR-TEXT-2);
 }
 
 .paginationWrapper {
   float: right;
+}
+
+.resultWrapper {
+  padding: 36px;
+  padding-left: 64px;
+}
+
+.resultWrapper .badge-light {
+  background-color: var(--GW-COLOR-ALERT-INFO);
+  color: var(--GW-COLOR-TEXT-3);
 }
 
 /* Bootstrap overrides */
