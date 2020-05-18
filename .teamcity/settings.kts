@@ -81,7 +81,7 @@ object Helpers {
             params {
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-${build_env}.json", allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
