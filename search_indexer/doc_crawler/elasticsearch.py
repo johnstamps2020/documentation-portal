@@ -69,8 +69,5 @@ class ElasticClient(Elasticsearch):
                 self.logger_instance.warning(f'Failed to load the following entries:')
                 for failed_entry in failed_entries:
                     self.logger_instance.warning(f'\t{failed_entry}')
-
-            return True
         else:
             self.logger_instance.info(f'Index "{search_index_name}" does not exist. No entries to delete.')
-            return False

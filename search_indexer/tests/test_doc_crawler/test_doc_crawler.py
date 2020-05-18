@@ -69,6 +69,9 @@ def test_index_has_entries(elastic_client):
     assert number_of_index_entries == 27
 
 
+
+
+
 def test_broken_links_file():
     broken_links_file = current_working_dir / 'out' / 'broken-links.json'
     expected_broken_links_file = expected_resources / 'broken-links.json'
