@@ -52,6 +52,7 @@ const landingRouter = require('./routes/landing');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
+const missingPageRouter = require('./routes/404');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -123,6 +124,8 @@ app.use(function(req, res, next) {
 
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
+app.use('/404', missingPageRouter);
+
 app.use('/', landingRouter);
 
 const proxyOptions = {
@@ -135,16 +138,13 @@ const proxyOptions = {
 const docProxy = proxy(proxyOptions);
 app.use('/', docProxy);
 
-
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
 // handles unauthorized errors
 app.use((err, req, res, next) => {
   if (err.httpStatusCode === 304) {
     res.status(304).redirect('/unauthorized');
+  }
+  if (err.httpStatusCode === 404) {
+    res.status(404).redirect('/404');
   }
   next(err);
 });
