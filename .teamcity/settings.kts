@@ -82,10 +82,10 @@ object Helpers {
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
-                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("APP_BASE_URL", "https://docs.guidewire.com", allowEmpty = false)
+                text("DOC_S3_URL", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
-                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
             }
 
