@@ -45,20 +45,21 @@ class ElasticClient(Elasticsearch):
         self.logger_instance.addHandler(self.log_console_handler)
 
     def create_index(self, search_index_name: str, search_index_settings: dict):
+        operation_result = {}
         if not self.indices.exists(index=search_index_name):
             self.logger_instance.info(f'Index "{search_index_name}" does not exist. Creating index.')
             operation_result = self.indices.create(index=search_index_name, body=search_index_settings)
             self.logger_instance.info(f'Index creation result: {operation_result}')
-            return True
         else:
             self.logger_instance.info(f'Skipping index creation. Index "{search_index_name}" already exists.')
-            return False
+        return operation_result
 
     @staticmethod
     def prepare_del_query(query_template: Template, **kwargs):
         return ast.literal_eval(query_template.substitute(**kwargs))
 
     def delete_entries_by_query(self, search_index_name: str, elastic_query: dict):
+        operation_result = {}
         if self.indices.exists(index=search_index_name):
             self.logger_instance.info(f'Deleting entries for query: {elastic_query}')
             operation_result = self.delete_by_query(index=search_index_name, body=elastic_query)
@@ -71,3 +72,5 @@ class ElasticClient(Elasticsearch):
                     self.logger_instance.warning(f'\t{failed_entry}')
         else:
             self.logger_instance.info(f'Index "{search_index_name}" does not exist. No entries to delete.')
+
+        return operation_result

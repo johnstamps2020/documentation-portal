@@ -69,7 +69,14 @@ def test_index_has_entries(elastic_client):
     assert number_of_index_entries == 27
 
 
+def test_delete_entries_by_query(elastic_client):
+    expected_number_of_deleted_entries = 27
+    elastic_del_query = elastic_client.prepare_del_query(elastic_client.elastic_del_query_template,
+                                                         id_to_delete='/cloud/gcp/latest.*')
+    delete_operation_result = elastic_client.delete_entries_by_query(index_name, elastic_del_query)
+    number_of_deleted_entries = delete_operation_result.get('deleted')
 
+    assert number_of_deleted_entries == expected_number_of_deleted_entries
 
 
 def test_broken_links_file():
