@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 
 import urllib3
 
@@ -47,7 +48,19 @@ class ElasticsearchPipeline:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         self.elastic_client = ElasticClient(search_app_urls, use_ssl=False, verify_certs=False,
                                             ssl_show_warn=False)
+
         self.elastic_client.create_index(self.index_name, self.elastic_client.main_index_settings)
+
+        for doc in spider.docs:
+            id_to_delete = f'{urlparse(urljoin(spider.doc_s3_url, doc["url"])).path}.*'
+            elastic_del_query = self.elastic_client.prepare_del_query(self.elastic_client.elastic_del_query_template,
+                                                                      id_to_delete=id_to_delete)
+            self.elastic_client.logger_instance.info(f'Deleting entries using query: {elastic_del_query}')
+            del_operation_result = self.elastic_client.delete_by_query(index=self.index_name, body=elastic_del_query)
+            if del_operation_result.get("failures"):
+                self.elastic_client.logger_instance.warning('Failed to delete entry')
+            # else:
+            #     self.elastic_client.logger_instance.info('Entry deleted')
 
     def close_spider(self, spider):
         self.elastic_client.logger_instance.info(f'\nCreated entries: {self.number_of_created_entries}')
@@ -60,15 +73,6 @@ class ElasticsearchPipeline:
     def process_item(self, item, spider):
         if item.__class__.__name__ == IndexEntry.__name__:
             index_entry = dict(item)
-            elastic_del_query = self.elastic_client.prepare_del_query(self.elastic_client.elastic_del_query_template,
-                                                                      path_to_delete=index_entry['id'])
-            self.elastic_client.logger_instance.info(f'Deleting entry using query: {elastic_del_query}')
-            del_operation_result = self.elastic_client.delete_by_query(index=self.index_name, body=elastic_del_query)
-            if del_operation_result.get("failures"):
-                self.elastic_client.logger_instance.warning('Failed to delete entry')
-            else:
-                self.elastic_client.logger_instance.info('Entry deleted')
-
             create_operation_result = self.elastic_client.index(index=self.index_name, body=index_entry)
             if create_operation_result.get('result') == 'created':
                 self.number_of_created_entries += 1

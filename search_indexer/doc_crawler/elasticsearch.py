@@ -8,9 +8,9 @@ from elasticsearch import Elasticsearch
 class ElasticClient(Elasticsearch):
     elastic_del_query_template = Template("""{
             "query": {
-                "match": {
+                "regexp": {
                     "id": {
-                        "query": "${path_to_delete}"
+                        "value": "${id_to_delete}"
                         }
                     },
                 }
