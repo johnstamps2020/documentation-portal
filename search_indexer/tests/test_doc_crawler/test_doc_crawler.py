@@ -7,7 +7,7 @@ import pytest
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
-from doc_crawler.pipelines import ElasticClient
+from doc_crawler.elasticsearch import ElasticClient
 from doc_crawler.spiders import doc_portal_spider
 
 current_working_dir = Path.cwd()
@@ -67,6 +67,37 @@ def test_index_was_created(elastic_client):
 def test_index_has_entries(elastic_client):
     number_of_index_entries = elastic_client.count(index=index_name)['count']
     assert number_of_index_entries == 27
+
+
+def test_delete_entries_by_query(elastic_client):
+    entries_with_id_existed = False
+    entries_with_id_deleted = False
+    number_of_existing_eq_number_of_deleted = False
+
+    elastic_del_query = elastic_client.prepare_del_query(elastic_client.elastic_del_query_template,
+                                                         id_to_delete='isgwcpcloudlatest')
+
+    search_doc_id_before_delete = elastic_client.search(index=index_name, body=elastic_del_query)
+    number_of_existing_entries_before_delete = search_doc_id_before_delete['hits']['total']['value']
+
+    if number_of_existing_entries_before_delete > 0:
+        entries_with_id_existed = True
+
+    delete_operation_result = elastic_client.delete_entries_by_query(index_name, elastic_del_query)
+    number_of_deleted_entries = delete_operation_result.get('deleted')
+
+    time.sleep(1)
+
+    search_doc_id_after_delete = elastic_client.search(index=index_name, body=elastic_del_query)
+    number_of_existing_entries_after_delete = search_doc_id_after_delete['hits']['total']['value']
+
+    if number_of_existing_entries_after_delete == 0:
+        entries_with_id_deleted = True
+
+    if number_of_existing_entries_before_delete == number_of_deleted_entries:
+        number_of_existing_eq_number_of_deleted = True
+
+    assert entries_with_id_existed is True and entries_with_id_deleted is True and number_of_existing_eq_number_of_deleted is True
 
 
 def test_broken_links_file():
