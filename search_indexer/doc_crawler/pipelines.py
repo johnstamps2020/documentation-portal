@@ -1,7 +1,6 @@
 import json
 import os
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
 
 import urllib3
 
@@ -52,7 +51,7 @@ class ElasticsearchPipeline:
         self.elastic_client.create_index(self.index_name, self.elastic_client.main_index_settings)
 
         for doc in spider.docs:
-            id_to_delete = f'{urlparse(urljoin(spider.doc_s3_url, doc["url"])).path}.*'
+            id_to_delete = doc["id"]
             elastic_del_query = self.elastic_client.prepare_del_query(self.elastic_client.elastic_del_query_template,
                                                                       id_to_delete=id_to_delete)
             self.elastic_client.delete_entries_by_query(self.index_name, elastic_del_query)
