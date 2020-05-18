@@ -55,16 +55,11 @@ class ElasticsearchPipeline:
             id_to_delete = f'{urlparse(urljoin(spider.doc_s3_url, doc["url"])).path}.*'
             elastic_del_query = self.elastic_client.prepare_del_query(self.elastic_client.elastic_del_query_template,
                                                                       id_to_delete=id_to_delete)
-            self.elastic_client.logger_instance.info(f'Deleting entries using query: {elastic_del_query}')
-            del_operation_result = self.elastic_client.delete_by_query(index=self.index_name, body=elastic_del_query)
-            if del_operation_result.get("failures"):
-                self.elastic_client.logger_instance.warning('Failed to delete entry')
-            # else:
-            #     self.elastic_client.logger_instance.info('Entry deleted')
+            self.elastic_client.delete_entries_by_query(self.index_name, elastic_del_query)
 
     def close_spider(self, spider):
-        self.elastic_client.logger_instance.info(f'\nCreated entries: {self.number_of_created_entries}')
-        self.elastic_client.logger_instance.info(f'Failed entries: {len(self.failed_entries)}')
+        self.elastic_client.logger_instance.info(
+            f'\nCreated entries/Failures: {self.number_of_created_entries}/{len(self.failed_entries)}')
         if self.failed_entries:
             self.elastic_client.logger_instance.info(f'Failed to load the following entries:')
             for failed_entry in self.failed_entries:

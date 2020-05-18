@@ -57,3 +57,20 @@ class ElasticClient(Elasticsearch):
     @staticmethod
     def prepare_del_query(query_template: Template, **kwargs):
         return ast.literal_eval(query_template.substitute(**kwargs))
+
+    def delete_entries_by_query(self, search_index_name: str, elastic_query: dict):
+        if self.indices.exists(index=search_index_name):
+            self.logger_instance.info(f'Deleting entries for query: {elastic_query}')
+            operation_result = self.delete_by_query(index=search_index_name, body=elastic_query)
+            failed_entries = operation_result.get("failures")
+            self.logger_instance.info(
+                f'Deleted entries/Failures: {operation_result.get("deleted")}/{len(failed_entries)}')
+            if failed_entries:
+                self.logger_instance.warning(f'Failed to load the following entries:')
+                for failed_entry in failed_entries:
+                    self.logger_instance.warning(f'\t{failed_entry}')
+
+            return True
+        else:
+            self.logger_instance.info(f'Index "{search_index_name}" does not exist. No entries to delete.')
+            return False
