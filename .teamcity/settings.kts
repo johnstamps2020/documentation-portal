@@ -46,6 +46,7 @@ project {
     template(Deploy)
     template(BuildDockerImage)
     template(BuildAndUploadToS3)
+    template(CrawlDocumentAndUpdateIndex)
     template(AddFilesFromXDocsToBitbucket)
 
     params {
@@ -72,29 +73,44 @@ object Helpers {
             }
         })
 
-        class UploadToS3AbstractProd(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String) : BuildType({
+        class UploadToS3AbstractProd(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
+            templates(CrawlDocumentAndUpdateIndex)
             id = RelativeId("${doc_id}toprod")
             name = "Copy $title $doc_platform $doc_version from Staging to Prod ($doc_id)"
 
+            params {
+                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
+                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-${build_env}.json", allowEmpty = false)
+                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_ID", doc_id, allowEmpty = false)
+                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEX_NAME", "gw-docs", allowEmpty = false)
+            }
+
             steps {
                 script {
+                    id = "RUNNER_666"
                     name = "Copy from S3 on staging to S3 on Prod"
                     scriptContent = """
-                aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path stage/$relative_copy_path/ --delete
-                
-                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                
-                aws s3 sync stage/$relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
-            """.trimIndent()
+                        aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path $relative_copy_path/ --delete
+                        
+                        export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                        export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                        export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                        
+                        aws s3 sync $relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
+                    """.trimIndent()
                 }
+                stepsOrder = arrayListOf("RUNNER_666", "RUNNER_2634", "RUNNER_2635")
             }
+
         })
 
-        class BuildAndUploadToS3AbstractDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
-                                            build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3)
+        class BuildAndUploadToS3AbstractDevAndInt(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
+                                                  build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
+            templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex)
 
             id = RelativeId(doc_id)
             name = build_name
@@ -144,7 +160,7 @@ object Helpers {
         class BuildAndUploadToS3AbstractStaging(doc_id: String, build_name: String, ditaval_file: String,
                                                 input_path: String, build_env: String, publish_path: String,
                                                 vsc_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3)
+            templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex)
 
             id = RelativeId(doc_id)
             name = build_name
@@ -258,7 +274,7 @@ object Helpers {
                 val vcsRootId = build.getString("src")
 
                 if (env == "dev" || env == "int") {
-                    builds.add(BuildAndUploadToS3AbstractDev(buildId, buildName, filter, root, env,
+                    builds.add(BuildAndUploadToS3AbstractDevAndInt(buildId, buildName, filter, root, env,
                             publishPath, vcsRootId))
                 }
 
@@ -268,7 +284,7 @@ object Helpers {
                 }
 
                 if (env == "prod") {
-                    builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform))
+                    builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform, env))
                 }
             }
         }
@@ -745,7 +761,6 @@ object LoadSearchIndex : BuildType({
             name = "Publish to S3"
             scriptContent = "aws s3 sync ./search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%"
         }
-
     }
 
     features {
@@ -1096,18 +1111,10 @@ object BuildAndUploadToS3 : Template({
         text("env.FORMAT", "%FORMAT%", allowEmpty = false)
         text("env.DITAVAL_FILE", "%DITAVAL_FILE%", allowEmpty = false)
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-        text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
-        text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
-        text("env.APP_BASE_URL", "%APP_BASE_URL%", allowEmpty = false)
-        text("env.DOC_S3_URL", "%DOC_S3_URL%", allowEmpty = false)
-        text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS", "%ELASTICSEARCH_URLS%", allowEmpty = false)
-        text("env.INDEX_NAME", "%INDEX_NAME%", allowEmpty = false)
     }
 
     vcs {
         root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
-        root(vcsrootmasteronly, "+:. => %env.TOOLS_ROOT%")
         root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
 
         cleanCheckout = true
@@ -1128,6 +1135,50 @@ object BuildAndUploadToS3 : Template({
             id = "RUNNER_2633"
             scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
         }
+    }
+
+    features {
+        commitStatusPublisher {
+            id = "BUILD_EXT_329"
+            vcsRootExtId = "${DitaOt331.id}"
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%env.ARTIFACTORY_USERNAME%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+
+        }
+        dockerSupport {
+            id = "DockerSupport"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object CrawlDocumentAndUpdateIndex : Template({
+    name = "Crawl document and update index"
+
+    maxRunningBuilds = 1
+
+    params {
+        text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
+        text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
+        text("env.APP_BASE_URL", "%APP_BASE_URL%", allowEmpty = false)
+        text("env.DOC_S3_URL", "%DOC_S3_URL%", allowEmpty = false)
+        text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS", "%ELASTICSEARCH_URLS%", allowEmpty = false)
+        text("env.INDEX_NAME", "%INDEX_NAME%", allowEmpty = false)
+    }
+
+    vcs {
+        root(vcsrootmasteronly, "+:. => %env.TOOLS_ROOT%")
+
+        cleanCheckout = true
+    }
+
+    steps {
         dockerCommand {
             name = "Build a Python Docker image"
             id = "RUNNER_2634"
