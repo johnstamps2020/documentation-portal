@@ -4,13 +4,13 @@
   <body>
     <% include parts/header %>
     <div>
-      <div class="row">
+      <div class="row searchResultsPage">
         <div class="col filterSearchResults">
           <div class="container allFiltersWrapper">
             <% filters.forEach(filter => { %>
                 <h2>Filter by <%= filter.name %></h2>
                 <% filter.values.forEach(checkboxValue => { %>
-                <div class="checkboxRowContainer">
+                <!-- <div class="checkboxRowContainer">
                   <label class="checkboxRow">
                     <input
                     type="checkbox"
@@ -24,7 +24,17 @@
                     <span class="checkboxLabelText"><%= checkboxValue.label %></span>
                     <span class="docCount"><%= checkboxValue.doc_count %></span>
                   </label>
-                </div>
+                </div> -->
+                <label class="checkboxRowContainer">
+                  <span class="checkboxLabelText"><%= checkboxValue.label %></span>
+                  <span class="docCount"><%= checkboxValue.doc_count %></span>
+                  <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>" value="<%= checkboxValue.label %>"
+                    <% if (checkboxValue.checked) { %>
+                      checked="true"
+                    <% } %>
+                  />
+                  <span class="checkmark"></span>
+                </label>
             <% }) %> <% }) %>
           </div>
         </div>
@@ -51,7 +61,7 @@
             </h2>
             <div class="resultBadges">
               <% result.docTags.forEach(tag => { %>
-                <span class="badge badge-light"><%= tag %></span>
+                <span class="infoLabel"><%= tag %></span>
               <% }) %>
             </div>
             <p><%= result.body %></p>
@@ -92,7 +102,7 @@
           <% } %>
         </div>
       </div>
-      <div class="col">&nbsp;</div>
+      <div class="col grayBackground">&nbsp;</div>
       </div>
     </div>
     <script>
