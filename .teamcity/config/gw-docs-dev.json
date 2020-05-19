@@ -1,8 +1,14 @@
 {
   "$schema": "./config-schema.json",
   "pages": [
-    { "view": "home", "route": "/" },
-    { "view": "self-managed-latest-dev", "route": "/self-managed-latest" },
+    {
+      "view": "home",
+      "route": "/"
+    },
+    {
+      "view": "self-managed-latest-dev",
+      "route": "/self-managed-latest"
+    },
     {
       "view": "self-managed-all-releases-dev",
       "route": "/self-managed-all-releases"
@@ -140,6 +146,23 @@
       },
       "build": {
         "buildType": "dita",
+        "filter": "IS-PC-Cloud-Draft.ditaval",
+        "root": "guidewire_cloud_platform_guide.ditamap",
+        "src": "cloudgwcplatestratjqyws"
+      }
+    },
+    {
+      "id": "cloudgwcplatestdevwsdfklvkdsd",
+      "title": "Guidewire Cloud Platform Dev",
+      "url": "dev/gwcp/latest/",
+      "metadata": {
+        "product": "Guidewire Cloud Platform",
+        "platform": "Cloud",
+        "version": "latest",
+        "category": "Cloud"
+      },
+      "build": {
+        "buildType": "dita-dev",
         "filter": "IS-PC-Cloud-Draft.ditaval",
         "root": "guidewire_cloud_platform_guide.ditamap",
         "src": "cloudgwcplatestratjqyws"

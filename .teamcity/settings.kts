@@ -108,17 +108,21 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3AbstractDevAndInt(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
+        class BuildAndUploadToS3AbstractDevAndInt(doc_id: String, build_name: String, build_type: String, ditaval_file: String, input_path: String,
                                                   build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex)
 
             id = RelativeId(doc_id)
             name = build_name
+            var format = "webhelp_Guidewire"
+            if (build_type == "dita-dev") {
+                format = "html5"
+            }
 
 
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("FORMAT", "webhelp_Guidewire", allowEmpty = false)
+                text("FORMAT", format, allowEmpty = false)
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
                 text("INPUT_PATH", input_path, allowEmpty = false)
@@ -269,12 +273,13 @@ object Helpers {
                 val buildName = "Build $title $platform $version"
 
                 val build: JSONObject = doc.getJSONObject("build")
+                val buildType =  build.getString("buildType")
                 val filter = build.getString("filter")
                 val root = build.getString("root")
                 val vcsRootId = build.getString("src")
 
                 if (env == "dev" || env == "int") {
-                    builds.add(BuildAndUploadToS3AbstractDevAndInt(buildId, buildName, filter, root, env,
+                    builds.add(BuildAndUploadToS3AbstractDevAndInt(buildId, buildName, buildType, filter, root, env,
                             publishPath, vcsRootId))
                 }
 
