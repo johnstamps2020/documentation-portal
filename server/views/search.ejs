@@ -5,26 +5,11 @@
     <% include parts/header %>
     <div>
       <div class="row searchResultsPage">
-        <div class="col filterSearchResults">
+        <div class="col-sm-2 filterSearchResults">
           <div class="container allFiltersWrapper">
             <% filters.forEach(filter => { %>
                 <h2>Filter by <%= filter.name %></h2>
                 <% filter.values.forEach(checkboxValue => { %>
-                <!-- <div class="checkboxRowContainer">
-                  <label class="checkboxRow">
-                    <input
-                    type="checkbox"
-                    class="filterCheckbox"
-                    name="<%= filter.name %>"
-                    value="<%= checkboxValue.label %>"
-                    <% if (checkboxValue.checked) { %>
-                    checked="true"
-                    <% } %>
-                    />
-                    <span class="checkboxLabelText"><%= checkboxValue.label %></span>
-                    <span class="docCount"><%= checkboxValue.doc_count %></span>
-                  </label>
-                </div> -->
                 <label class="checkboxRowContainer">
                   <span class="checkboxLabelText"><%= checkboxValue.label %></span>
                   <span class="docCount"><%= checkboxValue.doc_count %></span>
@@ -38,7 +23,7 @@
             <% }) %> <% }) %>
           </div>
         </div>
-        <div class="col-sm-9 docPanelContainer">
+        <div class="col-sm-8 docPanelContainer">
           <div class="resultWrapper">
           <h1>Search results for "<%= query %>"</h1>
           <div class="resultsSubheading">
@@ -102,7 +87,7 @@
           <% } %>
         </div>
       </div>
-      <div class="col grayBackground">&nbsp;</div>
+      <div class="col-sm-2 grayBackground">&nbsp;</div>
       </div>
     </div>
     <script>
