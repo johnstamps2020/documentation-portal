@@ -141,30 +141,6 @@
           box.addEventListener('change', updateFilters, false);
         });
       }
-
-      const searchButton = document.getElementById('searchButton');
-      if (searchButton) {
-        searchButton.addEventListener('click', function(event) {
-          setUrlParam(
-            'q',
-            encodeURI(document.getElementById('searchField').value)
-          );
-        });
-      } else {
-        console.log('~Cannot find search button');
-      }
-
-      const searchInput = document.getElementById('searchField');
-      if (searchInput) {
-        searchInput.addEventListener('keyup', function(event) {
-          if (event.keyCode === 13) {
-            event.preventDefault();
-            document.getElementById('searchButton').click();
-          }
-        });
-      } else {
-        console.log('~Cannot find search input');
-      }
     </script>
   </body>
   <% include parts/footer %>
