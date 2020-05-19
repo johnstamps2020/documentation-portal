@@ -1,0 +1,236 @@
+<!DOCTYPE html
+        SYSTEM "about:legacy-compat">
+<html lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="copyright" content="(C) Copyright 2020">
+    <meta name="DC.rights.owner" content="(C) Copyright 2020">
+    <meta name="DC.type" content="concept">
+    <meta name="description"
+          content="Connect a client application that has both a JavaScript client side and a trusted server side.">
+    <meta name="DC.relation" scheme="URI"
+          content="../../guidewire-identity-federation-hub/topics/c_choose-app-flow.html">
+    <meta name="DC.format" content="HTML5">
+    <meta name="DC.identifier" content="xd_cf0857481548101b--192595-1714b3f1b9a--7f5d">
+    <meta name="DC.language" content="en-US">
+    <link rel="stylesheet" type="text/css" href="../../commonltr.css">
+    <title>Using the Authorization Code flow</title></head>
+<body>
+<main role="main">
+    <article role="article" aria-labelledby="ariaid-title1">
+        <article class="nested0" aria-labelledby="ariaid-title1" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f5d">
+            <h1 class="title topictitle1" id="ariaid-title1">Using the Authorization Code flow</h1>
+
+            <div class="body conbody"><p class="shortdesc">Connect a client application that has both a JavaScript
+                client side and a trusted server
+                side.</p>
+                <p class="p">The server must be trusted so that it can store secret information. In particular, the
+                    server
+                    stores the client secret that is allocated when the client is first registered. This allows the
+                    Guidewire Hub to return an authorization code that can be used only in combination with the
+                    client secret. When the client needs to use the authorization code, it uses its server side to
+                    call Guidewire Hub, passing the code and client secret, and getting back an access token.</p>
+                <div class="p">The Authorization Code flow begins when the user clicks on a control that requires
+                    authentication or authorization. The client then calls Guidewire Hub via an HTTP GET with the
+                    following parameters:
+                    <dl class="dl parml">
+
+                        <dt class="dt pt dlterm">client_id</dt>
+                        <dd class="dd pd">The client ID that is provided during application registration.</dd>
+
+
+                        <dt class="dt pt dlterm">redirect_uri</dt>
+                        <dd class="dd pd">The URI to which Guidewire Hub returns after checking whether to allow the
+                            request. The
+                            URI must match one of the redirect URIs specified during client registration. Using a
+                            registered URI ensures that the request result is sent to an authorized recipient.
+                        </dd>
+
+
+                        <dt class="dt pt dlterm">response_type</dt>
+                        <dd class="dd pd">Set this parameter to <code class="ph codeph">code</code>, indicating that
+                            Guidewire Hub grants an
+                            authorization code that can be used in combination with the client secret to get an access
+                            token.
+                        </dd>
+
+                    </dl>
+                    <dl class="dl parml">
+
+                        <dt class="dt pt dlterm">scope</dt>
+                        <dd class="dd pd">One or more scopes describing the extent of the access that the client
+                            needs.
+                        </dd>
+
+
+                        <dt class="dt pt dlterm">state</dt>
+                        <dd class="dd pd">A string that is returned to the client via a parameter added to the
+                            <code class="ph codeph">redirect_uri</code>. This string is usually used to prevent CSRF
+                            attacks. For
+                            example, the client puts a random value in the <code class="ph codeph">state</code>
+                            parameter, and when it
+                            receives a response at the <code class="ph codeph">redirect_uri</code> it checks to see if
+                            the state
+                            parameter contains that same value. This prevents an attacker from pretending to be the
+                            Guidewire Hub, since only the genuine Guidewire Hub would have the <code class="ph codeph">state</code>
+                            value provided in the initial request.
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="p">Control of the flow then passes to Guidewire Hub. The browser sends Guidewire Hub any
+                    existing cookies for the user, allowing it to access the user's existing session information. If
+                    the user is already authorized, Guidewire Hub allocates a new code and redirects back to the
+                    client right away. In other cases, Guidewire Hub displays a login window or, if the user is
+                    already logged in, another window providing a description of the scopes being requested by the
+                    client. Guidewire Hub then determines whether the client is authorized for the requested
+                    access on behalf of the user. If so, Guidewire Hub redirects back to the client via the
+                    <code class="ph codeph">redirect_uri</code>, passing the following parameters:
+                    <dl class="dl parml">
+
+                        <dt class="dt pt dlterm">code</dt>
+                        <dd class="dd pd">The newly created authorization code, which can be exchanged for a token
+                            providing the
+                            requested access to the resource.
+                        </dd>
+
+
+                        <dt class="dt pt dlterm">state</dt>
+                        <dd class="dd pd">The same state string that was provided in the original GET request.</dd>
+
+                    </dl>
+                </div>
+                <p class="p">At this point in the flow, the client side has an authorization code representing the
+                    requested
+                    access to the resource server. It passes this authorization code to its trusted server side, and
+                    its server side makes another call to Guidewire Hub, passing the authorization code plus the
+                    client secret that was set up at registration time. Guidewire Hub responds with an access
+                    token, and the trusted server can now make calls to the resource server, passing the access token
+                    in the authorization header. The server can also share the token with the client so that the
+                    client can call the resource server directly, though in that case the client needs to be careful
+                    not to expose the token.</p>
+                <p class="p seealso">See also</p>
+                <ul class="ul" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f5d__ul_cyx_wz4_flb">
+                    <li class="li"><a class="xref"
+                                      href="https://www.oauth.com/oauth2-servers/access-tokens/authorization-code-request/"
+                                      target="_blank">Authorization Code Request</a></li>
+                </ul>
+            </div>
+            <nav role="navigation" class="related-links">
+                <div class="familylinks">
+                    <div class="parentlink"><strong>Parent topic:</strong> <a class="link"
+                                                                              href="../../guidewire-identity-federation-hub/topics/c_choose-app-flow.html">Choosing
+                        an OAuth 2.0 application flow</a></div>
+                </div>
+            </nav>
+            <article class="topic concept nested1" aria-labelledby="ariaid-title2" lang="en-US"
+                     id="xd_cf0857481548101b--192595-1714b3f1b9a--7f52">
+                <h2 class="title topictitle2" id="ariaid-title2">Make system API calls using a token via the
+                    Authorization Code flow</h2>
+
+                <div class="body conbody"><p class="shortdesc">Each time an application authenticates a new user, it
+                    must authenticate with the
+                    Guidewire Hub to get a code and a token. The application then uses this token to make REST calls
+                    against the ClaimCenter System APIs.</p>
+                    <p class="p">First make the call to obtain the code. Once you have the code, use the code in a
+                        second call
+                        to obtain the token.</p>
+                    <div class="p">To get the token, the application issues the following GET call to Guidewire Hub:
+                        <pre class="pre codeblock"><code><var class="keyword varname">authServerUri</var>/v1/authorize?client_id=<var
+                                class="keyword varname">clientId</var>&amp;redirect_uri=<var class="keyword varname">redirectUri</var>&amp;response_type=code&amp;
+    scope=<var class="keyword varname">scope</var>&amp;state=<var class="keyword varname">state</var>&amp;idp=<var
+                                    class="keyword varname">idpId</var></code></pre>
+                        <dl class="dl parml">
+
+                            <dt class="dt pt dlterm">authServerUri</dt>
+                            <dd class="dd pd">The URI for Guidewire Hub.</dd>
+
+
+                            <dt class="dt pt dlterm">clientId</dt>
+                            <dd class="dd pd">A unique identifier for the application that the client uses in any
+                                requests to the
+                                Guidewire Hub.
+                            </dd>
+
+
+                            <dt class="dt pt dlterm">redirectUri</dt>
+                            <dd class="dd pd">The URI to which Guidewire Hub returns after checking whether to allow the
+                                request.
+                            </dd>
+
+
+                            <dt class="dt pt dlterm">scope</dt>
+                            <dd class="dd pd">The data access level specified when registering the application, as well
+                                as
+                                <code class="ph codeph">openid</code>, <code class="ph codeph">groups</code>, and <code
+                                        class="ph codeph">tenant_id</code>. Provide
+                                these as a space-separated list. For example,
+                                <code class="ph codeph">scope=cc_policyNumbers%20openid%20groups%20tenant_id</code></dd>
+
+
+                            <dt class="dt pt dlterm">state</dt>
+                            <dd class="dd pd">The string returned by Guidewire Hub along with the token.</dd>
+
+
+                            <dt class="dt pt dlterm">idpId</dt>
+                            <dd class="dd pd">The ID of your IdP that Guidewire provided you after onboarding your
+                                IdP.
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <div class="p">When the call is made:
+                        <ol class="ol" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f52__ol_zyl_wvv_flb">
+                            <li class="li">The user is redirected to Guidewire Hub to enter their credentials.</li>
+                            <li class="li">The credentials are redirected to the IdP and validated.</li>
+                            <li class="li">If the credentials are validated, Guidewire Hub delivers a code back to the
+                                application.
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="p">The application can now use the code to obtain a token. To get the token, the
+                        application
+                        issues the following call to Guidewire Hub as a POST:
+                        <pre class="pre codeblock"><code><var class="keyword varname">authServerUri</var>/v1/token?client_id=<var
+                                class="keyword varname">clientId</var>&amp;redirect_uri=<var class="keyword varname">redirectUri</var>&amp;response_type=token&amp;
+    grant_type=authorization_code&amp;client_secret=<var class="keyword varname">clientSecret</var>&amp;code=<var
+                                    class="keyword varname">code</var></code></pre>
+                        <dl class="dl parml">
+
+                            <dt class="dt pt dlterm">authServerUri</dt>
+                            <dd class="dd pd">The URI for Guidewire Hub.</dd>
+
+
+                            <dt class="dt pt dlterm">clientId</dt>
+                            <dd class="dd pd">A unique identifier for the application that the client uses in any
+                                requests to the
+                                Guidewire Hub.
+                            </dd>
+
+
+                            <dt class="dt pt dlterm">redirectUri</dt>
+                            <dd class="dd pd">The URI to which Guidewire Hub returns after checking whether to allow the
+                                request.
+                            </dd>
+
+
+                            <dt class="dt pt dlterm">clientSecret</dt>
+                            <dd class="dd pd">The secret string shared between the client and Guidewire Hub.</dd>
+
+
+                            <dt class="dt pt dlterm">code</dt>
+                            <dd class="dd pd">The code that was returned by the initial call.</dd>
+
+                        </dl>
+                    </div>
+                    <p class="p">The application uses this token to make System API calls to ClaimCenter using <code
+                            class="ph codeph">Header
+                        Authorization=Bearer <var class="keyword varname">token</var></code>.</p>
+                </div>
+            </article>
+        </article>
+    </article>
+</main>
+</body>
+</html>

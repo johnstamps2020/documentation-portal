@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "docportalindex"
-version = "0.1.0"
+name = "search_indexer"
+version = "1.0.0"
 description = "An application to prepare a search index for the doc portal"
 authors = ["Guidewire"]
 license = "LGPL-3.0-or-later"

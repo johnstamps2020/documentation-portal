@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.type" content="task"><meta name="description" content="Ensure that your IdP supports the needs of your application."><meta name="DC.relation" scheme="URI" content="../../guidewire-identity-federation-hub/topics/c_browser-app.html"><meta name="DC.format" content="HTML5"><meta name="DC.identifier" content="xd_cf0857481548101b--192595-1714b3f1b9a--7f54"><meta name="DC.language" content="en-US"><link rel="stylesheet" type="text/css" href="../../commonltr.css"><title>Configure your IdP for a browser application</title></head><body id="xd_cf0857481548101b--192595-1714b3f1b9a--7f54"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Configure your IdP for a browser application</h1>
+  
+  <div class="body taskbody"><p class="shortdesc">Ensure that your IdP supports the needs of your
+    application.</p>
+    <section class="section context">Your IdP must be able to provide the security information and data that your
+      application requires.</section>
+    <section><ol class="ol steps"><li class="li step stepexpand">
+        <span class="ph cmd">Ensure that your IdP is able to assign roles for each request. See <a class="xref" href="t_define-roles-browser-app.html#xd_cf0857481548101b--192595-1714b3f1b9a--7f5b" title="The roles returned in the SAML response identify the permissions for the request.">Specify roles for browser-based applications</a>.</span>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Track the data that is required by Guidewire Hub. This includes the
+          following:</span>
+        <div class="itemgroup info">
+          <ul class="ul" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__ul_y3n_1gv_hlb">
+            <li class="li"><code class="ph codeph">firstName</code></li>
+            <li class="li"><code class="ph codeph">lastName</code></li>
+            <li class="li"><code class="ph codeph">email</code></li>
+            <li class="li"><code class="ph codeph">groups</code></li>
+          </ul>
+        </div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Track the data that is required for the data access levels that
+          your application supports. See also <a class="xref" href="c_data-access-level.html#xd_cf0857481548101b--192595-1714b3f1b9a--7f55">Choose a data access level</a>.</span>
+        <div class="itemgroup info">
+          <table class="table frame-all" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb"><caption></caption><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead class="thead">
+                <tr class="row">
+                  <th class="entry colsep-1 rowsep-1" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__1">Access level</th>
+                  <th class="entry colsep-1 rowsep-1" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__2">Information to track</th>
+                </tr>
+              </thead><tbody class="tbody">
+                <tr class="row">
+                  <td class="entry colsep-1 rowsep-1" headers="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__1 "><code class="ph codeph">cc_gwabuid</code></td>
+                  <td class="entry colsep-1 rowsep-1" headers="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__2 ">Your IdP must track the <code class="ph codeph">abuid</code> of the contact that
+                    represents the specialist that is associated with this user. For example, an
+                    employee of Classic Auto Shop must track <code class="ph codeph">gwabuid =
+                        "<var class="keyword varname">abuid_for_classic_auto_shop</var></code>.</td>
+                </tr>
+                <tr class="row">
+                  <td class="entry colsep-1 rowsep-1" headers="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__1 "><code class="ph codeph">cc_policyNumbers</code></td>
+                  <td class="entry colsep-1 rowsep-1" headers="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__2 ">Your IdP must track the policy numbers associated with each user. For
+                    example, track that the insured Ray Newton, rnewton@email.com, has access to
+                    policy number = ["54-123456"].</td>
+                </tr>
+                <tr class="row">
+                  <td class="entry colsep-1 rowsep-1" headers="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__1 "><code class="ph codeph">cc_username</code></td>
+                  <td class="entry colsep-1 rowsep-1" headers="xd_cf0857481548101b--192595-1714b3f1b9a--7f54__table_ihd_bfv_hlb__entry__2 ">Your IdP must track the username of each user as stored in ClaimCenter. For
+                    example, for adjuster Andy Applegate, track <code class="ph codeph">username =
+                      "aapplegate"</code>.</td>
+                </tr>
+              </tbody></table>
+          <div class="note note note_note"><span class="note__title">Note:</span> Users who do not have one of the above tracked will not have any resource access in
+            ClaimCenter. These users will be able to access only generic endpoints, such as ones to
+            acquire metadata.</div>
+        </div>
+      </li></ol></section>   
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../../guidewire-identity-federation-hub/topics/c_browser-app.html">Designing a browser-based application</a></div></div></nav></article></main></body></html>
