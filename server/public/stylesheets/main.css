@@ -38,6 +38,8 @@ body {
   --GW-COLOR-BRAND-2: #3c4c5e;
   --GW-COLOR-BRAND-2-HOVER: #46596e;
   --GW-COLOR-BRAND-2-ACTIVE: #50657d;
+  --GW-COLOR-FOCUS-1: #1E9ACF;
+  --GW-COLOR-BORDER: #ACB9CA;
   /* TEXT COLOR */
   --GW-COLOR-TEXT-1: #28333f;
   --GW-COLOR-TEXT-2: #657580;
@@ -197,10 +199,6 @@ div.searchBoxPusher {
   padding-right: 14px;
   width: var(--search-field-width);
   margin: auto;
-}
-
-.searchFieldWrapper:focus-within {
-  outline-color: red;
 }
 
 .searchField {
@@ -368,7 +366,7 @@ h1.display-4 {
   position: relative;
   font-size: 14px;
   letter-spacing: 0;
-  line-height: 14px;
+  line-height: 18px;
   width: 100%;
   color: var(--GW-COLOR-TEXT-1);
   padding-left: 18px;
@@ -378,6 +376,10 @@ h1.display-4 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.checkboxRowContainer:focus-within {
+  outline: -webkit-focus-ring-color auto 5px;
 }
 
 .checkboxRowContainer input {
@@ -390,16 +392,12 @@ h1.display-4 {
 
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 0;
   height: 14px;
   width: 14px;
-  background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.checkboxRowContainer:hover input ~ .checkmark {
-  background-color: #ccc;
+  border: 1px solid var(--GW-COLOR-BORDER);
+  border-radius: 4px;
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -421,20 +419,20 @@ h1.display-4 {
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 5px;
-  top: 1px;
+  left: -2px;
+  top: -4px;
   width: 5px;
   height: 10px;
-  border: solid white;
-  border-width: 0 1px 1px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  content: url("/images/done-white-18dp.svg");
 }
 
 .filterCheckbox {
   height: 16px;
   width: 16px;
+  margin-right: 8px;
+}
+
+.checkboxLabelText {
   margin-right: 8px;
 }
 
