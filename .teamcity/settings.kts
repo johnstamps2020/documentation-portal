@@ -755,7 +755,7 @@ object LoadSearchIndex : BuildType({
                     export CONFIG_FILE="${'$'}{CONFIG_FILE_STAGING}"
                 fi
 
-                cd search_indexer
+                cd apps/search_indexer
                 make run-doc-crawler
             """.trimIndent()
             dockerImage = "python-runner"
@@ -809,7 +809,7 @@ object TestContent : BuildType({
         script {
             name = "Run tests for loading index"
             scriptContent = """
-                cd search_indexer
+                cd apps/search_indexer
                 make test-doc-crawler
             """.trimIndent()
             dockerImage = "python-runner"
@@ -865,7 +865,7 @@ object TestConfig : BuildType({
         script {
             name = "Run tests for server config"
             scriptContent = """
-                cd search_indexer
+                cd apps/search_indexer
                 make test-config
             """.trimIndent()
             dockerImage = "python-runner"
@@ -1201,7 +1201,7 @@ object CrawlDocumentAndUpdateIndex : Template({
             id = "RUNNER_2635"
             workingDir = "%env.TOOLS_ROOT%"
             scriptContent = """
-                cd search_indexer
+                cd apps/search_indexer
                 make run-doc-crawler
             """.trimIndent()
             dockerImage = "python-runner"
