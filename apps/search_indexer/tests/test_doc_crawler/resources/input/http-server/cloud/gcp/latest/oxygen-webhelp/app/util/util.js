@@ -1,4 +1,4 @@
-define(["test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/util/parseuri"], function(parseUri){
+define(["test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/util/parseuri"], function(parseUri){
     return {
         /**
          * @description Log messages and objects value into browser console

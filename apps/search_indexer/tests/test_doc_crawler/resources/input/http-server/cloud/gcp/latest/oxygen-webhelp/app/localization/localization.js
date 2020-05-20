@@ -4,7 +4,7 @@
     Copyright (c) 1998-2019 Syncro Soft SRL, Romania.  All rights reserved.
 
     */
-define(["test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/localization/strings"], function (strings) {
+define(["test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/localization/strings"], function (strings) {
 
     return {
         /**

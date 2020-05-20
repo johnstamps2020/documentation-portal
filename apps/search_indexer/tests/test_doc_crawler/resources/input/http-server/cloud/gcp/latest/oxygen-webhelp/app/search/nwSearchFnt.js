@@ -1,4 +1,4 @@
-define(["test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/index", "options", "stemmer", "util"], function(index, options, stemmer, util) {
+define(["test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/index", "options", "stemmer", "util"], function(index, options, stemmer, util) {
     /*
 
      David Cramer

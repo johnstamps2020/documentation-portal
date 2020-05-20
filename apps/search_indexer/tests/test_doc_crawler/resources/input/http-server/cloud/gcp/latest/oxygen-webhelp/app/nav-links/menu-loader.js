@@ -1,4 +1,4 @@
-define(["options", "jquery", "test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/nav-links/nav"], function (options, $, navConfig) {
+define(["options", "jquery", "test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/nav-links/nav"], function (options, $, navConfig) {
 
     /**
      * The path of the output directory, relative to the current HTML file.

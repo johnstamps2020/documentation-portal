@@ -1,4 +1,4 @@
-define(["keywords", "test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/searchHistoryItems", "options", "jquery", "jquery.ui"], function(keywordsInfo, searchHistory, options, $) {
+define(["keywords", "test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/searchHistoryItems", "options", "jquery", "jquery.ui"], function(keywordsInfo, searchHistory, options, $) {
 
 // Install search autocomplete
 

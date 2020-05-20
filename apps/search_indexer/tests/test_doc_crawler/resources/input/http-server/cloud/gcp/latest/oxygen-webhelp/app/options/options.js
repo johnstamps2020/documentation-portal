@@ -2,7 +2,7 @@
  * The 'properties.js' file is generated in the output directory next to this file
  *  and contains the parameters configured in the current transformation.
  */
-define(['test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/options/properties'], function (properties) {
+define(['test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/options/properties'], function (properties) {
     return {
         get : function (property) {
             return properties[property];

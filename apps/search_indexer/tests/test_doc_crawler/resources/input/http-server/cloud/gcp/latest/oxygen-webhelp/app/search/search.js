@@ -1,4 +1,4 @@
-define(['util', 'options', 'test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/nwSearchFnt', 'tests/test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/searchHistoryItems', 'localization', 'jquery', 'jquery.highlight', 'jquery.bootpag'], function(util, options, nwSearchFnt, searchHistory, i18n, $) {
+define(['util', 'options', 'test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/nwSearchFnt', 'tests/test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/search/searchHistoryItems', 'localization', 'jquery', 'jquery.highlight', 'jquery.bootpag'], function(util, options, nwSearchFnt, searchHistory, i18n, $) {
 
     /*
     	Oxygen WebHelp Plugin

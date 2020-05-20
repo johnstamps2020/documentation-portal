@@ -5,7 +5,7 @@ define(["require", "util"], function (require, util) {
         var appname = util.getParameter('appname');
 
         if (contextId != undefined && contextId != "") {
-            require(["test_elastic_search/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/context-help/context-help-map"], function (helpContext) {
+            require(["test_doc_crawler/resources/input/http-server/cloud/gcp/latest/oxygen-webhelp/app/context-help/context-help-map"], function (helpContext) {
                 if (helpContext != undefined) {
                     for (var i = 0; i < helpContext.length; i++) {
                         var ctxt = helpContext[i];
