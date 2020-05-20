@@ -1,25 +1,27 @@
-import datetime
 import os
+
+import datetime
 import shutil
+from lxml import etree
 from pathlib import Path
 from string import Template
-
-from lxml import etree
 
 current_year = datetime.datetime.now().year
 
 root_dir = Path(os.environ['OUTPUT_DIR'])
-out_dir = Path(__file__).parent / "out"
+current_dir = Path(__file__).parent
+out_dir = current_dir / 'out'
+assets_dir = current_year / 'assets'
 
 html_parser = etree.HTMLParser()
 
-with open("assets/header.html") as header_file:
+with open(assets_dir / 'header.html') as header_file:
     header_element = etree.fromstring(header_file.read())
 
-with open("assets/head.txt") as head_file:
+with open(assets_dir / 'head.txt') as head_file:
     head_tags = head_file.readlines()
 
-with open("assets/footer.html") as footer_file:
+with open(assets_dir / 'footer.html') as footer_file:
     footer_element_template = Template(footer_file.read())
     footer_element = etree.fromstring(footer_element_template.substitute(current_year=current_year))
 
