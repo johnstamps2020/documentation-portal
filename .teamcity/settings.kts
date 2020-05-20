@@ -856,7 +856,7 @@ object TestContent : BuildType({
         }
 
         script {
-            name = "Run tests for loading index"
+            name = "Run tests for crawling documents and uploading index"
             scriptContent = """
                 cd apps/search_indexer
                 make test-doc-crawler
