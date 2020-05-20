@@ -117,6 +117,10 @@
           "description": "The url of the resource we're linking to. Can be relative to the root, or an absolute URL that starts with https://",
           "type": "string"
         },
+        "visible": {
+          "description": "If set to false, do not display link on landing page. Defaults to true if not set.",
+          "type": "boolean"
+        },
         "metadata": {
           "$ref": "#/definitions/metadata"
         },
