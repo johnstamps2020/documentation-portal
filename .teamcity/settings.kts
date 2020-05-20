@@ -1213,7 +1213,7 @@ object BuildAndUploadToS3 : Template({
 })
 
 object BuildAndUploadToS3DitaDev : Template({
-    name = "Build DITA and upload to S3 template"
+    name = "Build DITA DEV and upload to S3 template"
 
     maxRunningBuilds = 1
 
