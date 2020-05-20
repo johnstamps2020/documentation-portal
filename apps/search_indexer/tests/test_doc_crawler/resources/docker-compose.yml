@@ -24,6 +24,6 @@ services:
     network_mode: ${TEST_ENVIRONMENT_DOCKER_NETWORK}
     build:
       context: input/http-server
-      dockerfile: input/http-server/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "80:80"
