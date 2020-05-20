@@ -11,7 +11,7 @@ current_year = datetime.datetime.now().year
 root_dir = Path(os.environ['OUTPUT_DIR'])
 current_dir = Path(__file__).parent
 out_dir = current_dir / 'out'
-assets_dir = current_year / 'assets'
+assets_dir = current_dir / 'assets'
 
 html_parser = etree.HTMLParser()
 
