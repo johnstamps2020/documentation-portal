@@ -6,7 +6,7 @@ authors = ["Guidewire"]
 license = "LGPL-3.0-or-later"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 jinja2 = "^2.10"
 scrapy = "^2.1.0"
 elasticsearch = "^7.1"
