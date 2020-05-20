@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.teamcity/DocumentationTools_Documentationportal_dsl.iml" filepath="$PROJECT_DIR$/.teamcity/DocumentationTools_Documentationportal_dsl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dita_processor/dita_processor.iml" filepath="$PROJECT_DIR$/dita_processor/dita_processor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/dita_processor/dita_processor.iml" filepath="$PROJECT_DIR$/apps/dita_processor/dita_processor.iml" />
       <module fileurl="file://$PROJECT_DIR$/documentation-portal.iml" filepath="$PROJECT_DIR$/documentation-portal.iml" />
       <module fileurl="file://$PROJECT_DIR$/s3/s3.iml" filepath="$PROJECT_DIR$/s3/s3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/search_indexer/search_indexer.iml" filepath="$PROJECT_DIR$/search_indexer/search_indexer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/search_indexer/search_indexer.iml" filepath="$PROJECT_DIR$/apps/search_indexer/search_indexer.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
     </modules>
   </component>
