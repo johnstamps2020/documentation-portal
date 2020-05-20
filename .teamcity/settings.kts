@@ -782,7 +782,7 @@ object LoadSearchIndex : BuildType({
             name = "Build a Python Docker image"
             commandType = build {
                 source = file {
-                    path = "apps/search_indexer/Dockerfile"
+                    path = "apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -848,7 +848,7 @@ object TestContent : BuildType({
             name = "Build a Docker image for running the Python search_indexer"
             commandType = build {
                 source = file {
-                    path = "apps/search_indexer/Dockerfile"
+                    path = "apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -904,7 +904,7 @@ object TestConfig : BuildType({
             name = "Build a Docker image for running the Python apps"
             commandType = build {
                 source = file {
-                    path = "apps/search_indexer/Dockerfile"
+                    path = "apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -1250,7 +1250,7 @@ object BuildAndUploadToS3DitaDev : Template({
             id = "RUNNER_2634"
             commandType = build {
                 source = file {
-                    path = "%env.TOOLS_ROOT%/apps/search_indexer/Dockerfile"
+                    path = "%env.TOOLS_ROOT%/apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -1324,7 +1324,7 @@ object CrawlDocumentAndUpdateIndex : Template({
             id = "RUNNER_2634"
             commandType = build {
                 source = file {
-                    path = "%env.TOOLS_ROOT%/apps/search_indexer/Dockerfile"
+                    path = "%env.TOOLS_ROOT%/apps/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
