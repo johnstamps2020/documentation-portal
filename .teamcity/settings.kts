@@ -634,12 +634,12 @@ object DeploySearchService : BuildType({
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=search_indexer/kube/deployment-prod.yml
+                    export KUBE_FILE=apps/search_indexer/kube/deployment-prod.yml
                 else
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=search_indexer/kube/deployment.yml
+                    export KUBE_FILE=apps/search_indexer/kube/deployment.yml
                 fi
                 sh ci/deployKubernetes.sh
             """.trimIndent()
@@ -733,7 +733,7 @@ object LoadSearchIndex : BuildType({
             name = "Build a Python Docker image"
             commandType = build {
                 source = file {
-                    path = "search_indexer/Dockerfile"
+                    path = "apps/search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -764,7 +764,7 @@ object LoadSearchIndex : BuildType({
 
         script {
             name = "Publish to S3"
-            scriptContent = "aws s3 sync ./search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%"
+            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%"
         }
     }
 
@@ -793,13 +793,13 @@ object TestContent : BuildType({
     steps {
         dockerCompose {
             name = "Compose services"
-            file = "search_indexer/tests/test_doc_crawler/resources/docker-compose.yml"
+            file = "apps/search_indexer/tests/test_doc_crawler/resources/docker-compose.yml"
         }
         dockerCommand {
             name = "Build a Docker image for running the Python search_indexer"
             commandType = build {
                 source = file {
-                    path = "search_indexer/Dockerfile"
+                    path = "apps/search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -821,7 +821,7 @@ object TestContent : BuildType({
         vcs {
             triggerRules = """
                 +:.teamcity/settings.kts
-                +:search_indexer/**
+                +:apps/search_indexer/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -855,7 +855,7 @@ object TestConfig : BuildType({
             name = "Build a Docker image for running the Python apps"
             commandType = build {
                 source = file {
-                    path = "search_indexer/Dockerfile"
+                    path = "apps/search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
@@ -1189,7 +1189,7 @@ object CrawlDocumentAndUpdateIndex : Template({
             id = "RUNNER_2634"
             commandType = build {
                 source = file {
-                    path = "%env.TOOLS_ROOT%/search_indexer/Dockerfile"
+                    path = "%env.TOOLS_ROOT%/apps/search_indexer/Dockerfile"
                 }
                 namesAndTags = "python-runner"
                 commandArgs = "--pull"
