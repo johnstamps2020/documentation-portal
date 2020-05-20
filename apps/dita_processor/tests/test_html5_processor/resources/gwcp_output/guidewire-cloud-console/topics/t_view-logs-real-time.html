@@ -1,0 +1,24 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.type" content="task"><meta name="DC.relation" scheme="URI" content="../../guidewire-cloud-console/topics/t_access-logs.html"><meta name="DC.format" content="HTML5"><meta name="DC.identifier" content="t_view-logs-real-time"><link rel="stylesheet" type="text/css" href="../../commonltr.css"><title>View logs in real time</title></head><body id="t_view-logs-real-time"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+    <h1 class="title topictitle1" id="ariaid-title1">View logs in real time</h1>
+    <div class="body taskbody">
+        <section class="section context">
+            <p class="p">When viewing logs in real time, you cannot use the Kubernetes fields for querying.
+                Use the following fields:</p>
+            <ul class="ul" id="t_view-logs-real-time__ul_xc2_qrb_llb">
+                <li class="li"><code class="ph codeph">_sourceCategory</code> – Displays logs for the specified
+                    deployment.</li>
+                <li class="li"><code class="ph codeph">_sourceName</code> – Displays logs for the specified pod and
+                    containter.</li>
+            </ul>
+            <p class="p">For more details about this feature, refer to Sumo Logic documentation: <a class="xref" href="https://help.sumologic.com/05Search/Live-Tail" target="_blank">Live Tail</a>.</p>
+        </section>
+        <section><ol class="ol steps"><li class="li step">
+                <span class="ph cmd">In Sumo Logic, click <span class="ph uicontrol">New</span> &gt; <span class="ph uicontrol">Live
+                        Tail</span>.</span>
+            </li><li class="li step">
+                <span class="ph cmd">Enter the query.</span>
+            </li></ol></section>
+    </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="t_access-logs.html" title="You can access logs for deployed applications.">Accessing application logs</a></div></div></nav></article></main></body></html>

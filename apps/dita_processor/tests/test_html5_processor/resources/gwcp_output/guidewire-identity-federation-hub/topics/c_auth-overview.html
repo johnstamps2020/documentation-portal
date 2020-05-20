@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.type" content="concept"><meta name="DC.format" content="HTML5"><meta name="DC.identifier" content="xd_cf0857481548101b--192595-1714b3f1b9a--7f75"><meta name="DC.language" content="en-US"><link rel="stylesheet" type="text/css" href="../../commonltr.css"><title>Guidewire authentication and authorization</title></head><body><main role="main"><article role="article" aria-labelledby="ariaid-title1"><article class="nested0" aria-labelledby="ariaid-title1" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f75">
+  <h1 class="title topictitle1" id="ariaid-title1">Guidewire authentication and authorization</h1>
+  <div class="body conbody"><p class="p">Guidewire must control access to its applications and data. When a
+      user tries to access a Guidewire resource, the user must be authenticated, and then verified
+      to be authorized to access that resource. <dfn class="term">Authentication and authorization</dfn>
+      (together often called <dfn class="term">auth</dfn>) is a common requirement for cloud applications, and
+      there are many products available that provide these services.</p>
+    <p class="p">The <dfn class="term">Guidewire Identity Federation Hub (Guidewire Hub)</dfn> is an auth server that
+      uses OAuth 2.0 and SAML for identity management services. Guidewire Hub is the trusted
+      auth server for all Guidewire cloud applications, including client applications that you
+      create that access Guidewire cloud resources.</p>
+    <div class="p">Guidewire Hub uses your identify provider (IdP) for user management. When a user logs in to
+      your custom application, the application makes an auth request to Guidewire Hub, which then
+      federates the request to your IdP.<br><img class="image" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f75__image_gg1_k4h_flb" src="../graphics/app_hub_idp.png" width="450" alt="Application request to Guidewire Hub, and then to IdP."><br></div>
+    <p class="p">To enable Guidewire Hub to use your IdP, you must have your IdP registered with the
+      Guidewire Hub. In addition, if you want to use your own client application to access Guidewire
+      resources, you must register your application.</p></div>
+<article class="topic task nested1" aria-labelledby="ariaid-title2" lang="en-US" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f6c">
+  <h2 class="title topictitle2" id="ariaid-title2">Register your identity provider (IdP)</h2>
+  
+  <div class="body taskbody"><p class="shortdesc">Registering your IdP with Guidewire allows your organization to use Guidewire Hub
+    for auth functions.</p>
+    <section class="section context">Registration allows Guidewire Hub to federate auth requests to your IdP. You need
+      to register your IdP only once.</section>
+    <section><ol class="ol steps"><li class="li step">
+        <span class="ph cmd">Ensure that you have an operational SAML-based IdP.</span>
+      </li><li class="li step">
+        <span class="ph cmd">Contact your Guidewire Services representative to register your
+          IdP.</span>
+      </li></ol></section>
+    <section class="section postreq" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f6c__postreq_alt_szs_hlb">Guidewire will provide you with the following
+      information. Store this information for later use.<dl class="dl parml">
+        
+          <dt class="dt pt dlterm">idp_id</dt>
+          <dd class="dd pd">The ID of your IdP. You will use this ID when issuing requests to the Guidewire
+            Hub.</dd>
+        
+        
+          <dt class="dt pt dlterm">tenant_id</dt>
+          <dd class="dd pd">The ID of your organization. You will use this ID when registering Guidewire
+            applications with Guidewire Hub.</dd>
+        
+      </dl></section>   
+  </div>
+</article><article class="topic task nested1" aria-labelledby="ariaid-title3" lang="en-US" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f6b">
+  <h2 class="title topictitle2" id="ariaid-title3">Register your InsuranceSuite applications</h2>
+  
+  <div class="body taskbody"><p class="shortdesc">Registering allows your Guidewire InsuranceSuite
+    applications to use Guidewire Hub for auth
+    functions.</p>
+    <section class="section context">
+      <p class="p">You will likely use multiple environments for your Guidewire application. For example, you
+        might have a staging environment and a production environment. You must register each
+        application for each environment separately.</p>
+    </section>
+    <section><ol class="ol steps"><li class="li step stepexpand">
+        <span class="ph cmd">Contact your Guidewire Services representative to register your
+          application.</span>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Guidewire will provide you with the following information. Store this information for
+          later use.</span>
+        <div class="itemgroup info">
+          <dl class="dl parml">
+            
+              <dt class="dt pt dlterm">authServerUri</dt>
+              <dd class="dd pd">The URI for Guidewire Hub.</dd>
+            
+          </dl>
+        </div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Modify the the <span class="keyword apiname">SignatureKeyProviderPlugin</span> plugin.</span>
+        <div class="itemgroup info">
+          <div class="note note note_note"><span class="note__title">Note:</span> This step is likely to change in a future release.</div>
+        </div>
+        <ol type="a" class="ol substeps" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f6b__substeps_ujx_12t_hlb">
+          <li class="li substep">
+            <span class="ph cmd">In Guidewire Studio, navigate to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Plugins</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">registry</span></span>, and then open the <span class="ph filepath">SignatureKeyProviderPlugin.gwp</span>
+              plugin.</span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="ph uicontrol">Parameters</span> list, for
+              the parameter <span class="keyword parmname">defaultIssuer</span>, set the <span class="ph uicontrol">Value</span> to the value of
+                <code class="ph codeph">authServerUri</code> provided to you by Guidewire.</span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="ph uicontrol">Parameters</span> list, for
+              the parameter <span class="keyword parmname">allowedIssuers</span>, set the <span class="ph uicontrol">Value</span> to the value of
+                <code class="ph codeph">authServerUri</code> provided to you by Guidewire.</span>
+          </li>
+        </ol>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Modify the <span class="keyword apiname">RestAuthenticationVerifierPlugin</span> plugin.</span>
+        <div class="itemgroup info">
+          <div class="note note note_note"><span class="note__title">Note:</span> This step is likely to change in a future release.</div>
+        </div>
+        <ol type="a" class="ol substeps" id="xd_cf0857481548101b--192595-1714b3f1b9a--7f6b__substeps_x11_b2t_hlb">
+          <li class="li substep">
+            <span class="ph cmd">In Guidewire Studio, navigate to <span class="ph menucascade"><span class="ph uicontrol">configuration</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">config</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Plugins</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">registry</span></span>, and then open the
+                <span class="ph filepath">RestAuthenticationVerifierPlugin.gwp</span> plugin.</span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">In the <span class="ph uicontrol">Parameters</span> list, for
+              the parameter <span class="keyword parmname">tenantId</span>, set the <span class="ph uicontrol">Value</span> to the value of
+                <code class="ph codeph">tenant_id</code> provided to you by Guidewire.</span>
+          </li>
+        </ol>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">Change the universal variable in <code class="ph codeph">testbench</code> to use the tenant ID
+          provided to you by Guidewire.</span>
+        <div class="itemgroup info">Fiona says: They don't have testbench in the 3.0.0 release, so they don't have to do
+          that They *will* have to do this in the 4.0.0 release They'll then need to change it back
+          in the Aspen release when we've moved tenant to a config parameter</div>
+      </li></ol></section>   
+  </div>
+</article></article></article></main></body></html>
