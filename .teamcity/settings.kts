@@ -46,6 +46,7 @@ project {
     template(Deploy)
     template(BuildDockerImage)
     template(BuildAndUploadToS3)
+    template(BuildAndUploadToS3DitaDev)
     template(CrawlDocumentAndUpdateIndex)
     template(AddFilesFromXDocsToBitbucket)
 
