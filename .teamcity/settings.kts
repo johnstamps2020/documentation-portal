@@ -108,21 +108,65 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3AbstractDevAndInt(doc_id: String, build_name: String, build_type: String, ditaval_file: String, input_path: String,
+        class BuildAndUploadToS3AbstractDevAndInt(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
                                                   build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
             templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex)
 
             id = RelativeId(doc_id)
             name = build_name
-            var format = "webhelp_Guidewire"
-            if (build_type == "dita-dev") {
-                format = "html5"
-            }
-
 
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("FORMAT", format, allowEmpty = false)
+                text("FORMAT", "webhelp_Guidewire", allowEmpty = false)
+                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
+                text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
+                text("INPUT_PATH", input_path, allowEmpty = false)
+                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
+                text("PUBLISH_PATH", publish_path, allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
+                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_ID", doc_id, allowEmpty = false)
+                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEX_NAME", "gw-docs", allowEmpty = false)
+            }
+
+            vcs {
+                root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        -:root=${vcsrootmasteronly.id}:**
+                        -:root=${DitaOt331.id}:**
+                        -:root=DocumentationTools_DitaOtPlugins:**
+                    """.trimIndent()
+                }
+            }
+
+            dependencies {
+                snapshot(TestContent) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestConfig) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+        })
+
+        class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
+                                                         build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
+            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex)
+
+            id = RelativeId(doc_id)
+            name = build_name
+
+            params {
+                text("SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("FORMAT", "html5", allowEmpty = false)
+                text("OUTPUT_DIR", "out", allowEmpty = false)
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
                 text("INPUT_PATH", input_path, allowEmpty = false)
@@ -273,14 +317,19 @@ object Helpers {
                 val buildName = "Build $title $platform $version"
 
                 val build: JSONObject = doc.getJSONObject("build")
-                val buildType =  build.getString("buildType")
+                val buildType = build.getString("buildType")
                 val filter = build.getString("filter")
                 val root = build.getString("root")
                 val vcsRootId = build.getString("src")
 
                 if (env == "dev" || env == "int") {
-                    builds.add(BuildAndUploadToS3AbstractDevAndInt(buildId, buildName, buildType, filter, root, env,
-                            publishPath, vcsRootId))
+                    if (buildType == "dita-dev") {
+                        builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
+                                publishPath, vcsRootId))
+                    } else {
+                        builds.add(BuildAndUploadToS3AbstractDevAndInt(buildId, buildName, filter, root, env,
+                                publishPath, vcsRootId))
+                    }
                 }
 
                 if (env == "staging") {
@@ -1141,6 +1190,92 @@ object BuildAndUploadToS3 : Template({
             scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
         }
     }
+
+    features {
+        commitStatusPublisher {
+            id = "BUILD_EXT_329"
+            vcsRootExtId = "${DitaOt331.id}"
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%env.ARTIFACTORY_USERNAME%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+
+        }
+        dockerSupport {
+            id = "DockerSupport"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object BuildAndUploadToS3DitaDev : Template({
+    name = "Build DITA and upload to S3 template"
+
+    maxRunningBuilds = 1
+
+    params {
+        text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
+        text("env.OUTPUT_DIR", "%OUTPUT_DIR%", allowEmpty = false)
+        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", description = "Set to dev, int or staging", allowEmpty = false)
+        text("env.INPUT_PATH", "%INPUT_PATH%", allowEmpty = false)
+        text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
+        text("env.FORMAT", "%FORMAT%", allowEmpty = false)
+        text("env.DITAVAL_FILE", "%DITAVAL_FILE%", allowEmpty = false)
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+    }
+
+    vcs {
+        root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
+        root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
+
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run build"
+            id = "RUNNER_2108"
+            scriptContent = """
+                chmod -R 777 ./
+                %env.DITA_OT_331_DIR%/bin/dita --install
+                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes
+            """.trimIndent()
+        }
+
+        dockerCommand {
+            name = "Build a Python Docker image"
+            id = "RUNNER_2634"
+            commandType = build {
+                source = file {
+                    path = "%env.TOOLS_ROOT%/apps/search_indexer/Dockerfile"
+                }
+                namesAndTags = "python-runner"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+        script {
+            name = "Run transformations for HTML5"
+            id = "RUNNER_2635"
+            workingDir = "%env.TOOLS_ROOT%"
+            scriptContent = """
+                cd apps/dita_processor
+                make run-html5-processor
+            """.trimIndent()
+            dockerImage = "python-runner"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Upload to the S3 bucket"
+            id = "RUNNER_2633"
+            scriptContent = "aws s3 sync %env.OUTPUT_DIR% s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
+        }
+
+    }
+
 
     features {
         commitStatusPublisher {
