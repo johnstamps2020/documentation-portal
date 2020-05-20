@@ -1,10 +1,5 @@
 import json
-import os
-import sys
 from pathlib import Path
-
-local_modules_path = os.path.abspath(Path(__file__).parent.parent.parent)
-sys.path.insert(0, local_modules_path)
 
 root_dir = Path(__file__).parent.parent.parent.parent.parent
 views_dir = root_dir / 'server' / 'views'
