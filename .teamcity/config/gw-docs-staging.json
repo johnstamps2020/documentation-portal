@@ -1,13 +1,204 @@
 {
   "$schema": "./config-schema.json",
   "pages": [
-    { "view": "self-managed-latest", "route": "/" },
+    { "view": "home", "route": "/" },
+    { "view": "self-managed-latest", "route": "/self-managed-latest" },
     {
       "view": "self-managed-all-releases",
       "route": "/self-managed-all-releases"
     }
   ],
   "docs": [
+    {
+      "id": "cloudbcfxhglseu",
+      "title": "BillingCenter",
+      "url": "cloud/bc/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "BillingCenter",
+        "version": "2020.05",
+        "category": "Core"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportisaspenforstaging"
+      }
+    },
+    {
+      "id": "cloudccahrgbyin",
+      "title": "ClaimCenter",
+      "url": "cloud/cc/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "ClaimCenter",
+        "version": "2020.05",
+        "category": "Core"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-Cloud-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportisaspenforstaging"
+      }
+    },
+    {
+      "id": "selfmanagedpcuytrolxz",
+      "title": "PolicyCenter",
+      "url": "cloud/pc/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "PolicyCenter",
+        "version": "2020.05",
+        "category": "Core"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportisaspenforstaging"
+      }
+    },
+    {
+      "id": "lobbopcloudstaging",
+      "title": "Businessowners Standards Based Template",
+      "url": "cloud/lob/bop/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "Businessowners Standards Based Template",
+        "version": "2020.05",
+        "category": "Core"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "LOB_STANDARDS_filterSet.ditaval",
+        "root": "lob-bop-(10.x)/_supermap.ditamap",
+        "src": "lobs"
+      }
+    },
+    {
+      "id": "clouddhaithitzz",
+      "title": "DataHub",
+      "url": "cloud/dh/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "DataHub",
+        "version": "2020.05",
+        "category": "Data"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "DataHub-MS-RELEASE.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "exportdhiccloudforstaging"
+      }
+    },
+    {
+      "id": "cloudiclovarpzz",
+      "title": "InfoCenter",
+      "url": "cloud/ic/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "InfoCenter",
+        "version": "2020.05",
+        "category": "Data"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "InfoCenter-MS-RELEASE.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "exportdhiccloudforstaging"
+      }
+    },
+    {
+      "id": "clouddataplatformstaging",
+      "title": "Cloud Data Access",
+      "url": "cloud/cdp/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "Cloud Data Access",
+        "version": "2020.05",
+        "category": "Data"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "root": "cdp-supermap.ditamap",
+        "src": "explore"
+      }
+    },
+    {
+      "id": "explorecloudstaging",
+      "title": "Explore",
+      "url": "cloud/explore/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "Explore",
+        "version": "2020.05",
+        "category": "Data"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
+        "root": "supermapExplore.ditamap",
+        "src": "explore"
+      }
+    },
+    {
+      "id": "dxceqbcloudstaging",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ceqb/latest",
+      "visible": false,
+      "metadata": {
+        "product": "CustomerEngage Quote and Buy",
+        "platform": "Cloud",
+        "version": "2020.05",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxpecloudstaging",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/latest",
+      "visible": false,
+      "metadata": {
+        "product": "ProducerEngage",
+        "platform": "Cloud",
+        "version": "2020.05",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxsrecloudstaging",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/latest",
+      "visible": false,
+      "metadata": {
+        "product": "ServiceRepEngage",
+        "platform": "Cloud",
+        "version": "2020.05",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
     {
       "id": "selfmanagedbcfxhglseu",
       "title": "BillingCenter",
@@ -55,7 +246,7 @@
         "buildType": "dita",
         "filter": "DataHub-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportfadatastuffforintandprod"
+        "src": "exportdhiconpremforstaging"
       }
     },
     {
@@ -72,7 +263,7 @@
         "buildType": "dita",
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportfadatastuffforintandprod"
+        "src": "exportdhiconpremforstaging"
       }
     },
     {
@@ -109,6 +300,159 @@
       }
     },
     {
+      "id": "dxceqbonpremstaging",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ceqb/1110",
+      "metadata": {
+        "product": "CustomerEngage Quote and Buy",
+        "platform": "Self-managed",
+        "version": "11.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxdionpremstaging",
+      "title": "Guidewire for Salesforce Data Integrations",
+      "url": "self-managed/dx/di/310",
+      "metadata": {
+        "product": "Guidewire for Salesforce Data Integrations",
+        "platform": "Self-managed",
+        "version": "3.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-di-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxdiconpremstaging",
+      "title": "Guidewire for Salesforce Data Integrations for Claims",
+      "url": "self-managed/dx/dic/310",
+      "metadata": {
+        "product": "Guidewire for Salesforce Data Integrations for Claims",
+        "platform": "Self-managed",
+        "version": "3.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-di-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxedonpremstaging",
+      "title": "Guidewire for Salesforce Digital Gateway",
+      "url": "self-managed/dx/ed/310",
+      "metadata": {
+        "product": "Guidewire for Salesforce Digital Gateway",
+        "platform": "Self-managed",
+        "version": "3.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ed-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxedconpremstaging",
+      "title": "Guidewire for Salesforce Digital Gateway for Claims",
+      "url": "self-managed/dx/ed-c/310",
+      "metadata": {
+        "product": "Guidewire for Salesforce Digital Gateway for Claims",
+        "platform": "Self-managed",
+        "version": "3.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ed-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxvodonpremstaging",
+      "title": "Guidewire for Salesforce View on Demand",
+      "url": "self-managed/dx/ed/310",
+      "metadata": {
+        "product": "Guidewire for Salesforce View on Demand",
+        "platform": "Self-managed",
+        "version": "3.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-vod-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxvodconpremstaging",
+      "title": "Guidewire for Salesforce View on Demand for Claims",
+      "url": "self-managed/dx/ed/310",
+      "metadata": {
+        "product": "Guidewire for Salesforce View on Demand for Claims",
+        "platform": "Self-managed",
+        "version": "3.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-vod-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxpeonpremstaging",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1110",
+      "metadata": {
+        "product": "ProducerEngage",
+        "platform": "Self-managed",
+        "version": "11.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxsreonpremstaging",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1110",
+      "metadata": {
+        "product": "ServiceRepEngage",
+        "platform": "Self-managed",
+        "version": "11.1.0",
+        "category": "Digital"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
       "id": "selfmanageddxceqbphivypaz",
       "title": "CustomerEngage Quote and Buy",
       "url": "self-managed/dx/ce-qb/1001",
@@ -121,11 +465,11 @@
     },
     {
       "id": "selfmanageddxpemlefekrm",
-      "title": "Producer Engage",
+      "title": "ProducerEngage",
       "url": "self-managed/dx/pe/1001",
       "metadata": {
         "platform": "Self-managed",
-        "product": "Producer Engage",
+        "product": "ProducerEngage",
         "version": "10.0.1",
         "category": "Digital"
       }
@@ -1859,55 +2203,55 @@
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
-      "title": "Producer Engage",
+      "title": "ProducerEngage",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ProducerEngage1000_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "Producer Engage",
+        "product": "ProducerEngage",
         "version": "10.0.0",
         "category": "Digital"
       }
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm",
-      "title": "Producer Engage",
+      "title": "ProducerEngage",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.1.0/ProducerEngage810_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "Producer Engage",
+        "product": "ProducerEngage",
         "version": "8.1.0",
         "category": "Digital"
       }
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst",
-      "title": "Producer Engage",
+      "title": "ProducerEngage",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.0.0/ProducerEngage800_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "Producer Engage",
+        "product": "ProducerEngage",
         "version": "8.0.0",
         "category": "Digital"
       }
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocseucuheur",
-      "title": "Producer Engage",
+      "title": "ProducerEngage",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.1.0/ProducerEngage710_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "Producer Engage",
+        "product": "ProducerEngage",
         "version": "7.1.0",
         "category": "Digital"
       }
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb",
-      "title": "Producer Engage",
+      "title": "ProducerEngage",
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.0.0/ProducerEngage700_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "Producer Engage",
+        "product": "ProducerEngage",
         "version": "7.0.0",
         "category": "Digital"
       }
@@ -2025,14 +2369,93 @@
   ],
   "sources": [
     {
-      "id": "exportfadatastuffforintandprod",
-      "title": "Data Management",
+      "id": "exportdhiconpremforstaging",
+      "title": "Data Management OnPrem",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "1030",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "exportdhiccloudforstaging",
+      "title": "Data Management Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "exportisaspenforstaging",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/active/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "dxstaging",
+      "title": "Digital",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DX_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval"
+      ]
+    },
+    {
+      "id": "lobs",
+      "title": "LOBs",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/_supermap.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_filterSet.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_filterSet.ditaval"
+      ]
+    },
+    {
+      "id": "clouddataplatform",
+      "title": "Cloud Data Platform",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/cloud-data-platform/active/cdp-supermap.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "explore",
+      "title": "Explore",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     }
   ]
