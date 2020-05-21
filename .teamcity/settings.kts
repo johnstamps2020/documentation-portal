@@ -167,7 +167,8 @@ object Helpers {
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("FORMAT", "html5", allowEmpty = false)
-                text("OUTPUT_DIR", "%system.teamcity.build.tempDir%/out", allowEmpty = false)
+                text("DITA_OUTPUT_DIR", "%system.teamcity.build.tempDir%/out", allowEmpty = false)
+                text("OUTPUT_DIR", "%system.teamcity.build.tempDir%/html5", allowEmpty = false)
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
                 text("INPUT_PATH", input_path, allowEmpty = false)
@@ -1219,6 +1220,7 @@ object BuildAndUploadToS3DitaDev : Template({
 
     params {
         text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
+        text("env.DITA_OUTPUT_DIR", "%DITA_OUTPUT_DIR%", allowEmpty = false)
         text("env.OUTPUT_DIR", "%OUTPUT_DIR%", allowEmpty = false)
         text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", description = "Set to dev, int or staging", allowEmpty = false)
         text("env.INPUT_PATH", "%INPUT_PATH%", allowEmpty = false)
@@ -1242,7 +1244,7 @@ object BuildAndUploadToS3DitaDev : Template({
             scriptContent = """
                 chmod -R 777 ./
                 %env.DITA_OT_331_DIR%/bin/dita --install
-                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes
+                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.DITA_OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes
             """.trimIndent()
         }
 
