@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include parts/head %>
+<body>
+<% include parts/header %>
+<div class="homeContainer">
+    <div class="gw-jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Cloud products</h1>
+            <a class="btn btn-link" href="/self-managed-latest" role="button">Self-managed products &gt;</a>
+        </div>
+    </div>
+    <div class="docPanelContainer container">
+        <div class="row">
+            <% docs.forEach(doc => { -%>
+                <% if (doc.metadata.platform === "Cloud") { -%>
+                    <div class="docPanel col-sm-5">
+                        <span class="docPanelTitle"><a
+                            href="<%= doc.url %>"><%= doc.title %></a></span>
+                        <% if (doc.docDescription) { -%>
+                            <span class="docPanelDescription"><%= doc.docDescription %></span>
+                        <% } -%>
+                    </div>
+                <% } -%>
+            <% }) -%>
+        </div>
+    </div>
+</div>
+<% include parts/footer %>
+</body>
+</html>
