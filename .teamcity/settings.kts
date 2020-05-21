@@ -167,7 +167,7 @@ object Helpers {
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("FORMAT", "html5", allowEmpty = false)
-                text("OUTPUT_DIR", "out", allowEmpty = false)
+                text("OUTPUT_DIR", "%system.teamcity.build.tempDir%/out", allowEmpty = false)
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
                 text("INPUT_PATH", input_path, allowEmpty = false)
