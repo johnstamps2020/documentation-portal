@@ -62,7 +62,7 @@
         },
         "category": {
           "description": "A product category",
-          "type": "string",
+          "type": "array",
           "examples": ["Core", "Data", "Digital"]
         }
       }
