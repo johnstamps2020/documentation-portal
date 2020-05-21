@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include parts/head %>
+  <body>
+    <% include parts/header %>
+    <div class="homeContainer">
+      <% include parts/switcher %>
+      <div class="gw-jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Cloud product documentation</h1>
+          <p>
+            We provide cloud products as an ongoing service. These products are
+            on-demand and we manage them for you.
+          </p>
+        </div>
+      </div>
+      <div class="docPanelContainer container">
+        <div class="row">
+          <div class="homeCards">
+            <% products.forEach(product => { -%>
+            <div class="productCard">
+              <a href="/products/<%= product.href %>"><%= product.name %></a>
+            </div>
+            <% }); -%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include parts/footer %>
+  </body>
+</html>

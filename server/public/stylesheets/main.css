@@ -38,8 +38,8 @@ body {
   --GW-COLOR-BRAND-2: #3c4c5e;
   --GW-COLOR-BRAND-2-HOVER: #46596e;
   --GW-COLOR-BRAND-2-ACTIVE: #50657d;
-  --GW-COLOR-FOCUS-1: #1E9ACF;
-  --GW-COLOR-BORDER: #ACB9CA;
+  --GW-COLOR-FOCUS-1: #1e9acf;
+  --GW-COLOR-BORDER: #acb9ca;
   /* TEXT COLOR */
   --GW-COLOR-TEXT-1: #28333f;
   --GW-COLOR-TEXT-2: #657580;
@@ -80,8 +80,51 @@ body {
 }
 
 .homeContainer {
+  position: relative;
   min-height: calc(100% - var(--header-height) - var(--footer-height));
   background-color: var(--GW-COLOR-BKGD-1);
+}
+
+
+
+.switcher {
+  float: right;
+  margin-top: 3rem;
+  margin-right: 3rem;
+  border: 1px solid var(--GW-COLOR-BRAND-2);
+  border-radius: 3px;
+}
+
+.switcher div {
+  width: 200px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.switcher div a:hover {
+  text-decoration: none;
+}
+
+.switcher .cloud {
+  display: inline-block;
+  background-color: var(--GW-COLOR-BRAND-1);
+}
+
+.switcher .cloud a {
+  color: var(--GW-COLOR-TEXT-3);
+}
+
+.switcher .cloud a:hover {
+  color: var(--GW-COLOR-TEXT-3-HOVER) !important;
+}
+
+.switcher .selfManaged {
+  display: inline-block;
+}
+
+.switcher .selfManaged a {
+  color: var(--GW-COLOR-TEXT-2);
 }
 
 .grayBackground {
@@ -407,7 +450,7 @@ h1.display-4 {
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
@@ -423,7 +466,7 @@ h1.display-4 {
   top: -4px;
   width: 5px;
   height: 10px;
-  content: url("/images/done-white-18dp.svg");
+  content: url('/images/done-white-18dp.svg');
 }
 
 .filterCheckbox {

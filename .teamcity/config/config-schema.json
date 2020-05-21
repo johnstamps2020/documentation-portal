@@ -48,8 +48,41 @@
       "properties": {
         "product": {
           "description": "The name of the product",
-          "type": "string",
-          "examples": ["PolicyCenter", "Jutro", "DataHub"]
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PolicyCenter Cloud",
+              "BillingCenter Cloud",
+              "ClaimCenter Cloud",
+              "PolicyCenter",
+              "BillingCenter",
+              "ClaimCenter",
+              "DataHub",
+              "InfoCenter",
+              "CustomerEngage Account Management",
+              "CustomerEngage Quote and Buy",
+              "Guidewire for Salesforce Data Integrations",
+              "Guidewire for Salesforce Data Integrations for Claims",
+              "Guidewire for Salesforce Digital Gateway",
+              "Guidewire for Salesforce Digital Gateway for Claims",
+              "Guidewire for Salesforce View on Demand",
+              "Guidewire for Salesforce View on Demand for Claims",
+              "ProducerEngage",
+              "ServiceRepEngage",
+              "VendorEngage",
+              "InsuranceNow",
+              "Guidewire Cloud Platform",
+              "Data Integrations",
+              "Data Integrations - Claims",
+              "Embedded Digital",
+              "Embedded Digital - Claims",
+              "Producer Engage",
+              "Guidewire for Salesforce",
+              "View on Demand",
+              "View on Demand - Claims"
+            ]
+          }
         },
         "platform": {
           "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
