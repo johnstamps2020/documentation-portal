@@ -13,11 +13,12 @@
       "id": "cloudbcupgradeguidepedjvkglts",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/latest/upgrade",
+      "visible": false,
       "metadata": {
         "platform": "Cloud",
-        "product": "BillingCenter",
+        "product": ["BillingCenter Cloud"],
         "version": "2020.05",
-        "category": ["Core", "BillingCenter Cloud"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -30,11 +31,12 @@
       "id": "cloudccupgradeguideqdmbvphr",
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/latest/upgrade",
+      "visible": false,
       "metadata": {
         "platform": "Cloud",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter Cloud"],
         "version": "2020.05",
-        "category": ["Core", "ClaimCenter Cloud"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -47,11 +49,12 @@
       "id": "cloudpcupgradeguideqafgpmxs",
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/latest/upgrade",
+      "visible": false,
       "metadata": {
         "platform": "Cloud",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter Cloud"],
         "version": "2020.05",
-        "category": ["Core", "PolicyCenter Cloud"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -66,7 +69,7 @@
       "url": "cloud/bc/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -83,7 +86,7 @@
       "url": "cloud/cc/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -100,7 +103,7 @@
       "url": "cloud/pc/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -117,9 +120,13 @@
       "url": "cloud/lob/bop/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "Businessowners Standards Based Template",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "version": "2020.05",
-        "category": ["Core", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -134,9 +141,13 @@
       "url": "cloud/dh/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "DataHub",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "version": "2020.05",
-        "category": ["Data", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -151,9 +162,13 @@
       "url": "cloud/ic/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "InfoCenter",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "version": "2020.05",
-        "category": ["Data", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -168,9 +183,13 @@
       "url": "cloud/cdp/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "Cloud Data Access",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "version": "2020.05",
-        "category": ["Data", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -185,9 +204,13 @@
       "url": "cloud/explore/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": "Explore",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "version": "2020.05",
-        "category": ["Data", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -202,10 +225,14 @@
       "url": "cloud/dx/ceqb/latest",
       "visible": false,
       "metadata": {
-        "product": "CustomerEngage Quote and Buy",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "platform": "Cloud",
         "version": "2020.05",
-        "category": ["Digital", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -220,10 +247,14 @@
       "url": "cloud/dx/pe/latest",
       "visible": false,
       "metadata": {
-        "product": "ProducerEngage",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "platform": "Cloud",
         "version": "2020.05",
-        "category": ["Digital", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -238,10 +269,14 @@
       "url": "cloud/dx/sre/latest",
       "visible": false,
       "metadata": {
-        "product": "ServiceRepEngage",
+        "product": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
         "platform": "Cloud",
         "version": "2020.05",
-        "category": ["Digital", "PolicyCenter Cloud", "BillingCenter Cloud", "ClaimCenter Cloud"]
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -256,7 +291,7 @@
       "url": "self-managed/bc/1003",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "10.0.3",
         "category": ["Core"]
       }
@@ -267,7 +302,7 @@
       "url": "self-managed/cc/1003",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "10.0.3",
         "category": ["Core"]
       }
@@ -278,7 +313,7 @@
       "url": "self-managed/pc/1003",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "10.0.3",
         "category": ["Core"]
       }
@@ -289,7 +324,7 @@
       "url": "self-managed/dh/1030",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "10.3.0",
         "category": ["Data"]
       },
@@ -306,7 +341,7 @@
       "url": "self-managed/ic/1030",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "10.3.0",
         "category": ["Data"]
       },
@@ -323,7 +358,7 @@
       "url": "self-managed/dh/1020",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "10.2.0",
         "category": ["Data"]
       }
@@ -334,7 +369,7 @@
       "url": "self-managed/ic/1020",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "10.2.0",
         "category": ["Data"]
       }
@@ -345,7 +380,7 @@
       "url": "self-managed/dx/ce-am/1001",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Account Management",
+        "product": ["CustomerEngage Account Management"],
         "version": "10.0.1",
         "category": ["Digital"]
       }
@@ -355,7 +390,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ceqb/1110",
       "metadata": {
-        "product": "CustomerEngage Quote and Buy",
+        "product": ["CustomerEngage Quote and Buy"],
         "platform": "Self-managed",
         "version": "11.1.0",
         "category": ["Digital"]
@@ -372,7 +407,7 @@
       "title": "Guidewire for Salesforce Data Integrations",
       "url": "self-managed/dx/di/310",
       "metadata": {
-        "product": "Guidewire for Salesforce Data Integrations",
+        "product": ["Guidewire for Salesforce Data Integrations"],
         "platform": "Self-managed",
         "version": "3.1.0",
         "category": ["Digital"]
@@ -389,7 +424,7 @@
       "title": "Guidewire for Salesforce Data Integrations for Claims",
       "url": "self-managed/dx/dic/310",
       "metadata": {
-        "product": "Guidewire for Salesforce Data Integrations for Claims",
+        "product": ["Guidewire for Salesforce Data Integrations for Claims"],
         "platform": "Self-managed",
         "version": "3.1.0",
         "category": ["Digital"]
@@ -406,7 +441,7 @@
       "title": "Guidewire for Salesforce Digital Gateway",
       "url": "self-managed/dx/ed/310",
       "metadata": {
-        "product": "Guidewire for Salesforce Digital Gateway",
+        "product": ["Guidewire for Salesforce Digital Gateway"],
         "platform": "Self-managed",
         "version": "3.1.0",
         "category": ["Digital"]
@@ -423,7 +458,7 @@
       "title": "Guidewire for Salesforce Digital Gateway",
       "url": "self-managed/dx/ed-c/310",
       "metadata": {
-        "product": "Guidewire for Salesforce Digital Gateway for Claims",
+        "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
         "platform": "Self-managed",
         "version": "3.1.0",
         "category": ["Digital"]
@@ -440,7 +475,7 @@
       "title": "Guidewire for Salesforce View on Demand",
       "url": "self-managed/dx/ed/310",
       "metadata": {
-        "product": "Guidewire for Salesforce View on Demand",
+        "product": ["Guidewire for Salesforce View on Demand"],
         "platform": "Self-managed",
         "version": "3.1.0",
         "category": ["Digital"]
@@ -457,7 +492,7 @@
       "title": "Guidewire for Salesforce View on Demand for Claims",
       "url": "self-managed/dx/ed/310",
       "metadata": {
-        "product": "Guidewire for Salesforce View on Demand for Claims",
+        "product": ["Guidewire for Salesforce View on Demand for Claims"],
         "platform": "Self-managed",
         "version": "3.1.0",
         "category": ["Digital"]
@@ -474,7 +509,7 @@
       "title": "ProducerEngage",
       "url": "self-managed/dx/pe/1110",
       "metadata": {
-        "product": "ProducerEngage",
+        "product": ["ProducerEngage"],
         "platform": "Self-managed",
         "version": "11.1.0",
         "category": ["Digital"]
@@ -491,7 +526,7 @@
       "title": "ServiceRepEngage",
       "url": "self-managed/dx/sre/1110",
       "metadata": {
-        "product": "ServiceRepEngage",
+        "product": ["ServiceRepEngage"],
         "platform": "Self-managed",
         "version": "11.1.0",
         "category": ["Digital"]
@@ -509,7 +544,7 @@
       "url": "self-managed/dx/ce-qb/1001",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Quote and Buy",
+        "product": ["CustomerEngage Quote and Buy"],
         "version": "10.0.1",
         "category": ["Digital"]
       }
@@ -520,7 +555,7 @@
       "url": "self-managed/dx/pe/1001",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ProducerEngage",
+        "product": ["ProducerEngage"],
         "version": "10.0.1",
         "category": ["Digital"]
       }
@@ -531,7 +566,7 @@
       "url": "self-managed/dx/sre/1001",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ServiceRepEngage",
+        "product": ["ServiceRepEngage"],
         "version": "10.0.1",
         "category": ["Digital"]
       }
@@ -542,7 +577,7 @@
       "url": "self-managed/dx/ve/1001",
       "metadata": {
         "platform": "Self-managed",
-        "product": "VendorEngage",
+        "product": ["VendorEngage"],
         "version": "10.0.1",
         "category": ["Digital"]
       }
@@ -553,7 +588,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.2/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "10.0.2",
         "category": ["Core"]
       }
@@ -564,7 +599,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.1/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "10.0.1",
         "category": ["Core"]
       }
@@ -575,7 +610,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.0/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "10.0.0",
         "category": ["Core"]
       }
@@ -586,7 +621,7 @@
       "url": "self-managed/bc/908",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.8",
         "category": ["Core"]
       }
@@ -597,7 +632,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.7/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.7",
         "category": ["Core"]
       }
@@ -608,7 +643,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.6/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.6",
         "category": ["Core"]
       }
@@ -619,7 +654,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.5/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.5",
         "category": ["Core"]
       }
@@ -630,7 +665,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.4",
         "category": ["Core"]
       }
@@ -641,7 +676,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.3",
         "category": ["Core"]
       }
@@ -652,7 +687,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.2",
         "category": ["Core"]
       }
@@ -663,7 +698,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.1",
         "category": ["Core"]
       }
@@ -674,7 +709,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_9.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "9.0.0",
         "category": ["Core"]
       }
@@ -685,7 +720,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.7",
         "category": ["Core"]
       }
@@ -696,7 +731,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.6",
         "category": ["Core"]
       }
@@ -707,7 +742,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.5",
         "category": ["Core"]
       }
@@ -718,7 +753,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.4",
         "category": ["Core"]
       }
@@ -729,7 +764,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.3",
         "category": ["Core"]
       }
@@ -740,7 +775,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.2",
         "category": ["Core"]
       }
@@ -751,7 +786,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.1",
         "category": ["Core"]
       }
@@ -762,7 +797,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_8.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "8.0.0",
         "category": ["Core"]
       }
@@ -773,7 +808,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.8/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.8",
         "category": ["Core"]
       }
@@ -784,7 +819,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.7",
         "category": ["Core"]
       }
@@ -795,7 +830,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.6",
         "category": ["Core"]
       }
@@ -806,7 +841,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.5",
         "category": ["Core"]
       }
@@ -817,7 +852,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.4",
         "category": ["Core"]
       }
@@ -828,7 +863,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.3",
         "category": ["Core"]
       }
@@ -839,7 +874,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.2",
         "category": ["Core"]
       }
@@ -850,7 +885,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.1",
         "category": ["Core"]
       }
@@ -861,7 +896,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_7.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "7.0.0",
         "category": ["Core"]
       }
@@ -872,7 +907,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.8/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.8",
         "category": ["Core"]
       }
@@ -883,7 +918,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.7",
         "category": ["Core"]
       }
@@ -894,7 +929,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.6",
         "category": ["Core"]
       }
@@ -905,7 +940,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.5",
         "category": ["Core"]
       }
@@ -916,7 +951,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.4",
         "category": ["Core"]
       }
@@ -927,7 +962,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.3",
         "category": ["Core"]
       }
@@ -938,7 +973,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.2/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.2",
         "category": ["Core"]
       }
@@ -949,7 +984,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.1/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.1",
         "category": ["Core"]
       }
@@ -960,7 +995,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_3.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "BillingCenter",
+        "product": ["BillingCenter"],
         "version": "3.0.0",
         "category": ["Core"]
       }
@@ -971,7 +1006,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.2/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "10.0.2",
         "category": ["Core"]
       }
@@ -982,7 +1017,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.1/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "10.0.1",
         "category": ["Core"]
       }
@@ -993,7 +1028,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.0/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "10.0.0",
         "category": ["Core"]
       }
@@ -1004,7 +1039,7 @@
       "url": "self-managed/cc/908",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.8",
         "category": ["Core"]
       }
@@ -1015,7 +1050,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.7/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.7",
         "category": ["Core"]
       }
@@ -1026,7 +1061,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.6/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.6",
         "category": ["Core"]
       }
@@ -1037,7 +1072,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.5/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.5",
         "category": ["Core"]
       }
@@ -1048,7 +1083,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.4",
         "category": ["Core"]
       }
@@ -1059,7 +1094,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.3",
         "category": ["Core"]
       }
@@ -1070,7 +1105,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.2",
         "category": ["Core"]
       }
@@ -1081,7 +1116,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.1",
         "category": ["Core"]
       }
@@ -1092,7 +1127,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_9.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "9.0.0",
         "category": ["Core"]
       }
@@ -1103,7 +1138,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.7",
         "category": ["Core"]
       }
@@ -1114,7 +1149,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.6",
         "category": ["Core"]
       }
@@ -1125,7 +1160,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.5",
         "category": ["Core"]
       }
@@ -1136,7 +1171,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.4",
         "category": ["Core"]
       }
@@ -1147,7 +1182,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.3",
         "category": ["Core"]
       }
@@ -1158,7 +1193,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.2",
         "category": ["Core"]
       }
@@ -1169,7 +1204,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.1",
         "category": ["Core"]
       }
@@ -1180,7 +1215,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_8.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "8.0.0",
         "category": ["Core"]
       }
@@ -1191,7 +1226,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.8/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.8",
         "category": ["Core"]
       }
@@ -1202,7 +1237,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.7",
         "category": ["Core"]
       }
@@ -1213,7 +1248,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.6",
         "category": ["Core"]
       }
@@ -1224,7 +1259,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.5",
         "category": ["Core"]
       }
@@ -1235,7 +1270,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.4",
         "category": ["Core"]
       }
@@ -1246,7 +1281,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.3",
         "category": ["Core"]
       }
@@ -1257,7 +1292,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.2",
         "category": ["Core"]
       }
@@ -1268,7 +1303,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.1",
         "category": ["Core"]
       }
@@ -1279,7 +1314,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_7.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "7.0.0",
         "category": ["Core"]
       }
@@ -1290,7 +1325,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.8/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.8",
         "category": ["Core"]
       }
@@ -1301,7 +1336,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.7",
         "category": ["Core"]
       }
@@ -1312,7 +1347,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.6",
         "category": ["Core"]
       }
@@ -1323,7 +1358,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.5",
         "category": ["Core"]
       }
@@ -1334,7 +1369,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.4",
         "category": ["Core"]
       }
@@ -1345,7 +1380,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.3",
         "category": ["Core"]
       }
@@ -1356,7 +1391,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.2/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.2",
         "category": ["Core"]
       }
@@ -1367,7 +1402,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.1/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.1",
         "category": ["Core"]
       }
@@ -1378,7 +1413,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_6.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "6.0.0",
         "category": ["Core"]
       }
@@ -1389,7 +1424,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.9/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.9",
         "category": ["Core"]
       }
@@ -1400,7 +1435,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.8/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.8",
         "category": ["Core"]
       }
@@ -1411,7 +1446,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.7/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.7",
         "category": ["Core"]
       }
@@ -1422,7 +1457,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.6/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.6",
         "category": ["Core"]
       }
@@ -1433,7 +1468,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.5/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.5",
         "category": ["Core"]
       }
@@ -1444,7 +1479,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.4/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.4",
         "category": ["Core"]
       }
@@ -1455,7 +1490,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.3/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.3",
         "category": ["Core"]
       }
@@ -1466,7 +1501,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.2/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.2",
         "category": ["Core"]
       }
@@ -1477,7 +1512,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.1/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.1",
         "category": ["Core"]
       }
@@ -1488,7 +1523,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_5.0.0/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ClaimCenter",
+        "product": ["ClaimCenter"],
         "version": "5.0.0",
         "category": ["Core"]
       }
@@ -1499,7 +1534,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.2/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "10.0.2",
         "category": ["Core"]
       }
@@ -1510,7 +1545,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.1/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "10.0.1",
         "category": ["Core"]
       }
@@ -1521,7 +1556,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.0/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "10.0.0",
         "category": ["Core"]
       }
@@ -1532,7 +1567,7 @@
       "url": "self-managed/pc/908",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.8",
         "category": ["Core"]
       }
@@ -1543,7 +1578,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.7/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.7",
         "category": ["Core"]
       }
@@ -1554,7 +1589,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.6/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.6",
         "category": ["Core"]
       }
@@ -1565,7 +1600,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.5/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.5",
         "category": ["Core"]
       }
@@ -1576,7 +1611,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.4",
         "category": ["Core"]
       }
@@ -1587,7 +1622,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.3",
         "category": ["Core"]
       }
@@ -1598,7 +1633,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.2",
         "category": ["Core"]
       }
@@ -1609,7 +1644,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.1",
         "category": ["Core"]
       }
@@ -1620,7 +1655,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_9.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "9.0.0",
         "category": ["Core"]
       }
@@ -1631,7 +1666,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.8/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.8",
         "category": ["Core"]
       }
@@ -1642,7 +1677,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.7",
         "category": ["Core"]
       }
@@ -1653,7 +1688,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.6",
         "category": ["Core"]
       }
@@ -1664,7 +1699,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.5",
         "category": ["Core"]
       }
@@ -1675,7 +1710,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.4",
         "category": ["Core"]
       }
@@ -1686,7 +1721,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.3",
         "category": ["Core"]
       }
@@ -1697,7 +1732,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.2",
         "category": ["Core"]
       }
@@ -1708,7 +1743,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.1",
         "category": ["Core"]
       }
@@ -1719,7 +1754,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_8.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "8.0.0",
         "category": ["Core"]
       }
@@ -1730,7 +1765,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.9/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.9",
         "category": ["Core"]
       }
@@ -1741,7 +1776,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.8/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.8",
         "category": ["Core"]
       }
@@ -1752,7 +1787,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.7/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.7",
         "category": ["Core"]
       }
@@ -1763,7 +1798,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.6",
         "category": ["Core"]
       }
@@ -1774,7 +1809,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.5",
         "category": ["Core"]
       }
@@ -1785,7 +1820,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.4",
         "category": ["Core"]
       }
@@ -1796,7 +1831,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.3",
         "category": ["Core"]
       }
@@ -1807,7 +1842,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.2/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.2",
         "category": ["Core"]
       }
@@ -1818,7 +1853,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.1",
         "category": ["Core"]
       }
@@ -1829,7 +1864,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_7.0.0/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "7.0.0",
         "category": ["Core"]
       }
@@ -1840,7 +1875,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.6/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "4.0.6",
         "category": ["Core"]
       }
@@ -1851,7 +1886,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.5/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "4.0.5",
         "category": ["Core"]
       }
@@ -1862,7 +1897,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.4/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "4.0.4",
         "category": ["Core"]
       }
@@ -1873,7 +1908,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.3/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "4.0.3",
         "category": ["Core"]
       }
@@ -1884,7 +1919,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.2/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "4.0.2",
         "category": ["Core"]
       }
@@ -1895,7 +1930,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.1/doc/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "4.0.1",
         "category": ["Core"]
       }
@@ -1906,7 +1941,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_4.0.0/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "PolicyCenter",
+        "product": ["PolicyCenter"],
         "version": "4.0.0",
         "category": ["Core"]
       }
@@ -1917,7 +1952,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1010/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "10.1.0",
         "category": ["Data"]
       }
@@ -1928,7 +1963,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1000/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "10.0.0",
         "category": ["Data"]
       }
@@ -1939,7 +1974,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/930/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "9.3.0",
         "category": ["Data"]
       }
@@ -1950,7 +1985,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/920/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "9.2.0",
         "category": ["Data"]
       }
@@ -1961,7 +1996,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/910/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "9.1.0",
         "category": ["Data"]
       }
@@ -1972,7 +2007,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/900/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "9.0.0",
         "category": ["Data"]
       }
@@ -1983,7 +2018,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/830/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "8.3.0",
         "category": ["Data"]
       }
@@ -1994,7 +2029,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/820/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "8.2.0",
         "category": ["Data"]
       }
@@ -2005,7 +2040,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/811/DataHub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "8.1.1",
         "category": ["Data"]
       }
@@ -2016,7 +2051,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/810/datahub/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "DataHub",
+        "product": ["DataHub"],
         "version": "8.1.0",
         "category": ["Data"]
       }
@@ -2027,7 +2062,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1010/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "10.1.0",
         "category": ["Data"]
       }
@@ -2038,7 +2073,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/1000/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "10.0.0",
         "category": ["Data"]
       }
@@ -2049,7 +2084,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/930/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "9.3.0",
         "category": ["Data"]
       }
@@ -2060,7 +2095,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/920/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "9.2.0",
         "category": ["Data"]
       }
@@ -2071,7 +2106,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/910/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "9.1.0",
         "category": ["Data"]
       }
@@ -2082,7 +2117,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/900/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "9.0.0",
         "category": ["Data"]
       }
@@ -2093,7 +2128,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/830/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "8.3.0",
         "category": ["Data"]
       }
@@ -2104,7 +2139,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/821/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "8.2.1",
         "category": ["Data"]
       }
@@ -2115,7 +2150,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/820/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "8.2.0",
         "category": ["Data"]
       }
@@ -2126,7 +2161,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/811/InfoCenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "8.1.1",
         "category": ["Data"]
       }
@@ -2137,7 +2172,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/data-management/810/infocenter/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "InfoCenter",
+        "product": ["InfoCenter"],
         "version": "8.1.0",
         "category": ["Data"]
       }
@@ -2148,7 +2183,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_AccountManagement1000_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Account Management",
+        "product": ["CustomerEngage Account Management"],
         "version": "10.0.0",
         "category": ["Digital"]
       }
@@ -2159,7 +2194,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.1.0/CustomerEngage_AccountManagement810_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Account Management",
+        "product": ["CustomerEngage Account Management"],
         "version": "8.1.0",
         "category": ["Digital"]
       }
@@ -2170,7 +2205,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.0.0/CustomerEngage_AccountManagement800_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Account Management",
+        "product": ["CustomerEngage Account Management"],
         "version": "8.0.0",
         "category": ["Digital"]
       }
@@ -2181,7 +2216,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.1.0/CustomerEngage_AccountManagement710_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Account Management",
+        "product": ["CustomerEngage Account Management"],
         "version": "7.1.0",
         "category": ["Digital"]
       }
@@ -2192,7 +2227,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.0.0/CustomerEngage_AccountManagement700_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Account Management",
+        "product": ["CustomerEngage Account Management"],
         "version": "7.0.0",
         "category": ["Digital"]
       }
@@ -2203,7 +2238,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_QuoteAndBuy1000_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Quote and Buy",
+        "product": ["CustomerEngage Quote and Buy"],
         "version": "10.0.0",
         "category": ["Digital"]
       }
@@ -2214,7 +2249,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.1.0/CustomerEngage_QuoteAndBuy810_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Quote and Buy",
+        "product": ["CustomerEngage Quote and Buy"],
         "version": "8.1.0",
         "category": ["Digital"]
       }
@@ -2225,7 +2260,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.0.0/CustomerEngage_QuoteAndBuy800_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Quote and Buy",
+        "product": ["CustomerEngage Quote and Buy"],
         "version": "8.0.0",
         "category": ["Digital"]
       }
@@ -2236,7 +2271,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.1.0/CustomerEngage_QuoteAndBuy710_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Quote and Buy",
+        "product": ["CustomerEngage Quote and Buy"],
         "version": "7.1.0",
         "category": ["Digital"]
       }
@@ -2247,7 +2282,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.0.0/CustomerEngage_QuoteAndBuy700_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "CustomerEngage Quote and Buy",
+        "product": ["CustomerEngage Quote and Buy"],
         "version": "7.0.0",
         "category": ["Digital"]
       }
@@ -2258,7 +2293,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ProducerEngage1000_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ProducerEngage",
+        "product": ["ProducerEngage"],
         "version": "10.0.0",
         "category": ["Digital"]
       }
@@ -2269,7 +2304,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.1.0/ProducerEngage810_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ProducerEngage",
+        "product": ["ProducerEngage"],
         "version": "8.1.0",
         "category": ["Digital"]
       }
@@ -2280,7 +2315,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.0.0/ProducerEngage800_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ProducerEngage",
+        "product": ["ProducerEngage"],
         "version": "8.0.0",
         "category": ["Digital"]
       }
@@ -2291,7 +2326,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.1.0/ProducerEngage710_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ProducerEngage",
+        "product": ["ProducerEngage"],
         "version": "7.1.0",
         "category": ["Digital"]
       }
@@ -2302,7 +2337,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.0.0/ProducerEngage700_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ProducerEngage",
+        "product": ["ProducerEngage"],
         "version": "7.0.0",
         "category": ["Digital"]
       }
@@ -2313,7 +2348,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ServiceRepEngage1000_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ServiceRepEngage",
+        "product": ["ServiceRepEngage"],
         "version": "10.0.0",
         "category": ["Digital"]
       }
@@ -2324,7 +2359,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.1.0/ServiceRepEngage810_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ServiceRepEngage",
+        "product": ["ServiceRepEngage"],
         "version": "8.1.0",
         "category": ["Digital"]
       }
@@ -2335,7 +2370,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.0.0/ServiceRepEngage800_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ServiceRepEngage",
+        "product": ["ServiceRepEngage"],
         "version": "8.0.0",
         "category": ["Digital"]
       }
@@ -2346,7 +2381,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.1.0/ServiceRepEngage710_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ServiceRepEngage",
+        "product": ["ServiceRepEngage"],
         "version": "7.1.0",
         "category": ["Digital"]
       }
@@ -2357,7 +2392,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.0.0/ServiceRepEngage700_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "ServiceRepEngage",
+        "product": ["ServiceRepEngage"],
         "version": "7.0.0",
         "category": ["Digital"]
       }
@@ -2368,7 +2403,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/VendorEngage1000_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "VendorEngage",
+        "product": ["VendorEngage"],
         "version": "10.0.0",
         "category": ["Digital"]
       }
@@ -2379,7 +2414,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.1.0/VendorEngage810_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "VendorEngage",
+        "product": ["VendorEngage"],
         "version": "8.1.0",
         "category": ["Digital"]
       }
@@ -2390,7 +2425,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/8.0.0/VendorEngage800_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "VendorEngage",
+        "product": ["VendorEngage"],
         "version": "8.0.0",
         "category": ["Digital"]
       }
@@ -2401,7 +2436,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.1.0/VendorEngage710_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "VendorEngage",
+        "product": ["VendorEngage"],
         "version": "7.1.0",
         "category": ["Digital"]
       }
@@ -2412,7 +2447,7 @@
       "url": "https://portal2.guidewire.com/portal/secure/doc/digital/7.0.0/VendorEngage700_Docs/",
       "metadata": {
         "platform": "Self-managed",
-        "product": "VendorEngage",
+        "product": ["VendorEngage"],
         "version": "7.0.0",
         "category": ["Digital"]
       }

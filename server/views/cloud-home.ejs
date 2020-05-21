@@ -17,9 +17,9 @@
       <div class="docPanelContainer container">
         <div class="row">
           <div class="homeCards">
-            <% categories.forEach(category => { -%>
-            <div class="categoryCard">
-              <a href="/categories<%= category.href %>"><%= category.name %></a>
+            <% products.forEach(product => { -%>
+            <div class="productCard">
+              <a href="/products/<%= product.href %>"><%= product.name %></a>
             </div>
             <% }); -%>
           </div>
