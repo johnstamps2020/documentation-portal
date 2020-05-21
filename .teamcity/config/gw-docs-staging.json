@@ -2471,6 +2471,15 @@
   ],
   "sources": [
     {
+      "id": "guidewireidentityfederationhub",
+      "title": "Guidewire Identity Federation Hub",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap"
+      ]
+    },
+    {
       "id": "guidewirecloudplatform",
       "title": "Guidewire Cloud Platform",
       "sourceType": "git",
