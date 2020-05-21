@@ -49,6 +49,7 @@ const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const landingRouter = require('./routes/landing');
+const categoryRouter = require('./routes/categories');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
@@ -127,6 +128,7 @@ app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 
 app.use('/', landingRouter);
+app.use('/categories', categoryRouter);
 
 const proxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
