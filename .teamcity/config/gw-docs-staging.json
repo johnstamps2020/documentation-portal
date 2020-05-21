@@ -369,7 +369,7 @@
     },
     {
       "id": "dxedconpremstaging",
-      "title": "Guidewire for Salesforce Digital Gateway",
+      "title": "Guidewire for Salesforce Digital Gateway for Claims",
       "url": "self-managed/dx/ed-c/310",
       "metadata": {
         "product": "Guidewire for Salesforce Digital Gateway for Claims",
@@ -2370,7 +2370,7 @@
   "sources": [
     {
       "id": "exportdhiconpremforstaging",
-      "title": "Data Management",
+      "title": "Data Management OnPrem",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "1030",
@@ -2382,7 +2382,7 @@
     },
     {
       "id": "exportdhiccloudforstaging",
-      "title": "Data Management",
+      "title": "Data Management Cloud",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "xdocsPathIds": [
