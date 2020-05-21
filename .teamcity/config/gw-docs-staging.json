@@ -10,6 +10,57 @@
   ],
   "docs": [
     {
+      "id": "cloudbcupgradeguidepedjvkglts",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "cloud/bc/latest/upgrade",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "BillingCenter",
+        "version": "2020.05",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportupgradeguide"
+      }
+    },
+    {
+      "id": "cloudccupgradeguideqdmbvphr",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "cloud/cc/latest/upgrade",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "ClaimCenter",
+        "version": "2020.05",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-Cloud-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportupgradeguide"
+      }
+    },
+    {
+      "id": "cloudpcupgradeguideqafgpmxs",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "cloud/pc/latest/upgrade",
+      "metadata": {
+        "platform": "Cloud",
+        "product": "PolicyCenter",
+        "version": "2020.05",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportupgradeguide"
+      }
+    },
+    {
       "id": "cloudbcfxhglseu",
       "title": "BillingCenter",
       "url": "cloud/bc/latest",
@@ -2368,6 +2419,21 @@
     }
   ],
   "sources": [
+    {
+      "id": "exportupgradeguide",
+      "title": "Insurance Suite Upgrade Guide",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
     {
       "id": "exportdhiconpremforstaging",
       "title": "Data Management",
