@@ -124,7 +124,7 @@ object Helpers {
                 text("INPUT_PATH", input_path, allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -174,7 +174,7 @@ object Helpers {
                 text("INPUT_PATH", input_path, allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -285,7 +285,7 @@ object Helpers {
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
             val gitUrl: String = source.get("gitUrl").toString()
-            val sourceId: String = source.get("id").toString()
+            val sourceId: String = source.get("id").toString() + env
             val sourceTitle: String = source.get("title").toString()
             var branchName = ""
             if (source.has("branch")) {
@@ -294,7 +294,7 @@ object Helpers {
             roots.add(CreateVcsRoot(gitUrl, sourceId, branchName))
 
             if (source.has("xdocsPathIds") && env != "prod") {
-                val exportBuildId: String = source.get("id").toString() + "export"
+                val exportBuildId: String = source.get("id").toString() + "export" + env
                 val xdocsPathIds: String = source.getJSONArray("xdocsPathIds").joinToString(" ")
                 val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
                 scheduleIndex++
@@ -308,7 +308,7 @@ object Helpers {
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
             if (doc.has("build")) {
-                val buildId = doc.getString("id")
+                val buildId = doc.getString("id") + env
                 val publishPath = doc.getString("url")
                 val title = doc.getString("title")
 
@@ -322,7 +322,7 @@ object Helpers {
                 val buildType = build.getString("buildType")
                 val filter = build.getString("filter")
                 val root = build.getString("root")
-                val vcsRootId = build.getString("src")
+                val vcsRootId = build.getString("src") + env
 
                 if (env == "dev" || env == "int") {
                     if (buildType == "dita-dev") {
@@ -428,7 +428,7 @@ object DeployDev : BuildType({
         param("env.TAG_VERSION", "latest")
         param("env.PARTNERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/partners/idp/endpoint/HttpRedirect")
         param("env.CUSTOMERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/customers/idp/endpoint/HttpRedirect")
-        param("env.CONFIG_FILENAME", "gw-docs-dev.json")
+        param("env.CONFIG_FILENAME", "gw-docs-staging.json")
     }
 
     vcs {
@@ -763,7 +763,7 @@ object LoadSearchIndex : BuildType({
     name = "Delete and load THE ENTIRE search index"
 
     params {
-        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-dev.json", allowEmpty = false)
+        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
         text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
@@ -1394,7 +1394,7 @@ object DeployServices : Project({
 object DeployDevContent : Project({
     name = "Deploy to Dev"
 
-    val (roots, builds) = Helpers.getBuildsFromConfig("dev", "config/gw-docs-dev.json")
+    val (roots, builds) = Helpers.getBuildsFromConfig("dev", "config/gw-docs-staging.json")
     roots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
 })
