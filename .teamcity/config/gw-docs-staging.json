@@ -10,22 +10,6 @@
   ],
   "docs": [
     {
-      "id": "guidewirecloudplatformtycvlqax",
-      "title": "Guidewire Cloud Platform",
-      "url": "cloud/gwcp/latest",
-      "metadata": {
-        "platform": "Cloud",
-        "product": ["Guidewire Cloud Platform"],
-        "version": "2020.05"
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "insurer-developer.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "guidewirecloudplatform"
-      }
-    },
-    {
       "id": "cloudbcupgradeguidepedjvkglts",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/latest/upgrade",
@@ -2470,21 +2454,6 @@
     }
   ],
   "sources": [
-    {
-      "id": "guidewireidentityfederationhub",
-      "title": "Guidewire Identity Federation Hub",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap"
-      ]
-    },
-    {
-      "id": "guidewirecloudplatform",
-      "title": "Guidewire Cloud Platform",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git"
-    },
     {
       "id": "exportupgradeguide",
       "title": "Insurance Suite Upgrade Guide",
