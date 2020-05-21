@@ -241,7 +241,7 @@ object Helpers {
             templates(AddFilesFromXDocsToBitbucket)
 
             id = RelativeId(build_id)
-            name = "Export $source_title from XDocs and add to git"
+            name = "Export $source_title from XDocs and add to git ($build_id)"
 
             params {
                 text("EXPORT_PATH_IDS", export_path_ids, allowEmpty = false)
@@ -316,7 +316,7 @@ object Helpers {
                 val platform = metadata.getString("platform")
                 val version = metadata.getString("version")
 
-                val buildName = "Build $title $platform $version"
+                val buildName = "Build $title $platform $version ($buildId)"
 
                 val build: JSONObject = doc.getJSONObject("build")
                 val buildType = build.getString("buildType")
