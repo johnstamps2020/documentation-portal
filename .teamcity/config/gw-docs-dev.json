@@ -24,7 +24,7 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "exportupgradeguidedevonly"
       }
     },
     {
@@ -42,7 +42,7 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "exportupgradeguidedevonly"
       }
     },
     {
@@ -60,7 +60,7 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "exportupgradeguidedevonly"
       }
     },
     {
@@ -77,7 +77,7 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportisaspenforstaging"
+        "src": "exportisaspenforstagingdevonly"
       }
     },
     {
@@ -94,7 +94,7 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportisaspenforstaging"
+        "src": "exportisaspenforstagingdevonly"
       }
     },
     {
@@ -111,7 +111,7 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportisaspenforstaging"
+        "src": "exportisaspenforstagingdevonly"
       }
     },
     {
@@ -132,7 +132,7 @@
         "buildType": "dita",
         "filter": "LOB_STANDARDS_filterSet.ditaval",
         "root": "lob-bop-(10.x)/_supermap.ditamap",
-        "src": "lobs"
+        "src": "lobsdevonly"
       }
     },
     {
@@ -153,7 +153,7 @@
         "buildType": "dita",
         "filter": "DataHub-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiccloudforstaging"
+        "src": "exportdhiccloudforstagingdevonly"
       }
     },
     {
@@ -174,7 +174,7 @@
         "buildType": "dita",
         "filter": "InfoCenter-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiccloudforstaging"
+        "src": "exportdhiccloudforstagingdevonly"
       }
     },
     {
@@ -195,7 +195,7 @@
         "buildType": "dita",
         "filter": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "root": "cdp-supermap.ditamap",
-        "src": "explore"
+        "src": "exploredevonly"
       }
     },
     {
@@ -216,7 +216,7 @@
         "buildType": "dita",
         "filter": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
         "root": "supermapExplore.ditamap",
-        "src": "explore"
+        "src": "exploredevonly"
       }
     },
     {
@@ -238,7 +238,7 @@
         "buildType": "dita",
         "filter": "Digital-ce-qb-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -260,7 +260,7 @@
         "buildType": "dita",
         "filter": "Digital-pe-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -282,7 +282,7 @@
         "buildType": "dita",
         "filter": "Digital-sre-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -332,7 +332,7 @@
         "buildType": "dita",
         "filter": "DataHub-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiconpremforstaging"
+        "src": "exportdhiconpremforstagingdevonly"
       }
     },
     {
@@ -349,7 +349,7 @@
         "buildType": "dita",
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiconpremforstaging"
+        "src": "exportdhiconpremforstagingdevonly"
       }
     },
     {
@@ -399,7 +399,7 @@
         "buildType": "dita",
         "filter": "Digital-ce-qb-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -416,7 +416,7 @@
         "buildType": "dita",
         "filter": "Digital-di-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -433,7 +433,7 @@
         "buildType": "dita",
         "filter": "Digital-di-c-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -450,7 +450,7 @@
         "buildType": "dita",
         "filter": "Digital-ed-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -467,7 +467,7 @@
         "buildType": "dita",
         "filter": "Digital-ed-c-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -484,7 +484,7 @@
         "buildType": "dita",
         "filter": "Digital-vod-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -501,7 +501,7 @@
         "buildType": "dita",
         "filter": "Digital-vod-c-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -518,7 +518,7 @@
         "buildType": "dita",
         "filter": "Digital-pe-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
@@ -535,7 +535,7 @@
         "buildType": "dita",
         "filter": "Digital-sre-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dxstagingdevonly"
       }
     },
     {
