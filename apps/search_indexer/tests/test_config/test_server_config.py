@@ -4,10 +4,9 @@ from pathlib import Path
 root_dir = Path(__file__).parent.parent.parent.parent.parent
 views_dir = root_dir / 'server' / 'views'
 
-dev_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-dev.json'
 int_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-int.json'
 staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
-config_paths = [dev_config_path, int_config_path, staging_config_path]
+config_paths = [int_config_path, staging_config_path]
 
 
 def load_json_file(file_path: Path()):
