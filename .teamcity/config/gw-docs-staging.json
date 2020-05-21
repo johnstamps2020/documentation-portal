@@ -17,7 +17,7 @@
         "platform": "Cloud",
         "product": "BillingCenter",
         "version": "2020.05",
-        "category": "Core"
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -34,7 +34,7 @@
         "platform": "Cloud",
         "product": "ClaimCenter",
         "version": "2020.05",
-        "category": "Core"
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -51,7 +51,7 @@
         "platform": "Cloud",
         "product": "PolicyCenter",
         "version": "2020.05",
-        "category": "Core"
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -68,7 +68,7 @@
         "platform": "Cloud",
         "product": "Businessowners Standards Based Template",
         "version": "2020.05",
-        "category": "Core"
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -85,7 +85,7 @@
         "platform": "Cloud",
         "product": "DataHub",
         "version": "2020.05",
-        "category": "Data"
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -102,7 +102,7 @@
         "platform": "Cloud",
         "product": "InfoCenter",
         "version": "2020.05",
-        "category": "Data"
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -119,7 +119,7 @@
         "platform": "Cloud",
         "product": "Cloud Data Access",
         "version": "2020.05",
-        "category": "Data"
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -136,7 +136,7 @@
         "platform": "Cloud",
         "product": "Explore",
         "version": "2020.05",
-        "category": "Data"
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -154,7 +154,7 @@
         "product": "CustomerEngage Quote and Buy",
         "platform": "Cloud",
         "version": "2020.05",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -172,7 +172,7 @@
         "product": "ProducerEngage",
         "platform": "Cloud",
         "version": "2020.05",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -190,7 +190,7 @@
         "product": "ServiceRepEngage",
         "platform": "Cloud",
         "version": "2020.05",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -207,7 +207,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "10.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -218,7 +218,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "10.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -229,7 +229,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "10.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -240,7 +240,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "10.3.0",
-        "category": "Data"
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -257,7 +257,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "10.3.0",
-        "category": "Data"
+        "category": ["Data"]
       },
       "build": {
         "buildType": "dita",
@@ -274,7 +274,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "10.2.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -285,7 +285,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "10.2.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -296,7 +296,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Account Management",
         "version": "10.0.1",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -307,7 +307,7 @@
         "product": "CustomerEngage Quote and Buy",
         "platform": "Self-managed",
         "version": "11.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -324,7 +324,7 @@
         "product": "Guidewire for Salesforce Data Integrations",
         "platform": "Self-managed",
         "version": "3.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -341,7 +341,7 @@
         "product": "Guidewire for Salesforce Data Integrations for Claims",
         "platform": "Self-managed",
         "version": "3.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -358,7 +358,7 @@
         "product": "Guidewire for Salesforce Digital Gateway",
         "platform": "Self-managed",
         "version": "3.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -375,7 +375,7 @@
         "product": "Guidewire for Salesforce Digital Gateway for Claims",
         "platform": "Self-managed",
         "version": "3.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -392,7 +392,7 @@
         "product": "Guidewire for Salesforce View on Demand",
         "platform": "Self-managed",
         "version": "3.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -409,7 +409,7 @@
         "product": "Guidewire for Salesforce View on Demand for Claims",
         "platform": "Self-managed",
         "version": "3.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -426,7 +426,7 @@
         "product": "ProducerEngage",
         "platform": "Self-managed",
         "version": "11.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -443,7 +443,7 @@
         "product": "ServiceRepEngage",
         "platform": "Self-managed",
         "version": "11.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       },
       "build": {
         "buildType": "dita",
@@ -460,7 +460,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Quote and Buy",
         "version": "10.0.1",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -471,7 +471,7 @@
         "platform": "Self-managed",
         "product": "ProducerEngage",
         "version": "10.0.1",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -482,7 +482,7 @@
         "platform": "Self-managed",
         "product": "ServiceRepEngage",
         "version": "10.0.1",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -493,7 +493,7 @@
         "platform": "Self-managed",
         "product": "VendorEngage",
         "version": "10.0.1",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -504,7 +504,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "10.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -515,7 +515,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "10.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -526,7 +526,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "10.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -537,7 +537,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -548,7 +548,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -559,7 +559,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -570,7 +570,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -581,7 +581,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -592,7 +592,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -603,7 +603,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -614,7 +614,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -625,7 +625,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "9.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -636,7 +636,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -647,7 +647,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -658,7 +658,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -669,7 +669,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -680,7 +680,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -691,7 +691,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -702,7 +702,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -713,7 +713,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "8.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -724,7 +724,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -735,7 +735,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -746,7 +746,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -757,7 +757,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -768,7 +768,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -779,7 +779,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -790,7 +790,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -801,7 +801,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -812,7 +812,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "7.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -823,7 +823,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -834,7 +834,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -845,7 +845,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -856,7 +856,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -867,7 +867,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -878,7 +878,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -889,7 +889,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -900,7 +900,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -911,7 +911,7 @@
         "platform": "Self-managed",
         "product": "BillingCenter",
         "version": "3.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -922,7 +922,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "10.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -933,7 +933,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "10.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -944,7 +944,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "10.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -955,7 +955,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -966,7 +966,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -977,7 +977,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -988,7 +988,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -999,7 +999,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1010,7 +1010,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1021,7 +1021,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1032,7 +1032,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1043,7 +1043,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "9.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1054,7 +1054,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1065,7 +1065,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1076,7 +1076,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1087,7 +1087,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1098,7 +1098,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1109,7 +1109,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1120,7 +1120,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1131,7 +1131,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "8.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1142,7 +1142,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1153,7 +1153,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1164,7 +1164,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1175,7 +1175,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1186,7 +1186,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1197,7 +1197,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1208,7 +1208,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1219,7 +1219,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1230,7 +1230,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "7.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1241,7 +1241,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1252,7 +1252,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1263,7 +1263,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1274,7 +1274,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1285,7 +1285,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1296,7 +1296,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1307,7 +1307,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1318,7 +1318,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1329,7 +1329,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "6.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1340,7 +1340,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.9",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1351,7 +1351,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1362,7 +1362,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1373,7 +1373,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1384,7 +1384,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1395,7 +1395,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1406,7 +1406,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1417,7 +1417,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1428,7 +1428,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1439,7 +1439,7 @@
         "platform": "Self-managed",
         "product": "ClaimCenter",
         "version": "5.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1450,7 +1450,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "10.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1461,7 +1461,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "10.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1472,7 +1472,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "10.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1483,7 +1483,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1494,7 +1494,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1505,7 +1505,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1516,7 +1516,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1527,7 +1527,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1538,7 +1538,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1549,7 +1549,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1560,7 +1560,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1571,7 +1571,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "9.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1582,7 +1582,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1593,7 +1593,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1604,7 +1604,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1615,7 +1615,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1626,7 +1626,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1637,7 +1637,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1648,7 +1648,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1659,7 +1659,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1670,7 +1670,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "8.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1681,7 +1681,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.9",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1692,7 +1692,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.8",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1703,7 +1703,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.7",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1714,7 +1714,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1725,7 +1725,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1736,7 +1736,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1747,7 +1747,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1758,7 +1758,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1769,7 +1769,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1780,7 +1780,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "7.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1791,7 +1791,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "4.0.6",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1802,7 +1802,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "4.0.5",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1813,7 +1813,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "4.0.4",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1824,7 +1824,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "4.0.3",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1835,7 +1835,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "4.0.2",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1846,7 +1846,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "4.0.1",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1857,7 +1857,7 @@
         "platform": "Self-managed",
         "product": "PolicyCenter",
         "version": "4.0.0",
-        "category": "Core"
+        "category": ["Core"]
       }
     },
     {
@@ -1868,7 +1868,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "10.1.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1879,7 +1879,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "10.0.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1890,7 +1890,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "9.3.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1901,7 +1901,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "9.2.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1912,7 +1912,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "9.1.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1923,7 +1923,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "9.0.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1934,7 +1934,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "8.3.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1945,7 +1945,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "8.2.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1956,7 +1956,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "8.1.1",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1967,7 +1967,7 @@
         "platform": "Self-managed",
         "product": "DataHub",
         "version": "8.1.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1978,7 +1978,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "10.1.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -1989,7 +1989,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "10.0.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2000,7 +2000,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "9.3.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2011,7 +2011,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "9.2.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2022,7 +2022,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "9.1.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2033,7 +2033,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "9.0.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2044,7 +2044,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "8.3.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2055,7 +2055,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "8.2.1",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2066,7 +2066,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "8.2.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2077,7 +2077,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "8.1.1",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2088,7 +2088,7 @@
         "platform": "Self-managed",
         "product": "InfoCenter",
         "version": "8.1.0",
-        "category": "Data"
+        "category": ["Data"]
       }
     },
     {
@@ -2099,7 +2099,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Account Management",
         "version": "10.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2110,7 +2110,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Account Management",
         "version": "8.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2121,7 +2121,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Account Management",
         "version": "8.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2132,7 +2132,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Account Management",
         "version": "7.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2143,7 +2143,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Account Management",
         "version": "7.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2154,7 +2154,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Quote and Buy",
         "version": "10.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2165,7 +2165,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Quote and Buy",
         "version": "8.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2176,7 +2176,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Quote and Buy",
         "version": "8.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2187,7 +2187,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Quote and Buy",
         "version": "7.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2198,7 +2198,7 @@
         "platform": "Self-managed",
         "product": "CustomerEngage Quote and Buy",
         "version": "7.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2209,7 +2209,7 @@
         "platform": "Self-managed",
         "product": "ProducerEngage",
         "version": "10.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2220,7 +2220,7 @@
         "platform": "Self-managed",
         "product": "ProducerEngage",
         "version": "8.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2231,7 +2231,7 @@
         "platform": "Self-managed",
         "product": "ProducerEngage",
         "version": "8.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2242,7 +2242,7 @@
         "platform": "Self-managed",
         "product": "ProducerEngage",
         "version": "7.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2253,7 +2253,7 @@
         "platform": "Self-managed",
         "product": "ProducerEngage",
         "version": "7.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2264,7 +2264,7 @@
         "platform": "Self-managed",
         "product": "ServiceRepEngage",
         "version": "10.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2275,7 +2275,7 @@
         "platform": "Self-managed",
         "product": "ServiceRepEngage",
         "version": "8.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2286,7 +2286,7 @@
         "platform": "Self-managed",
         "product": "ServiceRepEngage",
         "version": "8.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2297,7 +2297,7 @@
         "platform": "Self-managed",
         "product": "ServiceRepEngage",
         "version": "7.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2308,7 +2308,7 @@
         "platform": "Self-managed",
         "product": "ServiceRepEngage",
         "version": "7.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2319,7 +2319,7 @@
         "platform": "Self-managed",
         "product": "VendorEngage",
         "version": "10.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2330,7 +2330,7 @@
         "platform": "Self-managed",
         "product": "VendorEngage",
         "version": "8.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2341,7 +2341,7 @@
         "platform": "Self-managed",
         "product": "VendorEngage",
         "version": "8.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2352,7 +2352,7 @@
         "platform": "Self-managed",
         "product": "VendorEngage",
         "version": "7.1.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     },
     {
@@ -2363,7 +2363,7 @@
         "platform": "Self-managed",
         "product": "VendorEngage",
         "version": "7.0.0",
-        "category": "Digital"
+        "category": ["Digital"]
       }
     }
   ],
