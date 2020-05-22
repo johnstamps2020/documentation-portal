@@ -3,75 +3,72 @@
   <% include parts/head %>
   <body class="loginPage">
     <% include parts/header %>
-    <div class="homeContainerNoSearch">
+    <div class="docPanelContainer">
       <div class="container">
-        <div class="gw-jumbotron jumbotron-fluid loginJumbotron">
-          <div class="container">
-            <h1 class="display-4">Welcome to Guidewire documentation</h1>
-            <div class="loginSubtitle">
+        <div class="row">
+          <div class="docPageTitle">
+            <h1>Welcome to Guidewire documentation</h1>
+            <p>
               Log in using one of the following methods.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg">
+            <div class="loginCard">
+              <div class="loginCardTitle">Guidewire Cloud Account</div>
+              <div class="loginCardDescription">
+                Use your Guidewire Cloud Platform account to access
+                documentation.
+              </div>
+              <a
+                class="loginButton"
+                href="/login"
+                aria-expanded="false"
+                aria-controls="partnerLogin"
+                >Continue</a
+              >
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="loginCard">
+              <div class="loginCardTitle">
+                Customer Community Account
+              </div>
+              <div class="loginCardDescription">
+                Use your community.guidewire.com account to access
+                documentation.
+              </div>
+              <a
+                class="loginButton"
+                href="/customers-login"
+                aria-expanded="false"
+                aria-controls="partnerLogin"
+                >Continue</a
+              >
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="loginCard">
+              <div class="loginCardTitle">
+                Partner Community Account
+              </div>
+              <div class="loginCardDescription">
+                Use your partner.guidewire.com account to access documentation.
+              </div>
+              <a
+                class="loginButton"
+                href="/partners-login"
+                aria-expanded="false"
+                aria-controls="partnerLogin"
+                >Continue</a
+              >
             </div>
           </div>
         </div>
-        <div class="docPanelContainerNoSearch">
-          <div class="row">
-            <div class="col-lg">
-              <div class="loginCard">
-                <div class="loginCardTitle">Guidewire Cloud Account</div>
-                <div class="loginCardDescription">
-                  Use your Guidewire Cloud Platform account to access
-                  documentation.
-                </div>
-                <a
-                  class="loginButton"
-                  href="/login"
-                  aria-expanded="false"
-                  aria-controls="partnerLogin"
-                  >Continue</a
-                >
-              </div>
-            </div>
-            <div class="col-lg">
-              <div class="loginCard">
-                <div class="loginCardTitle">
-                  Customer Community Account
-                </div>
-                <div class="loginCardDescription">
-                  Use your community.guidewire.com account to access
-                  documentation.
-                </div>
-                <a
-                  class="loginButton"
-                  href="/customers-login"
-                  aria-expanded="false"
-                  aria-controls="partnerLogin"
-                  >Continue</a
-                >
-              </div>
-            </div>
-            <div class="col-lg">
-              <div class="loginCard">
-                <div class="loginCardTitle">
-                  Partner Community Account
-                </div>
-                <div class="loginCardDescription">
-                  Use your partner.guidewire.com account to access
-                  documentation.
-                </div>
-                <a
-                  class="loginButton"
-                  href="/partners-login"
-                  aria-expanded="false"
-                  aria-controls="partnerLogin"
-                  >Continue</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="row employeeLogin">
-            <div class="col">
-              Guidewire employee? <a href="/login">Click here to log in</a>.
-            </div>
+        <div class="row employeeLogin">
+          <div class="col">
+            Guidewire employee? <a href="/login">Click here to log in</a>.
           </div>
         </div>
       </div>

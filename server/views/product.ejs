@@ -3,21 +3,27 @@
   <% include parts/head %>
   <body>
     <% include parts/header %>
-    <div class="homeContainer">
-      <% include parts/switcher %>
-      <div class="gw-jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4"><%= product.name %></h1>
-        </div>
-      </div>
-      <div class="docPanelContainer container">
+    <div class="docPanelContainer">
+      <div class="container">
         <div class="row">
-          <div class="docsInProduct">
-            <% docs.forEach(doc => { -%>
-            <div class="docLink">
-              <a href="/<%= doc.url %>"><%= doc.title %></a>
+          <div class="docPageTitle">
+            <h1><%= product.name %></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="categoryCards">
+              <% Object.entries(docs).forEach(category => { -%>
+              <div class="categoryCard">
+                <h2><%= category[0] %></h2>
+                <% category[1].forEach(doc => { -%>
+                <div class="docLink">
+                  <a href="/<%= doc.url %>"><%= doc.title %></a>
+                </div>
+                <% }); -%>
+              </div>
+              <% }); -%>
             </div>
-            <% }); -%>
           </div>
         </div>
       </div>

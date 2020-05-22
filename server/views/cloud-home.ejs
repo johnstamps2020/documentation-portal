@@ -3,25 +3,34 @@
   <% include parts/head %>
   <body>
     <% include parts/header %>
-    <div class="homeContainer">
-      <% include parts/switcher %>
-      <div class="gw-jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Cloud product documentation</h1>
-          <p>
-            We provide cloud products as an ongoing service. These products are
-            on-demand and we manage them for you.
-          </p>
-        </div>
-      </div>
-      <div class="docPanelContainer container">
+    <div class="docPanelContainer">
+      <div class="container">
         <div class="row">
-          <div class="homeCards">
-            <% products.forEach(product => { -%>
-            <div class="productCard">
-              <a href="/products/<%= product.href %>"><%= product.name %></a>
+          <div class="col-sm-9">
+            <div class="docPageTitle">
+              <h1>Cloud product documentation</h1>
+              <p>
+                We provide cloud products as an ongoing service. These products
+                are on-demand and we manage them for you.
+              </p>
             </div>
-            <% }); -%>
+          </div>
+          <div class="col-sm-3">
+            <% include parts/switcher %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9 pl-0 pr-0">
+            <div class="homeCards">
+              <% products.forEach(product => { -%>
+                <a href="/products/<%= product.href %>" 
+                  class="productCard"
+                ><%= product.name %></a>
+              <% }); -%>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <% include parts/useful-links %>
           </div>
         </div>
       </div>
