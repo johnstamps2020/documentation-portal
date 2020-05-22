@@ -109,6 +109,29 @@ a:hover {
   background-color: var(--GW-COLOR-BKGD-1);
 }
 
+.homeCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 277px [col-start]);
+  column-gap: 12px;
+}
+
+.productCard {
+  box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+  display: block;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.productCard:hover {
+  box-shadow: var(--GW-BOX-SHADOW-OUTER-3);
+  text-decoration: none;
+}
+
 .switcher {
   --switcher-width: 324px;
   margin-top: 64px;
@@ -151,7 +174,6 @@ a:hover {
 }
 
 .docPanelContainer {
-  padding: 20px;
   min-height: calc(100% - var(--footer-height) - var(--header-height));
   background-color: var(--GW-COLOR-BKGD-1);
 }
