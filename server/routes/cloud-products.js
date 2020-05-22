@@ -6,18 +6,18 @@ const cloudProductFamilies = require('../controllers/cloudProductController');
 const configureRouter = async () => {
   cloudProductFamilies.forEach(productFamily => {
     router.get(`/${productFamily.href}`, (req, res) => {
-      const productDocs = config.docs
-        .map(doc => {
-          if (
-            doc.metadata.productFamily &&
-            doc.metadata.productFamily.includes(productFamily.name)
-          ) {
-            if (doc.visible === undefined || doc.visible) {
-              return doc;
-            }
-          }
-        })
-        .filter(Boolean);
+      const productDocs = config.docs.reduce((r, doc) => {
+        if (
+          doc.metadata.platform === 'Cloud' &&
+          doc.metadata.productFamily &&
+          doc.metadata.productFamily.includes(productFamily.name) &&
+          (doc.visible === undefined || doc.visible)
+        ) {
+          r[doc.metadata.category] = [...(r[doc.metadata.category] || []), doc];
+        }
+        return r;
+      }, {});
+
       res.render('product', { product: productFamily, docs: productDocs });
     });
   });

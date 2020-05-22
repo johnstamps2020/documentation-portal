@@ -6,24 +6,24 @@
     <div class="docPanelContainer">
       <div class="container">
         <div class="row">
-          <div class="col-sm-9">
-            <div class="docPageTitle">
-              <h1><%= product.name %></h1>
-            </div>
+          <div class="docPageTitle">
+            <h1><%= product.name %></h1>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-9">
-            <div class="docsInProduct">
-              <% docs.forEach(doc => { -%>
-              <div class="docLink">
-                <a href="/<%= doc.url %>"><%= doc.title %></a>
+          <div class="col">
+            <div class="categoryCards">
+              <% Object.entries(docs).forEach(category => { -%>
+              <div class="categoryCard">
+                <h2><%= category[0] %></h2>
+                <% category[1].forEach(doc => { -%>
+                <div class="docLink">
+                  <a href="/<%= doc.url %>"><%= doc.title %></a>
+                </div>
+                <% }); -%>
               </div>
               <% }); -%>
             </div>
-          </div>
-          <div class="col-sm-3">
-            <% include parts/useful-links %>
           </div>
         </div>
       </div>
