@@ -16,7 +16,8 @@
       "visible": false,
       "metadata": {
         "platform": "Cloud",
-        "product": ["BillingCenter Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter Upgrade Tools"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -34,7 +35,8 @@
       "visible": false,
       "metadata": {
         "platform": "Cloud",
-        "product": ["ClaimCenter Cloud"],
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["ClaimCenter Upgrade Tools"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -52,7 +54,8 @@
       "visible": false,
       "metadata": {
         "platform": "Cloud",
-        "product": ["PolicyCenter Cloud"],
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["PolicyCenter Upgrade Tools"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -69,7 +72,8 @@
       "url": "cloud/bc/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": ["BillingCenter Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -86,7 +90,8 @@
       "url": "cloud/cc/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": ["ClaimCenter Cloud"],
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["ClaimCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -103,7 +108,8 @@
       "url": "cloud/pc/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": ["PolicyCenter Cloud"],
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["PolicyCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -120,11 +126,8 @@
       "url": "cloud/lob/bop/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
+        "productFamily": ["PolicyCenter Cloud"],
+        "product":["Businessowners Standards Based Template"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -141,11 +144,12 @@
       "url": "cloud/dh/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": [
+        "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
+        "product": ["DataHub"],
         "version": "2020.05",
         "category": ["Data"]
       },
@@ -162,11 +166,12 @@
       "url": "cloud/ic/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": [
+        "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
+        "product": ["InfoCenter"],
         "version": "2020.05",
         "category": ["Data"]
       },
@@ -183,11 +188,12 @@
       "url": "cloud/cdp/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": [
+        "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
+        "product": ["Cloud Data Access"],
         "version": "2020.05",
         "category": ["Data"]
       },
@@ -204,11 +210,12 @@
       "url": "cloud/explore/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": [
+        "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
+        "product": ["Explore"],
         "version": "2020.05",
         "category": ["Data"]
       },
@@ -225,11 +232,12 @@
       "url": "cloud/dx/ceqb/latest",
       "visible": false,
       "metadata": {
-        "product": [
+        "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
+        "product": ["CustomerEngage Quote and Buy"],
         "platform": "Cloud",
         "version": "2020.05",
         "category": ["Digital"]
@@ -247,11 +255,12 @@
       "url": "cloud/dx/pe/latest",
       "visible": false,
       "metadata": {
-        "product": [
+        "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
+        "product": ["ProducerEngage"],
         "platform": "Cloud",
         "version": "2020.05",
         "category": ["Digital"]
@@ -269,11 +278,12 @@
       "url": "cloud/dx/sre/latest",
       "visible": false,
       "metadata": {
-        "product": [
+        "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
+        "product": ["ServiceRepEngage"],
         "platform": "Cloud",
         "version": "2020.05",
         "category": ["Digital"]

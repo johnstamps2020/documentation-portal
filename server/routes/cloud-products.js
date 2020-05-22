@@ -1,24 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../config.json');
-const cloudProductList = require('../controllers/cloudProductController');
+const cloudProductFamilies = require('../controllers/cloudProductController');
 
 const configureRouter = async () => {
   console.log('Generating category pages');
+  console.log(cloudProductFamilies);
 
-  cloudProductList.forEach(product => {
-    router.get(`/${product.href}`, (req, res) => {
+  cloudProductFamilies.forEach(productFamily => {
+    router.get(`/${productFamily.href}`, (req, res) => {
       const productDocs = config.docs
         .map(doc => {
-          console.log(doc);
-          if (doc.metadata.product.includes(product.name)) {
+          if (
+            doc.metadata.productFamily &&
+            doc.metadata.productFamily.includes(productFamily.name)
+          ) {
             if (doc.visible === undefined || doc.visible) {
               return doc;
             }
           }
         })
         .filter(Boolean);
-      res.render('product', { product: product, docs: productDocs });
+      res.render('product', { product: productFamily, docs: productDocs });
     });
   });
 };

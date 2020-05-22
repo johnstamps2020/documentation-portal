@@ -928,8 +928,7 @@ object TestConfig : BuildType({
     triggers {
         vcs {
             triggerRules = """
-                +:.teamcity/config/**/*.json
-
+                +:.teamcity/**/*.*
                 -:user=doctools:**
             """.trimIndent()
         }
