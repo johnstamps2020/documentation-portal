@@ -146,6 +146,13 @@ a:hover {
   padding-bottom: 3rem;
   padding-left: 3rem;
   padding-right: 3rem;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.docLink {
+  margin-bottom: 8px;
 }
 
 .switcher {
