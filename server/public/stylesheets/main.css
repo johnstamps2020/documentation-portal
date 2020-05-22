@@ -117,6 +117,7 @@ a:hover {
 
 .productCard {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+  background-color: white;
   display: block;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -140,6 +141,7 @@ a:hover {
 
 .categoryCard {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
+  background-color: white;
   padding-top: 3rem;
   padding-bottom: 3rem;
   padding-left: 3rem;
