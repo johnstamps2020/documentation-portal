@@ -21,6 +21,9 @@ if __name__ == '__main__':
     else:
         doc_objects_to_crawl = docs_in_config
 
+    if not doc_objects_to_crawl:
+        raise ValueError('The list of docs to crawl is empty')
+
     process = CrawlerProcess(get_project_settings())
     process.crawl(doc_portal_spider.DocPortalSpider, docs=doc_objects_to_crawl, app_base_url=app_base_url,
                   doc_s3_url=doc_s3_url)
