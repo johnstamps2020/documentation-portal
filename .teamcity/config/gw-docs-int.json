@@ -21,7 +21,7 @@
       "build": {
         "buildType": "dita",
         "filter": "assets/insurer-developer.ditaval",
-        "root": "_superbook.ditamap",
+        "root": "guidewire_cloud_platform_guide.ditamap",
         "src": "guidewirecloudplatform"
       }
     },
