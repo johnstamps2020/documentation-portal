@@ -76,7 +76,7 @@ object Helpers {
 
         class UploadToS3AbstractProd(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
             templates(CrawlDocumentAndUpdateIndex)
-            id = RelativeId("${doc_id}toprod")
+            id = RelativeId(doc_id + env)
             name = "Copy $title $doc_platform $doc_version from Staging to Prod ($doc_id)"
 
             params {
@@ -109,60 +109,18 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3AbstractDevAndInt(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
-                                                  build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex)
-
-            id = RelativeId(doc_id)
-            name = build_name
-
-            params {
-                text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("FORMAT", "webhelp_Guidewire", allowEmpty = false)
-                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
-                text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
-                text("INPUT_PATH", input_path, allowEmpty = false)
-                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
-                text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
-                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_ID", doc_id, allowEmpty = false)
-                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("INDEX_NAME", "gw-docs", allowEmpty = false)
-            }
-
-            vcs {
-                root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
-            }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                        -:root=${vcsrootmasteronly.id}:**
-                        -:root=${DitaOt331.id}:**
-                        -:root=DocumentationTools_DitaOtPlugins:**
-                    """.trimIndent()
-                }
-            }
-
-            dependencies {
-                snapshot(TestContent) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfig) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-        })
-
         class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
-                                                         build_env: String, publish_path: String, vsc_root_id: String) : BuildType({
+                                                         build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
             templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex)
 
-            id = RelativeId(doc_id)
+            id = RelativeId(doc_id + env)
             name = build_name
+
+            var config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json"
+            if (env == "int") {
+                config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-int.json"
+            }
+
 
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
@@ -174,7 +132,7 @@ object Helpers {
                 text("INPUT_PATH", input_path, allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+                text("CONFIG_FILE", config_file, allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -183,37 +141,23 @@ object Helpers {
             }
 
             vcs {
-                root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
-            }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                        -:root=${vcsrootmasteronly.id}:**
-                        -:root=${DitaOt331.id}:**
-                        -:root=DocumentationTools_DitaOtPlugins:**
-                    """.trimIndent()
-                }
-            }
-
-            dependencies {
-                snapshot(TestContent) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfig) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
+                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
 
         })
 
-        class BuildAndUploadToS3AbstractStaging(doc_id: String, build_name: String, ditaval_file: String,
-                                                input_path: String, build_env: String, publish_path: String,
-                                                vsc_root_id: String) : BuildType({
+        class BuildAndUploadToS3Abstract(doc_id: String, build_name: String, ditaval_file: String,
+                                         input_path: String, build_env: String, publish_path: String,
+                                         vcs_root_id: String) : BuildType({
             templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex)
 
-            id = RelativeId(doc_id)
+            id = RelativeId(doc_id + env)
             name = build_name
+
+            var config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json"
+            if (env == "int") {
+                config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-int.json"
+            }
 
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
@@ -223,7 +167,7 @@ object Helpers {
                 text("INPUT_PATH", input_path, allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+                text("CONFIG_FILE", config_file, allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -232,15 +176,38 @@ object Helpers {
             }
 
             vcs {
-                root(RelativeId(vsc_root_id), "+:. => %SOURCES_ROOT%")
+                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
+
+            if (env != "staging") {
+                triggers {
+                    vcs {
+                        triggerRules = """
+                        -:root=${vcsrootmasteronly.id}:**
+                        -:root=${DitaOt331.id}:**
+                        -:root=DocumentationTools_DitaOtPlugins:**
+                    """.trimIndent()
+                    }
+                }
+
+                dependencies {
+                    snapshot(TestContent) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    snapshot(TestConfig) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+
+            }
+
         })
 
         class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String,
                                                       vcs_root_id: String, startHour: Int, startMinute: Int) : BuildType({
             templates(AddFilesFromXDocsToBitbucket)
 
-            id = RelativeId(build_id)
+            id = RelativeId(build_id + env)
             name = "Export $source_title from XDocs and add to git ($build_id)"
 
             params {
@@ -285,22 +252,22 @@ object Helpers {
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
             val gitUrl: String = source.get("gitUrl").toString()
-            val sourceId: String = source.get("id").toString() + env
+            val sourceId: String = source.get("id").toString()
             val sourceTitle: String = source.get("title").toString()
             var branchName = ""
             if (source.has("branch")) {
                 branchName = source.getString("branch")
             }
-            roots.add(CreateVcsRoot(gitUrl, sourceId, branchName))
+            roots.add(CreateVcsRoot(gitUrl, sourceId + env, branchName))
 
             if (source.has("xdocsPathIds") && env != "prod") {
-                val exportBuildId: String = source.get("id").toString() + "export" + env
+                val exportBuildId: String = source.get("id").toString() + "export"
                 val xdocsPathIds: String = source.getJSONArray("xdocsPathIds").joinToString(" ")
                 val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
                 scheduleIndex++
 
                 builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId,
-                        sourceTitle, xdocsPathIds, sourceId, availableHour, availableMinute))
+                        sourceTitle, xdocsPathIds, sourceId + env, availableHour, availableMinute))
             }
         }
 
@@ -308,7 +275,7 @@ object Helpers {
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
             if (doc.has("build")) {
-                val buildId = doc.getString("id") + env
+                val buildId = doc.getString("id")
                 val publishPath = doc.getString("url")
                 val title = doc.getString("title")
 
@@ -322,25 +289,18 @@ object Helpers {
                 val buildType = build.getString("buildType")
                 val filter = build.getString("filter")
                 val root = build.getString("root")
-                val vcsRootId = build.getString("src") + env
-
-                if (env == "dev" || env == "int") {
-                    if (buildType == "dita-dev") {
-                        builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId))
-                    } else {
-                        builds.add(BuildAndUploadToS3AbstractDevAndInt(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId))
-                    }
-                }
-
-                if (env == "staging") {
-                    builds.add(BuildAndUploadToS3AbstractStaging(buildId, buildName, filter, root, env,
-                            publishPath, vcsRootId))
-                }
+                val vcsRootId = build.getString("src")
 
                 if (env == "prod") {
                     builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform, env))
+                } else {
+                    if (buildType == "dita-dev") {
+                        builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
+                                publishPath, vcsRootId + env))
+                    } else {
+                        builds.add(BuildAndUploadToS3Abstract(buildId, buildName, filter, root, env,
+                                publishPath, vcsRootId + env))
+                    }
                 }
             }
         }
