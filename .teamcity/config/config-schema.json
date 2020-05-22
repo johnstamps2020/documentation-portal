@@ -46,20 +46,36 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "productFamily": {
+          "description": "The name of the product family, for cloud docs only.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "BillingCenter Cloud",
+              "ClaimCenter Cloud",
+              "PolicyCenter Cloud",
+              "Guidewire Cloud Platform"
+            ]
+          }
+        },
         "product": {
           "description": "The name of the product",
           "type": "array",
           "items": {
             "type": "string",
             "enum": [
-              "PolicyCenter Cloud",
-              "BillingCenter Cloud",
-              "ClaimCenter Cloud",
               "PolicyCenter",
               "BillingCenter",
               "ClaimCenter",
+              "PolicyCenter Upgrade Tools",
+              "BillingCenter Upgrade Tools",
+              "ClaimCenter Upgrade Tools",
+              "Businessowners Standards Based Template",
               "DataHub",
               "InfoCenter",
+              "Cloud Data Access",
+              "Explore",
               "CustomerEngage Account Management",
               "CustomerEngage Quote and Buy",
               "Guidewire for Salesforce Data Integrations",
@@ -68,19 +84,12 @@
               "Guidewire for Salesforce Digital Gateway for Claims",
               "Guidewire for Salesforce View on Demand",
               "Guidewire for Salesforce View on Demand for Claims",
+              "Guidewire for Salesforce ProducerEngage",
               "ProducerEngage",
               "ServiceRepEngage",
               "VendorEngage",
-              "InsuranceNow",
               "Guidewire Cloud Platform",
-              "Data Integrations",
-              "Data Integrations - Claims",
-              "Embedded Digital",
-              "Embedded Digital - Claims",
-              "Producer Engage",
-              "Guidewire for Salesforce",
-              "View on Demand",
-              "View on Demand - Claims"
+              "InsuranceNow"
             ]
           }
         },
