@@ -287,7 +287,10 @@ object Helpers {
 
                 val build: JSONObject = doc.getJSONObject("build")
                 val buildType = build.getString("buildType")
-                val filter = build.getString("filter")
+                var filter = ""
+                if (build.has("filter")) {
+                    filter = build.getString("filter")
+                }
                 val root = build.getString("root")
                 val vcsRootId = build.getString("src")
 
@@ -1135,6 +1138,7 @@ object BuildAndUploadToS3 : Template({
         cleanCheckout = true
     }
 
+
     steps {
         script {
             name = "Run build"
@@ -1142,7 +1146,12 @@ object BuildAndUploadToS3 : Template({
             scriptContent = """
                 chmod -R 777 ./
                 %env.DITA_OT_331_DIR%/bin/dita --install
-                %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes
+                
+                if [[ %env.DITAVAL_FILE% == "" ]]; then
+                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --use-doc-portal-params=yes
+                else
+                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes
+                fi
             """.trimIndent()
         }
         script {

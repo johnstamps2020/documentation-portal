@@ -20,7 +20,6 @@
       },
       "build": {
         "buildType": "dita",
-        "filter": "",
         "root": "GuidewireHub.ditamap",
         "src": "guidewireidentityfederationhub"
       }
