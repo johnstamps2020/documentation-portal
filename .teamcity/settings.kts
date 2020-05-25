@@ -1147,7 +1147,7 @@ object BuildAndUploadToS3 : Template({
                 chmod -R 777 ./
                 %env.DITA_OT_331_DIR%/bin/dita --install
                 
-                if [[ %env.DITAVAL_FILE% == "" ]]; then
+                if [[ "%env.DITAVAL_FILE%" == "" ]]; then
                     %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --use-doc-portal-params=yes
                 else
                     %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes
