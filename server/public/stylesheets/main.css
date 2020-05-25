@@ -604,9 +604,12 @@ body {
 }
 
 .loginButton {
+  font-size: 20px;
+}
+
+.gwButton {
   color: var(--GW-COLOR-TEXT-3) !important;
   border-radius: 4px;
-  font-size: 20px;
   background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
   box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
   display: block;
@@ -617,7 +620,7 @@ body {
   margin-top: 32px;
 }
 
-.loginButton:hover {
+.gwButton:hover {
   text-decoration: none;
   color: var(--GW-COLOR-TEXT-3) !important;
   background: var(--GW-COLOR-BRAND-1-HOVER);

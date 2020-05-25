@@ -18,7 +18,7 @@ const configureRouter = async () => {
         return r;
       }, {});
 
-      res.render('product', { product: productFamily, docs: productDocs });
+      res.render('product', { product: productFamily, docs: productDocs, returnUrl: '/' });
     });
   });
 };
