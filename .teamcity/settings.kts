@@ -1142,7 +1142,7 @@ object BuildAndUploadToS3 : Template({
             scriptContent = """
                 chmod -R 777 ./
                 %env.DITA_OT_331_DIR%/bin/dita --install
-                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes
+                %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes
             """.trimIndent()
         }
         script {
