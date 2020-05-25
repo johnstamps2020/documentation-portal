@@ -190,7 +190,7 @@
     "build": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["buildType", "filter", "root", "src"],
+      "required": ["buildType", "root", "src"],
       "properties": {
         "buildType": {
           "description": "The build type to apply",
