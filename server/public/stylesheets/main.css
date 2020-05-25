@@ -157,6 +157,30 @@ a:hover {
   margin-bottom: 8px;
 }
 
+.gwAccordion {
+  --dropdown-border: 1px solid var(--GW-COLOR-BORDER);
+  display: block;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border: none;
+  border-top: var(--dropdown-border);
+  border-bottom: var(--dropdown-border);
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.gwAccordion .accordionTitle {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  white-space: normal;
+}
+
+.gwAccordion .accordionTitle::before {
+  content: url("/images/chevron_right-black-18dp.svg");
+}
+
 .switcher {
   --switcher-width: 324px;
   margin-top: 64px;
