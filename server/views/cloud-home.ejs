@@ -17,11 +17,11 @@
         </div>
         <div class="row">
           <div class="col-sm-9">
-            <div class="homeCards">
+            <div class="row">
               <% products.forEach(product => { -%>
-                <a href="/products/<%= product.href %>" 
-                  class="productCard"
-                ><%= product.name %></a>
+                <div class="col-sm-4"><a href="/products/<%= product.href %>"
+                class="productCard"
+                ><%= product.name %></a></div>
               <% }); -%>
             </div>
           </div>

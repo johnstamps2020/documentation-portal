@@ -81,6 +81,14 @@ body {
   height: 100%;
 }
 
+.container {
+  max-width: 1300px !important;
+}
+
+.docPanelContainer .col-sm-4 {
+  padding: 8px;
+}
+
 a {
   color: var(--GW-COLOR-BRAND-1) !important;
 }
@@ -142,33 +150,24 @@ a:hover {
 .categoryCard {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
   background-color: white;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding: 24px;
+  padding-right: 16px;
   font-size: 16px;
   letter-spacing: 0;
   line-height: 20px;
+  height: 100%;
 }
 
 .docLink {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .gwAccordion {
-  --dropdown-border: 1px solid var(--GW-COLOR-BORDER);
   display: block;
   text-align: left;
   width: 100%;
   margin-bottom: 16px;
-  border-radius: 4px;
   border: none;
-  border-top: var(--dropdown-border);
-  border-bottom: var(--dropdown-border);
-}
-
-.dropdown-toggle::after {
-  display: none !important;
 }
 
 .gwAccordion .accordionTitle {
@@ -177,8 +176,18 @@ a:hover {
   white-space: normal;
 }
 
-.dropdown-toggle.gwAccordion .accordionTitle::before {
-  content: url("/images/chevron_right-black-18dp.svg");
+.dropdown-toggle {
+  white-space: normal !important;
+}
+
+.gwAccordion.dropdown-toggle::after {
+  content: url("/images/expand_more-black-18dp.svg") !important;
+  border-top: none;
+  vertical-align: middle;
+}
+
+.usefulLinks div {
+  margin-bottom: 16px;
 }
 
 .switcher {
@@ -588,6 +597,7 @@ body {
 .docPageTitle {
   margin-top: 64px;
   margin-bottom: 54px;
+  height: 48px;
 }
 
 .docPageHeaderItems {

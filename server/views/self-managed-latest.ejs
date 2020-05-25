@@ -8,7 +8,8 @@
         <div class="row">
             <div class="col-sm-9">
                 <div class="docPageTitle">
-                    <h1 class="display-4">Self-managed products</h1>
+                    <h1 class="display-4">Self-managed product documentation</h1>
+                    <p><a href="/self-managed-all-releases">See all releases</a></p>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -28,7 +29,7 @@
                 groupArray.forEach(group => {
                     const groupName = group[0];
                     const groupItems = group[1]; -%>
-                    <div class="col-sm-4 mt-3">
+                    <div class="col-sm-4">
                         <div class="categoryCard">
                             <h2><%= groupName %></h2>
                             <div class="card-text">
@@ -58,11 +59,6 @@
             </div>
             <div class="col-sm-3">
                 <% include parts/useful-links %>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-5">
-            <div class="col-auto">
-                <a class="gwButtonPrimary" href="/self-managed-all-releases">See all releases</a>
             </div>
         </div>
     </div>
