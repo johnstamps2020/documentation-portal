@@ -13,50 +13,48 @@
         </div>
         <div class="row">
             <div class="col-sm-9">
-                <div class="row">
-                    <div class="categoryCards">
-                    <%  let groups = docs.reduce((r, a) => {
-                        if (a.metadata.platform === 'Self-managed') {
-                            r[a.metadata.category] = [...r[a.metadata.category] || [], a];
-                        }
-                        return r;
-                    }, {});
-                    const groupArray = Object.entries(groups);
-                    groupArray.forEach(group => {
-                        const groupName = group[0];
-                        const groupItems = group[1]; -%>
-                        <div class="categoryCard">
-                            <h2><%= groupName %></h2>
-                            <%  const products = groupItems.reduce((r, a) => {
-                                    r[a.metadata.product] = [...r[a.metadata.product] || [], a];
-                                    return r;
-                                }, {});
-                                const productArray = Object.entries(products);
-                                productArray.forEach(product => {
-                                    const productTitle = product[0].trim();
-                                    const productId = `${productTitle.replace(/\s/g,'')}Releases`
-                                    const productReleases = product[1];
-                            -%>
-                            <div class="dropdown-toggle gwAccordion" type="button"
-                                data-toggle="collapse"
-                                data-target="#<%= productId %>"
-                                aria-expanded="false"
-                                aria-controls="<%= productId %>">
-                                <div class="accordionTitle">
-                                    <%= productTitle %>
-                                </div>
-                                <div class="collapse" id="<%= productId %>">
-                                    <ul class="list-unstyled card-columns">
-                                        <% productReleases.forEach(release => { -%>
-                                            <li><a href="<%= release.url %>"><%= release.metadata.version %></a></li>
-                                        <% }) %>
-                                    </ul>
-                                </div>
+                <div class="categoryCards">
+                <%  let groups = docs.reduce((r, a) => {
+                    if (a.metadata.platform === 'Self-managed') {
+                        r[a.metadata.category] = [...r[a.metadata.category] || [], a];
+                    }
+                    return r;
+                }, {});
+                const groupArray = Object.entries(groups);
+                groupArray.forEach(group => {
+                    const groupName = group[0];
+                    const groupItems = group[1]; -%>
+                    <div class="categoryCard">
+                        <h2><%= groupName %></h2>
+                        <%  const products = groupItems.reduce((r, a) => {
+                                r[a.metadata.product] = [...r[a.metadata.product] || [], a];
+                                return r;
+                            }, {});
+                            const productArray = Object.entries(products);
+                            productArray.forEach(product => {
+                                const productTitle = product[0].trim();
+                                const productId = `${productTitle.replace(/\s/g,'')}Releases`
+                                const productReleases = product[1];
+                        -%>
+                        <div class="dropdown-toggle gwAccordion" type="button"
+                            data-toggle="collapse"
+                            data-target="#<%= productId %>"
+                            aria-expanded="false"
+                            aria-controls="<%= productId %>">
+                            <div class="accordionTitle">
+                                <%= productTitle %>
                             </div>
-                            <% }) -%>
+                            <div class="collapse" id="<%= productId %>">
+                                <ul class="list-unstyled card-columns">
+                                    <% productReleases.forEach(release => { -%>
+                                        <li><a href="<%= release.url %>"><%= release.metadata.version %></a></li>
+                                    <% }) %>
+                                </ul>
+                            </div>
                         </div>
-                    <% }) -%>
+                        <% }) -%>
                     </div>
+                <% }) -%>
                 </div>
             </div>
             <div class="col-sm-3">
