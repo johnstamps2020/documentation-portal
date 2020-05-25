@@ -14,17 +14,17 @@
         <div class="row">
             <div class="col-sm-9">
                 <div class="row">
-                    <div class="categoryCards">
-                    <%  let groups = docs.reduce((r, a) => {
-                        if (a.metadata.platform === 'Self-managed') {
-                            r[a.metadata.category] = [...r[a.metadata.category] || [], a];
-                        }
-                        return r;
-                    }, {});
-                    const groupArray = Object.entries(groups);
-                    groupArray.forEach(group => {
-                        const groupName = group[0];
-                        const groupItems = group[1]; -%>
+                <%  let groups = docs.reduce((r, a) => {
+                    if (a.metadata.platform === 'Self-managed') {
+                        r[a.metadata.category] = [...r[a.metadata.category] || [], a];
+                    }
+                    return r;
+                }, {});
+                const groupArray = Object.entries(groups);
+                groupArray.forEach(group => {
+                    const groupName = group[0];
+                    const groupItems = group[1]; -%>
+                    <div class="col-sm-4 mt-3">
                         <div class="categoryCard">
                             <h2><%= groupName %></h2>
                             <%  const products = groupItems.reduce((r, a) => {
@@ -55,8 +55,8 @@
                             </div>
                             <% }) -%>
                         </div>
-                    <% }) -%>
                     </div>
+                <% }) -%>
                 </div>
             </div>
             <div class="col-sm-3">
