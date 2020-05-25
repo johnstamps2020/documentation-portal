@@ -56,7 +56,7 @@
       "build": {
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "_superbook.ditamap",
+        "root": "_supermap-cloud-active.ditamap",
         "src": "cloudbclatestufgiaibq"
       }
     },
@@ -74,7 +74,7 @@
       "build": {
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Draft.ditaval",
-        "root": "_superbook.ditamap",
+        "root": "_supermap-cloud-active.ditamap",
         "src": "cloudbclatestufgiaibq"
       }
     },
@@ -92,7 +92,7 @@
       "build": {
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Draft.ditaval",
-        "root": "_superbook.ditamap",
+        "root": "_supermap-cloud-active.ditamap",
         "src": "cloudbclatestufgiaibq"
       }
     },
