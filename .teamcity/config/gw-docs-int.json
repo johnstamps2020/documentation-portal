@@ -10,6 +10,22 @@
   ],
   "docs": [
     {
+      "id": "guidewireidentityfederationhubqsvkhtgf",
+      "title": "Guidewire Identity Federation Hub",
+      "url": "cloud/gifh/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": ["Guidewire Cloud Platform"],
+        "version": "2020.05"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "",
+        "root": "GuidewireHub.ditamap",
+        "src": "guidewireidentityfederationhub"
+      }
+    },
+    {
       "id": "guidewirecloudplatformtycvlqax",
       "title": "Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
