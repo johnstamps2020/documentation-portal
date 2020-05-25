@@ -12,12 +12,12 @@
     {
       "id": "cloudbcupgradeguidepedjvkglts",
       "title": "BillingCenter Upgrade Guide",
-      "url": "cloud/bc/latest/upgrade",
+      "url": "cloud/upgrade/bc/latest",
       "visible": false,
       "metadata": {
         "platform": "Cloud",
         "productFamily": ["BillingCenter Cloud"],
-        "product": ["BillingCenter Upgrade Tools"],
+        "product": ["BillingCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -31,12 +31,12 @@
     {
       "id": "cloudccupgradeguideqdmbvphr",
       "title": "ClaimCenter Upgrade Guide",
-      "url": "cloud/cc/latest/upgrade",
+      "url": "cloud/upgrade/cc/latest",
       "visible": false,
       "metadata": {
         "platform": "Cloud",
         "productFamily": ["ClaimCenter Cloud"],
-        "product": ["ClaimCenter Upgrade Tools"],
+        "product": ["ClaimCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
@@ -50,12 +50,12 @@
     {
       "id": "cloudpcupgradeguideqafgpmxs",
       "title": "PolicyCenter Upgrade Guide",
-      "url": "cloud/pc/latest/upgrade",
+      "url": "cloud/upgrade/pc/latest",
       "visible": false,
       "metadata": {
         "platform": "Cloud",
         "productFamily": ["PolicyCenter Cloud"],
-        "product": ["PolicyCenter Upgrade Tools"],
+        "product": ["PolicyCenter"],
         "version": "2020.05",
         "category": ["Core"]
       },
