@@ -112,15 +112,15 @@
       }
     },
     {
-      "id": "cloudupgradebclatestujenocim",
-      "title": "BillingCenter Upgrade Tools",
+      "id": "cloudbcupgradeguidekdhbtvvm",
+      "title": "BillingCenter Upgrade Guide",
       "url": "cloud/upgrade/bc/latest",
       "metadata": {
         "productFamily": ["BillingCenter Cloud"],
-        "product": ["BillingCenter Upgrade Tools"],
+        "product": ["BillingCenter"],
         "platform": "Cloud",
         "version": "latest",
-        "category": ["InsuranceSuite"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -130,15 +130,15 @@
       }
     },
     {
-      "id": "cloudupgradecclatestbhlmoisa",
-      "title": "ClaimCenter Upgrade Tools",
+      "id": "cloudccupgradeguideqaplmudc",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/upgrade/cc/latest",
       "metadata": {
         "productFamily": ["ClaimCenter Cloud"],
         "product": ["ClaimCenter"],
         "platform": "Cloud",
         "version": "latest",
-        "category": ["InsuranceSuite"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -148,15 +148,15 @@
       }
     },
     {
-      "id": "cloudupgradepclatestpfsswfag",
-      "title": "PolicyCenter Upgrade Tools",
+      "id": "cloudpcupgradeguideytghbvjd",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/upgrade/pc/latest",
       "metadata": {
         "productFamily": ["PolicyCenter Cloud"],
-        "product": ["PolicyCenter Upgrade Tools"],
+        "product": ["PolicyCenter"],
         "platform": "Cloud",
         "version": "latest",
-        "category": ["InsuranceSuite"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
@@ -367,7 +367,7 @@
     },
     {
       "id": "selfmanagedupgradebcxjpnrssav",
-      "title": "BillingCenter Upgrade Guide 3x",
+      "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/upgrade/bc/3x",
       "metadata": {
         "product": ["BillingCenter"],
@@ -384,7 +384,7 @@
     },
     {
       "id": "selfmanagedupgradeccxktcfcgek",
-      "title": "ClaimCenter Upgrade Guide 3x",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/upgrade/cc/3x",
       "metadata": {
         "product": ["ClaimCenter"],
@@ -401,7 +401,7 @@
     },
     {
       "id": "selfmanagedupgradepcxhcmnkzft",
-      "title": "PolicyCenter Upgrade Guide 3x",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/upgrade/pc/3x",
       "metadata": {
         "product": ["PolicyCenter"],
