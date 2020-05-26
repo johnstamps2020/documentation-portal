@@ -98,6 +98,21 @@ a:hover {
   color: var(--GW-COLOR-BRAND-1-HOVER) !important;
 }
 
+a.returnLink {
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+a.returnLink::before {
+  content: url("/images/chevron_left-brand1-18dp.svg");
+  vertical-align: middle;
+}
+
+a.returnLink:hover::before {
+  content: url("/images/chevron_left-brand1-hover-18dp.svg");
+  vertical-align: middle;
+}
+
 .docPanelContainer h1 {
   font-size: 24px;
   font-weight: 600;
