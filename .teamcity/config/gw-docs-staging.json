@@ -140,7 +140,7 @@
     },
     {
       "id": "clouddhaithitzz",
-      "title": "DataHub",
+      "title": "DataHubDataHub for Guidewire Cloud",
       "url": "cloud/dh/latest",
       "metadata": {
         "platform": "Cloud",
@@ -162,7 +162,7 @@
     },
     {
       "id": "cloudiclovarpzz",
-      "title": "InfoCenter",
+      "title": "InfoCenter for Guidewire Cloud",
       "url": "cloud/ic/latest",
       "metadata": {
         "platform": "Cloud",

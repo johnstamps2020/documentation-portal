@@ -192,14 +192,13 @@ a:hover {
 
 .switcher {
   --switcher-width: 324px;
-  margin-top: 64px;
   width: var(--switcher-width);
   border: 1px solid var(--GW-COLOR-BRAND-2);
   border-radius: 3px;
   font-size: 0.9rem;
 }
 
-.switcher div {
+.switcher a {
   display: inline-block;
   width: calc(var(--switcher-width) / 2 - 3px);
   text-align: center;
@@ -207,35 +206,35 @@ a:hover {
   padding-bottom: 6px;
 }
 
-.switcher div a:hover {
+.switcher a:hover {
   text-decoration: none;
 }
 
-.switcher .cloud {
+.switcher .selected {
   background-color: var(--GW-COLOR-BRAND-1);
 }
 
-.switcher .cloud:hover {
+.switcher a.selected:hover {
   background-color: var(--GW-COLOR-BRAND-1-HOVER);
 }
 
-.switcher .cloud a {
+.switcher a.selected {
   color: var(--GW-COLOR-TEXT-3) !important;
 }
 
-.switcher .cloud a:hover {
+.switcher a.selected:hover {
   color: var(--GW-COLOR-TEXT-3-HOVER) !important;
 }
 
-.switcher .selfManaged:hover {
+.switcher .unselected:hover {
   background-color: var(--GW-COLOR-BRAND-1);
 }
 
-.switcher .selfManaged:hover a {
+.switcher a.unselected:hover {
   color: var(--GW-COLOR-TEXT-3) !important;
 }
 
-.switcher .selfManaged a {
+.switcher a.unselected {
   color: var(--GW-COLOR-TEXT-2) !important;
 }
 
@@ -595,8 +594,6 @@ body {
 }
 
 .docPageTitle {
-  margin-top: 64px;
-  margin-bottom: 54px;
   height: 48px;
 }
 
@@ -612,13 +609,22 @@ body {
   line-height: 40px;
 }
 
-.loginJumbotron {
+.loginPageTitle {
   text-align: center;
 }
 
-.loginSubtitle {
-  font-size: 18px;
-  color: var(--GW-COLOR-TEXT-1);
+.loginPageTitle h1 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+
+.loginPageTitle p {
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 31px;
+  text-align: center;
 }
 
 .loginCard {
@@ -631,6 +637,7 @@ body {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
   box-sizing: border-box;
   text-align: center;
+  margin: auto;
   margin-bottom: 32px;
 }
 
