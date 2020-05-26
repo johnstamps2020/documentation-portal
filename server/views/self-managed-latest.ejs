@@ -7,13 +7,15 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-9">
-                <div class="docPageTitle">
+                <div class="docPageTitle docPageHeaderItems">
                     <h1 class="display-4">Self-managed product documentation</h1>
                     <p><a href="/self-managed-all-releases">See all releases</a></p>
                 </div>
             </div>
             <div class="col-sm-3">
-                <% include parts/switcher %>
+                <div class="docPageHeaderItems">
+                    <%- include('./parts/switcher.ejs', {selected: 'sm'}) %>
+                </div>
             </div>
         </div>
         <div class="row">

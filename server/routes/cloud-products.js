@@ -18,7 +18,12 @@ const configureRouter = async () => {
         return r;
       }, {});
 
-      res.render('product', { product: productFamily, docs: productDocs, returnUrl: '/' });
+      res.render('product', {
+        product: productFamily,
+        docs: productDocs,
+        returnUrl: '/',
+        returnLabel: 'Back to Cloud Product Documentation',
+      });
     });
   });
 };
