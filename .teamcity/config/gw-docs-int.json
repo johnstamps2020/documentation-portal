@@ -114,7 +114,7 @@
     {
       "id": "cloudbcupgradeguidekdhbtvvm",
       "title": "BillingCenter Upgrade Guide",
-      "url": "cloud/upgrade/bc/latest",
+      "url": "cloud/bc/upgrade/latest",
       "metadata": {
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
@@ -126,13 +126,13 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "cloudupgradebclatestpaqnlqfs"
+        "src": "exportupgradeguide"
       }
     },
     {
       "id": "cloudccupgradeguideqaplmudc",
       "title": "ClaimCenter Upgrade Guide",
-      "url": "cloud/upgrade/cc/latest",
+      "url": "cloud/cc/upgrade/latest",
       "metadata": {
         "productFamily": ["ClaimCenter Cloud"],
         "product": ["ClaimCenter"],
@@ -144,13 +144,13 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "cloudupgradebclatestpaqnlqfs"
+        "src": "exportupgradeguide"
       }
     },
     {
       "id": "cloudpcupgradeguideytghbvjd",
       "title": "PolicyCenter Upgrade Guide",
-      "url": "cloud/upgrade/pc/latest",
+      "url": "cloud/pc/upgrade/latest",
       "metadata": {
         "productFamily": ["PolicyCenter Cloud"],
         "product": ["PolicyCenter"],
@@ -162,7 +162,7 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "cloudupgradebclatestpaqnlqfs"
+        "src": "exportupgradeguide"
       }
     },
     {
@@ -368,7 +368,7 @@
     {
       "id": "selfmanagedupgradebcxjpnrssav",
       "title": "BillingCenter Upgrade Guide",
-      "url": "self-managed/upgrade/bc/3x",
+      "url": "self-managed/bc/upgrade/3x",
       "metadata": {
         "product": ["BillingCenter"],
         "platform": "Self-managed",
@@ -379,13 +379,13 @@
         "buildType": "dita",
         "filter": "IS-BC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "cloudupgradebclatestpaqnlqfs"
+        "src": "exportupgradeguide"
       }
     },
     {
       "id": "selfmanagedupgradeccxktcfcgek",
       "title": "ClaimCenter Upgrade Guide",
-      "url": "self-managed/upgrade/cc/3x",
+      "url": "self-managed/cc/upgrade/3x",
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": "Self-managed",
@@ -396,13 +396,13 @@
         "buildType": "dita",
         "filter": "IS-CC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "cloudupgradebclatestpaqnlqfs"
+        "src": "exportupgradeguide"
       }
     },
     {
       "id": "selfmanagedupgradepcxhcmnkzft",
       "title": "PolicyCenter Upgrade Guide",
-      "url": "self-managed/upgrade/pc/3x",
+      "url": "self-managed/pc/upgrade/3x",
       "metadata": {
         "product": ["PolicyCenter"],
         "platform": "Self-managed",
@@ -413,7 +413,7 @@
         "buildType": "dita",
         "filter": "IS-PC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "cloudupgradebclatestpaqnlqfs"
+        "src": "exportupgradeguide"
       }
     },
     {
@@ -748,7 +748,7 @@
       ]
     },
     {
-      "id": "cloudupgradebclatestpaqnlqfs",
+      "id": "exportupgradeguide",
       "title": "Insurance Suite Upgrade Guide",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
