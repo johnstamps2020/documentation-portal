@@ -12,7 +12,7 @@
     {
       "id": "cloudbcupgradeguidepedjvkglts",
       "title": "BillingCenter Upgrade Guide",
-      "url": "cloud/upgrade/bc/latest",
+      "url": "cloud/bc/upgrade/latest",
       "visible": false,
       "metadata": {
         "platform": "Cloud",
@@ -31,7 +31,7 @@
     {
       "id": "cloudccupgradeguideqdmbvphr",
       "title": "ClaimCenter Upgrade Guide",
-      "url": "cloud/upgrade/cc/latest",
+      "url": "cloud/cc/upgrade/latest",
       "visible": false,
       "metadata": {
         "platform": "Cloud",
@@ -50,7 +50,7 @@
     {
       "id": "cloudpcupgradeguideqafgpmxs",
       "title": "PolicyCenter Upgrade Guide",
-      "url": "cloud/upgrade/pc/latest",
+      "url": "cloud/pc/upgrade/latest",
       "visible": false,
       "metadata": {
         "platform": "Cloud",
