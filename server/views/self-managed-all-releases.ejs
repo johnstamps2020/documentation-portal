@@ -42,7 +42,7 @@
                                     productArray.forEach(product => {
                                         const productTitle = product[0].trim();
                                         const productId = `${productTitle.replace(/\s/g,'')}Releases`
-                                        const productReleases = product[1];
+                                        const productReleases = product[1].filter(doc => (doc.visible !== false));
                                 -%>
                                 <button class="dropdown-toggle gwAccordion" type="button"
                                     data-toggle="collapse"
