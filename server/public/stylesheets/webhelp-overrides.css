@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import "vars.css";
 
 @media only screen and (max-width: 580px) {
   /* leaving this here if wne need it later */
@@ -69,33 +70,13 @@
   }
 
   .wh_content_area#content {
-    min-height: calc(100% - var(--header-height) - var(--footer-height));
+    min-height: var(--main-height);
   }
 }
 
-html,
-body {
-  --footer-height: 84px;
-  --header-height: 64px;
-  --landing-title-container-height: 200px;
-  --search-bar-height: 104px;
-  --search-field-width: 360px;
-  --search-button-width: 16px;
-  --GW-COLOR-BRAND-1: #00739d;
-  --GW-COLOR-BRAND-1-HOVER: #006083;
-  --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
-  --GW-COLOR-BRAND-2: #3c4c5e;
-  --GW-COLOR-BRAND-2-HOVER: #46596e;
-  --GW-COLOR-BRAND-2-ACTIVE: #50657d;
-  --GW-COLOR-TEXT-1: #28333f;
-  --GW-COLOR-TEXT-3: #ffffff;
-  --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
-  --GW-COLOR-BKGD-1: #fafafa;
-  --GW-COLOR-BKGD-2: #e9f9ff;
-  --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
-  --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
-  background-color: var(--GW-COLOR-BKGD-1);
-  height: 100%;
+header.navbar.navbar-default.wh_header {
+  min-height: var(--header-height) !important;
+  background-color: var(--GW-COLOR-BRAND-2) !important;
 }
 
 header {

@@ -1,7 +1,9 @@
+/*noinspection CssUnknownTarget*/
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import "vars.css";
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 581px) {
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -33,53 +35,6 @@
   .pageLogo {
     margin: 0 !important;
   }
-}
-
-html,
-body {
-  /* PORTAL-SPECIFIC */
-  --footer-height: 84px;
-  --header-height: 64px;
-  --main-height: calc(100% - var(--header-height) - var(--footer-height));
-  --landing-title-container-height: 200px;
-  --search-bar-height: 104px;
-  --search-field-width: 360px;
-  --search-button-width: 16px;
-  /*  */
-  /* -------- JUTRO -------- */
-  /*  */
-  /* COLOR */
-  --GW-COLOR-BRAND-1: #00739d;
-  --GW-COLOR-BRAND-1-HOVER: #006083;
-  --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
-  --GW-COLOR-BRAND-2: #3c4c5e;
-  --GW-COLOR-BRAND-2-HOVER: #46596e;
-  --GW-COLOR-BRAND-2-ACTIVE: #50657d;
-  --GW-COLOR-FOCUS-1: #1e9acf;
-  --GW-COLOR-BORDER: #acb9ca;
-  /* TEXT COLOR */
-  --GW-COLOR-TEXT-1: #28333f;
-  --GW-COLOR-TEXT-2: #657580;
-  --GW-COLOR-TEXT-3: #ffffff;
-  --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
-  --GW-COLOR-ALERT-INFO: #4074ce;
-  /* BACKGROUND */
-  --GW-COLOR-BKGD-1: #fafafa;
-  --GW-COLOR-BKGD-2: #e9f9ff;
-  --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
-  --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
-  /* SPACING */
-  --GW-SPACING-XXS: 0.25rem;
-  --GW-SPACING-XS: 0.5rem;
-  --GW-SPACING-SM: 0.75rem;
-  --GW-SPACING: 1rem;
-  --GW-SPACING-LG: 1.25rem;
-  --GW-SPACING-XL: 1.5rem;
-  --GW-SPACING-XXL: 2rem;
-  --GW-SPACING-XXXL: 2.5rem;
-
-  background-color: var(--GW-COLOR-BKGD-1);
-  height: 100%;
 }
 
 .docPanelContainer .container {
@@ -183,6 +138,7 @@ a.returnLink {
   width: 100%;
   margin-bottom: 16px;
   border: none;
+  background-color: transparent;
 }
 
 .gwAccordion .accordionTitle {
@@ -397,7 +353,7 @@ div.searchBoxPusher {
 }
 
 .searchResultsPage {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  min-height: var(--main-height);
 }
 
 .searchResults {
