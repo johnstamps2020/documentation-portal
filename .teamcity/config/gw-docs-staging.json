@@ -2571,7 +2571,7 @@
   "sources": [
     {
       "id": "exportupgradeguide3x",
-      "title": "Insurance Suite Upgrade Guide",
+      "title": "Insurance Suite Upgrade Guide 3x",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
       "xdocsPathIds": [
@@ -2586,7 +2586,7 @@
     },
     {
       "id": "exportupgradeguide1x",
-      "title": "Insurance Suite Upgrade Guide",
+      "title": "Insurance Suite Upgrade Guide 1x",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-1x.git",
       "xdocsPathIds": [
