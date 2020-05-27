@@ -179,7 +179,7 @@
       "title": "BillingCenter",
       "url": "self-managed/bc/909",
       "metadata": {
-        "platform": "Cloud",
+        "platform": "Self-managed",
         "product": ["BillingCenter"],
         "version": "9.0.9",
         "category": ["Core"]
