@@ -41,6 +41,22 @@
       }
     },
     {
+      "id": "dkereofmtkrfkdd",
+      "title": "Guidewire Cloud Platform (new webhelp preview)",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "product": ["Guidewire Cloud Platform"],
+        "version": "2020.05"
+      },
+      "build": {
+        "buildType": "dita-dev",
+        "filter": "assets/insurer-developer.ditaval",
+        "root": "guidewire_cloud_platform_guide.ditamap",
+        "src": "guidewirecloudplatform"
+      }
+    },
+    {
       "id": "cloudinlatestdnoewrkt",
       "title": "InsuranceNow",
       "url": "cloud/in/latest",
