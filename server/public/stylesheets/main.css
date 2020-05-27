@@ -247,7 +247,7 @@ a.returnLink {
 }
 
 .switcher a.unselected:hover {
-  background-color: var(--GW-COLOR-BRAND-1);
+  background-color: var(--GW-COLOR-BRAND-1-HOVER);
   color: var(--GW-COLOR-TEXT-3) !important;
 }
 
