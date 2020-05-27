@@ -1,7 +1,9 @@
+/*noinspection CssUnknownTarget*/
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import "vars.css";
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 581px) {
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -35,53 +37,6 @@
   }
 }
 
-html,
-body {
-  /* PORTAL-SPECIFIC */
-  --footer-height: 84px;
-  --header-height: 64px;
-  --main-height: calc(100% - var(--header-height) - var(--footer-height));
-  --landing-title-container-height: 200px;
-  --search-bar-height: 104px;
-  --search-field-width: 360px;
-  --search-button-width: 16px;
-  /*  */
-  /* -------- JUTRO -------- */
-  /*  */
-  /* COLOR */
-  --GW-COLOR-BRAND-1: #00739d;
-  --GW-COLOR-BRAND-1-HOVER: #006083;
-  --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
-  --GW-COLOR-BRAND-2: #3c4c5e;
-  --GW-COLOR-BRAND-2-HOVER: #46596e;
-  --GW-COLOR-BRAND-2-ACTIVE: #50657d;
-  --GW-COLOR-FOCUS-1: #1e9acf;
-  --GW-COLOR-BORDER: #acb9ca;
-  /* TEXT COLOR */
-  --GW-COLOR-TEXT-1: #28333f;
-  --GW-COLOR-TEXT-2: #657580;
-  --GW-COLOR-TEXT-3: #ffffff;
-  --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
-  --GW-COLOR-ALERT-INFO: #4074ce;
-  /* BACKGROUND */
-  --GW-COLOR-BKGD-1: #fafafa;
-  --GW-COLOR-BKGD-2: #e9f9ff;
-  --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
-  --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
-  /* SPACING */
-  --GW-SPACING-XXS: 0.25rem;
-  --GW-SPACING-XS: 0.5rem;
-  --GW-SPACING-SM: 0.75rem;
-  --GW-SPACING: 1rem;
-  --GW-SPACING-LG: 1.25rem;
-  --GW-SPACING-XL: 1.5rem;
-  --GW-SPACING-XXL: 2rem;
-  --GW-SPACING-XXXL: 2.5rem;
-
-  background-color: var(--GW-COLOR-BKGD-1);
-  height: 100%;
-}
-
 .docPanelContainer .container {
   max-width: 1300px !important;
 }
@@ -94,23 +49,30 @@ a {
   color: var(--GW-COLOR-BRAND-1) !important;
 }
 
+a svg {
+  fill: var(--GW-COLOR-BRAND-1) !important;
+}
+
 a:hover {
   color: var(--GW-COLOR-BRAND-1-HOVER) !important;
+}
+
+a:hover svg {
+  fill: var(--GW-COLOR-BRAND-1-HOVER) !important;
+}
+
+a:active {
+  color: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
+}
+
+a:active svg {
+  fill: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
 }
 
 a.returnLink {
   vertical-align: middle;
   line-height: 20px;
-}
-
-a.returnLink::before {
-  content: url("/images/chevron_left-brand1-18dp.svg");
-  vertical-align: middle;
-}
-
-a.returnLink:hover::before {
-  content: url("/images/chevron_left-brand1-hover-18dp.svg");
-  vertical-align: middle;
+  font-size: 14px;
 }
 
 .docPanelContainer h1 {
@@ -159,8 +121,7 @@ a.returnLink:hover::before {
 .categoryCard {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
   background-color: white;
-  padding: 24px;
-  padding-right: 16px;
+  padding: 24px 16px 24px 24px;
   font-size: 16px;
   letter-spacing: 0;
   line-height: 20px;
@@ -177,6 +138,7 @@ a.returnLink:hover::before {
   width: 100%;
   margin-bottom: 16px;
   border: none;
+  background-color: transparent;
 }
 
 .gwAccordion .accordionTitle {
@@ -199,7 +161,7 @@ a.returnLink:hover::before {
   margin-bottom: 16px;
 }
 
-.switcher {
+.toggle {
   --switcher-height: 32px;
   width: 324px;
   height: var(--switcher-height);
@@ -212,31 +174,35 @@ a.returnLink:hover::before {
   overflow: hidden;
 }
 
-.switcher a {
+.toggle a {
   display: inline-block;
   text-align: center;
 }
 
-.switcher a:hover {
+.toggle a:hover {
   text-decoration: none;
 }
 
-.switcher a.selected {
+.toggle a:active {
+  background-color: var(--GW-COLOR-BRAND-1-ACTIVE);
+}
+
+.toggle a.selected {
   background-color: var(--GW-COLOR-BRAND-1);
   color: var(--GW-COLOR-TEXT-3) !important;
 }
 
-.switcher a.selected:hover {
-  background-color: var(--GW-COLOR-BRAND-1-HOVER);
+.toggle a.selected:hover {
+  background-color: var(--GW-COLOR-BRAND-1-ACTIVE);
   color: var(--GW-COLOR-TEXT-3-HOVER) !important;
 }
 
-.switcher a.unselected {
+.toggle a.unselected {
   color: var(--GW-COLOR-TEXT-2) !important;
 }
 
-.switcher a.unselected:hover {
-  background-color: var(--GW-COLOR-BRAND-1);
+.toggle a.unselected:hover {
+  background-color: var(--GW-COLOR-BRAND-1-HOVER);
   color: var(--GW-COLOR-TEXT-3) !important;
 }
 
@@ -267,17 +233,11 @@ a.returnLink:hover::before {
 .docPanelLink a {
   color: var(--GW-COLOR-BRAND-1) !important;
 }
+
 .docPanel a:hover,
 .docPanelTransparent a:hover,
 .docPanelLink a:hover {
   color: var(--GW-COLOR-BRAND-1-HOVER) !important;
-}
-a:hover {
-  color: var(--GW-COLOR-BRAND-1-HOVER) !important;
-}
-
-a:active {
-  color: var(--GW-COLOR-BRAND-1-ACTIVE);
 }
 
 .docPanelLink {
@@ -312,6 +272,7 @@ a:active {
 .pageLogo {
   margin-left: 32px;
   height: 32px;
+  width: 340px;
 }
 
 .searchBoxContainer {
@@ -393,7 +354,7 @@ div.searchBoxPusher {
 }
 
 .searchResultsPage {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  min-height: var(--main-height);
 }
 
 .searchResults {
@@ -408,9 +369,7 @@ div.searchBoxPusher {
   min-height: var(--footer-height);
   color: var(--GW-COLOR-TEXT-3);
   background-color: var(--GW-COLOR-TEXT-1);
-  padding: 32px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px 32px;
 }
 
 .footerCopyright {
@@ -560,8 +519,7 @@ div.searchBoxPusher {
 }
 
 .resultWrapper {
-  padding: 36px;
-  padding-left: 64px;
+  padding: 36px 36px 36px 64px;
 }
 
 .resultWrapper .badge-light {

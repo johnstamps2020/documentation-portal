@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include parts/head %>
-  <body>
-    <% include parts/header %>
-    <div class="docPanelContainer">
-      <div class="container">
+<% include parts/head %>
+<body>
+<% include parts/header %>
+<div class="docPanelContainer">
+    <div class="container">
         <div class="row">
-          <div class="col-sm-9">
-            <div class="docPageTitle docPageHeaderItems">
-              <h1><%= product.name %></h1>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="docPageHeaderItems">
-              <a class="returnLink" href="<%= returnUrl %>"><%= returnLabel %></a>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="row">
-              <% Object.entries(docs).forEach(category => { -%>
-              <div class="col-sm-4 mt-3">
-                <div class="categoryCard">
-                  <h2><%= category[0] %></h2>
-                  <% category[1].forEach(doc => { -%>
-                  <div class="docLink">
-                    <a href="/<%= doc.url %>"><%= doc.title %></a>
-                  </div>
-                  <% }); -%>
+            <div class="col-sm-9">
+                <div class="docPageTitle docPageHeaderItems">
+                    <h1><%= product.name %></h1>
                 </div>
-              </div>
-              <% }); -%>
             </div>
-          </div>
+            <div class="col-sm-3">
+                <div class="docPageHeaderItems">
+                    <a class="returnLink" href="<%= returnUrl %>">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00739d" width="18px"
+                             height="18px">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                        </svg> <%= returnLabel %></a>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <% Object.entries(docs).forEach(category => { -%>
+                        <div class="col-sm-4 mt-3">
+                            <div class="categoryCard">
+                                <h2><%= category[0] %></h2>
+                                <% category[1].forEach(doc => { -%>
+                                    <div class="docLink">
+                                        <a href="/<%= doc.url %>"><%= doc.title %></a>
+                                    </div>
+                                <% }); -%>
+                            </div>
+                        </div>
+                    <% }); -%>
+                </div>
+            </div>
+        </div>
     </div>
-    <% include parts/footer %>
-  </body>
+</div>
+<% include parts/footer %>
+</body>
 </html>
