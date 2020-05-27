@@ -42,7 +42,7 @@
                                     const productArray = Object.entries(products);
                                     productArray.forEach(product => {
                                         const productTitle = product[0].trim();
-                                        const productReleases = product[1];
+                                        const productReleases = product[1].filter(doc => (doc.visible !== false));
                                         const versionsInProductGroup = productReleases.map(item => {
                                             return parseInt(item.metadata.version.replace(/\./g, ''));
                                         });
