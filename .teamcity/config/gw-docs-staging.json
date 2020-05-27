@@ -326,7 +326,7 @@
       },
       "build": {
         "buildType": "dita",
-        "filter": "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
+        "filter": "GW-Generic-Cloud-Release.ditaval",
         "root": "supermapExplore.ditamap",
         "src": "explore"
       }
