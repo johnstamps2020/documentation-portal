@@ -2564,6 +2564,7 @@
       "title": "Explore",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
