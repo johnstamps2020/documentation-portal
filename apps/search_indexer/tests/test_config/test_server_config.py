@@ -26,6 +26,42 @@ def test_config_exists():
         raise AssertionError(f'Cannot find config files:\n    {missing_files}')
 
 
+def test_props_are_unique():
+    def raise_exception_if_not_unique(values: list, prop_label):
+        unique_values = []
+        duplicates = []
+        for item in values:
+            if not item in unique_values:
+                unique_values.append(item)
+            else:
+                duplicates.append(item)
+        try:
+            assert not duplicates
+        except AssertionError:
+            raise AssertionError(
+                f'Found duplicate {prop_label}(s): {duplicates}')
+
+    def test_props_are_unique_in_file(config_json: object):
+        routes = [x.get('route') for x in config_json['pages']]
+        raise_exception_if_not_unique(routes, 'route')
+
+        ids = [x.get('id')
+               for x in config_json['docs'] + config_json['sources']]
+        raise_exception_if_not_unique(ids, 'id')
+
+    def test_referenced_sources_exist(config_json: str):
+        pass
+
+    def test_if_is_compliant_with_schema(config_json: str):
+        pass
+
+    for path in config_paths:
+        json = load_json_file(path)
+        test_if_is_compliant_with_schema(json)
+        test_props_are_unique_in_file(json)
+        test_referenced_sources_exist(json)
+
+
 def test_config_views_exist():
     missing_views = []
     for config_path in config_paths:
@@ -40,20 +76,3 @@ def test_config_views_exist():
         assert not missing_views
     except AssertionError:
         raise AssertionError(f'Missing some views: {missing_views}')
-
-
-def test_routes_are_unique():
-    def test_routes_are_unique_in_file(config_path: str):
-        config_json = load_json_file(config_path)
-        page_config = config_json['pages']
-        routes = [x.get('route') for x in page_config]
-        unique_routes = set(routes)
-        try:
-            assert sorted(routes) == sorted(unique_routes)
-        except AssertionError:
-            duplicates = [i for i, j in zip(
-                sorted(routes), sorted(unique_routes)) if i != j]
-            raise AssertionError(f'Found duplicate route(s): {duplicates}')
-
-    for config_path in config_paths:
-        test_routes_are_unique_in_file(config_path)
