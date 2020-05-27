@@ -1,11 +1,13 @@
 import json
 from pathlib import Path
+from jsonschema import validate
 
 root_dir = Path(__file__).parent.parent.parent.parent.parent
 views_dir = root_dir / 'server' / 'views'
 
 int_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-int.json'
 staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
+schema_path = root_dir / '.teamcity' / 'config' / 'config-schema.json'
 config_paths = [int_config_path, staging_config_path]
 
 
@@ -26,7 +28,7 @@ def test_config_exists():
         raise AssertionError(f'Cannot find config files:\n    {missing_files}')
 
 
-def test_props_are_unique():
+def test_config_is_valid():
     def raise_exception_if_not_unique(values: list, prop_label):
         unique_values = []
         duplicates = []
@@ -50,16 +52,31 @@ def test_props_are_unique():
         raise_exception_if_not_unique(ids, 'id')
 
     def test_referenced_sources_exist(config_json: str):
-        pass
+        source_ids = [x.get('id') for x in config_json['sources']]
+        referenced_ids = []
+        for doc in config_json['docs']:
+            if doc.get('build', None):
+                referenced_ids.append(doc['build']['src'])
 
-    def test_if_is_compliant_with_schema(config_json: str):
-        pass
+        refs_to_missing_sources = []
+        for referenced_id in referenced_ids:
+            if not referenced_id in source_ids:
+                refs_to_missing_sources.append(referenced_id)
+
+        try:
+            assert not refs_to_missing_sources
+        except AssertionError:
+            raise AssertionError(f'One or more builds reference missing source IDs: {refs_to_missing_sources}')
+
+    def test_is_valid_with_schema(config_json: str):
+        config_schema = load_json_file(schema_path)
+        validate(instance=config_json, schema=config_schema)
 
     for path in config_paths:
-        json = load_json_file(path)
-        test_if_is_compliant_with_schema(json)
-        test_props_are_unique_in_file(json)
-        test_referenced_sources_exist(json)
+        json_object = load_json_file(path)
+        test_is_valid_with_schema(json_object)
+        test_props_are_unique_in_file(json_object)
+        test_referenced_sources_exist(json_object)
 
 
 def test_config_views_exist():
