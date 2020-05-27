@@ -206,7 +206,7 @@ a.returnLink {
   margin-bottom: 16px;
 }
 
-.switcher {
+.toggle {
   --switcher-height: 32px;
   width: 324px;
   height: var(--switcher-height);
@@ -219,34 +219,34 @@ a.returnLink {
   overflow: hidden;
 }
 
-.switcher a {
+.toggle a {
   display: inline-block;
   text-align: center;
 }
 
-.switcher a:hover {
+.toggle a:hover {
   text-decoration: none;
 }
 
-.switcher a:active {
+.toggle a:active {
   background-color: var(--GW-COLOR-BRAND-1-ACTIVE);
 }
 
-.switcher a.selected {
+.toggle a.selected {
   background-color: var(--GW-COLOR-BRAND-1);
   color: var(--GW-COLOR-TEXT-3) !important;
 }
 
-.switcher a.selected:hover {
+.toggle a.selected:hover {
   background-color: var(--GW-COLOR-BRAND-1-ACTIVE);
   color: var(--GW-COLOR-TEXT-3-HOVER) !important;
 }
 
-.switcher a.unselected {
+.toggle a.unselected {
   color: var(--GW-COLOR-TEXT-2) !important;
 }
 
-.switcher a.unselected:hover {
+.toggle a.unselected:hover {
   background-color: var(--GW-COLOR-BRAND-1-HOVER);
   color: var(--GW-COLOR-TEXT-3) !important;
 }
