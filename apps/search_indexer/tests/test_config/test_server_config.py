@@ -43,7 +43,7 @@ def test_config_is_valid():
             raise AssertionError(
                 f'Found duplicate {prop_label}(s): {duplicates}')
 
-    def test_props_are_unique_in_file(config_json: object):
+    def props_are_unique_in_file(config_json: object):
         routes = [x.get('route') for x in config_json['pages']]
         raise_exception_if_not_unique(routes, 'route')
 
@@ -51,7 +51,7 @@ def test_config_is_valid():
                for x in config_json['docs'] + config_json['sources']]
         raise_exception_if_not_unique(ids, 'id')
 
-    def test_referenced_sources_exist(config_json: str):
+    def referenced_sources_exist(config_json: str):
         source_ids = [x.get('id') for x in config_json['sources']]
         referenced_ids = []
         for doc in config_json['docs']:
@@ -68,15 +68,15 @@ def test_config_is_valid():
         except AssertionError:
             raise AssertionError(f'One or more builds reference missing source IDs: {refs_to_missing_sources}')
 
-    def test_is_valid_with_schema(config_json: str):
+    def is_valid_with_schema(config_json: str):
         config_schema = load_json_file(schema_path)
         validate(instance=config_json, schema=config_schema)
 
     for path in config_paths:
         json_object = load_json_file(path)
-        test_is_valid_with_schema(json_object)
-        test_props_are_unique_in_file(json_object)
-        test_referenced_sources_exist(json_object)
+        is_valid_with_schema(json_object)
+        props_are_unique_in_file(json_object)
+        referenced_sources_exist(json_object)
 
 
 def test_config_views_exist():
