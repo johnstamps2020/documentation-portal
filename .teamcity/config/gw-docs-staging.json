@@ -304,8 +304,8 @@
       },
       "build": {
         "buildType": "dita",
-        "filter": "GW-Generic-Release.ditaval",
-        "root": "cdp-supermap.ditamap",
+        "filter": "GW-Generic-Cloud-Release.ditaval",
+        "root": "supermapExplore.ditamap",
         "src": "explore"
       }
     },
