@@ -1,147 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include parts/head %>
-  <body>
-    <% include parts/header %>
-    <div>
-      <div class="row searchResultsPage">
+<% include parts/head %>
+<body>
+<% include parts/header %>
+<div>
+    <div class="row searchResultsPage">
         <div class="col-sm-2 filterSearchResults">
-          <div class="container allFiltersWrapper">
-            <% filters.forEach(filter => { %>
-                <h2>Filter by <%= filter.name %></h2>
-                <% filter.values.forEach(checkboxValue => { %>
-                <label class="checkboxRowContainer">
-                  <span class="checkboxLabelText"><%= checkboxValue.label %></span>
-                  <span class="docCount"><%= checkboxValue.doc_count %></span>
-                  <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>" value="<%= checkboxValue.label %>"
-                    <% if (checkboxValue.checked) { %>
-                      checked="true"
-                    <% } %>
-                  />
-                  <span class="checkmark"></span>
-                </label>
-            <% }) %> <% }) %>
-          </div>
+            <div class="container allFiltersWrapper">
+                <% filters.forEach(filter => { %>
+                    <h2>Filter by <%= filter.name %></h2>
+                    <% filter.values.forEach(checkboxValue => { %>
+                        <label class="checkboxRowContainer">
+                            <span class="checkboxLabelText"><%= checkboxValue.label %></span>
+                            <span class="docCount"><%= checkboxValue.doc_count %></span>
+                            <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
+                                   value="<%= checkboxValue.label %>"
+                            <% if (checkboxValue.checked) { %>
+                                   checked="true"
+                                    <% } %>
+                            />
+                            <span class="checkmark"></span>
+                        </label>
+                    <% }) %>
+                <% }) %>
+            </div>
         </div>
         <div class="col-sm-8 docPanelContainer">
-          <div class="resultWrapper">
-          <h1>Search results for "<%= query %>"</h1>
-          <div class="resultsSubheading">
+            <div class="resultWrapper">
+                <h1>Search results for "<%= query %>"</h1>
+                <div class="resultsSubheading">
             <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
-            %> results (page <%= currentPage %> of <%= pages %>)</span>
-            <span class="paginationWrapper">
+                %> results (page <%= currentPage %> of <%= pages %>)</span>
+                    <span class="paginationWrapper">
               <span>View items:</span>
               <select id="pagination">
-                <% ['10', '25', '50', '100'].forEach(rpp => { %>
-                  <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
-                <% }) %>
+                  <% ['10', '25', '50', '100'].forEach(rpp => { %>
+                      <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
+                  <% }) %>
               </select>
             </span>
-          </div>
-          <div class="searchResults" id="searchResults">
-            <% searchResults.forEach(result => { %>
-            <h2>
-              <a href="<%= result.href %>" target="_blank"
-                ><%= result.title %></a>
-            </h2>
-            <div class="resultBadges">
-              <% result.docTags.forEach(tag => { %>
-                <span class="infoLabel"><%= tag %></span>
-              <% }) %>
+                </div>
+                <div class="searchResults" id="searchResults">
+                    <% searchResults.forEach(result => { %>
+                        <h2>
+                            <a href="<%= result.href %>" target="_blank"
+                            ><%= result.title %></a>
+                        </h2>
+                        <div class="resultBadges">
+                            <% result.docTags.forEach(tag => { %>
+                                <% if (Array.isArray(tag)) { %>
+                                    <% tag.forEach(value => { %>
+                                        <span class="infoLabel"><%= value %></span>
+                                    <% }) %>
+                                <% } else { %>
+                                    <span class="infoLabel"><%= tag %></span>
+                                <% } %>
+                            <% }) %>
+                        </div>
+                        <p><%= result.body %></p>
+                    <% }) %>
+                </div>
+                <% if (pages > 0) { %>
+                    <ul class="pagination text-center">
+                        <% if (currentPage == 1) { %>
+                            <li class="disabled"><a>First</a></li>
+                        <% } else { %>
+                            <li>
+                                <button onclick="setUrlParam('page', '1')">First</button>
+                            </li>
+                        <% } %>
+                        <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
+                                4 : 1) %>
+                        <% if (i !== 1) { %>
+                            <li class="disabled"><a>...</a></li>
+                        <% } %>
+                        <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
+                        { %> <% if (i == currentPage) { %>
+                            <li class="disabled"><%= i %></li>
+                        <% } else { %>
+                            <li>
+                                <button onclick="setUrlParam('page', <%= i %>)">
+                                    <%= i %>
+                                </button>
+                            </li>
+                        <% } %> <% if (i == Number(currentPage) + 4 && i < pages) { %>
+                            <li class="disabled"><a>...</a></li>
+                        <% } %>
+                        <% } %>
+                        <% if (currentPage == pages) { %>
+                            <li class="disabled"><a>Last</a></li>
+                        <% } else { %>
+                            <li>
+                                <button onclick="setUrlParam('page', <%= pages %>)">
+                                    Last
+                                </button>
+                            </li>
+                        <% } %>
+                    </ul>
+                <% } %>
             </div>
-            <p><%= result.body %></p>
-            <% }) %>
-          </div>
-          <% if (pages > 0) { %>
-          <ul class="pagination text-center">
-            <% if (currentPage == 1) { %>
-            <li class="disabled"><a>First</a></li>
-            <% } else { %>
-            <li>
-              <button onclick="setUrlParam('page', '1')">First</button>
-            </li>
-            <% } %> <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
-            4 : 1) %> <% if (i !== 1) { %>
-            <li class="disabled"><a>...</a></li>
-            <% } %> <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
-            { %> <% if (i == currentPage) { %>
-            <li class="disabled"><%= i %></li>
-            <% } else { %>
-            <li>
-              <button onclick="setUrlParam('page', <%= i %>)">
-                <%= i %>
-              </button>
-            </li>
-            <% } %> <% if (i == Number(currentPage) + 4 && i < pages) { %>
-            <li class="disabled"><a>...</a></li>
-            <% } %> <% } %> <% if (currentPage == pages) { %>
-            <li class="disabled"><a>Last</a></li>
-            <% } else { %>
-            <li>
-              <button onclick="setUrlParam('page', <%= pages %>)">
-                Last
-              </button>
-            </li>
-            <% } %>
-          </ul>
-          <% } %>
         </div>
-      </div>
-      <div class="col-sm-2 grayBackground">&nbsp;</div>
-      </div>
+        <div class="col-sm-2 grayBackground">&nbsp;</div>
     </div>
-    <script>
-      function setUrlParam(paramName, paramValue) {
+</div>
+<script>
+    function setUrlParam(paramName, paramValue) {
         const url = new URL(window.location.href);
         const queryString = url.search;
         const searchParams = new URLSearchParams(queryString);
 
         if (('' + paramValue).length === 0) {
-          searchParams.delete(paramName);
+            searchParams.delete(paramName);
         } else {
-          if (searchParams.has(paramName)) {
-            searchParams.set(paramName, paramValue)
-          } else {
-            searchParams.append(paramName, paramValue);
-          }
+            if (searchParams.has(paramName)) {
+                searchParams.set(paramName, paramValue)
+            } else {
+                searchParams.append(paramName, paramValue);
+            }
         }
 
         url.search = searchParams.toString();
         const newUrl = url.toString();
         window.location.href = newUrl;
-      }
+    }
 
-      function updateFilters(e) {
+    function updateFilters(e) {
 
         const neighbors = document.getElementsByName(e.target.name);
         let selectedValues = new Array();
-        Array.prototype.forEach.call(neighbors, function(cb) {
-          if (cb.checked) {
-            selectedValues.push(cb.value);
-          }
+        Array.prototype.forEach.call(neighbors, function (cb) {
+            if (cb.checked) {
+                selectedValues.push(cb.value);
+            }
         });
 
         setUrlParam(e.target.name, encodeURI(selectedValues.join(',')));
-      }
+    }
 
-      const pagination = document.getElementById('pagination');
-      if (pagination) {
-        pagination.addEventListener('change', function(e) {
-          const selectTag = e.target;
-          if (selectTag.selectedIndex !== -1) {
-            const selectedValue = selectTag.options[selectTag.selectedIndex].value;
-            setUrlParam('pagination', selectedValue);
-          }
+    const pagination = document.getElementById('pagination');
+    if (pagination) {
+        pagination.addEventListener('change', function (e) {
+            const selectTag = e.target;
+            if (selectTag.selectedIndex !== -1) {
+                const selectedValue = selectTag.options[selectTag.selectedIndex].value;
+                setUrlParam('pagination', selectedValue);
+            }
         });
-      }
+    }
 
-      const allBoxes = document.getElementsByClassName('filterCheckbox');
-      if (allBoxes) {
-        Array.prototype.forEach.call(allBoxes, function(box) {
-          box.addEventListener('change', updateFilters, false);
+    const allBoxes = document.getElementsByClassName('filterCheckbox');
+    if (allBoxes) {
+        Array.prototype.forEach.call(allBoxes, function (box) {
+            box.addEventListener('change', updateFilters, false);
         });
-      }
-    </script>
-  </body>
-  <% include parts/footer %>
+    }
+</script>
+</body>
+<% include parts/footer %>
 </html>

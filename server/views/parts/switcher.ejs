@@ -1,8 +1,11 @@
 <div class="switcher">
-  <div class="cloud">
-    <a href="/">Cloud products</a>
-  </div>
-  <div class="selfManaged">
-    <a href="/self-managed-latest">Self-managed products</a>
-  </div>
+  <a class="<%= selected === 'cloud' ? 'selected' : 'unselected' %>" 
+    href="/"
+    >Cloud products</a
+  >
+  <a
+    class="<%= selected === 'sm' ? 'selected' : 'unselected' %>"
+    href="/self-managed-latest"
+    >Self-managed products</a
+  >
 </div>

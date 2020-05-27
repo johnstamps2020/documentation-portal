@@ -121,6 +121,57 @@
       }
     },
     {
+      "id": "bc9xstaging",
+      "title": "BillingCenter",
+      "url": "self-managed/bc/909",
+      "metadata": {
+        "platform": "Cloud",
+        "product": ["BillingCenter"],
+        "version": "9.0.9",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Release.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      }
+    },
+    {
+      "id": "cc9xstaging",
+      "title": "ClaimCenter",
+      "url": "self-managed/cc/909",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["ClaimCenter"],
+        "version": "9.0.9",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Release.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      }
+    },
+    {
+      "id": "pc9xstaging",
+      "title": "PolicyCenter",
+      "url": "self-managed/pc/909",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["PolicyCenter"],
+        "version": "9.0.9",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Release.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      }
+    },
+    {
       "id": "lobbopcloudstaging",
       "title": "Businessowners Standards Based Template",
       "url": "cloud/lob/bop/latest",
@@ -140,7 +191,7 @@
     },
     {
       "id": "clouddhaithitzz",
-      "title": "DataHubDataHub for Guidewire Cloud",
+      "title": "DataHub for Guidewire Cloud",
       "url": "cloud/dh/latest",
       "metadata": {
         "platform": "Cloud",
@@ -2516,6 +2567,19 @@
       ]
     },
     {
+      "id": "exportis9onprem",
+      "title": "InsuranceSuite OnPrem 9",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
       "id": "dxstaging",
       "title": "Digital",
       "sourceType": "git",
@@ -2564,6 +2628,7 @@
       "title": "Explore",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"

@@ -22,7 +22,7 @@ const configureRouter = async () => {
         product: productFamily,
         docs: productDocs,
         returnUrl: '/',
-        returnLabel: 'Back to Cloud Product Documentation',
+        returnLabel: 'Back to Cloud product documentation',
       });
     });
   });

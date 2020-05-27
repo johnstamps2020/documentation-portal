@@ -12,7 +12,7 @@
     {
       "id": "guidewireidentityfederationhubqsvkhtgf",
       "title": "Guidewire Identity Federation Hub",
-      "url": "cloud/gifh/latest",
+      "url": "cloud/auth/latest",
       "metadata": {
         "platform": "Cloud",
         "product": ["Guidewire Cloud Platform"],

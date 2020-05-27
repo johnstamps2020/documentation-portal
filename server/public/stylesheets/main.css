@@ -40,6 +40,7 @@ body {
   /* PORTAL-SPECIFIC */
   --footer-height: 84px;
   --header-height: 64px;
+  --main-height: calc(100% - var(--header-height) - var(--footer-height));
   --landing-title-container-height: 200px;
   --search-bar-height: 104px;
   --search-field-width: 360px;
@@ -81,7 +82,7 @@ body {
   height: 100%;
 }
 
-.container {
+.docPanelContainer .container {
   max-width: 1300px !important;
 }
 
@@ -95,6 +96,21 @@ a {
 
 a:hover {
   color: var(--GW-COLOR-BRAND-1-HOVER) !important;
+}
+
+a.returnLink {
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+a.returnLink::before {
+  content: url("/images/chevron_left-brand1-18dp.svg");
+  vertical-align: middle;
+}
+
+a.returnLink:hover::before {
+  content: url("/images/chevron_left-brand1-hover-18dp.svg");
+  vertical-align: middle;
 }
 
 .docPanelContainer h1 {
@@ -113,15 +129,8 @@ a:hover {
 
 .homeContainer {
   position: relative;
-  min-height: calc(100% - var(--header-height) - var(--footer-height));
+  min-height: var(--main-height);
   background-color: var(--GW-COLOR-BKGD-1);
-}
-
-.homeCards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 265px [col-start]);
-  column-gap: 12px;
-  row-gap: 12px;
 }
 
 .productCard {
@@ -181,7 +190,7 @@ a:hover {
 }
 
 .gwAccordion.dropdown-toggle::after {
-  content: url("/images/expand_more-black-18dp.svg") !important;
+  content: url('/images/expand_more-black-18dp.svg') !important;
   border-top: none;
   vertical-align: middle;
 }
@@ -191,52 +200,44 @@ a:hover {
 }
 
 .switcher {
-  --switcher-width: 324px;
-  margin-top: 64px;
-  width: var(--switcher-width);
-  border: 1px solid var(--GW-COLOR-BRAND-2);
+  --switcher-height: 32px;
+  width: 324px;
+  height: var(--switcher-height);
+  border: 1px solid var(--GW-COLOR-BORDER);
   border-radius: 3px;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: var(--switcher-height);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  overflow: hidden;
 }
 
-.switcher div {
+.switcher a {
   display: inline-block;
-  width: calc(var(--switcher-width) / 2 - 3px);
   text-align: center;
-  padding-top: 6px;
-  padding-bottom: 6px;
 }
 
-.switcher div a:hover {
+.switcher a:hover {
   text-decoration: none;
 }
 
-.switcher .cloud {
+.switcher a.selected {
   background-color: var(--GW-COLOR-BRAND-1);
-}
-
-.switcher .cloud:hover {
-  background-color: var(--GW-COLOR-BRAND-1-HOVER);
-}
-
-.switcher .cloud a {
   color: var(--GW-COLOR-TEXT-3) !important;
 }
 
-.switcher .cloud a:hover {
+.switcher a.selected:hover {
+  background-color: var(--GW-COLOR-BRAND-1-HOVER);
   color: var(--GW-COLOR-TEXT-3-HOVER) !important;
 }
 
-.switcher .selfManaged:hover {
-  background-color: var(--GW-COLOR-BRAND-1);
-}
-
-.switcher .selfManaged:hover a {
-  color: var(--GW-COLOR-TEXT-3) !important;
-}
-
-.switcher .selfManaged a {
+.switcher a.unselected {
   color: var(--GW-COLOR-TEXT-2) !important;
+}
+
+.switcher a.unselected:hover {
+  background-color: var(--GW-COLOR-BRAND-1);
+  color: var(--GW-COLOR-TEXT-3) !important;
 }
 
 .grayBackground {
@@ -244,7 +245,7 @@ a:hover {
 }
 
 .docPanelContainer {
-  min-height: calc(100% - var(--footer-height) - var(--header-height));
+  min-height: var(--main-height);
   background-color: var(--GW-COLOR-BKGD-1);
   padding-bottom: 3rem;
 }
@@ -300,6 +301,10 @@ a:active {
   background-color: var(--GW-COLOR-BRAND-2);
 }
 
+.pageHeader div.col-sm {
+  padding: 0;
+}
+
 .logoWrapper {
   margin-top: 16px;
 }
@@ -319,10 +324,14 @@ a:active {
 }
 
 div.searchBoxPusher {
-  padding-left: 0;
+  padding: 0;
 }
 
 .loginPage .searchFieldWrapper {
+  display: none;
+}
+
+.loginPage div.searchBoxPusher {
   display: none;
 }
 
@@ -504,7 +513,7 @@ div.searchBoxPusher {
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.checkboxRowContainer input:checked ~ .checkmark {
   background-color: var(--GW-COLOR-BRAND-1);
 }
 
@@ -516,12 +525,12 @@ div.searchBoxPusher {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.checkboxRowContainer input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.checkboxRowContainer .checkmark:after {
   left: -2px;
   top: -4px;
   width: 5px;
@@ -595,8 +604,6 @@ body {
 }
 
 .docPageTitle {
-  margin-top: 64px;
-  margin-bottom: 54px;
   height: 48px;
 }
 
@@ -612,18 +619,36 @@ body {
   line-height: 40px;
 }
 
-.loginJumbotron {
+.loginPageTitle {
   text-align: center;
 }
 
-.loginSubtitle {
-  font-size: 18px;
-  color: var(--GW-COLOR-TEXT-1);
+.loginPageTitle h1 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+
+.loginPageTitle p {
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 31px;
+  text-align: center;
+}
+
+.loginCards {
+  --login-card-width: 324px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, var(--login-card-width));
+  column-gap: 32px;
+  row-gap: 32px;
 }
 
 .loginCard {
   position: relative;
-  max-width: 330px;
+  max-width: var(--login-card-width);
   min-height: 300px;
   padding: 32px;
   color: var(--GW-COLOR-TEXT-1);
@@ -631,7 +656,6 @@ body {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
   box-sizing: border-box;
   text-align: center;
-  margin-bottom: 32px;
 }
 
 .loginCard:hover {
