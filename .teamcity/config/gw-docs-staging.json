@@ -169,7 +169,7 @@
       },
       "build": {
         "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Release.ditaval",
+        "filter": "IS-PC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
         "src": "exportupgradeguide1x"
       }
