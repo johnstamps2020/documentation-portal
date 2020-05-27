@@ -305,8 +305,8 @@
       },
       "build": {
         "buildType": "dita",
-        "filter": "GW-Generic-Cloud-Release.ditaval",
-        "root": "cdp-supermap.ditamap",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-cda.ditamap",
         "src": "clouddataplatform"
       }
     },
@@ -2686,7 +2686,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/cloud-data-platform/active/cdp-supermap.ditamap",
+        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
