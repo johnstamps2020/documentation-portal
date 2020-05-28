@@ -1212,7 +1212,7 @@ object BuildAndUploadToS3DitaDev : Template({
             scriptContent = """
                 chmod -R 777 ./
                 %env.DITA_OT_331_DIR%/bin/dita --install
-                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.DITA_OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes --nav-toc=yes
+                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.DITA_OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes --nav-toc=full
             """.trimIndent()
         }
 
