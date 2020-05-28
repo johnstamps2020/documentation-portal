@@ -64,7 +64,7 @@
       }
     },
     {
-      "id": "cloudbcupgradeguidepedjvkglts",
+      "id": "cloudbcupgradetoolspedjvkglts",
       "title": "BillingCenter Upgrade Tools",
       "url": "cloud/bc/upgrade/300",
       "metadata": {
@@ -78,11 +78,11 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide3x"
+        "src": "upgradetools3x"
       }
     },
     {
-      "id": "cloudccupgradeguideqdmbvphr",
+      "id": "cloudccupgradetoolsqdmbvphr",
       "title": "ClaimCenter Upgrade Tools",
       "url": "cloud/cc/upgrade/300",
       "metadata": {
@@ -96,11 +96,11 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide3x"
+        "src": "upgradetools3x"
       }
     },
     {
-      "id": "cloudpcupgradeguideqafgpmxs",
+      "id": "cloudpcupgradetoolsqafgpmxs",
       "title": "PolicyCenter Upgrade Tools",
       "url": "cloud/pc/upgrade/300",
       "metadata": {
@@ -114,7 +114,7 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide3x"
+        "src": "upgradetools3x"
       }
     },
     {
@@ -169,7 +169,7 @@
       }
     },
     {
-      "id": "selfmanagedbcupgradeguideqwertyui",
+      "id": "selfmanagedbcupgradetoolsqwertyui",
       "title": "BillingCenter Upgrade Tools",
       "url": "self-managed/bc/upgrade/1440",
       "visible": false,
@@ -183,11 +183,11 @@
         "buildType": "dita",
         "filter": "IS-BC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide1x"
+        "src": "upgradetools1x"
       }
     },
     {
-      "id": "selfmanagedccupgradeguideqwertyui",
+      "id": "selfmanagedccupgradetoolsqwertyui",
       "title": "ClaimCenter Upgrade Tools",
       "url": "self-managed/cc/upgrade/1440",
       "visible": false,
@@ -201,11 +201,11 @@
         "buildType": "dita",
         "filter": "IS-CC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide1x"
+        "src": "upgradetools1x"
       }
     },
     {
-      "id": "selfmanagedpcupgradeguideqwertyui",
+      "id": "selfmanagedpcupgradetoolsqwertyui",
       "title": "PolicyCenter Upgrade Tools",
       "url": "self-managed/pc/upgrade/1440",
       "visible": false,
@@ -219,7 +219,7 @@
         "buildType": "dita",
         "filter": "IS-PC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide1x"
+        "src": "upgradetools1x"
       }
     },
     {
@@ -2568,10 +2568,10 @@
   ],
   "sources": [
     {
-      "id": "exportupgradeguide3x",
-      "title": "Insurance Suite Upgrade Guide 3x",
+      "id": "upgradetools3x",
+      "title": "Insurance Suite Upgrade Tools 3x",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -2583,10 +2583,10 @@
       ]
     },
     {
-      "id": "exportupgradeguide1x",
-      "title": "Insurance Suite Upgrade Guide 1x",
+      "id": "upgradetools1x",
+      "title": "Insurance Suite Upgrade Tools 1x",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-1x.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
