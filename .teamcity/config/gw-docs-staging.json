@@ -501,7 +501,7 @@
     {
       "id": "dxceqbonpremstaging",
       "title": "CustomerEngage Quote and Buy",
-      "url": "cloud/dx/ceqb/1110",
+      "url": "self-managed/dx/ceqb/1110",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
         "platform": "Self-managed",
@@ -511,6 +511,40 @@
       "build": {
         "buildType": "dita",
         "filter": "Digital-ce-qb-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxpeonpremstaging",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1110",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": "Self-managed",
+        "version": "11.1.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxsreonpremstaging",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1110",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": "Self-managed",
+        "version": "11.1.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
       }
@@ -613,40 +647,6 @@
       "build": {
         "buildType": "dita",
         "filter": "Digital-vod-c-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
-      }
-    },
-    {
-      "id": "dxpeonpremstaging",
-      "title": "ProducerEngage",
-      "url": "self-managed/dx/pe/1110",
-      "metadata": {
-        "product": ["ProducerEngage"],
-        "platform": "Self-managed",
-        "version": "11.1.0",
-        "category": ["Digital"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
-      }
-    },
-    {
-      "id": "dxsreonpremstaging",
-      "title": "ServiceRepEngage",
-      "url": "self-managed/dx/sre/1110",
-      "metadata": {
-        "product": ["ServiceRepEngage"],
-        "platform": "Self-managed",
-        "version": "11.1.0",
-        "category": ["Digital"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-sre-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
       }
