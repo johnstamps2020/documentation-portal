@@ -801,7 +801,7 @@
     },
     {
       "id": "cloudbclatestufgiaibq",
-      "title": "Insurance Suite Cloud",
+      "title": "InsuranceSuite Cloud",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -816,7 +816,7 @@
     },
     {
       "id": "upgradetools1x",
-      "title": "Insurance Suite Upgrade Tools 1x",
+      "title": "InsuranceSuite Upgrade Tools 1x",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
       "xdocsPathIds": [
@@ -828,7 +828,7 @@
     },
     {
       "id": "upgradetools3x",
-      "title": "Insurance Suite Upgrade Tools 3x",
+      "title": "InsuranceSuite Upgrade Tools 3x",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
       "xdocsPathIds": [
@@ -868,7 +868,7 @@
     },
     {
       "id": "selfmanagedbcxzsnzrhsu",
-      "title": "Insurance Suite 10",
+      "title": "InsuranceSuite 10",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
       "xdocsPathIds": [
@@ -880,7 +880,7 @@
     },
     {
       "id": "selfmanagedbcxawsnphcq",
-      "title": "Insurance Suite 9",
+      "title": "InsuranceSuite 9",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
       "xdocsPathIds": [
