@@ -2611,6 +2611,7 @@
       "title": "Data Management",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
@@ -2682,6 +2683,7 @@
       "title": "Cloud Data Platform",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
