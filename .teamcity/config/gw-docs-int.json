@@ -128,13 +128,13 @@
       }
     },
     {
-      "id": "cloudbcupgradeguidekdhbtvvm",
-      "title": "BillingCenter Upgrade Guide",
-      "url": "cloud/bc/upgrade/latest",
+      "id": "cloudbcupgradetoolspedjvkglts",
+      "title": "BillingCenter Upgrade Tools",
+      "url": "cloud/bc/upgrade/3xx",
       "metadata": {
-        "productFamily": ["BillingCenter Cloud"],
-        "product": ["BillingCenter"],
         "platform": "Cloud",
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter Upgrade Tools"],
         "version": "latest",
         "category": ["Core"]
       },
@@ -142,17 +142,17 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "upgradetools3x"
       }
     },
     {
-      "id": "cloudccupgradeguideqaplmudc",
-      "title": "ClaimCenter Upgrade Guide",
-      "url": "cloud/cc/upgrade/latest",
+      "id": "cloudccupgradetoolsqdmbvphr",
+      "title": "ClaimCenter Upgrade Tools",
+      "url": "cloud/cc/upgrade/3xx",
       "metadata": {
-        "productFamily": ["ClaimCenter Cloud"],
-        "product": ["ClaimCenter"],
         "platform": "Cloud",
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["ClaimCenter Upgrade Tools"],
         "version": "latest",
         "category": ["Core"]
       },
@@ -160,17 +160,17 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "upgradetools3x"
       }
     },
     {
-      "id": "cloudpcupgradeguideytghbvjd",
-      "title": "PolicyCenter Upgrade Guide",
-      "url": "cloud/pc/upgrade/latest",
+      "id": "cloudpcupgradetoolsqafgpmxs",
+      "title": "PolicyCenter Upgrade Tools",
+      "url": "cloud/pc/upgrade/3xx",
       "metadata": {
-        "productFamily": ["PolicyCenter Cloud"],
-        "product": ["PolicyCenter"],
         "platform": "Cloud",
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["PolicyCenter Upgrade Tools"],
         "version": "latest",
         "category": ["Core"]
       },
@@ -178,7 +178,7 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "upgradetools3x"
       }
     },
     {
