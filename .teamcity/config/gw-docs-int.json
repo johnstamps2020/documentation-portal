@@ -382,54 +382,54 @@
       }
     },
     {
-      "id": "selfmanagedupgradebcxjpnrssav",
-      "title": "BillingCenter Upgrade Guide",
-      "url": "self-managed/bc/upgrade/3x",
+      "id": "selfmanagedbcupgradetoolsxjpnrssav",
+      "title": "BillingCenter Upgrade Tools",
+      "url": "self-managed/bc/upgrade/3xx",
       "metadata": {
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Upgrade Tools"],
         "platform": "Self-managed",
-        "version": "3.x",
+        "version": "3.x.x",
         "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
         "filter": "IS-BC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "upgradetools3x"
       }
     },
     {
-      "id": "selfmanagedupgradeccxktcfcgek",
-      "title": "ClaimCenter Upgrade Guide",
-      "url": "self-managed/cc/upgrade/3x",
+      "id": "selfmanagedccupgradetoolsxktcfcgek",
+      "title": "ClaimCenter Upgrade Tools",
+      "url": "self-managed/cc/upgrade/3xx",
       "metadata": {
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter Upgrade Tools"],
         "platform": "Self-managed",
-        "version": "3.x",
+        "version": "3.x.x",
         "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
         "filter": "IS-CC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "upgradetools3x"
       }
     },
     {
-      "id": "selfmanagedupgradepcxhcmnkzft",
-      "title": "PolicyCenter Upgrade Guide",
-      "url": "self-managed/pc/upgrade/3x",
+      "id": "selfmanagedpcupgradetoolsxhcmnkzft",
+      "title": "PolicyCenter Upgrade Tools",
+      "url": "self-managed/pc/upgrade/3xx",
       "metadata": {
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter Upgrade Tools"],
         "platform": "Self-managed",
-        "version": "3.x",
+        "version": "3.x.x",
         "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
         "filter": "IS-PC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "exportupgradeguide"
+        "src": "upgradetools3x"
       }
     },
     {
@@ -764,10 +764,10 @@
       ]
     },
     {
-      "id": "exportupgradeguide",
-      "title": "Insurance Suite Upgrade Guide",
+      "id": "upgradetools3x",
+      "title": "Insurance Suite Upgrade Tools 3x",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide-3x.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval",
         "/Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
