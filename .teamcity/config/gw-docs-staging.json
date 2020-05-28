@@ -64,7 +64,7 @@
       }
     },
     {
-      "id": "cloudbcupgradeguidepedjvkglts",
+      "id": "cloudbcupgradetoolspedjvkglts",
       "title": "BillingCenter Upgrade Tools",
       "url": "cloud/bc/upgrade/300",
       "metadata": {
@@ -82,7 +82,7 @@
       }
     },
     {
-      "id": "cloudccupgradeguideqdmbvphr",
+      "id": "cloudccupgradetoolsqdmbvphr",
       "title": "ClaimCenter Upgrade Tools",
       "url": "cloud/cc/upgrade/300",
       "metadata": {
@@ -100,7 +100,7 @@
       }
     },
     {
-      "id": "cloudpcupgradeguideqafgpmxs",
+      "id": "cloudpcupgradetoolsqafgpmxs",
       "title": "PolicyCenter Upgrade Tools",
       "url": "cloud/pc/upgrade/300",
       "metadata": {
@@ -169,7 +169,7 @@
       }
     },
     {
-      "id": "selfmanagedbcupgradeguideqwertyui",
+      "id": "selfmanagedbcupgradetoolsqwertyui",
       "title": "BillingCenter Upgrade Tools",
       "url": "self-managed/bc/upgrade/1440",
       "visible": false,
@@ -187,7 +187,7 @@
       }
     },
     {
-      "id": "selfmanagedccupgradeguideqwertyui",
+      "id": "selfmanagedccupgradetoolsqwertyui",
       "title": "ClaimCenter Upgrade Tools",
       "url": "self-managed/cc/upgrade/1440",
       "visible": false,
@@ -205,7 +205,7 @@
       }
     },
     {
-      "id": "selfmanagedpcupgradeguideqwertyui",
+      "id": "selfmanagedpcupgradetoolsqwertyui",
       "title": "PolicyCenter Upgrade Tools",
       "url": "self-managed/pc/upgrade/1440",
       "visible": false,
