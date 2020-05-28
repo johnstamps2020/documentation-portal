@@ -1,0 +1,7 @@
+@import "common.css";
+
+body > h1.title,
+body > nav {
+    max-width: 1300px;
+    margin: 32px auto auto;
+}

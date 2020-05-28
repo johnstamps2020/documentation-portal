@@ -1,6 +1,6 @@
 /*noinspection CssUnknownTarget*/
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-@import "vars.css";
+@import "common.css";
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 581px) {
@@ -256,93 +256,12 @@ a.returnLink {
   display: block;
 }
 
-.pageHeader {
-  min-height: var(--header-height);
-  background-color: var(--GW-COLOR-BRAND-2);
-}
-
-.pageHeader div.col-sm {
-  padding: 0;
-}
-
-.logoWrapper {
-  margin-top: 16px;
-}
-
-.pageLogo {
-  margin-left: 32px;
-  height: 32px;
-  width: 340px;
-}
-
-.searchBoxContainer {
-  margin-top: 16px;
-  height: 32px;
-}
-
-.searchBoxContainer * {
-  vertical-align: middle;
-}
-
-div.searchBoxPusher {
-  padding: 0;
-}
-
 .loginPage .searchFieldWrapper {
   display: none;
 }
 
 .loginPage div.searchBoxPusher {
   display: none;
-}
-
-.searchFieldWrapper {
-  background-color: var(--GW-COLOR-BRAND-2-HOVER);
-  border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 4px;
-  font-size: 14px;
-  padding-left: 14px;
-  padding-right: 14px;
-  width: var(--search-field-width);
-  margin: auto;
-}
-
-.searchField {
-  color: var(--GW-COLOR-TEXT-3);
-  background-color: var(--GW-COLOR-BRAND-2-HOVER);
-  width: calc(100% - var(--search-button-width) - 16px);
-  border: none;
-  height: 32px;
-}
-
-.searchButton {
-  border: none;
-  margin-left: 12px;
-  background-image: url(../images/search.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: transparent;
-  height: 24px;
-  width: var(--search-button-width);
-}
-
-.searchField::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--GW-COLOR-TEXT-3);
-  opacity: 1; /* Firefox */
-}
-
-.searchField:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: var(--GW-COLOR-TEXT-3);
-}
-
-.searchField::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: var(--GW-COLOR-TEXT-3);
 }
 
 .resultList li {
@@ -363,38 +282,6 @@ div.searchBoxPusher {
 
 .card {
   background-color: var(--GW-COLOR-BKGD-1) !important;
-}
-
-.pageFooter {
-  min-height: var(--footer-height);
-  color: var(--GW-COLOR-TEXT-3);
-  background-color: var(--GW-COLOR-TEXT-1);
-  padding: 16px 32px;
-}
-
-.footerCopyright {
-  display: block;
-  font-size: 10px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.footerLinks {
-  display: block;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.footerLink a {
-  margin-right: 32px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--GW-COLOR-TEXT-3) !important;
-}
-
-.footerLink a:hover {
-  text-decoration: none;
-  color: var(--GW-COLOR-TEXT-3-HOVER);
 }
 
 .pagination li {
