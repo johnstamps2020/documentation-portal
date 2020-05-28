@@ -1,5 +1,20 @@
 @import "common.css";
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.col-sm, .col {
+    flex: 1;
+}
+
 body > h1.title,
 body > nav {
     max-width: 1300px;
@@ -12,8 +27,28 @@ header.pageHeader {
 
 nav[role="toc"] {
     grid-area: nav;
-    padding: 8px;
+    padding: 8px 8px 8px 0;
     background-color: white;
+}
+
+nav[role="toc"] ul {
+    margin: 0;
+}
+
+nav[role="toc"] li {
+    list-style: none;
+}
+
+nav[role="toc"] a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    padding: 4px;
+}
+
+nav[role="toc"] li.active > a {
+    font-weight: bold;
+    border-right: 6px solid var(--GW-COLOR-BRAND-1-ACTIVE);
 }
 
 main[role="main"] {
