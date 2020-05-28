@@ -5,3 +5,59 @@ body > nav {
     max-width: 1300px;
     margin: 32px auto auto;
 }
+
+header.pageHeader {
+    grid-area: header;
+}
+
+nav[role="toc"] {
+    grid-area: nav;
+    padding: 8px;
+    background-color: white;
+}
+
+main[role="main"] {
+    grid-area: main;
+    padding: 32px;
+    background-color: var(--GW-COLOR-BKGD-1);
+    min-height: var(--main-height);
+}
+
+footer.pageFooter {
+    grid-area: footer;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr [col-start]);
+    grid-template-rows: auto;
+    grid-template-areas:
+            "header header header header header header header header header header header header"
+            "nav nav nav main main main main main main main main main"
+            "footer footer footer footer footer footer footer footer footer footer footer footer";
+}
+
+.topictitle1, .topictitle2, .topictitle3, .topictitle4, .topictitle5, .sectiontitle {
+    font-weight: 600;
+}
+
+.topictitle1 {
+    padding-top: 16px;
+    font-size: 40px;
+}
+
+.topictitle2 {
+    font-size: 32px;
+}
+
+.topictitle3 {
+    font-size: 24px;
+}
+
+.topictitle4 {
+    font-size: 20px;
+}
+
+.topictitle5, sectiontitle {
+    font-size: 16px;
+}
