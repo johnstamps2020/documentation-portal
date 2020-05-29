@@ -569,7 +569,7 @@
     {
       "id": "dxdiconpremstaging",
       "title": "Guidewire for Salesforce Data Integrations for Claims",
-      "url": "self-managed/dx/dic/310",
+      "url": "self-managed/dx/di-c/310",
       "metadata": {
         "product": ["Guidewire for Salesforce Data Integrations for Claims"],
         "platform": "Self-managed",
@@ -620,7 +620,7 @@
     {
       "id": "dxvodonpremstaging",
       "title": "Guidewire for Salesforce View on Demand",
-      "url": "self-managed/dx/ed/310",
+      "url": "self-managed/dx/vod/310",
       "metadata": {
         "product": ["Guidewire for Salesforce View on Demand"],
         "platform": "Self-managed",
@@ -637,7 +637,7 @@
     {
       "id": "dxvodconpremstaging",
       "title": "Guidewire for Salesforce View on Demand for Claims",
-      "url": "self-managed/dx/ed/310",
+      "url": "self-managed/dx/vod-c/310",
       "metadata": {
         "product": ["Guidewire for Salesforce View on Demand for Claims"],
         "platform": "Self-managed",
