@@ -21,45 +21,40 @@
         <div class="row">
             <div class="col-sm-9">
                 <div class="row">
-                <%  let groups = docs.reduce((r, a) => {
-                    if (a.metadata.platform === 'Self-managed') {
-                        r[a.metadata.category] = [...r[a.metadata.category] || [], a];
-                    }
-                    return r;
-                }, {});
-                const groupArray = Object.entries(groups);
-                groupArray.forEach(group => {
-                    const groupName = group[0];
-                    const groupItems = group[1]; -%>
+                    <% let groups = docs.reduce((r, a) => {
+                        if (a.metadata.platform === 'Self-managed') {
+                            r[a.metadata.category] = [...r[a.metadata.category] || [], a];
+                        }
+                        return r;
+                    }, {});
+                    const groupArray = Object.entries(groups);
+                    groupArray.forEach(group => {
+                        const groupName = group[0];
+                        const groupItems = group[1]; -%>
                     <div class="col-sm-4">
                         <div class="categoryCard">
                             <h2><%= groupName %></h2>
                             <div class="card-text">
-                                <%  const products = groupItems.reduce((r, a) => {
+                                <% const products = groupItems.reduce((r, a) => {
                                     r[a.metadata.product] = [...r[a.metadata.product] || [], a];
                                     return r;
-                                    }, {});
+                                }, {});
                                     const productArray = Object.entries(products);
-                                    productArray.forEach(product => {
-                                        const productReleases = product[1].filter(doc => (doc.visible !== false));
-                                        const docsSortedFromLatestToOldest = productReleases.sort((a, b) => (a.metadata.version > b.metadata.version) ? 1 : -1)
-                                        let doc = undefined;
-                                        docsSortedFromLatestToOldest.forEach(item => {
-                                            if (item.visible !== false) {
-                                                doc = item;
-                                            }
-                                        })
-                                        if (doc) {
-                                        -%>
-                                            <div class="docLink">
-                                                <a href="<%= doc.url %>"><%= doc.title %></a>
-                                            </div>
-                                        <% } -%>
-                                    <% }) -%>
+                                productArray.forEach(product => {
+                                    const productReleases = product[1].filter(doc => (doc.visible !== false));
+                                    const docsSortedFromLatestToOldest = productReleases.sort((a, b) => (parseInt(a.metadata.version) > parseInt(b.metadata.version)) ? -1 : 1)
+                                    const doc = docsSortedFromLatestToOldest[0]
+                                if (doc) {
+                                -%>
+                                    <div class="docLink">
+                                        <a href="<%= doc.url %>"><%= doc.title %></a>
+                                    </div>
+                                <% } -%>
+                                <% }) -%>
                             </div>
                         </div>
                     </div>
-                <% }) -%>
+                    <% }) -%>
                 </div>
             </div>
             <div class="col-sm-3">
