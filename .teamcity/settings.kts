@@ -70,9 +70,7 @@ object Helpers {
             }
 
             if (branch_name != "") {
-                branchSpec = """+:refs/heads/$branch_name
-                    -:refs/heads/master
-                """.trimIndent()
+                branch = "refs/heads/$branch_name"
             }
         })
 
