@@ -2643,7 +2643,6 @@
       "title": "InsuranceSuite OnPrem 9",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-      "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
