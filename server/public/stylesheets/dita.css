@@ -29,6 +29,7 @@ nav[role="toc"] {
     grid-area: nav;
     padding: 8px 8px 8px 0;
     background-color: white;
+    font-size: 15px;
 }
 
 nav[role="toc"] ul {
@@ -42,13 +43,44 @@ nav[role="toc"] li {
 nav[role="toc"] a {
     display: block;
     width: 100%;
+    color: var(--GW-COLOR-TEXT-1) !important;
     text-decoration: none;
     padding: 4px;
 }
 
-nav[role="toc"] li.active > a {
+nav[role="toc"] a:hover {
+    text-decoration: underline;
+}
+
+nav[role="toc"] .selectedNavItem {
     font-weight: bold;
-    border-right: 6px solid var(--GW-COLOR-BRAND-1-ACTIVE);
+    border-left: 4px solid var(--GW-COLOR-BRAND-1-ACTIVE);
+}
+
+nav[role="toc"] ul.nested {
+    display: none;
+}
+
+nav[role="toc"] ul.expanded {
+    display: block;
+}
+
+nav[role="toc"] .caret {
+    cursor: pointer;
+}
+
+nav[role="toc"] .caret > *:nth-child(1):before {
+    content: ">";
+    color: var(--GW-COLOR-TEXT-2);
+    font-weight: bold;
+    display: inline-block;
+    font-size: 12px;
+    padding-right: 6px;
+}
+
+nav[role="toc"] .caret.expanded > *:nth-child(1):before {
+    transform: rotate(90deg);
+    padding-left: 4px;
 }
 
 main[role="main"] {
