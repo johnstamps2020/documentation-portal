@@ -41,18 +41,21 @@
                                     }, {});
                                     const productArray = Object.entries(products);
                                     productArray.forEach(product => {
-                                        const productTitle = product[0].trim();
                                         const productReleases = product[1].filter(doc => (doc.visible !== false));
-                                        const versionsInProductGroup = productReleases.map(item => {
-                                            return parseInt(item.metadata.version.replace(/\./g, ''));
-                                        });
-                                        const latestVersion = Math.max(...versionsInProductGroup);
-                                        const doc = productReleases.find(item => parseInt(item.metadata.version.replace(/\./g, '')) === latestVersion);
+                                        const docsSortedFromLatestToOldest = productReleases.sort((a, b) => (a.metadata.version > b.metadata.version) ? 1 : -1)
+                                        let doc = undefined;
+                                        docsSortedFromLatestToOldest.forEach(item => {
+                                            if (item.visible !== false) {
+                                                doc = item;
+                                            }
+                                        })
+                                        if (doc) {
                                         -%>
-                                        <div class="docLink">
-                                            <a href="<%= doc.url %>"><%= doc.title %></a>
-                                        </div>
-                                <% }) -%>
+                                            <div class="docLink">
+                                                <a href="<%= doc.url %>"><%= doc.title %></a>
+                                            </div>
+                                        <% } -%>
+                                    <% }) -%>
                             </div>
                         </div>
                     </div>
