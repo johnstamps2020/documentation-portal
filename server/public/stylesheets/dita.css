@@ -105,6 +105,7 @@ footer.pageFooter {
 }
 
 body {
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr [col-start]);
     grid-template-rows: auto;
