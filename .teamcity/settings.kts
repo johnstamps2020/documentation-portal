@@ -547,7 +547,7 @@ object Release : BuildType({
                 git add .
                 git commit -m "push changes to ${'$'}{TAG_VERSION}"
                 git tag -a ${'$'}{TAG_VERSION} -m "create new %semver-scope% version ${'$'}{TAG_VERSION}"
-                git push origin master
+                git push
                 git push --tags
                 
                 docker build -t docportal .
@@ -1101,7 +1101,7 @@ object AddFilesFromXDocsToBitbucket : Template({
                 if git status | grep "Changes to be committed"
                 then
                   git commit -m "[TeamCity] Adds files exported from XDocs"
-                  git push origin master
+                  git push
                 else
                   echo "No changes to commit"
                 fi
