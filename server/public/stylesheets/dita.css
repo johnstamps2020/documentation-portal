@@ -16,7 +16,7 @@
 }
 
 body > h1.title,
-body > nav {
+body > nav:not([role="toc"]) {
     max-width: 1300px;
     margin: 32px auto auto;
 }
@@ -27,13 +27,19 @@ header.pageHeader {
 
 nav[role="toc"] {
     grid-area: nav;
-    padding: 8px 8px 8px 0;
+    padding: 48px 8px 8px 0;
+    margin: 16px;
     background-color: white;
     font-size: 15px;
 }
 
+nav[role="toc"] > ul > li {
+    padding-bottom: 16px !important;
+}
+
 nav[role="toc"] ul {
     margin: 0;
+    padding-inline-start: 16px;
 }
 
 nav[role="toc"] li {
@@ -45,7 +51,7 @@ nav[role="toc"] a {
     width: 100%;
     color: var(--GW-COLOR-TEXT-1) !important;
     text-decoration: none;
-    padding: 4px;
+    padding: 8px 16px;
 }
 
 nav[role="toc"] a:hover {
@@ -53,8 +59,8 @@ nav[role="toc"] a:hover {
 }
 
 nav[role="toc"] .selectedNavItem {
-    font-weight: bold;
-    border-left: 4px solid var(--GW-COLOR-BRAND-1-ACTIVE);
+    font-weight: 600;
+    border-left: 3px solid var(--GW-COLOR-BRAND-1-ACTIVE);
 }
 
 nav[role="toc"] ul.nested {
@@ -67,6 +73,10 @@ nav[role="toc"] ul.expanded {
 
 nav[role="toc"] .caret {
     cursor: pointer;
+}
+
+nav[role="toc"] .caret:hover span {
+    text-decoration: underline;
 }
 
 nav[role="toc"] .caret > *:nth-child(1):before {
@@ -95,6 +105,7 @@ footer.pageFooter {
 }
 
 body {
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr [col-start]);
     grid-template-rows: auto;
