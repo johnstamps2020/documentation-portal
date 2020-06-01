@@ -435,6 +435,39 @@
       }
     },
     {
+      "id": "selfmanagedbcupgradetoolspiteqdgk",
+      "title": "BillingCenter Upgrade Tools",
+      "url": "self-managed/bc/upgrade/230",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["BillingCenter Upgrade Tools"],
+        "version": "10.0.3",
+        "category": ["Core"]
+      }
+    },
+    {
+      "id": "selfmanagedccupgradetoolspiteqdgk",
+      "title": "ClaimCenter Upgrade Tools",
+      "url": "self-managed/cc/upgrade/230",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["ClaimCenter Upgrade Tools"],
+        "version": "10.0.3",
+        "category": ["Core"]
+      }
+    },
+    {
+      "id": "selfmanagedpcupgradetoolspiteqdgk",
+      "title": "PolicyCenter Upgrade Tools",
+      "url": "self-managed/pc/upgrade/230",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["PolicyCenter Upgrade Tools"],
+        "version": "10.0.3",
+        "category": ["Core"]
+      }
+    },
+    {
       "id": "selfmanageddhaithitzz",
       "title": "DataHub",
       "url": "self-managed/dh/1030",
