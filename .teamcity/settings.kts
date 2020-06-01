@@ -1162,16 +1162,6 @@ object BuildAndUploadToS3 : Template({
     }
 
     features {
-        commitStatusPublisher {
-            id = "BUILD_EXT_329"
-            vcsRootExtId = "${DitaOt331.id}"
-            publisher = bitbucketServer {
-                url = "https://stash.guidewire.com"
-                userName = "%env.ARTIFACTORY_USERNAME%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
-            }
-
-        }
         dockerSupport {
             id = "DockerSupport"
             loginToRegistry = on {
@@ -1249,16 +1239,6 @@ object BuildAndUploadToS3DitaDev : Template({
 
 
     features {
-        commitStatusPublisher {
-            id = "BUILD_EXT_329"
-            vcsRootExtId = "${DitaOt331.id}"
-            publisher = bitbucketServer {
-                url = "https://stash.guidewire.com"
-                userName = "%env.ARTIFACTORY_USERNAME%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
-            }
-
-        }
         dockerSupport {
             id = "DockerSupport"
             loginToRegistry = on {
