@@ -725,6 +725,10 @@ object DeployS3Ingress : BuildType({
 object LoadSearchIndex : BuildType({
     name = "Delete and load THE ENTIRE search index"
 
+    artifactRules = """
+        *.log => logs
+    """.trimIndent()
+
     params {
         text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
         text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
@@ -1252,6 +1256,11 @@ object CrawlDocumentAndUpdateIndex : Template({
     name = "Crawl document and update index"
 
     maxRunningBuilds = 1
+
+    artifactRules = """
+        *.log => logs
+    """.trimIndent()
+
 
     params {
         text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)

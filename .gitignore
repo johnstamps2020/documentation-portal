@@ -8,6 +8,8 @@ server/config.json
 .DS_Store
 tmp/
 
+.idea/libraries/
+
 # Created by https://www.gitignore.io/api/intellij
 # Edit at https://www.gitignore.io/?templates=intellij
 
