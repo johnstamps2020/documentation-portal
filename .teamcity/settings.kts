@@ -730,7 +730,7 @@ object LoadSearchIndex : BuildType({
     """.trimIndent()
 
     params {
-        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-int.json", allowEmpty = false)
         text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
@@ -771,7 +771,7 @@ object LoadSearchIndex : BuildType({
                     export ELASTICSEARCH_URLS="${'$'}{ELASTICSEARCH_URLS_PROD}"
                 fi
 
-                if [[ "%env.DEPLOY_ENV%" == "staging" ]] || [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                if [[ "%env.DEPLOY_ENV%" != "int" ]]; then
                     export CONFIG_FILE="${'$'}{CONFIG_FILE_STAGING}"
                 fi
 
