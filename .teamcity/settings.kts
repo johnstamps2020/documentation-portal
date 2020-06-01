@@ -739,6 +739,8 @@ object LoadSearchIndex : BuildType({
         text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
         select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want reindex documents", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
+        text("env.DOC_ID", "", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
 
