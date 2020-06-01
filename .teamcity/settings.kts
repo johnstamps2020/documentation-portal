@@ -726,7 +726,7 @@ object LoadSearchIndex : BuildType({
     name = "Delete and load THE ENTIRE search index"
 
     artifactRules = """
-        *.log => logs
+        **/*.log => logs
     """.trimIndent()
 
     params {
@@ -1260,7 +1260,7 @@ object CrawlDocumentAndUpdateIndex : Template({
     maxRunningBuilds = 1
 
     artifactRules = """
-        *.log => logs
+        **/*.log => logs
     """.trimIndent()
 
 
