@@ -185,7 +185,7 @@
         "buildType": "dita",
         "filter": "IS-BC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools1x"
+        "src": "upgradetoolsrelease1440_909"
       }
     },
     {
@@ -202,7 +202,7 @@
         "buildType": "dita",
         "filter": "IS-CC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools1x"
+        "src": "upgradetoolsrelease1440_909"
       }
     },
     {
@@ -219,7 +219,7 @@
         "buildType": "dita",
         "filter": "IS-PC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools1x"
+        "src": "upgradetoolsrelease1440_909"
       }
     },
     {
@@ -2600,6 +2600,13 @@
     }
   ],
   "sources": [
+    {
+      "id": "upgradetoolsrelease1440_909",
+      "title": "InsuranceSuite Upgrade Tools 1.44.0-9.0.9",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
+      "branch": "release/1.44.0-9.0.9"
+    },
     {
       "id": "upgradetoolsrelease300_202005",
       "title": "InsuranceSuite Upgrade Tools 3.0.0-2020.05",
