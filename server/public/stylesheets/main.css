@@ -27,7 +27,7 @@
   .logoWrapper {
     margin-left: auto !important;
     margin-right: auto !important;
-    width: 269px !important;
+    width: 330px !important;
   }
 
   .pageLogo {
@@ -459,7 +459,7 @@ a.returnLink {
   --login-card-width: 324px;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(3, var(--login-card-width));
+  grid-template-columns: repeat(auto-fill, var(--login-card-width));
   column-gap: 32px;
   row-gap: 32px;
 }
