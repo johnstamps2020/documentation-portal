@@ -329,8 +329,7 @@
     {
       "id": "dxceqbcloudstaging",
       "title": "CustomerEngage Quote and Buy",
-      "url": "cloud/dx/ceqb/latest",
-      "visible": false,
+      "url": "cloud/dx/ce-qb/202005",
       "metadata": {
         "productFamily": [
           "PolicyCenter Cloud",
@@ -350,10 +349,30 @@
       }
     },
     {
+      "id": "dxapdcloudstaging",
+      "title": "Digital Code Generation",
+      "url": "cloud/dx/apd/202005",
+      "visible": false,
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud"
+        ],
+        "product": ["Digital Code Generation"],
+        "platform": "Cloud",
+        "version": "2020.05",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-apd-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      }
+    },
+    {
       "id": "dxpecloudstaging",
       "title": "ProducerEngage",
-      "url": "cloud/dx/pe/latest",
-      "visible": false,
+      "url": "cloud/dx/pe/202005",
       "metadata": {
         "productFamily": [
           "PolicyCenter Cloud",
@@ -375,8 +394,7 @@
     {
       "id": "dxsrecloudstaging",
       "title": "ServiceRepEngage",
-      "url": "cloud/dx/sre/latest",
-      "visible": false,
+      "url": "cloud/dx/sre/202005",
       "metadata": {
         "productFamily": [
           "PolicyCenter Cloud",
@@ -580,6 +598,17 @@
       }
     },
     {
+      "id": "selfmanageddxvebjvtkgov",
+      "title": "VendorEngage",
+      "url": "self-managed/dx/ve/1001",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["VendorEngage"],
+        "version": "10.0.1",
+        "category": ["Digital"]
+      }
+    },
+    {
       "id": "dxdionpremstaging",
       "title": "Guidewire for Salesforce Data Integrations",
       "url": "self-managed/dx/di/310",
@@ -710,17 +739,6 @@
       "metadata": {
         "platform": "Self-managed",
         "product": ["ServiceRepEngage"],
-        "version": "10.0.1",
-        "category": ["Digital"]
-      }
-    },
-    {
-      "id": "selfmanageddxvebjvtkgov",
-      "title": "VendorEngage",
-      "url": "self-managed/dx/ve/1001",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": ["VendorEngage"],
         "version": "10.0.1",
         "category": ["Digital"]
       }
