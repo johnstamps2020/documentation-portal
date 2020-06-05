@@ -1272,6 +1272,8 @@ object CrawlDocumentAndUpdateIndex : Template({
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "%ELASTICSEARCH_URLS%", allowEmpty = false)
         text("env.INDEX_NAME", "%INDEX_NAME%", allowEmpty = false)
+        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", description = "Set to dev, int or staging", allowEmpty = false)
+        text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
     }
 
     vcs {
@@ -1308,7 +1310,7 @@ object CrawlDocumentAndUpdateIndex : Template({
             name = "Publish to S3"
             id = "RUNNER_2636"
             workingDir = "%env.TOOLS_ROOT%"
-            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DOC_ID%"
+            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://%env.S3_BUCKET_NAME%/broken-links-reports/%env.PUBLISH_PATH% --delete"
         }
 
     }
