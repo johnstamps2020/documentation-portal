@@ -1304,6 +1304,13 @@ object CrawlDocumentAndUpdateIndex : Template({
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
+        script {
+            name = "Publish to S3"
+            id = "RUNNER_2636"
+            workingDir = "%env.TOOLS_ROOT%"
+            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DOC_ID%"
+        }
+
     }
 
     features {
