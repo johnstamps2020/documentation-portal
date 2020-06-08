@@ -1272,7 +1272,7 @@ object CrawlDocumentAndUpdateIndex : Template({
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "%ELASTICSEARCH_URLS%", allowEmpty = false)
         text("env.INDEX_NAME", "%INDEX_NAME%", allowEmpty = false)
-        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", description = "Set to dev, int or staging", allowEmpty = false)
+        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", allowEmpty = false)
         text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
     }
 
