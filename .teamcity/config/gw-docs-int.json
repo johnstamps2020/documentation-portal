@@ -40,7 +40,7 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
         "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudbclatestufgiaibq"
+        "src": "cloudisdraftsrc"
       }
     },
     {
@@ -58,7 +58,7 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Draft.ditaval",
         "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudbclatestufgiaibq"
+        "src": "cloudisdraftsrc"
       }
     },
     {
@@ -76,7 +76,7 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Draft.ditaval",
         "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudbclatestufgiaibq"
+        "src": "cloudisdraftsrc"
       }
     },
     {
@@ -218,7 +218,7 @@
         "buildType": "dita",
         "filter": "GW-Generic-Cloud-Release.ditaval",
         "root": "supermapExplore.ditamap",
-        "src": "exploredraftsrc"
+        "src": "explorebadraftsrc"
       }
     },
     {
@@ -345,6 +345,24 @@
         "filter": "GW-Generic-Draft.ditaval",
         "root": "_superbook.ditamap",
         "src": "cloudinlatestrdifnwoy"
+      }
+    },
+    {
+      "id": "lobbopclouddraft",
+      "title": "Businessowners Standards Based Template",
+      "url": "cloud/lob/bop/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "LOB_STANDARDS_filterSet.ditaval",
+        "root": "lob-bop-(10.x)/_supermap.ditamap",
+        "src": "lobsdraftsrc"
       }
     },
     {
@@ -619,6 +637,23 @@
       }
     },
     {
+      "id": "selfmanagedbadraft",
+      "title": "Business Analytics",
+      "url": "self-managed/ba/latest",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["Business Analytics"],
+        "version": "latest",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-OnPrem-Release.ditaval",
+        "root": "supermapExplore.ditamap",
+        "src": "explorebadraftsrc"
+      }
+    },
+    {
       "id": "selfmanageddxceamdraft",
       "title": "CustomerEngage Account Management",
       "url": "self-managed/dx/ce-am/11x",
@@ -854,7 +889,7 @@
       ]
     },
     {
-      "id": "cloudbclatestufgiaibq",
+      "id": "cloudisdraftsrc",
       "title": "InsuranceSuite Cloud",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
@@ -934,8 +969,8 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
       "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
-        "/Content/doc/insuranceSuite/core/10.x/active/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
       ]
@@ -946,8 +981,8 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
       "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
-        "/Content/doc/insuranceSuite/core/9.x/active/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
       ]
@@ -976,13 +1011,25 @@
       ]
     },
     {
-      "id": "exploredraftsrc",
-      "title": "Explore",
+      "id": "explorebadraftsrc",
+      "title": "Explore and Business Analytics",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "lobsdraftsrc",
+      "title": "LOBs",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/_supermap.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_filterSet.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_filterSet.ditaval"
       ]
     }
   ]
