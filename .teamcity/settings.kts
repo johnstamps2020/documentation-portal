@@ -723,7 +723,7 @@ object DeployS3Ingress : BuildType({
 })
 
 object LoadSearchIndex : BuildType({
-    name = "Delete and load THE ENTIRE search index"
+    name = "Update search index (all docs or single doc)"
 
     artifactRules = """
         **/*.log => logs
