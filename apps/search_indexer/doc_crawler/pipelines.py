@@ -1,4 +1,3 @@
-import json
 import os
 from pathlib import Path
 
@@ -7,25 +6,28 @@ import urllib3
 from .elasticsearch import ElasticClient
 from .items import BrokenLink
 from .items import IndexEntry
+from .report_generator import report_generator
 
 
 class BrokenLinkPipeline:
     current_working_dir = Path.cwd()
     out_dir = current_working_dir / 'out'
-    broken_links_file = None
+    broken_links_report = out_dir / 'broken-links-report.html'
+    broken_links = []
 
     def open_spider(self, spider):
-        self.out_dir.mkdir(exist_ok=True)
-        self.broken_links_file = open(self.out_dir / 'broken-links.json', 'w')
+        report_generator.prepare_out_dir(self.out_dir)
 
     def close_spider(self, spider):
-        self.broken_links_file.close()
+        grouped_broken_links = report_generator.group_broken_links_by_origin(self.broken_links)
+        broken_links_page_content = report_generator.render_str_from_template(broken_links=grouped_broken_links,
+                                                                              page_title='Broken links report')
+        report_generator.write_content_to_file(broken_links_page_content, self.broken_links_report)
 
     def process_item(self, item, spider):
         if item.__class__.__name__ == BrokenLink.__name__:
             broken_link_item = dict(item)
-            line = f'{json.dumps(broken_link_item)}\n'
-            self.broken_links_file.write(line)
+            self.broken_links.append(broken_link_item)
 
         return item
 
