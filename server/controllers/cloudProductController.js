@@ -1,21 +1,30 @@
 const config = require('../config.json');
 
-const cloudProducts = config.docs
-  .map(doc => {
-    if (doc.metadata.platform.toLowerCase() === 'cloud') {
-      return doc.metadata.productFamily;
-    }
-  })
-  .filter(Boolean);
-const flatList = cloudProducts.concat.apply([], cloudProducts);
-const uniqueProducts = new Set(flatList);
-
 let cloudProductFamilies = [];
-uniqueProducts.forEach(uniqueProduct => {
-  cloudProductFamilies.push({
-    name: uniqueProduct,
-    href: uniqueProduct.toLowerCase().replace(/ /g, '-'),
-  });
-});
+for (const doc of config.docs) {
+  if (
+    doc.metadata.platform &&
+    doc.metadata.platform.toLowerCase() === 'cloud'
+  ) {
+    if (doc.metadata.productFamily) {
+      for (const productFamily of doc.metadata.productFamily) {
+        const existingFamily = cloudProductFamilies.find(
+          f => f.name === productFamily
+        );
+        if (existingFamily) {
+          existingFamily.href = `products/${existingFamily.id}`;
+        } else {
+          cloudProductFamilies.push({
+            id: productFamily.toLowerCase().replace(/\W/g, '-'),
+            name: productFamily,
+            href: doc.url,
+          });
+        }
+      }
+    } else {
+      console.log('This doc does not have a product family', doc);
+    }
+  }
+}
 
 module.exports = cloudProductFamilies;

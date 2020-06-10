@@ -5,7 +5,7 @@ const cloudProductFamilies = require('../controllers/cloudProductController');
 
 const configureRouter = async () => {
   cloudProductFamilies.forEach(productFamily => {
-    router.get(`/${productFamily.href}`, (req, res) => {
+    router.get(`/${productFamily.id}`, (req, res) => {
       const productDocs = config.docs.reduce((r, doc) => {
         if (
           doc.metadata.platform === 'Cloud' &&
