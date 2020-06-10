@@ -11,7 +11,6 @@ from .report_generator import report_generator
 
 class BrokenLinkPipeline:
     current_working_dir = Path.cwd()
-    current_dir = Path(__file__).parent
     out_dir = current_working_dir / 'out'
     broken_links_report = out_dir / 'broken-links-report.html'
     broken_links = []
