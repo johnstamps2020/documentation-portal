@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 import pytest
+from lxml import etree
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
@@ -101,20 +102,17 @@ def test_delete_entries_by_query(elastic_client):
 
 
 def test_broken_links_file():
-    broken_links_file = current_working_dir / 'out' / 'broken-links.json'
-    expected_broken_links_file = expected_resources / 'broken-links.json'
+    broken_links_file = current_working_dir / 'out' / 'broken-links-report.html'
+    expected_broken_links_file = expected_resources / 'broken-links-report.html'
 
-    broken_links = load_json_file(broken_links_file)
-    expected_broken_links = load_json_file(expected_broken_links_file)
+    html_parser = etree.HTMLParser()
+    with open(broken_links_file) as brf:
+        broken_links_file_tree = etree.parse(brf, html_parser)
+        broken_links_table = broken_links_file_tree.find('//table')
+        broken_links_table_string = etree.tostring(broken_links_table, pretty_print=True)
+    with open(expected_broken_links_file) as ebrf:
+        expected_broken_links_file_tree = etree.parse(ebrf, html_parser)
+        expected_broken_links_table = expected_broken_links_file_tree.find('//table')
+        expected_broken_links_table_string = etree.tostring(expected_broken_links_table, pretty_print=True)
 
-    broken_links_match = True
-    for expected_broken_link in expected_broken_links:
-        matching_broken_link = next(
-            broken_link for broken_link in broken_links if broken_link['doc_id'] == expected_broken_link['doc_id'])
-        if matching_broken_link != expected_broken_link:
-            broken_links_match = False
-
-    if len(broken_links) != len(expected_broken_links):
-        broken_links_match = False
-
-    assert broken_links_match is True
+    assert broken_links_table_string == expected_broken_links_table_string

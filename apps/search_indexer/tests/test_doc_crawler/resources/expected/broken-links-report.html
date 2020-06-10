@@ -109,11 +109,10 @@
         }
     </style>
     <meta charset="UTF-8">
-    <title>{{ page_title }}</title>
+    <title>Broken links report</title>
 </head>
 <body>
-<h1>{{ page_title }}</h1>
-{% if broken_links|length > 0 -%}
+<h1>Broken links report</h1>
 <table>
     <thead>
     <tr>
@@ -122,22 +121,17 @@
     </tr>
     </thead>
     <tbody>
-    {% for broken_link in broken_links -%}
     <tr>
-        <td><a href="{{ broken_link.get('origin_url') }}" target="_blank">{{ broken_link.get('origin_url') }}</a></td>
+        <td><a href="No origin URL" target="_blank">No origin URL</a></td>
         <td>
             <ol>
-                {% for url in broken_link.get('urls') -%}
-                <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
-                {% endfor -%}
-            </ol>
+                <li><a href="http://localhost/cloud/bc/latest" target="_blank">http://localhost/cloud/bc/latest</a></li>
+                <li><a href="http://localhost/cloud/cc/latest" target="_blank">http://localhost/cloud/cc/latest</a></li>
+                <li><a href="http://localhost/cloud/pc/latest" target="_blank">http://localhost/cloud/pc/latest</a></li>
+                </ol>
         </td>
     </tr>
-    {%- endfor %}
     </tbody>
 </table>
-{%- else -%}
-<p>No broken links have been found</p>
-{%- endif %}
 </body>
 </html>
