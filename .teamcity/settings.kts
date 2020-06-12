@@ -235,7 +235,7 @@ object Helpers {
 
         fun getScheduleWindow(index: Int): Pair<Int, Int> {
             val startTime = 0
-            val interval = 7
+            val interval = 10
             val hour = startTime + ((interval * index) / 60)
             val minute = startTime + ((interval * index) % 60)
 
