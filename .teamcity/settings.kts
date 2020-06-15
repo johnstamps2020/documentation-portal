@@ -1107,6 +1107,7 @@ object AddFilesFromXDocsToBitbucket : Template({
                 if git status | grep "Changes to be committed"
                 then
                   git commit -m "[TeamCity] Adds files exported from XDocs"
+                  git pull
                   git push
                 else
                   echo "No changes to commit"
