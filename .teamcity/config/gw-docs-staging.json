@@ -10,24 +10,6 @@
   ],
   "docs": [
     {
-      "id": "guidewirecloudplatformidalpxcm",
-      "title": "Guidewire Cloud Platform",
-      "url": "cloud/gwcp/latest",
-      "metadata": {
-        "platform": "Cloud",
-        "productFamily": ["Guidewire Cloud Platform"],
-        "product": ["Guidewire Cloud Platform"],
-        "category": ["Guidewire Cloud Platform"],
-        "version": "2020.05"
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "assets/insurer-developer-release.ditaval",
-        "root": "guidewire_cloud_platform_guide.ditamap",
-        "src": "guidewirecloudplatform"
-      }
-    },
-    {
       "id": "cloudbcfxhglseu",
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/latest",
@@ -133,6 +115,24 @@
         "filter": "IS-PC-Cloud-Release.ditaval",
         "root": "_superbook.ditamap",
         "src": "upgradetoolsrelease300_202005"
+      }
+    },
+    {
+      "id": "guidewirecloudplatformidalpxcm",
+      "title": "Guidewire Cloud Platform",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": ["Guidewire Cloud Platform"],
+        "product": ["Guidewire Cloud Platform"],
+        "category": ["Guidewire Cloud Platform"],
+        "version": "2020.05"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "assets/insurer-developer-release.ditaval",
+        "root": "guidewire_cloud_platform_guide.ditamap",
+        "src": "guidewirecloudplatform"
       }
     },
     {
