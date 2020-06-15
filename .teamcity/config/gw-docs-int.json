@@ -393,7 +393,7 @@
       },
       "build": {
         "buildType": "dita",
-        "filter": "assets/insurer-developer.ditaval",
+        "filter": "assets/insurer-developer-draft.ditaval",
         "root": "guidewire_cloud_platform_guide.ditamap",
         "src": "guidewirecloudplatform"
       }
