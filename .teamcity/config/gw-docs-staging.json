@@ -121,6 +121,7 @@
       "id": "guidewirecloudplatformidalpxcm",
       "title": "Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
+      "visible": false,
       "metadata": {
         "platform": "Cloud",
         "productFamily": ["Guidewire Cloud Platform"],
