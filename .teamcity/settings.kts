@@ -96,12 +96,15 @@ object Helpers {
                     id = "RUNNER_666"
                     name = "Copy from S3 on staging to S3 on Prod"
                     scriptContent = """
+                        echo "Copying from staging to Teamcity"
                         aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path $relative_copy_path/ --delete
                         
+                        echo "Setting credentials to access prod"
                         export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                         export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                         export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                         
+                        echo "Uploading from Teamcity to prod"
                         aws s3 sync $relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
                     """.trimIndent()
                 }
