@@ -238,6 +238,36 @@ object Helpers {
             }
         })
 
+        class CopyResourcesFromGitToS3Abstract(title: String, build_id: String, vcs_root_id: String,
+                                               source_folder: String, target_folder: String) : BuildType({
+            id = RelativeId(build_id)
+            name = "Copy resources for $title ($build_id)"
+
+            vcs {
+                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+            }
+
+            steps {
+                script {
+                    id = "ZARDOZ_003"
+                    name = "Copy resources from git to S3"
+                    scriptContent = """
+                        export S3_BUCKET_NAME=tenant-doctools-$env-builds
+                        if [[ $env == "prod" ]]; then
+                            echo "Setting credentials to access prod"
+                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                            export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                        fi
+                        
+                        echo "Copying files to S3"
+                        aws s3 sync $source_folder/ s3://${'$'}S3_BUCKET_NAME/$target_folder --delete
+                    """.trimIndent()
+                }
+                stepsOrder = arrayListOf("RUNNER_666", "RUNNER_2634", "RUNNER_2635")
+            }
+        })
+
         fun getScheduleWindow(index: Int): Pair<Int, Int> {
             val startTime = 0
             val interval = 10
@@ -298,6 +328,27 @@ object Helpers {
                 }
                 val root = build.getString("root")
                 val vcsRootId = build.getString("src")
+
+                if (build.has("resources")) {
+                    val resources = build.getJSONArray("resources")
+                    for (j in 0 until resources.length()) {
+                        val resource = resources.getJSONObject(j)
+                        val resourceGitUrl = resource.getString("gitUrl")
+                        val resourceSourceFolder = resource.getString("sourceFolder")
+                        val resourceTargetFolder = resource.getString("targetFolder")
+                        var resourceBranch = ""
+                        if (resource.has("branch")) {
+                            resourceBranch = resource.getString("branch")
+                        }
+
+                        val resourceVcsRootId = buildId + "source" + j + env
+                        val resourceBuildId = "copy$resourceVcsRootId"
+
+                        roots.add(CreateVcsRoot(resourceGitUrl, resourceVcsRootId, resourceBranch))
+                        builds.add(CopyResourcesFromGitToS3Abstract(title, resourceBuildId,
+                                resourceVcsRootId, resourceSourceFolder, "$publishPath/$resourceTargetFolder"))
+                    }
+                }
 
                 if (env == "prod") {
                     builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform, env))
@@ -788,7 +839,7 @@ object LoadSearchIndex : BuildType({
         }
 
         script {
-            name = "Publish to S3"
+            name = "Publish broken link report to S3"
             scriptContent = "aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_ID%"
         }
     }
@@ -1167,7 +1218,7 @@ object BuildAndUploadToS3 : Template({
             """.trimIndent()
         }
         script {
-            name = "Upload to the S3 bucket"
+            name = "Upload generated content to the S3 bucket"
             id = "RUNNER_2633"
             scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
         }
