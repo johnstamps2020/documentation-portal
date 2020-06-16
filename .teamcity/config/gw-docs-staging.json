@@ -118,25 +118,6 @@
       }
     },
     {
-      "id": "guidewirecloudplatformidalpxcm",
-      "title": "Guidewire Cloud Platform",
-      "url": "cloud/gwcp/latest",
-      "visible": false,
-      "metadata": {
-        "platform": "Cloud",
-        "productFamily": ["Guidewire Cloud Platform"],
-        "product": ["Guidewire Cloud Platform"],
-        "category": ["Guidewire Cloud Platform"],
-        "version": "2020.05"
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "assets/insurer-developer-release.ditaval",
-        "root": "guidewire_cloud_platform_guide.ditamap",
-        "src": "guidewirecloudplatform"
-      }
-    },
-    {
       "id": "bc9xstaging",
       "title": "BillingCenter",
       "url": "self-managed/bc/909",
