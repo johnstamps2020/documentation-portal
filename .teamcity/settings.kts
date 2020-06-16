@@ -243,12 +243,8 @@ object Helpers {
             id = RelativeId(build_id)
             name = "Copy resources for $title ($build_id)"
 
-            params {
-                text("SOURCES_ROOT", "src_root", allowEmpty = false)
-            }
-
             vcs {
-                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+                root(RelativeId(vcs_root_id))
             }
 
             steps {
