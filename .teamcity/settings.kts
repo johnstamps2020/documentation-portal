@@ -261,7 +261,7 @@ object Helpers {
                         fi
                         
                         echo "Copying files to S3"
-                        aws s3 sync ${'$'}SOURCES_ROOT/$source_folder/ s3://${'$'}S3_BUCKET_NAME/$target_folder --delete
+                        aws s3 sync ./$source_folder/ s3://${'$'}S3_BUCKET_NAME/$target_folder --delete
                     """.trimIndent()
                 }
                 stepsOrder = arrayListOf("RUNNER_666", "RUNNER_2634", "RUNNER_2635")
