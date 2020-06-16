@@ -88,6 +88,7 @@ object Helpers {
                 text("DOC_ID", doc_id, allowEmpty = false)
                 text("ELASTICSEARCH_URLS", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
+                text("PUBLISH_PATH", relative_copy_path, allowEmpty = false)
             }
 
             steps {
