@@ -1454,5 +1454,6 @@ object DeployProdContent : Project({
 
     buildType(CopyContentFromStagingToProd)
     val (roots, builds) = Helpers.getBuildsFromConfig("prod", "config/gw-docs-staging.json")
+    roots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
 })
