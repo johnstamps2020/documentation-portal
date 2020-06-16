@@ -239,12 +239,19 @@ object Helpers {
         })
 
         class CopyResourcesFromGitToS3Abstract(title: String, build_id: String, vcs_root_id: String,
-                                               source_folder: String, target_folder: String) : BuildType({
+                                               source_folder: String, target_folder: String, parent_build_id: String) : BuildType({
             id = RelativeId(build_id)
             name = "Copy resources for $title ($build_id)"
 
             vcs {
                 root(RelativeId(vcs_root_id))
+            }
+
+            triggers {
+                finishBuildTrigger {
+                    buildType = RelativeId(parent_build_id + env).toString()
+                    successfulOnly = true
+                }
             }
 
             steps {
@@ -346,7 +353,8 @@ object Helpers {
 
                         roots.add(CreateVcsRoot(resourceGitUrl, resourceVcsRootId, resourceBranch))
                         builds.add(CopyResourcesFromGitToS3Abstract(title, resourceBuildId,
-                                resourceVcsRootId, resourceSourceFolder, "$publishPath/$resourceTargetFolder"))
+                                resourceVcsRootId, resourceSourceFolder,
+                                "$publishPath/$resourceTargetFolder", buildId))
                     }
                 }
 
