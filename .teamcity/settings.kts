@@ -788,7 +788,7 @@ object LoadSearchIndex : BuildType({
         }
 
         script {
-            name = "Publish to S3"
+            name = "Publish broken link report to S3"
             scriptContent = "aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_ID%"
         }
     }
@@ -1167,7 +1167,7 @@ object BuildAndUploadToS3 : Template({
             """.trimIndent()
         }
         script {
-            name = "Upload to the S3 bucket"
+            name = "Upload generated content to the S3 bucket"
             id = "RUNNER_2633"
             scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
         }
