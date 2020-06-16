@@ -115,7 +115,7 @@ object Helpers {
 
         class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
                                                          build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex)
+            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
 
             id = RelativeId(doc_id + env)
             name = build_name
@@ -153,7 +153,7 @@ object Helpers {
         class BuildAndUploadToS3Abstract(doc_id: String, build_name: String, ditaval_file: String,
                                          input_path: String, build_env: String, publish_path: String,
                                          vcs_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex)
+            templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
 
             id = RelativeId(doc_id + env)
             name = build_name
@@ -1277,8 +1277,6 @@ object CrawlDocumentAndUpdateIndex : Template({
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "%ELASTICSEARCH_URLS%", allowEmpty = false)
         text("env.INDEX_NAME", "%INDEX_NAME%", allowEmpty = false)
-        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", allowEmpty = false)
-        text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
     }
 
     vcs {
@@ -1311,13 +1309,6 @@ object CrawlDocumentAndUpdateIndex : Template({
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
-        script {
-            name = "Publish to S3"
-            id = "RUNNER_2636"
-            workingDir = "%env.TOOLS_ROOT%"
-            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://%env.S3_BUCKET_NAME%/broken-links-reports/%env.PUBLISH_PATH% --delete"
-        }
-
     }
 
     features {
@@ -1326,6 +1317,24 @@ object CrawlDocumentAndUpdateIndex : Template({
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
             }
+        }
+    }
+})
+
+object PublishBrokenLinksReportToS3 : Template({
+    name = "Publish the broken link report to S3"
+
+    params {
+        text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
+        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", allowEmpty = false)
+        text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
+    }
+    steps {
+        script {
+            name = "Publish to S3"
+            id = "RUNNER_2636"
+            workingDir = "%env.TOOLS_ROOT%"
+            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://%env.S3_BUCKET_NAME%/broken-links-reports/%env.PUBLISH_PATH% --delete"
         }
     }
 })
