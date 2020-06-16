@@ -48,6 +48,7 @@ project {
     template(BuildAndUploadToS3)
     template(BuildAndUploadToS3DitaDev)
     template(CrawlDocumentAndUpdateIndex)
+    template(PublishBrokenLinksReportToS3)
     template(AddFilesFromXDocsToBitbucket)
 
     params {
