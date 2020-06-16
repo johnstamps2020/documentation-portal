@@ -346,7 +346,7 @@ object Helpers {
 
                         roots.add(CreateVcsRoot(resourceGitUrl, resourceVcsRootId, resourceBranch))
                         builds.add(CopyResourcesFromGitToS3Abstract(title, resourceBuildId,
-                                resourceVcsRootId, resourceSourceFolder, resourceTargetFolder))
+                                resourceVcsRootId, resourceSourceFolder, "$publishPath/$resourceTargetFolder"))
                     }
                 }
 
