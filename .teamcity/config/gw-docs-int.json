@@ -1096,7 +1096,7 @@
           {
             "targetFolder":"javadoc/PTF",
             "sourceFolder": "PTF",
-            "src": "testingframeworksdraftsrc"
+            "src": "testingframeworksextrassrc"
           }
         ]
       }
