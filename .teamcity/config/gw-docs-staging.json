@@ -27,7 +27,7 @@
         "src": "exportisaspenforstaging",
         "resources": [
           {
-            "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git",
+            "src": "exampleresource",
             "sourceFolder": "DITA-OT2.5.4/plugins",
             "targetFolder": "dita/ot/plugins"
           }

@@ -10,8 +10,10 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import kotlin.reflect.jvm.internal.impl.types.AbstractTypeCheckerContext
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -138,7 +140,7 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3Abstract(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
+        class BuildAndUploadToS3Abstract(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String, resources: JSONArray?) : BuildType({
             templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
 
             id = RelativeId(doc_id + env)
@@ -165,8 +167,56 @@ object Helpers {
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
             }
 
+            val resourceVcsIds = mutableListOf<String>()
+
+            if (resources != null) {
+                val extraSteps = mutableListOf<ScriptBuildStep>()
+                val stepIds = mutableListOf<String>()
+                for (j in 0 until resources.length()) {
+                    val resource = resources.getJSONObject(j)
+                    resourceVcsIds.add(resource.getString("src"))
+                    val resourceSourceFolder = resource.getString("sourceFolder")
+                    val resourceTargetFolder = resource.getString("targetFolder")
+
+                    val stepId = "COPY_RESOURCES$j"
+                    stepIds.add(stepId)
+
+                    extraSteps.add(ScriptBuildStep {
+                        id = stepId
+                        name = "Copy resources from git to S3"
+                        scriptContent = """
+                                    export S3_BUCKET_NAME=tenant-doctools-$env-builds
+                                    if [[ $env == "prod" ]]; then
+                                        echo "Setting credentials to access prod"
+                                        export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                                        export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                                        export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                                    fi
+                                    
+                                    echo "Copying files to S3"
+                                    aws s3 sync ./resource$j/$resourceSourceFolder/ s3://${'$'}S3_BUCKET_NAME/$resourceTargetFolder --delete
+                                """.trimIndent()
+                    })
+                }
+
+                val orderWithExtraSteps = arrayListOf<String>()
+                orderWithExtraSteps.addAll(arrayListOf<String>("RUN_DITA_BUILD", "UPLOAD_GENERATED_CONTENT"))
+                orderWithExtraSteps.addAll(stepIds)
+                orderWithExtraSteps.addAll(arrayListOf<String>("BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC", "PUBLISH_BROKEN_LINK"))
+
+                steps {
+                    extraSteps.forEach(this::step)
+                    stepsOrder = orderWithExtraSteps
+                }
+            }
+
             vcs {
                 root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+                if (resourceVcsIds.count() > 0) {
+                    for (i in 0 until resourceVcsIds.count()) {
+                        root(RelativeId(resourceVcsIds[i]), "+:. => resource$i")
+                    }
+                }
             }
 
             if (env != "staging") {
@@ -193,6 +243,42 @@ object Helpers {
 
         })
 
+        class CopyResourcesFromGitToS3Abstract(title: String, build_id: String, vcs_root_id: String, source_folder: String, target_folder: String, parent_build_id: String) : BuildType({
+            id = RelativeId(build_id)
+            name = "Copy resources for $title ($build_id)"
+
+            vcs {
+                root(RelativeId(vcs_root_id))
+            }
+
+            triggers {
+                finishBuildTrigger {
+                    buildType = RelativeId(parent_build_id + env).toString()
+                    successfulOnly = true
+                }
+            }
+
+            steps {
+                script {
+                    id = "ZARDOZ_003"
+                    name = "Copy resources from git to S3"
+                    scriptContent = """
+                        export S3_BUCKET_NAME=tenant-doctools-$env-builds
+                        if [[ $env == "prod" ]]; then
+                            echo "Setting credentials to access prod"
+                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                            export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                        fi
+                        
+                        echo "Copying files to S3"
+                        aws s3 sync ./$source_folder/ s3://${'$'}S3_BUCKET_NAME/$target_folder --delete
+                    """.trimIndent()
+                }
+                stepsOrder = arrayListOf("RUNNER_666", "RUNNER_2634", "RUNNER_2635")
+            }
+        })
+
         val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
 
         val builds = mutableListOf<BuildType>()
@@ -217,6 +303,12 @@ object Helpers {
                 if (build.has("filter")) {
                     filter = build.getString("filter")
                 }
+
+                var resources: JSONArray? = null
+                if (build.has("resources")) {
+                    resources = build.getJSONArray("resources")
+                }
+
                 val root = build.getString("root")
                 val vcsRootId = build.getString("src")
 
@@ -228,7 +320,7 @@ object Helpers {
                                 publishPath, vcsRootId + env))
                     } else {
                         builds.add(BuildAndUploadToS3Abstract(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId + env))
+                                publishPath, vcsRootId + env, resources))
                     }
                 }
             }
@@ -1171,8 +1263,8 @@ object BuildAndUploadToS3 : Template({
 
     steps {
         script {
-            name = "Run build"
-            id = "RUNNER_2108"
+            name = "Run DITA build"
+            id = "RUN_DITA_BUILD"
             scriptContent = """
                 chmod -R 777 ./
                 %env.DITA_OT_331_DIR%/bin/dita --install
@@ -1186,7 +1278,7 @@ object BuildAndUploadToS3 : Template({
         }
         script {
             name = "Upload generated content to the S3 bucket"
-            id = "RUNNER_2633"
+            id = "UPLOAD_GENERATED_CONTENT"
             scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
         }
     }
@@ -1307,7 +1399,7 @@ object CrawlDocumentAndUpdateIndex : Template({
     steps {
         dockerCommand {
             name = "Build a Python Docker image"
-            id = "RUNNER_2634"
+            id = "BUILD_CRAWLER_DOCKER_IMAGE"
             commandType = build {
                 source = file {
                     path = "%env.TOOLS_ROOT%/apps/Dockerfile"
@@ -1319,7 +1411,7 @@ object CrawlDocumentAndUpdateIndex : Template({
         }
         script {
             name = "Crawl the document and update the index"
-            id = "RUNNER_2635"
+            id = "CRAWL_DOC"
             workingDir = "%env.TOOLS_ROOT%"
             scriptContent = """
                 cd apps/search_indexer
@@ -1350,8 +1442,8 @@ object PublishBrokenLinksReportToS3 : Template({
     }
     steps {
         script {
-            name = "Publish to S3"
-            id = "RUNNER_2636"
+            name = "Publish broken link report to to S3"
+            id = "PUBLISH_BROKEN_LINK"
             workingDir = "%env.TOOLS_ROOT%"
             scriptContent = "aws s3 sync ./apps/search_indexer/out s3://%env.S3_BUCKET_NAME%/broken-links-reports/%env.PUBLISH_PATH% --delete"
         }

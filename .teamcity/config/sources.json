@@ -2,6 +2,12 @@
   "$schema": "./config-schema.json",
   "sources": [
     {
+      "id": "exampleresource",
+      "title": "Example resource package",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git"
+    },
+    {
       "id": "guidewirecloudplatform",
       "title": "Guidewire Cloud Platform",
       "sourceType": "git",
