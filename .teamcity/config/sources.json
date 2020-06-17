@@ -264,7 +264,7 @@
       ]
     },
     {
-      "id": "testingframeworksdraftsrc",
+      "id": "testingframeworksextrassrc",
       "title": "Testing Frameworks Extras",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks-extras.git"
