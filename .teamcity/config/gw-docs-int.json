@@ -1091,7 +1091,7 @@
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
         "root": "TestingFrameworks_supermap.ditamap",
-        "src": "testingframeworksdraftsrc",
+        "src": "testingframeworkssrc",
         "resources": [
           {
             "targetFolder":"javadoc/PTF",
