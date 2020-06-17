@@ -1096,7 +1096,7 @@
           {
             "targetFolder":"javadoc/PTF",
             "sourceFolder": "PTF",
-            "src": "ssh://git@stash.guidewire.com/docsources/testing-frameworks-extras.git"
+            "src": "testingframeworksdraftsrc"
           }
         ]
       }
