@@ -135,7 +135,7 @@ object Helpers {
             }
 
             vcs {
-                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+                root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
 
         })
@@ -211,10 +211,10 @@ object Helpers {
             }
 
             vcs {
-                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+                root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
                 if (resourceVcsIds.count() > 0) {
                     for (i in 0 until resourceVcsIds.count()) {
-                        root(RelativeId(resourceVcsIds[i]), "+:. => resource$i")
+                        root(AbsoluteId(resourceVcsIds[i]), "+:. => resource$i")
                     }
                 }
             }
@@ -241,42 +241,6 @@ object Helpers {
 
             }
 
-        })
-
-        class CopyResourcesFromGitToS3Abstract(title: String, build_id: String, vcs_root_id: String, source_folder: String, target_folder: String, parent_build_id: String) : BuildType({
-            id = RelativeId(build_id)
-            name = "Copy resources for $title ($build_id)"
-
-            vcs {
-                root(RelativeId(vcs_root_id))
-            }
-
-            triggers {
-                finishBuildTrigger {
-                    buildType = RelativeId(parent_build_id + env).toString()
-                    successfulOnly = true
-                }
-            }
-
-            steps {
-                script {
-                    id = "ZARDOZ_003"
-                    name = "Copy resources from git to S3"
-                    scriptContent = """
-                        export S3_BUCKET_NAME=tenant-doctools-$env-builds
-                        if [[ $env == "prod" ]]; then
-                            echo "Setting credentials to access prod"
-                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                            export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                        fi
-                        
-                        echo "Copying files to S3"
-                        aws s3 sync ./$source_folder/ s3://${'$'}S3_BUCKET_NAME/$target_folder --delete
-                    """.trimIndent()
-                }
-                stepsOrder = arrayListOf("RUNNER_666", "RUNNER_2634", "RUNNER_2635")
-            }
         })
 
         val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
@@ -332,7 +296,7 @@ object Helpers {
     fun getVcsRootsAndExportsFromConfig(): Pair<MutableList<VcsRoot>, MutableList<BuildType>> {
         class CreateVcsRoot(git_path: String, vcs_root_id: String, branch_name: String) :
                 jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
-                    id = RelativeId(vcs_root_id)
+                    id = AbsoluteId(vcs_root_id)
                     name = vcs_root_id
                     url = git_path
                     authMethod = uploadedKey {
@@ -358,7 +322,7 @@ object Helpers {
             }
 
             vcs {
-                root(RelativeId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+                root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
 
             triggers {
