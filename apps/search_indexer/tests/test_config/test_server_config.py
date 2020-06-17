@@ -7,12 +7,13 @@ views_dir = root_dir / 'server' / 'views'
 
 int_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-int.json'
 staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
+sources_path = root_dir / '.teamcity' / 'config' / 'sources.json'
 schema_path = root_dir / '.teamcity' / 'config' / 'config-schema.json'
 config_paths = [int_config_path, staging_config_path]
 
 
 def load_json_file(file_path: Path()):
-    with open(file_path, 'r') as config_file:
+    with open(file_path) as config_file:
         return json.load(config_file)
 
 
@@ -43,16 +44,16 @@ def test_config_is_valid():
             raise AssertionError(
                 f'Found duplicate {prop_label}(s): {duplicates}')
 
-    def props_are_unique_in_file(config_json: object):
+    def props_are_unique_in_file(config_json: object, sources_json: object):
         routes = [x.get('route') for x in config_json['pages']]
         raise_exception_if_not_unique(routes, 'route')
 
         ids = [x.get('id')
-               for x in config_json['docs'] + config_json['sources']]
+               for x in config_json['docs'] + sources_json['sources']]
         raise_exception_if_not_unique(ids, 'id')
 
-    def referenced_sources_exist(config_json: str):
-        source_ids = [x.get('id') for x in config_json['sources']]
+    def referenced_sources_exist(config_json: str, sources_json: object):
+        source_ids = [x.get('id') for x in sources_json['sources']]
         referenced_ids = []
         for doc in config_json['docs']:
             if doc.get('build', None):
@@ -74,9 +75,10 @@ def test_config_is_valid():
 
     for path in config_paths:
         json_object = load_json_file(path)
+        sources_object = load_json_file(sources_path)
         is_valid_with_schema(json_object)
-        props_are_unique_in_file(json_object)
-        referenced_sources_exist(json_object)
+        props_are_unique_in_file(json_object, sources_object)
+        referenced_sources_exist(json_object, sources_object)
 
 
 def test_config_views_exist():

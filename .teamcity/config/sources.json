@@ -220,6 +220,38 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval"
       ]
+    },
+    {
+      "id": "cloudinlatestrdifnwoy",
+      "title": "Insurance Now",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/2020.1.x/active/_superbook.ditamap"
+      ]
+    },
+    {
+      "id": "guidewireidentityfederationhub",
+      "title": "Guidewire Identity Federation Hub",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap"
+      ]
+    },
+    {
+      "id": "selfmanagedis10xdraft",
+      "title": "InsuranceSuite 10",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
+      ]
     }
   ]
 }
