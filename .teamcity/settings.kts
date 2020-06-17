@@ -281,10 +281,10 @@ object Helpers {
                 } else {
                     if (buildType == "dita-dev") {
                         builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId + env))
+                                publishPath, vcsRootId))
                     } else {
                         builds.add(BuildAndUploadToS3Abstract(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId + env, resources))
+                                publishPath, vcsRootId, resources))
                     }
                 }
             }
