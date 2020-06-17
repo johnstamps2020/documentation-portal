@@ -61,19 +61,7 @@ project {
 }
 
 object Helpers {
-    fun getBuildsFromConfig(env: String, configPath: String): Pair<MutableList<VcsRoot>, MutableList<BuildType>> {
-        class CreateVcsRoot(git_path: String, vcs_root_id: String, branch_name: String) : jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
-            id = RelativeId(vcs_root_id)
-            name = vcs_root_id
-            url = git_path
-            authMethod = uploadedKey {
-                uploadedKey = "sys-doc.rsa"
-            }
-
-            if (branch_name != "") {
-                branch = "refs/heads/$branch_name"
-            }
-        })
+    private fun getBuildsFromConfig(env: String, configPath: String): MutableList<BuildType> {
 
         class UploadToS3AbstractProd(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
             templates(CrawlDocumentAndUpdateIndex)
@@ -114,8 +102,7 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String,
-                                                         build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
+        class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
             templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
 
             id = RelativeId(doc_id + env)
@@ -151,9 +138,7 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3Abstract(doc_id: String, build_name: String, ditaval_file: String,
-                                         input_path: String, build_env: String, publish_path: String,
-                                         vcs_root_id: String) : BuildType({
+        class BuildAndUploadToS3Abstract(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
             templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
 
             id = RelativeId(doc_id + env)
@@ -208,11 +193,70 @@ object Helpers {
 
         })
 
+        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
+
+        val builds = mutableListOf<BuildType>()
+
+        val docConfigs = config.getJSONArray("docs")
+        for (i in 0 until docConfigs.length()) {
+            val doc = docConfigs.getJSONObject(i)
+            if (doc.has("build")) {
+                val buildId = doc.getString("id")
+                val publishPath = doc.getString("url")
+                val title = doc.getString("title")
+
+                val metadata = doc.getJSONObject("metadata")
+                val platform = metadata.getString("platform")
+                val version = metadata.getString("version")
+
+                val buildName = "Build $title $platform $version ($buildId)"
+
+                val build: JSONObject = doc.getJSONObject("build")
+                val buildType = build.getString("buildType")
+                var filter = ""
+                if (build.has("filter")) {
+                    filter = build.getString("filter")
+                }
+                val root = build.getString("root")
+                val vcsRootId = build.getString("src")
+
+                if (env == "prod") {
+                    builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform, env))
+                } else {
+                    if (buildType == "dita-dev") {
+                        builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
+                                publishPath, vcsRootId + env))
+                    } else {
+                        builds.add(BuildAndUploadToS3Abstract(buildId, buildName, filter, root, env,
+                                publishPath, vcsRootId + env))
+                    }
+                }
+            }
+        }
+
+        return builds
+    }
+
+    fun getVcsRootsAndExportsFromConfig(): Pair<MutableList<VcsRoot>, MutableList<BuildType>> {
+        class CreateVcsRoot(git_path: String, vcs_root_id: String, branch_name: String) :
+                jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
+                    id = RelativeId(vcs_root_id)
+                    name = vcs_root_id
+                    url = git_path
+                    authMethod = uploadedKey {
+                        uploadedKey = "sys-doc.rsa"
+                    }
+
+                    if (branch_name != "") {
+                        branch = "refs/heads/$branch_name"
+                    }
+                })
+
         class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String,
                                                       vcs_root_id: String, startHour: Int, startMinute: Int) : BuildType({
             templates(AddFilesFromXDocsToBitbucket)
 
-            id = RelativeId(build_id + env)
+            id = RelativeId(build_id)
             name = "Export $source_title from XDocs and add to git ($build_id)"
 
             params {
@@ -238,43 +282,6 @@ object Helpers {
             }
         })
 
-        class CopyResourcesFromGitToS3Abstract(title: String, build_id: String, vcs_root_id: String,
-                                               source_folder: String, target_folder: String, parent_build_id: String) : BuildType({
-            id = RelativeId(build_id)
-            name = "Copy resources for $title ($build_id)"
-
-            vcs {
-                root(RelativeId(vcs_root_id))
-            }
-
-            triggers {
-                finishBuildTrigger {
-                    buildType = RelativeId(parent_build_id + env).toString()
-                    successfulOnly = true
-                }
-            }
-
-            steps {
-                script {
-                    id = "ZARDOZ_003"
-                    name = "Copy resources from git to S3"
-                    scriptContent = """
-                        export S3_BUCKET_NAME=tenant-doctools-$env-builds
-                        if [[ $env == "prod" ]]; then
-                            echo "Setting credentials to access prod"
-                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                            export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                        fi
-                        
-                        echo "Copying files to S3"
-                        aws s3 sync ./$source_folder/ s3://${'$'}S3_BUCKET_NAME/$target_folder --delete
-                    """.trimIndent()
-                }
-                stepsOrder = arrayListOf("RUNNER_666", "RUNNER_2634", "RUNNER_2635")
-            }
-        })
-
         fun getScheduleWindow(index: Int): Pair<Int, Int> {
             val startTime = 0
             val interval = 10
@@ -284,7 +291,8 @@ object Helpers {
             return Pair(hour, minute)
         }
 
-        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
+        val sourceConfigPath = "config/sources.json"
+        val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
 
         val builds = mutableListOf<BuildType>()
         val roots = mutableListOf<VcsRoot>()
@@ -300,79 +308,30 @@ object Helpers {
             if (source.has("branch")) {
                 branchName = source.getString("branch")
             }
-            roots.add(CreateVcsRoot(gitUrl, sourceId + env, branchName))
+            roots.add(CreateVcsRoot(gitUrl, sourceId, branchName))
 
-            if (source.has("xdocsPathIds") && env != "prod") {
+            if (source.has("xdocsPathIds")) {
                 val exportBuildId: String = source.get("id").toString() + "export"
                 val xdocsPathIds: String = source.getJSONArray("xdocsPathIds").joinToString(" ")
                 val (availableHour, availableMinute) = getScheduleWindow(scheduleIndex)
                 scheduleIndex++
 
                 builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId,
-                        sourceTitle, xdocsPathIds, sourceId + env, availableHour, availableMinute))
-            }
-        }
-
-        val docConfigs = config.getJSONArray("docs")
-        for (i in 0 until docConfigs.length()) {
-            val doc = docConfigs.getJSONObject(i)
-            if (doc.has("build")) {
-                val buildId = doc.getString("id")
-                val publishPath = doc.getString("url")
-                val title = doc.getString("title")
-
-                val metadata = doc.getJSONObject("metadata")
-                val platform = metadata.getString("platform")
-                val version = metadata.getString("version")
-
-                val buildName = "Build $title $platform $version ($buildId)"
-
-                val build: JSONObject = doc.getJSONObject("build")
-                val buildType = build.getString("buildType")
-                var filter = ""
-                if (build.has("filter")) {
-                    filter = build.getString("filter")
-                }
-                val root = build.getString("root")
-                val vcsRootId = build.getString("src")
-
-                if (build.has("resources")) {
-                    val resources = build.getJSONArray("resources")
-                    for (j in 0 until resources.length()) {
-                        val resource = resources.getJSONObject(j)
-                        val resourceGitUrl = resource.getString("gitUrl")
-                        val resourceSourceFolder = resource.getString("sourceFolder")
-                        val resourceTargetFolder = resource.getString("targetFolder")
-                        var resourceBranch = ""
-                        if (resource.has("branch")) {
-                            resourceBranch = resource.getString("branch")
-                        }
-
-                        val resourceVcsRootId = buildId + "source" + j + env
-                        val resourceBuildId = "copy$resourceVcsRootId"
-
-                        roots.add(CreateVcsRoot(resourceGitUrl, resourceVcsRootId, resourceBranch))
-                        builds.add(CopyResourcesFromGitToS3Abstract(title, resourceBuildId,
-                                resourceVcsRootId, resourceSourceFolder,
-                                "$publishPath/$resourceTargetFolder", buildId))
-                    }
-                }
-
-                if (env == "prod") {
-                    builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform, env))
-                } else {
-                    if (buildType == "dita-dev") {
-                        builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId + env))
-                    } else {
-                        builds.add(BuildAndUploadToS3Abstract(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId + env))
-                    }
-                }
+                        sourceTitle, xdocsPathIds, sourceId, availableHour, availableMinute))
             }
         }
 
         return Pair(roots, builds)
+    }
+
+    fun getContentProjectFromConfig(env: String, config_path: String): Project {
+        return Project {
+            id = RelativeId("deploycontentto$env")
+            name = "Deploy content to $env"
+
+            val builds = getBuildsFromConfig(env, config_path)
+            builds.forEach(this::buildType)
+        }
     }
 }
 
@@ -1416,13 +1375,17 @@ object Server : Project({
 object Content : Project({
     name = "Content"
 
+    val (roots, builds) = Helpers.getVcsRootsAndExportsFromConfig()
+    roots.forEach(this::vcsRoot)
+    builds.forEach(this::buildType)
+
     buildType(LoadSearchIndex)
     subProject(DeployServices)
     buildType(TestContent)
-    subProject(DeployDevContent)
-    subProject(DeployIntContent)
-    subProject(DeployStagingContent)
-    subProject(DeployProdContent)
+    subProject(Helpers.getContentProjectFromConfig("dev", "config/gw-docs-staging.json"))
+    subProject(Helpers.getContentProjectFromConfig("int", "config/gw-docs-int.json"))
+    subProject(Helpers.getContentProjectFromConfig("staging", "config/gw-docs-staging.json"))
+    subProject(Helpers.getContentProjectFromConfig("prod", "config/gw-docs-staging.json"))
 
 })
 
@@ -1431,37 +1394,4 @@ object DeployServices : Project({
 
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
-})
-
-object DeployDevContent : Project({
-    name = "Deploy to Dev"
-
-    val (roots, builds) = Helpers.getBuildsFromConfig("dev", "config/gw-docs-staging.json")
-    roots.forEach(this::vcsRoot)
-    builds.forEach(this::buildType)
-})
-
-object DeployIntContent : Project({
-    name = "Deploy to Int"
-
-    val (roots, builds) = Helpers.getBuildsFromConfig("int", "config/gw-docs-int.json")
-    roots.forEach(this::vcsRoot)
-    builds.forEach(this::buildType)
-})
-
-object DeployStagingContent : Project({
-    name = "Deploy to Staging"
-
-    val (roots, builds) = Helpers.getBuildsFromConfig("staging", "config/gw-docs-staging.json")
-    roots.forEach(this::vcsRoot)
-    builds.forEach(this::buildType)
-})
-
-object DeployProdContent : Project({
-    name = "Deploy to Prod"
-
-    buildType(CopyContentFromStagingToProd)
-    val (roots, builds) = Helpers.getBuildsFromConfig("prod", "config/gw-docs-staging.json")
-    roots.forEach(this::vcsRoot)
-    builds.forEach(this::buildType)
 })

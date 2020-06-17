@@ -1,0 +1,219 @@
+{
+  "$schema": "./config-schema.json",
+  "sources": [
+    {
+      "id": "guidewirecloudplatform",
+      "title": "Guidewire Cloud Platform",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git"
+    },
+    {
+      "id": "upgradetoolsrelease1440_909",
+      "title": "InsuranceSuite Upgrade Tools 1.44.0-9.0.9",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
+      "branch": "release/1.44.0-9.0.9"
+    },
+    {
+      "id": "upgradetools1x",
+      "title": "InsuranceSuite Upgrade Tools 1x",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "upgradetoolsrelease300_202005",
+      "title": "InsuranceSuite Upgrade Tools 3.0.0-2020.05",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
+      "branch": "release/3.0.0-2020.05"
+    },
+    {
+      "id": "upgradetools3x",
+      "title": "InsuranceSuite Upgrade Tools 3x",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/upgrade/3.x/active/upgrade-guide/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
+      "id": "exportdhiconpremforstaging",
+      "title": "Data Management 1030",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "1030",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dhicdraftsrc",
+      "title": "Data Management Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "exportdhiccloudforstaging",
+      "title": "Data Management Aspen",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "exportisaspenforstaging",
+      "title": "InsuranceSuite Cloud Aspen",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-cloud-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisdraftsrc",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-cloud-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "exportisonprem9",
+      "title": "InsuranceSuite OnPrem 9",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
+      "id": "selfmanagedis9xdraft",
+      "title": "InsuranceSuite 9",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "dxstaging",
+      "title": "Digital",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DX_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval"
+      ]
+    },
+    {
+      "id": "lobs",
+      "title": "LOBs",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/_supermap.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_filterSet.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_filterSet.ditaval"
+      ]
+    },
+    {
+      "id": "clouddataplatform",
+      "title": "Cloud Data Platform Aspen",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cdpdraftsrc",
+      "title": "Cloud Data Platform",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "explore",
+      "title": "Explore Aspen",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "explorebadraftsrc",
+      "title": "Explore and Business Analytics",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval"
+      ]
+    }
+  ]
+}
