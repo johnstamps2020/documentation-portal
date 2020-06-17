@@ -1067,6 +1067,39 @@
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
       }
+    },
+    {
+      "id": "testingframeworksdraft",
+      "title": "Testing Frameworks",
+      "url": "testingframeworks/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": [
+          "Testing Frameworks"
+        ],
+        "platform": "Cloud",
+        "version": "latest",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "TestingFrameworks_supermap.ditamap",
+        "src": "testingframeworksdraftsrc",
+        "resources": [
+          {
+            "targetFolder":"javadoc/PTF",
+            "sourceFolder": "PTF",
+            "src": "ssh://git@stash.guidewire.com/docsources/testing-frameworks-extras.git"
+          }
+        ]
+      }
     }
   ]
 }

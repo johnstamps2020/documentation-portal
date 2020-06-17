@@ -252,6 +252,16 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
       ]
+    },
+    {
+      "id": "testingframeworksdraftsrc",
+      "title": "Testing Frameworks Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/TestingFrameworks_supermap.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
     }
   ]
 }
