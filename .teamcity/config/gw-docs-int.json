@@ -1073,14 +1073,14 @@
       "title": "Testing Frameworks",
       "url": "cloud/testingframeworks/latest",
       "metadata": {
+        "productFamily": [
+          "Testing Frameworks"
+        ],
         "product": [
           "Testing Frameworks"
         ],
         "platform": "Cloud",
-        "version": "latest",
-        "category": [
-          "Core"
-        ]
+        "version": "latest"
       },
       "build": {
         "buildType": "dita",
