@@ -1071,13 +1071,8 @@
     {
       "id": "testingframeworksdraft",
       "title": "Testing Frameworks",
-      "url": "testingframeworks/latest",
+      "url": "cloud/testingframeworks/latest",
       "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
         "product": [
           "Testing Frameworks"
         ],
