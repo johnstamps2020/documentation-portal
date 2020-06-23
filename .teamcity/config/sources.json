@@ -242,7 +242,7 @@
       ]
     },
     {
-      "id": "selfmanagedis10xdraft",
+      "id": "selfmanagedis10xdraftsrc",
       "title": "InsuranceSuite 10",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
@@ -251,6 +251,18 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "selfmanagedis1010src",
+      "title": "InsuranceSuite 10",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
       ]
     },
     {

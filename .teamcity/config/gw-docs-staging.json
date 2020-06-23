@@ -143,6 +143,57 @@
       }
     },
     {
+      "id": "bc1010staging",
+      "title": "BillingCenter",
+      "url": "self-managed/bc/1010",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["BillingCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Release.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis1010src"
+      }
+    },
+    {
+      "id": "cc1010staging",
+      "title": "ClaimCenter",
+      "url": "self-managed/cc/1010",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["ClaimCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Release.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis1010src"
+      }
+    },
+    {
+      "id": "pc1010staging",
+      "title": "PolicyCenter",
+      "url": "self-managed/pc/1010",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["PolicyCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Release.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis1010src"
+      }
+    },
+    {
       "id": "bc9xstaging",
       "title": "BillingCenter",
       "url": "self-managed/bc/909",
