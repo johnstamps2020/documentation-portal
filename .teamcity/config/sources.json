@@ -266,6 +266,12 @@
       ]
     },
     {
+      "id": "insurancesuiteextrassrc",
+      "title": "InsuranceSuite Extras",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git"
+    },
+    {
       "id": "testingframeworkssrc",
       "title": "Testing Frameworks Draft",
       "sourceType": "xdocs",

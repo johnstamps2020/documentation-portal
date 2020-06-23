@@ -156,7 +156,14 @@
         "buildType": "dita",
         "filter": "IS-BC-OnPrem-Release.ditaval",
         "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis1010src"
+        "src": "selfmanagedis1010src",
+        "resources": [
+          {
+            "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.1.0",
+            "sourceFolder": "ReleaseNotes-files/bc/10.1.0",
+            "src": "insurancesuiteextrassrc"
+          }
+        ]
       }
     },
     {
@@ -173,7 +180,14 @@
         "buildType": "dita",
         "filter": "IS-CC-OnPrem-Release.ditaval",
         "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis1010src"
+        "src": "selfmanagedis1010src",
+        "resources": [
+          {
+            "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.1.0",
+            "sourceFolder": "ReleaseNotes-files/cc/10.1.0",
+            "src": "insurancesuiteextrassrc"
+          }
+        ]
       }
     },
     {
@@ -190,7 +204,14 @@
         "buildType": "dita",
         "filter": "IS-PC-OnPrem-Release.ditaval",
         "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis1010src"
+        "src": "selfmanagedis1010src",
+        "resources": [
+          {
+            "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.1.0",
+            "sourceFolder": "ReleaseNotes-files/pc/10.1.0",
+            "src": "insurancesuiteextrassrc"
+          }
+        ]
       }
     },
     {
