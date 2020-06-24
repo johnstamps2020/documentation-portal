@@ -1125,6 +1125,21 @@
           }
         ]
       }
+    },
+    {
+      "id": "dkekdisievjfjrndjsj",
+      "title": "Jutro Designers",
+      "url": "jutro/designers/latest",
+      "metadata": {
+        "product": [
+          "Jutro"
+        ],
+        "productFamily": [
+          "Jutro"
+        ],
+        "platform": "Cloud",
+        "version": "latest"
+      }
     }
   ]
 }
