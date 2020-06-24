@@ -194,7 +194,7 @@ object Helpers {
                                     fi
                                     
                                     echo "Copying files to S3"
-                                    aws s3 sync ./resource$j/$resourceSourceFolder/ s3://${'$'}S3_BUCKET_NAME/$resourceTargetFolder --delete
+                                    aws s3 sync ./resource$j/$resourceSourceFolder/ s3://${'$'}S3_BUCKET_NAME/${'$'}PUBLISH_PATH/$resourceTargetFolder --delete
                                 """.trimIndent()
                     })
                 }
