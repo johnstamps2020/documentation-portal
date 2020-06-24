@@ -242,6 +242,13 @@
       ]
     },
     {
+      "id": "guidewirecloudconsole",
+      "title": "Guidewire Cloud Console",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
+      "branch": "feature/modular-builds"
+    },
+    {
       "id": "selfmanagedis10xdraft",
       "title": "InsuranceSuite 10",
       "sourceType": "xdocs",

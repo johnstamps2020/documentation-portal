@@ -463,8 +463,14 @@
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": "Cloud",
-        "product": [
+        "productFamily": [
           "Guidewire Cloud Platform"
+        ],
+        "product": [
+          "Guidewire Identity Federation Hub"
+        ],
+        "category": [
+          "Authentication"
         ],
         "version": "2020.05"
       },
@@ -475,27 +481,27 @@
       }
     },
     {
-      "id": "guidewirecloudplatformtycvlqax",
-      "title": "Guidewire Cloud Platform",
-      "url": "cloud/gwcp/latest",
+      "id": "guidewirecloudconsoletycvlqax",
+      "title": "Guidewire Cloud Console",
+      "url": "cloud/gcc/latest",
       "metadata": {
         "platform": "Cloud",
         "productFamily": [
           "Guidewire Cloud Platform"
         ],
         "product": [
-          "Guidewire Cloud Platform"
+          "Guidewire Cloud Console"
         ],
         "category": [
-          "Guidewire Cloud Platform"
+          "Guidewire Cloud Console"
         ],
         "version": "2020.05"
       },
       "build": {
         "buildType": "dita",
         "filter": "assets/insurer-developer-draft.ditaval",
-        "root": "guidewire_cloud_platform_guide.ditamap",
-        "src": "guidewirecloudplatform"
+        "root": "gcc.ditamap",
+        "src": "guidewirecloudconsole"
       }
     },
     {
