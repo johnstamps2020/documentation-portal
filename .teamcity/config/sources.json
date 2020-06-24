@@ -242,7 +242,7 @@
       ]
     },
     {
-      "id": "selfmanagedis10xdraftsrc",
+      "id": "selfmanagedis10xdraft",
       "title": "InsuranceSuite 10",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
