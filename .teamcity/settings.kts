@@ -168,6 +168,8 @@ object Helpers {
                 text("PRODUCT", product, allowEmpty = false)
                 text("PLATFORM", platform, allowEmpty = false)
                 text("VERSION", version, allowEmpty = false)
+                text("SSH_USER", value = "ssh_user", allowEmpty = false)
+                password("SSH_PASSWORD", value="credentialsJSON:a547ee60-435e-47c3-901e-a1255a38dd3b")
             }
 
             val resourceVcsIds = mutableListOf<String>()
@@ -1223,6 +1225,9 @@ object BuildAndUploadToS3 : Template({
         text("env.PRODUCT", "%PRODUCT%", allowEmpty = false)
         text("env.PLATFORM", "%PLATFORM%", allowEmpty = false)
         text("env.VERSION", "%VERSION%", allowEmpty = false)
+        text("env.SSH_USER", value = "%SSH_USER%", allowEmpty = false)
+        password("env.SSH_PASSWORD", value="%SSH_PASSWORD%")
+
     }
 
     vcs {
