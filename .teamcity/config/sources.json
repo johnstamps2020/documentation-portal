@@ -261,6 +261,25 @@
       ]
     },
     {
+      "id": "selfmanagedis1010src",
+      "title": "InsuranceSuite 10",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.1.0",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
+      "id": "insurancesuiteextrassrc",
+      "title": "InsuranceSuite Extras",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git"
+    },
+    {
       "id": "testingframeworkssrc",
       "title": "Testing Frameworks Draft",
       "sourceType": "xdocs",
