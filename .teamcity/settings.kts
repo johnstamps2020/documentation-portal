@@ -153,7 +153,8 @@ object Helpers {
 
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("FORMAT", "webhelp_Guidewire", allowEmpty = false)
+                text("FORMAT", "wh-pdf", allowEmpty = false)
+                text("PDF_TRANSTYPE", "pdf5_Guidewire")
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
                 text("INPUT_PATH", input_path, allowEmpty = false)
@@ -1213,6 +1214,7 @@ object BuildAndUploadToS3 : Template({
         text("env.INPUT_PATH", "%INPUT_PATH%", allowEmpty = false)
         text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
         text("env.FORMAT", "%FORMAT%", allowEmpty = false)
+        text("env.PDF_TRANSTYPE", "%PDF_TRANSTYPE%", allowEmpty = false)
         text("env.DITAVAL_FILE", "%DITAVAL_FILE%", allowEmpty = false)
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
     }
@@ -1234,9 +1236,9 @@ object BuildAndUploadToS3 : Template({
                 %env.DITA_OT_331_DIR%/bin/dita --install
                 
                 if [[ "%env.DITAVAL_FILE%" == "" ]]; then
-                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --use-doc-portal-params=yes
+                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes
                 else
-                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes
+                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes
                 fi
             """.trimIndent()
         }
