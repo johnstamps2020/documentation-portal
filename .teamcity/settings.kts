@@ -13,7 +13,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
-import kotlin.reflect.jvm.internal.impl.types.AbstractTypeCheckerContext
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -140,7 +139,7 @@ object Helpers {
 
         })
 
-        class BuildAndUploadToS3Abstract(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String, resources: JSONArray?) : BuildType({
+        class BuildAndUploadToS3Abstract(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String, resources: JSONArray?) : BuildType({
             templates(BuildAndUploadToS3, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
 
             id = RelativeId(doc_id + env)
@@ -166,6 +165,9 @@ object Helpers {
                 text("DOC_ID", doc_id, allowEmpty = false)
                 text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
+                text("PRODUCT", product, allowEmpty = false)
+                text("PLATFORM", platform, allowEmpty = false)
+                text("VERSION", version, allowEmpty = false)
             }
 
             val resourceVcsIds = mutableListOf<String>()
@@ -257,6 +259,7 @@ object Helpers {
                 val title = doc.getString("title")
 
                 val metadata = doc.getJSONObject("metadata")
+                val product = metadata.getJSONArray("product")[0].toString()
                 val platform = metadata.getString("platform")
                 val version = metadata.getString("version")
 
@@ -284,7 +287,7 @@ object Helpers {
                         builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
                                 publishPath, vcsRootId))
                     } else {
-                        builds.add(BuildAndUploadToS3Abstract(buildId, buildName, filter, root, env,
+                        builds.add(BuildAndUploadToS3Abstract(product, platform, version, buildId, buildName, filter, root, env,
                                 publishPath, vcsRootId, resources))
                     }
                 }
@@ -1217,6 +1220,9 @@ object BuildAndUploadToS3 : Template({
         text("env.PDF_TRANSTYPE", "%PDF_TRANSTYPE%", allowEmpty = false)
         text("env.DITAVAL_FILE", "%DITAVAL_FILE%", allowEmpty = false)
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+        text("env.PRODUCT", "%PRODUCT%", allowEmpty = false)
+        text("env.PLATFORM", "%PLATFORM%", allowEmpty = false)
+        text("env.VERSION", "%VERSION%", allowEmpty = false)
     }
 
     vcs {
@@ -1236,9 +1242,9 @@ object BuildAndUploadToS3 : Template({
                 %env.DITA_OT_331_DIR%/bin/dita --install
                 
                 if [[ "%env.DITAVAL_FILE%" == "" ]]; then
-                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes
+                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes --gw-product="%env.PRODUCT%" --gw-platform="%env.PLATFORM%" --gw-version="%env.VERSION%"
                 else
-                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes
+                    %env.DITA_OT_331_DIR%/bin/dita --input="%env.SOURCES_ROOT%/%env.INPUT_PATH%" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --filter="%env.SOURCES_ROOT%/%env.DITAVAL_FILE%" --use-doc-portal-params=yes --gw-product="%env.PRODUCT%" --gw-platform="%env.PLATFORM%" --gw-version="%env.VERSION%"
                 fi
             """.trimIndent()
         }
