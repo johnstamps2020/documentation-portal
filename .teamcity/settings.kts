@@ -83,7 +83,7 @@ object Helpers {
 
             steps {
                 script {
-                    id = "RUNNER_666"
+                    id = "COPY_FROM_STAGING_TO_PROD"
                     name = "Copy from S3 on staging to S3 on Prod"
                     scriptContent = """
                         echo "Copying from staging to Teamcity"
@@ -98,7 +98,7 @@ object Helpers {
                         aws s3 sync $relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
                     """.trimIndent()
                 }
-                stepsOrder = arrayListOf("RUNNER_666", "RUNNER_2634", "RUNNER_2635")
+                stepsOrder = arrayListOf("COPY_FROM_STAGING_TO_PROD", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC")
             }
 
         })
