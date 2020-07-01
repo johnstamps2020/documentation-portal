@@ -223,7 +223,7 @@
     },
     {
       "id": "indraftsrc",
-      "title": "Insurance Now",
+      "title": "InsuranceNow",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
       "xdocsPathIds": [

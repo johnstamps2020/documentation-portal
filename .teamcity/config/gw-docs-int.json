@@ -410,15 +410,15 @@
       }
     },
     {
-      "id": "cloudinlatestdnoewrkt",
+      "id": "cloudininternaldraft",
       "title": "InsuranceNow",
-      "url": "cloud/in/latest",
+      "url": "cloud/in-internal/latest",
       "metadata": {
         "productFamily": [
           "InsuranceNow"
         ],
         "product": [
-          "InsuranceNow"
+          "InsuranceNow - Internal Audience"
         ],
         "platform": "Cloud",
         "version": "latest",
@@ -429,6 +429,30 @@
       "build": {
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "indraftsrc"
+      }
+    },
+    {
+      "id": "cloudinexternaldraft",
+      "title": "InsuranceNow - External",
+      "url": "cloud/in-external/latest",
+      "metadata": {
+        "productFamily": [
+          "InsuranceNow"
+        ],
+        "product": [
+          "InsuranceNow - External Audience"
+        ],
+        "platform": "Cloud",
+        "version": "latest",
+        "category": [
+          "InsuranceNow"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
         "root": "_supermap-20201x-active.ditamap",
         "src": "indraftsrc"
       }
