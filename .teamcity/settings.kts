@@ -137,6 +137,8 @@ object Helpers {
                 root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
             }
 
+
+
         })
 
         class BuildAndUploadToS3Abstract(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String, resources: JSONArray?) : BuildType({
@@ -144,6 +146,8 @@ object Helpers {
 
             id = RelativeId(doc_id + env)
             name = build_name
+
+
 
             var config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json"
             if (env == "int") {
@@ -299,6 +303,13 @@ object Helpers {
         return builds
     }
 
+    private fun getSourcesFromConfig(): JSONArray {
+        val sourceConfigPath = "config/sources.json"
+        val sources = mutableListOf<Triple<String, String, String>>()
+        val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
+        return config.getJSONArray("sources")
+    }
+
     fun getVcsRootsAndExportsFromConfig(): Pair<MutableList<VcsRoot>, MutableList<BuildType>> {
         class CreateVcsRoot(git_path: String, vcs_root_id: String, branch_name: String) :
                 jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
@@ -353,14 +364,11 @@ object Helpers {
             return Pair(hour, minute)
         }
 
-        val sourceConfigPath = "config/sources.json"
-        val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
-
         val builds = mutableListOf<BuildType>()
         val roots = mutableListOf<VcsRoot>()
         var scheduleIndex = 0
 
-        val sourceConfigs = config.getJSONArray("sources")
+        val sourceConfigs = Helpers.getSourcesFromConfig()
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
             val gitUrl: String = source.get("gitUrl").toString()
