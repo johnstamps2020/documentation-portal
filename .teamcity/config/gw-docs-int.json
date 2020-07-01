@@ -16,6 +16,23 @@
   ],
   "docs": [
     {
+      "id": "isconfigupgradetools3xqsgvpkjt",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "cloud/upgradetools/latest",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": "3xx"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/GW-Generic-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "src": "insurancesuiteconfigurationupgradetools3x"
+      }
+    },
+    {
       "id": "dkereofmtkrfkdd",
       "title": "Guidewire Cloud Platform (new webhelp preview)",
       "url": "html5/cloud/gwcp/latest",
