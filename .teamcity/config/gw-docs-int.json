@@ -429,8 +429,8 @@
       "build": {
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "cloudinlatestrdifnwoy"
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "indraftsrc"
       }
     },
     {
