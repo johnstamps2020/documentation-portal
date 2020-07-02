@@ -262,7 +262,7 @@ object Helpers {
             vcs {
                 root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
                 root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
-                root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+                root(AbsoluteId(vcs_root_id), "+:. => %env.SOURCES_ROOT%")
                 if (resourceVcsIds.count() > 0) {
                     for (i in 0 until resourceVcsIds.count()) {
                         root(AbsoluteId(resourceVcsIds[i]), "+:. => resource$i")
