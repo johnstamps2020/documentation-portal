@@ -22,7 +22,7 @@
       "metadata": {
         "platform": "Cloud",
         "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3xx",
         "category": ["Core"]
       },
