@@ -203,6 +203,8 @@ object Helpers {
                     id = "UPLOAD_GENERATED_CONTENT"
                     scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
                 }
+
+                stepsOrder = arrayListOf<String>("RUN_DITA_BUILD", "UPLOAD_GENERATED_CONTENT", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC", "PUBLISH_BROKEN_LINK")
             }
 
 
