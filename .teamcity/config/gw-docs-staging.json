@@ -544,6 +544,57 @@
       }
     },
     {
+      "id": "selfmanagedbcupgradetools300_1010",
+      "title": "BillingCenter Upgrade Tools",
+      "url": "self-managed/bc/upgrade/300",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["BillingCenter Upgrade Tools"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "upgradetools3x"
+      }
+    },
+    {
+      "id": "selfmanagedccupgradetools300_1010",
+      "title": "ClaimCenter Upgrade Tools",
+      "url": "self-managed/cc/upgrade/300",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["ClaimCenter Upgrade Tools"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "upgradetools3x"
+      }
+    },
+    {
+      "id": "selfmanagedpcupgradetools300_1010",
+      "title": "PolicyCenter Upgrade Tools",
+      "url": "self-managed/pc/upgrade/300",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["PolicyCenter Upgrade Tools"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "upgradetools3x"
+      }
+    },
+    {
       "id": "selfmanagedbcupgradetoolspiteqdgk",
       "title": "BillingCenter Upgrade Tools",
       "url": "self-managed/bc/upgrade/230",
