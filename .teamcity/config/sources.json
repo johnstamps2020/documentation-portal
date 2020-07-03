@@ -33,6 +33,13 @@
       ]
     },
     {
+      "id": "upgradetoolsrelease300_1010",
+      "title": "InsuranceSuite Upgrade Tools 3.0.0-10.1.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
+      "branch": "release/3.0.0-10.1.0"
+    },
+    {
       "id": "upgradetoolsrelease300_202005",
       "title": "InsuranceSuite Upgrade Tools 3.0.0-2020.05",
       "sourceType": "git",
