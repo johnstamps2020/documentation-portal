@@ -430,7 +430,14 @@
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
         "root": "_supermap-20201x-active.ditamap",
-        "src": "indraftsrc"
+        "src": "indraftsrc",
+        "resources": [
+          {
+            "targetFolder":"ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
       }
     },
     {
