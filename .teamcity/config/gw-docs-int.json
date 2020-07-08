@@ -479,7 +479,14 @@
         "buildType": "dita",
         "filter": "GW-Generic-Release.ditaval",
         "root": "_supermap-20201x-active.ditamap",
-        "src": "indraftsrc"
+        "src": "indraftsrc",
+        "resources": [
+          {
+            "targetFolder":"ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
       }
     },
     {
@@ -526,7 +533,8 @@
       "build": {
         "buildType": "dita",
         "root": "GuidewireHub.ditamap",
-        "src": "guidewireidentityfederationhub"
+        "filter": "GW-Generic-Cloud-Draft.ditaval",
+        "src": "guidewireidentityfederationhubdraft"
       }
     },
     {

@@ -252,12 +252,13 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git"
     },
     {
-      "id": "guidewireidentityfederationhub",
-      "title": "Guidewire Identity Federation Hub",
+      "id": "guidewireidentityfederationhubdraft",
+      "title": "Guidewire Identity Federation Hub Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap"
+        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
     {
