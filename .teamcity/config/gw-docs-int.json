@@ -1189,6 +1189,24 @@
         "platform": "Cloud",
         "version": "latest"
       }
+    },
+    {
+      "id": "gwfeaturepreviewearlyaccess",
+      "title": "Guidewire Feature Preview Early Access",
+      "url": "cloud/gw-feature-preview/latest",
+      "metadata": {
+        "product": [
+          "Guidewire Feature Preview"
+        ],
+        "platform": "Cloud",
+        "version": "latest"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Release.ditaval",
+        "root": "_supermap-hawaii.ditamap",
+        "src": "gwhawaii"
+      }
     }
   ]
 }
