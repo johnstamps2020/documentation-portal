@@ -246,6 +246,12 @@
       ]
     },
     {
+      "id": "insurancenowextrassrc",
+      "title": "InsuranceNow Extras",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git"
+    },
+    {
       "id": "guidewireidentityfederationhub",
       "title": "Guidewire Identity Federation Hub",
       "sourceType": "xdocs",
@@ -307,6 +313,36 @@
       "title": "Testing Frameworks Extras",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks-extras.git"
+    },
+    {
+      "id": "cloudratingdraftsrc",
+      "title": "Cloud Rating Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rating.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/hawaii/_supermap-cloud-rating-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "cloudrulesdraftsrc",
+      "title": "Cloud Rules Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/hawaii/_supermap-cloud-rules-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "mixandmatchdraftsrc",
+      "title": "Mix and Match Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mix-and-match.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/hawaii/_supermap-mix-and-match-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
+      ]
     }
   ]
 }
