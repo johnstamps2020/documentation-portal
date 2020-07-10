@@ -134,7 +134,7 @@
     },
     {
       "id": "cloudis202005src",
-      "title": "InsuranceSuite Cloud",
+      "title": "InsuranceSuite Cloud 2020.05",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "2020.05.1",
