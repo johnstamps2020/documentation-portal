@@ -10,67 +10,6 @@
   ],
   "docs": [
     {
-      "id": "cloudbcfxhglseu",
-      "title": "BillingCenter for Guidewire Cloud",
-      "url": "cloud/bc/latest",
-      "metadata": {
-        "platform": "Cloud",
-        "productFamily": ["BillingCenter Cloud"],
-        "product": ["BillingCenter"],
-        "version": "2020.05",
-        "category": ["Core"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Release.ditaval",
-        "root": "_supermap-cloud-active.ditamap",
-        "src": "exportisaspenforstaging",
-        "resources": [
-          {
-            "src": "exampleresource",
-            "sourceFolder": "DITA-OT2.5.4/plugins",
-            "targetFolder": "dita/ot/plugins"
-          }
-        ]
-      }
-    },
-    {
-      "id": "cloudccahrgbyin",
-      "title": "ClaimCenter for Guidewire Cloud",
-      "url": "cloud/cc/latest",
-      "metadata": {
-        "platform": "Cloud",
-        "productFamily": ["ClaimCenter Cloud"],
-        "product": ["ClaimCenter"],
-        "version": "2020.05",
-        "category": ["Core"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-Cloud-Release.ditaval",
-        "root": "_supermap-cloud-active.ditamap",
-        "src": "exportisaspenforstaging"
-      }
-    },
-    {
-      "id": "cloudpcuytrolxz",
-      "title": "PolicyCenter for Guidewire Cloud",
-      "url": "cloud/pc/latest",
-      "metadata": {
-        "platform": "Cloud",
-        "productFamily": ["PolicyCenter Cloud"],
-        "product": ["PolicyCenter"],
-        "version": "2020.05",
-        "category": ["Core"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-Cloud-Release.ditaval",
-        "root": "_supermap-cloud-active.ditamap",
-        "src": "exportisaspenforstaging"
-      }
-    },
-    {
       "id": "cloudbc202005",
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/202005",
