@@ -274,7 +274,7 @@ object Helpers {
                 cleanCheckout = true
             }
 
-            if (env != "staging") {
+            if (env == "int") {
                 triggers {
                     vcs {
                         triggerRules = """
@@ -419,7 +419,7 @@ object Helpers {
 
         fun getScheduleWindow(index: Int): Pair<Int, Int> {
             val startTime = 0
-            val interval = 10
+            val interval = 30
             val hour = startTime + ((interval * index) / 60)
             val minute = startTime + ((interval * index) % 60)
 
