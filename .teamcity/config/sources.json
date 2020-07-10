@@ -133,6 +133,19 @@
       ]
     },
     {
+      "id": "cloudis202005src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "2020.05.1",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-202005.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
       "id": "exportisonprem9",
       "title": "InsuranceSuite OnPrem 9",
       "sourceType": "xdocs",

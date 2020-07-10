@@ -71,6 +71,86 @@
       }
     },
     {
+      "id": "cloudbc202005",
+      "title": "BillingCenter for Guidewire Cloud",
+      "url": "cloud/bc/202005",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "2020.05",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Release.ditaval",
+        "root": "_supermap-202005.ditamap",
+        "src": "cloudis202005src",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cloudcc202005",
+      "title": "ClaimCenter for Guidewire Cloud",
+      "url": "cloud/cc/202005",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["ClaimCenter"],
+        "version": "2020.05",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-Cloud-Release.ditaval",
+        "root": "_supermap-202005.ditamap",
+        "src": "cloudis202005src",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/cc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cloudpc202005",
+      "title": "PolicyCenter for Guidewire Cloud",
+      "url": "cloud/pc/202005",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["PolicyCenter"],
+        "version": "2020.05",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Release.ditaval",
+        "root": "_supermap-202005.ditamap",
+        "src": "cloudis202005src",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/pc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05"
+          },
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/pc/2020.05.1",
+            "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05.1"
+          }
+        ]
+      }
+    },
+    {
       "id": "cloudbcupgradetoolspedjvkglts",
       "title": "BillingCenter Upgrade Tools",
       "url": "cloud/bc/upgrade/300",
