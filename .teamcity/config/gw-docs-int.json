@@ -1201,7 +1201,7 @@
     {
       "id": "gwfeaturepreviewearlyaccess",
       "title": "Guidewire Feature Preview Early Access",
-      "url": "cloud/gw-feature-preview/latest",
+      "url": "cloud/gw-feature-preview/earlyaccess",
       "metadata": {
         "product": [
           "Guidewire Feature Preview"
@@ -1213,6 +1213,25 @@
       "build": {
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Release.ditaval",
+        "root": "_supermap-hawaii.ditamap",
+        "src": "gwhawaii"
+      }
+    },
+    {
+      "id": "gwfeaturepreviewdraft",
+      "title": "Guidewire Feature Preview Draft",
+      "url": "cloud/gw-feature-preview/latest",
+      "metadata": {
+        "product": [
+          "Guidewire Feature Preview"
+        ],
+        "productFamily": ["Guidewire Feature Preview"],
+        "platform": "Cloud",
+        "version": "latest"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Draft.ditaval",
         "root": "_supermap-hawaii.ditamap",
         "src": "gwhawaii"
       }
