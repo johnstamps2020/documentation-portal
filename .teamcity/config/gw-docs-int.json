@@ -124,16 +124,16 @@
       }
     },
     {
-      "id": "cloudbcupgradetoolspedjvkglts",
-      "title": "BillingCenter Upgrade Tools",
-      "url": "cloud/bc/upgrade/3xx",
+      "id": "cloudbcupgradeguidepedjvkgl",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "cloud/bc/upgrade/latest",
       "metadata": {
         "platform": "Cloud",
         "productFamily": [
           "BillingCenter Cloud"
         ],
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
         "version": "latest",
         "category": [
@@ -144,20 +144,20 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools3x"
+        "src": "insurancesuiteupgradeguide"
       }
     },
     {
-      "id": "cloudccupgradetoolsqdmbvphr",
-      "title": "ClaimCenter Upgrade Tools",
-      "url": "cloud/cc/upgrade/3xx",
+      "id": "cloudccupgradeguideqdmbvphr",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "cloud/cc/upgrade/latest",
       "metadata": {
         "platform": "Cloud",
         "productFamily": [
           "ClaimCenter Cloud"
         ],
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
         "version": "latest",
         "category": [
@@ -168,20 +168,20 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools3x"
+        "src": "insurancesuiteupgradeguide"
       }
     },
     {
-      "id": "cloudpcupgradetoolsqafgpmxs",
-      "title": "PolicyCenter Upgrade Tools",
-      "url": "cloud/pc/upgrade/3xx",
+      "id": "cloudpcupgradeguideqafgpmxs",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "cloud/pc/upgrade/latest",
       "metadata": {
         "platform": "Cloud",
         "productFamily": [
           "PolicyCenter Cloud"
         ],
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
         "version": "latest",
         "category": [
@@ -192,7 +192,7 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools3x"
+        "src": "insurancesuiteupgradeguide"
       }
     },
     {
@@ -712,15 +712,15 @@
       }
     },
     {
-      "id": "selfmanagedbcupgradetoolsxjpnrssav",
-      "title": "BillingCenter Upgrade Tools",
-      "url": "self-managed/bc/upgrade/3xx",
+      "id": "selfmanagedbcupgradeguidexjpnrssav",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/10x",
       "metadata": {
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
         "platform": "Self-managed",
-        "version": "3.x.x",
+        "version": "10.x",
         "category": [
           "Core"
         ]
@@ -729,19 +729,19 @@
         "buildType": "dita",
         "filter": "IS-BC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools3x"
+        "src": "insurancesuiteupgradeguide"
       }
     },
     {
-      "id": "selfmanagedccupgradetoolsxktcfcgek",
-      "title": "ClaimCenter Upgrade Tools",
-      "url": "self-managed/cc/upgrade/3xx",
+      "id": "selfmanagedccupgradeguidexktcfcgek",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/10x",
       "metadata": {
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
         "platform": "Self-managed",
-        "version": "3.x.x",
+        "version": "10.x",
         "category": [
           "Core"
         ]
@@ -750,19 +750,19 @@
         "buildType": "dita",
         "filter": "IS-CC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools3x"
+        "src": "insurancesuiteupgradeguide"
       }
     },
     {
-      "id": "selfmanagedpcupgradetoolsxhcmnkzft",
-      "title": "PolicyCenter Upgrade Tools",
-      "url": "self-managed/pc/upgrade/3xx",
+      "id": "selfmanagedpcupgradeguidexhcmnkzft",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/10x",
       "metadata": {
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
         "platform": "Self-managed",
-        "version": "3.x.x",
+        "version": "10.x",
         "category": [
           "Core"
         ]
@@ -771,7 +771,7 @@
         "buildType": "dita",
         "filter": "IS-PC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools3x"
+        "src": "insurancesuiteupgradeguide"
       }
     },
     {

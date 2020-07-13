@@ -46,17 +46,17 @@
       ]
     },
     {
-      "id": "upgradetoolsrelease300_1010",
-      "title": "InsuranceSuite Upgrade Tools 3.0.0-10.1.0",
+      "id": "insurancesuiteupgradeguiderelease300_1010",
+      "title": "InsuranceSuite Upgrade Guide 3.0.0-10.1.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/3.0.0-10.1.0"
     },
     {
-      "id": "upgradetoolsrelease300_202005",
-      "title": "InsuranceSuite Upgrade Tools 3.0.0-2020.05",
+      "id": "insurancesuiteupgradeguiderelease300_202005",
+      "title": "InsuranceSuite Upgrade Guide 3.0.0-2020.05",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/3.0.0-2020.05"
     },
     {
@@ -66,10 +66,10 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
     },
     {
-      "id": "upgradetools3x",
-      "title": "InsuranceSuite Upgrade Tools 3x",
+      "id": "insurancesuiteupgradeguide",
+      "title": "InsuranceSuite Upgrade Guide",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-3x.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git"
     },
     {
       "id": "selfmanagedis10xdraft",
