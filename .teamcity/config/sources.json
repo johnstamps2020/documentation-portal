@@ -313,7 +313,8 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-feature-preview.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/hawaii/_supermap-hawaii.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
       ]
     },
     {
