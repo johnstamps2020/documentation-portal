@@ -1207,6 +1207,9 @@
           "Guidewire Feature Preview"
         ],
         "productFamily": ["Guidewire Feature Preview"],
+        "category": [
+          "Guidewire Feature Preview"
+        ],
         "platform": "Cloud",
         "version": "latest"
       },
