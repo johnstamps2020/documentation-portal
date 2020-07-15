@@ -553,12 +553,6 @@
           "Guidewire Cloud Console"
         ],
         "version": "2020.05"
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "assets/insurer-developer-draft.ditaval",
-        "root": "gcc.ditamap",
-        "src": "guidewirecloudconsole"
       }
     },
     {
