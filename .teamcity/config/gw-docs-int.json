@@ -574,6 +574,25 @@
       }
     },
     {
+      "id": "dkeirtlsleeedc",
+      "title": "Cloud Console Root Doc",
+      "url": "cloud/gcc-guide/latest",
+      "visible": false,
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": [
+          "Guidewire Cloud Platform"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "category": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "2020.05"
+      }
+    },
+    {
       "id": "selfmanagedbcxufesxuwl",
       "title": "BillingCenter",
       "url": "self-managed/bc/10x",
