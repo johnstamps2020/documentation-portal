@@ -144,21 +144,58 @@
       }
     },
     {
-      "id": "guidewirecloudplatformidalpxcm",
-      "title": "Guidewire Cloud Platform",
-      "url": "cloud/gwcp/latest",
+      "id": "dkckdkeee",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
       "metadata": {
         "platform": "Cloud",
-        "productFamily": ["Guidewire Cloud Platform"],
-        "product": ["Guidewire Cloud Platform"],
-        "category": ["Guidewire Cloud Platform"],
+        "productFamily": [
+          "Guidewire Cloud Platform"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "category": [
+          "Guidewire Cloud Console"
+        ],
         "version": "2020.05"
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "assets/insurer-developer-release.ditaval",
-        "root": "guidewire_cloud_platform_guide.ditamap",
-        "src": "guidewirecloudplatform"
+      }
+    },
+    {
+      "id": "dfkrkelllser",
+      "title": "Cloud Console Release Notes",
+      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": [
+          "Guidewire Cloud Platform"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "category": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "2020.05"
+      }
+    },
+    {
+      "id": "swwdkskekrtt",
+      "title": "Cloud Console Root Doc",
+      "url": "cloud/gcc-guide/latest",
+      "visible": false,
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": [
+          "Guidewire Cloud Platform"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "category": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "2020.05"
       }
     },
     {
