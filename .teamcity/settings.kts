@@ -953,12 +953,16 @@ object LoadSearchIndex : BuildType({
 })
 
 object CleanUpIndex : BuildType({
-    name = "Clean up indes"
+    name = "Clean up index"
     description = "Remove documents from index which are not in the config"
 
     params {
         select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want clean up the index", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
     }
 
     steps {
