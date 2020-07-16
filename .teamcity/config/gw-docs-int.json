@@ -34,24 +34,6 @@
       }
     },
     {
-      "id": "dkereofmtkrfkdd",
-      "title": "Guidewire Cloud Platform (new webhelp preview)",
-      "url": "html5/cloud/gwcp/latest",
-      "metadata": {
-        "platform": "Cloud",
-        "product": [
-          "Guidewire Cloud Platform"
-        ],
-        "version": "2020.05"
-      },
-      "build": {
-        "buildType": "dita-dev",
-        "filter": "assets/insurer-developer.ditaval",
-        "root": "guidewire_cloud_platform_guide.ditamap",
-        "src": "guidewirecloudplatform"
-      }
-    },
-    {
       "id": "cloudbclatestvkeurqms",
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/latest/",

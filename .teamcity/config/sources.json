@@ -8,12 +8,6 @@
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git"
     },
     {
-      "id": "guidewirecloudplatform",
-      "title": "Guidewire Cloud Platform",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/super-guidewire-cloud-platform.git"
-    },
-    {
       "id": "upgradetoolsrelease1440_909",
       "title": "InsuranceSuite Upgrade Tools 1.44.0-9.0.9",
       "sourceType": "git",
