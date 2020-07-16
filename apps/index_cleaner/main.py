@@ -4,6 +4,9 @@ import os
 from elasticsearch import Elasticsearch, helpers
 
 docsearch_url = f'https://docsearch-doctools.{os.environ["DEPLOY_ENV"]}.ccs.guidewire.net'
+if os.environ["DEPLOY_ENV"] == 'prod':
+    docsearch_url = 'https://docsearch-doctools.internal.us-east-2.service.guidewire.net'
+
 print(f'Connecting to the search service: {docsearch_url}')
 client = Elasticsearch([docsearch_url], use_ssl=False, verify_certs=False,
                        ssl_show_warn=False)
