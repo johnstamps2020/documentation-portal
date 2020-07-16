@@ -973,6 +973,13 @@ object CleanUpIndex : BuildType({
                     export CONFIG_FILE=%teamcity.build.checkoutDir%/.teamcity/config/gw-docs-staging.json
                 fi
                 
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                fi
+                
                 pip install elasticsearch
                 cd apps/index_cleaner
                 python main.py ${'$'}{CONFIG_FILE}
