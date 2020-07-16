@@ -952,6 +952,44 @@ object LoadSearchIndex : BuildType({
     }
 })
 
+object CleanUpIndex : BuildType({
+    name = "Clean up indes"
+    description = "Remove documents from index which are not in the config"
+
+    params {
+        select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want clean up the index", display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod"))
+    }
+
+    steps {
+        script {
+            name = "Run the cleanup script"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "int" ]]; then
+                    export CONFIG_FILE=%teamcity.build.checkoutDir%/.teamcity/config/gw-docs-int.json
+                else
+                    export CONFIG_FILE=%teamcity.build.checkoutDir%/.teamcity/config/gw-docs-staging.json
+                fi
+                
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                fi
+                
+                pip install elasticsearch
+                cd apps/index_cleaner
+                python main.py ${'$'}{CONFIG_FILE}
+            """.trimIndent()
+            dockerImage = "python:3.8-slim"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+})
+
 object TestContent : BuildType({
     name = "Test"
 
@@ -1458,6 +1496,7 @@ object Content : Project({
     builds.forEach(this::buildType)
 
     buildType(LoadSearchIndex)
+    buildType(CleanUpIndex)
     subProject(DeployServices)
     buildType(TestContent)
     subProject(Helpers.getContentProjectFromConfig("dev", "config/gw-docs-staging.json"))
