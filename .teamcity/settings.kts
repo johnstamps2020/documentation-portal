@@ -982,7 +982,6 @@ object CleanUpIndex : BuildType({
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                    export DEPLOY_ENV=us-east-2
                 fi
                 
                 pip install elasticsearch
