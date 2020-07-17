@@ -16,7 +16,7 @@
   ],
   "docs": [
     {
-      "id": "isconfigupgradetools3xcloud",
+      "id": "cloudisconfigupgradetools3xx",
       "title": "InsuranceSuite Configuration Upgrade Tools",
       "url": "isconfigupgradetools/3xx",
       "metadata": {
@@ -28,7 +28,7 @@
       }
     },
     {
-      "id": "isconfigupgradetools3selfmanaged",
+      "id": "selfmanagedisconfigupgradetools3xx",
       "title": "InsuranceSuite Configuration Upgrade Tools",
       "url": "isconfigupgradetools/3xx",
       "metadata": {
