@@ -15,29 +15,7 @@
     }
   ],
   "docs": [
-    {
-      "id": "cloudisconfigupgradetools3xx",
-      "title": "InsuranceSuite Configuration Upgrade Tools",
-      "url": "isconfigupgradetools/3xx",
-      "metadata": {
-        "platform": "Cloud",
-        "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": "3.x.x",
-        "category": ["Core"]
-      }
-    },
-    {
-      "id": "selfmanagedisconfigupgradetools3xx",
-      "title": "InsuranceSuite Configuration Upgrade Tools",
-      "url": "isconfigupgradetools/3xx",
-      "metadata": {
-        "platform": "Self-managed",
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": "3.x.x",
-        "category": ["Core"]
-      }
-    },
+
     {
       "id": "cloudbclatestvkeurqms",
       "title": "BillingCenter for Guidewire Cloud",
@@ -162,6 +140,18 @@
         "category": [
           "Core"
         ]
+      }
+    },
+    {
+      "id": "cloudisconfigupgradetools3xx",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
+      "url": "isconfigupgradetools/3xx",
+      "metadata": {
+        "platform": "Cloud",
+        "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": "3.x.x",
+        "category": ["Core"]
       }
     },
     {
@@ -670,8 +660,19 @@
       }
     },
     {
+      "id": "selfmanagedisconfigupgradetools3xx",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
+      "url": "isconfigupgradetools/3xx",
+      "metadata": {
+        "platform": "Self-managed",
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": "3.x.x",
+        "category": ["Core"]
+      }
+    },
+    {
       "id": "selfmanagedbcupgradetoolsqwsxcgtr",
-      "title": "BillingCenter Upgrade Tools",
+      "title": "BillingCenter Upgrade Tools 1.x.x",
       "url": "self-managed/bc/upgrade/1xx",
       "metadata": {
         "product": [
@@ -692,7 +693,7 @@
     },
     {
       "id": "selfmanagedccupgradetoolsplmciuyg",
-      "title": "ClaimCenter Upgrade Tools",
+      "title": "ClaimCenter Upgrade Tools 1.x.x",
       "url": "self-managed/cc/upgrade/1xx",
       "metadata": {
         "product": [
@@ -713,7 +714,7 @@
     },
     {
       "id": "selfmanagedpcupgradetoolstyfghxsw",
-      "title": "PolicyCenter Upgrade Tools",
+      "title": "PolicyCenter Upgrade Tools 1.x.x",
       "url": "self-managed/pc/upgrade/1xx",
       "metadata": {
         "product": [
