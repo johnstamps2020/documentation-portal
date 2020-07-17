@@ -54,18 +54,6 @@
       "branch": "release/3.0.0-2020.05"
     },
     {
-      "id": "insurancesuiteconfigurationupgradetools3x",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3x",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
-    },
-    {
-      "id": "insurancesuiteupgradeguide",
-      "title": "InsuranceSuite Upgrade Guide",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git"
-    },
-    {
       "id": "selfmanagedis10xdraft",
       "title": "InsuranceSuite 10",
       "sourceType": "xdocs",
