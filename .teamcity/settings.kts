@@ -312,7 +312,7 @@ object Helpers {
 
                 val metadata = doc.getJSONObject("metadata")
                 val product = metadata.getJSONArray("product")[0].toString()
-                val platform = metadata.getString("platform")
+                val platform = metadata.getJSONArray("platform")[0].toString()
                 val version = metadata.getString("version")
 
                 val buildName = "Build $title $platform $version ($buildId)"
