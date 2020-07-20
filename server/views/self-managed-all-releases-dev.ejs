@@ -13,7 +13,7 @@
     <div class="docPanelContainer container">
         <div class="row">
         <%  let groups = docs.reduce((r, a) => {
-                if (a.metadata.platform === 'Self-managed') {
+                if (a.metadata.platform.includes('Self-managed')) {
                     r[a.metadata.category] = [...r[a.metadata.category] || [], a];
                 }
                 return r;

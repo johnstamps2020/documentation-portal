@@ -8,7 +8,7 @@ const configureRouter = async () => {
     router.get(`/${productFamily.id}`, (req, res) => {
       const productDocs = config.docs.reduce((r, doc) => {
         if (
-          doc.metadata.platform === 'Cloud' &&
+          doc.metadata.platform.includes('Cloud') &&
           doc.metadata.productFamily &&
           doc.metadata.productFamily.includes(productFamily.name) &&
           (doc.visible === undefined || doc.visible)
