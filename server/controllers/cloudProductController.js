@@ -2,10 +2,7 @@ const config = require('../config.json');
 
 let cloudProductFamilies = [];
 for (const doc of config.docs) {
-  if (
-    doc.metadata.platform &&
-    doc.metadata.platform.toLowerCase() === 'cloud'
-  ) {
+  if (doc.metadata.platform && doc.metadata.platform.includes('Cloud')) {
     if (doc.metadata.productFamily) {
       for (const productFamily of doc.metadata.productFamily) {
         const existingFamily = cloudProductFamilies.find(

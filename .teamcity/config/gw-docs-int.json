@@ -27,7 +27,9 @@
         "product": [
           "BillingCenter"
         ],
-        "platform": "Cloud",
+        "platform": [
+          "Cloud"
+        ],
         "version": "latest",
         "category": [
           "Core"
@@ -51,7 +53,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Core"
@@ -75,7 +77,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Core"
@@ -93,7 +95,7 @@
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/latest",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "BillingCenter Cloud"
         ],
@@ -111,7 +113,7 @@
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/upgrade/latest",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "ClaimCenter Cloud"
         ],
@@ -129,7 +131,7 @@
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/upgrade/latest",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "PolicyCenter Cloud"
         ],
@@ -147,7 +149,7 @@
       "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
       "url": "isconfigupgradetools/3xx",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud", "Self-managed"],
         "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3.x.x",
@@ -167,7 +169,7 @@
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Data"
@@ -193,7 +195,7 @@
           "BillingCenter Cloud",
           "ClaimCenter Cloud"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Data"
@@ -211,7 +213,7 @@
       "title": "Cloud Data Access",
       "url": "cloud/cdp/latest",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
@@ -237,7 +239,7 @@
       "title": "Explore",
       "url": "cloud/explore/latest",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "PolicyCenter Cloud",
           "BillingCenter Cloud",
@@ -271,7 +273,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Digital"
@@ -297,7 +299,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Digital"
@@ -321,7 +323,7 @@
         "product": [
           "Digital Code Generation"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Digital"
@@ -347,7 +349,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Digital"
@@ -373,7 +375,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "Digital"
@@ -397,7 +399,7 @@
         "product": [
           "InsuranceNow - Internal Audience"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "InsuranceNow"
@@ -428,7 +430,7 @@
         "product": [
           "InsuranceNow - External Audience"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest",
         "category": [
           "InsuranceNow"
@@ -453,7 +455,7 @@
       "title": "Businessowners Standards Based Template",
       "url": "cloud/lob/bop/latest",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "PolicyCenter Cloud"
         ],
@@ -477,7 +479,7 @@
       "title": "Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "Guidewire Cloud Platform"
         ],
@@ -501,7 +503,7 @@
       "title": "Cloud Console Guide",
       "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "Guidewire Cloud Platform"
         ],
@@ -519,7 +521,7 @@
       "title": "Cloud Console Release Notes",
       "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "Guidewire Cloud Platform"
         ],
@@ -538,7 +540,7 @@
       "url": "cloud/gcc-guide/latest",
       "visible": false,
       "metadata": {
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "productFamily": [
           "Guidewire Cloud Platform"
         ],
@@ -559,7 +561,7 @@
         "product": [
           "BillingCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Core"
@@ -580,7 +582,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Core"
@@ -601,7 +603,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Core"
@@ -622,7 +624,7 @@
         "product": [
           "BillingCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Core"
@@ -637,7 +639,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Core"
@@ -652,7 +654,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Core"
@@ -664,7 +666,7 @@
       "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
       "url": "isconfigupgradetools/3xx",
       "metadata": {
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3.x.x",
         "category": ["Core"]
@@ -678,7 +680,7 @@
         "product": [
           "BillingCenter Upgrade Tools"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "1.x.x",
         "category": [
           "Core"
@@ -699,7 +701,7 @@
         "product": [
           "ClaimCenter Upgrade Tools"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "1.x.x",
         "category": [
           "Core"
@@ -720,7 +722,7 @@
         "product": [
           "PolicyCenter Upgrade Tools"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "1.x.x",
         "category": [
           "Core"
@@ -741,7 +743,7 @@
         "product": [
           "BillingCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "9.x",
         "category": [
           "Core"
@@ -762,7 +764,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "9.x",
         "category": [
           "Core"
@@ -783,7 +785,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "9.x",
         "category": [
           "Core"
@@ -804,7 +806,7 @@
         "product": [
           "DataHub"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Data"
@@ -825,7 +827,7 @@
         "product": [
           "InfoCenter"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "10.x",
         "category": [
           "Data"
@@ -843,7 +845,7 @@
       "title": "Business Analytics",
       "url": "self-managed/ba/latest",
       "metadata": {
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "product": [
           "Business Analytics"
         ],
@@ -867,7 +869,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -888,7 +890,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -912,7 +914,7 @@
         "product": [
           "Digital Code Generation"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "latest",
         "category": [
           "Digital"
@@ -933,7 +935,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -954,7 +956,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -975,7 +977,7 @@
         "product": [
           "VendorEngage"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -996,7 +998,7 @@
         "product": [
           "Guidewire for Salesforce Data Integrations"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -1017,7 +1019,7 @@
         "product": [
           "Guidewire for Salesforce Data Integrations for Claims"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -1038,7 +1040,7 @@
         "product": [
           "Guidewire for Salesforce Digital Gateway"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -1059,7 +1061,7 @@
         "product": [
           "Guidewire for Salesforce Digital Gateway for Claims"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -1080,7 +1082,7 @@
         "product": [
           "Guidewire for Salesforce View on Demand"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -1101,7 +1103,7 @@
         "product": [
           "Guidewire for Salesforce View on Demand for Claims"
         ],
-        "platform": "Self-managed",
+        "platform": ["Self-managed"],
         "version": "11.x",
         "category": [
           "Digital"
@@ -1125,7 +1127,7 @@
         "product": [
           "Testing Frameworks"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest"
       },
       "build": {
@@ -1153,7 +1155,7 @@
         "productFamily": [
           "Jutro"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest"
       }
     },
@@ -1169,7 +1171,7 @@
         "category": [
           "Early Access"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest"
       },
       "build": {
@@ -1191,7 +1193,7 @@
         "category": [
           "Internal Draft"
         ],
-        "platform": "Cloud",
+        "platform": ["Cloud"],
         "version": "latest"
       },
       "build": {

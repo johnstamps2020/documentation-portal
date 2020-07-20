@@ -134,11 +134,13 @@
         },
         "platform": {
           "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
-          "type": "string",
-          "enum": [
-            "Self-managed",
-            "Cloud"
-          ]
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Self-managed",
+              "Cloud"
+            ]
         },
         "version": {
           "description": "A version number, or a word like 'latest'",
