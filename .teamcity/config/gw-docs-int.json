@@ -43,6 +43,33 @@
       }
     },
     {
+      "id": "testplatformarray",
+      "title": "Test Platform Array",
+      "url": "test/platform/array",
+      "metadata": {
+        "productFamily": [
+          "BillingCenter Cloud"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "platform": [
+          "Cloud", "Self-managed"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "insurancesuiteupgradeguiderelease300_202005"
+      }
+    },
+
+    {
       "id": "cloudcclatestovwsjybk",
       "title": "ClaimCenter for Guidewire Cloud",
       "url": "cloud/cc/latest/",
