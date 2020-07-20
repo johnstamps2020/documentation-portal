@@ -141,6 +141,7 @@
               "Self-managed",
               "Cloud"
             ]
+          }
         },
         "version": {
           "description": "A version number, or a word like 'latest'",
