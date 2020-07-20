@@ -145,7 +145,7 @@
       }
     },
     {
-      "id": "cloudisconfigupgradetools3xx",
+      "id": "isconfigupgradetools3xx",
       "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
       "url": "isconfigupgradetools/3xx",
       "metadata": {
@@ -659,17 +659,6 @@
         "category": [
           "Core"
         ]
-      }
-    },
-    {
-      "id": "selfmanagedisconfigupgradetools3xx",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
-      "url": "isconfigupgradetools/3xx",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": "3.x.x",
-        "category": ["Core"]
       }
     },
     {
