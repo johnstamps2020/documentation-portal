@@ -91,9 +91,10 @@
       }
     },
     {
-      "id": "cloudbcupgradeguidepedjvkgl",
+      "id": "cloudbcupgradeguidelatest",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/latest",
+      "visible": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": [
@@ -109,9 +110,10 @@
       }
     },
     {
-      "id": "cloudccupgradeguideqdmbvphr",
+      "id": "cloudccupgradeguidelatest",
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/upgrade/latest",
+      "visible": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": [
@@ -127,9 +129,10 @@
       }
     },
     {
-      "id": "cloudpcupgradeguideqafgpmxs",
+      "id": "cloudpcupgradeguidelatest",
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/upgrade/latest",
+      "visible": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": [
@@ -145,9 +148,9 @@
       }
     },
     {
-      "id": "isconfigupgradetools3xx",
+      "id": "isconfigupgradetools3x",
       "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
-      "url": "isconfigupgradetools/3xx",
+      "url": "isconfigupgradetools/3x",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
@@ -617,45 +620,48 @@
       }
     },
     {
-      "id": "selfmanagedbcupgradeguidexjpnrssav",
+      "id": "selfmanagedbcupgradeguide10x",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/10x",
+      "visible": false,
       "metadata": {
         "product": [
           "BillingCenter"
         ],
         "platform": ["Self-managed"],
-        "version": "10.x",
+        "version": "10.x.x",
         "category": [
           "Core"
         ]
       }
     },
     {
-      "id": "selfmanagedccupgradeguidexktcfcgek",
+      "id": "selfmanagedccupgradeguide10x",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/10x",
+      "visible": false,
       "metadata": {
         "product": [
           "ClaimCenter"
         ],
         "platform": ["Self-managed"],
-        "version": "10.x",
+        "version": "10.x.x",
         "category": [
           "Core"
         ]
       }
     },
     {
-      "id": "selfmanagedpcupgradeguidexhcmnkzft",
+      "id": "selfmanagedpcupgradeguide10x",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/10x",
+      "visible": false,
       "metadata": {
         "product": [
           "PolicyCenter"
         ],
         "platform": ["Self-managed"],
-        "version": "10.x",
+        "version": "10.x.x",
         "category": [
           "Core"
         ]
