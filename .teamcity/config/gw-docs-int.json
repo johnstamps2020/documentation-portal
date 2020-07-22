@@ -103,7 +103,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "latest",
+        "version": "2020.05",
         "category": [
           "Core"
         ]
@@ -122,7 +122,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "latest",
+        "version": "2020.05",
         "category": [
           "Core"
         ]
@@ -141,7 +141,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "latest",
+        "version": "2020.05",
         "category": [
           "Core"
         ]
@@ -629,7 +629,7 @@
           "BillingCenter"
         ],
         "platform": ["Self-managed"],
-        "version": "10.x.x",
+        "version": "10.1.0",
         "category": [
           "Core"
         ]
@@ -645,7 +645,7 @@
           "ClaimCenter"
         ],
         "platform": ["Self-managed"],
-        "version": "10.x.x",
+        "version": "10.1.0",
         "category": [
           "Core"
         ]
@@ -661,7 +661,7 @@
           "PolicyCenter"
         ],
         "platform": ["Self-managed"],
-        "version": "10.x.x",
+        "version": "10.1.0",
         "category": [
           "Core"
         ]
