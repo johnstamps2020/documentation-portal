@@ -1470,7 +1470,7 @@ object PublishBrokenLinksReportToS3 : Template({
     }
     steps {
         script {
-            name = "Publish broken link report to to S3"
+            name = "Publish broken link report to S3"
             id = "PUBLISH_BROKEN_LINK"
             workingDir = "%env.TOOLS_ROOT%"
             scriptContent = "aws s3 sync ./apps/search_indexer/out s3://%env.S3_BUCKET_NAME%/broken-links-reports/%env.PUBLISH_PATH% --delete"
