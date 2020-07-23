@@ -1105,7 +1105,7 @@ object TestConfig : BuildType({
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
                 userName = "%serviceAccountUsername%"
-                password = "zxx02d98e2c9ff7a3fe236631b550fc8db9b0a9c655f3a18e4b775d03cbe80d301b"
+                password = "credentialsJSON:01a9d262-c4a1-4c6a-9341-70e3999e329b"
             }
         }
         sshAgent {
