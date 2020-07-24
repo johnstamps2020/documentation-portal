@@ -26,29 +26,33 @@
             <div class="col">
                 <div class="row">
                     <% Object.entries(docs).forEach(category => {
-                    const categoryName = category[0];
-                    const categoryItems = category[1]; -%>
-                        <div class="col-sm-4 mt-3">
-                            <div class="categoryCard">
-                                <h2><%= categoryName %></h2>
-                                <% const products = category[1].reduce((r, a) => {
-                                    r[a.metadata.product] = [...r[a.metadata.product] || [], a];
-                                    return r;
-                                }, {});
-                                    const productArray = Object.entries(products);
-                                productArray.forEach(product => {
-                                    const productReleases = product[1].filter(doc => (doc.visible !== false));
-                                    const docsSortedFromLatestToOldest = productReleases.sort((a, b) => (parseInt(a.metadata.version) > parseInt(b.metadata.version)) ? -1 : 1)
-                                    const doc = docsSortedFromLatestToOldest[0]
-                                if (doc) {
-                                -%>
-                                    <div class="docLink">
-                                        <a href="/<%= doc.url %>"><%= doc.title %></a>
-                                    </div>
-                                <% } -%>
-                                <% }) %>
-                            </div>
+                        const categoryName = category[0];
+                        const categoryItems = category[1]; -%>
+                    <div class="col-sm-4 mt-3">
+                        <div class="categoryCard">
+                            <h2><%= categoryName %></h2>
+                            <% const products = categoryItems.reduce((r, a) => {
+                                r[a.metadata.product] = [...r[a.metadata.product] || [], a];
+                                return r;
+                            }, {});
+                                const productArray = Object.entries(products);
+                            productArray.forEach(product => {
+                                console.log(product[1])
+                                const visibleDocs = product[1].filter(doc => (doc.visible !== false));
+                                const productReleases = visibleDocs.map(e => parseFloat(e.metadata.version));
+                                const latestProductRelease = Math.max(...productReleases);
+                                const docsToDisplay = visibleDocs.filter(e => parseFloat(e.metadata.version) === latestProductRelease);
+                            if (docsToDisplay) {
+                            docsToDisplay.forEach(doc => {
+                            -%>
+                                <div class="docLink">
+                                    <a href="/<%= doc.url %>"><%= doc.title %></a>
+                                </div>
+                            <% }) -%>
+                            <% } -%>
+                            <% }) %>
                         </div>
+                    </div>
                     <% }) -%>
                 </div>
             </div>
