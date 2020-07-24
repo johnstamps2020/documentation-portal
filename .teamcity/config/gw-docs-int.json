@@ -149,13 +149,13 @@
     },
     {
       "id": "isconfigupgradetools3x",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.0.0",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.1.0",
       "url": "isconfigupgradetools/3x",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": "3.0.0",
+        "version": "3.1.0",
         "category": ["Core"]
       }
     },
