@@ -734,24 +734,30 @@
       }
     },
     {
-      "id": "selfmanageddxceamagmqaagu",
+      "id": "dxceam1120onpremstaging",
       "title": "CustomerEngage Account Management",
-      "url": "self-managed/dx/ce-am/1001",
+      "url": "self-managed/dx/ce-am/1120",
       "metadata": {
-        "platform": ["Self-managed"],
         "product": ["CustomerEngage Account Management"],
-        "version": "10.0.1",
+        "platform": ["Self-managed"],
+        "version": "11.2.0",
         "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
       }
     },
     {
-      "id": "dxceqbonpremstaging",
+      "id": "dxceqb1120onpremstaging",
       "title": "CustomerEngage Quote and Buy",
-      "url": "self-managed/dx/ce-qb/1110",
+      "url": "self-managed/dx/ce-qb/1120",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Self-managed"],
-        "version": "11.1.0",
+        "version": "11.2.0",
         "category": ["Digital"]
       },
       "build": {
@@ -762,13 +768,13 @@
       }
     },
     {
-      "id": "dxpeonpremstaging",
+      "id": "dxpe1120onpremstaging",
       "title": "ProducerEngage",
-      "url": "self-managed/dx/pe/1110",
+      "url": "self-managed/dx/pe/1120",
       "metadata": {
         "product": ["ProducerEngage"],
         "platform": ["Self-managed"],
-        "version": "11.1.0",
+        "version": "11.2.0",
         "category": ["Digital"]
       },
       "build": {
@@ -779,13 +785,13 @@
       }
     },
     {
-      "id": "dxsreonpremstaging",
+      "id": "dxsre1120onpremstaging",
       "title": "ServiceRepEngage",
-      "url": "self-managed/dx/sre/1110",
+      "url": "self-managed/dx/sre/1120",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Self-managed"],
-        "version": "11.1.0",
+        "version": "11.2.0",
         "category": ["Digital"]
       },
       "build": {
@@ -793,6 +799,50 @@
         "filter": "Digital-sre-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
+      }
+    },
+    {
+      "id": "dxceqb1110onpremstaging",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/1110",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Self-managed"],
+        "version": "11.1.0",
+        "category": ["Digital"]
+      }
+    },
+    {
+      "id": "dxpe1110onpremstaging",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1110",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.1.0",
+        "category": ["Digital"]
+      }
+    },
+    {
+      "id": "dxsre1110onpremstaging",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1110",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.1.0",
+        "category": ["Digital"]
+      }
+    },
+    {
+      "id": "selfmanageddxceamagmqaagu",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/1001",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Account Management"],
+        "version": "10.0.1",
+        "category": ["Digital"]
       }
     },
     {
