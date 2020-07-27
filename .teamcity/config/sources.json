@@ -139,6 +139,8 @@
         "/Content/doc/digital/11.x/active/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
