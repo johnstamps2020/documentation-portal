@@ -174,7 +174,7 @@ object Helpers {
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
             }
 
-            var baseDitaCommand = "%env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --input=\"%env.SOURCES_ROOT%/%env.INPUT_PATH%\" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes --gw-product=\"%env.PRODUCT%\" --gw-platform=\"%env.PLATFORM%\" --gw-version=\"%env.VERSION%\""
+            var baseDitaCommand = "%env.DITA_OT_DIR%/bin/dita --input=\"%env.SOURCES_ROOT%/%env.INPUT_PATH%\" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes --gw-product=\"%env.PRODUCT%\" --gw-platform=\"%env.PLATFORM%\" --gw-version=\"%env.VERSION%\""
             if (ditaval_file != "") {
                 baseDitaCommand += " --filter=\"%env.SOURCES_ROOT%/$ditaval_file\""
             }
@@ -192,7 +192,7 @@ object Helpers {
                     id = "RUN_DITA_BUILD"
                     scriptContent = """
                             chmod -R 777 ./
-                            %env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --install
+                            %env.DITA_OT_DIR%/bin/dita --install
                             
                             $baseDitaCommand
                         """.trimIndent()
@@ -1338,8 +1338,8 @@ object BuildAndUploadToS3DitaDev : Template({
             id = "RUNNER_2108"
             scriptContent = """
                 chmod -R 777 ./
-                %env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --install
-                %env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.DITA_OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes --nav-toc=full --toc.class=home
+                %env.DITA_OT_DIR%/bin/dita --install
+                %env.DITA_OT_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.DITA_OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes --nav-toc=full --toc.class=home
             """.trimIndent()
         }
 
