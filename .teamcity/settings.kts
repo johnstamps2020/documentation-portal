@@ -42,7 +42,6 @@ project {
 
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
-    vcsRoot(DitaOt331)
 
     template(Deploy)
     template(BuildDockerImage)
@@ -175,7 +174,7 @@ object Helpers {
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
             }
 
-            var baseDitaCommand = "%env.DITA_OT_331_DIR%/bin/dita --input=\"%env.SOURCES_ROOT%/%env.INPUT_PATH%\" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes --gw-product=\"%env.PRODUCT%\" --gw-platform=\"%env.PLATFORM%\" --gw-version=\"%env.VERSION%\""
+            var baseDitaCommand = "%env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --input=\"%env.SOURCES_ROOT%/%env.INPUT_PATH%\" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes --gw-product=\"%env.PRODUCT%\" --gw-platform=\"%env.PLATFORM%\" --gw-version=\"%env.VERSION%\""
             if (ditaval_file != "") {
                 baseDitaCommand += " --filter=\"%env.SOURCES_ROOT%/$ditaval_file\""
             }
@@ -193,7 +192,7 @@ object Helpers {
                     id = "RUN_DITA_BUILD"
                     scriptContent = """
                             chmod -R 777 ./
-                            %env.DITA_OT_331_DIR%/bin/dita --install
+                            %env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --install
                             
                             $baseDitaCommand
                         """.trimIndent()
@@ -262,7 +261,6 @@ object Helpers {
             }
 
             vcs {
-                root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
                 root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
                 root(AbsoluteId(vcs_root_id), "+:. => %env.SOURCES_ROOT%")
                 if (resourceVcsIds.count() > 0) {
@@ -279,7 +277,6 @@ object Helpers {
                     vcs {
                         triggerRules = """
                         -:root=${vcsrootmasteronly.id}:**
-                        -:root=${DitaOt331.id}:**
                         -:root=DocumentationTools_DitaOtPlugins:**
                     """.trimIndent()
                     }
@@ -482,15 +479,6 @@ object vcsroot : GitVcsRoot({
     branchSpec = "+:refs/heads/*"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object DitaOt331 : GitVcsRoot({
-    name = "dita-ot-331"
-    url = "ssh://git@stash.guidewire.com/doctools/dita-ot-331.git"
-    branchSpec = "+:refs/*"
-    authMethod = uploadedKey {
-        uploadedKey = "dita-ot.rsa"
     }
 })
 
@@ -1339,7 +1327,6 @@ object BuildAndUploadToS3DitaDev : Template({
     }
 
     vcs {
-        root(DitaOt331, "+:. => ./%env.DITA_OT_331_DIR%")
         root(AbsoluteId("DocumentationTools_DitaOtPlugins"), "+:. => ./%env.DITA_OT_PLUGINS_DIR%")
 
         cleanCheckout = true
@@ -1351,8 +1338,8 @@ object BuildAndUploadToS3DitaDev : Template({
             id = "RUNNER_2108"
             scriptContent = """
                 chmod -R 777 ./
-                %env.DITA_OT_331_DIR%/bin/dita --install
-                %env.DITA_OT_331_DIR%/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.DITA_OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes --nav-toc=full --toc.class=home
+                %env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --install
+                %env.DITA_OT_PLUGINS_DIR%/dita-ot/bin/dita --input=%env.SOURCES_ROOT%/%env.INPUT_PATH% --output=%env.DITA_OUTPUT_DIR% --format=%env.FORMAT% --filter=%env.SOURCES_ROOT%/%env.DITAVAL_FILE% --use-doc-portal-params=yes --nav-toc=full --toc.class=home
             """.trimIndent()
         }
 
