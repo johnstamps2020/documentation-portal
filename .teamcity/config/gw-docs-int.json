@@ -103,7 +103,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "latest",
+        "version": "2020.x",
         "category": [
           "Core"
         ]
@@ -122,7 +122,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "latest",
+        "version": "2020.x",
         "category": [
           "Core"
         ]
@@ -141,7 +141,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "latest",
+        "version": "2020.x",
         "category": [
           "Core"
         ]
