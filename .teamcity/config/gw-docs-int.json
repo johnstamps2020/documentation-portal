@@ -103,7 +103,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "category": [
           "Core"
         ]
@@ -122,7 +122,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "category": [
           "Core"
         ]
@@ -141,7 +141,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "category": [
           "Core"
         ]
@@ -149,13 +149,13 @@
     },
     {
       "id": "isconfigupgradetools3x",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.1.0",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
       "url": "isconfigupgradetools/3x",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": "3.1.0",
+        "version": "3.x.x",
         "category": ["Core"]
       }
     },
