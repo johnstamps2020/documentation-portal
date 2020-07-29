@@ -37,11 +37,16 @@
                             }, {});
                                 const productArray = Object.entries(products);
                             productArray.forEach(product => {
-                                console.log(product[1])
                                 const visibleDocs = product[1].filter(doc => (doc.visible !== false));
-                                const productReleases = visibleDocs.map(e => parseFloat(e.metadata.version));
-                                const latestProductRelease = Math.max(...productReleases);
-                                const docsToDisplay = visibleDocs.filter(e => parseFloat(e.metadata.version) === latestProductRelease);
+                                const productReleases = visibleDocs.map(e => e.metadata.version);
+                                let latestProductRelease = '';
+                                if (productReleases.includes('latest')) {
+                                    latestProductRelease = 'latest'
+                                } else {
+                                    const highestVersion = Math.max(...productReleases.map(e => parseFloat(e)));
+                                    latestProductRelease = productReleases.find(p => parseFloat(p) === highestVersion);
+                                }
+                                const docsToDisplay = visibleDocs.filter(e => e.metadata.version === latestProductRelease);
                             if (docsToDisplay) {
                             docsToDisplay.forEach(doc => {
                             -%>
