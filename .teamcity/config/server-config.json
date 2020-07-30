@@ -1,14 +1,1002 @@
 {
   "$schema": "./config-schema.json",
-  "pages": [
-    { "view": "cloud-home", "route": "/" },
-    { "view": "self-managed-latest", "route": "/self-managed-latest" },
-    {
-      "view": "self-managed-all-releases",
-      "route": "/self-managed-all-releases"
-    }
-  ],
   "docs": [
+    {
+      "id": "cloudbclatestvkeurqms",
+      "title": "BillingCenter for Guidewire Cloud",
+      "url": "cloud/bc/latest/",
+      "metadata": {
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "_supermap-cloud-active.ditamap",
+        "src": "cloudisdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudcclatestovwsjybk",
+      "title": "ClaimCenter for Guidewire Cloud",
+      "url": "cloud/cc/latest/",
+      "metadata": {
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-Cloud-Draft.ditaval",
+        "root": "_supermap-cloud-active.ditamap",
+        "src": "cloudisdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudpclatestltxfjual",
+      "title": "PolicyCenter for Guidewire Cloud",
+      "url": "cloud/pc/latest/",
+      "metadata": {
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Draft.ditaval",
+        "root": "_supermap-cloud-active.ditamap",
+        "src": "cloudisdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudbcupgradeguidelatest",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "cloud/bc/upgrade/latest",
+      "visible": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudccupgradeguidelatest",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "cloud/cc/upgrade/latest",
+      "visible": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["ClaimCenter"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudpcupgradeguidelatest",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "cloud/pc/upgrade/latest",
+      "visible": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["PolicyCenter"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "isconfigupgradetools3x",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
+      "url": "isconfigupgradetools/3x",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "productFamily": [
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud",
+          "PolicyCenter Cloud"
+        ],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": "3.x.x",
+        "category": ["Core"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "clouddhdraft",
+      "title": "DataHub",
+      "url": "cloud/dh/latest",
+      "metadata": {
+        "product": ["DataHub"],
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "DataHub-MS-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudicdraft",
+      "title": "InfoCenter",
+      "url": "cloud/ic/latest",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "InfoCenter-MS-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "clouddataplatformdraft",
+      "title": "Cloud Data Access",
+      "url": "cloud/cdp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["Cloud Data Access"],
+        "version": "latest",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-cda.ditamap",
+        "src": "cdpdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "exploreclouddraft",
+      "title": "Explore",
+      "url": "cloud/explore/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["Explore"],
+        "version": "latest",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Cloud-Release.ditaval",
+        "root": "supermapExplore.ditamap",
+        "src": "explorebadraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "clouddxceamdraft",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "clouddxceqbdraft",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "dxapdclouddraft",
+      "title": "Digital Code Generation",
+      "url": "cloud/dx/apd/latest",
+      "metadata": {
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["Digital Code Generation"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-apd-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "clouddxpedraft",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "clouddxsredraft",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudininternaldraft",
+      "title": "InsuranceNow - Internal",
+      "url": "cloud/in-internal/latest",
+      "metadata": {
+        "productFamily": ["InsuranceNow"],
+        "product": ["InsuranceNow - Internal Audience"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["InsuranceNow"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "indraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudinexternaldraft",
+      "title": "InsuranceNow - External",
+      "url": "cloud/in-external/latest",
+      "metadata": {
+        "productFamily": ["InsuranceNow"],
+        "product": ["InsuranceNow - External Audience"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["InsuranceNow"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "indraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "lobbopclouddraft",
+      "title": "Businessowners Standards Based Template",
+      "url": "cloud/lob/bop/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": "latest",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "LOB_STANDARDS_filterSet.ditaval",
+        "root": "lob-bop-(10.x)/_supermap.ditamap",
+        "src": "lobs"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "guidewireidentityfederationhubqsvkhtgf",
+      "title": "Guidewire Identity Federation Hub",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["Guidewire Cloud Platform"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "category": ["Authentication"],
+        "version": "2020.05"
+      },
+      "build": {
+        "buildType": "dita",
+        "root": "GuidewireHub.ditamap",
+        "filter": "GW-Generic-Cloud-Draft.ditaval",
+        "src": "guidewireidentityfederationhubdraft"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "guidewirecloudconsoleguidetycvlqax",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["Guidewire Cloud Platform"],
+        "product": ["Guidewire Cloud Console"],
+        "category": ["Guidewire Cloud Console"],
+        "version": "2020.05"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "guidewirecloudconsolerelnotesijdxzmpe",
+      "title": "Cloud Console Release Notes",
+      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["Guidewire Cloud Platform"],
+        "product": ["Guidewire Cloud Console"],
+        "category": ["Guidewire Cloud Console"],
+        "version": "2020.05"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "dkeirtlsleeedc",
+      "title": "Cloud Console Root Doc",
+      "url": "cloud/gcc-guide/latest",
+      "visible": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["Guidewire Cloud Platform"],
+        "product": ["Guidewire Cloud Console"],
+        "category": ["Guidewire Cloud Console"],
+        "version": "2020.05"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedbcxufesxuwl",
+      "title": "BillingCenter",
+      "url": "self-managed/bc/10x",
+      "metadata": {
+        "product": ["BillingCenter"],
+        "platform": ["Self-managed"],
+        "version": "10.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Draft.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis10xdraft"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedccxbvqtoakg",
+      "title": "ClaimCenter",
+      "url": "self-managed/cc/10x",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": "10.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Draft.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis10xdraft"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedpcxrwjcdamu",
+      "title": "PolicyCenter",
+      "url": "self-managed/pc/10x",
+      "metadata": {
+        "product": ["PolicyCenter"],
+        "platform": ["Self-managed"],
+        "version": "10.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Draft.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis10xdraft"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedbcupgradeguide10x",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/10x",
+      "visible": false,
+      "metadata": {
+        "product": ["BillingCenter"],
+        "platform": ["Self-managed"],
+        "version": "10.x.x",
+        "category": ["Core"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedccupgradeguide10x",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/10x",
+      "visible": false,
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": "10.x.x",
+        "category": ["Core"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedpcupgradeguide10x",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/10x",
+      "visible": false,
+      "metadata": {
+        "product": ["PolicyCenter"],
+        "platform": ["Self-managed"],
+        "version": "10.x.x",
+        "category": ["Core"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedbcupgradetoolsqwsxcgtr",
+      "title": "BillingCenter Upgrade Tools 1.x.x",
+      "url": "self-managed/bc/upgrade/1xx",
+      "metadata": {
+        "product": ["BillingCenter Upgrade Tools"],
+        "platform": ["Self-managed"],
+        "version": "1.x.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Draft.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "upgradetools1x"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedccupgradetoolsplmciuyg",
+      "title": "ClaimCenter Upgrade Tools 1.x.x",
+      "url": "self-managed/cc/upgrade/1xx",
+      "metadata": {
+        "product": ["ClaimCenter Upgrade Tools"],
+        "platform": ["Self-managed"],
+        "version": "1.x.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Draft.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "upgradetools1x"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedpcupgradetoolstyfghxsw",
+      "title": "PolicyCenter Upgrade Tools 1.x.x",
+      "url": "self-managed/pc/upgrade/1xx",
+      "metadata": {
+        "product": ["PolicyCenter Upgrade Tools"],
+        "platform": ["Self-managed"],
+        "version": "1.x.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Draft.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "upgradetools1x"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedbcxcoxibeoa",
+      "title": "BillingCenter 9",
+      "url": "self-managed/bc/9x",
+      "metadata": {
+        "product": ["BillingCenter"],
+        "platform": ["Self-managed"],
+        "version": "9.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Draft.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedccxgfurvaqu",
+      "title": "ClaimCenter 9",
+      "url": "self-managed/cc/9x",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": "9.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Draft.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedpcxxbkttzbb",
+      "title": "PolicyCenter 9",
+      "url": "self-managed/pc/9x",
+      "metadata": {
+        "product": ["PolicyCenter"],
+        "platform": ["Self-managed"],
+        "version": "9.x",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Draft.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddhxoiefunwl",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": "10.x",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "DataHub-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedicxrsfjafti",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": "10.x",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "InfoCenter-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanagedbadraft",
+      "title": "Business Analytics",
+      "url": "self-managed/ba/latest",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Business Analytics"],
+        "version": "latest",
+        "category": ["Data"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-OnPrem-Release.ditaval",
+        "root": "supermapExplore.ditamap",
+        "src": "explorebadraftsrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxceamdraft",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/11x",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxceqbdraft",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/11x",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxapddraft",
+      "title": "Digital Code Generation",
+      "url": "self-managed/dx/apd/latest",
+      "metadata": {
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["Digital Code Generation"],
+        "platform": ["Self-managed"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-apd-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxpedraft",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/11x",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxsredraft",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/11x",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxvedraft",
+      "title": "VendorEngage",
+      "url": "self-managed/dx/ve/11x",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ve-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxdixowqwwrfu",
+      "title": "Guidewire for Salesforce Data Integrations",
+      "url": "self-managed/dx/di/11x",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-di-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxdicxyhksqnkf",
+      "title": "Guidewire for Salesforce Data Integrations for Claims",
+      "url": "self-managed/dx/di-c/11x",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations for Claims"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-di-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxedxqqjwvkln",
+      "title": "Guidewire for Salesforce Digital Gateway",
+      "url": "self-managed/dx/ed/11x",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ed-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxedcxvpeswwmn",
+      "title": "Guidewire for Salesforce Digital Gateway for Claims",
+      "url": "self-managed/dx/ed-c/11x",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ed-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxvodxqjomllcj",
+      "title": "Guidewire for Salesforce View on Demand",
+      "url": "self-managed/dx/vod/11x",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-vod-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxvodcxeajkygfs",
+      "title": "Guidewire for Salesforce View on Demand for Claims",
+      "url": "self-managed/dx/vod-c/11x",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand for Claims"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-vod-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "testingframeworksdraft",
+      "title": "Testing Frameworks",
+      "url": "cloud/testingframeworks/latest",
+      "metadata": {
+        "productFamily": ["Testing Frameworks"],
+        "product": ["Testing Frameworks"],
+        "platform": ["Cloud"],
+        "version": "latest"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "TestingFrameworks_supermap.ditamap",
+        "src": "testingframeworkssrc",
+        "resources": [
+          {
+            "targetFolder": "javadoc/PTF",
+            "sourceFolder": "PTF",
+            "src": "testingframeworksextrassrc"
+          }
+        ]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "dkekdisievjfjrndjsj",
+      "title": "Jutro Designers",
+      "url": "jutro/designers/latest",
+      "metadata": {
+        "product": ["Jutro"],
+        "productFamily": ["Jutro"],
+        "platform": ["Cloud"],
+        "version": "latest"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "gwfeaturepreviewearlyaccess",
+      "title": "Guidewire Feature Preview Early Access",
+      "url": "cloud/gw-feature-preview/earlyaccess",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "productFamily": ["Guidewire Feature Preview"],
+        "category": ["Early Access"],
+        "platform": ["Cloud"],
+        "version": "latest"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Release.ditaval",
+        "root": "_supermap-hawaii.ditamap",
+        "src": "gwhawaii"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "gwfeaturepreviewdraft",
+      "title": "Guidewire Feature Preview Draft",
+      "url": "cloud/gw-feature-preview/latest",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "productFamily": ["Guidewire Feature Preview"],
+        "category": ["Internal Draft"],
+        "platform": ["Cloud"],
+        "version": "latest"
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Draft.ditaval",
+        "root": "_supermap-hawaii.ditamap",
+        "src": "gwhawaii"
+      },
+      "environments": ["int"]
+    },
     {
       "id": "cloudbc202005",
       "title": "BillingCenter for Guidewire Cloud",
@@ -32,7 +1020,8 @@
             "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
           }
         ]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cloudcc202005",
@@ -57,7 +1046,8 @@
             "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05"
           }
         ]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cloudpc202005",
@@ -87,7 +1077,8 @@
             "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05.1"
           }
         ]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cloudbcupgradeguide202005",
@@ -100,7 +1091,8 @@
         "product": ["BillingCenter"],
         "version": "2020.05",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cloudccupgradeguide202005",
@@ -113,7 +1105,8 @@
         "product": ["ClaimCenter"],
         "version": "2020.05",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cloudpcupgradeguide202005",
@@ -126,7 +1119,8 @@
         "product": ["PolicyCenter"],
         "version": "2020.05",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dkckdkeee",
@@ -138,7 +1132,8 @@
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
         "version": "2020.05"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dfkrkelllser",
@@ -150,7 +1145,8 @@
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
         "version": "2020.05"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "swwdkskekrtt",
@@ -163,7 +1159,8 @@
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
         "version": "2020.05"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "bc1010staging",
@@ -187,7 +1184,8 @@
             "src": "insurancesuiteextrassrc"
           }
         ]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cc1010staging",
@@ -211,7 +1209,8 @@
             "src": "insurancesuiteextrassrc"
           }
         ]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "pc1010staging",
@@ -235,7 +1234,8 @@
             "src": "insurancesuiteextrassrc"
           }
         ]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "bc9xstaging",
@@ -252,7 +1252,8 @@
         "filter": "IS-BC-OnPrem-Release.ditaval",
         "root": "_supermap-9x-active.ditamap",
         "src": "exportisonprem9"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cc9xstaging",
@@ -269,7 +1270,8 @@
         "filter": "IS-CC-OnPrem-Release.ditaval",
         "root": "_supermap-9x-active.ditamap",
         "src": "exportisonprem9"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "pc9xstaging",
@@ -286,7 +1288,8 @@
         "filter": "IS-PC-OnPrem-Release.ditaval",
         "root": "_supermap-9x-active.ditamap",
         "src": "exportisonprem9"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedbcupgradetoolsqwertyui",
@@ -303,7 +1306,8 @@
         "filter": "IS-BC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
         "src": "upgradetoolsrelease1440_909"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
@@ -320,7 +1324,8 @@
         "filter": "IS-CC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
         "src": "upgradetoolsrelease1440_909"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
@@ -337,7 +1342,8 @@
         "filter": "IS-PC-OnPrem-Release.ditaval",
         "root": "_superbook.ditamap",
         "src": "upgradetoolsrelease1440_909"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "lobbopcloudstaging",
@@ -356,7 +1362,8 @@
         "filter": "LOB_STANDARDS_filterSet.ditaval",
         "root": "lob-bop-(10.x)/_supermap.ditamap",
         "src": "lobs"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "clouddhaithitzz",
@@ -378,7 +1385,8 @@
         "filter": "DataHub-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiccloudforstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cloudiclovarpzz",
@@ -400,7 +1408,8 @@
         "filter": "InfoCenter-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiccloudforstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "clouddataplatformstaging",
@@ -422,7 +1431,8 @@
         "filter": "GW-Generic-Release.ditaval",
         "root": "_supermap-cda.ditamap",
         "src": "clouddataplatform"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "explorecloudstaging",
@@ -444,7 +1454,8 @@
         "filter": "GW-Generic-Cloud-Release.ditaval",
         "root": "supermapExplore.ditamap",
         "src": "explore"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxceqbcloudstaging",
@@ -466,7 +1477,8 @@
         "filter": "Digital-ce-qb-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxapdcloudstaging",
@@ -485,7 +1497,8 @@
         "filter": "Digital-apd-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxpecloudstaging",
@@ -507,7 +1520,8 @@
         "filter": "Digital-pe-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxsrecloudstaging",
@@ -529,7 +1543,8 @@
         "filter": "Digital-sre-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedbcfxhglseu",
@@ -540,7 +1555,8 @@
         "product": ["BillingCenter"],
         "version": "10.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedccahrgbyin",
@@ -551,7 +1567,8 @@
         "product": ["ClaimCenter"],
         "version": "10.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedpcuytrolxz",
@@ -562,7 +1579,8 @@
         "product": ["PolicyCenter"],
         "version": "10.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "isconfigupgradetools310",
@@ -578,7 +1596,8 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3.1.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "isconfigupgradetools300",
@@ -594,7 +1613,8 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedbcupgradeguide1010",
@@ -606,7 +1626,8 @@
         "product": ["BillingCenter"],
         "version": "10.1.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedccupgradeguide1010",
@@ -618,7 +1639,8 @@
         "product": ["ClaimCenter"],
         "version": "10.1.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedpcupgradeguide1010",
@@ -630,7 +1652,8 @@
         "product": ["PolicyCenter"],
         "version": "10.1.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedbcupgradetoolspiteqdgk",
@@ -641,7 +1664,8 @@
         "product": ["BillingCenter Upgrade Tools"],
         "version": "10.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
@@ -652,7 +1676,8 @@
         "product": ["ClaimCenter Upgrade Tools"],
         "version": "10.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
@@ -663,7 +1688,8 @@
         "product": ["PolicyCenter Upgrade Tools"],
         "version": "10.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanageddhaithitzz",
@@ -680,7 +1706,8 @@
         "filter": "DataHub-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiconpremforstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagediclovarpzz",
@@ -697,7 +1724,8 @@
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiconpremforstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanageddhaithituu",
@@ -708,7 +1736,8 @@
         "product": ["DataHub"],
         "version": "10.2.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagediclovarpxb",
@@ -719,7 +1748,8 @@
         "product": ["InfoCenter"],
         "version": "10.2.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxceam1120onpremstaging",
@@ -736,7 +1766,8 @@
         "filter": "Digital-ce-am-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxceqb1120onpremstaging",
@@ -753,7 +1784,8 @@
         "filter": "Digital-ce-qb-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxpe1120onpremstaging",
@@ -770,7 +1802,8 @@
         "filter": "Digital-pe-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxsre1120onpremstaging",
@@ -787,7 +1820,8 @@
         "filter": "Digital-sre-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxceqb1110onpremstaging",
@@ -798,7 +1832,8 @@
         "platform": ["Self-managed"],
         "version": "11.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxpe1110onpremstaging",
@@ -809,7 +1844,8 @@
         "platform": ["Self-managed"],
         "version": "11.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxsre1110onpremstaging",
@@ -820,7 +1856,8 @@
         "platform": ["Self-managed"],
         "version": "11.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanageddxceamagmqaagu",
@@ -831,7 +1868,8 @@
         "product": ["CustomerEngage Account Management"],
         "version": "10.0.1",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanageddxvebjvtkgov",
@@ -842,7 +1880,8 @@
         "product": ["VendorEngage"],
         "version": "10.0.1",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxdionpremstaging",
@@ -859,7 +1898,8 @@
         "filter": "Digital-di-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxdiconpremstaging",
@@ -876,7 +1916,8 @@
         "filter": "Digital-di-c-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxedonpremstaging",
@@ -893,7 +1934,8 @@
         "filter": "Digital-ed-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxedconpremstaging",
@@ -910,7 +1952,8 @@
         "filter": "Digital-ed-c-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxvodonpremstaging",
@@ -927,7 +1970,8 @@
         "filter": "Digital-vod-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "dxvodconpremstaging",
@@ -944,7 +1988,8 @@
         "filter": "Digital-vod-c-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanageddxceqbphivypaz",
@@ -955,7 +2000,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "version": "10.0.1",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanageddxpemlefekrm",
@@ -966,7 +2012,8 @@
         "product": ["ProducerEngage"],
         "version": "10.0.1",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanageddxsreaqsojbmv",
@@ -977,7 +2024,8 @@
         "product": ["ServiceRepEngage"],
         "version": "10.0.1",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingentercqsywzuj",
@@ -988,7 +2036,8 @@
         "product": ["BillingCenter"],
         "version": "10.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingentervdugkpgr",
@@ -999,7 +2048,8 @@
         "product": ["BillingCenter"],
         "version": "10.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterlhkdzceb",
@@ -1010,7 +2060,8 @@
         "product": ["BillingCenter"],
         "version": "10.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedbchggrerca",
@@ -1021,7 +2072,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterkqqanxwh",
@@ -1032,7 +2084,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterkxubulyh",
@@ -1043,7 +2096,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterlmkrswrz",
@@ -1054,7 +2108,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocicbeksro",
@@ -1065,7 +2120,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfcmljyqa",
@@ -1076,7 +2132,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjoxldmbo",
@@ -1087,7 +2144,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfmnupekf",
@@ -1098,7 +2156,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyoyphgem",
@@ -1109,7 +2168,8 @@
         "product": ["BillingCenter"],
         "version": "9.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockdppxpda",
@@ -1120,7 +2180,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoczxmrlibm",
@@ -1131,7 +2192,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocccsrmkdc",
@@ -1142,7 +2204,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoceiifgxcw",
@@ -1153,7 +2216,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocffmmswgf",
@@ -1164,7 +2228,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocqfdehuey",
@@ -1175,7 +2240,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccjtmugit",
@@ -1186,7 +2252,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocammzblnv",
@@ -1197,7 +2264,8 @@
         "product": ["BillingCenter"],
         "version": "8.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyftpvcaw",
@@ -1208,7 +2276,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocxlzchxhu",
@@ -1219,7 +2288,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgrobvbee",
@@ -1230,7 +2300,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccmauxbba",
@@ -1241,7 +2312,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdochpillvww",
@@ -1252,7 +2324,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjlfsfdfd",
@@ -1263,7 +2336,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocbkjcnzwz",
@@ -1274,7 +2348,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgnjtyazg",
@@ -1285,7 +2360,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocncmwqrli",
@@ -1296,7 +2372,8 @@
         "product": ["BillingCenter"],
         "version": "7.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocutiqttau",
@@ -1307,7 +2384,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocwhxoullx",
@@ -1318,7 +2396,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoconjiqcsc",
@@ -1329,7 +2408,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocedtrwltv",
@@ -1340,7 +2420,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccdfgarry",
@@ -1351,7 +2432,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocnzoixxnr",
@@ -1362,7 +2444,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterfjbyhawz",
@@ -1373,7 +2456,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterysfwgwsw",
@@ -1384,7 +2468,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockzksesmd",
@@ -1395,7 +2480,8 @@
         "product": ["BillingCenter"],
         "version": "3.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterbfthnlvf",
@@ -1406,7 +2492,8 @@
         "product": ["ClaimCenter"],
         "version": "10.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenteruhhqohgq",
@@ -1417,7 +2504,8 @@
         "product": ["ClaimCenter"],
         "version": "10.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterqqxmyzex",
@@ -1428,7 +2516,8 @@
         "product": ["ClaimCenter"],
         "version": "10.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedccaaforoxt",
@@ -1439,7 +2528,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterelmxqvai",
@@ -1450,7 +2540,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterwtigvtxy",
@@ -1461,7 +2552,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentercxzeemjp",
@@ -1472,7 +2564,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocidesewcj",
@@ -1483,7 +2576,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvqlyczrv",
@@ -1494,7 +2588,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnlrfsben",
@@ -1505,7 +2600,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoceytmuoui",
@@ -1516,7 +2612,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocxjnxnozc",
@@ -1527,7 +2624,8 @@
         "product": ["ClaimCenter"],
         "version": "9.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnhpuynwc",
@@ -1538,7 +2636,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocmypqavjm",
@@ -1549,7 +2648,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocbapuerjf",
@@ -1560,7 +2660,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqeuxmcrz",
@@ -1571,7 +2672,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpfaqnsti",
@@ -1582,7 +2684,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdochpprlkbr",
@@ -1593,7 +2696,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaxxmkayt",
@@ -1604,7 +2708,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq",
@@ -1615,7 +2720,8 @@
         "product": ["ClaimCenter"],
         "version": "8.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdococjxqzog",
@@ -1626,7 +2732,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocswjfurfe",
@@ -1637,7 +2744,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocubdkstsc",
@@ -1648,7 +2756,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocydpzhmah",
@@ -1659,7 +2768,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgkfnzidi",
@@ -1670,7 +2780,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwmlaqcal",
@@ -1681,7 +2792,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaumilntg",
@@ -1692,7 +2804,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocojirlrtn",
@@ -1703,7 +2816,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpeofahzc",
@@ -1714,7 +2828,8 @@
         "product": ["ClaimCenter"],
         "version": "7.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocdojgivnl",
@@ -1725,7 +2840,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoculwlmrqc",
@@ -1736,7 +2852,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpahymdbb",
@@ -1747,7 +2864,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgpkucyfr",
@@ -1758,7 +2876,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdockjixkity",
@@ -1769,7 +2888,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqalxtzlg",
@@ -1780,7 +2900,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentereejtoxhw",
@@ -1791,7 +2912,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterjzkkauje",
@@ -1802,7 +2924,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoclpvcofpk",
@@ -1813,7 +2936,8 @@
         "product": ["ClaimCenter"],
         "version": "6.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvjecaxdc",
@@ -1824,7 +2948,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.9",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwgkxuleb",
@@ -1835,7 +2960,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentergyvfjncd",
@@ -1846,7 +2972,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenternjdtrfxa",
@@ -1857,7 +2984,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterpkcaesiy",
@@ -1868,7 +2996,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterphlqkcmc",
@@ -1879,7 +3008,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterlsomiapi",
@@ -1890,7 +3020,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterawscafqo",
@@ -1901,7 +3032,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterlomzguhc",
@@ -1912,7 +3044,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentervrjxjhjn",
@@ -1923,7 +3056,8 @@
         "product": ["ClaimCenter"],
         "version": "5.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterzvxwgqku",
@@ -1934,7 +3068,8 @@
         "product": ["PolicyCenter"],
         "version": "10.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyentergcxbllrp",
@@ -1945,7 +3080,8 @@
         "product": ["PolicyCenter"],
         "version": "10.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterxdtwvycu",
@@ -1956,7 +3092,8 @@
         "product": ["PolicyCenter"],
         "version": "10.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "selfmanagedpchmmjfhlm",
@@ -1967,7 +3104,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterrtwztpfk",
@@ -1978,7 +3116,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterhzpxxvwz",
@@ -1989,7 +3128,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterwlvmqlps",
@@ -2000,7 +3140,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocnzfemwar",
@@ -2011,7 +3152,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsetccnkr",
@@ -2022,7 +3164,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclzhtwoyw",
@@ -2033,7 +3176,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfwxqxxjo",
@@ -2044,7 +3188,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocrbuikbrg",
@@ -2055,7 +3200,8 @@
         "product": ["PolicyCenter"],
         "version": "9.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmeibkklu",
@@ -2066,7 +3212,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocucydlhvx",
@@ -2077,7 +3224,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclxmhamjs",
@@ -2088,7 +3236,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocafqpzdwd",
@@ -2099,7 +3248,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocpaqllgoi",
@@ -2110,7 +3260,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfnbhhrvy",
@@ -2121,7 +3272,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocojaabfwj",
@@ -2132,7 +3284,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocewdbghur",
@@ -2143,7 +3296,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx",
@@ -2154,7 +3308,8 @@
         "product": ["PolicyCenter"],
         "version": "8.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmdiceask",
@@ -2165,7 +3320,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.9",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoccmpgocpi",
@@ -2176,7 +3332,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.8",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocdgcpumzg",
@@ -2187,7 +3344,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.7",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczbopvdeg",
@@ -2198,7 +3356,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocyqwcdrnp",
@@ -2209,7 +3368,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocuuvupheu",
@@ -2220,7 +3380,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocaazeaxkq",
@@ -2231,7 +3392,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocijpuiydy",
@@ -2242,7 +3404,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmehjueat",
@@ -2253,7 +3416,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocowemuyjf",
@@ -2264,7 +3428,8 @@
         "product": ["PolicyCenter"],
         "version": "7.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocemkhxjqy",
@@ -2275,7 +3440,8 @@
         "product": ["PolicyCenter"],
         "version": "4.0.6",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczsrkqubl",
@@ -2286,7 +3452,8 @@
         "product": ["PolicyCenter"],
         "version": "4.0.5",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsqxndtgn",
@@ -2297,7 +3464,8 @@
         "product": ["PolicyCenter"],
         "version": "4.0.4",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocwarptbie",
@@ -2308,7 +3476,8 @@
         "product": ["PolicyCenter"],
         "version": "4.0.3",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyentertrzuzdki",
@@ -2319,7 +3488,8 @@
         "product": ["PolicyCenter"],
         "version": "4.0.2",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczmtfkxvn",
@@ -2330,7 +3500,8 @@
         "product": ["PolicyCenter"],
         "version": "4.0.1",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenteromjhnper",
@@ -2341,7 +3512,8 @@
         "product": ["PolicyCenter"],
         "version": "4.0.0",
         "category": ["Core"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubyluzrolx",
@@ -2352,7 +3524,8 @@
         "product": ["DataHub"],
         "version": "10.1.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubuesxagrn",
@@ -2363,7 +3536,8 @@
         "product": ["DataHub"],
         "version": "10.0.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubthgnbdfg",
@@ -2374,7 +3548,8 @@
         "product": ["DataHub"],
         "version": "9.3.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubrzwdsixl",
@@ -2385,7 +3560,8 @@
         "product": ["DataHub"],
         "version": "9.2.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubhsutrtnu",
@@ -2396,7 +3572,8 @@
         "product": ["DataHub"],
         "version": "9.1.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubzmzzotex",
@@ -2407,7 +3584,8 @@
         "product": ["DataHub"],
         "version": "9.0.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubsupynnah",
@@ -2418,7 +3596,8 @@
         "product": ["DataHub"],
         "version": "8.3.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataublvbraqby",
@@ -2429,7 +3608,8 @@
         "product": ["DataHub"],
         "version": "8.2.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubguacpbha",
@@ -2440,7 +3620,8 @@
         "product": ["DataHub"],
         "version": "8.1.1",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementdatahubvfzvhptq",
@@ -2451,7 +3632,8 @@
         "product": ["DataHub"],
         "version": "8.1.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentereiscelti",
@@ -2462,7 +3644,8 @@
         "product": ["InfoCenter"],
         "version": "10.1.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterowudqgnv",
@@ -2473,7 +3656,8 @@
         "product": ["InfoCenter"],
         "version": "10.0.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterrowgmanb",
@@ -2484,7 +3668,8 @@
         "product": ["InfoCenter"],
         "version": "9.3.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentertuykkfbw",
@@ -2495,7 +3680,8 @@
         "product": ["InfoCenter"],
         "version": "9.2.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterbzhtclos",
@@ -2506,7 +3692,8 @@
         "product": ["InfoCenter"],
         "version": "9.1.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterzjwxvdgn",
@@ -2517,7 +3704,8 @@
         "product": ["InfoCenter"],
         "version": "9.0.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterxnghccvc",
@@ -2528,7 +3716,8 @@
         "product": ["InfoCenter"],
         "version": "8.3.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterqtbtcudr",
@@ -2539,7 +3728,8 @@
         "product": ["InfoCenter"],
         "version": "8.2.1",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterlgrrnrtz",
@@ -2550,7 +3740,8 @@
         "product": ["InfoCenter"],
         "version": "8.2.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterfuqlhtcv",
@@ -2561,7 +3752,8 @@
         "product": ["InfoCenter"],
         "version": "8.1.1",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementinfocentergkwxcgth",
@@ -2572,7 +3764,8 @@
         "product": ["InfoCenter"],
         "version": "8.1.0",
         "category": ["Data"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
@@ -2583,7 +3776,8 @@
         "product": ["CustomerEngage Account Management"],
         "version": "10.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocswtwqtyvt",
@@ -2594,7 +3788,8 @@
         "product": ["CustomerEngage Account Management"],
         "version": "8.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocskaceffks",
@@ -2605,7 +3800,8 @@
         "product": ["CustomerEngage Account Management"],
         "version": "8.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsvvjeexxr",
@@ -2616,7 +3812,8 @@
         "product": ["CustomerEngage Account Management"],
         "version": "7.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsdixvkiug",
@@ -2627,7 +3824,8 @@
         "product": ["CustomerEngage Account Management"],
         "version": "7.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk",
@@ -2638,7 +3836,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "version": "10.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsxqghmido",
@@ -2649,7 +3848,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "version": "8.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocssvsmobif",
@@ -2660,7 +3860,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "version": "8.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswnmqkwxj",
@@ -2671,7 +3872,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "version": "7.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsmoleigkn",
@@ -2682,7 +3884,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "version": "7.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
@@ -2693,7 +3896,8 @@
         "product": ["ProducerEngage"],
         "version": "10.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm",
@@ -2704,7 +3908,8 @@
         "product": ["ProducerEngage"],
         "version": "8.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst",
@@ -2715,7 +3920,8 @@
         "product": ["ProducerEngage"],
         "version": "8.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocseucuheur",
@@ -2726,7 +3932,8 @@
         "product": ["ProducerEngage"],
         "version": "7.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb",
@@ -2737,7 +3944,8 @@
         "product": ["ProducerEngage"],
         "version": "7.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
@@ -2748,7 +3956,8 @@
         "product": ["ServiceRepEngage"],
         "version": "10.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh",
@@ -2759,7 +3968,8 @@
         "product": ["ServiceRepEngage"],
         "version": "8.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn",
@@ -2770,7 +3980,8 @@
         "product": ["ServiceRepEngage"],
         "version": "8.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc",
@@ -2781,7 +3992,8 @@
         "product": ["ServiceRepEngage"],
         "version": "7.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki",
@@ -2792,7 +4004,8 @@
         "product": ["ServiceRepEngage"],
         "version": "7.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp",
@@ -2803,7 +4016,8 @@
         "product": ["VendorEngage"],
         "version": "10.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya",
@@ -2814,7 +4028,8 @@
         "product": ["VendorEngage"],
         "version": "8.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsyrmcgnnq",
@@ -2825,7 +4040,8 @@
         "product": ["VendorEngage"],
         "version": "8.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsgehgsaei",
@@ -2836,7 +4052,8 @@
         "product": ["VendorEngage"],
         "version": "7.1.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsjkkjagrp",
@@ -2847,7 +4064,8 @@
         "product": ["VendorEngage"],
         "version": "7.0.0",
         "category": ["Digital"]
-      }
+      },
+      "environments": ["dev", "staging", "prod"]
     }
   ]
 }

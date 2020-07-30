@@ -1046,6 +1046,54 @@ object TestContent : BuildType({
     }
 })
 
+object DeployServerConfig : BuildType({
+    name = "Deploy server config"
+
+    params {
+        select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want deploy the config", display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod"))
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Generate config file"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/config_deployer
+                python main.py
+            """.trimIndent()
+            dockerImage = "python:3.8-slim"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Upload config to S3"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ %env.DEPLOY_ENV% == "prod" ]]; then
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                fi
+                
+                aws s3 cp apps/config_deployer/out/config.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config/config.json
+                """.trimIndent()
+        }
+    }
+})
+
 object TestConfig : BuildType({
     name = "Test config"
 
@@ -1475,8 +1523,9 @@ object Server : Project({
     buildType(DeployDev)
     buildType(Release)
     buildType(DeployProd)
+    buildType(DeployServerConfig)
 
-    buildTypesOrder = arrayListOf(Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
+    buildTypesOrder = arrayListOf(DeployServerConfig, Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
 })
 
 object Content : Project({
