@@ -122,7 +122,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
@@ -138,6 +137,10 @@ const proxyOptions = {
   },
 };
 const docProxy = proxy(proxyOptions);
+
+app.use('/portal-config/*', (req, res) => {
+  res.redirect('/unauthorized');
+});
 app.use('/', docProxy);
 
 // handles unauthorized errors
