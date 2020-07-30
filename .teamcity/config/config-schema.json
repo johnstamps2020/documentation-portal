@@ -47,11 +47,7 @@
     },
     "resource": {
       "additionalProperties": false,
-      "required": [
-        "targetFolder",
-        "sourceFolder",
-        "src"
-      ],
+      "required": ["targetFolder", "sourceFolder", "src"],
       "properties": {
         "targetFolder": {
           "description": "For resources, it is the path where we want to place the resource.",
@@ -64,6 +60,14 @@
         "src": {
           "$ref": "#/definitions/src"
         }
+      }
+    },
+    "environments": {
+      "description": "Environments where we will display this doc, dev, int, staging, etc.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["dev", "int", "staging", "prod"]
       }
     },
     "metadata": {
@@ -137,10 +141,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "Self-managed",
-              "Cloud"
-            ]
+            "enum": ["Self-managed", "Cloud"]
           }
         },
         "version": {
@@ -150,11 +151,7 @@
         "category": {
           "description": "A product category",
           "type": "array",
-          "examples": [
-            "Core",
-            "Data",
-            "Digital"
-          ]
+          "examples": ["Core", "Data", "Digital"]
         }
       }
     },
@@ -162,12 +159,7 @@
       "description": "A source where we can get files from, for example Git, XDocs, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "id",
-        "title",
-        "sourceType",
-        "gitUrl"
-      ],
+      "required": ["id", "title", "sourceType", "gitUrl"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -178,10 +170,7 @@
         "sourceType": {
           "description": "The type of the source",
           "type": "string",
-          "enum": [
-            "git",
-            "xdocs"
-          ]
+          "enum": ["git", "xdocs"]
         },
         "gitUrl": {
           "description": "An SSH url to a git repo. For all source types, it is a source of files. For the 'xdocs' type, it is also the target where we commit exported files. The 'git' and 'xdocs' types are used by 'docs' components to generate builds.",
@@ -197,21 +186,14 @@
         "branch": {
           "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",
           "type": "string",
-          "examples": [
-            "release-1.0",
-            "usaa-experimental"
-          ]
+          "examples": ["release-1.0", "usaa-experimental"]
         }
       }
     },
     "doc": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "id",
-        "url",
-        "metadata"
-      ],
+      "required": ["id", "url", "metadata"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -232,16 +214,16 @@
         },
         "build": {
           "$ref": "#/definitions/build"
+        },
+        "environments": {
+          "$ref": "#/definitions/environments"
         }
       }
     },
     "page": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "view",
-        "route"
-      ],
+      "required": ["view", "route"],
       "properties": {
         "view": {
           "description": "The name of the view to use on the server",
@@ -250,30 +232,19 @@
         "route": {
           "description": "The address on the server, relative to the root",
           "type": "string",
-          "examples": [
-            "/",
-            "/self-managed/all-releases",
-            "/audiences"
-          ]
+          "examples": ["/", "/self-managed/all-releases", "/audiences"]
         }
       }
     },
     "build": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "buildType",
-        "root",
-        "src"
-      ],
+      "required": ["buildType", "root", "src"],
       "properties": {
         "buildType": {
           "description": "The build type to apply",
           "type": "string",
-          "enum": [
-            "dita",
-            "dita-dev"
-          ]
+          "enum": ["dita", "dita-dev"]
         },
         "filter": {
           "description": "The name of the ditaval file to use in the build, including the extension",
@@ -286,11 +257,7 @@
         },
         "root": {
           "description": "The filename of the ditamap to use, including the extension",
-          "examples": [
-            "_superbook.ditamap",
-            "flowers.ditamap",
-            "webhelp.xml"
-          ]
+          "examples": ["_superbook.ditamap", "flowers.ditamap", "webhelp.xml"]
         },
         "src": {
           "$ref": "#/definitions/src"
