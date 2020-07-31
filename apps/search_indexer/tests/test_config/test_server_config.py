@@ -1,15 +1,13 @@
 import json
 from pathlib import Path
+
 from jsonschema import validate
 
 root_dir = Path(__file__).parent.parent.parent.parent.parent
-views_dir = root_dir / 'server' / 'views'
 
-int_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-int.json'
-staging_config_path = root_dir / '.teamcity' / 'config' / 'gw-docs-staging.json'
+config_path = root_dir / '.teamcity' / 'config' / 'server-config.json'
 sources_path = root_dir / '.teamcity' / 'config' / 'sources.json'
 schema_path = root_dir / '.teamcity' / 'config' / 'config-schema.json'
-config_paths = [int_config_path, staging_config_path]
 
 
 def load_json_file(file_path: Path()):
@@ -18,15 +16,10 @@ def load_json_file(file_path: Path()):
 
 
 def test_config_exists():
-    missing_files = []
-    for config_path in config_paths:
-        if not config_path.exists():
-            missing_files.append(config_path)
-    print(missing_files)
     try:
-        assert not missing_files
+        assert config_path.exists()
     except AssertionError:
-        raise AssertionError(f'Cannot find config files:\n    {missing_files}')
+        raise AssertionError(f'Cannot find the config file: {config_path}')
 
 
 def test_config_is_valid():
@@ -45,9 +38,6 @@ def test_config_is_valid():
                 f'Found duplicate {prop_label}(s): {duplicates}')
 
     def props_are_unique_in_file(config_json: object, sources_json: object):
-        routes = [x.get('route') for x in config_json['pages']]
-        raise_exception_if_not_unique(routes, 'route')
-
         ids = [x.get('id')
                for x in config_json['docs'] + sources_json['sources']]
         raise_exception_if_not_unique(ids, 'id')
@@ -73,25 +63,8 @@ def test_config_is_valid():
         config_schema = load_json_file(schema_path)
         validate(instance=config_json, schema=config_schema)
 
-    for path in config_paths:
-        json_object = load_json_file(path)
-        sources_object = load_json_file(sources_path)
-        is_valid_with_schema(json_object)
-        props_are_unique_in_file(json_object, sources_object)
-        referenced_sources_exist(json_object, sources_object)
-
-
-def test_config_views_exist():
-    missing_views = []
-    for config_path in config_paths:
-        config_json = load_json_file(config_path)
-        page_config = config_json['pages']
-        views_in_config = [x.get('view') for x in page_config]
-        for view_in_config in views_in_config:
-            path_to_view = views_dir / f'{view_in_config}.ejs'
-            if not path_to_view.exists():
-                missing_views.append(view_in_config)
-    try:
-        assert not missing_views
-    except AssertionError:
-        raise AssertionError(f'Missing some views: {missing_views}')
+    json_object = load_json_file(config_path)
+    sources_object = load_json_file(sources_path)
+    is_valid_with_schema(json_object)
+    props_are_unique_in_file(json_object, sources_object)
+    referenced_sources_exist(json_object, sources_object)
