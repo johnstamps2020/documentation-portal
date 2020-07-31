@@ -1952,7 +1952,7 @@
     },
     {
       "id": "dxedconpremstaging",
-      "title": "Guidewire for Salesforce Digital Gateway",
+      "title": "Guidewire for Salesforce Digital Gateway for Claims",
       "url": "self-managed/dx/ed-c/310",
       "metadata": {
         "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
