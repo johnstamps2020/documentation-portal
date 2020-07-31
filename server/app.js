@@ -48,7 +48,9 @@ app.use(
 const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
-const landingRouter = require('./routes/landing');
+const cloudHomeRouter = require('./routes/cloud-home');
+const selfManagedLatestRouter = require('./routes/self-managed-latest');
+const selfManagedAllReleasesRouter = require('./routes/self-managed-all-releases');
 const cloudProductRouter = require('./routes/cloud-products');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
@@ -122,13 +124,14 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 
-app.use('/', landingRouter);
+app.use('/self-managed-latest', selfManagedLatestRouter);
+app.use('/self-managed-all-releases', selfManagedAllReleasesRouter);
 app.use('/products', cloudProductRouter);
+app.use('/', cloudHomeRouter);
 
 const proxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
@@ -138,7 +141,11 @@ const proxyOptions = {
   },
 };
 const docProxy = proxy(proxyOptions);
-app.use('/', docProxy);
+app.use(docProxy);
+
+app.use('/portal-config/*', (req, res) => {
+  res.redirect('/unauthorized');
+});
 
 // handles unauthorized errors
 app.use((err, req, res, next) => {
