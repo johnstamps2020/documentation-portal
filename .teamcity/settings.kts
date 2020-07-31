@@ -1156,7 +1156,6 @@ object BuildDockerImage : Template({
                 else 
                     export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${'$'}{DEPLOY_ENV}
                 fi
-                cp ./.teamcity/config/${'$'}{CONFIG_FILENAME} ./server/config.json
                 docker build -t docportal ./server
                 docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
