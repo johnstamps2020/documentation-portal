@@ -14,28 +14,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
-/*
-The settings script is an entry point for defining a TeamCity
-project hierarchy. The script should contain a single call to the
-project() function with a Project instance or an init function as
-an argument.
-
-VcsRoots, BuildTypes, Templates, and subprojects can be
-registered inside the project using the vcsRoot(), buildType(),
-template(), and subProject() methods respectively.
-
-To debug settings scripts in command-line, run the
-
-    mvnDebug org.jetbrains.teamcity:teamcity-configs-maven-plugin:generate
-
-command and attach your debugger to the port 8000.
-
-To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
--> Tool Windows -> Maven Projects), find the generate task node
-(Plugins -> teamcity-configs -> teamcity-configs:generate), the
-'Debug' option is available in the context menu for the task.
-*/
-
 version = "2019.2"
 
 project {
@@ -70,7 +48,7 @@ object Helpers {
             params {
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/server-config.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.guidewire.com", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -107,11 +85,7 @@ object Helpers {
             id = RelativeId(doc_id + env)
             name = build_name
 
-            var config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json"
-            if (env == "int") {
-                config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-int.json"
-            }
-
+            var config_file = "%teamcity.build.workingDir%/.teamcity/config/server-config.json"
 
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
@@ -147,10 +121,7 @@ object Helpers {
             maxRunningBuilds = 1
 
 
-            var config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json"
-            if (env == "int") {
-                config_file = "%teamcity.build.workingDir%/.teamcity/config/gw-docs-int.json"
-            }
+            var config_file = "%teamcity.build.workingDir%/.teamcity/config/server-config.json"
 
             params {
                 text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
@@ -311,6 +282,7 @@ object Helpers {
                 val product = metadata.getJSONArray("product")[0].toString()
                 val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
                 val version = metadata.getString("version")
+                val environments = doc.getJSONArray("environments")
 
                 val buildName = "Build $title $platform $version ($buildId)"
 
@@ -331,15 +303,17 @@ object Helpers {
                 val sourcesFromConfig = getSourcesFromConfig()
                 val (sourceGitUrl, sourceGitBranch) = getSourceById(vcsRootId, sourcesFromConfig)
 
-                if (env == "prod") {
-                    builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform, env))
-                } else {
-                    if (buildType == "dita-dev") {
-                        builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId))
+                if (environments.contains(env)) {
+                    if (env == "prod") {
+                        builds.add(UploadToS3AbstractProd(publishPath, title, buildId, version, platform, env))
                     } else {
-                        builds.add(BuildAndUploadToS3Abstract(product, platform, version, buildId, buildName, filter, root, env,
-                                publishPath, vcsRootId, resources, sourceGitUrl, sourceGitBranch))
+                        if (buildType == "dita-dev") {
+                            builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
+                                    publishPath, vcsRootId))
+                        } else {
+                            builds.add(BuildAndUploadToS3Abstract(product, platform, version, buildId, buildName, filter, root, env,
+                                    publishPath, vcsRootId, resources, sourceGitUrl, sourceGitBranch))
+                        }
                     }
                 }
             }
@@ -534,7 +508,6 @@ object DeployDev : BuildType({
         param("env.TAG_VERSION", "latest")
         param("env.PARTNERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/partners/idp/endpoint/HttpRedirect")
         param("env.CUSTOMERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/customers/idp/endpoint/HttpRedirect")
-        param("env.CONFIG_FILENAME", "gw-docs-staging.json")
     }
 
     vcs {
@@ -666,7 +639,6 @@ object Release : BuildType({
     params {
         select("semver-scope", "patch", label = "Version Scope", display = ParameterDisplay.PROMPT,
                 options = listOf("Patch" to "patch", "Minor" to "minor", "Major" to "major"))
-        param("env.CONFIG_FILENAME", "gw-docs-staging.json")
     }
 
     vcs {
@@ -684,7 +656,6 @@ object Release : BuildType({
                 git config --global user.name "sys-doc"
                 git fetch --tags
 
-                cp ./.teamcity/config/${'$'}{CONFIG_FILENAME} ./server/config.json
                 cd server/
                 export TAG_VERSION=${'$'}(npm version %semver-scope%)
                 git add .
@@ -873,8 +844,7 @@ object LoadSearchIndex : BuildType({
     """.trimIndent()
 
     params {
-        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-int.json", allowEmpty = false)
-        text("env.CONFIG_FILE_STAGING", "%teamcity.build.workingDir%/.teamcity/config/gw-docs-staging.json", allowEmpty = false)
+        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/server-config.json", allowEmpty = false)
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -914,10 +884,6 @@ object LoadSearchIndex : BuildType({
                     export ELASTICSEARCH_URLS="${'$'}{ELASTICSEARCH_URLS_PROD}"
                 fi
 
-                if [[ "%env.DEPLOY_ENV%" != "int" ]]; then
-                    export CONFIG_FILE="${'$'}{CONFIG_FILE_STAGING}"
-                fi
-
                 cd apps/search_indexer
                 make run-doc-crawler
             """.trimIndent()
@@ -947,6 +913,7 @@ object CleanUpIndex : BuildType({
     params {
         select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want clean up the index", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
+        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json")
     }
 
     vcs {
@@ -959,17 +926,16 @@ object CleanUpIndex : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                if [[ "%env.DEPLOY_ENV%" == "int" ]]; then
-                    export CONFIG_FILE=%teamcity.build.checkoutDir%/.teamcity/config/gw-docs-int.json
-                else
-                    export CONFIG_FILE=%teamcity.build.checkoutDir%/.teamcity/config/gw-docs-staging.json
-                fi
                 
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                if [[ %env.DEPLOY_ENV% == "prod" ]]; then
+                  echo "Setting credentials to access prod"
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
                 fi
                 
                 pip install elasticsearch
@@ -1539,10 +1505,10 @@ object Content : Project({
     buildType(CleanUpIndex)
     subProject(DeployServices)
     buildType(TestContent)
-    subProject(Helpers.getContentProjectFromConfig("dev", "config/gw-docs-staging.json"))
-    subProject(Helpers.getContentProjectFromConfig("int", "config/gw-docs-int.json"))
-    subProject(Helpers.getContentProjectFromConfig("staging", "config/gw-docs-staging.json"))
-    subProject(Helpers.getContentProjectFromConfig("prod", "config/gw-docs-staging.json"))
+    subProject(Helpers.getContentProjectFromConfig("dev", "config/server-config.json"))
+    subProject(Helpers.getContentProjectFromConfig("int", "config/server-config.json"))
+    subProject(Helpers.getContentProjectFromConfig("staging", "config/server-config.json"))
+    subProject(Helpers.getContentProjectFromConfig("prod", "config/server-config.json"))
 
 })
 

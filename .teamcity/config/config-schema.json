@@ -193,7 +193,7 @@
     "doc": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "url", "metadata"],
+      "required": ["id", "url", "metadata", "environments"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
