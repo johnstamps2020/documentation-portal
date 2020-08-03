@@ -373,32 +373,6 @@
       "environments": ["int"]
     },
     {
-      "id": "cloudinexternal2020.1",
-      "title": "InsuranceNow",
-      "url": "cloud/in/20201",
-      "metadata": {
-        "productFamily": ["InsuranceNow"],
-        "product": ["InsuranceNow"],
-        "platform": ["Cloud"],
-        "version": "2020.1",
-        "category": ["InsuranceNow"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Release.ditaval",
-        "root": "_supermap-20201x-active.ditamap",
-        "src": "in20201src",
-        "resources": [
-          {
-            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
-            "sourceFolder": "ChangedFiles/2020.1",
-            "src": "insurancenowextrassrc"
-          }
-        ]
-      },
-      "environments": ["staging", "prod"]
-    },
-    {
       "id": "lobbopclouddraft",
       "title": "Businessowners Standards Based Template",
       "url": "cloud/lob/bop/latest",
@@ -1145,6 +1119,32 @@
         "product": ["PolicyCenter"],
         "version": "2020.05",
         "category": ["Core"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "cloudinexternal2020.1",
+      "title": "InsuranceNow",
+      "url": "cloud/in/20201",
+      "metadata": {
+        "productFamily": ["InsuranceNow"],
+        "product": ["InsuranceNow"],
+        "platform": ["Cloud"],
+        "version": "2020.1",
+        "category": ["InsuranceNow"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "in20201src",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
       },
       "environments": ["dev", "staging", "prod"]
     },
