@@ -1123,7 +1123,7 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "cloudinexternal2020.1",
+      "id": "cloudinexternal20201",
       "title": "InsuranceNow",
       "url": "cloud/in/20201",
       "metadata": {
