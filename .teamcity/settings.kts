@@ -38,7 +38,7 @@ project {
 }
 
 object Helpers {
-    private fun getBuildsFromConfig(env: String, configPath: String): MutableList<BuildType> {
+    private fun getBuildsFromConfig(env: String): MutableList<BuildType> {
 
         class UploadToS3AbstractProd(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
             templates(CrawlDocumentAndUpdateIndex)
@@ -48,7 +48,7 @@ object Helpers {
             params {
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
-                text("CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/server-config.json", allowEmpty = false)
+                text("CONFIG_FILE_URL", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.guidewire.com", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -85,8 +85,6 @@ object Helpers {
             id = RelativeId(doc_id + env)
             name = build_name
 
-            var config_file = "%teamcity.build.workingDir%/.teamcity/config/server-config.json"
-
             params {
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("FORMAT", "html5", allowEmpty = false)
@@ -97,7 +95,7 @@ object Helpers {
                 text("INPUT_PATH", input_path, allowEmpty = false)
                 text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
                 text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE", config_file, allowEmpty = false)
+                text("CONFIG_FILE_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -120,9 +118,6 @@ object Helpers {
 
             maxRunningBuilds = 1
 
-
-            var config_file = "%teamcity.build.workingDir%/.teamcity/config/server-config.json"
-
             params {
                 text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("env.FORMAT", "wh-pdf", allowEmpty = false)
@@ -137,7 +132,7 @@ object Helpers {
                 text("env.SSH_USER", value = "ssh_user", allowEmpty = false)
                 password("env.SSH_PASSWORD", value = "credentialsJSON:a547ee60-435e-47c3-901e-a1255a38dd3b")
                 text("TOOLS_ROOT", "tools_root", allowEmpty = false)
-                text("CONFIG_FILE", config_file, allowEmpty = false)
+                text("CONFIG_FILE_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
                 text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
@@ -266,6 +261,7 @@ object Helpers {
 
         })
 
+        val configPath = "config/server-config.json"
         val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
 
         val builds = mutableListOf<BuildType>()
@@ -427,12 +423,12 @@ object Helpers {
         return Pair(roots, builds)
     }
 
-    fun getContentProjectFromConfig(env: String, config_path: String): Project {
+    fun getContentProjectFromConfig(env: String): Project {
         return Project {
             id = RelativeId("deploycontentto$env")
             name = "Deploy content to $env"
 
-            val builds = getBuildsFromConfig(env, config_path)
+            val builds = getBuildsFromConfig(env)
             builds.forEach(this::buildType)
         }
     }
@@ -836,7 +832,7 @@ object DeployS3Ingress : BuildType({
     }
 })
 
-object LoadSearchIndex : BuildType({
+object UpdateSearchIndex : BuildType({
     name = "Update search index (all docs or single doc)"
 
     artifactRules = """
@@ -844,7 +840,8 @@ object LoadSearchIndex : BuildType({
     """.trimIndent()
 
     params {
-        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/.teamcity/config/server-config.json", allowEmpty = false)
+        text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
+        text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -880,9 +877,13 @@ object LoadSearchIndex : BuildType({
                 #!/bin/bash
                 set -xe
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export DOC_S3_URL="${'$'}{DOC_S3_URL_PROD}"
-                    export ELASTICSEARCH_URLS="${'$'}{ELASTICSEARCH_URLS_PROD}"
+                    export DOC_S3_URL="%env.DOC_S3_URL_PROD%"
+                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                    export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
                 fi
+                
+                curl %env.CONFIG_FILE_URL% > %teamcity.build.workingDir%/config.json
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
 
                 cd apps/search_indexer
                 make run-doc-crawler
@@ -913,7 +914,11 @@ object CleanUpIndex : BuildType({
     params {
         select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want clean up the index", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
-        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json")
+        text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
+        text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+
     }
 
     vcs {
@@ -926,21 +931,16 @@ object CleanUpIndex : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                
-                if [[ %env.DEPLOY_ENV% == "prod" ]]; then
-                  echo "Setting credentials to access prod"
-                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                else
-                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                    export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
                 fi
                 
+                curl %env.CONFIG_FILE_URL% > %teamcity.build.workingDir%/config.json
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
                 pip install elasticsearch
                 cd apps/index_cleaner
-                python main.py ${'$'}{CONFIG_FILE}
+                python main.py
             """.trimIndent()
             dockerImage = "python:3.8-slim"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1410,7 +1410,7 @@ object CrawlDocumentAndUpdateIndex : Template({
 
     params {
         text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
-        text("env.CONFIG_FILE", "%CONFIG_FILE%", allowEmpty = false)
+        text("env.CONFIG_FILE_URL", "%CONFIG_FILE_URL%", allowEmpty = false)
         text("env.APP_BASE_URL", "%APP_BASE_URL%", allowEmpty = false)
         text("env.DOC_S3_URL", "%DOC_S3_URL%", allowEmpty = false)
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
@@ -1442,6 +1442,12 @@ object CrawlDocumentAndUpdateIndex : Template({
             id = "CRAWL_DOC"
             workingDir = "%env.TOOLS_ROOT%"
             scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                curl %env.CONFIG_FILE_URL% > %teamcity.build.workingDir%/config.json
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
+
                 cd apps/search_indexer
                 make run-doc-crawler
             """.trimIndent()
@@ -1500,14 +1506,14 @@ object Content : Project({
     roots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
 
-    buildType(LoadSearchIndex)
+    buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
     subProject(DeployServices)
     buildType(TestContent)
-    subProject(Helpers.getContentProjectFromConfig("dev", "config/server-config.json"))
-    subProject(Helpers.getContentProjectFromConfig("int", "config/server-config.json"))
-    subProject(Helpers.getContentProjectFromConfig("staging", "config/server-config.json"))
-    subProject(Helpers.getContentProjectFromConfig("prod", "config/server-config.json"))
+    subProject(Helpers.getContentProjectFromConfig("dev"))
+    subProject(Helpers.getContentProjectFromConfig("int"))
+    subProject(Helpers.getContentProjectFromConfig("staging"))
+    subProject(Helpers.getContentProjectFromConfig("prod"))
 
 })
 
