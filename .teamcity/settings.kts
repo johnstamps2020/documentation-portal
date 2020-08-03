@@ -926,6 +926,18 @@ object CleanUpIndex : BuildType({
     }
 
     steps {
+        dockerCommand {
+            name = "Build a Python Docker image"
+            commandType = build {
+                source = file {
+                    path = "apps/Dockerfile"
+                }
+                namesAndTags = "python-runner"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+
         script {
             name = "Run the cleanup script"
             scriptContent = """
@@ -942,7 +954,7 @@ object CleanUpIndex : BuildType({
                 cd apps/index_cleaner
                 python main.py
             """.trimIndent()
-            dockerImage = "python:3.8-slim"
+            dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
