@@ -21,19 +21,6 @@
       "environments": ["int"]
     },
     {
-      "id": "thethingthatsmellslikelamonds",
-      "title": "This is an illusion",
-      "url": "https://thisman.org",
-      "environments": [ "int" ],
-      "metadata": {
-        "productFamily": ["BillingCenter Cloud"],
-        "product": ["BillingCenter"],
-        "platform": ["Cloud"],
-        "version": "latest",
-        "category": ["Core"]
-      }
-    },
-    {
       "id": "cloudcclatestovwsjybk",
       "title": "ClaimCenter for Guidewire Cloud",
       "url": "cloud/cc/latest/",

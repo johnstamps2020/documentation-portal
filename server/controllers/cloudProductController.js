@@ -11,30 +11,14 @@ async function getCloudProducts() {
             f => f.name === productFamily
           );
           if (existingFamily) {
-            // const productDocs = config.docs.reduce((r, doc) => {
-            //   if (
-            //     doc.metadata.platform.includes('Cloud') &&
-            //     doc.metadata.productFamily &&
-            //     doc.metadata.productFamily.includes(productFamily.name) &&
-            //     (doc.visible === undefined || doc.visible)
-            //   ) {
-            //     r[doc.metadata.category] = [
-            //       ...(r[doc.metadata.category] || []),
-            //       doc,
-            //     ];
-            //   }
-            //   return r;
-            // }, {});
-
             existingFamily.href = `products/${existingFamily.id}`;
             existingFamily.docs.push(doc);
-            console.log(existingFamily);
           } else {
             cloudProductFamilies.push({
               id: productFamily.toLowerCase().replace(/\W/g, '-'),
               name: productFamily,
               href: doc.url,
-              docs: [ doc ]
+              docs: [doc],
             });
           }
         }
