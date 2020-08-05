@@ -26,10 +26,19 @@
                         <div class="categoryCard">
                             <h2><%= category.categoryName %></h2>
                             <div class="card-text">
-                                <% category.categoryItems.forEach(product => { -%>
+                                <%
+                                    category.categoryItems.forEach(product => {
+                                    const excludedProducts = new RegExp(
+                                            '(BillingCenter|ClaimCenter|PolicyCenter) Upgrade Tools'
+                                    );
+                                    const productDocsToDisplay = product.productDocs.filter(doc => !doc.metadata.product.some(e => excludedProducts.test(e))
+                                    );
+                                    if (productDocsToDisplay[0]) {
+                                -%>
                                 <div class="docLink">
-                                    <a href="<%= product.productDocs[0].url %>"><%= product.productDocs[0].title %></a>
+                                    <a href="<%= productDocsToDisplay[0].url %>"><%= productDocsToDisplay[0].title %></a>
                                 </div>
+                                <% } %>
                                 <% }) -%>
                             </div>
                         </div>

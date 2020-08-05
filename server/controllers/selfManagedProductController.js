@@ -22,14 +22,7 @@ async function getSelfManagedProducts() {
     const productArray = Object.entries(products);
     let productsInCategory = [];
     productArray.forEach(product => {
-      const excludedProducts = new RegExp(
-        '(BillingCenter|ClaimCenter|PolicyCenter) Upgrade Tools'
-      );
-      const productReleases = product[1].filter(
-        doc =>
-          doc.visible !== false &&
-          !doc.metadata.product.some(e => excludedProducts.test(e))
-      );
+      const productReleases = product[1].filter(doc => doc.visible !== false);
       const docsSortedFromLatestToOldest = productReleases.sort((a, b) =>
         parseInt(a.metadata.version) > parseInt(b.metadata.version) ? -1 : 1
       );
