@@ -948,7 +948,7 @@ object CleanUpIndex : BuildType({
                     export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
                 fi
                 
-                curl %env.CONFIG_FILE_URL% > %teamcity.build.workingDir%/config.json
+                curl ${'$'}CONFIG_FILE_URL > %teamcity.build.workingDir%/config.json
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
                 pip install elasticsearch
                 cd apps/index_cleaner
