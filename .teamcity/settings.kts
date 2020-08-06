@@ -119,13 +119,18 @@ object Helpers {
             maxRunningBuilds = 1
             
             var build_format = "wh-pdf"
-            if(build_env == "int")
+            var pdf_transtype= "pdf5_Guidewire"
+            var git_src_url = git_source_url
+            if(build_env == "int") {
                 build_format = "webhelp_Guidewire_validate"
+                pdf_transtype = ""
+                git_src_url = ""
+            }
 
             params {
                 text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("env.FORMAT", build_format, allowEmpty = false)
-                text("env.PDF_TRANSTYPE", "pdf5_Guidewire")
+                text("env.PDF_TRANSTYPE", pdf_transtype)
                 text("env.DITAVAL_FILE", ditaval_file, allowEmpty = false)
                 text("env.INPUT_PATH", input_path, allowEmpty = false)
                 text("env.S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
@@ -144,16 +149,20 @@ object Helpers {
                 text("INDEX_NAME", "gw-docs", allowEmpty = false)
             }
 
-            var baseDitaCommand = "%env.DITA_OT_DIR%/bin/dita --input=\"%env.SOURCES_ROOT%/%env.INPUT_PATH%\" --format=%env.FORMAT% --dita.ot.pdf.format=%env.PDF_TRANSTYPE% --use-doc-portal-params=yes --gw-product=\"%env.PRODUCT%\" --gw-platform=\"%env.PLATFORM%\" --gw-version=\"%env.VERSION%\""
+            var baseDitaCommand = "%env.DITA_OT_DIR%/bin/dita --input=\"%env.SOURCES_ROOT%/%env.INPUT_PATH%\" --format=%env.FORMAT% --use-doc-portal-params=yes --gw-product=\"%env.PRODUCT%\" --gw-platform=\"%env.PLATFORM%\" --gw-version=\"%env.VERSION%\""
             if (ditaval_file != "") {
                 baseDitaCommand += " --filter=\"%env.SOURCES_ROOT%/$ditaval_file\""
             }
 
-            if (git_source_url != "") {
-                baseDitaCommand += " --git.url=$git_source_url"
+            if (git_src_url != "") {
+                baseDitaCommand += " --git.url=$git_src_url"
                 if (git_source_branch != "") {
                     baseDitaCommand += " --git.branch=$git_source_branch"
                 }
+            }
+
+            if (pdf_transtype != "") {
+                baseDitaCommand += " --dita.ot.pdf.format=\"%env.PDF_TRANSTYPE%\""
             }
 
             steps {
