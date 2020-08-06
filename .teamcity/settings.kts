@@ -117,10 +117,14 @@ object Helpers {
             name = build_name
 
             maxRunningBuilds = 1
+            
+            var build_format = "wh-pdf"
+            if(build_env == "int")
+                build_format = "webhelp_Guidewire_validate"
 
             params {
                 text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("env.FORMAT", "wh-pdf", allowEmpty = false)
+                text("env.FORMAT", build_format, allowEmpty = false)
                 text("env.PDF_TRANSTYPE", "pdf5_Guidewire")
                 text("env.DITAVAL_FILE", ditaval_file, allowEmpty = false)
                 text("env.INPUT_PATH", input_path, allowEmpty = false)
