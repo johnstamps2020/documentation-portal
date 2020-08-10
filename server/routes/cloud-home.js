@@ -1,11 +1,15 @@
 const getCloudProductList = require('../controllers/cloudProductController');
 
 const cloudHome = async (req, res, next) => {
-  const cloudProductList = await getCloudProductList();
-  if (req.originalUrl === '/') {
-    res.render('cloud-home', { products: cloudProductList });
-  } else {
-    req.next();
+  try {
+    const cloudProductList = await getCloudProductList();
+    if (req.originalUrl === '/') {
+      res.render('cloud-home', { products: cloudProductList });
+    } else {
+      req.next();
+    }
+  } catch (err) {
+    next(err);
   }
 };
 

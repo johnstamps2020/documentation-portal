@@ -1,8 +1,12 @@
 const getSelfManagedCategories = require('../controllers/selfManagedProductController');
 
 const selfManagedLatest = async (req, res, next) => {
-  const selfManagedCategories = await getSelfManagedCategories();
-  res.render('self-managed-latest', { categories: selfManagedCategories });
+  try {
+    const selfManagedCategories = await getSelfManagedCategories();
+    res.render('self-managed-latest', { categories: selfManagedCategories });
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = selfManagedLatest;
