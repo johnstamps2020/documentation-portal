@@ -15,23 +15,27 @@ const oktaOIDC = new ExpressOIDC({
 });
 
 const authGateway = (req, res, next) => {
-  if (req.isAuthenticated() || process.env.DEV === 'yes') {
-    if (req.session.redirectTo) {
-      const redirectTo = req.session.redirectTo;
-      delete req.session.redirectTo;
-      res.redirect(redirectTo);
+  try {
+    if (req.isAuthenticated() || process.env.DEV === 'yes') {
+      if (req.session.redirectTo) {
+        const redirectTo = req.session.redirectTo;
+        delete req.session.redirectTo;
+        res.redirect(redirectTo);
+      } else {
+        next();
+      }
     } else {
-      next();
+      req.session.redirectTo = req.path;
+      if (req.query.authSource === gwCommunityCustomerParam) {
+        res.redirect('/customers-login');
+      } else if (req.query.authSource === gwCommunityPartnerParam) {
+        res.redirect('/partners-login');
+      } else {
+        res.redirect(loginGatewayRoute);
+      }
     }
-  } else {
-    req.session.redirectTo = req.path;
-    if (req.query.authSource === gwCommunityCustomerParam) {
-      res.redirect('/customers-login');
-    } else if (req.query.authSource === gwCommunityPartnerParam) {
-      res.redirect('/partners-login');
-    } else {
-      res.redirect(loginGatewayRoute);
-    }
+  } catch (err) {
+    next(err);
   }
 };
 
