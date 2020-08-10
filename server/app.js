@@ -169,10 +169,8 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-oktaOIDC.on('ready', () => {
-  app.listen(port, () => {
-    console.log('Running on PORT: ' + port);
-  });
+app.listen(port, () => {
+  console.log('Running on PORT: ' + port);
 });
 
 module.exports = app;
