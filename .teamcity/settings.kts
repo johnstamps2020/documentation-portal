@@ -610,7 +610,7 @@ object DeployProd : BuildType({
                 eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
                 docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v%env.TAG_VERSION%
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
@@ -677,7 +677,7 @@ object Release : BuildType({
                 docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
@@ -780,7 +780,7 @@ object DeploySearchService : BuildType({
                 fi
                 sh ci/deployKubernetes.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -829,7 +829,7 @@ object DeployS3Ingress : BuildType({
                 fi
                 sh ci/deployKubernetes.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -1185,7 +1185,7 @@ object BuildDockerImage : Template({
                 docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
@@ -1232,7 +1232,7 @@ object Deploy : Template({
                 fi
                 sh server/ci/deployKubernetes.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -1268,7 +1268,7 @@ object Deploy : Template({
                     TIME=${'$'}[${'$'}TIME+1]
                 done
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.10"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
