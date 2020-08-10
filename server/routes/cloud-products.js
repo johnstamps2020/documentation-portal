@@ -9,7 +9,6 @@ router.get('/:productFamilyId', async function(req, res, next) {
     let productFamilyToDisplay = cloudProductFamilies.find(
       productFamily => productFamily.id === req.params.productFamilyId
     );
-    console.log(productFamilyToDisplay);
 
     const productDocs = productFamilyToDisplay.docs.reduce((r, doc) => {
       if (

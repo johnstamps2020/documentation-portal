@@ -3,7 +3,6 @@ const getSelfManagedCategories = require('../controllers/selfManagedProductContr
 const selfManagedAllReleases = async (req, res, next) => {
   try {
     const selfManagedCategories = await getSelfManagedCategories();
-    console.log('I am self managed all releases');
     res.render('self-managed-all-releases', {
       categories: selfManagedCategories,
     });
