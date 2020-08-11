@@ -1070,11 +1070,6 @@
             "src": "insurancesuiteextrassrc",
             "sourceFolder": "ReleaseNotes-files/pc/2020.05",
             "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05"
-          },
-          {
-            "src": "insurancesuiteextrassrc",
-            "sourceFolder": "ReleaseNotes-files/pc/2020.05.1",
-            "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05.1"
           }
         ]
       },
