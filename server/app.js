@@ -1,3 +1,8 @@
+process.on('unhandledRejection', function(reason, p) {
+  console.log(reason, p);
+  process.exit(1);
+});
+
 require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
