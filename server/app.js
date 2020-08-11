@@ -1,3 +1,8 @@
+process.on('unhandledRejection', function(reason, p) {
+  console.log(reason, p);
+  process.exit(1);
+});
+
 require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
@@ -23,7 +28,6 @@ const localServiceName = require(__dirname + '/package.json').name;
 
 const ctxImpl = new ExplicitContext();
 const zipkinUrl = process.env.ZIPKIN_URL;
-console.log('Zipkin URL: ' + zipkinUrl);
 const recorder = new BatchRecorder({
   logger: new HttpLogger({
     endpoint: zipkinUrl,
@@ -35,6 +39,18 @@ const tracer = new Tracer({ ctxImpl, recorder, localServiceName });
 
 const port = process.env.PORT || 8081;
 const app = express();
+console.log('Server app instantiated!');
+
+// error handler
+app.use((err, req, res, next) => {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 // session support is required to use ExpressOIDC
 app.use(
@@ -156,17 +172,6 @@ app.use((err, req, res, next) => {
     res.status(404).redirect('/404');
   }
   next(err);
-});
-
-// error handler
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
 });
 
 app.listen(port, () => {
