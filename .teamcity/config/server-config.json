@@ -16,7 +16,14 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
         "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudisdraftsrc"
+        "src": "cloudisdraftsrc",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
+          }
+        ]
       },
       "environments": ["int"]
     },
@@ -35,7 +42,14 @@
         "buildType": "dita",
         "filter": "IS-CC-Cloud-Draft.ditaval",
         "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudisdraftsrc"
+        "src": "cloudisdraftsrc",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
+          }
+        ]
       },
       "environments": ["int"]
     },
@@ -54,7 +68,14 @@
         "buildType": "dita",
         "filter": "IS-PC-Cloud-Draft.ditaval",
         "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudisdraftsrc"
+        "src": "cloudisdraftsrc",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
+          }
+        ]
       },
       "environments": ["int"]
     },
