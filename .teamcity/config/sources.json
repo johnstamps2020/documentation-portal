@@ -31,7 +31,7 @@
       "title": "InsuranceSuite Cloud 2020.05",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "2020.05.1",
+      "branch": "2020.05.2",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/_supermap-202005.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
