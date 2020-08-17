@@ -1635,7 +1635,7 @@ object BuildDita : BuildType({
                   -i /src/"${'$'}INPUT_PATH"/"${'$'}ROOT_MAP" \
                   -o /src/"${'$'}OUTPUT_PATH" \
                   -f webhelp_Guidewire \
-                  --filter /src/"${'$'}FILTER_PATH" \
+                  --filter /src/"${'$'}INPUT_PATH"/"${'$'}FILTER_PATH" \
                   --use-doc-portal-params yes \
                   --gw-product "${'$'}GW_PRODUCT" \
                   --gw-platform "${'$'}GW_PLATFORM" \
