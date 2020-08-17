@@ -35,6 +35,7 @@ project {
     buildType(TestConfig)
     subProject(Server)
     subProject(Content)
+    subProject(ModularBuilds)
 }
 
 object Helpers {
@@ -117,11 +118,11 @@ object Helpers {
             name = build_name
 
             maxRunningBuilds = 1
-            
+
             var build_format = "wh-pdf"
-            var pdf_transtype= "pdf5_Guidewire"
+            var pdf_transtype = "pdf5_Guidewire"
             var git_src_url = git_source_url
-            if(build_env == "int") {
+            if (build_env == "int") {
                 build_format = "webhelp_Guidewire_validate"
                 pdf_transtype = ""
                 git_src_url = ""
@@ -1547,4 +1548,111 @@ object DeployServices : Project({
 
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
+})
+
+object BuildIsConfigUpgradeTools : BuildType({
+    name = "Build InsuranceSuite Configuration Upgrade Tools"
+
+    params {
+        password("env.AUTH_TOKEN", "credentialsJSON:16003346-edaa-414a-b604-e19250bc5251", display = ParameterDisplay.HIDDEN)
+        select("env.DEPLOY_ENV", "int", display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "staging", "int", "prod"))
+        text("env.DOC_ID", "", display = ParameterDisplay.PROMPT, allowEmpty = false)
+    }
+
+    vcs {
+        root(AbsoluteId("DocumentationTools_Builders_InsurancesuiteConfigurationUpgradeTools_IsConfigUpgradeTools"))
+    }
+
+    steps {
+        script {
+            name = "Trigger a modular build"
+            id = "TRIGGER_MODULAR_BUILD"
+            scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        curl -X POST -H "Content-Type: application/xml" \
+                            -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                            -H "Accept: application/json" \
+                            -d  '<build><buildType id="${BuildDita.id}"/><properties><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                            https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+                    """.trimIndent()
+        }
+    }
+
+})
+
+object BuildDita : BuildType({
+    name = "Build the output from DITA"
+    id = RelativeId("BuildDita")
+
+    maxRunningBuilds = 3
+
+    params {
+        text("env.CONFIG_FILE", "config/server-config.json", allowEmpty = false)
+        text("env.SOURCES_FILE", "config/sources.json", allowEmpty = false)
+        text("env.DEPLOY_ENV", "", allowEmpty = true)
+        text("env.DOC_ID", "", allowEmpty = true)
+    }
+
+    vcs {
+        root(DslContext.settingsRootId)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Build webhelp from DITA"
+            id = "BUILD_WEBHELP"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export GW_PRODUCT=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.product[0]' %env.CONFIG_FILE%)                
+                export GW_PLATFORM=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.platform[0]' %env.CONFIG_FILE%)
+                export GW_VERSION=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.version' %env.CONFIG_FILE%)
+                export FILTER_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.filter' %env.CONFIG_FILE%)
+                export ROOT_MAP=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.root' %env.CONFIG_FILE%)
+
+                export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%)
+                export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%)
+                export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
+
+                WORKING_DIR=${'$'}(pwd)
+                OUTPUT_PATH="out"
+                
+                SECONDS=0
+                docker login -u %env.ARTIFACTORY_USERNAME% --password %env.ARTIFACTORY_PASSWORD% artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+                
+                echo "Building webhelp for ${'$'}GW_PRODUCT ${'$'}GW_PLATFORM ${'$'}GW_VERSION using filter ${'$'}FILTER_PATH"
+                docker run -i \
+                  -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest \
+                  -i /src/_supermap.ditamap \
+                  -o /src/"${'$'}OUTPUT_PATH" \
+                  -f webhelp_Guidewire \
+                  --filter /src/"${'$'}FILTER_PATH" \
+                  --use-doc-portal-params yes \
+                  --gw-product "${'$'}GW_PRODUCT" \
+                  --gw-platform "${'$'}GW_PLATFORM" \
+                  --gw-version "${'$'}GW_VERSION" \
+                  --create-index-redirect yes \
+                  --webhelp.publication.toc.links all
+                 
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+
+            """.trimIndent()
+        }
+
+    }
+})
+
+object ModularBuilds : Project({
+    name = "Modular builds"
+
+    buildType(BuildIsConfigUpgradeTools)
+    buildType(BuildDita)
+
 })
