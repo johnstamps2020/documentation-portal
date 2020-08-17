@@ -1626,7 +1626,7 @@ object BuildDita : BuildType({
                 git clone --single-branch --branch ${'$'}GIT_BRANCH ${'$'}GIT_URL ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
                 
                 SECONDS=0
-                docker login -u "%env.ARTIFACTORY_USERNAME%" --password "%env.ARTIFACTORY_PASSWORD%" artifactory.guidewire.com
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
                 docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
                 
                 echo "Building webhelp for ${'$'}GW_PRODUCT ${'$'}GW_PLATFORM ${'$'}GW_VERSION using filter ${'$'}FILTER_PATH"
