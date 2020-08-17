@@ -1550,8 +1550,8 @@ object DeployServices : Project({
     buildType(DeploySearchService)
 })
 
-object BuildIsConfigUpgradeTools : BuildType({
-    name = "Build InsuranceSuite Configuration Upgrade Tools"
+object BuildIsGuide : BuildType({
+    name = "Build and InsuranceSuite guide"
 
     params {
         password("env.AUTH_TOKEN", "credentialsJSON:67d9216c-4183-4ebf-a9b3-374ea5e547ec", display = ParameterDisplay.HIDDEN)
@@ -1614,7 +1614,11 @@ object BuildDita : BuildType({
                 export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%)
                 export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%)
                 export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
-
+                
+                elif [[ "${'$'}GIT_BRANCH" == null ]]; then
+                  export GIT_BRANCH="master"
+                fi
+                
                 export WORKING_DIR=${'$'}(pwd)
                 export INPUT_PATH="input"
                 export OUTPUT_PATH="out"
@@ -1646,12 +1650,19 @@ object BuildDita : BuildType({
         }
 
     }
+
+    features {
+        sshAgent {
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+
 })
 
 object ModularBuilds : Project({
     name = "Modular builds"
 
-    buildType(BuildIsConfigUpgradeTools)
+    buildType(BuildIsGuide)
     buildType(BuildDita)
 
 })
