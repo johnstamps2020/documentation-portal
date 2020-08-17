@@ -1560,10 +1560,6 @@ object BuildIsConfigUpgradeTools : BuildType({
         text("env.DOC_ID", "", display = ParameterDisplay.PROMPT, allowEmpty = false)
     }
 
-    vcs {
-        root(AbsoluteId("DocumentationTools_Builders_InsurancesuiteConfigurationUpgradeTools_IsConfigUpgradeTools"))
-    }
-
     steps {
         script {
             name = "Trigger a modular build"
@@ -1619,8 +1615,11 @@ object BuildDita : BuildType({
                 export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%)
                 export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
 
-                WORKING_DIR=${'$'}(pwd)
-                OUTPUT_PATH="out"
+                export WORKING_DIR=${'$'}(pwd)
+                export INPUT_PATH="input"
+                export OUTPUT_PATH="out"
+                
+                git clone --single-branch --branch ${'$'}GIT_BRANCH ${'$'}GIT_URL ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
                 
                 SECONDS=0
                 docker login -u %env.ARTIFACTORY_USERNAME% --password %env.ARTIFACTORY_PASSWORD% artifactory.guidewire.com
@@ -1629,7 +1628,7 @@ object BuildDita : BuildType({
                 echo "Building webhelp for ${'$'}GW_PRODUCT ${'$'}GW_PLATFORM ${'$'}GW_VERSION using filter ${'$'}FILTER_PATH"
                 docker run -i \
                   -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest \
-                  -i /src/_supermap.ditamap \
+                  -i /src/"${'$'}INPUT_PATH"/"${'$'}ROOT_MAP" \
                   -o /src/"${'$'}OUTPUT_PATH" \
                   -f webhelp_Guidewire \
                   --filter /src/"${'$'}FILTER_PATH" \
