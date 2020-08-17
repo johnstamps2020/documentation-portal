@@ -1551,7 +1551,7 @@ object DeployServices : Project({
 })
 
 object BuildIsGuide : BuildType({
-    name = "Build and InsuranceSuite guide"
+    name = "Build an InsuranceSuite guide"
 
     params {
         password("env.AUTH_TOKEN", "credentialsJSON:67d9216c-4183-4ebf-a9b3-374ea5e547ec", display = ParameterDisplay.HIDDEN)
