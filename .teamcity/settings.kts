@@ -1615,7 +1615,7 @@ object BuildDita : BuildType({
                 export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%)
                 export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
                 
-                elif [[ "${'$'}GIT_BRANCH" == null ]]; then
+                if [[ "${'$'}GIT_BRANCH" == null ]]; then
                   export GIT_BRANCH="master"
                 fi
                 
