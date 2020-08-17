@@ -1554,7 +1554,7 @@ object BuildIsConfigUpgradeTools : BuildType({
     name = "Build InsuranceSuite Configuration Upgrade Tools"
 
     params {
-        password("env.AUTH_TOKEN", "credentialsJSON:16003346-edaa-414a-b604-e19250bc5251", display = ParameterDisplay.HIDDEN)
+        password("env.AUTH_TOKEN", "credentialsJSON:67d9216c-4183-4ebf-a9b3-374ea5e547ec", display = ParameterDisplay.HIDDEN)
         select("env.DEPLOY_ENV", "int", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "staging", "int", "prod"))
         text("env.DOC_ID", "", display = ParameterDisplay.PROMPT, allowEmpty = false)
