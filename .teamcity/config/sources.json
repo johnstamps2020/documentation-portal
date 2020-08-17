@@ -349,7 +349,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Gneric-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
       ]
     }
   ]
