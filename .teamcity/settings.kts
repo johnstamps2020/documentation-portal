@@ -1586,8 +1586,8 @@ object BuildDita : BuildType({
     maxRunningBuilds = 3
 
     params {
-        text("env.CONFIG_FILE", "config/server-config.json", allowEmpty = false)
-        text("env.SOURCES_FILE", "config/sources.json", allowEmpty = false)
+        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json", allowEmpty = false)
+        text("env.SOURCES_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/sources.json", allowEmpty = false)
         text("env.DEPLOY_ENV", "", allowEmpty = true)
         text("env.DOC_ID", "", allowEmpty = true)
     }
