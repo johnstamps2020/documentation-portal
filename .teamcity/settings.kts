@@ -1625,7 +1625,6 @@ object BuildDita : BuildType({
                 
                 git clone --single-branch --branch ${'$'}GIT_BRANCH ${'$'}GIT_URL ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
                 
-                SECONDS=0
                 docker login -u %env.ARTIFACTORY_USERNAME% --password %env.ARTIFACTORY_PASSWORD% artifactory.guidewire.com
                 docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
                 
@@ -1643,9 +1642,6 @@ object BuildDita : BuildType({
                   --create-index-redirect yes \
                   --webhelp.publication.toc.links all
                  
-                duration=${'$'}SECONDS
-                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-
             """.trimIndent()
         }
 
