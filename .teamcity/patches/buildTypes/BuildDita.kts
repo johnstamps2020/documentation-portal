@@ -24,6 +24,7 @@ changeBuildType(RelativeId("BuildDita")) {
         }
         update(RelativeId("GetParametersFromConfigFiles")) {
             snapshot {
+                runOnSameAgent = true
                 reuseBuilds = ReuseBuilds.NO
                 onDependencyFailure = FailureAction.CANCEL
                 onDependencyCancel = FailureAction.CANCEL
