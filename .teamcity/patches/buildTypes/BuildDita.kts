@@ -70,7 +70,7 @@ changeBuildType(RelativeId("BuildDita")) {
     }
     steps {
         update<ScriptBuildStep>(0) {
-            name = "Build webhelp from DITA (1)"
+            name = "Get the document sources from Git"
             scriptContent = """
                 #!/bin/bash
                 set -xe
