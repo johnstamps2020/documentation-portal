@@ -12,6 +12,12 @@ To apply the patch, change the buildType with id = 'BuildDita'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("BuildDita")) {
+    params {
+        add {
+            param("env.SOURCES_ROOT", "src_root")
+        }
+    }
+
     expectSteps {
         script {
             name = "Build webhelp from DITA"
