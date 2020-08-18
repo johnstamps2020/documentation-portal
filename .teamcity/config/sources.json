@@ -341,6 +341,16 @@
         "/Content/doc/insuranceSuite/hawaii/_supermap-mix-and-match-active.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
       ]
+    },
+    {
+      "id": "midipgdraftsrc",
+      "title": "MID IPG Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
     }
   ]
 }
