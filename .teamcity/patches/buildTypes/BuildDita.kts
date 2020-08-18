@@ -64,8 +64,45 @@ changeBuildType(RelativeId("BuildDita")) {
     }
     steps {
         update<ScriptBuildStep>(0) {
-            name = "Get the document sources from Git"
-            scriptContent = "git clone"
+            name = "Build webhelp from DITA (1)"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export GW_PRODUCT=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.product[0]' %env.CONFIG_FILE%)                
+                export GW_PLATFORM=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.platform[0]' %env.CONFIG_FILE%)
+                export GW_VERSION=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.version' %env.CONFIG_FILE%)
+                export FILTER_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.filter' %env.CONFIG_FILE%)
+                export ROOT_MAP=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.root' %env.CONFIG_FILE%)
+                
+                export WORKING_DIR=${'$'}(pwd)
+                export INPUT_PATH="input"
+                export OUTPUT_PATH="out"
+                
+                git clone --single-branch --branch ${'$'}GIT_BRANCH ${'$'}GIT_URL ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
+                
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+                
+                echo "Building webhelp for ${'$'}GW_PRODUCT ${'$'}GW_PLATFORM ${'$'}GW_VERSION using filter ${'$'}FILTER_PATH"
+                docker run -i \
+                  -i "${'$'}INPUT_PATH"/"${'$'}ROOT_MAP" \
+                  -o "${'$'}OUTPUT_PATH" \
+                  -f webhelp_Guidewire \
+                  --filter "${'$'}FILTER_PATH" \
+                  --use-doc-portal-params yes \
+                  --gw-product "${'$'}GW_PRODUCT" \
+                  --gw-platform "${'$'}GW_PLATFORM" \
+                  --gw-version "${'$'}GW_VERSION" \
+                  --create-index-redirect yes \
+                  --webhelp.publication.toc.links all
+                 
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
         insert(1) {
             script {
