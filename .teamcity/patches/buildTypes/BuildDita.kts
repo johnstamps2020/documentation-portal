@@ -105,7 +105,7 @@ changeBuildType(RelativeId("BuildDita")) {
                     
                     SECONDS=0
                     echo "Building webhelp for ${'$'}GW_PRODUCT ${'$'}GW_PLATFORM ${'$'}GW_VERSION using filter ${'$'}FILTER_PATH"
-                    docker run -i \
+                    /opt/app/bin/dita \
                       -i "%env.SOURCES_ROOT%"/"${'$'}ROOT_MAP" \
                       -o "%env.OUTPUT_PATH%" \
                       -f webhelp_Guidewire \
