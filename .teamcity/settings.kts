@@ -1620,7 +1620,7 @@ object GetDocParametersFromConfigFiles : BuildType({
                 curl -X POST -H "Content-Type: application/xml" \
                     -H "Authorization: Bearer %env.AUTH_TOKEN%" \
                     -H "Accept: application/json" \
-                    -d  '<build><buildType id="${BuildOutputFromDita.id}"/><properties><property name="env.GW_PRODUCT" value="'"${'$'}GW_PRODUCT"'"/><property name="env.GW_PLATFORM" value=\"${'$'}GW_PLATFORM\"/><property name="env.GW_VERSION" value="${'$'}GW_VERSION"/><property name="env.FILTER_PATH" value="${'$'}FILTER_PATH"/><property name="env.ROOT_MAP" value="${'$'}ROOT_MAP"/><property name="env.GIT_URL" value="${'$'}GIT_URL"/><property name="env.GIT_BRANCH" value="${'$'}GIT_BRANCH"/><property name="env.PUBLISH_PATH" value="${'$'}PUBLISH_PATH"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                    -d  '<build><buildType id="${BuildOutputFromDita.id}"/><properties><property name="env.GW_PRODUCT" value="'"${'$'}GW_PRODUCT"'"/><property name="env.GW_PLATFORM" value="'"${'$'}GW_PLATFORM"'"/><property name="env.GW_VERSION" value="'"${'$'}GW_VERSION"'"/><property name="env.FILTER_PATH" value="'"${'$'}FILTER_PATH"'"/><property name="env.ROOT_MAP" value="'"${'$'}ROOT_MAP"'"/><property name="env.GIT_URL" value="'"${'$'}GIT_URL"'"/><property name="env.GIT_BRANCH" value="'"${'$'}GIT_BRANCH"'"/><property name="env.PUBLISH_PATH" value="'"${'$'}PUBLISH_PATH"'"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
                     https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
 
             """.trimIndent()
