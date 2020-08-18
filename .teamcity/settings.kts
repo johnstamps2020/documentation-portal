@@ -1580,8 +1580,6 @@ object BuildInsuranceSuiteGuide : BuildType({
 object GetDocParametersFromConfigFiles : BuildType({
     name = "Get doc parameters from config files"
 
-    artifactRules = "%env.OUT_FILE%"
-
     params {
         password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
         text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json", allowEmpty = false)
@@ -1592,14 +1590,13 @@ object GetDocParametersFromConfigFiles : BuildType({
     }
 
     vcs {
-        root(AbsoluteId("DocumentationTools_DocumentationPortal_vcsroot"))
-
+        root(DslContext.settingsRoot)
         cleanCheckout = true
     }
 
     steps {
         script {
-            name = "Save doc parameters to a file"
+            name = "Get doc parameters from config files"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1623,7 +1620,7 @@ object GetDocParametersFromConfigFiles : BuildType({
                 curl -X POST -H "Content-Type: application/xml" \
                     -H "Authorization: Bearer %env.AUTH_TOKEN%" \
                     -H "Accept: application/json" \
-                    -d  '<build><buildType id="${BuildOutputFromDita.id}"/><properties><property name="env.GW_PRODUCT" value="${'$'}GW_PRODUCT"/><property name="env.GW_PLATFORM" value="${'$'}GW_PLATFORM"/><property name="env.GW_VERSION" value="${'$'}GW_VERSION"/><property name="env.FILTER_PATH" value="${'$'}FILTER_PATH"/><property name="env.ROOT_MAP" value="${'$'}ROOT_MAP"/><property name="env.GIT_URL" value="${'$'}GIT_URL"/><property name="env.GIT_BRANCH" value="${'$'}GIT_BRANCH"/><property name="env.PUBLISH_PATH" value="${'$'}PUBLISH_PATH"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                    -d  '<build><buildType id="${BuildOutputFromDita.id}"/><properties><property name="env.GW_PRODUCT" value="'"${'$'}GW_PRODUCT"'"/><property name="env.GW_PLATFORM" value=\"${'$'}GW_PLATFORM\"/><property name="env.GW_VERSION" value="${'$'}GW_VERSION"/><property name="env.FILTER_PATH" value="${'$'}FILTER_PATH"/><property name="env.ROOT_MAP" value="${'$'}ROOT_MAP"/><property name="env.GIT_URL" value="${'$'}GIT_URL"/><property name="env.GIT_BRANCH" value="${'$'}GIT_BRANCH"/><property name="env.PUBLISH_PATH" value="${'$'}PUBLISH_PATH"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
                     https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
 
             """.trimIndent()
