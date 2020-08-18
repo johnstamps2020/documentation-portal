@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
 /*
@@ -9,6 +11,80 @@ To apply the patch, change the buildType with id = 'BuildDita'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("BuildDita")) {
+    expectSteps {
+        script {
+            name = "Build webhelp from DITA"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                source %teamcity.build.workingDir%/doc_params.txt
+                
+                export WORKING_DIR=${'$'}(pwd)
+                export INPUT_PATH="input"
+                export OUTPUT_PATH="out"
+                
+                git clone --single-branch --branch ${'$'}GIT_BRANCH ${'$'}GIT_URL ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
+                
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+                
+                echo "Building webhelp for ${'$'}GW_PRODUCT ${'$'}GW_PLATFORM ${'$'}GW_VERSION using filter ${'$'}FILTER_PATH"
+                docker run -i \
+                  -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest \
+                  -i /src/"${'$'}INPUT_PATH"/"${'$'}ROOT_MAP" \
+                  -o /src/"${'$'}OUTPUT_PATH" \
+                  -f webhelp_Guidewire \
+                  --filter /src/"${'$'}INPUT_PATH"/"${'$'}FILTER_PATH" \
+                  --use-doc-portal-params yes \
+                  --gw-product "${'$'}GW_PRODUCT" \
+                  --gw-platform "${'$'}GW_PLATFORM" \
+                  --gw-version "${'$'}GW_VERSION" \
+                  --create-index-redirect yes \
+                  --webhelp.publication.toc.links all
+                 
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+    }
+    steps {
+        update<ScriptBuildStep>(0) {
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export WORKING_DIR=${'$'}(pwd)
+                export INPUT_PATH="input"
+                export OUTPUT_PATH="out"
+                
+                git clone --single-branch --branch ${'$'}GIT_BRANCH ${'$'}GIT_URL ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
+                
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+                
+                echo "Building webhelp for ${'$'}GW_PRODUCT ${'$'}GW_PLATFORM ${'$'}GW_VERSION using filter ${'$'}FILTER_PATH"
+                docker run -i \
+                  -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest \
+                  -i /src/"${'$'}INPUT_PATH"/"${'$'}ROOT_MAP" \
+                  -o /src/"${'$'}OUTPUT_PATH" \
+                  -f webhelp_Guidewire \
+                  --filter /src/"${'$'}INPUT_PATH"/"${'$'}FILTER_PATH" \
+                  --use-doc-portal-params yes \
+                  --gw-product "${'$'}GW_PRODUCT" \
+                  --gw-platform "${'$'}GW_PLATFORM" \
+                  --gw-version "${'$'}GW_VERSION" \
+                  --create-index-redirect yes \
+                  --webhelp.publication.toc.links all
+                 
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+    }
+
     dependencies {
         expect(RelativeId("GetParametersFromConfigFiles")) {
             snapshot {
