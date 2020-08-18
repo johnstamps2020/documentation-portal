@@ -35,6 +35,7 @@ project {
     buildType(TestConfig)
     subProject(Server)
     subProject(Content)
+    subProject(ModularBuilds)
 }
 
 object Helpers {
@@ -1547,4 +1548,154 @@ object DeployServices : Project({
 
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
+})
+
+object BuildInsuranceSuiteGuide : BuildType({
+    name = "Build an InsuranceSuite guide"
+
+    params {
+        password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+        select("env.DEPLOY_ENV", "int", display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "staging", "int", "prod"))
+        text("env.DOC_ID", "", display = ParameterDisplay.PROMPT, allowEmpty = false)
+    }
+
+    steps {
+        script {
+            name = "Trigger a modular build"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                curl -X POST -H "Content-Type: application/xml" \
+                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                    -H "Accept: application/json" \
+                    -d  '<build><buildType id="${GetDocParametersFromConfigFiles.id}"/><properties><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+            """.trimIndent()
+        }
+    }
+})
+
+object GetDocParametersFromConfigFiles : BuildType({
+    name = "Get doc parameters from config files"
+
+    artifactRules = "%env.OUT_FILE%"
+
+    params {
+        password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json", allowEmpty = false)
+        text("env.DEPLOY_ENV", "", allowEmpty = true)
+        text("env.SOURCES_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/sources.json", allowEmpty = false)
+        text("env.OUT_FILE", "%teamcity.build.workingDir%/doc_params.txt")
+        text("env.DOC_ID", "", allowEmpty = true)
+    }
+
+    vcs {
+        root(AbsoluteId("DocumentationTools_DocumentationPortal_vcsroot"))
+
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Save doc parameters to a file"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export GW_PRODUCT=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.product[0]' %env.CONFIG_FILE%)
+                export GW_PLATFORM=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.platform[0]' %env.CONFIG_FILE%)
+                export GW_VERSION=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.version' %env.CONFIG_FILE%)
+                export FILTER_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.filter' %env.CONFIG_FILE%)
+                export ROOT_MAP=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.root' %env.CONFIG_FILE%)
+                
+                export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%)
+                export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%)
+                export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
+                
+                if [[ "${'$'}GIT_BRANCH" == null ]]; then
+                  export GIT_BRANCH=master
+                fi
+                
+                export PUBLISH_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).url' %env.CONFIG_FILE%)
+                
+                curl -X POST -H "Content-Type: application/xml" \
+                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                    -H "Accept: application/json" \
+                    -d  '<build><buildType id="${BuildOutputFromDita.id}"/><properties><property name="env.GW_PRODUCT" value="${'$'}GW_PRODUCT"/><property name="env.GW_PLATFORM" value="${'$'}GW_PLATFORM"/><property name="env.GW_VERSION" value="${'$'}GW_VERSION"/><property name="env.FILTER_PATH" value="${'$'}FILTER_PATH"/><property name="env.ROOT_MAP" value="${'$'}ROOT_MAP"/><property name="env.GIT_URL" value="${'$'}GIT_URL"/><property name="env.GIT_BRANCH" value="${'$'}GIT_BRANCH"/><property name="env.PUBLISH_PATH" value="${'$'}PUBLISH_PATH"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+
+            """.trimIndent()
+        }
+    }
+})
+
+object BuildOutputFromDita : BuildType({
+    name = "Build the output from DITA"
+
+    maxRunningBuilds = 3
+
+    params {
+        text("env.DOC_ID", "", allowEmpty = true)
+        text("env.GW_PRODUCT", "", allowEmpty = true)
+        text("env.GW_PLATFORM", "", allowEmpty = true)
+        text("env.GW_VERSION", "", allowEmpty = true)
+        text("env.FILTER_PATH", "", allowEmpty = true)
+        text("env.ROOT_MAP", "", allowEmpty = true)
+        text("env.GIT_URL", "", allowEmpty = true)
+        text("env.GIT_BRANCH", "", allowEmpty = true)
+        text("env.PUBLISH_PATH", "", allowEmpty = true)
+    }
+
+    steps {
+        script {
+            name = "Build webhelp from DITA"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export WORKING_DIR=${'$'}(pwd)
+                export INPUT_PATH="input"
+                export OUTPUT_PATH="out"
+                
+                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
+                
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+                
+                echo "Building webhelp for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION% using filter %env.FILTER_PATH%"
+                docker run -i \
+                  -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest \
+                  -i /src/"${'$'}INPUT_PATH"/"%env.ROOT_MAP%" \
+                  -o /src/"${'$'}OUTPUT_PATH" \
+                  -f webhelp_Guidewire \
+                  --filter /src/"${'$'}INPUT_PATH"/"%env.FILTER_PATH%" \
+                  --use-doc-portal-params yes \
+                  --gw-product "%env.GW_PRODUCT%" \
+                  --gw-platform "%env.GW_PLATFORM%" \
+                  --gw-version "%env.GW_VERSION%" \
+                  --create-index-redirect yes \
+                  --webhelp.publication.toc.links all
+                 
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+})
+
+object ModularBuilds : Project({
+    name = "Modular builds"
+
+    buildType(BuildInsuranceSuiteGuide)
+    buildType(BuildOutputFromDita)
+    buildType(GetDocParametersFromConfigFiles)
 })
