@@ -1,0 +1,275 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://docs.guidewire.com/config.schema.json",
+  "title": "Config",
+  "description": "A config for the doc-portal",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "description": "A link to the JSON schema",
+      "type": "string"
+    },
+    "sources": {
+      "description": "A list of sources where we can get files for builds",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/source"
+      }
+    },
+    "docs": {
+      "description": "A list of available docs, along with urls, metadata, and optional build information",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/doc"
+      }
+    },
+    "pages": {
+      "description": "A list of landing pages to show on the website",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/page"
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "description": "A unique ID",
+      "type": "string"
+    },
+    "title": {
+      "description": "A human-readable title, for displaying to humans in various human scenarios. All of us humans know what it is. Right, fellow humans?",
+      "type": "string"
+    },
+    "src": {
+      "description": "Refers to the ID of an item in the array of 'sources'.",
+      "type": "string"
+    },
+    "resource": {
+      "additionalProperties": false,
+      "required": ["targetFolder", "sourceFolder", "src"],
+      "properties": {
+        "targetFolder": {
+          "description": "For resources, it is the path where we want to place the resource.",
+          "type": "string"
+        },
+        "sourceFolder": {
+          "description": "The folder in the repo to use as the start directory. Copy everything in that folder.",
+          "type": "string"
+        },
+        "src": {
+          "$ref": "#/definitions/src"
+        }
+      }
+    },
+    "environments": {
+      "description": "Environments where we will display this doc, dev, int, staging, etc.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["dev", "int", "staging", "prod"]
+      }
+    },
+    "metadata": {
+      "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "productFamily": {
+          "description": "The name of the product family, for cloud docs only.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "BillingCenter Cloud",
+              "ClaimCenter Cloud",
+              "PolicyCenter Cloud",
+              "InsuranceNow",
+              "Guidewire Cloud Platform",
+              "Guidewire Feature Preview",
+              "Testing Frameworks",
+              "Jutro"
+            ]
+          }
+        },
+        "product": {
+          "description": "The name of the product",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PolicyCenter",
+              "BillingCenter",
+              "ClaimCenter",
+              "InsuranceSuite Configuration Upgrade Tools",
+              "PolicyCenter Upgrade Tools",
+              "BillingCenter Upgrade Tools",
+              "ClaimCenter Upgrade Tools",
+              "Businessowners Standards Based Template",
+              "DataHub",
+              "InfoCenter",
+              "Business Analytics",
+              "Cloud Data Access",
+              "Explore",
+              "CustomerEngage Account Management",
+              "CustomerEngage Quote and Buy",
+              "Digital Code Generation",
+              "Guidewire for Salesforce Data Integrations",
+              "Guidewire for Salesforce Data Integrations for Claims",
+              "Guidewire for Salesforce Digital Gateway",
+              "Guidewire for Salesforce Digital Gateway for Claims",
+              "Guidewire for Salesforce View on Demand",
+              "Guidewire for Salesforce View on Demand for Claims",
+              "Guidewire for Salesforce ProducerEngage",
+              "ProducerEngage",
+              "ServiceRepEngage",
+              "VendorEngage",
+              "Guidewire Cloud Platform",
+              "Guidewire Cloud Console",
+              "Guidewire Feature Preview",
+              "Guidewire Identity Federation Hub",
+              "Guidewire InsuranceSuite Package for Germany",
+              "InsuranceNow",
+              "InsuranceNow - Internal Audience",
+              "InsuranceNow - External Audience",
+              "Testing Frameworks",
+              "Jutro"
+            ]
+          }
+        },
+        "platform": {
+          "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["Self-managed", "Cloud"]
+          }
+        },
+        "version": {
+          "description": "A version number, or a word like 'latest'",
+          "type": "string"
+        },
+        "category": {
+          "description": "A product category",
+          "type": "array",
+          "examples": ["Core", "Data", "Digital"]
+        }
+      }
+    },
+    "source": {
+      "description": "A source where we can get files from, for example Git, XDocs, etc.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "sourceType", "gitUrl"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/title"
+        },
+        "sourceType": {
+          "description": "The type of the source",
+          "type": "string",
+          "enum": ["git", "xdocs"]
+        },
+        "gitUrl": {
+          "description": "An SSH url to a git repo. For all source types, it is a source of files. For the 'xdocs' type, it is also the target where we commit exported files. The 'git' and 'xdocs' types are used by 'docs' components to generate builds.",
+          "type": "string"
+        },
+        "xdocsPathIds": {
+          "description": "A list of pathIds to be exported from XDocs",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "branch": {
+          "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",
+          "type": "string",
+          "examples": ["release-1.0", "usaa-experimental"]
+        }
+      }
+    },
+    "doc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "url", "metadata", "environments"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "title": {
+          "$ref": "#/definitions/title"
+        },
+        "url": {
+          "description": "The url of the resource we're linking to. Can be relative to the root, or an absolute URL that starts with https://",
+          "type": "string"
+        },
+        "visible": {
+          "description": "If set to false, do not display link on landing page. Defaults to true if not set.",
+          "type": "boolean"
+        },
+        "metadata": {
+          "$ref": "#/definitions/metadata"
+        },
+        "build": {
+          "$ref": "#/definitions/build"
+        },
+        "environments": {
+          "$ref": "#/definitions/environments"
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["view", "route"],
+      "properties": {
+        "view": {
+          "description": "The name of the view to use on the server",
+          "type": "string"
+        },
+        "route": {
+          "description": "The address on the server, relative to the root",
+          "type": "string",
+          "examples": ["/", "/self-managed/all-releases", "/audiences"]
+        }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["buildType", "root", "src"],
+      "properties": {
+        "buildType": {
+          "description": "The build type to apply",
+          "type": "string",
+          "enum": ["dita", "dita-dev"]
+        },
+        "filter": {
+          "description": "The name of the ditaval file to use in the build, including the extension",
+          "type": "string",
+          "examples": [
+            "operator.ditaval",
+            "IS-BC-Cloud-Draft.ditaval",
+            "audience.xml"
+          ]
+        },
+        "root": {
+          "description": "The filename of the ditamap to use, including the extension",
+          "examples": ["_superbook.ditamap", "flowers.ditamap", "webhelp.xml"]
+        },
+        "src": {
+          "$ref": "#/definitions/src"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/resource"
+          }
+        }
+      }
+    }
+  }
+}
