@@ -1571,12 +1571,58 @@ object BuildIsGuide : BuildType({
                         curl -X POST -H "Content-Type: application/xml" \
                             -H "Authorization: Bearer %env.AUTH_TOKEN%" \
                             -H "Accept: application/json" \
-                            -d  '<build><buildType id="${BuildDita.id}"/><properties><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                            -d  '<build><buildType id="${GetDocParametersFromConfigFiles.id}"/><properties><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
                             https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
                     """.trimIndent()
         }
     }
 
+})
+
+object GetDocParametersFromConfigFiles : BuildType({
+    name = "Get doc parameters from config files"
+    id = RelativeId("GetParametersFromConfigFiles")
+
+    params {
+        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json", allowEmpty = false)
+        text("env.SOURCES_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/sources.json", allowEmpty = false)
+        text("env.DEPLOY_ENV", "", allowEmpty = true)
+        text("env.DOC_ID", "", allowEmpty = true)
+        text("env.OUT_FILE", "%teamcity.build.workingDir%/doc_params.txt")
+    }
+
+    artifactRules = "%env.OUT_FILE%"
+
+    vcs {
+        root(DslContext.settingsRootId)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Save doc parameters to a file"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                touch %env.OUT_FILE%
+                
+                echo export GW_PRODUCT=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.product[0]' %env.CONFIG_FILE%) >> %env.OUT_FILE%                
+                echo export GW_PLATFORM=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.platform[0]' %env.CONFIG_FILE%) >> %env.OUT_FILE%
+                echo export GW_VERSION=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.version' %env.CONFIG_FILE%) >> %env.OUT_FILE%
+                echo export FILTER_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.filter' %env.CONFIG_FILE%) >> %env.OUT_FILE%
+                echo export ROOT_MAP=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.root' %env.CONFIG_FILE%) >> %env.OUT_FILE%
+
+                echo export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%) >> %env.OUT_FILE%
+                echo export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%) >> %env.OUT_FILE%
+                echo export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%) >> %env.OUT_FILE%
+                
+                if [[ "${'$'}GIT_BRANCH" == null ]]; then
+                  echo export GIT_BRANCH="master" >> %env.OUT_FILE%
+                fi 
+            """.trimIndent()
+        }
+    }
 })
 
 object BuildDita : BuildType({
@@ -1585,17 +1631,7 @@ object BuildDita : BuildType({
 
     maxRunningBuilds = 3
 
-    params {
-        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json", allowEmpty = false)
-        text("env.SOURCES_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/sources.json", allowEmpty = false)
-        text("env.DEPLOY_ENV", "", allowEmpty = true)
-        text("env.DOC_ID", "", allowEmpty = true)
-    }
 
-    vcs {
-        root(DslContext.settingsRootId)
-        cleanCheckout = true
-    }
 
     steps {
         script {
@@ -1663,6 +1699,7 @@ object ModularBuilds : Project({
     name = "Modular builds"
 
     buildType(BuildIsGuide)
+    buildType(GetDocParametersFromConfigFiles)
     buildType(BuildDita)
 
 })
