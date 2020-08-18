@@ -1613,13 +1613,16 @@ object GetDocParametersFromConfigFiles : BuildType({
                 echo export FILTER_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.filter' %env.CONFIG_FILE%) >> %env.OUT_FILE%
                 echo export ROOT_MAP=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.root' %env.CONFIG_FILE%) >> %env.OUT_FILE%
 
-                echo export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%) >> %env.OUT_FILE%
+                export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%)
+                echo export SOURCE_ID=${'$'}SOURCE_ID >> %env.OUT_FILE%
                 echo export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%) >> %env.OUT_FILE%
                 echo export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%) >> %env.OUT_FILE%
                 
                 if [[ "${'$'}GIT_BRANCH" == null ]]; then
                   echo export GIT_BRANCH="master" >> %env.OUT_FILE%
-                fi 
+                fi
+                
+                echo export PUBLISH_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).url' %env.CONFIG_FILE%) >> %env.OUT_FILE%                
             """.trimIndent()
         }
     }
@@ -1630,8 +1633,6 @@ object BuildDita : BuildType({
     id = RelativeId("BuildDita")
 
     maxRunningBuilds = 3
-
-
 
     steps {
         script {
