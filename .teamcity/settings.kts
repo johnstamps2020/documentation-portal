@@ -1620,10 +1620,67 @@ object GetDocParametersFromConfigFiles : BuildType({
                 curl -X POST -H "Content-Type: application/xml" \
                     -H "Authorization: Bearer %env.AUTH_TOKEN%" \
                     -H "Accept: application/json" \
-                    -d  '<build><buildType id="${BuildOutputFromDita.id}"/><properties><property name="env.GW_PRODUCT" value="'"${'$'}GW_PRODUCT"'"/><property name="env.GW_PLATFORM" value=\"${'$'}GW_PLATFORM\"/><property name="env.GW_VERSION" value="${'$'}GW_VERSION"/><property name="env.FILTER_PATH" value="${'$'}FILTER_PATH"/><property name="env.ROOT_MAP" value="${'$'}ROOT_MAP"/><property name="env.GIT_URL" value="${'$'}GIT_URL"/><property name="env.GIT_BRANCH" value="${'$'}GIT_BRANCH"/><property name="env.PUBLISH_PATH" value="${'$'}PUBLISH_PATH"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                    -d  '<build><buildType id="${BuildOutputFromDita.id}"/><properties><property name="env.GW_PRODUCT" value="'"${'$'}GW_PRODUCT"'"/><property name="env.GW_PLATFORM" value="'"${'$'}GW_PLATFORM"'"/><property name="env.GW_VERSION" value="'"${'$'}GW_VERSION"'"/><property name="env.FILTER_PATH" value="'"${'$'}FILTER_PATH"'"/><property name="env.ROOT_MAP" value="'"${'$'}ROOT_MAP"'"/><property name="env.GIT_URL" value="'"${'$'}GIT_URL"'"/><property name="env.GIT_BRANCH" value="'"${'$'}GIT_BRANCH"'"/><property name="env.PUBLISH_PATH" value="'"${'$'}PUBLISH_PATH"'"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
                     https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
 
             """.trimIndent()
+        }
+    }
+})
+
+object ExportFilesFromXDocsToBitbucket : BuildType({
+    name = "Export files from XDocs to Bitbucket"
+
+    maxRunningBuilds = 2
+
+    params {
+        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", description = "Directory for the repo cloned from Bitbucket", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.EXPORT_PATH_IDS", "", allowEmpty = true)
+        text("env.XDOCS_EXPORT_DIR", "", allowEmpty = true)
+    }
+
+    vcs {
+        root(AbsoluteId("DocumentationTools_XDocsClient"))
+
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Export files from XDocs"
+            id = "EXPORT_FILES_FROM_XDOCS"
+            workingDir = "LocalClient/sample/local/bin"
+            scriptContent = """
+                chmod 777 runExport.sh
+                for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
+            """.trimIndent()
+        }
+        script {
+            name = "Add exported files to Bitbucket"
+            id = "RUNNER_2622"
+            scriptContent = """
+                set -xe
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "%serviceAccountUsername%"
+                cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
+                cd %env.SOURCES_ROOT%
+                git add -A
+                if git status | grep "Changes to be committed"
+                then
+                  git commit -m "[TeamCity] Adds files exported from XDocs"
+                  git pull
+                  git push
+                else
+                  echo "No changes to commit"
+                fi
+            """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            id = "ssh-agent-build-feature"
+            teamcitySshKey = "sys-doc.rsa"
         }
     }
 })
@@ -1689,10 +1746,117 @@ object BuildOutputFromDita : BuildType({
     }
 })
 
+object UploadContentToS3 : BuildType({
+    name = "Upload content to S3"
+
+    params {
+        text("env.DEPLOY_ENV", "", allowEmpty = true)
+        text("env.PUBLISH_PATH", "", allowEmpty = true)
+        text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", allowEmpty = false)
+    }
+
+    steps {
+        script {
+            name = "Upload generated content to the S3 bucket"
+            id = "UPLOAD_GENERATED_CONTENT"
+            scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
+        }
+
+    }
+})
+
+object CrawlDocumentAndUpdateSearchIndex : BuildType({
+    name = "Update the search index"
+    artifactRules = """
+        **/*.log => logs
+    """.trimIndent()
+
+
+    params {
+        text("env.DEPLOY_ENV", "", allowEmpty = true)
+        text("env.DOC_ID", "", allowEmpty = true)
+        text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
+        text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
+        text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+        text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+        cleanCheckout = true
+    }
+
+    steps {
+        dockerCommand {
+            name = "Build a Python Docker image"
+            id = "BUILD_CRAWLER_DOCKER_IMAGE"
+            commandType = build {
+                source = file {
+                    path = "apps/Dockerfile"
+                }
+                namesAndTags = "python-runner"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+        script {
+            name = "Crawl the document and update the index"
+            id = "CRAWL_DOC"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export DOC_S3_URL="%env.DOC_S3_URL_PROD%"
+                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                    export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
+                    export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
+                fi
+                
+                curl %env.CONFIG_FILE_URL% > %teamcity.build.workingDir%/config.json
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"               
+
+                cd apps/search_indexer
+                make run-doc-crawler
+            """.trimIndent()
+            dockerImage = "python-runner"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+        script {
+            name = "Publish broken links report to S3"
+            id = "PUBLISH_BROKEN_LINKS_REPORT"
+            scriptContent = """
+                if [[ %env.DEPLOY_ENV% != "prod" ]]; then
+                    aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_ID%
+                fi
+    `       """.trimIndent()
+        }
+
+    }
+
+    features {
+        dockerSupport {
+            id = "DockerSupport"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
 object ModularBuilds : Project({
     name = "Modular builds"
 
     buildType(BuildInsuranceSuiteGuide)
-    buildType(BuildOutputFromDita)
     buildType(GetDocParametersFromConfigFiles)
+    buildType(ExportFilesFromXDocsToBitbucket)
+    buildType(BuildOutputFromDita)
+    buildType(UploadContentToS3)
+    buildType(CrawlDocumentAndUpdateSearchIndex)
 })
