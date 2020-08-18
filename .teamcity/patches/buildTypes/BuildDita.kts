@@ -117,19 +117,9 @@ changeBuildType(RelativeId("BuildDita")) {
                     export FILTER_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.filter' %env.CONFIG_FILE%)
                     export ROOT_MAP=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.root' %env.CONFIG_FILE%)
                     
-                    export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%)
-                    export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%)
-                    export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
-                    
-                    if [[ "${'$'}GIT_BRANCH" == null ]]; then
-                      export GIT_BRANCH="master"
-                    fi
-                    
                     export WORKING_DIR=${'$'}(pwd)
                     export INPUT_PATH="input"
-                    export OUTPUT_PATH="out"
-                    
-                    git clone --single-branch --branch ${'$'}GIT_BRANCH ${'$'}GIT_URL ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
+                    export OUTPUT_PATH="out"              
                     
                     SECONDS=0
                     docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
