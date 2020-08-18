@@ -1638,7 +1638,6 @@ object BuildDita : BuildType({
 
     dependencies {
         artifacts(GetDocParametersFromConfigFiles) {
-            buildRule = lastSuccessful()
             cleanDestination = true
             artifactRules = "+:*"
         }
