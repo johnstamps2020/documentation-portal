@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="DocumentationTools_DocumentationPortal" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Server</name>
+  <parameters />
+  <cleanup />
+  <buildTypesOrder order="DocumentationTools_DocumentationPortal_DeployServerConfig,DocumentationTools_DocumentationPortal_Test,DocumentationTools_DocumentationPortal_Checkmarx,DocumentationTools_DocumentationPortal_DeployDev,DocumentationTools_DocumentationPortal_DeployInt,DocumentationTools_DocumentationPortal_DeployStaging,DocumentationTools_DocumentationPortal_DeployProd,DocumentationTools_DocumentationPortal_Release" />
+</project>
+

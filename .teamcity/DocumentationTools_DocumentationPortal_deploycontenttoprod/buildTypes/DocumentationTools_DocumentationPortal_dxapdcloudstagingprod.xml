@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Copy Digital Code Generation Cloud 2020.05 from Staging to Prod (dxapdcloudstaging)</name>
+  <description />
+  <settings ref="DocumentationTools_DocumentationPortal_CrawlDocumentAndUpdateIndex">
+    <parameters>
+      <param name="APP_BASE_URL" value="https://docs.guidewire.com" spec="text validationMode='not_empty'" />
+      <param name="CONFIG_FILE_URL" value="https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json" spec="text validationMode='not_empty'" />
+      <param name="DOC_ID" value="dxapdcloudstaging" spec="text validationMode='not_empty'" />
+      <param name="DOC_S3_URL" value="https://ditaot.internal.us-east-2.service.guidewire.net" spec="text validationMode='not_empty'" />
+      <param name="ELASTICSEARCH_URLS" value="https://docsearch-doctools.internal.us-east-2.service.guidewire.net" spec="text validationMode='not_empty'" />
+      <param name="INDEX_NAME" value="gw-docs" spec="text validationMode='not_empty'" />
+      <param name="PUBLISH_PATH" value="cloud/dx/apd/202005" spec="text validationMode='not_empty'" />
+      <param name="S3_BUCKET_NAME" value="tenant-doctools-prod-builds" spec="text validationMode='not_empty'" />
+      <param name="TOOLS_ROOT" value="tools_root" spec="text validationMode='not_empty'" />
+    </parameters>
+    <build-runners order="COPY_FROM_STAGING_TO_PROD, BUILD_CRAWLER_DOCKER_IMAGE, CRAWL_DOC">
+      <runner id="COPY_FROM_STAGING_TO_PROD" name="Copy from S3 on staging to S3 on Prod" type="simpleRunner">
+        <parameters>
+          <param name="script.content"><![CDATA[echo "Copying from staging to Teamcity"
+aws s3 sync s3://tenant-doctools-staging-builds/cloud/dx/apd/202005 cloud/dx/apd/202005/ --delete
+
+echo "Setting credentials to access prod"
+export AWS_ACCESS_KEY_ID="$ATMOS_PROD_AWS_ACCESS_KEY_ID"
+export AWS_SECRET_ACCESS_KEY="$ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+export AWS_DEFAULT_REGION="$ATMOS_PROD_AWS_DEFAULT_REGION"
+
+echo "Uploading from Teamcity to prod"
+aws s3 sync cloud/dx/apd/202005/ s3://tenant-doctools-prod-builds/cloud/dx/apd/202005 --delete]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

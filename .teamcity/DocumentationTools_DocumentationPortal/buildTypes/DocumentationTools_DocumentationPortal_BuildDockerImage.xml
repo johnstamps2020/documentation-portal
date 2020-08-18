@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Build Docker Image</name>
+  <settings>
+    <options>
+      <option name="cleanBuild" value="true" />
+    </options>
+    <parameters />
+    <build-runners>
+      <runner id="TEMPLATE_RUNNER_1" name="Build and Push Docker Image" type="simpleRunner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="plugin.docker.pull.enabled" value="true" />
+          <param name="plugin.docker.run.parameters" value="-v /var/run/docker.sock:/var/run/docker.sock -v $pwd:/app:ro -v $HOME/.docker:/root/.docker" />
+          <param name="script.content"><![CDATA[#!/bin/bash 
+set -xe
+if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
+    export TAG_VERSION=${TAG_VERSION}
+else 
+    export TAG_VERSION=$(echo "%teamcity.build.branch%" | tr -d /)-${DEPLOY_ENV}
+fi
+docker build -t docportal ./server
+docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${TAG_VERSION}
+docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${TAG_VERSION}]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="DocumentationTools_DocumentationPortal_vcsroot" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="TEMPLATE_BUILD_EXT_1" type="DockerSupport">
+        <parameters>
+          <param name="login2registry" value="PROJECT_EXT_155" />
+          <param name="loginCheckbox" value="on" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</template>
+

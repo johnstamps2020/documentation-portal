@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Crawl document and update index</name>
+  <settings>
+    <options>
+      <option name="artifactRules" value="**/*.log =&gt; logs" />
+      <option name="cleanBuild" value="true" />
+      <option name="maximumNumberOfBuilds" value="1" />
+    </options>
+    <parameters>
+      <param name="env.APP_BASE_URL" value="%APP_BASE_URL%" spec="text validationMode='not_empty'" />
+      <param name="env.CONFIG_FILE_URL" value="%CONFIG_FILE_URL%" spec="text validationMode='not_empty'" />
+      <param name="env.DOC_ID" value="%DOC_ID%" spec="text validationMode='not_empty'" />
+      <param name="env.DOC_S3_URL" value="%DOC_S3_URL%" spec="text validationMode='not_empty'" />
+      <param name="env.ELASTICSEARCH_URLS" value="%ELASTICSEARCH_URLS%" spec="text validationMode='not_empty'" />
+      <param name="env.INDEX_NAME" value="%INDEX_NAME%" spec="text validationMode='not_empty'" />
+      <param name="env.TOOLS_ROOT" value="%TOOLS_ROOT%" spec="text validationMode='not_empty'" />
+    </parameters>
+    <build-runners>
+      <runner id="BUILD_CRAWLER_DOCKER_IMAGE" name="Build a Python Docker image" type="DockerCommand">
+        <parameters>
+          <param name="command.args" value="--pull" />
+          <param name="docker.command.type" value="build" />
+          <param name="docker.image.namesAndTags" value="python-runner" />
+          <param name="docker.push.remove.image" value="true" />
+          <param name="dockerImage.platform" value="linux" />
+          <param name="dockerfile.path" value="%env.TOOLS_ROOT%/apps/Dockerfile" />
+          <param name="dockerfile.source" value="PATH" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="CRAWL_DOC" name="Crawl the document and update the index" type="simpleRunner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="python-runner" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="script.content"><![CDATA[#!/bin/bash
+set -xe
+
+curl %env.CONFIG_FILE_URL% > %teamcity.build.workingDir%/config.json
+export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
+
+cd apps/search_indexer
+make run-doc-crawler]]></param>
+          <param name="teamcity.build.workingDir" value="%env.TOOLS_ROOT%" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="DocumentationTools_DocumentationPortal_vcsrootmasteronly">
+        <checkout-rule rule="+:. =&gt; %env.TOOLS_ROOT%" />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="DockerSupport" type="DockerSupport">
+        <parameters>
+          <param name="login2registry" value="PROJECT_EXT_155" />
+          <param name="loginCheckbox" value="on" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</template>
+
