@@ -14,6 +14,9 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("BuildDita")) {
     params {
         add {
+            param("env.OUTPUT_PATH", "%teamcity.build.workingDir%/out")
+        }
+        add {
             param("env.SOURCES_ROOT", "src_root")
         }
     }
