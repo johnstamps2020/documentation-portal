@@ -1571,7 +1571,7 @@ object BuildIsGuide : BuildType({
                         curl -X POST -H "Content-Type: application/xml" \
                             -H "Authorization: Bearer %env.AUTH_TOKEN%" \
                             -H "Accept: application/json" \
-                            -d  '<build><buildType id="${GetDocParametersFromConfigFiles.id}"/><properties><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
+                            -d  '<build><buildType id="${BuildDita.id}"/><properties><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/><property name="env.DOC_ID" value="%env.DOC_ID%"/></properties></build>' \
                             https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
                     """.trimIndent()
         }
@@ -1616,10 +1616,12 @@ object GetDocParametersFromConfigFiles : BuildType({
                 export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%)
                 echo export SOURCE_ID=${'$'}SOURCE_ID >> %env.OUT_FILE%
                 echo export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%) >> %env.OUT_FILE%
-                echo export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%) >> %env.OUT_FILE%
+                export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
                 
                 if [[ "${'$'}GIT_BRANCH" == null ]]; then
-                  echo export GIT_BRANCH="master" >> %env.OUT_FILE%
+                  echo export GIT_BRANCH=master >> %env.OUT_FILE%
+                else
+                  echo export GIT_BRANCH=${'$'}GIT_BRANCH >> %env.OUT_FILE%
                 fi
                 
                 echo export PUBLISH_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).url' %env.CONFIG_FILE%) >> %env.OUT_FILE%                
@@ -1634,6 +1636,19 @@ object BuildDita : BuildType({
 
     maxRunningBuilds = 3
 
+    dependencies {
+        artifacts(GetDocParametersFromConfigFiles) {
+            buildRule = lastSuccessful()
+            cleanDestination = true
+            artifactRules = "+:*"
+        }
+        snapshot(GetDocParametersFromConfigFiles) {
+            reuseBuilds = ReuseBuilds.NO
+            onDependencyFailure = FailureAction.CANCEL
+            onDependencyCancel = FailureAction.CANCEL
+        }
+    }
+
     steps {
         script {
             name = "Build webhelp from DITA"
@@ -1642,20 +1657,8 @@ object BuildDita : BuildType({
                 #!/bin/bash
                 set -xe
                 
-                export GW_PRODUCT=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.product[0]' %env.CONFIG_FILE%)                
-                export GW_PLATFORM=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.platform[0]' %env.CONFIG_FILE%)
-                export GW_VERSION=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).metadata.version' %env.CONFIG_FILE%)
-                export FILTER_PATH=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.filter' %env.CONFIG_FILE%)
-                export ROOT_MAP=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.root' %env.CONFIG_FILE%)
+                source %teamcity.build.workingDir%/doc_params.txt
 
-                export SOURCE_ID=${'$'}(jq -r --arg doc_id "${'$'}DOC_ID" '.docs | .[] | select(.id == ${'$'}doc_id).build.src' %env.CONFIG_FILE%)
-                export GIT_URL=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).gitUrl' %env.SOURCES_FILE%)
-                export GIT_BRANCH=${'$'}(jq -r --arg source_id "${'$'}SOURCE_ID" '.sources | .[] | select(.id == ${'$'}source_id).branch' %env.SOURCES_FILE%)
-                
-                if [[ "${'$'}GIT_BRANCH" == null ]]; then
-                  export GIT_BRANCH="master"
-                fi
-                
                 export WORKING_DIR=${'$'}(pwd)
                 export INPUT_PATH="input"
                 export OUTPUT_PATH="out"
@@ -1682,7 +1685,6 @@ object BuildDita : BuildType({
                  
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-
             """.trimIndent()
         }
 
