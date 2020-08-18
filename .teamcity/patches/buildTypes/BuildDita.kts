@@ -111,6 +111,12 @@ changeBuildType(RelativeId("BuildDita")) {
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
+        insert(1) {
+            script {
+                name = "Get the document sources from Git"
+                scriptContent = "git clone"
+            }
+        }
     }
 
     features {
