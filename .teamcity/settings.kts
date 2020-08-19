@@ -1628,6 +1628,23 @@ object GetDocParametersFromConfigFiles : BuildType({
     }
 })
 
+object TestExportFromXDocs : BuildType({
+    name = "Test export from XDocs"
+
+    params {
+        text("%reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval")
+        text("%reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git")
+    }
+
+    dependencies {
+        snapshot(ExportFilesFromXDocsToBitbucket) {
+            synchronizeRevisions = true
+            reuseBuilds = ReuseBuilds.NO
+            runOnSameAgent = true
+        }
+    }
+})
+
 object ExportFilesFromXDocsToBitbucket : BuildType({
     name = "Export files from XDocs to Bitbucket"
 
@@ -1863,6 +1880,7 @@ object ModularBuilds : Project({
 
     buildType(BuildInsuranceSuiteGuide)
     buildType(GetDocParametersFromConfigFiles)
+    buildType(TestExportFromXDocs)
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(BuildOutputFromDita)
     buildType(UploadContentToS3)
