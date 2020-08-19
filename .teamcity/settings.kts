@@ -1632,8 +1632,8 @@ object TestExportFromXDocs : BuildType({
     name = "Test export from XDocs"
 
     params {
-        text("%reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval")
-        text("%reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git")
+        text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval")
+        text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git")
     }
 
     dependencies {
@@ -1682,7 +1682,8 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 git config --global user.name "%serviceAccountUsername%"
                 
                 git clone --single-branch --branch master %env.GIT_URL% %env.SOURCES_ROOT%
-                chmod 777 %env.SOURCES_ROOT%
+                chmod -R 777 %env.XDOCS_EXPORT_DIR%
+                chmod -R 777 %env.SOURCES_ROOT%
                 
                 cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
                 cd %env.SOURCES_ROOT%
