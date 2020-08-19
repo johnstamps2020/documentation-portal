@@ -1709,7 +1709,7 @@ object BuildOutputFromDita : BuildType({
 
     maxRunningBuilds = 3
 
-    artifactRules = "out"
+    artifactRules = "out => out"
 
     params {
         text("env.GW_PRODUCT", "", allowEmpty = true)
