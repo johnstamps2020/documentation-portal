@@ -1709,8 +1709,9 @@ object BuildOutputFromDita : BuildType({
 
     maxRunningBuilds = 3
 
+    artifactRules = "out"
+
     params {
-        text("env.DOC_ID", "", allowEmpty = true)
         text("env.GW_PRODUCT", "", allowEmpty = true)
         text("env.GW_PLATFORM", "", allowEmpty = true)
         text("env.GW_VERSION", "", allowEmpty = true)
@@ -1718,7 +1719,6 @@ object BuildOutputFromDita : BuildType({
         text("env.ROOT_MAP", "", allowEmpty = true)
         text("env.GIT_URL", "", allowEmpty = true)
         text("env.GIT_BRANCH", "", allowEmpty = true)
-        text("env.PUBLISH_PATH", "", allowEmpty = true)
     }
 
     steps {
@@ -1765,22 +1765,41 @@ object BuildOutputFromDita : BuildType({
     }
 })
 
-object UploadContentToS3 : BuildType({
+object TestPublishGuide : BuildType({
     name = "Upload content to S3"
 
     params {
-        text("env.DEPLOY_ENV", "", allowEmpty = true)
-        text("env.PUBLISH_PATH", "", allowEmpty = true)
+        text("env.DEPLOY_ENV", "int", allowEmpty = true)
+        text("env.PUBLISH_PATH", "isconfigupgradetools/3x", allowEmpty = true)
         text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", allowEmpty = false)
+        text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PRODUCT", "InsuranceSuite Configuration Upgrade Tools", allowEmpty = true)
+        text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PLATFORM", "Cloud,Self-managed", allowEmpty = true)
+        text("reverse.dep.${BuildOutputFromDita.id}.env.GW_VERSION", "3.x.x", allowEmpty = true)
+        text("reverse.dep.${BuildOutputFromDita.id}.env.FILTER_PATH", "Other/GW-Generic-Draft.ditaval", allowEmpty = true)
+        text("reverse.dep.${BuildOutputFromDita.id}.env.ROOT_MAP", "_supermap.ditamap", allowEmpty = true)
+        text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git", allowEmpty = true)
+        text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", "master", allowEmpty = true)
+
     }
 
     steps {
         script {
             name = "Upload generated content to the S3 bucket"
             id = "UPLOAD_GENERATED_CONTENT"
-            scriptContent = "aws s3 sync ./out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
+            scriptContent = "aws s3 sync out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
         }
 
+    }
+
+    dependencies {
+        snapshot(BuildOutputFromDita) {
+            synchronizeRevisions = true
+            reuseBuilds = ReuseBuilds.NO
+            runOnSameAgent = true
+        }
+        artifacts(BuildOutputFromDita) {
+            artifactRules = "out"
+        }
     }
 })
 
@@ -1880,6 +1899,6 @@ object ModularBuilds : Project({
     buildType(TestExportFromXDocs)
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(BuildOutputFromDita)
-    buildType(UploadContentToS3)
+    buildType(TestPublishGuide)
     buildType(CrawlDocumentAndUpdateSearchIndex)
 })
