@@ -1766,7 +1766,7 @@ object BuildOutputFromDita : BuildType({
 })
 
 object TestPublishGuide : BuildType({
-    name = "Upload content to S3"
+    name = "Test publish a guide"
 
     params {
         text("env.DEPLOY_ENV", "int", allowEmpty = true)
