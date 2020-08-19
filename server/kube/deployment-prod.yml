@@ -18,6 +18,8 @@ spec:
       containers:
         - name: docportal
           image: 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:${TAG_VERSION}
+          command: ["/bin/sh", "-c"]
+          args: ["until wget -qO- http://localhost:15000/server_info | grep '\"state\": \"LIVE\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; npm start"]
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
