@@ -1813,8 +1813,8 @@ object TestPublishGuide : BuildType({
             runOnSameAgent = true
         }
         artifacts(BuildOutputFromDita) {
-            artifactRules = "out"
-        }
+            cleanDestination = true
+            artifactRules = "out => out"        }
     }
 })
 
