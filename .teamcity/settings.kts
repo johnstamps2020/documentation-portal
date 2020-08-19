@@ -1550,6 +1550,56 @@ object DeployServices : Project({
     buildType(DeploySearchService)
 })
 
+object HelperMethods {
+    private fun getSourcesFromConfig(): JSONArray {
+        val sourceConfigPath = "config/sources.json"
+        val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
+        return config.getJSONArray("sources")
+    }
+
+    fun createExportBuilds(): MutableList<BuildType> {
+        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String, git_path: String, branch_name: String) : BuildType({
+
+            id = RelativeId(build_id)
+            name = "Export $source_title from XDocs and add to git ($build_id)"
+
+            params {
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", export_path_ids)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", git_path)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_BRANCH", branch_name)
+            }
+
+            dependencies {
+                snapshot(ExportFilesFromXDocsToBitbucket) {
+                    synchronizeRevisions = true
+                    reuseBuilds = ReuseBuilds.NO
+                    runOnSameAgent = true
+                }
+            }
+        })
+
+        val builds = mutableListOf<BuildType>()
+        val sourceConfigs = getSourcesFromConfig()
+        for (i in 0 until sourceConfigs.length()) {
+            val source = sourceConfigs.getJSONObject(i)
+            val gitUrl: String = source.get("gitUrl").toString()
+            val sourceTitle: String = source.get("title").toString()
+            var branchName = "master"
+            if (source.has("branch")) {
+                branchName = source.getString("branch")
+            }
+
+            if (source.has("xdocsPathIds")) {
+                val exportBuildId: String = source.get("id").toString() + "_export"
+                val xdocsPathIds: String = source.getJSONArray("xdocsPathIds").joinToString(" ")
+
+                builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, sourceTitle, xdocsPathIds, gitUrl, branchName))
+            }
+        }
+        return builds
+    }
+}
+
 object BuildInsuranceSuiteGuide : BuildType({
     name = "Build an InsuranceSuite guide"
 
@@ -1628,23 +1678,6 @@ object GetDocParametersFromConfigFiles : BuildType({
     }
 })
 
-object TestExportFromXDocs : BuildType({
-    name = "Test export from XDocs"
-
-    params {
-        text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap /SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval /SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval")
-        text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git")
-    }
-
-    dependencies {
-        snapshot(ExportFilesFromXDocsToBitbucket) {
-            synchronizeRevisions = true
-            reuseBuilds = ReuseBuilds.NO
-            runOnSameAgent = true
-        }
-    }
-})
-
 object ExportFilesFromXDocsToBitbucket : BuildType({
     name = "Export files from XDocs to Bitbucket"
 
@@ -1653,6 +1686,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
     params {
         text("env.EXPORT_PATH_IDS", "", allowEmpty = true)
         text("env.GIT_URL", "", allowEmpty = true)
+        text("env.GIT_BRANCH", "", allowEmpty = true)
         text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", description = "Directory for the repo cloned from Bitbucket", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
     }
@@ -1680,7 +1714,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 set -xe
                 git config --global user.email "doctools@guidewire.com"
                 git config --global user.name "%serviceAccountUsername%"
-                git clone --single-branch --branch master %env.GIT_URL% %env.SOURCES_ROOT%
+                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
                 cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
                 cd %env.SOURCES_ROOT%
                 git add -A
@@ -1814,7 +1848,8 @@ object TestPublishGuide : BuildType({
         }
         artifacts(BuildOutputFromDita) {
             cleanDestination = true
-            artifactRules = "out => out"        }
+            artifactRules = "out => out"
+        }
     }
 })
 
@@ -1906,12 +1941,19 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
     }
 })
 
+object ExportSourcesFromXDocs : Project({
+    name = "Export sources from XDocs"
+
+    val builds = HelperMethods.createExportBuilds()
+    builds.forEach(this::buildType)
+})
+
 object ModularBuilds : Project({
     name = "Modular builds"
 
+    subProject(ExportSourcesFromXDocs)
     buildType(BuildInsuranceSuiteGuide)
     buildType(GetDocParametersFromConfigFiles)
-    buildType(TestExportFromXDocs)
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(BuildOutputFromDita)
     buildType(TestPublishGuide)
