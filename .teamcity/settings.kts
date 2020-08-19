@@ -1709,7 +1709,7 @@ object BuildOutputFromDita : BuildType({
 
     maxRunningBuilds = 3
 
-    artifactRules = "out"
+    artifactRules = "out => out"
 
     params {
         text("env.GW_PRODUCT", "", allowEmpty = true)
@@ -1766,9 +1766,11 @@ object BuildOutputFromDita : BuildType({
 })
 
 object TestPublishGuide : BuildType({
-    name = "Upload content to S3"
+    name = "Test publish a guide"
 
     params {
+        password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+        text("env.DOC_ID", "isconfigupgradetools3x", allowEmpty = true)
         text("env.DEPLOY_ENV", "int", allowEmpty = true)
         text("env.PUBLISH_PATH", "isconfigupgradetools/3x", allowEmpty = true)
         text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", allowEmpty = false)
@@ -1788,7 +1790,20 @@ object TestPublishGuide : BuildType({
             id = "UPLOAD_GENERATED_CONTENT"
             scriptContent = "aws s3 sync out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
         }
+        script {
+            name = "Trigger index update"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
 
+                curl -X POST -H "Content-Type: application/xml" \
+                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                    -H "Accept: application/json" \
+                    -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
+                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+
+            """.trimIndent()
+        }
     }
 
     dependencies {
