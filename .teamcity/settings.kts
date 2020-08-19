@@ -1680,11 +1680,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 set -xe
                 git config --global user.email "doctools@guidewire.com"
                 git config --global user.name "%serviceAccountUsername%"
-                
                 git clone --single-branch --branch master %env.GIT_URL% %env.SOURCES_ROOT%
-                chmod -R 777 %env.XDOCS_EXPORT_DIR%
-                chmod -R 777 %env.SOURCES_ROOT%
-                
                 cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
                 cd %env.SOURCES_ROOT%
                 git add -A
