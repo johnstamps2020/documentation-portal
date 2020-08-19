@@ -1654,7 +1654,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
         text("env.EXPORT_PATH_IDS", "", allowEmpty = true)
         text("env.GIT_URL", "", allowEmpty = true)
         text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", description = "Directory for the repo cloned from Bitbucket", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir ", allowEmpty = false)
+        text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
     }
 
     vcs {
