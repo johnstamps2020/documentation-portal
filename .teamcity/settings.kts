@@ -1832,10 +1832,13 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
             name = "Publish broken links report to S3"
             id = "PUBLISH_BROKEN_LINKS_REPORT"
             scriptContent = """
+                #!/bin/bash
+                set -xe
+                
                 if [[ %env.DEPLOY_ENV% != "prod" ]]; then
                     aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_ID%
                 fi
-    `       """.trimIndent()
+            """.trimIndent()
         }
 
     }
