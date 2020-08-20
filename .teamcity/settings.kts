@@ -1824,7 +1824,7 @@ object HelperMethods {
 
     fun getContentProjectFromConfig(env: String): Project {
         return Project {
-            id = RelativeId("DeployContentTo$env")
+            id = RelativeId("DeployContent_$env")
             name = "Deploy content to $env"
 
             val builds = createPublishBuildsFromConfig(env)
