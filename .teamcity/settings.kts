@@ -1676,7 +1676,7 @@ object HelperMethods {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 artifacts(BuildOutputFromDita) {
-                    artifactRules = "out/out.zip => out/out.zip"
+                    artifactRules = "out => out"
                 }
             }
         })
@@ -1978,7 +1978,7 @@ object BuildOutputFromDita : BuildType({
 
     maxRunningBuilds = 3
 
-    artifactRules = "out/out.zip => out/out.zip"
+    artifactRules = "out => out"
 
     params {
         text("env.GW_PRODUCT", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
