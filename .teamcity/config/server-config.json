@@ -1521,30 +1521,7 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "dxceamcloudstaging",
-      "title": "CustomerEngage Account Management",
-      "url": "cloud/dx/ce-am/202005",
-      "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
-        "product": ["CustomerEngage Account Management"],
-        "platform": ["Cloud"],
-        "version": "2020.05",
-        "category": ["Digital"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-am-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "dxceqbcloudstaging",
+      "id": "dxceqb202005cloudstaging",
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202005",
       "metadata": {
@@ -1558,16 +1535,10 @@
         "version": "2020.05",
         "category": ["Digital"]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-qb-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
-      },
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "dxapdcloudstaging",
+      "id": "dxapd202005cloudstaging",
       "title": "Digital Code Generation",
       "url": "cloud/dx/apd/202005",
       "visible": false,
@@ -1578,16 +1549,10 @@
         "version": "2020.05",
         "category": ["Digital"]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-apd-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
-      },
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "dxpecloudstaging",
+      "id": "dxpe202005cloudstaging",
       "title": "ProducerEngage",
       "url": "cloud/dx/pe/202005",
       "metadata": {
@@ -1601,16 +1566,10 @@
         "version": "2020.05",
         "category": ["Digital"]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
-      },
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "dxsrecloudstaging",
+      "id": "dxsre202005cloudstaging",
       "title": "ServiceRepEngage",
       "url": "cloud/dx/sre/202005",
       "metadata": {
@@ -1622,6 +1581,92 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": "2020.05",
+        "category": ["Digital"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceam202008cloudstaging",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/202008",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": "2020.08",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceqb202008cloudstaging",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/202008",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": "2020.08",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxpe202008cloudstaging",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/202008",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": "2020.08",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxsre202008cloudstaging",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/202008",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": "2020.08",
         "category": ["Digital"]
       },
       "build": {
