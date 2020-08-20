@@ -1598,6 +1598,8 @@ object HelperMethods {
         }
         return builds
     }
+
+
 }
 
 object BuildInsuranceSuiteGuide : BuildType({
@@ -1684,11 +1686,11 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
     maxRunningBuilds = 2
 
     params {
-        text("env.EXPORT_PATH_IDS", "", allowEmpty = true)
-        text("env.GIT_URL", "", allowEmpty = true)
-        text("env.GIT_BRANCH", "", allowEmpty = true)
-        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", description = "Directory for the repo cloned from Bitbucket", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", allowEmpty = false)
+        text("env.EXPORT_PATH_IDS", "", description = "A list of space-separated path IDs from XDocs", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_URL", "", description = "The URL of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_BRANCH", "", description = "The branch of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", display = ParameterDisplay.HIDDEN, allowEmpty = false)
     }
 
     vcs {
@@ -1703,6 +1705,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             id = "EXPORT_FILES_FROM_XDOCS"
             workingDir = "LocalClient/sample/local/bin"
             scriptContent = """
+                #!/bin/bash
                 chmod 777 runExport.sh
                 for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
             """.trimIndent()
@@ -1711,6 +1714,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             name = "Add exported files to Bitbucket"
             id = "RUNNER_2622"
             scriptContent = """
+                #!/bin/bash
                 set -xe
                 git config --global user.email "doctools@guidewire.com"
                 git config --global user.name "%serviceAccountUsername%"
