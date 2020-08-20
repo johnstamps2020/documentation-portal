@@ -1521,6 +1521,29 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
+      "id": "dxceamcloudstaging",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/202005",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": "2020.05",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
       "id": "dxceqbcloudstaging",
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202005",
