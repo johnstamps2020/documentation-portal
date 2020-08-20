@@ -1557,6 +1557,21 @@ object HelperMethods {
         return config.getJSONArray("sources")
     }
 
+    private fun getSourceById(sourceId: String, sourceList: JSONArray): Pair<String, String> {
+        for (i in 0 until sourceList.length()) {
+            val source = sourceList.getJSONObject(i)
+            if (source.getString("id") == sourceId) {
+                var sourceGitBranch = ""
+                val sourceGitUrl = source.getString("gitUrl")
+                if (source.has("branch")) {
+                    sourceGitBranch = source.getString("branch")
+                }
+                return Pair(sourceGitUrl, sourceGitBranch)
+            }
+        }
+        return Pair("", "")
+    }
+
     fun createExportBuilds(): MutableList<BuildType> {
         class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String, git_path: String, branch_name: String) : BuildType({
 
@@ -1599,7 +1614,213 @@ object HelperMethods {
         return builds
     }
 
+    private fun getBuildsFromConfig(env: String): MutableList<BuildType> {
 
+        class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String) : BuildType({
+            id = RelativeId(doc_id + build_env + "_modular")
+            name = build_name
+            maxRunningBuilds = 1
+
+            params {
+                password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+                text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+
+            }
+
+            steps {
+                script {
+                    name = "Upload generated content to the S3 bucket"
+                    id = "UPLOAD_GENERATED_CONTENT"
+                    scriptContent = "aws s3 sync out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
+                }
+                script {
+                    name = "Trigger index update"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+        
+                        curl -X POST -H "Content-Type: application/xml" \
+                            -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                            -H "Accept: application/json" \
+                            -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
+                            https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+        
+                    """.trimIndent()
+                }
+            }
+
+            dependencies {
+                snapshot(BuildOutputFromDita) {
+                    synchronizeRevisions = true
+                    reuseBuilds = ReuseBuilds.NO
+                    runOnSameAgent = true
+                }
+                artifacts(BuildOutputFromDita) {
+                    cleanDestination = true
+                    artifactRules = "out => out"
+                }
+            }
+        })
+
+        class PublishToS3ProdAbstract(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
+            id = RelativeId(doc_id + build_env + "_modular")
+            name = "Copy $title $doc_platform $doc_version from Staging to Prod ($doc_id)"
+
+            params {
+                password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+                text("TOOLS_ROOT", "tools_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("CONFIG_FILE_URL", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("APP_BASE_URL", "https://docs.guidewire.com", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("DOC_S3_URL", "https://ditaot.internal.us-east-2.service.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("INDEX_NAME", "gw-docs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("PUBLISH_PATH", relative_copy_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            }
+
+            steps {
+                script {
+                    id = "COPY_FROM_STAGING_TO_PROD"
+                    name = "Copy from S3 on staging to S3 on Prod"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        echo "Copying from staging to Teamcity"
+                        aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path $relative_copy_path/ --delete
+                        
+                        echo "Setting credentials to access prod"
+                        export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                        export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                        export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                        
+                        echo "Uploading from Teamcity to prod"
+                        aws s3 sync $relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
+                    """.trimIndent()
+                }
+                script {
+                    id = "TRIGGER_INDEX_UPDATE"
+                    name = "Trigger index update"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+        
+                        curl -X POST -H "Content-Type: application/xml" \
+                            -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                            -H "Accept: application/json" \
+                            -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
+                            https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+        
+                    """.trimIndent()
+                }
+
+            }
+
+        })
+
+        class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
+            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
+
+            id = RelativeId(doc_id + build_env + "_modular")
+            name = build_name
+
+            params {
+                text("SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("FORMAT", "html5", allowEmpty = false)
+                text("DITA_OUTPUT_DIR", "%system.teamcity.build.tempDir%/out", allowEmpty = false)
+                text("OUTPUT_DIR", "%system.teamcity.build.tempDir%/html5", allowEmpty = false)
+                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
+                text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
+                text("INPUT_PATH", input_path, allowEmpty = false)
+                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
+                text("PUBLISH_PATH", publish_path, allowEmpty = false)
+                text("CONFIG_FILE_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
+                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("DOC_ID", doc_id, allowEmpty = false)
+                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
+                text("INDEX_NAME", "gw-docs", allowEmpty = false)
+            }
+
+            vcs {
+                root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
+            }
+
+
+        })
+
+        val configPath = "config/server-config.json"
+        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
+
+        val builds = mutableListOf<BuildType>()
+
+        val docConfigs = config.getJSONArray("docs")
+        for (i in 0 until docConfigs.length()) {
+            val doc = docConfigs.getJSONObject(i)
+            if (doc.has("build")) {
+                val buildId = doc.getString("id")
+                val publishPath = doc.getString("url")
+                val title = doc.getString("title")
+
+                val metadata = doc.getJSONObject("metadata")
+                val product = metadata.getJSONArray("product")[0].toString()
+                val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
+                val version = metadata.getString("version")
+                val environments = doc.getJSONArray("environments")
+
+                val buildName = "Build $title $platform $version ($buildId)"
+
+                val build: JSONObject = doc.getJSONObject("build")
+                val buildType = build.getString("buildType")
+                var filter = ""
+                if (build.has("filter")) {
+                    filter = build.getString("filter")
+                }
+
+                val root = build.getString("root")
+                val vcsRootId = build.getString("src")
+                val sourcesFromConfig = getSourcesFromConfig()
+                val (sourceGitUrl, sourceGitBranch) = getSourceById(vcsRootId, sourcesFromConfig)
+
+                if (environments.contains(env)) {
+                    if (env == "prod") {
+                        builds.add(PublishToS3ProdAbstract(publishPath, title, buildId, version, platform, env))
+                    } else {
+                        if (buildType == "dita-dev") {
+                            builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
+                                    publishPath, vcsRootId))
+                        } else {
+                            builds.add(PublishToS3(product, platform, version, buildId, buildName, filter, root, env,
+                                    publishPath, sourceGitUrl, sourceGitBranch))
+                        }
+                    }
+                }
+            }
+        }
+
+        return builds
+    }
+
+    fun getContentProjectFromConfig(env: String): Project {
+        return Project {
+            id = RelativeId("DeployContentTo$env")
+            name = "Deploy content to $env"
+
+            val builds = getBuildsFromConfig(env)
+            builds.forEach(this::buildType)
+        }
+    }
 }
 
 object BuildInsuranceSuiteGuide : BuildType({
@@ -1803,60 +2024,6 @@ object BuildOutputFromDita : BuildType({
     }
 })
 
-object TestPublishGuide : BuildType({
-    name = "Test publish a guide"
-
-    params {
-        password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
-        text("env.DOC_ID", "isconfigupgradetools3x", allowEmpty = true)
-        text("env.DEPLOY_ENV", "int", allowEmpty = true)
-        text("env.PUBLISH_PATH", "isconfigupgradetools/3x", allowEmpty = true)
-        text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", allowEmpty = false)
-        text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PRODUCT", "InsuranceSuite Configuration Upgrade Tools", allowEmpty = true)
-        text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PLATFORM", "Cloud,Self-managed", allowEmpty = true)
-        text("reverse.dep.${BuildOutputFromDita.id}.env.GW_VERSION", "3.x.x", allowEmpty = true)
-        text("reverse.dep.${BuildOutputFromDita.id}.env.FILTER_PATH", "Other/GW-Generic-Draft.ditaval", allowEmpty = true)
-        text("reverse.dep.${BuildOutputFromDita.id}.env.ROOT_MAP", "_supermap.ditamap", allowEmpty = true)
-        text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git", allowEmpty = true)
-        text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", "master", allowEmpty = true)
-
-    }
-
-    steps {
-        script {
-            name = "Upload generated content to the S3 bucket"
-            id = "UPLOAD_GENERATED_CONTENT"
-            scriptContent = "aws s3 sync out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
-        }
-        script {
-            name = "Trigger index update"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-
-                curl -X POST -H "Content-Type: application/xml" \
-                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
-                    -H "Accept: application/json" \
-                    -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
-                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
-
-            """.trimIndent()
-        }
-    }
-
-    dependencies {
-        snapshot(BuildOutputFromDita) {
-            synchronizeRevisions = true
-            reuseBuilds = ReuseBuilds.NO
-            runOnSameAgent = true
-        }
-        artifacts(BuildOutputFromDita) {
-            cleanDestination = true
-            artifactRules = "out => out"
-        }
-    }
-})
-
 object CrawlDocumentAndUpdateSearchIndex : BuildType({
     name = "Update the search index"
     artifactRules = """
@@ -1965,7 +2132,10 @@ object ModularBuilds : Project({
 
     subProject(CoreBuilds)
     subProject(ExportSourcesFromXDocs)
+    subProject(HelperMethods.getContentProjectFromConfig("dev"))
+    subProject(HelperMethods.getContentProjectFromConfig("int"))
+    subProject(HelperMethods.getContentProjectFromConfig("staging"))
+    subProject(HelperMethods.getContentProjectFromConfig("prod"))
     buildType(BuildInsuranceSuiteGuide)
     buildType(GetDocParametersFromConfigFiles)
-    buildType(TestPublishGuide)
 })
