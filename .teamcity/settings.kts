@@ -2199,6 +2199,7 @@ object ModularBuilds : Project({
 
     subProject(CoreBuilds)
     subProject(XdocsExportBuilds)
+    subProject(TriggerBuilds)
     subProject(HelperMethods.getContentProjectFromConfig("dev"))
     subProject(HelperMethods.getContentProjectFromConfig("int"))
     subProject(HelperMethods.getContentProjectFromConfig("staging"))
