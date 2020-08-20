@@ -1642,7 +1642,15 @@ object HelperMethods {
                 script {
                     name = "Upload generated content to the S3 bucket"
                     id = "UPLOAD_GENERATED_CONTENT"
-                    scriptContent = "aws s3 sync out s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export OUT_DIR="out/extracted"
+                        
+                        unzip out/out.zip -d ${'$'}OUT_DIR && rm -rf ${'$'}OUT_DIR/out.zip
+                        aws s3 sync ${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
+                    """.trimIndent()
                 }
                 script {
                     name = "Trigger index update"
@@ -1668,7 +1676,7 @@ object HelperMethods {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 artifacts(BuildOutputFromDita) {
-                    artifactRules = "out => out"
+                    artifactRules = "out/out.zip => out/out.zip"
                 }
             }
         })
@@ -1969,7 +1977,7 @@ object BuildOutputFromDita : BuildType({
 
     maxRunningBuilds = 3
 
-    artifactRules = "out => out"
+    artifactRules = "out/out.zip => out/out.zip"
 
     params {
         text("env.GW_PRODUCT", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
@@ -2015,6 +2023,16 @@ object BuildOutputFromDita : BuildType({
                   --gw-version "%env.GW_VERSION%" \
                   --create-index-redirect yes \
                   --webhelp.publication.toc.links all
+                 
+                echo "Creating a ZIP package"
+                packageName=out.zip"
+                outputDir="${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
+                cd "${'$'}outputDir" || exit
+                zip -r ../"${'$'}packageName" *
+                cd .. &&
+                  rm -rf "${'$'}outputDir" &&
+                  mkdir "${'$'}outputDir" &&
+                  mv "${'$'}packageName" "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"/
                  
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
