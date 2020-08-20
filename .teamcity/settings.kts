@@ -1668,7 +1668,6 @@ object HelperMethods {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 artifacts(BuildOutputFromDita) {
-                    cleanDestination = true
                     artifactRules = "out => out"
                 }
             }
