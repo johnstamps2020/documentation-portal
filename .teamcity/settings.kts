@@ -1980,6 +1980,10 @@ object BuildOutputFromDita : BuildType({
         text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
+    vcs {
+        cleanCheckout = true
+    }
+
     steps {
         script {
             name = "Build webhelp from DITA"
