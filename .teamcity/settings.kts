@@ -1572,7 +1572,7 @@ object HelperMethods {
         return Pair("", "")
     }
 
-    fun createExportBuilds(): MutableList<BuildType> {
+    fun createExportBuildsFromConfig(): MutableList<BuildType> {
         class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String, git_path: String, branch_name: String) : BuildType({
 
             id = RelativeId(build_id)
@@ -1589,6 +1589,7 @@ object HelperMethods {
                     synchronizeRevisions = true
                     reuseBuilds = ReuseBuilds.NO
                     runOnSameAgent = true
+                    onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
         })
@@ -1614,7 +1615,7 @@ object HelperMethods {
         return builds
     }
 
-    private fun getBuildsFromConfig(env: String): MutableList<BuildType> {
+    private fun createPublishBuildsFromConfig(env: String): MutableList<BuildType> {
 
         class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String) : BuildType({
             id = RelativeId(doc_id + build_env + "_modular")
@@ -1664,9 +1665,9 @@ object HelperMethods {
                     synchronizeRevisions = true
                     reuseBuilds = ReuseBuilds.NO
                     runOnSameAgent = true
+                    onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 artifacts(BuildOutputFromDita) {
-                    cleanDestination = true
                     artifactRules = "out => out"
                 }
             }
@@ -1817,7 +1818,7 @@ object HelperMethods {
             id = RelativeId("DeployContentTo$env")
             name = "Deploy content to $env"
 
-            val builds = getBuildsFromConfig(env)
+            val builds = createPublishBuildsFromConfig(env)
             builds.forEach(this::buildType)
         }
     }
@@ -2127,7 +2128,7 @@ object CoreBuilds : Project({
 object ExportSourcesFromXDocs : Project({
     name = "Export sources from XDocs"
 
-    val builds = HelperMethods.createExportBuilds()
+    val builds = HelperMethods.createExportBuildsFromConfig()
     builds.forEach(this::buildType)
 })
 
