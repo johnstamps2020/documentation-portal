@@ -1750,13 +1750,13 @@ object BuildOutputFromDita : BuildType({
     artifactRules = "out => out"
 
     params {
-        text("env.GW_PRODUCT", "", allowEmpty = true)
-        text("env.GW_PLATFORM", "", allowEmpty = true)
-        text("env.GW_VERSION", "", allowEmpty = true)
-        text("env.FILTER_PATH", "", allowEmpty = true)
-        text("env.ROOT_MAP", "", allowEmpty = true)
-        text("env.GIT_URL", "", allowEmpty = true)
-        text("env.GIT_BRANCH", "", allowEmpty = true)
+        text("env.GW_PRODUCT", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GW_PLATFORM", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GW_VERSION", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.FILTER_PATH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.ROOT_MAP", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     steps {
@@ -1863,10 +1863,9 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
         **/*.log => logs
     """.trimIndent()
 
-
     params {
-        text("env.DEPLOY_ENV", "", allowEmpty = true)
-        text("env.DOC_ID", "", allowEmpty = true)
+        text("env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.DOC_ID", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
         text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
         text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -1945,6 +1944,15 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
     }
 })
 
+object CoreBuilds : Project({
+    name = "Core builds"
+    description = "Builds used as a service to other builds. You can also run the core builds manually."
+
+    buildType(ExportFilesFromXDocsToBitbucket)
+    buildType(BuildOutputFromDita)
+    buildType(CrawlDocumentAndUpdateSearchIndex)
+})
+
 object ExportSourcesFromXDocs : Project({
     name = "Export sources from XDocs"
 
@@ -1955,11 +1963,9 @@ object ExportSourcesFromXDocs : Project({
 object ModularBuilds : Project({
     name = "Modular builds"
 
+    subProject(CoreBuilds)
     subProject(ExportSourcesFromXDocs)
     buildType(BuildInsuranceSuiteGuide)
     buildType(GetDocParametersFromConfigFiles)
-    buildType(ExportFilesFromXDocsToBitbucket)
-    buildType(BuildOutputFromDita)
     buildType(TestPublishGuide)
-    buildType(CrawlDocumentAndUpdateSearchIndex)
 })
