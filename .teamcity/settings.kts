@@ -1972,6 +1972,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
     }
 })
 
+//TODO: Add logic for resources and other cases from Helpers.BuildAndUploadToS3Abstract
 object BuildOutputFromDita : BuildType({
     name = "Build the output from DITA"
 
@@ -2025,7 +2026,7 @@ object BuildOutputFromDita : BuildType({
                   --webhelp.publication.toc.links all
                  
                 echo "Creating a ZIP package"
-                packageName=out.zip"
+                packageName="out.zip"
                 outputDir="${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
                 cd "${'$'}outputDir" || exit
                 zip -r ../"${'$'}packageName" *
@@ -2134,6 +2135,12 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
     }
 })
 
+object TriggerXdocsExportBuilds : BuildType({
+    name = "Trigger XDocs export builds"
+
+
+})
+
 object CoreBuilds : Project({
     name = "Core builds"
     description = "Builds used as a service to other builds. You can also run the core builds manually."
@@ -2143,18 +2150,24 @@ object CoreBuilds : Project({
     buildType(CrawlDocumentAndUpdateSearchIndex)
 })
 
-object ExportSourcesFromXDocs : Project({
-    name = "Export sources from XDocs"
+object XdocsExportBuilds : Project({
+    name = "XDocs export builds"
 
     val builds = HelperMethods.createExportBuildsFromConfig()
     builds.forEach(this::buildType)
+})
+
+object TriggerBuilds : Project({
+    name = "Trigger builds"
+
+    buildType(TriggerXdocsExportBuilds)
 })
 
 object ModularBuilds : Project({
     name = "Modular builds"
 
     subProject(CoreBuilds)
-    subProject(ExportSourcesFromXDocs)
+    subProject(XdocsExportBuilds)
     subProject(HelperMethods.getContentProjectFromConfig("dev"))
     subProject(HelperMethods.getContentProjectFromConfig("int"))
     subProject(HelperMethods.getContentProjectFromConfig("staging"))
