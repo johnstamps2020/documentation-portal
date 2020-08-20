@@ -1521,71 +1521,6 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "dxceqb202005cloudstaging",
-      "title": "CustomerEngage Quote and Buy",
-      "url": "cloud/dx/ce-qb/202005",
-      "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
-        "product": ["CustomerEngage Quote and Buy"],
-        "platform": ["Cloud"],
-        "version": "2020.05",
-        "category": ["Digital"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "dxapd202005cloudstaging",
-      "title": "Digital Code Generation",
-      "url": "cloud/dx/apd/202005",
-      "visible": false,
-      "metadata": {
-        "productFamily": ["PolicyCenter Cloud"],
-        "product": ["Digital Code Generation"],
-        "platform": ["Cloud"],
-        "version": "2020.05",
-        "category": ["Digital"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "dxpe202005cloudstaging",
-      "title": "ProducerEngage",
-      "url": "cloud/dx/pe/202005",
-      "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
-        "product": ["ProducerEngage"],
-        "platform": ["Cloud"],
-        "version": "2020.05",
-        "category": ["Digital"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "dxsre202005cloudstaging",
-      "title": "ServiceRepEngage",
-      "url": "cloud/dx/sre/202005",
-      "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
-        "product": ["ServiceRepEngage"],
-        "platform": ["Cloud"],
-        "version": "2020.05",
-        "category": ["Digital"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
       "id": "dxceam202008cloudstaging",
       "title": "CustomerEngage Account Management",
       "url": "cloud/dx/ce-am/202008",
@@ -1674,6 +1609,71 @@
         "filter": "Digital-sre-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceqb202005cloudstaging",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/202005",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": "2020.05",
+        "category": ["Digital"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxapd202005cloudstaging",
+      "title": "Digital Code Generation",
+      "url": "cloud/dx/apd/202005",
+      "visible": false,
+      "metadata": {
+        "productFamily": ["PolicyCenter Cloud"],
+        "product": ["Digital Code Generation"],
+        "platform": ["Cloud"],
+        "version": "2020.05",
+        "category": ["Digital"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxpe202005cloudstaging",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/202005",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": "2020.05",
+        "category": ["Digital"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxsre202005cloudstaging",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/202005",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": "2020.05",
+        "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
     },
