@@ -1561,7 +1561,7 @@ object HelperMethods {
         for (i in 0 until sourceList.length()) {
             val source = sourceList.getJSONObject(i)
             if (source.getString("id") == sourceId) {
-                var sourceGitBranch = ""
+                var sourceGitBranch = "master"
                 val sourceGitUrl = source.getString("gitUrl")
                 if (source.has("branch")) {
                     sourceGitBranch = source.getString("branch")
