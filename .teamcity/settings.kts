@@ -1646,9 +1646,9 @@ object HelperMethods {
                         #!/bin/bash
                         set -xe
                         
-                        export OUT_DIR="out/extracted"
+                        export OUT_DIR="./out/extracted"
                         
-                        unzip out/out.zip -d ${'$'}OUT_DIR && rm -rf ${'$'}OUT_DIR/out.zip
+                        unzip ./out/out.zip -d ${'$'}OUT_DIR && rm -rf ${'$'}OUT_DIR/out.zip
                         aws s3 sync ${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                     """.trimIndent()
                 }
