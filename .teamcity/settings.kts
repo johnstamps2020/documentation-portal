@@ -1677,6 +1677,7 @@ object HelperMethods {
                 }
                 artifacts(BuildOutputFromDita) {
                     artifactRules = "out => out"
+                    cleanDestination = true
                 }
             }
         })
