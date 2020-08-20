@@ -1645,11 +1645,11 @@ object HelperMethods {
                     scriptContent = """
                         #!/bin/bash
                         set -xe
+                        export WORKING_DIR=${'$'}(pwd)
+                        export OUT_DIR="out/extracted"
                         
-                        export OUT_DIR="./out/extracted"
-                        
-                        unzip ./out/out.zip -d ${'$'}OUT_DIR && rm -rf ${'$'}OUT_DIR/out.zip
-                        aws s3 sync ${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
+                        unzip ${'$'}WORKING_DIR/out/out.zip -d ${'$'}WORKING_DIR/${'$'}OUT_DIR && rm -rf ${'$'}WORKING_DIR/${'$'}OUT_DIR/out.zip
+                        aws s3 sync ${'$'}WORKING_DIR/${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                     """.trimIndent()
                 }
                 script {
@@ -2138,7 +2138,38 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
 object TriggerXdocsExportBuilds : BuildType({
     name = "Trigger XDocs export builds"
 
+    params {
+        password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+    }
 
+    steps {
+        script {
+            name = "Trigger all export builds through the API"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                BUILD_TYPES_FILE=build_types.json
+                
+                curl -o ${'$'}BUILD_TYPES_FILE -H "Content-Type: application/xml" \
+                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                    -H "Accept: application/json" \
+                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/projects/id:${XdocsExportBuilds.id}
+                
+                buildIds=${'$'}(jq -r '.buildTypes.buildType[].id' ${'$'}BUILD_TYPES_FILE)
+                for buildId in ${'$'}buildIds
+                do
+                  echo "Starting the export build for id ${'$'}{buildId}"
+                  curl -X POST -H "Content-Type: application/xml" \
+                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                    -H "Accept: application/json" \
+                    -d '<build><buildType id="'"${'$'}buildId"'"/></build>' \
+                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+                done
+            """.trimIndent()
+        }
+    }
+//TODO: Add a schedule trigger
 })
 
 object CoreBuilds : Project({
@@ -2168,6 +2199,7 @@ object ModularBuilds : Project({
 
     subProject(CoreBuilds)
     subProject(XdocsExportBuilds)
+    subProject(TriggerBuilds)
     subProject(HelperMethods.getContentProjectFromConfig("dev"))
     subProject(HelperMethods.getContentProjectFromConfig("int"))
     subProject(HelperMethods.getContentProjectFromConfig("staging"))
