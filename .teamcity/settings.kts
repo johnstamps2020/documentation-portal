@@ -2029,7 +2029,7 @@ object BuildOutputFromDita : BuildType({
                 docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
                 docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
 
-                echo "Building webhelp for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION% using filter %env.FILTER_PATH%"
+                echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 ${'$'}DITA_BASE_COMMAND
                 
                 echo "Creating a ZIP package"
