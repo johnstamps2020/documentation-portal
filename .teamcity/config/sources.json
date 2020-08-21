@@ -132,7 +132,7 @@
     },
     {
       "id": "exportis908",
-      "title": "InsuranceSuite OnPrem 9",
+      "title": "InsuranceSuite OnPrem 9.0.8",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
       "branch": "9.0.8",
