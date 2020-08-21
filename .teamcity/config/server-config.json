@@ -2204,6 +2204,12 @@
         "version": "9.0.8",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportis908"
+      },
       "environments": ["dev", "staging", "prod"]
     },
     {
@@ -2659,6 +2665,12 @@
         "product": ["ClaimCenter"],
         "version": "9.0.8",
         "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportis908"
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3235,6 +3247,12 @@
         "product": ["PolicyCenter"],
         "version": "9.0.8",
         "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "exportis908"
       },
       "environments": ["dev", "staging", "prod"]
     },

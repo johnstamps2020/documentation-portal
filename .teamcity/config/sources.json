@@ -131,6 +131,19 @@
       ]
     },
     {
+      "id": "exportis908",
+      "title": "InsuranceSuite OnPrem 9",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+      "branch": "9.0.8",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/9.x/releases/908/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
       "id": "dxstaging",
       "title": "Digital",
       "sourceType": "git",
