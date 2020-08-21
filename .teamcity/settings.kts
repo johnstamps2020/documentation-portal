@@ -2014,7 +2014,7 @@ object BuildOutputFromDita : BuildType({
                 
                 git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}WORKING_DIR/${'$'}INPUT_PATH
                 
-                export DITA_BASE_COMMAND="docker run -i -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i /src/"${'$'}INPUT_PATH"/"%env.ROOT_MAP%" -o /src/"${'$'}OUTPUT_PATH" --filter /src/"${'$'}INPUT_PATH"/"%env.FILTER_PATH%" --use-doc-portal-params yes --gw-product "%env.GW_PRODUCT%" --gw-platform "%env.GW_PLATFORM%" --gw-version "%env.GW_VERSION%" --create-index-redirect no --webhelp.publication.toc.links chapter"
+                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/${'$'}INPUT_PATH/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --filter \"/src/${'$'}INPUT_PATH/%env.FILTER_PATH%\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
                 
                 SECONDS=0
                 docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
