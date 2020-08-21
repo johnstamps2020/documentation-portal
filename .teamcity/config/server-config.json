@@ -1687,6 +1687,12 @@
         "version": "10.0.3",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "selfmanagedis1003src"
+      },
       "environments": ["dev", "staging", "prod"]
     },
     {
@@ -1699,6 +1705,12 @@
         "version": "10.0.3",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "selfmanagedis1003src"
+      },
       "environments": ["dev", "staging", "prod"]
     },
     {
@@ -1710,6 +1722,12 @@
         "product": ["PolicyCenter"],
         "version": "10.0.3",
         "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Release.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "selfmanagedis1003src"
       },
       "environments": ["dev", "staging", "prod"]
     },
