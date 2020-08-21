@@ -1622,6 +1622,11 @@ object HelperMethods {
             name = build_name
             maxRunningBuilds = 1
 
+            var build_pdf = "true"
+            if (build_env == "int") {
+                build_pdf = "false"
+            }
+
             params {
                 password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
                 text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1635,7 +1640,7 @@ object HelperMethods {
                 text("reverse.dep.${BuildOutputFromDita.id}.env.ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-
+                text("reverse.dep.${BuildOutputFromDita.id}.env.BUILD_PDF", build_pdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             steps {
@@ -1989,42 +1994,38 @@ object BuildOutputFromDita : BuildType({
         text("env.ROOT_MAP", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
         text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
         text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.BUILD_PDF", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
         cleanCheckout = true
     }
-
+//TODO: Add a condition for the DITA filter path
     steps {
         script {
             name = "Build webhelp from DITA"
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                
+
                 export WORKING_DIR=${'$'}(pwd)
                 export INPUT_PATH="input"
                 export OUTPUT_PATH="out"
                 
                 git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}WORKING_DIR/${'$'}INPUT_PATH                
                 
+                export DITA_BASE_COMMAND="docker run -i -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i /src/"${'$'}INPUT_PATH"/"%env.ROOT_MAP%" -o /src/"${'$'}OUTPUT_PATH" --filter /src/""${'$'}"INPUT_PATH"/"%env.FILTER_PATH%" --use-doc-portal-params yes --gw-product "%env.GW_PRODUCT%" --gw-platform "%env.GW_PLATFORM%" --gw-version "%env.GW_VERSION%" --create-index-redirect no --webhelp.publication.toc.links chapter"
+                
                 SECONDS=0
                 docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
                 docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
                 
                 echo "Building webhelp for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION% using filter %env.FILTER_PATH%"
-                docker run -i \
-                  -v "${'$'}WORKING_DIR":/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest \
-                  -i /src/"${'$'}INPUT_PATH"/"%env.ROOT_MAP%" \
-                  -o /src/"${'$'}OUTPUT_PATH" \
-                  -f webhelp_Guidewire \
-                  --filter /src/"${'$'}INPUT_PATH"/"%env.FILTER_PATH%" \
-                  --use-doc-portal-params yes \
-                  --gw-product "%env.GW_PRODUCT%" \
-                  --gw-platform "%env.GW_PLATFORM%" \
-                  --gw-version "%env.GW_VERSION%" \
-                  --create-index-redirect yes \
-                  --webhelp.publication.toc.links all
+                if [[ "%env.BUILD_PDF%" == "true" ]]; then
+                    "${'$'}DITA_BASE_COMMAND -f wh_pdf --git.url=%env.GIT_URL% --git.branch=%env.GIT_BRANCH% dita.ot.pdf.format=pdf5_Guidewire" 
+                elif [[ "%env.BUILD_PDF%" == "false" ]]; then
+                    "${'$'}DITA_BASE_COMMAND -f webhelp_Guidewire_validate" 
+                fi
                  
                 echo "Creating a ZIP package"
                 packageName="out.zip"
