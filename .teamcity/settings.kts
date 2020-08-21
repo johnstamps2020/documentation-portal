@@ -2000,7 +2000,6 @@ object BuildOutputFromDita : BuildType({
     vcs {
         cleanCheckout = true
     }
-//TODO: Add a condition for the DITA filter path
     steps {
         script {
             name = "Build webhelp from DITA"
@@ -2014,12 +2013,16 @@ object BuildOutputFromDita : BuildType({
                 
                 git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}WORKING_DIR/${'$'}INPUT_PATH
                 
-                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/${'$'}INPUT_PATH/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --filter \"/src/${'$'}INPUT_PATH/%env.FILTER_PATH%\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
-
+                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/${'$'}INPUT_PATH/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
+                
+                if [[ ! -z "%env.FILTER_PATH%" ]]; then
+                    export DITA_BASE_COMMAND+=" --filter \"/src/${'$'}INPUT_PATH/%env.FILTER_PATH%\""
+                fi
+                
                 if [[ "%env.BUILD_PDF%" == "true" ]]; then
-                    DITA_BASE_COMMAND+=" -f wh_pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
+                    export DITA_BASE_COMMAND+=" -f wh_pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
                 elif [[ "%env.BUILD_PDF%" == "false" ]]; then
-                    DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
+                    export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
                 fi
                 
                 SECONDS=0
