@@ -2000,9 +2000,10 @@ object BuildOutputFromDita : BuildType({
     vcs {
         cleanCheckout = true
     }
+// TODO: Add logic to build webhelp with or without the index redirect
     steps {
         script {
-            name = "Build webhelp from DITA"
+            name = "Build output from DITA"
             scriptContent = """
                 #!/bin/bash
                 set -xe
