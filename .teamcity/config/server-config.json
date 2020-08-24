@@ -1172,6 +1172,32 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
+      "id": "cloudinexternal20201fix",
+      "title": "InsuranceNow Fix",
+      "url": "cloud/in/20201",
+      "metadata": {
+        "productFamily": ["InsuranceNow"],
+        "product": ["InsuranceNow"],
+        "platform": ["Cloud"],
+        "version": "2020.1",
+        "category": ["InsuranceNow"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "in20201Fixsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": ["staging", "prod"]
+    },
+    {
       "id": "midipg2x",
       "title": "Guidewire InsuranceSuite Package for Germany",
       "url": "cloud/mid/ipg/latest",
