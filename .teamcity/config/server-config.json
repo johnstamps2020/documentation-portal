@@ -141,7 +141,7 @@
         "filter": "Other/GW-Generic-Draft.ditaval",
         "root": "_supermap.ditamap",
         "indexRedirect": true,
-        "src": "isconfigupgradetools3x"
+        "src": "isconfigupgradetools3xsrc"
       },
       "environments": ["int"]
     },
