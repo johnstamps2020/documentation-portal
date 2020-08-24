@@ -108,5 +108,6 @@ def test_delete_entries_by_query(elastic_client):
 
 
 def test_broken_links_in_elastic(elastic_client):
-    number_of_broken_links = elastic_client.count(index='broken-links')['count']
-    assert number_of_broken_links > 0
+    number_of_broken_links = elastic_client.count(
+        index='broken-links')['count']
+    assert number_of_broken_links == 3
