@@ -138,19 +138,19 @@ metadata:
   name: kibana-doctools-${DEPLOY_ENV}
   namespace: doctools
   labels:
-    component: kibana
+    component: kibana-doctools-${DEPLOY_ENV}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: kibana
+      component: kibana-doctools-${DEPLOY_ENV}
   template:
     metadata:
       labels:
-        component: kibana
+        component: kibana-doctools-${DEPLOY_ENV}
     spec:
       containers:
-        - name: kibana
+        - name: kibana-doctools-${DEPLOY_ENV}
           image: docker.elastic.co/kibana/kibana:7.9.0
           env:
             - name: "CLUSTER_NAME"
@@ -172,7 +172,7 @@ spec:
               cpu: 100m
           ports:
             - containerPort: 5601
-              name: kibana
+              name: kibana-doctools-${DEPLOY_ENV}
               protocol: TCP
 ---
 apiVersion: extensions/v1beta1
