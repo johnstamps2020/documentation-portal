@@ -118,7 +118,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kibana
+  name: kibana-doctools-${DEPLOY_ENV}
   namespace: default
   labels:
     component: kibana
@@ -135,7 +135,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kibana
+  name: kibana-doctools-${DEPLOY_ENV}
   namespace: default
   labels:
     component: kibana
@@ -179,13 +179,13 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   namespace: doctools
-  name: dockibana-ingress-${DEPLOY_ENV}
+  name: kibana-doctools-ingress-${DEPLOY_ENV}
 spec:
   rules:
     - host: kibana-doctools.${DEPLOY_ENV}.ccs.guidewire.net
       http:
         paths:
           - backend:
-              serviceName: dockibana-${DEPLOY_ENV}
+              serviceName: kibana-doctools-${DEPLOY_ENV}
               servicePort: 80
             path: /
