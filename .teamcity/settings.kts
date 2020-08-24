@@ -217,15 +217,15 @@ object Helpers {
                         scriptContent = """
                                     export S3_BUCKET_NAME=tenant-doctools-$env-builds
                                     if [[ $env == "prod" ]]; then
-                                        echo "Setting credentials to access prod"
-                                        export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                                        export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                                        export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                                    fi
+                                echo "Setting credentials to access prod"
+                                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                            fi
                                     
-                                    echo "Copying files to S3"
-                                    aws s3 sync ./resource$j/$resourceSourceFolder/ s3://${'$'}S3_BUCKET_NAME/${'$'}PUBLISH_PATH/$resourceTargetFolder --delete
-                                """.trimIndent()
+                            echo "Copying files to S3"
+                            aws s3 sync ./resource$j/$resourceSourceFolder/ s3://${'$'}S3_BUCKET_NAME/${'$'}PUBLISH_PATH/$resourceTargetFolder --delete
+                        """.trimIndent()
                     })
                 }
 
@@ -1617,7 +1617,7 @@ object HelperMethods {
 
     private fun createPublishBuildsFromConfig(env: String): MutableList<BuildType> {
 
-        class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String) : BuildType({
+        class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>) : BuildType({
             id = RelativeId(doc_id + build_env + "_modular")
             name = build_name
             maxRunningBuilds = 1
@@ -1659,6 +1659,7 @@ object HelperMethods {
                 }
                 script {
                     name = "Trigger index update"
+                    id = "TRIGGER_INDEX_UPDATE"
                     scriptContent = """
                         #!/bin/bash
                         set -xe
@@ -1671,6 +1672,55 @@ object HelperMethods {
         
                     """.trimIndent()
                 }
+            }
+
+            if (!resources_to_copy.isNullOrEmpty()) {
+                val extraSteps = mutableListOf<ScriptBuildStep>()
+                val stepIds = mutableListOf<String>()
+                var stepIdSuffix = 0
+                for (resource in resources_to_copy) {
+                    val resourceGitUrl = resource.getString("resourceGitUrl")
+                    val resourceGitBranch = resource.getString("resourceGitBranch")
+                    val resourceSourceFolder = resource.getString("resourceSourceFolder")
+                    val resourceTargetFolder = resource.getString("resourceTargetFolder")
+
+                    val stepId = "COPY_RESOURCES$stepIdSuffix"
+                    stepIds.add(stepId)
+                    stepIdSuffix += 1
+
+                    extraSteps.add(ScriptBuildStep {
+                        id = stepId
+                        name = "Copy resources from git to S3"
+                        scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            
+                            git clone --single-branch --branch $resourceGitBranch $resourceGitUrl resource
+                            export S3_BUCKET_NAME=tenant-doctools-%env.DEPLOY_ENV%-builds
+                            if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                                echo "Setting credentials to access prod"
+                                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                            fi
+                            
+                            echo "Copying files to S3"
+                            aws s3 sync ./resource/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
+                        """.trimIndent()
+                    })
+                }
+
+                val orderWithExtraSteps = arrayListOf<String>()
+                orderWithExtraSteps.add("UPLOAD_GENERATED_CONTENT")
+                orderWithExtraSteps.addAll(stepIds)
+                orderWithExtraSteps.add("TRIGGER_INDEX_UPDATE")
+
+                steps {
+                    extraSteps.forEach(this::step)
+                    stepsOrder = orderWithExtraSteps
+                }
+
+
             }
 
             dependencies {
@@ -1808,6 +1858,24 @@ object HelperMethods {
                 val sourcesFromConfig = getSourcesFromConfig()
                 val (sourceGitUrl, sourceGitBranch) = getSourceById(vcsRootId, sourcesFromConfig)
 
+                val resourcesToCopy = mutableListOf<JSONObject>()
+                if (build.has("resources")) {
+                    val resources = build.getJSONArray("resources")
+                    for (j in 0 until resources.length()) {
+                        val resource = resources.getJSONObject(j)
+                        val resourceVcsId = resource.getString("src")
+                        val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourcesFromConfig)
+                        val resourceSourceFolder = resource.getString("sourceFolder")
+                        val resourceTargetFolder = resource.getString("targetFolder")
+                        val resourceObject = JSONObject()
+                        resourceObject.put("resourceGitUrl", resourceGitUrl)
+                        resourceObject.put("resourceGitBranch", resourceGitBranch)
+                        resourceObject.put("resourceSourceFolder", resourceSourceFolder)
+                        resourceObject.put("resourceTargetFolder", resourceTargetFolder)
+                        resourcesToCopy.add(resourceObject)
+                    }
+                }
+
                 if (environments.contains(env)) {
                     if (env == "prod") {
                         builds.add(PublishToS3ProdAbstract(publishPath, title, buildId, version, platform, env))
@@ -1817,7 +1885,7 @@ object HelperMethods {
                                     publishPath, vcsRootId))
                         } else {
                             builds.add(PublishToS3(product, platform, version, buildId, buildName, filter, root, env,
-                                    publishPath, sourceGitUrl, sourceGitBranch))
+                                    publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy))
                         }
                     }
                 }
@@ -1978,7 +2046,6 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
     }
 })
 
-//TODO: Add logic for resources and other cases from Helpers.BuildAndUploadToS3Abstract
 object BuildOutputFromDita : BuildType({
     name = "Build the output from DITA"
 
@@ -2000,9 +2067,10 @@ object BuildOutputFromDita : BuildType({
     vcs {
         cleanCheckout = true
     }
+// TODO: Add logic to build webhelp with or without the index redirect
     steps {
         script {
-            name = "Build webhelp from DITA"
+            name = "Build output from DITA"
             scriptContent = """
                 #!/bin/bash
                 set -xe
