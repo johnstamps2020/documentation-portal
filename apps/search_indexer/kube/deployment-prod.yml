@@ -138,16 +138,16 @@ metadata:
   name: kibana-doctools-${DEPLOY_ENV}
   namespace: doctools
   labels:
-    component: kibana-doctools-${DEPLOY_ENV}
+    component: kibana
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: kibana-doctools-${DEPLOY_ENV}
+      component: kibana
   template:
     metadata:
       labels:
-        component: kibana-doctools-${DEPLOY_ENV}
+        component: kibana
     spec:
       containers:
         - name: kibana-doctools-${DEPLOY_ENV}
