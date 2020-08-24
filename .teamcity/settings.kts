@@ -1617,7 +1617,7 @@ object HelperMethods {
 
     private fun createPublishBuildsFromConfig(env: String): MutableList<BuildType> {
 
-        class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>) : BuildType({
+        class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>) : BuildType({
             id = RelativeId(doc_id + build_env + "_modular")
             name = build_name
             maxRunningBuilds = 1
@@ -1641,6 +1641,7 @@ object HelperMethods {
                 text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("reverse.dep.${BuildOutputFromDita.id}.env.BUILD_PDF", build_pdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             steps {
@@ -1857,6 +1858,11 @@ object HelperMethods {
                     filter = build.getString("filter")
                 }
 
+                var indexRedirect = "false"
+                if (build.has("indexRedirect")) {
+                    indexRedirect = build.getBoolean("indexRedirect").toString()
+                }
+
                 val root = build.getString("root")
                 val vcsRootId = build.getString("src")
                 val sourcesFromConfig = getSourcesFromConfig()
@@ -1888,7 +1894,7 @@ object HelperMethods {
                             builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
                                     publishPath, vcsRootId))
                         } else {
-                            builds.add(PublishToS3(product, platform, version, buildId, buildName, filter, root, env,
+                            builds.add(PublishToS3(product, platform, version, buildId, buildName, filter, root, indexRedirect, env,
                                     publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy))
                         }
                     }
@@ -2066,12 +2072,13 @@ object BuildOutputFromDita : BuildType({
         text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
         text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
         text("env.BUILD_PDF", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.CREATE_INDEX_REDIRECT", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
         cleanCheckout = true
     }
-// TODO: Add logic to build webhelp with or without the index redirect
+
     steps {
         script {
             name = "Build output from DITA"
@@ -2095,6 +2102,10 @@ object BuildOutputFromDita : BuildType({
                     export DITA_BASE_COMMAND+=" -f wh-pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
                 elif [[ "%env.BUILD_PDF%" == "false" ]]; then
                     export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
+                fi
+                
+                if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
+                    export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
                 fi
                 
                 SECONDS=0

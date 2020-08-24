@@ -260,6 +260,11 @@
           "description": "The filename of the ditamap to use, including the extension",
           "examples": ["_superbook.ditamap", "flowers.ditamap", "webhelp.xml"]
         },
+        "indexRedirect": {
+          "description": "If set to true, add a script to the landing page that redirects the user to the first topic in the table of contents. Defaults to false if not set.",
+          "type": "boolean"
+
+        },
         "src": {
           "$ref": "#/definitions/src"
         },

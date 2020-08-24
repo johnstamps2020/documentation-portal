@@ -136,6 +136,13 @@
         "version": "3.x.x",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/GW-Generic-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isconfigupgradetools3xsrc"
+      },
       "environments": ["int"]
     },
     {
