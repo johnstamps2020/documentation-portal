@@ -20,7 +20,8 @@ def get_portal_config(config_file_path: Path, doc_filter_query: str = None):
 
 
 def normalize_text(input_text: str):
-    removed_whitespace = input_text.replace('\n', ' ').replace('\t', ' ').replace('\r', '').strip()
+    removed_whitespace = input_text.replace(
+        '\n', ' ').replace('\t', ' ').replace('\r', '').strip()
     removed_multiple_spaces = re.sub('[ ]{2,}', ' ', removed_whitespace)
     removed_empty_lines = filter(lambda x: not x.isspace(),
                                  io.StringIO(removed_multiple_spaces).readlines())
@@ -50,7 +51,9 @@ class DocPortalSpider(scrapy.Spider):
             broken_link = BrokenLink(
                 doc_id=doc_object_id,
                 origin_url=cb_kwargs.get('origin_url', 'No origin URL'),
-                url=response.url
+                url=response.url,
+                metadata=doc_object['metadata'],
+                title=doc_object['title'],
             )
 
             yield broken_link
@@ -79,7 +82,8 @@ class DocPortalSpider(scrapy.Spider):
 
             index_entry_body = ''
             for body_element in body_elements:
-                body_text = ' '.join(body_element.xpath('.//*/text()').getall())
+                body_text = ' '.join(
+                    body_element.xpath('.//*/text()').getall())
                 index_entry_body += f'{normalize_text(body_text)} '
 
             index_entry = IndexEntry(
