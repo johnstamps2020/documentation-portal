@@ -213,3 +213,5 @@ dmypy.json
 
 # End of https://www.gitignore.io/api/python
 server/config-schema.json
+
+search_indexer.log
