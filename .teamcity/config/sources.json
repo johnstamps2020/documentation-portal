@@ -267,11 +267,7 @@
       "title": "InsuranceNow Fix",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-1x.git",
-      "branch": "2020.1-Fix",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/_supermap-20201x-active.ditamap"
-      ]
+      "branch": "2020.1-Fix"
     },
     {
       "id": "insurancenowextrassrc",
