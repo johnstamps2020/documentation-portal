@@ -121,11 +121,11 @@ metadata:
   name: kibana-doctools-${DEPLOY_ENV}
   namespace: doctools
   labels:
-    component: kibana
+    component: kibana-doctools-${DEPLOY_ENV}
 spec:
+  type: ClusterIP
   selector:
-    component: kibana
-  type: LoadBalancer
+    app: kibana-doctools-${DEPLOY_ENV}
   ports:
     - name: http
       port: 80
