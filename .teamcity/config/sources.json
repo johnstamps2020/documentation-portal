@@ -2,6 +2,12 @@
   "$schema": "./config-schema.json",
   "sources": [
     {
+      "id": "isconfigupgradetools3x",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
+    },
+    {
       "id": "exampleresource",
       "title": "Example resource package",
       "sourceType": "git",
