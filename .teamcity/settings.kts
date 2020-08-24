@@ -1719,8 +1719,12 @@ object HelperMethods {
                     extraSteps.forEach(this::step)
                     stepsOrder = orderWithExtraSteps
                 }
+            }
 
-
+            features {
+                sshAgent {
+                    teamcitySshKey = "sys-doc.rsa"
+                }
             }
 
             dependencies {
