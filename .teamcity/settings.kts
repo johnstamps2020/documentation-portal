@@ -1551,6 +1551,10 @@ object DeployServices : Project({
 })
 
 object HelperMethods {
+    private const val configPath = "config/server-config.json"
+    private val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
+    private val docConfigs = config.getJSONArray("docs")
+
     private fun getSourcesFromConfig(): JSONArray {
         val sourceConfigPath = "config/sources.json"
         val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
@@ -1799,43 +1803,8 @@ object HelperMethods {
 
         })
 
-        class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
-
-            id = RelativeId(doc_id + build_env + "_modular")
-            name = build_name
-
-            params {
-                text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("FORMAT", "html5", allowEmpty = false)
-                text("DITA_OUTPUT_DIR", "%system.teamcity.build.tempDir%/out", allowEmpty = false)
-                text("OUTPUT_DIR", "%system.teamcity.build.tempDir%/html5", allowEmpty = false)
-                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
-                text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
-                text("INPUT_PATH", input_path, allowEmpty = false)
-                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
-                text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
-                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_ID", doc_id, allowEmpty = false)
-                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("INDEX_NAME", "gw-docs", allowEmpty = false)
-            }
-
-            vcs {
-                root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
-            }
-
-
-        })
-
-        val configPath = "config/server-config.json"
-        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
-
         val builds = mutableListOf<BuildType>()
 
-        val docConfigs = config.getJSONArray("docs")
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
             if (doc.has("build")) {
@@ -1890,21 +1859,48 @@ object HelperMethods {
                     if (env == "prod") {
                         builds.add(PublishToS3ProdAbstract(publishPath, title, buildId, version, platform, env))
                     } else {
-                        if (buildType == "dita-dev") {
-                            builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
-                                    publishPath, vcsRootId))
-                        } else {
                             builds.add(PublishToS3(product, platform, version, buildId, buildName, filter, root, indexRedirect, env,
                                     publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy))
                         }
                     }
                 }
             }
-        }
 
         return builds
     }
 
+    fun createProjectForPlatform(platform_name: String): Project {
+        return Project {
+            id = RelativeId("$platform_name")
+            name = platform_name
+
+            var categories = mutableListOf<String>()
+            for (i in 0 until docConfigs.length()) {
+                val doc = docConfigs.getJSONObject(i)
+                var category = "No category"
+                val metadata = doc.getJSONObject("metadata")
+                if (metadata.has("category")) {
+                    category = metadata.getJSONArray("category")[0].toString()
+                }
+                if (!categories.contains(category)) {
+                    categories.add(category)
+                }
+            }
+
+            val subProjects = mutableListOf<Project>()
+            for (category in categories) {
+                subProjects.add(createProjectForCategory(platform_name, category))
+            }
+            subProjects.forEach(this::subProject)
+        }
+    }
+
+    fun createProjectForCategory(platform_name: String, category_name: String): Project {
+        return Project {
+
+        }
+    }
+    //TODO: Call createProjectForPlatform for every platform
     fun getContentProjectFromConfig(env: String): Project {
         return Project {
             id = RelativeId("DeployContent_$env")
