@@ -4,6 +4,5 @@ LOG_LEVEL = 'INFO'
 LOG_FILE = 'search_indexer.log'
 DEFAULT_REQUEST_HEADERS = {'Referer': 'https://docs.guidewire.com'}
 ITEM_PIPELINES = {
-    'doc_crawler.pipelines.BrokenLinkPipeline': 100,
-    'doc_crawler.pipelines.ElasticsearchPipeline': 200,
-                  }
+    'doc_crawler.pipelines.ElasticsearchPipeline': 100,
+}
