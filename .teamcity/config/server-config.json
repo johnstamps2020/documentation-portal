@@ -261,6 +261,29 @@
       "environments": ["int"]
     },
     {
+      "id": "clouddxceclaimsdraft",
+      "title": "CustomerEngage Clams Management",
+      "url": "cloud/dx/ce-claims/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["CustomerEngage Claims Management"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-claims-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
       "id": "clouddxceqbdraft",
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/latest",
@@ -326,6 +349,29 @@
       "environments": ["int"]
     },
     {
+      "id": "clouddxpeclaimsdraft",
+      "title": "ProducerEngage Claims Management",
+      "url": "cloud/dx/pe-claims/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["ProducerEngage Claims Management"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-claims-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
       "id": "clouddxsredraft",
       "title": "ServiceRepEngage",
       "url": "cloud/dx/sre/latest",
@@ -343,6 +389,29 @@
       "build": {
         "buildType": "dita",
         "filter": "Digital-sre-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "clouddxvedraft",
+      "title": "VendorEngage",
+      "url": "cloud/dx/ve/latest",
+      "metadata": {
+        "productFamily": [
+          "PolicyCenter Cloud",
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud"
+        ],
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ve-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
       },
@@ -752,6 +821,24 @@
       "environments": ["int"]
     },
     {
+      "id": "selfmanageddxceclaimsdraft",
+      "title": "CustomerEngage Claims Management",
+      "url": "self-managed/dx/pe/11x",
+      "metadata": {
+        "product": ["CustomerEngage Claims Management"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-claims-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
       "id": "selfmanageddxceqbdraft",
       "title": "CustomerEngage Quote and Buy",
       "url": "self-managed/dx/ce-qb/11x",
@@ -801,6 +888,24 @@
       "build": {
         "buildType": "dita",
         "filter": "Digital-pe-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "selfmanageddxpeclaimsdraft",
+      "title": "ProducerEngage Claims Management",
+      "url": "self-managed/dx/pe/11x",
+      "metadata": {
+        "product": ["ProducerEngage Claims Management"],
+        "platform": ["Self-managed"],
+        "version": "11.x",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-claims-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
       },
