@@ -121,16 +121,12 @@ metadata:
   name: kibana-doctools-${DEPLOY_ENV}
   namespace: doctools
   labels:
-    component: kibana
+    app: kibana
 spec:
-  type: ClusterIP
+  ports:
+  - port: 5601
   selector:
     app: kibana
-  ports:
-    - name: http
-      port: 80
-      targetPort: 5601
-      protocol: TCP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -138,42 +134,30 @@ metadata:
   name: kibana-doctools-${DEPLOY_ENV}
   namespace: doctools
   labels:
-    component: kibana
+    app: kibana
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: kibana
+      app: kibana
   template:
     metadata:
       labels:
-        component: kibana
+        app: kibana
     spec:
       containers:
-        - name: kibana
-          image: docker.elastic.co/kibana/kibana:7.5.1
-          env:
-            - name: CLUSTER_NAME
-              value: es-${DEPLOY_ENV}
-            - name: XPACK_SECURITY_ENABLED
-              value: "false"
-            - name: XPACK_GRAPH_ENABLED
-              value: "false"
-            - name: XPACK_ML_ENABLED
-              value: "false"
-            - name: XPACK_REPORTING_ENABLED
-              value: "false"
-            - name: ELASTICSEARCH_URL
-              value: https://docsearch-doctools.${DEPLOY_ENV}.ccs.guidewire.net
-          resources:
-            limits:
-              cpu: 1000m
-            requests:
-              cpu: 100m
-          ports:
-            - containerPort: 5601
-              name: kibana
-              protocol: TCP
+      - name: kibana
+        image: docker.elastic.co/kibana/kibana:7.5.1
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 100m
+        env:
+          - name: ELASTICSEARCH_URL
+            value: http://docsearch-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
+        ports:
+        - containerPort: 5601
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -187,5 +171,5 @@ spec:
         paths:
           - backend:
               serviceName: kibana-doctools-${DEPLOY_ENV}
-              servicePort: 80
+              servicePort: 5601
             path: /
