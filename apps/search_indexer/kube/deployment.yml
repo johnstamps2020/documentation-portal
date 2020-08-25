@@ -164,7 +164,7 @@ spec:
             - name: XPACK_REPORTING_ENABLED
               value: "false"
             - name: ELASTICSEARCH_URL
-              value: docsearch-doctools.${DEPLOY_ENV}.ccs.guidewire.net
+              value: https://docsearch-doctools.${DEPLOY_ENV}.ccs.guidewire.net
           resources:
             limits:
               cpu: 1000m
