@@ -154,7 +154,7 @@ spec:
           image: docker.elastic.co/kibana/kibana:7.5.1
           env:
             - name: "CLUSTER_NAME"
-              value: "escluster"
+              value: es-${DEPLOY_ENV}
             - name: XPACK_SECURITY_ENABLED
               value: "false"
             - name: XPACK_GRAPH_ENABLED
