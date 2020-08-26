@@ -107,13 +107,13 @@ metadata:
   name: docsearch-ingress-${DEPLOY_ENV}
 spec:
   rules:
-  - host: docsearch-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
-    http:
-      paths:
-      - backend:
-          serviceName: docsearch-${DEPLOY_ENV}
-          servicePort: 9200
-        path: /
+    - host: docsearch-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
+      http:
+        paths:
+          - backend:
+              serviceName: docsearch-${DEPLOY_ENV}
+              servicePort: 9200
+            path: /
 ---
 apiVersion: v1
 kind: Service
@@ -166,7 +166,7 @@ metadata:
   name: kibana-doctools-ingress-${DEPLOY_ENV}
 spec:
   rules:
-    - host: kibana-doctools.${DEPLOY_ENV}.ccs.guidewire.net
+    - host: kibana-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
       http:
         paths:
           - backend:
