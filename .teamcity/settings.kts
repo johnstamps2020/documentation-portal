@@ -1604,12 +1604,10 @@ object HelperObjects {
                 for (docCategory in docCategories) {
                     if (!categories.contains(docCategory.toString())) {
                         categories.add(docCategory.toString())
-                    } else {
-                        if (!categories.contains(noCategoryLabel)) {
-                            categories.add(noCategoryLabel)
-                        }
                     }
                 }
+            } else if (!categories.contains(noCategoryLabel)) {
+                categories.add(noCategoryLabel)
             }
         }
 
@@ -1624,7 +1622,7 @@ object HelperObjects {
                     docsInCategory.add(doc)
                 }
             }
-            subProjects.add(createCategoryProject("${platform_name}_${category}", docsInCategory))
+            subProjects.add(createCategoryProject(platform_name, category, docsInCategory))
         }
 
         return Project {
@@ -1635,7 +1633,7 @@ object HelperObjects {
         }
     }
 
-    private fun createCategoryProject(category_name: String, docs: MutableList<JSONObject>): Project {
+    private fun createCategoryProject(platform_name: String, category_name: String, docs: MutableList<JSONObject>): Project {
 
         val subProjects = mutableListOf<Project>()
         for (doc in docs) {
@@ -1643,7 +1641,7 @@ object HelperObjects {
         }
 
         return Project {
-            id = RelativeId(removeSpecialCharacters(category_name))
+            id = RelativeId(removeSpecialCharacters(platform_name + category_name))
             name = category_name
 
             subProjects.forEach(this::subProject)
@@ -1651,9 +1649,9 @@ object HelperObjects {
     }
 
     private fun createDocProjectWithBuilds(doc: JSONObject): Project {
-        class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>) : BuildType({
-            id = RelativeId(removeSpecialCharacters(build_env + build_name + "modular"))
-            name = "$build_env $build_name"
+        class PublishToS3(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>) : BuildType({
+            id = RelativeId(removeSpecialCharacters(build_env + doc_id + "modular"))
+            name = "Publish to $build_env"
             maxRunningBuilds = 1
 
             var build_pdf = "true"
@@ -1778,7 +1776,7 @@ object HelperObjects {
 
         class PublishToS3ProdAbstract(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
             id = RelativeId(removeSpecialCharacters(doc_id + build_env + "modular"))
-            name = "Copy $title $doc_platform $doc_version from Staging to Prod ($doc_id)"
+            name = "Copy from staging to prod"
 
             params {
                 password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
@@ -1834,7 +1832,6 @@ object HelperObjects {
         })
 
         var builds = mutableListOf<BuildType>()
-        var buildName = ""
 
         val docId = doc.getString("id")
         val publishPath = doc.getString("url")
@@ -1845,8 +1842,6 @@ object HelperObjects {
         val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
         val version = metadata.getString("version")
         val environments = doc.getJSONArray("environments")
-
-        buildName = "$title $version ($docId)"
 
         val build: JSONObject = doc.getJSONObject("build")
         var filter = ""
@@ -1886,13 +1881,13 @@ object HelperObjects {
             if (env == "prod") {
                 builds.add(PublishToS3ProdAbstract(publishPath, title, docId, version, platform, env as String))
             } else {
-                builds.add(PublishToS3(product, platform, version, docId, buildName, filter, root, indexRedirect, env as String,
+                builds.add(PublishToS3(product, platform, version, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy))
             }
         }
         return Project {
-            id = RelativeId(removeSpecialCharacters(buildName))
-            name = buildName
+            id = RelativeId(removeSpecialCharacters(title + version + docId))
+            name = "$title $version"
 
             builds.forEach(this::buildType)
         }
@@ -1912,10 +1907,8 @@ object HelperObjects {
                         platforms.add(docPlatform.toString())
                     }
                 }
-            } else {
-                if (!platforms.contains(noPlatformLabel)) {
-                    platforms.add(noPlatformLabel)
-                }
+            } else if (!platforms.contains(noPlatformLabel)) {
+                platforms.add(noPlatformLabel)
             }
         }
         val subProjects = mutableListOf<Project>()
