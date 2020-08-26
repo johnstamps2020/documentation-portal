@@ -4374,7 +4374,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Administration"]
       },
       "build": {
         "buildType": "dita",
