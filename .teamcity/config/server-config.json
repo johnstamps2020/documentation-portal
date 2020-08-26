@@ -4371,6 +4371,7 @@
       "url": "test/bc/admin",
       "metadata": {
         "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
         "category": ["Core"]
