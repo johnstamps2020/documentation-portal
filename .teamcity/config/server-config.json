@@ -4364,6 +4364,24 @@
         "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "iscloudnoxbookadmin",
+      "title": "BillingCenter",
+      "url": "test/bc/noxbook",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/admin/AdminGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
     }
   ]
 }
