@@ -4367,7 +4367,7 @@
     },
     {
       "id": "iscloudnoxbookadmin",
-      "title": "BillingCenter",
+      "title": "BillingCenter Administration",
       "url": "test/bc/admin",
       "metadata": {
         "platform": ["Cloud"],
