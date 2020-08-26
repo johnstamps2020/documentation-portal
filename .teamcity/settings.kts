@@ -1652,7 +1652,7 @@ object HelperObjects {
 
     private fun createDocProjectWithBuilds(doc: JSONObject): Project {
         class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>) : BuildType({
-            id = RelativeId(build_env + build_name.replace(" ", ""))
+            id = RelativeId(removeSpecialCharacters(build_env + build_name + "modular"))
             name = "$build_env $build_name"
             maxRunningBuilds = 1
 
@@ -1777,7 +1777,7 @@ object HelperObjects {
         })
 
         class PublishToS3ProdAbstract(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
-            id = RelativeId(doc_id + build_env + "_modular")
+            id = RelativeId(removeSpecialCharacters(doc_id + build_env + "modular"))
             name = "Copy $title $doc_platform $doc_version from Staging to Prod ($doc_id)"
 
             params {
