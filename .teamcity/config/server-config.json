@@ -4367,14 +4367,14 @@
     },
     {
       "id": "iscloudnoxbookadmin",
-      "title": "BillingCenter",
+      "title": "BillingCenter Administration",
       "url": "test/bc/admin",
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Administration"]
+        "category": ["Core"]
       },
       "build": {
         "buildType": "dita",
