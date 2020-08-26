@@ -2085,6 +2085,25 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
+      "id": "standardsdraft",
+      "title": "SurePath Standards",
+      "url": "cloud/standards/latest",
+      "metadata": {
+        "productFamily": ["SurePath Standards"],
+        "product": ["SurePath Standards"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["SurePath Standards"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "surepath.ditamap",
+        "src": "standardsdraftsrc"
+      },
+      "environments": ["dev", "int"]
+    },
+    {
       "id": "dxceqb1110onpremstaging",
       "title": "CustomerEngage Quote and Buy",
       "url": "self-managed/dx/ce-qb/1110",
