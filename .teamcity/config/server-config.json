@@ -4366,7 +4366,7 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "iscloudnoxbookadmin",
+      "id": "isbccloudnoxbookadmin",
       "title": "BillingCenter Administration",
       "url": "test/bc/admin",
       "metadata": {
@@ -4380,6 +4380,120 @@
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
         "root": "cloud/active/admin/AdminGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookapp",
+      "title": "BillingCenter Application",
+      "url": "test/bc/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/app/BC-AppGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookbestpractice",
+      "title": "BillingCenter Best Practices",
+      "url": "test/bc/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/bestpractice/BestPracticesGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookconfig",
+      "title": "BillingCenter Configuration",
+      "url": "test/bc/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/config/ConfigGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookcontact",
+      "title": "Guidewire Contact Management",
+      "url": "test/bc/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/contact/ContactMgmtGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookglobal",
+      "title": "BillingCenter Globalization",
+      "url": "test/bc/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/global/GlobalizationGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "iscloudnoxbookglossary",
+      "title": "Guidewire Glossary",
+      "url": "test/is/glossary",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": "0.1",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Cloud-Draft.ditaval",
+        "root": "cloud/active/glossary/Glossary.ditamap",
         "src": "cloudisnoxbook"
       },
       "environments": ["dev"]
