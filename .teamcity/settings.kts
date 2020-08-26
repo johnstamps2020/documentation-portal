@@ -1524,6 +1524,11 @@ object HelperObjects {
     private val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
     private val docConfigs = config.getJSONArray("docs")
 
+    private fun removeSpecialCharacters(stringToClean: String): String {
+        val re = Regex("[^A-Za-z0-9]")
+        return re.replace(stringToClean, "")
+    }
+
     private fun getSourcesFromConfig(): JSONArray {
         val sourceConfigPath = "config/sources.json"
         val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
@@ -1623,7 +1628,7 @@ object HelperObjects {
         }
 
         return Project {
-            id = RelativeId(platform_name)
+            id = RelativeId(removeSpecialCharacters(platform_name))
             name = platform_name
 
             subProjects.forEach(this::subProject)
@@ -1638,7 +1643,7 @@ object HelperObjects {
         }
 
         return Project {
-            id = RelativeId(category_name)
+            id = RelativeId(removeSpecialCharacters(category_name))
             name = category_name
 
             subProjects.forEach(this::subProject)
@@ -1886,7 +1891,7 @@ object HelperObjects {
             }
         }
         return Project {
-            id = RelativeId(buildName.replace(" ", ""))
+            id = RelativeId(removeSpecialCharacters(buildName))
             name = buildName
 
             builds.forEach(this::buildType)
