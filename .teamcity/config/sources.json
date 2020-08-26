@@ -389,6 +389,12 @@
         "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
       ]
+    },
+    {
+      "id": "standardsdraftsrc",
+      "title": "Standards Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     }
   ]
 }
