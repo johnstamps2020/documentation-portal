@@ -107,10 +107,69 @@ metadata:
   name: docsearch-ingress-${DEPLOY_ENV}
 spec:
   rules:
-  - host: docsearch-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
-    http:
-      paths:
-      - backend:
-          serviceName: docsearch-${DEPLOY_ENV}
-          servicePort: 9200
-        path: /
+    - host: docsearch-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
+      http:
+        paths:
+          - backend:
+              serviceName: docsearch-${DEPLOY_ENV}
+              servicePort: 9200
+            path: /
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana-doctools-${DEPLOY_ENV}
+  namespace: doctools
+  labels:
+    component: kibana
+spec:
+  ports:
+    - port: 5601
+  selector:
+    component: kibana
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana-doctools-${DEPLOY_ENV}
+  namespace: doctools
+  labels:
+    component: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: kibana
+  template:
+    metadata:
+      labels:
+        component: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:7.5.1
+          resources:
+            limits:
+              cpu: 1000m
+            requests:
+              cpu: 100m
+          env:
+            - name: ELASTICSEARCH_HOSTS
+              value: http://docsearch-${DEPLOY_ENV}:9200
+          ports:
+            - containerPort: 5601
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: doctools
+  name: kibana-doctools-ingress-${DEPLOY_ENV}
+spec:
+  rules:
+    - host: kibana-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
+      http:
+        paths:
+          - backend:
+              serviceName: kibana-doctools-${DEPLOY_ENV}
+              servicePort: 5601
+            path: /

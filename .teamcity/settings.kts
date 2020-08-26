@@ -25,7 +25,6 @@ project {
     template(BuildDockerImage)
     template(BuildAndUploadToS3DitaDev)
     template(CrawlDocumentAndUpdateIndex)
-    template(PublishBrokenLinksReportToS3)
     template(AddFilesFromXDocsToBitbucket)
 
     params {
@@ -81,7 +80,7 @@ object Helpers {
         })
 
         class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
+            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex)
 
             id = RelativeId(doc_id + env)
             name = build_name
@@ -112,7 +111,7 @@ object Helpers {
         })
 
         class BuildAndUploadToS3Abstract(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String, resources: JSONArray?, git_source_url: String, git_source_branch: String) : BuildType({
-            templates(CrawlDocumentAndUpdateIndex, PublishBrokenLinksReportToS3)
+            templates(CrawlDocumentAndUpdateIndex)
 
             id = RelativeId(doc_id + env)
             name = build_name
@@ -905,11 +904,6 @@ object UpdateSearchIndex : BuildType({
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
-
-        script {
-            name = "Publish broken link report to S3"
-            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_ID%"
-        }
     }
 
     features {
@@ -1488,24 +1482,6 @@ object CrawlDocumentAndUpdateIndex : Template({
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
             }
-        }
-    }
-})
-
-object PublishBrokenLinksReportToS3 : Template({
-    name = "Publish the broken link report to S3"
-
-    params {
-        text("env.TOOLS_ROOT", "%TOOLS_ROOT%", allowEmpty = false)
-        text("env.S3_BUCKET_NAME", "%S3_BUCKET_NAME%", allowEmpty = false)
-        text("env.PUBLISH_PATH", "%PUBLISH_PATH%", allowEmpty = false)
-    }
-    steps {
-        script {
-            name = "Publish broken link report to S3"
-            id = "PUBLISH_BROKEN_LINK"
-            workingDir = "%env.TOOLS_ROOT%"
-            scriptContent = "aws s3 sync ./apps/search_indexer/out s3://%env.S3_BUCKET_NAME%/broken-links-reports/%env.PUBLISH_PATH% --delete"
         }
     }
 })
@@ -2247,20 +2223,6 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
             dockerImage = "python-runner"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
-
-        script {
-            name = "Publish broken links report to S3"
-            id = "PUBLISH_BROKEN_LINKS_REPORT"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                if [[ %env.DEPLOY_ENV% != "prod" ]]; then
-                    aws s3 sync ./apps/search_indexer/out s3://tenant-doctools-admin-builds/broken-links-reports/%env.DEPLOY_ENV%/%env.DOC_ID%
-                fi
-            """.trimIndent()
-        }
-
     }
 
     features {
