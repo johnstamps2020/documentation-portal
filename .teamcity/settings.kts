@@ -1615,13 +1615,19 @@ object HelperObjects {
     private fun createPlatformProject(platform_name: String, docs: MutableList<JSONObject>): Project {
 
         var categories = mutableListOf<String>()
+        val noCategoryLabel = "No category"
         for (doc in docs) {
-            var category = "No category"
             val metadata = doc.getJSONObject("metadata")
             if (metadata.has("category")) {
-                category = metadata.getJSONArray("category")[0].toString()
-                if (!categories.contains(category)) {
-                    categories.add(category)
+                val docCategories = metadata.getJSONArray("category")
+                for (docCategory in docCategories) {
+                    if (!categories.contains(docCategory.toString())) {
+                        categories.add(docCategory.toString())
+                    } else {
+                        if (!categories.contains(noCategoryLabel)) {
+                            categories.add(noCategoryLabel)
+                        }
+                    }
                 }
             }
         }
@@ -1631,13 +1637,13 @@ object HelperObjects {
             val docsInCategory = mutableListOf<JSONObject>()
             for (doc in docs) {
                 val metadata = doc.getJSONObject("metadata")
-                if (metadata.has("category") && metadata.getJSONArray("category").toList().contains(category)) {
+                if (metadata.has("category") && metadata.getJSONArray("category")[0].toString() == category) {
                     docsInCategory.add(doc)
-                } else if (category == "No category" && !metadata.has("category")) {
+                } else if (category == noCategoryLabel && !metadata.has("category")) {
                     docsInCategory.add(doc)
                 }
             }
-            subProjects.add(createCategoryProject(category, docsInCategory))
+            subProjects.add(createCategoryProject("${platform_name}_${category}", docsInCategory))
         }
 
         return Project {
@@ -1914,15 +1920,21 @@ object HelperObjects {
     fun createProjects(): List<Project> {
 
         var platforms = mutableListOf<String>()
+        val noPlatformLabel = "No platform"
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
-            var platform = "No platform"
             val metadata = doc.getJSONObject("metadata")
             if (metadata.has("platform")) {
-                platform = metadata.getJSONArray("platform")[0].toString()
-            }
-            if (!platforms.contains(platform)) {
-                platforms.add(platform)
+                val docPlatforms = metadata.getJSONArray("platform")
+                for (docPlatform in docPlatforms) {
+                    if (!platforms.contains(docPlatform.toString())) {
+                        platforms.add(docPlatform.toString())
+                    }
+                }
+            } else {
+                if (!platforms.contains(noPlatformLabel)) {
+                    platforms.add(noPlatformLabel)
+                }
             }
         }
         val subProjects = mutableListOf<Project>()
@@ -1932,9 +1944,9 @@ object HelperObjects {
                 val doc = docConfigs.getJSONObject(i)
                 if (doc.has("build")) {
                     val metadata = doc.getJSONObject("metadata")
-                    if (metadata.has("platform") && metadata.getJSONArray("platform").toList().contains(platform)) {
+                    if (metadata.has("platform") && metadata.getJSONArray("platform")[0].toString() == platform) {
                         docsInPlatform.add(doc)
-                    } else if (platform == "No platform" && !metadata.has("platform")) {
+                    } else if (platform == noPlatformLabel && !metadata.has("platform")) {
                         docsInPlatform.add(doc)
                     }
                 }
