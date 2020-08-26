@@ -1519,14 +1519,11 @@ object Content : Project({
 
 })
 
-object DeployServices : Project({
-    name = "Deploy services"
+object HelperObjects {
+    private const val configPath = "config/server-config.json"
+    private val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
+    private val docConfigs = config.getJSONArray("docs")
 
-    buildType(DeployS3Ingress)
-    buildType(DeploySearchService)
-})
-
-object HelperMethods {
     private fun getSourcesFromConfig(): JSONArray {
         val sourceConfigPath = "config/sources.json"
         val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
@@ -1591,11 +1588,67 @@ object HelperMethods {
         return builds
     }
 
-    private fun createPublishBuildsFromConfig(env: String): MutableList<BuildType> {
+    private fun createPlatformProject(platform_name: String, docs: MutableList<JSONObject>): Project {
 
+        var categories = mutableListOf<String>()
+        val noCategoryLabel = "No category"
+        for (doc in docs) {
+            val metadata = doc.getJSONObject("metadata")
+            if (metadata.has("category")) {
+                val docCategories = metadata.getJSONArray("category")
+                for (docCategory in docCategories) {
+                    if (!categories.contains(docCategory.toString())) {
+                        categories.add(docCategory.toString())
+                    } else {
+                        if (!categories.contains(noCategoryLabel)) {
+                            categories.add(noCategoryLabel)
+                        }
+                    }
+                }
+            }
+        }
+
+        val subProjects = mutableListOf<Project>()
+        for (category in categories) {
+            val docsInCategory = mutableListOf<JSONObject>()
+            for (doc in docs) {
+                val metadata = doc.getJSONObject("metadata")
+                if (metadata.has("category") && metadata.getJSONArray("category")[0].toString() == category) {
+                    docsInCategory.add(doc)
+                } else if (category == noCategoryLabel && !metadata.has("category")) {
+                    docsInCategory.add(doc)
+                }
+            }
+            subProjects.add(createCategoryProject("${platform_name}_${category}", docsInCategory))
+        }
+
+        return Project {
+            id = RelativeId(platform_name)
+            name = platform_name
+
+            subProjects.forEach(this::subProject)
+        }
+    }
+
+    private fun createCategoryProject(category_name: String, docs: MutableList<JSONObject>): Project {
+
+        val subProjects = mutableListOf<Project>()
+        for (doc in docs) {
+            subProjects.add(createDocProjectWithBuilds(doc))
+        }
+
+        return Project {
+            id = RelativeId(category_name)
+            name = category_name
+
+            subProjects.forEach(this::subProject)
+        }
+    }
+
+    private fun createDocProjectWithBuilds(doc: JSONObject): Project {
         class PublishToS3(product: String, platform: String, version: String, doc_id: String, build_name: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>) : BuildType({
-            id = RelativeId(doc_id + build_env + "_modular")
-            name = build_name
+            id = RelativeId(build_env + build_name.replace(" ", ""))
+            name = "$build_env $build_name"
             maxRunningBuilds = 1
 
             var build_pdf = "true"
@@ -1625,29 +1678,29 @@ object HelperMethods {
                     name = "Upload generated content to the S3 bucket"
                     id = "UPLOAD_GENERATED_CONTENT"
                     scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        export WORKING_DIR=${'$'}(pwd)
-                        export OUT_DIR="out/extracted"
-                        
-                        unzip ${'$'}WORKING_DIR/out/out.zip -d ${'$'}WORKING_DIR/${'$'}OUT_DIR && rm -rf ${'$'}WORKING_DIR/${'$'}OUT_DIR/out.zip
-                        aws s3 sync ${'$'}WORKING_DIR/${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
-                    """.trimIndent()
+                    #!/bin/bash
+                    set -xe
+                    export WORKING_DIR=${'$'}(pwd)
+                    export OUT_DIR="out/extracted"
+                    
+                    unzip ${'$'}WORKING_DIR/out/out.zip -d ${'$'}WORKING_DIR/${'$'}OUT_DIR && rm -rf ${'$'}WORKING_DIR/${'$'}OUT_DIR/out.zip
+                    aws s3 sync ${'$'}WORKING_DIR/${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
+                """.trimIndent()
                 }
                 script {
                     name = "Trigger index update"
                     id = "TRIGGER_INDEX_UPDATE"
                     scriptContent = """
-                        #!/bin/bash
-                        set -xe
-        
-                        curl -X POST -H "Content-Type: application/xml" \
-                            -H "Authorization: Bearer %env.AUTH_TOKEN%" \
-                            -H "Accept: application/json" \
-                            -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
-                            https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
-        
-                    """.trimIndent()
+                    #!/bin/bash
+                    set -xe
+    
+                    curl -X POST -H "Content-Type: application/xml" \
+                        -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                        -H "Accept: application/json" \
+                        -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
+                        https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+    
+                """.trimIndent()
                 }
             }
 
@@ -1669,21 +1722,21 @@ object HelperMethods {
                         id = stepId
                         name = "Copy resources from git to S3"
                         scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            git clone --single-branch --branch $resourceGitBranch $resourceGitUrl resource
-                            export S3_BUCKET_NAME=tenant-doctools-%env.DEPLOY_ENV%-builds
-                            if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                                echo "Setting credentials to access prod"
-                                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                            fi
-                            
-                            echo "Copying files to S3"
-                            aws s3 sync ./resource/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
-                        """.trimIndent()
+                        #!/bin/bash
+                        set -xe
+                        
+                        git clone --single-branch --branch $resourceGitBranch $resourceGitUrl resource
+                        export S3_BUCKET_NAME=tenant-doctools-%env.DEPLOY_ENV%-builds
+                        if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                            echo "Setting credentials to access prod"
+                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                            export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                        fi
+                        
+                        echo "Copying files to S3"
+                        aws s3 sync ./resource/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
+                    """.trimIndent()
                     })
                 }
 
@@ -1740,157 +1793,152 @@ object HelperMethods {
                     id = "COPY_FROM_STAGING_TO_PROD"
                     name = "Copy from S3 on staging to S3 on Prod"
                     scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        echo "Copying from staging to Teamcity"
-                        aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path $relative_copy_path/ --delete
-                        
-                        echo "Setting credentials to access prod"
-                        export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                        export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                        export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                        
-                        echo "Uploading from Teamcity to prod"
-                        aws s3 sync $relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
-                    """.trimIndent()
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Copying from staging to Teamcity"
+                    aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path $relative_copy_path/ --delete
+                    
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    
+                    echo "Uploading from Teamcity to prod"
+                    aws s3 sync $relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
+                """.trimIndent()
                 }
                 script {
                     id = "TRIGGER_INDEX_UPDATE"
                     name = "Trigger index update"
                     scriptContent = """
-                        #!/bin/bash
-                        set -xe
-        
-                        curl -X POST -H "Content-Type: application/xml" \
-                            -H "Authorization: Bearer %env.AUTH_TOKEN%" \
-                            -H "Accept: application/json" \
-                            -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
-                            https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
-        
-                    """.trimIndent()
+                    #!/bin/bash
+                    set -xe
+    
+                    curl -X POST -H "Content-Type: application/xml" \
+                        -H "Authorization: Bearer %env.AUTH_TOKEN%" \
+                        -H "Accept: application/json" \
+                        -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
+                        https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
+    
+                """.trimIndent()
                 }
 
             }
 
         })
 
-        class BuildAndUploadToS3AbstractDevAndIntDitaDev(doc_id: String, build_name: String, ditaval_file: String, input_path: String, build_env: String, publish_path: String, vcs_root_id: String) : BuildType({
-            templates(BuildAndUploadToS3DitaDev, CrawlDocumentAndUpdateIndex)
+        var builds = mutableListOf<BuildType>()
+        var buildName = ""
 
-            id = RelativeId(doc_id + build_env + "_modular")
-            name = build_name
+        val docId = doc.getString("id")
+        val publishPath = doc.getString("url")
+        val title = doc.getString("title")
 
-            params {
-                text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("FORMAT", "html5", allowEmpty = false)
-                text("DITA_OUTPUT_DIR", "%system.teamcity.build.tempDir%/out", allowEmpty = false)
-                text("OUTPUT_DIR", "%system.teamcity.build.tempDir%/html5", allowEmpty = false)
-                text("TOOLS_ROOT", "tools_root", allowEmpty = false)
-                text("DITAVAL_FILE", ditaval_file, allowEmpty = false)
-                text("INPUT_PATH", input_path, allowEmpty = false)
-                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", allowEmpty = false)
-                text("PUBLISH_PATH", publish_path, allowEmpty = false)
-                text("CONFIG_FILE_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
-                text("APP_BASE_URL", "https://docs.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_S3_URL", "https://ditaot.internal.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("DOC_ID", doc_id, allowEmpty = false)
-                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.${build_env}.ccs.guidewire.net", allowEmpty = false)
-                text("INDEX_NAME", "gw-docs", allowEmpty = false)
-            }
+        val metadata = doc.getJSONObject("metadata")
+        val product = metadata.getJSONArray("product")[0].toString()
+        val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
+        val version = metadata.getString("version")
+        val environments = doc.getJSONArray("environments")
 
-            vcs {
-                root(AbsoluteId(vcs_root_id), "+:. => %SOURCES_ROOT%")
-            }
+        buildName = "$title $version ($docId)"
 
+        val build: JSONObject = doc.getJSONObject("build")
+        var filter = ""
+        if (build.has("filter")) {
+            filter = build.getString("filter")
+        }
 
-        })
+        var indexRedirect = "false"
+        if (build.has("indexRedirect")) {
+            indexRedirect = build.getBoolean("indexRedirect").toString()
+        }
 
-        val configPath = "config/server-config.json"
-        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
+        val root = build.getString("root")
+        val vcsRootId = build.getString("src")
+        val sourcesFromConfig = getSourcesFromConfig()
+        val (sourceGitUrl, sourceGitBranch) = getSourceById(vcsRootId, sourcesFromConfig)
 
-        val builds = mutableListOf<BuildType>()
-
-        val docConfigs = config.getJSONArray("docs")
-        for (i in 0 until docConfigs.length()) {
-            val doc = docConfigs.getJSONObject(i)
-            if (doc.has("build")) {
-                val buildId = doc.getString("id")
-                val publishPath = doc.getString("url")
-                val title = doc.getString("title")
-
-                val metadata = doc.getJSONObject("metadata")
-                val product = metadata.getJSONArray("product")[0].toString()
-                val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
-                val version = metadata.getString("version")
-                val environments = doc.getJSONArray("environments")
-
-                val buildName = "Build $title $platform $version ($buildId)"
-
-                val build: JSONObject = doc.getJSONObject("build")
-                val buildType = build.getString("buildType")
-                var filter = ""
-                if (build.has("filter")) {
-                    filter = build.getString("filter")
-                }
-
-                var indexRedirect = "false"
-                if (build.has("indexRedirect")) {
-                    indexRedirect = build.getBoolean("indexRedirect").toString()
-                }
-
-                val root = build.getString("root")
-                val vcsRootId = build.getString("src")
-                val sourcesFromConfig = getSourcesFromConfig()
-                val (sourceGitUrl, sourceGitBranch) = getSourceById(vcsRootId, sourcesFromConfig)
-
-                val resourcesToCopy = mutableListOf<JSONObject>()
-                if (build.has("resources")) {
-                    val resources = build.getJSONArray("resources")
-                    for (j in 0 until resources.length()) {
-                        val resource = resources.getJSONObject(j)
-                        val resourceVcsId = resource.getString("src")
-                        val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourcesFromConfig)
-                        val resourceSourceFolder = resource.getString("sourceFolder")
-                        val resourceTargetFolder = resource.getString("targetFolder")
-                        val resourceObject = JSONObject()
-                        resourceObject.put("resourceGitUrl", resourceGitUrl)
-                        resourceObject.put("resourceGitBranch", resourceGitBranch)
-                        resourceObject.put("resourceSourceFolder", resourceSourceFolder)
-                        resourceObject.put("resourceTargetFolder", resourceTargetFolder)
-                        resourcesToCopy.add(resourceObject)
-                    }
-                }
-
-                if (environments.contains(env)) {
-                    if (env == "prod") {
-                        builds.add(PublishToS3ProdAbstract(publishPath, title, buildId, version, platform, env))
-                    } else {
-                        if (buildType == "dita-dev") {
-                            builds.add(BuildAndUploadToS3AbstractDevAndIntDitaDev(buildId, buildName, filter, root, env,
-                                    publishPath, vcsRootId))
-                        } else {
-                            builds.add(PublishToS3(product, platform, version, buildId, buildName, filter, root, indexRedirect, env,
-                                    publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy))
-                        }
-                    }
-                }
+        val resourcesToCopy = mutableListOf<JSONObject>()
+        if (build.has("resources")) {
+            val resources = build.getJSONArray("resources")
+            for (j in 0 until resources.length()) {
+                val resource = resources.getJSONObject(j)
+                val resourceVcsId = resource.getString("src")
+                val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourcesFromConfig)
+                val resourceSourceFolder = resource.getString("sourceFolder")
+                val resourceTargetFolder = resource.getString("targetFolder")
+                val resourceObject = JSONObject()
+                resourceObject.put("resourceGitUrl", resourceGitUrl)
+                resourceObject.put("resourceGitBranch", resourceGitBranch)
+                resourceObject.put("resourceSourceFolder", resourceSourceFolder)
+                resourceObject.put("resourceTargetFolder", resourceTargetFolder)
+                resourcesToCopy.add(resourceObject)
             }
         }
 
-        return builds
-    }
-
-    fun getContentProjectFromConfig(env: String): Project {
+        for (env in environments) {
+            if (env == "prod") {
+                builds.add(PublishToS3ProdAbstract(publishPath, title, docId, version, platform, env as String))
+            } else {
+                builds.add(PublishToS3(product, platform, version, docId, buildName, filter, root, indexRedirect, env as String,
+                        publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy))
+            }
+        }
         return Project {
-            id = RelativeId("DeployContent_$env")
-            name = "Deploy content to $env"
+            id = RelativeId(buildName.replace(" ", ""))
+            name = buildName
 
-            val builds = createPublishBuildsFromConfig(env)
             builds.forEach(this::buildType)
         }
     }
+
+    fun createProjects(): List<Project> {
+
+        var platforms = mutableListOf<String>()
+        val noPlatformLabel = "No platform"
+        for (i in 0 until docConfigs.length()) {
+            val doc = docConfigs.getJSONObject(i)
+            val metadata = doc.getJSONObject("metadata")
+            if (metadata.has("platform")) {
+                val docPlatforms = metadata.getJSONArray("platform")
+                for (docPlatform in docPlatforms) {
+                    if (!platforms.contains(docPlatform.toString())) {
+                        platforms.add(docPlatform.toString())
+                    }
+                }
+            } else {
+                if (!platforms.contains(noPlatformLabel)) {
+                    platforms.add(noPlatformLabel)
+                }
+            }
+        }
+        val subProjects = mutableListOf<Project>()
+        for (platform in platforms) {
+            val docsInPlatform = mutableListOf<JSONObject>()
+            for (i in 0 until docConfigs.length()) {
+                val doc = docConfigs.getJSONObject(i)
+                if (doc.has("build")) {
+                    val metadata = doc.getJSONObject("metadata")
+                    if (metadata.has("platform") && metadata.getJSONArray("platform")[0].toString() == platform) {
+                        docsInPlatform.add(doc)
+                    } else if (platform == noPlatformLabel && !metadata.has("platform")) {
+                        docsInPlatform.add(doc)
+                    }
+                }
+            }
+            subProjects.add(createPlatformProject(platform, docsInPlatform))
+        }
+        return subProjects
+    }
 }
+
+object DeployServices : Project({
+    name = "Deploy services"
+
+    buildType(DeployS3Ingress)
+    buildType(DeploySearchService)
+})
 
 object BuildInsuranceSuiteGuide : BuildType({
     name = "Build an InsuranceSuite guide"
@@ -2236,7 +2284,7 @@ object CoreBuilds : Project({
 object XdocsExportBuilds : Project({
     name = "XDocs export builds"
 
-    val builds = HelperMethods.createExportBuildsFromConfig()
+    val builds = HelperObjects.createExportBuildsFromConfig()
     builds.forEach(this::buildType)
 })
 
@@ -2252,10 +2300,7 @@ object ModularBuilds : Project({
     subProject(CoreBuilds)
     subProject(XdocsExportBuilds)
     subProject(TriggerBuilds)
-    subProject(HelperMethods.getContentProjectFromConfig("dev"))
-    subProject(HelperMethods.getContentProjectFromConfig("int"))
-    subProject(HelperMethods.getContentProjectFromConfig("staging"))
-    subProject(HelperMethods.getContentProjectFromConfig("prod"))
+    HelperObjects.createProjects().forEach(this::subProject)
     buildType(BuildInsuranceSuiteGuide)
     buildType(GetDocParametersFromConfigFiles)
 })
