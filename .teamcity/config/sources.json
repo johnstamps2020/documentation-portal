@@ -109,6 +109,12 @@
       ]
     },
     {
+      "id": "cloudisnoxbook",
+      "title": "InsuranceSuite Cloud No Xbook",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud-no-xbook.git"
+    },
+    {
       "id": "exportisonprem9",
       "title": "InsuranceSuite OnPrem 9",
       "sourceType": "xdocs",
@@ -374,6 +380,12 @@
         "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
       ]
+    },
+    {
+      "id": "standardsdraftsrc",
+      "title": "Standards Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     }
   ]
 }
