@@ -943,7 +943,7 @@ object HelperObjects {
                 })
 
         class PublishToS3(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId) : BuildType({
-            id = RelativeId(removeSpecialCharacters(build_env + doc_id + "modular"))
+            id = RelativeId(removeSpecialCharacters(build_env + doc_id))
             name = "Publish to $build_env"
             maxRunningBuilds = 1
 
@@ -1078,21 +1078,16 @@ object HelperObjects {
             }
         })
 
-        class PublishToS3ProdAbstract(relative_copy_path: String, title: String, doc_id: String, doc_version: String, doc_platform: String, build_env: String) : BuildType({
-            id = RelativeId(removeSpecialCharacters(doc_id + build_env + "modular"))
+        class PublishToS3Prod(publish_path: String, doc_id: String) : BuildType({
+            id = RelativeId(removeSpecialCharacters(doc_id))
             name = "Copy from staging to prod"
 
             params {
                 password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
-                text("TOOLS_ROOT", "tools_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("S3_BUCKET_NAME", "tenant-doctools-${build_env}-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("CONFIG_FILE_URL", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("APP_BASE_URL", "https://docs.guidewire.com", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("DOC_S3_URL", "https://ditaot.internal.us-east-2.service.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("ELASTICSEARCH_URLS", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("INDEX_NAME", "gw-docs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("PUBLISH_PATH", relative_copy_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.DEPLOY_ENV", "prod", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             steps {
@@ -1104,7 +1099,7 @@ object HelperObjects {
                     set -xe
                     
                     echo "Copying from staging to Teamcity"
-                    aws s3 sync s3://tenant-doctools-staging-builds/$relative_copy_path $relative_copy_path/ --delete
+                    aws s3 sync s3://tenant-doctools-staging-builds/$publish_path $publish_path/ --delete
                     
                     echo "Setting credentials to access prod"
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
@@ -1112,7 +1107,7 @@ object HelperObjects {
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                     
                     echo "Uploading from Teamcity to prod"
-                    aws s3 sync $relative_copy_path/ s3://tenant-doctools-prod-builds/$relative_copy_path --delete
+                    aws s3 sync $publish_path/ s3://tenant-doctools-prod-builds/$publish_path --delete
                 """.trimIndent()
                 }
                 script {
@@ -1184,7 +1179,7 @@ object HelperObjects {
 
         for (env in environments) {
             if (env == "prod") {
-                builds.add(PublishToS3ProdAbstract(publishPath, title, docId, version, platform, env as String))
+                builds.add(PublishToS3Prod(publishPath, docId))
             } else {
                 builds.add(PublishToS3(product, platform, version, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId))
