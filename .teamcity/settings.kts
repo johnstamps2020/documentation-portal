@@ -787,6 +787,7 @@ object Server : Project({
 
     buildType(Checkmarx)
     buildType(Test)
+    buildType(TestConfig)
     buildType(DeployInt)
     buildType(DeployStaging)
     buildType(DeployDev)
