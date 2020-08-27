@@ -1136,25 +1136,6 @@ object TestConfig : BuildType({
     }
 })
 
-object CopyContentFromStagingToProd : BuildType({
-    name = "Copy content from Staging to Prod"
-
-    steps {
-        script {
-            name = "Copy from S3 on staging to S3 on Prod"
-            scriptContent = """
-                aws s3 sync s3://tenant-doctools-staging-builds stage/ --delete
-                
-                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                
-                aws s3 sync stage/ s3://tenant-doctools-prod-builds --delete
-            """.trimIndent()
-        }
-    }
-})
-
 object BuildDockerImage : Template({
     name = "Build Docker Image"
 
