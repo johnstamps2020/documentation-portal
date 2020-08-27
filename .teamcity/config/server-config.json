@@ -91,6 +91,13 @@
         "version": "latest",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
       "environments": ["int"]
     },
     {
@@ -105,6 +112,13 @@
         "version": "latest",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
       "environments": ["int"]
     },
     {
@@ -118,6 +132,13 @@
         "product": ["PolicyCenter"],
         "version": "latest",
         "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
       },
       "environments": ["int"]
     },
@@ -612,6 +633,13 @@
         "version": "10.x.x",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-BillingCenter-Self-managed-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
       "environments": ["int"]
     },
     {
@@ -624,6 +652,13 @@
         "platform": ["Self-managed"],
         "version": "10.x.x",
         "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-ClaimCenter-Self-managed-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
       },
       "environments": ["int"]
     },
@@ -638,12 +673,19 @@
         "version": "10.x.x",
         "category": ["Core"]
       },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-PolicyCenter-Self-managed-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
       "environments": ["int"]
     },
     {
-      "id": "selfmanagedbcupgradetoolsqwsxcgtr",
+      "id": "selfmanagedbcupgradetools1x",
       "title": "BillingCenter Upgrade Tools 1.x.x",
-      "url": "self-managed/bc/upgrade/1xx",
+      "url": "self-managed/bc/upgrade/1x",
       "metadata": {
         "product": ["BillingCenter Upgrade Tools"],
         "platform": ["Self-managed"],
@@ -654,14 +696,14 @@
         "buildType": "dita",
         "filter": "IS-BC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools1x"
+        "src": "isconfigupgradetools1xsrc"
       },
       "environments": ["int"]
     },
     {
-      "id": "selfmanagedccupgradetoolsplmciuyg",
+      "id": "selfmanagedccupgradetools1x",
       "title": "ClaimCenter Upgrade Tools 1.x.x",
-      "url": "self-managed/cc/upgrade/1xx",
+      "url": "self-managed/cc/upgrade/1x",
       "metadata": {
         "product": ["ClaimCenter Upgrade Tools"],
         "platform": ["Self-managed"],
@@ -672,14 +714,14 @@
         "buildType": "dita",
         "filter": "IS-CC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools1x"
+        "src": "isconfigupgradetools1xsrc"
       },
       "environments": ["int"]
     },
     {
-      "id": "selfmanagedpcupgradetoolstyfghxsw",
+      "id": "selfmanagedpcupgradetools1x",
       "title": "PolicyCenter Upgrade Tools 1.x.x",
-      "url": "self-managed/pc/upgrade/1xx",
+      "url": "self-managed/pc/upgrade/1x",
       "metadata": {
         "product": ["PolicyCenter Upgrade Tools"],
         "platform": ["Self-managed"],
@@ -690,7 +732,7 @@
         "buildType": "dita",
         "filter": "IS-PC-OnPrem-Draft.ditaval",
         "root": "_superbook.ditamap",
-        "src": "upgradetools1x"
+        "src": "isconfigupgradetools1xsrc"
       },
       "environments": ["int"]
     },
