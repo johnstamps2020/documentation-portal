@@ -1428,7 +1428,7 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
                     export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
                 fi
                 
-                curl %env.CONFIG_FILE_URL% > %teamcity.build.workingDir%/config.json
+                curl ${'$'}CONFIG_FILE_URL > %teamcity.build.workingDir%/config.json
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"               
 
                 cd apps/search_indexer
