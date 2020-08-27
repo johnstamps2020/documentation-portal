@@ -30,7 +30,7 @@ project {
 
     subProject(Services)
     subProject(Server)
-    subProject(Content)
+    subProject(ModularContent)
 }
 
 object vcsrootmasteronly : GitVcsRoot({
@@ -1574,7 +1574,7 @@ object TriggerBuilds : Project({
     buildType(TriggerXdocsExportBuilds)
 })
 
-object Content : Project({
+object ModularContent : Project({
     name = "Content"
 
     subProject(ServiceBuilds)
