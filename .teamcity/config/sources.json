@@ -8,20 +8,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
     },
     {
-      "id": "exampleresource",
-      "title": "Example resource package",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git"
-    },
-    {
-      "id": "upgradetoolsrelease1440_909",
-      "title": "InsuranceSuite Upgrade Tools 1.44.0-9.0.9",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
-      "branch": "release/1.44.0-9.0.9"
-    },
-    {
-      "id": "upgradetools1x",
+      "id": "isconfigupgradetools1xsrc",
       "title": "InsuranceSuite Upgrade Tools 1x",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
@@ -31,6 +18,18 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
       ]
+    },
+    {
+      "id": "isupgradeguidesrc",
+      "title": "InsuranceSuite Upgrade Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git"
+    },
+    {
+      "id": "exampleresource",
+      "title": "Example resource package",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git"
     },
     {
       "id": "cloudis202005src",
@@ -44,20 +43,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
       ]
-    },
-    {
-      "id": "insurancesuiteupgradeguiderelease300_1010",
-      "title": "InsuranceSuite Upgrade Guide 3.0.0-10.1.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "release/3.0.0-10.1.0"
-    },
-    {
-      "id": "insurancesuiteupgradeguiderelease300_202005",
-      "title": "InsuranceSuite Upgrade Guide 3.0.0-2020.05",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "release/3.0.0-2020.05"
     },
     {
       "id": "selfmanagedis10xdraft",
