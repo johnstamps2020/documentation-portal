@@ -1490,9 +1490,9 @@ object Content : Project({
     builds.forEach(this::buildType)
 
     buildType(UpdateSearchIndex)
-    buildType(CleanUpIndex)
-    subProject(DeployServices)
-    buildType(TestContent)
+//    buildType(CleanUpIndex)
+//    subProject(DeployServices)
+//    buildType(TestContent)
     subProject(Helpers.getContentProjectFromConfig("dev"))
     subProject(Helpers.getContentProjectFromConfig("int"))
     subProject(Helpers.getContentProjectFromConfig("staging"))
@@ -1510,7 +1510,7 @@ object HelperObjects {
         return re.replace(stringToClean, "")
     }
 
-    private fun getSourcesFromConfig(): JSONArray {
+    fun getSourcesFromConfig(): JSONArray {
         val sourceConfigPath = "config/sources.json"
         val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
         return config.getJSONArray("sources")
@@ -1912,13 +1912,6 @@ object HelperObjects {
     }
 }
 
-object DeployServices : Project({
-    name = "Deploy services"
-
-    buildType(DeployS3Ingress)
-    buildType(DeploySearchService)
-})
-
 object BuildInsuranceSuiteGuide : BuildType({
     name = "Build an InsuranceSuite guide"
 
@@ -2214,6 +2207,56 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
     }
 })
 
+object CreateReleaseTag : BuildType({
+    name = "Create a release tag"
+
+    val gitRepositories = mutableListOf<String>()
+    val sourceConfigs = HelperObjects.getSourcesFromConfig()
+    for (i in 0 until sourceConfigs.length()) {
+        val source = sourceConfigs.getJSONObject(i)
+        val gitUrl: String = source.get("gitUrl").toString()
+        val sourceTitle: String = source.get("title").toString()
+        val branchName = if (source.has("branch")) source.getString("branch") else "master"
+        if (branchName == "master") {
+            gitRepositories.add(gitUrl)
+        }
+    }
+
+    params {
+        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.TAG_VERSION", "", description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0", display = ParameterDisplay.PROMPT,
+                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer format")
+        select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
+    }
+
+    steps {
+        script {
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                export TAG_NAME="v%env.TAG_VERSION%"
+
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "%serviceAccountUsername%"
+                
+                git clone %env.GIT_URL% %env.SOURCES_ROOT%
+                cd %env.SOURCES_ROOT%
+                
+                git tag -a "${'$'}TAG_NAME" -m "Documentation ${'$'}TAG_VERSION"
+                echo "Created tag ${'$'}TAG_NAME"
+                git push origin "${'$'}TAG_NAME"
+                echo "Pushed tag to the remote repository"
+            """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+})
+
 object TriggerXdocsExportBuilds : BuildType({
     name = "Trigger XDocs export builds"
 
@@ -2253,11 +2296,12 @@ object TriggerXdocsExportBuilds : BuildType({
 
 object ServiceBuilds : Project({
     name = "Service builds"
-    description = "Builds used as a service to other builds. You can also run the core builds manually."
+    description = "Builds used as a service to other builds. You can also run the service builds manually."
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(BuildOutputFromDita)
     buildType(CrawlDocumentAndUpdateSearchIndex)
+    buildType(CreateReleaseTag)
 })
 
 object XdocsExportBuilds : Project({
@@ -2285,4 +2329,11 @@ object ModularBuilds : Project({
     buildType(CleanUpIndex)
     subProject(DeployServices)
     buildType(TestContent)
+})
+
+object DeployServices : Project({
+    name = "Deploy services"
+
+    buildType(DeployS3Ingress)
+    buildType(DeploySearchService)
 })
