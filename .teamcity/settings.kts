@@ -1136,25 +1136,6 @@ object TestConfig : BuildType({
     }
 })
 
-object CopyContentFromStagingToProd : BuildType({
-    name = "Copy content from Staging to Prod"
-
-    steps {
-        script {
-            name = "Copy from S3 on staging to S3 on Prod"
-            scriptContent = """
-                aws s3 sync s3://tenant-doctools-staging-builds stage/ --delete
-                
-                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                
-                aws s3 sync stage/ s3://tenant-doctools-prod-builds --delete
-            """.trimIndent()
-        }
-    }
-})
-
 object BuildDockerImage : Template({
     name = "Build Docker Image"
 
@@ -1509,9 +1490,9 @@ object Content : Project({
     builds.forEach(this::buildType)
 
     buildType(UpdateSearchIndex)
-    buildType(CleanUpIndex)
-    subProject(DeployServices)
-    buildType(TestContent)
+//    buildType(CleanUpIndex)
+//    subProject(DeployServices)
+//    buildType(TestContent)
     subProject(Helpers.getContentProjectFromConfig("dev"))
     subProject(Helpers.getContentProjectFromConfig("int"))
     subProject(Helpers.getContentProjectFromConfig("staging"))
@@ -1529,7 +1510,7 @@ object HelperObjects {
         return re.replace(stringToClean, "")
     }
 
-    private fun getSourcesFromConfig(): JSONArray {
+    fun getSourcesFromConfig(): JSONArray {
         val sourceConfigPath = "config/sources.json"
         val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
         return config.getJSONArray("sources")
@@ -1931,13 +1912,6 @@ object HelperObjects {
     }
 }
 
-object DeployServices : Project({
-    name = "Deploy services"
-
-    buildType(DeployS3Ingress)
-    buildType(DeploySearchService)
-})
-
 object BuildInsuranceSuiteGuide : BuildType({
     name = "Build an InsuranceSuite guide"
 
@@ -2233,6 +2207,56 @@ object CrawlDocumentAndUpdateSearchIndex : BuildType({
     }
 })
 
+object CreateReleaseTag : BuildType({
+    name = "Create a release tag"
+
+    val gitRepositories = mutableListOf<String>()
+    val sourceConfigs = HelperObjects.getSourcesFromConfig()
+    for (i in 0 until sourceConfigs.length()) {
+        val source = sourceConfigs.getJSONObject(i)
+        val gitUrl: String = source.get("gitUrl").toString()
+        val sourceTitle: String = source.get("title").toString()
+        val branchName = if (source.has("branch")) source.getString("branch") else "master"
+        if (branchName == "master") {
+            gitRepositories.add(gitUrl)
+        }
+    }
+
+    params {
+        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.TAG_VERSION", "", description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0", display = ParameterDisplay.PROMPT,
+                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer format")
+        select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
+    }
+
+    steps {
+        script {
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                export TAG_NAME="v%env.TAG_VERSION%"
+
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "%serviceAccountUsername%"
+                
+                git clone %env.GIT_URL% %env.SOURCES_ROOT%
+                cd %env.SOURCES_ROOT%
+                
+                git tag -a "${'$'}TAG_NAME" -m "Documentation ${'$'}TAG_VERSION"
+                echo "Created tag ${'$'}TAG_NAME"
+                git push origin "${'$'}TAG_NAME"
+                echo "Pushed tag to the remote repository"
+            """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+})
+
 object TriggerXdocsExportBuilds : BuildType({
     name = "Trigger XDocs export builds"
 
@@ -2270,13 +2294,14 @@ object TriggerXdocsExportBuilds : BuildType({
 //TODO: Add a schedule trigger
 })
 
-object CoreBuilds : Project({
-    name = "Core builds"
-    description = "Builds used as a service to other builds. You can also run the core builds manually."
+object ServiceBuilds : Project({
+    name = "Service builds"
+    description = "Builds used as a service to other builds. You can also run the service builds manually."
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(BuildOutputFromDita)
     buildType(CrawlDocumentAndUpdateSearchIndex)
+    buildType(CreateReleaseTag)
 })
 
 object XdocsExportBuilds : Project({
@@ -2295,10 +2320,20 @@ object TriggerBuilds : Project({
 object ModularBuilds : Project({
     name = "Modular builds"
 
-    subProject(CoreBuilds)
+    subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
     subProject(TriggerBuilds)
     HelperObjects.createProjects().forEach(this::subProject)
     buildType(BuildInsuranceSuiteGuide)
     buildType(GetDocParametersFromConfigFiles)
+    buildType(CleanUpIndex)
+    subProject(DeployServices)
+    buildType(TestContent)
+})
+
+object DeployServices : Project({
+    name = "Deploy services"
+
+    buildType(DeployS3Ingress)
+    buildType(DeploySearchService)
 })
