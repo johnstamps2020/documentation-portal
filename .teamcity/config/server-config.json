@@ -1518,12 +1518,6 @@
         "version": "9.0.9",
         "category": ["Core"]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "upgradetoolsrelease1440_909"
-      },
       "environments": ["dev", "staging", "prod"]
     },
     {
@@ -1536,12 +1530,6 @@
         "version": "9.0.9",
         "category": ["Core"]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "upgradetoolsrelease1440_909"
-      },
       "environments": ["dev", "staging", "prod"]
     },
     {
@@ -1553,12 +1541,6 @@
         "product": ["PolicyCenter Upgrade Tools"],
         "version": "9.0.9",
         "category": ["Core"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "upgradetoolsrelease1440_909"
       },
       "environments": ["dev", "staging", "prod"]
     },
