@@ -2251,8 +2251,8 @@ object TriggerXdocsExportBuilds : BuildType({
 //TODO: Add a schedule trigger
 })
 
-object CoreBuilds : Project({
-    name = "Core builds"
+object ServiceBuilds : Project({
+    name = "Service builds"
     description = "Builds used as a service to other builds. You can also run the core builds manually."
 
     buildType(ExportFilesFromXDocsToBitbucket)
@@ -2276,10 +2276,13 @@ object TriggerBuilds : Project({
 object ModularBuilds : Project({
     name = "Modular builds"
 
-    subProject(CoreBuilds)
+    subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
     subProject(TriggerBuilds)
     HelperObjects.createProjects().forEach(this::subProject)
     buildType(BuildInsuranceSuiteGuide)
     buildType(GetDocParametersFromConfigFiles)
+    buildType(CleanUpIndex)
+    subProject(DeployServices)
+    buildType(TestContent)
 })
