@@ -1537,11 +1537,13 @@ object TriggerXdocsExportBuilds : BuildType({
     triggers {
         schedule {
             schedulingPolicy = daily {
-                hour = 0
+                hour = 7
+                minute = 20
             }
             branchFilter = ""
             triggerBuild = always()
             enableQueueOptimization = false
+            withPendingChangesOnly = false
         }
     }
 })
