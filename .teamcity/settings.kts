@@ -872,77 +872,77 @@ object HelperObjects {
         return builds
     }
 
-    private fun createPlatformProject(platform_name: String, docs: MutableList<JSONObject>): Project {
+    private fun createProductProject(product_name: String, docs: MutableList<JSONObject>): Project {
 
-        var categories = mutableListOf<String>()
-        val noCategoryLabel = "No category"
+        var versions = mutableListOf<String>()
+        val noVersionLabel = "No version"
         for (doc in docs) {
             val metadata = doc.getJSONObject("metadata")
-            if (metadata.has("category")) {
-                val docCategories = metadata.getJSONArray("category")
-                for (docCategory in docCategories) {
-                    if (!categories.contains(docCategory.toString())) {
-                        categories.add(docCategory.toString())
-                    }
+            if (metadata.has("version")) {
+                val docVersion = metadata.getString("version")
+                if (!versions.contains(docVersion)) {
+                    versions.add(docVersion)
+                } else if (!versions.contains(noVersionLabel)) {
+                    versions.add(noVersionLabel)
                 }
-            } else if (!categories.contains(noCategoryLabel)) {
-                categories.add(noCategoryLabel)
             }
         }
 
         val subProjects = mutableListOf<Project>()
-        for (category in categories) {
-            val docsInCategory = mutableListOf<JSONObject>()
+        for (version in versions) {
+            val docsInVersion = mutableListOf<JSONObject>()
             for (doc in docs) {
                 val metadata = doc.getJSONObject("metadata")
-                if (metadata.has("category") && metadata.getJSONArray("category")[0].toString() == category) {
-                    docsInCategory.add(doc)
-                } else if (category == noCategoryLabel && !metadata.has("category")) {
-                    docsInCategory.add(doc)
+                if (!docsInVersion.contains(doc)) {
+                    if (metadata.has("version") && metadata.getString("version") == version) {
+                        docsInVersion.add(doc)
+                    } else if (!metadata.has("version") && version == noVersionLabel) {
+                        docsInVersion.add(doc)
+                    }
                 }
             }
-            subProjects.add(createCategoryProject(platform_name, category, docsInCategory))
+            subProjects.add(createVersionProject(product_name, version, docsInVersion))
         }
 
         return Project {
-            id = RelativeId(removeSpecialCharacters(platform_name))
-            name = platform_name
+            id = RelativeId(removeSpecialCharacters(product_name))
+            name = product_name
 
             subProjects.forEach(this::subProject)
         }
     }
 
-    private fun createCategoryProject(platform_name: String, category_name: String, docs: MutableList<JSONObject>): Project {
+    private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
 
         val subProjects = mutableListOf<Project>()
         for (doc in docs) {
-            subProjects.add(createDocProjectWithBuilds(doc))
+            subProjects.add(createDocProjectWithBuilds(doc, product_name, version))
         }
 
         return Project {
-            id = RelativeId(removeSpecialCharacters(platform_name + category_name))
-            name = category_name
+            id = RelativeId(removeSpecialCharacters(product_name + version))
+            name = version
 
             subProjects.forEach(this::subProject)
         }
     }
 
-    private fun createDocProjectWithBuilds(doc: JSONObject): Project {
+    private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
         class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
-                    id = vcs_root_id
-                    name = vcs_root_id.toString()
-                    url = git_source_url
-                    authMethod = uploadedKey {
-                        uploadedKey = "sys-doc.rsa"
-                    }
+            id = vcs_root_id
+            name = vcs_root_id.toString()
+            url = git_source_url
+            authMethod = uploadedKey {
+                uploadedKey = "sys-doc.rsa"
+            }
 
-                    if (git_source_branch != "") {
-                        branch = "refs/heads/$git_source_branch"
-                    }
-                })
+            if (git_source_branch != "") {
+                branch = "refs/heads/$git_source_branch"
+            }
+        })
 
         class PublishToS3(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId) : BuildType({
-            id = RelativeId(removeSpecialCharacters(build_env + doc_id))
+            id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
             name = "Publish to $build_env"
             maxRunningBuilds = 1
 
@@ -1083,7 +1083,7 @@ object HelperObjects {
         })
 
         class PublishToS3Prod(publish_path: String, doc_id: String) : BuildType({
-            id = RelativeId(removeSpecialCharacters(doc_id))
+            id = RelativeId(removeSpecialCharacters("prod$doc_id"))
             name = "Copy from staging to prod"
 
             params {
@@ -1140,9 +1140,7 @@ object HelperObjects {
         val title = doc.getString("title")
 
         val metadata = doc.getJSONObject("metadata")
-        val product = metadata.getJSONArray("product")[0].toString()
         val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
-        val version = metadata.getString("version")
         val environments = doc.getJSONArray("environments")
 
         val build: JSONObject = doc.getJSONObject("build")
@@ -1158,7 +1156,7 @@ object HelperObjects {
 
         val root = build.getString("root")
         val sourceId = build.getString("src")
-        val vcsRootId = RelativeId(docId + sourceId)
+        val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
         val sourcesFromConfig = getSourcesFromConfig()
         val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourcesFromConfig)
 
@@ -1184,13 +1182,13 @@ object HelperObjects {
             if (env == "prod") {
                 builds.add(PublishToS3Prod(publishPath, docId))
             } else {
-                builds.add(PublishToS3(product, platform, version, docId, filter, root, indexRedirect, env as String,
+                builds.add(PublishToS3(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId))
             }
         }
         return Project {
-            id = RelativeId(removeSpecialCharacters(title + version + docId))
-            name = "$title $version"
+            id = RelativeId(removeSpecialCharacters( title + product_name + version + docId))
+            name = "$title $platform $product_name $version"
 
             vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
 
@@ -1200,37 +1198,37 @@ object HelperObjects {
 
     fun createProjects(): List<Project> {
 
-        var platforms = mutableListOf<String>()
-        val noPlatformLabel = "No platform"
+        var products = mutableListOf<String>()
+        val noProductLabel = "No product"
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
             val metadata = doc.getJSONObject("metadata")
-            if (metadata.has("platform")) {
-                val docPlatforms = metadata.getJSONArray("platform")
-                for (docPlatform in docPlatforms) {
-                    if (!platforms.contains(docPlatform.toString())) {
-                        platforms.add(docPlatform.toString())
+            if (metadata.has("product")) {
+                val docProducts = metadata.getJSONArray("product")
+                for (docProduct in docProducts) {
+                    if (!products.contains(docProduct.toString())) {
+                        products.add(docProduct.toString())
                     }
                 }
-            } else if (!platforms.contains(noPlatformLabel)) {
-                platforms.add(noPlatformLabel)
+            } else if (!products.contains(noProductLabel)) {
+                products.add(noProductLabel)
             }
         }
         val subProjects = mutableListOf<Project>()
-        for (platform in platforms) {
-            val docsInPlatform = mutableListOf<JSONObject>()
+        for (product in products) {
+            val docsInProduct = mutableListOf<JSONObject>()
             for (i in 0 until docConfigs.length()) {
                 val doc = docConfigs.getJSONObject(i)
-                if (doc.has("build")) {
+                if (doc.has("build") && !docsInProduct.contains(doc)) {
                     val metadata = doc.getJSONObject("metadata")
-                    if (metadata.has("platform") && metadata.getJSONArray("platform")[0].toString() == platform) {
-                        docsInPlatform.add(doc)
-                    } else if (platform == noPlatformLabel && !metadata.has("platform")) {
-                        docsInPlatform.add(doc)
+                    if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
+                            docsInProduct.add(doc)
+                            } else if (!metadata.has("product") && product == noProductLabel) {
+                                docsInProduct.add(doc)
+                            }
                     }
                 }
-            }
-            subProjects.add(createPlatformProject(platform, docsInPlatform))
+            subProjects.add(createProductProject(product, docsInProduct))
         }
         return subProjects
     }
