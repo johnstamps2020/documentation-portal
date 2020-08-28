@@ -1537,8 +1537,7 @@ object TriggerXdocsExportBuilds : BuildType({
     triggers {
         schedule {
             schedulingPolicy = daily {
-                hour = 7
-                minute = 20
+                hour = 0
             }
             branchFilter = ""
             triggerBuild = always()
