@@ -353,16 +353,6 @@
       ]
     },
     {
-      "id": "mixandmatchdraftsrc",
-      "title": "Mix and Match Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mix-and-match.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/_supermap-mix-and-match-active.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
-      ]
-    },
-    {
       "id": "midipgdraftsrc",
       "title": "MID IPG Draft",
       "sourceType": "git",

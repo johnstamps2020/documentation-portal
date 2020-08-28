@@ -283,15 +283,11 @@
     },
     {
       "id": "clouddxceclaimsdraft",
-      "title": "CustomerEngage Clams Management",
+      "title": "CustomerEngage Claims",
       "url": "cloud/dx/ce-claims/latest",
       "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
-        "product": ["CustomerEngage Claims Management"],
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["CustomerEngage Claims"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["Digital"]
@@ -309,11 +305,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/latest",
       "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
+        "productFamily": ["PolicyCenter Cloud"],
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": "latest",
@@ -371,15 +363,11 @@
     },
     {
       "id": "clouddxpeclaimsdraft",
-      "title": "ProducerEngage Claims Management",
+      "title": "ProducerEngage Claims",
       "url": "cloud/dx/pe-claims/latest",
       "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
-        "product": ["ProducerEngage Claims Management"],
+        "productFamily": ["ClaimCenter Cloud"],
+        "product": ["ProducerEngage Claims"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["Digital"]
@@ -420,11 +408,7 @@
       "title": "VendorEngage",
       "url": "cloud/dx/ve/latest",
       "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
+        "productFamily": ["ClaimCenter Cloud"],
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": "latest",
@@ -864,10 +848,10 @@
     },
     {
       "id": "selfmanageddxceclaimsdraft",
-      "title": "CustomerEngage Claims Management",
-      "url": "self-managed/dx/pe/11x",
+      "title": "CustomerEngage Claims",
+      "url": "self-managed/dx/ce-claims/11x",
       "metadata": {
-        "product": ["CustomerEngage Claims Management"],
+        "product": ["CustomerEngage Claims"],
         "platform": ["Self-managed"],
         "version": "11.x",
         "category": ["Digital"]
@@ -937,10 +921,10 @@
     },
     {
       "id": "selfmanageddxpeclaimsdraft",
-      "title": "ProducerEngage Claims Management",
-      "url": "self-managed/dx/pe/11x",
+      "title": "ProducerEngage Claims",
+      "url": "self-managed/dx/pe-claims/11x",
       "metadata": {
-        "product": ["ProducerEngage Claims Management"],
+        "product": ["ProducerEngage Claims"],
         "platform": ["Self-managed"],
         "version": "11.x",
         "category": ["Digital"]
@@ -1684,11 +1668,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202008",
       "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
+        "productFamily": ["PolicyCenter Cloud"],
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": "2020.08",
@@ -1753,11 +1733,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202005",
       "metadata": {
-        "productFamily": [
-          "PolicyCenter Cloud",
-          "BillingCenter Cloud",
-          "ClaimCenter Cloud"
-        ],
+        "productFamily": ["PolicyCenter Cloud"],
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": "2020.05",
