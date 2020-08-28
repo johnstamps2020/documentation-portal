@@ -31,6 +31,7 @@ project {
     subProject(Services)
     subProject(Server)
     subProject(Content)
+    subProject(Docs)
 }
 
 object vcsrootmasteronly : GitVcsRoot({
@@ -1582,7 +1583,6 @@ object Content : Project({
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
     subProject(TriggerBuilds)
-    HelperObjects.createProjects().forEach(this::subProject)
     buildType(CleanUpIndex)
     buildType(TestContent)
 })
@@ -1592,4 +1592,10 @@ object Services : Project({
 
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
+})
+
+object Docs : Project({
+    name = "Docs"
+
+    HelperObjects.createProjects().forEach(this::subProject)
 })
