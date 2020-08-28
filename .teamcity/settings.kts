@@ -882,9 +882,9 @@ object HelperObjects {
                 val docVersion = metadata.getString("version")
                 if (!versions.contains(docVersion)) {
                     versions.add(docVersion)
-                } else if (!versions.contains(noVersionLabel)) {
-                    versions.add(noVersionLabel)
                 }
+            } else if (!versions.contains(noVersionLabel)) {
+                versions.add(noVersionLabel)
             }
         }
 
@@ -901,7 +901,9 @@ object HelperObjects {
                     }
                 }
             }
-            subProjects.add(createVersionProject(product_name, version, docsInVersion))
+            if (!docsInVersion.isNullOrEmpty()) {
+                subProjects.add(createVersionProject(product_name, version, docsInVersion))
+            }
         }
 
         return Project {
@@ -1187,7 +1189,7 @@ object HelperObjects {
             }
         }
         return Project {
-            id = RelativeId(removeSpecialCharacters( title + product_name + version + docId))
+            id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
             name = "$title $platform $product_name $version"
 
             vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
@@ -1222,13 +1224,15 @@ object HelperObjects {
                 if (doc.has("build") && !docsInProduct.contains(doc)) {
                     val metadata = doc.getJSONObject("metadata")
                     if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
-                            docsInProduct.add(doc)
-                            } else if (!metadata.has("product") && product == noProductLabel) {
-                                docsInProduct.add(doc)
-                            }
+                        docsInProduct.add(doc)
+                    } else if (!metadata.has("product") && product == noProductLabel) {
+                        docsInProduct.add(doc)
                     }
                 }
-            subProjects.add(createProductProject(product, docsInProduct))
+            }
+            if (!docsInProduct.isNullOrEmpty()) {
+                subProjects.add(createProductProject(product, docsInProduct))
+            }
         }
         return subProjects
     }
