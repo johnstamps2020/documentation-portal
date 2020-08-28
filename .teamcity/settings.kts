@@ -928,8 +928,7 @@ object HelperObjects {
     }
 
     private fun createDocProjectWithBuilds(doc: JSONObject): Project {
-        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) :
-                jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot({
+        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
                     id = vcs_root_id
                     name = vcs_root_id.toString()
                     url = git_source_url
@@ -977,9 +976,14 @@ object HelperObjects {
                     #!/bin/bash
                     set -xe
                     export WORKING_DIR=${'$'}(pwd)
-                    export OUT_DIR="out/extracted"
+                    export SOURCE_FILE_PATH=out/out.zip
+                    export OUT_DIR=out/extracted
                     
-                    unzip ${'$'}WORKING_DIR/out/out.zip -d ${'$'}WORKING_DIR/${'$'}OUT_DIR && rm -rf ${'$'}WORKING_DIR/${'$'}OUT_DIR/out.zip
+                    unzip "${'$'}WORKING_DIR/${'$'}SOURCE_FILE_PATH" -d "${'$'}WORKING_DIR/${'$'}OUT_DIR"
+                    if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
+                        cp "${'$'}WORKING_DIR/${'$'}SOURCE_FILE_PATH" "${'$'}WORKING_DIR/${'$'}OUT_DIR/"
+                    fi
+                    
                     aws s3 sync ${'$'}WORKING_DIR/${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
                 }
