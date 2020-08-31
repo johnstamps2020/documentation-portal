@@ -327,7 +327,7 @@ object Test : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%env.ARTIFACTORY_USERNAME%"
+                userName = "%serviceAccountUsername%"
                 password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
             }
         }
@@ -540,7 +540,7 @@ object TestContent : BuildType({
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
                 userName = "%serviceAccountUsername%"
-                password = "zxx02d98e2c9ff7a3fe236631b550fc8db9b0a9c655f3a18e4b775d03cbe80d301b"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
             }
         }
         sshAgent {
@@ -1184,7 +1184,16 @@ object HelperObjects {
                 }
             }
 
-            })
+            features {
+                commitStatusPublisher {
+                    publisher = bitbucketServer {
+                        url = "https://stash.guidewire.com"
+                        userName = "%serviceAccountUsername%"
+                        password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                    }
+                }
+            }
+        })
 
         var builds = mutableListOf<BuildType>()
 
