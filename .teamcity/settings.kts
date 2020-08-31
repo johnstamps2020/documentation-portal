@@ -944,6 +944,16 @@ object HelperObjects {
             }
         })
 
+        class DocVcsRootBranches(vcs_root_id: RelativeId, git_source_url: String) : GitVcsRoot({
+            id = vcs_root_id
+            name = vcs_root_id.toString()
+            url = git_source_url
+            branchSpec = "+:refs/heads/*"
+            authMethod = uploadedKey {
+                uploadedKey = "sys-doc.rsa"
+            }
+        })
+
         class PublishToS3(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId) : BuildType({
             id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
             name = "Publish to $build_env"
@@ -1136,6 +1146,46 @@ object HelperObjects {
 
         })
 
+        class TestContentOnAllBranches(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
+            id = RelativeId(removeSpecialCharacters(product + version + doc_id + "branches"))
+            name = "Test content on all branches"
+
+            params {
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.BUILD_PDF", "false", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("reverse.dep.${BuildOutputFromDita.id}.env.CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            }
+
+            vcs {
+                root(vcs_root_id)
+            }
+
+            triggers {
+                vcs {
+                    branchFilter = """
+                        -:<default>
+                        +:*
+                    """.trimIndent()
+                }
+            }
+
+            dependencies {
+                snapshot(BuildOutputFromDita) {
+                    synchronizeRevisions = true
+                    reuseBuilds = ReuseBuilds.NO
+                    runOnSameAgent = true
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+            })
+
         var builds = mutableListOf<BuildType>()
 
         val docId = doc.getString("id")
@@ -1189,11 +1239,15 @@ object HelperObjects {
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId))
             }
         }
+        val vcsRootIdBranches = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "branches"))
+        builds.add(TestContentOnAllBranches(product_name, platform, version, docId, filter, root, indexRedirect, sourceGitUrl, sourceGitBranch, vcsRootIdBranches))
+
         return Project {
             id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
             name = "$title $platform $product_name $version"
 
             vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
+            vcsRoot(DocVcsRootBranches(vcsRootIdBranches, sourceGitUrl))
 
             builds.forEach(this::buildType)
         }
