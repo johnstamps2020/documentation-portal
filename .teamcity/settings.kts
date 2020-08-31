@@ -979,7 +979,7 @@ object HelperObjects {
                     #!/bin/bash
                     set -xe
                     export WORKING_DIR=${'$'}(pwd)
-                    export SOURCE_FILE_PATH=out/out.zip
+                    export SOURCE_FILE_PATH=out/docs.zip
                     export OUT_DIR=out/extracted
                     
                     unzip "${'$'}WORKING_DIR/${'$'}SOURCE_FILE_PATH" -d "${'$'}WORKING_DIR/${'$'}OUT_DIR"
@@ -1361,7 +1361,7 @@ object BuildOutputFromDita : BuildType({
                 ${'$'}DITA_BASE_COMMAND
                 
                 echo "Creating a ZIP package"
-                packageName="out.zip"
+                packageName="docs.zip"
                 outputDir="${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
                 cd "${'$'}outputDir" || exit
                 zip -r ../"${'$'}packageName" *
