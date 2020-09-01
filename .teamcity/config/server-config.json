@@ -1659,7 +1659,7 @@
         "buildType": "dita",
         "filter": "Digital-ce-am-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx202008"
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1678,7 +1678,7 @@
         "buildType": "dita",
         "filter": "Digital-ce-qb-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx202008"
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1701,7 +1701,7 @@
         "buildType": "dita",
         "filter": "Digital-pe-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx202008"
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1724,7 +1724,7 @@
         "buildType": "dita",
         "filter": "Digital-sre-MgSvcs.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx202008"
       },
       "environments": ["dev", "staging", "prod"]
     },
