@@ -2092,7 +2092,7 @@
         "productFamily": ["REST API Client"],
         "product": ["REST API Client"],
         "platform": ["Cloud"],
-        "version": "1.0.0",
+        "version": "latest",
         "category": ["Core"]
       },
       "build": {
