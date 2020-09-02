@@ -2026,7 +2026,7 @@
         "buildType": "dita",
         "filter": "Digital-ce-am-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx1120"
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2044,7 +2044,7 @@
         "buildType": "dita",
         "filter": "Digital-ce-qb-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx1120"
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2062,7 +2062,7 @@
         "buildType": "dita",
         "filter": "Digital-pe-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx1120"
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2080,7 +2080,7 @@
         "buildType": "dita",
         "filter": "Digital-sre-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "src": "dx1120"
       },
       "environments": ["dev", "staging", "prod"]
     },
