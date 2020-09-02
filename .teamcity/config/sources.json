@@ -217,6 +217,17 @@
       ]
     },
     {
+      "id": "restapi",
+      "title": "REST API",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/DevConnect/cloud/active/REST-API-Client/RESTAPIClientGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
       "id": "lobs",
       "title": "LOBs",
       "sourceType": "git",

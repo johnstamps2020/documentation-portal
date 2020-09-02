@@ -2085,6 +2085,25 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
+      "id": "restapidraft",
+      "title": "REST API Client",
+      "url": "cloud/restapi/latest",
+      "metadata": {
+        "productFamily": ["REST API Client"],
+        "product": ["REST API Client"],
+        "platform": ["Cloud"],
+        "version": "1.0.0",
+        "category": ["Core"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "RESTAPIClientGuide.ditamap",
+        "src": "restapi"
+      },
+      "environments": ["dev", "int"]
+    },
+    {
       "id": "standardsdraft",
       "title": "SurePath Standards",
       "url": "cloud/standards/latest",
