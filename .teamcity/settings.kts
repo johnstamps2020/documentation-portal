@@ -854,6 +854,16 @@ object HelperObjects {
             }
         })
 
+//        val intSources = mutableListOf<String>()
+//        for (i in 0 until docConfigs.length()) {
+//            val doc = docConfigs.getJSONObject(i)
+//            val environments = doc.getJSONArray("environments")
+//            if (doc.has("build") && environments.contains("int")) {
+//                val docSrc = doc.getJSONObject("build").getString("src")
+//                if (!intSources.contains(docSrc)) intSources.add(docSrc)
+//            }
+//        }
+//
         val builds = mutableListOf<BuildType>()
         val sourceConfigs = getSourcesFromConfig()
         for (i in 0 until sourceConfigs.length()) {
