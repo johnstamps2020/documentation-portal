@@ -23,6 +23,8 @@ project {
 
     template(Deploy)
     template(BuildDockerImage)
+    template(BuildOutputFromDita)
+    template(CrawlDocumentAndUpdateSearchIndex)
 
     params {
         param("env.NAMESPACE", "doctools")
