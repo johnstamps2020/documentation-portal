@@ -2116,7 +2116,7 @@
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
         "root": "GWCloudPlatform.ditamap",
-        "src": "configmgrhelpdraft"
+        "src": "configmgrhelpdraftsrc"
       },
       "environments": ["dev", "int"]
     },

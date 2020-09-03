@@ -228,7 +228,7 @@
       ]
     },
     {
-      "id": "configmgrhelpdraft",
+      "id": "configmgrhelpdraftsrc",
       "title": "Configuration Manager Help Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
