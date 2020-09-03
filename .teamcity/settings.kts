@@ -1273,7 +1273,7 @@ object HelperObjects {
 object ExportFilesFromXDocsToBitbucket : BuildType({
     name = "Export files from XDocs to Bitbucket"
 
-    maxRunningBuilds = 2
+    maxRunningBuilds = 1
 
     params {
         text("env.EXPORT_PATH_IDS", "", description = "A list of space-separated path IDs from XDocs", display = ParameterDisplay.PROMPT, allowEmpty = true)
