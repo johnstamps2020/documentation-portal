@@ -1001,7 +1001,10 @@ object HelperObjects {
                     export OUTPUT_PATH="out"
 
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
-                        cp "${'$'}WORKING_DIR/docs.zip" "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH/"
+                        echo "Creating a ZIP package"
+                        cd "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH" || exit
+                        zip -r "${'$'}WORKING_DIR/docs.zip" * &&
+                            mv "${'$'}WORKING_DIR/docs.zip" "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH/"
                     fi
                     
                     aws s3 sync ${'$'}WORKING_DIR/${'$'}OUTPUT_PATH s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
@@ -1382,11 +1385,7 @@ object BuildOutputFromDita : Template({
 
                 echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 ${'$'}DITA_BASE_COMMAND
-                
-                echo "Creating a ZIP package"
-                cd "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH" || exit
-                zip -r "${'$'}WORKING_DIR/docs.zip" *
-                
+
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
