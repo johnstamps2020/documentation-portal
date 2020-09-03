@@ -491,7 +491,7 @@
         "root": "lob-bop-(10.x)/_supermap.ditamap",
         "src": "lobs"
       },
-      "environments": ["int"]
+      "environments": ["dev", "int"]
     },
     {
       "id": "guidewireidentityfederationhubqsvkhtgf",
@@ -1531,7 +1531,7 @@
     {
       "id": "lobbopcloudstaging",
       "title": "Businessowners Standards Based Template",
-      "url": "cloud/lob/bop/latest",
+      "url": "cloud/lob/bop/202005",
       "visible": false,
       "metadata": {
         "platform": ["Cloud"],
@@ -1544,7 +1544,7 @@
         "buildType": "dita",
         "filter": "LOB_STANDARDS_filterSet.ditaval",
         "root": "lob-bop-(10.x)/_supermap.ditamap",
-        "src": "lobs"
+        "src": "lobs202005"
       },
       "environments": ["dev", "staging", "prod"]
     },
