@@ -475,7 +475,7 @@
       "environments": ["int"]
     },
     {
-      "id": "lobbopclouddraft",
+      "id": "lobbopcloud",
       "title": "Businessowners Standards Based Template",
       "url": "cloud/lob/bop/latest",
       "metadata": {
@@ -491,7 +491,7 @@
         "root": "lob-bop-(10.x)/_supermap.ditamap",
         "src": "lobs"
       },
-      "environments": ["int"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "guidewireidentityfederationhubqsvkhtgf",
