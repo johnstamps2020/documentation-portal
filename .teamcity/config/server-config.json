@@ -488,7 +488,7 @@
       "build": {
         "buildType": "dita",
         "filter": "LOB_STANDARDS_filterSet.ditaval",
-        "root": "lob-bop-(10.x)/_supermap.ditamap",
+        "root": "lob-bop-10x/_supermap.ditamap",
         "src": "lobs"
       },
       "environments": ["dev", "int"]
@@ -1542,7 +1542,7 @@
       "build": {
         "buildType": "dita",
         "filter": "LOB_STANDARDS_filterSet.ditaval",
-        "root": "lob-bop-(10.x)/_supermap.ditamap",
+        "root": "lob-bop-10x/_supermap.ditamap",
         "src": "lobs202005"
       },
       "environments": ["dev", "staging", "prod"]
@@ -2115,7 +2115,7 @@
       "build": {
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
-        "root": "GWCloudPlatform.ditamap",
+        "root": "cloudPlatform.ditamap",
         "src": "configmgrhelpdraftsrc"
       },
       "environments": ["dev", "int"]
