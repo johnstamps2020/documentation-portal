@@ -998,15 +998,13 @@ object HelperObjects {
                     #!/bin/bash
                     set -xe
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
-                    export SOURCE_FILE_PATH="out/docs.zip"
-                    export OUT_DIR="out/extracted"
-                    
-                    unzip "${'$'}WORKING_DIR/${'$'}SOURCE_FILE_PATH" -d "${'$'}WORKING_DIR/${'$'}OUT_DIR"
+                    export OUTPUT_PATH="out"
+
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
-                        cp "${'$'}WORKING_DIR/${'$'}SOURCE_FILE_PATH" "${'$'}WORKING_DIR/${'$'}OUT_DIR/"
+                        cp "${'$'}WORKING_DIR/docs.zip" "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH/"
                     fi
                     
-                    aws s3 sync ${'$'}WORKING_DIR/${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
+                    aws s3 sync ${'$'}WORKING_DIR/${'$'}OUTPUT_PATH s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
                 }
 
@@ -1386,15 +1384,9 @@ object BuildOutputFromDita : Template({
                 ${'$'}DITA_BASE_COMMAND
                 
                 echo "Creating a ZIP package"
-                packageName="docs.zip"
-                outputDir="${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
-                cd "${'$'}outputDir" || exit
-                zip -r ../"${'$'}packageName" *
-                cd .. &&
-                  rm -rf "${'$'}outputDir" &&
-                  mkdir "${'$'}outputDir" &&
-                  mv "${'$'}packageName" "${'$'}outputDir"/
-                 
+                cd "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH" || exit
+                zip -r "${'$'}WORKING_DIR/docs.zip" *
+                
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
