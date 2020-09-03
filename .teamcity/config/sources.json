@@ -228,6 +228,17 @@
       ]
     },
     {
+      "id": "configmgrhelpdraft",
+      "title": "Configuration Manager Help Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
+      "xdocsPathIds": [
+        "/Content/doc/help/GWCloudPlatform/GWCloudPlatform.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
       "id": "lobs",
       "title": "LOBs",
       "sourceType": "git",
