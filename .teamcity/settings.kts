@@ -1359,13 +1359,12 @@ object BuildOutputFromDita : Template({
                 #!/bin/bash
                 set -xe
 
-                export WORKING_DIR=${'$'}(pwd)
                 export OUTPUT_PATH="out"
 
-                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.SOURCES_ROOT%/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
+                export DITA_BASE_COMMAND="docker run -i -v %teamcity.build.checkoutDir%/%env.SOURCES_ROOT%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.SOURCES_ROOT%/%env.FILTER_PATH%\""
+                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
                 fi
                 
                 if [[ "%env.BUILD_PDF%" == "true" ]]; then
@@ -1387,13 +1386,13 @@ object BuildOutputFromDita : Template({
                 
                 echo "Creating a ZIP package"
                 packageName="docs.zip"
-                outputDir="${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
+                outputDir="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/${'$'}{OUTPUT_PATH}"
                 cd "${'$'}outputDir" || exit
                 zip -r ../"${'$'}packageName" *
                 cd .. &&
                   rm -rf "${'$'}outputDir" &&
                   mkdir "${'$'}outputDir" &&
-                  mv "${'$'}packageName" "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"/
+                  mv "${'$'}packageName" "${'$'}outputDir"/
                  
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
