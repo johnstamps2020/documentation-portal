@@ -2109,6 +2109,7 @@
       "url": "help/configuration-manager",
       "metadata": {
         "platform": ["Cloud"],
+        "product": ["Configuration Manager"],
         "version": "latest"
       },
       "visible": false,
