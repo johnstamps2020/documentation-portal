@@ -997,9 +997,9 @@ object HelperObjects {
                     scriptContent = """
                     #!/bin/bash
                     set -xe
-                    export WORKING_DIR=${'$'}(pwd)
-                    export SOURCE_FILE_PATH=out/docs.zip
-                    export OUT_DIR=out/extracted
+                    export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
+                    export SOURCE_FILE_PATH="out/docs.zip"
+                    export OUT_DIR="out/extracted"
                     
                     unzip "${'$'}WORKING_DIR/${'$'}SOURCE_FILE_PATH" -d "${'$'}WORKING_DIR/${'$'}OUT_DIR"
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
@@ -1360,8 +1360,9 @@ object BuildOutputFromDita : Template({
                 set -xe
 
                 export OUTPUT_PATH="out"
+                export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
 
-                export DITA_BASE_COMMAND="docker run -i -v %teamcity.build.checkoutDir%/%env.SOURCES_ROOT%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
+                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
@@ -1386,7 +1387,7 @@ object BuildOutputFromDita : Template({
                 
                 echo "Creating a ZIP package"
                 packageName="docs.zip"
-                outputDir="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/${'$'}{OUTPUT_PATH}"
+                outputDir="${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
                 cd "${'$'}outputDir" || exit
                 zip -r ../"${'$'}packageName" *
                 cd .. &&
