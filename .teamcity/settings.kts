@@ -1073,6 +1073,9 @@ object HelperObjects {
             if (build_env == "int") {
                 triggers {
                     vcs {
+                        triggerRules = """
+                        -:root=${vcsrootmasteronly.id}:**
+                    """.trimIndent()
                     }
                 }
             }
