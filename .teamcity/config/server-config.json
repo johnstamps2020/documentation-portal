@@ -2089,9 +2089,9 @@
       "title": "REST API Client",
       "url": "cloud/restapi/latest",
       "metadata": {
-        "productFamily": ["REST API Client"],
+        "productFamily": ["Integration Framework"],
         "product": ["REST API Client"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": "latest",
         "category": ["Core"]
       },
@@ -2100,6 +2100,23 @@
         "filter": "GW-Generic-Draft.ditaval",
         "root": "RESTAPIClientGuide.ditamap",
         "src": "restapi"
+      },
+      "environments": ["dev", "int"]
+    },
+    {
+      "id": "configmgrhelpdraft",
+      "title": "Configuration Manager Help",
+      "url": "help/configuration-manager",
+      "metadata": {
+        "platform": ["Cloud"],
+        "version": "latest"
+      },
+      "visible": false,
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "GWCloudPlatform.ditamap",
+        "src": "configmgrhelpdraftsrc"
       },
       "environments": ["dev", "int"]
     },
