@@ -954,7 +954,9 @@ object HelperObjects {
             }
         })
 
-        class PublishToS3(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId) : BuildType({
+        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId) : BuildType({
+            templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
+
             id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
             name = "Publish to $build_env"
             maxRunningBuilds = 1
@@ -970,15 +972,15 @@ object HelperObjects {
                 text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.BUILD_PDF", build_pdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("BUILD_PDF", build_pdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             steps {
@@ -1000,22 +1002,11 @@ object HelperObjects {
                     aws s3 sync ${'$'}WORKING_DIR/${'$'}OUT_DIR s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
                 }
-                script {
-                    name = "Trigger index update"
-                    id = "TRIGGER_INDEX_UPDATE"
-                    scriptContent = """
-                    #!/bin/bash
-                    set -xe
-    
-                    curl -X POST -H "Content-Type: application/xml" \
-                        -H "Authorization: Bearer %env.AUTH_TOKEN%" \
-                        -H "Accept: application/json" \
-                        -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
-                        https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
-    
-                """.trimIndent()
-                }
+
+                stepsOrder = arrayListOf("BUILD_OUTPUT_FROM_DITA", "UPLOAD_GENERATED_CONTENT", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC")
+
             }
+
 
             if (!resources_to_copy.isNullOrEmpty()) {
                 val extraSteps = mutableListOf<ScriptBuildStep>()
@@ -1054,9 +1045,11 @@ object HelperObjects {
                 }
 
                 val orderWithExtraSteps = arrayListOf<String>()
+                orderWithExtraSteps.add("BUILD_OUTPUT_FROM_DITA")
                 orderWithExtraSteps.add("UPLOAD_GENERATED_CONTENT")
                 orderWithExtraSteps.addAll(stepIds)
-                orderWithExtraSteps.add("TRIGGER_INDEX_UPDATE")
+                orderWithExtraSteps.add("BUILD_CRAWLER_DOCKER_IMAGE")
+                orderWithExtraSteps.add("CRAWL_DOC")
 
                 steps {
                     extraSteps.forEach(this::step)
@@ -1080,29 +1073,17 @@ object HelperObjects {
                     }
                 }
             }
-
-            dependencies {
-                snapshot(BuildOutputFromDita) {
-                    synchronizeRevisions = true
-                    reuseBuilds = ReuseBuilds.NO
-                    runOnSameAgent = true
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                artifacts(BuildOutputFromDita) {
-                    artifactRules = "out => out"
-                    cleanDestination = true
-                }
-            }
         })
 
-        class PublishToS3Prod(publish_path: String, doc_id: String) : BuildType({
+        class PublishToS3IndexProd(publish_path: String, doc_id: String) : BuildType({
+            templates(CrawlDocumentAndUpdateSearchIndex)
             id = RelativeId(removeSpecialCharacters("prod$doc_id"))
             name = "Copy from staging to prod"
 
             params {
                 password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
-                text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.DEPLOY_ENV", "prod", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("DEPLOY_ENV", "prod", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
@@ -1115,7 +1096,7 @@ object HelperObjects {
                     set -xe
                     
                     echo "Copying from staging to Teamcity"
-                    aws s3 sync s3://tenant-doctools-staging-builds/$publish_path $publish_path/ --delete
+                    aws s3 sync s3://tenant-doctools-staging-builds/%env.PUBLISH_PATH% %env.PUBLISH_PATH%/ --delete
                     
                     echo "Setting credentials to access prod"
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
@@ -1123,43 +1104,32 @@ object HelperObjects {
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                     
                     echo "Uploading from Teamcity to prod"
-                    aws s3 sync $publish_path/ s3://tenant-doctools-prod-builds/$publish_path --delete
+                    aws s3 sync %env.PUBLISH_PATH%/ s3://tenant-doctools-prod-builds/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
                 }
-                script {
-                    id = "TRIGGER_INDEX_UPDATE"
-                    name = "Trigger index update"
-                    scriptContent = """
-                    #!/bin/bash
-                    set -xe
-    
-                    curl -X POST -H "Content-Type: application/xml" \
-                        -H "Authorization: Bearer %env.AUTH_TOKEN%" \
-                        -H "Accept: application/json" \
-                        -d  '<build><buildType id="${CrawlDocumentAndUpdateSearchIndex.id}"/><properties><property name="env.DOC_ID" value="%env.DOC_ID%"/><property name="env.DEPLOY_ENV" value="%env.DEPLOY_ENV%"/></properties></build>' \
-                        https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
-    
-                """.trimIndent()
-                }
+
+                stepsOrder = arrayListOf("COPY_FROM_STAGING_TO_PROD", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC")
 
             }
 
         })
 
         class TestContentOnAllBranches(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
+            templates(BuildOutputFromDita)
+
             id = RelativeId(removeSpecialCharacters(product + version + doc_id + "branches"))
             name = "Test content on all branches"
 
             params {
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.BUILD_PDF", "false", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("reverse.dep.${BuildOutputFromDita.id}.env.CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("BUILD_PDF", "false", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             vcs {
@@ -1172,15 +1142,6 @@ object HelperObjects {
                         -:<default>
                         +:*
                     """.trimIndent()
-                }
-            }
-
-            dependencies {
-                snapshot(BuildOutputFromDita) {
-                    synchronizeRevisions = true
-                    reuseBuilds = ReuseBuilds.NO
-                    runOnSameAgent = true
-                    onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
 
@@ -1242,9 +1203,9 @@ object HelperObjects {
 
         for (env in environments) {
             if (env == "prod") {
-                builds.add(PublishToS3Prod(publishPath, docId))
+                builds.add(PublishToS3IndexProd(publishPath, docId))
             } else {
-                builds.add(PublishToS3(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
+                builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId))
             }
         }
@@ -1364,23 +1325,19 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
     }
 })
 
-object BuildOutputFromDita : BuildType({
+object BuildOutputFromDita : Template({
     name = "Build the output from DITA"
 
-    maxRunningBuilds = 3
-
-    artifactRules = "out => out"
-
     params {
-        text("env.GW_PRODUCT", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GW_PLATFORM", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GW_VERSION", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.FILTER_PATH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.ROOT_MAP", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.BUILD_PDF", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.CREATE_INDEX_REDIRECT", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+        text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
+        text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
+        text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
+        text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
+        text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
+        text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
     }
 
     vcs {
@@ -1390,6 +1347,7 @@ object BuildOutputFromDita : BuildType({
     steps {
         script {
             name = "Build output from DITA"
+            id = "BUILD_OUTPUT_FROM_DITA"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1446,15 +1404,15 @@ object BuildOutputFromDita : BuildType({
     }
 })
 
-object CrawlDocumentAndUpdateSearchIndex : BuildType({
+object CrawlDocumentAndUpdateSearchIndex : Template({
     name = "Update the search index"
     artifactRules = """
         **/*.log => logs
     """.trimIndent()
 
     params {
-        text("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want reindex documents", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.DOC_ID", "", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", label = "Deployment environment", description = "The environment on which you want reindex documents", allowEmpty = false)
+        text("env.DOC_ID", "%DOC_ID%", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.", allowEmpty = true)
         text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
         text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -1622,8 +1580,6 @@ object ServiceBuilds : Project({
     description = "Builds used as a service to other builds. You can also run the service builds manually."
 
     buildType(ExportFilesFromXDocsToBitbucket)
-    buildType(BuildOutputFromDita)
-    buildType(CrawlDocumentAndUpdateSearchIndex)
     buildType(CreateReleaseTag)
 })
 
