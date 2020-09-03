@@ -968,12 +968,17 @@ object HelperObjects {
                 build_pdf = "false"
             }
 
+            vcs {
+                root(vcs_root_id, "+:. => %SOURCES_ROOT%")
+            }
+
             params {
                 password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
                 text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1066,10 +1071,6 @@ object HelperObjects {
             }
 
             if (build_env == "int") {
-                vcs {
-                    root(vcs_root_id)
-                }
-
                 triggers {
                     vcs {
                     }
@@ -1340,6 +1341,7 @@ object BuildOutputFromDita : Template({
         text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
         text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
         text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
     }
 
     vcs {
@@ -1355,15 +1357,12 @@ object BuildOutputFromDita : Template({
                 set -xe
 
                 export WORKING_DIR=${'$'}(pwd)
-                export INPUT_PATH="input"
                 export OUTPUT_PATH="out"
-                
-                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}WORKING_DIR/${'$'}INPUT_PATH
-                
-                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/${'$'}INPUT_PATH/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
+
+                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.SOURCES_ROOT%/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --create-index-redirect no --webhelp.publication.toc.links chapter"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"/src/${'$'}INPUT_PATH/%env.FILTER_PATH%\""
+                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.SOURCES_ROOT%/%env.FILTER_PATH%\""
                 fi
                 
                 if [[ "%env.BUILD_PDF%" == "true" ]]; then
@@ -1399,11 +1398,6 @@ object BuildOutputFromDita : Template({
         }
     }
 
-    features {
-        sshAgent {
-            teamcitySshKey = "sys-doc.rsa"
-        }
-    }
 })
 
 object CrawlDocumentAndUpdateSearchIndex : Template({
