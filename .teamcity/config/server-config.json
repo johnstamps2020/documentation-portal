@@ -1532,7 +1532,6 @@
       "id": "lobbopcloudstaging",
       "title": "Businessowners Standards Based Template",
       "url": "cloud/lob/bop/202005",
-      "visible": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["PolicyCenter Cloud"],
