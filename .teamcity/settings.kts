@@ -979,8 +979,12 @@ object HelperObjects {
             }
         })
 
-        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId) : BuildType({
-            templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
+        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
+            if (index_for_search) {
+                templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
+            } else {
+                templates(BuildOutputFromDita)
+            }
 
             id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
             name = "Publish to $build_env"
@@ -1034,7 +1038,10 @@ object HelperObjects {
                 """.trimIndent()
                 }
 
-                stepsOrder = arrayListOf("BUILD_OUTPUT_FROM_DITA", "UPLOAD_GENERATED_CONTENT", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC")
+                stepsOrder = arrayListOf("BUILD_OUTPUT_FROM_DITA", "UPLOAD_GENERATED_CONTENT")
+                if (index_for_search) {
+                    stepsOrder.addAll(arrayListOf("BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC"))
+                }
 
             }
 
@@ -1075,16 +1082,9 @@ object HelperObjects {
                     })
                 }
 
-                val orderWithExtraSteps = arrayListOf<String>()
-                orderWithExtraSteps.add("BUILD_OUTPUT_FROM_DITA")
-                orderWithExtraSteps.add("UPLOAD_GENERATED_CONTENT")
-                orderWithExtraSteps.addAll(stepIds)
-                orderWithExtraSteps.add("BUILD_CRAWLER_DOCKER_IMAGE")
-                orderWithExtraSteps.add("CRAWL_DOC")
-
                 steps {
                     extraSteps.forEach(this::step)
-                    stepsOrder = orderWithExtraSteps
+                    stepsOrder.addAll(2, stepIds)
                 }
             }
 
@@ -1195,6 +1195,7 @@ object HelperObjects {
         val metadata = doc.getJSONObject("metadata")
         val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
         val environments = doc.getJSONArray("environments")
+        val indexForSearch = if (doc.has("indexForSearch")) doc.getBoolean("indexForSearch") else true
 
         val build: JSONObject = doc.getJSONObject("build")
         var filter = ""
@@ -1236,7 +1237,7 @@ object HelperObjects {
                 builds.add(PublishToS3IndexProd(publishPath, docId))
             } else {
                 builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
-                        publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId))
+                        publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
             }
         }
         val vcsRootIdBranches = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "branches"))
