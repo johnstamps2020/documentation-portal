@@ -849,6 +849,7 @@ object HelperObjects {
 
             dependencies {
                 snapshot(ExportFilesFromXDocsToBitbucket) {
+                    reuseBuilds = ReuseBuilds.NO
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
