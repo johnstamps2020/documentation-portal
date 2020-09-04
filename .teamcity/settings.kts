@@ -833,10 +833,13 @@ object HelperObjects {
     }
 
     fun createExportBuildsFromConfig(): MutableList<BuildType> {
-        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String, git_path: String, branch_name: String) : BuildType({
+        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String, git_path: String, branch_name: String, nightly_build: Boolean) : BuildType({
 
             id = RelativeId(build_id)
             name = "Export $source_title from XDocs and add to git ($build_id)"
+
+            enablePersonalBuilds = false
+            type = Type.COMPOSITE
 
             params {
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", export_path_ids)
@@ -846,40 +849,49 @@ object HelperObjects {
 
             dependencies {
                 snapshot(ExportFilesFromXDocsToBitbucket) {
-                    synchronizeRevisions = true
-                    reuseBuilds = ReuseBuilds.NO
-                    runOnSameAgent = true
                     onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+            if (nightly_build) {
+                triggers {
+                    schedule {
+                        schedulingPolicy = daily {
+                            hour = 0
+                        }
+                        branchFilter = ""
+                        triggerBuild = always()
+                        withPendingChangesOnly = false
+                    }
                 }
             }
         })
 
-//        val intSources = mutableListOf<String>()
-//        for (i in 0 until docConfigs.length()) {
-//            val doc = docConfigs.getJSONObject(i)
-//            val environments = doc.getJSONArray("environments")
-//            if (doc.has("build") && environments.contains("int")) {
-//                val docSrc = doc.getJSONObject("build").getString("src")
-//                if (!intSources.contains(docSrc)) intSources.add(docSrc)
-//            }
-//        }
-//
+        val intSources = mutableListOf<String>()
+        for (i in 0 until docConfigs.length()) {
+            val doc = docConfigs.getJSONObject(i)
+            val environments = doc.getJSONArray("environments")
+            if (doc.has("build") && environments.contains("int")) {
+                val docSrc = doc.getJSONObject("build").getString("src")
+                if (!intSources.contains(docSrc)) intSources.add(docSrc)
+            }
+        }
+
         val builds = mutableListOf<BuildType>()
         val sourceConfigs = getSourcesFromConfig()
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
-            val gitUrl: String = source.get("gitUrl").toString()
-            val sourceTitle: String = source.get("title").toString()
-            var branchName = "master"
-            if (source.has("branch")) {
-                branchName = source.getString("branch")
-            }
+            val sourceId = source.getString("id")
+            val gitUrl = source.getString("gitUrl")
+            val sourceTitle = source.getString("title")
+            val branchName = if (source.has("branch")) source.getString("branch") else "master"
+            val nightlyBuild = intSources.contains(sourceId)
 
             if (source.has("xdocsPathIds")) {
-                val exportBuildId: String = source.get("id").toString() + "_export"
-                val xdocsPathIds: String = source.getJSONArray("xdocsPathIds").joinToString(" ")
+                val exportBuildId = source.getString("id") + "_export"
+                val xdocsPathIds = source.getJSONArray("xdocsPathIds").joinToString(" ")
 
-                builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, sourceTitle, xdocsPathIds, gitUrl, branchName))
+                builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, sourceTitle, xdocsPathIds, gitUrl, branchName, nightlyBuild))
             }
         }
         return builds
@@ -887,7 +899,7 @@ object HelperObjects {
 
     private fun createProductProject(product_name: String, docs: MutableList<JSONObject>): Project {
 
-        var versions = mutableListOf<String>()
+        val versions = mutableListOf<String>()
         val noVersionLabel = "No version"
         for (doc in docs) {
             val metadata = doc.getJSONObject("metadata")
@@ -973,9 +985,9 @@ object HelperObjects {
             name = "Publish to $build_env"
             maxRunningBuilds = 1
 
-            var build_pdf = "true"
+            var buildPdf = "true"
             if (build_env == "int") {
-                build_pdf = "false"
+                buildPdf = "false"
             }
 
             vcs {
@@ -996,7 +1008,7 @@ object HelperObjects {
                 text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("BUILD_PDF", build_pdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
@@ -1173,7 +1185,7 @@ object HelperObjects {
             }
         })
 
-        var builds = mutableListOf<BuildType>()
+        val builds = mutableListOf<BuildType>()
 
         val docId = doc.getString("id")
         val publishPath = doc.getString("url")
@@ -1242,7 +1254,7 @@ object HelperObjects {
 
     fun createProjects(): List<Project> {
 
-        var products = mutableListOf<String>()
+        val products = mutableListOf<String>()
         val noProductLabel = "No product"
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
@@ -1484,8 +1496,7 @@ object CreateReleaseTag : BuildType({
     val sourceConfigs = HelperObjects.getSourcesFromConfig()
     for (i in 0 until sourceConfigs.length()) {
         val source = sourceConfigs.getJSONObject(i)
-        val gitUrl: String = source.get("gitUrl").toString()
-        val sourceTitle: String = source.get("title").toString()
+        val gitUrl = source.getString("gitUrl")
         val branchName = if (source.has("branch")) source.getString("branch") else "master"
         if (branchName == "master") {
             gitRepositories.add(gitUrl)
@@ -1527,54 +1538,6 @@ object CreateReleaseTag : BuildType({
     }
 })
 
-object TriggerXdocsExportBuilds : BuildType({
-    name = "Trigger XDocs export builds"
-
-    params {
-        password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
-    }
-
-    steps {
-        script {
-            name = "Trigger all export builds through the API"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                BUILD_TYPES_FILE=build_types.json
-                
-                curl -o ${'$'}BUILD_TYPES_FILE -H "Content-Type: application/xml" \
-                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
-                    -H "Accept: application/json" \
-                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/projects/id:${XdocsExportBuilds.id}
-                
-                buildIds=${'$'}(jq -r '.buildTypes.buildType[].id' ${'$'}BUILD_TYPES_FILE)
-                for buildId in ${'$'}buildIds
-                do
-                  echo "Starting the export build for id ${'$'}{buildId}"
-                  curl -X POST -H "Content-Type: application/xml" \
-                    -H "Authorization: Bearer %env.AUTH_TOKEN%" \
-                    -H "Accept: application/json" \
-                    -d '<build><buildType id="'"${'$'}buildId"'"/></build>' \
-                    https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue
-                done
-            """.trimIndent()
-        }
-    }
-
-    triggers {
-        schedule {
-            schedulingPolicy = daily {
-                hour = 0
-            }
-            branchFilter = ""
-            triggerBuild = always()
-            enableQueueOptimization = false
-            withPendingChangesOnly = false
-        }
-    }
-})
-
 object ServiceBuilds : Project({
     name = "Service builds"
     description = "Builds used as a service to other builds. You can also run the service builds manually."
@@ -1590,18 +1553,11 @@ object XdocsExportBuilds : Project({
     builds.forEach(this::buildType)
 })
 
-object TriggerBuilds : Project({
-    name = "Trigger builds"
-
-    buildType(TriggerXdocsExportBuilds)
-})
-
 object Content : Project({
     name = "Content"
 
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
-    subProject(TriggerBuilds)
     buildType(CleanUpIndex)
     buildType(TestContent)
 })
