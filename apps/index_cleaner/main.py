@@ -14,45 +14,37 @@ print(f'Reading from config: {path_to_config}')
 with open(path_to_config) as json_file:
     config_json = json.load(json_file)
 
-ids_in_config = []
 for doc in config_json['docs']:
-    doc_id = doc.get('id', None)
-    if (doc_id and doc_id not in ids_in_config):
-        ids_in_config.append(doc_id)
+    try:
+        searchable_ids_from_config = set([doc['id'] for doc in config_json['docs'] if doc.get('indexForSearch', True)])
+    except Exception as e:
+        print(e)
 
 
 def clean_index(index_name):
     print(f'Cleaning the {index_name} index...')
     if client.indices.exists(index=index_name):
-        search_body = {
-            "size": 42,
-            "query": {
-                "match_all": {}
-            }
-        }
-        all_ids = []
 
         resp = helpers.scan(client, index=index_name)
-        for doc in list(resp):
-            doc_id = doc['_source'].get('doc_id', None)
-            if (doc_id and doc_id not in all_ids):
-                all_ids.append(doc_id)
-
-        count = 0
-        for id_in_index in all_ids:
-            if id_in_index not in ids_in_config:
-                print(f'Deleting docs with id "{id_in_index}"')
-                client.delete_by_query(index=index_name, body={
-                    "query": {
-                        "match": {
-                            "doc_id": {
-                                "query": id_in_index
-                            }
-                        },
-                    }
-                })
-                count += 1
-        print(f'Deleted {count} ids from {index_name}')
+        try:
+            count = 0
+            all_indexed_ids = set([indexed_doc['_source']['doc_id'] for indexed_doc in resp])
+            for indexed_id in all_indexed_ids:
+                if indexed_id not in searchable_ids_from_config:
+                    print(f'Deleting docs with id "{indexed_id}"')
+                    client.delete_by_query(index=index_name, body={
+                        "query": {
+                            "match": {
+                                "doc_id": {
+                                    "query": indexed_id
+                                }
+                            },
+                        }
+                    })
+                    count += 1
+            print(f'Deleted {count} ids from {index_name}')
+        except Exception as e:
+            print(e)
 
 
 clean_index('gw-docs')

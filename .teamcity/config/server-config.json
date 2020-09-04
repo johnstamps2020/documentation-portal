@@ -83,7 +83,7 @@
       "id": "cloudbcupgradeguidelatest",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/latest",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["BillingCenter Cloud"],
@@ -104,7 +104,7 @@
       "id": "cloudccupgradeguidelatest",
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/upgrade/latest",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["ClaimCenter Cloud"],
@@ -125,7 +125,7 @@
       "id": "cloudpcupgradeguidelatest",
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/upgrade/latest",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["PolicyCenter Cloud"],
@@ -542,7 +542,7 @@
       "id": "dkeirtlsleeedc",
       "title": "Cloud Console Root Doc",
       "url": "cloud/gcc-guide/latest",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["Guidewire Cloud Platform"],
@@ -610,7 +610,7 @@
       "id": "selfmanagedbcupgradeguide10x",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/10x",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "product": ["BillingCenter"],
         "platform": ["Self-managed"],
@@ -630,7 +630,7 @@
       "id": "selfmanagedccupgradeguide10x",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/10x",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Self-managed"],
@@ -650,7 +650,7 @@
       "id": "selfmanagedpcupgradeguide10x",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/10x",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "product": ["PolicyCenter"],
         "platform": ["Self-managed"],
@@ -1238,7 +1238,7 @@
       "id": "cloudbcupgradeguide202005",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/202005",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["BillingCenter Cloud"],
@@ -1252,7 +1252,7 @@
       "id": "cloudccupgradeguide202005",
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/upgrade/202005",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["ClaimCenter Cloud"],
@@ -1266,7 +1266,7 @@
       "id": "cloudpcupgradeguide202005",
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/upgrade/202005",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["PolicyCenter Cloud"],
@@ -1353,7 +1353,7 @@
       "id": "swwdkskekrtt",
       "title": "Cloud Console Root Doc",
       "url": "cloud/gcc-guide/latest",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["Guidewire Cloud Platform"],
@@ -1744,7 +1744,7 @@
       "id": "dxapd202005cloudstaging",
       "title": "Digital Code Generation",
       "url": "cloud/dx/apd/202005",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "productFamily": ["PolicyCenter Cloud"],
         "product": ["Digital Code Generation"],
@@ -1880,7 +1880,7 @@
       "id": "selfmanagedbcupgradeguide1010",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1010",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -1893,7 +1893,7 @@
       "id": "selfmanagedccupgradeguide1010",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1010",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -1906,7 +1906,7 @@
       "id": "selfmanagedpcupgradeguide1010",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1010",
-      "visible": false,
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
@@ -2111,7 +2111,7 @@
         "product": ["Configuration Manager"],
         "version": "latest"
       },
-      "visible": false,
+      "displayOnLandingPages": false,
       "build": {
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",

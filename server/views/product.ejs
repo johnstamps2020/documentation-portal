@@ -37,7 +37,7 @@
                             }, {});
                                 const productArray = Object.entries(products);
                             productArray.forEach(product => {
-                                const visibleDocs = product[1].filter(doc => (doc.visible !== false));
+                                const visibleDocs = product[1].filter(doc => (doc.displayOnLandingPages !== false));
                                 const productReleases = visibleDocs.map(e => e.metadata.version);
                                 let latestProductRelease = '';
                                 if (productReleases.includes('latest')) {
