@@ -434,6 +434,17 @@ object DeployS3Ingress : BuildType({
     }
 })
 
+object UpdateSearchIndex : BuildType({
+    templates(CrawlDocumentAndUpdateSearchIndex)
+    name = "Update search index"
+
+    params {
+        select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "The environment on which you want reindex documents", display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod"))
+        text("DOC_ID", "", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.", display = ParameterDisplay.PROMPT, allowEmpty = true)
+    }
+})
+
 object CleanUpIndex : BuildType({
     name = "Clean up index"
     description = "Remove documents from index which are not in the config"
@@ -1560,6 +1571,7 @@ object Content : Project({
 
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
+    buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
     buildType(TestContent)
 })
