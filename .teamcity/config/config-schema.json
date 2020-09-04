@@ -213,8 +213,12 @@
           "description": "The url of the resource we're linking to. Can be relative to the root, or an absolute URL that starts with https://",
           "type": "string"
         },
-        "visible": {
+        "displayOnLandingPages": {
           "description": "If set to false, do not display link on landing page. Defaults to true if not set.",
+          "type": "boolean"
+        },
+        "indexForSearch": {
+          "description": "If set to false, do not add the document to the search index. Defaults to true if not set.",
           "type": "boolean"
         },
         "metadata": {
