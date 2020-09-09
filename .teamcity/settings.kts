@@ -1505,7 +1505,6 @@ object RunContentValidations : BuildType({
                 set -xe
 
                 export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
-                export DITA_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE"
 
                 git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
 
@@ -1522,7 +1521,8 @@ object RunContentValidations : BuildType({
                 export TEMP_DIR="tmp/dita"
                 export FORMAT=dita
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
-                ${'$'}DITA_COMMAND
+
+                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE
                 cp -R "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/*" "%env.NORMALIZED_DITA_DIR%/"
                 cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
                 
@@ -1531,7 +1531,8 @@ object RunContentValidations : BuildType({
                 export TEMP_DIR="tmp/validate"
                 export FORMAT=validate
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
-                ${'$'}DITA_COMMAND
+
+                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE
                 cp "${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml" "%env.SCHEMATRON_REPORTS_DIR%/"
                 cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
                 
