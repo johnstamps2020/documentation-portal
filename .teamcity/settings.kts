@@ -1187,14 +1187,14 @@ object HelperObjects {
                 root(vcs_root_id)
             }
 
-            triggers {
-                vcs {
-                    branchFilter = """
-                        -:<default>
-                        +:*
-                    """.trimIndent()
-                }
-            }
+//            triggers {
+//                vcs {
+//                    branchFilter = """
+//                        -:<default>
+//                        +:*
+//                    """.trimIndent()
+//                }
+//            }
 
             features {
                 commitStatusPublisher {
@@ -1234,14 +1234,14 @@ object HelperObjects {
                 }
             }
 
-            triggers {
-                vcs {
-                    branchFilter = """
-                        -:<default>
-                        +:*
-                    """.trimIndent()
-                }
-            }
+//            triggers {
+//                vcs {
+//                    branchFilter = """
+//                        -:<default>
+//                        +:*
+//                    """.trimIndent()
+//                }
+//            }
 
             features {
                 commitStatusPublisher {
