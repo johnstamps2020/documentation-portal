@@ -1367,6 +1367,126 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
     }
 })
 
+object CreateReleaseTag : BuildType({
+    name = "Create a release tag"
+
+    val gitRepositories = mutableListOf<String>()
+    val sourceConfigs = HelperObjects.getSourcesFromConfig()
+    for (i in 0 until sourceConfigs.length()) {
+        val source = sourceConfigs.getJSONObject(i)
+        val gitUrl = source.getString("gitUrl")
+        val branchName = if (source.has("branch")) source.getString("branch") else "master"
+        if (branchName == "master") {
+            gitRepositories.add(gitUrl)
+        }
+    }
+
+    params {
+        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.TAG_VERSION", "", description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0", display = ParameterDisplay.PROMPT,
+                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer format")
+        select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
+    }
+
+    steps {
+        script {
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                export TAG_NAME="v%env.TAG_VERSION%"
+
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "%serviceAccountUsername%"
+                
+                git clone %env.GIT_URL% %env.SOURCES_ROOT%
+                cd %env.SOURCES_ROOT%
+                
+                git tag -a "${'$'}TAG_NAME" -m "Documentation ${'$'}TAG_VERSION"
+                echo "Created tag ${'$'}TAG_NAME"
+                git push origin "${'$'}TAG_NAME"
+                echo "Pushed tag to the remote repository"
+            """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+})
+
+object RunContentValidations : BuildType({
+    name = "Run content validations"
+
+    params {
+        text("env.ROOT_MAP", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+    }
+
+    vcs {
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Build normalized DITA and run Schematron validations"
+            id = "BUILD_NORMALIZED_DITA_RUN_SCHEMATRON_VALIDATIONS"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+
+                export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
+                export NORMALIZED_DITA_DIR=normalized_dita
+                export DITA_OT_LOGS_DIR=dita_ot_logs
+                export SCHEMATRON_REPORTS_DIR=schematron_reports
+                export DITA_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE"
+
+                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
+
+                mkdir -p ${'$'}NORMALIZED_DITA_DIR
+                mkdir -p ${'$'}DITA_OT_LOGS_DIR
+                mkdir -p ${'$'}SCHEMATRON_REPORTS_DIR
+                
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+
+                echo "Building normalized DITA"
+                export OUTPUT_PATH="out/dita"
+                export TEMP_DIR="tmp/dita"
+                export FORMAT=dita
+                export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
+                ${'$'}DITA_COMMAND
+                cp -R "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/*" "${'$'}{WORKING_DIR}/${'$'}{NORMALIZED_DITA_DIR}/"
+                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "${'$'}{WORKING_DIR}/${'$'}{DITA_OT_LOGS_DIR}/"
+                
+                echo "Running the validate plugin"
+                export OUTPUT_PATH="out/validate"
+                export TEMP_DIR="tmp/validate"
+                export FORMAT=validate
+                export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
+                ${'$'}DITA_COMMAND
+                cp "${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml" "${'$'}{WORKING_DIR}/${'$'}{DITA_OT_LOGS_DIR}/"
+                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "${'$'}{WORKING_DIR}/${'$'}{DITA_OT_LOGS_DIR}/"
+                
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            id = "ssh-agent-build-feature"
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+
+})
+
 object BuildOutputFromDita : Template({
     name = "Build the output from DITA"
 
@@ -1502,61 +1622,13 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
     }
 })
 
-object CreateReleaseTag : BuildType({
-    name = "Create a release tag"
-
-    val gitRepositories = mutableListOf<String>()
-    val sourceConfigs = HelperObjects.getSourcesFromConfig()
-    for (i in 0 until sourceConfigs.length()) {
-        val source = sourceConfigs.getJSONObject(i)
-        val gitUrl = source.getString("gitUrl")
-        val branchName = if (source.has("branch")) source.getString("branch") else "master"
-        if (branchName == "master") {
-            gitRepositories.add(gitUrl)
-        }
-    }
-
-    params {
-        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.TAG_VERSION", "", description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0", display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer format")
-        select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
-    }
-
-    steps {
-        script {
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                export TAG_NAME="v%env.TAG_VERSION%"
-
-                git config --global user.email "doctools@guidewire.com"
-                git config --global user.name "%serviceAccountUsername%"
-                
-                git clone %env.GIT_URL% %env.SOURCES_ROOT%
-                cd %env.SOURCES_ROOT%
-                
-                git tag -a "${'$'}TAG_NAME" -m "Documentation ${'$'}TAG_VERSION"
-                echo "Created tag ${'$'}TAG_NAME"
-                git push origin "${'$'}TAG_NAME"
-                echo "Pushed tag to the remote repository"
-            """.trimIndent()
-        }
-    }
-
-    features {
-        sshAgent {
-            teamcitySshKey = "sys-doc.rsa"
-        }
-    }
-})
-
 object ServiceBuilds : Project({
     name = "Service builds"
     description = "Builds used as a service to other builds. You can also run the service builds manually."
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(CreateReleaseTag)
+    buildType(RunContentValidations)
 })
 
 object XdocsExportBuilds : Project({
