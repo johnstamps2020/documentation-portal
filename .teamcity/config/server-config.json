@@ -423,12 +423,12 @@
       "environments": ["int"]
     },
     {
-      "id": "cloudininternaldraft",
-      "title": "InsuranceNow - Internal",
-      "url": "cloud/in-internal/latest",
+      "id": "cloudin20201xinternaldraft",
+      "title": "InsuranceNow 2020.1x - Internal",
+      "url": "cloud/in/internal/20201x",
       "metadata": {
         "productFamily": ["InsuranceNow"],
-        "product": ["InsuranceNow - Internal Audience"],
+        "product": ["InsuranceNow 2020.1x - Internal Audience"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["InsuranceNow"]
@@ -437,7 +437,7 @@
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
         "root": "_supermap-20201x-active.ditamap",
-        "src": "indraftsrc",
+        "src": "in20201xdraftsrc",
         "resources": [
           {
             "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
@@ -449,12 +449,12 @@
       "environments": ["int"]
     },
     {
-      "id": "cloudinexternaldraft",
-      "title": "InsuranceNow - External",
-      "url": "cloud/in-external/latest",
+      "id": "cloudin20201xexternaldraft",
+      "title": "InsuranceNow 2020.1x - External",
+      "url": "cloud/in/external/20201x",
       "metadata": {
         "productFamily": ["InsuranceNow"],
-        "product": ["InsuranceNow - External Audience"],
+        "product": ["InsuranceNow 2020.1x - External Audience"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["InsuranceNow"]
@@ -463,11 +463,63 @@
         "buildType": "dita",
         "filter": "GW-Generic-Release.ditaval",
         "root": "_supermap-20201x-active.ditamap",
-        "src": "indraftsrc",
+        "src": "in20201xdraftsrc",
         "resources": [
           {
             "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
             "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudin20202xinternaldraft",
+      "title": "InsuranceNow 2020.2x - Internal",
+      "url": "cloud/in/internal/20202x",
+      "metadata": {
+        "productFamily": ["InsuranceNow"],
+        "product": ["InsuranceNow 2020.2x - Internal Audience"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["InsuranceNow"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "_supermap-20202x-active.ditamap",
+        "src": "in20202xdraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.2",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudin20202xexternaldraft",
+      "title": "InsuranceNow 2020.2x - External",
+      "url": "cloud/in/external/20202x",
+      "metadata": {
+        "productFamily": ["InsuranceNow"],
+        "product": ["InsuranceNow 2020.2x - External Audience"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["InsuranceNow"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-20202x-active.ditamap",
+        "src": "in20202xdraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.2",
             "src": "insurancenowextrassrc"
           }
         ]
