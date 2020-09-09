@@ -1525,8 +1525,8 @@ object RunContentValidations : BuildType({
                 mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
 
                 docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
-                cp -R "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/*" "%env.NORMALIZED_DITA_DIR%/"
-                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
+                cp -R ${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/* %env.NORMALIZED_DITA_DIR%/
+                cp ${'$'}{WORKING_DIR}/${'$'}{LOG_FILE} %env.DITA_OT_LOGS_DIR%/
                 
                 echo "Running the validate plugin"
                 export OUTPUT_PATH="out/validate"
@@ -1537,8 +1537,8 @@ object RunContentValidations : BuildType({
                 mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
 
                 docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
-                cp "${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml" "%env.SCHEMATRON_REPORTS_DIR%/"
-                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
+                cp ${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/
+                cp ${'$'}{WORKING_DIR}/${'$'}{LOG_FILE} %env.DITA_OT_LOGS_DIR%/
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
