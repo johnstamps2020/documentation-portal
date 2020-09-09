@@ -1521,6 +1521,8 @@ object RunContentValidations : BuildType({
                 export TEMP_DIR="tmp/dita"
                 export FORMAT=dita
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
+                
+                mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
 
                 docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE
                 cp -R "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/*" "%env.NORMALIZED_DITA_DIR%/"
@@ -1531,6 +1533,8 @@ object RunContentValidations : BuildType({
                 export TEMP_DIR="tmp/validate"
                 export FORMAT=validate
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
+                
+                mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
 
                 docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE
                 cp "${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml" "%env.SCHEMATRON_REPORTS_DIR%/"
