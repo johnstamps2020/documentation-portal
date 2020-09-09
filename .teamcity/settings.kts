@@ -1155,11 +1155,11 @@ object HelperObjects {
 
         })
 
-        class TestContentOnAllBranches(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
+        class BuildTestOutputFromDitaAllBranches(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
             templates(BuildOutputFromDita)
 
             id = RelativeId(removeSpecialCharacters(product + version + doc_id + "branches"))
-            name = "Test content on all branches"
+            name = "Build test output on all branches"
 
             params {
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1175,6 +1175,51 @@ object HelperObjects {
 
             vcs {
                 root(vcs_root_id)
+            }
+
+            triggers {
+                vcs {
+                    branchFilter = """
+                        -:<default>
+                        +:*
+                    """.trimIndent()
+                }
+            }
+
+            features {
+                commitStatusPublisher {
+                    publisher = bitbucketServer {
+                        url = "https://stash.guidewire.com"
+                        userName = "%serviceAccountUsername%"
+                        password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                    }
+                }
+            }
+        })
+
+        class ValidateContentAllBranches(product: String, version: String, doc_id: String, input_path: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
+
+            id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validate" + "branches"))
+            name = "Validate content on all branches"
+
+            enablePersonalBuilds = false
+            type = Type.COMPOSITE
+
+            params {
+                text("reverse.dep.${RunContentValidations.id}.env.ROOT_MAP", input_path)
+                text("reverse.dep.${RunContentValidations.id}.env.GIT_URL", git_source_url)
+                text("reverse.dep.${RunContentValidations.id}.env.GIT_BRANCH", git_source_branch)
+            }
+
+            vcs {
+                root(vcs_root_id)
+            }
+
+            dependencies {
+                snapshot(RunContentValidations) {
+                    reuseBuilds = ReuseBuilds.NO
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
             }
 
             triggers {
@@ -1252,7 +1297,8 @@ object HelperObjects {
             }
         }
         val vcsRootIdBranches = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "branches"))
-        builds.add(TestContentOnAllBranches(product_name, platform, version, docId, filter, root, indexRedirect, sourceGitUrl, sourceGitBranch, vcsRootIdBranches))
+        builds.add(BuildTestOutputFromDitaAllBranches(product_name, platform, version, docId, filter, root, indexRedirect, sourceGitUrl, sourceGitBranch, vcsRootIdBranches))
+        builds.add(ValidateContentAllBranches(product_name, version, docId, root, sourceGitUrl, sourceGitBranch, vcsRootIdBranches))
 
         return Project {
             id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
