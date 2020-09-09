@@ -1524,7 +1524,7 @@ object RunContentValidations : BuildType({
                 
                 mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
 
-                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE
+                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
                 cp -R "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/*" "%env.NORMALIZED_DITA_DIR%/"
                 cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
                 
@@ -1536,7 +1536,7 @@ object RunContentValidations : BuildType({
                 
                 mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
 
-                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE
+                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
                 cp "${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml" "%env.SCHEMATRON_REPORTS_DIR%/"
                 cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
                 
