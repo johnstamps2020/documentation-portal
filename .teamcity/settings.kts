@@ -1180,6 +1180,7 @@ object HelperObjects {
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("BUILD_PDF", "false", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             vcs {
