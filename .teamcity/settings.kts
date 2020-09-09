@@ -1506,7 +1506,7 @@ object RunContentValidations : BuildType({
 
                 export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
 
-                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
+                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% "${'$'}WORKING_DIR/%env.SOURCES_ROOT%"
 
                 mkdir -p %env.NORMALIZED_DITA_DIR%
                 mkdir -p %env.DITA_OT_LOGS_DIR%
