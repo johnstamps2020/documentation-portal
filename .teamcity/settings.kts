@@ -20,6 +20,7 @@ project {
 
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
+    vcsRoot(DocValidator)
 
     template(Deploy)
     template(BuildDockerImage)
@@ -49,6 +50,14 @@ object vcsroot : GitVcsRoot({
     name = "vcsroot"
     url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
     branchSpec = "+:refs/heads/*"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object DocValidator : GitVcsRoot({
+    name = "Documentation validator"
+    url = "ssh://git@stash.guidewire.com/doctools/doc-validator.git"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
@@ -1209,6 +1218,8 @@ object HelperObjects {
                 text("reverse.dep.${RunContentValidations.id}.env.ROOT_MAP", input_path)
                 text("reverse.dep.${RunContentValidations.id}.env.GIT_URL", git_source_url)
                 text("reverse.dep.${RunContentValidations.id}.env.GIT_BRANCH", git_source_branch)
+                text("reverse.dep.${RunContentValidations.id}.env.GIT_BRANCH", git_source_branch)
+                text("reverse.dep.${RunContentValidations.id}.env.DOC_ID", doc_id)
             }
 
             vcs {
@@ -1465,14 +1476,22 @@ object CreateReleaseTag : BuildType({
 object RunContentValidations : BuildType({
     name = "Run content validations"
 
+    artifactRules = "**/*.log => logs"
+
     params {
         text("env.ROOT_MAP", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
         text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
         text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.DOC_ID", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.NORMALIZED_DITA_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.DITA_OT_LOGS_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.SCHEMATRON_REPORTS_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
     }
 
     vcs {
+        root(DocValidator)
         cleanCheckout = true
     }
 
@@ -1485,16 +1504,13 @@ object RunContentValidations : BuildType({
                 set -xe
 
                 export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
-                export NORMALIZED_DITA_DIR=normalized_dita
-                export DITA_OT_LOGS_DIR=dita_ot_logs
-                export SCHEMATRON_REPORTS_DIR=schematron_reports
                 export DITA_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l ${'$'}LOG_FILE"
 
                 git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
 
-                mkdir -p ${'$'}NORMALIZED_DITA_DIR
-                mkdir -p ${'$'}DITA_OT_LOGS_DIR
-                mkdir -p ${'$'}SCHEMATRON_REPORTS_DIR
+                mkdir -p %env.NORMALIZED_DITA_DIR%
+                mkdir -p %env.DITA_OT_LOGS_DIR%
+                mkdir -p %env.SCHEMATRON_REPORTS_DIR%
                 
                 SECONDS=0
                 docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
@@ -1506,8 +1522,8 @@ object RunContentValidations : BuildType({
                 export FORMAT=dita
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
                 ${'$'}DITA_COMMAND
-                cp -R "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/*" "${'$'}{WORKING_DIR}/${'$'}{NORMALIZED_DITA_DIR}/"
-                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "${'$'}{WORKING_DIR}/${'$'}{DITA_OT_LOGS_DIR}/"
+                cp -R "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/*" "%env.NORMALIZED_DITA_DIR%/"
+                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
                 
                 echo "Running the validate plugin"
                 export OUTPUT_PATH="out/validate"
@@ -1515,19 +1531,51 @@ object RunContentValidations : BuildType({
                 export FORMAT=validate
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
                 ${'$'}DITA_COMMAND
-                cp "${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml" "${'$'}{WORKING_DIR}/${'$'}{DITA_OT_LOGS_DIR}/"
-                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "${'$'}{WORKING_DIR}/${'$'}{DITA_OT_LOGS_DIR}/"
+                cp "${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml" "%env.SCHEMATRON_REPORTS_DIR%/"
+                cp "${'$'}{WORKING_DIR}/${'$'}{LOG_FILE}" "%env.DITA_OT_LOGS_DIR%/"
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
         }
+
+        dockerCommand {
+            name = "Build a Docker image for running the validator"
+            id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "runner-image"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+
+        script {
+            name = "Run the doc validator"
+            id = "RUN_DOC_VALIDATOR"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                ./run_app.sh
+            """.trimIndent()
+            dockerImage = "runner-image"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+        stepsOrder = arrayListOf("BUILD_NORMALIZED_DITA_RUN_SCHEMATRON_VALIDATIONS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
+
     }
 
     features {
         sshAgent {
             id = "ssh-agent-build-feature"
             teamcitySshKey = "sys-doc.rsa"
+        }
+
+        dockerSupport {
         }
     }
 
