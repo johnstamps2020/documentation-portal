@@ -2150,7 +2150,7 @@
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
         "root": "_supermap.ditamap",
-        "indexRedirect": true,
+        "indexRedirect": false,
         "src": "restapi"
       },
       "environments": ["dev", "int"]
