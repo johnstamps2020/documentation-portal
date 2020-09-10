@@ -2149,8 +2149,8 @@
       "build": {
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
-        "root": "RESTAPIClientGuide.ditamap",
-        "indexRedirect": true,
+        "root": "_supermap.ditamap",
+        "indexRedirect": false,
         "src": "restapi"
       },
       "environments": ["dev", "int"]
