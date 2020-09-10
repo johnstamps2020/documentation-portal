@@ -26,6 +26,7 @@ project {
     template(BuildDockerImage)
     template(BuildOutputFromDita)
     template(CrawlDocumentAndUpdateSearchIndex)
+    template(RunContentValidations)
 
     params {
         param("env.NAMESPACE", "doctools")
@@ -495,8 +496,9 @@ object CleanUpIndex : BuildType({
                     export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
                 fi
                 
-                curl ${'$'}CONFIG_FILE_URL > %teamcity.build.workingDir%/config.json
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
+                curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
+
                 pip install elasticsearch
                 cd apps/index_cleaner
                 python main.py
@@ -1208,30 +1210,20 @@ object HelperObjects {
         })
 
         class ValidateContentAllBranches(product: String, version: String, doc_id: String, input_path: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
+            templates(RunContentValidations)
 
             id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validate" + "branches"))
             name = "Validate content on all branches"
 
-            enablePersonalBuilds = false
-            type = Type.COMPOSITE
-
             params {
-                text("reverse.dep.${RunContentValidations.id}.env.ROOT_MAP", input_path)
-                text("reverse.dep.${RunContentValidations.id}.env.GIT_URL", git_source_url)
-                text("reverse.dep.${RunContentValidations.id}.env.GIT_BRANCH", git_source_branch)
-                text("reverse.dep.${RunContentValidations.id}.env.GIT_BRANCH", git_source_branch)
-                text("reverse.dep.${RunContentValidations.id}.env.DOC_ID", doc_id)
+                text("ROOT_MAP", input_path)
+                text("GIT_URL", git_source_url)
+                text("GIT_BRANCH", git_source_branch)
+                text("DOC_ID", doc_id)
             }
 
             vcs {
                 root(vcs_root_id)
-            }
-
-            dependencies {
-                snapshot(RunContentValidations) {
-                    reuseBuilds = ReuseBuilds.NO
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
             }
 
 //            triggers {
@@ -1474,16 +1466,17 @@ object CreateReleaseTag : BuildType({
     }
 })
 
-object RunContentValidations : BuildType({
+object RunContentValidations : Template({
     name = "Run content validations"
 
     artifactRules = "**/*.log => logs"
 
     params {
-        text("env.ROOT_MAP", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.DOC_ID", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = true)
+        text("env.GIT_URL", "%GIT_URL%", allowEmpty = true)
+        text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = true)
+        text("env.DOC_ID", "%DOC_ID%", allowEmpty = true)
+        text("env.CONFIG_FILE_URL", "https://ditaot.internal.int.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.NORMALIZED_DITA_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1565,6 +1558,11 @@ object RunContentValidations : BuildType({
                 #!/bin/bash
                 set -xe
                 
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
+                export DOC_INFO="%teamcity.build.workingDir%/doc_info.json"
+                curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
+                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE) > ${'$'}DOC_INFO
+
                 ./run_app.sh
             """.trimIndent()
             dockerImage = "runner-image"
@@ -1728,7 +1726,6 @@ object ServiceBuilds : Project({
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(CreateReleaseTag)
-    buildType(RunContentValidations)
 })
 
 object XdocsExportBuilds : Project({
