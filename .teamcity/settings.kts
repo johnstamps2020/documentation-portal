@@ -1476,6 +1476,7 @@ object RunContentValidations : Template({
         text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
         text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
+        text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.CONFIG_FILE_URL", "https://ditaot.internal.int.ccs.guidewire.net/portal-config/config.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1538,6 +1539,21 @@ object RunContentValidations : Template({
             """.trimIndent()
         }
 
+        script {
+            name = "Get document details"
+            id = "GET_DOCUMENT_DETAILS"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
+                curl %env.CONFIG_FILE_URL% > ${'$'}CONFIG_FILE
+                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE > %env.DOC_INFO%
+                
+                cat %env.DOC_INFO%
+            """.trimIndent()
+        }
+
         dockerCommand {
             name = "Build a Docker image for running the validator"
             id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
@@ -1557,13 +1573,6 @@ object RunContentValidations : Template({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
-                export DOC_INFO="%teamcity.build.workingDir%/doc_info.json"
-                curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
-                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE > ${'$'}DOC_INFO
-                
-                cat ${'$'}DOC_INFO
 
                 ./run_app.sh
             """.trimIndent()
@@ -1571,7 +1580,7 @@ object RunContentValidations : Template({
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
-        stepsOrder = arrayListOf("BUILD_NORMALIZED_DITA_RUN_SCHEMATRON_VALIDATIONS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
+        stepsOrder = arrayListOf("BUILD_NORMALIZED_DITA_RUN_SCHEMATRON_VALIDATIONS", "GET_DOCUMENT_DETAILS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
 
     }
 
