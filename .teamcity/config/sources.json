@@ -222,7 +222,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/DevConnect/cloud/active/REST-API-Client/RESTAPIClientGuide.ditamap",
+        "/Content/doc/insuranceSuite/DevConnect/cloud/active/_supermap.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]

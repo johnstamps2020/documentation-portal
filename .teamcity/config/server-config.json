@@ -2149,7 +2149,7 @@
       "build": {
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
-        "root": "RESTAPIClientGuide.ditamap",
+        "root": "_supermap.ditamap",
         "indexRedirect": true,
         "src": "restapi"
       },
