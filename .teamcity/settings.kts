@@ -1561,7 +1561,7 @@ object RunContentValidations : Template({
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
                 export DOC_INFO="%teamcity.build.workingDir%/doc_info.json"
                 curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
-                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE) > ${'$'}DOC_INFO
+                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE > ${'$'}DOC_INFO
                 
                 cat ${'$'}DOC_INFO
 
