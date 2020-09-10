@@ -1476,7 +1476,7 @@ object RunContentValidations : Template({
         text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
         text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
-        text("env.CONFIG_FILE_URL", "https://ditaot.internal.int.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
+        text("env.CONFIG_FILE_URL", "https://ditaot.internal.int.ccs.guidewire.net/portal-config/config.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.NORMALIZED_DITA_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
