@@ -2150,6 +2150,7 @@
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
         "root": "RESTAPIClientGuide.ditamap",
+        "indexRedirect": true,
         "src": "restapi"
       },
       "environments": ["dev", "int"]
