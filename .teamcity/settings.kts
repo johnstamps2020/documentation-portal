@@ -1180,11 +1180,12 @@ object HelperObjects {
                 text("CREATE_INDEX_REDIRECT", create_index_redirect, allowEmpty = false)
                 text("ROOT_MAP", input_path, allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
-                text("DITA_OT_WORKING_DIR", "src_root", allowEmpty = false)
+                text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
             }
 
             vcs {
-                root(vcs_root_id, "+:. => %DITA_OT_WORKING_DIR%")
+                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
                 cleanCheckout = true
             }
 
