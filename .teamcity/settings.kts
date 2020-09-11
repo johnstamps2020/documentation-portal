@@ -1203,6 +1203,7 @@ object HelperObjects {
 
             features {
                 commitStatusPublisher {
+                    vcsRootExtId = vcs_root_id.toString()
                     publisher = bitbucketServer {
                         url = "https://stash.guidewire.com"
                         userName = "%serviceAccountUsername%"
