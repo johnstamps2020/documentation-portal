@@ -995,7 +995,10 @@ object HelperObjects {
             id = vcs_root_id
             name = vcs_root_id.toString()
             url = git_source_url
-            branchSpec = "+:refs/heads/*"
+            branchSpec = """
+                +:refs/heads/*
+                +:refs/pull-requests/*/from
+            """.trimIndent()
             authMethod = uploadedKey {
                 uploadedKey = "sys-doc.rsa"
             }
