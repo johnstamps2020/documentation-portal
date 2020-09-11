@@ -1180,7 +1180,7 @@ object HelperObjects {
                 text("CREATE_INDEX_REDIRECT", create_index_redirect, allowEmpty = false)
                 text("ROOT_MAP", input_path, allowEmpty = false)
                 text("DOC_ID", doc_id, allowEmpty = false)
-                text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/src_root", allowEmpty = false)
+                text("DITA_OT_WORKING_DIR", "src_root", allowEmpty = false)
             }
 
             vcs {
@@ -1427,7 +1427,7 @@ object CreateReleaseTag : BuildType({
     }
 })
 
-object RunContentValidations : Template({
+object  RunContentValidations : Template({
     name = "Run content validations"
 
     artifactRules = "**/*.log => logs"
