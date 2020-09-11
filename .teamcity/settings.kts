@@ -1172,9 +1172,6 @@ object HelperObjects {
             id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validatedoc"))
             name = "Validate document"
 
-            enablePersonalBuilds = false
-            type = Type.COMPOSITE
-
             params {
                 text("env.GW_PRODUCT", product, allowEmpty = false)
                 text("env.GW_PLATFORM", platform, allowEmpty = false)
