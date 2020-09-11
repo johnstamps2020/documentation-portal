@@ -1193,7 +1193,7 @@ object HelperObjects {
                 vcs {
                     branchFilter = """
                         -:<default>
-                        +:refs/pull-requests/merge*
+                        +:refs/pull-requests/*/from
                     """.trimIndent()
                 }
             }
