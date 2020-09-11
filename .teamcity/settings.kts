@@ -1166,74 +1166,37 @@ object HelperObjects {
 
         })
 
-        class BuildTestOutputFromDitaAllBranches(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
-            templates(BuildOutputFromDita)
-
-            id = RelativeId(removeSpecialCharacters(product + version + doc_id + "branches"))
-            name = "Build test output on all branches"
-
-            params {
-                text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("BUILD_PDF", "false", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-            }
-
-            vcs {
-                root(vcs_root_id)
-            }
-
-//            triggers {
-//                vcs {
-//                    branchFilter = """
-//                        -:<default>
-//                        +:*
-//                    """.trimIndent()
-//                }
-//            }
-
-            features {
-                commitStatusPublisher {
-                    publisher = bitbucketServer {
-                        url = "https://stash.guidewire.com"
-                        userName = "%serviceAccountUsername%"
-                        password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
-                    }
-                }
-            }
-        })
-
-        class ValidateContentAllBranches(product: String, version: String, doc_id: String, input_path: String, git_source_url: String, git_source_branch: String, vcs_root_id: RelativeId) : BuildType({
+        class ValidateDoc(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, vcs_root_id: RelativeId) : BuildType({
             templates(RunContentValidations)
 
-            id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validate" + "branches"))
-            name = "Validate content on all branches"
+            id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validatedoc"))
+            name = "Validate document"
+
+            enablePersonalBuilds = false
+            type = Type.COMPOSITE
 
             params {
-                text("ROOT_MAP", input_path)
-                text("GIT_URL", git_source_url)
-                text("GIT_BRANCH", git_source_branch)
-                text("DOC_ID", doc_id)
+                text("env.GW_PRODUCT", product, allowEmpty = false)
+                text("env.GW_PLATFORM", platform, allowEmpty = false)
+                text("env.GW_VERSION", version, allowEmpty = false)
+                text("env.FILTER_PATH", ditaval_file, allowEmpty = false)
+                text("env.CREATE_INDEX_REDIRECT", create_index_redirect, allowEmpty = false)
+                text("env.ROOT_MAP", input_path, allowEmpty = false)
+                text("env.DOC_ID", doc_id, allowEmpty = false)
             }
 
             vcs {
                 root(vcs_root_id)
             }
 
-//            triggers {
-//                vcs {
-//                    branchFilter = """
-//                        -:<default>
-//                        +:*
-//                    """.trimIndent()
-//                }
-//            }
+            triggers {
+                vcs {
+                    branchFilter = """
+                        -:<default>
+                        +:refs/pull-requests/*/from
+                    """.trimIndent()
+                }
+            }
 
             features {
                 commitStatusPublisher {
@@ -1301,8 +1264,7 @@ object HelperObjects {
             }
         }
         val vcsRootIdBranches = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "branches"))
-        builds.add(BuildTestOutputFromDitaAllBranches(product_name, platform, version, docId, filter, root, indexRedirect, sourceGitUrl, sourceGitBranch, vcsRootIdBranches))
-        builds.add(ValidateContentAllBranches(product_name, version, docId, root, sourceGitUrl, sourceGitBranch, vcsRootIdBranches))
+        builds.add(ValidateDoc(product_name, platform, version, docId, filter, root, indexRedirect, vcsRootIdBranches))
 
         return Project {
             id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
@@ -1472,14 +1434,18 @@ object RunContentValidations : Template({
     artifactRules = "**/*.log => logs"
 
     params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+        text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
+        text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
-        text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
-        text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.CONFIG_FILE_URL", "https://ditaot.internal.int.ccs.guidewire.net/portal-config/config.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text("env.DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
         text("env.NORMALIZED_DITA_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.DITA_OT_LOGS_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.SCHEMATRON_REPORTS_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1492,47 +1458,106 @@ object RunContentValidations : Template({
 
     steps {
         script {
-            name = "Build normalized DITA and run Schematron validations"
-            id = "BUILD_NORMALIZED_DITA_RUN_SCHEMATRON_VALIDATIONS"
+            name = "Create directories"
+            id = "CREATE_DIRECTORIES"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                mkdir -p %env.NORMALIZED_DITA_DIR%
+                mkdir -p %env.DITA_OT_LOGS_DIR%
+                mkdir -p %env.SCHEMATRON_REPORTS_DIR%
+            """.trimIndent()
+        }
+
+        script {
+            name = "Build Guidewire webhelp"
+            id = "BUILD_GUIDEWIRE_WEBHELP"
             scriptContent = """
                 #!/bin/bash
                 set -xe
 
-                export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
+                export OUTPUT_PATH="out/webhelp"
+                export LOG_FILE="${'$'}{OUTPUT_PATH}/webhelp_build.log"
 
-                git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% "${'$'}WORKING_DIR"
+                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"/src/${'$'}LOG_FILE\""
+                
+                if [[ ! -z "%env.FILTER_PATH%" ]]; then
+                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
+                fi
 
-                mkdir -p %env.NORMALIZED_DITA_DIR%
-                mkdir -p %env.DITA_OT_LOGS_DIR%
-                mkdir -p %env.SCHEMATRON_REPORTS_DIR%
+                if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
+                    export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
+                fi
                 
                 SECONDS=0
                 docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
                 docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
 
-                echo "Building normalized DITA"
+                echo "Building Guidewire webhelp for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
+                mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
+                ${'$'}DITA_BASE_COMMAND
+                
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
+                
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+
+        script {
+            name = "Build normalized DITA"
+            id = "BUILD_NORMALIZED_DITA"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+
                 export OUTPUT_PATH="out/dita"
-                export TEMP_DIR="tmp/dita"
-                export FORMAT=dita
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
                 
-                mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
+                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f dita -l \"/src/${'$'}LOG_FILE\""
 
-                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
-                cp -R ${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}/* %env.NORMALIZED_DITA_DIR%/
-                cp ${'$'}{WORKING_DIR}/${'$'}{LOG_FILE} %env.DITA_OT_LOGS_DIR%/
+                if [[ ! -z "%env.FILTER_PATH%" ]]; then
+                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
+                fi
+
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+
+                echo "Building normalized DITA"
+                mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
+                ${'$'}DITA_BASE_COMMAND
                 
-                echo "Running the validate plugin"
+                cp -R %env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH/* %env.NORMALIZED_DITA_DIR%/
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
+
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+
+        script {
+            name = "Run Schematron validations"
+            id = "RUN_SCHEMATRON_VALIDATIONS"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
                 export OUTPUT_PATH="out/validate"
                 export TEMP_DIR="tmp/validate"
-                export FORMAT=validate
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
                 
-                mkdir -p "${'$'}{WORKING_DIR}/${'$'}{OUTPUT_PATH}"
-
-                docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f ${'$'}FORMAT --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
-                cp ${'$'}{WORKING_DIR}/${'$'}{TEMP_DIR}/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/
-                cp ${'$'}{WORKING_DIR}/${'$'}{LOG_FILE} %env.DITA_OT_LOGS_DIR%/
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+ 
+                echo "Running the validate plugin"
+                mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
+                docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f validate --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
+                
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
@@ -1580,16 +1605,11 @@ object RunContentValidations : Template({
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
-        stepsOrder = arrayListOf("BUILD_NORMALIZED_DITA_RUN_SCHEMATRON_VALIDATIONS", "GET_DOCUMENT_DETAILS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
+        stepsOrder = arrayListOf("BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "GET_DOCUMENT_DETAILS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
 
     }
 
     features {
-        sshAgent {
-            id = "ssh-agent-build-feature"
-            teamcitySshKey = "sys-doc.rsa"
-        }
-
         dockerSupport {
         }
     }
