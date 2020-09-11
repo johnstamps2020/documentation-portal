@@ -997,7 +997,7 @@ object HelperObjects {
             url = git_source_url
             branchSpec = """
                 +:refs/heads/*
-                +:refs/pull-requests/*/from
+                +:(refs/pull-requests/*/from)
             """.trimIndent()
             authMethod = uploadedKey {
                 uploadedKey = "sys-doc.rsa"
