@@ -1505,6 +1505,7 @@ object RunContentValidations : Template({
         script {
             name = "Build normalized DITA"
             id = "BUILD_NORMALIZED_DITA"
+            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1537,6 +1538,7 @@ object RunContentValidations : Template({
         script {
             name = "Run Schematron validations"
             id = "RUN_SCHEMATRON_VALIDATIONS"
+            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1564,6 +1566,7 @@ object RunContentValidations : Template({
         script {
             name = "Get document details"
             id = "GET_DOCUMENT_DETAILS"
+            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1579,6 +1582,7 @@ object RunContentValidations : Template({
         dockerCommand {
             name = "Build a Docker image for running the validator"
             id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
+            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             commandType = build {
                 source = file {
                     path = "Dockerfile"
@@ -1592,6 +1596,7 @@ object RunContentValidations : Template({
         script {
             name = "Run the doc validator"
             id = "RUN_DOC_VALIDATOR"
+            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             scriptContent = """
                 #!/bin/bash
                 set -xe
