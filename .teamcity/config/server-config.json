@@ -540,8 +540,8 @@
       "build": {
         "buildType": "dita",
         "filter": "LOB_STANDARDS_filterSet.ditaval",
-        "root": "lob-bop-10x/_supermap.ditamap",
-        "src": "lobs"
+        "root": "_supermap-lob-bop-10x.ditamap",
+        "src": "lobbopdraft"
       },
       "environments": ["dev", "int"]
     },
@@ -1594,8 +1594,8 @@
       "build": {
         "buildType": "dita",
         "filter": "LOB_STANDARDS_filterSet.ditaval",
-        "root": "lob-bop-10x/_supermap.ditamap",
-        "src": "lobs202005"
+        "root": "_supermap-lob-bop-10x.ditamap",
+        "src": "lobbop202005"
       },
       "environments": ["dev", "staging", "prod"]
     },

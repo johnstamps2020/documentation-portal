@@ -239,24 +239,24 @@
       ]
     },
     {
-      "id": "lobs",
-      "title": "LOBs",
+      "id": "lobbopdraft",
+      "title": "LOB BOP Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/_supermap.ditamap",
+        "/Content/doc/LOB/active/lob-bop-10x/_supermap-lob-bop-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_filterSet.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_filterSet.ditaval"
       ]
     },
     {
-      "id": "lobs202005",
-      "title": "LOBs",
+      "id": "lobbop202005",
+      "title": "LOB BOP 2020.05",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
       "branch": "2020.05",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/_supermap.ditamap",
+        "/Content/doc/LOB/active/lob-bop-10x/_supermap-lob-bop-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_filterSet.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_filterSet.ditaval"
       ]
