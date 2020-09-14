@@ -23,8 +23,6 @@ async function getCloudProducts() {
               });
             }
           }
-        } else {
-          console.log('This doc does not have a product family', doc);
         }
       }
     }
