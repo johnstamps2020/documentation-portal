@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include parts/head %>
+<body>
+<% include parts/header %>
+<div class="docPanelContainer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="docPageTitle docPageHeaderItems">
+                    <h1><%= product %> <%= version %></h1>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="docPageHeaderItems">
+                    <a class="returnLink" href="<%= returnUrl %>">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00739d" width="18px"
+                             height="18px">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                        </svg> <%= returnLabel %></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <% Object.entries(docs).forEach(category => {
+                        const categoryName = category[0];
+                        const categoryItems = category[1]; -%>
+                    <div class="col-sm-4 mt-3">
+                        <div class="categoryCard">
+                            <h2><%= categoryName %></h2>
+                            <% const docs = categoryItems.reduce((r, a) => {
+                                r[a.metadata.product] = [...r[a.metadata.product] || [], a];
+                                return r;
+                            }, {});
+                                const productArray = Object.entries(docs);
+                            productArray.forEach(product => {
+                                const visibleDocs = product[1].filter(doc => (doc.displayOnLandingPages !== false));
+                                const productReleases = visibleDocs.map(e => e.metadata.version);
+                                let latestProductRelease = '';
+                                if (productReleases.includes('latest')) {
+                                    latestProductRelease = 'latest'
+                                } else {
+                                    const highestVersion = Math.max(...productReleases.map(e => parseFloat(e)));
+                                    latestProductRelease = productReleases.find(p => parseFloat(p) === highestVersion);
+                                }
+                                const docsToDisplay = visibleDocs.filter(e => e.metadata.version === latestProductRelease);
+                            if (docsToDisplay) {
+                            docsToDisplay.forEach(doc => {
+                            -%>
+                                <div class="docLink">
+                                    <a href="/<%= doc.url %>"><%= doc.title %></a>
+                                </div>
+                            <% }) -%>
+                            <% } -%>
+                            <% }) %>
+                        </div>
+                    </div>
+                    <% }) -%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include parts/footer %>
+</body>
+</html>
