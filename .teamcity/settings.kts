@@ -1208,9 +1208,6 @@ object HelperObjects {
 
             triggers {
                 vcs {
-                    branchFilter = """
-                        +:<default>
-                    """.trimIndent()
                 }
             }
 
