@@ -1579,7 +1579,7 @@ object  RunContentValidations : Template({
                 
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
                 curl %env.CONFIG_FILE_URL% > ${'$'}CONFIG_FILE
-                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE > %env.DOC_INFO%
+                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE | jq '. += {"gitBuildBranch": "%teamcity.build.branch%"}' > %env.DOC_INFO%
                 
                 cat %env.DOC_INFO%
             """.trimIndent()
