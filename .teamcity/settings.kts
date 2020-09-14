@@ -1164,7 +1164,7 @@ object HelperObjects {
 
         })
 
-        class ValidateDoc(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, vcs_root_id: RelativeId) : BuildType({
+        class ValidateDoc(doc_info: JSONObject, product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, vcs_root_id: RelativeId) : BuildType({
             templates(RunContentValidations)
 
             id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validatedoc"))
@@ -1180,6 +1180,25 @@ object HelperObjects {
                 text("DOC_ID", doc_id, allowEmpty = false)
                 text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
+                text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            }
+            steps {
+                script {
+                    name = "Get document details"
+                    id = "GET_DOCUMENT_DETAILS"
+
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.branch%"}' > %env.DOC_INFO%
+                        cat %env.DOC_INFO%
+                        
+                    """.trimIndent()
+                }
+
+                stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
+
             }
 
             vcs {
@@ -1275,7 +1294,7 @@ object HelperObjects {
             }
         }
         val vcsRootIdBranches = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "branches"))
-        builds.add(ValidateDoc(product_name, platform, version, docId, filter, root, indexRedirect, vcsRootIdBranches))
+        builds.add(ValidateDoc(doc, product_name, platform, version, docId, filter, root, indexRedirect, vcsRootIdBranches))
 
         return Project {
             id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
@@ -1453,8 +1472,6 @@ object RunContentValidations : Template({
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.DITA_OT_WORKING_DIR", "%DITA_OT_WORKING_DIR%", allowEmpty = false)
-        text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.CONFIG_FILE_URL", "https://ditaot.internal.int.ccs.guidewire.net/portal-config/config.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.NORMALIZED_DITA_DIR", "%env.DITA_OT_WORKING_DIR%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.DITA_OT_LOGS_DIR", "%env.DITA_OT_WORKING_DIR%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1576,22 +1593,6 @@ object RunContentValidations : Template({
             """.trimIndent()
         }
 
-        script {
-            name = "Get document details"
-            id = "GET_DOCUMENT_DETAILS"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
-                curl %env.CONFIG_FILE_URL% > ${'$'}CONFIG_FILE
-                jq -r --arg doc_id "%env.DOC_ID%" '.docs | .[] | select(.id == ${'$'}doc_id)' ${'$'}CONFIG_FILE | jq '. += {"gitBuildBranch": "%teamcity.build.branch%"}' > %env.DOC_INFO%
-                
-                cat %env.DOC_INFO%
-            """.trimIndent()
-        }
-
         dockerCommand {
             name = "Build a Docker image for running the validator"
             id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
@@ -1619,8 +1620,6 @@ object RunContentValidations : Template({
             dockerImage = "runner-image"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
-
-        stepsOrder = arrayListOf("BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "GET_DOCUMENT_DETAILS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
 
     }
 
