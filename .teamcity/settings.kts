@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
@@ -978,7 +979,7 @@ object HelperObjects {
     }
 
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
-        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
+        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String, include_branches: Boolean) : GitVcsRoot({
             id = vcs_root_id
             name = vcs_root_id.toString()
             url = git_source_url
@@ -989,19 +990,13 @@ object HelperObjects {
             if (git_source_branch != "") {
                 branch = "refs/heads/$git_source_branch"
             }
-        })
 
-        class DocVcsRootBranches(vcs_root_id: RelativeId, git_source_url: String) : GitVcsRoot({
-            id = vcs_root_id
-            name = vcs_root_id.toString()
-            url = git_source_url
-            branchSpec = """
+            if (include_branches) {
+                branchSpec = """
                 +:refs/heads/*
-                +:(refs/pull-requests/*/from)
             """.trimIndent()
-            authMethod = uploadedKey {
-                uploadedKey = "sys-doc.rsa"
             }
+
         })
 
         class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
@@ -1210,6 +1205,18 @@ object HelperObjects {
                         password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                     }
                 }
+
+                pullRequests {
+                    vcsRootExtId = vcs_root_id.toString()
+                    provider = bitbucketServer {
+                        serverUrl = "https://stash.guidewire.com"
+                        authType = password {
+                            username = "%serviceAccountUsername%"
+                            password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                        }
+                        filterTargetBranch = "+:<default>"
+                    }
+                }
             }
         })
 
@@ -1274,8 +1281,8 @@ object HelperObjects {
             id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
             name = "$title $platform $product_name $version"
 
-            vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
-            vcsRoot(DocVcsRootBranches(vcsRootIdBranches, sourceGitUrl))
+            vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch, include_branches = false))
+            vcsRoot(DocVcsRoot(vcsRootIdBranches, sourceGitUrl, sourceGitBranch, include_branches = true))
 
             builds.forEach(this::buildType)
         }
@@ -1432,7 +1439,7 @@ object CreateReleaseTag : BuildType({
     }
 })
 
-object  RunContentValidations : Template({
+object RunContentValidations : Template({
     name = "Run content validations"
 
     artifactRules = "**/*.log => logs"
