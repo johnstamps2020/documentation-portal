@@ -979,7 +979,7 @@ object HelperObjects {
     }
 
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
-        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String, include_branches: Boolean) : GitVcsRoot({
+        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
             id = vcs_root_id
             name = vcs_root_id.toString()
             url = git_source_url
@@ -989,12 +989,6 @@ object HelperObjects {
 
             if (git_source_branch != "") {
                 branch = "refs/heads/$git_source_branch"
-            }
-
-            if (include_branches) {
-                branchSpec = """
-                +:refs/heads/*
-            """.trimIndent()
             }
 
         })
@@ -1289,15 +1283,13 @@ object HelperObjects {
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
             }
         }
-        val vcsRootIdBranches = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "branches"))
-        builds.add(ValidateDoc(doc, product_name, platform, version, docId, filter, root, indexRedirect, vcsRootIdBranches, sourceGitBranch))
+        builds.add(ValidateDoc(doc, product_name, platform, version, docId, filter, root, indexRedirect, vcsRootId, sourceGitBranch))
 
         return Project {
             id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
             name = "$title $platform $product_name $version"
 
-            vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch, include_branches = false))
-            vcsRoot(DocVcsRoot(vcsRootIdBranches, sourceGitUrl, sourceGitBranch, include_branches = true))
+            vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
 
             builds.forEach(this::buildType)
         }
