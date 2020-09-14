@@ -1209,7 +1209,7 @@ object HelperObjects {
             triggers {
                 vcs {
                     branchFilter = """
-                        +:refs/pull-requests/*/from
+                        +:<default>
                     """.trimIndent()
                 }
             }
