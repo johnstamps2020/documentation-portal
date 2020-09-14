@@ -1,6 +1,6 @@
 const getConfig = require('./configController');
 
-async function getCloudProducts() {
+async function getCloudProductFamilies() {
   try {
     const config = await getConfig();
     let cloudProductFamilies = [];
@@ -33,4 +33,4 @@ async function getCloudProducts() {
   }
 }
 
-module.exports = getCloudProducts;
+module.exports = getCloudProductFamilies;
