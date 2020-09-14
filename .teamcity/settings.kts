@@ -1164,7 +1164,7 @@ object HelperObjects {
 
         })
 
-        class ValidateDoc(doc_info: JSONObject, product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, vcs_root_id: RelativeId) : BuildType({
+        class ValidateDoc(doc_info: JSONObject, product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, vcs_root_id: RelativeId, git_source_branch: String) : BuildType({
             templates(RunContentValidations)
 
             id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validatedoc"))
@@ -1229,7 +1229,7 @@ object HelperObjects {
                             username = "%serviceAccountUsername%"
                             password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                         }
-                        filterTargetBranch = "+:<default>"
+                        filterTargetBranch = "refs/heads/$git_source_branch"
                     }
                 }
             }
@@ -1290,7 +1290,7 @@ object HelperObjects {
             }
         }
         val vcsRootIdBranches = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "branches"))
-        builds.add(ValidateDoc(doc, product_name, platform, version, docId, filter, root, indexRedirect, vcsRootIdBranches))
+        builds.add(ValidateDoc(doc, product_name, platform, version, docId, filter, root, indexRedirect, vcsRootIdBranches, sourceGitBranch))
 
         return Project {
             id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
