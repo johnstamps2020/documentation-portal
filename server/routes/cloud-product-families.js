@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const getCloudProducts = require('../controllers/cloudProductController');
+const getCloudProductFamilies = require('../controllers/cloudProductFamilyController');
 
 router.get('/:productFamilyId', async function(req, res, next) {
   try {
-    const cloudProductFamilies = await getCloudProducts();
+    const cloudProductFamilies = await getCloudProductFamilies();
 
     let productFamilyToDisplay = cloudProductFamilies.find(
       productFamily => productFamily.id === req.params.productFamilyId
@@ -22,8 +22,8 @@ router.get('/:productFamilyId', async function(req, res, next) {
       return r;
     }, {});
 
-    res.render('product', {
-      product: productFamilyToDisplay,
+    res.render('product-family', {
+      productFamily: productFamilyToDisplay,
       docs: productDocs,
       returnUrl: '/',
       returnLabel: 'Back to Cloud product documentation',

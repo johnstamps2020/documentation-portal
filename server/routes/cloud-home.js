@@ -1,4 +1,4 @@
-const getCloudProductList = require('../controllers/cloudProductController');
+const getCloudProductList = require('../controllers/cloudProductFamilyController');
 
 const cloudHome = async (req, res, next) => {
   try {
