@@ -185,7 +185,17 @@
         "buildType": "dita",
         "filter": "DataHub-MS-DRAFT.ditaval",
         "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc"
+        "src": "dhicdraftsrc",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+        }]
       },
       "environments": ["int"]
     },
@@ -208,7 +218,17 @@
         "buildType": "dita",
         "filter": "InfoCenter-MS-DRAFT.ditaval",
         "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc"
+        "src": "dhicdraftsrc",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+        }]
       },
       "environments": ["int"]
     },
@@ -840,7 +860,17 @@
         "buildType": "dita",
         "filter": "DataHub-DRAFT.ditaval",
         "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc"
+        "src": "dhicdraftsrc",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+        }]
       },
       "environments": ["int"]
     },
@@ -858,7 +888,17 @@
         "buildType": "dita",
         "filter": "InfoCenter-DRAFT.ditaval",
         "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc"
+        "src": "dhicdraftsrc",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+        }]
       },
       "environments": ["int"]
     },
@@ -1602,7 +1642,7 @@
     {
       "id": "clouddhaithitzz",
       "title": "DataHub for Guidewire Cloud",
-      "url": "cloud/dh/latest",
+      "url": "cloud/dh/202005",
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": [
@@ -1618,14 +1658,24 @@
         "buildType": "dita",
         "filter": "DataHub-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiccloudforstaging"
+        "src": "exportdhiccloudforstaging",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+        }]
       },
       "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "cloudiclovarpzz",
       "title": "InfoCenter for Guidewire Cloud",
-      "url": "cloud/ic/latest",
+      "url": "cloud/ic/202005",
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": [
@@ -1641,7 +1691,17 @@
         "buildType": "dita",
         "filter": "InfoCenter-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiccloudforstaging"
+        "src": "exportdhiccloudforstaging",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+        }]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2017,7 +2077,17 @@
         "buildType": "dita",
         "filter": "DataHub-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiconpremforstaging"
+        "src": "exportdhiconpremforstaging",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+        }]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2035,7 +2105,17 @@
         "buildType": "dita",
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
-        "src": "exportdhiconpremforstaging"
+        "src": "exportdhiconpremforstaging",
+        "resources": [{
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter"
+        },
+        {
+          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+        }]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -4463,7 +4543,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Administration"]
       },
       "build": {
         "buildType": "dita",
@@ -4482,7 +4562,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Features and functionality"]
       },
       "build": {
         "buildType": "dita",
@@ -4501,7 +4581,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Best practices"]
       },
       "build": {
         "buildType": "dita",
@@ -4520,7 +4600,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Configuration"]
       },
       "build": {
         "buildType": "dita",
@@ -4539,7 +4619,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Features and functionality"]
       },
       "build": {
         "buildType": "dita",
@@ -4558,7 +4638,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Configuration"]
       },
       "build": {
         "buildType": "dita",
@@ -4577,7 +4657,7 @@
         "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Glossary"]
       },
       "build": {
         "buildType": "dita",
