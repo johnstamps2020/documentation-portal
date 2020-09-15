@@ -37,6 +37,7 @@ project {
     subProject(Server)
     subProject(Content)
     subProject(Docs)
+    subProject(Sources)
 }
 
 object vcsrootmasteronly : GitVcsRoot({
@@ -978,20 +979,21 @@ object HelperObjects {
         }
     }
 
+    class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
+        id = vcs_root_id
+        name = vcs_root_id.toString()
+        url = git_source_url
+        authMethod = uploadedKey {
+            uploadedKey = "sys-doc.rsa"
+        }
+
+        if (git_source_branch != "") {
+            branch = "refs/heads/$git_source_branch"
+        }
+
+    })
+
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
-        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
-            id = vcs_root_id
-            name = vcs_root_id.toString()
-            url = git_source_url
-            authMethod = uploadedKey {
-                uploadedKey = "sys-doc.rsa"
-            }
-
-            if (git_source_branch != "") {
-                branch = "refs/heads/$git_source_branch"
-            }
-
-        })
 
         class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
             if (index_for_search) {
@@ -1158,6 +1160,112 @@ object HelperObjects {
 
         })
 
+        val builds = mutableListOf<BuildType>()
+
+        val docId = doc.getString("id")
+        val publishPath = doc.getString("url")
+        val title = doc.getString("title")
+
+        val metadata = doc.getJSONObject("metadata")
+        val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
+        val environments = doc.getJSONArray("environments")
+        val indexForSearch = if (doc.has("indexForSearch")) doc.getBoolean("indexForSearch") else true
+
+        val build: JSONObject = doc.getJSONObject("build")
+        var filter = ""
+        if (build.has("filter")) {
+            filter = build.getString("filter")
+        }
+
+        var indexRedirect = "false"
+        if (build.has("indexRedirect")) {
+            indexRedirect = build.getBoolean("indexRedirect").toString()
+        }
+
+        val root = build.getString("root")
+        val sourceId = build.getString("src")
+        val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
+        val sourcesFromConfig = getSourcesFromConfig()
+        val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourcesFromConfig)
+
+        val resourcesToCopy = mutableListOf<JSONObject>()
+        if (build.has("resources")) {
+            val resources = build.getJSONArray("resources")
+            for (j in 0 until resources.length()) {
+                val resource = resources.getJSONObject(j)
+                val resourceVcsId = resource.getString("src")
+                val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourcesFromConfig)
+                val resourceSourceFolder = resource.getString("sourceFolder")
+                val resourceTargetFolder = resource.getString("targetFolder")
+                val resourceObject = JSONObject()
+                resourceObject.put("resourceGitUrl", resourceGitUrl)
+                resourceObject.put("resourceGitBranch", resourceGitBranch)
+                resourceObject.put("resourceSourceFolder", resourceSourceFolder)
+                resourceObject.put("resourceTargetFolder", resourceTargetFolder)
+                resourcesToCopy.add(resourceObject)
+            }
+        }
+
+        for (env in environments) {
+            if (env == "prod") {
+                builds.add(PublishToS3IndexProd(publishPath, docId))
+            } else {
+                builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
+                        publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
+            }
+        }
+
+        return Project {
+            id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
+            name = "$title $platform $product_name $version"
+
+            vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
+
+            builds.forEach(this::buildType)
+        }
+    }
+
+    fun createProjects(): List<Project> {
+
+        val products = mutableListOf<String>()
+        val noProductLabel = "No product"
+        for (i in 0 until docConfigs.length()) {
+            val doc = docConfigs.getJSONObject(i)
+            val metadata = doc.getJSONObject("metadata")
+            if (metadata.has("product")) {
+                val docProducts = metadata.getJSONArray("product")
+                for (docProduct in docProducts) {
+                    if (!products.contains(docProduct.toString())) {
+                        products.add(docProduct.toString())
+                    }
+                }
+            } else if (!products.contains(noProductLabel)) {
+                products.add(noProductLabel)
+            }
+        }
+        val subProjects = mutableListOf<Project>()
+        for (product in products) {
+            val docsInProduct = mutableListOf<JSONObject>()
+            for (i in 0 until docConfigs.length()) {
+                val doc = docConfigs.getJSONObject(i)
+                if (doc.has("build") && !docsInProduct.contains(doc)) {
+                    val metadata = doc.getJSONObject("metadata")
+                    if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
+                        docsInProduct.add(doc)
+                    } else if (!metadata.has("product") && product == noProductLabel) {
+                        docsInProduct.add(doc)
+                    }
+                }
+            }
+            if (!docsInProduct.isNullOrEmpty()) {
+                subProjects.add(createProductProject(product, docsInProduct))
+            }
+        }
+        return subProjects
+    }
+
+    fun createSourceValidationsFromConfig(): List<Project> {
+
         class ValidateDoc(doc_info: JSONObject, product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, vcs_root_id: RelativeId, git_source_branch: String) : BuildType({
             templates(RunContentValidations)
 
@@ -1229,111 +1337,52 @@ object HelperObjects {
             }
         })
 
-        val builds = mutableListOf<BuildType>()
+        val sourcesToValidate = mutableListOf<Project>()
+        val sourceConfigs = getSourcesFromConfig()
+        for (i in 0 until sourceConfigs.length()) {
+            val source = sourceConfigs.getJSONObject(i)
+            if (!source.has("xdocsPathIds")) {
+                val sourceDocBuilds = mutableListOf<JSONObject>()
+                val sourceId = source.getString("id")
+                val sourceTitle = source.getString("title")
+                val sourceGitUrl = source.getString("gitUrl")
+                val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
 
-        val docId = doc.getString("id")
-        val publishPath = doc.getString("url")
-        val title = doc.getString("title")
-
-        val metadata = doc.getJSONObject("metadata")
-        val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
-        val environments = doc.getJSONArray("environments")
-        val indexForSearch = if (doc.has("indexForSearch")) doc.getBoolean("indexForSearch") else true
-
-        val build: JSONObject = doc.getJSONObject("build")
-        var filter = ""
-        if (build.has("filter")) {
-            filter = build.getString("filter")
-        }
-
-        var indexRedirect = "false"
-        if (build.has("indexRedirect")) {
-            indexRedirect = build.getBoolean("indexRedirect").toString()
-        }
-
-        val root = build.getString("root")
-        val sourceId = build.getString("src")
-        val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
-        val sourcesFromConfig = getSourcesFromConfig()
-        val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourcesFromConfig)
-
-        val resourcesToCopy = mutableListOf<JSONObject>()
-        if (build.has("resources")) {
-            val resources = build.getJSONArray("resources")
-            for (j in 0 until resources.length()) {
-                val resource = resources.getJSONObject(j)
-                val resourceVcsId = resource.getString("src")
-                val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourcesFromConfig)
-                val resourceSourceFolder = resource.getString("sourceFolder")
-                val resourceTargetFolder = resource.getString("targetFolder")
-                val resourceObject = JSONObject()
-                resourceObject.put("resourceGitUrl", resourceGitUrl)
-                resourceObject.put("resourceGitBranch", resourceGitBranch)
-                resourceObject.put("resourceSourceFolder", resourceSourceFolder)
-                resourceObject.put("resourceTargetFolder", resourceTargetFolder)
-                resourcesToCopy.add(resourceObject)
-            }
-        }
-
-        for (env in environments) {
-            if (env == "prod") {
-                builds.add(PublishToS3IndexProd(publishPath, docId))
-            } else {
-                builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
-                        publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
-            }
-        }
-        builds.add(ValidateDoc(doc, product_name, platform, version, docId, filter, root, indexRedirect, vcsRootId, sourceGitBranch))
-
-        return Project {
-            id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
-            name = "$title $platform $product_name $version"
-
-            vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
-
-            builds.forEach(this::buildType)
-        }
-    }
-
-    fun createProjects(): List<Project> {
-
-        val products = mutableListOf<String>()
-        val noProductLabel = "No product"
-        for (i in 0 until docConfigs.length()) {
-            val doc = docConfigs.getJSONObject(i)
-            val metadata = doc.getJSONObject("metadata")
-            if (metadata.has("product")) {
-                val docProducts = metadata.getJSONArray("product")
-                for (docProduct in docProducts) {
-                    if (!products.contains(docProduct.toString())) {
-                        products.add(docProduct.toString())
+                for (i in 0 until docConfigs.length()) {
+                    val doc = docConfigs.getJSONObject(i)
+                    if (doc.has("build")) {
+                        val docSrc = doc.getJSONObject("build").getString("src")
+                        if (docSrc == sourceId) sourceDocBuilds.add(doc)
                     }
                 }
-            } else if (!products.contains(noProductLabel)) {
-                products.add(noProductLabel)
-            }
-        }
-        val subProjects = mutableListOf<Project>()
-        for (product in products) {
-            val docsInProduct = mutableListOf<JSONObject>()
-            for (i in 0 until docConfigs.length()) {
-                val doc = docConfigs.getJSONObject(i)
-                if (doc.has("build") && !docsInProduct.contains(doc)) {
-                    val metadata = doc.getJSONObject("metadata")
-                    if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
-                        docsInProduct.add(doc)
-                    } else if (!metadata.has("product") && product == noProductLabel) {
-                        docsInProduct.add(doc)
-                    }
+
+                if (!sourceDocBuilds.isNullOrEmpty()) {
+                    sourcesToValidate.add(
+                            Project {
+                                id = RelativeId(removeSpecialCharacters(sourceId + sourceGitBranch))
+                                name = "$sourceTitle ($sourceId)"
+
+                                vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
+                            }
+
+                    )
                 }
             }
-            if (!docsInProduct.isNullOrEmpty()) {
-                subProjects.add(createProductProject(product, docsInProduct))
-            }
         }
-        return subProjects
+        return sourcesToValidate
     }
 }
+
+//        val intSources = mutableListOf<String>()
+//        for (i in 0 until docConfigs.length()) {
+//            val doc = docConfigs.getJSONObject(i)
+//            val environments = doc.getJSONArray("environments")
+//            if (doc.has("build") && environments.contains("int")) {
+//                val docSrc = doc.getJSONObject("build").getString("src")
+//                if (!intSources.contains(docSrc)) intSources.add(docSrc)
+//            }
+//        }
+
 
 object ExportFilesFromXDocsToBitbucket : BuildType({
     name = "Export files from XDocs to Bitbucket"
@@ -1790,3 +1839,11 @@ object Docs : Project({
 
     HelperObjects.createProjects().forEach(this::subProject)
 })
+
+object Sources : Project({
+    name = "Sources"
+
+    HelperObjects.createSourceValidationsFromConfig().forEach(this::subProject)
+})
+
+
