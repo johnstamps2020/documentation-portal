@@ -239,7 +239,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
       "xdocsPathIds": [
-        "/Content/doc/help/cloudPlatform/cloudPlatform.ditamap",
+        "/Content/doc/help/cloudPlatform/GuidewireCloudPlatform.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
