@@ -1,5 +1,4 @@
 const express = require('express');
-const { doc } = require('prettier');
 const router = express.Router();
 const getCloudProductFamilies = require('../controllers/cloudProductFamilyController');
 
@@ -9,27 +8,6 @@ async function getSingleProductFamily(productFamilyId) {
   return cloudProductFamilies.find(
     productFamily => productFamily.id === productFamilyId
   );
-}
-
-function reduceVisibleDocsByCategory(listOfDocs) {
-  return listOfDocs.reduce((r, doc) => {
-    if (
-      doc.metadata.platform.includes('Cloud') &&
-      doc.metadata.productFamily &&
-      doc.metadata.productFamily.includes(listOfDocs.name) &&
-      (doc.visible === undefined || doc.visible)
-    ) {
-      r[doc.metadata.category] = [...(r[doc.metadata.category] || []), doc];
-    }
-    return r;
-  }, {});
-}
-
-function reduceDocsByVersion(listOfDocs) {
-  return listOfDocs.reduce((r, doc) => {
-    r[doc.metadata.version] = [...(r[doc.metadata.version] || []), doc];
-    return r;
-  });
 }
 
 function getDocsInVersion(listOfDocs, version) {
