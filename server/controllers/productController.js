@@ -2,10 +2,6 @@ const getConfig = require('./configController');
 
 async function getProduct(productName, docVersion) {
   try {
-    console.log(
-      'LOOKING FOR PRODUCT',
-      `name: ${productName}, version: ${docVersion}`
-    );
     const config = await getConfig();
     let product = {
       name: productName,
@@ -20,8 +16,6 @@ async function getProduct(productName, docVersion) {
         d.metadata.version === docVersion
     );
 
-    console.log('FOUND', matchingDocs);
-
     if (matchingDocs && matchingDocs.length > 1) {
       const docs = matchingDocs.reduce((r, a) => {
         r[a.metadata.category] = [...(r[a.metadata.category] || []), a];
@@ -31,7 +25,6 @@ async function getProduct(productName, docVersion) {
       product.docs = docs;
     } else if (matchingDocs && matchingDocs.length === 1) {
       const categoryName = matchingDocs[0].metadata.category;
-      console.log('We found one doc and we are in the right if block');
       product.url = matchingDocs[0].url;
       product.docs = [{ [categoryName]: [matchingDocs] }];
     } else {

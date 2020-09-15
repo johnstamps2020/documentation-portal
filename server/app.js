@@ -148,7 +148,7 @@ app.use('/404', missingPageRouter);
 app.use('/self-managed-latest', selfManagedLatestRouter);
 app.use('/self-managed-all-releases', selfManagedAllReleasesRouter);
 app.use('/products', cloudProductFamilyRouter);
-app.use('/product/', productRouter);
+app.use('/product', productRouter);
 app.use('/', cloudHomeRouter);
 
 const proxyOptions = {

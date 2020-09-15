@@ -1,32 +1,125 @@
 const express = require('express');
+const { doc } = require('prettier');
 const router = express.Router();
 const getCloudProductFamilies = require('../controllers/cloudProductFamilyController');
 
+async function getSingleProductFamily(productFamilyId) {
+  const cloudProductFamilies = await getCloudProductFamilies();
+
+  return cloudProductFamilies.find(
+    productFamily => productFamily.id === productFamilyId
+  );
+}
+
+function reduceVisibleDocsByCategory(listOfDocs) {
+  return listOfDocs.reduce((r, doc) => {
+    if (
+      doc.metadata.platform.includes('Cloud') &&
+      doc.metadata.productFamily &&
+      doc.metadata.productFamily.includes(listOfDocs.name) &&
+      (doc.visible === undefined || doc.visible)
+    ) {
+      r[doc.metadata.category] = [...(r[doc.metadata.category] || []), doc];
+    }
+    return r;
+  }, {});
+}
+
+function reduceDocsByVersion(listOfDocs) {
+  return listOfDocs.reduce((r, doc) => {
+    r[doc.metadata.version] = [...(r[doc.metadata.version] || []), doc];
+    return r;
+  });
+}
+
+function getDocsInVersion(listOfDocs, version) {
+  return listOfDocs.filter(doc => doc.metadata.version === version);
+}
+
+function getHighestVersion(listOfVersions) {
+  if (listOfVersions.includes('latest')) {
+    return 'latest';
+  }
+
+  const versionNumbers = listOfVersions.map(v => parseFloat(v));
+  const highestVersionNumber = Math.max(...versionNumbers);
+  const latestVersion = listOfVersions.find(
+    p => parseFloat(p) === highestVersionNumber
+  );
+
+  return latestVersion;
+}
+
+function getAvailableVersions(listOfDocs) {
+  let availableVersions = [];
+  for (const doc of listOfDocs) {
+    const version = doc.metadata.version;
+    if (!availableVersions.includes(version)) {
+      availableVersions.push(version);
+    }
+  }
+
+  return availableVersions;
+}
+
 router.get('/:productFamilyId', async function(req, res, next) {
   try {
-    const cloudProductFamilies = await getCloudProductFamilies();
-
-    let productFamilyToDisplay = cloudProductFamilies.find(
-      productFamily => productFamily.id === req.params.productFamilyId
+    const productFamilyToDisplay = await getSingleProductFamily(
+      req.params.productFamilyId
     );
 
-    const productDocs = productFamilyToDisplay.docs.reduce((r, doc) => {
-      if (
-        doc.metadata.platform.includes('Cloud') &&
-        doc.metadata.productFamily &&
-        doc.metadata.productFamily.includes(productFamilyToDisplay.name) &&
-        (doc.visible === undefined || doc.visible)
-      ) {
-        r[doc.metadata.category] = [...(r[doc.metadata.category] || []), doc];
+    const availableVersions = getAvailableVersions(productFamilyToDisplay.docs);
+
+    const highestVersion = getHighestVersion(availableVersions);
+
+    res.redirect(`${req.params.productFamilyId}/${highestVersion}`);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:productFamilyId/:version', async function(req, res, next) {
+  try {
+    const productFamilyToDisplay = await getSingleProductFamily(
+      req.params.productFamilyId
+    );
+    const availableVersions = getAvailableVersions(productFamilyToDisplay.docs);
+    const version = req.params.version;
+
+    const docsInVersion = getDocsInVersion(
+      productFamilyToDisplay.docs,
+      version
+    );
+
+    let availableCategories = [];
+    for (const doc of docsInVersion) {
+      for (const category of doc.metadata.category) {
+        if (!availableCategories.includes(category)) {
+          availableCategories.push(category);
+        }
       }
-      return r;
-    }, {});
+    }
+
+    let docsByCategoryInThisVersion = [];
+    for (const category of availableCategories) {
+      const docsInCategory = docsInVersion.filter(d =>
+        d.metadata.category.includes(category)
+      );
+      if (docsInCategory.length > 0) {
+        docsByCategoryInThisVersion.push({
+          category: category,
+          docs: docsInCategory,
+        });
+      }
+    }
 
     res.render('product-family', {
       productFamily: productFamilyToDisplay,
-      docs: productDocs,
+      docGroups: docsByCategoryInThisVersion,
       returnUrl: '/',
       returnLabel: 'Back to Cloud product documentation',
+      selectedVersion: version,
+      availableVersions: availableVersions,
     });
   } catch (err) {
     next(err);
