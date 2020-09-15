@@ -1363,6 +1363,8 @@ object HelperObjects {
                                 name = "$sourceTitle ($sourceId)"
 
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
+
+//                              TODO: Render doc builds from the ValidateDoc class here
                             }
 
                     )
@@ -1372,17 +1374,6 @@ object HelperObjects {
         return sourcesToValidate
     }
 }
-
-//        val intSources = mutableListOf<String>()
-//        for (i in 0 until docConfigs.length()) {
-//            val doc = docConfigs.getJSONObject(i)
-//            val environments = doc.getJSONArray("environments")
-//            if (doc.has("build") && environments.contains("int")) {
-//                val docSrc = doc.getJSONObject("build").getString("src")
-//                if (!intSources.contains(docSrc)) intSources.add(docSrc)
-//            }
-//        }
-
 
 object ExportFilesFromXDocsToBitbucket : BuildType({
     name = "Export files from XDocs to Bitbucket"
