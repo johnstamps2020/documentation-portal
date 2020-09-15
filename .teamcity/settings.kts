@@ -1266,7 +1266,7 @@ object HelperObjects {
 
     fun createSourceValidationsFromConfig(): List<Project> {
 
-        class ValidateDoc(doc_info: JSONObject, vcs_root_id: RelativeId, git_source_branch: String) : BuildType({
+        class ValidateDoc(doc_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String, git_source_branch: String) : BuildType({
             templates(RunContentValidations)
 
             val docId = doc_info.getString("id")
@@ -1305,7 +1305,7 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
                         
-                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.branch%"}' > %env.DOC_INFO%
+                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.branch%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
                         cat %env.DOC_INFO%
                         
                     """.trimIndent()
@@ -1349,6 +1349,50 @@ object HelperObjects {
             }
         })
 
+        class CleanValidationResults(source_id: String) : BuildType({
+            id = RelativeId(removeSpecialCharacters(source_id + "cleanresults"))
+            name = "Clean validation results for $source_id"
+
+            params {
+                text("env.PULL_REQUEST_NAME", "")
+                text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+            }
+
+            steps {
+                script {
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        curl -X POST "%env.ELASTICSEARCH_URLS%/content-validations/_delete_by_query?pretty" -H 'Content-Type: application/json' -d'
+                        {
+                          "query": {
+                            "bool": {
+                              "must": [
+                                {
+                                  "match": {
+                                    "source_id": {
+                                      "query": "$source_id"
+                                    }
+                                  }
+                                },
+                                {
+                                  "match": {
+                                    "pull_request_name": {
+                                      "query": "%env.PULL_REQUEST_NAME%"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                        '                        
+                    """.trimIndent()
+                }
+            }
+        })
+
         val sourcesToValidate = mutableListOf<Project>()
         val sourceConfigs = getSourcesFromConfig()
         for (i in 0 until sourceConfigs.length()) {
@@ -1377,11 +1421,8 @@ object HelperObjects {
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
 
                                 for (doc in sourceDocBuilds) {
-                                    buildType(ValidateDoc(
-                                            doc,
-                                            RelativeId(sourceId),
-                                            sourceGitBranch
-                                    ))
+                                    buildType(ValidateDoc(doc, RelativeId(sourceId), sourceId, sourceGitBranch))
+                                    buildType(CleanValidationResults(sourceId))
                                 }
 
                             }
