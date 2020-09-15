@@ -1266,20 +1266,32 @@ object HelperObjects {
 
     fun createSourceValidationsFromConfig(): List<Project> {
 
-        class ValidateDoc(doc_info: JSONObject, product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, vcs_root_id: RelativeId, git_source_branch: String) : BuildType({
+        class ValidateDoc(doc_info: JSONObject, vcs_root_id: RelativeId, git_source_branch: String) : BuildType({
             templates(RunContentValidations)
 
-            id = RelativeId(removeSpecialCharacters(product + version + doc_id + "validatedoc"))
-            name = "Validate  $doc_id document"
+            val docId = doc_info.getString("id")
+            val docTitle = doc_info.getString("title")
+            val docMetadata = doc_info.getJSONObject("metadata")
+            val docProduct = docMetadata.getJSONArray("product").joinToString(separator = ",")
+            val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
+            val docVersion = docMetadata.getString("version")
+
+            val docBuild = doc_info.getJSONObject("build")
+            val docBuildRootMap = docBuild.getString("root")
+            val docBuildFilter = if (docBuild.has("filter")) docBuild.getString("filter") else ""
+            val docBuildIndexRedirect = if (docBuild.has("indexRedirect")) docBuild.getBoolean("indexRedirect").toString() else "false"
+
+            id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
+            name = "Validate $docTitle $docPlatform $docVersion"
 
             params {
-                text("GW_PRODUCT", product, allowEmpty = false)
-                text("GW_PLATFORM", platform, allowEmpty = false)
-                text("GW_VERSION", version, allowEmpty = false)
-                text("FILTER_PATH", ditaval_file, allowEmpty = false)
-                text("CREATE_INDEX_REDIRECT", create_index_redirect, allowEmpty = false)
-                text("ROOT_MAP", input_path, allowEmpty = false)
-                text("DOC_ID", doc_id, allowEmpty = false)
+                text("GW_PRODUCT", docProduct, allowEmpty = false)
+                text("GW_PLATFORM", docPlatform, allowEmpty = false)
+                text("GW_VERSION", docVersion, allowEmpty = false)
+                text("FILTER_PATH", docBuildFilter, allowEmpty = false)
+                text("CREATE_INDEX_REDIRECT", docBuildIndexRedirect, allowEmpty = false)
+                text("ROOT_MAP", docBuildRootMap, allowEmpty = false)
+                text("DOC_ID", docId, allowEmpty = false)
                 text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
                 text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1348,8 +1360,8 @@ object HelperObjects {
                 val sourceGitUrl = source.getString("gitUrl")
                 val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
 
-                for (i in 0 until docConfigs.length()) {
-                    val doc = docConfigs.getJSONObject(i)
+                for (j in 0 until docConfigs.length()) {
+                    val doc = docConfigs.getJSONObject(j)
                     if (doc.has("build")) {
                         val docSrc = doc.getJSONObject("build").getString("src")
                         if (docSrc == sourceId) sourceDocBuilds.add(doc)
@@ -1365,26 +1377,8 @@ object HelperObjects {
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
 
                                 for (doc in sourceDocBuilds) {
-                                    val docId = doc.getString("id")
-                                    val metadata = doc.getJSONObject("metadata")
-                                    val product = metadata.getJSONArray("product").joinToString(separator = ",")
-                                    val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
-                                    val version = metadata.getString("version")
-
-                                    val build = doc.getJSONObject("build")
-                                    val root = build.getString("root")
-                                    val filter = if (build.has("filter")) build.getString("filter") else ""
-                                    var indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
-
                                     buildType(ValidateDoc(
                                             doc,
-                                            product,
-                                            platform,
-                                            version,
-                                            docId,
-                                            filter,
-                                            root,
-                                            indexRedirect,
                                             RelativeId(sourceId),
                                             sourceGitBranch
                                     ))
