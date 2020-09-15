@@ -94,6 +94,12 @@
       ]
     },
     {
+      "id": "dhicextrassrc",
+      "title": "DataHub and InfoCenter Extras",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git"
+    },
+    {
       "id": "cloudisdraftsrc",
       "title": "InsuranceSuite Cloud",
       "sourceType": "xdocs",
