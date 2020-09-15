@@ -187,12 +187,12 @@
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
           "targetFolder": "extras/DataHub"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
           "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
         }]
@@ -220,12 +220,12 @@
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
           "targetFolder": "extras/InfoCenter"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
           "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
         }]
@@ -862,12 +862,12 @@
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
           "targetFolder": "extras/DataHub"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
           "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
         }]
@@ -890,12 +890,12 @@
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
           "targetFolder": "extras/InfoCenter"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
           "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
         }]
@@ -1660,12 +1660,12 @@
         "root": "DM_all.ditamap",
         "src": "exportdhiccloudforstaging",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
           "targetFolder": "extras/DataHub"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
           "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
         }]
@@ -1693,12 +1693,12 @@
         "root": "DM_all.ditamap",
         "src": "exportdhiccloudforstaging",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
           "targetFolder": "extras/InfoCenter"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
           "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
         }]
@@ -2079,12 +2079,12 @@
         "root": "DM_all.ditamap",
         "src": "exportdhiconpremforstaging",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
           "targetFolder": "extras/DataHub"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
           "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
         }]
@@ -2107,12 +2107,12 @@
         "root": "DM_all.ditamap",
         "src": "exportdhiconpremforstaging",
         "resources": [{
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
           "targetFolder": "extras/InfoCenter"
         },
         {
-          "src": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
+          "src": "dhicextrassrc",
           "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
           "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
         }]
