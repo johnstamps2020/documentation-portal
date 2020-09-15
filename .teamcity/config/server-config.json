@@ -303,11 +303,11 @@
     },
     {
       "id": "clouddxceclaimsdraft",
-      "title": "CustomerEngage Claims",
+      "title": "CustomerEngage Account Management for ClaimCenter",
       "url": "cloud/dx/ce-claims/latest",
       "metadata": {
         "productFamily": ["ClaimCenter Cloud"],
-        "product": ["CustomerEngage Claims"],
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["Digital"]
@@ -383,11 +383,11 @@
     },
     {
       "id": "clouddxpeclaimsdraft",
-      "title": "ProducerEngage Claims",
+      "title": "ProducerEngage for ClaimCenter",
       "url": "cloud/dx/pe-claims/latest",
       "metadata": {
         "productFamily": ["ClaimCenter Cloud"],
-        "product": ["ProducerEngage Claims"],
+        "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["Digital"]
@@ -940,10 +940,10 @@
     },
     {
       "id": "selfmanageddxceclaimsdraft",
-      "title": "CustomerEngage Claims",
+      "title": "CustomerEngage Account Management for ClaimCenter",
       "url": "self-managed/dx/ce-claims/11x",
       "metadata": {
-        "product": ["CustomerEngage Claims"],
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Self-managed"],
         "version": "11.x",
         "category": ["Digital"]
@@ -1013,10 +1013,10 @@
     },
     {
       "id": "selfmanageddxpeclaimsdraft",
-      "title": "ProducerEngage Claims",
+      "title": "ProducerEngage for ClaimCenter",
       "url": "self-managed/dx/pe-claims/11x",
       "metadata": {
-        "product": ["ProducerEngage Claims"],
+        "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Self-managed"],
         "version": "11.x",
         "category": ["Digital"]
