@@ -4463,7 +4463,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Administration"]
       },
       "build": {
         "buildType": "dita",
@@ -4482,7 +4482,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Features and functionality"]
       },
       "build": {
         "buildType": "dita",
@@ -4501,7 +4501,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Best practices"]
       },
       "build": {
         "buildType": "dita",
@@ -4520,7 +4520,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Configuration"]
       },
       "build": {
         "buildType": "dita",
@@ -4539,7 +4539,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Features and functionality"]
       },
       "build": {
         "buildType": "dita",
@@ -4558,7 +4558,7 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Configuration"]
       },
       "build": {
         "buildType": "dita",
@@ -4577,7 +4577,7 @@
         "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": "0.1",
-        "category": ["Core"]
+        "category": ["Glossary"]
       },
       "build": {
         "buildType": "dita",
