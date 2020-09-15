@@ -2248,7 +2248,7 @@
       "build": {
         "buildType": "dita",
         "filter": "GW-Generic-Draft.ditaval",
-        "root": "cloudPlatform.ditamap",
+        "root": "GuidewireCloudPlatform.ditamap",
         "src": "configmgrhelpdraftsrc"
       },
       "environments": ["dev", "int"]
