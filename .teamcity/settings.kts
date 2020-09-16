@@ -1352,46 +1352,46 @@ object HelperObjects {
             }
         })
 
-        class CleanValidationResults(source_id: String) : BuildType({
+        class CleanValidationResults(source_id: String, git_source_url: String) : BuildType({
             id = RelativeId(removeSpecialCharacters(source_id + "cleanresults"))
             name = "Clean validation results for $source_id"
 
+//            TODO: Add logic to construct the pull requests endpoint from the git url
+
             params {
-                text("env.PULL_REQUEST_NAME", "")
                 text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+                text("env.SOURCE_ID", source_id)
+                text("env.PULL_REQUESTS_ENDPOINT", "https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/insurancesuite-upgrade-guide/pull-requests")
+                text("env.BITBUCKET_ACCESS_TOKEN", "")
             }
 
             steps {
+                dockerCommand {
+                    name = "Build a Docker image for running the results cleaner"
+                    id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
+                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                    commandType = build {
+                        source = file {
+                            path = "Dockerfile"
+                        }
+                        namesAndTags = "runner-image"
+                        commandArgs = "--pull"
+                    }
+                    param("dockerImage.platform", "linux")
+                }
+
                 script {
+                    name = "Run the results cleaner"
+                    id = "RUN_RESULTS_CLEANER"
+                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
                     scriptContent = """
                         #!/bin/bash
                         set -xe
-                        
-                        curl -X POST "%env.ELASTICSEARCH_URLS%/content-validations/_delete_by_query?pretty" -H 'Content-Type: application/json' -d'
-                        {
-                          "query": {
-                            "bool": {
-                              "must": [
-                                {
-                                  "match": {
-                                    "source_id": {
-                                      "query": "$source_id"
-                                    }
-                                  }
-                                },
-                                {
-                                  "match": {
-                                    "pull_request_name": {
-                                      "query": "%env.PULL_REQUEST_NAME%"
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          }
-                        }
-                        '                        
-                    """.trimIndent()
+        
+                        ./run_results_cleaner.sh
+            """.trimIndent()
+                    dockerImage = "runner-image"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
             }
         })
@@ -1422,7 +1422,7 @@ object HelperObjects {
                                 name = "$sourceTitle ($sourceId)"
 
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
-                                buildType(CleanValidationResults(sourceId))
+                                buildType(CleanValidationResults(sourceId, sourceGitUrl))
 
                                 for (doc in sourceDocBuilds) {
                                     buildType(ValidateDoc(doc, RelativeId(sourceId), sourceId, sourceGitBranch))
