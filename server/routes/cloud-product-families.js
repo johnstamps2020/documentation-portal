@@ -1,7 +1,12 @@
 const express = require('express');
-const { doc } = require('prettier');
 const router = express.Router();
 const getCloudProductFamilies = require('../controllers/cloudProductFamilyController');
+const {
+  getHighestRelease,
+  getUniqueInMetadataArrays,
+  getUniqueInMetadataFields,
+  getHighestVersion,
+} = require('./helpers/metadata');
 
 async function getSingleProductFamily(productFamilyId) {
   const cloudProductFamilies = await getCloudProductFamilies();
@@ -13,58 +18,6 @@ async function getSingleProductFamily(productFamilyId) {
 
 function getDocsInRelease(listOfDocs, release) {
   return listOfDocs.filter(doc => doc.metadata.release.includes(release));
-}
-
-function getHighestRelease(listOfReleases) {
-  const releasesFromNewest = ['Banff', 'Aspen'];
-
-  for (const releaseName of releasesFromNewest) {
-    if (listOfReleases.includes(releaseName)) {
-      return releaseName;
-    }
-  }
-}
-
-function getUniqueInMetadataArrays(listOfDocs, fieldName) {
-  let availableValues = [];
-  for (const doc of listOfDocs) {
-    const values = doc.metadata[fieldName];
-    if (values) {
-      for (const value of values) {
-        if (!availableValues.includes(value)) {
-          availableValues.push(value);
-        }
-      }
-    }
-  }
-
-  return availableValues;
-}
-
-function getUniqueInMetadataFields(listOfDocs, fieldName) {
-  let availableValues = [];
-  for (const doc of listOfDocs) {
-    const value = doc.metadata[fieldName];
-    if (value && !availableValues.includes(value)) {
-      availableValues.push(value);
-    }
-  }
-
-  return availableValues;
-}
-
-function getHighestVersion(listOfVersions) {
-  if (listOfVersions.includes('latest')) {
-    return 'latest';
-  }
-
-  const versionNumbers = listOfVersions.map(v => parseFloat(v));
-  const highestVersionNumber = Math.max(...versionNumbers);
-  const highestVersion = listOfVersions.find(
-    p => parseFloat(p) === highestVersionNumber
-  );
-
-  return highestVersion;
 }
 
 router.get('/:productFamilyId', async function(req, res, next) {

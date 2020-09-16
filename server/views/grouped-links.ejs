@@ -54,7 +54,11 @@
                   <h2><%= group.category %></h2>
                   <% group.docs.forEach(doc => { -%>
                   <div class="docLink">
-                    <a href="/<%= doc.url %>"><%= doc.title %></a>
+                    <% if (doc.url.startsWith('http://') || doc.url.startsWith('https://')) { -%>
+                      <a href="<%= doc.url %>" target="_blank" rel="noopener noreferrer"><%= doc.title %></a>
+                    <% } else { -%>
+                      <a href="/<%= doc.url %>"><%= doc.title %></a>
+                    <% } %>
                   </div>
                   <% }) -%>
                 </div>

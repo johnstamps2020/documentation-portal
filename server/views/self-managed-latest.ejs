@@ -1,57 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include parts/head %>
-<body>
-<% include parts/header %>
-<div class="docPanelContainer">
-    <div class="container">
+  <% include parts/head %>
+  <body>
+    <% include parts/header %>
+    <div class="docPanelContainer">
+      <div class="container">
         <div class="row">
-            <div class="col-sm-9">
-                <div class="docPageTitle docPageHeaderItems">
-                    <h1 class="display-4">Self-managed product documentation</h1>
-                    <p><a href="/self-managed-all-releases">See all releases</a></p>
-                </div>
+          <div class="col-sm-9">
+            <div class="docPageTitle docPageHeaderItems">
+              <h1 class="display-4">Self-managed product documentation</h1>
             </div>
-            <div class="col-sm-3">
-                <div class="docPageHeaderItems">
-                    <%- include('./parts/toggle.ejs', {selected: 'sm'}) %>
-                </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="docPageHeaderItems">
+              <%- include('./parts/toggle.ejs', {selected: 'sm'}) %>
             </div>
+          </div>
         </div>
         <div class="row">
-            <div class="col-sm-9">
-                <div class="row">
-                    <% categories.forEach(category => {-%>
-                    <div class="col-sm-4">
-                        <div class="categoryCard">
-                            <h2><%= category.categoryName %></h2>
-                            <div class="card-text">
-                                <%
-                                    category.categoryItems.forEach(product => {
-                                    const excludedProducts = new RegExp(
-                                            '(BillingCenter|ClaimCenter|PolicyCenter) Upgrade Tools'
-                                    );
-                                    const productDocsToDisplay = product.productDocs.filter(doc => !doc.metadata.product.some(e => excludedProducts.test(e))
-                                    );
-                                    if (productDocsToDisplay[0]) {
-                                -%>
-                                <div class="docLink">
-                                    <a href="<%= productDocsToDisplay[0].url %>"><%= productDocsToDisplay[0].title %></a>
-                                </div>
-                                <% } %>
-                                <% }) -%>
-                            </div>
-                        </div>
-                    </div>
-                    <% }) -%>
+          <div class="col-sm-9">
+            <div class="row">
+              <% docGroups.forEach(group => { -%>
+              <div class="col-sm-4 mt-3">
+                <div class="categoryCard">
+                  <h2><%= group.category %></h2>
+                  <% group.docs.forEach(doc => { -%>
+                  <div class="docLink">
+                    <a href="<%= doc.url %>"><%= doc.title %></a>
+                  </div>
+                  <% }) -%>
                 </div>
+              </div>
+              <% }) -%>
             </div>
-            <div class="col-sm-3">
-                <% include parts/useful-links %>
+          </div>
+          <div class="col-sm-3">
+            <div class="row">
+              <% include parts/useful-links %>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<% include parts/footer %>
-</body>
+    <% include parts/footer %>
+  </body>
 </html>
