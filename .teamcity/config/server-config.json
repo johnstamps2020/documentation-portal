@@ -4623,7 +4623,7 @@
         "product": ["BillingCenter"],
         "version": "0.1",
         "category": ["Administration"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
       "build": {
         "buildType": "dita",
@@ -4643,7 +4643,7 @@
         "product": ["BillingCenter"],
         "version": "0.1",
         "category": ["Features and functionality"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
       "build": {
         "buildType": "dita",
@@ -4663,7 +4663,7 @@
         "product": ["BillingCenter"],
         "version": "0.1",
         "category": ["Best practices"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
       "build": {
         "buildType": "dita",
@@ -4683,7 +4683,7 @@
         "product": ["BillingCenter"],
         "version": "0.1",
         "category": ["Configuration"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
       "build": {
         "buildType": "dita",
@@ -4703,7 +4703,7 @@
         "product": ["BillingCenter"],
         "version": "0.1",
         "category": ["Features and functionality"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
       "build": {
         "buildType": "dita",
@@ -4723,7 +4723,7 @@
         "product": ["BillingCenter"],
         "version": "0.1",
         "category": ["Configuration"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
       "build": {
         "buildType": "dita",
@@ -4747,7 +4747,7 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": "0.1",
         "category": ["Glossary"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
       "build": {
         "buildType": "dita",
