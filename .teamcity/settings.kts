@@ -1360,6 +1360,7 @@ object HelperObjects {
                 text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             steps {
@@ -1395,7 +1396,8 @@ object HelperObjects {
             }
 
             vcs {
-                root(vcs_root_id)
+                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
+                root(DocValidator)
                 cleanCheckout = true
             }
 
