@@ -1266,7 +1266,7 @@ object HelperObjects {
 
     fun createSourceValidationsFromConfig(): List<Project> {
 
-        class ValidateDoc(doc_info: JSONObject, vcs_root_id: RelativeId, git_source_branch: String) : BuildType({
+        class ValidateDoc(doc_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String, git_source_branch: String) : BuildType({
             templates(RunContentValidations)
 
             val docId = doc_info.getString("id")
@@ -1305,7 +1305,7 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
                         
-                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.branch%"}' > %env.DOC_INFO%
+                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.branch%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
                         cat %env.DOC_INFO%
                         
                     """.trimIndent()
@@ -1322,6 +1322,9 @@ object HelperObjects {
 
             triggers {
                 vcs {
+                    triggerRules = """
+                        +:root=${vcs_root_id}:**
+                    """.trimIndent()
                 }
             }
 
@@ -1347,6 +1350,63 @@ object HelperObjects {
                     }
                 }
             }
+        })
+
+        class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) : BuildType({
+            id = RelativeId(removeSpecialCharacters(git_source_id + "cleanresults"))
+            name = "Clean validation results for $git_source_id"
+
+            params {
+                text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            }
+
+            steps {
+                dockerCommand {
+                    name = "Build a Docker image for running the results cleaner"
+                    id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
+                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                    commandType = build {
+                        source = file {
+                            path = "Dockerfile"
+                        }
+                        namesAndTags = "runner-image"
+                        commandArgs = "--pull"
+                    }
+                    param("dockerImage.platform", "linux")
+                }
+
+                script {
+                    name = "Run the results cleaner"
+                    id = "RUN_RESULTS_CLEANER"
+                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+        
+                        ./run_results_cleaner.sh
+                    """.trimIndent()
+                    dockerImage = "runner-image"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+
+                stepsOrder = arrayListOf("BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_RESULTS_CLEANER")
+            }
+
+            vcs {
+                root(vcs_root_id)
+                cleanCheckout = true
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${vcs_root_id}:**
+                    """.trimIndent()
+                }
+            }
+
         })
 
         val sourcesToValidate = mutableListOf<Project>()
@@ -1375,13 +1435,10 @@ object HelperObjects {
                                 name = "$sourceTitle ($sourceId)"
 
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
+                                buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
                                 for (doc in sourceDocBuilds) {
-                                    buildType(ValidateDoc(
-                                            doc,
-                                            RelativeId(sourceId),
-                                            sourceGitBranch
-                                    ))
+                                    buildType(ValidateDoc(doc, RelativeId(sourceId), sourceId, sourceGitBranch))
                                 }
 
                             }
