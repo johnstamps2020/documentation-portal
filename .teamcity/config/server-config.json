@@ -4622,8 +4622,9 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Administration"],
-        "release": ["Aspen", "Banff"]
+        "category": ["Core"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Administration"]
       },
       "build": {
         "buildType": "dita",
@@ -4642,8 +4643,9 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Features and functionality"],
-        "release": ["Aspen", "Banff"]
+        "category": ["Core"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Features and functionality"]
       },
       "build": {
         "buildType": "dita",
@@ -4662,8 +4664,9 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Best practices"],
-        "release": ["Aspen", "Banff"]
+        "category": ["Core"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Best practices"]
       },
       "build": {
         "buildType": "dita",
@@ -4682,8 +4685,9 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Configuration"],
-        "release": ["Aspen", "Banff"]
+        "category": ["Core"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Configuration"]
       },
       "build": {
         "buildType": "dita",
@@ -4702,8 +4706,9 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Features and functionality"],
-        "release": ["Aspen", "Banff"]
+        "category": ["Core"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Features and functionality"]
       },
       "build": {
         "buildType": "dita",
@@ -4722,8 +4727,9 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Configuration"],
-        "release": ["Aspen", "Banff"]
+        "category": ["Core"],
+        "release": ["Aspen", "Banff"],
+        "subject": ["Configuration"]
       },
       "build": {
         "buildType": "dita",
