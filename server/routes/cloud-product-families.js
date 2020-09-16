@@ -1,4 +1,5 @@
 const express = require('express');
+const { doc } = require('prettier');
 const router = express.Router();
 const getCloudProductFamilies = require('../controllers/cloudProductFamilyController');
 
@@ -10,8 +11,62 @@ async function getSingleProductFamily(productFamilyId) {
   );
 }
 
-function getDocsInVersion(listOfDocs, version) {
-  return listOfDocs.filter(doc => doc.metadata.version === version);
+function getDocsInRelease(listOfDocs, release) {
+  return listOfDocs.filter(doc => doc.metadata.release.includes(release));
+}
+
+function getHighestRelease(listOfReleases) {
+  const releasesFromNewest = ['Banff', 'Aspen'];
+
+  for (const releaseName of releasesFromNewest) {
+    if (listOfReleases.includes(releaseName)) {
+      return releaseName;
+    }
+  }
+}
+
+function getAvailableReleases(listOfDocs) {
+  let availableReleases = [];
+  for (const doc of listOfDocs) {
+    const releases = doc.metadata.release;
+    if (releases) {
+      for (const release of releases) {
+        if (!availableReleases.includes(release)) {
+          availableReleases.push(release);
+        }
+      }
+    }
+  }
+
+  return availableReleases;
+}
+
+function getUniqueInMetadataArrays(listOfDocs, fieldName) {
+  let availableValues = [];
+  for (const doc of listOfDocs) {
+    const values = doc.metadata[fieldName];
+    if (values) {
+      for (const value of values) {
+        if (!availableValues.includes(value)) {
+          availableValues.push(value);
+        }
+      }
+    }
+  }
+
+  return availableValues;
+}
+
+function getUniqueInMetadataFields(listOfDocs, fieldName) {
+  let availableValues = [];
+  for (const doc of listOfDocs) {
+    const value = doc.metadata[fieldName];
+    if (value && !availableValues.includes(value)) {
+      availableValues.push(value);
+    }
+  }
+
+  return availableValues;
 }
 
 function getHighestVersion(listOfVersions) {
@@ -21,23 +76,11 @@ function getHighestVersion(listOfVersions) {
 
   const versionNumbers = listOfVersions.map(v => parseFloat(v));
   const highestVersionNumber = Math.max(...versionNumbers);
-  const latestVersion = listOfVersions.find(
+  const highestVersion = listOfVersions.find(
     p => parseFloat(p) === highestVersionNumber
   );
 
-  return latestVersion;
-}
-
-function getAvailableVersions(listOfDocs) {
-  let availableVersions = [];
-  for (const doc of listOfDocs) {
-    const version = doc.metadata.version;
-    if (!availableVersions.includes(version)) {
-      availableVersions.push(version);
-    }
-  }
-
-  return availableVersions;
+  return highestVersion;
 }
 
 router.get('/:productFamilyId', async function(req, res, next) {
@@ -46,58 +89,168 @@ router.get('/:productFamilyId', async function(req, res, next) {
       req.params.productFamilyId
     );
 
-    const availableVersions = getAvailableVersions(productFamilyToDisplay.docs);
+    const availableReleases = getUniqueInMetadataArrays(
+      productFamilyToDisplay.docs,
+      'release'
+    );
 
-    const highestVersion = getHighestVersion(availableVersions);
+    const highestRelease = getHighestRelease(availableReleases);
 
-    res.redirect(`${req.params.productFamilyId}/${highestVersion}`);
+    res.redirect(`${req.params.productFamilyId}/${highestRelease}`);
   } catch (err) {
     next(err);
   }
 });
 
-router.get('/:productFamilyId/:version', async function(req, res, next) {
+router.get('/:productFamilyId/:release', async function(req, res, next) {
   try {
-    const productFamilyToDisplay = await getSingleProductFamily(
-      req.params.productFamilyId
-    );
-    const availableVersions = getAvailableVersions(productFamilyToDisplay.docs);
-    const version = req.params.version;
-
-    const docsInVersion = getDocsInVersion(
-      productFamilyToDisplay.docs,
-      version
+    const { productFamilyId, release } = req.params;
+    const productFamily = await getSingleProductFamily(productFamilyId);
+    const availableReleases = getUniqueInMetadataArrays(
+      productFamily.docs,
+      'release'
     );
 
-    let availableCategories = [];
-    for (const doc of docsInVersion) {
-      for (const category of doc.metadata.category) {
-        if (!availableCategories.includes(category)) {
-          availableCategories.push(category);
-        }
-      }
-    }
+    const docsInRelease = getDocsInRelease(productFamily.docs, release);
 
-    let docsByCategoryInThisVersion = [];
+    let availableCategories = getUniqueInMetadataArrays(
+      docsInRelease,
+      'category'
+    );
+
+    let productLinks = [];
     for (const category of availableCategories) {
-      const docsInCategory = docsInVersion.filter(d =>
+      const docsInCategory = docsInRelease.filter(d =>
         d.metadata.category.includes(category)
       );
-      if (docsInCategory.length > 0) {
-        docsByCategoryInThisVersion.push({
+
+      const productsInCategory = getUniqueInMetadataArrays(
+        docsInCategory,
+        'product'
+      );
+
+      let linksInProduct = [];
+      for (const product of productsInCategory) {
+        const docsInProduct = docsInRelease.filter(d =>
+          d.metadata.product.includes(product)
+        );
+
+        if (docsInProduct.length === 1) {
+          linksInProduct.push({
+            title: product,
+            url: `/${docsInProduct[0].url}`,
+          });
+        }
+
+        if (docsInProduct.length > 1) {
+          linksInProduct.push({
+            title: product,
+            url: `products/${productFamilyId}/${release}/${product}`,
+          });
+        }
+      }
+
+      if (linksInProduct.length > 0) {
+        productLinks.push({
           category: category,
-          docs: docsInCategory,
+          docs: linksInProduct,
         });
       }
     }
 
     res.render('product-family', {
-      productFamily: productFamilyToDisplay,
-      docGroups: docsByCategoryInThisVersion,
+      productFamily: productFamily,
+      docGroups: productLinks,
       returnUrl: '/',
       returnLabel: 'Back to Cloud product documentation',
-      selectedVersion: version,
-      availableVersions: availableVersions,
+      selectedRelease: release,
+      availableReleases: availableReleases,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:productFamilyId/:release/:product', async function(
+  req,
+  res,
+  next
+) {
+  try {
+    const { productFamilyId, release, product } = req.params;
+    const productFamily = await getSingleProductFamily(productFamilyId);
+    const docsInProduct = productFamily.docs.filter(
+      d =>
+        d.metadata.release.includes(release) &&
+        d.metadata.product.includes(product)
+    );
+
+    const availableVersions = getUniqueInMetadataFields(
+      docsInProduct,
+      'version'
+    );
+
+    const highestVersion = getHighestVersion(availableVersions);
+
+    res.redirect(`${product}/${highestVersion}`);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:productFamilyId/:release/:product/:version', async function(
+  req,
+  res,
+  next
+) {
+  try {
+    const { productFamilyId, release, product, version } = req.params;
+    const productFamily = await getSingleProductFamily(productFamilyId);
+    const docsInProduct = productFamily.docs.filter(
+      d =>
+        d.metadata.release.includes(release) &&
+        d.metadata.product.includes(product)
+    );
+    const availableVersions = getUniqueInMetadataFields(
+      docsInProduct,
+      'version'
+    );
+
+    const docsInVersion = docsInProduct.filter(
+      d => d.metadata.version === version
+    );
+
+    let docsBySubject = [];
+    const availableSubjects = getUniqueInMetadataArrays(
+      docsInVersion,
+      'subject'
+    );
+    for (const subject of availableSubjects) {
+      docsInSubject = docsInVersion.filter(d =>
+        d.metadata.subject.includes(subject)
+      );
+      if (docsInSubject.length > 0) {
+        docsBySubject.push({
+          category: subject,
+          docs: docsInSubject,
+        });
+      }
+    }
+
+    const docsWithoutSubject = docsInVersion.filter(d => !d.metadata.subject);
+
+    docsBySubject.push({
+      category: '',
+      docs: docsWithoutSubject,
+    });
+
+    res.render('product-family', {
+      productFamily: { name: product },
+      docGroups: docsBySubject,
+      returnUrl: `/products/${productFamilyId}/${release}`,
+      returnLabel: `Back to the ${release} release`,
+      selectedRelease: version,
+      availableReleases: availableVersions,
     });
   } catch (err) {
     next(err);
