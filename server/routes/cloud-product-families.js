@@ -25,22 +25,6 @@ function getHighestRelease(listOfReleases) {
   }
 }
 
-function getAvailableReleases(listOfDocs) {
-  let availableReleases = [];
-  for (const doc of listOfDocs) {
-    const releases = doc.metadata.release;
-    if (releases) {
-      for (const release of releases) {
-        if (!availableReleases.includes(release)) {
-          availableReleases.push(release);
-        }
-      }
-    }
-  }
-
-  return availableReleases;
-}
-
 function getUniqueInMetadataArrays(listOfDocs, fieldName) {
   let availableValues = [];
   for (const doc of listOfDocs) {
@@ -85,12 +69,11 @@ function getHighestVersion(listOfVersions) {
 
 router.get('/:productFamilyId', async function(req, res, next) {
   try {
-    const productFamilyToDisplay = await getSingleProductFamily(
-      req.params.productFamilyId
-    );
+    const { productFamilyId } = req.params;
+    const productFamily = await getSingleProductFamily(productFamilyId);
 
     const availableReleases = getUniqueInMetadataArrays(
-      productFamilyToDisplay.docs,
+      productFamily.docs,
       'release'
     );
 
