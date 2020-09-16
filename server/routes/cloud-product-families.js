@@ -141,8 +141,8 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
       }
     }
 
-    res.render('product-family', {
-      productFamily: productFamily,
+    res.render('grouped-links', {
+      title: `${productFamily.name} ${release}`,
       docGroups: productLinks,
       returnUrl: '/',
       returnLabel: 'Back to Cloud product documentation',
@@ -227,8 +227,8 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
       docs: docsWithoutSubject,
     });
 
-    res.render('product-family', {
-      productFamily: { name: product },
+    res.render('grouped-links', {
+      title: `${product} ${version}`,
       docGroups: docsBySubject,
       returnUrl: `/products/${productFamilyId}/${release}`,
       returnLabel: `Back to the ${release} release`,
