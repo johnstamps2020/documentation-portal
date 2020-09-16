@@ -1352,17 +1352,15 @@ object HelperObjects {
             }
         })
 
-        class CleanValidationResults(source_id: String, git_source_url: String) : BuildType({
-            id = RelativeId(removeSpecialCharacters(source_id + "cleanresults"))
-            name = "Clean validation results for $source_id"
-
-//            TODO: Add logic to construct the pull requests endpoint from the git url
+        class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) : BuildType({
+            id = RelativeId(removeSpecialCharacters(git_source_id + "cleanresults"))
+            name = "Clean validation results for $git_source_id"
 
             params {
-                text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
-                text("env.SOURCE_ID", source_id)
-                text("env.PULL_REQUESTS_ENDPOINT", "https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/insurancesuite-upgrade-guide/pull-requests")
-                text("env.BITBUCKET_ACCESS_TOKEN", "")
+                text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                password("env.BITBUCKET_ACCESS_TOKEN", "", display = ParameterDisplay.HIDDEN)
             }
 
             steps {
@@ -1389,11 +1387,27 @@ object HelperObjects {
                         set -xe
         
                         ./run_results_cleaner.sh
-            """.trimIndent()
+                    """.trimIndent()
                     dockerImage = "runner-image"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
+
+                stepsOrder = arrayListOf("BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_RESULTS_CLEANER")
             }
+
+            vcs {
+                root(vcs_root_id)
+                cleanCheckout = true
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${vcs_root_id}:**
+                    """.trimIndent()
+                }
+            }
+
         })
 
         val sourcesToValidate = mutableListOf<Project>()
@@ -1422,7 +1436,7 @@ object HelperObjects {
                                 name = "$sourceTitle ($sourceId)"
 
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
-                                buildType(CleanValidationResults(sourceId, sourceGitUrl))
+                                buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
                                 for (doc in sourceDocBuilds) {
                                     buildType(ValidateDoc(doc, RelativeId(sourceId), sourceId, sourceGitBranch))
