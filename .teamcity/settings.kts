@@ -1419,10 +1419,10 @@ object HelperObjects {
                                 name = "$sourceTitle ($sourceId)"
 
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
+                                buildType(CleanValidationResults(sourceId))
 
                                 for (doc in sourceDocBuilds) {
                                     buildType(ValidateDoc(doc, RelativeId(sourceId), sourceId, sourceGitBranch))
-                                    buildType(CleanValidationResults(sourceId))
                                 }
 
                             }
