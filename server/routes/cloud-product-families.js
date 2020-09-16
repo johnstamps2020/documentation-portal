@@ -175,10 +175,12 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
 
     const docsWithoutSubject = docsInVersion.filter(d => !d.metadata.subject);
 
-    docsBySubject.push({
-      category: '',
-      docs: docsWithoutSubject,
-    });
+    if (docsWithoutSubject && docsWithoutSubject.length > 0) {
+      docsBySubject.push({
+        category: '',
+        docs: docsWithoutSubject,
+      });
+    }
 
     res.render('grouped-links', {
       title: `${product} ${version}`,
