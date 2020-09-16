@@ -10,7 +10,8 @@
         "product": ["BillingCenter"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -36,7 +37,8 @@
         "product": ["ClaimCenter"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -62,7 +64,8 @@
         "product": ["PolicyCenter"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -89,7 +92,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -110,7 +114,8 @@
         "productFamily": ["ClaimCenter Cloud"],
         "product": ["ClaimCenter"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -131,7 +136,8 @@
         "productFamily": ["PolicyCenter Cloud"],
         "product": ["PolicyCenter"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -155,7 +161,8 @@
         ],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3.x.x",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -179,23 +186,26 @@
         ],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
         "filter": "DataHub-MS-DRAFT.ditaval",
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["int"]
     },
@@ -212,23 +222,26 @@
         ],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
         "filter": "InfoCenter-MS-DRAFT.ditaval",
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["int"]
     },
@@ -245,7 +258,8 @@
         ],
         "product": ["Cloud Data Access"],
         "version": "latest",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -268,7 +282,8 @@
         ],
         "product": ["Explore"],
         "version": "latest",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -291,7 +306,8 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -310,7 +326,8 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -329,7 +346,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -348,7 +366,8 @@
         "product": ["Digital Code Generation"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -371,7 +390,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -390,7 +410,8 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -413,7 +434,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -432,7 +454,8 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -451,7 +474,8 @@
         "product": ["InsuranceNow 2020.1x - Internal Audience"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["InsuranceNow"]
+        "category": ["InsuranceNow"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -477,7 +501,8 @@
         "product": ["InsuranceNow 2020.1x - External Audience"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["InsuranceNow"]
+        "category": ["InsuranceNow"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -503,7 +528,8 @@
         "product": ["InsuranceNow 2020.2x - Internal Audience"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["InsuranceNow"]
+        "category": ["InsuranceNow"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -529,7 +555,8 @@
         "product": ["InsuranceNow 2020.2x - External Audience"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["InsuranceNow"]
+        "category": ["InsuranceNow"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -555,7 +582,8 @@
         "productFamily": ["PolicyCenter Cloud"],
         "product": ["Businessowners Standards Based Template"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -574,7 +602,8 @@
         "productFamily": ["Guidewire Cloud Platform"],
         "product": ["Guidewire Identity Federation Hub"],
         "category": ["Authentication"],
-        "version": "2020.05"
+        "version": "2020.05",
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -593,7 +622,8 @@
         "productFamily": ["Guidewire Cloud Platform"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05"
+        "version": "2020.05",
+        "release": ["Aspen"]
       },
       "environments": ["int"]
     },
@@ -606,7 +636,8 @@
         "productFamily": ["Guidewire Cloud Platform"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05"
+        "version": "2020.05",
+        "release": ["Aspen"]
       },
       "environments": ["int"]
     },
@@ -620,7 +651,8 @@
         "productFamily": ["Guidewire Cloud Platform"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05"
+        "version": "2020.05",
+        "release": ["Aspen"]
       },
       "environments": ["int"]
     },
@@ -861,16 +893,18 @@
         "filter": "DataHub-DRAFT.ditaval",
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["int"]
     },
@@ -889,16 +923,18 @@
         "filter": "InfoCenter-DRAFT.ditaval",
         "root": "DM_all.ditamap",
         "src": "dhicdraftsrc",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["int"]
     },
@@ -1181,7 +1217,8 @@
         "productFamily": ["Testing Frameworks"],
         "product": ["Testing Frameworks"],
         "platform": ["Cloud"],
-        "version": "latest"
+        "version": "latest",
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1206,7 +1243,8 @@
         "product": ["Jutro"],
         "productFamily": ["Jutro"],
         "platform": ["Cloud"],
-        "version": "latest"
+        "version": "latest",
+        "release": ["Aspen"]
       },
       "environments": ["int"]
     },
@@ -1219,7 +1257,8 @@
         "productFamily": ["Guidewire Feature Preview"],
         "category": ["Early Access"],
         "platform": ["Cloud"],
-        "version": "latest"
+        "version": "latest",
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1238,7 +1277,8 @@
         "productFamily": ["Guidewire Feature Preview"],
         "category": ["Internal Draft"],
         "platform": ["Cloud"],
-        "version": "latest"
+        "version": "latest",
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1257,7 +1297,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "2020.05",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1283,7 +1324,8 @@
         "productFamily": ["ClaimCenter Cloud"],
         "product": ["ClaimCenter"],
         "version": "2020.05",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1309,7 +1351,8 @@
         "productFamily": ["PolicyCenter Cloud"],
         "product": ["PolicyCenter"],
         "version": "2020.05",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1336,7 +1379,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "2020.05",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1350,7 +1394,8 @@
         "productFamily": ["ClaimCenter Cloud"],
         "product": ["ClaimCenter"],
         "version": "2020.05",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1364,7 +1409,8 @@
         "productFamily": ["PolicyCenter Cloud"],
         "product": ["PolicyCenter"],
         "version": "2020.05",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1377,7 +1423,8 @@
         "product": ["InsuranceNow"],
         "platform": ["Cloud"],
         "version": "2020.1",
-        "category": ["InsuranceNow"]
+        "category": ["InsuranceNow"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1399,13 +1446,16 @@
       "title": "Guidewire InsuranceSuite Package for Germany",
       "url": "cloud/mid/ipg/latest",
       "metadata": {
-        "productFamily": ["BillingCenter Cloud",
+        "productFamily": [
+          "BillingCenter Cloud",
           "ClaimCenter Cloud",
-          "PolicyCenter Cloud"],
+          "PolicyCenter Cloud"
+        ],
         "product": ["Guidewire InsuranceSuite Package for Germany"],
         "platform": ["Cloud"],
         "version": "2.x",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1424,7 +1474,8 @@
         "productFamily": ["Guidewire Cloud Platform"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05"
+        "version": "2020.05",
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1437,7 +1488,8 @@
         "productFamily": ["Guidewire Cloud Platform"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05"
+        "version": "2020.05",
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1451,7 +1503,8 @@
         "productFamily": ["Guidewire Cloud Platform"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05"
+        "version": "2020.05",
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1629,7 +1682,8 @@
         "productFamily": ["PolicyCenter Cloud"],
         "product": ["Businessowners Standards Based Template"],
         "version": "2020.05",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1652,23 +1706,26 @@
         ],
         "product": ["DataHub"],
         "version": "2020.05",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
         "filter": "DataHub-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiccloudforstaging",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1685,23 +1742,26 @@
         ],
         "product": ["InfoCenter"],
         "version": "2020.05",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
         "filter": "InfoCenter-MS-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiccloudforstaging",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1718,7 +1778,8 @@
         ],
         "product": ["Cloud Data Access"],
         "version": "2020.05",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1741,7 +1802,8 @@
         ],
         "product": ["Explore"],
         "version": "2020.05",
-        "category": ["Data"]
+        "category": ["Data"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1764,7 +1826,8 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": "2020.08",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1783,7 +1846,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": "2020.08",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1806,7 +1870,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": "2020.08",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1829,7 +1894,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": "2020.08",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -1848,7 +1914,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": "2020.05",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1862,7 +1929,8 @@
         "product": ["Digital Code Generation"],
         "platform": ["Cloud"],
         "version": "2020.05",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1879,7 +1947,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": "2020.05",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1896,7 +1965,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": "2020.05",
-        "category": ["Digital"]
+        "category": ["Digital"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1967,7 +2037,8 @@
         ],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3.1.0",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1984,7 +2055,8 @@
         ],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "3.0.0",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2078,16 +2150,18 @@
         "filter": "DataHub-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiconpremforstaging",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2106,16 +2180,18 @@
         "filter": "InfoCenter-RELEASE.ditaval",
         "root": "DM_all.ditamap",
         "src": "exportdhiconpremforstaging",
-        "resources": [{
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter"
-        },
-        {
-          "src": "dhicextrassrc",
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-        }]
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+          }
+        ]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2224,7 +2300,8 @@
         "product": ["REST API Client"],
         "platform": ["Cloud", "Self-managed"],
         "version": "latest",
-        "category": ["Core"]
+        "category": ["Core"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -2242,7 +2319,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Configuration Manager"],
-        "version": "latest"
+        "version": "latest",
+        "release": ["Aspen"]
       },
       "displayOnLandingPages": false,
       "build": {
@@ -2262,7 +2340,8 @@
         "product": ["SurePath Standards"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["SurePath Standards"]
+        "category": ["SurePath Standards"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -4543,7 +4622,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Administration"]
+        "category": ["Administration"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -4562,7 +4642,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Features and functionality"]
+        "category": ["Features and functionality"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -4581,7 +4662,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Best practices"]
+        "category": ["Best practices"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -4600,7 +4682,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Configuration"]
+        "category": ["Configuration"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -4619,7 +4702,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Features and functionality"]
+        "category": ["Features and functionality"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -4638,7 +4722,8 @@
         "productFamily": ["BillingCenter Cloud"],
         "product": ["BillingCenter"],
         "version": "0.1",
-        "category": ["Configuration"]
+        "category": ["Configuration"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",
@@ -4654,10 +4739,15 @@
       "url": "test/is/glossary",
       "metadata": {
         "platform": ["Cloud"],
-        "productFamily": ["BillingCenter Cloud", "ClaimCenter Cloud", "PolicyCenter Cloud"],
+        "productFamily": [
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud",
+          "PolicyCenter Cloud"
+        ],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": "0.1",
-        "category": ["Glossary"]
+        "category": ["Glossary"],
+        "release": ["Aspen"]
       },
       "build": {
         "buildType": "dita",

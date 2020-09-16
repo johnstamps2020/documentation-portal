@@ -162,6 +162,11 @@
           "description": "A product category",
           "type": "array",
           "examples": ["Core", "Data", "Digital"]
+        },
+        "release": {
+          "description": "A major release",
+          "type": "array",
+          "examples": ["Aspen", "Banff", "Cortina"]
         }
       }
     },
