@@ -1360,7 +1360,6 @@ object HelperObjects {
                 text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                password("env.BITBUCKET_ACCESS_TOKEN", "", display = ParameterDisplay.HIDDEN)
             }
 
             steps {
