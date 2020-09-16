@@ -68,7 +68,6 @@ const cloudHomeRouter = require('./routes/cloud-home');
 const selfManagedLatestRouter = require('./routes/self-managed-latest');
 const selfManagedAllReleasesRouter = require('./routes/self-managed-all-releases');
 const cloudProductFamilyRouter = require('./routes/cloud-product-families');
-const productRouter = require('./routes/products');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
@@ -148,7 +147,6 @@ app.use('/404', missingPageRouter);
 app.use('/self-managed-latest', selfManagedLatestRouter);
 app.use('/self-managed-all-releases', selfManagedAllReleasesRouter);
 app.use('/products', cloudProductFamilyRouter);
-app.use('/product', productRouter);
 app.use('/', cloudHomeRouter);
 
 const proxyOptions = {
