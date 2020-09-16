@@ -162,6 +162,24 @@
           "description": "A product category",
           "type": "array",
           "examples": ["Core", "Data", "Digital"]
+        },
+        "release": {
+          "description": "A major release",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["Aspen", "Banff", "Cortina"]
+          }
+        },
+        "subject": {
+          "description": "What the doc is about",
+          "type": "array",
+          "examples": [
+            "Administration",
+            "Features and functionality",
+            "Best practices",
+            "Configuration"
+          ]
         }
       }
     },
@@ -276,7 +294,6 @@
         "indexRedirect": {
           "description": "If set to true, add a script to the landing page that redirects the user to the first topic in the table of contents. Defaults to false if not set.",
           "type": "boolean"
-
         },
         "src": {
           "$ref": "#/definitions/src"
