@@ -1407,6 +1407,11 @@ object HelperObjects {
                 }
             }
 
+            features {
+                dockerSupport {
+                }
+            }
+
         })
 
         val sourcesToValidate = mutableListOf<Project>()
