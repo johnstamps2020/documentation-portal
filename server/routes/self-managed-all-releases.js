@@ -1,11 +1,6 @@
-const getSelfManagedCategories = require('../controllers/selfManagedProductController');
-
 const selfManagedAllReleases = async (req, res, next) => {
   try {
-    const selfManagedCategories = await getSelfManagedCategories();
-    res.render('self-managed-all-releases', {
-      categories: selfManagedCategories,
-    });
+    res.redirect('/self-managed-latest');
   } catch (err) {
     next(err);
   }
