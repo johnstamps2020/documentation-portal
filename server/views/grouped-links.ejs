@@ -15,16 +15,18 @@
                   window.location.replace(selectedRelease);
                 }
               </script>
-              <select onchange="selectRelease()" id="releaseSelector">
-                <% availableReleases.forEach(release => { -%>
-                <option 
-                    value="<%= release -%>" 
-                    <%= release === selectedRelease ? 'selected="selected"' : '' %> 
-                >
+              <label for="releaseSelector">Select version:
+                <select onchange="selectRelease()" id="releaseSelector">
+                  <% availableReleases.forEach(release => { -%>
+                    <option
+                      value="<%= release -%>"
+                      <%= release === selectedRelease ? 'selected="selected"' : '' %>
+                    >
                     <%= release -%>
-                </option>
-                <% }); -%>
-              </select>
+                    </option>
+                  <% }); -%>
+                </select>
+              </label>
             </div>
           </div>
           <div class="col-sm-3">

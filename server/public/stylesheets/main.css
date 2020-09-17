@@ -1,4 +1,4 @@
-@import "common.css";
+@import 'common.css';
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 581px) {
@@ -535,4 +535,11 @@ a.returnLink {
 
 .employeeLogin a {
   color: var(--GW-COLOR-BRAND-1);
+}
+
+#releaseSelector {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--GW-COLOR-BRAND-2);
+  margin: 8px;
 }
