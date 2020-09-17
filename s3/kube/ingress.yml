@@ -7,6 +7,10 @@ metadata:
 spec:
   type: ExternalName
   externalName: tenant-doctools-${DEPLOY_ENV}-builds.s3-website.us-west-2.amazonaws.com
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
