@@ -4614,9 +4614,9 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "isbccloudnoxbookadmin",
-      "title": "BillingCenter Administration",
-      "url": "test/bc/admin",
+      "id": "isbccloudnoxbookreleasenotes",
+      "title": "Release Notes",
+      "url": "test/bc/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "productFamily": ["BillingCenter Cloud"],
@@ -4624,19 +4624,80 @@
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
-        "subject": ["Administration"]
+        "subject": ["Release notes"]
       },
       "build": {
         "buildType": "dita",
         "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/admin/AdminGuide.ditamap",
+        "root": "releasenotes/ReleaseNotes-cloud.ditamap",
         "src": "cloudisnoxbook"
       },
       "environments": ["dev"]
     },
     {
+      "id": "isbccloudnoxbooknewandchanged",
+      "title": "New and Changed",
+      "url": "test/bc/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/newAndChanged/NewAndChanged.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookupgrade",
+      "title": "Upgrade Guide",
+      "url": "test/bc/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isnoxbookconfigupgradetools",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0",
+      "url": "test/isconfigupgradetools/320",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "productFamily": [
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud",
+          "PolicyCenter Cloud"
+        ],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": "3.2.0",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["dev"]
+    },
+    {
       "id": "isbccloudnoxbookapp",
-      "title": "BillingCenter Application",
+      "title": "Application Guide",
       "url": "test/bc/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -4656,8 +4717,71 @@
       "environments": ["dev"]
     },
     {
+      "id": "isbccloudnoxbookcontact",
+      "title": "Contact Management",
+      "url": "test/bc/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/contact/ContactMgmtGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbooksuite",
+      "title": "InsuranceSuite Guide",
+      "url": "test/bc/suite",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/suite/InsuranceSuiteGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookadmin",
+      "title": "Administration",
+      "url": "test/bc/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Administration"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/admin/AdminGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
       "id": "isbccloudnoxbookbestpractice",
-      "title": "BillingCenter Best Practices",
+      "title": "Best Practices",
       "url": "test/bc/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
@@ -4678,7 +4802,7 @@
     },
     {
       "id": "isbccloudnoxbookconfig",
-      "title": "BillingCenter Configuration",
+      "title": "Configuration",
       "url": "test/bc/config",
       "metadata": {
         "platform": ["Cloud"],
@@ -4698,29 +4822,8 @@
       "environments": ["dev"]
     },
     {
-      "id": "isbccloudnoxbookcontact",
-      "title": "Guidewire Contact Management",
-      "url": "test/bc/contact",
-      "metadata": {
-        "platform": ["Cloud"],
-        "productFamily": ["BillingCenter Cloud"],
-        "product": ["BillingCenter"],
-        "version": "0.1",
-        "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Features and functionality"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/contact/ContactMgmtGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": ["dev"]
-    },
-    {
       "id": "isbccloudnoxbookglobal",
-      "title": "BillingCenter Globalization",
+      "title": "Globalization",
       "url": "test/bc/global",
       "metadata": {
         "platform": ["Cloud"],
@@ -4740,8 +4843,113 @@
       "environments": ["dev"]
     },
     {
+      "id": "isbccloudnoxbookrules",
+      "title": "Rules",
+      "url": "test/bc/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Configuration"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/rules/RulesGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookinteg",
+      "title": "Integration",
+      "url": "test/bc/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/integration/IntegrationGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookgosu",
+      "title": "Gosu Reference",
+      "url": "test/bc/gosu",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Development"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/gosu/GosuRefGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbooktesting",
+      "title": "Testing",
+      "url": "test/bc/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Development"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/testing/TestingGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "isbccloudnoxbookinstall",
+      "title": "Installation",
+      "url": "test/bc/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "productFamily": ["BillingCenter Cloud"],
+        "product": ["BillingCenter"],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Installation"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "cloud/active/installation/InstallationGuide.ditamap",
+        "src": "cloudisnoxbook"
+      },
+      "environments": ["dev"]
+    },
+    {
       "id": "iscloudnoxbookglossary",
-      "title": "Guidewire Glossary",
+      "title": "Glossary",
       "url": "test/is/glossary",
       "metadata": {
         "platform": ["Cloud"],
