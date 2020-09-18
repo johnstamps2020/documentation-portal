@@ -96,7 +96,7 @@ router.get('/:product/:version', async function(req, res, next) {
       });
     }
 
-    res.render('grouped-links', {
+    res.render('grouped-cards', {
       title: `${product} ${version}`,
       docGroups: docLinks,
       returnUrl: `/self-managed-latest`,

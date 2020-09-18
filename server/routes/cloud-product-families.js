@@ -94,7 +94,7 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
       }
     }
 
-    res.render('grouped-links', {
+    res.render('grouped-cards', {
       title: `${productFamily.name} ${release}`,
       docGroups: productLinks,
       returnUrl: '/',

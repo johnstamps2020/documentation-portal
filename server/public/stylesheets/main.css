@@ -74,6 +74,12 @@ a.returnLink {
   background-color: var(--GW-COLOR-BKGD-1);
 }
 
+.linkGroup {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 3rem;
+}
+
 .productCard {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
   background-color: white;
