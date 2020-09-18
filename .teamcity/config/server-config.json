@@ -2,6 +2,84 @@
   "$schema": "./config-schema.json",
   "docs": [
     {
+      "id": "testvcstriggers",
+      "title": "Test VCS triggers latest",
+      "url": "testvcstriggers/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "productFamily": [
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud",
+          "PolicyCenter Cloud"
+        ],
+        "product": ["Test VCS triggers"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Aspen"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/GW-Generic-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "testvcstriggerssrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "testvcstriggerscust1",
+      "title": "Test VCS triggers customer 1 latest",
+      "url": "testvcstriggerscust1/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "productFamily": [
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud",
+          "PolicyCenter Cloud"
+        ],
+        "product": ["Test VCS triggers"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/GW-Generic-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "testvcstriggerssrc"
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "testvcstriggersrelease100",
+      "title": "Test VCS triggers 1.0.0",
+      "url": "testvcstriggers/100",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "productFamily": [
+          "BillingCenter Cloud",
+          "ClaimCenter Cloud",
+          "PolicyCenter Cloud"
+        ],
+        "product": ["Test VCS triggers"],
+        "version": "1.0.0",
+        "category": ["Core"],
+        "release": ["Aspen"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/GW-Generic-Release.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "testvcstriggersrelease100src"
+      },
+      "environments": ["dev"]
+    },
+    {
       "id": "cloudbclatestvkeurqms",
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/latest/",
