@@ -4,7 +4,7 @@
     {
       "productFamilyName": "BillingCenter Cloud",
       "products": [
-        "BillingCenter",
+        "BillingCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "BillingCenter Upgrade Tools",
         "Cloud Data Access",
@@ -20,7 +20,7 @@
     {
       "productFamilyName": "ClaimCenter Cloud",
       "products": [
-        "ClaimCenter",
+        "ClaimCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "Cloud Data Access",
         "CustomerEngage Account Management",
@@ -38,7 +38,7 @@
     {
       "productFamilyName": "PolicyCenter Cloud",
       "products": [
-        "PolicyCenter",
+        "PolicyCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "Businessowners Standards Based Template",
         "Cloud Data Access",
@@ -93,7 +93,7 @@
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/latest/",
       "metadata": {
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["Core"],
@@ -119,7 +119,7 @@
       "title": "ClaimCenter for Guidewire Cloud",
       "url": "cloud/cc/latest/",
       "metadata": {
-        "products": ["ClaimCenter"],
+        "products": ["ClaimCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["Core"],
@@ -145,7 +145,7 @@
       "title": "PolicyCenter for Guidewire Cloud",
       "url": "cloud/pc/latest/",
       "metadata": {
-        "products": ["PolicyCenter"],
+        "products": ["PolicyCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": "latest",
         "category": ["Core"],
@@ -173,7 +173,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "latest",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -194,7 +194,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["ClaimCenter"],
+        "products": ["ClaimCenter for Guidewire Cloud"],
         "version": "latest",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -215,7 +215,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["PolicyCenter"],
+        "products": ["PolicyCenter for Guidewire Cloud"],
         "version": "latest",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -4546,7 +4546,7 @@
       "url": "test/bc/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4566,7 +4566,7 @@
       "url": "test/bc/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4586,7 +4586,7 @@
       "url": "test/bc/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4595,7 +4595,7 @@
       "build": {
         "buildType": "dita",
         "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
-        "root": "_supermap.ditamap",
+        "root": "UpgradeGuide.ditamap",
         "indexRedirect": true,
         "src": "isupgradeguidesrc"
       },
@@ -4607,10 +4607,17 @@
       "url": "test/isconfigupgradetools/320",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
-        "products": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": "3.2.0",
+        "products": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud",
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"],
+        "version": "0.1",
         "category": ["Core"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "subject": ["Release notes"]
       },
       "environments": ["dev"]
     },
@@ -4639,7 +4646,7 @@
       "url": "test/bc/app",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4659,7 +4666,7 @@
       "url": "test/bc/contact",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4679,7 +4686,7 @@
       "url": "test/bc/suite",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4699,7 +4706,7 @@
       "url": "test/bc/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4719,7 +4726,7 @@
       "url": "test/bc/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4739,7 +4746,7 @@
       "url": "test/bc/config",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4759,7 +4766,7 @@
       "url": "test/bc/global",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4779,7 +4786,7 @@
       "url": "test/bc/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4799,7 +4806,7 @@
       "url": "test/bc/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4819,7 +4826,7 @@
       "url": "test/bc/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4839,7 +4846,7 @@
       "url": "test/bc/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4859,7 +4866,7 @@
       "url": "test/bc/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "0.1",
         "category": ["Core"],
         "release": ["Banff"],
@@ -4879,7 +4886,10 @@
       "url": "test/is/glossary",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "products": [
+          "BillingCenter for Guidewire Cloud", 
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"],
         "version": "0.1",
         "subject": ["Glossary"],
         "category": ["Core"],
