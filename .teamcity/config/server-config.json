@@ -13,7 +13,7 @@
           "ClaimCenter Cloud",
           "PolicyCenter Cloud"
         ],
-        "product": ["Test VCS triggers"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "latest",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -39,7 +39,7 @@
           "ClaimCenter Cloud",
           "PolicyCenter Cloud"
         ],
-        "product": ["Test VCS triggers"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "latest",
         "category": ["Core"],
         "release": ["Banff"]
@@ -65,7 +65,7 @@
           "ClaimCenter Cloud",
           "PolicyCenter Cloud"
         ],
-        "product": ["Test VCS triggers"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": "1.0.0",
         "category": ["Core"],
         "release": ["Aspen"]
