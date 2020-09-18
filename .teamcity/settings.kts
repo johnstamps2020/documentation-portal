@@ -1232,8 +1232,8 @@ object HelperObjects {
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
             val metadata = doc.getJSONObject("metadata")
-            if (metadata.has("product")) {
-                val docProducts = metadata.getJSONArray("product")
+            if (metadata.has("products")) {
+                val docProducts = metadata.getJSONArray("products")
                 for (docProduct in docProducts) {
                     if (!products.contains(docProduct.toString())) {
                         products.add(docProduct.toString())
@@ -1250,9 +1250,9 @@ object HelperObjects {
                 val doc = docConfigs.getJSONObject(i)
                 if (doc.has("build") && !docsInProduct.contains(doc)) {
                     val metadata = doc.getJSONObject("metadata")
-                    if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
+                    if (metadata.has("products") && metadata.getJSONArray("products").contains(product)) {
                         docsInProduct.add(doc)
-                    } else if (!metadata.has("product") && product == noProductLabel) {
+                    } else if (!metadata.has("products") && product == noProductLabel) {
                         docsInProduct.add(doc)
                     }
                 }
@@ -1272,7 +1272,7 @@ object HelperObjects {
             val docId = doc_info.getString("id")
             val docTitle = doc_info.getString("title")
             val docMetadata = doc_info.getJSONObject("metadata")
-            val docProduct = docMetadata.getJSONArray("product").joinToString(separator = ",")
+            val docProduct = docMetadata.getJSONArray("products").joinToString(separator = ",")
             val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
             val docVersion = docMetadata.getString("version")
 
