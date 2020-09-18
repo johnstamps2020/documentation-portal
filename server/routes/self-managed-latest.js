@@ -99,8 +99,9 @@ router.get('/:product/:version', async function(req, res, next) {
     res.render('grouped-cards', {
       title: `${product} ${version}`,
       docGroups: docLinks,
-      returnUrl: `/self-managed-latest`,
-      returnLabel: `Back to self-managed products`,
+      breadcrumb: [
+        { href: `/self-managed-latest`, label: 'Self-managed documentation' },
+      ],
       selectedRelease: version,
       availableReleases: versions,
     });

@@ -97,8 +97,7 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
     res.render('grouped-cards', {
       title: `${productFamily.name} ${release}`,
       docGroups: productLinks,
-      returnUrl: '/',
-      returnLabel: 'Back to Cloud product documentation',
+      breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
       selectedRelease: release,
       availableReleases: availableReleases,
     });
@@ -185,8 +184,11 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
     res.render('grouped-links', {
       title: `${product} ${version}`,
       docGroups: docsBySubject,
-      returnUrl: `/products/${productFamilyId}/${release}`,
-      returnLabel: `Back to the ${release} release`,
+      breadcrumb: [
+        { href: `/`, label: 'Cloud documentation' },
+        { href: `/products/${productFamilyId}`, label: productFamily.name },
+        { href: `/products/${productFamilyId}/${release}`, label: release },
+      ],
       selectedRelease: version,
       availableReleases: availableVersions,
     });
