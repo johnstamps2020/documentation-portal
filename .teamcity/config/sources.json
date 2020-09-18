@@ -2,6 +2,19 @@
   "$schema": "./config-schema.json",
   "sources": [
     {
+      "id": "testvcstriggerssrc",
+      "title": "Test VCS triggers",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/test-vcs-triggers.git"
+    },
+    {
+      "id": "testvcstriggersrelease100src",
+      "title": "Test VCS triggers release 1.0.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/test-vcs-triggers.git",
+      "branch": "release-1.0.0"
+    },
+    {
       "id": "isconfigupgradetools3xsrc",
       "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
       "sourceType": "git",
