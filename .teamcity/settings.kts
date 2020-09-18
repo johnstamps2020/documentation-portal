@@ -1325,6 +1325,11 @@ object HelperObjects {
                     triggerRules = """
                         +:root=${vcs_root_id}:**
                     """.trimIndent()
+
+                    branchFilter = """
+                        +:*
+                        -:<default>
+                    """.trimIndent()
                 }
             }
 
@@ -1405,6 +1410,10 @@ object HelperObjects {
                 vcs {
                     triggerRules = """
                         +:root=${vcs_root_id}:**
+                    """.trimIndent()
+
+                    branchFilter = """
+                        +:<default>
                     """.trimIndent()
                 }
             }
