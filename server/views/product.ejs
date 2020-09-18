@@ -32,7 +32,7 @@
                         <div class="categoryCard">
                             <h2><%= categoryName %></h2>
                             <% const docs = categoryItems.reduce((r, a) => {
-                                r[a.metadata.product] = [...r[a.metadata.product] || [], a];
+                                r[a.metadata.products] = [...r[a.metadata.products] || [], a];
                                 return r;
                             }, {});
                                 const productArray = Object.entries(docs);

@@ -62,13 +62,13 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
 
       const productsInCategory = getUniqueInMetadataArrays(
         docsInCategory,
-        'product'
+        'products'
       );
 
       let linksInProduct = [];
       for (const product of productsInCategory) {
         const docsInProduct = docsInRelease.filter(d =>
-          d.metadata.product.includes(product)
+          d.metadata.products.includes(product)
         );
 
         if (docsInProduct.length === 1) {
@@ -118,7 +118,7 @@ router.get('/:productFamilyId/:release/:product', async function(
     const docsInProduct = productFamily.docs.filter(
       d =>
         d.metadata.release.includes(release) &&
-        d.metadata.product.includes(product)
+        d.metadata.products.includes(product)
     );
 
     const availableVersions = getUniqueInMetadataFields(
@@ -145,7 +145,7 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
     const docsInProduct = productFamily.docs.filter(
       d =>
         d.metadata.release.includes(release) &&
-        d.metadata.product.includes(product)
+        d.metadata.products.includes(product)
     );
     const availableVersions = getUniqueInMetadataFields(
       docsInProduct,

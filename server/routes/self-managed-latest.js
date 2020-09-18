@@ -27,10 +27,10 @@ router.get('/', async function(req, res, next) {
       const docsInCategory = docs.filter(d =>
         d.metadata.category.includes(category)
       );
-      const products = getUniqueInMetadataArrays(docsInCategory, 'product');
+      const products = getUniqueInMetadataArrays(docsInCategory, 'products');
       for (const product of products) {
         docsInProduct = docsInCategory.filter(d =>
-          d.metadata.product.includes(product)
+          d.metadata.products.includes(product)
         );
         if (docsInProduct.length === 1) {
           const onlyVersion = docsInProduct[0].metadata.version;
@@ -73,7 +73,7 @@ router.get('/:product/:version', async function(req, res, next) {
     const docs = await getSelfManagedDocs();
 
     const docsInProduct = docs.filter(d =>
-      d.metadata.product.includes(product)
+      d.metadata.products.includes(product)
     );
     const versions = getUniqueInMetadataFields(docsInProduct, 'version');
 
