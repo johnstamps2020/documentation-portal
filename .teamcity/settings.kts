@@ -1378,7 +1378,7 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
         
-                        ./run_results_cleaner.sh
+                        results_cleaner --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --git-source-id "%env.GIT_SOURCE_ID%" --git-source-url "%env.GIT_SOURCE_URL%"
                     """.trimIndent()
                     dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1404,9 +1404,11 @@ object HelperObjects {
 
             features {
                 dockerSupport {
+                    loginToRegistry = on {
+                        dockerRegistryId = "PROJECT_EXT_155"
+                    }
                 }
             }
-
         })
 
         val sourcesToValidate = mutableListOf<Project>()
@@ -1699,8 +1701,13 @@ object RunContentValidations : Template({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-
-                ./run_app.sh
+                
+                doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" dita \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" images \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" files \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" content \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.DITA_OT_LOGS_DIR%" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.SCHEMATRON_REPORTS_DIR%" schematron-reports
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1710,6 +1717,9 @@ object RunContentValidations : Template({
 
     features {
         dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
         }
     }
 
