@@ -1707,7 +1707,7 @@ object RunContentValidations : Template({
                   && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" files \
                   && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" content \
                   && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.DITA_OT_LOGS_DIR%" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.SCHEMATRON_REPORTS_DIR%" schematron-reports            
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.SCHEMATRON_REPORTS_DIR%" schematron-reports
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
