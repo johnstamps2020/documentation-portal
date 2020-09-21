@@ -1311,7 +1311,7 @@ object HelperObjects {
                     """.trimIndent()
                 }
 
-                stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
+                stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "RUN_DOC_VALIDATOR")
 
             }
 
@@ -1369,19 +1369,6 @@ object HelperObjects {
             }
 
             steps {
-                dockerCommand {
-                    name = "Build a Docker image for running the results cleaner"
-                    id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
-                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                    commandType = build {
-                        source = file {
-                            path = "Dockerfile"
-                        }
-                        namesAndTags = "runner-image"
-                        commandArgs = "--pull"
-                    }
-                    param("dockerImage.platform", "linux")
-                }
 
                 script {
                     name = "Run the results cleaner"
@@ -1393,16 +1380,13 @@ object HelperObjects {
         
                         ./run_results_cleaner.sh
                     """.trimIndent()
-                    dockerImage = "runner-image"
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
-
-                stepsOrder = arrayListOf("BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_RESULTS_CLEANER")
             }
 
             vcs {
                 root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
-                root(DocValidator)
                 cleanCheckout = true
             }
 
@@ -1598,11 +1582,6 @@ object RunContentValidations : Template({
         text("env.SCHEMATRON_REPORTS_DIR", "%env.DITA_OT_WORKING_DIR%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
     }
 
-    vcs {
-        root(DocValidator)
-        cleanCheckout = true
-    }
-
     steps {
         script {
             name = "Create directories"
@@ -1713,20 +1692,6 @@ object RunContentValidations : Template({
             """.trimIndent()
         }
 
-        dockerCommand {
-            name = "Build a Docker image for running the validator"
-            id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                namesAndTags = "runner-image"
-                commandArgs = "--pull"
-            }
-            param("dockerImage.platform", "linux")
-        }
-
         script {
             name = "Run the doc validator"
             id = "RUN_DOC_VALIDATOR"
@@ -1737,7 +1702,7 @@ object RunContentValidations : Template({
 
                 ./run_app.sh
             """.trimIndent()
-            dockerImage = "runner-image"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
