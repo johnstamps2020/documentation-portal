@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "config_deployer"
+version = "1.0.0"
+description = "An application to prepare the config file for a deployment environment"
+authors = ["Guidewire"]
+license = "LGPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.0"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
