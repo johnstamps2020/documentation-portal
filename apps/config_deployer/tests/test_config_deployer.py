@@ -47,13 +47,6 @@ def test_out_dir_has_expected_files():
     assert dir_comp.left_list == dir_comp.right_list
 
 
-def test_out_files_have_expected_content():
-    for out_file in out_dir.iterdir():
-        matching_expected_file = next(
-            expected_file for expected_file in expected_dir.iterdir() if expected_file.name == out_file.name)
-        assert filecmp.cmp(out_file, matching_expected_file, shallow=False)
-
-
 def test_docs_element(match_out_and_expected_files):
     def test_number_of_docs_in_files():
         for json_data_pair in match_out_and_expected_files:
