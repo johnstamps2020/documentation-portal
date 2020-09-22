@@ -1,0 +1,1895 @@
+{
+  "docs": [
+    {
+      "id": "cloudbclatestvkeurqms",
+      "title": "BillingCenter for Guidewire Cloud",
+      "url": "cloud/bc/latest/",
+      "metadata": {
+        "products": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-Cloud-Draft.ditaval",
+        "root": "_supermap-cloud-active.ditamap",
+        "src": "cloudisdraftsrc",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudcclatestovwsjybk",
+      "title": "ClaimCenter for Guidewire Cloud",
+      "url": "cloud/cc/latest/",
+      "metadata": {
+        "products": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-Cloud-Draft.ditaval",
+        "root": "_supermap-cloud-active.ditamap",
+        "src": "cloudisdraftsrc",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/cc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudpclatestltxfjual",
+      "title": "PolicyCenter for Guidewire Cloud",
+      "url": "cloud/pc/latest/",
+      "metadata": {
+        "products": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Draft.ditaval",
+        "root": "_supermap-cloud-active.ditamap",
+        "src": "cloudisdraftsrc",
+        "resources": [
+          {
+            "src": "insurancesuiteextrassrc",
+            "sourceFolder": "ReleaseNotes-files/pc/2020.05",
+            "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudbcupgradeguidelatest",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "cloud/bc/upgrade/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudccupgradeguidelatest",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "cloud/cc/upgrade/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudpcupgradeguidelatest",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "cloud/pc/upgrade/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isconfigupgradetools3x",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
+      "url": "isconfigupgradetools/3x",
+      "metadata": {
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "products": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
+        "version": "3.x.x",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/GW-Generic-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isconfigupgradetools3xsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddhdraft",
+      "title": "DataHub",
+      "url": "cloud/dh/latest",
+      "metadata": {
+        "products": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Data"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "DataHub-MS-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc",
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudicdraft",
+      "title": "InfoCenter",
+      "url": "cloud/ic/latest",
+      "metadata": {
+        "products": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Data"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "InfoCenter-MS-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc",
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddataplatformdraft",
+      "title": "Cloud Data Access",
+      "url": "cloud/cdp/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Cloud Data Access"
+        ],
+        "version": "latest",
+        "category": [
+          "Data"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-cda.ditamap",
+        "src": "cdpdraftsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "exploreclouddraft",
+      "title": "Explore",
+      "url": "cloud/explore/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Explore"
+        ],
+        "version": "latest",
+        "category": [
+          "Data"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Cloud-Release.ditaval",
+        "root": "supermapExplore.ditamap",
+        "src": "explorebadraftsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddxceamdraft",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/latest",
+      "metadata": {
+        "products": [
+          "CustomerEngage Account Management"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddxceclaimsdraft",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "cloud/dx/ce-claims/latest",
+      "metadata": {
+        "products": [
+          "CustomerEngage Account Management for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-claims-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddxceqbdraft",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/latest",
+      "metadata": {
+        "products": [
+          "CustomerEngage Quote and Buy"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "dxapdclouddraft",
+      "title": "Digital Code Generation",
+      "url": "cloud/dx/apd/latest",
+      "metadata": {
+        "products": [
+          "Digital Code Generation"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-apd-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddxpedraft",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/latest",
+      "metadata": {
+        "products": [
+          "ProducerEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddxpeclaimsdraft",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "cloud/dx/pe-claims/latest",
+      "metadata": {
+        "products": [
+          "ProducerEngage for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-claims-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddxsredraft",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/latest",
+      "metadata": {
+        "products": [
+          "ServiceRepEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "clouddxvedraft",
+      "title": "VendorEngage",
+      "url": "cloud/dx/ve/latest",
+      "metadata": {
+        "products": [
+          "VendorEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ve-MgSvcs.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudin20201xinternaldraft",
+      "title": "InsuranceNow 2020.1x - Internal",
+      "url": "cloud/in/internal/20201x",
+      "metadata": {
+        "products": [
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "InsuranceNow"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "in20201xdraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudin20201xexternaldraft",
+      "title": "InsuranceNow 2020.1x - External",
+      "url": "cloud/in/external/20201x",
+      "metadata": {
+        "products": [
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "InsuranceNow"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-20201x-active.ditamap",
+        "src": "in20201xdraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.1",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudin20202xinternaldraft",
+      "title": "InsuranceNow 2020.2x - Internal",
+      "url": "cloud/in/internal/20202x",
+      "metadata": {
+        "products": [
+          "InsuranceNow 2020.2x - Internal Audience"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "InsuranceNow"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "_supermap-20202x-active.ditamap",
+        "src": "in20202xdraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.2",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "cloudin20202xexternaldraft",
+      "title": "InsuranceNow 2020.2x - External",
+      "url": "cloud/in/external/20202x",
+      "metadata": {
+        "products": [
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "InsuranceNow"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Release.ditaval",
+        "root": "_supermap-20202x-active.ditamap",
+        "src": "in20202xdraftsrc",
+        "resources": [
+          {
+            "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+            "sourceFolder": "ChangedFiles/2020.2",
+            "src": "insurancenowextrassrc"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "guidewireidentityfederationhubqsvkhtgf",
+      "title": "Guidewire Identity Federation Hub",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Guidewire Identity Federation Hub"
+        ],
+        "category": [
+          "Authentication"
+        ],
+        "version": "2020.05",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "root": "GuidewireHub.ditamap",
+        "filter": "GW-Generic-Cloud-Draft.ditaval",
+        "src": "guidewireidentityfederationhubdraft"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsoleguidetycvlqax",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Guidewire Cloud Console"
+        ],
+        "category": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "2020.05",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsolerelnotesijdxzmpe",
+      "title": "Cloud Console Release Notes",
+      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Guidewire Cloud Console"
+        ],
+        "category": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "2020.05",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "dkeirtlsleeedc",
+      "title": "Cloud Console Root Doc",
+      "url": "cloud/gcc-guide/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Guidewire Cloud Console"
+        ],
+        "category": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "2020.05",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedbcxufesxuwl",
+      "title": "BillingCenter",
+      "url": "self-managed/bc/10x",
+      "metadata": {
+        "products": [
+          "BillingCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Draft.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis10xdraft"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedccxbvqtoakg",
+      "title": "ClaimCenter",
+      "url": "self-managed/cc/10x",
+      "metadata": {
+        "products": [
+          "ClaimCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Draft.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis10xdraft"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedpcxrwjcdamu",
+      "title": "PolicyCenter",
+      "url": "self-managed/pc/10x",
+      "metadata": {
+        "products": [
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Draft.ditaval",
+        "root": "_supermap-10x-active.ditamap",
+        "src": "selfmanagedis10xdraft"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedbcupgradeguide10x",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "products": [
+          "BillingCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-BillingCenter-Self-managed-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedccupgradeguide10x",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "products": [
+          "ClaimCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-ClaimCenter-Self-managed-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedpcupgradeguide10x",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "products": [
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Other/IS-PolicyCenter-Self-managed-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": true,
+        "src": "isupgradeguidesrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedbcupgradetools1x",
+      "title": "BillingCenter Upgrade Tools 1.x.x",
+      "url": "self-managed/bc/upgrade/1x",
+      "metadata": {
+        "products": [
+          "BillingCenter Upgrade Tools"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "1.x.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Draft.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "isconfigupgradetools1xsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedccupgradetools1x",
+      "title": "ClaimCenter Upgrade Tools 1.x.x",
+      "url": "self-managed/cc/upgrade/1x",
+      "metadata": {
+        "products": [
+          "ClaimCenter Upgrade Tools"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "1.x.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Draft.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "isconfigupgradetools1xsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedpcupgradetools1x",
+      "title": "PolicyCenter Upgrade Tools 1.x.x",
+      "url": "self-managed/pc/upgrade/1x",
+      "metadata": {
+        "products": [
+          "PolicyCenter Upgrade Tools"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "1.x.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Draft.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "isconfigupgradetools1xsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedbcxcoxibeoa",
+      "title": "BillingCenter 9",
+      "url": "self-managed/bc/9x",
+      "metadata": {
+        "products": [
+          "BillingCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "9.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-BC-OnPrem-Draft.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedccxgfurvaqu",
+      "title": "ClaimCenter 9",
+      "url": "self-managed/cc/9x",
+      "metadata": {
+        "products": [
+          "ClaimCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "9.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-CC-OnPrem-Draft.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedpcxxbkttzbb",
+      "title": "PolicyCenter 9",
+      "url": "self-managed/pc/9x",
+      "metadata": {
+        "products": [
+          "PolicyCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "9.x",
+        "category": [
+          "Core"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-OnPrem-Draft.ditaval",
+        "root": "_supermap-9x-active.ditamap",
+        "src": "exportisonprem9"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddhxoiefunwl",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x",
+      "metadata": {
+        "products": [
+          "DataHub"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x",
+        "category": [
+          "Data"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "DataHub-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc",
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedicxrsfjafti",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x",
+      "metadata": {
+        "products": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "10.x",
+        "category": [
+          "Data"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "InfoCenter-DRAFT.ditaval",
+        "root": "DM_all.ditamap",
+        "src": "dhicdraftsrc",
+        "resources": [
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanagedbadraft",
+      "title": "Business Analytics",
+      "url": "self-managed/ba/latest",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "products": [
+          "Business Analytics"
+        ],
+        "version": "latest",
+        "category": [
+          "Data"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-OnPrem-Release.ditaval",
+        "root": "supermapExplore.ditamap",
+        "src": "explorebadraftsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxceamdraft",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/11x",
+      "metadata": {
+        "products": [
+          "CustomerEngage Account Management"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxceclaimsdraft",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "self-managed/dx/ce-claims/11x",
+      "metadata": {
+        "products": [
+          "CustomerEngage Account Management for ClaimCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-claims-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxceqbdraft",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/11x",
+      "metadata": {
+        "products": [
+          "CustomerEngage Quote and Buy"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxapddraft",
+      "title": "Digital Code Generation",
+      "url": "self-managed/dx/apd/latest",
+      "metadata": {
+        "products": [
+          "Digital Code Generation"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "latest",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-apd-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxpedraft",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/11x",
+      "metadata": {
+        "products": [
+          "ProducerEngage"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxpeclaimsdraft",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "self-managed/dx/pe-claims/11x",
+      "metadata": {
+        "products": [
+          "ProducerEngage for ClaimCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-claims-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxsredraft",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/11x",
+      "metadata": {
+        "products": [
+          "ServiceRepEngage"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxvedraft",
+      "title": "VendorEngage",
+      "url": "self-managed/dx/ve/11x",
+      "metadata": {
+        "products": [
+          "VendorEngage"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ve-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxdixowqwwrfu",
+      "title": "Guidewire for Salesforce Data Integrations",
+      "url": "self-managed/dx/di/11x",
+      "metadata": {
+        "products": [
+          "Guidewire for Salesforce Data Integrations"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-di-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxdicxyhksqnkf",
+      "title": "Guidewire for Salesforce Data Integrations for Claims",
+      "url": "self-managed/dx/di-c/11x",
+      "metadata": {
+        "products": [
+          "Guidewire for Salesforce Data Integrations for Claims"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-di-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxedxqqjwvkln",
+      "title": "Guidewire for Salesforce Digital Gateway",
+      "url": "self-managed/dx/ed/11x",
+      "metadata": {
+        "products": [
+          "Guidewire for Salesforce Digital Gateway"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ed-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxedcxvpeswwmn",
+      "title": "Guidewire for Salesforce Digital Gateway for Claims",
+      "url": "self-managed/dx/ed-c/11x",
+      "metadata": {
+        "products": [
+          "Guidewire for Salesforce Digital Gateway for Claims"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ed-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxvodxqjomllcj",
+      "title": "Guidewire for Salesforce View on Demand",
+      "url": "self-managed/dx/vod/11x",
+      "metadata": {
+        "products": [
+          "Guidewire for Salesforce View on Demand"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-vod-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "selfmanageddxvodcxeajkygfs",
+      "title": "Guidewire for Salesforce View on Demand for Claims",
+      "url": "self-managed/dx/vod-c/11x",
+      "metadata": {
+        "products": [
+          "Guidewire for Salesforce View on Demand for Claims"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.x",
+        "category": [
+          "Digital"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-vod-c-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "testingframeworksdraft",
+      "title": "Testing Frameworks",
+      "url": "cloud/testingframeworks/latest",
+      "metadata": {
+        "products": [
+          "Testing Frameworks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "TestingFrameworks_supermap.ditamap",
+        "src": "testingframeworkssrc",
+        "resources": [
+          {
+            "targetFolder": "javadoc/PTF",
+            "sourceFolder": "PTF",
+            "src": "testingframeworksextrassrc"
+          }
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "dkekdisievjfjrndjsj",
+      "title": "Jutro Designers",
+      "url": "jutro/designers/latest",
+      "metadata": {
+        "products": [
+          "Jutro"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "gwfeaturepreviewearlyaccess",
+      "title": "Guidewire Feature Preview Early Access",
+      "url": "cloud/gw-feature-preview/earlyaccess",
+      "metadata": {
+        "products": [
+          "Guidewire Feature Preview"
+        ],
+        "category": [
+          "Early Access"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Release.ditaval",
+        "root": "_supermap-hawaii.ditamap",
+        "src": "gwhawaii"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "gwfeaturepreviewdraft",
+      "title": "Guidewire Feature Preview Draft",
+      "url": "cloud/gw-feature-preview/latest",
+      "metadata": {
+        "products": [
+          "Guidewire Feature Preview"
+        ],
+        "category": [
+          "Internal Draft"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "IS-PC-Cloud-Draft.ditaval",
+        "root": "_supermap-hawaii.ditamap",
+        "src": "gwhawaii"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "midipg2x",
+      "title": "Guidewire InsuranceSuite Package for Germany",
+      "url": "cloud/mid/ipg/latest",
+      "metadata": {
+        "products": [
+          "Guidewire InsuranceSuite Package for Germany"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2.x",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "_superbook.ditamap",
+        "src": "midipgdraftsrc"
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "restapidraft",
+      "title": "REST API Client",
+      "url": "cloud/restapi/latest",
+      "metadata": {
+        "products": [
+          "REST API Client"
+        ],
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "_supermap.ditamap",
+        "indexRedirect": false,
+        "src": "restapi"
+      },
+      "environments": [
+        "dev",
+        "int"
+      ]
+    },
+    {
+      "id": "configmgrhelpdraft",
+      "title": "Configuration Manager Help",
+      "url": "help/configuration-manager",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Configuration Manager"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "displayOnLandingPages": false,
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "GuidewireCloudPlatform.ditamap",
+        "src": "configmgrhelpdraftsrc"
+      },
+      "environments": [
+        "dev",
+        "int"
+      ]
+    },
+    {
+      "id": "standardsdraft",
+      "title": "SurePath Standards",
+      "url": "cloud/standards/latest",
+      "metadata": {
+        "products": [
+          "SurePath Standards"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "category": [
+          "SurePath Standards"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "GW-Generic-Draft.ditaval",
+        "root": "surepath.ditamap",
+        "src": "standardsdraftsrc"
+      },
+      "environments": [
+        "dev",
+        "int"
+      ]
+    },
+    {
+      "id": "lobbopclouddraft",
+      "title": "Businessowners Standards Based Template",
+      "url": "cloud/lob/bop/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "products": [
+          "Businessowners Standards Based Template"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "LOB_STANDARDS_filterSet.ditaval",
+        "root": "_supermap-lob-bop-10x.ditamap",
+        "src": "lobbopdraft"
+      },
+      "environments": [
+        "dev",
+        "int"
+      ]
+    }
+  ]
+}
