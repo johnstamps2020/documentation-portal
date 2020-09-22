@@ -4,7 +4,7 @@ const getConfig = require('../controllers/configController');
 const {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
-  getHighestVersion,
+  getSortedVersions
 } = require('./helpers/metadata');
 
 async function getSelfManagedDocs() {
@@ -41,9 +41,9 @@ router.get('/', async function(req, res, next) {
         }
 
         if (docsInProduct.length > 1) {
-          const version = getHighestVersion(
+          const version = getSortedVersions(
             getUniqueInMetadataFields(docsInProduct, 'version')
-          );
+          )[0];
           linksForCategory.push({
             title: product,
             url: `self-managed-latest/${product}/${version}`,
@@ -76,11 +76,11 @@ router.get('/:product/:version', async function(req, res, next) {
       d.metadata.products.includes(product)
     );
     const versions = getUniqueInMetadataFields(docsInProduct, 'version');
+    const sortedVersions = getSortedVersions(versions);
 
     const docsInVersion = docsInProduct.filter(
       d => d.metadata.version === version
     );
-    console.log('DOCS IN VERSION', docsInVersion);
 
     let docLinks = [];
     for (const category of getUniqueInMetadataArrays(
@@ -103,7 +103,7 @@ router.get('/:product/:version', async function(req, res, next) {
         { href: `/self-managed-latest`, label: 'Self-managed documentation' },
       ],
       selectedRelease: version,
-      availableReleases: versions,
+      availableReleases: sortedVersions,
     });
   } catch (err) {
     next(err);

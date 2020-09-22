@@ -680,7 +680,7 @@
         "root": "_supermap-10x-active.ditamap",
         "src": "selfmanagedis10xdraft"
       },
-      "environments": ["int"]
+      "environments": ["dev", "int"]
     },
     {
       "id": "selfmanagedccxbvqtoakg",

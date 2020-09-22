@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const getCloudProductFamilies = require('../controllers/cloudProductFamilyController');
 const {
-  getHighestRelease,
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
-  getHighestVersion,
+  getSortedVersions
 } = require('./helpers/metadata');
 
 async function getSingleProductFamily(productFamilyId) {
@@ -30,7 +29,9 @@ router.get('/:productFamilyId', async function(req, res, next) {
       'release'
     );
 
-    const highestRelease = getHighestRelease(availableReleases);
+    const sortedReleases = getSortedVersions(availableReleases);
+
+    const highestRelease = sortedReleases[0];
 
     res.redirect(`${req.params.productFamilyId}/${highestRelease}`);
   } catch (err) {
@@ -46,6 +47,8 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
       productFamily.docs,
       'release'
     );
+
+    const sortedReleases = getSortedVersions(availableReleases);
 
     const docsInRelease = getDocsInRelease(productFamily.docs, release);
 
@@ -99,7 +102,7 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
       docGroups: productLinks,
       breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
       selectedRelease: release,
-      availableReleases: availableReleases,
+      sortedReleases: sortedReleases,
     });
   } catch (err) {
     next(err);
@@ -125,7 +128,7 @@ router.get('/:productFamilyId/:release/:product', async function(
       'version'
     );
 
-    const highestVersion = getHighestVersion(availableVersions);
+    const highestVersion = getSortedVersions(availableVersions)[0];
 
     res.redirect(`${product}/${highestVersion}`);
   } catch (err) {
@@ -150,6 +153,8 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
       docsInProduct,
       'version'
     );
+
+    const sortedVersions = getSortedVersions(availableVersions);
 
     const docsInVersion = docsInProduct.filter(
       d => d.metadata.version === version
@@ -190,7 +195,7 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
         { href: `/products/${productFamilyId}/${release}`, label: release },
       ],
       selectedRelease: version,
-      availableReleases: availableVersions,
+      sortedVersions: sortedVersions,
     });
   } catch (err) {
     next(err);

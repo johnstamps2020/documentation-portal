@@ -36,16 +36,9 @@ exports.getUniqueInMetadataFields = function(listOfDocs, fieldName) {
   return availableValues;
 };
 
-exports.getHighestVersion = function(listOfVersions) {
-  if (listOfVersions.includes('latest')) {
-    return 'latest';
-  }
-
-  const versionNumbers = listOfVersions.map(v => parseFloat(v));
-  const highestVersionNumber = Math.max(...versionNumbers);
-  const highestVersion = listOfVersions.find(
-    p => parseFloat(p) === highestVersionNumber
-  );
-
-  return highestVersion;
-};
+exports.getSortedVersions = function(listOfVersions) {
+  const sortedVersions = listOfVersions.sort(
+    (a,b) => a.replace(/\d+/g, n => +n+100).localeCompare(b.replace(/\d+/g, n => +n+100))).reverse();
+  
+  return sortedVersions;
+}

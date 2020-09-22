@@ -19,7 +19,7 @@
                 </script>
                 <label for="releaseSelector">Select version:
                   <select onchange="selectRelease()" id="releaseSelector">
-                    <% availableReleases.forEach(release => { -%>
+                    <% sortedVersions.forEach(release => { -%>
                       <option
                         value="<%= release -%>"
                         <%= release === selectedRelease ? 'selected="selected"' : '' %>
