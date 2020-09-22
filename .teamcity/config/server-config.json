@@ -4608,16 +4608,10 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "products": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud",
-          "BillingCenter",
-          "ClaimCenter",
-          "PolicyCenter"],
-        "version": "0.1",
+          "InsuranceSuite Configuration Upgrade Tools"],
+        "version": "3.2.0",
         "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Release notes"]
+        "release": ["Banff"]
       },
       "environments": ["dev"]
     },
