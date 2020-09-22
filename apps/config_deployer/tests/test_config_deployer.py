@@ -54,8 +54,8 @@ def test_docs_element(match_out_and_expected_files):
 
     def test_all_docs_are_included_in_files():
         for json_data_pair in match_out_and_expected_files:
-            for out_doc_id in json_data_pair[0]['docs']:
-                assert any(out_doc_id == exp_doc_id for exp_doc_id in json_data_pair[1]['docs'])
+            for out_doc in json_data_pair[0]['docs']:
+                assert any(out_doc == exp_doc for exp_doc in json_data_pair[1]['docs'])
 
     test_number_of_docs_in_files()
     test_all_docs_are_included_in_files()
@@ -68,8 +68,9 @@ def test_product_families_element(match_out_and_expected_files):
 
     def test_all_product_families_are_included_in_files():
         for json_data_pair in match_out_and_expected_files:
-            for out_doc_id in json_data_pair[0]['docs']:
-                assert any(out_doc_id == exp_doc_id for exp_doc_id in json_data_pair[1]['docs'])
+            for out_product_family in json_data_pair[0]['productFamilies']:
+                assert any(out_product_family == exp_product_family for exp_product_family in
+                           json_data_pair[1]['productFamilies'])
 
     test_number_of_product_families()
     test_all_product_families_are_included_in_files()

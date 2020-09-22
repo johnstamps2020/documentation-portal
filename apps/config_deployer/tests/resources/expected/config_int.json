@@ -1,4 +1,91 @@
 {
+  "productFamilies": [
+    {
+      "productFamilyName": "BillingCenter Cloud",
+      "products": [
+        "BillingCenter for Guidewire Cloud",
+        "InsuranceSuite Configuration Upgrade Tools",
+        "BillingCenter Upgrade Tools",
+        "Cloud Data Access",
+        "CustomerEngage Account Management",
+        "DataHub",
+        "Explore",
+        "Guidewire InsuranceSuite Package for Germany",
+        "InfoCenter",
+        "ProducerEngage",
+        "ServiceRepEngage"
+      ]
+    },
+    {
+      "productFamilyName": "ClaimCenter Cloud",
+      "products": [
+        "ClaimCenter for Guidewire Cloud",
+        "InsuranceSuite Configuration Upgrade Tools",
+        "Cloud Data Access",
+        "CustomerEngage Account Management",
+        "CustomerEngage Account Management for ClaimCenter",
+        "DataHub",
+        "Explore",
+        "Guidewire InsuranceSuite Package for Germany",
+        "InfoCenter",
+        "ProducerEngage",
+        "ProducerEngage for ClaimCenter",
+        "ServiceRepEngage",
+        "VendorEngage"
+      ]
+    },
+    {
+      "productFamilyName": "PolicyCenter Cloud",
+      "products": [
+        "PolicyCenter for Guidewire Cloud",
+        "InsuranceSuite Configuration Upgrade Tools",
+        "Businessowners Standards Based Template",
+        "Cloud Data Access",
+        "CustomerEngage Account Management",
+        "CustomerEngage Quote and Buy",
+        "DataHub",
+        "Digital Code Generation",
+        "Explore",
+        "Guidewire InsuranceSuite Package for Germany",
+        "InfoCenter",
+        "ProducerEngage",
+        "ServiceRepEngage"
+      ]
+    },
+    {
+      "productFamilyName": "InsuranceNow",
+      "products": [
+        "InsuranceNow 2020.1x - External Audience",
+        "InsuranceNow 2020.1x - Internal Audience",
+        "InsuranceNow 2020.2x - External Audience",
+        "InsuranceNow 2020.2x - Internal Audience",
+        "InsuranceNow"
+      ]
+    },
+    {
+      "productFamilyName": "Guidewire Cloud Platform",
+      "products": [
+        "Guidewire Cloud Console",
+        "Guidewire Identity Federation Hub"
+      ]
+    },
+    {
+      "productFamilyName": "Testing Frameworks",
+      "products": ["Testing Frameworks"]
+    },
+    {
+      "productFamilyName": "Jutro",
+      "products": ["Jutro"]
+    },
+    {
+      "productFamilyName": "Guidewire Feature Preview",
+      "products": ["Guidewire Feature Preview"]
+    },
+    {
+      "productFamilyName": "SurePath Standards",
+      "products": ["SurePath Standards"]
+    }
+  ],
   "docs": [
     {
       "id": "cloudbclatestvkeurqms",

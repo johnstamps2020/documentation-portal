@@ -5,13 +5,11 @@ from typing import Dict
 
 
 def get_docs_for_env(config_file: Path, env_name: str) -> Dict:
-    result_config = {'docs': []}
     with open(config_file) as config_file:
         json_data = json.load(config_file)
-        for doc in json_data['docs']:
-            if env_name in doc['environments']:
-                result_config['docs'].append(doc)
-    return result_config
+        json_data.pop('$schema')
+        json_data['docs'] = [doc for doc in json_data['docs'] if env_name in doc['environments']]
+    return json_data
 
 
 def save_config_for_env(save_path: Path, config_content: Dict):
