@@ -1,4 +1,5 @@
 import filecmp
+import json
 import shutil
 from pathlib import Path
 
@@ -23,6 +24,24 @@ def generate_configs():
         )
 
 
+@pytest.fixture(scope='session')
+def match_out_and_expected_files():
+    matching_files_json_data = []
+    for out_file in out_dir.iterdir():
+        matching_expected_file = next(
+            expected_file for expected_file in expected_dir.iterdir() if expected_file.name == out_file.name)
+        with open(out_file) as of:
+            out_file_json_data = json.load(of)
+        with open(matching_expected_file) as mef:
+            expected_file_json_data = json.load(mef)
+
+        matching_files_json_data.append(
+            (out_file_json_data, expected_file_json_data)
+        )
+
+    return matching_files_json_data
+
+
 def test_out_dir_has_expected_files():
     dir_comp = filecmp.dircmp(out_dir, expected_dir)
     assert dir_comp.left_list == dir_comp.right_list
@@ -30,8 +49,34 @@ def test_out_dir_has_expected_files():
 
 def test_out_files_have_expected_content():
     for out_file in out_dir.iterdir():
-        for expected_file in expected_dir.iterdir():
-            if out_file.name == expected_file.name:
-                assert filecmp.cmp(out_file, expected_file, shallow=False)
+        matching_expected_file = next(
+            expected_file for expected_file in expected_dir.iterdir() if expected_file.name == out_file.name)
+        assert filecmp.cmp(out_file, matching_expected_file, shallow=False)
 
-#TODO: Add a test for counting the number of docs in the config files
+
+def test_docs_element(match_out_and_expected_files):
+    def test_number_of_docs_in_files():
+        for json_data_pair in match_out_and_expected_files:
+            assert len(json_data_pair[0]['docs']) == len(json_data_pair[1]['docs'])
+
+    def test_all_docs_are_included_in_files():
+        for json_data_pair in match_out_and_expected_files:
+            for out_doc_id in json_data_pair[0]['docs']:
+                assert any(out_doc_id == exp_doc_id for exp_doc_id in json_data_pair[1]['docs'])
+
+    test_number_of_docs_in_files()
+    test_all_docs_are_included_in_files()
+
+
+def test_product_families_element(match_out_and_expected_files):
+    def test_number_of_product_families():
+        for json_data_pair in match_out_and_expected_files:
+            assert len(json_data_pair[0]['productFamilies']) == len(json_data_pair[1]['productFamilies'])
+
+    def test_all_product_families_are_included_in_files():
+        for json_data_pair in match_out_and_expected_files:
+            for out_doc_id in json_data_pair[0]['docs']:
+                assert any(out_doc_id == exp_doc_id for exp_doc_id in json_data_pair[1]['docs'])
+
+    test_number_of_product_families()
+    test_all_product_families_are_included_in_files()
