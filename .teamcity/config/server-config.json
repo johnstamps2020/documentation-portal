@@ -197,8 +197,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
           }
         ]
       },
@@ -228,8 +233,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
           }
         ]
       },
@@ -886,8 +896,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
           }
         ]
       },
@@ -911,8 +926,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
           }
         ]
       },
@@ -1697,8 +1717,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
           }
         ]
       },
@@ -1728,8 +1753,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
           }
         ]
       },
@@ -2123,8 +2153,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+            "targetFolder": "extras/DataHub"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
           }
         ]
       },
@@ -2148,8 +2183,13 @@
         "resources": [
           {
             "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter",
-            "targetFolder": "extras"
+            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+            "targetFolder": "extras/InfoCenter"
+          },
+          {
+            "src": "dhicextrassrc",
+            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
           }
         ]
       },
