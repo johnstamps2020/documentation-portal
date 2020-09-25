@@ -1074,7 +1074,6 @@ object HelperObjects {
 
                     val stepId = "COPY_RESOURCES$stepIdSuffix"
                     stepIds.add(stepId)
-                    stepIdSuffix += 1
 
                     extraSteps.add(ScriptBuildStep {
                         id = stepId
@@ -1083,7 +1082,9 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
                         
-                        git clone --single-branch --branch $resourceGitBranch $resourceGitUrl resource
+                        export RESOURCE_DIR="resource$stepIdSuffix"
+                        
+                        git clone --single-branch --branch $resourceGitBranch $resourceGitUrl ${'$'}RESOURCE_DIR
                         export S3_BUCKET_NAME=tenant-doctools-%env.DEPLOY_ENV%-builds
                         if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                             echo "Setting credentials to access prod"
@@ -1093,9 +1094,12 @@ object HelperObjects {
                         fi
                         
                         echo "Copying files to S3"
-                        aws s3 sync ./resource/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
+                        aws s3 sync ./${'$'}RESOURCE_DIR/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
                     """.trimIndent()
                     })
+
+                    stepIdSuffix += 1
+
                 }
 
                 steps {
