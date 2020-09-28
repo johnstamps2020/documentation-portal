@@ -1,5 +1,11 @@
 const getConfig = require('./configController');
 
+const {
+  getUniqueInMetadataArrays,
+  getUniqueInMetadataFields,
+  getSortedVersions
+} = require('../routes/helpers/metadata');
+
 async function getSelfManagedProducts() {
   try {
     const config = await getConfig();
@@ -25,8 +31,7 @@ async function getSelfManagedProducts() {
       productArray.forEach(product => {
         const productReleases = product[1].filter(doc => doc.visible !== false);
         const docsSortedFromLatestToOldest = productReleases.sort((a, b) =>
-          parseInt(a.metadata.version) > parseInt(b.metadata.version) ? -1 : 1
-        );
+          a.metadata.version.replace(/\d+/g, n => +n+100).localeCompare(b.metadata.version.replace(/\d+/g, n => +n+100))).reverse();
 
         if (docsSortedFromLatestToOldest.length > 0) {
           productsInCategory.push({
