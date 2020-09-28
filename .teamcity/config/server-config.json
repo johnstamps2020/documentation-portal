@@ -2220,78 +2220,6 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "dxceam1120onpremstaging",
-      "title": "CustomerEngage Account Management",
-      "url": "self-managed/dx/ce-am/1120",
-      "metadata": {
-        "product": ["CustomerEngage Account Management"],
-        "platform": ["Self-managed"],
-        "version": "11.2.0",
-        "category": ["Digital"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-am-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "dxceqb1120onpremstaging",
-      "title": "CustomerEngage Quote and Buy",
-      "url": "self-managed/dx/ce-qb/1120",
-      "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
-        "platform": ["Self-managed"],
-        "version": "11.2.0",
-        "category": ["Digital"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-qb-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "dxpe1120onpremstaging",
-      "title": "ProducerEngage",
-      "url": "self-managed/dx/pe/1120",
-      "metadata": {
-        "product": ["ProducerEngage"],
-        "platform": ["Self-managed"],
-        "version": "11.2.0",
-        "category": ["Digital"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "dxsre1120onpremstaging",
-      "title": "ServiceRepEngage",
-      "url": "self-managed/dx/sre/1120",
-      "metadata": {
-        "product": ["ServiceRepEngage"],
-        "platform": ["Self-managed"],
-        "version": "11.2.0",
-        "category": ["Digital"]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-sre-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
       "id": "dxceam1130",
       "title": "CustomerEngage Account Management",
       "url": "self-managed/dx/ce-am/1130",
@@ -2414,6 +2342,78 @@
         "filter": "Digital-ve-OnPrem.ditaval",
         "root": "DX_superbook.ditamap",
         "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceam1120onpremstaging",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/1120",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Self-managed"],
+        "version": "11.2.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dx1120"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceqb1120onpremstaging",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/1120",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Self-managed"],
+        "version": "11.2.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dx1120"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxpe1120onpremstaging",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1120",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.2.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dx1120"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxsre1120onpremstaging",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1120",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.2.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dx1120"
       },
       "environments": ["dev", "staging", "prod"]
     },
