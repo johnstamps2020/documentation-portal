@@ -1509,6 +1509,45 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
+      "id": "selfmanagedbcupgradeguide1010",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "selfmanagedccupgradeguide1010",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1010",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
       "id": "bc1010staging",
       "title": "BillingCenter",
       "url": "self-managed/bc/1010",
@@ -2057,45 +2096,6 @@
         "version": "3.0.0",
         "category": ["Core"],
         "release": ["Aspen"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "selfmanagedbcupgradeguide1010",
-      "title": "BillingCenter Upgrade Guide",
-      "url": "self-managed/bc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
-        "version": "10.1.0",
-        "category": ["Core"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "selfmanagedccupgradeguide1010",
-      "title": "ClaimCenter Upgrade Guide",
-      "url": "self-managed/cc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
-        "version": "10.1.0",
-        "category": ["Core"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "selfmanagedpcupgradeguide1010",
-      "title": "PolicyCenter Upgrade Guide",
-      "url": "self-managed/pc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
-        "version": "10.1.0",
-        "category": ["Core"]
       },
       "environments": ["dev", "staging", "prod"]
     },
