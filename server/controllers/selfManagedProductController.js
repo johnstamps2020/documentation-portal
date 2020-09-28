@@ -1,11 +1,5 @@
 const getConfig = require('./configController');
 
-const {
-  getUniqueInMetadataArrays,
-  getUniqueInMetadataFields,
-  getSortedVersions
-} = require('../routes/helpers/metadata');
-
 async function getSelfManagedProducts() {
   try {
     const config = await getConfig();
