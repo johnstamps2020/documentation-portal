@@ -2,16 +2,14 @@
   "$schema": "./config-schema.json",
   "productFamilies": [
     {
-      "productFamilyName": "PolicyCenter Cloud",
+      "productFamilyName": "BillingCenter Cloud",
       "products": [
-        "PolicyCenter for Guidewire Cloud",
+        "BillingCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
-        "Businessowners Standards Based Template",
+        "BillingCenter Upgrade Tools",
         "Cloud Data Access",
         "CustomerEngage Account Management",
-        "CustomerEngage Quote and Buy",
         "DataHub",
-        "Digital Code Generation",
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
         "InfoCenter",
@@ -38,14 +36,16 @@
       ]
     },
     {
-      "productFamilyName": "BillingCenter Cloud",
+      "productFamilyName": "PolicyCenter Cloud",
       "products": [
-        "BillingCenter for Guidewire Cloud",
+        "PolicyCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
-        "BillingCenter Upgrade Tools",
+        "Businessowners Standards Based Template",
         "Cloud Data Access",
         "CustomerEngage Account Management",
+        "CustomerEngage Quote and Buy",
         "DataHub",
+        "Digital Code Generation",
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
         "InfoCenter",
@@ -680,7 +680,7 @@
         "root": "_supermap-10x-active.ditamap",
         "src": "selfmanagedis10xdraft"
       },
-      "environments": ["dev", "int"]
+      "environments": ["int"]
     },
     {
       "id": "selfmanagedccxbvqtoakg",

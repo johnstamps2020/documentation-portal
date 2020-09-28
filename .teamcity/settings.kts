@@ -995,7 +995,7 @@ object HelperObjects {
 
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
-        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
+        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_title: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
             if (index_for_search) {
                 templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
             } else {
@@ -1025,6 +1025,7 @@ object HelperObjects {
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_TITLE", doc_title, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1164,7 +1165,7 @@ object HelperObjects {
 
         val docId = doc.getString("id")
         val publishPath = doc.getString("url")
-        val title = doc.getString("title")
+        val docTitle = doc.getString("title")
 
         val metadata = doc.getJSONObject("metadata")
         val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
@@ -1210,14 +1211,14 @@ object HelperObjects {
             if (env == "prod") {
                 builds.add(PublishToS3IndexProd(publishPath, docId))
             } else {
-                builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
+                builds.add(BuildPublishToS3Index(product_name, platform, version, docTitle, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
             }
         }
 
         return Project {
-            id = RelativeId(removeSpecialCharacters(title + product_name + version + docId))
-            name = "$title $platform $product_name $version"
+            id = RelativeId(removeSpecialCharacters(docTitle + product_name + version + docId))
+            name = "$docTitle $platform $product_name $version"
 
             vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
 
@@ -1232,8 +1233,8 @@ object HelperObjects {
         for (i in 0 until docConfigs.length()) {
             val doc = docConfigs.getJSONObject(i)
             val metadata = doc.getJSONObject("metadata")
-            if (metadata.has("product")) {
-                val docProducts = metadata.getJSONArray("product")
+            if (metadata.has("products")) {
+                val docProducts = metadata.getJSONArray("products")
                 for (docProduct in docProducts) {
                     if (!products.contains(docProduct.toString())) {
                         products.add(docProduct.toString())
@@ -1250,9 +1251,9 @@ object HelperObjects {
                 val doc = docConfigs.getJSONObject(i)
                 if (doc.has("build") && !docsInProduct.contains(doc)) {
                     val metadata = doc.getJSONObject("metadata")
-                    if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
+                    if (metadata.has("products") && metadata.getJSONArray("products").contains(product)) {
                         docsInProduct.add(doc)
-                    } else if (!metadata.has("product") && product == noProductLabel) {
+                    } else if (!metadata.has("products") && product == noProductLabel) {
                         docsInProduct.add(doc)
                     }
                 }
@@ -1272,7 +1273,7 @@ object HelperObjects {
             val docId = doc_info.getString("id")
             val docTitle = doc_info.getString("title")
             val docMetadata = doc_info.getJSONObject("metadata")
-            val docProduct = docMetadata.getJSONArray("product").joinToString(separator = ",")
+            val docProduct = docMetadata.getJSONArray("products").joinToString(separator = ",")
             val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
             val docVersion = docMetadata.getString("version")
 
@@ -1748,6 +1749,7 @@ object BuildOutputFromDita : Template({
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+        text("env.GW_TITLE", "%GW_TITLE%", allowEmpty = false)
         text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
         text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
@@ -1772,7 +1774,7 @@ object BuildOutputFromDita : Template({
                 export OUTPUT_PATH="out"
                 export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
 
-                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
+                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --gw-title \"%env.GW_TITLE%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""

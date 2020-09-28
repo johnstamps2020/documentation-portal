@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const getCloudProductFamilies = require('../controllers/cloudProductFamilyController');
 const {
-  getHighestRelease,
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
-  getHighestVersion,
+  getSortedVersions
 } = require('./helpers/metadata');
 
 async function getSingleProductFamily(productFamilyId) {
@@ -30,7 +29,9 @@ router.get('/:productFamilyId', async function(req, res, next) {
       'release'
     );
 
-    const highestRelease = getHighestRelease(availableReleases);
+    const sortedReleases = getSortedVersions(availableReleases);
+
+    const highestRelease = sortedReleases[0];
 
     res.redirect(`${req.params.productFamilyId}/${highestRelease}`);
   } catch (err) {
@@ -47,6 +48,8 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
       'release'
     );
 
+    const sortedReleases = getSortedVersions(availableReleases);
+
     const docsInRelease = getDocsInRelease(productFamily.docs, release);
 
     let availableCategories = getUniqueInMetadataArrays(
@@ -62,13 +65,13 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
 
       const productsInCategory = getUniqueInMetadataArrays(
         docsInCategory,
-        'product'
+        'products'
       );
 
       let linksInProduct = [];
       for (const product of productsInCategory) {
         const docsInProduct = docsInRelease.filter(d =>
-          d.metadata.product.includes(product)
+          d.metadata.products.includes(product)
         );
 
         if (docsInProduct.length === 1) {
@@ -94,13 +97,12 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
       }
     }
 
-    res.render('grouped-links', {
+    res.render('grouped-cards', {
       title: `${productFamily.name} ${release}`,
       docGroups: productLinks,
-      returnUrl: '/',
-      returnLabel: 'Back to Cloud product documentation',
+      breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
       selectedRelease: release,
-      availableReleases: availableReleases,
+      sortedReleases: sortedReleases,
     });
   } catch (err) {
     next(err);
@@ -118,7 +120,7 @@ router.get('/:productFamilyId/:release/:product', async function(
     const docsInProduct = productFamily.docs.filter(
       d =>
         d.metadata.release.includes(release) &&
-        d.metadata.product.includes(product)
+        d.metadata.products.includes(product)
     );
 
     const availableVersions = getUniqueInMetadataFields(
@@ -126,7 +128,7 @@ router.get('/:productFamilyId/:release/:product', async function(
       'version'
     );
 
-    const highestVersion = getHighestVersion(availableVersions);
+    const highestVersion = getSortedVersions(availableVersions)[0];
 
     res.redirect(`${product}/${highestVersion}`);
   } catch (err) {
@@ -145,12 +147,14 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
     const docsInProduct = productFamily.docs.filter(
       d =>
         d.metadata.release.includes(release) &&
-        d.metadata.product.includes(product)
+        d.metadata.products.includes(product)
     );
     const availableVersions = getUniqueInMetadataFields(
       docsInProduct,
       'version'
     );
+
+    const sortedVersions = getSortedVersions(availableVersions);
 
     const docsInVersion = docsInProduct.filter(
       d => d.metadata.version === version
@@ -185,10 +189,13 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
     res.render('grouped-links', {
       title: `${product} ${version}`,
       docGroups: docsBySubject,
-      returnUrl: `/products/${productFamilyId}/${release}`,
-      returnLabel: `Back to the ${release} release`,
+      breadcrumb: [
+        { href: `/`, label: 'Cloud documentation' },
+        { href: `/products/${productFamilyId}`, label: productFamily.name },
+        { href: `/products/${productFamilyId}/${release}`, label: release },
+      ],
       selectedRelease: version,
-      availableReleases: availableVersions,
+      sortedVersions: sortedVersions,
     });
   } catch (err) {
     next(err);

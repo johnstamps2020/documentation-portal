@@ -74,6 +74,11 @@ a.returnLink {
   background-color: var(--GW-COLOR-BKGD-1);
 }
 
+.linkGroup {
+  padding: 3rem;
+  width: 25%;
+}
+
 .productCard {
   box-shadow: var(--GW-BOX-SHADOW-OUTER-2);
   background-color: white;
@@ -422,12 +427,12 @@ a.returnLink {
 }
 
 .docPageTitle {
-  height: 48px;
+  /* height: 48px; */
 }
 
 .docPageHeaderItems {
-  margin-top: 64px;
-  margin-bottom: 54px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .docPageTitle h1 {
@@ -542,4 +547,26 @@ a.returnLink {
   border-radius: 6px;
   border: 1px solid var(--GW-COLOR-BRAND-2);
   margin: 8px;
+}
+
+.docBreadcrumb {
+  padding: 8px 0;
+}
+
+.docBreadcrumb a {
+  display: inline-block;
+}
+
+.docBreadcrumb:hover a {
+  text-decoration: none;
+}
+
+.docBreadcrumb a::after {
+  content: '>';
+  margin: 0 8px;
+  color: gray;
+}
+
+.docBreadcrumb a:last-child::after {
+  content: none;
 }

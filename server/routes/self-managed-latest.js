@@ -4,7 +4,7 @@ const getConfig = require('../controllers/configController');
 const {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
-  getHighestVersion,
+  getSortedVersions
 } = require('./helpers/metadata');
 
 async function getSelfManagedDocs() {
@@ -27,10 +27,10 @@ router.get('/', async function(req, res, next) {
       const docsInCategory = docs.filter(d =>
         d.metadata.category.includes(category)
       );
-      const products = getUniqueInMetadataArrays(docsInCategory, 'product');
+      const products = getUniqueInMetadataArrays(docsInCategory, 'products');
       for (const product of products) {
         docsInProduct = docsInCategory.filter(d =>
-          d.metadata.product.includes(product)
+          d.metadata.products.includes(product)
         );
         if (docsInProduct.length === 1) {
           const onlyVersion = docsInProduct[0].metadata.version;
@@ -41,9 +41,9 @@ router.get('/', async function(req, res, next) {
         }
 
         if (docsInProduct.length > 1) {
-          const version = getHighestVersion(
+          const version = getSortedVersions(
             getUniqueInMetadataFields(docsInProduct, 'version')
-          );
+          )[0];
           linksForCategory.push({
             title: product,
             url: `self-managed-latest/${product}/${version}`,
@@ -73,14 +73,14 @@ router.get('/:product/:version', async function(req, res, next) {
     const docs = await getSelfManagedDocs();
 
     const docsInProduct = docs.filter(d =>
-      d.metadata.product.includes(product)
+      d.metadata.products.includes(product)
     );
     const versions = getUniqueInMetadataFields(docsInProduct, 'version');
+    const sortedVersions = getSortedVersions(versions);
 
     const docsInVersion = docsInProduct.filter(
       d => d.metadata.version === version
     );
-    console.log('DOCS IN VERSION', docsInVersion);
 
     let docLinks = [];
     for (const category of getUniqueInMetadataArrays(
@@ -96,13 +96,14 @@ router.get('/:product/:version', async function(req, res, next) {
       });
     }
 
-    res.render('grouped-links', {
+    res.render('grouped-cards', {
       title: `${product} ${version}`,
       docGroups: docLinks,
-      returnUrl: `/self-managed-latest`,
-      returnLabel: `Back to self-managed products`,
+      breadcrumb: [
+        { href: `/self-managed-latest`, label: 'Self-managed documentation' },
+      ],
       selectedRelease: version,
-      availableReleases: versions,
+      availableReleases: sortedVersions,
     });
   } catch (err) {
     next(err);

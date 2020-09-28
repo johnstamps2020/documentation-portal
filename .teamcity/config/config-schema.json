@@ -17,6 +17,13 @@
         "$ref": "#/definitions/source"
       }
     },
+    "productFamilies": {
+      "description": "A list of available product families, and the products that belong to them",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/productFamily"
+      }
+    },
     "docs": {
       "description": "A list of available docs, along with urls, metadata, and optional build information",
       "type": "array",
@@ -75,76 +82,8 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "productFamily": {
-          "description": "The name of the product family, for cloud docs only.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "BillingCenter Cloud",
-              "ClaimCenter Cloud",
-              "PolicyCenter Cloud",
-              "InsuranceNow",
-              "Guidewire Cloud Platform",
-              "Guidewire Feature Preview",
-              "Integration Framework",
-              "SurePath Standards",
-              "Testing Frameworks",
-              "Jutro"
-            ]
-          }
-        },
-        "product": {
-          "description": "The name of the product",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "PolicyCenter",
-              "BillingCenter",
-              "ClaimCenter",
-              "InsuranceSuite Configuration Upgrade Tools",
-              "PolicyCenter Upgrade Tools",
-              "BillingCenter Upgrade Tools",
-              "ClaimCenter Upgrade Tools",
-              "Businessowners Standards Based Template",
-              "DataHub",
-              "InfoCenter",
-              "Business Analytics",
-              "Cloud Data Access",
-              "Configuration Manager",
-              "Explore",
-              "CustomerEngage Account Management",
-              "CustomerEngage Account Management for ClaimCenter",
-              "CustomerEngage Quote and Buy",
-              "Digital Code Generation",
-              "Guidewire for Salesforce Data Integrations",
-              "Guidewire for Salesforce Data Integrations for Claims",
-              "Guidewire for Salesforce Digital Gateway",
-              "Guidewire for Salesforce Digital Gateway for Claims",
-              "Guidewire for Salesforce View on Demand",
-              "Guidewire for Salesforce View on Demand for Claims",
-              "Guidewire for Salesforce ProducerEngage",
-              "ProducerEngage",
-              "ProducerEngage for ClaimCenter",
-              "ServiceRepEngage",
-              "SurePath Standards",
-              "VendorEngage",
-              "Guidewire Cloud Platform",
-              "Guidewire Cloud Console",
-              "Guidewire Feature Preview",
-              "Guidewire Identity Federation Hub",
-              "Guidewire InsuranceSuite Package for Germany",
-              "InsuranceNow",
-              "InsuranceNow 2020.1x - Internal Audience",
-              "InsuranceNow 2020.1x - External Audience",
-              "InsuranceNow 2020.2x - Internal Audience",
-              "InsuranceNow 2020.2x - External Audience",
-              "REST API Client",
-              "Testing Frameworks",
-              "Jutro"
-            ]
-          }
+        "products": {
+          "$ref": "#definitions/products"
         },
         "platform": {
           "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
@@ -217,6 +156,90 @@
           "examples": ["release-1.0", "usaa-experimental"]
         }
       }
+    },
+    "productFamily": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["productFamilyName", "products"],
+      "properties": {
+        "productFamilyName": {
+          "$ref": "#/definitions/productFamilyName"
+        },
+        "products": {
+          "$ref": "#/definitions/products"
+        }
+      }
+    },
+    "productFamilyName": {
+      "description": "The name of the product family, for cloud docs only.",
+      "type": "string",
+      "enum": [
+        "BillingCenter Cloud",
+        "ClaimCenter Cloud",
+        "PolicyCenter Cloud",
+        "InsuranceNow",
+        "Guidewire Cloud Platform",
+        "Guidewire Feature Preview",
+        "Integration Framework",
+        "SurePath Standards",
+        "Testing Frameworks",
+        "Jutro"
+      ]
+    },
+    "products": {
+          "description": "The name of the product",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PolicyCenter",
+              "BillingCenter",
+              "ClaimCenter",
+              "BillingCenter for Guidewire Cloud",
+              "ClaimCenter for Guidewire Cloud",
+              "PolicyCenter for Guidewire Cloud",
+              "InsuranceSuite Configuration Upgrade Tools",
+              "PolicyCenter Upgrade Tools",
+              "BillingCenter Upgrade Tools",
+              "ClaimCenter Upgrade Tools",
+              "Businessowners Standards Based Template",
+              "DataHub",
+              "InfoCenter",
+              "Business Analytics",
+              "Cloud Data Access",
+              "Configuration Manager",
+              "Explore",
+              "CustomerEngage Account Management",
+              "CustomerEngage Account Management for ClaimCenter",
+              "CustomerEngage Quote and Buy",
+              "Digital Code Generation",
+              "Guidewire for Salesforce Data Integrations",
+              "Guidewire for Salesforce Data Integrations for Claims",
+              "Guidewire for Salesforce Digital Gateway",
+              "Guidewire for Salesforce Digital Gateway for Claims",
+              "Guidewire for Salesforce View on Demand",
+              "Guidewire for Salesforce View on Demand for Claims",
+              "Guidewire for Salesforce ProducerEngage",
+              "ProducerEngage",
+              "ProducerEngage for ClaimCenter",
+              "ServiceRepEngage",
+              "SurePath Standards",
+              "VendorEngage",
+              "Guidewire Cloud Platform",
+              "Guidewire Cloud Console",
+              "Guidewire Feature Preview",
+              "Guidewire Identity Federation Hub",
+              "Guidewire InsuranceSuite Package for Germany",
+              "InsuranceNow",
+              "InsuranceNow 2020.1x - Internal Audience",
+              "InsuranceNow 2020.1x - External Audience",
+              "InsuranceNow 2020.2x - Internal Audience",
+              "InsuranceNow 2020.2x - External Audience",
+              "REST API Client",
+              "Testing Frameworks",
+              "Jutro"
+            ]
+          }
     },
     "doc": {
       "type": "object",
