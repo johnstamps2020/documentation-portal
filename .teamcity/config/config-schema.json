@@ -18,17 +18,17 @@
       }
     },
     "docs": {
-      "description": "A list of available docs, along with urls, metadata, and optional build information",
+      "description": "A list of available docs, along with urls and metadata",
       "type": "array",
       "items": {
         "$ref": "#/definitions/doc"
       }
     },
-    "pages": {
-      "description": "A list of landing pages to show on the website",
+    "builds": {
+      "description": "A list of build configurations which include information about the source, doc, and build parameters",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/page"
+        "$ref": "#/definitions/build"
       }
     }
   },
@@ -41,13 +41,9 @@
       "description": "A human-readable title, for displaying to humans in various human scenarios. All of us humans know what it is. Right, fellow humans?",
       "type": "string"
     },
-    "src": {
-      "description": "Refers to the ID of an item in the array of 'sources'.",
-      "type": "string"
-    },
     "resource": {
       "additionalProperties": false,
-      "required": ["targetFolder", "sourceFolder", "src"],
+      "required": ["targetFolder", "sourceFolder", "srcId"],
       "properties": {
         "targetFolder": {
           "description": "For resources, it is the path where we want to place the resource.",
@@ -57,8 +53,8 @@
           "description": "The folder in the repo to use as the start directory. Copy everything in that folder.",
           "type": "string"
         },
-        "src": {
-          "$ref": "#/definitions/src"
+        "srcId": {
+          "$ref": "#/definitions/id"
         }
       }
     },
@@ -244,34 +240,15 @@
         "metadata": {
           "$ref": "#/definitions/metadata"
         },
-        "build": {
-          "$ref": "#/definitions/build"
-        },
         "environments": {
           "$ref": "#/definitions/environments"
-        }
-      }
-    },
-    "page": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["view", "route"],
-      "properties": {
-        "view": {
-          "description": "The name of the view to use on the server",
-          "type": "string"
-        },
-        "route": {
-          "description": "The address on the server, relative to the root",
-          "type": "string",
-          "examples": ["/", "/self-managed/all-releases", "/audiences"]
         }
       }
     },
     "build": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["buildType", "root", "src"],
+      "required": ["buildType", "root", "srcId"],
       "properties": {
         "buildType": {
           "description": "The build type to apply",
@@ -295,8 +272,11 @@
           "description": "If set to true, add a script to the landing page that redirects the user to the first topic in the table of contents. Defaults to false if not set.",
           "type": "boolean"
         },
-        "src": {
-          "$ref": "#/definitions/src"
+        "srcId": {
+          "$ref": "#/definitions/id"
+        },
+        "docId": {
+          "$ref": "#/definitions/id"
         },
         "resources": {
           "type": "array",

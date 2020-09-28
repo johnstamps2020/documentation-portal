@@ -1,70 +1,98 @@
 import json
 from pathlib import Path
+from typing import Dict
 
 from jsonschema import validate
 
 root_dir = Path(__file__).parent.parent.parent.parent.parent
 
-config_path = root_dir / '.teamcity' / 'config' / 'server-config.json'
+server_config_path = root_dir / '.teamcity' / 'config' / 'server-config.json'
 sources_path = root_dir / '.teamcity' / 'config' / 'sources.json'
+builds_path = root_dir / '.teamcity' / 'config' / 'builds.json'
 schema_path = root_dir / '.teamcity' / 'config' / 'config-schema.json'
 
 
-def load_json_file(file_path: Path()):
+def load_json_file(file_path: Path):
     with open(file_path) as config_file:
         return json.load(config_file)
 
 
-def test_config_exists():
+def prop_is_unique_in_file(config_json: Dict, prop_label: str, root_node_label: str):
+    prop_values = [x.get(prop_label) for x in config_json[root_node_label]]
+    unique_values = []
+    duplicates = []
+    for prop_value in prop_values:
+        if prop_value not in unique_values:
+            unique_values.append(prop_value)
+        else:
+            duplicates.append(prop_value)
     try:
-        assert config_path.exists()
+        assert not duplicates
     except AssertionError:
-        raise AssertionError(f'Cannot find the config file: {config_path}')
+        raise AssertionError(
+            f'Found duplicate {prop_label}(s): {duplicates}')
 
 
-def test_config_is_valid():
-    def raise_exception_if_not_unique(values: list, prop_label):
-        unique_values = []
-        duplicates = []
-        for item in values:
-            if not item in unique_values:
-                unique_values.append(item)
-            else:
-                duplicates.append(item)
+def referenced_sources_exist(builds_json: Dict, sources_json: Dict):
+    source_ids = [source['id'] for source in sources_json['sources']]
+    referenced_ids = [build['srcId'] for build in builds_json['builds']]
+
+    refs_to_missing_sources = []
+    for referenced_id in referenced_ids:
+        if referenced_id not in source_ids:
+            refs_to_missing_sources.append(referenced_id)
+
+    try:
+        assert not refs_to_missing_sources
+    except AssertionError:
+        raise AssertionError(f'One or more builds reference missing source IDs: {refs_to_missing_sources}')
+
+
+def referenced_docs_exist(builds_json: Dict, config_json: Dict):
+    doc_ids = [doc['id'] for doc in config_json['docs']]
+    referenced_ids = [build['docId'] for build in builds_json['builds']]
+
+    refs_to_missing_docs = []
+    for referenced_id in referenced_ids:
+        if referenced_id not in doc_ids:
+            refs_to_missing_docs.append(referenced_id)
+
+    try:
+        assert not refs_to_missing_docs
+    except AssertionError:
+        raise AssertionError(f'One or more builds reference missing doc IDs: {refs_to_missing_docs}')
+
+
+def is_valid_with_schema(config_json: Dict):
+    config_schema = load_json_file(schema_path)
+    validate(instance=config_json, schema=config_schema)
+
+
+def test_config_files_exist():
+    config_file_paths = [server_config_path, sources_path, builds_path]
+    for config_file_path in config_file_paths:
         try:
-            assert not duplicates
+            assert config_file_path.exists()
         except AssertionError:
-            raise AssertionError(
-                f'Found duplicate {prop_label}(s): {duplicates}')
+            raise AssertionError(f'Cannot find the config file: {config_file_path}')
 
-    def props_are_unique_in_file(config_json: object, sources_json: object):
-        ids = [x.get('id')
-               for x in config_json['docs'] + sources_json['sources']]
-        raise_exception_if_not_unique(ids, 'id')
 
-    def referenced_sources_exist(config_json: str, sources_json: object):
-        source_ids = [x.get('id') for x in sources_json['sources']]
-        referenced_ids = []
-        for doc in config_json['docs']:
-            if doc.get('build', None):
-                referenced_ids.append(doc['build']['src'])
+server_config_object = load_json_file(server_config_path)
+sources_object = load_json_file(sources_path)
+builds_object = load_json_file(builds_path)
 
-        refs_to_missing_sources = []
-        for referenced_id in referenced_ids:
-            if not referenced_id in source_ids:
-                refs_to_missing_sources.append(referenced_id)
 
-        try:
-            assert not refs_to_missing_sources
-        except AssertionError:
-            raise AssertionError(f'One or more builds reference missing source IDs: {refs_to_missing_sources}')
+def test_docs_config():
+    is_valid_with_schema(server_config_object)
+    prop_is_unique_in_file(server_config_object, 'id', 'docs')
 
-    def is_valid_with_schema(config_json: str):
-        config_schema = load_json_file(schema_path)
-        validate(instance=config_json, schema=config_schema)
 
-    json_object = load_json_file(config_path)
-    sources_object = load_json_file(sources_path)
-    is_valid_with_schema(json_object)
-    props_are_unique_in_file(json_object, sources_object)
-    referenced_sources_exist(json_object, sources_object)
+def test_sources_config():
+    is_valid_with_schema(sources_object)
+    prop_is_unique_in_file(sources_object, 'id', 'sources')
+
+
+def test_builds_config():
+    is_valid_with_schema(builds_object)
+    referenced_sources_exist(builds_object, sources_object)
+    referenced_docs_exist(builds_object, server_config_object)
