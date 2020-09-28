@@ -1,13 +1,3 @@
-exports.getHighestRelease = function(listOfReleases) {
-  const releasesFromNewest = ['Banff', 'Aspen'];
-
-  for (const releaseName of releasesFromNewest) {
-    if (listOfReleases.includes(releaseName)) {
-      return releaseName;
-    }
-  }
-};
-
 exports.getUniqueInMetadataArrays = function(listOfDocs, fieldName) {
   let availableValues = [];
   for (const doc of listOfDocs) {
