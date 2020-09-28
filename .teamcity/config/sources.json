@@ -223,8 +223,8 @@
       ]
     },
     {
-      "id": "dx1120",
-      "title": "Digital 11.2.0",
+      "id": "dx1130",
+      "title": "Digital 11.3.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "11.3.0",
