@@ -1297,7 +1297,7 @@
       "url": "cloud/bc/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "2020.05",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -1323,7 +1323,7 @@
       "url": "cloud/cc/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["ClaimCenter"],
+        "products": ["ClaimCenter for Guidewire Cloud"],
         "version": "2020.05",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -1349,7 +1349,7 @@
       "url": "cloud/pc/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["PolicyCenter"],
+        "products": ["PolicyCenter for Guidewire Cloud"],
         "version": "2020.05",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -1376,7 +1376,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["BillingCenter"],
+        "products": ["BillingCenter for Guidewire Cloud"],
         "version": "2020.05",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -1390,7 +1390,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["ClaimCenter"],
+        "products": ["ClaimCenter for Guidewire Cloud"],
         "version": "2020.05",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -1404,7 +1404,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "products": ["PolicyCenter"],
+        "products": ["PolicyCenter for Guidewire Cloud"],
         "version": "2020.05",
         "category": ["Core"],
         "release": ["Aspen"]
@@ -1454,7 +1454,7 @@
         "root": "_superbook.ditamap",
         "src": "midipgdraftsrc"
       },
-      "environments": ["int"]
+      "environments": ["dev", "int"]
     },
     {
       "id": "dkckdkeee",
