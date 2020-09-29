@@ -1075,7 +1075,6 @@ object HelperObjects {
 
                     val stepId = "COPY_RESOURCES$stepIdSuffix"
                     stepIds.add(stepId)
-                    stepIdSuffix += 1
 
                     extraSteps.add(ScriptBuildStep {
                         id = stepId
@@ -1084,7 +1083,9 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
                         
-                        git clone --single-branch --branch $resourceGitBranch $resourceGitUrl resource
+                        export RESOURCE_DIR="resource$stepIdSuffix"
+                        
+                        git clone --single-branch --branch $resourceGitBranch $resourceGitUrl ${'$'}RESOURCE_DIR
                         export S3_BUCKET_NAME=tenant-doctools-%env.DEPLOY_ENV%-builds
                         if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                             echo "Setting credentials to access prod"
@@ -1094,9 +1095,12 @@ object HelperObjects {
                         fi
                         
                         echo "Copying files to S3"
-                        aws s3 sync ./resource/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
+                        aws s3 sync ./${'$'}RESOURCE_DIR/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
                     """.trimIndent()
                     })
+
+                    stepIdSuffix += 1
+
                 }
 
                 steps {
@@ -1306,13 +1310,13 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
                         
-                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.branch%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
+                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.vcs.branch.$vcs_root_id%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
                         cat %env.DOC_INFO%
                         
                     """.trimIndent()
                 }
 
-                stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_DOC_VALIDATOR")
+                stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "RUN_DOC_VALIDATOR")
 
             }
 
@@ -1325,6 +1329,11 @@ object HelperObjects {
                 vcs {
                     triggerRules = """
                         +:root=${vcs_root_id}:**
+                    """.trimIndent()
+
+                    branchFilter = """
+                        +:*
+                        -:<default>
                     """.trimIndent()
                 }
             }
@@ -1365,19 +1374,6 @@ object HelperObjects {
             }
 
             steps {
-                dockerCommand {
-                    name = "Build a Docker image for running the results cleaner"
-                    id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
-                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                    commandType = build {
-                        source = file {
-                            path = "Dockerfile"
-                        }
-                        namesAndTags = "runner-image"
-                        commandArgs = "--pull"
-                    }
-                    param("dockerImage.platform", "linux")
-                }
 
                 script {
                     name = "Run the results cleaner"
@@ -1387,18 +1383,15 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
         
-                        ./run_results_cleaner.sh
+                        results_cleaner --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --git-source-id "%env.GIT_SOURCE_ID%" --git-source-url "%env.GIT_SOURCE_URL%"
                     """.trimIndent()
-                    dockerImage = "runner-image"
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
-
-                stepsOrder = arrayListOf("BUILD_DOCKER_IMAGE_DOC_VALIDATOR", "RUN_RESULTS_CLEANER")
             }
 
             vcs {
                 root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
-                root(DocValidator)
                 cleanCheckout = true
             }
 
@@ -1407,14 +1400,20 @@ object HelperObjects {
                     triggerRules = """
                         +:root=${vcs_root_id}:**
                     """.trimIndent()
+
+                    branchFilter = """
+                        +:<default>
+                    """.trimIndent()
                 }
             }
 
             features {
                 dockerSupport {
+                    loginToRegistry = on {
+                        dockerRegistryId = "PROJECT_EXT_155"
+                    }
                 }
             }
-
         })
 
         val sourcesToValidate = mutableListOf<Project>()
@@ -1590,11 +1589,6 @@ object RunContentValidations : Template({
         text("env.SCHEMATRON_REPORTS_DIR", "%env.DITA_OT_WORKING_DIR%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
     }
 
-    vcs {
-        root(DocValidator)
-        cleanCheckout = true
-    }
-
     steps {
         script {
             name = "Create directories"
@@ -1705,20 +1699,6 @@ object RunContentValidations : Template({
             """.trimIndent()
         }
 
-        dockerCommand {
-            name = "Build a Docker image for running the validator"
-            id = "BUILD_DOCKER_IMAGE_DOC_VALIDATOR"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                namesAndTags = "runner-image"
-                commandArgs = "--pull"
-            }
-            param("dockerImage.platform", "linux")
-        }
-
         script {
             name = "Run the doc validator"
             id = "RUN_DOC_VALIDATOR"
@@ -1726,10 +1706,15 @@ object RunContentValidations : Template({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-
-                ./run_app.sh
+                
+                doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" dita \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" images \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" files \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" validators "%env.NORMALIZED_DITA_DIR%" content \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.DITA_OT_LOGS_DIR%" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.SCHEMATRON_REPORTS_DIR%" schematron-reports
             """.trimIndent()
-            dockerImage = "runner-image"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
@@ -1737,6 +1722,9 @@ object RunContentValidations : Template({
 
     features {
         dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
         }
     }
 
