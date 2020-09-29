@@ -8,10 +8,13 @@ async function getConfig() {
       const configPath = `${__dirname}/../../.teamcity/config/server-config.json`;
       const config = await fs.readFile(configPath, 'utf-8');
       const json = JSON.parse(config);
+      
       const docs = json.docs.filter(d =>
         d.environments.includes(process.env.DEPLOY_ENV)
       );
-      const localConfig = { docs: docs };
+      
+      const productFamilies = json.productFamilies;
+      const localConfig = { docs: docs, productFamilies: productFamilies };
       return localConfig;
     } else {
       const result = await fetch(

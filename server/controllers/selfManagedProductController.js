@@ -17,7 +17,7 @@ async function getSelfManagedProducts() {
       const categoryItems = group[1];
 
       const products = categoryItems.reduce((r, a) => {
-        r[a.metadata.product] = [...(r[a.metadata.product] || []), a];
+        r[a.metadata.products] = [...(r[a.metadata.products] || []), a];
         return r;
       }, {});
       const productArray = Object.entries(products);

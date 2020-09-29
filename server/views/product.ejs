@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-sm-9">
                 <div class="docPageTitle docPageHeaderItems">
-                    <h1><%= product.name %></h1>
+                    <h1><%= product %> <%= version %></h1>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -31,11 +31,11 @@
                     <div class="col-sm-4 mt-3">
                         <div class="categoryCard">
                             <h2><%= categoryName %></h2>
-                            <% const products = categoryItems.reduce((r, a) => {
-                                r[a.metadata.product] = [...r[a.metadata.product] || [], a];
+                            <% const docs = categoryItems.reduce((r, a) => {
+                                r[a.metadata.products] = [...r[a.metadata.products] || [], a];
                                 return r;
                             }, {});
-                                const productArray = Object.entries(products);
+                                const productArray = Object.entries(docs);
                             productArray.forEach(product => {
                                 const visibleDocs = product[1].filter(doc => (doc.displayOnLandingPages !== false));
                                 const productReleases = visibleDocs.map(e => e.metadata.version);
