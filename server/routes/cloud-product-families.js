@@ -102,7 +102,7 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
       docGroups: productLinks,
       breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
       selectedRelease: release,
-      sortedReleases: sortedReleases,
+      availableReleases: sortedReleases,
     });
   } catch (err) {
     next(err);
