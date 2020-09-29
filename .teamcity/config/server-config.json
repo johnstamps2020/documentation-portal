@@ -1497,6 +1497,45 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
+      "id": "selfmanagedbcupgradeguide1010",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "products": ["BillingCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "selfmanagedccupgradeguide1010",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "products": ["ClaimCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1010",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "products": ["PolicyCenter"],
+        "version": "10.1.0",
+        "category": ["Core"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
       "id": "bc1010staging",
       "title": "BillingCenter",
       "url": "self-managed/bc/1010",
@@ -1971,19 +2010,6 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "selfmanagedbcupgradeguide1010",
-      "title": "BillingCenter Upgrade Guide",
-      "url": "self-managed/bc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "products": ["BillingCenter"],
-        "version": "10.1.0",
-        "category": ["Core"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
       "id": "lobbopcloudstaging",
       "title": "Businessowners Standards Based Template",
       "url": "cloud/lob/bop/202005",
@@ -1999,32 +2025,6 @@
         "filter": "LOB_STANDARDS_filterSet.ditaval",
         "root": "_supermap-lob-bop-10x.ditamap",
         "src": "lobbop202005"
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "selfmanagedccupgradeguide1010",
-      "title": "ClaimCenter Upgrade Guide",
-      "url": "self-managed/cc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "products": ["ClaimCenter"],
-        "version": "10.1.0",
-        "category": ["Core"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "selfmanagedpcupgradeguide1010",
-      "title": "PolicyCenter Upgrade Guide",
-      "url": "self-managed/pc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "products": ["PolicyCenter"],
-        "version": "10.1.0",
-        "category": ["Core"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2145,6 +2145,132 @@
         "products": ["InfoCenter"],
         "version": "10.2.0",
         "category": ["Data"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceam1130",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/1130",
+      "metadata": {
+        "products": ["CustomerEngage Account Management"],
+        "platform": ["Self-managed"],
+        "version": "11.3.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-am-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceclaims1130",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "self-managed/dx/ce-claims/1130",
+      "metadata": {
+        "products": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": "11.3.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-claims-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxceqb1130",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/1130",
+      "metadata": {
+        "products": ["CustomerEngage Quote and Buy"],
+        "platform": ["Self-managed"],
+        "version": "11.3.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ce-qb-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxpe1130",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1130",
+      "metadata": {
+        "products": ["ProducerEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.3.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxpeclaims1130",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "self-managed/dx/pe-claims/1130",
+      "metadata": {
+        "products": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": "11.3.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-pe-claims-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxsre1130",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1130",
+      "metadata": {
+        "products": ["ServiceRepEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.3.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-sre-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dxve1130",
+      "title": "VendorEngage",
+      "url": "self-managed/dx/ve/1130",
+      "metadata": {
+        "products": ["VendorEngage"],
+        "platform": ["Self-managed"],
+        "version": "11.3.0",
+        "category": ["Digital"]
+      },
+      "build": {
+        "buildType": "dita",
+        "filter": "Digital-ve-OnPrem.ditaval",
+        "root": "DX_superbook.ditamap",
+        "src": "dxstaging"
       },
       "environments": ["dev", "staging", "prod"]
     },
