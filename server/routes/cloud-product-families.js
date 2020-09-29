@@ -77,7 +77,7 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
         if (docsInProduct.length === 1) {
           linksInProduct.push({
             title: product,
-            url: `/${docsInProduct[0].url}`,
+            url: `${docsInProduct[0].url}`,
           });
         }
 

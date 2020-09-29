@@ -33,9 +33,8 @@ router.get('/', async function(req, res, next) {
           d.metadata.products.includes(product)
         );
         if (docsInProduct.length === 1) {
-          const onlyVersion = docsInProduct[0].metadata.version;
           linksForCategory.push({
-            title: `${product} ${onlyVersion}`,
+            title: `${product}`,
             url: `/${docsInProduct[0].url}`,
           });
         }
