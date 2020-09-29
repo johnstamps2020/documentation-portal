@@ -826,19 +826,28 @@ object Server : Project({
 })
 
 object HelperObjects {
-    private const val configPath = "config/server-config.json"
-    private val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
-    private val docConfigs = config.getJSONArray("docs")
+    private fun getObjectsFromConfig(configPath: String, objectName: String): JSONArray {
+        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
+        return config.getJSONArray(objectName)
+    }
+
+    val docConfigs = getObjectsFromConfig("config/server-config.json", "docs")
+    val sourceConfigs = getObjectsFromConfig("config/sources.json", "sources")
+    private val buildConfigs = getObjectsFromConfig("config/builds.json", "builds")
+
+    private fun getObjectById(objectList: JSONArray, idName: String, idValue: String): JSONObject {
+        for (i in 0 until objectList.length()) {
+            val obj = objectList.getJSONObject(i)
+            if (obj.getString(idName) == idValue) {
+                return obj
+            }
+        }
+        return JSONObject()
+    }
 
     private fun removeSpecialCharacters(stringToClean: String): String {
         val re = Regex("[^A-Za-z0-9]")
         return re.replace(stringToClean, "")
-    }
-
-    fun getSourcesFromConfig(): JSONArray {
-        val sourceConfigPath = "config/sources.json"
-        val config = JSONObject(File(sourceConfigPath).readText(Charsets.UTF_8))
-        return config.getJSONArray("sources")
     }
 
     private fun getSourceById(sourceId: String, sourceList: JSONArray): Pair<String, String> {
@@ -855,6 +864,7 @@ object HelperObjects {
         }
         return Pair("", "")
     }
+
 
     fun createExportBuildsFromConfig(): MutableList<BuildType> {
         class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String, git_path: String, branch_name: String, nightly_build: Boolean) : BuildType({
@@ -892,29 +902,24 @@ object HelperObjects {
             }
         })
 
-        val intSources = mutableListOf<String>()
-        for (i in 0 until docConfigs.length()) {
-            val doc = docConfigs.getJSONObject(i)
-            val environments = doc.getJSONArray("environments")
-            if (doc.has("build") && environments.contains("int")) {
-                val docSrc = doc.getJSONObject("build").getString("src")
-                if (!intSources.contains(docSrc)) intSources.add(docSrc)
-            }
-        }
-
         val builds = mutableListOf<BuildType>()
-        val sourceConfigs = getSourcesFromConfig()
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
-            val sourceId = source.getString("id")
-            val gitUrl = source.getString("gitUrl")
-            val sourceTitle = source.getString("title")
-            val branchName = if (source.has("branch")) source.getString("branch") else "master"
-            val nightlyBuild = intSources.contains(sourceId)
-
             if (source.has("xdocsPathIds")) {
+                val sourceId = source.getString("id")
+                val gitUrl = source.getString("gitUrl")
+                val sourceTitle = source.getString("title")
+                val branchName = if (source.has("branch")) source.getString("branch") else "master"
                 val exportBuildId = source.getString("id") + "_export"
                 val xdocsPathIds = source.getJSONArray("xdocsPathIds").joinToString(" ")
+
+                val build = getObjectById(buildConfigs, "srcId", sourceId)
+                var nightlyBuild = false
+                if (build.has("docId")) {
+                    val buildDocId = build.getString("docId")
+                    val doc = getObjectById(docConfigs, "id", buildDocId)
+                    nightlyBuild = doc.getJSONArray("environments").contains("int")
+                }
 
                 builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, sourceTitle, xdocsPathIds, gitUrl, branchName, nightlyBuild))
             }
@@ -1175,30 +1180,23 @@ object HelperObjects {
         val environments = doc.getJSONArray("environments")
         val indexForSearch = if (doc.has("indexForSearch")) doc.getBoolean("indexForSearch") else true
 
-        val build: JSONObject = doc.getJSONObject("build")
-        var filter = ""
-        if (build.has("filter")) {
-            filter = build.getString("filter")
-        }
+        val build = getObjectById(buildConfigs, "docId", docId)
+        val filter = if (build.has("filter")) build.getString("filter") else ""
 
-        var indexRedirect = "false"
-        if (build.has("indexRedirect")) {
-            indexRedirect = build.getBoolean("indexRedirect").toString()
-        }
+        val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
 
         val root = build.getString("root")
-        val sourceId = build.getString("src")
+        val sourceId = build.getString("srcId")
         val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
-        val sourcesFromConfig = getSourcesFromConfig()
-        val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourcesFromConfig)
+        val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
 
         val resourcesToCopy = mutableListOf<JSONObject>()
         if (build.has("resources")) {
             val resources = build.getJSONArray("resources")
             for (j in 0 until resources.length()) {
                 val resource = resources.getJSONObject(j)
-                val resourceVcsId = resource.getString("src")
-                val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourcesFromConfig)
+                val resourceVcsId = resource.getString("srcId")
+                val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourceConfigs)
                 val resourceSourceFolder = resource.getString("sourceFolder")
                 val resourceTargetFolder = resource.getString("targetFolder")
                 val resourceObject = JSONObject()
@@ -1252,7 +1250,8 @@ object HelperObjects {
             val docsInProduct = mutableListOf<JSONObject>()
             for (i in 0 until docConfigs.length()) {
                 val doc = docConfigs.getJSONObject(i)
-                if (doc.has("build") && !docsInProduct.contains(doc)) {
+                val docId = doc.getString("id")
+                if (!getObjectById(buildConfigs, "docId", docId).isEmpty && !docsInProduct.contains(doc)) {
                     val metadata = doc.getJSONObject("metadata")
                     if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
                         docsInProduct.add(doc)
@@ -1270,20 +1269,20 @@ object HelperObjects {
 
     fun createSourceValidationsFromConfig(): List<Project> {
 
-        class ValidateDoc(doc_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String, git_source_branch: String) : BuildType({
+        class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String, git_source_branch: String) : BuildType({
             templates(RunContentValidations)
 
-            val docId = doc_info.getString("id")
-            val docTitle = doc_info.getString("title")
-            val docMetadata = doc_info.getJSONObject("metadata")
+            val docBuildRootMap = build_info.getString("root")
+            val docBuildFilter = if (build_info.has("filter")) build_info.getString("filter") else ""
+            val docBuildIndexRedirect = if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
+            val docBuildDocId = build_info.getString("docId")
+            val doc = getObjectById(docConfigs, "id", docBuildDocId)
+            val docId = doc.getString("id")
+            val docTitle = doc.getString("title")
+            val docMetadata = doc.getJSONObject("metadata")
             val docProduct = docMetadata.getJSONArray("product").joinToString(separator = ",")
             val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
             val docVersion = docMetadata.getString("version")
-
-            val docBuild = doc_info.getJSONObject("build")
-            val docBuildRootMap = docBuild.getString("root")
-            val docBuildFilter = if (docBuild.has("filter")) docBuild.getString("filter") else ""
-            val docBuildIndexRedirect = if (docBuild.has("indexRedirect")) docBuild.getBoolean("indexRedirect").toString() else "false"
 
             id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
             name = "Validate $docTitle $docPlatform $docVersion"
@@ -1309,7 +1308,7 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
                         
-                        jq -n '$doc_info' | jq '. += {"gitBuildBranch": "%teamcity.build.vcs.branch.$vcs_root_id%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
+                        jq -n '$build_info' | jq '. += {"gitBuildBranch": "%teamcity.build.vcs.branch.$vcs_root_id%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
                         cat %env.DOC_INFO%
                         
                     """.trimIndent()
@@ -1416,7 +1415,6 @@ object HelperObjects {
         })
 
         val sourcesToValidate = mutableListOf<Project>()
-        val sourceConfigs = getSourcesFromConfig()
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
             if (!source.has("xdocsPathIds")) {
@@ -1426,11 +1424,11 @@ object HelperObjects {
                 val sourceGitUrl = source.getString("gitUrl")
                 val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
 
-                for (j in 0 until docConfigs.length()) {
-                    val doc = docConfigs.getJSONObject(j)
-                    if (doc.has("build")) {
-                        val docSrc = doc.getJSONObject("build").getString("src")
-                        if (docSrc == sourceId) sourceDocBuilds.add(doc)
+                for (j in 0 until buildConfigs.length()) {
+                    val build = buildConfigs.getJSONObject(j)
+                    val buildSrcId = build.getString("srcId")
+                    if (buildSrcId == sourceId) {
+                        sourceDocBuilds.add(build)
                     }
                 }
 
@@ -1443,8 +1441,8 @@ object HelperObjects {
                                 vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
                                 buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
-                                for (doc in sourceDocBuilds) {
-                                    buildType(ValidateDoc(doc, RelativeId(sourceId), sourceId, sourceGitBranch))
+                                for (docBuild in sourceDocBuilds) {
+                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId, sourceGitBranch))
                                 }
 
                             }
@@ -1523,9 +1521,8 @@ object CreateReleaseTag : BuildType({
     name = "Create a release tag"
 
     val gitRepositories = mutableListOf<String>()
-    val sourceConfigs = HelperObjects.getSourcesFromConfig()
-    for (i in 0 until sourceConfigs.length()) {
-        val source = sourceConfigs.getJSONObject(i)
+    for (i in 0 until HelperObjects.sourceConfigs.length()) {
+        val source = HelperObjects.sourceConfigs.getJSONObject(i)
         val gitUrl = source.getString("gitUrl")
         val branchName = if (source.has("branch")) source.getString("branch") else "master"
         if (branchName == "master") {
