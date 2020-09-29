@@ -11,6 +11,7 @@
               <div class="docPageTitle docPageHeaderItems">
                 <% include parts/breadcrumb %>
                 <h1><%= title %></h1>
+                <% if(sortedVersions.length > 1) {-%>
                 <script>
                   function selectRelease() {
                     const selectedRelease = document.getElementById("releaseSelector").value;
@@ -29,6 +30,7 @@
                     <% }); -%>
                   </select>
                 </label>
+                <% }; -%>
               </div>
             </div>
           </div>
