@@ -1,0 +1,1062 @@
+{
+  "$schema": "./config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "_supermap-cloud-active.ditamap",
+      "srcId": "cloudisdraftsrc",
+      "docId": "cloudbclatestvkeurqms",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "root": "_supermap-cloud-active.ditamap",
+      "srcId": "cloudisdraftsrc",
+      "docId": "cloudcclatestovwsjybk",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "_supermap-cloud-active.ditamap",
+      "srcId": "cloudisdraftsrc",
+      "docId": "cloudpclatestltxfjual",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "cloudbcupgradeguidelatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "cloudccupgradeguidelatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "cloudpcupgradeguidelatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/GW-Generic-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isconfigupgradetools3xsrc",
+      "docId": "isconfigupgradetools3x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhicdraftsrc",
+      "docId": "clouddhdraft",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhicdraftsrc",
+      "docId": "cloudicdraft",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-cda.ditamap",
+      "srcId": "cdpdraftsrc",
+      "docId": "clouddataplatformdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "supermapExplore.ditamap",
+      "srcId": "explorebadraftsrc",
+      "docId": "exploreclouddraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "clouddxceamdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "clouddxceclaimsdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "clouddxceqbdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-apd-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxapdclouddraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "clouddxpedraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "clouddxpeclaimsdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "clouddxsredraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "clouddxvedraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "_supermap-20201x-active.ditamap",
+      "srcId": "in20201xdraftsrc",
+      "docId": "cloudin20201xinternaldraft",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-20201x-active.ditamap",
+      "srcId": "in20201xdraftsrc",
+      "docId": "cloudin20201xexternaldraft",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "_supermap-20202x-active.ditamap",
+      "srcId": "in20202xdraftsrc",
+      "docId": "cloudin20202xinternaldraft",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-20202x-active.ditamap",
+      "srcId": "in20202xdraftsrc",
+      "docId": "cloudin20202xexternaldraft",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "root": "GuidewireHub.ditamap",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "srcId": "guidewireidentityfederationhubdraft",
+      "docId": "guidewireidentityfederationhubqsvkhtgf"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Draft.ditaval",
+      "root": "_supermap-10x-active.ditamap",
+      "srcId": "selfmanagedis10xdraft",
+      "docId": "selfmanagedbcxufesxuwl"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Draft.ditaval",
+      "root": "_supermap-10x-active.ditamap",
+      "srcId": "selfmanagedis10xdraft",
+      "docId": "selfmanagedccxbvqtoakg"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Draft.ditaval",
+      "root": "_supermap-10x-active.ditamap",
+      "srcId": "selfmanagedis10xdraft",
+      "docId": "selfmanagedpcxrwjcdamu"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-BillingCenter-Self-managed-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "selfmanagedbcupgradeguide10x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-ClaimCenter-Self-managed-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "selfmanagedccupgradeguide10x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-PolicyCenter-Self-managed-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "selfmanagedpcupgradeguide10x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Draft.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "isconfigupgradetools1xsrc",
+      "docId": "selfmanagedbcupgradetools1x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Draft.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "isconfigupgradetools1xsrc",
+      "docId": "selfmanagedccupgradetools1x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Draft.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "isconfigupgradetools1xsrc",
+      "docId": "selfmanagedpcupgradetools1x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Draft.ditaval",
+      "root": "_supermap-9x-active.ditamap",
+      "srcId": "exportisonprem9",
+      "docId": "selfmanagedbcxcoxibeoa"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Draft.ditaval",
+      "root": "_supermap-9x-active.ditamap",
+      "srcId": "exportisonprem9",
+      "docId": "selfmanagedccxgfurvaqu"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Draft.ditaval",
+      "root": "_supermap-9x-active.ditamap",
+      "srcId": "exportisonprem9",
+      "docId": "selfmanagedpcxxbkttzbb"
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhicdraftsrc",
+      "docId": "selfmanageddhxoiefunwl",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhicdraftsrc",
+      "docId": "selfmanagedicxrsfjafti",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-OnPrem-Release.ditaval",
+      "root": "supermapExplore.ditamap",
+      "srcId": "explorebadraftsrc",
+      "docId": "selfmanagedbadraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxceamdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxceclaimsdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxceqbdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-apd-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxapddraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxpedraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxpeclaimsdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxsredraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxvedraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxdixowqwwrfu"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-c-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxdicxyhksqnkf"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxedxqqjwvkln"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-c-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxedcxvpeswwmn"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxvodxqjomllcj"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-c-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "selfmanageddxvodcxeajkygfs"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "TestingFrameworks_supermap.ditamap",
+      "srcId": "testingframeworkssrc",
+      "docId": "testingframeworksdraft",
+      "resources": [
+        {
+          "targetFolder": "javadoc/PTF",
+          "sourceFolder": "PTF",
+          "srcId": "testingframeworksextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "_supermap-hawaii.ditamap",
+      "srcId": "gwhawaii",
+      "docId": "gwfeaturepreviewearlyaccess"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "_supermap-hawaii.ditamap",
+      "srcId": "gwhawaii",
+      "docId": "gwfeaturepreviewdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "_supermap-202005.ditamap",
+      "srcId": "cloudis202005src",
+      "docId": "cloudbc202005",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "_supermap-202005.ditamap",
+      "srcId": "cloudis202005src",
+      "docId": "cloudcc202005",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "_supermap-202005.ditamap",
+      "srcId": "cloudis202005src",
+      "docId": "cloudpc202005",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-20201x-active.ditamap",
+      "srcId": "in20201src",
+      "docId": "cloudinexternal20201",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "midipgdraftsrc",
+      "docId": "midipg2x"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "_supermap-10x-active.ditamap",
+      "srcId": "selfmanagedis1010src",
+      "docId": "bc1010staging",
+      "resources": [
+        {
+          "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.1.0",
+          "sourceFolder": "ReleaseNotes-files/bc/10.1.0",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "_supermap-10x-active.ditamap",
+      "srcId": "selfmanagedis1010src",
+      "docId": "cc1010staging",
+      "resources": [
+        {
+          "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.1.0",
+          "sourceFolder": "ReleaseNotes-files/cc/10.1.0",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "_supermap-10x-active.ditamap",
+      "srcId": "selfmanagedis1010src",
+      "docId": "pc1010staging",
+      "resources": [
+        {
+          "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.1.0",
+          "sourceFolder": "ReleaseNotes-files/pc/10.1.0",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "_supermap-9x-active.ditamap",
+      "srcId": "exportisonprem9",
+      "docId": "bc9xstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "_supermap-9x-active.ditamap",
+      "srcId": "exportisonprem9",
+      "docId": "cc9xstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "_supermap-9x-active.ditamap",
+      "srcId": "exportisonprem9",
+      "docId": "pc9xstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "exportdhiccloudforstaging",
+      "docId": "clouddhaithitzz",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "exportdhiccloudforstaging",
+      "docId": "cloudiclovarpzz",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-cda.ditamap",
+      "srcId": "clouddataplatform",
+      "docId": "clouddataplatformstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "supermapExplore.ditamap",
+      "srcId": "explore",
+      "docId": "explorecloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202008",
+      "docId": "dxceam202008cloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202008",
+      "docId": "dxceqb202008cloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202008",
+      "docId": "dxpe202008cloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202008",
+      "docId": "dxsre202008cloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "selfmanagedis1003src",
+      "docId": "selfmanagedbcfxhglseu"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "selfmanagedis1003src",
+      "docId": "selfmanagedccahrgbyin"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "selfmanagedis1003src",
+      "docId": "selfmanagedpcuytrolxz"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_filterSet.ditaval",
+      "root": "_supermap-lob-bop-10x.ditamap",
+      "srcId": "lobbop202005",
+      "docId": "lobbopcloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "exportdhiconpremforstaging",
+      "docId": "selfmanageddhaithitzz",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
+          "targetFolder": "extras/DataHub",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
+          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "exportdhiconpremforstaging",
+      "docId": "selfmanagediclovarpzz",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
+          "targetFolder": "extras/InfoCenter",
+          "srcId": "dhicextrassrc"
+        },
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
+          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceam1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceclaims1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceqb1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpe1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpeclaims1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxsre1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxve1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxceam1120onpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxceqb1120onpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxpe1120onpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1120",
+      "docId": "dxsre1120onpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": false,
+      "srcId": "restapi",
+      "docId": "restapidraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "GuidewireCloudPlatform.ditamap",
+      "srcId": "configmgrhelpdraftsrc",
+      "docId": "configmgrhelpdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standardsdraftsrc",
+      "docId": "standardsdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxdionpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-c-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxdiconpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxedonpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-c-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxedconpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxvodonpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-c-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxvodconpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "exportis908",
+      "docId": "selfmanagedbchggrerca"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "exportis908",
+      "docId": "selfmanagedccaaforoxt"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "exportis908",
+      "docId": "selfmanagedpchmmjfhlm"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "releasenotes/ReleaseNotes-cloud.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookreleasenotes"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/newAndChanged/NewAndChanged.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbooknewandchanged"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "isbccloudnoxbookupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_filterSet.ditaval",
+      "root": "_supermap-lob-bop-10x.ditamap",
+      "srcId": "lobbopdraft",
+      "docId": "lobbopclouddraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/app/BC-AppGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookapp"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/contact/ContactMgmtGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookcontact"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/suite/InsuranceSuiteGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbooksuite"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/admin/AdminGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookadmin"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/bestpractice/BestPracticesGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookbestpractice"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/config/ConfigGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookconfig"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/global/GlobalizationGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookglobal"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/rules/RulesGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookrules"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/integration/IntegrationGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookinteg"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/gosu/GosuRefGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookgosu"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/testing/TestingGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbooktesting"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "cloud/active/installation/InstallationGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "isbccloudnoxbookinstall"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "cloud/active/glossary/Glossary.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "iscloudnoxbookglossary"
+    }
+  ]
+}
