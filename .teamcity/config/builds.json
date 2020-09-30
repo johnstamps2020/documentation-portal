@@ -241,13 +241,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "LOB_STANDARDS_filterSet.ditaval",
-      "root": "_supermap-lob-bop-10x.ditamap",
-      "srcId": "lobbopdraft",
-      "docId": "lobbopclouddraft"
-    },
-    {
-      "buildType": "dita",
       "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "srcId": "guidewireidentityfederationhubdraft",
@@ -639,13 +632,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "LOB_STANDARDS_filterSet.ditaval",
-      "root": "_supermap-lob-bop-10x.ditamap",
-      "srcId": "lobbop202005",
-      "docId": "lobbopcloudstaging"
-    },
-    {
-      "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "exportdhiccloudforstaging",
@@ -747,6 +733,13 @@
     },
     {
       "buildType": "dita",
+      "filter": "LOB_STANDARDS_filterSet.ditaval",
+      "root": "_supermap-lob-bop-10x.ditamap",
+      "srcId": "lobbop202005",
+      "docId": "lobbopcloudstaging"
+    },
+    {
+      "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "exportdhiconpremforstaging",
@@ -782,6 +775,55 @@
           "srcId": "dhicextrassrc"
         }
       ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceam1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceclaims1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceqb1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpe1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpeclaims1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxsre1130"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxve1130"
     },
     {
       "buildType": "dita",
@@ -913,10 +955,17 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "isbccloudnoxbookupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_filterSet.ditaval",
+      "root": "_supermap-lob-bop-10x.ditamap",
+      "srcId": "lobbopdraft",
+      "docId": "lobbopclouddraft"
     },
     {
       "buildType": "dita",
