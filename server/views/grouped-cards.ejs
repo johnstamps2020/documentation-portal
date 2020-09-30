@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include parts/head %>
+  <body>
+    <% include parts/header %>
+    <div class="docPanelContainer">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="docPageTitle docPageHeaderItems">
+              <% include parts/breadcrumb %>
+              <% if(availableReleases.length > 1) {-%>
+              <h1><%= title %></h1>
+              <script>
+                function selectRelease() {
+                  const selectedRelease = document.getElementById("releaseSelector").value;
+                  window.location.replace(selectedRelease);
+                }
+              </script>
+              <label for="releaseSelector">Select version:
+                <select onchange="selectRelease()" id="releaseSelector">
+                  <% availableReleases.forEach(release => { -%>
+                    <option
+                      value="<%= release -%>"
+                      <%= release === selectedRelease ? 'selected="selected"' : '' %>
+                    >
+                    <%= release -%>
+                    </option>
+                  <% }); -%>
+                </select>
+              </label>
+              <% }; -%>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <% docGroups.forEach(group => { -%>
+                <div class="col-sm-4 mt-3">
+                  <div class="categoryCard">
+                  <h2><%= group.category %></h2>
+                    <% group.docs.forEach(doc => { -%>
+                      <div class="docLink">
+                        <% if (doc.url.startsWith('http://') || doc.url.startsWith('https://')) { -%>
+                          <a href="<%= doc.url %>" target="_blank" rel="noopener noreferrer"><%= doc.title %></a>
+                        <% } else { -%>
+                          <a href="/<%= doc.url %>"><%= doc.title %></a>
+                        <% } %>
+                      </div>
+                    <% }) -%>
+                  </div>
+                </div>
+              <% }) -%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include parts/footer %>
+  </body>
+</html>
