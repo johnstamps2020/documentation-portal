@@ -163,15 +163,19 @@ const searchController = async (req, res, next) => {
       });
     });
 
-    res.render('search', {
-      query: searchPhrase,
-      currentPage: currentPage,
-      pages: Math.ceil(totalNumOfResults / resultsPerPage),
-      totalNumOfResults: totalNumOfResults,
-      resultsPerPage: resultsPerPage,
-      searchResults: resultsToDisplay,
-      filters: filters,
-    });
+    if (req.query.rawJSON) {
+      res.send(resultsToDisplay);
+    } else {
+      res.render('search', {
+        query: searchPhrase,
+        currentPage: currentPage,
+        pages: Math.ceil(totalNumOfResults / resultsPerPage),
+        totalNumOfResults: totalNumOfResults,
+        resultsPerPage: resultsPerPage,
+        searchResults: resultsToDisplay,
+        filters: filters,
+      });
+    }
   } catch (err) {
     appLogger.log({
       level: 'error',
