@@ -71,6 +71,12 @@
       ]
     },
     {
+      "productFamilyName": "Integration Framework",
+      "products": [
+        "REST API Client"
+      ]
+    },
+    {
       "productFamilyName": "Testing Frameworks",
       "products": [
         "Testing Frameworks"
