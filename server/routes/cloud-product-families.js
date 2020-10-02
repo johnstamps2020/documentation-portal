@@ -4,7 +4,7 @@ const getCloudProductFamilies = require('../controllers/cloudProductFamilyContro
 const {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
-  getSortedVersions
+  getSortedVersions,
 } = require('./helpers/metadata');
 
 async function getSingleProductFamily(productFamilyId) {
@@ -186,17 +186,21 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
       });
     }
 
-    res.render('grouped-links', {
-      title: `${product} ${version}`,
-      docGroups: docsBySubject,
-      breadcrumb: [
-        { href: `/`, label: 'Cloud documentation' },
-        { href: `/products/${productFamilyId}`, label: productFamily.name },
-        { href: `/products/${productFamilyId}/${release}`, label: release },
-      ],
-      selectedRelease: version,
-      sortedVersions: sortedVersions,
-    });
+    if (docsBySubject.length === 1 && docsBySubject[0].docs.length === 1) {
+      res.redirect('/' + docsBySubject[0].docs[0].url);
+    } else {
+      res.render('grouped-links', {
+        title: `${product} ${version}`,
+        docGroups: docsBySubject,
+        breadcrumb: [
+          { href: `/`, label: 'Cloud documentation' },
+          { href: `/products/${productFamilyId}`, label: productFamily.name },
+          { href: `/products/${productFamilyId}/${release}`, label: release },
+        ],
+        selectedRelease: version,
+        sortedVersions: sortedVersions,
+      });
+    }
   } catch (err) {
     next(err);
   }
