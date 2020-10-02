@@ -7,8 +7,6 @@ metadata:
     ingress.kubernetes.io/config-backend: |
       http-response add-header Content-Security-Policy \"frame-ancestors https://*.guidewire.net\"
       http-response add-header X-Frame-Options SAMEORIGIN
-      http-response add-header SameSite None
-      http-response add-header Secure
 spec:
   rules:
   - host: docs.guidewire.com
