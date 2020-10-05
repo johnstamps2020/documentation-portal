@@ -2,7 +2,7 @@
   "productFamilies": [
     {
       "productFamilyName": "BillingCenter Cloud",
-      "products": [
+      "product": [
         "BillingCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "BillingCenter Upgrade Tools",
@@ -18,7 +18,7 @@
     },
     {
       "productFamilyName": "ClaimCenter Cloud",
-      "products": [
+      "product": [
         "ClaimCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "Cloud Data Access",
@@ -36,7 +36,7 @@
     },
     {
       "productFamilyName": "PolicyCenter Cloud",
-      "products": [
+      "product": [
         "PolicyCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "Businessowners Standards Based Template",
@@ -54,7 +54,7 @@
     },
     {
       "productFamilyName": "InsuranceNow",
-      "products": [
+      "product": [
         "InsuranceNow 2020.1x - External Audience",
         "InsuranceNow 2020.1x - Internal Audience",
         "InsuranceNow 2020.2x - External Audience",
@@ -64,26 +64,26 @@
     },
     {
       "productFamilyName": "Guidewire Cloud Platform",
-      "products": [
+      "product": [
         "Guidewire Cloud Console",
         "Guidewire Identity Federation Hub"
       ]
     },
     {
       "productFamilyName": "Testing Frameworks",
-      "products": ["Testing Frameworks"]
+      "product": ["Testing Frameworks"]
     },
     {
       "productFamilyName": "Jutro",
-      "products": ["Jutro"]
+      "product": ["Jutro"]
     },
     {
       "productFamilyName": "Guidewire Feature Preview",
-      "products": ["Guidewire Feature Preview"]
+      "product": ["Guidewire Feature Preview"]
     },
     {
       "productFamilyName": "SurePath Standards",
-      "products": ["SurePath Standards"]
+      "product": ["SurePath Standards"]
     }
   ],
   "docs": [
@@ -92,7 +92,7 @@
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/latest/",
       "metadata": {
-        "products": [
+        "product": [
           "BillingCenter for Guidewire Cloud"
         ],
         "platform": [
@@ -128,7 +128,7 @@
       "title": "ClaimCenter for Guidewire Cloud",
       "url": "cloud/cc/latest/",
       "metadata": {
-        "products": [
+        "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
         "platform": [
@@ -164,7 +164,7 @@
       "title": "PolicyCenter for Guidewire Cloud",
       "url": "cloud/pc/latest/",
       "metadata": {
-        "products": [
+        "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
         "platform": [
@@ -204,7 +204,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "BillingCenter for Guidewire Cloud"
         ],
         "version": "latest",
@@ -235,7 +235,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
         "version": "latest",
@@ -266,7 +266,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": "latest",
@@ -297,7 +297,7 @@
           "Cloud",
           "Self-managed"
         ],
-        "products": [
+        "product": [
           "InsuranceSuite Configuration Upgrade Tools"
         ],
         "version": "3.x.x",
@@ -324,7 +324,7 @@
       "title": "DataHub",
       "url": "cloud/dh/latest",
       "metadata": {
-        "products": [
+        "product": [
           "DataHub"
         ],
         "platform": [
@@ -365,7 +365,7 @@
       "title": "InfoCenter",
       "url": "cloud/ic/latest",
       "metadata": {
-        "products": [
+        "product": [
           "InfoCenter"
         ],
         "platform": [
@@ -409,7 +409,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Cloud Data Access"
         ],
         "version": "latest",
@@ -438,7 +438,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Explore"
         ],
         "version": "latest",
@@ -464,7 +464,7 @@
       "title": "CustomerEngage Account Management",
       "url": "cloud/dx/ce-am/latest",
       "metadata": {
-        "products": [
+        "product": [
           "CustomerEngage Account Management"
         ],
         "platform": [
@@ -493,7 +493,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter",
       "url": "cloud/dx/ce-claims/latest",
       "metadata": {
-        "products": [
+        "product": [
           "CustomerEngage Account Management for ClaimCenter"
         ],
         "platform": [
@@ -522,7 +522,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/latest",
       "metadata": {
-        "products": [
+        "product": [
           "CustomerEngage Quote and Buy"
         ],
         "platform": [
@@ -551,7 +551,7 @@
       "title": "Digital Code Generation",
       "url": "cloud/dx/apd/latest",
       "metadata": {
-        "products": [
+        "product": [
           "Digital Code Generation"
         ],
         "platform": [
@@ -580,7 +580,7 @@
       "title": "ProducerEngage",
       "url": "cloud/dx/pe/latest",
       "metadata": {
-        "products": [
+        "product": [
           "ProducerEngage"
         ],
         "platform": [
@@ -609,7 +609,7 @@
       "title": "ProducerEngage for ClaimCenter",
       "url": "cloud/dx/pe-claims/latest",
       "metadata": {
-        "products": [
+        "product": [
           "ProducerEngage for ClaimCenter"
         ],
         "platform": [
@@ -638,7 +638,7 @@
       "title": "ServiceRepEngage",
       "url": "cloud/dx/sre/latest",
       "metadata": {
-        "products": [
+        "product": [
           "ServiceRepEngage"
         ],
         "platform": [
@@ -667,7 +667,7 @@
       "title": "VendorEngage",
       "url": "cloud/dx/ve/latest",
       "metadata": {
-        "products": [
+        "product": [
           "VendorEngage"
         ],
         "platform": [
@@ -696,7 +696,7 @@
       "title": "InsuranceNow 2020.1x - Internal",
       "url": "cloud/in/internal/20201x",
       "metadata": {
-        "products": [
+        "product": [
           "InsuranceNow 2020.1x - Internal Audience"
         ],
         "platform": [
@@ -732,7 +732,7 @@
       "title": "InsuranceNow 2020.1x - External",
       "url": "cloud/in/external/20201x",
       "metadata": {
-        "products": [
+        "product": [
           "InsuranceNow 2020.1x - External Audience"
         ],
         "platform": [
@@ -768,7 +768,7 @@
       "title": "InsuranceNow 2020.2x - Internal",
       "url": "cloud/in/internal/20202x",
       "metadata": {
-        "products": [
+        "product": [
           "InsuranceNow 2020.2x - Internal Audience"
         ],
         "platform": [
@@ -804,7 +804,7 @@
       "title": "InsuranceNow 2020.2x - External",
       "url": "cloud/in/external/20202x",
       "metadata": {
-        "products": [
+        "product": [
           "InsuranceNow 2020.2x - External Audience"
         ],
         "platform": [
@@ -843,7 +843,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Guidewire Identity Federation Hub"
         ],
         "category": [
@@ -872,7 +872,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Guidewire Cloud Console"
         ],
         "category": [
@@ -895,7 +895,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Guidewire Cloud Console"
         ],
         "category": [
@@ -919,7 +919,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Guidewire Cloud Console"
         ],
         "category": [
@@ -939,7 +939,7 @@
       "title": "BillingCenter",
       "url": "self-managed/bc/10x",
       "metadata": {
-        "products": [
+        "product": [
           "BillingCenter"
         ],
         "platform": [
@@ -965,7 +965,7 @@
       "title": "ClaimCenter",
       "url": "self-managed/cc/10x",
       "metadata": {
-        "products": [
+        "product": [
           "ClaimCenter"
         ],
         "platform": [
@@ -991,7 +991,7 @@
       "title": "PolicyCenter",
       "url": "self-managed/pc/10x",
       "metadata": {
-        "products": [
+        "product": [
           "PolicyCenter"
         ],
         "platform": [
@@ -1018,7 +1018,7 @@
       "url": "self-managed/bc/upgrade/10x",
       "displayOnLandingPages": false,
       "metadata": {
-        "products": [
+        "product": [
           "BillingCenter"
         ],
         "platform": [
@@ -1046,7 +1046,7 @@
       "url": "self-managed/cc/upgrade/10x",
       "displayOnLandingPages": false,
       "metadata": {
-        "products": [
+        "product": [
           "ClaimCenter"
         ],
         "platform": [
@@ -1074,7 +1074,7 @@
       "url": "self-managed/pc/upgrade/10x",
       "displayOnLandingPages": false,
       "metadata": {
-        "products": [
+        "product": [
           "PolicyCenter"
         ],
         "platform": [
@@ -1101,7 +1101,7 @@
       "title": "BillingCenter Upgrade Tools 1.x.x",
       "url": "self-managed/bc/upgrade/1x",
       "metadata": {
-        "products": [
+        "product": [
           "BillingCenter Upgrade Tools"
         ],
         "platform": [
@@ -1127,7 +1127,7 @@
       "title": "ClaimCenter Upgrade Tools 1.x.x",
       "url": "self-managed/cc/upgrade/1x",
       "metadata": {
-        "products": [
+        "product": [
           "ClaimCenter Upgrade Tools"
         ],
         "platform": [
@@ -1153,7 +1153,7 @@
       "title": "PolicyCenter Upgrade Tools 1.x.x",
       "url": "self-managed/pc/upgrade/1x",
       "metadata": {
-        "products": [
+        "product": [
           "PolicyCenter Upgrade Tools"
         ],
         "platform": [
@@ -1179,7 +1179,7 @@
       "title": "BillingCenter 9",
       "url": "self-managed/bc/9x",
       "metadata": {
-        "products": [
+        "product": [
           "BillingCenter"
         ],
         "platform": [
@@ -1205,7 +1205,7 @@
       "title": "ClaimCenter 9",
       "url": "self-managed/cc/9x",
       "metadata": {
-        "products": [
+        "product": [
           "ClaimCenter"
         ],
         "platform": [
@@ -1231,7 +1231,7 @@
       "title": "PolicyCenter 9",
       "url": "self-managed/pc/9x",
       "metadata": {
-        "products": [
+        "product": [
           "PolicyCenter"
         ],
         "platform": [
@@ -1257,7 +1257,7 @@
       "title": "DataHub",
       "url": "self-managed/dh/10x",
       "metadata": {
-        "products": [
+        "product": [
           "DataHub"
         ],
         "platform": [
@@ -1295,7 +1295,7 @@
       "title": "InfoCenter",
       "url": "self-managed/ic/10x",
       "metadata": {
-        "products": [
+        "product": [
           "InfoCenter"
         ],
         "platform": [
@@ -1336,7 +1336,7 @@
         "platform": [
           "Self-managed"
         ],
-        "products": [
+        "product": [
           "Business Analytics"
         ],
         "version": "latest",
@@ -1359,7 +1359,7 @@
       "title": "CustomerEngage Account Management",
       "url": "self-managed/dx/ce-am/11x",
       "metadata": {
-        "products": [
+        "product": [
           "CustomerEngage Account Management"
         ],
         "platform": [
@@ -1385,7 +1385,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter",
       "url": "self-managed/dx/ce-claims/11x",
       "metadata": {
-        "products": [
+        "product": [
           "CustomerEngage Account Management for ClaimCenter"
         ],
         "platform": [
@@ -1411,7 +1411,7 @@
       "title": "CustomerEngage Quote and Buy",
       "url": "self-managed/dx/ce-qb/11x",
       "metadata": {
-        "products": [
+        "product": [
           "CustomerEngage Quote and Buy"
         ],
         "platform": [
@@ -1437,7 +1437,7 @@
       "title": "Digital Code Generation",
       "url": "self-managed/dx/apd/latest",
       "metadata": {
-        "products": [
+        "product": [
           "Digital Code Generation"
         ],
         "platform": [
@@ -1463,7 +1463,7 @@
       "title": "ProducerEngage",
       "url": "self-managed/dx/pe/11x",
       "metadata": {
-        "products": [
+        "product": [
           "ProducerEngage"
         ],
         "platform": [
@@ -1489,7 +1489,7 @@
       "title": "ProducerEngage for ClaimCenter",
       "url": "self-managed/dx/pe-claims/11x",
       "metadata": {
-        "products": [
+        "product": [
           "ProducerEngage for ClaimCenter"
         ],
         "platform": [
@@ -1515,7 +1515,7 @@
       "title": "ServiceRepEngage",
       "url": "self-managed/dx/sre/11x",
       "metadata": {
-        "products": [
+        "product": [
           "ServiceRepEngage"
         ],
         "platform": [
@@ -1541,7 +1541,7 @@
       "title": "VendorEngage",
       "url": "self-managed/dx/ve/11x",
       "metadata": {
-        "products": [
+        "product": [
           "VendorEngage"
         ],
         "platform": [
@@ -1567,7 +1567,7 @@
       "title": "Guidewire for Salesforce Data Integrations",
       "url": "self-managed/dx/di/11x",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire for Salesforce Data Integrations"
         ],
         "platform": [
@@ -1593,7 +1593,7 @@
       "title": "Guidewire for Salesforce Data Integrations for Claims",
       "url": "self-managed/dx/di-c/11x",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire for Salesforce Data Integrations for Claims"
         ],
         "platform": [
@@ -1619,7 +1619,7 @@
       "title": "Guidewire for Salesforce Digital Gateway",
       "url": "self-managed/dx/ed/11x",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire for Salesforce Digital Gateway"
         ],
         "platform": [
@@ -1645,7 +1645,7 @@
       "title": "Guidewire for Salesforce Digital Gateway for Claims",
       "url": "self-managed/dx/ed-c/11x",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire for Salesforce Digital Gateway for Claims"
         ],
         "platform": [
@@ -1671,7 +1671,7 @@
       "title": "Guidewire for Salesforce View on Demand",
       "url": "self-managed/dx/vod/11x",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire for Salesforce View on Demand"
         ],
         "platform": [
@@ -1697,7 +1697,7 @@
       "title": "Guidewire for Salesforce View on Demand for Claims",
       "url": "self-managed/dx/vod-c/11x",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire for Salesforce View on Demand for Claims"
         ],
         "platform": [
@@ -1723,7 +1723,7 @@
       "title": "Testing Frameworks",
       "url": "cloud/testingframeworks/latest",
       "metadata": {
-        "products": [
+        "product": [
           "Testing Frameworks"
         ],
         "platform": [
@@ -1756,7 +1756,7 @@
       "title": "Jutro Designers",
       "url": "jutro/designers/latest",
       "metadata": {
-        "products": [
+        "product": [
           "Jutro"
         ],
         "platform": [
@@ -1776,7 +1776,7 @@
       "title": "Guidewire Feature Preview Early Access",
       "url": "cloud/gw-feature-preview/earlyaccess",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire Feature Preview"
         ],
         "category": [
@@ -1805,7 +1805,7 @@
       "title": "Guidewire Feature Preview Draft",
       "url": "cloud/gw-feature-preview/latest",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire Feature Preview"
         ],
         "category": [
@@ -1834,7 +1834,7 @@
       "title": "Guidewire InsuranceSuite Package for Germany",
       "url": "cloud/mid/ipg/latest",
       "metadata": {
-        "products": [
+        "product": [
           "Guidewire InsuranceSuite Package for Germany"
         ],
         "platform": [
@@ -1863,7 +1863,7 @@
       "title": "REST API Client",
       "url": "cloud/restapi/latest",
       "metadata": {
-        "products": [
+        "product": [
           "REST API Client"
         ],
         "platform": [
@@ -1898,7 +1898,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Configuration Manager"
         ],
         "version": "latest",
@@ -1923,7 +1923,7 @@
       "title": "SurePath Standards",
       "url": "cloud/standards/latest",
       "metadata": {
-        "products": [
+        "product": [
           "SurePath Standards"
         ],
         "platform": [
@@ -1956,7 +1956,7 @@
         "platform": [
           "Cloud"
         ],
-        "products": [
+        "product": [
           "Businessowners Standards Based Template"
         ],
         "version": "latest",

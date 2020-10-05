@@ -15,7 +15,8 @@ expected_dir = current_dir / 'resources' / 'expected'
 
 @pytest.fixture(scope='session', autouse=True)
 def generate_configs():
-    shutil.rmtree(out_dir)
+    if out_dir.exists():
+        shutil.rmtree(out_dir)
     deploy_envs = ['dev', 'int', 'staging', 'prod']
     for deploy_env in deploy_envs:
         config_deployer.save_config_for_env(
