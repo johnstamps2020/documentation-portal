@@ -159,3 +159,10 @@ div#affix3 form#searchForm {
   top: 32px;
   left: 960px;
 }
+
+#versionSelector {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--GW-COLOR-BRAND-2);
+  margin: 8px;
+}
