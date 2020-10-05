@@ -71,6 +71,8 @@ class DocPortalSpider(scrapy.Spider):
             dita_chunk_selector = response.xpath(
                 '//*[contains(@class, "nested0")]')
             framemaker_default_selector = response.xpath('//body/blockquote')
+            docusaurus_selector = response.xpath(
+                '//article[div[@class = "markdown"]]')
 
             body_elements = []
             if dita_default_selector:
@@ -79,6 +81,8 @@ class DocPortalSpider(scrapy.Spider):
                 body_elements = dita_chunk_selector
             elif framemaker_default_selector:
                 body_elements = framemaker_default_selector
+            elif docusaurus_selector:
+                body_elements = docusaurus_selector
 
             index_entry_body = ''
             for body_element in body_elements:
