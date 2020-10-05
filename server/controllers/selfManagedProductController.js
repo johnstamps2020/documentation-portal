@@ -17,15 +17,20 @@ async function getSelfManagedProducts() {
       const categoryItems = group[1];
 
       const products = categoryItems.reduce((r, a) => {
-        r[a.metadata.products] = [...(r[a.metadata.products] || []), a];
+        r[a.metadata.product] = [...(r[a.metadata.product] || []), a];
         return r;
       }, {});
       const productArray = Object.entries(products);
       let productsInCategory = [];
       productArray.forEach(product => {
         const productReleases = product[1].filter(doc => doc.visible !== false);
-        const docsSortedFromLatestToOldest = productReleases.sort((a, b) =>
-          a.metadata.version.replace(/\d+/g, n => +n+100).localeCompare(b.metadata.version.replace(/\d+/g, n => +n+100))).reverse();
+        const docsSortedFromLatestToOldest = productReleases
+          .sort((a, b) =>
+            a.metadata.version
+              .replace(/\d+/g, n => +n + 100)
+              .localeCompare(b.metadata.version.replace(/\d+/g, n => +n + 100))
+          )
+          .reverse();
 
         if (docsSortedFromLatestToOldest.length > 0) {
           productsInCategory.push({
