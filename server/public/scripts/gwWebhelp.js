@@ -29,7 +29,7 @@ async function getVersions() {
     const json = await result.json();
     const docsFromConfig = json.docs.filter(
       d =>
-        d.metadata.products.includes(product) &&
+        d.metadata.product.includes(product) &&
         d.metadata.platform.includes(platform) &&
         d.displayOnLandingPages !== false
     );
