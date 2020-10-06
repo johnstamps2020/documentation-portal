@@ -4,7 +4,7 @@ const getConfig = require('../controllers/configController');
 const {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
-  getSortedVersions
+  getSortedVersions,
 } = require('./helpers/metadata');
 
 async function getSelfManagedDocs() {
@@ -27,10 +27,10 @@ router.get('/', async function(req, res, next) {
       const docsInCategory = docs.filter(d =>
         d.metadata.category.includes(category)
       );
-      const products = getUniqueInMetadataArrays(docsInCategory, 'products');
+      const products = getUniqueInMetadataArrays(docsInCategory, 'product');
       for (const product of products) {
         docsInProduct = docsInCategory.filter(d =>
-          d.metadata.products.includes(product)
+          d.metadata.product.includes(product)
         );
         if (docsInProduct.length === 1) {
           linksForCategory.push({
@@ -72,7 +72,7 @@ router.get('/:product/:version', async function(req, res, next) {
     const docs = await getSelfManagedDocs();
 
     const docsInProduct = docs.filter(d =>
-      d.metadata.products.includes(product)
+      d.metadata.product.includes(product)
     );
     const versions = getUniqueInMetadataFields(docsInProduct, 'version');
     const sortedVersions = getSortedVersions(versions);

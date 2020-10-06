@@ -78,8 +78,8 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "products": {
-          "$ref": "#definitions/products"
+        "product": {
+          "$ref": "#definitions/product"
         },
         "platform": {
           "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
@@ -156,13 +156,13 @@
     "productFamily": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["productFamilyName", "products"],
+      "required": ["productFamilyName", "product"],
       "properties": {
         "productFamilyName": {
           "$ref": "#/definitions/productFamilyName"
         },
-        "products": {
-          "$ref": "#/definitions/products"
+        "product": {
+          "$ref": "#/definitions/product"
         }
       }
     },
@@ -182,7 +182,7 @@
         "Jutro"
       ]
     },
-    "products": {
+    "product": {
           "description": "The name of the product",
           "type": "array",
           "items": {
