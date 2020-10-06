@@ -637,7 +637,7 @@
     },
     {
       "id": "guidewireidentityfederationhubqsvkhtgf",
-      "title": "Guidewire Identity Federation Hub",
+      "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": [

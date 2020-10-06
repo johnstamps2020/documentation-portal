@@ -243,6 +243,7 @@
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubdraft",
       "docId": "guidewireidentityfederationhubqsvkhtgf"
     },
