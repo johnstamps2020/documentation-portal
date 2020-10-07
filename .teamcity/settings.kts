@@ -1774,6 +1774,7 @@ object PublishDocCrawlerDockerImage : BuildType({
             name = "Publish Doc Crawler Docker image to Artifactory"
             scriptContent = """
                 set -xe
+                cd apps/doc_crawler
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
