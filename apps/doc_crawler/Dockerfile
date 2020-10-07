@@ -10,7 +10,8 @@ RUN poetry build -f wheel
 
 FROM python:3.8-slim-buster
 
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential \
+    && apt-get install -y curl
 COPY --from=app-builder /opt/app/dist/doc_crawler-1.0.0-py3-none-any.whl /opt/app/
 WORKDIR /opt/app
 RUN pip install doc_crawler-1.0.0-py3-none-any.whl
