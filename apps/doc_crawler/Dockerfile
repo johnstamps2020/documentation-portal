@@ -4,7 +4,6 @@ COPY doc_crawler /opt/app/doc_crawler
 COPY poetry.lock /opt/app
 COPY pyproject.toml /opt/app
 COPY README.md /opt/app
-COPY scrapy.cfg /opt/app
 WORKDIR /opt/app
 RUN pip install poetry
 RUN poetry build -f wheel
@@ -17,3 +16,6 @@ WORKDIR /opt/app
 RUN pip install doc_crawler-1.0.0-py3-none-any.whl
 
 RUN rm -rf doc_crawler-1.0.0-py3-none-any.whl
+COPY scrapy.cfg .
+
+CMD ["doc_crawler"]
