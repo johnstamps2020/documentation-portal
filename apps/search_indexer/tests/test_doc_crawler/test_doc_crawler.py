@@ -7,8 +7,8 @@ import pytest
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
-from search_indexer.doc_crawler.elasticsearch import ElasticClient
-from search_indexer.doc_crawler.spiders import doc_portal_spider
+from doc_crawler.elasticsearch import ElasticClient
+from doc_crawler.spiders import doc_portal_spider
 
 current_working_dir = Path.cwd()
 current_dir = Path(__file__).parent

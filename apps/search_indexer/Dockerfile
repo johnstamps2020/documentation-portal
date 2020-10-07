@@ -1,6 +1,6 @@
 FROM python:3.8-slim-buster AS app-builder
 
-COPY search_indexer /opt/app/search_indexer
+COPY doc_crawler /opt/app/doc_crawler
 COPY poetry.lock /opt/app
 COPY pyproject.toml /opt/app
 COPY README.md /opt/app

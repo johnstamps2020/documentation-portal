@@ -11,7 +11,7 @@ classifiers=[
         "Operating System :: OS Independent",
     ]
 [tool.poetry.scripts]
-search_indexer = "search_indexer.main:main"
+search_indexer = "doc_crawler.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"

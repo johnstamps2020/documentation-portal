@@ -3,7 +3,7 @@ import os
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
-from search_indexer.doc_crawler.spiders import doc_portal_spider
+from doc_crawler.spiders import doc_portal_spider
 
 
 def env_is_set():
