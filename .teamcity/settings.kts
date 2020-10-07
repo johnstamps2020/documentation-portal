@@ -372,12 +372,12 @@ object DeploySearchService : BuildType({
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=apps/search_indexer/kube/deployment-prod.yml
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment-prod.yml
                 else
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=apps/search_indexer/kube/deployment.yml
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment.yml
                 fi
                 sh ci/deployKubernetes.sh
             """.trimIndent()
@@ -476,18 +476,6 @@ object CleanUpIndex : BuildType({
     }
 
     steps {
-        dockerCommand {
-            name = "Build a Python Docker image"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-            param("dockerImage.platform", "linux")
-        }
-
         script {
             name = "Run the cleanup script"
             scriptContent = """
@@ -505,7 +493,7 @@ object CleanUpIndex : BuildType({
                 cd apps/index_cleaner
                 python main.py
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -527,26 +515,16 @@ object TestContent : BuildType({
     steps {
         dockerCompose {
             name = "Compose services"
-            file = "apps/search_indexer/tests/test_doc_crawler/resources/docker-compose.yml"
-        }
-        dockerCommand {
-            name = "Build a Docker image for running the Python search_indexer"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
+            file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
         }
 
         script {
             name = "Run tests for crawling documents and uploading index"
             scriptContent = """
-                cd apps/search_indexer
-                make test-doc-crawler
+                cd apps/doc_crawler
+                ./test_doc_crawler.sh
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -555,7 +533,7 @@ object TestContent : BuildType({
         vcs {
             triggerRules = """
                 +:.teamcity/settings.kts
-                +:apps/search_indexer/**
+                +:apps/doc_crawler/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -633,24 +611,13 @@ object TestConfig : BuildType({
     }
 
     steps {
-        dockerCommand {
-            name = "Build a Docker image for running the Python apps"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-        }
-
         script {
             name = "Run tests for server config"
             scriptContent = """
-                cd apps/search_indexer
-                make test-config
+                cd apps/doc_crawler
+                ./run_test_config.sh
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--network=host"
         }
@@ -821,6 +788,7 @@ object Server : Project({
     buildType(Release)
     buildType(DeployProd)
     buildType(DeployServerConfig)
+    buildType(PublishDocCrawlerDockerImage)
 
     buildTypesOrder = arrayListOf(DeployServerConfig, Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
 })
@@ -1790,6 +1758,45 @@ object BuildOutputFromDita : Template({
 
 })
 
+object PublishDocCrawlerDockerImage : BuildType({
+    name = "Publish Doc Crawler docker image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Doc Crawler Docker image to Artifactory"
+            scriptContent = """
+                set -xe
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/doc_crawler/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    dependencies {
+        snapshot(TestContent) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
 object CrawlDocumentAndUpdateSearchIndex : Template({
     name = "Update the search index"
     artifactRules = """
@@ -1810,24 +1817,7 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
         text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
     }
 
-    vcs {
-        root(vcsrootmasteronly)
-        cleanCheckout = true
-    }
-
     steps {
-        dockerCommand {
-            name = "Build a Python Docker image"
-            id = "BUILD_CRAWLER_DOCKER_IMAGE"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-            param("dockerImage.platform", "linux")
-        }
         script {
             name = "Crawl the document and update the index"
             id = "CRAWL_DOC"
@@ -1845,10 +1835,9 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
                 curl ${'$'}CONFIG_FILE_URL > %teamcity.build.workingDir%/config.json
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"               
 
-                cd apps/search_indexer
-                make run-doc-crawler
+                doc_crawler
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "doctools-docker-dev/doc-crawler:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }

@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "doc_crawler"
+version = "1.0.0"
+description = "An application to prepare a search index for the doc portal"
+authors = ["Guidewire <doctools@guidewire.com>"]
+readme = "README.md"
+repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Proprietary",
+    "Operating System :: OS Independent",
+]
+include = [
+    "scrapy.cfg"
+]
+[tool.poetry.scripts]
+doc_crawler = "doc_crawler.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jinja2 = "^2.10"
+scrapy = "^2.1.0"
+elasticsearch = "^7.1"
+jsonschema = "^3.2.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.3"
+autopep8 = "^1.4"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
