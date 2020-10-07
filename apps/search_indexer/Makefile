@@ -4,7 +4,7 @@ PATH := $(PATH):$(HOME)/.poetry/bin
 
 run-doc-crawler:
 	poetry install --no-dev \
-        && poetry run python -m main
+        && poetry run python -m search_indexer.main
 
 # An Elasticsearch instance is needed for test-load-index task. An http server instance is needed for test-collect-documents task.
 # In TeamCity, the instances are built with a TeamCity plugin.
