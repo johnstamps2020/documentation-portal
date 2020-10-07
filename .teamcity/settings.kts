@@ -1838,7 +1838,7 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
 
                 doc_crawler
             """.trimIndent()
-            dockerImage = "doctools-docker-dev/doc-crawler:latest"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
