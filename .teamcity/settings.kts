@@ -522,7 +522,7 @@ object TestContent : BuildType({
             name = "Run tests for crawling documents and uploading index"
             scriptContent = """
                 cd apps/doc_crawler
-                make test-doc-crawler
+                ./test_doc_crawler.sh
             """.trimIndent()
             dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
