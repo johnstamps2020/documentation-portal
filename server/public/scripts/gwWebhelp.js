@@ -140,9 +140,16 @@ function addTopLinkToBreadcrumbs() {
     titleSpan.appendChild(listItemLink);
     topicrefSpan.appendChild(titleSpan);
     listItem.appendChild(topicrefSpan);
-    const breadcrumbs = document.querySelector(
-      '.wh_breadcrumb > .d-print-inline-block'
-    );
+
+    function getBreadcrumbs() {
+      return document.querySelector('.wh_breadcrumb > .d-print-inline-block');
+    }
+
+    let breadcrumbs = getBreadcrumbs();
+    while (!breadcrumbs) {
+      setTimeout(wait, 100);
+      breadcrumbs = getBreadcrumbs();
+    }
     console.log(breadcrumbs);
     if (breadcrumbs) {
       breadcrumbs.prepend(listItem);
