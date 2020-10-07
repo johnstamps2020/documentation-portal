@@ -615,7 +615,7 @@ object TestConfig : BuildType({
             name = "Run tests for server config"
             scriptContent = """
                 cd apps/doc_crawler
-                make test-config
+                ./run_test_config.sh
             """.trimIndent()
             dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
