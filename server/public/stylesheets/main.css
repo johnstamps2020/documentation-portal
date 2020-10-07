@@ -570,3 +570,113 @@ a.returnLink {
 .docBreadcrumb a:last-child::after {
   content: none;
 }
+
+.fa-object-group {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/object-group-regular.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-wrench {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/wrench-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-file-note {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/file-alt-regular.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-users-cog {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/users-cog-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-code {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/code-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-puzzle-piece {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/puzzle-piece-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-cogs {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/cogs-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-lightbulb {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/lightbulb-regular.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-book-open {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/book-open-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-book {
+  display: inline-block;
+  width: 1.0em;
+  height: 1.0em;
+  background: url('../images/book-solid.svg');
+  background-size: 1.0em 1.0em;
+  position: relative;
+  top: 4px;
+  margin-left: .2em;
+}
