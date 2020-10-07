@@ -476,18 +476,6 @@ object CleanUpIndex : BuildType({
     }
 
     steps {
-        dockerCommand {
-            name = "Build a Python Docker image"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-            param("dockerImage.platform", "linux")
-        }
-
         script {
             name = "Run the cleanup script"
             scriptContent = """
@@ -505,7 +493,7 @@ object CleanUpIndex : BuildType({
                 cd apps/index_cleaner
                 python main.py
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -529,16 +517,6 @@ object TestContent : BuildType({
             name = "Compose services"
             file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
         }
-        dockerCommand {
-            name = "Build a Docker image for running the Python doc_crawler"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-        }
 
         script {
             name = "Run tests for crawling documents and uploading index"
@@ -546,7 +524,7 @@ object TestContent : BuildType({
                 cd apps/doc_crawler
                 make test-doc-crawler
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -633,24 +611,13 @@ object TestConfig : BuildType({
     }
 
     steps {
-        dockerCommand {
-            name = "Build a Docker image for running the Python apps"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-        }
-
         script {
             name = "Run tests for server config"
             scriptContent = """
                 cd apps/doc_crawler
                 make test-config
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--network=host"
         }

@@ -1,9 +1,8 @@
 .PHONY: run-doc-crawler create-test-environment test-doc-crawler test-config
 
-PATH := $(PATH):$(HOME)/.poetry/bin
-
 run-doc-crawler:
-	poetry install --no-dev \
+	pip install poetry \
+		&& poetry install --no-dev \
         && poetry run python -m doc_crawler.main
 
 # An Elasticsearch instance is needed for test-load-index task. An http server instance is needed for test-collect-documents task.
@@ -21,9 +20,11 @@ test-doc-crawler:
 		&& export DOC_S3_URL=http://localhost/ \
 		&& export ELASTICSEARCH_URLS=http://localhost:9200 \
 		&& export INDEX_NAME=gw-docs \
+		&& pip install poetry \
         && poetry install \
         && poetry run python -m pytest -v ./tests/test_doc_crawler/test_doc_crawler.py
 
 test-config:
-	poetry install \
+	pip install poetry \
+		&& poetry install \
         && poetry run python -m pytest -vx ./tests/test_config/test_server_config.py
