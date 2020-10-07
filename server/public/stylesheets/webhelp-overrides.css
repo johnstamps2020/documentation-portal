@@ -111,7 +111,7 @@ div.wh_content_area {
   display: none;
 }
 
-.wh_publication_title {
+div.wh_publication_title {
   display: none;
 }
 
@@ -158,4 +158,11 @@ div#affix3 form#searchForm {
   position: fixed;
   top: 32px;
   left: 960px;
+}
+
+#versionSelector {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--GW-COLOR-BRAND-2);
+  margin: 8px;
 }
