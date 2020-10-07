@@ -1834,7 +1834,12 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
                 fi
                 
                 curl ${'$'}CONFIG_FILE_URL > %teamcity.build.workingDir%/config.json
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"               
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
+                
+                cat > scrapy.cfg <<- EOM
+                [settings]
+                default = doc_crawler.settings
+                EOM
 
                 doc_crawler
             """.trimIndent()
