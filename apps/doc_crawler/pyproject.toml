@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "search_indexer"
+name = "doc_crawler"
 version = "1.0.0"
 description = "An application to prepare a search index for the doc portal"
 authors = ["Guidewire <doctools@guidewire.com>"]
@@ -11,7 +11,7 @@ classifiers=[
         "Operating System :: OS Independent",
     ]
 [tool.poetry.scripts]
-search_indexer = "doc_crawler.main:main"
+doc_crawler = "doc_crawler.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"

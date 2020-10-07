@@ -6,4 +6,4 @@ set -xe
 docker run -i \
 -v /Users/pkowaluk/Documents/git-repos/documentation-portal/.teamcity/config:/config \
 --env-file ./.env-file \
-search-indexer search_indexer
+doc-crawler doc_crawler
