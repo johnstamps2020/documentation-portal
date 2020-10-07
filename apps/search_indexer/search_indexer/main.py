@@ -7,7 +7,7 @@ from search_indexer.doc_crawler.spiders import doc_portal_spider
 
 
 def env_is_set():
-    env_list = ['CONFIG_FILE', 'DOC_ID', 'APP_BASE_URL',
+    env_list = ['CONFIG_FILE', 'APP_BASE_URL',
                 'DOC_S3_URL', 'ELASTICSEARCH_URLS', 'INDEX_NAME']
     for env_name in env_list:
         if env_name not in os.environ:
