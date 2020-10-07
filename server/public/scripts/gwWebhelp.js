@@ -123,6 +123,38 @@ async function createVersionSelector() {
   }
 }
 
+function addTopLinkToBreadcrumbs() {
+  try {
+    console.log('Creating top level link');
+    const listItem = document.createElement('li');
+    const topicrefSpan = document.createElement('span');
+    topicrefSpan.setAttribute('class', 'topicref');
+    topicrefSpan.setAttribute('data-id', 'fake value');
+    const titleSpan = document.createElement('span');
+    titleSpan.setAttribute('class', 'title');
+    const listItemLink = document.createElement('a');
+    listItemLink.setAttribute('href', '#');
+    listItemLink.innerText = 'Top level link';
+    console.log(listItem);
+
+    titleSpan.appendChild(listItemLink);
+    topicrefSpan.appendChild(titleSpan);
+    listItem.appendChild(topicrefSpan);
+    const breadcrumbs = document.querySelector(
+      '.wh_breadcrumb > .d-print-inline-block'
+    );
+    console.log(breadcrumbs);
+    if (breadcrumbs) {
+      breadcrumbs.prepend(listItem);
+    } else {
+      console.log('Breadcrumbs not found');
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 function docReady(fn) {
   if (
     document.readyState === 'complete' ||
@@ -136,4 +168,5 @@ function docReady(fn) {
 
 docReady(async function() {
   await createVersionSelector();
+  addTopLinkToBreadcrumbs();
 });
