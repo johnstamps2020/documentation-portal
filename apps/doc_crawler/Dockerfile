@@ -17,5 +17,3 @@ RUN pip install doc_crawler-1.0.0-py3-none-any.whl
 
 RUN rm -rf doc_crawler-1.0.0-py3-none-any.whl
 COPY scrapy.cfg .
-
-CMD ["doc_crawler"]
