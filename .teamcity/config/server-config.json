@@ -10,11 +10,11 @@
         "Cloud Data Access",
         "CustomerEngage Account Management",
         "CustomerEngage Quote and Buy",
-        "DataHub",
+        "DataHub for Guidewire Cloud",
         "Digital Code Generation",
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
+        "InfoCenter for Guidewire Cloud",
         "ProducerEngage",
         "ServiceRepEngage"
       ]
@@ -27,10 +27,10 @@
         "Cloud Data Access",
         "CustomerEngage Account Management",
         "CustomerEngage Account Management for ClaimCenter",
-        "DataHub",
+        "DataHub for Guidewire Cloud",
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
+        "InfoCenter for Guidewire Cloud",
         "ProducerEngage",
         "ProducerEngage for ClaimCenter",
         "ServiceRepEngage",
@@ -45,10 +45,10 @@
         "BillingCenter Upgrade Tools",
         "Cloud Data Access",
         "CustomerEngage Account Management",
-        "DataHub",
+        "DataHub for Guidewire Cloud",
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
+        "InfoCenter for Guidewire Cloud",
         "ProducerEngage",
         "ServiceRepEngage"
       ]
@@ -269,11 +269,11 @@
     },
     {
       "id": "clouddhdraft",
-      "title": "DataHub",
+      "title": "DataHub for Guidewire Cloud",
       "url": "cloud/dh/latest",
       "metadata": {
         "product": [
-          "DataHub"
+          "DataHub for Guidewire Cloud"
         ],
         "platform": [
           "Cloud"
@@ -283,7 +283,7 @@
           "Data"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -292,11 +292,11 @@
     },
     {
       "id": "cloudicdraft",
-      "title": "InfoCenter",
+      "title": "InfoCenter for Guidewire Cloud",
       "url": "cloud/ic/latest",
       "metadata": {
         "product": [
-          "InfoCenter"
+          "InfoCenter for Guidewire Cloud"
         ],
         "platform": [
           "Cloud"
@@ -306,7 +306,7 @@
           "Data"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -1952,7 +1952,7 @@
           "Cloud"
         ],
         "product": [
-          "DataHub"
+          "DataHub for Guidewire Cloud"
         ],
         "version": "2020.05",
         "category": [
@@ -1977,7 +1977,7 @@
           "Cloud"
         ],
         "product": [
-          "InfoCenter"
+          "InfoCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
         "category": [
