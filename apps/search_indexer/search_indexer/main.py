@@ -14,6 +14,8 @@ def env_is_set():
             print(
                 f'Environment variable {env_name} is not set. Required variables: {env_list}')
             return False
+        else:
+            print(f'{env_name}: {os.environ[env_name]}')
     return True
 
 
