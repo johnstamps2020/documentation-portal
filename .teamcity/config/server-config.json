@@ -118,7 +118,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -141,7 +141,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -164,7 +164,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -188,7 +188,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -212,7 +212,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -236,7 +236,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -260,7 +260,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -329,7 +329,7 @@
           "Data"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -352,7 +352,7 @@
           "Data"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -651,7 +651,7 @@
         ],
         "version": "2020.05",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -674,7 +674,7 @@
         ],
         "version": "2020.05",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -697,7 +697,7 @@
         ],
         "version": "2020.05",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -721,7 +721,7 @@
         ],
         "version": "2020.05",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -1325,7 +1325,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -1345,7 +1345,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -1368,7 +1368,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -1391,7 +1391,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -2800,7 +2800,7 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -2821,7 +2821,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "displayOnLandingPages": false,
@@ -2846,7 +2846,7 @@
           "SurePath Standards"
         ],
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
