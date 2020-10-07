@@ -83,13 +83,8 @@
       "docId": "clouddhdraft",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/DataHub",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -102,13 +97,8 @@
       "docId": "cloudicdraft",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/InfoCenter",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -243,6 +233,7 @@
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubdraft",
       "docId": "guidewireidentityfederationhubqsvkhtgf"
     },
@@ -341,13 +332,8 @@
       "docId": "selfmanageddhxoiefunwl",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/DataHub",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -360,13 +346,8 @@
       "docId": "selfmanagedicxrsfjafti",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/InfoCenter",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -638,13 +619,8 @@
       "docId": "clouddhaithitzz",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/DataHub",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -657,13 +633,8 @@
       "docId": "cloudiclovarpzz",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/InfoCenter",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -746,13 +717,8 @@
       "docId": "selfmanageddhaithitzz",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-          "targetFolder": "extras/DataHub",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-          "targetFolder": "relnotes/DataHub/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/DataHub",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -765,13 +731,8 @@
       "docId": "selfmanagediclovarpzz",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-          "targetFolder": "extras/InfoCenter",
-          "srcId": "dhicextrassrc"
-        },
-        {
-          "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-          "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files",
+          "sourceFolder": "Aspen-10.3/InfoCenter",
+          "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
       ]
