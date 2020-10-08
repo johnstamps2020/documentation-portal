@@ -1,9 +1,17 @@
 [tool.poetry]
 name = "config_deployer"
 version = "1.0.0"
-description = "An application to prepare the config file for a deployment environment"
-authors = ["Guidewire"]
-license = "LGPL-3.0-or-later"
+description = "An application to clean the search index for the doc portal"
+authors = ["Guidewire <doctools@guidewire.com>"]
+readme = "README.md"
+repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Proprietary",
+    "Operating System :: OS Independent",
+]
+[tool.poetry.scripts]
+config_deployer = "config_deployer.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
