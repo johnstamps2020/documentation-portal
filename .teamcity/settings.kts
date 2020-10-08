@@ -457,6 +457,46 @@ object UpdateSearchIndex : BuildType({
     }
 })
 
+object PublishIndexClanerDockerImage : BuildType({
+    name = "Publish Index Clenaer image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Index Cleaner image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/doc_crawler
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/index_cleaner/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    dependencies {
+        snapshot(TestContent) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
 object CleanUpIndex : BuildType({
     name = "Clean up index"
     description = "Remove documents from index which are not in the config"
@@ -489,11 +529,9 @@ object CleanUpIndex : BuildType({
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
                 curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
 
-                pip install elasticsearch
-                cd apps/index_cleaner
-                python main.py
+                index_cleaner
             """.trimIndent()
-            dockerImage = "python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -1876,6 +1914,7 @@ object Content : Project({
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
     buildType(UpdateSearchIndex)
+    buildType(PublishIndexClanerDockerImage)
     buildType(CleanUpIndex)
     buildType(TestContent)
 })
