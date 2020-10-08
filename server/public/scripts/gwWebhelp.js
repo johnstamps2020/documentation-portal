@@ -188,7 +188,7 @@ async function addTopLinkToBreadcrumbs() {
       '//' +
       window.location.host +
       '/products/' +
-      productFamily +
+      productFamily.toLowerCase().replace(/\W/g, '-') +
       '/' +
       release +
       '/' +
