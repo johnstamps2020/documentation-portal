@@ -528,6 +528,15 @@ object CleanUpIndex : BuildType({
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
 })
 
 object TestContent : BuildType({
