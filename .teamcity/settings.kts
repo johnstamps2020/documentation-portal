@@ -372,12 +372,12 @@ object DeploySearchService : BuildType({
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=apps/search_indexer/kube/deployment-prod.yml
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment-prod.yml
                 else
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
-                    export KUBE_FILE=apps/search_indexer/kube/deployment.yml
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment.yml
                 fi
                 sh ci/deployKubernetes.sh
             """.trimIndent()
@@ -457,6 +457,39 @@ object UpdateSearchIndex : BuildType({
     }
 })
 
+object PublishIndexClanerDockerImage : BuildType({
+    name = "Publish Index Cleaner image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Index Cleaner image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/index_cleaner
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/index_cleaner/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+})
+
 object CleanUpIndex : BuildType({
     name = "Clean up index"
     description = "Remove documents from index which are not in the config"
@@ -476,18 +509,6 @@ object CleanUpIndex : BuildType({
     }
 
     steps {
-        dockerCommand {
-            name = "Build a Python Docker image"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-            param("dockerImage.platform", "linux")
-        }
-
         script {
             name = "Run the cleanup script"
             scriptContent = """
@@ -501,11 +522,9 @@ object CleanUpIndex : BuildType({
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
                 curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
 
-                pip install elasticsearch
-                cd apps/index_cleaner
-                python main.py
+                index_cleaner
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -527,26 +546,16 @@ object TestContent : BuildType({
     steps {
         dockerCompose {
             name = "Compose services"
-            file = "apps/search_indexer/tests/test_doc_crawler/resources/docker-compose.yml"
-        }
-        dockerCommand {
-            name = "Build a Docker image for running the Python search_indexer"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
+            file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
         }
 
         script {
             name = "Run tests for crawling documents and uploading index"
             scriptContent = """
-                cd apps/search_indexer
-                make test-doc-crawler
+                cd apps/doc_crawler
+                ./test_doc_crawler.sh
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -555,7 +564,7 @@ object TestContent : BuildType({
         vcs {
             triggerRules = """
                 +:.teamcity/settings.kts
-                +:apps/search_indexer/**
+                +:apps/doc_crawler/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -633,26 +642,14 @@ object TestConfig : BuildType({
     }
 
     steps {
-        dockerCommand {
-            name = "Build a Docker image for running the Python apps"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-        }
-
         script {
             name = "Run tests for server config"
             scriptContent = """
-                cd apps/search_indexer
-                make test-config
+                cd apps/config_tester
+                ./test_config.sh
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--network=host"
         }
     }
 
@@ -821,6 +818,7 @@ object Server : Project({
     buildType(Release)
     buildType(DeployProd)
     buildType(DeployServerConfig)
+    buildType(PublishDocCrawlerDockerImage)
 
     buildTypesOrder = arrayListOf(DeployServerConfig, Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
 })
@@ -1000,7 +998,7 @@ object HelperObjects {
 
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
-        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_title: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
+        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
             if (index_for_search) {
                 templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
             } else {
@@ -1030,7 +1028,6 @@ object HelperObjects {
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GW_TITLE", doc_title, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1213,7 +1210,7 @@ object HelperObjects {
             if (env == "prod") {
                 builds.add(PublishToS3IndexProd(publishPath, docId))
             } else {
-                builds.add(BuildPublishToS3Index(product_name, platform, version, docTitle, docId, filter, root, indexRedirect, env as String,
+                builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
             }
         }
@@ -1734,7 +1731,6 @@ object BuildOutputFromDita : Template({
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.GW_TITLE", "%GW_TITLE%", allowEmpty = false)
         text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
         text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
@@ -1759,7 +1755,7 @@ object BuildOutputFromDita : Template({
                 export OUTPUT_PATH="out"
                 export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
 
-                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --gw-title \"%env.GW_TITLE%\""
+                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
@@ -1790,6 +1786,46 @@ object BuildOutputFromDita : Template({
 
 })
 
+object PublishDocCrawlerDockerImage : BuildType({
+    name = "Publish Doc Crawler docker image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Doc Crawler Docker image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/doc_crawler
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/doc_crawler/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    dependencies {
+        snapshot(TestContent) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
 object CrawlDocumentAndUpdateSearchIndex : Template({
     name = "Update the search index"
     artifactRules = """
@@ -1810,24 +1846,7 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
         text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
     }
 
-    vcs {
-        root(vcsrootmasteronly)
-        cleanCheckout = true
-    }
-
     steps {
-        dockerCommand {
-            name = "Build a Python Docker image"
-            id = "BUILD_CRAWLER_DOCKER_IMAGE"
-            commandType = build {
-                source = file {
-                    path = "apps/Dockerfile"
-                }
-                namesAndTags = "python-runner"
-                commandArgs = "--pull"
-            }
-            param("dockerImage.platform", "linux")
-        }
         script {
             name = "Crawl the document and update the index"
             id = "CRAWL_DOC"
@@ -1843,12 +1862,16 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
                 fi
                 
                 curl ${'$'}CONFIG_FILE_URL > %teamcity.build.workingDir%/config.json
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"               
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
+                
+                cat > scrapy.cfg <<- EOM
+                [settings]
+                default = doc_crawler.settings
+                EOM
 
-                cd apps/search_indexer
-                make run-doc-crawler
+                doc_crawler
             """.trimIndent()
-            dockerImage = "python-runner"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -1884,6 +1907,7 @@ object Content : Project({
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
     buildType(UpdateSearchIndex)
+    buildType(PublishIndexClanerDockerImage)
     buildType(CleanUpIndex)
     buildType(TestContent)
 })

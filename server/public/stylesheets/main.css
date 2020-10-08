@@ -33,6 +33,10 @@
   .pageLogo {
     padding: 0 !important;
   }
+
+  .wh_categories {
+    column-count: 1;
+  }
 }
 
 body {
@@ -570,3 +574,171 @@ a.returnLink {
 .docBreadcrumb a:last-child::after {
   content: none;
 }
+
+.fa-object-group {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/object-group-regular.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-wrench {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/wrench-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-file-note {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/file-alt-regular.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-users-cog {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/users-cog-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-code {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/code-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-puzzle-piece {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/puzzle-piece-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-cogs {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/cogs-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-lightbulb {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/lightbulb-regular.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-book-open {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/book-open-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+.fa-book {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url('../images/book-solid.svg');
+  background-size: 1em 1em;
+  position: relative;
+  top: 4px;
+  margin-left: 0.2em;
+}
+
+/*
+ * ------------------------------------------------------------------
+ *  
+ * Categories
+ * 
+ */
+.wh_categories {
+  --column-width: 415px;
+  column-count: 2;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  max-width: calc(2 * var(--column-width));
+  margin: auto;
+}
+
+.wh_category {
+  margin-bottom: 2em;
+  display: block;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  width: var(--column-width);
+}
+
+.wh_category ul {
+  list-style: none;
+}
+
+.wh_category_header {
+  font-size: 20px;
+}
+
+.wh_category_header div {
+  display: inline-block;
+}
+
+.wh_category_header .fas,
+.wh_category_header .far {
+  margin-right: 0.5em;
+}
+
+.wh_category_header_text {
+  font-weight: 700;
+  color: var(--GW-COLOR-TEXT-1);
+  margin-bottom: 9px;
+}
+
+.wh_category_item {
+  margin-top: 0.5em;
+}
+
+/*
+ * ------------------------------------------------------------------
+ *  
+ * END Categories
+ * 
+ */

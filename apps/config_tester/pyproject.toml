@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "config_tester"
+version = "1.0.0"
+description = "For testing the docportal config"
+authors = ["Guidewire <doctools@guidewire.com>"]
+repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Proprietary",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pytest = "^6.1.1"
+jsonschema = "^3.2.0"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"

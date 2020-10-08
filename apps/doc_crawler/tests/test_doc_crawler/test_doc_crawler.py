@@ -4,7 +4,6 @@ import time
 from pathlib import Path
 
 import pytest
-from lxml import etree
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
