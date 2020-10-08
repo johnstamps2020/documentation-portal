@@ -457,7 +457,7 @@ object UpdateSearchIndex : BuildType({
     }
 })
 
-object PublishIndexClanerDockerImage : BuildType({
+object PublishIndexCleanerDockerImage : BuildType({
     name = "Publish Index Cleaner image"
 
     params {
@@ -502,10 +502,6 @@ object CleanUpIndex : BuildType({
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
 
-    }
-
-    vcs {
-        root(vcsrootmasteronly)
     }
 
     steps {
@@ -1916,7 +1912,7 @@ object Content : Project({
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
     buildType(UpdateSearchIndex)
-    buildType(PublishIndexClanerDockerImage)
+    buildType(PublishIndexCleanerDockerImage)
     buildType(CleanUpIndex)
     buildType(TestContent)
 })
