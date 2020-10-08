@@ -215,3 +215,5 @@ dmypy.json
 server/config-schema.json
 
 search_indexer.log
+
+venv
