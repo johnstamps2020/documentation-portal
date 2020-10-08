@@ -211,7 +211,7 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
 
     if (docsWithoutSubject && docsWithoutSubject.length > 0) {
       docsBySubject.push({
-        category: '',
+        category: 'Documents',
         docs: docsWithoutSubject,
         icon: getDefaultCategoryIcon(),
       });
