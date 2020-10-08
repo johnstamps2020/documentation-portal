@@ -473,7 +473,7 @@ object PublishIndexClanerDockerImage : BuildType({
             name = "Publish Index Cleaner image to Artifactory"
             scriptContent = """
                 set -xe
-                cd apps/doc_crawler
+                cd apps/index_cleaner
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
