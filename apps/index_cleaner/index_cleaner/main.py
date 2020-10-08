@@ -39,5 +39,10 @@ def clean_index(index_name):
         print(f'Deleted {count} ids from {index_name}')
 
 
-clean_index('gw-docs')
-clean_index('broken-links')
+def main():
+    clean_index('gw-docs')
+    clean_index('broken-links')
+
+
+if __name__ == '__main__':
+    main()
