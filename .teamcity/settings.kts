@@ -3,10 +3,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
@@ -33,7 +30,7 @@ project {
         param("env.NAMESPACE", "doctools")
     }
 
-    subProject(Services)
+    subProject(Infrastructure)
     subProject(Server)
     subProject(Content)
     subProject(Docs)
@@ -127,7 +124,7 @@ object DeployDev : BuildType({
     triggers {
         finishBuildTrigger {
             id = "TRIGGER_1"
-            buildType = "${Test.id}"
+            buildType = "${TestDocPortalServer.id}"
             successfulOnly = true
         }
     }
@@ -136,7 +133,7 @@ object DeployDev : BuildType({
         snapshot(Checkmarx) {
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
-        snapshot(Test) {
+        snapshot(TestDocPortalServer) {
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
         snapshot(TestConfig) {
@@ -168,7 +165,7 @@ object DeployInt : BuildType({
         snapshot(Checkmarx) {
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
-        snapshot(Test) {
+        snapshot(TestDocPortalServer) {
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
         snapshot(TestConfig) {
@@ -297,8 +294,8 @@ object Release : BuildType({
     }
 })
 
-object Test : BuildType({
-    name = "Test"
+object TestDocPortalServer : BuildType({
+    name = "Test Doc Portal server app"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -308,7 +305,7 @@ object Test : BuildType({
 
     steps {
         script {
-            name = "Test"
+            name = "Test the Node.js server app"
             scriptContent = """
                 set -e
                 export APP_BASE_URL=http://localhost:8081
@@ -325,7 +322,6 @@ object Test : BuildType({
     triggers {
         vcs {
             triggerRules = """
-                +:.teamcity/settings.kts
                 +:server/**
                 -:user=doctools:**
             """.trimIndent()
@@ -338,6 +334,42 @@ object Test : BuildType({
                 dockerRegistryId = "PROJECT_EXT_155"
             }
         }
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+    }
+})
+
+object TestSettingsKts: BuildType({
+    name = "Test settings.kts"
+
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+
+    steps {
+        maven {
+            name = "Test settings.kts"
+            goals = "teamcity-configs:generate"
+            pomLocation = ".teamcity/pom.xml"
+        }
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:.teamcity/settings.kts
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
@@ -535,8 +567,8 @@ object CleanUpIndex : BuildType({
     }
 })
 
-object TestContent : BuildType({
-    name = "Test"
+object TestDocCrawler : BuildType({
+    name = "Test Doc Crawler"
 
     params {
         text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
@@ -568,7 +600,6 @@ object TestContent : BuildType({
     triggers {
         vcs {
             triggerRules = """
-                +:.teamcity/settings.kts
                 +:apps/doc_crawler/**
                 -:user=doctools:**
             """.trimIndent()
@@ -589,6 +620,79 @@ object TestContent : BuildType({
     }
 })
 
+object PublishConfigDeployerDockerImage : BuildType({
+    name = "Publish Config Deployer image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Config Deployer image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/config_deployer
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/config_deployer/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    dependencies {
+        snapshot(TestConfigDeployer) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestConfigDeployer : BuildType({
+    name = "Test Config Deployer"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for config deployer"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/config_deployer
+                ./test_config_deployer.sh
+            """.trimIndent()
+            dockerImage = "python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/config_deployer/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+})
+
 object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
@@ -597,22 +701,15 @@ object DeployServerConfig : BuildType({
                 options = listOf("dev", "int", "staging", "prod"))
     }
 
-    vcs {
-        root(vcsrootmasteronly)
-
-        cleanCheckout = true
-    }
-
     steps {
         script {
             name = "Generate config file"
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                cd apps/config_deployer
-                python main.py
+                config_deployer
             """.trimIndent()
-            dockerImage = "python:3.8-slim"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
         script {
@@ -633,6 +730,15 @@ object DeployServerConfig : BuildType({
                 
                 aws s3 cp apps/config_deployer/out/config.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config/config.json
                 """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
         }
     }
 })
@@ -811,21 +917,44 @@ object Deploy : Template({
     }
 })
 
+object Infrastructure : Project({
+    name = "Infrastructure"
+
+    subProject(Testing)
+    subProject(Deployment)
+})
+
+object Testing : Project({
+    name = "Testing"
+
+    buildType(TestConfigDeployer)
+    buildType(TestDocPortalServer)
+    buildType(TestSettingsKts)
+    buildType(TestConfig)
+    buildType(TestDocCrawler)
+})
+
+object Deployment : Project({
+    name = "Deployment"
+
+    buildType(PublishConfigDeployerDockerImage)
+    buildType(PublishDocCrawlerDockerImage)
+    buildType(PublishIndexCleanerDockerImage)
+    buildType(DeployS3Ingress)
+    buildType(DeploySearchService)
+})
+
 object Server : Project({
     name = "Server"
 
     buildType(Checkmarx)
-    buildType(Test)
-    buildType(TestConfig)
     buildType(DeployInt)
     buildType(DeployStaging)
     buildType(DeployDev)
     buildType(Release)
     buildType(DeployProd)
     buildType(DeployServerConfig)
-    buildType(PublishDocCrawlerDockerImage)
 
-    buildTypesOrder = arrayListOf(DeployServerConfig, Test, Checkmarx, DeployDev, DeployInt, DeployStaging, DeployProd, Release)
 })
 
 object HelperObjects {
@@ -1824,7 +1953,7 @@ object PublishDocCrawlerDockerImage : BuildType({
     }
 
     dependencies {
-        snapshot(TestContent) {
+        snapshot(TestDocCrawler) {
             reuseBuilds = ReuseBuilds.SUCCESSFUL
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
@@ -1912,16 +2041,7 @@ object Content : Project({
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
     buildType(UpdateSearchIndex)
-    buildType(PublishIndexCleanerDockerImage)
     buildType(CleanUpIndex)
-    buildType(TestContent)
-})
-
-object Services : Project({
-    name = "Services"
-
-    buildType(DeployS3Ingress)
-    buildType(DeploySearchService)
 })
 
 object Docs : Project({

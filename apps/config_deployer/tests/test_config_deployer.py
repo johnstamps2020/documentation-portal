@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-import main as config_deployer
+from config_deployer import main as config_deployer
 
 current_dir = Path.absolute(Path(__file__)).parent
 config_path = current_dir / 'resources' / 'input' / 'config' / 'server-config.json'
