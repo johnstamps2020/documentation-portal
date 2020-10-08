@@ -458,7 +458,7 @@ object UpdateSearchIndex : BuildType({
 })
 
 object PublishIndexClanerDockerImage : BuildType({
-    name = "Publish Index Clenaer image"
+    name = "Publish Index Cleaner image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
@@ -486,13 +486,6 @@ object PublishIndexClanerDockerImage : BuildType({
                 +:apps/index_cleaner/**
                 -:user=doctools:**
             """.trimIndent()
-        }
-    }
-
-    dependencies {
-        snapshot(TestContent) {
-            reuseBuilds = ReuseBuilds.SUCCESSFUL
-            onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
 })
