@@ -15,6 +15,17 @@ async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   }
 }
 
+async function getConfig() {
+  try {
+    const configUrl = '/portal-config/config.json';
+    const result = await fetch(configUrl);
+    return await result.json();
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 async function getVersions() {
   try {
     const product = document.querySelector("meta[name = 'gw-product']")[
@@ -24,9 +35,7 @@ async function getVersions() {
       'content'
     ];
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    const configUrl = '/portal-config/config.json';
-    const result = await fetch(configUrl);
-    const json = await result.json();
+    const json = await getConfig();
     const docsFromConfig = json.docs.filter(
       d =>
         d.metadata.product.includes(product) &&
@@ -60,6 +69,47 @@ async function getVersions() {
   } catch (err) {
     console.log(err);
     return { docs: [] };
+  }
+}
+
+async function getDocRelease() {
+  try {
+    const product = document.querySelector("meta[name = 'gw-product']")[
+      'content'
+    ];
+    const platform = document.querySelector("meta[name = 'gw-platform']")[
+      'content'
+    ];
+    const version = document.querySelector("meta[name = 'gw-version']")[
+      'content'
+    ];
+    const json = await getConfig();
+    const docsFromConfig = json.docs.filter(
+      d =>
+        d.metadata.product.includes(product) &&
+        d.metadata.platform.includes(platform) &&
+        d.metadata.version === version &&
+        d.displayOnLandingPages !== false
+    );
+    return docsFromConfig[0].metadata.release[0];
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function getProductFamilyForProduct() {
+  try {
+    const product = document.querySelector("meta[name = 'gw-product']")[
+      'content'
+    ];
+    const json = await getConfig();
+    const productFamiliesFromConfig = json.productFamilies.filter(pf =>
+      pf.product.includes(product)
+    );
+    return productFamiliesFromConfig[0].productFamilyName;
+  } catch (err) {
+    console.log(err);
+    return { productFamilies: [] };
   }
 }
 
@@ -123,19 +173,36 @@ async function createVersionSelector() {
   }
 }
 
-function addTopLinkToBreadcrumbs() {
+async function addTopLinkToBreadcrumbs() {
   try {
-    console.log('Creating top level link');
+    const product = document.querySelector("meta[name = 'gw-product']")[
+      'content'
+    ];
+    const version = document.querySelector("meta[name = 'gw-version']")[
+      'content'
+    ];
+    const productFamily = await getProductFamilyForProduct();
+    const release = await getDocRelease();
+    const topLink =
+      window.location.protocol +
+      '//' +
+      window.location.host +
+      '/products/' +
+      productFamily +
+      '/' +
+      release +
+      '/' +
+      product +
+      '/' +
+      version;
     const listItem = document.createElement('li');
     const topicrefSpan = document.createElement('span');
     topicrefSpan.setAttribute('class', 'topicref');
-    topicrefSpan.setAttribute('data-id', 'fake value');
     const titleSpan = document.createElement('span');
     titleSpan.setAttribute('class', 'title');
     const listItemLink = document.createElement('a');
-    listItemLink.setAttribute('href', '#');
-    listItemLink.innerText = 'Top level link';
-    console.log(listItem);
+    listItemLink.setAttribute('href', topLink);
+    listItemLink.innerText = product + ' ' + version;
 
     titleSpan.appendChild(listItemLink);
     topicrefSpan.appendChild(titleSpan);
@@ -150,7 +217,6 @@ function addTopLinkToBreadcrumbs() {
       setTimeout(wait, 100);
       breadcrumbs = getBreadcrumbs();
     }
-    console.log(breadcrumbs);
     if (breadcrumbs) {
       breadcrumbs.prepend(listItem);
     } else {
