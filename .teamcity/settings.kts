@@ -614,14 +614,11 @@ object TestConfig : BuildType({
         script {
             name = "Run tests for server config"
             scriptContent = """
-                cd apps/doc_crawler
-                apt-get update && apt-get install -y build-essential \
-                    && apt-get install -y curl
+                cd apps/config_tester
                 ./test_config.sh
             """.trimIndent()
             dockerImage = "python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--network=host"
         }
     }
 

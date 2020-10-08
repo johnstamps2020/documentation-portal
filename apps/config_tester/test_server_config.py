@@ -4,7 +4,7 @@ from typing import Dict
 
 from jsonschema import validate
 
-root_dir = Path(__file__).parent.parent.parent.parent.parent
+root_dir = Path(__file__).parent.parent.parent
 
 server_config_path = root_dir / '.teamcity' / 'config' / 'server-config.json'
 sources_path = root_dir / '.teamcity' / 'config' / 'sources.json'
