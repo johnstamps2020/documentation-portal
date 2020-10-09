@@ -23,6 +23,7 @@ async function getVersions() {
     const platform = document.querySelector("meta[name = 'gw-platform']")[
       'content'
     ];
+
     const baseUrl = window.location.protocol + '//' + window.location.host;
     const configUrl = '/portal-config/config.json';
     const result = await fetch(configUrl);
@@ -33,18 +34,39 @@ async function getVersions() {
         d.metadata.platform.includes(platform) &&
         d.displayOnLandingPages !== false
     );
+
     const versions = [];
     docsFromConfig.forEach(doc => {
-      if (doc.url.includes('portal2')) {
-        versions.push({
-          label: doc.metadata.version,
-          link: doc.url,
-        });
+      const sameVersionDocs = docsFromConfig.filter(
+        d => d.metadata.version === doc.metadata.version
+      );
+      if (sameVersionDocs.length > 1) {
+        const productVersionPageUrl =
+          baseUrl +
+          '/' +
+          'product' +
+          '/' +
+          product.toLowerCase().replace(/\W/g, '-') +
+          '/' +
+          doc.metadata.version;
+        if (!versions.some(ver => ver.link === productVersionPageUrl)) {
+          versions.push({
+            label: doc.metadata.version,
+            link: productVersionPageUrl,
+          });
+        }
       } else {
-        versions.push({
-          label: doc.metadata.version,
-          link: baseUrl + '/' + doc.url,
-        });
+        if (doc.url.includes('portal2')) {
+          versions.push({
+            label: doc.metadata.version,
+            link: doc.url,
+          });
+        } else {
+          versions.push({
+            label: doc.metadata.version,
+            link: baseUrl + '/' + doc.url,
+          });
+        }
       }
     });
 
