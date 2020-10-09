@@ -904,14 +904,16 @@
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "releasenotes/ReleaseNotes-cloud.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookreleasenotes"
+      "docId": "isbccloudnoxbookreleasenotes",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/newAndChanged/NewAndChanged.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbooknewandchanged"
+      "docId": "isbccloudnoxbooknewandchanged",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
@@ -933,91 +935,104 @@
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/app/BC-AppGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookapp"
+      "docId": "isbccloudnoxbookapp",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/contact/ContactMgmtGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookcontact"
+      "docId": "isbccloudnoxbookcontact",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/suite/InsuranceSuiteGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbooksuite"
+      "docId": "isbccloudnoxbooksuite",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/admin/AdminGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookadmin"
+      "docId": "isbccloudnoxbookadmin",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/bestpractice/BestPracticesGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookbestpractice"
+      "docId": "isbccloudnoxbookbestpractice",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/config/ConfigGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookconfig"
+      "docId": "isbccloudnoxbookconfig",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/global/GlobalizationGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookglobal"
+      "docId": "isbccloudnoxbookglobal",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/rules/RulesGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookrules"
+      "docId": "isbccloudnoxbookrules",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/integration/IntegrationGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookinteg"
+      "docId": "isbccloudnoxbookinteg",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/gosu/GosuRefGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookgosu"
+      "docId": "isbccloudnoxbookgosu",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/testing/TestingGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbooktesting"
+      "docId": "isbccloudnoxbooktesting",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "cloud/active/installation/InstallationGuide.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookinstall"
+      "docId": "isbccloudnoxbookinstall",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "cloud/active/glossary/Glossary.ditamap",
       "srcId": "cloudisnoxbook",
-      "docId": "iscloudnoxbookglossary"
+      "docId": "iscloudnoxbookglossary",
+      "indexRedirect": true
     }
   ]
 }
