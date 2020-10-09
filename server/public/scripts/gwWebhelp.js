@@ -94,47 +94,6 @@ async function getVersions() {
   }
 }
 
-async function getDocRelease() {
-  try {
-    const product = document.querySelector("meta[name = 'gw-product']")[
-      'content'
-    ];
-    const platform = document.querySelector("meta[name = 'gw-platform']")[
-      'content'
-    ];
-    const version = document.querySelector("meta[name = 'gw-version']")[
-      'content'
-    ];
-    const json = await getConfig();
-    const docsFromConfig = json.docs.filter(
-      d =>
-        d.metadata.product.includes(product) &&
-        d.metadata.platform.includes(platform) &&
-        d.metadata.version === version &&
-        d.displayOnLandingPages !== false
-    );
-    return docsFromConfig[0].metadata.release[0];
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function getProductFamilyForProduct() {
-  try {
-    const product = document.querySelector("meta[name = 'gw-product']")[
-      'content'
-    ];
-    const json = await getConfig();
-    const productFamiliesFromConfig = json.productFamilies.filter(pf =>
-      pf.product.includes(product)
-    );
-    return productFamiliesFromConfig[0].productFamilyName;
-  } catch (err) {
-    console.log(err);
-    return { productFamilies: [] };
-  }
-}
-
 async function createVersionSelector() {
   try {
     const docProduct = document.querySelector("meta[name = 'gw-product']")
@@ -203,18 +162,14 @@ async function addTopLinkToBreadcrumbs() {
     const version = document.querySelector("meta[name = 'gw-version']")[
       'content'
     ];
-    const productFamily = await getProductFamilyForProduct();
-    const release = await getDocRelease();
-    const topLink =
+    const productVersionPageUrl =
       window.location.protocol +
       '//' +
       window.location.host +
-      '/products/' +
-      productFamily.toLowerCase().replace(/\W/g, '-') +
       '/' +
-      release +
+      'product' +
       '/' +
-      product +
+      product.toLowerCase().replace(/\W/g, '-') +
       '/' +
       version;
     const listItem = document.createElement('li');
@@ -223,7 +178,7 @@ async function addTopLinkToBreadcrumbs() {
     const titleSpan = document.createElement('span');
     titleSpan.setAttribute('class', 'title');
     const listItemLink = document.createElement('a');
-    listItemLink.setAttribute('href', topLink);
+    listItemLink.setAttribute('href', productVersionPageUrl);
     listItemLink.innerText = product + ' ' + version;
 
     titleSpan.appendChild(listItemLink);
