@@ -15,6 +15,17 @@ async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   }
 }
 
+async function getConfig() {
+  try {
+    const configUrl = '/portal-config/config.json';
+    const result = await fetch(configUrl);
+    return await result.json();
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 async function getVersions() {
   try {
     const product = document.querySelector("meta[name = 'gw-product']")[
@@ -25,9 +36,7 @@ async function getVersions() {
     ];
 
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    const configUrl = '/portal-config/config.json';
-    const result = await fetch(configUrl);
-    const json = await result.json();
+    const json = await getConfig();
     const docsFromConfig = json.docs.filter(
       d =>
         d.metadata.product.includes(product) &&
@@ -145,6 +154,71 @@ async function createVersionSelector() {
   }
 }
 
+async function addTopLinkToBreadcrumbs() {
+  try {
+    const product = document.querySelector("meta[name = 'gw-product']")[
+      'content'
+    ];
+    const platform = document.querySelector("meta[name = 'gw-platform']")[
+      'content'
+    ];
+    const version = document.querySelector("meta[name = 'gw-version']")[
+      'content'
+    ];
+    const baseUrl = window.location.protocol + '//' + window.location.host;
+    const json = await getConfig();
+    const sameVersionDocs = json.docs.filter(
+      d =>
+        d.metadata.product.includes(product) &&
+        d.metadata.platform.includes(platform) &&
+        d.metadata.version === version &&
+        d.displayOnLandingPages !== false
+    );
+    if (sameVersionDocs.length > 1) {
+      const productVersionPageUrl =
+        baseUrl +
+        '/' +
+        'product' +
+        '/' +
+        product.toLowerCase().replace(/\W/g, '-') +
+        '/' +
+        version;
+      const listItem = document.createElement('li');
+      const topicrefSpan = document.createElement('span');
+      topicrefSpan.setAttribute('class', 'topicref');
+      const titleSpan = document.createElement('span');
+      titleSpan.setAttribute('class', 'title');
+      const listItemLink = document.createElement('a');
+      listItemLink.setAttribute('href', productVersionPageUrl);
+      listItemLink.innerText = product + ' ' + version;
+
+      titleSpan.appendChild(listItemLink);
+      topicrefSpan.appendChild(titleSpan);
+      listItem.appendChild(topicrefSpan);
+
+      function getBreadcrumbs() {
+        try {
+          let breadcrumbs = document.querySelector(
+            '.wh_breadcrumb > .d-print-inline-block'
+          );
+          if (!breadcrumbs) {
+            window.requestAnimationFrame(getBreadcrumbs);
+          } else {
+            breadcrumbs.prepend(listItem);
+          }
+        } catch (err) {
+          console.log(err);
+          return null;
+        }
+      }
+      getBreadcrumbs();
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 function docReady(fn) {
   if (
     document.readyState === 'complete' ||
@@ -158,4 +232,5 @@ function docReady(fn) {
 
 docReady(async function() {
   await createVersionSelector();
+  addTopLinkToBreadcrumbs();
 });
