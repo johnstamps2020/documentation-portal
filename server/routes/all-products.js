@@ -4,28 +4,21 @@ const getAllProductDocs = require('../controllers/allProductController');
 const {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
-  getSortedVersions
+  getSortedVersions,
 } = require('./helpers/metadata');
-const {
-  getDefaultSubjectIcon,
-  getSubjectIcon
-} = require('./helpers/icons');
+const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 
 async function getSingleProduct(productId) {
   const products = await getAllProductDocs();
 
-  return products.find(
-    product => product.id === productId
-  );
+  return products.find(product => product.id === productId);
 }
 
 async function getSingleProductVersion(productId, version) {
-    let product = await getSingleProduct(productId);
+  let product = await getSingleProduct(productId);
 
-    product.docs = product.docs.filter(
-      doc => (doc.metadata.version === version)
-    );
-    return product;
+  product.docs = product.docs.filter(doc => doc.metadata.version === version);
+  return product;
 }
 
 router.get('/:productId', async function(req, res, next) {
@@ -50,7 +43,10 @@ router.get('/:productId/:version', async function(req, res, next) {
   try {
     const { productId, version } = req.params;
     const allProductDocs = await getSingleProduct(productId);
-    const productDocsForVersion = await getSingleProductVersion(productId, version);
+    const productDocsForVersion = await getSingleProductVersion(
+      productId,
+      version
+    );
 
     const availableVersions = getUniqueInMetadataFields(
       allProductDocs.docs,
@@ -83,7 +79,7 @@ router.get('/:productId/:version', async function(req, res, next) {
 
     if (docsWithoutSubject && docsWithoutSubject.length > 0) {
       docsBySubject.push({
-        category: '',
+        category: 'Documents',
         docs: docsWithoutSubject,
         icon: getDefaultSubjectIcon(),
       });
@@ -92,14 +88,14 @@ router.get('/:productId/:version', async function(req, res, next) {
     if (docsBySubject.length === 1 && docsBySubject[0].docs.length === 1) {
       res.redirect('/' + docsBySubject[0].docs[0].url);
     } else {
-        res.render('grouped-links', {
-          title: `${productDocsForVersion.name} ${version}`,
-          docGroups: docsBySubject,
-          breadcrumb: [],
-          selectedRelease: version,
-          sortedVersions: sortedVersions,
-        })};
-        
+      res.render('grouped-links', {
+        title: `${productDocsForVersion.name} ${version}`,
+        docGroups: docsBySubject,
+        breadcrumb: [],
+        selectedRelease: version,
+        sortedVersions: sortedVersions,
+      });
+    }
   } catch (err) {
     next(err);
   }
