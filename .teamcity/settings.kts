@@ -703,6 +703,7 @@ object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
     params {
+        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json")
         select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want deploy the config", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
     }
@@ -734,7 +735,7 @@ object DeployServerConfig : BuildType({
                   export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
                 fi
                 
-                aws s3 cp apps/config_deployer/out/config.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config/config.json
+                aws s3 cp %teamcity.build.checkoutDir%/.teamcity/config/out/config.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config/config.json
                 """.trimIndent()
         }
     }
