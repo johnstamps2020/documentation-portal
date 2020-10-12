@@ -657,6 +657,55 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
+      "srcId": "dx202010",
+      "docId": "dxceam202010"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202010",
+      "docId": "dxceclaims202010"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202010",
+      "docId": "dxceqb202010"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202010",
+      "docId": "dxpe202010"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202010",
+      "docId": "dxpeclaims202010"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202010",
+      "docId": "dxsre202010"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202010",
+      "docId": "dxve202010"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
       "srcId": "dx202008",
       "docId": "dxceam202008cloudstaging"
     },
