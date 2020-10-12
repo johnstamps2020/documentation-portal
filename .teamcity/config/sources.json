@@ -420,8 +420,21 @@
       "branch": "feature/modular-builds"
     },
     {
+      "id": "selfmanagedis1011src",
+      "title": "InsuranceSuite 10.1.1",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.1.1",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1011/_supermap-10x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
       "id": "selfmanagedis1010src",
-      "title": "InsuranceSuite 10",
+      "title": "InsuranceSuite 10.1.0",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
       "branch": "10.1.0",
