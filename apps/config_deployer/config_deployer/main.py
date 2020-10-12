@@ -19,10 +19,9 @@ def save_config_for_env(save_path: Path, config_content: Dict):
 
 
 def main():
-    current_dir = Path.absolute(Path(__file__)).parent
-    config_path = current_dir.parent.parent / '.teamcity' / 'config' / 'server-config.json'
+    config_path = Path(os.environ['CONFIG_FILE'])
     deploy_env = os.environ['DEPLOY_ENV']
-    result_path = current_dir / 'out' / 'config.json'
+    result_path = config_path.parent / 'out' / 'config.json'
     save_config_for_env(result_path, get_docs_for_env(config_path, deploy_env))
 
 
