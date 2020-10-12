@@ -2348,7 +2348,7 @@
       ]
     },
     {
-      "id": "dxceam202008cloudstaging",
+      "id": "dxceam202008",
       "title": "CustomerEngage Account Management",
       "url": "cloud/dx/ce-am/202008",
       "metadata": {
@@ -2373,7 +2373,7 @@
       ]
     },
     {
-      "id": "dxceqb202008cloudstaging",
+      "id": "dxceqb202008",
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202008",
       "metadata": {
@@ -2398,7 +2398,7 @@
       ]
     },
     {
-      "id": "dxpe202008cloudstaging",
+      "id": "dxpe202008",
       "title": "ProducerEngage",
       "url": "cloud/dx/pe/202008",
       "metadata": {
@@ -2423,7 +2423,7 @@
       ]
     },
     {
-      "id": "dxsre202008cloudstaging",
+      "id": "dxsre202008",
       "title": "ServiceRepEngage",
       "url": "cloud/dx/sre/202008",
       "metadata": {
@@ -2448,7 +2448,7 @@
       ]
     },
     {
-      "id": "dxceqb202005cloudstaging",
+      "id": "dxceqb202005",
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202005",
       "metadata": {
@@ -2473,7 +2473,7 @@
       ]
     },
     {
-      "id": "dxapd202005cloudstaging",
+      "id": "dxapd202005",
       "title": "Digital Code Generation",
       "url": "cloud/dx/apd/202005",
       "displayOnLandingPages": false,
@@ -2499,7 +2499,7 @@
       ]
     },
     {
-      "id": "dxpe202005cloudstaging",
+      "id": "dxpe202005",
       "title": "ProducerEngage",
       "url": "cloud/dx/pe/202005",
       "metadata": {
@@ -2524,7 +2524,7 @@
       ]
     },
     {
-      "id": "dxsre202005cloudstaging",
+      "id": "dxsre202005",
       "title": "ServiceRepEngage",
       "url": "cloud/dx/sre/202005",
       "metadata": {
