@@ -2044,6 +2044,181 @@
       ]
     },
     {
+      "id": "dxceam202010",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/202010",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceclaims202010",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "cloud/dx/ce-claims/202010",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceqb202010",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/202010",
+      "metadata": {
+        "product": [
+          "CustomerEngage Quote and Buy"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpe202010",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/202010",
+      "metadata": {
+        "product": [
+          "ProducerEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpeclaims202010",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "cloud/dx/pe-claims/202010",
+      "metadata": {
+        "product": [
+          "ProducerEngage for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxsre202010",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/202010",
+      "metadata": {
+        "product": [
+          "ServiceRepEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxve202010",
+      "title": "VendorEngage",
+      "url": "cloud/dx/ve/202010",
+      "metadata": {
+        "product": [
+          "VendorEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "category": [
+          "Digital"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
       "id": "dxceam202008cloudstaging",
       "title": "CustomerEngage Account Management",
       "url": "cloud/dx/ce-am/202008",
