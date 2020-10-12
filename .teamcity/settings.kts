@@ -3,7 +3,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
@@ -344,7 +346,7 @@ object TestDocPortalServer : BuildType({
     }
 })
 
-object TestSettingsKts: BuildType({
+object TestSettingsKts : BuildType({
     name = "Test settings.kts"
 
     vcs {
@@ -706,6 +708,11 @@ object DeployServerConfig : BuildType({
         text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json")
         select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want deploy the config", display = ParameterDisplay.PROMPT,
                 options = listOf("dev", "int", "staging", "prod"))
+    }
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
     }
 
     steps {
