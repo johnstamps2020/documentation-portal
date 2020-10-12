@@ -83,7 +83,7 @@
       "docId": "clouddhdraft",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/DataHub",
+          "sourceFolder": "Banff-10.4/DataHub",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
@@ -97,7 +97,7 @@
       "docId": "cloudicdraft",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/InfoCenter",
+          "sourceFolder": "Banff-10.4/InfoCenter",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
@@ -332,7 +332,7 @@
       "docId": "selfmanageddhxoiefunwl",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/DataHub",
+          "sourceFolder": "Banff-10.4/DataHub",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
@@ -346,7 +346,7 @@
       "docId": "selfmanagedicxrsfjafti",
       "resources": [
         {
-          "sourceFolder": "Aspen-10.3/InfoCenter",
+          "sourceFolder": "Banff-10.4/InfoCenter",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
@@ -657,8 +657,8 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
-      "srcId": "exportdhiccloudforstaging",
-      "docId": "clouddhaithitzz",
+      "srcId": "dhic202005",
+      "docId": "dh202005",
       "resources": [
         {
           "sourceFolder": "Aspen-10.3/DataHub",
@@ -671,8 +671,8 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
-      "srcId": "exportdhiccloudforstaging",
-      "docId": "cloudiclovarpzz",
+      "srcId": "dhic202005",
+      "docId": "ic202005",
       "resources": [
         {
           "sourceFolder": "Aspen-10.3/InfoCenter",
@@ -804,8 +804,36 @@
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
-      "srcId": "exportdhiconpremforstaging",
-      "docId": "selfmanageddhaithitzz",
+      "srcId": "dhic1040",
+      "docId": "dh1040",
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhic1040",
+      "docId": "ic1040",
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/InfoCenter",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhic1030",
+      "docId": "dh1030",
       "resources": [
         {
           "sourceFolder": "Aspen-10.3/DataHub",
@@ -818,8 +846,8 @@
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "DM_all.ditamap",
-      "srcId": "exportdhiconpremforstaging",
-      "docId": "selfmanagediclovarpzz",
+      "srcId": "dhic1030",
+      "docId": "ic1030",
       "resources": [
         {
           "sourceFolder": "Aspen-10.3/InfoCenter",

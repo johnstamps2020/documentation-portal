@@ -2079,7 +2079,7 @@
       ]
     },
     {
-      "id": "clouddhaithitzz",
+      "id": "dh202005",
       "title": "DataHub for Guidewire Cloud",
       "url": "cloud/dh/202005",
       "metadata": {
@@ -2104,7 +2104,7 @@
       ]
     },
     {
-      "id": "cloudiclovarpzz",
+      "id": "ic202005",
       "title": "InfoCenter for Guidewire Cloud",
       "url": "cloud/ic/202005",
       "metadata": {
@@ -2764,7 +2764,49 @@
       ]
     },
     {
-      "id": "selfmanageddhaithitzz",
+      "id": "dh1040",
+      "title": "DataHub",
+      "url": "self-managed/dh/1040",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "DataHub"
+        ],
+        "version": "10.4.0",
+        "category": [
+          "Data"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "ic1040",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1040",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "InfoCenter"
+        ],
+        "version": "10.4.0",
+        "category": [
+          "Data"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "dh1030",
       "title": "DataHub",
       "url": "self-managed/dh/1030",
       "metadata": {
@@ -2786,7 +2828,7 @@
       ]
     },
     {
-      "id": "selfmanagediclovarpzz",
+      "id": "ic1030",
       "title": "InfoCenter",
       "url": "self-managed/ic/1030",
       "metadata": {
