@@ -11,6 +11,7 @@
     left: calc(50vw - (var(--search-field-width) / 2));
     padding: 0;
     margin: 0;
+    display: inline-block;
   }
 
   input.wh_search_textfield {
@@ -165,4 +166,11 @@ div#affix3 form#searchForm {
   border-radius: 6px;
   border: 1px solid var(--GW-COLOR-BRAND-2);
   margin: 8px;
+}
+.wh_top_menu_and_indexterms_link > label {
+  margin-bottom:0;
+}
+
+.wh_topic_label:after {
+  content: "" !important
 }
