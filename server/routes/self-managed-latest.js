@@ -95,15 +95,19 @@ router.get('/:product/:version', async function(req, res, next) {
       });
     }
 
-    res.render('grouped-cards', {
-      title: `${product} ${version}`,
-      docGroups: docLinks,
-      breadcrumb: [
-        { href: `/self-managed-latest`, label: 'Self-managed documentation' },
-      ],
-      selectedRelease: version,
-      availableReleases: sortedVersions,
-    });
+    if (docLinks.length === 1 && docLinks[0].docs.length === 1) {
+      res.redirect('/' + docLinks[0].docs[0].url);
+    } else {
+      res.render('grouped-cards', {
+        title: `${product} ${version}`,
+        docGroups: docLinks,
+        breadcrumb: [
+          { href: `/self-managed-latest`, label: 'Self-managed documentation' },
+        ],
+        selectedRelease: version,
+        availableReleases: sortedVersions,
+      });
+    }
   } catch (err) {
     next(err);
   }
