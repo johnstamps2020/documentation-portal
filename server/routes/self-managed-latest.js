@@ -10,7 +10,8 @@ const {
 async function getSelfManagedDocs() {
   const config = await getConfig();
   const docs = config.docs.filter(d =>
-    d.metadata.platform.includes('Self-managed')
+    d.metadata.platform.includes('Self-managed') &&
+    d.displayOnLandingPages != false
   );
 
   return docs;
