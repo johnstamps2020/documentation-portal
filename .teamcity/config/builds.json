@@ -634,27 +634,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
-      "srcId": "exportisonprem9",
-      "docId": "bc9xstaging"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
-      "srcId": "exportisonprem9",
-      "docId": "cc9xstaging"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
-      "srcId": "exportisonprem9",
-      "docId": "pc9xstaging"
-    },
-    {
-      "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic202005",
@@ -1017,6 +996,34 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
       "docId": "dxvodonpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-c-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxvodconpremstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "is909",
+      "docId": "bc909"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "is909",
+      "docId": "cc909"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "is909",
+      "docId": "pc909"
     },
     {
       "buildType": "dita",
