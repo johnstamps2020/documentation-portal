@@ -801,7 +801,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x.x",
+        "version": "10.x",
         "category": [
           "Core"
         ]
@@ -822,7 +822,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x.x",
+        "version": "10.x",
         "category": [
           "Core"
         ]
@@ -843,7 +843,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x.x",
+        "version": "10.x",
         "category": [
           "Core"
         ]
@@ -854,7 +854,7 @@
     },
     {
       "id": "selfmanagedbcupgradetools1x",
-      "title": "BillingCenter Upgrade Tools 1.x.x",
+      "title": "BillingCenter Upgrade Tools 1.x",
       "url": "self-managed/bc/upgrade/1x",
       "metadata": {
         "product": [
@@ -863,7 +863,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x.x",
+        "version": "1.x",
         "category": [
           "Core"
         ]
@@ -874,7 +874,7 @@
     },
     {
       "id": "selfmanagedccupgradetools1x",
-      "title": "ClaimCenter Upgrade Tools 1.x.x",
+      "title": "ClaimCenter Upgrade Tools 1.x",
       "url": "self-managed/cc/upgrade/1x",
       "metadata": {
         "product": [
@@ -883,7 +883,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x.x",
+        "version": "1.x",
         "category": [
           "Core"
         ]
@@ -894,7 +894,7 @@
     },
     {
       "id": "selfmanagedpcupgradetools1x",
-      "title": "PolicyCenter Upgrade Tools 1.x.x",
+      "title": "PolicyCenter Upgrade Tools 1.x",
       "url": "self-managed/pc/upgrade/1x",
       "metadata": {
         "product": [
@@ -903,7 +903,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x.x",
+        "version": "1.x",
         "category": [
           "Core"
         ]
@@ -1941,7 +1941,7 @@
       ]
     },
     {
-      "id": "bc9xstaging",
+      "id": "bc909",
       "title": "BillingCenter",
       "url": "self-managed/bc/909",
       "metadata": {
@@ -1963,7 +1963,7 @@
       ]
     },
     {
-      "id": "cc9xstaging",
+      "id": "cc909",
       "title": "ClaimCenter",
       "url": "self-managed/cc/909",
       "metadata": {
@@ -1985,7 +1985,7 @@
       ]
     },
     {
-      "id": "pc9xstaging",
+      "id": "pc909",
       "title": "PolicyCenter",
       "url": "self-managed/pc/909",
       "metadata": {

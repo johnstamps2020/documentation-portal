@@ -149,6 +149,19 @@
       ]
     },
     {
+      "id": "is909",
+      "title": "InsuranceSuite OnPrem 9.0.9",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+      "branch": "9.0.9",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/9.x/releases/909/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
       "id": "exportis908",
       "title": "InsuranceSuite OnPrem 9.0.8",
       "sourceType": "xdocs",
@@ -199,7 +212,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2020.10",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/DX_superbook.ditamap",
+        "/Content/doc/digital/11.x/releases/202010/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
