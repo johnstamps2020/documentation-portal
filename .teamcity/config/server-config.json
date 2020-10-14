@@ -745,7 +745,6 @@
         ]
       },
       "environments": [
-        "dev",
         "int"
       ]
     },
