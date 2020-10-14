@@ -2009,6 +2009,7 @@
       "id": "selfmanagedbcupgradetoolsqwertyui",
       "title": "BillingCenter Upgrade Tools",
       "url": "self-managed/bc/upgrade/1440",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2031,6 +2032,7 @@
       "id": "selfmanagedccupgradetoolsqwertyui",
       "title": "ClaimCenter Upgrade Tools",
       "url": "self-managed/cc/upgrade/1440",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2053,6 +2055,7 @@
       "id": "selfmanagedpcupgradetoolsqwertyui",
       "title": "PolicyCenter Upgrade Tools",
       "url": "self-managed/pc/upgrade/1440",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2694,6 +2697,7 @@
       "id": "selfmanagedbcupgradetoolspiteqdgk",
       "title": "BillingCenter Upgrade Tools",
       "url": "self-managed/bc/upgrade/230",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2716,6 +2720,7 @@
       "id": "selfmanagedccupgradetoolspiteqdgk",
       "title": "ClaimCenter Upgrade Tools",
       "url": "self-managed/cc/upgrade/230",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2738,6 +2743,7 @@
       "id": "selfmanagedpcupgradetoolspiteqdgk",
       "title": "PolicyCenter Upgrade Tools",
       "url": "self-managed/pc/upgrade/230",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
