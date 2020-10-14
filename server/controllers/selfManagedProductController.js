@@ -6,7 +6,8 @@ async function getSelfManagedProducts() {
     const docs = config.docs;
     let selfManagedProducts = [];
     let categories = docs.reduce((r, a) => {
-      if (a.metadata.platform.includes('Self-managed')) {
+      if (a.metadata.platform.includes('Self-managed') &&
+          a.displayOnLandingPages != false) {
         r[a.metadata.category] = [...(r[a.metadata.category] || []), a];
       }
       return r;

@@ -12,7 +12,8 @@ async function getAllProductDocs() {
       for (const doc of config.docs) {
         if (
           doc.metadata.product &&
-          doc.metadata.product.includes(productName)
+          doc.metadata.product.includes(productName)  &&
+          doc.displayOnLandingPages != false
         ) {
           productDocs.push(doc);
         }
