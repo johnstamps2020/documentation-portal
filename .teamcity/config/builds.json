@@ -1007,21 +1007,21 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_superbook.ditamap",
+      "root": "_supermap-9x-active.ditamap",
       "srcId": "is909",
       "docId": "bc909"
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_superbook.ditamap",
+      "root": "_supermap-9x-active.ditamap",
       "srcId": "is909",
       "docId": "cc909"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_superbook.ditamap",
+      "root": "_supermap-9x-active.ditamap",
       "srcId": "is909",
       "docId": "pc909"
     },
