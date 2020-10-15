@@ -28,19 +28,19 @@ async function getConfig() {
 
 async function getVersions() {
   try {
-    const product = document.querySelector("meta[name = 'gw-product']")[
-      'content'
-    ];
-    const platform = document.querySelector("meta[name = 'gw-platform']")[
-      'content'
-    ];
+    const product = document
+      .querySelector("meta[name = 'gw-product']")
+      ['content'].split(',');
+    const platform = document
+      .querySelector("meta[name = 'gw-platform']")
+      ['content'].split(',');
 
     const baseUrl = window.location.protocol + '//' + window.location.host;
     const json = await getConfig();
     const docsFromConfig = json.docs.filter(
       d =>
-        d.metadata.product.includes(product) &&
-        d.metadata.platform.includes(platform) &&
+        d.metadata.product.some(p => product.includes(p)) &&
+        d.metadata.platform.some(pl => platform.includes(pl)) &&
         d.displayOnLandingPages !== false
     );
 
@@ -55,7 +55,7 @@ async function getVersions() {
           '/' +
           'product' +
           '/' +
-          product.toLowerCase().replace(/\W/g, '-') +
+          product[0].toLowerCase().replace(/\W/g, '-') +
           '/' +
           doc.metadata.version;
         if (!versions.some(ver => ver.link === productVersionPageUrl)) {
@@ -156,12 +156,12 @@ async function createVersionSelector() {
 
 async function addTopLinkToBreadcrumbs() {
   try {
-    const product = document.querySelector("meta[name = 'gw-product']")[
-      'content'
-    ];
-    const platform = document.querySelector("meta[name = 'gw-platform']")[
-      'content'
-    ];
+    const product = document
+      .querySelector("meta[name = 'gw-product']")
+      ['content']?.split(',')[0];
+    const platform = document
+      .querySelector("meta[name = 'gw-platform']")
+      ['content']?.split(',')[0];
     const version = document.querySelector("meta[name = 'gw-version']")[
       'content'
     ];
