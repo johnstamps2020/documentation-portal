@@ -42,7 +42,6 @@
       "product": [
         "BillingCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
-        "BillingCenter Upgrade Tools",
         "Cloud Data Access",
         "CustomerEngage Account Management",
         "DataHub for Guidewire Cloud",
@@ -853,16 +852,17 @@
     },
     {
       "id": "selfmanagedbcupgradetools1x",
-      "title": "BillingCenter Upgrade Tools 1.x",
+      "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1x",
+      "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x",
+        "version": "9.x",
         "category": [
           "Core"
         ]
@@ -873,16 +873,17 @@
     },
     {
       "id": "selfmanagedccupgradetools1x",
-      "title": "ClaimCenter Upgrade Tools 1.x",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1x",
+      "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x",
+        "version": "9.x",
         "category": [
           "Core"
         ]
@@ -893,16 +894,17 @@
     },
     {
       "id": "selfmanagedpcupgradetools1x",
-      "title": "PolicyCenter Upgrade Tools 1.x",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1x",
+      "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x",
+        "version": "9.x",
         "category": [
           "Core"
         ]
@@ -2007,7 +2009,7 @@
     },
     {
       "id": "selfmanagedbcupgradetoolsqwertyui",
-      "title": "BillingCenter Upgrade Tools",
+      "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1440",
       "displayOnLandingPages": false,
       "metadata": {
@@ -2015,7 +2017,7 @@
           "Self-managed"
         ],
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
         "version": "9.0.9",
         "category": [
@@ -2030,7 +2032,7 @@
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
-      "title": "ClaimCenter Upgrade Tools",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1440",
       "displayOnLandingPages": false,
       "metadata": {
@@ -2038,7 +2040,7 @@
           "Self-managed"
         ],
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
         "version": "9.0.9",
         "category": [
@@ -2053,7 +2055,7 @@
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
-      "title": "PolicyCenter Upgrade Tools",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1440",
       "displayOnLandingPages": false,
       "metadata": {
@@ -2061,7 +2063,7 @@
           "Self-managed"
         ],
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
         "version": "9.0.9",
         "category": [
@@ -2695,7 +2697,7 @@
     },
     {
       "id": "selfmanagedbcupgradetoolspiteqdgk",
-      "title": "BillingCenter Upgrade Tools",
+      "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/230",
       "displayOnLandingPages": false,
       "metadata": {
@@ -2703,7 +2705,7 @@
           "Self-managed"
         ],
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
         "version": "10.0.3",
         "category": [
@@ -2718,7 +2720,7 @@
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
-      "title": "ClaimCenter Upgrade Tools",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/230",
       "displayOnLandingPages": false,
       "metadata": {
@@ -2726,7 +2728,7 @@
           "Self-managed"
         ],
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
         "version": "10.0.3",
         "category": [
@@ -2741,7 +2743,7 @@
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
-      "title": "PolicyCenter Upgrade Tools",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/230",
       "displayOnLandingPages": false,
       "metadata": {
@@ -2749,7 +2751,7 @@
           "Self-managed"
         ],
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
         "version": "10.0.3",
         "category": [
