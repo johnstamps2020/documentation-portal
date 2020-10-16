@@ -1078,7 +1078,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/newAndChanged/NewAndChanged.ditamap",
+      "root": "NewAndChanged.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbooknewandchanged",
       "indexRedirect": true
@@ -1101,7 +1101,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/app/BC-AppGuide.ditamap",
+      "root": "BC-AppGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookapp",
       "indexRedirect": true
@@ -1109,7 +1109,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/contact/ContactMgmtGuide.ditamap",
+      "root": "ContactMgmtGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookcontact",
       "indexRedirect": true
@@ -1117,7 +1117,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/suite/InsuranceSuiteGuide.ditamap",
+      "root": "InsuranceSuiteGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbooksuite",
       "indexRedirect": true
@@ -1125,7 +1125,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/admin/AdminGuide.ditamap",
+      "root": "AdminGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookadmin",
       "indexRedirect": true
@@ -1133,7 +1133,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/bestpractice/BestPracticesGuide.ditamap",
+      "root": "BestPracticesGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookbestpractice",
       "indexRedirect": true
@@ -1141,7 +1141,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/config/ConfigGuide.ditamap",
+      "root": "ConfigGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookconfig",
       "indexRedirect": true
@@ -1149,7 +1149,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/global/GlobalizationGuide.ditamap",
+      "root": "GlobalizationGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookglobal",
       "indexRedirect": true
@@ -1157,7 +1157,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/rules/RulesGuide.ditamap",
+      "root": "RulesGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookrules",
       "indexRedirect": true
@@ -1165,7 +1165,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/integration/IntegrationGuide.ditamap",
+      "root": "IntegrationGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookinteg",
       "indexRedirect": true
@@ -1173,7 +1173,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/gosu/GosuRefGuide.ditamap",
+      "root": "GosuRefGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookgosu",
       "indexRedirect": true
@@ -1181,7 +1181,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/testing/TestingGuide.ditamap",
+      "root": "TestingGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbooktesting",
       "indexRedirect": true
@@ -1189,7 +1189,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "cloud/active/installation/InstallationGuide.ditamap",
+      "root": "InstallationGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookinstall",
       "indexRedirect": true
@@ -1197,7 +1197,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "cloud/active/glossary/Glossary.ditamap",
+      "root": "Glossary.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "iscloudnoxbookglossary",
       "indexRedirect": true
