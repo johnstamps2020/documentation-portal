@@ -81,6 +81,18 @@
       ]
     },
     {
+      "id": "dhic1020",
+      "title": "Data Management 10.2.0",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.2.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1020/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
+      ]
+    },
+    {
       "id": "dhicdraftsrc",
       "title": "Data Management Draft",
       "sourceType": "xdocs",
