@@ -865,6 +865,20 @@
     },
     {
       "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhic1020",
+      "docId": "dh1020"
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhic1020",
+      "docId": "ic1020"
+    },
+    {
+      "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
