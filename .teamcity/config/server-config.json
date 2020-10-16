@@ -7256,6 +7256,54 @@
       ]
     },
     {
+      "id": "lobbopclouddraft",
+      "title": "Businessowners Standards Based Template",
+      "url": "cloud/lob/bop/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Businessowners Standards Based Template"
+        ],
+        "version": "latest",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int"
+      ]
+    },
+    {
+      "id": "isnoxbookconfigupgradetools",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0",
+      "url": "test/isconfigupgradetools/320",
+      "metadata": {
+        "platform": [
+          "Cloud",
+          "Self-managed"
+        ],
+        "product": [
+          "InsuranceSuite Configuration Upgrade Tools"
+        ],
+        "version": "3.2.0",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
       "id": "isbccloudnoxbookreleasenotes",
       "title": "Release Notes",
       "url": "test/bc/releasenotes",
@@ -7309,7 +7357,7 @@
     },
     {
       "id": "isbccloudnoxbookupgrade",
-      "title": "Upgrade Guide",
+      "title": "Upgrade",
       "url": "test/bc/upgrade",
       "metadata": {
         "platform": [
@@ -7326,59 +7374,11 @@
           "Banff"
         ],
         "subject": [
-          "Release notes"
+          "Installation"
         ]
       },
       "environments": [
         "dev"
-      ]
-    },
-    {
-      "id": "isnoxbookconfigupgradetools",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0",
-      "url": "test/isconfigupgradetools/320",
-      "metadata": {
-        "platform": [
-          "Cloud",
-          "Self-managed"
-        ],
-        "product": [
-          "InsuranceSuite Configuration Upgrade Tools"
-        ],
-        "version": "3.2.0",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "lobbopclouddraft",
-      "title": "Businessowners Standards Based Template",
-      "url": "cloud/lob/bop/latest",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Businessowners Standards Based Template"
-        ],
-        "version": "latest",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "environments": [
-        "dev",
-        "int"
       ]
     },
     {
@@ -7677,6 +7677,968 @@
         ],
         "product": [
           "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookreleasenotes",
+      "title": "Release Notes",
+      "url": "test/cc/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbooknewandchanged",
+      "title": "New and Changed",
+      "url": "test/cc/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookupgrade",
+      "title": "Upgrade",
+      "url": "test/cc/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookapp",
+      "title": "Application Guide",
+      "url": "test/cc/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookcontact",
+      "title": "Contact Management",
+      "url": "test/cc/contact",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbooksuite",
+      "title": "InsuranceSuite Guide",
+      "url": "test/cc/suite",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookadmin",
+      "title": "Administration",
+      "url": "test/cc/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookbestpractice",
+      "title": "Best Practices",
+      "url": "test/cc/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookconfig",
+      "title": "Configuration",
+      "url": "test/cc/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookglobal",
+      "title": "Globalization",
+      "url": "test/cc/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookrules",
+      "title": "Rules",
+      "url": "test/cc/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookinteg",
+      "title": "Integration",
+      "url": "test/cc/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookcloudapi",
+      "title": "Cloud API",
+      "url": "test/cc/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookgosu",
+      "title": "Gosu Reference",
+      "url": "test/cc/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbooktesting",
+      "title": "Testing",
+      "url": "test/cc/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookrestapi",
+      "title": "REST API Framework",
+      "url": "test/cc/restapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "iscccloudnoxbookinstall",
+      "title": "Installation",
+      "url": "test/cc/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookreleasenotes",
+      "title": "Release Notes",
+      "url": "test/pc/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbooknewandchanged",
+      "title": "New and Changed",
+      "url": "test/pc/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookupgrade",
+      "title": "Upgrade",
+      "url": "test/pc/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookapp",
+      "title": "Application Guide",
+      "url": "test/pc/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookcontact",
+      "title": "Contact Management",
+      "url": "test/pc/contact",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbooksuite",
+      "title": "InsuranceSuite Guide",
+      "url": "test/pc/suite",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookadmin",
+      "title": "Administration",
+      "url": "test/pc/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookbestpractice",
+      "title": "Best Practices",
+      "url": "test/pc/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookapd",
+      "title": "Advanced Product Designer",
+      "url": "test/pc/apd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookconfig",
+      "title": "Configuration",
+      "url": "test/pc/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookglobal",
+      "title": "Globalization",
+      "url": "test/pc/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookrules",
+      "title": "Rules",
+      "url": "test/pc/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookpd",
+      "title": "Product Designer",
+      "url": "test/pc/pd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookpm",
+      "title": "Product Model",
+      "url": "test/pc/productmodel",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookinteg",
+      "title": "Integration",
+      "url": "test/pc/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookcloudapi",
+      "title": "Cloud API",
+      "url": "test/pc/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookgosu",
+      "title": "Gosu Reference",
+      "url": "test/pc/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbooktesting",
+      "title": "Testing",
+      "url": "test/pc/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookrestapi",
+      "title": "REST API Framework",
+      "url": "test/pc/restapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": [
+          "Core"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev"
+      ]
+    },
+    {
+      "id": "ispccloudnoxbookinstall",
+      "title": "Installation",
+      "url": "test/pc/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
         ],
         "version": "0.1",
         "category": [
