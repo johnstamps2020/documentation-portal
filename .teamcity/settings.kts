@@ -1365,7 +1365,7 @@ object HelperObjects {
 
         return Project {
             id = RelativeId(removeSpecialCharacters(docTitle + product_name + version + docId))
-            name = "$docTitle $platform $product_name $version"
+            name = "$docTitle $product_name $version $platform"
 
             vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
 
