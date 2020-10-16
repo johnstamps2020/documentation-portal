@@ -102,7 +102,7 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
     }
 
     res.render('grouped-cards', {
-      title: `${productFamily.name} ${release}`,
+      title: `${productFamily.name}`,
       docGroups: productLinks,
       breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
       selectedRelease: release,

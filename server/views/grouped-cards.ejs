@@ -9,8 +9,8 @@
           <div class="col">
             <div class="docPageTitle docPageHeaderItems">
               <% include parts/breadcrumb %>
-              <% if(availableReleases.length > 1) {-%>
               <h1><%= title %></h1>
+              <% if(availableReleases.length > 1) {-%>
               <script>
                 function selectRelease() {
                   const selectedRelease = document.getElementById("releaseSelector").value;
