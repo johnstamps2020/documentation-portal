@@ -2691,8 +2691,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
