@@ -1431,7 +1431,7 @@ object HelperObjects {
             val docVersion = docMetadata.getString("version")
 
             id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
-            name = "Validate $docTitle $docPlatform $docVersion"
+            name = "Validate $docTitle $docProduct $docVersion"
 
             params {
                 text("GW_PRODUCT", docProduct, allowEmpty = false)
