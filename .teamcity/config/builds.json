@@ -1085,7 +1085,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "NewAndChanged.ditamap",
+      "root": "NewAndChangedGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbooknewandchanged",
       "indexRedirect": true
@@ -1189,7 +1189,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "InstallationGuide.ditamap",
+      "root": "InstallGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookinstall",
       "indexRedirect": true
@@ -1205,7 +1205,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "NewAndChanged.ditamap",
+      "root": "NewAndChangedGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "iscccloudnoxbooknewandchanged",
       "indexRedirect": true
@@ -1325,7 +1325,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "InstallationGuide.ditamap",
+      "root": "InstallGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "iscccloudnoxbookinstall",
       "indexRedirect": true
@@ -1341,7 +1341,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "NewAndChanged.ditamap",
+      "root": "NewAndChangedGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "ispccloudnoxbooknewandchanged",
       "indexRedirect": true
@@ -1485,7 +1485,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "InstallationGuide.ditamap",
+      "root": "InstallGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "ispccloudnoxbookinstall",
       "indexRedirect": true
