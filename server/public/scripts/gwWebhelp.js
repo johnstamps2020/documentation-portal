@@ -211,11 +211,27 @@ async function addTopLinkToBreadcrumbs() {
           return null;
         }
       }
+
       getBreadcrumbs();
     }
   } catch (err) {
     console.log(err);
     return null;
+  }
+}
+
+async function addPublicationDate() {
+  const pathToRoot = document.querySelector("meta[name = 'wh-path2root']")[
+    'content'
+  ];
+  if (pathToRoot) {
+    const rootUrl = pathToRoot + 'index.html';
+    const result = await fetch(rootUrl);
+    const parser = new DOMParser();
+    const rootDoc = parser.parseFromString(await result.text(), 'text/html');
+    const footerDate = rootDoc.querySelector("span[class = 'footerDate']");
+    const footerLink = document.querySelector("span[class = 'footerLink']");
+    footerLink.parentNode.insertBefore(footerDate, footerLink);
   }
 }
 
@@ -232,5 +248,6 @@ function docReady(fn) {
 
 docReady(async function() {
   await createVersionSelector();
-  addTopLinkToBreadcrumbs();
+  await addTopLinkToBreadcrumbs();
+  await addPublicationDate();
 });
