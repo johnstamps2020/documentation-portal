@@ -174,3 +174,7 @@ div#affix3 form#searchForm {
 .wh_topic_label:after {
   content: "" !important
 }
+
+html {
+  scroll-padding-top: 134px;
+}
