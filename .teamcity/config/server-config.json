@@ -1335,8 +1335,28 @@
     },
     {
       "id": "dkekdisievjfjrndjsj",
-      "title": "Jutro Designers",
-      "url": "jutro/designers/latest",
+      "title": "Jutro Documentation",
+      "url": "jutro/documentation/latest",
+      "metadata": {
+        "product": [
+          "Jutro"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "dsssekelmvkdnasjsjsnndddf",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/latest",
       "metadata": {
         "product": [
           "Jutro"
