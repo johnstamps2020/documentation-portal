@@ -79,7 +79,7 @@
     },
     {
       "productFamilyName": "Jutro",
-      "product": ["Jutro"]
+      "product": ["Jutro Documentation", "Jutro Storybook"]
     },
     {
       "productFamilyName": "Guidewire Feature Preview",
@@ -817,7 +817,7 @@
       "title": "Jutro Documentation",
       "url": "jutro/documentation/latest",
       "metadata": {
-        "product": ["Jutro"],
+        "product": ["Jutro Documentation"],
         "platform": ["Cloud"],
         "category": ["Digital"],
         "version": "latest",
@@ -830,7 +830,7 @@
       "title": "Jutro Storybook",
       "url": "jutro/storybook/latest",
       "metadata": {
-        "product": ["Jutro"],
+        "product": ["Jutro Storybook"],
         "platform": ["Cloud"],
         "category": ["Digital"],
         "version": "latest",
