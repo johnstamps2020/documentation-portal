@@ -45,6 +45,48 @@
     },
     {
       "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "_supermap-cloud-active.ditamap",
+      "srcId": "cloudisdraftsrc",
+      "docId": "cloudbclatestearlyaccess",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "_supermap-cloud-active.ditamap",
+      "srcId": "cloudisdraftsrc",
+      "docId": "cloudcclatestearlyaccess",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "_supermap-cloud-active.ditamap",
+      "srcId": "cloudisdraftsrc",
+      "docId": "cloudpclatestearlyaccess",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2020.05",
+          "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
