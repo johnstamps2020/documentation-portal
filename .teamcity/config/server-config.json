@@ -131,6 +131,45 @@
       "environments": ["int"]
     },
     {
+      "id": "cloudbclatestearlyaccess",
+      "title": "BillingCenter for Guidewire Cloud - Early Access",
+      "url": "cloud/bc/ea/",
+      "metadata": {
+        "product": ["BillingCenter for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": "early access",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudcclatestearlyaccess",
+      "title": "ClaimCenter for Guidewire Cloud - Early Access",
+      "url": "cloud/cc/ea/",
+      "metadata": {
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": "early access",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "cloudpclatestearlyaccess",
+      "title": "PolicyCenter for Guidewire Cloud - Early Access",
+      "url": "cloud/pc/ea/",
+      "metadata": {
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": "early access",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
       "id": "cloudbcupgradeguidelatest",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/latest",
