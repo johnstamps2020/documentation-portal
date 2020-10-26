@@ -600,7 +600,7 @@ object TestDocCrawler : BuildType({
                 cd apps/doc_crawler
                 ./test_doc_crawler.sh
             """.trimIndent()
-            dockerImage = "python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -624,6 +624,12 @@ object TestDocCrawler : BuildType({
         }
         sshAgent {
             teamcitySshKey = "dita-ot.rsa"
+        }
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
         }
     }
 })
@@ -685,7 +691,7 @@ object TestConfigDeployer : BuildType({
                 cd apps/config_deployer
                 ./test_config_deployer.sh
             """.trimIndent()
-            dockerImage = "python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
@@ -699,6 +705,16 @@ object TestConfigDeployer : BuildType({
             """.trimIndent()
         }
     }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
 })
 
 object DeployServerConfig : BuildType({
@@ -773,7 +789,7 @@ object TestConfig : BuildType({
                 cd apps/config_tester
                 ./test_config.sh
             """.trimIndent()
-            dockerImage = "python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -797,6 +813,12 @@ object TestConfig : BuildType({
         }
         sshAgent {
             teamcitySshKey = "dita-ot.rsa"
+        }
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
         }
     }
 })
