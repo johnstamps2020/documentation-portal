@@ -528,6 +528,16 @@ object PublishIndexCleanerDockerImage : BuildType({
             """.trimIndent()
         }
     }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
 })
 
 object CleanUpIndex : BuildType({
@@ -663,6 +673,15 @@ object PublishConfigDeployerDockerImage : BuildType({
                 +:apps/config_deployer/**
                 -:user=doctools:**
             """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
         }
     }
 
@@ -1985,6 +2004,15 @@ object PublishDocCrawlerDockerImage : BuildType({
                 +:apps/doc_crawler/**
                 -:user=doctools:**
             """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
         }
     }
 
