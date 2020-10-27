@@ -4,16 +4,15 @@ metadata:
   namespace: ${NAMESPACE}
   name: docportal-ingress
   annotations:
-    ingress.kubernetes.io/cors-enable: "true"
     ingress.kubernetes.io/config-backend: |
       http-response add-header Content-Security-Policy \"frame-ancestors https://*.guidewire.net\"
       http-response add-header X-Frame-Options SAMEORIGIN
 spec:
   rules:
-  - host: docs.${DEPLOY_ENV}.ccs.guidewire.net
-    http:
-      paths:
-      - backend:
-          serviceName: docportal-app
-          servicePort: 8081
-        path: /
+    - host: docs.${DEPLOY_ENV}.ccs.guidewire.net
+      http:
+        paths:
+          - backend:
+              serviceName: docportal-app
+              servicePort: 8081
+            path: /
