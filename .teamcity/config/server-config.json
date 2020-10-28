@@ -92,6 +92,45 @@
   ],
   "docs": [
     {
+      "id": "apiekdfksmds",
+      "title": "API Specifications",
+      "url": "cloud/bc/api-specs/latest/",
+      "metadata": {
+        "product": ["BillingCenter for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "pcappciekdfpcksmds",
+      "title": "API Specifications",
+      "url": "cloud/pc/api-specs/latest/",
+      "metadata": {
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "ccapcciekdfccksmds",
+      "title": "API Specifications",
+      "url": "cloud/cc/api-specs/latest/",
+      "metadata": {
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
       "id": "cloudbclatestvkeurqms",
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/latest/",
