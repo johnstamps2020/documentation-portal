@@ -53,11 +53,13 @@ app.use((err, req, res, next) => {
 });
 
 // session support is required to use ExpressOIDC
+app.set('trust proxy', 1)
 app.use(
   session({
     secret: `${process.env.SESSION_KEY}`,
     resave: true,
     saveUninitialized: false,
+    cookie: { secure: true }
   })
 );
 
