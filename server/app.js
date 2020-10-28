@@ -59,7 +59,10 @@ app.use(
     secret: `${process.env.SESSION_KEY}`,
     resave: true,
     saveUninitialized: false,
-    cookie: { secure: true }
+    cookie: {
+      sameSite: 'none',
+      secure: true
+    }
   })
 );
 
