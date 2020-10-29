@@ -1484,7 +1484,6 @@
       "docId": "ispccloudnoxbookinstall",
       "indexRedirect": true
     },
-    ,
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
