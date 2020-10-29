@@ -4176,34 +4176,6 @@
       "environments": ["dev"]
     },
     {
-      "id": "isbccloudnoxbookcontact",
-      "title": "Contact Management",
-      "url": "test/bc/contact",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter for Guidewire Cloud"],
-        "version": "0.1",
-        "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev"]
-    },
-    {
-      "id": "isbccloudnoxbooksuite",
-      "title": "InsuranceSuite Guide",
-      "url": "test/bc/suite",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter for Guidewire Cloud"],
-        "version": "0.1",
-        "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev"]
-    },
-    {
       "id": "isbccloudnoxbookadmin",
       "title": "Administration",
       "url": "test/bc/admin",
@@ -4375,34 +4347,6 @@
       "id": "iscccloudnoxbookapp",
       "title": "Application Guide",
       "url": "test/cc/app",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": "0.1",
-        "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev"]
-    },
-    {
-      "id": "iscccloudnoxbookcontact",
-      "title": "Contact Management",
-      "url": "test/cc/contact",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": "0.1",
-        "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev"]
-    },
-    {
-      "id": "iscccloudnoxbooksuite",
-      "title": "InsuranceSuite Guide",
-      "url": "test/cc/suite",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
@@ -4624,34 +4568,6 @@
       "environments": ["dev"]
     },
     {
-      "id": "ispccloudnoxbookcontact",
-      "title": "Contact Management",
-      "url": "test/pc/contact",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter for Guidewire Cloud"],
-        "version": "0.1",
-        "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev"]
-    },
-    {
-      "id": "ispccloudnoxbooksuite",
-      "title": "InsuranceSuite Guide",
-      "url": "test/pc/suite",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter for Guidewire Cloud"],
-        "version": "0.1",
-        "category": ["Core"],
-        "release": ["Banff"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev"]
-    },
-    {
       "id": "ispccloudnoxbookadmin",
       "title": "Administration",
       "url": "test/pc/admin",
@@ -4844,6 +4760,24 @@
         "category": ["Core"],
         "release": ["Banff"],
         "subject": ["Installation"]
+      },
+      "environments": ["dev"]
+    },
+    {
+      "id": "iscloudnoxbookcontact",
+      "title": "Contact Management",
+      "url": "test/is/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "0.1",
+        "category": ["Core"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["dev"]
     },

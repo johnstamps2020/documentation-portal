@@ -1151,22 +1151,6 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "ContactMgmtGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookcontact",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "InsuranceSuiteGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbooksuite",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "isbccloudnoxbookadmin",
@@ -1266,22 +1250,6 @@
       "root": "CC-AppGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "iscccloudnoxbookapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "ContactMgmtGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookcontact",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "InsuranceSuiteGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbooksuite",
       "indexRedirect": true
     },
     {
@@ -1407,22 +1375,6 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "ContactMgmtGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookcontact",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "InsuranceSuiteGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbooksuite",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "ispccloudnoxbookadmin",
@@ -1530,6 +1482,14 @@
       "root": "InstallGuide.ditamap",
       "srcId": "cloudisnoxbook",
       "docId": "ispccloudnoxbookinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "cloudisnoxbook",
+      "docId": "iscloudnoxbookcontact",
       "indexRedirect": true
     },
     {
