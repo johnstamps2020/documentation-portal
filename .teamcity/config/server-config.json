@@ -16,7 +16,8 @@
         "Guidewire InsuranceSuite Package for Germany",
         "InfoCenter for Guidewire Cloud",
         "ProducerEngage",
-        "ServiceRepEngage"
+        "ServiceRepEngage",
+        "PolicyCenter API"
       ]
     },
     {
@@ -34,7 +35,8 @@
         "ProducerEngage",
         "ProducerEngage for ClaimCenter",
         "ServiceRepEngage",
-        "VendorEngage"
+        "VendorEngage",
+        "ClaimCenter API"
       ]
     },
     {
@@ -49,7 +51,8 @@
         "Guidewire InsuranceSuite Package for Germany",
         "InfoCenter for Guidewire Cloud",
         "ProducerEngage",
-        "ServiceRepEngage"
+        "ServiceRepEngage",
+        "BillingCenter API"
       ]
     },
     {
@@ -79,7 +82,7 @@
     },
     {
       "productFamilyName": "Jutro",
-      "product": ["Jutro Documentation", "Jutro Storybook"]
+      "product": ["Jutro"]
     },
     {
       "productFamilyName": "Guidewire Feature Preview",
@@ -91,45 +94,6 @@
     }
   ],
   "docs": [
-    {
-      "id": "apiekdfksmds",
-      "title": "API Specifications",
-      "url": "cloud/bc/api-specs/latest/",
-      "metadata": {
-        "product": ["BillingCenter for Guidewire Cloud"],
-        "platform": ["Cloud"],
-        "version": "latest",
-        "category": ["Core"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "pcappciekdfpcksmds",
-      "title": "API Specifications",
-      "url": "cloud/pc/api-specs/latest/",
-      "metadata": {
-        "product": ["PolicyCenter for Guidewire Cloud"],
-        "platform": ["Cloud"],
-        "version": "latest",
-        "category": ["Core"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "ccapcciekdfccksmds",
-      "title": "API Specifications",
-      "url": "cloud/cc/api-specs/latest/",
-      "metadata": {
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "platform": ["Cloud"],
-        "version": "latest",
-        "category": ["Core"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
-    },
     {
       "id": "cloudbclatestvkeurqms",
       "title": "BillingCenter for Guidewire Cloud",
@@ -895,11 +859,12 @@
       "title": "Jutro Documentation",
       "url": "jutro/documentation/latest",
       "metadata": {
-        "product": ["Jutro Documentation"],
+        "product": ["Jutro"],
         "platform": ["Cloud"],
         "category": ["Digital"],
         "version": "latest",
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "subject": ["Best practices"]
       },
       "environments": ["int"]
     },
@@ -908,11 +873,12 @@
       "title": "Jutro Storybook",
       "url": "jutro/storybook/latest",
       "metadata": {
-        "product": ["Jutro Storybook"],
+        "product": ["Jutro"],
         "platform": ["Cloud"],
         "category": ["Digital"],
         "version": "latest",
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "subject": ["Development"]
       },
       "environments": ["int"]
     },
@@ -4898,6 +4864,45 @@
         "release": ["Banff"]
       },
       "environments": ["dev"]
+    },
+    {
+      "id": "apiekdfksmds",
+      "title": "API Specifications",
+      "url": "cloud/bc/api-specs/latest/",
+      "metadata": {
+        "product": ["BillingCenter API"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "pcappciekdfpcksmds",
+      "title": "API Specifications",
+      "url": "cloud/pc/api-specs/latest/",
+      "metadata": {
+        "product": ["PolicyCenter API"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
+    },
+    {
+      "id": "ccapcciekdfccksmds",
+      "title": "API Specifications",
+      "url": "cloud/cc/api-specs/latest/",
+      "metadata": {
+        "product": ["ClaimCenter API"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Core"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"]
     }
   ]
 }

@@ -6,10 +6,7 @@ const {
   getUniqueInMetadataFields,
   getSortedVersions,
 } = require('./helpers/metadata');
-const {
-  getDefaultSubjectIcon,
-  getSubjectIcon
-} = require('./helpers/icons');
+const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 
 async function getSingleProductFamily(productFamilyId) {
   const cloudProductFamilies = await getCloudProductFamilies();
@@ -99,6 +96,10 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
           docs: linksInProduct,
         });
       }
+    }
+
+    if (productLinks.length === 1 && productLinks[0].docs.length === 1) {
+      res.redirect(`/${productLinks[0].docs[0].url}`);
     }
 
     res.render('grouped-cards', {
