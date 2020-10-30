@@ -1,0 +1,31 @@
+{
+  "Guidewire Cloud documentation": [
+    {
+      "BillingCenter Cloud": [
+        {
+          "Core": [
+            "BillingCenter for Guidewire Cloud",
+            "InsuranceSuite Configuration Upgrade Tools",
+            {
+              "Add-ons": [
+                "BillingCenter Add-on 1",
+                "BillingCenter Add-on 2"
+              ]
+            }
+          ]
+        },
+        {
+          "Data": [
+            "CustomerEngage",
+            {
+              "Add-ons": [
+                "InfoCenter for Guidewire Cloud",
+                "DataHub"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
