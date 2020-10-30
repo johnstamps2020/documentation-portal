@@ -1,10 +1,11 @@
-const getCloudProductList = require('../controllers/cloudProductFamilyController');
+const getCloudProductPageInfo = require('../controllers/cloudDocumentationController')
+  .getCloudProductPageInfo;
 
 const cloudHome = async (req, res, next) => {
   try {
-    const cloudProductList = await getCloudProductList();
+    const cloudProductPageInfo = await getCloudProductPageInfo();
     if (req.originalUrl === '/') {
-      res.render('cloud-home', { products: cloudProductList });
+      res.render('cloud-home', { cloudProductPageInfo: cloudProductPageInfo });
     } else {
       req.next();
     }

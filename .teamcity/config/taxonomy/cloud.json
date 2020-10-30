@@ -7,10 +7,7 @@
             "BillingCenter for Guidewire Cloud",
             "InsuranceSuite Configuration Upgrade Tools",
             {
-              "Add-ons": [
-                "BillingCenter Add-on 1",
-                "BillingCenter Add-on 2"
-              ]
+              "Add-ons": ["BillingCenter Add-on 1", "BillingCenter Add-on 2"]
             }
           ]
         },
@@ -18,14 +15,52 @@
           "Data": [
             "CustomerEngage",
             {
-              "Add-ons": [
-                "InfoCenter for Guidewire Cloud",
-                "DataHub"
-              ]
+              "Add-ons": ["InfoCenter for Guidewire Cloud", "DataHub"]
             }
           ]
         }
       ]
-    }
+    },
+    {
+      "ClaimCenter Cloud": [
+        {
+          "Core": [
+            "ClaimCenter for Guidewire Cloud",
+            "InsuranceSuite Configuration Upgrade Tools",
+            {
+              "Add-ons": ["ClaimCenter Add-on 1", "ClaimCenter Add-on 2"]
+            }
+          ]
+        },
+        {
+          "Data": [
+            "CustomerEngage",
+            {
+              "Add-ons": ["InfoCenter for Guidewire Cloud", "DataHub"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "PolicyCenter Cloud": [
+        {
+          "Core": [
+            "PolicyCenter for Guidewire Cloud",
+            "InsuranceSuite Configuration Upgrade Tools"
+          ]
+        },
+        {
+          "Data": [
+            "CustomerEngage",
+            {
+              "Add-ons": ["InfoCenter for Guidewire Cloud", "DataHub"]
+            }
+          ]
+        }
+      ]
+    },
+    { "Jutro": ["Jutro"] },
+    { "Tomahawk": ["Billy", "Bob", "Jean"] }
   ]
 }
