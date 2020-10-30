@@ -7,6 +7,10 @@ const {
   getSortedVersions,
 } = require('./helpers/metadata');
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
+const {
+  getProductFamilyPageInfo,
+  getHighestRelease,
+} = require('../controllers/cloudDocumentationController');
 
 async function getSingleProductFamily(productFamilyId) {
   const cloudProductFamilies = await getCloudProductFamilies();
@@ -23,18 +27,7 @@ function getDocsInRelease(listOfDocs, release) {
 router.get('/:productFamilyId', async function(req, res, next) {
   try {
     const { productFamilyId } = req.params;
-    const productFamily = await getSingleProductFamily(productFamilyId);
-
-    const availableReleases = getUniqueInMetadataArrays(
-      productFamily.docs,
-      'release'
-    );
-
-    const sortedReleases = getSortedVersions(availableReleases);
-
-    const highestRelease = sortedReleases[0];
-
-    res.redirect(`${req.params.productFamilyId}/${highestRelease}`);
+    const highestRelease = getHighestRelease(productFamilyId);
   } catch (err) {
     next(err);
   }
@@ -42,66 +35,6 @@ router.get('/:productFamilyId', async function(req, res, next) {
 
 router.get('/:productFamilyId/:release', async function(req, res, next) {
   try {
-    const { productFamilyId, release } = req.params;
-    const productFamily = await getSingleProductFamily(productFamilyId);
-    const availableReleases = getUniqueInMetadataArrays(
-      productFamily.docs,
-      'release'
-    );
-
-    const sortedReleases = getSortedVersions(availableReleases);
-
-    const docsInRelease = getDocsInRelease(productFamily.docs, release);
-
-    let availableCategories = getUniqueInMetadataArrays(
-      docsInRelease,
-      'category'
-    );
-
-    let productLinks = [];
-    for (const category of availableCategories) {
-      const docsInCategory = docsInRelease.filter(d =>
-        d.metadata.category.includes(category)
-      );
-
-      const productsInCategory = getUniqueInMetadataArrays(
-        docsInCategory,
-        'product'
-      );
-
-      let linksInProduct = [];
-      for (const product of productsInCategory) {
-        const docsInProduct = docsInRelease.filter(d =>
-          d.metadata.product.includes(product)
-        );
-
-        if (docsInProduct.length === 1) {
-          linksInProduct.push({
-            title: product,
-            url: `${docsInProduct[0].url}`,
-          });
-        }
-
-        if (docsInProduct.length > 1) {
-          linksInProduct.push({
-            title: product,
-            url: `products/${productFamilyId}/${release}/${product}`,
-          });
-        }
-      }
-
-      if (linksInProduct.length > 0) {
-        productLinks.push({
-          category: category,
-          docs: linksInProduct,
-        });
-      }
-    }
-
-    if (productLinks.length === 1 && productLinks[0].docs.length === 1) {
-      res.redirect(`/${productLinks[0].docs[0].url}`);
-    }
-
     res.render('grouped-cards', {
       title: `${productFamily.name}`,
       docGroups: productLinks,

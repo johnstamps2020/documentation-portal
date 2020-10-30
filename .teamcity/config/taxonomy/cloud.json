@@ -13,6 +13,7 @@
           "Data": [
             "Cloud Data Access",
             "Explore",
+            "Pawel's new doc!",
             {
               "Add-ons": [
                 "DataHub for Guidewire Cloud",
@@ -94,16 +95,12 @@
       ]
     },
     {
-      "InsuranceNow": [
-        "InsuranceNow"
-      ]
+      "InsuranceNow": ["InsuranceNow"]
     },
     {
       "Guidewire Cloud Platform": [
         {
-          "Guidewire Cloud Console": [
-            "Guidewire Cloud Console"
-          ]
+          "Guidewire Cloud Console": ["Guidewire Cloud Console"]
         }
       ]
     }
