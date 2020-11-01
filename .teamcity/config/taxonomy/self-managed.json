@@ -1,0 +1,35 @@
+{
+  "Self-managed product documentation": [
+    {
+      "Core": [
+        "BillingCenter",
+        "ClaimCenter",
+        "PolicyCenter",
+        "InsuranceSuite Configuration Upgrade Tools"
+      ]
+    },
+    {
+      "Data": [
+        "DataHub",
+        "InfoCenter"
+      ]
+    },
+    {
+      "Digital": [
+        "CustomerEngage Account Management",
+        "CustomerEngage Account Management for ClaimCenter",
+        "CustomerEngage Quote and Buy",
+        "ProducerEngage",
+        "ProducerEngage for ClaimCenter",
+        "ServiceRepEngage",
+        "VendorEngage",
+        "Guidewire for Salesforce Data Integrations",
+        "Guidewire for Salesforce Data Integrations for Claims",
+        "Guidewire for Salesforce Digital Gateway",
+        "Guidewire for Salesforce Digital Gateway for Claims",
+        "Guidewire for Salesforce View on Demand",
+        "Guidewire for Salesforce View on Demand for Claims"
+      ]
+    }
+  ]
+}
