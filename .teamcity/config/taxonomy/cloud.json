@@ -3,7 +3,7 @@
   "label": "Guidewire Cloud Documentation",
   "items": [
     {
-      "id": "policyCenterCloud",
+      "id": "policycenter-cloud",
       "label": "PolicyCenter Cloud",
       "items": [
         {
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "claimCenterCloud",
+      "id": "claimcenter-cloud",
       "label": "ClaimCenter Cloud",
       "items": [
         {
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "id": "billingCenterCloud",
+      "id": "bilingcenter-cloud",
       "label": "BillingCenter Cloud",
       "items": [
         {
@@ -129,14 +129,14 @@
       ]
     },
     {
-      "id": "insuranceNow",
+      "id": "insurancenow",
       "label": "InsuranceNow",
       "items": [
         "InsuranceNow"
       ]
     },
     {
-      "id": "guidewireCloudPlatform",
+      "id": "guidewire-cloud-platform",
       "label": "Guidewire Cloud Platform",
       "items": [
         {

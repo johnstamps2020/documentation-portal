@@ -56,11 +56,14 @@ async function getCloudDocumentationPageInfo() {
   }
 }
 
-async function getProductFamilyPageInfo(productFamily) {
+async function getProductFamilyPageInfo(productFamilyId) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
     const categories = [];
-    for (const category of productFamily.items.filter(
+    const productFamilyItems = cloudTaxonomy.items.find(
+      i => i.id === productFamilyId
+    ).items;
+    for (const category of productFamilyItems.filter(
       i => typeof i !== 'string'
     )) {
       const docs = [];
@@ -68,13 +71,13 @@ async function getProductFamilyPageInfo(productFamily) {
       if (docs) {
         categories.push({
           label: category.label,
-          products: category.items.keys(),
+          products: category.items,
         });
       }
     }
 
     const productFamilyPageInfo = {
-      title: productFamily.label,
+      title: productFamilyId.label,
       categories: categories,
     };
     return productFamilyPageInfo;
@@ -83,39 +86,7 @@ async function getProductFamilyPageInfo(productFamily) {
   }
 }
 
-async function getProductFamilyPages() {
-  const productFamiliesWithDocs = (await getCloudDocumentationPageInfo())
-    .productFamilies;
-  const productFamilyPages = [];
-  for (const productFamily of productFamiliesWithDocs) {
-    const productFamilyObject = cloudTaxonomy.items.find(
-      p => p.label === productFamily.label
-    );
-    const productFamilyPageInfo = await getProductFamilyPageInfo(
-      productFamilyObject
-    );
-    productFamilyPages.push(productFamilyPageInfo);
-  }
-  return productFamilyPages;
-}
-
-async function getHighestRelease(familyId) {
-  const productFamilyInfo = await getProductFamilyPageInfo(familyId);
-  const productTree = productFamilyInfo.productTree;
-  const productList = [];
-  for (const item of productTree) {
-    getProductsFromTree(item, productList);
-  }
-
-  const cloudDocs = await getCloudDocsFromConfig();
-
-  console.log('RESULT:', productList);
-}
-
-getProductFamilyPages().then(r => r);
-
 module.exports = {
   getCloudDocumentationPageInfo,
-  getProductFamilyPages,
-  getHighestRelease,
+  getProductFamilyPageInfo,
 };
