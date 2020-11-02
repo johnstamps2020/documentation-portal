@@ -1,21 +1,31 @@
 {
-  "Guidewire Cloud documentation": [
+  "id": "guidewireCloudDocumentation",
+  "label": "Guidewire Cloud Documentation",
+  "items": [
     {
-      "PolicyCenter Cloud": [
+      "id": "policyCenterCloud",
+      "label": "PolicyCenter Cloud",
+      "items": [
         {
-          "Core": [
+          "id": "core",
+          "label": "Core",
+          "items": [
             "PolicyCenter for Guidewire Cloud",
             "InsuranceSuite Configuration Upgrade Tools",
             "Businessowners Standards Based Template"
           ]
         },
         {
-          "Data": [
+          "id": "data",
+          "label": "Data",
+          "items": [
             "Cloud Data Access",
             "Explore",
             "Pawel's new doc!",
             {
-              "Add-ons": [
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
                 "DataHub for Guidewire Cloud",
                 "InfoCenter for Guidewire Cloud"
               ]
@@ -23,7 +33,9 @@
           ]
         },
         {
-          "Digital": [
+          "id": "digital",
+          "label": "Digital",
+          "items": [
             "CustomerEngage Account Management",
             "CustomerEngage Quote and Buy",
             "ProducerEngage",
@@ -34,19 +46,28 @@
       ]
     },
     {
-      "ClaimCenterCloud": [
+      "id": "claimCenterCloud",
+      "label": "ClaimCenter Cloud",
+      "items": [
         {
-          "Core": [
+          "id": "core",
+          "label": "Core",
+          "items": [
             "ClaimCenter for Guidewire Cloud",
             "InsuranceSuite Configuration Upgrade Tools"
           ]
         },
         {
-          "Data": [
+          "id": "data",
+          "label": "Data",
+          "items": [
             "Cloud Data Access",
             "Explore",
+            "Pawel's new doc!",
             {
-              "Add-ons": [
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
                 "DataHub for Guidewire Cloud",
                 "InfoCenter for Guidewire Cloud"
               ]
@@ -54,7 +75,9 @@
           ]
         },
         {
-          "Digital": [
+          "id": "digital",
+          "label": "Digital",
+          "items": [
             "CustomerEngage Account Management",
             "CustomerEngage Account Management for ClaimCenter",
             "ProducerEngage",
@@ -66,19 +89,28 @@
       ]
     },
     {
-      "BillingCenter Cloud": [
+      "id": "billingCenterCloud",
+      "label": "BillingCenter Cloud",
+      "items": [
         {
-          "Core": [
+          "id": "core",
+          "label": "Core",
+          "items": [
             "BillingCenter for Guidewire Cloud",
             "InsuranceSuite Configuration Upgrade Tools"
           ]
         },
         {
-          "Data": [
+          "id": "data",
+          "label": "Data",
+          "items": [
             "Cloud Data Access",
             "Explore",
+            "Pawel's new doc!",
             {
-              "Add-ons": [
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
                 "DataHub for Guidewire Cloud",
                 "InfoCenter for Guidewire Cloud"
               ]
@@ -86,7 +118,9 @@
           ]
         },
         {
-          "Digital": [
+          "id": "digital",
+          "label": "Digital",
+          "items": [
             "CustomerEngage Account Management",
             "ProducerEngage",
             "ServiceRepEngage"
@@ -95,14 +129,25 @@
       ]
     },
     {
-      "InsuranceNow": ["InsuranceNow"]
+      "id": "insuranceNow",
+      "label": "InsuranceNow",
+      "items": [
+        "InsuranceNow"
+      ]
     },
     {
-      "Guidewire Cloud Platform": [
+      "id": "guidewireCloudPlatform",
+      "label": "Guidewire Cloud Platform",
+      "items": [
         {
-          "Guidewire Cloud Console": ["Guidewire Cloud Console"]
+          "id": "guidewireCloudConsole",
+          "label": "Guidewire Cloud Console",
+          "items": [
+            "Guidewire Cloud Console"
+          ]
         }
       ]
     }
   ]
 }
+

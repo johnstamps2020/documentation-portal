@@ -3,52 +3,47 @@ const cloudTaxonomy = require('../../.teamcity/config/taxonomy/cloud.json');
 const getId = require('./utils').getId;
 const { getUniqueInMetadataArrays } = require('../routes/helpers/metadata');
 
-async function getCloudDocs() {
+async function getCloudDocsFromConfig() {
   const serverConfig = await getConfig();
   const docs = serverConfig.docs;
   return docs.filter(doc => doc.metadata.platform.includes('Cloud'));
 }
 
-function hasDocs(node, docs) {
+function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
   if (typeof node === 'string') {
-    if (docs.some(d => d.metadata.product.includes(node))) {
-      return true;
+    if (docsFromConfig.some(d => d.metadata.product.includes(node))) {
+      const filteredDocs = docsFromConfig.filter(d =>
+        d.metadata.product.includes(node)
+      );
+      matchingDocs.push.apply(matchingDocs, filteredDocs);
     }
   } else {
-    for (const child of Object.values(node)[0]) {
-      if (hasDocs(child, docs)) {
-        return true;
-      }
+    for (const child of node.items) {
+      getDocsForTaxonomy(child, docsFromConfig, matchingDocs);
     }
   }
-
-  return false;
-}
-
-function getTaxonomyLabelIfNotEmpty(taxonomyObject, docs) {
-  if (hasDocs(taxonomyObject, docs)) {
-    return Object.keys(taxonomyObject)[0];
-  }
-}
-
-function getTaxonomyLabels(taxonomyObject, docs) {
-  return taxonomyObject
-    .map(p => getTaxonomyLabelIfNotEmpty(p, docs))
-    .filter(Boolean);
 }
 
 async function getCloudProductPageInfo() {
   try {
-    const cloudDocs = await getCloudDocs();
-
-    const pageTitle = Object.keys(cloudTaxonomy)[0];
-    const productFamilies = getTaxonomyLabels(
-      cloudTaxonomy[pageTitle],
-      cloudDocs
-    ).map(p => ({
-      label: p,
-      link: `products/${getId(p)}`,
-    }));
+    const cloudDocs = await getCloudDocsFromConfig();
+    const pageTitle = cloudTaxonomy.label;
+    const productFamilies = [];
+    for (const productFamily of cloudTaxonomy.items) {
+      const docs = [];
+      getDocsForTaxonomy(productFamily, cloudDocs, docs);
+      if (docs.length === 1) {
+        productFamilies.push({
+          label: productFamily.label,
+          link: docs[0].url,
+        });
+      } else if (docs.length > 1) {
+        productFamilies.push({
+          label: productFamily.label,
+          link: `products/${getId(productFamily.label)}`,
+        });
+      }
+    }
 
     const cloudProductPageInfo = {
       title: pageTitle,
@@ -61,26 +56,9 @@ async function getCloudProductPageInfo() {
   }
 }
 
-function getTaxonomyTree(taxonomyObject, docs) {
-  if (typeof taxonomyObject === 'string') {
-    if (hasDocs(taxonomyObject, docs)) {
-      return taxonomyObject;
-    } else {
-      return undefined;
-    }
-  } else {
-    const newChildren = [];
-    for (let child of Object.values(taxonomyObject)[0]) {
-      newChildren.push(getTaxonomyTree(child, docs));
-    }
-    return { [Object.keys(taxonomyObject)[0]]: newChildren.filter(Boolean) };
-  }
-}
-
 async function getProductFamilyPageInfo(familyId) {
   try {
-    const cloudDocs = await getCloudDocs();
-
+    const cloudDocs = await getCloudDocsFromConfig();
     const root = Object.keys(cloudTaxonomy)[0];
     const productFamily = cloudTaxonomy[root].find(
       f => getId(Object.keys(f)[0]) === familyId
@@ -92,24 +70,13 @@ async function getProductFamilyPageInfo(familyId) {
     );
 
     const productFamilyPageInfo = {
-      pageTitle: pageTitle,
+      title: pageTitle,
       productTree: productTree,
     };
-
+    console.log('ProductFamilePageInfo', productFamilyPageInfo);
     return productFamilyPageInfo;
   } catch (err) {
     console.log(err);
-  }
-}
-
-function getProductsFromTree(node, aggregator) {
-  console.log('NODE:', node);
-  if (typeof node === 'string') {
-    aggregator.push(node);
-  } else {
-    for (const child of Object.values(node)[0]) {
-      getProductsFromTree(child, aggregator);
-    }
   }
 }
 
@@ -121,7 +88,7 @@ async function getHighestRelease(familyId) {
     getProductsFromTree(item, productList);
   }
 
-  const cloudDocs = await getCloudDocs();
+  const cloudDocs = await getCloudDocsFromConfig();
 
   console.log('RESULT:', productList);
 }
