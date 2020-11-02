@@ -24,7 +24,7 @@ function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
   }
 }
 
-async function getCloudProductPageInfo() {
+async function getCloudDocumentationPageInfo() {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
     const pageTitle = cloudTaxonomy.label;
@@ -45,39 +45,58 @@ async function getCloudProductPageInfo() {
       }
     }
 
-    const cloudProductPageInfo = {
+    const cloudDocumentationPageInfo = {
       title: pageTitle,
       productFamilies: productFamilies,
     };
 
-    return cloudProductPageInfo;
+    return cloudDocumentationPageInfo;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function getProductFamilyPageInfo(familyId) {
+async function getProductFamilyPageInfo(productFamily) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
-    const root = Object.keys(cloudTaxonomy)[0];
-    const productFamily = cloudTaxonomy[root].find(
-      f => getId(Object.keys(f)[0]) === familyId
-    );
-
-    const pageTitle = Object.keys(productFamily)[0];
-    const productTree = productFamily[pageTitle].map(p =>
-      getTaxonomyTree(p, cloudDocs)
-    );
+    const categories = [];
+    for (const category of productFamily.items.filter(
+      i => typeof i !== 'string'
+    )) {
+      const docs = [];
+      getDocsForTaxonomy(category, cloudDocs, docs);
+      if (docs) {
+        categories.push({
+          label: category.label,
+          products: category.items.keys(),
+        });
+      }
+    }
 
     const productFamilyPageInfo = {
-      title: pageTitle,
-      productTree: productTree,
+      title: productFamily.label,
+      categories: categories,
     };
-    console.log('ProductFamilePageInfo', productFamilyPageInfo);
     return productFamilyPageInfo;
   } catch (err) {
     console.log(err);
   }
+}
+
+async function getProductFamilyPages() {
+  const productFamiliesWithDocs = (await getCloudDocumentationPageInfo())
+    .productFamilies;
+  const productFamilyPages = [];
+  for (const productFamily of productFamiliesWithDocs) {
+    const productFamilyObject = cloudTaxonomy.items.find(
+      p => p.label === productFamily.label
+    );
+    const productFamilyPageInfo = await getProductFamilyPageInfo(
+      productFamilyObject
+    );
+    productFamilyPages.push(productFamilyPageInfo);
+  }
+  return productFamilyPages;
 }
 
 async function getHighestRelease(familyId) {
@@ -93,8 +112,10 @@ async function getHighestRelease(familyId) {
   console.log('RESULT:', productList);
 }
 
+getProductFamilyPages().then(r => r);
+
 module.exports = {
-  getCloudProductPageInfo,
-  getProductFamilyPageInfo,
+  getCloudDocumentationPageInfo,
+  getProductFamilyPages,
   getHighestRelease,
 };
