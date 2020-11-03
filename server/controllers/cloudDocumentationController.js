@@ -1,11 +1,19 @@
 const getConfig = require('./configController');
 const cloudTaxonomy = require('../../.teamcity/config/taxonomy/cloud.json');
-const { getUniqueInMetadataArrays } = require('../routes/helpers/metadata');
+const {
+  getUniqueInMetadataFields,
+  getUniqueInMetadataArrays,
+  getSortedVersions,
+} = require('../routes/helpers/metadata');
 
 async function getCloudDocsFromConfig() {
   const serverConfig = await getConfig();
   const docs = serverConfig.docs;
-  return docs.filter(doc => doc.metadata.platform.includes('Cloud'));
+  return docs.filter(
+    doc =>
+      doc.metadata.platform.includes('Cloud') &&
+      doc.displayOnLandingPages !== false
+  );
 }
 
 function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
@@ -44,12 +52,10 @@ async function getCloudDocumentationPageInfo() {
       }
     }
 
-    const cloudDocumentationPageInfo = {
+    return {
       title: pageTitle,
       productFamilies: productFamilies,
     };
-
-    return cloudDocumentationPageInfo;
   } catch (err) {
     console.log(err);
   }
@@ -74,16 +80,31 @@ async function getProductFamilyPageInfo(productFamilyId) {
         const categoryDocs = productFamilyItem.items.filter(
           i => typeof i === 'string'
         );
+
+        function getDocUrl(listOfDocs, productName) {
+          if (listOfDocs.length === 1) {
+            return `/${listOfDocs[0]?.url}`;
+          } else if (listOfDocs.length > 1) {
+            const version = getSortedVersions(
+              getUniqueInMetadataFields(listOfDocs, 'version')
+            )[0];
+            return `cloud/${productName}/${version}`;
+          }
+        }
+
         const categoryDocsWithLinks = [];
         for (const categoryDoc of categoryDocs) {
-          const docUrlFromConfig = docs.filter(doc =>
+          const docsFromConfig = docs.filter(doc =>
             doc.metadata.product.includes(categoryDoc)
-          )[0]?.url;
-          if (docUrlFromConfig) {
-            categoryDocsWithLinks.push({
-              docLabel: categoryDoc,
-              docUrl: docUrlFromConfig,
-            });
+          );
+          if (docsFromConfig) {
+            const docUrl = getDocUrl(docsFromConfig, categoryDoc);
+            if (docUrl) {
+              categoryDocsWithLinks.push({
+                docLabel: categoryDoc,
+                docUrl: docUrl,
+              });
+            }
           }
         }
         const categoryGroupsWithLinks = [];
@@ -93,14 +114,17 @@ async function getProductFamilyPageInfo(productFamilyId) {
           );
           const categoryGroupDocsWithLinks = [];
           for (const categoryGroupDoc of categoryGroupDocs) {
-            const docUrlFromConfig = docs.filter(doc =>
+            const docsFromConfig = docs.filter(doc =>
               doc.metadata.product.includes(categoryGroupDoc)
-            )[0]?.url;
-            if (docUrlFromConfig) {
-              categoryGroupDocsWithLinks.push({
-                docLabel: categoryGroupDoc,
-                docUrl: docUrlFromConfig,
-              });
+            );
+            if (docsFromConfig) {
+              const docUrl = getDocUrl(docsFromConfig, categoryGroupDoc);
+              if (docUrl) {
+                categoryGroupDocsWithLinks.push({
+                  docLabel: categoryGroupDoc,
+                  docUrl: docUrl,
+                });
+              }
             }
           }
           categoryGroupsWithLinks.push({
@@ -118,6 +142,9 @@ async function getProductFamilyPageInfo(productFamilyId) {
       return {
         title: productFamily.label,
         categories: categories,
+        availableReleases: getSortedVersions(
+          getUniqueInMetadataArrays(docs, 'release')
+        ),
       };
     }
   } catch (err) {
