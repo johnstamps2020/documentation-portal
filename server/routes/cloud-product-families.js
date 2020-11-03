@@ -11,10 +11,10 @@ router.get('/:productFamilyId/', async function(req, res, next) {
     );
     res.render('grouped-cards', {
       title: productFamilyPageInfo.title,
-      docGroups: productFamilyPageInfo.categories,
-      breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
-      selectedRelease: release,
-      availableReleases: sortedReleases,
+      categories: productFamilyPageInfo.categories,
+      // breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
+      // selectedRelease: release,
+      // availableReleases: sortedReleases,
     });
   } catch (err) {
     next(err);

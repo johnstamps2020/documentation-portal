@@ -1,6 +1,5 @@
 const getConfig = require('./configController');
 const cloudTaxonomy = require('../../.teamcity/config/taxonomy/cloud.json');
-const getId = require('./utils').getId;
 const { getUniqueInMetadataArrays } = require('../routes/helpers/metadata');
 
 async function getCloudDocsFromConfig() {
@@ -40,7 +39,7 @@ async function getCloudDocumentationPageInfo() {
       } else if (docs.length > 1) {
         productFamilies.push({
           label: productFamily.label,
-          link: `products/${getId(productFamily.label)}`,
+          link: `products/${productFamily.id.toLowerCase()}`,
         });
       }
     }
@@ -59,28 +58,33 @@ async function getCloudDocumentationPageInfo() {
 async function getProductFamilyPageInfo(productFamilyId) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
-    const categories = [];
-    const productFamilyItems = cloudTaxonomy.items.find(
-      i => i.id === productFamilyId
-    ).items;
-    for (const category of productFamilyItems.filter(
-      i => typeof i !== 'string'
-    )) {
-      const docs = [];
-      getDocsForTaxonomy(category, cloudDocs, docs);
-      if (docs) {
+    const productFamily = cloudTaxonomy.items.find(
+      i => i.id.toLowerCase() === productFamilyId
+    );
+    const docs = [];
+    getDocsForTaxonomy(productFamily, cloudDocs, docs);
+    if (docs) {
+      const categories = [];
+      for (const productFamilyItem of productFamily.items.filter(
+        i => typeof i !== 'string'
+      )) {
+        const categoryGroups = productFamilyItem.items.filter(
+          i => typeof i !== 'string'
+        );
+        const categoryDocs = productFamilyItem.items.filter(
+          i => typeof i === 'string'
+        );
         categories.push({
-          label: category.label,
-          products: category.items,
+          label: productFamilyItem.label,
+          groups: categoryGroups,
+          docs: categoryDocs,
         });
       }
+      return {
+        title: productFamily.label,
+        categories: categories,
+      };
     }
-
-    const productFamilyPageInfo = {
-      title: productFamilyId.label,
-      categories: categories,
-    };
-    return productFamilyPageInfo;
   } catch (err) {
     console.log(err);
   }
