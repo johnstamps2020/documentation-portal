@@ -55,6 +55,9 @@ async function getCloudDocumentationPageInfo() {
     return {
       title: pageTitle,
       productFamilies: productFamilies,
+      availableReleases: getSortedVersions(
+        getUniqueInMetadataArrays(cloudDocs, 'release')
+      ),
     };
   } catch (err) {
     console.log(err);

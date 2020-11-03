@@ -8,7 +8,27 @@
         <div class="row">
           <div class="col-sm-9">
             <div class="docPageTitle docPageHeaderItems">
-              <h1><%= cloudProductPageInfo.title -%></h1>
+              <h1><%= title -%></h1>
+              <% if(availableReleases.length > 1) {-%>
+                <script>
+                  function selectRelease() {
+                    const selectedRelease = document.getElementById("releaseSelector").value;
+                    window.location.replace(selectedRelease);
+                  }
+                </script>
+                <label for="releaseSelector">Select version:
+                  <select onchange="selectRelease()" id="releaseSelector">
+                    <% availableReleases.forEach(release => { -%>
+                      <option
+                              value="<%= release -%>"
+                              <%= release === selectedRelease ? 'selected="selected"' : '' %>
+                      >
+                        <%= release -%>
+                      </option>
+                    <% }); -%>
+                  </select>
+                </label>
+              <% }; -%>
             </div>
           </div>
           <div class="col-sm-3">
@@ -20,7 +40,7 @@
         <div class="row">
           <div class="col-sm-9">
             <div class="row">
-              <% cloudProductPageInfo.productFamilies.forEach(family => { -%>
+              <% productFamilies.forEach(family => { -%>
               <div class="col-sm-4">
                 <a href="<%= family.link %>" class="productCard"
                   ><%= family.label %></a
