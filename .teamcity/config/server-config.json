@@ -17,7 +17,8 @@
         "InfoCenter for Guidewire Cloud",
         "ProducerEngage",
         "ServiceRepEngage",
-        "PolicyCenter API"
+        "PolicyCenter API",
+        "Jutro"
       ]
     },
     {
@@ -36,7 +37,8 @@
         "ProducerEngage for ClaimCenter",
         "ServiceRepEngage",
         "VendorEngage",
-        "ClaimCenter API"
+        "ClaimCenter API",
+        "Jutro"
       ]
     },
     {
@@ -52,7 +54,8 @@
         "InfoCenter for Guidewire Cloud",
         "ProducerEngage",
         "ServiceRepEngage",
-        "BillingCenter API"
+        "BillingCenter API",
+        "Jutro"
       ]
     },
     {
@@ -79,10 +82,6 @@
     {
       "productFamilyName": "Testing Frameworks",
       "product": ["Testing Frameworks"]
-    },
-    {
-      "productFamilyName": "Jutro",
-      "product": ["Jutro"]
     },
     {
       "productFamilyName": "Guidewire Feature Preview",
@@ -880,7 +879,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging"]
+      "environments": ["int"]
     },
     {
       "id": "gwfeaturepreviewearlyaccess",
