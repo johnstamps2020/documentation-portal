@@ -53,7 +53,7 @@ app.use((err, req, res, next) => {
 });
 
 // session support is required to use ExpressOIDC
-app.set('trust proxy', 1)
+app.set('trust proxy', 1);
 app.use(
   session({
     secret: `${process.env.SESSION_KEY}`,
@@ -61,8 +61,8 @@ app.use(
     saveUninitialized: false,
     cookie: {
       sameSite: 'none',
-      secure: true
-    }
+      secure: true,
+    },
   })
 );
 
@@ -152,7 +152,7 @@ app.use('/404', missingPageRouter);
 
 app.use('/self-managed-latest', selfManagedLatestRouter);
 app.use('/self-managed-all-releases', selfManagedAllReleasesRouter);
-app.use('/products', cloudProductFamilyRouter);
+app.use('/', cloudProductFamilyRouter);
 app.use('/product', allProductRouter);
 app.use('/', cloudHomeRouter);
 

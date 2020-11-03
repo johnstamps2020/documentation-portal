@@ -3,9 +3,9 @@ const router = express.Router();
 const getProductFamilyPageInfo = require('../controllers/cloudDocumentationController')
   .getProductFamilyPageInfo;
 
-router.get('/:productFamilyId/', async function(req, res, next) {
+router.get('/:release/:productFamilyId', async function(req, res, next) {
   try {
-    const { productFamilyId } = req.params;
+    const { release, productFamilyId } = req.params;
     const productFamilyPageInfo = await getProductFamilyPageInfo(
       productFamilyId
     );
@@ -13,7 +13,7 @@ router.get('/:productFamilyId/', async function(req, res, next) {
       title: productFamilyPageInfo.title,
       categories: productFamilyPageInfo.categories,
       breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
-      selectedRelease: '1',
+      selectedRelease: release,
       availableReleases: productFamilyPageInfo.availableReleases,
     });
   } catch (err) {

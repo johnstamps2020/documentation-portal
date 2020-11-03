@@ -31,7 +31,7 @@ function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
   }
 }
 
-async function getCloudDocumentationPageInfo() {
+async function getCloudDocumentationPageInfo(release) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
     const pageTitle = cloudTaxonomy.label;
@@ -47,7 +47,7 @@ async function getCloudDocumentationPageInfo() {
       } else if (docs.length > 1) {
         productFamilies.push({
           label: productFamily.label,
-          link: `products/${productFamily.id.toLowerCase()}`,
+          link: `${release.toLowerCase()}/${productFamily.id.toLowerCase()}`,
         });
       }
     }
