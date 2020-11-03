@@ -21,14 +21,14 @@
                   <h2><%= category.label %></h2>
                     <% category.docs.forEach(categoryDoc => { -%>
                       <div class="docLink">
-                          <a href="" target="_blank" rel="noopener noreferrer"><%= categoryDoc %></a>
+                          <a href="<%= categoryDoc.docUrl %>" target="_blank" rel="noopener noreferrer"><%= categoryDoc.docLabel %></a>
                       </div>
                     <% }) -%>
                     <% category.groups.forEach(group => { -%>
-                    <h3><%= group.label %></h3>
-                      <% group.items.forEach(groupDoc => { -%>
+                    <h3><%= group.groupLabel %></h3>
+                      <% group.groupDocs.forEach(groupDoc => { -%>
                         <div class="docLink">
-                          <a href="" target="_blank" rel="noopener noreferrer"><%= groupDoc %></a>
+                          <a href="<%= groupDoc.docUrl %>" target="_blank" rel="noopener noreferrer"><%= groupDoc.docLabel %></a>
                         </div>
                       <% }) -%>
                     <% }) -%>

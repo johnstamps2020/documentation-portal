@@ -74,10 +74,45 @@ async function getProductFamilyPageInfo(productFamilyId) {
         const categoryDocs = productFamilyItem.items.filter(
           i => typeof i === 'string'
         );
+        const categoryDocsWithLinks = [];
+        for (const categoryDoc of categoryDocs) {
+          const docUrlFromConfig = docs.filter(doc =>
+            doc.metadata.product.includes(categoryDoc)
+          )[0]?.url;
+          if (docUrlFromConfig) {
+            categoryDocsWithLinks.push({
+              docLabel: categoryDoc,
+              docUrl: docUrlFromConfig,
+            });
+          }
+        }
+        const categoryGroupsWithLinks = [];
+        for (const categoryGroup of categoryGroups) {
+          const categoryGroupDocs = categoryGroup.items.filter(
+            i => typeof i === 'string'
+          );
+          const categoryGroupDocsWithLinks = [];
+          for (const categoryGroupDoc of categoryGroupDocs) {
+            const docUrlFromConfig = docs.filter(doc =>
+              doc.metadata.product.includes(categoryGroupDoc)
+            )[0]?.url;
+            if (docUrlFromConfig) {
+              categoryGroupDocsWithLinks.push({
+                docLabel: categoryGroupDoc,
+                docUrl: docUrlFromConfig,
+              });
+            }
+          }
+          categoryGroupsWithLinks.push({
+            groupLabel: categoryGroup.label,
+            groupDocs: categoryGroupDocsWithLinks,
+          });
+        }
+
         categories.push({
           label: productFamilyItem.label,
-          groups: categoryGroups,
-          docs: categoryDocs,
+          groups: categoryGroupsWithLinks,
+          docs: categoryDocsWithLinks,
         });
       }
       return {
