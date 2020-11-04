@@ -1342,7 +1342,7 @@
         "category": ["Digital"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "staging"]
     },
     {
       "id": "dxceclaims202011",
@@ -1355,7 +1355,7 @@
         "category": ["Digital"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "staging"]
     },
     {
       "id": "dxceqb202011",
@@ -1368,7 +1368,7 @@
         "category": ["Digital"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "staging"]
     },
     {
       "id": "dxpe202011",
@@ -1381,7 +1381,7 @@
         "category": ["Digital"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "staging"]
     },
     {
       "id": "dxpeclaims202011",
@@ -1394,7 +1394,7 @@
         "category": ["Digital"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "staging"]
     },
     {
       "id": "dxsre202011",
@@ -1407,7 +1407,7 @@
         "category": ["Digital"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "staging"]
     },
     {
       "id": "dxve202011",
@@ -1420,7 +1420,7 @@
         "category": ["Digital"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "staging"]
     },
     {
       "id": "dxceam202010",
@@ -1960,7 +1960,7 @@
         "release": ["Banff"]
       },
       "displayOnLandingPages": false,
-      "environments": ["dev", "int"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "standardsdraft",
