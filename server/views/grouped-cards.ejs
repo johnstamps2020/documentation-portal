@@ -14,7 +14,9 @@
               <script>
                 function selectRelease() {
                   const selectedRelease = document.getElementById("releaseSelector").value;
-                  window.location.replace(selectedRelease);
+                  const urlParts = window.location.pathname.split('/');
+                  urlParts[1] = selectedRelease;
+                  window.location.replace(urlParts.join('/'));
                 }
               </script>
               <label for="releaseSelector">Select version:

@@ -1,7 +1,6 @@
 const getConfig = require('./configController');
 const {
   getUniqueInMetadataFields,
-  getUniqueInMetadataArrays,
   getSortedVersions,
 } = require('../routes/helpers/metadata');
 const fs = require('fs').promises;
