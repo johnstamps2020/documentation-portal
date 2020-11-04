@@ -57,14 +57,14 @@ async function getReleasesFromTaxonomyFiles(filterId) {
 }
 
 function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
-  if (typeof node === 'string') {
-    if (docsFromConfig.some(d => d.metadata.product.includes(node))) {
+  if (!node.items && node.label) {
+    if (docsFromConfig.some(d => d.metadata.product.includes(node.label))) {
       const filteredDocs = docsFromConfig.filter(d =>
-        d.metadata.product.includes(node)
+        d.metadata.product.includes(node.label)
       );
       matchingDocs.push.apply(matchingDocs, filteredDocs);
     }
-  } else {
+  } else if (node.items) {
     for (const child of node.items) {
       getDocsForTaxonomy(child, docsFromConfig, matchingDocs);
     }
@@ -113,22 +113,18 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
       d.metadata.release.includes(release)
     );
     const cloudTaxonomy = await getTaxonomyFromFile(release);
-    const productFamily = cloudTaxonomy.items.find(
+    const productFamilyNode = cloudTaxonomy.items.find(
       i => i.id === productFamilyId
     );
     const docs = [];
-    getDocsForTaxonomy(productFamily, cloudDocsForRelease, docs);
+    getDocsForTaxonomy(productFamilyNode, cloudDocsForRelease, docs);
     if (docs) {
       const categories = [];
-      for (const productFamilyItem of productFamily.items.filter(
-        i => typeof i !== 'string'
+      for (const productFamilyItem of productFamilyNode.items.filter(
+        i => i.items
       )) {
-        const categoryGroups = productFamilyItem.items.filter(
-          i => typeof i !== 'string'
-        );
-        const categoryDocs = productFamilyItem.items.filter(
-          i => typeof i === 'string'
-        );
+        const categoryGroups = productFamilyItem.items.filter(i => i.items);
+        const categoryDocs = productFamilyItem.items.filter(i => !i.items);
 
         function getDocUrl(listOfDocs, productName) {
           if (listOfDocs.length === 1) {
@@ -137,20 +133,20 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
             const version = getSortedVersions(
               getUniqueInMetadataFields(listOfDocs, 'version')
             )[0];
-            return `cloud/${productName}/${version}`;
+            return `/${release}/${productFamilyId}/${productName}/${version}`;
           }
         }
 
         const categoryDocsWithLinks = [];
         for (const categoryDoc of categoryDocs) {
           const docsFromConfig = docs.filter(doc =>
-            doc.metadata.product.includes(categoryDoc)
+            doc.metadata.product.includes(categoryDoc.label)
           );
           if (docsFromConfig) {
-            const docUrl = getDocUrl(docsFromConfig, categoryDoc);
+            const docUrl = getDocUrl(docsFromConfig, categoryDoc.label);
             if (docUrl) {
               categoryDocsWithLinks.push({
-                docLabel: categoryDoc,
+                docLabel: categoryDoc.label,
                 docUrl: docUrl,
               });
             }
@@ -158,19 +154,17 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
         }
         const categoryGroupsWithLinks = [];
         for (const categoryGroup of categoryGroups) {
-          const categoryGroupDocs = categoryGroup.items.filter(
-            i => typeof i === 'string'
-          );
+          const categoryGroupDocs = categoryGroup.items.filter(i => !i.items);
           const categoryGroupDocsWithLinks = [];
           for (const categoryGroupDoc of categoryGroupDocs) {
             const docsFromConfig = docs.filter(doc =>
-              doc.metadata.product.includes(categoryGroupDoc)
+              doc.metadata.product.includes(categoryGroupDoc.label)
             );
             if (docsFromConfig) {
-              const docUrl = getDocUrl(docsFromConfig, categoryGroupDoc);
+              const docUrl = getDocUrl(docsFromConfig, categoryGroupDoc.label);
               if (docUrl) {
                 categoryGroupDocsWithLinks.push({
-                  docLabel: categoryGroupDoc,
+                  docLabel: categoryGroupDoc.label,
                   docUrl: docUrl,
                 });
               }
@@ -189,7 +183,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
         });
       }
       return {
-        title: productFamily.label,
+        title: productFamilyNode.label,
         categories: categories,
         availableReleases: await getReleasesFromTaxonomyFiles(productFamilyId),
       };

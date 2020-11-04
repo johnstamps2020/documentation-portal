@@ -10,24 +10,44 @@
           "id": "core",
           "label": "Core",
           "items": [
-            "PolicyCenter for Guidewire Cloud",
-            "InsuranceSuite Configuration Upgrade Tools",
-            "Businessowners Standards Based Template"
+            {
+              "id": "pcGwCloud",
+              "label": "PolicyCenter for Guidewire Cloud"
+            },
+            {
+              "id": "isConfigUpgradeTools",
+              "label": "InsuranceSuite Configuration Upgrade Tools"
+            },
+            {
+              "id": "boStandardsBaseTemplate",
+              "label": "Businessowners Standards Based Template"
+            }
           ]
         },
         {
           "id": "data",
           "label": "Data",
           "items": [
-            "Cloud Data Access",
-            "Explore",
-            "Pawel's new doc!",
+            {
+              "id": "cloudDataAccess",
+              "label": "Cloud Data Access"
+            },
+            {
+              "id": "explore",
+              "label": "Explore"
+            },
             {
               "id": "addOns",
               "label": "Add-ons",
               "items": [
-                "DataHub for Guidewire Cloud",
-                "InfoCenter for Guidewire Cloud"
+                {
+                  "id": "dhGwCloud",
+                  "label": "DataHub for Guidewire Cloud"
+                },
+                {
+                  "id": "icGwCloud",
+                  "label": "InfoCenter for Guidewire Cloud"
+                }
               ]
             }
           ]
@@ -36,11 +56,26 @@
           "id": "digital",
           "label": "Digital",
           "items": [
-            "CustomerEngage Account Management",
-            "CustomerEngage Quote and Buy",
-            "ProducerEngage",
-            "ServiceRepEngage",
-            "Digital Code Generation"
+            {
+              "id": "ceAccountMgmt",
+              "label": "CustomerEngage Account Management"
+            },
+            {
+              "id": "ceQuoteAndBuy",
+              "label": "CustomerEngage Quote and Buy"
+            },
+            {
+              "id": "producerEngage",
+              "label": "ProducerEngage"
+            },
+            {
+              "id": "serviceRepEngage",
+              "label": "ServiceRepEngage"
+            },
+            {
+              "id": "digitalCodeGeneration",
+              "label": "Digital Code Generation"
+            }
           ]
         }
       ]
