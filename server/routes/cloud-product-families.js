@@ -32,7 +32,7 @@ router.get('/:release/:productFamilyId', async function(req, res, next) {
     res.render('grouped-cards', {
       title: productFamilyPageInfo.title,
       categories: productFamilyPageInfo.categories,
-      breadcrumb: [{ href: `/`, label: 'Cloud documentation' }],
+      breadcrumb: [{ href: `/${release}`, label: 'Cloud documentation' }],
       selectedRelease: release,
       availableReleases: productFamilyPageInfo.availableReleases,
     });
