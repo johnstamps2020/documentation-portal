@@ -1,8 +1,4 @@
-const express = require('express');
-const router = express.Router();
 const getConfig = require('../controllers/configController');
-const getCloudDocumentationPageInfo = require('../controllers/cloudDocumentationController')
-  .getCloudDocumentationPageInfo;
 const {
   getUniqueInMetadataArrays,
   getSortedVersions,
@@ -19,33 +15,8 @@ const cloudHome = async (req, res, next) => {
     const highestCloudRelease = getSortedVersions(
       getUniqueInMetadataArrays(docs, 'release')
     )[0];
-    const cloudDocumentationPageInfo = await getCloudDocumentationPageInfo(
-      highestCloudRelease
-    );
     if (req.originalUrl === '/') {
-      res.render('cloud-home', {
-        title: cloudDocumentationPageInfo.title,
-        productFamilies: cloudDocumentationPageInfo.productFamilies,
-        selectedRelease: highestCloudRelease,
-        availableReleases: cloudDocumentationPageInfo.availableReleases,
-      });
-    } else {
-      router.get('/:release', async function(req, res, next) {
-        try {
-          const release = req.params;
-          const cloudDocumentationPageInfo = await getCloudDocumentationPageInfo(
-            release
-          );
-          res.render('cloud-home', {
-            title: cloudDocumentationPageInfo.title,
-            productFamilies: cloudDocumentationPageInfo.productFamilies,
-            selectedRelease: release,
-            availableReleases: cloudDocumentationPageInfo.availableReleases,
-          });
-        } catch (err) {
-          next(err);
-        }
-      });
+      res.redirect(`/${highestCloudRelease}`);
     }
   } catch (err) {
     next(err);

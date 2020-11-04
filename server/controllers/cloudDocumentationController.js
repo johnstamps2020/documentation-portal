@@ -34,11 +34,14 @@ function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
 async function getCloudDocumentationPageInfo(release) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
+    const cloudDocsForRelease = cloudDocs.filter(d =>
+      d.metadata.release.includes(release)
+    );
     const pageTitle = cloudTaxonomy.label;
     const productFamilies = [];
     for (const productFamily of cloudTaxonomy.items) {
       const docs = [];
-      getDocsForTaxonomy(productFamily, cloudDocs, docs);
+      getDocsForTaxonomy(productFamily, cloudDocsForRelease, docs);
       if (docs.length === 1) {
         productFamilies.push({
           label: productFamily.label,
@@ -47,7 +50,7 @@ async function getCloudDocumentationPageInfo(release) {
       } else if (docs.length > 1) {
         productFamilies.push({
           label: productFamily.label,
-          link: `${release.toLowerCase()}/${productFamily.id.toLowerCase()}`,
+          link: `${release}/${productFamily.id.toLowerCase()}`,
         });
       }
     }
