@@ -170,17 +170,21 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
               }
             }
           }
-          categoryGroupsWithLinks.push({
-            groupLabel: categoryGroup.label,
-            groupDocs: categoryGroupDocsWithLinks,
-          });
+          if (categoryGroupDocsWithLinks.length > 0) {
+            categoryGroupsWithLinks.push({
+              groupLabel: categoryGroup.label,
+              groupDocs: categoryGroupDocsWithLinks,
+            });
+          }
         }
 
-        categories.push({
-          label: productFamilyItem.label,
-          groups: categoryGroupsWithLinks,
-          docs: categoryDocsWithLinks,
-        });
+        if (categoryDocsWithLinks.length > 0) {
+          categories.push({
+            label: productFamilyItem.label,
+            groups: categoryGroupsWithLinks,
+            docs: categoryDocsWithLinks,
+          });
+        }
       }
       return {
         title: productFamilyNode.label,
