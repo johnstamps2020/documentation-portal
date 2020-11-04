@@ -88,23 +88,40 @@
           "id": "core",
           "label": "Core",
           "items": [
-            "ClaimCenter for Guidewire Cloud",
-            "InsuranceSuite Configuration Upgrade Tools"
+            {
+              "id": "ccGwCloud",
+              "label": "ClaimCenter for Guidewire Cloud"
+            },
+            {
+              "id": "isConfigUpgradeTools",
+              "label": "InsuranceSuite Configuration Upgrade Tools"
+            }
           ]
         },
         {
           "id": "data",
           "label": "Data",
           "items": [
-            "Cloud Data Access",
-            "Explore",
-            "Pawel's new doc!",
+            {
+              "id": "cloudDataAccess",
+              "label": "Cloud Data Access"
+            },
+            {
+              "id": "explore",
+              "label": "Explore"
+            },
             {
               "id": "addOns",
               "label": "Add-ons",
               "items": [
-                "DataHub for Guidewire Cloud",
-                "InfoCenter for Guidewire Cloud"
+                {
+                  "id": "dhGwCloud",
+                  "label": "DataHub for Guidewire Cloud"
+                },
+                {
+                  "id": "icGwCloud",
+                  "label": "InfoCenter for Guidewire Cloud"
+                }
               ]
             }
           ]
@@ -113,12 +130,30 @@
           "id": "digital",
           "label": "Digital",
           "items": [
-            "CustomerEngage Account Management",
-            "CustomerEngage Account Management for ClaimCenter",
-            "ProducerEngage",
-            "ProducerEngage for ClaimCenter",
-            "ServiceRepEngage",
-            "VendorEngage"
+            {
+              "id": "ceAccountMgmt",
+              "label": "CustomerEngage Account Management"
+            },
+            {
+              "id": "ceAccountMgmtCc",
+              "label": "CustomerEngage Account Management for ClaimCenter"
+            },
+            {
+              "id": "producerEngage",
+              "label": "ProducerEngage"
+            },
+            {
+              "id": "producerEngageCc",
+              "label": "ProducerEngage for ClaimCenter"
+            },
+            {
+              "id": "serviceRepEngage",
+              "label": "ServiceRepEngage"
+            },
+            {
+              "id": "vendorEngage",
+              "label": "VendorEngage"
+            }
           ]
         }
       ]
@@ -131,23 +166,40 @@
           "id": "core",
           "label": "Core",
           "items": [
-            "BillingCenter for Guidewire Cloud",
-            "InsuranceSuite Configuration Upgrade Tools"
+            {
+              "id": "bcGwCloud",
+              "label": "BillingCenter for Guidewire Cloud"
+            },
+            {
+              "id": "isConfigUpgradeTools",
+              "label": "InsuranceSuite Configuration Upgrade Tools"
+            }
           ]
         },
         {
           "id": "data",
           "label": "Data",
           "items": [
-            "Cloud Data Access",
-            "Explore",
-            "Pawel's new doc!",
+            {
+              "id": "cloudDataAccess",
+              "label": "Cloud Data Access"
+            },
+            {
+              "id": "explore",
+              "label": "Explore"
+            },
             {
               "id": "addOns",
               "label": "Add-ons",
               "items": [
-                "DataHub for Guidewire Cloud",
-                "InfoCenter for Guidewire Cloud"
+                {
+                  "id": "dhGwCloud",
+                  "label": "DataHub for Guidewire Cloud"
+                },
+                {
+                  "id": "icGwCloud",
+                  "label": "InfoCenter for Guidewire Cloud"
+                }
               ]
             }
           ]
@@ -156,9 +208,18 @@
           "id": "digital",
           "label": "Digital",
           "items": [
-            "CustomerEngage Account Management",
-            "ProducerEngage",
-            "ServiceRepEngage"
+            {
+              "id": "ceAccountMgmt",
+              "label": "CustomerEngage Account Management"
+            },
+            {
+              "id": "producerEngage",
+              "label": "ProducerEngage"
+            },
+            {
+              "id": "serviceRepEngage",
+              "label": "ServiceRepEngage"
+            }
           ]
         }
       ]
@@ -167,7 +228,10 @@
       "id": "insuranceNow",
       "label": "InsuranceNow",
       "items": [
-        "InsuranceNow"
+        {
+          "id": "insuranceNow",
+          "label": "InsuranceNow"
+        }
       ]
     },
     {
@@ -178,7 +242,10 @@
           "id": "guidewireCloudConsole",
           "label": "Guidewire Cloud Console",
           "items": [
-            "Guidewire Cloud Console"
+            {
+              "id": "gwCloudConsole",
+              "label": "Guidewire Cloud Console"
+            }
           ]
         }
       ]

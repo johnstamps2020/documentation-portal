@@ -1,34 +1,105 @@
 {
-  "Self-managed product documentation": [
+  "id": "selfManagedProductDocumentation",
+  "label": "Self-managed product documentation",
+  "items": [
     {
-      "Core": [
-        "BillingCenter",
-        "ClaimCenter",
-        "PolicyCenter",
-        "InsuranceSuite Configuration Upgrade Tools"
+      "id": "core",
+      "label": "Core",
+      "items": [
+        {
+          "id": "bc",
+          "label": "BillingCenter"
+        },
+        {
+          "id": "cc",
+          "label": "ClaimCenter"
+        },
+        {
+          "id": "pc",
+          "label": "PolicyCenter"
+        },
+        {
+          "id": "isConfigUpgradeTools",
+          "label": "InsuranceSuite Configuration Upgrade Tools"
+        }
       ]
     },
     {
-      "Data": [
-        "DataHub",
-        "InfoCenter"
+      "id": "data",
+      "label": "Data",
+      "items": [
+        {
+          "id": "addOns",
+          "label": "Add-ons",
+          "items": [
+            {
+              "id": "dh",
+              "label": "DataHub"
+            },
+            {
+              "id": "ic",
+              "label": "InfoCenter"
+            }
+          ]
+        }
       ]
     },
     {
-      "Digital": [
-        "CustomerEngage Account Management",
-        "CustomerEngage Account Management for ClaimCenter",
-        "CustomerEngage Quote and Buy",
-        "ProducerEngage",
-        "ProducerEngage for ClaimCenter",
-        "ServiceRepEngage",
-        "VendorEngage",
-        "Guidewire for Salesforce Data Integrations",
-        "Guidewire for Salesforce Data Integrations for Claims",
-        "Guidewire for Salesforce Digital Gateway",
-        "Guidewire for Salesforce Digital Gateway for Claims",
-        "Guidewire for Salesforce View on Demand",
-        "Guidewire for Salesforce View on Demand for Claims"
+      "id": "digital",
+      "label": "Digital",
+      "items": [
+        {
+          "id": "ceAccountMgmt",
+          "label": "CustomerEngage Account Management"
+        },
+        {
+          "id": "ceAccountMgmtCc",
+          "label": "CustomerEngage Account Management for ClaimCenter"
+        },
+        {
+          "id": "ceQuoteAndBuy",
+          "label": "CustomerEngage Quote and Buy"
+        },
+        {
+          "id": "producerEngage",
+          "label": "ProducerEngage"
+        },
+        {
+          "id": "producerEngageCc",
+          "label": "ProducerEngage for ClaimCenter"
+        },
+        {
+          "id": "serviceRepEngage",
+          "label": "ServiceRepEngage"
+        },
+        {
+          "id": "vendorEngage",
+          "label": "VendorEngage"
+        },
+        {
+          "id": "gwSalesforceDataInteg",
+          "label": "Guidewire for Salesforce Data Integrations"
+        },
+        {
+          "id": "gwSalesforceDataIntegClaims",
+          "label": "Guidewire for Salesforce Data Integrations for Claims"
+        },
+        {
+          "id": "gwSalesforceDigitalGateway",
+          "label": "Guidewire for Salesforce Digital Gateway"
+        },
+        {
+          "id": "gwSalesforceDigitalGatewayClaims",
+          "label": "Guidewire for Salesforce Digital Gateway for Claims"
+        },
+        {
+          "id": "gwSalesforceViewOnDemand",
+          "label": "Guidewire for Salesforce View on Demand"
+        },
+        {
+          "id": "gwSalesforceViewOnDemandClaims",
+          "label": "Guidewire for Salesforce View on Demand for Claims"
+        }
       ]
     }
   ]
