@@ -72,6 +72,13 @@ a.returnLink {
   line-height: 40px;
 }
 
+.docPanelContainer h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+
 .homeContainer {
   position: relative;
   min-height: var(--main-height);

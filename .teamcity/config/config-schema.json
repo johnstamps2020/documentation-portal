@@ -98,6 +98,11 @@
           "type": "array",
           "examples": ["Core", "Data", "Digital"]
         },
+        "subcategory": {
+          "description": "A product subcategory",
+          "type": "string",
+          "examples": ["Add-ons"]
+        },
         "release": {
           "description": "A major release",
           "type": "array",

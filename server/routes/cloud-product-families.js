@@ -64,6 +64,19 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
         d.metadata.category.includes(category)
       );
 
+      const docsWithSubcategories = docsInCategory.filter(d =>
+        d.metadata.hasOwnProperty('subcategory')
+      );
+      const subcategories = [];
+      if (docsWithSubcategories) {
+        for (const doc of docsWithSubcategories) {
+          const docSubcategory = doc.metadata.subcategory;
+          if (!subcategories.includes(docSubcategory)) {
+            subcategories.push(docSubcategory);
+          }
+        }
+      }
+
       const productsInCategory = getUniqueInMetadataArrays(
         docsInCategory,
         'product'
@@ -75,24 +88,28 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
           d.metadata.product.includes(product)
         );
 
+        const productSubcategory = docsInProduct.filter(d =>
+          d.metadata.hasOwnProperty('subcategory')
+        )[0]?.metadata.subcategory;
+
+        let productUrl = '';
         if (docsInProduct.length === 1) {
-          linksInProduct.push({
-            title: product,
-            url: `${docsInProduct[0].url}`,
-          });
+          productUrl = `${docsInProduct[0].url}`;
+        } else if (docsInProduct.length > 1) {
+          productUrl = `products/${productFamilyId}/${release}/${product}`;
         }
 
-        if (docsInProduct.length > 1) {
-          linksInProduct.push({
-            title: product,
-            url: `products/${productFamilyId}/${release}/${product}`,
-          });
-        }
+        linksInProduct.push({
+          title: product,
+          url: productUrl,
+          subcategory: productSubcategory,
+        });
       }
 
       if (linksInProduct.length > 0) {
         productLinks.push({
           category: category,
+          subcategories: subcategories,
           docs: linksInProduct,
         });
       }
