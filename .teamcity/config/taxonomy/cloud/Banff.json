@@ -1,0 +1,152 @@
+{
+  "id": "guidewireCloudDocumentation",
+  "label": "Guidewire Cloud Documentation",
+  "items": [
+    {
+      "id": "policyCenterCloud",
+      "label": "PolicyCenter Cloud",
+      "items": [
+        {
+          "id": "core",
+          "label": "Core",
+          "items": [
+            "PolicyCenter for Guidewire Cloud",
+            "InsuranceSuite Configuration Upgrade Tools",
+            "Businessowners Standards Based Template"
+          ]
+        },
+        {
+          "id": "data",
+          "label": "Data",
+          "items": [
+            "Cloud Data Access",
+            "Explore",
+            "Pawel's new doc!",
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                "DataHub for Guidewire Cloud",
+                "InfoCenter for Guidewire Cloud"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital",
+          "label": "Digital",
+          "items": [
+            "CustomerEngage Account Management",
+            "CustomerEngage Quote and Buy",
+            "ProducerEngage",
+            "ServiceRepEngage",
+            "Digital Code Generation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "claimCenterCloud",
+      "label": "ClaimCenter Cloud",
+      "items": [
+        {
+          "id": "core",
+          "label": "Core",
+          "items": [
+            "ClaimCenter for Guidewire Cloud",
+            "InsuranceSuite Configuration Upgrade Tools"
+          ]
+        },
+        {
+          "id": "data",
+          "label": "Data",
+          "items": [
+            "Cloud Data Access",
+            "Explore",
+            "Pawel's new doc!",
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                "DataHub for Guidewire Cloud",
+                "InfoCenter for Guidewire Cloud"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital",
+          "label": "Digital",
+          "items": [
+            "CustomerEngage Account Management",
+            "CustomerEngage Account Management for ClaimCenter",
+            "ProducerEngage",
+            "ProducerEngage for ClaimCenter",
+            "ServiceRepEngage",
+            "VendorEngage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "billingCenterCloud",
+      "label": "BillingCenter Cloud",
+      "items": [
+        {
+          "id": "core",
+          "label": "Core",
+          "items": [
+            "BillingCenter for Guidewire Cloud",
+            "InsuranceSuite Configuration Upgrade Tools"
+          ]
+        },
+        {
+          "id": "data",
+          "label": "Data",
+          "items": [
+            "Cloud Data Access",
+            "Explore",
+            "Pawel's new doc!",
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                "DataHub for Guidewire Cloud",
+                "InfoCenter for Guidewire Cloud"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital",
+          "label": "Digital",
+          "items": [
+            "CustomerEngage Account Management",
+            "ProducerEngage",
+            "ServiceRepEngage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insuranceNow",
+      "label": "InsuranceNow",
+      "items": [
+        "InsuranceNow"
+      ]
+    },
+    {
+      "id": "guidewireCloudPlatform",
+      "label": "Guidewire Cloud Platform",
+      "items": [
+        {
+          "id": "guidewireCloudConsole",
+          "label": "Guidewire Cloud Console",
+          "items": [
+            "Guidewire Cloud Console"
+          ]
+        }
+      ]
+    }
+  ]
+}

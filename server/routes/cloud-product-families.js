@@ -26,6 +26,7 @@ router.get('/:release/:productFamilyId', async function(req, res, next) {
   try {
     const { release, productFamilyId } = req.params;
     const productFamilyPageInfo = await getProductFamilyPageInfo(
+      release,
       productFamilyId
     );
     res.render('grouped-cards', {
