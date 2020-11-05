@@ -31,8 +31,9 @@ function findNodeById(idValue, node) {
   }
   if (node.items) {
     for (const child of node.items) {
-      if (typeof findNodeById(idValue, child) !== 'undefined') {
-        return child;
+      const result = findNodeById(idValue, child);
+      if (result) {
+        return result;
       }
     }
   }
