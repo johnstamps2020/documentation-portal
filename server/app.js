@@ -70,10 +70,9 @@ const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const cloudRouter = require('./routes/cloud');
-const selfManagedLatestRouter = require('./routes/self-managed-latest');
-const selfManagedAllReleasesRouter = require('./routes/self-managed-all-releases');
-const allProductRouter = require('./routes/all-products');
+const selfManagedRouter = require('./routes/self-managed');
 const searchRouter = require('./routes/search');
+const allProductRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
@@ -149,8 +148,7 @@ app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 
-app.use('/self-managed-latest', selfManagedLatestRouter);
-app.use('/self-managed-all-releases', selfManagedAllReleasesRouter);
+app.use('/self-managed', selfManagedRouter);
 app.use('/product', allProductRouter);
 app.use('/', cloudRouter);
 

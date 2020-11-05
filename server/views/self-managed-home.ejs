@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col-sm-9">
             <div class="docPageTitle docPageHeaderItems">
-              <h1 class="display-4">Self-managed product documentation</h1>
+              <h1 class="display-4"><%= pageInfo.title -%></h1>
             </div>
           </div>
           <div class="col-sm-3">
@@ -20,17 +20,25 @@
         <div class="row">
           <div class="col-sm-9">
             <div class="row">
-              <% docGroups.forEach(group => { -%>
-              <div class="col-sm-4 mt-3">
-                <div class="categoryCard">
-                  <h2><%= group.category %></h2>
-                  <% group.docs.forEach(doc => { -%>
-                  <div class="docLink">
-                    <a href="<%= doc.url %>"><%= doc.title %></a>
+              <% pageInfo.categories.forEach(category => { -%>
+                <div class="col-sm-4 mt-3">
+                  <div class="categoryCard">
+                    <h2><%= category.label %></h2>
+                    <% category.docs.forEach(categoryDoc => { -%>
+                      <div class="docLink">
+                        <a href="<%= categoryDoc.docUrl %>"><%= categoryDoc.docLabel %></a>
+                      </div>
+                    <% }) -%>
+                    <% category.groups.forEach(group => { -%>
+                      <h3><%= group.groupLabel %></h3>
+                      <% group.groupDocs.forEach(groupDoc => { -%>
+                        <div class="docLink">
+                          <a href="<%= groupDoc.docUrl %>"><%= groupDoc.docLabel %></a>
+                        </div>
+                      <% }) -%>
+                    <% }) -%>
                   </div>
-                  <% }) -%>
                 </div>
-              </div>
               <% }) -%>
             </div>
           </div>

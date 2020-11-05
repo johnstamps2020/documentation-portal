@@ -97,10 +97,10 @@ async function getCloudDocumentationPageInfo(release) {
     const cloudDocsForRelease = cloudDocs.filter(d =>
       d.metadata.release.includes(release)
     );
-    const cloudTaxonomy = await getTaxonomyFromFile(release);
-    const pageTitle = cloudTaxonomy.label;
+    const releaseTaxonomy = await getTaxonomyFromFile(release);
+    const pageTitle = releaseTaxonomy.label;
     const productFamilies = [];
-    for (const productFamily of cloudTaxonomy.items) {
+    for (const productFamily of releaseTaxonomy.items) {
       const docs = [];
       getDocsForTaxonomy(productFamily, cloudDocsForRelease, docs);
       if (docs.length === 1) {
@@ -135,8 +135,8 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
     const cloudDocsForRelease = cloudDocs.filter(d =>
       d.metadata.release.includes(release)
     );
-    const cloudTaxonomy = await getTaxonomyFromFile(release);
-    const productFamilyNode = findNodeById(productFamilyId, cloudTaxonomy);
+    const releaseTaxonomy = await getTaxonomyFromFile(release);
+    const productFamilyNode = findNodeById(productFamilyId, releaseTaxonomy);
     const docs = [];
     getDocsForTaxonomy(productFamilyNode, cloudDocsForRelease, docs);
     if (docs) {
@@ -232,8 +232,8 @@ async function getProductPageInfo(
 ) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
-    const cloudTaxonomy = await getTaxonomyFromFile(release);
-    const productFamilyNode = findNodeById(productFamilyId, cloudTaxonomy);
+    const releaseTaxonomy = await getTaxonomyFromFile(release);
+    const productFamilyNode = findNodeById(productFamilyId, releaseTaxonomy);
     const productFamilyName = productFamilyNode.label;
     const productNode = findNodeById(productId, productFamilyNode);
     const productName = productNode.label;
