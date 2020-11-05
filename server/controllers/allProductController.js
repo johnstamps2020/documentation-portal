@@ -1,5 +1,5 @@
 const getConfig = require('./configController');
-const { getUniqueInMetadataArrays } = require('../routes/helpers/metadata');
+const { getUniqueInMetadataArrays } = require('./helpers/metadata');
 
 async function getAllProductDocs() {
   try {
@@ -12,7 +12,7 @@ async function getAllProductDocs() {
       for (const doc of config.docs) {
         if (
           doc.metadata.product &&
-          doc.metadata.product.includes(productName)  &&
+          doc.metadata.product.includes(productName) &&
           doc.displayOnLandingPages != false
         ) {
           productDocs.push(doc);

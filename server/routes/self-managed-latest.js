@@ -5,13 +5,14 @@ const {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
   getSortedVersions,
-} = require('./helpers/metadata');
+} = require('../controllers/helpers/metadata');
 
 async function getSelfManagedDocs() {
   const config = await getConfig();
-  const docs = config.docs.filter(d =>
-    d.metadata.platform.includes('Self-managed') &&
-    d.displayOnLandingPages != false
+  const docs = config.docs.filter(
+    d =>
+      d.metadata.platform.includes('Self-managed') &&
+      d.displayOnLandingPages != false
   );
 
   return docs;

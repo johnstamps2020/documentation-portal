@@ -5,8 +5,11 @@ const {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
   getSortedVersions,
-} = require('./helpers/metadata');
-const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
+} = require('../controllers/helpers/metadata');
+const {
+  getDefaultSubjectIcon,
+  getSubjectIcon,
+} = require('../controllers/helpers/icons');
 
 async function getSingleProduct(productId) {
   const products = await getAllProductDocs();

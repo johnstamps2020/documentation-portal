@@ -3,11 +3,8 @@ const {
   getUniqueInMetadataFields,
   getUniqueInMetadataArrays,
   getSortedVersions,
-} = require('../routes/helpers/metadata');
-const {
-  getDefaultSubjectIcon,
-  getSubjectIcon,
-} = require('../routes/helpers/icons');
+} = require('./helpers/metadata');
+const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const fs = require('fs').promises;
 const path = require('path');
 
