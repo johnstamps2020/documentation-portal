@@ -4,6 +4,10 @@ const {
   getUniqueInMetadataArrays,
   getSortedVersions,
 } = require('../routes/helpers/metadata');
+const {
+  getDefaultSubjectIcon,
+  getSubjectIcon,
+} = require('../routes/helpers/icons');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -149,10 +153,10 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
           if (listOfDocs.length === 1) {
             return `/${listOfDocs[0]?.url}`;
           } else if (listOfDocs.length > 1) {
-            const version = getSortedVersions(
+            const productVersion = getSortedVersions(
               getUniqueInMetadataFields(listOfDocs, 'version')
             )[0];
-            return `/${release}/${productFamilyId}/${productId}/${version}`;
+            return `/${release}/${productFamilyId}/${productId}/${productVersion}`;
           }
         }
 
@@ -226,28 +230,23 @@ async function getProductPageInfo(
 ) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
-    //Find the right product ID in the taxonomy
-    //Filter the doc list based on release, product, version
     const cloudTaxonomy = await getTaxonomyFromFile(release);
     const productFamilyNode = findNodeById(productFamilyId, cloudTaxonomy);
-    const productName = findNodeById(productId, productFamilyNode).label;
-    const docs = [];
-    const docsInProduct = cloudDocs.filter(
+    const productFamilyName = productFamilyNode.label;
+    const productNode = findNodeById(productId, productFamilyNode);
+    const productName = productNode.label;
+    const productDocs = cloudDocs.filter(
       d =>
         d.metadata.release.includes(release) &&
         d.metadata.product.includes(productName) &&
         d.metadata.version === productVersion &&
         d.displayOnLandingPages !== false
     );
-    const availableVersions = getUniqueInMetadataFields(
-      docsInProduct,
-      'version'
-    );
+    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
 
     const sortedVersions = getSortedVersions(availableVersions);
-
-    const docsInVersion = docsInProduct.filter(
-      d => d.metadata.version === version
+    const docsInVersion = productDocs.filter(
+      d => d.metadata.version === productVersion
     );
 
     let docsBySubject = [];
@@ -256,7 +255,7 @@ async function getProductPageInfo(
       'subject'
     );
     for (const subject of availableSubjects) {
-      docsInSubject = docsInVersion.filter(d =>
+      const docsInSubject = docsInVersion.filter(d =>
         d.metadata.subject.includes(subject)
       );
       if (docsInSubject.length > 0) {
@@ -278,21 +277,19 @@ async function getProductPageInfo(
       });
     }
 
-    if (docsBySubject.length === 1 && docsBySubject[0].docs.length === 1) {
-      res.redirect('/' + docsBySubject[0].docs[0].url);
-    } else {
-      res.render('grouped-links', {
-        title: `${product} ${version}`,
-        docGroups: docsBySubject,
-        breadcrumb: [
-          { href: `/`, label: 'Cloud documentation' },
-          { href: `/products/${productFamilyId}`, label: productFamily.name },
-          { href: `/products/${productFamilyId}/${release}`, label: release },
-        ],
-        selectedRelease: version,
-        sortedVersions: sortedVersions,
-      });
-    }
+    const productPageInfo = {
+      title: `${productName} ${productVersion}`,
+      docsBySubject: docsBySubject,
+      breadcrumb: [
+        { href: `/`, label: 'Cloud documentation' },
+        { href: `/${release}`, label: release },
+        { href: `/${release}/${productFamilyId}`, label: productFamilyName },
+      ],
+      selectedRelease: productVersion,
+      sortedVersions: sortedVersions,
+    };
+
+    return productPageInfo;
   } catch (err) {
     console.log(err);
   }

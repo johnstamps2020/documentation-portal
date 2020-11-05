@@ -83,13 +83,18 @@ router.get(
         productId,
         productVersion
       );
-      res.render('grouped-cards', {
-        title: productPageInfo.title,
-        categories: productPageInfo.categories,
-        breadcrumb: [{ href: `/${release}`, label: 'Cloud documentation' }],
-        selectedRelease: release,
-        availableReleases: productPageInfo.availableReleases,
-      });
+      const docsBySubject = productPageInfo.docsBySubject;
+      if (docsBySubject.length === 1 && docsBySubject[0].docs.length === 1) {
+        res.redirect('/' + docsBySubject[0].docs[0].url);
+      } else {
+        res.render('grouped-links', {
+          title: productPageInfo.title,
+          docsBySubject: productPageInfo.docsBySubject,
+          breadcrumb: productPageInfo.breadcrumb,
+          selectedRelease: productVersion,
+          sortedVersions: productPageInfo.sortedVersions,
+        });
+      }
     } catch (err) {
       next(err);
     }
