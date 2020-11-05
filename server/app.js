@@ -69,10 +69,9 @@ app.use(
 const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
-const cloudHomeRouter = require('./routes/cloud-home');
+const cloudRouter = require('./routes/cloud');
 const selfManagedLatestRouter = require('./routes/self-managed-latest');
 const selfManagedAllReleasesRouter = require('./routes/self-managed-all-releases');
-const cloudProductFamilyRouter = require('./routes/cloud-product-families');
 const allProductRouter = require('./routes/all-products');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
@@ -152,9 +151,8 @@ app.use('/404', missingPageRouter);
 
 app.use('/self-managed-latest', selfManagedLatestRouter);
 app.use('/self-managed-all-releases', selfManagedAllReleasesRouter);
-app.use('/', cloudProductFamilyRouter);
 app.use('/product', allProductRouter);
-app.use('/', cloudHomeRouter);
+app.use('/', cloudRouter);
 
 const proxyOptions = {
   target: `${process.env.DOC_S3_URL}`,

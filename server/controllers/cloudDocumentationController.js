@@ -1,6 +1,7 @@
 const getConfig = require('./configController');
 const {
   getUniqueInMetadataFields,
+  getUniqueInMetadataArrays,
   getSortedVersions,
 } = require('../routes/helpers/metadata');
 const fs = require('fs').promises;
@@ -24,14 +25,14 @@ async function getTaxonomyFromFile(release) {
   return JSON.parse(taxonomyFileContents);
 }
 
-function containsId(idValue, node) {
+function findNodeById(idValue, node) {
   if (node.id === idValue) {
-    return true;
+    return node;
   }
   if (node.items) {
     for (const child of node.items) {
-      if (containsId(idValue, child)) {
-        return true;
+      if (typeof findNodeById(idValue, child) !== 'undefined') {
+        return child;
       }
     }
   }
@@ -48,7 +49,7 @@ async function getReleasesFromTaxonomyFiles(filterId) {
       availableReleases.push(release);
     } else {
       const taxonomyFromFile = await getTaxonomyFromFile(release);
-      if (containsId(filterId, taxonomyFromFile)) {
+      if (findNodeById(filterId, taxonomyFromFile)) {
         availableReleases.push(release);
       }
     }
@@ -68,6 +69,23 @@ function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
     for (const child of node.items) {
       getDocsForTaxonomy(child, docsFromConfig, matchingDocs);
     }
+  }
+}
+
+async function getHighestCloudRelease() {
+  try {
+    const serverConfig = await getConfig();
+    const docs = serverConfig.docs.filter(
+      doc =>
+        doc.metadata.platform.includes('Cloud') &&
+        doc.displayOnLandingPages !== false
+    );
+    const highestCloudRelease = getSortedVersions(
+      getUniqueInMetadataArrays(docs, 'release')
+    )[0];
+    return highestCloudRelease;
+  } catch (err) {
+    console.log(err);
   }
 }
 
@@ -96,11 +114,13 @@ async function getCloudDocumentationPageInfo(release) {
       }
     }
 
-    return {
+    const cloudDocumentationPageInfo = {
       title: pageTitle,
       productFamilies: productFamilies,
       availableReleases: await getReleasesFromTaxonomyFiles(),
     };
+
+    return cloudDocumentationPageInfo;
   } catch (err) {
     console.log(err);
   }
@@ -113,9 +133,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
       d.metadata.release.includes(release)
     );
     const cloudTaxonomy = await getTaxonomyFromFile(release);
-    const productFamilyNode = cloudTaxonomy.items.find(
-      i => i.id === productFamilyId
-    );
+    const productFamilyNode = findNodeById(productFamilyId, cloudTaxonomy);
     const docs = [];
     getDocsForTaxonomy(productFamilyNode, cloudDocsForRelease, docs);
     if (docs) {
@@ -126,14 +144,14 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
         const categoryGroups = productFamilyItem.items.filter(i => i.items);
         const categoryDocs = productFamilyItem.items.filter(i => !i.items);
 
-        function getDocUrl(listOfDocs, productName) {
+        function getDocUrl(listOfDocs, productId) {
           if (listOfDocs.length === 1) {
             return `/${listOfDocs[0]?.url}`;
           } else if (listOfDocs.length > 1) {
             const version = getSortedVersions(
               getUniqueInMetadataFields(listOfDocs, 'version')
             )[0];
-            return `/${release}/${productFamilyId}/${productName}/${version}`;
+            return `/${release}/${productFamilyId}/${productId}/${version}`;
           }
         }
 
@@ -143,7 +161,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
             doc.metadata.product.includes(categoryDoc.label)
           );
           if (docsFromConfig) {
-            const docUrl = getDocUrl(docsFromConfig, categoryDoc.label);
+            const docUrl = getDocUrl(docsFromConfig, categoryDoc.id);
             if (docUrl) {
               categoryDocsWithLinks.push({
                 docLabel: categoryDoc.label,
@@ -161,7 +179,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
               doc.metadata.product.includes(categoryGroupDoc.label)
             );
             if (docsFromConfig) {
-              const docUrl = getDocUrl(docsFromConfig, categoryGroupDoc.label);
+              const docUrl = getDocUrl(docsFromConfig, categoryGroupDoc.id);
               if (docUrl) {
                 categoryGroupDocsWithLinks.push({
                   docLabel: categoryGroupDoc.label,
@@ -186,11 +204,93 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
           });
         }
       }
-      return {
+      const productFamilyPageInfo = {
         title: productFamilyNode.label,
         categories: categories,
         availableReleases: await getReleasesFromTaxonomyFiles(productFamilyId),
       };
+
+      return productFamilyPageInfo;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function getProductPageInfo(
+  release,
+  productFamilyId,
+  productId,
+  productVersion
+) {
+  try {
+    const cloudDocs = await getCloudDocsFromConfig();
+    //Find the right product ID in the taxonomy
+    //Filter the doc list based on release, product, version
+    const cloudTaxonomy = await getTaxonomyFromFile(release);
+    const productFamilyNode = findNodeById(productFamilyId, cloudTaxonomy);
+    const productName = findNodeById(productId, productFamilyNode).label;
+    const docs = [];
+    const docsInProduct = cloudDocs.filter(
+      d =>
+        d.metadata.release.includes(release) &&
+        d.metadata.product.includes(productName) &&
+        d.metadata.version === productVersion &&
+        d.displayOnLandingPages !== false
+    );
+    const availableVersions = getUniqueInMetadataFields(
+      docsInProduct,
+      'version'
+    );
+
+    const sortedVersions = getSortedVersions(availableVersions);
+
+    const docsInVersion = docsInProduct.filter(
+      d => d.metadata.version === version
+    );
+
+    let docsBySubject = [];
+    const availableSubjects = getUniqueInMetadataArrays(
+      docsInVersion,
+      'subject'
+    );
+    for (const subject of availableSubjects) {
+      docsInSubject = docsInVersion.filter(d =>
+        d.metadata.subject.includes(subject)
+      );
+      if (docsInSubject.length > 0) {
+        docsBySubject.push({
+          category: subject,
+          docs: docsInSubject,
+          icon: getSubjectIcon(subject),
+        });
+      }
+    }
+
+    const docsWithoutSubject = docsInVersion.filter(d => !d.metadata.subject);
+
+    if (docsWithoutSubject && docsWithoutSubject.length > 0) {
+      docsBySubject.push({
+        category: 'Documents',
+        docs: docsWithoutSubject,
+        icon: getDefaultSubjectIcon(),
+      });
+    }
+
+    if (docsBySubject.length === 1 && docsBySubject[0].docs.length === 1) {
+      res.redirect('/' + docsBySubject[0].docs[0].url);
+    } else {
+      res.render('grouped-links', {
+        title: `${product} ${version}`,
+        docGroups: docsBySubject,
+        breadcrumb: [
+          { href: `/`, label: 'Cloud documentation' },
+          { href: `/products/${productFamilyId}`, label: productFamily.name },
+          { href: `/products/${productFamilyId}/${release}`, label: release },
+        ],
+        selectedRelease: version,
+        sortedVersions: sortedVersions,
+      });
     }
   } catch (err) {
     console.log(err);
@@ -198,6 +298,8 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
 }
 
 module.exports = {
+  getHighestCloudRelease,
   getCloudDocumentationPageInfo,
   getProductFamilyPageInfo,
+  getProductPageInfo,
 };
