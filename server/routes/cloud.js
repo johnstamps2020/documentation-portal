@@ -25,10 +25,7 @@ router.get('/:release', async function(req, res, next) {
       release
     );
     res.render('cloud-home', {
-      title: cloudDocumentationPageInfo.title,
-      productFamilies: cloudDocumentationPageInfo.productFamilies,
-      selectedRelease: release,
-      availableReleases: cloudDocumentationPageInfo.availableReleases,
+      pageInfo: cloudDocumentationPageInfo,
     });
   } catch (err) {
     next(err);
@@ -43,11 +40,7 @@ router.get('/:release/:productFamilyId', async function(req, res, next) {
       productFamilyId
     );
     res.render('grouped-cards', {
-      title: productFamilyPageInfo.title,
-      categories: productFamilyPageInfo.categories,
-      breadcrumb: [{ href: `/${release}`, label: 'Cloud documentation' }],
-      selectedRelease: release,
-      availableReleases: productFamilyPageInfo.availableReleases,
+      pageInfo: productFamilyPageInfo,
     });
   } catch (err) {
     next(err);
@@ -83,16 +76,12 @@ router.get(
         productId,
         productVersion
       );
-      const docsBySubject = productPageInfo.docsBySubject;
-      if (docsBySubject.length === 1 && docsBySubject[0].docs.length === 1) {
-        res.redirect('/' + docsBySubject[0].docs[0].url);
+      const subjects = productPageInfo.subjects;
+      if (subjects.length === 1 && subjects[0].subjectDocs.length === 1) {
+        res.redirect('/' + subjects[0].subjectDocs[0].url);
       } else {
         res.render('grouped-links', {
-          title: productPageInfo.title,
-          docsBySubject: productPageInfo.docsBySubject,
-          breadcrumb: productPageInfo.breadcrumb,
-          selectedRelease: productVersion,
-          sortedVersions: productPageInfo.sortedVersions,
+          pageInfo: productPageInfo,
         });
       }
     } catch (err) {

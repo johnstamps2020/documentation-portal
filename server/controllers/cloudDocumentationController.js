@@ -106,12 +106,12 @@ async function getCloudDocumentationPageInfo(release) {
       if (docs.length === 1) {
         productFamilies.push({
           label: productFamily.label,
-          link: docs[0].url,
+          url: docs[0].url,
         });
       } else if (docs.length > 1) {
         productFamilies.push({
           label: productFamily.label,
-          link: `${release}/${productFamily.id}`,
+          url: `${release}/${productFamily.id}`,
         });
       }
     }
@@ -119,6 +119,7 @@ async function getCloudDocumentationPageInfo(release) {
     const cloudDocumentationPageInfo = {
       title: pageTitle,
       productFamilies: productFamilies,
+      selectedRelease: release,
       availableReleases: await getReleasesFromTaxonomyFiles(),
     };
 
@@ -209,6 +210,10 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
       const productFamilyPageInfo = {
         title: productFamilyNode.label,
         categories: categories,
+        breadcrumb: [
+          { href: `/${release}`, label: `${release} documentation` },
+        ],
+        selectedRelease: release,
         availableReleases: await getReleasesFromTaxonomyFiles(productFamilyId),
       };
 
@@ -239,51 +244,47 @@ async function getProductPageInfo(
         d.metadata.version === productVersion &&
         d.displayOnLandingPages !== false
     );
-    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
-
-    const sortedVersions = getSortedVersions(availableVersions);
     const docsInVersion = productDocs.filter(
       d => d.metadata.version === productVersion
     );
 
-    let docsBySubject = [];
-    const availableSubjects = getUniqueInMetadataArrays(
+    const docSubjectsInVersion = getUniqueInMetadataArrays(
       docsInVersion,
       'subject'
     );
-    for (const subject of availableSubjects) {
+    let docsWithSubject = [];
+    for (const subject of docSubjectsInVersion) {
       const docsInSubject = docsInVersion.filter(d =>
         d.metadata.subject.includes(subject)
       );
       if (docsInSubject.length > 0) {
-        docsBySubject.push({
-          category: subject,
-          docs: docsInSubject,
-          icon: getSubjectIcon(subject),
+        docsWithSubject.push({
+          subjectName: subject,
+          subjectDocs: docsInSubject,
+          subjectIcon: getSubjectIcon(subject),
         });
       }
     }
 
     const docsWithoutSubject = docsInVersion.filter(d => !d.metadata.subject);
-
     if (docsWithoutSubject && docsWithoutSubject.length > 0) {
-      docsBySubject.push({
-        category: 'Documents',
-        docs: docsWithoutSubject,
-        icon: getDefaultSubjectIcon(),
+      docsWithSubject.push({
+        subjectName: 'Documents',
+        subjectDocs: docsWithoutSubject,
+        subjectIcon: getDefaultSubjectIcon(),
       });
     }
-
+    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
-      docsBySubject: docsBySubject,
+      subjects: docsWithSubject,
       breadcrumb: [
         { href: `/`, label: 'Cloud documentation' },
         { href: `/${release}`, label: release },
         { href: `/${release}/${productFamilyId}`, label: productFamilyName },
       ],
-      selectedRelease: productVersion,
-      sortedVersions: sortedVersions,
+      selectedVersion: productVersion,
+      sortedVersions: getSortedVersions(availableVersions),
     };
 
     return productPageInfo;

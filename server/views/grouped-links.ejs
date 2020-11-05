@@ -1,63 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include parts/head %>
-  <body>
-    <% include parts/header %>
-    <div class="docPanelContainer">
-      <div class="container">
+<% include parts/head %>
+<body>
+<% include parts/header %>
+<div class="docPanelContainer">
+    <div class="container">
         <div class="row">
-          <div class="docPageTitle docPageHeaderItems">
-            <% include parts/breadcrumb %>
-            <h1><%= title %></h1>
-            <% if(sortedVersions.length > 1) {-%>
-            <script>
-              function selectRelease() {
-                const selectedRelease = document.getElementById("releaseSelector").value;
-                window.location.replace(selectedRelease);
-              }
-            </script>
-            <label for="releaseSelector">Select version:
-              <select onchange="selectRelease()" id="releaseSelector">
-                <% sortedVersions.forEach(release => { -%>
-                  <option
-                    value="<%= release -%>"
-                    <%= release === selectedRelease ? 'selected="selected"' : '' %>
-                  >
-                    <%= release -%>
-                  </option>
-                <% }); -%>
-              </select>
-            </label>
-            <% }; -%>
-          </div>
+            <div class="docPageTitle docPageHeaderItems">
+                <% const breadcrumb = pageInfo.breadcrumb -%>
+                <% include parts/breadcrumb %>
+                <h1><%= pageInfo.title %></h1>
+                <% if(pageInfo.sortedVersions.length > 1) { -%>
+                    <script>
+                        function selectRelease() {
+                            const selectedRelease = document.getElementById("releaseSelector").value;
+                            window.location.replace(selectedRelease);
+                        }
+                    </script>
+                    <label for="releaseSelector">Select version:
+                        <select onchange="selectRelease()" id="releaseSelector">
+                            <% pageInfo.sortedVersions.forEach(version => { -%>
+                                <option
+                                        value="<%= version -%>"
+                                        <%= version === pageInfo.selectedVersion ? 'selected="selected"' : '' %>
+                                >
+                                    <%= version -%>
+                                </option>
+                            <% }); -%>
+                        </select>
+                    </label>
+                <% }; -%>
+            </div>
         </div>
         <div class="row">
-          <div class="wh_categories">
-            <% docsBySubject.forEach(group => { -%>
-              <div class="wh_category">
-                <div class="wh_category_header">
-                  <div class="<%= group.icon -%>"></div>
-                  <div class="wh_category_header_text"><%= group.category %></div>
-                </div>
-                <ul class="wh_category_items">
-                  <% group.docs.forEach(doc => { -%>
-                    <li class="wh_category_item">
+            <div class="wh_categories">
+                <% pageInfo.subjects.forEach(subject => { -%>
+                    <div class="wh_category">
+                        <div class="wh_category_header">
+                            <div class="<%= subject.subjectIcon -%>"></div>
+                            <div class="wh_category_header_text"><%= subject.subjectName %></div>
+                        </div>
+                        <ul class="wh_category_items">
+                            <% subject.subjectDocs.forEach(doc => { -%>
+                                <li class="wh_category_item">
                       <span class="topicref">
-                        <% if (doc.url.startsWith('http://') || doc.url.startsWith('https://')) { -%>
-                          <a href="<%= doc.url %>" target="_blank" rel="noopener noreferrer"><%= doc.title %></a>
-                        <% } else { -%>
-                          <a href="/<%= doc.url %>"><%= doc.title %></a>
-                        <% } %>
+                          <% if (doc.url.startsWith('http://') || doc.url.startsWith('https://')) { -%>
+                              <a href="<%= doc.url %>" target="_blank" rel="noopener noreferrer"><%= doc.title %></a>
+                          <% } else { -%>
+                              <a href="/<%= doc.url %>"><%= doc.title %></a>
+                          <% } %>
                       </span>
-                      </li>
-                  <% }) -%>
-                </ul>
-              </div>
-            <% }) -%>
-          </div>
+                                </li>
+                            <% }) -%>
+                        </ul>
+                    </div>
+                <% }) -%>
+            </div>
         </div>
-      </div>
     </div>
-    <% include parts/footer %>
-  </body>
+</div>
+<% include parts/footer %>
+</body>
 </html>
