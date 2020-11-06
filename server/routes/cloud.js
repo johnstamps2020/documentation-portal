@@ -47,6 +47,7 @@ router.get('/:release/:productFamilyId', async function(req, res, next) {
   }
 });
 
+//TODO: Fix this logic, it breaks opening of URLs from the S3 bucket
 // router.get('/:release/:productFamilyId/:productId', async function(
 //   req,
 //   res,

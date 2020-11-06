@@ -1,3 +1,4 @@
+//TODO: Update the controller to work with the new taxonomy
 const getConfig = require('./configController');
 const { getUniqueInMetadataArrays } = require('./helpers/metadata');
 

@@ -1,3 +1,4 @@
+//TODO: Move generic helper functions to the helpers folder to share them between cloud and self-managed
 const getConfig = require('./configController');
 const {
   getUniqueInMetadataFields,
@@ -73,7 +74,7 @@ async function getSelfManagedDocumentationPageInfo() {
           const productVersion = getSortedVersions(
             getUniqueInMetadataFields(listOfDocs, 'version')
           )[0];
-          return `/${productId}/${productVersion}`;
+          return `/self-managed/${productId}/${productVersion}`;
         }
       }
 

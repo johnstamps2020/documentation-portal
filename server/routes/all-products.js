@@ -1,3 +1,4 @@
+//TODO: Move logic for generating list of docs to the controller
 const express = require('express');
 const router = express.Router();
 const getAllProductDocs = require('../controllers/allProductController');
