@@ -141,22 +141,14 @@ async function getSelfManagedDocumentationPageInfo() {
   }
 }
 
-async function getProductPageInfo(
-  release,
-  productFamilyId,
-  productId,
-  productVersion
-) {
+async function getProductPageInfo(productId, productVersion) {
   try {
-    const cloudDocs = await getCloudDocsFromConfig();
-    const cloudTaxonomy = await getTaxonomyFromFile(release);
-    const productFamilyNode = findNodeById(productFamilyId, cloudTaxonomy);
-    const productFamilyName = productFamilyNode.label;
-    const productNode = findNodeById(productId, productFamilyNode);
+    const selfManagedDocs = await getSelfManagedDocsFromConfig();
+    const selfManagedTaxonomy = await getSelfManagedTaxonomyFromFile();
+    const productNode = findNodeById(productId, selfManagedTaxonomy);
     const productName = productNode.label;
-    const productDocs = cloudDocs.filter(
+    const productDocs = selfManagedDocs.filter(
       d =>
-        d.metadata.release.includes(release) &&
         d.metadata.product.includes(productName) &&
         d.metadata.version === productVersion &&
         d.displayOnLandingPages !== false
@@ -195,11 +187,7 @@ async function getProductPageInfo(
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,
-      breadcrumb: [
-        { href: `/`, label: 'Cloud documentation' },
-        { href: `/${release}`, label: release },
-        { href: `/${release}/${productFamilyId}`, label: productFamilyName },
-      ],
+      breadcrumb: [{ href: `/`, label: 'Self-managed documentation' }],
       selectedVersion: productVersion,
       sortedVersions: getSortedVersions(availableVersions),
     };
