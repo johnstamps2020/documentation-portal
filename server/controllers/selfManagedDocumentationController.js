@@ -118,7 +118,10 @@ async function getSelfManagedDocumentationPageInfo() {
         }
       }
 
-      if (categoryDocsWithLinks.length > 0) {
+      if (
+        categoryDocsWithLinks.length > 0 ||
+        categoryGroupsWithLinks.length > 0
+      ) {
         categories.push({
           label: category.label,
           groups: categoryGroupsWithLinks,

@@ -199,7 +199,10 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
           }
         }
 
-        if (categoryDocsWithLinks.length > 0) {
+        if (
+          categoryDocsWithLinks.length > 0 ||
+          categoryGroupsWithLinks.length > 0
+        ) {
           categories.push({
             label: productFamilyItem.label,
             groups: categoryGroupsWithLinks,
