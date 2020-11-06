@@ -32,6 +32,19 @@
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git"
     },
     {
+      "id": "cloudis202011src",
+      "title": "InsuranceSuite Cloud 2020.11",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "2020.11",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/_supermap-202011.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
       "id": "cloudis202005src",
       "title": "InsuranceSuite Cloud 2020.05",
       "sourceType": "xdocs",
@@ -103,6 +116,18 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dhic202011",
+      "title": "Data Management 2020.11 and 10.4",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
     },
     {
@@ -440,6 +465,17 @@
       ]
     },
     {
+      "id": "in20202src",
+      "title": "InsuranceNow 2020.2",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-2x.git",
+      "branch": "2020.2",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/_supermap-20202x-active.ditamap"
+      ]
+    },
+    {
       "id": "in20201src",
       "title": "InsuranceNow 2020.1",
       "sourceType": "xdocs",
@@ -457,17 +493,6 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-2x.git",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/_supermap-20202x-active.ditamap"
-      ]
-    },
-    {
-      "id": "in20202src",
-      "title": "InsuranceNow 2020.2",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-2x.git",
-      "branch": "2020.2",
-      "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/_supermap-20202x-active.ditamap"
       ]
