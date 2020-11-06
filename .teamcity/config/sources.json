@@ -36,7 +36,7 @@
       "title": "InsuranceSuite Cloud 2020.11",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "2020.11",
+      "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/_supermap-202011.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -394,8 +394,9 @@
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/_supermap-lob-bop-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_filterSet.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_filterSet.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
@@ -406,8 +407,7 @@
       "branch": "2020.05",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/_supermap-lob-bop-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_filterSet.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_filterSet.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
