@@ -1,3 +1,4 @@
+//TODO: Opening links on the bucket generates errors in the console; it looks like the server is trying to render a page instead of going directly to the bucket
 const getConfig = require('./configController');
 const {
   getUniqueInMetadataFields,
