@@ -498,17 +498,6 @@
       ]
     },
     {
-      "id": "in20202src",
-      "title": "InsuranceNow 2020.2",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-2020-2x.git",
-      "branch": "2020.2",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/_supermap-20202x-active.ditamap"
-      ]
-    },
-    {
       "id": "insurancenowextrassrc",
       "title": "InsuranceNow Extras",
       "sourceType": "git",
