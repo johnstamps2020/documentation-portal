@@ -9,9 +9,10 @@ const {
 
 async function getSelfManagedDocs() {
   const config = await getConfig();
-  const docs = config.docs.filter(d =>
-    d.metadata.platform.includes('Self-managed') &&
-    d.displayOnLandingPages != false
+  const docs = config.docs.filter(
+    d =>
+      d.metadata.platform.includes('Self-managed') &&
+      d.displayOnLandingPages !== false
   );
 
   return docs;
@@ -28,32 +29,51 @@ router.get('/', async function(req, res, next) {
       const docsInCategory = docs.filter(d =>
         d.metadata.category.includes(category)
       );
+
+      const docsWithSubcategories = docsInCategory.filter(d =>
+        d.metadata.hasOwnProperty('subcategory')
+      );
+      const subcategories = [];
+      if (docsWithSubcategories) {
+        for (const doc of docsWithSubcategories) {
+          const docSubcategory = doc.metadata.subcategory;
+          if (!subcategories.includes(docSubcategory)) {
+            subcategories.push(docSubcategory);
+          }
+        }
+      }
+
       const products = getUniqueInMetadataArrays(docsInCategory, 'product');
       for (const product of products) {
         docsInProduct = docsInCategory.filter(d =>
           d.metadata.product.includes(product)
         );
-        if (docsInProduct.length === 1) {
-          linksForCategory.push({
-            title: `${product}`,
-            url: `/${docsInProduct[0].url}`,
-          });
-        }
 
-        if (docsInProduct.length > 1) {
+        const productSubcategory = docsInProduct.filter(d =>
+          d.metadata.hasOwnProperty('subcategory')
+        )[0]?.metadata.subcategory;
+
+        let productUrl = '';
+        if (docsInProduct.length === 1) {
+          productUrl = `/${docsInProduct[0].url}`;
+        } else if (docsInProduct.length > 1) {
           const version = getSortedVersions(
             getUniqueInMetadataFields(docsInProduct, 'version')
           )[0];
-          linksForCategory.push({
-            title: product,
-            url: `self-managed-latest/${product}/${version}`,
-          });
+          productUrl = `self-managed-latest/${product}/${version}`;
         }
+
+        linksForCategory.push({
+          title: product,
+          url: productUrl,
+          subcategory: productSubcategory,
+        });
       }
 
       if (linksForCategory.length > 0) {
         productLinks.push({
           category: category,
+          subcategories: subcategories,
           docs: linksForCategory,
         });
       }
