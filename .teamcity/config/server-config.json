@@ -647,8 +647,7 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": "10.x",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["int"]
     },
@@ -660,8 +659,7 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": "10.x",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["int"]
     },
@@ -781,8 +779,7 @@
         "product": ["Guidewire for Salesforce Data Integrations"],
         "platform": ["Self-managed"],
         "version": "11.x",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["int"]
     },
@@ -794,8 +791,7 @@
         "product": ["Guidewire for Salesforce Data Integrations for Claims"],
         "platform": ["Self-managed"],
         "version": "11.x",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["int"]
     },
@@ -807,8 +803,7 @@
         "product": ["Guidewire for Salesforce Digital Gateway"],
         "platform": ["Self-managed"],
         "version": "11.x",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["int"]
     },
@@ -820,8 +815,7 @@
         "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
         "platform": ["Self-managed"],
         "version": "11.x",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["int"]
     },
@@ -833,8 +827,7 @@
         "product": ["Guidewire for Salesforce View on Demand"],
         "platform": ["Self-managed"],
         "version": "11.x",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["int"]
     },
@@ -846,8 +839,7 @@
         "product": ["Guidewire for Salesforce View on Demand for Claims"],
         "platform": ["Self-managed"],
         "version": "11.x",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["int"]
     },
@@ -1752,8 +1744,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "10.4.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging"]
     },
@@ -1765,8 +1756,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "10.4.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging"]
     },
@@ -1778,8 +1768,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "10.3.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1791,8 +1780,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "10.3.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1804,8 +1792,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "10.2.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1817,8 +1804,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "10.2.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2061,8 +2047,7 @@
         "product": ["Guidewire for Salesforce Data Integrations"],
         "platform": ["Self-managed"],
         "version": "3.1.0",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2074,8 +2059,7 @@
         "product": ["Guidewire for Salesforce Data Integrations for Claims"],
         "platform": ["Self-managed"],
         "version": "3.1.0",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2087,8 +2071,7 @@
         "product": ["Guidewire for Salesforce Digital Gateway"],
         "platform": ["Self-managed"],
         "version": "3.1.0",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2100,8 +2083,7 @@
         "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
         "platform": ["Self-managed"],
         "version": "3.1.0",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2113,8 +2095,7 @@
         "product": ["Guidewire for Salesforce View on Demand"],
         "platform": ["Self-managed"],
         "version": "3.1.0",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -2126,8 +2107,7 @@
         "product": ["Guidewire for Salesforce View on Demand for Claims"],
         "platform": ["Self-managed"],
         "version": "3.1.0",
-        "category": ["Digital"],
-        "subcategory": "Add-ons"
+        "category": ["Digital"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3663,8 +3643,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "10.1.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3676,8 +3655,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "10.0.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3689,8 +3667,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "9.3.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3702,8 +3679,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "9.2.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3715,8 +3691,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "9.1.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3728,8 +3703,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "9.0.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3741,8 +3715,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "8.3.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3754,8 +3727,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "8.2.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3767,8 +3739,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "8.1.1",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3780,8 +3751,7 @@
         "platform": ["Self-managed"],
         "product": ["DataHub"],
         "version": "8.1.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3793,8 +3763,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "10.1.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3806,8 +3775,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "10.0.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3819,8 +3787,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "9.3.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3832,8 +3799,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "9.2.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3845,8 +3811,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "9.1.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3858,8 +3823,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "9.0.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3871,8 +3835,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "8.3.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3884,8 +3847,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "8.2.1",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3897,8 +3859,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "8.2.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3910,8 +3871,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "8.1.1",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -3923,8 +3883,7 @@
         "platform": ["Self-managed"],
         "product": ["InfoCenter"],
         "version": "8.1.0",
-        "category": ["Data"],
-        "subcategory": "Add-ons"
+        "category": ["Data"]
       },
       "environments": ["dev", "staging", "prod"]
     },
