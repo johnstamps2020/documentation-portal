@@ -57,24 +57,30 @@
           "label": "Digital",
           "items": [
             {
-              "id": "ceAccountMgmt",
-              "label": "CustomerEngage Account Management"
-            },
-            {
-              "id": "ceQuoteAndBuy",
-              "label": "CustomerEngage Quote and Buy"
-            },
-            {
-              "id": "producerEngage",
-              "label": "ProducerEngage"
-            },
-            {
-              "id": "serviceRepEngage",
-              "label": "ServiceRepEngage"
-            },
-            {
-              "id": "digitalCodeGeneration",
-              "label": "Digital Code Generation"
+              "id": "digitalApplications",
+              "label": "Digital Applications",
+              "items": [
+                {
+                  "id": "ceAccountMgmt",
+                  "label": "CustomerEngage Account Management"
+                },
+                {
+                  "id": "ceQuoteAndBuy",
+                  "label": "CustomerEngage Quote and Buy"
+                },
+                {
+                  "id": "producerEngage",
+                  "label": "ProducerEngage"
+                },
+                {
+                  "id": "serviceRepEngage",
+                  "label": "ServiceRepEngage"
+                },
+                {
+                  "id": "digitalCodeGeneration",
+                  "label": "Digital Code Generation"
+                }
+              ]
             }
           ]
         }
@@ -131,28 +137,34 @@
           "label": "Digital",
           "items": [
             {
-              "id": "ceAccountMgmt",
-              "label": "CustomerEngage Account Management"
-            },
-            {
-              "id": "ceAccountMgmtCc",
-              "label": "CustomerEngage Account Management for ClaimCenter"
-            },
-            {
-              "id": "producerEngage",
-              "label": "ProducerEngage"
-            },
-            {
-              "id": "producerEngageCc",
-              "label": "ProducerEngage for ClaimCenter"
-            },
-            {
-              "id": "serviceRepEngage",
-              "label": "ServiceRepEngage"
-            },
-            {
-              "id": "vendorEngage",
-              "label": "VendorEngage"
+              "id": "digitalApplications",
+              "label": "Digital Applications",
+              "items": [
+                {
+                  "id": "ceAccountMgmt",
+                  "label": "CustomerEngage Account Management"
+                },
+                {
+                  "id": "ceAccountMgmtCc",
+                  "label": "CustomerEngage Account Management for ClaimCenter"
+                },
+                {
+                  "id": "producerEngage",
+                  "label": "ProducerEngage"
+                },
+                {
+                  "id": "producerEngageCc",
+                  "label": "ProducerEngage for ClaimCenter"
+                },
+                {
+                  "id": "serviceRepEngage",
+                  "label": "ServiceRepEngage"
+                },
+                {
+                  "id": "vendorEngage",
+                  "label": "VendorEngage"
+                }
+              ]
             }
           ]
         }
@@ -209,16 +221,22 @@
           "label": "Digital",
           "items": [
             {
-              "id": "ceAccountMgmt",
-              "label": "CustomerEngage Account Management"
-            },
-            {
-              "id": "producerEngage",
-              "label": "ProducerEngage"
-            },
-            {
-              "id": "serviceRepEngage",
-              "label": "ServiceRepEngage"
+              "id": "digitalApplications",
+              "label": "Digital Applications",
+              "items": [
+                {
+                  "id": "ceAccountMgmt",
+                  "label": "CustomerEngage Account Management"
+                },
+                {
+                  "id": "producerEngage",
+                  "label": "ProducerEngage"
+                },
+                {
+                  "id": "serviceRepEngage",
+                  "label": "ServiceRepEngage"
+                }
+              ]
             }
           ]
         }
@@ -252,4 +270,3 @@
     }
   ]
 }
-
