@@ -11,7 +11,7 @@
         "CustomerEngage Account Management",
         "CustomerEngage Quote and Buy",
         "DataHub for Guidewire Cloud",
-        "Digital Code Generation",
+        "Digital Code Generation Extension Pack",
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
         "InfoCenter for Guidewire Cloud",
@@ -503,11 +503,11 @@
     },
     {
       "id": "dxapdclouddraft",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/latest",
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Cloud"
@@ -519,7 +519,7 @@
         "category": [
           "Digital"
         ],
-        "subcategory": "Digital Applications"
+        "subcategory": "Add-ons"
       },
       "environments": [
         "int"
@@ -1174,11 +1174,11 @@
     },
     {
       "id": "selfmanageddxapddraft",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "self-managed/dx/apd/latest",
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Self-managed"
@@ -2601,11 +2601,11 @@
     },
     {
       "id": "dxapd202011",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/202011",
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Cloud"
@@ -2617,7 +2617,7 @@
         "category": [
           "Digital"
         ],
-        "subcategory": "Digital Applications"
+        "subcategory": "Add-ons"
       },
       "environments": [
         "dev",
@@ -3043,12 +3043,12 @@
     },
     {
       "id": "dxapd202005",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/202005",
       "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Cloud"
@@ -3060,7 +3060,7 @@
         "category": [
           "Digital"
         ],
-        "subcategory": "Digital Applications"
+        "subcategory": "Add-ons"
       },
       "environments": [
         "dev",
