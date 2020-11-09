@@ -718,7 +718,7 @@
       ]
     },
     {
-      "id": "guidewireidentityfederationbanff",
+      "id": "guidewireidentityfederationhubbanff",
       "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/202011",
       "metadata": {
