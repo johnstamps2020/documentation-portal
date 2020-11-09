@@ -88,7 +88,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "cloudbcupgradeguidelatest"
@@ -96,7 +96,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "cloudccupgradeguidelatest"
@@ -104,10 +104,34 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "cloudpcupgradeguidelatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-BillingCenter-Cloud-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "cloudbcupgradeguide202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-ClaimCenter-Cloud-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "cloudccupgradeguide202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-PolicyCenter-Cloud-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "cloudpcupgradeguide202011"
     },
     {
       "buildType": "dita",
@@ -303,7 +327,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Self-managed-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "selfmanagedbcupgradeguide10x"
@@ -311,7 +335,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-ClaimCenter-Self-managed-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "selfmanagedccupgradeguide10x"
@@ -319,7 +343,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-PolicyCenter-Self-managed-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "selfmanagedpcupgradeguide10x"
