@@ -49,10 +49,6 @@ router.get('/', async function(req, res, next) {
           d.metadata.product.includes(product)
         );
 
-        const productSubcategory = docsInProduct.filter(d =>
-          d.metadata.hasOwnProperty('subcategory')
-        )[0]?.metadata.subcategory;
-
         let productUrl = '';
         if (docsInProduct.length === 1) {
           productUrl = `/${docsInProduct[0].url}`;
@@ -62,6 +58,14 @@ router.get('/', async function(req, res, next) {
           )[0];
           productUrl = `self-managed-latest/${product}/${version}`;
         }
+
+        const productDocsWithSubcategory = docsInProduct.filter(d =>
+          d.metadata.hasOwnProperty('subcategory')
+        );
+
+        const productSubcategory = productDocsWithSubcategory
+          ? docsInCategory[0].metadata.subcategory
+          : undefined;
 
         linksForCategory.push({
           title: product,
