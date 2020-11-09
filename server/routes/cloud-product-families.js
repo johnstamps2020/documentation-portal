@@ -99,8 +99,8 @@ router.get('/:productFamilyId/:release', async function(req, res, next) {
           d.metadata.hasOwnProperty('subcategory')
         );
 
-        const productSubcategory = productDocsWithSubcategory
-          ? docsInCategory[0].metadata.subcategory
+        const productSubcategory = productDocsWithSubcategory[0]
+          ? productDocsWithSubcategory[0].metadata.subcategory
           : undefined;
 
         linksInProduct.push({
