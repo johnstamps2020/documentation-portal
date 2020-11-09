@@ -860,14 +860,14 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "A_Map01_7x.ditamap",
-      "srcId": "pabanffsrc",
+      "srcId": "predictiveanalyticsbanffsrc",
       "docId": "pabanff"
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "A_Map01_7x.ditamap",
-      "srcId": "padraftsrc",
+      "srcId": "predictiveanalyticsdraftsrc",
       "docId": "padraft"
     },
     {
