@@ -15,6 +15,7 @@
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
         "InfoCenter for Guidewire Cloud",
+        "Predictive Analytics",
         "ProducerEngage",
         "ServiceRepEngage",
         "PolicyCenter API",
@@ -27,12 +28,14 @@
         "ClaimCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "Cloud Data Access",
+        "Compare",
         "CustomerEngage Account Management",
         "CustomerEngage Account Management for ClaimCenter",
         "DataHub for Guidewire Cloud",
         "Explore",
         "Guidewire InsuranceSuite Package for Germany",
         "InfoCenter for Guidewire Cloud",
+        "Predictive Analytics",
         "ProducerEngage",
         "ProducerEngage for ClaimCenter",
         "ServiceRepEngage",
@@ -328,6 +331,7 @@
           "Core"
         ],
         "release": [
+          "Aspen",
           "Banff"
         ]
       },
@@ -714,6 +718,31 @@
       ]
     },
     {
+      "id": "guidewireidentityfederationbanff",
+      "title": "Authentication with Guidewire Identity Federation Hub",
+      "url": "cloud/auth/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Identity Federation Hub"
+        ],
+        "category": [
+          "Authentication"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
       "id": "guidewireidentityfederationhubqsvkhtgf",
       "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
@@ -727,7 +756,7 @@
         "category": [
           "Authentication"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
           "Banff"
         ]
@@ -2420,6 +2449,56 @@
       ]
     },
     {
+      "id": "pabanff",
+      "title": "Predictive Analytics",
+      "url": "cloud/pa/banff",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Predictive Analytics"
+        ],
+        "version": "Banff",
+        "category": [
+          "Data"
+        ],
+        "subcategory": "Add-ons",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "padraft",
+      "title": "Predictive Analytics",
+      "url": "cloud/pa/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Predictive Analytics"
+        ],
+        "version": "latest",
+        "category": [
+          "Data"
+        ],
+        "subcategory": "Add-ons",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
       "id": "dh202005",
       "title": "DataHub for Guidewire Cloud",
       "url": "cloud/dh/202005",
@@ -2472,7 +2551,32 @@
       ]
     },
     {
-      "id": "clouddataplatformstaging",
+      "id": "clouddataplatform202011",
+      "title": "Cloud Data Access",
+      "url": "cloud/cdp/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Data Access"
+        ],
+        "version": "2020.11",
+        "category": [
+          "Data"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "clouddataplatform202005",
       "title": "Cloud Data Access",
       "url": "cloud/cdp/latest",
       "metadata": {
@@ -2494,6 +2598,54 @@
         "dev",
         "staging",
         "prod"
+      ]
+    },
+    {
+      "id": "comparebanff",
+      "title": "Compare",
+      "url": "cloud/compare/banff",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Compare"
+        ],
+        "version": "Banff",
+        "category": [
+          "Data"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "comparedraft",
+      "title": "Compare",
+      "url": "cloud/compare/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Compare"
+        ],
+        "version": "latest",
+        "category": [
+          "Data"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
       ]
     },
     {
@@ -3203,7 +3355,8 @@
           "Core"
         ],
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [

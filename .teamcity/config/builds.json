@@ -298,9 +298,17 @@
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewireidentityfederationhubbanffsrc",
+      "docId": "guidewireidentityfederationhubbanff"
+    },
+    {
+      "buildType": "dita",
+      "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubdraft",
+      "srcId": "guidewireidentityfederationhubdraftsrc",
       "docId": "guidewireidentityfederationhubqsvkhtgf"
     },
     {
@@ -824,8 +832,22 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "_supermap-cda.ditamap",
-      "srcId": "clouddataplatform",
-      "docId": "clouddataplatformstaging"
+      "srcId": "clouddataplatformbanffsrc",
+      "docId": "clouddataplatform202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "A_Map01.ditamap",
+      "srcId": "comparebanffsrc",
+      "docId": "comparebanff"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "A_Map01.ditamap",
+      "srcId": "comparedraftsrc",
+      "docId": "comparedraft"
     },
     {
       "buildType": "dita",
@@ -833,6 +855,20 @@
       "root": "supermapExplore.ditamap",
       "srcId": "explore",
       "docId": "explorecloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "A_Map01_7x.ditamap",
+      "srcId": "pabanffsrc",
+      "docId": "pabanff"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "A_Map01_7x.ditamap",
+      "srcId": "padraftsrc",
+      "docId": "padraft"
     },
     {
       "buildType": "dita",

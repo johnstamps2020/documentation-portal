@@ -411,7 +411,18 @@
       ]
     },
     {
-      "id": "clouddataplatform",
+      "id": "clouddataplatformbanffsrc",
+      "title": "Cloud Data Platform Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "clouddataplatformaspensrc",
       "title": "Cloud Data Platform Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
@@ -504,7 +515,18 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git"
     },
     {
-      "id": "guidewireidentityfederationhubdraft",
+      "id": "guidewireidentityfederationhubbanffsrc",
+      "title": "Guidewire Identity Federation Hub Banff",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "guidewireidentityfederationhubdraftsrc",
       "title": "Guidewire Identity Federation Hub Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
@@ -627,6 +649,48 @@
       "title": "Standards Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
+      "id": "predictiveanalyticsdraftsrc",
+      "title": "Predictive Analytics Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/predictive-analytics.git",
+      "xdocsPathIds": [
+        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "predictiveanalyticsbanffsrc",
+      "title": "Predictive Analytics Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/predictive-analytics.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "comparedraftsrc",
+      "title": "Compare Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/compare.git",
+      "xdocsPathIds": [
+        "/Content/doc/compare/Banff/A_Map01.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "comparebanffsrc",
+      "title": "Compare Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/compare.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/compare/Banff/A_Map01.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
     }
   ]
 }
