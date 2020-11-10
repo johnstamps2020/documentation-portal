@@ -171,13 +171,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebasrc",
-      "docId": "exploreclouddraft"
-    },
-    {
-      "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
