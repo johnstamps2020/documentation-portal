@@ -458,60 +458,7 @@
         "version": "latest",
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "guidewireidentityfederationhubqsvkhtgf",
-      "title": "Authentication with Guidewire Identity Federation Hub",
-      "url": "cloud/auth/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Identity Federation Hub"],
-        "category": ["Authentication"],
-        "version": "latest",
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "guidewirecloudconsoleguidetycvlqax",
-      "title": "Cloud Console Guide",
-      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "category": ["Guidewire Cloud Console"],
-        "version": "latest",
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "guidewirecloudconsolerelnotesijdxzmpe",
-      "title": "Cloud Console Release Notes",
-      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "category": ["Guidewire Cloud Console"],
-        "version": "latest",
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "dkeirtlsleeedc",
-      "title": "Cloud Console Root Doc",
-      "url": "cloud/gcc-guide/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "category": ["Guidewire Cloud Console"],
-        "version": "latest",
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["int"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "selfmanagedbcxufesxuwl",
@@ -1137,7 +1084,7 @@
       "environments": ["dev", "int"]
     },
     {
-      "id": "dkckdkeee",
+      "id": "cloudconsoleguide",
       "title": "Cloud Console Guide",
       "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
       "metadata": {
@@ -1147,10 +1094,10 @@
         "version": "latest",
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
-      "id": "dfkrkelllser",
+      "id": "cloudconsolern",
       "title": "Cloud Console Release Notes",
       "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
       "metadata": {
@@ -1160,10 +1107,10 @@
         "version": "latest",
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
-      "id": "swwdkskekrtt",
+      "id": "cloudconsoleroot",
       "title": "Cloud Console Root Doc",
       "url": "cloud/gcc-guide/latest",
       "displayOnLandingPages": false,
@@ -1174,7 +1121,7 @@
         "version": "latest",
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "selfmanagedbcupgradeguide1011",
@@ -1441,21 +1388,7 @@
         "subcategory": "Add-ons",
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "padraft",
-      "title": "Predictive Analytics",
-      "url": "cloud/pa/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Predictive Analytics"],
-        "version": "latest",
-        "category": ["Data"],
-        "subcategory": "Add-ons",
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "dh202005",
