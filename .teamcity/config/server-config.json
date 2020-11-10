@@ -1455,20 +1455,7 @@
         "category": ["Data"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "comparedraft",
-      "title": "Compare",
-      "url": "cloud/compare/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Compare"],
-        "version": "latest",
-        "category": ["Data"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "explorecloudstaging",

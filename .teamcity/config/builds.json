@@ -836,13 +836,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "A_Map01.ditamap",
-      "srcId": "comparedraftsrc",
-      "docId": "comparedraft"
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "supermapExplore.ditamap",
       "srcId": "explore",
