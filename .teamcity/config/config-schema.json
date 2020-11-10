@@ -183,8 +183,7 @@
         "Guidewire Feature Preview",
         "Integration Framework",
         "SurePath Standards",
-        "Testing Frameworks",
-        "Jutro"
+        "Testing Frameworks"
       ]
     },
     "product": {
@@ -239,7 +238,7 @@
           "InsuranceNow 2020.2x - External Audience",
           "REST API Client",
           "Testing Frameworks",
-          "Jutro",
+          "Jutro Design Framework",
           "PolicyCenter API",
           "BillingCenter API",
           "ClaimCenter API"
