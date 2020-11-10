@@ -305,14 +305,6 @@
     },
     {
       "buildType": "dita",
-      "root": "GuidewireHub.ditamap",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubdraftsrc",
-      "docId": "guidewireidentityfederationhubqsvkhtgf"
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
@@ -844,13 +836,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "A_Map01.ditamap",
-      "srcId": "comparedraftsrc",
-      "docId": "comparedraft"
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "supermapExplore.ditamap",
       "srcId": "explore",
@@ -862,13 +847,6 @@
       "root": "A_Map01_7x.ditamap",
       "srcId": "predictiveanalyticsbanffsrc",
       "docId": "pabanff"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "A_Map01_7x.ditamap",
-      "srcId": "predictiveanalyticsdraftsrc",
-      "docId": "padraft"
     },
     {
       "buildType": "dita",
