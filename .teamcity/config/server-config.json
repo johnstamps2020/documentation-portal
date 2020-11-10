@@ -19,7 +19,7 @@
         "ProducerEngage",
         "ServiceRepEngage",
         "PolicyCenter API",
-        "Jutro"
+        "Jutro Design Framework"
       ]
     },
     {
@@ -41,7 +41,7 @@
         "ServiceRepEngage",
         "VendorEngage",
         "ClaimCenter API",
-        "Jutro"
+        "Jutro Design Framework"
       ]
     },
     {
@@ -58,7 +58,7 @@
         "ProducerEngage",
         "ServiceRepEngage",
         "BillingCenter API",
-        "Jutro"
+        "Jutro Design Framework"
       ]
     },
     {
@@ -253,32 +253,6 @@
         "version": "latest",
         "category": ["Data"],
         "subcategory": "Add-ons",
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "clouddataplatformdraft",
-      "title": "Cloud Data Access",
-      "url": "cloud/cdp/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": "latest",
-        "category": ["Data"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "exploreclouddraft",
-      "title": "Explore",
-      "url": "cloud/explore/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": "latest",
-        "category": ["Data"],
         "release": ["Banff"]
       },
       "environments": ["int"]
@@ -825,36 +799,6 @@
         "release": ["Banff"]
       },
       "environments": ["int"]
-    },
-    {
-      "id": "dkekdisievjfjrndjsj",
-      "title": "Jutro Design System",
-      "url": "jutro/documentation/4.1.1",
-      "metadata": {
-        "product": ["Jutro"],
-        "platform": ["Cloud"],
-        "version": "4.1.1",
-        "release": ["Banff"],
-        "subject": ["Best practices"],
-        "category": ["Digital"],
-        "subcategory": "Digital Applications"
-      },
-      "environments": ["int", "staging"]
-    },
-    {
-      "id": "dsssekelmvkdnasjsjsnndddf",
-      "title": "Jutro Storybook",
-      "url": "jutro/storybook/4.1.1",
-      "metadata": {
-        "product": ["Jutro"],
-        "platform": ["Cloud"],
-        "version": "4.1.1",
-        "release": ["Banff"],
-        "subject": ["Development"],
-        "category": ["Digital"],
-        "subcategory": "Digital Applications"
-      },
-      "environments": ["int", "staging"]
     },
     {
       "id": "gwfeaturepreviewearlyaccess",
@@ -1419,33 +1363,20 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "clouddataplatform202011",
-      "title": "Cloud Data Access",
-      "url": "cloud/cdp/202011",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": "2020.11",
-        "category": ["Data"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "staging", "prod"]
-    },
-    {
-      "id": "clouddataplatform202005",
+      "id": "clouddataplatformlatest",
       "title": "Cloud Data Access",
       "url": "cloud/cdp/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Data Access"],
-        "version": "2020.05",
+        "version": "latest",
         "category": ["Data"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
-      "id": "comparebanff",
+      "id": "comparelatest",
       "title": "Compare",
       "url": "cloud/compare/latest",
       "metadata": {
@@ -1464,11 +1395,11 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
-        "version": "2020.05",
+        "version": "latest",
         "category": ["Data"],
-        "release": ["Aspen"]
+        "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "dxceam202011",
@@ -1581,6 +1512,36 @@
         "subcategory": "Digital Applications"
       },
       "environments": ["dev", "staging", "prod"]
+    },
+    {
+      "id": "dkekdisievjfjrndjsj",
+      "title": "Jutro Design System",
+      "url": "jutro/documentation/4.1.1",
+      "metadata": {
+        "product": ["Jutro Design Framework"],
+        "platform": ["Cloud"],
+        "version": "4.1.1",
+        "release": ["Banff"],
+        "subject": ["Best practices"],
+        "category": ["Digital"],
+        "subcategory": "Digital Framework"
+      },
+      "environments": ["int", "staging"]
+    },
+    {
+      "id": "dsssekelmvkdnasjsjsnndddf",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/4.1.1",
+      "metadata": {
+        "product": ["Jutro Design Framework"],
+        "platform": ["Cloud"],
+        "version": "4.1.1",
+        "release": ["Banff"],
+        "subject": ["Development"],
+        "category": ["Digital"],
+        "subcategory": "Digital Framework"
+      },
+      "environments": ["int", "staging"]
     },
     {
       "id": "dxceam202010",

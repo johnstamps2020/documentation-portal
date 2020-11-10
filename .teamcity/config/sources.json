@@ -411,8 +411,8 @@
       ]
     },
     {
-      "id": "clouddataplatformbanffsrc",
-      "title": "Cloud Data Platform Banff",
+      "id": "clouddataplatformreleasesrc",
+      "title": "Cloud Data Platform Release",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
       "branch": "Banff",
@@ -422,46 +422,16 @@
       ]
     },
     {
-      "id": "clouddataplatformaspensrc",
-      "title": "Cloud Data Platform Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cdpdraftsrc",
-      "title": "Cloud Data Platform",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
-      "id": "explore",
-      "title": "Explore Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "explorebadraftsrc",
+      "id": "explorebasrc",
       "title": "Explore and Business Analytics",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "xdocsPathIds": [
         "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Release.ditaval"
       ]
     },
     {
@@ -682,7 +652,7 @@
       ]
     },
     {
-      "id": "comparebanffsrc",
+      "id": "comparelatestsrc",
       "title": "Compare Banff",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/compare.git",
