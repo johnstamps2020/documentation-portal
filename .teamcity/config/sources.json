@@ -642,16 +642,6 @@
       ]
     },
     {
-      "id": "comparedraftsrc",
-      "title": "Compare Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/compare.git",
-      "xdocsPathIds": [
-        "/Content/doc/compare/Banff/A_Map01.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
       "id": "comparelatestsrc",
       "title": "Compare Banff",
       "sourceType": "git",
