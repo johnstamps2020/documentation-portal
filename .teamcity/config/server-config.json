@@ -886,7 +886,7 @@
       "metadata": {
         "product": ["Jutro"],
         "platform": ["Cloud"],
-        "version": "latest",
+        "version": "4.1.1",
         "release": ["Banff"],
         "subject": ["Best practices"],
         "category": ["Digital"],
@@ -901,7 +901,7 @@
       "metadata": {
         "product": ["Jutro"],
         "platform": ["Cloud"],
-        "version": "latest",
+        "version": "4.1.1",
         "release": ["Banff"],
         "subject": ["Development"],
         "category": ["Digital"],
