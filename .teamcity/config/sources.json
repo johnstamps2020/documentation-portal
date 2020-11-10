@@ -631,8 +631,8 @@
       ]
     },
     {
-      "id": "predictiveanalyticsbanffsrc",
-      "title": "Predictive Analytics Banff",
+      "id": "predictiveanalyticssrc",
+      "title": "Predictive Analytics",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/predictive-analytics.git",
       "branch": "Banff",
