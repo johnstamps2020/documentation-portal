@@ -832,8 +832,9 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "A_Map01_7x.ditamap",
+      "indexRedirect": true,
       "srcId": "predictiveanalyticssrc",
-      "docId": "pabanff"
+      "docId": "palatest"
     },
     {
       "buildType": "dita",

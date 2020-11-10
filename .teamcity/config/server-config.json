@@ -1321,7 +1321,7 @@
       "environments": ["dev", "staging", "prod"]
     },
     {
-      "id": "pabanff",
+      "id": "palatest",
       "title": "Predictive Analytics",
       "url": "cloud/pa/latest",
       "metadata": {

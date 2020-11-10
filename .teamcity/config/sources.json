@@ -621,16 +621,6 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
-      "id": "predictiveanalyticsdraftsrc",
-      "title": "Predictive Analytics Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/predictive-analytics.git",
-      "xdocsPathIds": [
-        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
       "id": "predictiveanalyticssrc",
       "title": "Predictive Analytics",
       "sourceType": "git",
