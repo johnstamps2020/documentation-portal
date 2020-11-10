@@ -831,8 +831,8 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "A_Map01.ditamap",
-      "srcId": "comparebanffsrc",
-      "docId": "comparebanff"
+      "srcId": "comparelatestsrc",
+      "docId": "comparelatest"
     },
     {
       "buildType": "dita",

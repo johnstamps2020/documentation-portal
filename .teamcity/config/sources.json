@@ -662,7 +662,7 @@
       ]
     },
     {
-      "id": "comparebanffsrc",
+      "id": "comparelatestsrc",
       "title": "Compare Banff",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/compare.git",
