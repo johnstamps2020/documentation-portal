@@ -19,7 +19,7 @@
         "ProducerEngage",
         "ServiceRepEngage",
         "PolicyCenter API",
-        "Jutro Design Framework"
+        "Jutro Design System"
       ]
     },
     {
@@ -41,7 +41,7 @@
         "ServiceRepEngage",
         "VendorEngage",
         "ClaimCenter API",
-        "Jutro Design Framework"
+        "Jutro Design System"
       ]
     },
     {
@@ -58,7 +58,7 @@
         "ProducerEngage",
         "ServiceRepEngage",
         "BillingCenter API",
-        "Jutro Design Framework"
+        "Jutro Design System"
       ]
     },
     {
@@ -1518,7 +1518,7 @@
       "title": "Jutro Design System",
       "url": "jutro/documentation/4.1.1",
       "metadata": {
-        "product": ["Jutro Design Framework"],
+        "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": "4.1.1",
         "release": ["Banff"],
@@ -1533,7 +1533,7 @@
       "title": "Jutro Storybook",
       "url": "jutro/storybook/4.1.1",
       "metadata": {
-        "product": ["Jutro Design Framework"],
+        "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": "4.1.1",
         "release": ["Banff"],
