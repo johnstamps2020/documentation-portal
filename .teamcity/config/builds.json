@@ -420,7 +420,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-OnPrem-Release.ditaval",
+      "filter": "GW-Generic-OnPrem-Draft.ditaval",
       "root": "supermapExplore.ditamap",
       "srcId": "explorebasrc",
       "docId": "selfmanagedbadraft"

@@ -423,7 +423,7 @@
     },
     {
       "id": "cdpdraftsrc",
-      "title": "Cloud Data Platform",
+      "title": "Cloud Data Platform Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
       "xdocsPathIds": [
