@@ -1817,9 +1817,8 @@ object RunContentValidations : Template({
                 
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
                 
-                export GIT_SOURCE_ID=$(jq .gitSourceId "%env.DOC_INFO%")
-                export GIT_BUILD_BRANCH=$(jq .gitBuildBranch "%env.DOC_INFO%")
-                aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH" --delete
+                export DOC_URL=$(jq -r .url "%env.DOC_INFO%")
+                aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/%teamcity.build.branch%/${'$'}DOC_URL" --delete
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
