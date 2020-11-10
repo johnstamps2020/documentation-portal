@@ -1767,6 +1767,7 @@ object RunContentValidations : Template({
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.DITA_OT_WORKING_DIR", "%DITA_OT_WORKING_DIR%", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+        text("env.S3_BUCKET_PREVIEW_PATH", "s3://tenant-doctools-int-builds/preview", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.NORMALIZED_DITA_DIR", "%env.DITA_OT_WORKING_DIR%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.DITA_OT_LOGS_DIR", "%env.DITA_OT_WORKING_DIR%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.SCHEMATRON_REPORTS_DIR", "%env.DITA_OT_WORKING_DIR%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1815,6 +1816,10 @@ object RunContentValidations : Template({
                 ${'$'}DITA_BASE_COMMAND
                 
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
+                
+                export GIT_SOURCE_ID=$(jq .gitSourceId "%env.DOC_INFO%")
+                export GIT_BUILD_BRANCH=$(jq .gitBuildBranch "%env.DOC_INFO%")
+                aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH" --delete
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
