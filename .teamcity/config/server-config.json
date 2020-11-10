@@ -258,32 +258,6 @@
       "environments": ["int"]
     },
     {
-      "id": "clouddataplatformdraft",
-      "title": "Cloud Data Access",
-      "url": "cloud/cdp/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": "latest",
-        "category": ["Data"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
-      "id": "exploreclouddraft",
-      "title": "Explore",
-      "url": "cloud/explore/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": "latest",
-        "category": ["Data"],
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["int"]
-    },
-    {
       "id": "clouddxceamdraft",
       "title": "CustomerEngage Account Management",
       "url": "cloud/dx/ce-am/latest",
@@ -1399,7 +1373,7 @@
         "category": ["Data"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "comparelatest",
@@ -1425,7 +1399,7 @@
         "category": ["Data"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["dev", "int", "staging", "prod"]
     },
     {
       "id": "dxceam202011",

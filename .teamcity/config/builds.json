@@ -171,13 +171,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-cda.ditamap",
-      "srcId": "cdpdraftsrc",
-      "docId": "clouddataplatformdraft"
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "supermapExplore.ditamap",
       "srcId": "explorebasrc",
