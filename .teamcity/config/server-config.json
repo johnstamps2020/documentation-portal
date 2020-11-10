@@ -450,12 +450,12 @@
     {
       "id": "guidewireidentityfederationhubbanff",
       "title": "Authentication with Guidewire Identity Federation Hub",
-      "url": "cloud/auth/202011",
+      "url": "cloud/auth/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Identity Federation Hub"],
         "category": ["Authentication"],
-        "version": "2020.11",
+        "version": "latest",
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"]
@@ -481,8 +481,8 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05",
-        "release": ["Banff"]
+        "version": "latest",
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["int"]
     },
@@ -494,8 +494,8 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05",
-        "release": ["Banff"]
+        "version": "latest",
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["int"]
     },
@@ -508,8 +508,8 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05",
-        "release": ["Banff"]
+        "version": "latest",
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["int"]
     },
@@ -1144,8 +1144,8 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05",
-        "release": ["Aspen"]
+        "version": "latest",
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1157,8 +1157,8 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05",
-        "release": ["Aspen"]
+        "version": "latest",
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1171,8 +1171,8 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "category": ["Guidewire Cloud Console"],
-        "version": "2020.05",
-        "release": ["Aspen"]
+        "version": "latest",
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["dev", "staging", "prod"]
     },
@@ -1432,11 +1432,11 @@
     {
       "id": "pabanff",
       "title": "Predictive Analytics",
-      "url": "cloud/pa/banff",
+      "url": "cloud/pa/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Predictive Analytics"],
-        "version": "Banff",
+        "version": "latest",
         "category": ["Data"],
         "subcategory": "Add-ons",
         "release": ["Banff"]
@@ -1514,11 +1514,11 @@
     {
       "id": "comparebanff",
       "title": "Compare",
-      "url": "cloud/compare/banff",
+      "url": "cloud/compare/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Compare"],
-        "version": "Banff",
+        "version": "latest",
         "category": ["Data"],
         "release": ["Banff"]
       },
