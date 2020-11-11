@@ -286,8 +286,8 @@
       "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubbanffsrc",
-      "docId": "guidewireidentityfederationhubbanff"
+      "srcId": "guidewireidentityfederationhublatestsrc",
+      "docId": "guidewireidentityfederationhublatest"
     },
     {
       "buildType": "dita",
