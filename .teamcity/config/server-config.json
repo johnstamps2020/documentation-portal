@@ -422,7 +422,7 @@
       "environments": ["int"]
     },
     {
-      "id": "guidewireidentityfederationhubbanff",
+      "id": "guidewireidentityfederationhublatest",
       "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
       "metadata": {
@@ -430,7 +430,7 @@
         "product": ["Guidewire Identity Federation Hub"],
         "category": ["Authentication"],
         "version": "latest",
-        "release": ["Banff"]
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["dev", "int", "staging", "prod"]
     },
