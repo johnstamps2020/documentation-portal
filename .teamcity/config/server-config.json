@@ -4022,7 +4022,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
       "title": "CustomerEngage Account Management",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_AccountManagement1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_AccountManagement1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["CustomerEngage Account Management"],
@@ -4082,7 +4082,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk",
       "title": "CustomerEngage Quote and Buy",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_QuoteAndBuy1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_QuoteAndBuy1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["CustomerEngage Quote and Buy"],
@@ -4142,7 +4142,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
       "title": "ProducerEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ProducerEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ProducerEngage1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ProducerEngage"],
@@ -4202,7 +4202,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
       "title": "ServiceRepEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ServiceRepEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ServiceRepEngage1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ServiceRepEngage"],
@@ -4262,7 +4262,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp",
       "title": "VendorEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/VendorEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/VendorEngage1000_Docs/",
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["VendorEngage"],
