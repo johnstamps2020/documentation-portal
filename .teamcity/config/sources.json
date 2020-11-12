@@ -76,7 +76,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.4.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1040/DM_all.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
       ]
@@ -120,12 +120,12 @@
     },
     {
       "id": "dhic202011",
-      "title": "Data Management 2020.11 and 10.4",
+      "title": "Data Management 2020.11",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/DM_all.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-cloud/202011/DM_all.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
