@@ -615,6 +615,13 @@
       ]
     },
     {
+      "id": "standards202010src",
+      "title": "Standards 2020.10",
+      "sourceType": "git",
+      "branch": "2020.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
       "id": "standardsdraftsrc",
       "title": "Standards Draft",
       "sourceType": "git",

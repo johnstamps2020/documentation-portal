@@ -91,8 +91,8 @@
       "product": ["Guidewire Feature Preview"]
     },
     {
-      "productFamilyName": "SurePath Standards",
-      "product": ["SurePath Standards"]
+      "productFamilyName": "Guidewire Cloud Standards",
+      "product": ["Guidewire Cloud Standards"]
     }
   ],
   "docs": [
@@ -2099,15 +2099,28 @@
       "environments": ["dev", "int", "staging", "prod"]
     },
     {
+      "id": "standards202010",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202010",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": "2020.10",
+        "category": ["Guidewire Cloud Standards"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
       "id": "standardsdraft",
-      "title": "SurePath Standards",
+      "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/latest",
       "metadata": {
-        "product": ["SurePath Standards"],
+        "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": "latest",
-        "category": ["SurePath Standards"],
-        "release": ["Banff"]
+        "category": ["Guidewire Cloud Standards"],
+        "release": ["Aspen", "Banff"]
       },
       "environments": ["dev", "int"]
     },
