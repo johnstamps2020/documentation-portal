@@ -4,15 +4,17 @@ const fs = require('fs').promises;
 async function getConfig() {
   try {
     if (process.env.DEV === 'yes') {
-      console.log('Getting local config');
+      console.log(
+        `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
+      );
       const configPath = `${__dirname}/../../.teamcity/config/server-config.json`;
       const config = await fs.readFile(configPath, 'utf-8');
       const json = JSON.parse(config);
-      
+
       const docs = json.docs.filter(d =>
         d.environments.includes(process.env.DEPLOY_ENV)
       );
-      
+
       const productFamilies = json.productFamilies;
       const localConfig = { docs: docs, productFamilies: productFamilies };
       return localConfig;
