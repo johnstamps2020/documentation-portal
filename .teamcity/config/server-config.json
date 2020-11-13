@@ -2099,6 +2099,21 @@
       "environments": ["dev", "int", "staging", "prod"]
     },
     {
+      "id": "standardslatest",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/latest",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": "latest",
+        "category": ["Guidewire Cloud Standards"],
+        "release": ["Aspen", "Banff"]
+      },
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "environments": ["dev", "staging", "prod"]
+    },
+    {
       "id": "standards202010",
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202010",
@@ -2118,11 +2133,11 @@
       "metadata": {
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
-        "version": "latest",
+        "version": "draft",
         "category": ["Guidewire Cloud Standards"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "int"]
+      "environments": ["int"]
     },
     {
       "id": "dxceqb1110onpremstaging",
