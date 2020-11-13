@@ -1194,6 +1194,13 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standards202010src",
+      "docId": "standards202010"
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "surepath.ditamap",
       "srcId": "standardsdraftsrc",
