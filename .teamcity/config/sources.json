@@ -38,7 +38,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/_supermap-202011.ditamap",
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/_supermap-202011.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
@@ -252,7 +252,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2020.11",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/DX_superbook.ditamap",
+        "/Content/doc/digital/11.x/releases/202011/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
