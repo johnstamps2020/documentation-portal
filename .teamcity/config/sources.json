@@ -30,7 +30,7 @@
       "title": "InsuranceSuite Upgrade Guide 2020.11",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "v2020.11.0"
+      "branch": "release/2020.11.0"
     },
     {
       "id": "exampleresource",
