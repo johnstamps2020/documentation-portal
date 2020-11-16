@@ -837,7 +837,7 @@
         "category": ["Core"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["staging", "prod"]
     },
     {
       "id": "cloudcc202011",
@@ -850,7 +850,7 @@
         "category": ["Core"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["staging", "prod"]
     },
     {
       "id": "cloudpc202011",
@@ -863,7 +863,7 @@
         "category": ["Core"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["staging", "prod"]
     },
     {
       "id": "cloudbc202005",
