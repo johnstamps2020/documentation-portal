@@ -916,7 +916,7 @@
         "category": ["Core"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["staging", "prod"]
     },
     {
       "id": "cloudccupgradeguide202011",
@@ -930,7 +930,7 @@
         "category": ["Core"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["staging", "prod"]
     },
     {
       "id": "cloudpcupgradeguide202011",
@@ -944,7 +944,7 @@
         "category": ["Core"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"]
+      "environments": ["staging", "prod"]
     },
     {
       "id": "cloudbcupgradeguide202005",
