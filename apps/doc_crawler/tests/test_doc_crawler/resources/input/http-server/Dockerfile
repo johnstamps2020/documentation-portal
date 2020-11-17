@@ -1,4 +1,4 @@
-FROM nginx
+FROM artifactory.guidewire.com/hub-docker-remote/nginx
 
 COPY cloud /usr/share/nginx/html/cloud
 COPY assets /usr/share/nginx/html/assets
