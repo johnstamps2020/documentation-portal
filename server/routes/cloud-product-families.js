@@ -146,7 +146,8 @@ router.get('/:productFamilyId/:release/:product', async function(
     const docsInProduct = productFamily.docs.filter(
       d =>
         d.metadata.release.includes(release) &&
-        d.metadata.product.includes(product)
+        d.metadata.product.includes(product) &&
+        d.displayOnLandingPages !== false
     );
 
     const availableVersions = getUniqueInMetadataFields(
@@ -174,7 +175,7 @@ router.get('/:productFamilyId/:release/:product/:version', async function(
       d =>
         d.metadata.release.includes(release) &&
         d.metadata.product.includes(product) &&
-        d.displayOnLandingPages != false
+        d.displayOnLandingPages !== false
     );
     const availableVersions = getUniqueInMetadataFields(
       docsInProduct,
