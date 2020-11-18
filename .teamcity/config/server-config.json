@@ -28,7 +28,7 @@
         "ClaimCenter for Guidewire Cloud",
         "InsuranceSuite Configuration Upgrade Tools",
         "Cloud Data Access",
-        "Compare",
+        "Compare+",
         "CustomerEngage Account Management",
         "CustomerEngage Account Management for ClaimCenter",
         "DataHub for Guidewire Cloud",
@@ -1377,11 +1377,11 @@
     },
     {
       "id": "comparelatest",
-      "title": "Compare",
+      "title": "Compare+",
       "url": "cloud/compare/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Compare"],
+        "product": ["Compare+"],
         "version": "latest",
         "category": ["Data"],
         "release": ["Banff"]
