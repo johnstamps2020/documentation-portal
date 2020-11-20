@@ -246,8 +246,27 @@ function docReady(fn) {
   }
 }
 
+function isInIframe() {
+  try {
+    return window.self !== window.top;
+  } catch (e) {
+    return true;
+  }
+}
+
+function hideByCssClass(cssClass) {
+  const el = document.getElementsByClassName(cssClass)[0];
+  if (el) {
+    el.style.display = 'none';
+  }
+}
+
 docReady(async function() {
   await createVersionSelector();
   await addTopLinkToBreadcrumbs();
   await addPublicationDate();
+  if (isInIframe()) {
+    hideByCssClass('wh_header');
+    hideByCssClass('wh_footer');
+  }
 });

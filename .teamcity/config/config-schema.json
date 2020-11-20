@@ -98,6 +98,11 @@
           "type": "array",
           "examples": ["Core", "Data", "Digital"]
         },
+        "subcategory": {
+          "description": "A product subcategory",
+          "type": "string",
+          "examples": ["Add-ons"]
+        },
         "release": {
           "description": "A major release",
           "type": "array",
@@ -177,9 +182,8 @@
         "Guidewire Cloud Platform",
         "Guidewire Feature Preview",
         "Integration Framework",
-        "SurePath Standards",
-        "Testing Frameworks",
-        "Jutro"
+        "Guidewire Cloud Standards",
+        "Testing Frameworks"
       ]
     },
     "product": {
@@ -202,12 +206,13 @@
           "InfoCenter for Guidewire Cloud",
           "Business Analytics",
           "Cloud Data Access",
+          "Compare+",
           "Configuration Manager",
           "Explore",
           "CustomerEngage Account Management",
           "CustomerEngage Account Management for ClaimCenter",
           "CustomerEngage Quote and Buy",
-          "Digital Code Generation",
+          "Digital Code Generation Extension Pack",
           "Guidewire for Salesforce Data Integrations",
           "Guidewire for Salesforce Data Integrations for Claims",
           "Guidewire for Salesforce Digital Gateway",
@@ -215,10 +220,11 @@
           "Guidewire for Salesforce View on Demand",
           "Guidewire for Salesforce View on Demand for Claims",
           "Guidewire for Salesforce ProducerEngage",
+          "Predictive Analytics",
           "ProducerEngage",
           "ProducerEngage for ClaimCenter",
           "ServiceRepEngage",
-          "SurePath Standards",
+          "Guidewire Cloud Standards",
           "VendorEngage",
           "Guidewire Cloud Platform",
           "Guidewire Cloud Console",
@@ -232,7 +238,7 @@
           "InsuranceNow 2020.2x - External Audience",
           "REST API Client",
           "Testing Frameworks",
-          "Jutro",
+          "Jutro Design System",
           "PolicyCenter API",
           "BillingCenter API",
           "ClaimCenter API"

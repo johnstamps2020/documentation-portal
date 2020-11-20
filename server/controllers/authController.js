@@ -17,6 +17,10 @@ const oktaOIDC = new ExpressOIDC({
 const authGateway = (req, res, next) => {
   try {
     if (req.isAuthenticated() || process.env.DEV === 'yes') {
+      if (req.query.authSource) {
+        const reqUrl = new URL(req.url, 'relative:///');
+        res.redirect(reqUrl.pathname);
+      }
       if (req.session.redirectTo) {
         const redirectTo = req.session.redirectTo;
         delete req.session.redirectTo;

@@ -178,3 +178,13 @@ div#affix3 form#searchForm {
 html {
   scroll-padding-top: 134px;
 }
+
+#wh_topic_toc li.topic-item a span {
+  color: inherit !important;
+  background-color: transparent !important;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}

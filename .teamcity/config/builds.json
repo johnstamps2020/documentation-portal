@@ -9,8 +9,8 @@
       "docId": "cloudbclatestvkeurqms",
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/bc/2020.05",
-          "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05",
+          "sourceFolder": "ReleaseNotes-files/bc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -23,8 +23,8 @@
       "docId": "cloudcclatestovwsjybk",
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/cc/2020.05",
-          "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05",
+          "sourceFolder": "ReleaseNotes-files/cc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -37,8 +37,8 @@
       "docId": "cloudpclatestltxfjual",
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/pc/2020.05",
-          "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05",
+          "sourceFolder": "ReleaseNotes-files/pc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -88,7 +88,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "cloudbcupgradeguidelatest"
@@ -96,7 +96,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "cloudccupgradeguidelatest"
@@ -104,10 +104,34 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "cloudpcupgradeguidelatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-BillingCenter-Cloud-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202011src",
+      "docId": "cloudbcupgradeguide202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-ClaimCenter-Cloud-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202011src",
+      "docId": "cloudccupgradeguide202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-PolicyCenter-Cloud-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202011src",
+      "docId": "cloudpcupgradeguide202011"
     },
     {
       "buildType": "dita",
@@ -144,20 +168,6 @@
           "srcId": "dhicextrassrc"
         }
       ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-cda.ditamap",
-      "srcId": "cdpdraftsrc",
-      "docId": "clouddataplatformdraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebadraftsrc",
-      "docId": "exploreclouddraft"
     },
     {
       "buildType": "dita",
@@ -274,10 +284,10 @@
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubdraft",
-      "docId": "guidewireidentityfederationhubqsvkhtgf"
+      "srcId": "guidewireidentityfederationhublatestsrc",
+      "docId": "guidewireidentityfederationhublatest"
     },
     {
       "buildType": "dita",
@@ -303,7 +313,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Self-managed-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "selfmanagedbcupgradeguide10x"
@@ -311,7 +321,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-ClaimCenter-Self-managed-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "selfmanagedccupgradeguide10x"
@@ -319,7 +329,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-PolicyCenter-Self-managed-Draft.ditaval",
-      "root": "_supermap.ditamap",
+      "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
       "docId": "selfmanagedpcupgradeguide10x"
@@ -396,9 +406,9 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-OnPrem-Release.ditaval",
+      "filter": "GW-Generic-OnPrem-Draft.ditaval",
       "root": "supermapExplore.ditamap",
-      "srcId": "explorebadraftsrc",
+      "srcId": "explorebasrc",
       "docId": "selfmanagedbadraft"
     },
     {
@@ -530,6 +540,63 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "_supermap-202011.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "cloudbc202011",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "_supermap-202011.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "cloudcc202011",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "_supermap-202011.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "cloudpc202011",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "_supermap-202005.ditamap",
       "srcId": "cloudis202005src",
       "docId": "cloudbc202005",
@@ -566,6 +633,20 @@
           "sourceFolder": "ReleaseNotes-files/pc/2020.05",
           "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05",
           "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-20202x-active.ditamap",
+      "srcId": "in20202src",
+      "docId": "cloudinexternal20202",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.2",
+          "srcId": "insurancenowextrassrc"
         }
       ]
     },
@@ -678,6 +759,34 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
+      "srcId": "dhic202011",
+      "docId": "dh202011",
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhic202011",
+      "docId": "ic202011",
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/InfoCenter",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
       "srcId": "dhic202005",
       "docId": "dh202005",
       "resources": [
@@ -706,15 +815,87 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "_supermap-cda.ditamap",
-      "srcId": "clouddataplatform",
-      "docId": "clouddataplatformstaging"
+      "srcId": "clouddataplatformreleasesrc",
+      "docId": "clouddataplatformlatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "A_Map01.ditamap",
+      "indexRedirect": true,
+      "srcId": "comparelatestsrc",
+      "docId": "comparelatest"
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "supermapExplore.ditamap",
-      "srcId": "explore",
+      "srcId": "explorebasrc",
       "docId": "explorecloudstaging"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "A_Map01_7x.ditamap",
+      "indexRedirect": true,
+      "srcId": "predictiveanalyticssrc",
+      "docId": "palatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxceam202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxceclaims202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxceqb202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-apd-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxapd202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxpe202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxpeclaims202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxsre202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-MgSvcs.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx202011",
+      "docId": "dxve202011"
     },
     {
       "buildType": "dita",
@@ -1013,10 +1194,27 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standards202010src",
+      "docId": "standardslatest",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standards202010src",
+      "docId": "standards202010",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "surepath.ditamap",
       "srcId": "standardsdraftsrc",
-      "docId": "standardsdraft"
+      "docId": "standardsdraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",

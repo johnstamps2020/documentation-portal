@@ -1555,6 +1555,7 @@ object HelperObjects {
                 text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.S3_BUCKET_NAME", "tenant-doctools-int-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
@@ -1568,7 +1569,7 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
         
-                        results_cleaner --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --git-source-id "%env.GIT_SOURCE_ID%" --git-source-url "%env.GIT_SOURCE_URL%"
+                        results_cleaner --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --git-source-id "%env.GIT_SOURCE_ID%" --git-source-url "%env.GIT_SOURCE_URL%" --s3-bucket-name "%env.S3_BUCKET_NAME%"
                     """.trimIndent()
                     dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1752,10 +1753,14 @@ object CreateReleaseTag : BuildType({
     }
 })
 
+//TODO: This template may not be needed. We could merge it with the ValidateDoc class
 object RunContentValidations : Template({
     name = "Run content validations"
 
-    artifactRules = "**/*.log => logs"
+    artifactRules = """
+        **/*.log => logs
+        preview_url.txt
+    """.trimIndent()
 
     params {
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
@@ -1767,6 +1772,7 @@ object RunContentValidations : Template({
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.DITA_OT_WORKING_DIR", "%DITA_OT_WORKING_DIR%", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+        text("env.S3_BUCKET_PREVIEW_PATH", "s3://tenant-doctools-int-builds/preview", display = ParameterDisplay.HIDDEN, allowEmpty = true)
         text("env.NORMALIZED_DITA_DIR", "%env.DITA_OT_WORKING_DIR%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.DITA_OT_LOGS_DIR", "%env.DITA_OT_WORKING_DIR%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
         text("env.SCHEMATRON_REPORTS_DIR", "%env.DITA_OT_WORKING_DIR%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1815,6 +1821,11 @@ object RunContentValidations : Template({
                 ${'$'}DITA_BASE_COMMAND
                 
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
+                
+                export GIT_SOURCE_ID=$(jq -r .gitSourceId "%env.DOC_INFO%")
+                export GIT_BUILD_BRANCH=$(jq -r .gitBuildBranch "%env.DOC_INFO%")
+                aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" --delete
+                echo "Output preview available at https://docs.int.ccs.guidewire.net/preview/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" > preview_url.txt
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"

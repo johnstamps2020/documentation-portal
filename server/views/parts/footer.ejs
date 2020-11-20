@@ -22,3 +22,26 @@
   integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
   crossorigin="anonymous"
 ></script>
+<script>
+    (function () {
+        function isInIframe () {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        }
+
+        function hideByCssClass (cssClass) {
+            const el = document.getElementsByClassName(cssClass)[0];
+            if (el) {
+                el.style.display = "none";
+            }
+        }
+
+        if (isInIframe()) {
+            hideByCssClass("pageHeader");
+            hideByCssClass("pageFooter");
+        }
+    })();
+</script>
