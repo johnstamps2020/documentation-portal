@@ -1,4 +1,3 @@
-//TODO: Opening links on the bucket generates errors in the console; it looks like the server is trying to render a page instead of going directly to the bucket
 const getConfig = require('./configController');
 const {
   getUniqueInMetadataFields,
@@ -8,6 +7,8 @@ const {
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const fs = require('fs').promises;
 const path = require('path');
+
+const cloudProductsEndpoint = '/cloudProducts';
 
 async function getCloudDocsFromConfig() {
   const serverConfig = await getConfig();
@@ -107,12 +108,12 @@ async function getCloudDocumentationPageInfo(release) {
       if (docs.length === 1) {
         productFamilies.push({
           label: productFamily.label,
-          url: docs[0].url,
+          url: `/${docs[0].url}`,
         });
       } else if (docs.length > 1) {
         productFamilies.push({
           label: productFamily.label,
-          url: `${release}/${productFamily.id}`,
+          url: `${cloudProductsEndpoint}/${release}/${productFamily.id}`,
         });
       }
     }
@@ -149,13 +150,21 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
         const categoryDocs = productFamilyItem.items.filter(i => !i.items);
 
         function getDocUrl(listOfDocs, productId) {
-          if (listOfDocs.length === 1) {
-            return `/${listOfDocs[0]?.url}`;
-          } else if (listOfDocs.length > 1) {
-            const productVersion = getSortedVersions(
-              getUniqueInMetadataFields(listOfDocs, 'version')
-            )[0];
-            return `/${release}/${productFamilyId}/${productId}/${productVersion}`;
+          const allVersions = getSortedVersions(
+            getUniqueInMetadataFields(listOfDocs, 'version')
+          );
+          const highestProductVersion = getSortedVersions(
+            getUniqueInMetadataFields(listOfDocs, 'version')
+          )[0];
+          const docsForHighestVersion = listOfDocs.filter(
+            d =>
+              d.metadata.version === highestProductVersion &&
+              d.displayOnLandingPages !== false
+          );
+          if (docsForHighestVersion.length === 1) {
+            return `/${docsForHighestVersion[0]?.url}`;
+          } else if (docsForHighestVersion.length > 1) {
+            return `${cloudProductsEndpoint}/${release}/${productFamilyId}/${productId}/${highestProductVersion}`;
           }
         }
 
@@ -215,7 +224,10 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
         title: productFamilyNode.label,
         categories: categories,
         breadcrumb: [
-          { href: `/${release}`, label: `${release} documentation` },
+          {
+            href: `${cloudProductsEndpoint}/${release}`,
+            label: `${release} documentation`,
+          },
         ],
         selectedRelease: release,
         availableReleases: await getReleasesFromTaxonomyFiles(productFamilyId),
@@ -283,9 +295,12 @@ async function getProductPageInfo(
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,
       breadcrumb: [
-        { href: `/`, label: 'Cloud documentation' },
-        { href: `/${release}`, label: release },
-        { href: `/${release}/${productFamilyId}`, label: productFamilyName },
+        { href: `${cloudProductsEndpoint}`, label: 'Cloud documentation' },
+        { href: `${cloudProductsEndpoint}/${release}`, label: release },
+        {
+          href: `${cloudProductsEndpoint}/${release}/${productFamilyId}`,
+          label: productFamilyName,
+        },
       ],
       selectedVersion: productVersion,
       sortedVersions: getSortedVersions(availableVersions),

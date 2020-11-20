@@ -1,4 +1,3 @@
-//TODO: Move generic helper functions to the helpers folder to share them between cloud and self-managed
 const getConfig = require('./configController');
 const {
   getUniqueInMetadataFields,
@@ -68,13 +67,18 @@ async function getSelfManagedDocumentationPageInfo() {
       const categoryDocs = category.items.filter(i => !i.items);
 
       function getDocUrl(listOfDocs, productId) {
-        if (listOfDocs.length === 1) {
-          return `/${listOfDocs[0]?.url}`;
-        } else if (listOfDocs.length > 1) {
-          const productVersion = getSortedVersions(
-            getUniqueInMetadataFields(listOfDocs, 'version')
-          )[0];
-          return `/self-managed/${productId}/${productVersion}`;
+        const highestProductVersion = getSortedVersions(
+          getUniqueInMetadataFields(listOfDocs, 'version')
+        )[0];
+        const docsForHighestVersion = listOfDocs.filter(
+          d =>
+            d.metadata.version === highestProductVersion &&
+            d.displayOnLandingPages !== false
+        );
+        if (docsForHighestVersion.length === 1) {
+          return `/${docsForHighestVersion[0]?.url}`;
+        } else if (docsForHighestVersion.length > 1) {
+          return `/selfManagedProducts/${productId}/${highestProductVersion}`;
         }
       }
 
@@ -188,7 +192,7 @@ async function getProductPageInfo(productId, productVersion) {
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,
-      breadcrumb: [{ href: `/`, label: 'Self-managed documentation' }],
+      breadcrumb: [{ href: '/', label: 'Self-managed documentation' }],
       selectedVersion: productVersion,
       sortedVersions: getSortedVersions(availableVersions),
     };

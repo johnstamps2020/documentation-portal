@@ -47,6 +47,10 @@
                 {
                   "id": "icGwCloud",
                   "label": "InfoCenter for Guidewire Cloud"
+                },
+                {
+                  "id": "predictiveAnalytics",
+                  "label": "Predictive Analytics"
                 }
               ]
             }
@@ -81,6 +85,16 @@
                   "label": "Digital Code Generation"
                 }
               ]
+            },
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                {
+                  "id": "digitalCodeGenExtPack",
+                  "label": "Digital Code Generation Extension Pack"
+                }
+              ]
             }
           ]
         }
@@ -113,6 +127,10 @@
               "label": "Cloud Data Access"
             },
             {
+              "id": "compare+",
+              "label": "Compare+"
+            },
+            {
               "id": "explore",
               "label": "Explore"
             },
@@ -127,6 +145,10 @@
                 {
                   "id": "icGwCloud",
                   "label": "InfoCenter for Guidewire Cloud"
+                },
+                {
+                  "id": "predictiveAnalytics",
+                  "label": "Predictive Analytics"
                 }
               ]
             }
@@ -265,6 +287,26 @@
               "label": "Guidewire Cloud Console"
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "gwCloudStandards",
+      "label": "Guidewire Cloud Standards",
+      "items": [
+        {
+          "id": "gwCloudStandards",
+          "label": "Guidewire Cloud Standards"
+        }
+      ]
+    },
+    {
+      "id": "restApiClient",
+      "label": "REST API Client",
+      "items": [
+        {
+          "id": "restApiClient",
+          "label": "REST API Client"
         }
       ]
     }

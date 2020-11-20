@@ -7,12 +7,12 @@ const {
   getProductPageInfo,
 } = require('../controllers/cloudDocumentationController');
 
+const cloudProductsEndpoint = '/cloudProducts';
+
 router.get('/', async (req, res, next) => {
   try {
     const highestCloudRelease = await getHighestCloudRelease();
-    if (req.originalUrl === '/') {
-      res.redirect(`/${highestCloudRelease}`);
-    }
+    res.redirect(`${cloudProductsEndpoint}/${highestCloudRelease}`);
   } catch (err) {
     next(err);
   }
@@ -47,19 +47,18 @@ router.get('/:release/:productFamilyId', async function(req, res, next) {
   }
 });
 
-//TODO: Fix this logic, it breaks opening of URLs from the S3 bucket
-// router.get('/:release/:productFamilyId/:productId', async function(
-//   req,
-//   res,
-//   next
-// ) {
-//   try {
-//     const { release, productFamilyId } = req.params;
-//     res.redirect(`/${release}/${productFamilyId}`);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+router.get('/:release/:productFamilyId/:productId', async function(
+  req,
+  res,
+  next
+) {
+  try {
+    const { release, productFamilyId } = req.params;
+    res.redirect(`${cloudProductsEndpoint}/${release}/${productFamilyId}`);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get(
   '/:release/:productFamilyId/:productId/:productVersion',

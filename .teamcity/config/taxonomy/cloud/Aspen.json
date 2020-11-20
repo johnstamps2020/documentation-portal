@@ -15,6 +15,10 @@
               "label": "PolicyCenter for Guidewire Cloud"
             },
             {
+              "id": "gwIsPackageForGermany",
+              "label": "Guidewire InsuranceSuite Package for Germany"
+            },
+            {
               "id": "isConfigUpgradeTools",
               "label": "InsuranceSuite Configuration Upgrade Tools"
             },
@@ -99,6 +103,10 @@
               "label": "ClaimCenter for Guidewire Cloud"
             },
             {
+              "id": "gwIsPackageForGermany",
+              "label": "Guidewire InsuranceSuite Package for Germany"
+            },
+            {
               "id": "isConfigUpgradeTools",
               "label": "InsuranceSuite Configuration Upgrade Tools"
             }
@@ -181,6 +189,10 @@
             {
               "id": "bcGwCloud",
               "label": "BillingCenter for Guidewire Cloud"
+            },
+            {
+              "id": "gwIsPackageForGermany",
+              "label": "Guidewire InsuranceSuite Package for Germany"
             },
             {
               "id": "isConfigUpgradeTools",

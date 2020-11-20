@@ -16,7 +16,7 @@
                             function selectRelease() {
                                 const selectedRelease = document.getElementById("releaseSelector").value;
                                 const urlParts = window.location.pathname.split('/');
-                                urlParts[1] = selectedRelease;
+                                urlParts[2] = selectedRelease;
                                 window.location.replace(urlParts.join('/'));
                             }
                         </script>

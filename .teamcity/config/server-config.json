@@ -198,6 +198,7 @@
         ],
         "version": "3.x.x",
         "release": [
+          "Aspen",
           "Banff"
         ]
       },
@@ -242,47 +243,6 @@
         ]
       },
       "environments": [
-        "int",
-        "dev"
-      ]
-    },
-    {
-      "id": "clouddataplatformdraft",
-      "title": "Cloud Data Access",
-      "url": "cloud/cdp/latest",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Cloud Data Access"
-        ],
-        "version": "latest",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "exploreclouddraft",
-      "title": "Explore",
-      "url": "cloud/explore/latest",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": "latest",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
         "int"
       ]
     },
@@ -299,7 +259,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -319,7 +279,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -339,7 +299,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -348,11 +308,11 @@
     },
     {
       "id": "dxapdclouddraft",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/latest",
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Cloud"
@@ -379,7 +339,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -399,7 +359,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -419,7 +379,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -439,7 +399,7 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "environments": [
@@ -527,7 +487,7 @@
       ]
     },
     {
-      "id": "guidewireidentityfederationhubqsvkhtgf",
+      "id": "guidewireidentityfederationhublatest",
       "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
       "metadata": {
@@ -537,74 +497,17 @@
         "product": [
           "Guidewire Identity Federation Hub"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
+          "Aspen",
           "Banff"
         ]
       },
       "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "guidewirecloudconsoleguidetycvlqax",
-      "title": "Cloud Console Guide",
-      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "guidewirecloudconsolerelnotesijdxzmpe",
-      "title": "Cloud Console Release Notes",
-      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "dkeirtlsleeedc",
-      "title": "Cloud Console Root Doc",
-      "url": "cloud/gcc-guide/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "int"
+        "dev",
+        "int",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -921,11 +824,11 @@
     },
     {
       "id": "selfmanageddxapddraft",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "self-managed/dx/apd/latest",
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Self-managed"
@@ -1127,52 +1030,6 @@
       ]
     },
     {
-      "id": "dkekdisievjfjrndjsj",
-      "title": "Jutro Documentation",
-      "url": "jutro/documentation/latest",
-      "metadata": {
-        "product": [
-          "Jutro"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Best practices"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "dsssekelmvkdnasjsjsnndddf",
-      "title": "Jutro Storybook",
-      "url": "jutro/storybook/latest",
-      "metadata": {
-        "product": [
-          "Jutro"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
       "id": "gwfeaturepreviewearlyaccess",
       "title": "Guidewire Feature Preview Early Access",
       "url": "cloud/gw-feature-preview/earlyaccess",
@@ -1210,6 +1067,69 @@
       },
       "environments": [
         "int"
+      ]
+    },
+    {
+      "id": "cloudbc202011",
+      "title": "BillingCenter for Guidewire Cloud",
+      "url": "cloud/bc/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "cloudcc202011",
+      "title": "ClaimCenter for Guidewire Cloud",
+      "url": "cloud/cc/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "cloudpc202011",
+      "title": "PolicyCenter for Guidewire Cloud",
+      "url": "cloud/pc/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "staging",
+        "prod"
       ]
     },
     {
@@ -1274,6 +1194,72 @@
       },
       "environments": [
         "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "cloudbcupgradeguide202011",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "cloud/bc/upgrade/202011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "cloudccupgradeguide202011",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "cloud/cc/upgrade/202011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "cloudpcupgradeguide202011",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "cloud/pc/upgrade/202011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
         "staging",
         "prod"
       ]
@@ -1348,6 +1334,28 @@
       ]
     },
     {
+      "id": "cloudinexternal20202",
+      "title": "InsuranceNow",
+      "url": "cloud/in/20202",
+      "metadata": {
+        "product": [
+          "InsuranceNow"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.2",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
       "id": "cloudinexternal20201",
       "title": "InsuranceNow",
       "url": "cloud/in/20201",
@@ -1391,7 +1399,7 @@
       ]
     },
     {
-      "id": "dkckdkeee",
+      "id": "cloudconsoleguide",
       "title": "Cloud Console Guide",
       "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
       "metadata": {
@@ -1401,19 +1409,21 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
         "dev",
+        "int",
         "staging",
         "prod"
       ]
     },
     {
-      "id": "dfkrkelllser",
+      "id": "cloudconsolern",
       "title": "Cloud Console Release Notes",
       "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
       "metadata": {
@@ -1423,19 +1433,21 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
         "dev",
+        "int",
         "staging",
         "prod"
       ]
     },
     {
-      "id": "swwdkskekrtt",
+      "id": "cloudconsoleroot",
       "title": "Cloud Console Root Doc",
       "url": "cloud/gcc-guide/latest",
       "displayOnLandingPages": false,
@@ -1446,13 +1458,15 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
         "dev",
+        "int",
         "staging",
         "prod"
       ]
@@ -1803,6 +1817,73 @@
       ]
     },
     {
+      "id": "dh202011",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ic202011",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "palatest",
+      "title": "Predictive Analytics",
+      "url": "cloud/pa/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Predictive Analytics"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
       "id": "dh202005",
       "title": "DataHub for Guidewire Cloud",
       "url": "cloud/dh/202005",
@@ -1847,7 +1928,7 @@
       ]
     },
     {
-      "id": "clouddataplatformstaging",
+      "id": "clouddataplatformlatest",
       "title": "Cloud Data Access",
       "url": "cloud/cdp/latest",
       "metadata": {
@@ -1857,13 +1938,38 @@
         "product": [
           "Cloud Data Access"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
         "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "comparelatest",
+      "title": "Compare+",
+      "url": "cloud/compare/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Compare+"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
         "staging",
         "prod"
       ]
@@ -1879,9 +1985,237 @@
         "product": [
           "Explore"
         ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceam202011",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/202011",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceclaims202011",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "cloud/dx/ce-claims/202011",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceqb202011",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/202011",
+      "metadata": {
+        "product": [
+          "CustomerEngage Quote and Buy"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dkekdisievjfjrndjsj",
+      "title": "Jutro Design System",
+      "url": "jutro/documentation/4.1.1",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "4.1.1",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dsssekelmvkdnasjsjsnndddf",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/4.1.1",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "4.1.1",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxapd202011",
+      "title": "Digital Code Generation Extension Pack",
+      "url": "cloud/dx/apd/202011",
+      "metadata": {
+        "product": [
+          "Digital Code Generation Extension Pack"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpe202011",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/202011",
+      "metadata": {
+        "product": [
+          "ProducerEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpeclaims202011",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "cloud/dx/pe-claims/202011",
+      "metadata": {
+        "product": [
+          "ProducerEngage for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxsre202011",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/202011",
+      "metadata": {
+        "product": [
+          "ServiceRepEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxve202011",
+      "title": "VendorEngage",
+      "url": "cloud/dx/ve/202011",
+      "metadata": {
+        "product": [
+          "VendorEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
         ]
       },
       "environments": [
@@ -2156,12 +2490,12 @@
     },
     {
       "id": "dxapd202005",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/202005",
       "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Cloud"
@@ -2292,7 +2626,8 @@
         ],
         "version": "3.1.0",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
@@ -2767,27 +3102,77 @@
       "displayOnLandingPages": false,
       "environments": [
         "dev",
-        "int"
+        "int",
+        "staging",
+        "prod"
       ]
     },
     {
-      "id": "standardsdraft",
-      "title": "SurePath Standards",
+      "id": "standardslatest",
+      "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/latest",
       "metadata": {
         "product": [
-          "SurePath Standards"
+          "Guidewire Cloud Standards"
         ],
         "platform": [
           "Cloud"
         ],
         "version": "latest",
         "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "standards202010",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202010",
+      "metadata": {
+        "product": [
+          "Guidewire Cloud Standards"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen",
           "Banff"
         ]
       },
       "environments": [
         "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "standardsdraft",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/latest",
+      "metadata": {
+        "product": [
+          "Guidewire Cloud Standards"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "draft",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
         "int"
       ]
     },
@@ -5815,7 +6200,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
       "title": "CustomerEngage Account Management",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_AccountManagement1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_AccountManagement1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -5910,7 +6295,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk",
       "title": "CustomerEngage Quote and Buy",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_QuoteAndBuy1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_QuoteAndBuy1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -6005,7 +6390,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
       "title": "ProducerEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ProducerEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ProducerEngage1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -6100,7 +6485,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
       "title": "ServiceRepEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ServiceRepEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ServiceRepEngage1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -6195,7 +6580,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp",
       "title": "VendorEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/VendorEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/VendorEngage1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"

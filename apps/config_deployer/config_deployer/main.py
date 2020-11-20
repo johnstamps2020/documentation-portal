@@ -1,3 +1,4 @@
+# TODO: Add deployment of the new taxonomy files
 import json
 import os
 from pathlib import Path
