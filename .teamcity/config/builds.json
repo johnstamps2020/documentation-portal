@@ -603,7 +603,7 @@
       "resources": [
         {
           "sourceFolder": "ReleaseNotes-files/bc/2020.05",
-          "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2020.05",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -617,7 +617,7 @@
       "resources": [
         {
           "sourceFolder": "ReleaseNotes-files/cc/2020.05",
-          "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2020.05",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -631,12 +631,17 @@
       "resources": [
         {
           "sourceFolder": "ReleaseNotes-files/pc/2020.05",
-          "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2020.05",
           "srcId": "insurancesuiteextrassrc"
         },
         {
           "sourceFolder": "ReleaseNotes-files/pc/2020.11",
-          "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
