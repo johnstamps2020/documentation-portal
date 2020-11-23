@@ -73,7 +73,7 @@ const customersLoginRouter = require('./routes/customers-login');
 const cloudProductsRouter = require('./routes/cloud-products');
 const selfManagedProductsRouter = require('./routes/self-managed-products');
 const searchRouter = require('./routes/search');
-const allProductRouter = require('./routes/all-products');
+const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
@@ -151,7 +151,7 @@ app.use('/404', missingPageRouter);
 
 app.use('/selfManagedProducts', selfManagedProductsRouter);
 app.use('/cloudProducts', cloudProductsRouter);
-app.use('/product', allProductRouter);
+app.use('/product', allProductsRouter);
 app.use('/', homeRouter);
 
 const proxyOptions = {

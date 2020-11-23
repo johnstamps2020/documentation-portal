@@ -1,8 +1,8 @@
-exports.getDefaultSubjectIcon = function() {
+function getDefaultSubjectIcon() {
   return 'fas fa-book';
-};
+}
 
-exports.getSubjectIcon = function(categoryName) {
+function getSubjectIcon(categoryName) {
   const categoryMap = [
     { label: 'Features and functionality', icon: 'far fa-object-group' },
     { label: 'Installation', icon: 'fas fa-wrench' },
@@ -25,4 +25,6 @@ exports.getSubjectIcon = function(categoryName) {
   } else {
     return getDefaultSubjectIcon();
   }
-};
+}
+
+module.exports = { getDefaultSubjectIcon, getSubjectIcon };

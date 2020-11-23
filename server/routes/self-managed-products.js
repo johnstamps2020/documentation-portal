@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   getSelfManagedDocumentationPageInfo,
   getProductPageInfo,
-} = require('../controllers/selfManagedDocumentationController');
+} = require('../controllers/selfManagedProductsController');
 
 router.get('/', async function(req, res, next) {
   try {

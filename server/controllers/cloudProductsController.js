@@ -5,6 +5,7 @@ const {
   getSortedVersions,
 } = require('./helpers/metadata');
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
+const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -28,20 +29,6 @@ async function getTaxonomyFromFile(release) {
   return JSON.parse(taxonomyFileContents);
 }
 
-function findNodeById(idValue, node) {
-  if (node.id === idValue) {
-    return node;
-  }
-  if (node.items) {
-    for (const child of node.items) {
-      const result = findNodeById(idValue, child);
-      if (result) {
-        return result;
-      }
-    }
-  }
-}
-
 async function getReleasesFromTaxonomyFiles(filterId) {
   const taxonomyFiles = await fs.readdir(
     `${__dirname}/../../.teamcity/config/taxonomy/cloud`
@@ -59,21 +46,6 @@ async function getReleasesFromTaxonomyFiles(filterId) {
     }
   }
   return availableReleases;
-}
-
-function getDocsForTaxonomy(node, docsFromConfig, matchingDocs) {
-  if (!node.items && node.label) {
-    if (docsFromConfig.some(d => d.metadata.product.includes(node.label))) {
-      const filteredDocs = docsFromConfig.filter(d =>
-        d.metadata.product.includes(node.label)
-      );
-      matchingDocs.push.apply(matchingDocs, filteredDocs);
-    }
-  } else if (node.items) {
-    for (const child of node.items) {
-      getDocsForTaxonomy(child, docsFromConfig, matchingDocs);
-    }
-  }
 }
 
 async function getHighestCloudRelease() {
@@ -150,9 +122,6 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
         const categoryDocs = productFamilyItem.items.filter(i => !i.items);
 
         function getDocUrl(listOfDocs, productId) {
-          const allVersions = getSortedVersions(
-            getUniqueInMetadataFields(listOfDocs, 'version')
-          );
           const highestProductVersion = getSortedVersions(
             getUniqueInMetadataFields(listOfDocs, 'version')
           )[0];

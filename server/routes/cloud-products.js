@@ -5,7 +5,7 @@ const {
   getCloudDocumentationPageInfo,
   getProductFamilyPageInfo,
   getProductPageInfo,
-} = require('../controllers/cloudDocumentationController');
+} = require('../controllers/cloudProductsController');
 
 const cloudProductsEndpoint = '/cloudProducts';
 
