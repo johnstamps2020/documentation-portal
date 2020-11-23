@@ -633,6 +633,11 @@
           "sourceFolder": "ReleaseNotes-files/pc/2020.05",
           "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05",
           "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2020.11",
+          "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
         }
       ]
     },
