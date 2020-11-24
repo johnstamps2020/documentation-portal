@@ -1,4 +1,8 @@
-const getConfig = require('./configController');
+const {
+  getConfig,
+  getTaxonomy,
+  getReleasesFromTaxonomies,
+} = require('./configController');
 const {
   getUniqueInMetadataFields,
   getUniqueInMetadataArrays,
@@ -6,8 +10,6 @@ const {
 } = require('./helpers/metadata');
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
-const fs = require('fs').promises;
-const path = require('path');
 
 const cloudProductsEndpoint = '/cloudProducts';
 
@@ -19,33 +21,6 @@ async function getCloudDocsFromConfig() {
       doc.metadata.platform.includes('Cloud') &&
       doc.displayOnLandingPages !== false
   );
-}
-
-async function getTaxonomyFromFile(release) {
-  const taxonomyFileContents = await fs.readFile(
-    `${__dirname}/../../.teamcity/config/taxonomy/cloud/${release}.json`,
-    'utf-8'
-  );
-  return JSON.parse(taxonomyFileContents);
-}
-
-async function getReleasesFromTaxonomyFiles(filterId) {
-  const taxonomyFiles = await fs.readdir(
-    `${__dirname}/../../.teamcity/config/taxonomy/cloud`
-  );
-  const availableReleases = [];
-  for (const file of taxonomyFiles.filter(f => f.endsWith('.json'))) {
-    const release = path.basename(file, '.json');
-    if (!filterId) {
-      availableReleases.push(release);
-    } else {
-      const taxonomyFromFile = await getTaxonomyFromFile(release);
-      if (findNodeById(filterId, taxonomyFromFile)) {
-        availableReleases.push(release);
-      }
-    }
-  }
-  return availableReleases;
 }
 
 async function getHighestCloudRelease() {
@@ -71,7 +46,7 @@ async function getCloudDocumentationPageInfo(release) {
     const cloudDocsForRelease = cloudDocs.filter(d =>
       d.metadata.release.includes(release)
     );
-    const releaseTaxonomy = await getTaxonomyFromFile(release);
+    const releaseTaxonomy = await getTaxonomy(release);
     const pageTitle = releaseTaxonomy.label;
     const productFamilies = [];
     for (const productFamily of releaseTaxonomy.items) {
@@ -94,7 +69,7 @@ async function getCloudDocumentationPageInfo(release) {
       title: pageTitle,
       productFamilies: productFamilies,
       selectedRelease: release,
-      availableReleases: await getReleasesFromTaxonomyFiles(),
+      availableReleases: await getReleasesFromTaxonomies(),
     };
 
     return cloudDocumentationPageInfo;
@@ -109,7 +84,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
     const cloudDocsForRelease = cloudDocs.filter(d =>
       d.metadata.release.includes(release)
     );
-    const releaseTaxonomy = await getTaxonomyFromFile(release);
+    const releaseTaxonomy = await getTaxonomy(release);
     const productFamilyNode = findNodeById(productFamilyId, releaseTaxonomy);
     const docs = [];
     getDocsForTaxonomy(productFamilyNode, cloudDocsForRelease, docs);
@@ -199,7 +174,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
           },
         ],
         selectedRelease: release,
-        availableReleases: await getReleasesFromTaxonomyFiles(productFamilyId),
+        availableReleases: await getReleasesFromTaxonomies(productFamilyId),
       };
 
       return productFamilyPageInfo;
@@ -217,7 +192,7 @@ async function getProductPageInfo(
 ) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
-    const releaseTaxonomy = await getTaxonomyFromFile(release);
+    const releaseTaxonomy = await getTaxonomy(release);
     const productFamilyNode = findNodeById(productFamilyId, releaseTaxonomy);
     const productFamilyName = productFamilyNode.label;
     const productNode = findNodeById(productId, productFamilyNode);

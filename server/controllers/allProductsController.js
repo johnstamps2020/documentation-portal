@@ -1,4 +1,4 @@
-const getConfig = require('./configController');
+const { getConfig } = require('./configController');
 const {
   getUniqueInMetadataFields,
   getSortedVersions,

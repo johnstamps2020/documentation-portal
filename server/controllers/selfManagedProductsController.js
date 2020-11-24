@@ -1,4 +1,4 @@
-const getConfig = require('./configController');
+const { getConfig, getTaxonomy } = require('./configController');
 const {
   getUniqueInMetadataFields,
   getUniqueInMetadataArrays,
@@ -18,18 +18,10 @@ async function getSelfManagedDocsFromConfig() {
   );
 }
 
-async function getSelfManagedTaxonomyFromFile() {
-  const taxonomyFileContents = await fs.readFile(
-    `${__dirname}/../../.teamcity/config/taxonomy/self-managed.json`,
-    'utf-8'
-  );
-  return JSON.parse(taxonomyFileContents);
-}
-
 async function getSelfManagedDocumentationPageInfo() {
   try {
     const selfManagedDocs = await getSelfManagedDocsFromConfig();
-    const selfManagedTaxonomy = await getSelfManagedTaxonomyFromFile();
+    const selfManagedTaxonomy = await getTaxonomy();
     const pageTitle = selfManagedTaxonomy.label;
     const docs = [];
     getDocsForTaxonomy(selfManagedTaxonomy, selfManagedDocs, docs);
@@ -121,7 +113,7 @@ async function getSelfManagedDocumentationPageInfo() {
 async function getProductPageInfo(productId, productVersion) {
   try {
     const selfManagedDocs = await getSelfManagedDocsFromConfig();
-    const selfManagedTaxonomy = await getSelfManagedTaxonomyFromFile();
+    const selfManagedTaxonomy = await getTaxonomy();
     const productNode = findNodeById(productId, selfManagedTaxonomy);
     const productName = productNode.label;
     const productDocs = selfManagedDocs.filter(
