@@ -1,4 +1,4 @@
-exports.getUniqueInMetadataArrays = function(listOfDocs, fieldName) {
+function getUniqueInMetadataArrays(listOfDocs, fieldName) {
   let availableValues = [];
   for (const doc of listOfDocs) {
     const values = doc.metadata[fieldName];
@@ -12,9 +12,9 @@ exports.getUniqueInMetadataArrays = function(listOfDocs, fieldName) {
   }
 
   return availableValues;
-};
+}
 
-exports.getUniqueInMetadataFields = function(listOfDocs, fieldName) {
+function getUniqueInMetadataFields(listOfDocs, fieldName) {
   let availableValues = [];
   for (const doc of listOfDocs) {
     const value = doc.metadata[fieldName];
@@ -24,11 +24,22 @@ exports.getUniqueInMetadataFields = function(listOfDocs, fieldName) {
   }
 
   return availableValues;
-};
+}
 
-exports.getSortedVersions = function(listOfVersions) {
-  const sortedVersions = listOfVersions.sort(
-    (a,b) => a.replace(/\d+/g, n => +n+100).localeCompare(b.replace(/\d+/g, n => +n+100))).reverse();
-  
+function getSortedVersions(listOfVersions) {
+  const sortedVersions = listOfVersions
+    .sort((a, b) =>
+      a
+        .replace(/\d+/g, n => +n + 100)
+        .localeCompare(b.replace(/\d+/g, n => +n + 100))
+    )
+    .reverse();
+
   return sortedVersions;
 }
+
+module.exports = {
+  getUniqueInMetadataArrays,
+  getUniqueInMetadataFields,
+  getSortedVersions,
+};

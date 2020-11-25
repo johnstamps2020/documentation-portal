@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include parts/head %>
+  <body>
+    <% include parts/header %>
+    <div class="docPanelContainer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="docPageTitle docPageHeaderItems">
+              <h1 class="display-4"><%= pageInfo.title -%></h1>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="docPageHeaderItems">
+              <%- include('./parts/toggle.ejs', {selected: 'sm'}) %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="row">
+              <% pageInfo.categories.forEach(category => { -%>
+                <div class="col-sm-4 mt-3">
+                  <div class="categoryCard">
+                    <h2><%= category.label %></h2>
+                    <% category.docs.forEach(categoryDoc => { -%>
+                      <div class="docLink">
+                        <a href="<%= categoryDoc.docUrl %>"><%= categoryDoc.docLabel %></a>
+                      </div>
+                    <% }) -%>
+                    <% category.groups.forEach(group => { -%>
+                      <h3><%= group.groupLabel %></h3>
+                      <% group.groupDocs.forEach(groupDoc => { -%>
+                        <div class="docLink">
+                          <a href="<%= groupDoc.docUrl %>"><%= groupDoc.docLabel %></a>
+                        </div>
+                      <% }) -%>
+                    <% }) -%>
+                  </div>
+                </div>
+              <% }) -%>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="row">
+              <% include parts/useful-links %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include parts/footer %>
+  </body>
+</html>

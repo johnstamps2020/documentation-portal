@@ -53,7 +53,7 @@ app.use((err, req, res, next) => {
 });
 
 // session support is required to use ExpressOIDC
-app.set('trust proxy', 1)
+app.set('trust proxy', 1);
 app.use(
   session({
     secret: `${process.env.SESSION_KEY}`,
@@ -61,20 +61,19 @@ app.use(
     saveUninitialized: false,
     cookie: {
       sameSite: 'none',
-      secure: true
-    }
+      secure: true,
+    },
   })
 );
 
+const homeRouter = require('./routes/home');
 const gwLoginRouter = require('./routes/gw-login');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
-const cloudHomeRouter = require('./routes/cloud-home');
-const selfManagedLatestRouter = require('./routes/self-managed-latest');
-const selfManagedAllReleasesRouter = require('./routes/self-managed-all-releases');
-const cloudProductFamilyRouter = require('./routes/cloud-product-families');
-const allProductRouter = require('./routes/all-products');
+const cloudProductsRouter = require('./routes/cloud-products');
+const selfManagedProductsRouter = require('./routes/self-managed-products');
 const searchRouter = require('./routes/search');
+const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
@@ -150,11 +149,10 @@ app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 
-app.use('/self-managed-latest', selfManagedLatestRouter);
-app.use('/self-managed-all-releases', selfManagedAllReleasesRouter);
-app.use('/products', cloudProductFamilyRouter);
-app.use('/product', allProductRouter);
-app.use('/', cloudHomeRouter);
+app.use('/selfManagedProducts', selfManagedProductsRouter);
+app.use('/cloudProducts', cloudProductsRouter);
+app.use('/product', allProductsRouter);
+app.use('/', homeRouter);
 
 const proxyOptions = {
   target: `${process.env.DOC_S3_URL}`,

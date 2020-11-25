@@ -1,0 +1,344 @@
+{
+  "id": "guidewireCloudDocumentation",
+  "label": "Guidewire Cloud Documentation",
+  "items": [
+    {
+      "id": "policyCenterCloud",
+      "label": "PolicyCenter Cloud",
+      "items": [
+        {
+          "id": "core",
+          "label": "Core",
+          "items": [
+            {
+              "id": "pcGwCloud",
+              "label": "PolicyCenter for Guidewire Cloud"
+            },
+            {
+              "id": "isConfigUpgradeTools",
+              "label": "InsuranceSuite Configuration Upgrade Tools"
+            },
+            {
+              "id": "boStandardsBaseTemplate",
+              "label": "Businessowners Standards Based Template"
+            }
+          ]
+        },
+        {
+          "id": "data",
+          "label": "Data",
+          "items": [
+            {
+              "id": "cloudDataAccess",
+              "label": "Cloud Data Access"
+            },
+            {
+              "id": "explore",
+              "label": "Explore"
+            },
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                {
+                  "id": "dhGwCloud",
+                  "label": "DataHub for Guidewire Cloud"
+                },
+                {
+                  "id": "icGwCloud",
+                  "label": "InfoCenter for Guidewire Cloud"
+                },
+                {
+                  "id": "predictiveAnalytics",
+                  "label": "Predictive Analytics"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital",
+          "label": "Digital",
+          "items": [
+            {
+              "id": "digitalApplications",
+              "label": "Digital Applications",
+              "items": [
+                {
+                  "id": "ceAccountMgmt",
+                  "label": "CustomerEngage Account Management"
+                },
+                {
+                  "id": "ceQuoteAndBuy",
+                  "label": "CustomerEngage Quote and Buy"
+                },
+                {
+                  "id": "producerEngage",
+                  "label": "ProducerEngage"
+                },
+                {
+                  "id": "serviceRepEngage",
+                  "label": "ServiceRepEngage"
+                },
+                {
+                  "id": "digitalCodeGeneration",
+                  "label": "Digital Code Generation"
+                }
+              ]
+            },
+            {
+              "id": "digitalFramework",
+              "label": "Digital Framework",
+              "items": [
+                {
+                  "id": "jutroDesignSystem",
+                  "label": "Jutro Design System"
+                }
+              ]
+            },
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                {
+                  "id": "digitalCodeGenExtPack",
+                  "label": "Digital Code Generation Extension Pack"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "claimCenterCloud",
+      "label": "ClaimCenter Cloud",
+      "items": [
+        {
+          "id": "core",
+          "label": "Core",
+          "items": [
+            {
+              "id": "ccGwCloud",
+              "label": "ClaimCenter for Guidewire Cloud"
+            },
+            {
+              "id": "isConfigUpgradeTools",
+              "label": "InsuranceSuite Configuration Upgrade Tools"
+            }
+          ]
+        },
+        {
+          "id": "data",
+          "label": "Data",
+          "items": [
+            {
+              "id": "cloudDataAccess",
+              "label": "Cloud Data Access"
+            },
+            {
+              "id": "compare+",
+              "label": "Compare+"
+            },
+            {
+              "id": "explore",
+              "label": "Explore"
+            },
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                {
+                  "id": "dhGwCloud",
+                  "label": "DataHub for Guidewire Cloud"
+                },
+                {
+                  "id": "icGwCloud",
+                  "label": "InfoCenter for Guidewire Cloud"
+                },
+                {
+                  "id": "predictiveAnalytics",
+                  "label": "Predictive Analytics"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital",
+          "label": "Digital",
+          "items": [
+            {
+              "id": "digitalApplications",
+              "label": "Digital Applications",
+              "items": [
+                {
+                  "id": "ceAccountMgmt",
+                  "label": "CustomerEngage Account Management"
+                },
+                {
+                  "id": "ceAccountMgmtCc",
+                  "label": "CustomerEngage Account Management for ClaimCenter"
+                },
+                {
+                  "id": "producerEngage",
+                  "label": "ProducerEngage"
+                },
+                {
+                  "id": "producerEngageCc",
+                  "label": "ProducerEngage for ClaimCenter"
+                },
+                {
+                  "id": "serviceRepEngage",
+                  "label": "ServiceRepEngage"
+                },
+                {
+                  "id": "vendorEngage",
+                  "label": "VendorEngage"
+                }
+              ]
+            },
+            {
+              "id": "digitalFramework",
+              "label": "Digital Framework",
+              "items": [
+                {
+                  "id": "jutroDesignSystem",
+                  "label": "Jutro Design System"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "billingCenterCloud",
+      "label": "BillingCenter Cloud",
+      "items": [
+        {
+          "id": "core",
+          "label": "Core",
+          "items": [
+            {
+              "id": "bcGwCloud",
+              "label": "BillingCenter for Guidewire Cloud"
+            },
+            {
+              "id": "isConfigUpgradeTools",
+              "label": "InsuranceSuite Configuration Upgrade Tools"
+            }
+          ]
+        },
+        {
+          "id": "data",
+          "label": "Data",
+          "items": [
+            {
+              "id": "cloudDataAccess",
+              "label": "Cloud Data Access"
+            },
+            {
+              "id": "explore",
+              "label": "Explore"
+            },
+            {
+              "id": "addOns",
+              "label": "Add-ons",
+              "items": [
+                {
+                  "id": "dhGwCloud",
+                  "label": "DataHub for Guidewire Cloud"
+                },
+                {
+                  "id": "icGwCloud",
+                  "label": "InfoCenter for Guidewire Cloud"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital",
+          "label": "Digital",
+          "items": [
+            {
+              "id": "digitalApplications",
+              "label": "Digital Applications",
+              "items": [
+                {
+                  "id": "ceAccountMgmt",
+                  "label": "CustomerEngage Account Management"
+                },
+                {
+                  "id": "producerEngage",
+                  "label": "ProducerEngage"
+                },
+                {
+                  "id": "serviceRepEngage",
+                  "label": "ServiceRepEngage"
+                }
+              ]
+            },
+            {
+              "id": "digitalFramework",
+              "label": "Digital Framework",
+              "items": [
+                {
+                  "id": "jutroDesignSystem",
+                  "label": "Jutro Design System"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "insuranceNow",
+      "label": "InsuranceNow",
+      "items": [
+        {
+          "id": "insuranceNow",
+          "label": "InsuranceNow"
+        }
+      ]
+    },
+    {
+      "id": "guidewireCloudPlatform",
+      "label": "Guidewire Cloud Platform",
+      "items": [
+        {
+          "id": "guidewireCloudConsole",
+          "label": "Guidewire Cloud Console",
+          "items": [
+            {
+              "id": "gwCloudConsole",
+              "label": "Guidewire Cloud Console"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gwCloudStandards",
+      "label": "Guidewire Cloud Standards",
+      "items": [
+        {
+          "id": "gwCloudStandards",
+          "label": "Guidewire Cloud Standards"
+        }
+      ]
+    },
+    {
+      "id": "restApiClient",
+      "label": "REST API Client",
+      "items": [
+        {
+          "id": "restApiClient",
+          "label": "REST API Client"
+        }
+      ]
+    }
+  ]
+}
