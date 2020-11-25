@@ -1,26 +1,21 @@
-const { getConfig } = require('./configController');
+const {
+  getConfig,
+  getTaxonomy,
+  getReleasesFromTaxonomies,
+} = require('./configController');
 const {
   getUniqueInMetadataFields,
   getSortedVersions,
 } = require('./helpers/metadata');
 const { findNodeById } = require('./helpers/taxonomy');
-const fs = require('fs').promises;
-const path = require('path');
 
 async function findProductRoute(productId, productVersion) {
-  const cloudTaxonomyDir = `${__dirname}/../../.teamcity/config/taxonomy/cloud`;
-  const cloudTaxonomyFiles = (await fs.readdir(cloudTaxonomyDir)).filter(f =>
-    f.endsWith('.json')
-  );
-  const sortedCloudTaxonomyFiles = getSortedVersions(cloudTaxonomyFiles);
-  for (const taxonomyFile of sortedCloudTaxonomyFiles) {
-    const taxonomyFilePath = path.join(cloudTaxonomyDir, taxonomyFile);
-    const taxonomyFileContents = await fs.readFile(taxonomyFilePath, 'utf-8');
-    const jsonTaxonomyContents = JSON.parse(taxonomyFileContents);
+  const availableReleases = await getReleasesFromTaxonomies();
+  for (const release of getSortedVersions(availableReleases)) {
+    const jsonTaxonomyContents = await getTaxonomy(release);
     for (const productFamily of jsonTaxonomyContents.items) {
       const productNode = findNodeById(productId, productFamily);
       if (productNode) {
-        const release = path.basename(taxonomyFile, '.json');
         const productFamilyId = productFamily.id;
         const productName = productNode.label;
         const serverConfig = await getConfig();
@@ -47,13 +42,7 @@ async function findProductRoute(productId, productVersion) {
       }
     }
   }
-  const selfManagedTaxonomyFileContents = await fs.readFile(
-    `${__dirname}/../../.teamcity/config/taxonomy/self-managed.json`,
-    'utf-8'
-  );
-  const jsonSelfManagedTaxonomyFileContents = JSON.parse(
-    selfManagedTaxonomyFileContents
-  );
+  const jsonSelfManagedTaxonomyFileContents = await getTaxonomy();
   const productNode = findNodeById(
     productId,
     jsonSelfManagedTaxonomyFileContents
