@@ -87,6 +87,16 @@
               ]
             },
             {
+              "id": "digitalFramework",
+              "label": "Digital Framework",
+              "items": [
+                {
+                  "id": "jutroDesignSystem",
+                  "label": "Jutro Design System"
+                }
+              ]
+            },
+            {
               "id": "addOns",
               "label": "Add-ons",
               "items": [
@@ -187,6 +197,16 @@
                   "label": "VendorEngage"
                 }
               ]
+            },
+            {
+              "id": "digitalFramework",
+              "label": "Digital Framework",
+              "items": [
+                {
+                  "id": "jutroDesignSystem",
+                  "label": "Jutro Design System"
+                }
+              ]
             }
           ]
         }
@@ -257,6 +277,16 @@
                 {
                   "id": "serviceRepEngage",
                   "label": "ServiceRepEngage"
+                }
+              ]
+            },
+            {
+              "id": "digitalFramework",
+              "label": "Digital Framework",
+              "items": [
+                {
+                  "id": "jutroDesignSystem",
+                  "label": "Jutro Design System"
                 }
               ]
             }
