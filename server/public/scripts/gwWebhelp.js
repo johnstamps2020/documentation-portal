@@ -1,5 +1,78 @@
-//TODO: Update the script to work with the new site config
-//We can always redirect to product/version and fine tune the logic in allProductsController to handle the rest
+function findNodeByLabel(labelValue, node) {
+  if (node.label === labelValue) {
+    return node;
+  }
+  if (node.items) {
+    for (const child of node.items) {
+      const result = findNodeByLabel(labelValue, child);
+      if (result) {
+        return result;
+      }
+    }
+  }
+}
+
+async function getConfig() {
+  try {
+    const configUrl = '/portal-config/config.json';
+    const result = await fetch(configUrl);
+    return await result.json();
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
+async function getTaxonomy(release) {
+  try {
+    const taxonomyFile = release
+      ? `cloud/${release}.json`
+      : 'self-managed.json';
+    const result = await fetch(`/portal-config/taxonomy/${taxonomyFile}`);
+    const json = await result.json();
+    return json;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function findProductIdInTaxonomies(productName) {
+  try {
+    const result = await fetch('/portal-config/taxonomy/cloud/index.json');
+    const json = await result.json();
+    const taxonomyFiles = json.paths;
+    const availableReleases = [];
+    for (const file of taxonomyFiles.filter(f => f.endsWith('.json'))) {
+      const release = file
+        .split('/')
+        .pop()
+        .replace('.json', '');
+      availableReleases.push(release);
+    }
+    let productNode;
+    for (const release of availableReleases) {
+      const jsonTaxonomyContents = await getTaxonomy(release);
+      const matchingProductNode = findNodeByLabel(
+        productName,
+        jsonTaxonomyContents
+      );
+      if (matchingProductNode) {
+        productNode = matchingProductNode;
+        break;
+      }
+    }
+    if (!productNode) {
+      const jsonSelfManagedTaxonomyContents = await getTaxonomy();
+      productNode = findNodeByLabel(
+        productName,
+        jsonSelfManagedTaxonomyContents
+      );
+    }
+    return productNode.id;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
@@ -9,20 +82,9 @@ async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
     searchUrl.searchParams.append('q', `${searchQuery}`);
     searchUrl.searchParams.append('product', `${docProduct}`);
     searchUrl.searchParams.append('version', `${docVersion}`);
-    const response = await fetch(searchUrl);
+    const response = await fetch(searchUrl.href);
     const responseBody = await response.json();
     return responseBody[0]?.href;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-}
-
-async function getConfig() {
-  try {
-    const configUrl = '/portal-config/config.json';
-    const result = await fetch(configUrl);
-    return await result.json();
   } catch (err) {
     console.log(err);
     return null;
@@ -48,17 +110,18 @@ async function getVersions() {
     );
 
     const versions = [];
-    docsFromConfig.forEach(doc => {
+    for (doc of docsFromConfig) {
       const sameVersionDocs = docsFromConfig.filter(
         d => d.metadata.version === doc.metadata.version
       );
       if (sameVersionDocs.length > 1) {
+        const productId = await findProductIdInTaxonomies(product[0]);
         const productVersionPageUrl =
           baseUrl +
           '/' +
           'product' +
           '/' +
-          product[0].toLowerCase().replace(/\W/g, '-') +
+          productId +
           '/' +
           doc.metadata.version;
         if (!versions.some(ver => ver.link === productVersionPageUrl)) {
@@ -80,7 +143,7 @@ async function getVersions() {
           });
         }
       }
-    });
+    }
 
     versions
       .sort((a, b) =>
@@ -178,14 +241,9 @@ async function addTopLinkToBreadcrumbs() {
         d.displayOnLandingPages !== false
     );
     if (sameVersionDocs.length > 1) {
+      const productId = await findProductIdInTaxonomies(product);
       const productVersionPageUrl =
-        baseUrl +
-        '/' +
-        'product' +
-        '/' +
-        product.toLowerCase().replace(/\W/g, '-') +
-        '/' +
-        version;
+        baseUrl + '/' + 'product' + '/' + productId + '/' + version;
       const listItem = document.createElement('li');
       const topicrefSpan = document.createElement('span');
       topicrefSpan.setAttribute('class', 'topicref');
