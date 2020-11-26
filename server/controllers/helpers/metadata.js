@@ -38,8 +38,27 @@ function getSortedVersions(listOfVersions) {
   return sortedVersions;
 }
 
+function resolveUrl(url) {
+  /**
+   * If you provide a relative URL without the base, new URL() throws a TypeError.
+   * This way, you can check if the URL is absolute or relative.
+   */
+  let resolvedUrl;
+  try {
+    new URL(url);
+    resolvedUrl = url;
+  } catch (err) {
+    if (err instanceof TypeError) {
+      resolvedUrl = `/${url}`;
+    }
+  } finally {
+    return resolvedUrl;
+  }
+}
+
 module.exports = {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
   getSortedVersions,
+  resolveUrl,
 };

@@ -3,6 +3,7 @@ const {
   getUniqueInMetadataFields,
   getUniqueInMetadataArrays,
   getSortedVersions,
+  resolveUrl,
 } = require('./helpers/metadata');
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
@@ -40,7 +41,7 @@ async function getSelfManagedDocumentationPageInfo() {
             d.displayOnLandingPages !== false
         );
         if (docsForHighestVersion.length === 1) {
-          return `/${docsForHighestVersion[0]?.url}`;
+          return resolveUrl(docsForHighestVersion[0]?.url);
         } else if (docsForHighestVersion.length > 1) {
           return `/selfManagedProducts/${productId}/${highestProductVersion}`;
         }
@@ -138,7 +139,10 @@ async function getProductPageInfo(productId, productVersion) {
       if (docsInSubject.length > 0) {
         docsWithSubject.push({
           subjectName: subject,
-          subjectDocs: docsInSubject,
+          subjectDocs: docsInSubject.map(d => ({
+            ...d,
+            url: resolveUrl(d.url),
+          })),
           subjectIcon: getSubjectIcon(subject),
         });
       }
@@ -148,10 +152,14 @@ async function getProductPageInfo(productId, productVersion) {
     if (docsWithoutSubject && docsWithoutSubject.length > 0) {
       docsWithSubject.push({
         subjectName: 'Documents',
-        subjectDocs: docsWithoutSubject,
+        subjectDocs: docsWithoutSubject.map(d => ({
+          ...d,
+          url: resolveUrl(d.url),
+        })),
         subjectIcon: getDefaultSubjectIcon(),
       });
     }
+
     const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
