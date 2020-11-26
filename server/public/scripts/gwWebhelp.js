@@ -1,3 +1,6 @@
+//TODO: Update the script to work with the new site config
+//We can always redirect to product/version and fine tune the logic in allProductsController to handle the rest
+
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;

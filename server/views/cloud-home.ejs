@@ -42,9 +42,12 @@
                 <div class="row">
                     <% pageInfo.productFamilies.forEach(family => { -%>
                         <div class="col-sm-4">
-                            <a href="<%= family.url %>" class="productCard"
-                            ><%= family.label %></a
-                            >
+                            <% if (family.url.startsWith('http://') || family.url.startsWith('https://')) { -%>
+                                <a href="<%= family.url %>" class="productCard" target="_blank"
+                                   rel="noopener noreferrer"><%= family.label %></a>
+                            <% } else { -%>
+                                <a href="<%= family.url %>" class="productCard"><%= family.label %></a>
+                            <% } %>
                         </div>
                     <% }); -%>
                 </div>

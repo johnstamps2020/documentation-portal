@@ -22,7 +22,7 @@ router.get('/:productId/:productVersion', async function(req, res, next) {
     const productPageInfo = await getProductPageInfo(productId, productVersion);
     const subjects = productPageInfo.subjects;
     if (subjects.length === 1 && subjects[0].subjectDocs.length === 1) {
-      res.redirect('/' + subjects[0].subjectDocs[0].url);
+      res.redirect(subjects[0].subjectDocs[0].url);
     } else {
       res.render('grouped-links', {
         pageInfo: productPageInfo,
