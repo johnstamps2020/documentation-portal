@@ -21,6 +21,10 @@
         {
           "id": "isConfigUpgradeTools",
           "label": "InsuranceSuite Configuration Upgrade Tools"
+        },
+        {
+          "id": "restApiClient",
+          "label": "REST API Client"
         }
       ]
     },
@@ -39,6 +43,10 @@
             {
               "id": "ic",
               "label": "InfoCenter"
+            },
+            {
+              "id": "businessAnalytics",
+              "label": "Business Analytics"
             }
           ]
         }

@@ -309,7 +309,7 @@
       "label": "Guidewire Cloud Platform",
       "items": [
         {
-          "id": "guidewireCloudConsole",
+          "id": "gwCloudConsole",
           "label": "Guidewire Cloud Console",
           "items": [
             {
@@ -317,6 +317,26 @@
               "label": "Guidewire Cloud Console"
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "restApiClient",
+      "label": "REST API Client",
+      "items": [
+        {
+          "id": "restApiClient",
+          "label": "REST API Client"
+        }
+      ]
+    },
+    {
+      "id": "testingFrameworks",
+      "label": "Testing Frameworks",
+      "items": [
+        {
+          "id": "testingFrameworks",
+          "label": "Testing Frameworks"
         }
       ]
     },
@@ -331,12 +351,28 @@
       ]
     },
     {
-      "id": "restApiClient",
-      "label": "REST API Client",
+      "id": "gwFeaturePreview",
+      "label": "Guidewire Feature Preview",
       "items": [
         {
-          "id": "restApiClient",
-          "label": "REST API Client"
+          "id": "earlyAccess",
+          "label": "Early Access",
+          "items": [
+            {
+              "id": "gwFeaturePreview",
+              "label": "Guidewire Feature Preview"
+            }
+          ]
+        },
+        {
+          "id": "internalDraft",
+          "label": "Internal Draft",
+          "items": [
+            {
+              "id": "gwFeaturePreview",
+              "label": "Guidewire Feature Preview"
+            }
+          ]
         }
       ]
     }
