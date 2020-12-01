@@ -1070,69 +1070,6 @@
       ]
     },
     {
-      "id": "cloudbc202011",
-      "title": "BillingCenter for Guidewire Cloud",
-      "url": "cloud/bc/202011",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "2020.11",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "staging",
-        "prod"
-      ]
-    },
-    {
-      "id": "cloudcc202011",
-      "title": "ClaimCenter for Guidewire Cloud",
-      "url": "cloud/cc/202011",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter for Guidewire Cloud"
-        ],
-        "version": "2020.11",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "staging",
-        "prod"
-      ]
-    },
-    {
-      "id": "cloudpc202011",
-      "title": "PolicyCenter for Guidewire Cloud",
-      "url": "cloud/pc/202011",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "2020.11",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "staging",
-        "prod"
-      ]
-    },
-    {
       "id": "cloudbc202005",
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/202005",
@@ -6694,30 +6631,9 @@
       ]
     },
     {
-      "id": "isnoxbookconfigupgradetools",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0",
-      "url": "test/isconfigupgradetools/320",
-      "metadata": {
-        "platform": [
-          "Cloud",
-          "Self-managed"
-        ],
-        "product": [
-          "InsuranceSuite Configuration Upgrade Tools"
-        ],
-        "version": "3.2.0",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookreleasenotes",
+      "id": "isbc202011releasenotes",
       "title": "Release Notes",
-      "url": "test/bc/releasenotes",
+      "url": "cloud/bc/202011/releasenotes",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6725,7 +6641,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6734,13 +6650,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbooknewandchanged",
+      "id": "isbc202011newandchanged",
       "title": "New and Changed",
-      "url": "test/bc/newandchanged",
+      "url": "cloud/bc/202011/newandchanged",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6748,7 +6664,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6757,13 +6673,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookupgrade",
+      "id": "isbc202011upgrade",
       "title": "Upgrade",
-      "url": "test/bc/upgrade",
+      "url": "cloud/bc/202011/upgrade",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6771,7 +6687,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6780,13 +6696,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookapp",
+      "id": "isbc202011app",
       "title": "Application Guide",
-      "url": "test/bc/app",
+      "url": "cloud/bc/202011/app",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6794,7 +6710,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6803,13 +6719,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookadmin",
+      "id": "isbc202011admin",
       "title": "Administration",
-      "url": "test/bc/admin",
+      "url": "cloud/bc/202011/admin",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6817,7 +6733,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6826,13 +6742,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookbestpractice",
+      "id": "isbc202011bestpractice",
       "title": "Best Practices",
-      "url": "test/bc/bestpractice",
+      "url": "cloud/bc/202011/bestpractice",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6840,7 +6756,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6849,13 +6765,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookconfig",
+      "id": "isbc202011config",
       "title": "Configuration",
-      "url": "test/bc/config",
+      "url": "cloud/bc/202011/config",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6863,7 +6779,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6872,13 +6788,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookglobal",
+      "id": "isbc202011global",
       "title": "Globalization",
-      "url": "test/bc/global",
+      "url": "cloud/bc/202011/global",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6886,7 +6802,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6895,13 +6811,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookrules",
+      "id": "isbc202011rules",
       "title": "Rules",
-      "url": "test/bc/rules",
+      "url": "cloud/bc/202011/rules",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6909,7 +6825,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6918,13 +6834,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookinteg",
+      "id": "isbc202011integ",
       "title": "Integration",
-      "url": "test/bc/integration",
+      "url": "cloud/bc/202011/integration",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6932,7 +6848,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6941,13 +6857,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookgosu",
+      "id": "isbc202011gosu",
       "title": "Gosu Reference",
-      "url": "test/bc/gosu",
+      "url": "cloud/bc/202011/gosu",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6955,7 +6871,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6964,13 +6880,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbooktesting",
+      "id": "isbc202011testing",
       "title": "Testing",
-      "url": "test/bc/testing",
+      "url": "cloud/bc/202011/testing",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6978,7 +6894,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6987,13 +6903,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookinstall",
+      "id": "isbc202011install",
       "title": "Installation",
-      "url": "test/bc/installation",
+      "url": "cloud/bc/202011/installation",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7001,7 +6917,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7010,13 +6926,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookreleasenotes",
+      "id": "iscc202011releasenotes",
       "title": "Release Notes",
-      "url": "test/cc/releasenotes",
+      "url": "cloud/cc/202011/releasenotes",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7024,7 +6940,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7033,13 +6949,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbooknewandchanged",
+      "id": "iscc202011newandchanged",
       "title": "New and Changed",
-      "url": "test/cc/newandchanged",
+      "url": "cloud/cc/202011/newandchanged",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7047,7 +6963,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7056,13 +6972,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookupgrade",
+      "id": "iscc202011upgrade",
       "title": "Upgrade",
-      "url": "test/cc/upgrade",
+      "url": "cloud/cc/202011/upgrade",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7070,7 +6986,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7079,13 +6995,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookapp",
+      "id": "iscc202011app",
       "title": "Application Guide",
-      "url": "test/cc/app",
+      "url": "cloud/cc/202011/app",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7093,7 +7009,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7102,13 +7018,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookadmin",
+      "id": "iscc202011admin",
       "title": "Administration",
-      "url": "test/cc/admin",
+      "url": "cloud/cc/202011/admin",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7116,7 +7032,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7125,13 +7041,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookbestpractice",
+      "id": "iscc202011bestpractice",
       "title": "Best Practices",
-      "url": "test/cc/bestpractice",
+      "url": "cloud/cc/202011/bestpractice",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7139,7 +7055,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7148,13 +7064,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookconfig",
+      "id": "iscc202011config",
       "title": "Configuration",
-      "url": "test/cc/config",
+      "url": "cloud/cc/202011/config",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7162,7 +7078,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7171,13 +7087,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookglobal",
+      "id": "iscc202011global",
       "title": "Globalization",
-      "url": "test/cc/global",
+      "url": "cloud/cc/202011/global",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7185,7 +7101,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7194,13 +7110,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookrules",
+      "id": "iscc202011rules",
       "title": "Rules",
-      "url": "test/cc/rules",
+      "url": "cloud/cc/202011/rules",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7208,7 +7124,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7217,13 +7133,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookinteg",
+      "id": "iscc202011integ",
       "title": "Integration",
-      "url": "test/cc/integration",
+      "url": "cloud/cc/202011/integration",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7231,7 +7147,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7240,13 +7156,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookcloudapi",
+      "id": "iscc202011cloudapi",
       "title": "Cloud API",
-      "url": "test/cc/cloudapi",
+      "url": "cloud/cc/202011/cloudapi",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7254,7 +7170,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7263,13 +7179,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookgosu",
+      "id": "iscc202011gosu",
       "title": "Gosu Reference",
-      "url": "test/cc/gosu",
+      "url": "cloud/cc/202011/gosu",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7277,7 +7193,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7286,13 +7202,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbooktesting",
+      "id": "iscc202011testing",
       "title": "Testing",
-      "url": "test/cc/testing",
+      "url": "cloud/cc/202011/testing",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7300,7 +7216,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7309,13 +7225,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookrestapi",
+      "id": "iscc202011restapi",
       "title": "REST API Framework",
-      "url": "test/cc/restapi",
+      "url": "cloud/cc/202011/restapi",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7323,7 +7239,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7332,13 +7248,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscccloudnoxbookinstall",
+      "id": "iscc202011install",
       "title": "Installation",
-      "url": "test/cc/installation",
+      "url": "cloud/cc/202011/installation",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7346,7 +7262,7 @@
         "product": [
           "ClaimCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7355,13 +7271,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookreleasenotes",
+      "id": "ispc202011releasenotes",
       "title": "Release Notes",
-      "url": "test/pc/releasenotes",
+      "url": "cloud/pc/202011/releasenotes",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7369,7 +7285,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7378,13 +7294,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbooknewandchanged",
+      "id": "ispc202011newandchanged",
       "title": "New and Changed",
-      "url": "test/pc/newandchanged",
+      "url": "cloud/pc/202011/newandchanged",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7392,7 +7308,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7401,13 +7317,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookupgrade",
+      "id": "ispc202011upgrade",
       "title": "Upgrade",
-      "url": "test/pc/upgrade",
+      "url": "cloud/pc/202011/upgrade",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7415,7 +7331,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7424,13 +7340,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookapp",
+      "id": "ispc202011app",
       "title": "Application Guide",
-      "url": "test/pc/app",
+      "url": "cloud/pc/202011/app",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7438,7 +7354,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7447,13 +7363,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookadmin",
+      "id": "ispc202011admin",
       "title": "Administration",
-      "url": "test/pc/admin",
+      "url": "cloud/pc/202011/admin",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7461,7 +7377,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7470,13 +7386,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookbestpractice",
+      "id": "ispc202011bestpractice",
       "title": "Best Practices",
-      "url": "test/pc/bestpractice",
+      "url": "cloud/pc/202011/bestpractice",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7484,7 +7400,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7493,13 +7409,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookapd",
+      "id": "ispc202011apd",
       "title": "Advanced Product Designer",
-      "url": "test/pc/apd",
+      "url": "cloud/pc/202011/apd",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7507,7 +7423,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7516,13 +7432,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookconfig",
+      "id": "ispc202011config",
       "title": "Configuration",
-      "url": "test/pc/config",
+      "url": "cloud/pc/202011/config",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7530,7 +7446,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7539,13 +7455,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookglobal",
+      "id": "ispc202011global",
       "title": "Globalization",
-      "url": "test/pc/global",
+      "url": "cloud/pc/202011/global",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7553,7 +7469,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7562,13 +7478,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookrules",
+      "id": "ispc202011rules",
       "title": "Rules",
-      "url": "test/pc/rules",
+      "url": "cloud/pc/202011/rules",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7576,7 +7492,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7585,13 +7501,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookpd",
+      "id": "ispc202011pd",
       "title": "Product Designer",
-      "url": "test/pc/pd",
+      "url": "cloud/pc/202011/pd",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7599,7 +7515,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7608,13 +7524,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookpm",
+      "id": "ispc202011pm",
       "title": "Product Model",
-      "url": "test/pc/productmodel",
+      "url": "cloud/pc/202011/productmodel",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7622,7 +7538,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7631,13 +7547,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookinteg",
+      "id": "ispc202011integ",
       "title": "Integration",
-      "url": "test/pc/integration",
+      "url": "cloud/pc/202011/integration",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7645,7 +7561,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7654,13 +7570,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookcloudapi",
+      "id": "ispc202011cloudapi",
       "title": "Cloud API",
-      "url": "test/pc/cloudapi",
+      "url": "cloud/pc/202011/cloudapi",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7668,7 +7584,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7677,13 +7593,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookgosu",
+      "id": "ispc202011gosu",
       "title": "Gosu Reference",
-      "url": "test/pc/gosu",
+      "url": "cloud/pc/202011/gosu",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7691,7 +7607,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7700,13 +7616,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbooktesting",
+      "id": "ispc202011testing",
       "title": "Testing",
-      "url": "test/pc/testing",
+      "url": "cloud/pc/202011/testing",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7714,7 +7630,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7723,13 +7639,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookrestapi",
+      "id": "ispc202011restapi",
       "title": "REST API Framework",
-      "url": "test/pc/restapi",
+      "url": "cloud/pc/202011/restapi",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7737,7 +7653,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7746,13 +7662,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "ispccloudnoxbookinstall",
+      "id": "ispc202011install",
       "title": "Installation",
-      "url": "test/pc/installation",
+      "url": "cloud/pc/202011/installation",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7760,7 +7676,7 @@
         "product": [
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7769,13 +7685,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscloudnoxbookcontact",
+      "id": "is202011contact",
       "title": "Contact Management",
-      "url": "test/is/contact",
+      "url": "cloud/is/202011/contact",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7785,7 +7701,7 @@
           "ClaimCenter for Guidewire Cloud",
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -7794,13 +7710,13 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {
-      "id": "iscloudnoxbookglossary",
+      "id": "is202011glossary",
       "title": "Glossary",
-      "url": "test/is/glossary",
+      "url": "cloud/is/202011/glossary",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7810,7 +7726,7 @@
           "ClaimCenter for Guidewire Cloud",
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
         "subject": [
           "Glossary"
         ],
@@ -7819,7 +7735,7 @@
         ]
       },
       "environments": [
-        "dev"
+        "dev", "staging", "prod"
       ]
     },
     {

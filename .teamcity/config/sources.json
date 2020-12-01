@@ -48,7 +48,8 @@
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/_supermap-202011.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval"
       ]
     },
     {
