@@ -6650,7 +6650,7 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod", "staging", "prod"
+        "dev", "staging", "prod"
       ]
     },
     {
