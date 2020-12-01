@@ -1319,9 +1319,9 @@ object HelperObjects {
             }
         })
 
-        class PublishToS3IndexProd(publish_path: String, doc_id: String) : BuildType({
+        class PublishToS3IndexProd(publish_path: String, doc_id: String, prod_name: String) : BuildType({
             templates(CrawlDocumentAndUpdateSearchIndex)
-            id = RelativeId(removeSpecialCharacters("prod$doc_id"))
+            id = RelativeId(removeSpecialCharacters("prod$doc_id$prod_name"))
             name = "Copy from staging to prod"
 
             params {
@@ -1425,7 +1425,7 @@ object HelperObjects {
 
         for (env in environments) {
             if (env == "prod") {
-                builds.add(PublishToS3IndexProd(publishPath, docId))
+                builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
             } else {
                 builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
