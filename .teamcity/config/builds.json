@@ -548,63 +548,6 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "_supermap-202011.ditamap",
-      "srcId": "cloudis202011src",
-      "docId": "cloudbc202011",
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/bc/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/bc/2020.11",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "_supermap-202011.ditamap",
-      "srcId": "cloudis202011src",
-      "docId": "cloudcc202011",
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/cc/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2020.11",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "_supermap-202011.ditamap",
-      "srcId": "cloudis202011src",
-      "docId": "cloudpc202011",
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/pc/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/pc/2020.11",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "_supermap-202005.ditamap",
       "srcId": "cloudis202005src",
       "docId": "cloudbc202005",
@@ -1448,7 +1391,12 @@
       "resources": [
         {
           "sourceFolder": "ReleaseNotes-files/cc/2020.11",
-          "targetFolder": "..extras/ReleaseNotes-files/cc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -1575,7 +1523,12 @@
       "resources": [
         {
           "sourceFolder": "ReleaseNotes-files/pc/2020.11",
-          "targetFolder": "../extras/ReleaseNotes-files/pc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
