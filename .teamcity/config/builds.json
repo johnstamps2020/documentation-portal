@@ -1324,386 +1324,412 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "releasenotes/ReleaseNotes-cloud.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookreleasenotes",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "Other/ReleaseNotesBook-banff.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011releasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/2020.11",
+          "targetFolder": "../extras/ReleaseNotes-files/bc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "../extras/ReleaseNotes-files/cm/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/NewAndChangedGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011newandchanged",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "NewAndChangedGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbooknewandchanged",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
+      "filter": "Other/IS-BillingCenter-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
-      "docId": "isbccloudnoxbookupgrade"
+      "docId": "isbc202011upgrade"
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "BC-AppGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookapp",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/BC-AppGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011app",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "AdminGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookadmin",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/AdminGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011admin",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookbestpractice",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/BestPracticesGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011bestpractice",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "ConfigGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookconfig",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/ConfigGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011config",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "GlobalizationGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookglobal",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/GlobalizationGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011global",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "RulesGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookrules",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/RulesGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011rules",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "IntegrationGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookinteg",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/IntegrationGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011integ",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookgosu",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/GosuRefGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011gosu",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "TestingGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbooktesting",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/TestingGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011testing",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "isbccloudnoxbookinstall",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "cloud/active/InstallGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011install",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "releasenotes/ReleaseNotes-cloud.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookreleasenotes",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "Other/ReleaseNotesBook-banff.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011releasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2020.11",
+          "targetFolder": "..extras/ReleaseNotes-files/cc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/NewAndChangedGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011newandchanged",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "NewAndChangedGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbooknewandchanged",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
+      "filter": "Other/IS-ClaimCenter-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
-      "docId": "iscccloudnoxbookupgrade"
+      "docId": "iscc202011upgrade"
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "CC-AppGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookapp",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/CC-AppGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011app",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "AdminGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookadmin",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/AdminGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011admin",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookbestpractice",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/BestPracticesGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011bestpractice",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "ConfigGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookconfig",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/ConfigGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011config",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "GlobalizationGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookglobal",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/GlobalizationGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011global",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "RulesGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookrules",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/RulesGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011rules",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "IntegrationGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookinteg",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/IntegrationGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011integ",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookcloudapi",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/CloudAPIGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011cloudapi",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookgosu",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/GosuRefGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011gosu",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "TestingGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbooktesting",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/TestingGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011testing",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookrestapi",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011restapi",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscccloudnoxbookinstall",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "cloud/active/InstallGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011install",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "releasenotes/ReleaseNotes-cloud.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookreleasenotes",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "Other/ReleaseNotesBook-banff.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011releasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2020.11",
+          "targetFolder": "../extras/ReleaseNotes-files/pc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/NewAndChangedGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011newandchanged",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "NewAndChangedGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbooknewandchanged",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
+      "filter": "Other/IS-PolicyCenter-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
-      "docId": "ispccloudnoxbookupgrade"
+      "docId": "ispc202011upgrade"
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "PC-AppGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookapp",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/PC-AppGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011app",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "AdminGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookadmin",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/AdminGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011admin",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookbestpractice",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/BestPracticesGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011bestpractice",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "AdvancedProductDesigner.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookapd",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/AdvancedProductDesigner.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011apd",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "ConfigGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookconfig",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/ConfigGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011config",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "GlobalizationGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookglobal",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/GlobalizationGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011global",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "RulesGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookrules",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/RulesGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011rules",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "ProductDesignerGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookpd",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/ProductDesignerGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011pd",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "ProductModelGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookpm",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/ProductModelGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011pm",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "IntegrationGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookinteg",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/IntegrationGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011integ",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookcloudapi",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/CloudAPIGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011cloudapi",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookgosu",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/GosuRefGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011gosu",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "TestingGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbooktesting",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/TestingGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011testing",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookrestapi",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011restapi",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "ispccloudnoxbookinstall",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "cloud/active/InstallGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011install",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "ContactMgmtGuide.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscloudnoxbookcontact",
+      "filter": "IS-CM-Cloud-Release.ditaval",
+      "root": "cloud/active/ContactMgmtGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "is202011contact",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "Glossary.ditamap",
-      "srcId": "cloudisnoxbook",
-      "docId": "iscloudnoxbookglossary",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "cloud/active/Glossary.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "is202011glossary",
       "indexRedirect": true
     }
   ]
