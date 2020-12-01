@@ -291,6 +291,14 @@
     },
     {
       "buildType": "dita",
+      "root": "guidewire_cloud_platform_guide.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestsrc",
+      "docId": "cloudconsoleroot"
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",

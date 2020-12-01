@@ -513,11 +513,10 @@
       ]
     },
     {
-      "id": "guidewirecloudconsole",
+      "id": "guidewirecloudconsolelatestsrc",
       "title": "Guidewire Cloud Console",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
-      "branch": "feature/modular-builds"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git"
     },
     {
       "id": "selfmanagedis1011src",
