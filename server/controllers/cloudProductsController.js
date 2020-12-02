@@ -202,7 +202,6 @@ async function getProductPageInfo(
       d =>
         d.metadata.release.includes(release) &&
         d.metadata.product.includes(productName) &&
-        d.metadata.version === productVersion &&
         d.displayOnLandingPages !== false
     );
     const docsInVersion = productDocs.filter(
