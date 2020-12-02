@@ -46,6 +46,7 @@
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/_supermap-202011.ditamap",
+        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-banff.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
