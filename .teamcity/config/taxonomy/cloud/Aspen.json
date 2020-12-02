@@ -261,6 +261,14 @@
         {
           "id": "insuranceNow",
           "label": "InsuranceNow"
+        },
+        {
+          "id": "insuranceNow20201xExt",
+          "label": "InsuranceNow 2020.1x - External Audience"
+        },
+        {
+          "id": "insuranceNow20201xInt",
+          "label": "InsuranceNow 2020.1x - Internal Audience"
         }
       ]
     },
