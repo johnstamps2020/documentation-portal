@@ -120,7 +120,6 @@ async function getProductPageInfo(productId, productVersion) {
     const productDocs = selfManagedDocs.filter(
       d =>
         d.metadata.product.includes(productName) &&
-        d.metadata.version === productVersion &&
         d.displayOnLandingPages !== false
     );
     const docsInVersion = productDocs.filter(
