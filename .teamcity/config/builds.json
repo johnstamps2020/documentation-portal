@@ -1352,6 +1352,14 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "RESTAPIClientGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "isbc202011restapiclient",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "cloudis202011src",
       "docId": "isbc202011install",
@@ -1476,9 +1484,17 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "RESTAPIClientGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "iscc202011restapiclient",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "cloudis202011src",
-      "docId": "iscc202011restapi",
+      "docId": "iscc202011restapifw",
       "indexRedirect": true
     },
     {
@@ -1632,9 +1648,17 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "RESTAPIClientGuide.ditamap",
+      "srcId": "cloudis202011src",
+      "docId": "ispc202011restapiclient",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "cloudis202011src",
-      "docId": "ispc202011restapi",
+      "docId": "ispc202011restapifw",
       "indexRedirect": true
     },
     {
