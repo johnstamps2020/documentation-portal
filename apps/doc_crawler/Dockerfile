@@ -1,4 +1,4 @@
-FROM artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster AS app-builder
+FROM artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster AS app-builder
 
 COPY doc_crawler /opt/app/doc_crawler
 COPY poetry.lock /opt/app
@@ -8,7 +8,7 @@ WORKDIR /opt/app
 RUN pip install poetry
 RUN poetry build -f wheel
 
-FROM artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster
+FROM artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster
 
 RUN apt-get update && apt-get install -y build-essential \
     && apt-get install -y curl
