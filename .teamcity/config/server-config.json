@@ -6841,6 +6841,29 @@
       ]
     },
     {
+      "id": "isbc202011restapiclient",
+      "title": "REST API Client",
+      "url": "cloud/bc/202011/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev", "staging", "prod"
+      ]
+    },
+    {
       "id": "isbc202011install",
       "title": "Installation",
       "url": "cloud/bc/202011/installation",
@@ -7163,9 +7186,32 @@
       ]
     },
     {
-      "id": "iscc202011restapi",
+      "id": "iscc202011restapiclient",
+      "title": "REST API Client",
+      "url": "cloud/cc/202011/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev", "staging", "prod"
+      ]
+    },
+    {
+      "id": "iscc202011restapifw",
       "title": "REST API Framework",
-      "url": "cloud/cc/202011/restapi",
+      "url": "cloud/cc/202011/restapiframework",
       "metadata": {
         "platform": [
           "Cloud"
@@ -7577,9 +7623,32 @@
       ]
     },
     {
-      "id": "ispc202011restapi",
+      "id": "ispc202011restapiclient",
+      "title": "REST API Client",
+      "url": "cloud/pc/202011/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev", "staging", "prod"
+      ]
+    },
+    {
+      "id": "ispc202011restapifw",
       "title": "REST API Framework",
-      "url": "cloud/pc/202011/restapi",
+      "url": "cloud/pc/202011/restapiframework",
       "metadata": {
         "platform": [
           "Cloud"
