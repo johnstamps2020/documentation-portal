@@ -335,8 +335,8 @@
       ]
     },
     {
-      "id": "restApiClient",
-      "label": "REST API Client",
+      "id": "integrationFramework",
+      "label": "Integration Framework",
       "items": [
         {
           "id": "restApiClient",

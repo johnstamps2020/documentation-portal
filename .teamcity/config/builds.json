@@ -111,30 +111,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Cloud-Release.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide202011src",
-      "docId": "cloudbcupgradeguide202011"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Cloud-Release.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide202011src",
-      "docId": "cloudccupgradeguide202011"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Cloud-Release.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide202011src",
-      "docId": "cloudpcupgradeguide202011"
-    },
-    {
-      "buildType": "dita",
       "filter": "Other/GW-Generic-Draft.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
