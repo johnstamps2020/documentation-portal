@@ -1,4 +1,4 @@
-FROM artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster AS app-builder
+FROM artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster AS app-builder
 
 COPY config_deployer /opt/app/config_deployer
 COPY poetry.lock /opt/app
@@ -8,7 +8,7 @@ WORKDIR /opt/app
 RUN pip install poetry
 RUN poetry build -f wheel
 
-FROM artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster
+FROM artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster
 
 COPY --from=app-builder /opt/app/dist/config_deployer-1.0.0-py3-none-any.whl /opt/app/
 WORKDIR /opt/app

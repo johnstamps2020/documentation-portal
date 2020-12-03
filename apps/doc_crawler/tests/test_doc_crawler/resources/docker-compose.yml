@@ -6,7 +6,7 @@ version: '3'
 services:
   docsearch:
     network_mode: ${TEST_ENVIRONMENT_DOCKER_NETWORK}
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    image: artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.5.1
     environment:
       - cluster.name=es-docker-cluster
       - discovery.type=single-node
