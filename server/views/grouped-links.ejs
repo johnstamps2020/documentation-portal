@@ -6,30 +6,32 @@
 <div class="docPanelContainer">
     <div class="container">
         <div class="row">
-            <div class="docPageTitle docPageHeaderItems">
-                <% const breadcrumb = pageInfo.breadcrumb -%>
-                <% include parts/breadcrumb %>
-                <h1><%= pageInfo.title %></h1>
-                <% if(pageInfo.sortedVersions.length > 1) { -%>
-                    <script>
-                        function selectRelease() {
-                            const selectedRelease = document.getElementById("releaseSelector").value;
-                            window.location.replace(selectedRelease);
-                        }
-                    </script>
-                    <label for="releaseSelector">Select version:
-                        <select onchange="selectRelease()" id="releaseSelector">
-                            <% pageInfo.sortedVersions.forEach(version => { -%>
-                                <option
-                                        value="<%= version -%>"
-                                        <%= version === pageInfo.selectedVersion ? 'selected="selected"' : '' %>
-                                >
-                                    <%= version -%>
-                                </option>
-                            <% }); -%>
-                        </select>
-                    </label>
-                <% }; -%>
+            <div class="col">
+                <div class="docPageTitle docPageHeaderItems">
+                    <% const breadcrumb = pageInfo.breadcrumb -%>
+                    <% include parts/breadcrumb %>
+                    <h1><%= pageInfo.title %></h1>
+                    <% if(pageInfo.sortedVersions.length > 1) { -%>
+                        <script>
+                            function selectRelease() {
+                                const selectedRelease = document.getElementById("releaseSelector").value;
+                                window.location.replace(selectedRelease);
+                            }
+                        </script>
+                        <label for="releaseSelector">Select version:
+                            <select onchange="selectRelease()" id="releaseSelector">
+                                <% pageInfo.sortedVersions.forEach(version => { -%>
+                                    <option
+                                            value="<%= version -%>"
+                                            <%= version === pageInfo.selectedVersion ? 'selected="selected"' : '' %>
+                                    >
+                                        <%= version -%>
+                                    </option>
+                                <% }); -%>
+                            </select>
+                        </label>
+                    <% }; -%>
+                </div>
             </div>
         </div>
         <div class="row">
