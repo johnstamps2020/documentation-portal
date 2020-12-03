@@ -35,28 +35,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="wh_categories">
-                <% pageInfo.subjects.forEach(subject => { -%>
-                    <div class="wh_category">
-                        <div class="wh_category_header">
-                            <div class="<%= subject.subjectIcon -%>"></div>
-                            <div class="wh_category_header_text"><%= subject.subjectName %></div>
+            <div class="col">
+                <div class="wh_categories">
+                    <% pageInfo.subjects.forEach(subject => { -%>
+                        <div class="wh_category">
+                            <div class="wh_category_header">
+                                <div class="<%= subject.subjectIcon -%>"></div>
+                                <div class="wh_category_header_text"><%= subject.subjectName %></div>
+                            </div>
+                            <ul class="wh_category_items">
+                                <% subject.subjectDocs.forEach(doc => { -%>
+                                    <li class="wh_category_item">
+                        <span class="topicref">
+                            <% if (doc.url.startsWith('http://') || doc.url.startsWith('https://')) { -%>
+                                <a href="<%= doc.url %>" target="_blank" rel="noopener noreferrer"><%= doc.title %></a>
+                            <% } else { -%>
+                                <a href="<%= doc.url %>"><%= doc.title %></a>
+                            <% } %>
+                        </span>
+                                    </li>
+                                <% }) -%>
+                            </ul>
                         </div>
-                        <ul class="wh_category_items">
-                            <% subject.subjectDocs.forEach(doc => { -%>
-                                <li class="wh_category_item">
-                      <span class="topicref">
-                          <% if (doc.url.startsWith('http://') || doc.url.startsWith('https://')) { -%>
-                              <a href="<%= doc.url %>" target="_blank" rel="noopener noreferrer"><%= doc.title %></a>
-                          <% } else { -%>
-                              <a href="<%= doc.url %>"><%= doc.title %></a>
-                          <% } %>
-                      </span>
-                                </li>
-                            <% }) -%>
-                        </ul>
-                    </div>
-                <% }) -%>
+                    <% }) -%>
+                </div>
             </div>
         </div>
     </div>
