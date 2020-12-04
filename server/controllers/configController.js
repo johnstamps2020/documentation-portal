@@ -2,34 +2,43 @@ const fetch = require('node-fetch');
 const fs = require('fs').promises;
 const path = require('path');
 const { findNodeById } = require('./helpers/taxonomy');
+require('dotenv').config();
+const { Client } = require('@elastic/elasticsearch');
+const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
+const searchIndexName = 'server-config';
 
-async function getConfig() {
+async function getDocs(queryBody, indexName = searchIndexName) {
   try {
     if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
-        `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
+          `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
       );
       const configPath = `${__dirname}/../../.teamcity/config/server-config.json`;
       const config = await fs.readFile(configPath, 'utf-8');
       const json = JSON.parse(config);
 
       const docs = json.docs.filter(d =>
-        d.environments.includes(process.env.DEPLOY_ENV)
+          d.environments.includes(process.env.DEPLOY_ENV)
       );
 
       const productFamilies = json.productFamilies;
-      const localConfig = { docs: docs, productFamilies: productFamilies };
+      const localConfig = {docs: docs, productFamilies: productFamilies};
       return localConfig;
     } else {
-      const result = await fetch(
-        `${process.env.DOC_S3_URL}/portal-config/config.json`
-      );
-      const json = await result.json();
-      return json;
+      const searchResults = await elasticClient.search({
+        index: indexName,
+        size: 10000,
+        body: queryBody,
+      });
+      const hits = searchResults.body.hits.hits;
+      let docs = [];
+      for (const hit of hits) {
+        docs.push(hit._source);
+      }
+      return docs;
     }
   } catch (err) {
     console.log(err);
-    return { docs: [] };
   }
 }
 
@@ -110,7 +119,7 @@ async function isPublicDoc(url) {
 }
 
 module.exports = {
-  getConfig,
+  getDocs,
   getTaxonomy,
   getReleasesFromTaxonomies,
   isPublicDoc,

@@ -101,8 +101,8 @@ async function getVersions() {
       ['content'].split(',');
 
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    const json = await getConfig();
-    const docsFromConfig = json.docs.filter(
+    const docs = await getConfig();
+    const docsFromConfig = docs.filter(
       d =>
         d.metadata.product.some(p => product.includes(p)) &&
         d.metadata.platform.some(pl => platform.includes(pl)) &&
@@ -245,8 +245,8 @@ async function addTopLinkToBreadcrumbs() {
       .querySelector("meta[name = 'gw-version']")
       ['content']?.split(',')[0];
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    const json = await getConfig();
-    const sameVersionDocs = json.docs.filter(
+    const docs = await getConfig();
+    const sameVersionDocs = docs.filter(
       d =>
         d.metadata.product.includes(product) &&
         d.metadata.platform.includes(platform) &&

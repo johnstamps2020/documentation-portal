@@ -1,10 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const { getConfig } = require('../controllers/configController');
+const configIndexName = 'server-config';
+const { getDocs } = require('../controllers/configController');
 
-router.get('/', async function(req, res) {
-  const config = await getConfig();
-  res.send(config);
+router.get('/', async function(req, res, next) {
+  try {
+    const docs = await getDocs(
+      {
+        query: {
+          match_all: {},
+        },
+      },
+      configIndexName
+    );
+    res.send(docs);
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

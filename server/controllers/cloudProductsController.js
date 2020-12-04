@@ -1,5 +1,5 @@
 const {
-  getConfig,
+  getDocs,
   getTaxonomy,
   getReleasesFromTaxonomies,
 } = require('./configController');
@@ -15,24 +15,17 @@ const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
 
 const cloudProductsEndpoint = '/cloudProducts';
 
-async function getCloudDocsFromConfig() {
-  const serverConfig = await getConfig();
-  const docs = serverConfig.docs;
-  return docs.filter(
-    doc =>
-      doc.metadata.platform.includes('Cloud') &&
-      doc.displayOnLandingPages !== false
-  );
-}
-
 async function getHighestCloudRelease() {
   try {
-    const serverConfig = await getConfig();
-    const docs = serverConfig.docs.filter(
-      doc =>
-        doc.metadata.platform.includes('Cloud') &&
-        doc.displayOnLandingPages !== false
-    );
+    const docs = await getDocs({
+      _source: 'metadata.release',
+      query: {
+        bool: {
+          must: [{ match_phrase: { 'metadata.platform': 'Cloud' } }],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
     const highestCloudRelease = getSortedVersions(
       getUniqueInMetadataArrays(docs, 'release')
     )[0];
@@ -44,10 +37,18 @@ async function getHighestCloudRelease() {
 
 async function getCloudDocumentationPageInfo(release) {
   try {
-    const cloudDocs = await getCloudDocsFromConfig();
-    const cloudDocsForRelease = cloudDocs.filter(d =>
-      d.metadata.release?.includes(release)
-    );
+    const cloudDocsForRelease = await getDocs({
+      query: {
+        bool: {
+          must: [
+            { match_phrase: { 'metadata.platform': 'Cloud' } },
+            { match_phrase: { 'metadata.release': release } },
+          ],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
+
     const releaseTaxonomy = await getTaxonomy(release);
     const pageTitle = releaseTaxonomy.label;
     const productFamilies = [];
@@ -84,10 +85,17 @@ async function getCloudDocumentationPageInfo(release) {
 
 async function getProductFamilyPageInfo(release, productFamilyId) {
   try {
-    const cloudDocs = await getCloudDocsFromConfig();
-    const cloudDocsForRelease = cloudDocs.filter(d =>
-      d.metadata.release?.includes(release)
-    );
+    const cloudDocsForRelease = await getDocs({
+      query: {
+        bool: {
+          must: [
+            { match_phrase: { 'metadata.platform': 'Cloud' } },
+            { match_phrase: { 'metadata.release': release } },
+          ],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
     const releaseTaxonomy = await getTaxonomy(release);
     const productFamilyNode = findNodeById(productFamilyId, releaseTaxonomy);
     const docs = [];
@@ -102,11 +110,11 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
 
         function getDocUrl(listOfDocs, productId) {
           const highestProductVersion = getSortedVersions(
-            getUniqueInMetadataArrays(listOfDocs, 'version')
+            getUniqueInMetadataFields(listOfDocs, 'version')
           )[0];
           const docsForHighestVersion = listOfDocs.filter(
             d =>
-              d.metadata.version.includes(highestProductVersion) &&
+              d.metadata.version === highestProductVersion &&
               d.displayOnLandingPages !== false
           );
           if (docsForHighestVersion.length === 1) {
@@ -202,21 +210,25 @@ async function getProductPageInfo(
   productVersion
 ) {
   try {
-    const cloudDocs = await getCloudDocsFromConfig();
     const releaseTaxonomy = await getTaxonomy(release);
     const productFamilyNode = findNodeById(productFamilyId, releaseTaxonomy);
     const productFamilyName = productFamilyNode.label;
     const productNode = findNodeById(productId, productFamilyNode);
     const productName = productNode.label;
-    const productDocs = cloudDocs.filter(
-      d =>
-        d.metadata.release?.includes(release) &&
-        d.metadata.product.includes(productName) &&
-        d.displayOnLandingPages !== false
-    );
-    const docsInVersion = productDocs.filter(d =>
-      d.metadata.version.includes(productVersion)
-    );
+
+    const docsInVersion = await getDocs({
+      query: {
+        bool: {
+          must: [
+            { match_phrase: { 'metadata.platform': 'Cloud' } },
+            { match_phrase: { 'metadata.product': productName } },
+            { match_phrase: { 'metadata.version': productVersion } },
+            { match_phrase: { 'metadata.release': release } },
+          ],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
 
     const docSubjectsInVersion = getUniqueInMetadataArrays(
       docsInVersion,
@@ -250,7 +262,21 @@ async function getProductPageInfo(
         subjectIcon: getDefaultSubjectIcon(),
       });
     }
-    const availableVersions = getUniqueInMetadataArrays(productDocs, 'version');
+
+    const productDocs = await getDocs({
+      query: {
+        bool: {
+          must: [
+            { match_phrase: { 'metadata.platform': 'Cloud' } },
+            { match_phrase: { 'metadata.product': productName } },
+            { match_phrase: { 'metadata.release': release } },
+          ],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
+
+    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,

@@ -1,4 +1,4 @@
-const { getConfig, getTaxonomy } = require('./configController');
+const { getDocs, getTaxonomy } = require('./configController');
 const {
   getUniqueInMetadataFields,
   getUniqueInMetadataArrays,
@@ -8,21 +8,17 @@ const {
 } = require('./helpers/metadata');
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
-const fs = require('fs').promises;
-
-async function getSelfManagedDocsFromConfig() {
-  const serverConfig = await getConfig();
-  const docs = serverConfig.docs;
-  return docs.filter(
-    doc =>
-      doc.metadata.platform.includes('Self-managed') &&
-      doc.displayOnLandingPages !== false
-  );
-}
 
 async function getSelfManagedDocumentationPageInfo() {
   try {
-    const selfManagedDocs = await getSelfManagedDocsFromConfig();
+    const selfManagedDocs = await getDocs({
+      query: {
+        bool: {
+          must: [{ match_phrase: { 'metadata.platform': 'Self-managed' } }],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
     const selfManagedTaxonomy = await getTaxonomy();
     const pageTitle = selfManagedTaxonomy.label;
     const docs = [];
@@ -116,18 +112,21 @@ async function getSelfManagedDocumentationPageInfo() {
 
 async function getProductPageInfo(productId, productVersion) {
   try {
-    const selfManagedDocs = await getSelfManagedDocsFromConfig();
     const selfManagedTaxonomy = await getTaxonomy();
     const productNode = findNodeById(productId, selfManagedTaxonomy);
     const productName = productNode.label;
-    const productDocs = selfManagedDocs.filter(
-      d =>
-        d.metadata.product.includes(productName) &&
-        d.displayOnLandingPages !== false
-    );
-    const docsInVersion = productDocs.filter(d =>
-      d.metadata.version.includes(productVersion)
-    );
+    const docsInVersion = await getDocs({
+      query: {
+        bool: {
+          must: [
+            { match_phrase: { 'metadata.platform': 'Self-managed' } },
+            { match_phrase: { 'metadata.product': productName } },
+            { match_phrase: { 'metadata.version': productVersion } },
+          ],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
 
     const docSubjectsInVersion = getUniqueInMetadataArrays(
       docsInVersion,
@@ -162,7 +161,20 @@ async function getProductPageInfo(productId, productVersion) {
       });
     }
 
-    const availableVersions = getUniqueInMetadataArrays(productDocs, 'version');
+    const productDocs = await getDocs({
+      query: {
+        bool: {
+          must: [
+            { match_phrase: { 'metadata.platform': 'Self-managed' } },
+            { match_phrase: { 'metadata.product': productName } },
+            { match_phrase: { 'metadata.version': productVersion } },
+          ],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
+
+    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,

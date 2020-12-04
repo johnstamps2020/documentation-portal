@@ -1,10 +1,10 @@
 const {
-  getConfig,
+  getDocs,
   getTaxonomy,
   getReleasesFromTaxonomies,
 } = require('./configController');
 const {
-  getUniqueInMetadataArrays,
+  getUniqueInMetadataFields,
   getSortedVersions,
 } = require('./helpers/metadata');
 const { findNodeById } = require('./helpers/taxonomy');
@@ -18,17 +18,20 @@ async function findProductRoute(productId, productVersion) {
       if (productNode) {
         const productFamilyId = productFamily.id;
         const productName = productNode.label;
-        const serverConfig = await getConfig();
-        const docs = serverConfig.docs;
-        let productDocs = docs.filter(
-          doc =>
-            doc.metadata.platform.includes('Cloud') &&
-            doc.metadata.product.includes(productName) &&
-            doc.metadata.release?.includes(release) &&
-            doc.displayOnLandingPages !== false
-        );
+        const productDocs = await getDocs({
+          query: {
+            bool: {
+              must: [
+                { match_phrase: { 'metadata.platform': 'Cloud' } },
+                { match_phrase: { 'metadata.product': productName } },
+                { match_phrase: { 'metadata.release': release } },
+              ],
+              must_not: [{ match: { displayOnLandingPages: 'false' } }],
+            },
+          },
+        });
         const productVersions = getSortedVersions(
-          getUniqueInMetadataArrays(productDocs, 'version')
+          getUniqueInMetadataFields(productDocs, 'version')
         );
         let highestProductVersion = productVersions[0];
         if (productVersion) {
@@ -49,16 +52,19 @@ async function findProductRoute(productId, productVersion) {
   );
   if (productNode) {
     const productName = productNode.label;
-    const serverConfig = await getConfig();
-    const docs = serverConfig.docs;
-    const productDocs = docs.filter(
-      doc =>
-        doc.metadata.platform.includes('Self-managed') &&
-        doc.metadata.product.includes(productName) &&
-        doc.displayOnLandingPages !== false
-    );
+    const productDocs = await getDocs({
+      query: {
+        bool: {
+          must: [
+            { match_phrase: { 'metadata.platform': 'Self-managed' } },
+            { match_phrase: { 'metadata.product': productName } },
+          ],
+          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+        },
+      },
+    });
     const productVersions = getSortedVersions(
-      getUniqueInMetadataArrays(productDocs, 'version')
+      getUniqueInMetadataFields(productDocs, 'version')
     );
     let highestProductVersion = productVersions[0];
     if (productVersion) {

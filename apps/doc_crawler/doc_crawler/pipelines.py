@@ -1,12 +1,10 @@
 import os
-from pathlib import Path
 
 import urllib3
 
 from .elasticsearch import ElasticClient
 from .items import BrokenLink
 from .items import IndexEntry
-from .report_generator import report_generator
 
 
 class ElasticsearchPipeline:
