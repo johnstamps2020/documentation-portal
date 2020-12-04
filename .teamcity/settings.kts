@@ -1202,8 +1202,10 @@ object HelperObjects {
                 val docId = "guidewirecloudconsolerootinsurerdev"
                 val build = getObjectById(buildConfigs, "docId", docId)
                 val sourceId = build.getString("srcId")
-                val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
+                val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "docker"))
+                val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
                 buildType(BuildAndPublishDockerImageWithContent(vcsRootId))
+                vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
             }
         }
     }
