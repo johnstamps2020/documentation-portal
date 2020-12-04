@@ -1160,6 +1160,32 @@ object HelperObjects {
 
     private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
 
+        class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId) : BuildType(
+                {
+                    name = "Build and publish Docker image with build content"
+                    id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
+                    params {
+                        text("doc-version", "", description = "Version", display = ParameterDisplay.PROMPT, allowEmpty = true)
+                    }
+                    vcs {
+                        root(vcs_root_id)
+                    }
+                    steps {
+                        script {
+                            scriptContent = "./build_standalone.sh"
+                        }
+                        script {
+                            scriptContent = """
+                                export BRANCH_NAME=%doc-version%
+                                docker build -t gccwebhelp .
+                                docker tag gccwebhelp artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
+                                docker push artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
+                            """.trimIndent()
+                        }
+                    }
+                }
+        )
+
         val subProjects = mutableListOf<Project>()
         for (doc in docs) {
             subProjects.add(createDocProjectWithBuilds(doc, product_name, version))
@@ -1170,6 +1196,15 @@ object HelperObjects {
             name = version
 
             subProjects.forEach(this::subProject)
+            // Currently, GCC is the only project using the BuildAndPublishDockerImageWithContent class.
+            // When we have more projects, we will create a more sustainable solution than this simple condition.
+            if (product_name == "Guidewire Cloud Console" && version == "latest") {
+                val docId = "guidewirecloudconsolerootinsurerdev"
+                val build = getObjectById(buildConfigs, "docId", docId)
+                val sourceId = build.getString("srcId")
+                val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
+                buildType(BuildAndPublishDockerImageWithContent(vcsRootId))
+            }
         }
     }
 
@@ -1358,32 +1393,6 @@ object HelperObjects {
 
         })
 
-        class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId) : BuildType(
-                {
-                    name = "Build and publish Docker image with build content"
-                    id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
-                    params {
-                        text("doc-version", "", description = "Version", display = ParameterDisplay.PROMPT, allowEmpty = true)
-                    }
-                    vcs {
-                        root(vcs_root_id)
-                    }
-                    steps {
-                        script {
-                            scriptContent = "./build_standalone.sh"
-                        }
-                        script {
-                            scriptContent = """
-                                export BRANCH_NAME=%doc-version%
-                                docker build -t gccwebhelp .
-                                docker tag gccwebhelp artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
-                                docker push artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
-                            """.trimIndent()
-                        }
-                    }
-                }
-        )
-
         val builds = mutableListOf<BuildType>()
 
         val docId = doc.getString("id")
@@ -1430,11 +1439,6 @@ object HelperObjects {
                 builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
                         publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
             }
-        }
-        // Currently, GCC is the only project using the BuildAndPublishDockerImageWithContent class.
-        // When we have more projects, we will create a more sustainable solution than this simple condition.
-        if (product_name == "Guidewire Cloud Console") {
-            builds.add(BuildAndPublishDockerImageWithContent(vcsRootId))
         }
 
         return Project {

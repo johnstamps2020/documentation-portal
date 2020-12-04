@@ -1270,9 +1270,9 @@
       ]
     },
     {
-      "id": "cloudconsoleguide",
+      "id": "guidewirecloudconsoleguideinsurerdev",
       "title": "Cloud Console Guide",
-      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
       "metadata": {
         "platform": [
           "Cloud"
@@ -1294,9 +1294,9 @@
       ]
     },
     {
-      "id": "cloudconsolern",
+      "id": "guidewirecloudconsolerninsurerdev",
       "title": "Cloud Console Release Notes",
-      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_new-and-changed.html",
       "metadata": {
         "platform": [
           "Cloud"
@@ -1318,9 +1318,9 @@
       ]
     },
     {
-      "id": "cloudconsoleroot",
-      "title": "Cloud Console Root Doc",
-      "url": "cloud/gcc-guide/latest",
+      "id": "guidewirecloudconsolerootinsurerdev",
+      "title": "Cloud Console Root Doc Insurer Developer",
+      "url": "cloud/gcc-guide/insurer-developer/latest",
       "displayOnLandingPages": false,
       "metadata": {
         "platform": [
@@ -1340,6 +1340,28 @@
         "int",
         "staging",
         "prod"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsolerootgwadmin",
+      "title": "Cloud Console Root Doc GW Admin",
+      "url": "cloud/gcc-guide/gw-admin/latest",
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
       ]
     },
     {
@@ -6584,7 +6606,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6607,7 +6631,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6630,7 +6656,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6653,7 +6681,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6676,7 +6706,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6699,7 +6731,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6722,7 +6756,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6745,7 +6781,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6768,7 +6806,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6791,7 +6831,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6814,7 +6856,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6837,7 +6881,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6860,7 +6906,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6883,7 +6931,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6906,7 +6956,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6929,7 +6981,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6952,7 +7006,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6975,7 +7031,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -6998,7 +7056,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7021,7 +7081,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7044,7 +7106,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7067,7 +7131,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7090,7 +7156,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7113,7 +7181,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7136,7 +7206,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7159,7 +7231,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7182,7 +7256,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7205,7 +7281,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7228,7 +7306,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7251,7 +7331,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7274,7 +7356,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7297,7 +7381,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7320,7 +7406,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7343,7 +7431,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7366,7 +7456,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7389,7 +7481,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7412,7 +7506,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7435,7 +7531,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7458,7 +7556,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7481,7 +7581,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7504,7 +7606,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7527,7 +7631,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7550,7 +7656,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7573,7 +7681,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7596,7 +7706,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7619,7 +7731,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7642,7 +7756,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7665,7 +7781,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7688,7 +7806,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7713,7 +7833,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -7738,7 +7860,9 @@
         ]
       },
       "environments": [
-        "dev", "staging", "prod"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
