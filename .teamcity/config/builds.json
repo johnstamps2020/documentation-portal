@@ -3,30 +3,6 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
-      "docId": "cloudbcupgradeguidelatest"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
-      "docId": "cloudccupgradeguidelatest"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
-      "docId": "cloudpcupgradeguidelatest"
-    },
-    {
-      "buildType": "dita",
       "filter": "Other/GW-Generic-Draft.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
