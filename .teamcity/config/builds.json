@@ -1251,10 +1251,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "cloudis202011src",
-      "docId": "isbc202011restapiclient",
+      "docId": "is202011restapiclient",
       "indexRedirect": true
     },
     {
@@ -1379,14 +1379,6 @@
       "root": "TestingGuide.ditamap",
       "srcId": "cloudis202011src",
       "docId": "iscc202011testing",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "cloudis202011src",
-      "docId": "iscc202011restapiclient",
       "indexRedirect": true
     },
     {
@@ -1548,14 +1540,6 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "cloudis202011src",
-      "docId": "ispc202011restapiclient",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "cloudis202011src",
       "docId": "ispc202011restapifw",
@@ -1695,10 +1679,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "cloudisdraftsrc",
-      "docId": "isbcclouddraftrestapiclient",
+      "docId": "isclouddraftrestapiclient",
       "indexRedirect": true
     },
     {
@@ -1823,14 +1807,6 @@
       "root": "TestingGuide.ditamap",
       "srcId": "cloudisdraftsrc",
       "docId": "isccclouddrafttesting",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "cloudisdraftsrc",
-      "docId": "isccclouddraftrestapiclient",
       "indexRedirect": true
     },
     {
@@ -1992,14 +1968,6 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "cloudisdraftsrc",
-      "docId": "ispcclouddraftrestapiclient",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "cloudisdraftsrc",
       "docId": "ispcclouddraftrestapifw",
@@ -2139,10 +2107,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-EA.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "cloudisdraftsrc",
-      "docId": "isbccloudearestapiclient",
+      "docId": "iscloudearestapiclient",
       "indexRedirect": true
     },
     {
@@ -2267,14 +2235,6 @@
       "root": "TestingGuide.ditamap",
       "srcId": "cloudisdraftsrc",
       "docId": "iscccloudeatesting",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-EA.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "cloudisdraftsrc",
-      "docId": "iscccloudearestapiclient",
       "indexRedirect": true
     },
     {
@@ -2431,14 +2391,6 @@
       "root": "TestingGuide.ditamap",
       "srcId": "cloudisdraftsrc",
       "docId": "ispccloudeatesting",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "cloudisdraftsrc",
-      "docId": "ispccloudearestapiclient",
       "indexRedirect": true
     },
     {
