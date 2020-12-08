@@ -331,6 +331,16 @@
               "label": "Guidewire Cloud Console"
             }
           ]
+        },
+        {
+          "id": "gwCloudAuth",
+          "label": "Authentication",
+          "items": [
+            {
+              "id": "gwCloudIdHub",
+              "label": "Guidewire Identity Federation Hub"
+            }
+          ]
         }
       ]
     },
