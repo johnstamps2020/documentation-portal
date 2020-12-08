@@ -6715,15 +6715,17 @@
       ]
     },
     {
-      "id": "isbc202011restapiclient",
+      "id": "is202011restapiclient",
       "title": "REST API Client",
-      "url": "cloud/bc/202011/restapiclient",
+      "url": "cloud/is/202011/restapiclient",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
         ],
         "version": "2020.11",
         "release": [
@@ -7081,31 +7083,6 @@
         ],
         "subject": [
           "Development"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ]
-    },
-    {
-      "id": "iscc202011restapiclient",
-      "title": "REST API Client",
-      "url": "cloud/cc/202011/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter for Guidewire Cloud"
-        ],
-        "version": "2020.11",
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Integration"
         ]
       },
       "environments": [
@@ -7565,31 +7542,6 @@
       ]
     },
     {
-      "id": "ispc202011restapiclient",
-      "title": "REST API Client",
-      "url": "cloud/pc/202011/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "2020.11",
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Integration"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ]
-    },
-    {
       "id": "ispc202011restapifw",
       "title": "REST API Framework",
       "url": "cloud/pc/202011/restapiframework",
@@ -8033,15 +7985,17 @@
       ]
     },
     {
-      "id": "isbcclouddraftrestapiclient",
+      "id": "isclouddraftrestapiclient",
       "title": "REST API Client",
-      "url": "cloud/bc/latest/restapiclient",
+      "url": "cloud/is/latest/restapiclient",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
         ],
         "version": "latest",
         "release": [
@@ -8371,29 +8325,6 @@
         ],
         "subject": [
           "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "isccclouddraftrestapiclient",
-      "title": "REST API Client",
-      "url": "cloud/cc/latest/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter for Guidewire Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Integration"
         ]
       },
       "environments": [
@@ -8815,29 +8746,6 @@
       ]
     },
     {
-      "id": "ispcclouddraftrestapiclient",
-      "title": "REST API Client",
-      "url": "cloud/pc/latest/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Integration"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
       "id": "ispcclouddraftrestapifw",
       "title": "REST API Framework",
       "url": "cloud/pc/latest/restapiframework",
@@ -9210,15 +9118,17 @@
       ]
     },
     {
-      "id": "isbccloudearestapiclient",
+      "id": "iscloudearestapiclient",
       "title": "REST API Client",
-      "url": "cloud/bc/ea/restapiclient",
+      "url": "cloud/is/ea/restapiclient",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
         ],
         "version": "earlyaccess",
         "release": [
@@ -9548,29 +9458,6 @@
         ],
         "subject": [
           "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "iscccloudearestapiclient",
-      "title": "REST API Client",
-      "url": "cloud/cc/ea/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter for Guidewire Cloud"
-        ],
-        "version": "earlyaccess",
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Integration"
         ]
       },
       "environments": [
@@ -9985,29 +9872,6 @@
         ],
         "subject": [
           "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "ispccloudearestapiclient",
-      "title": "REST API Client",
-      "url": "cloud/pc/ea/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "earlyaccess",
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Integration"
         ]
       },
       "environments": [
