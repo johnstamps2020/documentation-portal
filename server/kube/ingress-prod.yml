@@ -5,7 +5,7 @@ metadata:
   name: docportal-ingress
   annotations:
     ingress.kubernetes.io/config-backend: |
-      http-response add-header Content-Security-Policy "frame-ancestors\ https://*.guidewire.net\ https://*.guidewire.com"
+      http-response add-header Content-Security-Policy \"frame-ancestors\ https://*.guidewire.net\ https://*.guidewire.com\"
       http-response add-header X-Frame-Options SAMEORIGIN
 spec:
   rules:
