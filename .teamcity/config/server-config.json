@@ -6750,34 +6750,6 @@
       ]
     },
     {
-      "id": "is202011restapiclient",
-      "title": "REST API Client",
-      "url": "cloud/is/202011/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "2020.11",
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Integration"
-        ]
-      },
-      "environments": [
-        "dev",
-        "int",
-        "staging",
-        "prod"
-      ]
-    },
-    {
       "id": "isbc202011install",
       "title": "Installation",
       "url": "cloud/bc/202011/installation",
@@ -7718,6 +7690,34 @@
       ]
     },
     {
+      "id": "is202011restapiclient",
+      "title": "REST API Client",
+      "url": "cloud/is/202011/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
       "id": "apiekdfksmds",
       "title": "API Specifications",
       "url": "cloud/bc/api-specs/latest/",
@@ -8050,31 +8050,6 @@
         ],
         "subject": [
           "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "isclouddraftrestapiclient",
-      "title": "REST API Client",
-      "url": "cloud/is/latest/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Integration"
         ]
       },
       "environments": [
@@ -8864,6 +8839,31 @@
       ]
     },
     {
+      "id": "isclouddraftrestapiclient",
+      "title": "REST API Client",
+      "url": "cloud/is/latest/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
       "id": "isclouddraftcontact",
       "title": "Contact Management",
       "url": "cloud/is/latest/contact",
@@ -9183,31 +9183,6 @@
         ],
         "subject": [
           "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "iscloudearestapiclient",
-      "title": "REST API Client",
-      "url": "cloud/is/ea/restapiclient",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "earlyaccess",
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Integration"
         ]
       },
       "environments": [
@@ -9990,6 +9965,31 @@
         ],
         "subject": [
           "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscloudearestapiclient",
+      "title": "REST API Client",
+      "url": "cloud/is/ea/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
         ]
       },
       "environments": [
