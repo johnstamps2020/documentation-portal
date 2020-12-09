@@ -2851,6 +2851,29 @@
       ]
     },
     {
+      "id": "standards202011",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202011",
+      "metadata": {
+        "product": [
+          "Guidewire Cloud Standards"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
       "id": "standards202010",
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202010",
