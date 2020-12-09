@@ -726,6 +726,14 @@ object TestConfigDeployer : BuildType({
     }
 
     features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
         dockerSupport {
             id = "TEMPLATE_BUILD_EXT_1"
             loginToRegistry = on {
