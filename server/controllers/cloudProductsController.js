@@ -53,15 +53,15 @@ async function getCloudDocumentationPageInfo(release) {
     for (const productFamily of releaseTaxonomy.items) {
       const docs = [];
       getDocsForTaxonomy(productFamily, cloudDocsForRelease, docs);
-      if (docs.length === 1) {
-        productFamilies.push({
-          label: productFamily.label,
-          url: resolveUrl(docs[0].url),
-        });
-      } else if (docs.length > 1) {
+      if (docs.length > 1 && productFamily.items.length > 1) {
         productFamilies.push({
           label: productFamily.label,
           url: `${cloudProductsEndpoint}/${release}/${productFamily.id}`,
+        });
+      } else if (docs.length >= 1) {
+        productFamilies.push({
+          label: productFamily.label,
+          url: resolveUrl(docs[0].url),
         });
       }
     }
