@@ -53,6 +53,8 @@ def main():
     config_path = Path(os.environ['CONFIG_FILE'])
     deploy_env = os.environ['DEPLOY_ENV']
 
+    logger.info(f'Preparing server config and taxonomy files for "{deploy_env.upper()}" environment')
+
     out_dir = config_path.parent / 'out'
     if out_dir.exists():
         shutil.rmtree(out_dir)

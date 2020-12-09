@@ -1,92 +1,29 @@
 {
-  "productFamilies": [
-    {
-      "productFamilyName": "BillingCenter Cloud",
-      "product": [
-        "BillingCenter for Guidewire Cloud",
-        "InsuranceSuite Configuration Upgrade Tools",
-        "BillingCenter Upgrade Tools",
-        "Cloud Data Access",
-        "CustomerEngage Account Management",
-        "DataHub",
-        "Explore",
-        "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
-        "ProducerEngage",
-        "ServiceRepEngage"
-      ]
-    },
-    {
-      "productFamilyName": "ClaimCenter Cloud",
-      "product": [
-        "ClaimCenter for Guidewire Cloud",
-        "InsuranceSuite Configuration Upgrade Tools",
-        "Cloud Data Access",
-        "CustomerEngage Account Management",
-        "CustomerEngage Account Management for ClaimCenter",
-        "DataHub",
-        "Explore",
-        "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
-        "ProducerEngage",
-        "ProducerEngage for ClaimCenter",
-        "ServiceRepEngage",
-        "VendorEngage"
-      ]
-    },
-    {
-      "productFamilyName": "PolicyCenter Cloud",
-      "product": [
-        "PolicyCenter for Guidewire Cloud",
-        "InsuranceSuite Configuration Upgrade Tools",
-        "Businessowners Standards Based Template",
-        "Cloud Data Access",
-        "CustomerEngage Account Management",
-        "CustomerEngage Quote and Buy",
-        "DataHub",
-        "Digital Code Generation",
-        "Explore",
-        "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
-        "ProducerEngage",
-        "ServiceRepEngage"
-      ]
-    },
-    {
-      "productFamilyName": "InsuranceNow",
-      "product": [
-        "InsuranceNow 2020.1x - External Audience",
-        "InsuranceNow 2020.1x - Internal Audience",
-        "InsuranceNow 2020.2x - External Audience",
-        "InsuranceNow 2020.2x - Internal Audience",
-        "InsuranceNow"
-      ]
-    },
-    {
-      "productFamilyName": "Guidewire Cloud Platform",
-      "product": [
-        "Guidewire Cloud Console",
-        "Guidewire Identity Federation Hub"
-      ]
-    },
-    {
-      "productFamilyName": "Testing Frameworks",
-      "product": ["Testing Frameworks"]
-    },
-    {
-      "productFamilyName": "Jutro",
-      "product": ["Jutro"]
-    },
-    {
-      "productFamilyName": "Guidewire Feature Preview",
-      "product": ["Guidewire Feature Preview"]
-    },
-    {
-      "productFamilyName": "SurePath Standards",
-      "product": ["SurePath Standards"]
-    }
-  ],
   "docs": [
+    {
+      "id": "guidewireidentityfederationhublatest",
+      "title": "Authentication with Guidewire Identity Federation Hub",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Identity Federation Hub"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
     {
       "id": "cloudbc202005",
       "title": "BillingCenter for Guidewire Cloud",
@@ -96,27 +33,11 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter"
+          "BillingCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Release.ditaval",
-        "root": "_supermap-202005.ditamap",
-        "src": "cloudis202005src",
-        "resources": [
-          {
-            "src": "insurancesuiteextrassrc",
-            "sourceFolder": "ReleaseNotes-files/bc/2020.05",
-            "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
-          }
         ]
       },
       "environments": [
@@ -134,27 +55,11 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter"
+          "ClaimCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-Cloud-Release.ditaval",
-        "root": "_supermap-202005.ditamap",
-        "src": "cloudis202005src",
-        "resources": [
-          {
-            "src": "insurancesuiteextrassrc",
-            "sourceFolder": "ReleaseNotes-files/cc/2020.05",
-            "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05"
-          }
         ]
       },
       "environments": [
@@ -172,27 +77,11 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter"
+          "PolicyCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-Cloud-Release.ditaval",
-        "root": "_supermap-202005.ditamap",
-        "src": "cloudis202005src",
-        "resources": [
-          {
-            "src": "insurancesuiteextrassrc",
-            "sourceFolder": "ReleaseNotes-files/pc/2020.05",
-            "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05"
-          }
         ]
       },
       "environments": [
@@ -211,12 +100,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter"
+          "BillingCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
         ]
@@ -237,12 +123,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter"
+          "ClaimCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
         ]
@@ -263,14 +146,33 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter"
+          "PolicyCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "cloudinexternal20202",
+      "title": "InsuranceNow",
+      "url": "cloud/in/20202",
+      "metadata": {
+        "product": [
+          "InsuranceNow"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.2",
+        "release": [
+          "Banff"
         ]
       },
       "environments": [
@@ -291,24 +193,8 @@
           "Cloud"
         ],
         "version": "2020.1",
-        "category": [
-          "InsuranceNow"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Release.ditaval",
-        "root": "_supermap-20201x-active.ditamap",
-        "src": "in20201src",
-        "resources": [
-          {
-            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
-            "sourceFolder": "ChangedFiles/2020.1",
-            "src": "insurancenowextrassrc"
-          }
         ]
       },
       "environments": [
@@ -318,9 +204,32 @@
       ]
     },
     {
-      "id": "dkckdkeee",
+      "id": "midipg2x",
+      "title": "Guidewire InsuranceSuite Package for Germany",
+      "url": "cloud/mid/ipg/latest",
+      "metadata": {
+        "product": [
+          "Guidewire InsuranceSuite Package for Germany"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2.x",
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsoleguideinsurerdev",
       "title": "Cloud Console Guide",
-      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
       "metadata": {
         "platform": [
           "Cloud"
@@ -328,24 +237,23 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "category": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
         "dev",
+        "int",
         "staging",
         "prod"
       ]
     },
     {
-      "id": "dfkrkelllser",
+      "id": "guidewirecloudconsolerninsurerdev",
       "title": "Cloud Console Release Notes",
-      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_new-and-changed.html",
       "metadata": {
         "platform": [
           "Cloud"
@@ -353,24 +261,23 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "category": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
         "dev",
+        "int",
         "staging",
         "prod"
       ]
     },
     {
-      "id": "swwdkskekrtt",
-      "title": "Cloud Console Root Doc",
-      "url": "cloud/gcc-guide/latest",
+      "id": "guidewirecloudconsolerootinsurerdev",
+      "title": "Cloud Console Root Doc Insurer Developer",
+      "url": "cloud/gcc-guide/insurer-developer/latest",
       "displayOnLandingPages": false,
       "metadata": {
         "platform": [
@@ -379,18 +286,188 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "category": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "selfmanagedbcupgradeguide1011",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": "10.1.1"
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "selfmanagedccupgradeguide1011",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": "10.1.1"
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1011",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": "10.1.1"
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "selfmanagedbcupgradeguide1010",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": "10.1.0"
       },
       "environments": [
         "dev",
         "staging",
         "prod"
+      ]
+    },
+    {
+      "id": "selfmanagedccupgradeguide1010",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": "10.1.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1010",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": "10.1.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "bc1011",
+      "title": "BillingCenter",
+      "url": "self-managed/bc/1011",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "BillingCenter"
+        ],
+        "version": "10.1.1"
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "cc1011",
+      "title": "ClaimCenter",
+      "url": "self-managed/cc/1011",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "ClaimCenter"
+        ],
+        "version": "10.1.1"
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "pc1011",
+      "title": "PolicyCenter",
+      "url": "self-managed/pc/1011",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "PolicyCenter"
+        ],
+        "version": "10.1.1"
+      },
+      "environments": [
+        "dev",
+        "staging"
       ]
     },
     {
@@ -404,23 +481,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.1.0",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Release.ditaval",
-        "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis1010src",
-        "resources": [
-          {
-            "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.1.0",
-            "sourceFolder": "ReleaseNotes-files/bc/10.1.0",
-            "src": "insurancesuiteextrassrc"
-          }
-        ]
+        "version": "10.1.0"
       },
       "environments": [
         "dev",
@@ -439,23 +500,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.1.0",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Release.ditaval",
-        "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis1010src",
-        "resources": [
-          {
-            "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.1.0",
-            "sourceFolder": "ReleaseNotes-files/cc/10.1.0",
-            "src": "insurancesuiteextrassrc"
-          }
-        ]
+        "version": "10.1.0"
       },
       "environments": [
         "dev",
@@ -474,23 +519,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.1.0",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Release.ditaval",
-        "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis1010src",
-        "resources": [
-          {
-            "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.1.0",
-            "sourceFolder": "ReleaseNotes-files/pc/10.1.0",
-            "src": "insurancesuiteextrassrc"
-          }
-        ]
+        "version": "10.1.0"
       },
       "environments": [
         "dev",
@@ -499,7 +528,7 @@
       ]
     },
     {
-      "id": "bc9xstaging",
+      "id": "bc909",
       "title": "BillingCenter",
       "url": "self-managed/bc/909",
       "metadata": {
@@ -509,16 +538,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.9",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Release.ditaval",
-        "root": "_supermap-9x-active.ditamap",
-        "src": "exportisonprem9"
+        "version": "9.0.9"
       },
       "environments": [
         "dev",
@@ -527,7 +547,7 @@
       ]
     },
     {
-      "id": "cc9xstaging",
+      "id": "cc909",
       "title": "ClaimCenter",
       "url": "self-managed/cc/909",
       "metadata": {
@@ -537,16 +557,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.9",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Release.ditaval",
-        "root": "_supermap-9x-active.ditamap",
-        "src": "exportisonprem9"
+        "version": "9.0.9"
       },
       "environments": [
         "dev",
@@ -555,7 +566,7 @@
       ]
     },
     {
-      "id": "pc9xstaging",
+      "id": "pc909",
       "title": "PolicyCenter",
       "url": "self-managed/pc/909",
       "metadata": {
@@ -565,16 +576,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.9",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Release.ditaval",
-        "root": "_supermap-9x-active.ditamap",
-        "src": "exportisonprem9"
+        "version": "9.0.9"
       },
       "environments": [
         "dev",
@@ -584,19 +586,17 @@
     },
     {
       "id": "selfmanagedbcupgradetoolsqwertyui",
-      "title": "BillingCenter Upgrade Tools",
+      "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1440",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
         ],
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
-        "version": "9.0.9",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.9"
       },
       "environments": [
         "dev",
@@ -606,19 +606,17 @@
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
-      "title": "ClaimCenter Upgrade Tools",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1440",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
         ],
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
-        "version": "9.0.9",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.9"
       },
       "environments": [
         "dev",
@@ -628,18 +626,38 @@
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
-      "title": "PolicyCenter Upgrade Tools",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1440",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
         ],
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
-        "version": "9.0.9",
-        "category": [
-          "Core"
+        "version": "9.0.9"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dh202011",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
         ]
       },
       "environments": [
@@ -649,7 +667,52 @@
       ]
     },
     {
-      "id": "clouddhaithitzz",
+      "id": "ic202011",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202011",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "palatest",
+      "title": "Predictive Analytics",
+      "url": "cloud/pa/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Predictive Analytics"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dh202005",
       "title": "DataHub for Guidewire Cloud",
       "url": "cloud/dh/202005",
       "metadata": {
@@ -657,32 +720,11 @@
           "Cloud"
         ],
         "product": [
-          "DataHub"
+          "DataHub for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Data"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "DataHub-MS-RELEASE.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "exportdhiccloudforstaging",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-            "targetFolder": "extras/DataHub"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-          }
         ]
       },
       "environments": [
@@ -692,7 +734,7 @@
       ]
     },
     {
-      "id": "cloudiclovarpzz",
+      "id": "ic202005",
       "title": "InfoCenter for Guidewire Cloud",
       "url": "cloud/ic/202005",
       "metadata": {
@@ -700,32 +742,11 @@
           "Cloud"
         ],
         "product": [
-          "InfoCenter"
+          "InfoCenter for Guidewire Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Data"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "InfoCenter-MS-RELEASE.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "exportdhiccloudforstaging",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-            "targetFolder": "extras/InfoCenter"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-          }
         ]
       },
       "environments": [
@@ -735,7 +756,7 @@
       ]
     },
     {
-      "id": "clouddataplatformstaging",
+      "id": "clouddataplatformlatest",
       "title": "Cloud Data Access",
       "url": "cloud/cdp/latest",
       "metadata": {
@@ -745,22 +766,38 @@
         "product": [
           "Cloud Data Access"
         ],
-        "version": "2020.05",
-        "category": [
-          "Data"
-        ],
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Release.ditaval",
-        "root": "_supermap-cda.ditamap",
-        "src": "clouddataplatform"
       },
       "environments": [
         "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "comparelatest",
+      "title": "Compare+",
+      "url": "cloud/compare/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Compare+"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
         "staging",
         "prod"
       ]
@@ -776,19 +813,34 @@
         "product": [
           "Explore"
         ],
-        "version": "2020.05",
-        "category": [
-          "Data"
-        ],
+        "version": "latest",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Cloud-Release.ditaval",
-        "root": "supermapExplore.ditamap",
-        "src": "explore"
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceam202011",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/202011",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
       },
       "environments": [
         "dev",
@@ -797,7 +849,315 @@
       ]
     },
     {
-      "id": "dxceam202008cloudstaging",
+      "id": "dxceclaims202011",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "cloud/dx/ce-claims/202011",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceqb202011",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/202011",
+      "metadata": {
+        "product": [
+          "CustomerEngage Quote and Buy"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxapd202011",
+      "title": "Digital Code Generation Extension Pack",
+      "url": "cloud/dx/apd/202011",
+      "metadata": {
+        "product": [
+          "Digital Code Generation Extension Pack"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpe202011",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/202011",
+      "metadata": {
+        "product": [
+          "ProducerEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpeclaims202011",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "cloud/dx/pe-claims/202011",
+      "metadata": {
+        "product": [
+          "ProducerEngage for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxsre202011",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/202011",
+      "metadata": {
+        "product": [
+          "ServiceRepEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxve202011",
+      "title": "VendorEngage",
+      "url": "cloud/dx/ve/202011",
+      "metadata": {
+        "product": [
+          "VendorEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceam202010",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/202010",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceclaims202010",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "cloud/dx/ce-claims/202010",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceqb202010",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/202010",
+      "metadata": {
+        "product": [
+          "CustomerEngage Quote and Buy"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpe202010",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/202010",
+      "metadata": {
+        "product": [
+          "ProducerEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpeclaims202010",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "cloud/dx/pe-claims/202010",
+      "metadata": {
+        "product": [
+          "ProducerEngage for ClaimCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxsre202010",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/202010",
+      "metadata": {
+        "product": [
+          "ServiceRepEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxve202010",
+      "title": "VendorEngage",
+      "url": "cloud/dx/ve/202010",
+      "metadata": {
+        "product": [
+          "VendorEngage"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceam202008",
       "title": "CustomerEngage Account Management",
       "url": "cloud/dx/ce-am/202008",
       "metadata": {
@@ -808,18 +1168,9 @@
           "Cloud"
         ],
         "version": "2020.08",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-am-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx202008"
       },
       "environments": [
         "dev",
@@ -828,7 +1179,7 @@
       ]
     },
     {
-      "id": "dxceqb202008cloudstaging",
+      "id": "dxceqb202008",
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202008",
       "metadata": {
@@ -839,18 +1190,9 @@
           "Cloud"
         ],
         "version": "2020.08",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-qb-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx202008"
       },
       "environments": [
         "dev",
@@ -859,7 +1201,7 @@
       ]
     },
     {
-      "id": "dxpe202008cloudstaging",
+      "id": "dxpe202008",
       "title": "ProducerEngage",
       "url": "cloud/dx/pe/202008",
       "metadata": {
@@ -870,18 +1212,9 @@
           "Cloud"
         ],
         "version": "2020.08",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx202008"
       },
       "environments": [
         "dev",
@@ -890,7 +1223,7 @@
       ]
     },
     {
-      "id": "dxsre202008cloudstaging",
+      "id": "dxsre202008",
       "title": "ServiceRepEngage",
       "url": "cloud/dx/sre/202008",
       "metadata": {
@@ -901,18 +1234,9 @@
           "Cloud"
         ],
         "version": "2020.08",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-sre-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx202008"
       },
       "environments": [
         "dev",
@@ -921,7 +1245,7 @@
       ]
     },
     {
-      "id": "dxceqb202005cloudstaging",
+      "id": "dxceqb202005",
       "title": "CustomerEngage Quote and Buy",
       "url": "cloud/dx/ce-qb/202005",
       "metadata": {
@@ -932,9 +1256,6 @@
           "Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
@@ -946,21 +1267,18 @@
       ]
     },
     {
-      "id": "dxapd202005cloudstaging",
-      "title": "Digital Code Generation",
+      "id": "dxapd202005",
+      "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/202005",
       "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
@@ -972,7 +1290,7 @@
       ]
     },
     {
-      "id": "dxpe202005cloudstaging",
+      "id": "dxpe202005",
       "title": "ProducerEngage",
       "url": "cloud/dx/pe/202005",
       "metadata": {
@@ -983,9 +1301,6 @@
           "Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
@@ -997,7 +1312,7 @@
       ]
     },
     {
-      "id": "dxsre202005cloudstaging",
+      "id": "dxsre202005",
       "title": "ServiceRepEngage",
       "url": "cloud/dx/sre/202005",
       "metadata": {
@@ -1008,9 +1323,6 @@
           "Cloud"
         ],
         "version": "2020.05",
-        "category": [
-          "Digital"
-        ],
         "release": [
           "Aspen"
         ]
@@ -1032,16 +1344,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.3",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "selfmanagedis1003src"
+        "version": "10.0.3"
       },
       "environments": [
         "dev",
@@ -1060,16 +1363,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.3",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "selfmanagedis1003src"
+        "version": "10.0.3"
       },
       "environments": [
         "dev",
@@ -1088,16 +1382,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.3",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "selfmanagedis1003src"
+        "version": "10.0.3"
       },
       "environments": [
         "dev",
@@ -1118,11 +1403,9 @@
           "InsuranceSuite Configuration Upgrade Tools"
         ],
         "version": "3.1.0",
-        "category": [
-          "Core"
-        ],
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
@@ -1144,34 +1427,8 @@
           "InsuranceSuite Configuration Upgrade Tools"
         ],
         "version": "3.0.0",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ]
-    },
-    {
-      "id": "selfmanagedbcupgradeguide1010",
-      "title": "BillingCenter Upgrade Guide",
-      "url": "self-managed/bc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Self-managed"
-        ],
-        "product": [
-          "BillingCenter"
-        ],
-        "version": "10.1.0",
-        "category": [
-          "Core"
         ]
       },
       "environments": [
@@ -1192,86 +1449,28 @@
           "Businessowners Standards Based Template"
         ],
         "version": "2020.05",
-        "category": [
-          "Core"
-        ],
         "release": [
           "Aspen"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "LOB_STANDARDS_filterSet.ditaval",
-        "root": "_supermap-lob-bop-10x.ditamap",
-        "src": "lobbop202005"
-      },
       "environments": [
         "dev",
-        "staging",
-        "prod"
-      ]
-    },
-    {
-      "id": "selfmanagedccupgradeguide1010",
-      "title": "ClaimCenter Upgrade Guide",
-      "url": "self-managed/cc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Self-managed"
-        ],
-        "product": [
-          "ClaimCenter"
-        ],
-        "version": "10.1.0",
-        "category": [
-          "Core"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
-      ]
-    },
-    {
-      "id": "selfmanagedpcupgradeguide1010",
-      "title": "PolicyCenter Upgrade Guide",
-      "url": "self-managed/pc/upgrade/1010",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Self-managed"
-        ],
-        "product": [
-          "PolicyCenter"
-        ],
-        "version": "10.1.0",
-        "category": [
-          "Core"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
       "id": "selfmanagedbcupgradetoolspiteqdgk",
-      "title": "BillingCenter Upgrade Tools",
+      "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/230",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
         ],
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
-        "version": "10.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.3"
       },
       "environments": [
         "dev",
@@ -1281,19 +1480,17 @@
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
-      "title": "ClaimCenter Upgrade Tools",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/230",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
         ],
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
-        "version": "10.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.3"
       },
       "environments": [
         "dev",
@@ -1303,19 +1500,17 @@
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
-      "title": "PolicyCenter Upgrade Tools",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/230",
+      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
         ],
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
-        "version": "10.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.3"
       },
       "environments": [
         "dev",
@@ -1324,7 +1519,43 @@
       ]
     },
     {
-      "id": "selfmanageddhaithitzz",
+      "id": "dh1040",
+      "title": "DataHub",
+      "url": "self-managed/dh/1040",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "DataHub"
+        ],
+        "version": "10.4.0"
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "ic1040",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1040",
+      "metadata": {
+        "platform": [
+          "Self-managed"
+        ],
+        "product": [
+          "InfoCenter"
+        ],
+        "version": "10.4.0"
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "dh1030",
       "title": "DataHub",
       "url": "self-managed/dh/1030",
       "metadata": {
@@ -1334,28 +1565,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.3.0",
-        "category": [
-          "Data"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "DataHub-RELEASE.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "exportdhiconpremforstaging",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-            "targetFolder": "extras/DataHub"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-          }
-        ]
+        "version": "10.3.0"
       },
       "environments": [
         "dev",
@@ -1364,7 +1574,7 @@
       ]
     },
     {
-      "id": "selfmanagediclovarpzz",
+      "id": "ic1030",
       "title": "InfoCenter",
       "url": "self-managed/ic/1030",
       "metadata": {
@@ -1374,28 +1584,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.3.0",
-        "category": [
-          "Data"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "InfoCenter-RELEASE.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "exportdhiconpremforstaging",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-            "targetFolder": "extras/InfoCenter"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-          }
-        ]
+        "version": "10.3.0"
       },
       "environments": [
         "dev",
@@ -1404,7 +1593,7 @@
       ]
     },
     {
-      "id": "selfmanageddhaithituu",
+      "id": "dh1020",
       "title": "DataHub",
       "url": "self-managed/dh/1020",
       "metadata": {
@@ -1414,10 +1603,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.2.0",
-        "category": [
-          "Data"
-        ]
+        "version": "10.2.0"
       },
       "environments": [
         "dev",
@@ -1426,7 +1612,7 @@
       ]
     },
     {
-      "id": "selfmanagediclovarpxb",
+      "id": "ic1020",
       "title": "InfoCenter",
       "url": "self-managed/ic/1020",
       "metadata": {
@@ -1436,10 +1622,140 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.2.0",
-        "category": [
-          "Data"
-        ]
+        "version": "10.2.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceam1130",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/1130",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.3.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceclaims1130",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "self-managed/dx/ce-claims/1130",
+      "metadata": {
+        "product": [
+          "CustomerEngage Account Management for ClaimCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.3.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxceqb1130",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/1130",
+      "metadata": {
+        "product": [
+          "CustomerEngage Quote and Buy"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.3.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpe1130",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1130",
+      "metadata": {
+        "product": [
+          "ProducerEngage"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.3.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxpeclaims1130",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "self-managed/dx/pe-claims/1130",
+      "metadata": {
+        "product": [
+          "ProducerEngage for ClaimCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.3.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxsre1130",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1130",
+      "metadata": {
+        "product": [
+          "ServiceRepEngage"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.3.0"
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dxve1130",
+      "title": "VendorEngage",
+      "url": "self-managed/dx/ve/1130",
+      "metadata": {
+        "product": [
+          "VendorEngage"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": "11.3.0"
       },
       "environments": [
         "dev",
@@ -1458,16 +1774,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-am-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
+        "version": "11.2.0"
       },
       "environments": [
         "dev",
@@ -1486,16 +1793,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-qb-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
+        "version": "11.2.0"
       },
       "environments": [
         "dev",
@@ -1514,16 +1812,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
+        "version": "11.2.0"
       },
       "environments": [
         "dev",
@@ -1542,16 +1831,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-sre-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dx1120"
+        "version": "11.2.0"
       },
       "environments": [
         "dev",
@@ -1572,19 +1852,10 @@
           "Self-managed"
         ],
         "version": "latest",
-        "category": [
-          "Core"
-        ],
         "release": [
-          "Aspen"
+          "Banff",
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": false,
-        "src": "restapi"
       },
       "environments": [
         "dev",
@@ -1604,49 +1875,63 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "displayOnLandingPages": false,
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "GuidewireCloudPlatform.ditamap",
-        "src": "configmgrhelpdraftsrc"
-      },
       "environments": [
         "dev",
-        "int"
+        "int",
+        "staging",
+        "prod"
       ]
     },
     {
-      "id": "standardsdraft",
-      "title": "SurePath Standards",
+      "id": "standardslatest",
+      "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/latest",
       "metadata": {
         "product": [
-          "SurePath Standards"
+          "Guidewire Cloud Standards"
         ],
         "platform": [
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "SurePath Standards"
-        ],
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "surepath.ditamap",
-        "src": "standardsdraftsrc"
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "standards202010",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202010",
+      "metadata": {
+        "product": [
+          "Guidewire Cloud Standards"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "2020.10",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
       },
       "environments": [
         "dev",
-        "int"
+        "staging",
+        "prod"
       ]
     },
     {
@@ -1660,10 +1945,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "11.1.0"
       },
       "environments": [
         "dev",
@@ -1682,10 +1964,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "11.1.0"
       },
       "environments": [
         "dev",
@@ -1704,10 +1983,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "11.1.0"
       },
       "environments": [
         "dev",
@@ -1726,10 +2002,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -1748,10 +2021,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -1770,16 +2040,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-di-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "3.1.0"
       },
       "environments": [
         "dev",
@@ -1798,16 +2059,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-di-c-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "3.1.0"
       },
       "environments": [
         "dev",
@@ -1826,16 +2078,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ed-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "3.1.0"
       },
       "environments": [
         "dev",
@@ -1854,16 +2097,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ed-c-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "3.1.0"
       },
       "environments": [
         "dev",
@@ -1882,16 +2116,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-vod-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "3.1.0"
       },
       "environments": [
         "dev",
@@ -1910,16 +2135,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-vod-c-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "3.1.0"
       },
       "environments": [
         "dev",
@@ -1938,10 +2154,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -1960,10 +2173,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -1982,10 +2192,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -2004,10 +2211,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.2"
       },
       "environments": [
         "dev",
@@ -2026,10 +2230,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -2048,10 +2249,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -2070,16 +2268,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.8",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "exportis908"
+        "version": "9.0.8"
       },
       "environments": [
         "dev",
@@ -2098,10 +2287,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.7"
       },
       "environments": [
         "dev",
@@ -2120,10 +2306,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.6"
       },
       "environments": [
         "dev",
@@ -2142,10 +2325,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.5"
       },
       "environments": [
         "dev",
@@ -2164,10 +2344,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.4"
       },
       "environments": [
         "dev",
@@ -2186,10 +2363,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.3"
       },
       "environments": [
         "dev",
@@ -2208,10 +2382,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.2"
       },
       "environments": [
         "dev",
@@ -2230,10 +2401,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.1"
       },
       "environments": [
         "dev",
@@ -2252,10 +2420,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.0"
       },
       "environments": [
         "dev",
@@ -2274,10 +2439,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.7"
       },
       "environments": [
         "dev",
@@ -2296,10 +2458,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.6"
       },
       "environments": [
         "dev",
@@ -2318,10 +2477,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.5"
       },
       "environments": [
         "dev",
@@ -2340,10 +2496,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.4"
       },
       "environments": [
         "dev",
@@ -2362,10 +2515,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.3"
       },
       "environments": [
         "dev",
@@ -2384,10 +2534,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.2"
       },
       "environments": [
         "dev",
@@ -2406,10 +2553,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.1"
       },
       "environments": [
         "dev",
@@ -2428,10 +2572,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -2450,10 +2591,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.8",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.8"
       },
       "environments": [
         "dev",
@@ -2472,10 +2610,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.7"
       },
       "environments": [
         "dev",
@@ -2494,10 +2629,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.6"
       },
       "environments": [
         "dev",
@@ -2516,10 +2648,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.5"
       },
       "environments": [
         "dev",
@@ -2538,10 +2667,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.4"
       },
       "environments": [
         "dev",
@@ -2560,10 +2686,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.3"
       },
       "environments": [
         "dev",
@@ -2582,10 +2705,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.2"
       },
       "environments": [
         "dev",
@@ -2604,10 +2724,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.1"
       },
       "environments": [
         "dev",
@@ -2626,10 +2743,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
@@ -2648,10 +2762,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.8",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.8"
       },
       "environments": [
         "dev",
@@ -2670,10 +2781,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.7"
       },
       "environments": [
         "dev",
@@ -2692,10 +2800,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.6"
       },
       "environments": [
         "dev",
@@ -2714,10 +2819,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.5"
       },
       "environments": [
         "dev",
@@ -2736,10 +2838,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.4"
       },
       "environments": [
         "dev",
@@ -2758,10 +2857,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.3"
       },
       "environments": [
         "dev",
@@ -2780,10 +2876,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.2"
       },
       "environments": [
         "dev",
@@ -2802,10 +2895,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.1"
       },
       "environments": [
         "dev",
@@ -2824,10 +2914,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "3.0.0"
       },
       "environments": [
         "dev",
@@ -2846,10 +2933,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.2"
       },
       "environments": [
         "dev",
@@ -2868,10 +2952,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -2890,10 +2971,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -2912,16 +2990,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.8",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "exportis908"
+        "version": "9.0.8"
       },
       "environments": [
         "dev",
@@ -2940,10 +3009,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.7"
       },
       "environments": [
         "dev",
@@ -2962,10 +3028,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.6"
       },
       "environments": [
         "dev",
@@ -2984,10 +3047,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.5"
       },
       "environments": [
         "dev",
@@ -3006,10 +3066,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.4"
       },
       "environments": [
         "dev",
@@ -3028,10 +3085,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.3"
       },
       "environments": [
         "dev",
@@ -3050,10 +3104,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.2"
       },
       "environments": [
         "dev",
@@ -3072,10 +3123,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.1"
       },
       "environments": [
         "dev",
@@ -3094,10 +3142,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.0"
       },
       "environments": [
         "dev",
@@ -3116,10 +3161,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.7"
       },
       "environments": [
         "dev",
@@ -3138,10 +3180,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.6"
       },
       "environments": [
         "dev",
@@ -3160,10 +3199,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.5"
       },
       "environments": [
         "dev",
@@ -3182,10 +3218,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.4"
       },
       "environments": [
         "dev",
@@ -3204,10 +3237,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.3"
       },
       "environments": [
         "dev",
@@ -3226,10 +3256,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.2"
       },
       "environments": [
         "dev",
@@ -3248,10 +3275,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.1"
       },
       "environments": [
         "dev",
@@ -3270,10 +3294,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -3292,10 +3313,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.8",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.8"
       },
       "environments": [
         "dev",
@@ -3314,10 +3332,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.7"
       },
       "environments": [
         "dev",
@@ -3336,10 +3351,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.6"
       },
       "environments": [
         "dev",
@@ -3358,10 +3370,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.5"
       },
       "environments": [
         "dev",
@@ -3380,10 +3389,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.4"
       },
       "environments": [
         "dev",
@@ -3402,10 +3408,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.3"
       },
       "environments": [
         "dev",
@@ -3424,10 +3427,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.2"
       },
       "environments": [
         "dev",
@@ -3446,10 +3446,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.1"
       },
       "environments": [
         "dev",
@@ -3468,10 +3465,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
@@ -3490,10 +3484,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.8",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.8"
       },
       "environments": [
         "dev",
@@ -3512,10 +3503,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.7"
       },
       "environments": [
         "dev",
@@ -3534,10 +3522,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.6"
       },
       "environments": [
         "dev",
@@ -3556,10 +3541,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.5"
       },
       "environments": [
         "dev",
@@ -3578,10 +3560,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.4"
       },
       "environments": [
         "dev",
@@ -3600,10 +3579,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.3"
       },
       "environments": [
         "dev",
@@ -3622,10 +3598,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.2"
       },
       "environments": [
         "dev",
@@ -3644,10 +3617,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.1"
       },
       "environments": [
         "dev",
@@ -3666,10 +3636,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "6.0.0"
       },
       "environments": [
         "dev",
@@ -3688,10 +3655,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.9",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.9"
       },
       "environments": [
         "dev",
@@ -3710,10 +3674,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.8",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.8"
       },
       "environments": [
         "dev",
@@ -3732,10 +3693,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.7"
       },
       "environments": [
         "dev",
@@ -3754,10 +3712,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.6"
       },
       "environments": [
         "dev",
@@ -3776,10 +3731,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.5"
       },
       "environments": [
         "dev",
@@ -3798,10 +3750,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.4"
       },
       "environments": [
         "dev",
@@ -3820,10 +3769,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.3"
       },
       "environments": [
         "dev",
@@ -3842,10 +3788,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.2"
       },
       "environments": [
         "dev",
@@ -3864,10 +3807,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.1"
       },
       "environments": [
         "dev",
@@ -3886,10 +3826,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "5.0.0"
       },
       "environments": [
         "dev",
@@ -3908,10 +3845,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.2"
       },
       "environments": [
         "dev",
@@ -3930,10 +3864,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.1"
       },
       "environments": [
         "dev",
@@ -3952,10 +3883,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -3974,16 +3902,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.8",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Release.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "exportis908"
+        "version": "9.0.8"
       },
       "environments": [
         "dev",
@@ -4002,10 +3921,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.7"
       },
       "environments": [
         "dev",
@@ -4024,10 +3940,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.6"
       },
       "environments": [
         "dev",
@@ -4046,10 +3959,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.5"
       },
       "environments": [
         "dev",
@@ -4068,10 +3978,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.4"
       },
       "environments": [
         "dev",
@@ -4090,10 +3997,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.3"
       },
       "environments": [
         "dev",
@@ -4112,10 +4016,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.2"
       },
       "environments": [
         "dev",
@@ -4134,10 +4035,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.1"
       },
       "environments": [
         "dev",
@@ -4156,10 +4054,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "9.0.0"
       },
       "environments": [
         "dev",
@@ -4178,10 +4073,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.8",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.8"
       },
       "environments": [
         "dev",
@@ -4200,10 +4092,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.7"
       },
       "environments": [
         "dev",
@@ -4222,10 +4111,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.6"
       },
       "environments": [
         "dev",
@@ -4244,10 +4130,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.5"
       },
       "environments": [
         "dev",
@@ -4266,10 +4149,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.4"
       },
       "environments": [
         "dev",
@@ -4288,10 +4168,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.3"
       },
       "environments": [
         "dev",
@@ -4310,10 +4187,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.2"
       },
       "environments": [
         "dev",
@@ -4332,10 +4206,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.1"
       },
       "environments": [
         "dev",
@@ -4354,10 +4225,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -4376,10 +4244,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.9",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.9"
       },
       "environments": [
         "dev",
@@ -4398,10 +4263,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.8",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.8"
       },
       "environments": [
         "dev",
@@ -4420,10 +4282,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.7",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.7"
       },
       "environments": [
         "dev",
@@ -4442,10 +4301,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.6"
       },
       "environments": [
         "dev",
@@ -4464,10 +4320,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.5"
       },
       "environments": [
         "dev",
@@ -4486,10 +4339,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.4"
       },
       "environments": [
         "dev",
@@ -4508,10 +4358,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.3"
       },
       "environments": [
         "dev",
@@ -4530,10 +4377,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.2"
       },
       "environments": [
         "dev",
@@ -4552,10 +4396,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.1"
       },
       "environments": [
         "dev",
@@ -4574,10 +4415,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
@@ -4596,10 +4434,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.6",
-        "category": [
-          "Core"
-        ]
+        "version": "4.0.6"
       },
       "environments": [
         "dev",
@@ -4618,10 +4453,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.5",
-        "category": [
-          "Core"
-        ]
+        "version": "4.0.5"
       },
       "environments": [
         "dev",
@@ -4640,10 +4472,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.4",
-        "category": [
-          "Core"
-        ]
+        "version": "4.0.4"
       },
       "environments": [
         "dev",
@@ -4662,10 +4491,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.3",
-        "category": [
-          "Core"
-        ]
+        "version": "4.0.3"
       },
       "environments": [
         "dev",
@@ -4684,10 +4510,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.2",
-        "category": [
-          "Core"
-        ]
+        "version": "4.0.2"
       },
       "environments": [
         "dev",
@@ -4706,10 +4529,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.1",
-        "category": [
-          "Core"
-        ]
+        "version": "4.0.1"
       },
       "environments": [
         "dev",
@@ -4728,10 +4548,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.0",
-        "category": [
-          "Core"
-        ]
+        "version": "4.0.0"
       },
       "environments": [
         "dev",
@@ -4750,10 +4567,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.1.0",
-        "category": [
-          "Data"
-        ]
+        "version": "10.1.0"
       },
       "environments": [
         "dev",
@@ -4772,10 +4586,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Data"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -4794,10 +4605,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.3.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.3.0"
       },
       "environments": [
         "dev",
@@ -4816,10 +4624,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.2.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.2.0"
       },
       "environments": [
         "dev",
@@ -4838,10 +4643,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.1.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.1.0"
       },
       "environments": [
         "dev",
@@ -4860,10 +4662,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.0.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.0.0"
       },
       "environments": [
         "dev",
@@ -4882,10 +4681,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.3.0",
-        "category": [
-          "Data"
-        ]
+        "version": "8.3.0"
       },
       "environments": [
         "dev",
@@ -4904,10 +4700,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.2.0",
-        "category": [
-          "Data"
-        ]
+        "version": "8.2.0"
       },
       "environments": [
         "dev",
@@ -4926,10 +4719,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.1.1",
-        "category": [
-          "Data"
-        ]
+        "version": "8.1.1"
       },
       "environments": [
         "dev",
@@ -4948,10 +4738,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.1.0",
-        "category": [
-          "Data"
-        ]
+        "version": "8.1.0"
       },
       "environments": [
         "dev",
@@ -4970,10 +4757,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.1.0",
-        "category": [
-          "Data"
-        ]
+        "version": "10.1.0"
       },
       "environments": [
         "dev",
@@ -4992,10 +4776,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Data"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -5014,10 +4795,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.3.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.3.0"
       },
       "environments": [
         "dev",
@@ -5036,10 +4814,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.2.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.2.0"
       },
       "environments": [
         "dev",
@@ -5058,10 +4833,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.1.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.1.0"
       },
       "environments": [
         "dev",
@@ -5080,10 +4852,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.0.0",
-        "category": [
-          "Data"
-        ]
+        "version": "9.0.0"
       },
       "environments": [
         "dev",
@@ -5102,10 +4871,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.3.0",
-        "category": [
-          "Data"
-        ]
+        "version": "8.3.0"
       },
       "environments": [
         "dev",
@@ -5124,10 +4890,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.2.1",
-        "category": [
-          "Data"
-        ]
+        "version": "8.2.1"
       },
       "environments": [
         "dev",
@@ -5146,10 +4909,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.2.0",
-        "category": [
-          "Data"
-        ]
+        "version": "8.2.0"
       },
       "environments": [
         "dev",
@@ -5168,10 +4928,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.1.1",
-        "category": [
-          "Data"
-        ]
+        "version": "8.1.1"
       },
       "environments": [
         "dev",
@@ -5190,10 +4947,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.1.0",
-        "category": [
-          "Data"
-        ]
+        "version": "8.1.0"
       },
       "environments": [
         "dev",
@@ -5204,7 +4958,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
       "title": "CustomerEngage Account Management",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_AccountManagement1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_AccountManagement1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -5212,10 +4966,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -5234,10 +4985,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "8.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.1.0"
       },
       "environments": [
         "dev",
@@ -5256,10 +5004,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -5278,10 +5023,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "7.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.1.0"
       },
       "environments": [
         "dev",
@@ -5300,10 +5042,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
@@ -5314,7 +5053,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk",
       "title": "CustomerEngage Quote and Buy",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/CustomerEngage_QuoteAndBuy1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_QuoteAndBuy1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -5322,10 +5061,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -5344,10 +5080,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "8.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.1.0"
       },
       "environments": [
         "dev",
@@ -5366,10 +5099,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -5388,10 +5118,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "7.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.1.0"
       },
       "environments": [
         "dev",
@@ -5410,10 +5137,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
@@ -5424,7 +5148,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
       "title": "ProducerEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ProducerEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ProducerEngage1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -5432,10 +5156,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -5454,10 +5175,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "8.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.1.0"
       },
       "environments": [
         "dev",
@@ -5476,10 +5194,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -5498,10 +5213,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "7.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.1.0"
       },
       "environments": [
         "dev",
@@ -5520,10 +5232,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
@@ -5534,7 +5243,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
       "title": "ServiceRepEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/ServiceRepEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ServiceRepEngage1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -5542,10 +5251,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -5564,10 +5270,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "8.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.1.0"
       },
       "environments": [
         "dev",
@@ -5586,10 +5289,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -5608,10 +5308,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "7.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.1.0"
       },
       "environments": [
         "dev",
@@ -5630,10 +5327,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
@@ -5644,7 +5338,7 @@
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp",
       "title": "VendorEngage",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/VendorEngage1000_Docs/",
+      "url": "https://portal2.guidewire.com/portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/VendorEngage1000_Docs/",
       "metadata": {
         "platform": [
           "Self-managed"
@@ -5652,10 +5346,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "10.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "10.0.0"
       },
       "environments": [
         "dev",
@@ -5674,10 +5365,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "8.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.1.0"
       },
       "environments": [
         "dev",
@@ -5696,10 +5384,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "8.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "8.0.0"
       },
       "environments": [
         "dev",
@@ -5718,10 +5403,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "7.1.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.1.0"
       },
       "environments": [
         "dev",
@@ -5740,136 +5422,12 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "7.0.0",
-        "category": [
-          "Digital"
-        ]
+        "version": "7.0.0"
       },
       "environments": [
         "dev",
         "staging",
         "prod"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookreleasenotes",
-      "title": "Release Notes",
-      "url": "test/bc/releasenotes",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "releasenotes/ReleaseNotes-cloud.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbooknewandchanged",
-      "title": "New and Changed",
-      "url": "test/bc/newandchanged",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/newAndChanged/NewAndChanged.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookupgrade",
-      "title": "Upgrade Guide",
-      "url": "test/bc/upgrade",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
-        "root": "UpgradeGuide.ditamap",
-        "indexRedirect": true,
-        "src": "isupgradeguidesrc"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isnoxbookconfigupgradetools",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0",
-      "url": "test/isconfigupgradetools/320",
-      "metadata": {
-        "platform": [
-          "Cloud",
-          "Self-managed"
-        ],
-        "product": [
-          "InsuranceSuite Configuration Upgrade Tools"
-        ],
-        "version": "3.2.0",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "dev"
       ]
     },
     {
@@ -5884,18 +5442,11 @@
           "Businessowners Standards Based Template"
         ],
         "version": "latest",
-        "category": [
-          "Core"
-        ],
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff",
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "LOB_STANDARDS_filterSet.ditaval",
-        "root": "_supermap-lob-bop-10x.ditamap",
-        "src": "lobbopdraft"
       },
       "environments": [
         "dev",
@@ -5903,9 +5454,9 @@
       ]
     },
     {
-      "id": "isbccloudnoxbookapp",
-      "title": "Application Guide",
-      "url": "test/bc/app",
+      "id": "isbc202011releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/202011/releasenotes",
       "metadata": {
         "platform": [
           "Cloud"
@@ -5913,31 +5464,24 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
         "subject": [
-          "Features and functionality"
+          "Release notes"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/app/BC-AppGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
       "environments": [
-        "dev"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbookcontact",
-      "title": "Contact Management",
-      "url": "test/bc/contact",
+      "id": "isbc202011newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/bc/202011/newandchanged",
       "metadata": {
         "platform": [
           "Cloud"
@@ -5945,31 +5489,24 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
         "subject": [
-          "Features and functionality"
+          "Release notes"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/contact/ContactMgmtGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
       "environments": [
-        "dev"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
-      "id": "isbccloudnoxbooksuite",
-      "title": "InsuranceSuite Guide",
-      "url": "test/bc/suite",
+      "id": "isbc202011upgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/202011/upgrade",
       "metadata": {
         "platform": [
           "Cloud"
@@ -5977,298 +5514,7 @@
         "product": [
           "BillingCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/suite/InsuranceSuiteGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookadmin",
-      "title": "Administration",
-      "url": "test/bc/admin",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Administration"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/admin/AdminGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookbestpractice",
-      "title": "Best Practices",
-      "url": "test/bc/bestpractice",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Best practices"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/bestpractice/BestPracticesGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookconfig",
-      "title": "Configuration",
-      "url": "test/bc/config",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Configuration"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/config/ConfigGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookglobal",
-      "title": "Globalization",
-      "url": "test/bc/global",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Configuration"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/global/GlobalizationGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookrules",
-      "title": "Rules",
-      "url": "test/bc/rules",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Configuration"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/rules/RulesGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookinteg",
-      "title": "Integration",
-      "url": "test/bc/integration",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Integration"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/integration/IntegrationGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookgosu",
-      "title": "Gosu Reference",
-      "url": "test/bc/gosu",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/gosu/GosuRefGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbooktesting",
-      "title": "Testing",
-      "url": "test/bc/testing",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/testing/TestingGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
-      "environments": [
-        "dev"
-      ]
-    },
-    {
-      "id": "isbccloudnoxbookinstall",
-      "title": "Installation",
-      "url": "test/bc/installation",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "0.1",
-        "category": [
-          "Core"
-        ],
+        "version": "2020.11",
         "release": [
           "Banff"
         ],
@@ -6276,20 +5522,241 @@
           "Installation"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "cloud/active/installation/InstallationGuide.ditamap",
-        "src": "cloudisnoxbook"
-      },
       "environments": [
-        "dev"
+        "dev",
+        "staging",
+        "prod"
       ]
     },
     {
-      "id": "iscloudnoxbookglossary",
-      "title": "Glossary",
-      "url": "test/is/glossary",
+      "id": "isbc202011app",
+      "title": "Application Guide",
+      "url": "cloud/bc/202011/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011admin",
+      "title": "Administration",
+      "url": "cloud/bc/202011/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/bc/202011/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011config",
+      "title": "Configuration",
+      "url": "cloud/bc/202011/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011global",
+      "title": "Globalization",
+      "url": "cloud/bc/202011/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011rules",
+      "title": "Rules",
+      "url": "cloud/bc/202011/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011integ",
+      "title": "Integration",
+      "url": "cloud/bc/202011/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011gosu",
+      "title": "Gosu Reference",
+      "url": "cloud/bc/202011/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011testing",
+      "title": "Testing",
+      "url": "cloud/bc/202011/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "is202011restapiclient",
+      "title": "REST API Client",
+      "url": "cloud/is/202011/restapiclient",
       "metadata": {
         "platform": [
           "Cloud"
@@ -6299,25 +5766,922 @@
           "ClaimCenter for Guidewire Cloud",
           "PolicyCenter for Guidewire Cloud"
         ],
-        "version": "0.1",
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "isbc202011install",
+      "title": "Installation",
+      "url": "cloud/bc/202011/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/202011/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/cc/202011/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011upgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/202011/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011app",
+      "title": "Application Guide",
+      "url": "cloud/cc/202011/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011admin",
+      "title": "Administration",
+      "url": "cloud/cc/202011/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/cc/202011/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011config",
+      "title": "Configuration",
+      "url": "cloud/cc/202011/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011global",
+      "title": "Globalization",
+      "url": "cloud/cc/202011/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011rules",
+      "title": "Rules",
+      "url": "cloud/cc/202011/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011integ",
+      "title": "Integration",
+      "url": "cloud/cc/202011/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011cloudapi",
+      "title": "Cloud API",
+      "url": "cloud/cc/202011/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011gosu",
+      "title": "Gosu Reference",
+      "url": "cloud/cc/202011/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011testing",
+      "title": "Testing",
+      "url": "cloud/cc/202011/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/202011/restapiframework",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "iscc202011install",
+      "title": "Installation",
+      "url": "cloud/cc/202011/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/pc/202011/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/pc/202011/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011upgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/202011/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011app",
+      "title": "Application Guide",
+      "url": "cloud/pc/202011/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011admin",
+      "title": "Administration",
+      "url": "cloud/pc/202011/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/pc/202011/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011apd",
+      "title": "Advanced Product Designer",
+      "url": "cloud/pc/202011/apd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011config",
+      "title": "Configuration",
+      "url": "cloud/pc/202011/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011global",
+      "title": "Globalization",
+      "url": "cloud/pc/202011/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011rules",
+      "title": "Rules",
+      "url": "cloud/pc/202011/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011pd",
+      "title": "Product Designer",
+      "url": "cloud/pc/202011/pd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011pm",
+      "title": "Product Model",
+      "url": "cloud/pc/202011/productmodel",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011integ",
+      "title": "Integration",
+      "url": "cloud/pc/202011/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011cloudapi",
+      "title": "Cloud API",
+      "url": "cloud/pc/202011/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011gosu",
+      "title": "Gosu Reference",
+      "url": "cloud/pc/202011/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011testing",
+      "title": "Testing",
+      "url": "cloud/pc/202011/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/pc/202011/restapiframework",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "ispc202011install",
+      "title": "Installation",
+      "url": "cloud/pc/202011/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "is202011contact",
+      "title": "Contact Management",
+      "url": "cloud/is/202011/contact",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "is202011glossary",
+      "title": "Glossary",
+      "url": "cloud/is/202011/glossary",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "2020.11",
         "subject": [
           "Glossary"
-        ],
-        "category": [
-          "Core"
         ],
         "release": [
           "Banff"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Cloud-Draft.ditaval",
-        "root": "cloud/active/glossary/Glossary.ditamap",
-        "src": "cloudisnoxbook"
-      },
       "environments": [
-        "dev"
+        "dev",
+        "staging",
+        "prod"
       ]
     }
   ]
