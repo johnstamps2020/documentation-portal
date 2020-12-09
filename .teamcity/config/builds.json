@@ -506,7 +506,7 @@
       "docId": "bc1011",
       "resources": [
         {
-          "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.1.1",
+          "targetFolder": "extras/ReleaseNotes-files/bc/10.1.1",
           "sourceFolder": "ReleaseNotes-files/bc/10.1.1",
           "srcId": "insurancesuiteextrassrc"
         }
@@ -520,7 +520,7 @@
       "docId": "cc1011",
       "resources": [
         {
-          "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.1.1",
+          "targetFolder": "extras/ReleaseNotes-files/cc/10.1.1",
           "sourceFolder": "ReleaseNotes-files/cc/10.1.1",
           "srcId": "insurancesuiteextrassrc"
         }
@@ -534,7 +534,7 @@
       "docId": "pc1011",
       "resources": [
         {
-          "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.1.1",
+          "targetFolder": "extras/ReleaseNotes-files/pc/10.1.1",
           "sourceFolder": "ReleaseNotes-files/pc/10.1.1",
           "srcId": "insurancesuiteextrassrc"
         }
