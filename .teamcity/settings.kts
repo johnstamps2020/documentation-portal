@@ -777,9 +777,7 @@ object DeployServerConfig : BuildType({
                   export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
                 fi
                 
-                aws s3 cp %teamcity.build.checkoutDir%/.teamcity/config/out/config.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config/config.json
-                aws s3 cp %teamcity.build.checkoutDir%/.teamcity/config/taxonomy s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config/taxonomy --recursive
-                aws s3 cp %teamcity.build.checkoutDir%/.teamcity/config/out/taxonomy/cloud/index.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config/taxonomy/cloud/index.json
+                aws s3 cp %teamcity.build.checkoutDir%/.teamcity/config/out s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config --recursive
                 """.trimIndent()
         }
     }
