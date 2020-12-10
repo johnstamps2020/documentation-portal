@@ -563,8 +563,8 @@
       "docId": "bc1010staging",
       "resources": [
         {
-          "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.1.0",
-          "sourceFolder": "ReleaseNotes-files/bc/10.1.0",
+          "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.x/10.1.0",
+          "sourceFolder": "ReleaseNotes-files/bc/10.x/10.1.0",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -577,8 +577,8 @@
       "docId": "cc1010staging",
       "resources": [
         {
-          "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.1.0",
-          "sourceFolder": "ReleaseNotes-files/cc/10.1.0",
+          "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.x/10.1.0",
+          "sourceFolder": "ReleaseNotes-files/cc/10.x/10.1.0",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -591,8 +591,8 @@
       "docId": "pc1010staging",
       "resources": [
         {
-          "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.1.0",
-          "sourceFolder": "ReleaseNotes-files/pc/10.1.0",
+          "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.x/10.1.0",
+          "sourceFolder": "ReleaseNotes-files/pc/10.x/10.1.0",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
