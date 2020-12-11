@@ -303,16 +303,16 @@
           "label": "InsuranceNow",
           "items": [
             {
-              "id": "insNowBanff",
-              "label": "InsuranceNow"
-            },
-            {
               "id": "insuranceNow20202xExt",
               "label": "InsuranceNow 2020.2x - External Audience"
             },
             {
               "id": "insuranceNow20202xInt",
               "label": "InsuranceNow 2020.2x - Internal Audience"
+            },
+            {
+              "id": "insNowBanff",
+              "label": "InsuranceNow"
             }
           ]
         }
