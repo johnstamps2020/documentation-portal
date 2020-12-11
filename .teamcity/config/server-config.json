@@ -225,86 +225,6 @@
       ]
     },
     {
-      "id": "cloudin20201xinternaldraft",
-      "title": "InsuranceNow 2020.1x - Internal",
-      "url": "cloud/in/internal/20201x",
-      "metadata": {
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Aspen"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudin20201xexternaldraft",
-      "title": "InsuranceNow 2020.1x - External",
-      "url": "cloud/in/external/20201x",
-      "metadata": {
-        "product": [
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Aspen"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudin20202xinternaldraft",
-      "title": "InsuranceNow 2020.2x - Internal",
-      "url": "cloud/in/internal/20202x",
-      "metadata": {
-        "product": [
-          "InsuranceNow 2020.2x - Internal Audience"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudin20202xexternaldraft",
-      "title": "InsuranceNow 2020.2x - External",
-      "url": "cloud/in/external/20202x",
-      "metadata": {
-        "product": [
-          "InsuranceNow 2020.2x - External Audience"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Banff"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
       "id": "guidewireidentityfederationhublatest",
       "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
@@ -10051,20 +9971,793 @@
     {
       "id": "in20202xrndraft",
       "title": "Release Notes",
-      "url": "cloud/in/20202x/glossary",
+      "url": "cloud/in/20202x/releasenotes",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "InsuranceNow"
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
         ],
-        "version": "2020.2x - internal",
+        "version": "latest",
         "subject": [
-          "Glossary"
+          "Release Notes"
         ],
         "release": [
-          "Cortina"
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "incsp324rndraft",
+      "title": "Consumer Service Portal 3.24 Release Notes",
+      "url": "cloud/in/csp324rn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience",
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "incsp323rndraft",
+      "title": "Consumer Service Portal 3.23 Release Notes",
+      "url": "cloud/in/csp323rn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience",
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xstudiorndraft",
+      "title": "Studio Release Notes",
+      "url": "cloud/in/20202x/studiorn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xappdraft",
+      "title": "Application Guide",
+      "url": "cloud/in/20202x/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Features and Functionality"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xbidraft",
+      "title": "Business Intelligence Getting Started Guide",
+      "url": "cloud/in/20202x/bi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Features and Functionality"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xcsalespdraft",
+      "title": "Consumer Sales Portal Features",
+      "url": "cloud/in/20202x/csalesp",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Features and Functionality"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xcservicepdraft",
+      "title": "Consumer Service Portal Features",
+      "url": "cloud/in/20202x/cservicep",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Features and Functionality"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xappreaderintegdraft",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20202x/appreaderinteg",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xpadraft",
+      "title": "Predictive Analytics Integration",
+      "url": "cloud/in/20202x/pa",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xbiintegdraft",
+      "title": "Business Intelligence Integration",
+      "url": "cloud/in/20202x/biinteg",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xconfigdraft",
+      "title": "Configuration Guide",
+      "url": "cloud/in/20202x/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xcservicepconfigdraft",
+      "title": "Consumer Service Portal Configuration Guide",
+      "url": "cloud/in/20202x/cservicepconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xstudiodraft",
+      "title": "Studio Configuration Guide",
+      "url": "cloud/in/20202x/studioconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xprovportaldraft",
+      "title": "Provisioning Portal",
+      "url": "cloud/in/20202x/provportal",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xportaldevdraft",
+      "title": "Portal Development",
+      "url": "cloud/in/20202x/portaldev",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xprodattrefdraft",
+      "title": "Product Attribute Reference",
+      "url": "cloud/in/20202x/prodattref",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xuwconfigdraft",
+      "title": "Underwriting Product Configuration Guide",
+      "url": "cloud/in/20202x/uwconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xclaimsconfigdraft",
+      "title": "Claims Product Configuration Guide",
+      "url": "cloud/in/20202x/claimsconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xstudiorndraft",
+      "title": "Studio Release Notes",
+      "url": "cloud/in/20201x/studiorn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xappdraft",
+      "title": "Application Guide",
+      "url": "cloud/in/20201x/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Features and Functionality"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xbidraft",
+      "title": "Business Intelligence Getting Started Guide",
+      "url": "cloud/in/20201x/bi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Features and Functionality"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xcservicepdraft",
+      "title": "Consumer Service Portal Features",
+      "url": "cloud/in/20201x/cservicep",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Features and Functionality"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xappreaderintegdraft",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20201x/appreaderinteg",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xbiintegdraft",
+      "title": "Business Intelligence Integration",
+      "url": "cloud/in/20201x/biinteg",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xpaymentapiintegdraft",
+      "title": "Guidewire Payments API Integration",
+      "url": "cloud/in/20201x/paymentinteg",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xpadraft",
+      "title": "Predictive Analytics Integration",
+      "url": "cloud/in/20201x/pa",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Integration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xconfigdraft",
+      "title": "Configuration Guide",
+      "url": "cloud/in/20201x/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xstudiodraft",
+      "title": "Studio Configuration Guide",
+      "url": "cloud/in/20201x/studioconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xportaldevdraft",
+      "title": "Portal Development",
+      "url": "cloud/in/20201x/portaldev",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xuwconfigdraft",
+      "title": "Underwriting Product Configuration Guide",
+      "url": "cloud/in/20201x/uwconfig",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "inupgradetoolsdraft",
+      "title": "Upgrade Tools",
+      "url": "cloud/in/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience",
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
