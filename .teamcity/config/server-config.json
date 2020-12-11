@@ -2472,7 +2472,8 @@
       },
       "environments": [
         "dev",
-        "staging"
+        "staging",
+        "prod"
       ]
     },
     {
@@ -2490,7 +2491,8 @@
       },
       "environments": [
         "dev",
-        "staging"
+        "staging",
+        "prod"
       ]
     },
     {
@@ -10035,6 +10037,29 @@
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": "earlyaccess",
+        "subject": [
+          "Glossary"
+        ],
+        "release": [
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20202xrndraft",
+      "title": "Release Notes",
+      "url": "cloud/in/20202x/glossary",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": "2020.2x - internal",
         "subject": [
           "Glossary"
         ],
