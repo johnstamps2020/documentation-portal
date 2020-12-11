@@ -1586,7 +1586,6 @@ object HelperObjects {
                             username = "%serviceAccountUsername%"
                             password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                         }
-                        filterTargetBranch = "refs/heads/$git_source_branch"
                     }
                 }
             }
