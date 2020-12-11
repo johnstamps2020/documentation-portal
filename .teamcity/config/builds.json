@@ -95,48 +95,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-20201x-active.ditamap",
-      "srcId": "in20201xdraftsrc",
-      "docId": "cloudin20201xexternaldraft",
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2020.1",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "_supermap-20202x-active.ditamap",
-      "srcId": "in20202xdraftsrc",
-      "docId": "cloudin20202xinternaldraft",
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2020.2",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-20202x-active.ditamap",
-      "srcId": "in20202xdraftsrc",
-      "docId": "cloudin20202xexternaldraft",
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2020.2",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
       "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
