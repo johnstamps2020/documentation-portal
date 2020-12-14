@@ -2562,6 +2562,21 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20201.ditamap",
+      "srcId": "in20201xdraftsrc",
+      "docId": "in20201xrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20201.ditamap",
       "srcId": "in20201xdraftsrc",
       "docId": "in20201xstudiorndraft",
