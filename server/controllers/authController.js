@@ -28,7 +28,7 @@ const authGateway = (req, res, next) => {
     const reqUrl = new URL(req.url, 'relative:///');
     if (
       req.isAuthenticated() ||
-      process.env.SKIP_AUTH === 'yes' ||
+      process.env.ENABLE_AUTH === 'no' ||
       reqUrl.pathname === '/' ||
       majorOpenRoutes.some(r => reqUrl.pathname.startsWith(r))
     ) {
