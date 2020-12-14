@@ -19,7 +19,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudcclatestovwsjybk",
@@ -39,7 +42,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudpclatestltxfjual",
@@ -59,7 +65,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudbclatestearlyaccess",
@@ -79,7 +88,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudcclatestearlyaccess",
@@ -99,7 +111,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudpclatestearlyaccess",
@@ -119,13 +134,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudbcupgradeguidelatest",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/latest",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -140,13 +157,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "cloudccupgradeguidelatest",
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/upgrade/latest",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -161,13 +180,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "cloudpcupgradeguidelatest",
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/upgrade/latest",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -182,7 +203,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "isconfigupgradetools3x",
@@ -204,7 +228,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddhdraft",
@@ -224,7 +251,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudicdraft",
@@ -244,7 +274,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddxceamdraft",
@@ -264,7 +297,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "clouddxceclaimsdraft",
@@ -284,7 +320,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddxceqbdraft",
@@ -304,7 +343,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxapdclouddraft",
@@ -324,7 +366,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddxpedraft",
@@ -344,7 +389,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddxpeclaimsdraft",
@@ -364,7 +412,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddxsredraft",
@@ -384,7 +435,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddxvedraft",
@@ -404,7 +458,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudin20201xinternaldraft",
@@ -424,7 +481,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudin20201xexternaldraft",
@@ -444,7 +504,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudin20202xinternaldraft",
@@ -464,7 +527,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudin20202xexternaldraft",
@@ -484,7 +550,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "guidewireidentityfederationhublatest",
@@ -508,7 +577,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedbcxufesxuwl",
@@ -525,7 +597,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedccxbvqtoakg",
@@ -542,7 +617,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedpcxrwjcdamu",
@@ -559,13 +637,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedbcupgradeguide10x",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/10x",
-      "displayOnLandingPages": false,
       "metadata": {
         "product": [
           "BillingCenter"
@@ -577,13 +657,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedccupgradeguide10x",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/10x",
-      "displayOnLandingPages": false,
       "metadata": {
         "product": [
           "ClaimCenter"
@@ -595,13 +677,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/10x",
-      "displayOnLandingPages": false,
       "metadata": {
         "product": [
           "PolicyCenter"
@@ -613,13 +697,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedbcupgradetools1x",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1x",
-      "displayOnLandingPages": false,
       "metadata": {
         "product": [
           "BillingCenter"
@@ -631,13 +717,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedccupgradetools1x",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1x",
-      "displayOnLandingPages": false,
       "metadata": {
         "product": [
           "ClaimCenter"
@@ -649,13 +737,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedpcupgradetools1x",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1x",
-      "displayOnLandingPages": false,
       "metadata": {
         "product": [
           "PolicyCenter"
@@ -667,7 +757,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedbcxcoxibeoa",
@@ -684,7 +777,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedccxgfurvaqu",
@@ -701,7 +797,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedpcxxbkttzbb",
@@ -718,7 +817,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddhxoiefunwl",
@@ -735,7 +837,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedicxrsfjafti",
@@ -752,7 +857,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedbadraft",
@@ -769,7 +877,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxceamdraft",
@@ -786,7 +897,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "selfmanageddxceclaimsdraft",
@@ -803,7 +917,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxceqbdraft",
@@ -820,7 +937,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxapddraft",
@@ -837,7 +957,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxpedraft",
@@ -854,7 +977,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxpeclaimsdraft",
@@ -871,7 +997,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxsredraft",
@@ -888,7 +1017,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxvedraft",
@@ -905,7 +1037,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxdixowqwwrfu",
@@ -922,7 +1057,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxdicxyhksqnkf",
@@ -939,7 +1077,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxedxqqjwvkln",
@@ -956,7 +1097,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxedcxvpeswwmn",
@@ -973,7 +1117,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxvodxqjomllcj",
@@ -990,7 +1137,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxvodcxeajkygfs",
@@ -1007,7 +1157,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "testingframeworksdraft",
@@ -1027,7 +1180,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "gwfeaturepreviewearlyaccess",
@@ -1047,7 +1203,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "gwfeaturepreviewdraft",
@@ -1067,7 +1226,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudbc202005",
@@ -1089,7 +1251,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudcc202005",
@@ -1111,7 +1276,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudpc202005",
@@ -1133,13 +1301,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudbcupgradeguide202005",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/202005",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -1156,13 +1326,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "cloudccupgradeguide202005",
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/upgrade/202005",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -1179,13 +1351,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "cloudpcupgradeguide202005",
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/upgrade/202005",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -1202,7 +1376,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "cloudinexternal20202",
@@ -1224,7 +1401,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cloudinexternal20201",
@@ -1246,7 +1426,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "midipg2x",
@@ -1267,7 +1450,10 @@
       "environments": [
         "dev",
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "guidewirecloudconsoleguideinsurerdev",
@@ -1291,7 +1477,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "guidewirecloudconsolerninsurerdev",
@@ -1315,13 +1504,15 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "guidewirecloudconsolerootinsurerdev",
       "title": "Cloud Console Root Doc Insurer Developer",
       "url": "cloud/gcc-guide/insurer-developer/latest",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -1340,14 +1531,15 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "guidewirecloudconsolerootgwadmin",
       "title": "Cloud Console Root Doc GW Admin",
       "url": "cloud/gcc-guide/gw-admin/latest",
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
       "metadata": {
         "platform": [
           "Cloud"
@@ -1362,13 +1554,15 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": false,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedbcupgradeguide1011",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1011",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1381,13 +1575,15 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedccupgradeguide1011",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1011",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1400,13 +1596,15 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedpcupgradeguide1011",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1011",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1419,13 +1617,15 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedbcupgradeguide1010",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1010",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1439,13 +1639,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedccupgradeguide1010",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1010",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1459,13 +1661,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedpcupgradeguide1010",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1010",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1479,7 +1683,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "bc1011",
@@ -1497,7 +1704,10 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cc1011",
@@ -1515,7 +1725,10 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "pc1011",
@@ -1533,7 +1746,10 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "bc1010staging",
@@ -1552,7 +1768,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cc1010staging",
@@ -1571,7 +1790,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "pc1010staging",
@@ -1590,7 +1812,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "bc909",
@@ -1609,7 +1834,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "cc909",
@@ -1628,7 +1856,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "pc909",
@@ -1647,13 +1878,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedbcupgradetoolsqwertyui",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1440",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1667,13 +1900,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1440",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1687,13 +1922,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1440",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -1707,7 +1944,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "dh202011",
@@ -1729,7 +1969,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ic202011",
@@ -1751,7 +1994,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "palatest",
@@ -1774,7 +2020,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dh202005",
@@ -1796,7 +2045,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ic202005",
@@ -1818,7 +2070,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "clouddataplatformlatest",
@@ -1842,7 +2097,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "comparelatest",
@@ -1865,7 +2123,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "explorecloudstaging",
@@ -1889,7 +2150,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceam202011",
@@ -1911,7 +2175,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "dxceclaims202011",
@@ -1933,7 +2200,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceqb202011",
@@ -1955,7 +2225,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dkekdisievjfjrndjsj",
@@ -1980,7 +2253,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "dsssekelmvkdnasjsjsnndddf",
@@ -2005,7 +2281,10 @@
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "dxapd202011",
@@ -2027,7 +2306,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpe202011",
@@ -2049,7 +2331,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpeclaims202011",
@@ -2071,7 +2356,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxsre202011",
@@ -2093,7 +2381,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxve202011",
@@ -2115,7 +2406,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceam202010",
@@ -2137,7 +2431,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "dxceclaims202010",
@@ -2159,7 +2456,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceqb202010",
@@ -2181,7 +2481,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpe202010",
@@ -2203,7 +2506,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpeclaims202010",
@@ -2225,7 +2531,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxsre202010",
@@ -2247,7 +2556,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxve202010",
@@ -2269,7 +2581,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceam202008",
@@ -2291,7 +2606,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "dxceqb202008",
@@ -2313,7 +2631,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpe202008",
@@ -2335,7 +2656,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxsre202008",
@@ -2357,7 +2681,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceqb202005",
@@ -2379,13 +2706,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxapd202005",
       "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/202005",
-      "displayOnLandingPages": false,
       "metadata": {
         "product": [
           "Digital Code Generation Extension Pack"
@@ -2402,7 +2731,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "dxpe202005",
@@ -2424,7 +2756,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxsre202005",
@@ -2446,7 +2781,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedbcfxhglseu",
@@ -2465,7 +2803,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedccahrgbyin",
@@ -2484,7 +2825,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedpcuytrolxz",
@@ -2503,7 +2847,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isconfigupgradetools310",
@@ -2527,7 +2874,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isconfigupgradetools300",
@@ -2550,7 +2900,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "lobbopcloudstaging",
@@ -2571,13 +2924,15 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedbcupgradetoolspiteqdgk",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/230",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2591,13 +2946,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/230",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2611,13 +2968,15 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/230",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": [
           "Self-managed"
@@ -2631,7 +2990,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "dh1040",
@@ -2649,7 +3011,10 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ic1040",
@@ -2667,7 +3032,10 @@
       "environments": [
         "dev",
         "staging"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dh1030",
@@ -2686,7 +3054,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ic1030",
@@ -2705,7 +3076,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dh1020",
@@ -2724,7 +3098,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ic1020",
@@ -2743,7 +3120,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceam1130",
@@ -2762,7 +3142,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "dxceclaims1130",
@@ -2781,7 +3164,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceqb1130",
@@ -2800,7 +3186,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpe1130",
@@ -2819,7 +3208,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpeclaims1130",
@@ -2838,7 +3230,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxsre1130",
@@ -2857,7 +3252,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxve1130",
@@ -2876,7 +3274,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceam1120onpremstaging",
@@ -2895,7 +3296,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "dxceqb1120onpremstaging",
@@ -2914,7 +3318,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpe1120onpremstaging",
@@ -2933,7 +3340,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxsre1120onpremstaging",
@@ -2952,7 +3362,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "restapidraft",
@@ -2974,7 +3387,10 @@
       "environments": [
         "dev",
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "configmgrhelpdraft",
@@ -2992,13 +3408,15 @@
           "Banff"
         ]
       },
-      "displayOnLandingPages": false,
       "environments": [
         "dev",
         "int",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "standardslatest",
@@ -3017,13 +3435,14 @@
           "Banff"
         ]
       },
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
       "environments": [
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": false,
+      "displayOnLandingPages": false,
+      "public": false
     },
     {
       "id": "standards202010",
@@ -3046,7 +3465,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "standardsdraft",
@@ -3067,7 +3489,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxceqb1110onpremstaging",
@@ -3086,7 +3511,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxpe1110onpremstaging",
@@ -3105,7 +3533,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxsre1110onpremstaging",
@@ -3124,7 +3555,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxceamagmqaagu",
@@ -3143,7 +3577,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "selfmanageddxvebjvtkgov",
@@ -3162,7 +3599,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxdionpremstaging",
@@ -3181,7 +3621,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxdiconpremstaging",
@@ -3200,7 +3643,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxedonpremstaging",
@@ -3219,7 +3665,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxedconpremstaging",
@@ -3238,7 +3687,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxvodonpremstaging",
@@ -3257,7 +3709,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "dxvodconpremstaging",
@@ -3276,7 +3731,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxceqbphivypaz",
@@ -3295,7 +3753,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxpemlefekrm",
@@ -3314,7 +3775,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanageddxsreaqsojbmv",
@@ -3333,7 +3797,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingentercqsywzuj",
@@ -3352,7 +3819,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingentervdugkpgr",
@@ -3371,7 +3841,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterlhkdzceb",
@@ -3390,7 +3863,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedbchggrerca",
@@ -3409,7 +3885,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterkqqanxwh",
@@ -3428,7 +3907,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterkxubulyh",
@@ -3447,7 +3929,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterlmkrswrz",
@@ -3466,7 +3951,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocicbeksro",
@@ -3485,7 +3973,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfcmljyqa",
@@ -3504,7 +3995,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjoxldmbo",
@@ -3523,7 +4017,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfmnupekf",
@@ -3542,7 +4039,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyoyphgem",
@@ -3561,7 +4061,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockdppxpda",
@@ -3580,7 +4083,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoczxmrlibm",
@@ -3599,7 +4105,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocccsrmkdc",
@@ -3618,7 +4127,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoceiifgxcw",
@@ -3637,7 +4149,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocffmmswgf",
@@ -3656,7 +4171,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocqfdehuey",
@@ -3675,7 +4193,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccjtmugit",
@@ -3694,7 +4215,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocammzblnv",
@@ -3713,7 +4237,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyftpvcaw",
@@ -3732,7 +4259,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocxlzchxhu",
@@ -3751,7 +4281,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgrobvbee",
@@ -3770,7 +4303,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccmauxbba",
@@ -3789,7 +4325,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdochpillvww",
@@ -3808,7 +4347,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjlfsfdfd",
@@ -3827,7 +4369,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocbkjcnzwz",
@@ -3846,7 +4391,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgnjtyazg",
@@ -3865,7 +4413,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocncmwqrli",
@@ -3884,7 +4435,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocutiqttau",
@@ -3903,7 +4457,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocwhxoullx",
@@ -3922,7 +4479,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoconjiqcsc",
@@ -3941,7 +4501,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocedtrwltv",
@@ -3960,7 +4523,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccdfgarry",
@@ -3979,7 +4545,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocnzoixxnr",
@@ -3998,7 +4567,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterfjbyhawz",
@@ -4017,7 +4589,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterysfwgwsw",
@@ -4036,7 +4611,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockzksesmd",
@@ -4055,7 +4633,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterbfthnlvf",
@@ -4074,7 +4655,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenteruhhqohgq",
@@ -4093,7 +4677,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterqqxmyzex",
@@ -4112,7 +4699,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedccaaforoxt",
@@ -4131,7 +4721,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterelmxqvai",
@@ -4150,7 +4743,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterwtigvtxy",
@@ -4169,7 +4765,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentercxzeemjp",
@@ -4188,7 +4787,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocidesewcj",
@@ -4207,7 +4809,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvqlyczrv",
@@ -4226,7 +4831,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnlrfsben",
@@ -4245,7 +4853,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoceytmuoui",
@@ -4264,7 +4875,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocxjnxnozc",
@@ -4283,7 +4897,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnhpuynwc",
@@ -4302,7 +4919,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocmypqavjm",
@@ -4321,7 +4941,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocbapuerjf",
@@ -4340,7 +4963,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqeuxmcrz",
@@ -4359,7 +4985,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpfaqnsti",
@@ -4378,7 +5007,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdochpprlkbr",
@@ -4397,7 +5029,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaxxmkayt",
@@ -4416,7 +5051,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq",
@@ -4435,7 +5073,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdococjxqzog",
@@ -4454,7 +5095,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocswjfurfe",
@@ -4473,7 +5117,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocubdkstsc",
@@ -4492,7 +5139,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocydpzhmah",
@@ -4511,7 +5161,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgkfnzidi",
@@ -4530,7 +5183,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwmlaqcal",
@@ -4549,7 +5205,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaumilntg",
@@ -4568,7 +5227,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocojirlrtn",
@@ -4587,7 +5249,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpeofahzc",
@@ -4606,7 +5271,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocdojgivnl",
@@ -4625,7 +5293,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoculwlmrqc",
@@ -4644,7 +5315,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpahymdbb",
@@ -4663,7 +5337,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgpkucyfr",
@@ -4682,7 +5359,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdockjixkity",
@@ -4701,7 +5381,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqalxtzlg",
@@ -4720,7 +5403,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentereejtoxhw",
@@ -4739,7 +5425,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterjzkkauje",
@@ -4758,7 +5447,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoclpvcofpk",
@@ -4777,7 +5469,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvjecaxdc",
@@ -4796,7 +5491,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwgkxuleb",
@@ -4815,7 +5513,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentergyvfjncd",
@@ -4834,7 +5535,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenternjdtrfxa",
@@ -4853,7 +5557,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterpkcaesiy",
@@ -4872,7 +5579,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterphlqkcmc",
@@ -4891,7 +5601,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterlsomiapi",
@@ -4910,7 +5623,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterawscafqo",
@@ -4929,7 +5645,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterlomzguhc",
@@ -4948,7 +5667,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentervrjxjhjn",
@@ -4967,7 +5689,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterzvxwgqku",
@@ -4986,7 +5711,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyentergcxbllrp",
@@ -5005,7 +5733,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterxdtwvycu",
@@ -5024,7 +5755,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "selfmanagedpchmmjfhlm",
@@ -5043,7 +5777,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterrtwztpfk",
@@ -5062,7 +5799,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterhzpxxvwz",
@@ -5081,7 +5821,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterwlvmqlps",
@@ -5100,7 +5843,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocnzfemwar",
@@ -5119,7 +5865,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsetccnkr",
@@ -5138,7 +5887,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclzhtwoyw",
@@ -5157,7 +5909,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfwxqxxjo",
@@ -5176,7 +5931,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocrbuikbrg",
@@ -5195,7 +5953,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmeibkklu",
@@ -5214,7 +5975,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocucydlhvx",
@@ -5233,7 +5997,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclxmhamjs",
@@ -5252,7 +6019,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocafqpzdwd",
@@ -5271,7 +6041,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocpaqllgoi",
@@ -5290,7 +6063,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfnbhhrvy",
@@ -5309,7 +6085,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocojaabfwj",
@@ -5328,7 +6107,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocewdbghur",
@@ -5347,7 +6129,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx",
@@ -5366,7 +6151,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmdiceask",
@@ -5385,7 +6173,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoccmpgocpi",
@@ -5404,7 +6195,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocdgcpumzg",
@@ -5423,7 +6217,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczbopvdeg",
@@ -5442,7 +6239,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocyqwcdrnp",
@@ -5461,7 +6261,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocuuvupheu",
@@ -5480,7 +6283,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocaazeaxkq",
@@ -5499,7 +6305,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocijpuiydy",
@@ -5518,7 +6327,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmehjueat",
@@ -5537,7 +6349,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocowemuyjf",
@@ -5556,7 +6371,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocemkhxjqy",
@@ -5575,7 +6393,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczsrkqubl",
@@ -5594,7 +6415,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsqxndtgn",
@@ -5613,7 +6437,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocwarptbie",
@@ -5632,7 +6459,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyentertrzuzdki",
@@ -5651,7 +6481,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczmtfkxvn",
@@ -5670,7 +6503,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenteromjhnper",
@@ -5689,7 +6525,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubyluzrolx",
@@ -5708,7 +6547,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubuesxagrn",
@@ -5727,7 +6569,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubthgnbdfg",
@@ -5746,7 +6591,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubrzwdsixl",
@@ -5765,7 +6613,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubhsutrtnu",
@@ -5784,7 +6635,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubzmzzotex",
@@ -5803,7 +6657,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubsupynnah",
@@ -5822,7 +6679,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataublvbraqby",
@@ -5841,7 +6701,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubguacpbha",
@@ -5860,7 +6723,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementdatahubvfzvhptq",
@@ -5879,7 +6745,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentereiscelti",
@@ -5898,7 +6767,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterowudqgnv",
@@ -5917,7 +6789,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterrowgmanb",
@@ -5936,7 +6811,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentertuykkfbw",
@@ -5955,7 +6833,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterbzhtclos",
@@ -5974,7 +6855,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterzjwxvdgn",
@@ -5993,7 +6877,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterxnghccvc",
@@ -6012,7 +6899,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterqtbtcudr",
@@ -6031,7 +6921,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterlgrrnrtz",
@@ -6050,7 +6943,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterfuqlhtcv",
@@ -6069,7 +6965,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementinfocentergkwxcgth",
@@ -6088,7 +6987,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
@@ -6107,7 +7009,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocswtwqtyvt",
@@ -6126,7 +7031,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocskaceffks",
@@ -6145,7 +7053,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsvvjeexxr",
@@ -6164,7 +7075,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsdixvkiug",
@@ -6183,7 +7097,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": true
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk",
@@ -6202,7 +7119,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsxqghmido",
@@ -6221,7 +7141,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocssvsmobif",
@@ -6240,7 +7163,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswnmqkwxj",
@@ -6259,7 +7185,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsmoleigkn",
@@ -6278,7 +7207,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
@@ -6297,7 +7229,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm",
@@ -6316,7 +7251,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst",
@@ -6335,7 +7273,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocseucuheur",
@@ -6354,7 +7295,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb",
@@ -6373,7 +7317,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
@@ -6392,7 +7339,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh",
@@ -6411,7 +7361,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn",
@@ -6430,7 +7383,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc",
@@ -6449,7 +7405,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki",
@@ -6468,7 +7427,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp",
@@ -6487,7 +7449,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya",
@@ -6506,7 +7471,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsyrmcgnnq",
@@ -6525,7 +7493,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsgehgsaei",
@@ -6544,7 +7515,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsjkkjagrp",
@@ -6563,7 +7537,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "lobbopclouddraft",
@@ -6584,7 +7561,10 @@
       "environments": [
         "dev",
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011releasenotes",
@@ -6609,7 +7589,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011newandchanged",
@@ -6634,7 +7617,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011upgrade",
@@ -6659,7 +7645,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011app",
@@ -6684,7 +7673,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011admin",
@@ -6709,7 +7701,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011bestpractice",
@@ -6734,7 +7729,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011config",
@@ -6759,7 +7757,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011global",
@@ -6784,7 +7785,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011rules",
@@ -6809,7 +7813,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011integ",
@@ -6834,7 +7841,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011gosu",
@@ -6859,7 +7869,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011testing",
@@ -6884,7 +7897,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011restapiclient",
@@ -6909,7 +7925,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "isbc202011install",
@@ -6934,7 +7953,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011releasenotes",
@@ -6959,7 +7981,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011newandchanged",
@@ -6984,7 +8009,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011upgrade",
@@ -7009,7 +8037,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011app",
@@ -7034,7 +8065,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011admin",
@@ -7059,7 +8093,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011bestpractice",
@@ -7084,7 +8121,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011config",
@@ -7109,7 +8149,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011global",
@@ -7134,7 +8177,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011rules",
@@ -7159,7 +8205,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011integ",
@@ -7184,7 +8233,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011cloudapi",
@@ -7209,7 +8261,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011gosu",
@@ -7234,7 +8289,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011testing",
@@ -7259,7 +8317,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011restapiclient",
@@ -7284,7 +8345,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011restapifw",
@@ -7309,7 +8373,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "iscc202011install",
@@ -7334,7 +8401,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011releasenotes",
@@ -7359,7 +8429,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011newandchanged",
@@ -7384,7 +8457,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011upgrade",
@@ -7409,7 +8485,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011app",
@@ -7434,7 +8513,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011admin",
@@ -7459,7 +8541,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011bestpractice",
@@ -7484,7 +8569,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011apd",
@@ -7509,7 +8597,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011config",
@@ -7534,7 +8625,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011global",
@@ -7559,7 +8653,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011rules",
@@ -7584,7 +8681,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011pd",
@@ -7609,7 +8709,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011pm",
@@ -7634,7 +8737,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011integ",
@@ -7659,7 +8765,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011cloudapi",
@@ -7684,7 +8793,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011gosu",
@@ -7709,7 +8821,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011testing",
@@ -7734,7 +8849,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011restapiclient",
@@ -7759,7 +8877,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011restapifw",
@@ -7784,7 +8905,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ispc202011install",
@@ -7809,7 +8933,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "is202011contact",
@@ -7836,7 +8963,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "is202011glossary",
@@ -7863,7 +8993,10 @@
         "dev",
         "staging",
         "prod"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "apiekdfksmds",
@@ -7883,7 +9016,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "pcappciekdfpcksmds",
@@ -7903,7 +9039,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     },
     {
       "id": "ccapcciekdfccksmds",
@@ -7923,7 +9062,10 @@
       },
       "environments": [
         "int"
-      ]
+      ],
+      "indexForSearch": true,
+      "displayOnLandingPages": true,
+      "public": false
     }
   ]
 }

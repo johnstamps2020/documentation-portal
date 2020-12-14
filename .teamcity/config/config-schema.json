@@ -268,6 +268,10 @@
           "description": "If set to false, do not add the document to the search index. Defaults to true if not set.",
           "type": "boolean"
         },
+        "public": {
+          "description": "If set to true, users do not have to authenticate to view the document. Defaults to false if not set.",
+          "type": "boolean"
+        },
         "metadata": {
           "$ref": "#/definitions/metadata"
         },
