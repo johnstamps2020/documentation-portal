@@ -84,6 +84,7 @@ const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
+const userRouter = require('./routes/user');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -155,6 +156,7 @@ app.use(function(req, res, next) {
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
+app.use('/userInformation', userRouter);
 
 app.use('/selfManagedProducts', selfManagedProductsRouter);
 app.use('/cloudProducts', cloudProductsRouter);

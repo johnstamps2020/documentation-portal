@@ -99,9 +99,6 @@ async function isPublicDoc(url) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  console.log('ASKING FOR URL', relativeUrl);
-  console.log('LOOKING FOR IT ON', process.env.DOC_S3_URL);
-
   const config = await getConfig();
   const matchingDoc = config.docs.find(d => relativeUrl.startsWith(d.url));
 

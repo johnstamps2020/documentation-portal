@@ -22,6 +22,7 @@ const majorOpenRoutes = [
   '/unauthorized',
   '/product',
   '/alive',
+  '/userInformation',
 ];
 
 const authGateway = async (req, res, next) => {
