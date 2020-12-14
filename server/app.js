@@ -52,19 +52,26 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
+const sessionSettings = {
+  secret: `${process.env.SESSION_KEY}`,
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: 'none',
+    secure: true,
+  },
+};
+
+if (process.env.LOCALHOST_SESSION_SETTINGS === 'yes') {
+  sessionSettings.cookie = {
+    sameSite: 'lax',
+    secure: false,
+  };
+}
+
 // session support is required to use ExpressOIDC
 app.set('trust proxy', 1);
-app.use(
-  session({
-    secret: `${process.env.SESSION_KEY}`,
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: 'none',
-      secure: true,
-    },
-  })
-);
+app.use(session(sessionSettings));
 
 const homeRouter = require('./routes/home');
 const gwLoginRouter = require('./routes/gw-login');
