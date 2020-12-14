@@ -9994,6 +9994,31 @@
       ]
     },
     {
+      "id": "in20202xreleaseviddraft",
+      "title": "Release Notes",
+      "url": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
       "id": "incsp324rndraft",
       "title": "Consumer Service Portal 3.24 Release Notes",
       "url": "cloud/in/csp324rn",
@@ -10431,6 +10456,56 @@
         "version": "latest",
         "subject": [
           "Configuration"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xrndraft",
+      "title": "Release Notes",
+      "url": "cloud/in/20201x/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "in20201xreleaseviddraft",
+      "title": "Release Notes",
+      "url": "https://www.brainshark.com/guidewire/vu?pi=zHUzBobpCzM6iUz0",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": "latest",
+        "subject": [
+          "Release Notes"
         ],
         "release": [
           "Aspen",
