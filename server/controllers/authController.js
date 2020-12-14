@@ -14,11 +14,25 @@ const oktaOIDC = new ExpressOIDC({
   scope: 'openid profile',
 });
 
+const majorOpenRoutes = [
+  '/cloudProducts',
+  '/selfManagedProducts',
+  '/404',
+  '/unauthorized',
+  '/product',
+  '/alive',
+];
+
 const authGateway = (req, res, next) => {
   try {
-    if (req.isAuthenticated() || process.env.DEV === 'yes') {
+    const reqUrl = new URL(req.url, 'relative:///');
+    if (
+      req.isAuthenticated() ||
+      process.env.SKIP_AUTH === 'yes' ||
+      reqUrl.pathname === '/' ||
+      majorOpenRoutes.some(r => reqUrl.pathname.startsWith(r))
+    ) {
       if (req.query.authSource) {
-        const reqUrl = new URL(req.url, 'relative:///');
         res.redirect(reqUrl.pathname);
       }
       if (req.session.redirectTo) {
