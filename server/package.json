@@ -35,7 +35,7 @@
     "sinon": "^9.0.0",
     "supertest": "^4.0.2",
     "tap": "^14.10.6",
-    "winston": "^3.2.1",
+    "winston": "^3.3.3",
     "zipkin": "^0.19.1",
     "zipkin-instrumentation-express": "^0.19.1",
     "zipkin-transport-http": "^0.19.1"

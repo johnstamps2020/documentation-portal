@@ -93,4 +93,25 @@ async function getReleasesFromTaxonomies(filterId) {
   }
 }
 
-module.exports = { getConfig, getTaxonomy, getReleasesFromTaxonomies };
+async function isPublicDoc(url) {
+  let relativeUrl = url;
+  if (relativeUrl.startsWith('/')) {
+    relativeUrl = relativeUrl.substring(1);
+  }
+
+  const config = await getConfig();
+  const matchingDoc = config.docs.find(d => relativeUrl.startsWith(d.url));
+
+  if (matchingDoc && matchingDoc.public) {
+    return true;
+  }
+
+  return false;
+}
+
+module.exports = {
+  getConfig,
+  getTaxonomy,
+  getReleasesFromTaxonomies,
+  isPublicDoc,
+};
