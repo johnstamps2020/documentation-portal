@@ -4,6 +4,7 @@ const {
   getUniqueInMetadataArrays,
   getSortedVersions,
   resolveUrl,
+  isPublic,
 } = require('./helpers/metadata');
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
@@ -58,6 +59,7 @@ async function getSelfManagedDocumentationPageInfo() {
             categoryDocsWithLinks.push({
               docLabel: categoryDoc.label,
               docUrl: docUrl,
+              public: isPublic(docsFromConfig),
             });
           }
         }
@@ -76,6 +78,7 @@ async function getSelfManagedDocumentationPageInfo() {
               categoryGroupDocsWithLinks.push({
                 docLabel: categoryGroupDoc.label,
                 docUrl: docUrl,
+                public: isPublic(docsFromConfig),
               });
             }
           }
