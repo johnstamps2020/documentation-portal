@@ -12196,34 +12196,6 @@
       ]
     },
     {
-      "id": "incsp323rn",
-      "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/20202/csp323rn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow"
-        ],
-        "version": [
-          "2020.2",
-          "2020.1"
-        ],
-        "subject": [
-          "Release Notes"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging"
-      ]
-    },
-    {
       "id": "in20201releasevid",
       "title": "Release Video",
       "url": "https://www.brainshark.com/guidewire/vu?pi=zHUzBobpCzM6iUz0",
@@ -12262,6 +12234,34 @@
           "InsuranceNow"
         ],
         "version": [
+          "2020.1"
+        ],
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ]
+    },
+    {
+      "id": "incsp323rn",
+      "title": "Consumer Service Portal 3.23 Release Notes",
+      "url": "cloud/in/20202/csp323rn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2020.2",
           "2020.1"
         ],
         "subject": [
