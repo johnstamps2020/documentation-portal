@@ -328,7 +328,13 @@
         },
         {
           "id": "insNowBanff",
-          "label": "InsuranceNow"
+          "label": "InsuranceNow",
+          "items":[
+            {
+              "id": "insNowBanff",
+              "label": "InsuranceNow"
+            }
+          ]
         }
       ]
     },
