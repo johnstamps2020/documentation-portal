@@ -99,11 +99,11 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
 
         function getDocUrl(listOfDocs, productId) {
           const highestProductVersion = getSortedVersions(
-            getUniqueInMetadataFields(listOfDocs, 'version')
+            getUniqueInMetadataArrays(listOfDocs, 'version')
           )[0];
           const docsForHighestVersion = listOfDocs.filter(
             d =>
-              d.metadata.version === highestProductVersion &&
+              d.metadata.version.includes(highestProductVersion) &&
               d.displayOnLandingPages !== false
           );
           if (docsForHighestVersion.length === 1) {
@@ -204,8 +204,8 @@ async function getProductPageInfo(
         d.metadata.product.includes(productName) &&
         d.displayOnLandingPages !== false
     );
-    const docsInVersion = productDocs.filter(
-      d => d.metadata.version === productVersion
+    const docsInVersion = productDocs.filter(d =>
+      d.metadata.version.includes(productVersion)
     );
 
     const docSubjectsInVersion = getUniqueInMetadataArrays(
@@ -240,7 +240,7 @@ async function getProductPageInfo(
         subjectIcon: getDefaultSubjectIcon(),
       });
     }
-    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
+    const availableVersions = getUniqueInMetadataArrays(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,
