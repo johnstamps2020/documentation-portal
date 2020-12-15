@@ -1129,152 +1129,154 @@ object HelperObjects {
         for (doc in docs) {
             val metadata = doc.getJSONObject("metadata")
             if (metadata.has("version")) {
-                val docVersion = metadata.getString("version")
-                if (!versions.contains(docVersion)) {
-                    versions.add(docVersion)
+                val docVersions = metadata.getJSONArray("version")
+                for (docVersion in docVersions) {
+                    if (!versions.contains(docVersion.toString())) {
+                        versions.add(docVersion.toString())
+                    }
                 }
             } else if (!versions.contains(noVersionLabel)) {
                 versions.add(noVersionLabel)
             }
         }
 
-        val subProjects = mutableListOf<Project>()
-        for (version in versions) {
-            val docsInVersion = mutableListOf<JSONObject>()
-            for (doc in docs) {
-                val metadata = doc.getJSONObject("metadata")
-                if (!docsInVersion.contains(doc)) {
-                    if (metadata.has("version") && metadata.getString("version") == version) {
-                        docsInVersion.add(doc)
-                    } else if (!metadata.has("version") && version == noVersionLabel) {
-                        docsInVersion.add(doc)
+            val subProjects = mutableListOf<Project>()
+            for (version in versions) {
+                val docsInVersion = mutableListOf<JSONObject>()
+                for (doc in docs) {
+                    val metadata = doc.getJSONObject("metadata")
+                    if (!docsInVersion.contains(doc)) {
+                        if (metadata.has("version") && metadata.getJSONArray("version").contains(version)) {
+                            docsInVersion.add(doc)
+                        } else if (!metadata.has("version") && version == noVersionLabel) {
+                            docsInVersion.add(doc)
+                        }
                     }
                 }
+                if (!docsInVersion.isNullOrEmpty()) {
+                    subProjects.add(createVersionProject(product_name, version, docsInVersion))
+                }
             }
-            if (!docsInVersion.isNullOrEmpty()) {
-                subProjects.add(createVersionProject(product_name, version, docsInVersion))
+
+            return Project {
+                id = RelativeId(removeSpecialCharacters(product_name))
+                name = product_name
+
+                subProjects.forEach(this::subProject)
             }
         }
 
-        return Project {
-            id = RelativeId(removeSpecialCharacters(product_name))
-            name = product_name
+        private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
 
-            subProjects.forEach(this::subProject)
-        }
-    }
-
-    private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
-
-        class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId) : BuildType(
-                {
-                    name = "Build and publish Docker image with build content"
-                    id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
-                    params {
-                        text("doc-version", "", description = "Version", display = ParameterDisplay.PROMPT, allowEmpty = true)
-                    }
-                    vcs {
-                        root(vcs_root_id)
-                    }
-                    steps {
-                        script {
-                            scriptContent = "./build_standalone.sh"
+            class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId) : BuildType(
+                    {
+                        name = "Build and publish Docker image with build content"
+                        id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
+                        params {
+                            text("doc-version", "", description = "Version", display = ParameterDisplay.PROMPT, allowEmpty = true)
                         }
-                        script {
-                            scriptContent = """
+                        vcs {
+                            root(vcs_root_id)
+                        }
+                        steps {
+                            script {
+                                scriptContent = "./build_standalone.sh"
+                            }
+                            script {
+                                scriptContent = """
                                 export BRANCH_NAME=%doc-version%
                                 docker build -t gccwebhelp .
                                 docker tag gccwebhelp artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
                                 docker push artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
                             """.trimIndent()
+                            }
                         }
                     }
+            )
+
+            val subProjects = mutableListOf<Project>()
+            for (doc in docs) {
+                subProjects.add(createDocProjectWithBuilds(doc, product_name, version))
+            }
+
+            return Project {
+                id = RelativeId(removeSpecialCharacters(product_name + version))
+                name = version
+
+                subProjects.forEach(this::subProject)
+                // Currently, GCC is the only project using the BuildAndPublishDockerImageWithContent class.
+                // When we have more projects, we will create a more sustainable solution than this simple condition.
+                if (product_name == "Guidewire Cloud Console" && version == "latest") {
+                    val docId = "guidewirecloudconsolerootinsurerdev"
+                    val build = getObjectById(buildConfigs, "docId", docId)
+                    val sourceId = build.getString("srcId")
+                    val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "docker"))
+                    val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
+                    buildType(BuildAndPublishDockerImageWithContent(vcsRootId))
+                    vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
                 }
-        )
-
-        val subProjects = mutableListOf<Project>()
-        for (doc in docs) {
-            subProjects.add(createDocProjectWithBuilds(doc, product_name, version))
-        }
-
-        return Project {
-            id = RelativeId(removeSpecialCharacters(product_name + version))
-            name = version
-
-            subProjects.forEach(this::subProject)
-            // Currently, GCC is the only project using the BuildAndPublishDockerImageWithContent class.
-            // When we have more projects, we will create a more sustainable solution than this simple condition.
-            if (product_name == "Guidewire Cloud Console" && version == "latest") {
-                val docId = "guidewirecloudconsolerootinsurerdev"
-                val build = getObjectById(buildConfigs, "docId", docId)
-                val sourceId = build.getString("srcId")
-                val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "docker"))
-                val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
-                buildType(BuildAndPublishDockerImageWithContent(vcsRootId))
-                vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
             }
         }
-    }
 
-    class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
-        id = vcs_root_id
-        name = vcs_root_id.toString()
-        url = git_source_url
-        authMethod = uploadedKey {
-            uploadedKey = "sys-doc.rsa"
-        }
-
-        if (git_source_branch != "") {
-            branch = "refs/heads/$git_source_branch"
-        }
-
-    })
-
-    private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
-
-        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
-            if (index_for_search) {
-                templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
-            } else {
-                templates(BuildOutputFromDita)
+        class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
+            id = vcs_root_id
+            name = vcs_root_id.toString()
+            url = git_source_url
+            authMethod = uploadedKey {
+                uploadedKey = "sys-doc.rsa"
             }
 
-            id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
-            name = "Publish to $build_env"
-            maxRunningBuilds = 1
-
-            var buildPdf = "true"
-            if (build_env == "int") {
-                buildPdf = "false"
+            if (git_source_branch != "") {
+                branch = "refs/heads/$git_source_branch"
             }
 
-            vcs {
-                root(vcs_root_id, "+:. => %SOURCES_ROOT%")
-            }
+        })
 
-            params {
-                password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
-                text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-            }
+        private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
-            steps {
-                script {
-                    name = "Upload generated content to the S3 bucket"
-                    id = "UPLOAD_GENERATED_CONTENT"
-                    scriptContent = """
+            class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
+                if (index_for_search) {
+                    templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
+                } else {
+                    templates(BuildOutputFromDita)
+                }
+
+                id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
+                name = "Publish to $build_env"
+                maxRunningBuilds = 1
+
+                var buildPdf = "true"
+                if (build_env == "int") {
+                    buildPdf = "false"
+                }
+
+                vcs {
+                    root(vcs_root_id, "+:. => %SOURCES_ROOT%")
+                }
+
+                params {
+                    password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+                    text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("SOURCES_ROOT", "src_root", allowEmpty = false)
+                    text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                }
+
+                steps {
+                    script {
+                        name = "Upload generated content to the S3 bucket"
+                        id = "UPLOAD_GENERATED_CONTENT"
+                        scriptContent = """
                     #!/bin/bash
                     set -xe
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
@@ -1289,33 +1291,33 @@ object HelperObjects {
                     
                     aws s3 sync ${'$'}WORKING_DIR/${'$'}OUTPUT_PATH s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
+                    }
+
+                    stepsOrder = arrayListOf("BUILD_OUTPUT_FROM_DITA", "UPLOAD_GENERATED_CONTENT")
+                    if (index_for_search) {
+                        stepsOrder.addAll(arrayListOf("BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC"))
+                    }
+
                 }
 
-                stepsOrder = arrayListOf("BUILD_OUTPUT_FROM_DITA", "UPLOAD_GENERATED_CONTENT")
-                if (index_for_search) {
-                    stepsOrder.addAll(arrayListOf("BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC"))
-                }
 
-            }
+                if (!resources_to_copy.isNullOrEmpty()) {
+                    val extraSteps = mutableListOf<ScriptBuildStep>()
+                    val stepIds = mutableListOf<String>()
+                    var stepIdSuffix = 0
+                    for (resource in resources_to_copy) {
+                        val resourceGitUrl = resource.getString("resourceGitUrl")
+                        val resourceGitBranch = resource.getString("resourceGitBranch")
+                        val resourceSourceFolder = resource.getString("resourceSourceFolder")
+                        val resourceTargetFolder = resource.getString("resourceTargetFolder")
 
+                        val stepId = "COPY_RESOURCES$stepIdSuffix"
+                        stepIds.add(stepId)
 
-            if (!resources_to_copy.isNullOrEmpty()) {
-                val extraSteps = mutableListOf<ScriptBuildStep>()
-                val stepIds = mutableListOf<String>()
-                var stepIdSuffix = 0
-                for (resource in resources_to_copy) {
-                    val resourceGitUrl = resource.getString("resourceGitUrl")
-                    val resourceGitBranch = resource.getString("resourceGitBranch")
-                    val resourceSourceFolder = resource.getString("resourceSourceFolder")
-                    val resourceTargetFolder = resource.getString("resourceTargetFolder")
-
-                    val stepId = "COPY_RESOURCES$stepIdSuffix"
-                    stepIds.add(stepId)
-
-                    extraSteps.add(ScriptBuildStep {
-                        id = stepId
-                        name = "Copy resources from git to S3"
-                        scriptContent = """
+                        extraSteps.add(ScriptBuildStep {
+                            id = stepId
+                            name = "Copy resources from git to S3"
+                            scriptContent = """
                         #!/bin/bash
                         set -xe
                         
@@ -1333,52 +1335,52 @@ object HelperObjects {
                         echo "Copying files to S3"
                         aws s3 sync ./${'$'}RESOURCE_DIR/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
                     """.trimIndent()
-                    })
+                        })
 
-                    stepIdSuffix += 1
+                        stepIdSuffix += 1
 
+                    }
+
+                    steps {
+                        extraSteps.forEach(this::step)
+                        stepsOrder.addAll(2, stepIds)
+                    }
+                }
+
+                features {
+                    sshAgent {
+                        teamcitySshKey = "sys-doc.rsa"
+                    }
+                }
+
+                if (build_env == "int") {
+                    triggers {
+                        vcs {
+                            triggerRules = """
+                        -:root=${vcsrootmasteronly.id}:**
+                    """.trimIndent()
+                        }
+                    }
+                }
+            })
+
+            class PublishToS3IndexProd(publish_path: String, doc_id: String, prod_name: String) : BuildType({
+                templates(CrawlDocumentAndUpdateSearchIndex)
+                id = RelativeId(removeSpecialCharacters("prod$doc_id$prod_name"))
+                name = "Copy from staging to prod"
+
+                params {
+                    password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+                    text("DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("DEPLOY_ENV", "prod", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 }
 
                 steps {
-                    extraSteps.forEach(this::step)
-                    stepsOrder.addAll(2, stepIds)
-                }
-            }
-
-            features {
-                sshAgent {
-                    teamcitySshKey = "sys-doc.rsa"
-                }
-            }
-
-            if (build_env == "int") {
-                triggers {
-                    vcs {
-                        triggerRules = """
-                        -:root=${vcsrootmasteronly.id}:**
-                    """.trimIndent()
-                    }
-                }
-            }
-        })
-
-        class PublishToS3IndexProd(publish_path: String, doc_id: String, prod_name: String) : BuildType({
-            templates(CrawlDocumentAndUpdateSearchIndex)
-            id = RelativeId(removeSpecialCharacters("prod$doc_id$prod_name"))
-            name = "Copy from staging to prod"
-
-            params {
-                password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
-                text("DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("DEPLOY_ENV", "prod", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-            }
-
-            steps {
-                script {
-                    id = "COPY_FROM_STAGING_TO_PROD"
-                    name = "Copy from S3 on staging to S3 on Prod"
-                    scriptContent = """
+                    script {
+                        id = "COPY_FROM_STAGING_TO_PROD"
+                        name = "Copy from S3 on staging to S3 on Prod"
+                        scriptContent = """
                     #!/bin/bash
                     set -xe
                     
@@ -1393,150 +1395,150 @@ object HelperObjects {
                     echo "Uploading from Teamcity to prod"
                     aws s3 sync %env.PUBLISH_PATH%/ s3://tenant-doctools-prod-builds/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
-                }
-
-                stepsOrder = arrayListOf("COPY_FROM_STAGING_TO_PROD", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC")
-
-            }
-
-        })
-
-        val builds = mutableListOf<BuildType>()
-
-        val docId = doc.getString("id")
-        val publishPath = doc.getString("url")
-        val docTitle = doc.getString("title")
-
-        val metadata = doc.getJSONObject("metadata")
-        val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
-        val environments = doc.getJSONArray("environments")
-        val indexForSearch = if (doc.has("indexForSearch")) doc.getBoolean("indexForSearch") else true
-
-        val build = getObjectById(buildConfigs, "docId", docId)
-        val filter = if (build.has("filter")) build.getString("filter") else ""
-
-        val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
-
-        val root = build.getString("root")
-        val sourceId = build.getString("srcId")
-        val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
-        val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
-
-        val resourcesToCopy = mutableListOf<JSONObject>()
-        if (build.has("resources")) {
-            val resources = build.getJSONArray("resources")
-            for (j in 0 until resources.length()) {
-                val resource = resources.getJSONObject(j)
-                val resourceVcsId = resource.getString("srcId")
-                val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourceConfigs)
-                val resourceSourceFolder = resource.getString("sourceFolder")
-                val resourceTargetFolder = resource.getString("targetFolder")
-                val resourceObject = JSONObject()
-                resourceObject.put("resourceGitUrl", resourceGitUrl)
-                resourceObject.put("resourceGitBranch", resourceGitBranch)
-                resourceObject.put("resourceSourceFolder", resourceSourceFolder)
-                resourceObject.put("resourceTargetFolder", resourceTargetFolder)
-                resourcesToCopy.add(resourceObject)
-            }
-        }
-
-        for (env in environments) {
-            if (env == "prod") {
-                builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
-            } else {
-                builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
-                        publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
-            }
-        }
-
-        return Project {
-            id = RelativeId(removeSpecialCharacters(docTitle + product_name + version + docId))
-            name = "$docTitle $product_name $version $platform"
-
-            vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
-
-            builds.forEach(this::buildType)
-        }
-    }
-
-    fun createProjects(): List<Project> {
-
-        val products = mutableListOf<String>()
-        val noProductLabel = "No product"
-        for (i in 0 until docConfigs.length()) {
-            val doc = docConfigs.getJSONObject(i)
-            val metadata = doc.getJSONObject("metadata")
-            if (metadata.has("product")) {
-                val docProducts = metadata.getJSONArray("product")
-                for (docProduct in docProducts) {
-                    if (!products.contains(docProduct.toString())) {
-                        products.add(docProduct.toString())
                     }
+
+                    stepsOrder = arrayListOf("COPY_FROM_STAGING_TO_PROD", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC")
+
                 }
-            } else if (!products.contains(noProductLabel)) {
-                products.add(noProductLabel)
+
+            })
+
+            val builds = mutableListOf<BuildType>()
+
+            val docId = doc.getString("id")
+            val publishPath = doc.getString("url")
+            val docTitle = doc.getString("title")
+
+            val metadata = doc.getJSONObject("metadata")
+            val platform = metadata.getJSONArray("platform").joinToString(separator = ",")
+            val environments = doc.getJSONArray("environments")
+            val indexForSearch = if (doc.has("indexForSearch")) doc.getBoolean("indexForSearch") else true
+
+            val build = getObjectById(buildConfigs, "docId", docId)
+            val filter = if (build.has("filter")) build.getString("filter") else ""
+
+            val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
+
+            val root = build.getString("root")
+            val sourceId = build.getString("srcId")
+            val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
+            val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
+
+            val resourcesToCopy = mutableListOf<JSONObject>()
+            if (build.has("resources")) {
+                val resources = build.getJSONArray("resources")
+                for (j in 0 until resources.length()) {
+                    val resource = resources.getJSONObject(j)
+                    val resourceVcsId = resource.getString("srcId")
+                    val (resourceGitUrl, resourceGitBranch) = getSourceById(resourceVcsId, sourceConfigs)
+                    val resourceSourceFolder = resource.getString("sourceFolder")
+                    val resourceTargetFolder = resource.getString("targetFolder")
+                    val resourceObject = JSONObject()
+                    resourceObject.put("resourceGitUrl", resourceGitUrl)
+                    resourceObject.put("resourceGitBranch", resourceGitBranch)
+                    resourceObject.put("resourceSourceFolder", resourceSourceFolder)
+                    resourceObject.put("resourceTargetFolder", resourceTargetFolder)
+                    resourcesToCopy.add(resourceObject)
+                }
+            }
+
+            for (env in environments) {
+                if (env == "prod") {
+                    builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
+                } else {
+                    builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
+                            publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
+                }
+            }
+
+            return Project {
+                id = RelativeId(removeSpecialCharacters(docTitle + product_name + version + docId))
+                name = "$docTitle $product_name $version $platform"
+
+                vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
+
+                builds.forEach(this::buildType)
             }
         }
-        val subProjects = mutableListOf<Project>()
-        for (product in products) {
-            val docsInProduct = mutableListOf<JSONObject>()
+
+        fun createProjects(): List<Project> {
+
+            val products = mutableListOf<String>()
+            val noProductLabel = "No product"
             for (i in 0 until docConfigs.length()) {
                 val doc = docConfigs.getJSONObject(i)
-                val docId = doc.getString("id")
-                if (!getObjectById(buildConfigs, "docId", docId).isEmpty && !docsInProduct.contains(doc)) {
-                    val metadata = doc.getJSONObject("metadata")
-                    if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
-                        docsInProduct.add(doc)
-                    } else if (!metadata.has("product") && product == noProductLabel) {
-                        docsInProduct.add(doc)
+                val metadata = doc.getJSONObject("metadata")
+                if (metadata.has("product")) {
+                    val docProducts = metadata.getJSONArray("product")
+                    for (docProduct in docProducts) {
+                        if (!products.contains(docProduct.toString())) {
+                            products.add(docProduct.toString())
+                        }
                     }
+                } else if (!products.contains(noProductLabel)) {
+                    products.add(noProductLabel)
                 }
             }
-            if (!docsInProduct.isNullOrEmpty()) {
-                subProjects.add(createProductProject(product, docsInProduct))
+            val subProjects = mutableListOf<Project>()
+            for (product in products) {
+                val docsInProduct = mutableListOf<JSONObject>()
+                for (i in 0 until docConfigs.length()) {
+                    val doc = docConfigs.getJSONObject(i)
+                    val docId = doc.getString("id")
+                    if (!getObjectById(buildConfigs, "docId", docId).isEmpty && !docsInProduct.contains(doc)) {
+                        val metadata = doc.getJSONObject("metadata")
+                        if (metadata.has("product") && metadata.getJSONArray("product").contains(product)) {
+                            docsInProduct.add(doc)
+                        } else if (!metadata.has("product") && product == noProductLabel) {
+                            docsInProduct.add(doc)
+                        }
+                    }
+                }
+                if (!docsInProduct.isNullOrEmpty()) {
+                    subProjects.add(createProductProject(product, docsInProduct))
+                }
             }
+            return subProjects
         }
-        return subProjects
-    }
 
-    fun createSourceValidationsFromConfig(): List<Project> {
+        fun createSourceValidationsFromConfig(): List<Project> {
 
-        class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String, git_source_branch: String) : BuildType({
-            templates(RunContentValidations)
+            class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String) : BuildType({
+                templates(RunContentValidations)
 
-            val docBuildRootMap = build_info.getString("root")
-            val docBuildFilter = if (build_info.has("filter")) build_info.getString("filter") else ""
-            val docBuildIndexRedirect = if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
-            val docBuildDocId = build_info.getString("docId")
-            val doc = getObjectById(docConfigs, "id", docBuildDocId)
-            val docId = doc.getString("id")
-            val docTitle = doc.getString("title")
-            val docMetadata = doc.getJSONObject("metadata")
-            val docProduct = docMetadata.getJSONArray("product").joinToString(separator = ",")
-            val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
-            val docVersion = docMetadata.getString("version")
+                val docBuildRootMap = build_info.getString("root")
+                val docBuildFilter = if (build_info.has("filter")) build_info.getString("filter") else ""
+                val docBuildIndexRedirect = if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
+                val docBuildDocId = build_info.getString("docId")
+                val doc = getObjectById(docConfigs, "id", docBuildDocId)
+                val docId = doc.getString("id")
+                val docTitle = doc.getString("title")
+                val docMetadata = doc.getJSONObject("metadata")
+                val docProduct = docMetadata.getJSONArray("product").joinToString(separator = ",")
+                val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
+                val docVersion = docMetadata.getJSONArray("version").joinToString(separator = ",")
 
-            id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
-            name = "Validate $docTitle $docProduct $docVersion"
+                id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
+                name = "Validate $docTitle $docProduct $docVersion"
 
-            params {
-                text("GW_PRODUCT", docProduct, allowEmpty = false)
-                text("GW_PLATFORM", docPlatform, allowEmpty = false)
-                text("GW_VERSION", docVersion, allowEmpty = false)
-                text("FILTER_PATH", docBuildFilter, allowEmpty = false)
-                text("CREATE_INDEX_REDIRECT", docBuildIndexRedirect, allowEmpty = false)
-                text("ROOT_MAP", docBuildRootMap, allowEmpty = false)
-                text("DOC_ID", docId, allowEmpty = false)
-                text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
-                text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-            }
-            steps {
-                script {
-                    name = "Get document details"
-                    id = "GET_DOCUMENT_DETAILS"
+                params {
+                    text("GW_PRODUCT", docProduct, allowEmpty = false)
+                    text("GW_PLATFORM", docPlatform, allowEmpty = false)
+                    text("GW_VERSION", docVersion, allowEmpty = false)
+                    text("FILTER_PATH", docBuildFilter, allowEmpty = false)
+                    text("CREATE_INDEX_REDIRECT", docBuildIndexRedirect, allowEmpty = false)
+                    text("ROOT_MAP", docBuildRootMap, allowEmpty = false)
+                    text("DOC_ID", docId, allowEmpty = false)
+                    text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
+                    text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
+                    text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                }
+                steps {
+                    script {
+                        name = "Get document details"
+                        id = "GET_DOCUMENT_DETAILS"
 
-                    scriptContent = """
+                        scriptContent = """
                         #!/bin/bash
                         set -xe
                         
@@ -1544,183 +1546,183 @@ object HelperObjects {
                         cat %env.DOC_INFO%
                         
                     """.trimIndent()
+                    }
+
+                    stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "RUN_DOC_VALIDATOR")
+
                 }
 
-                stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "RUN_DOC_VALIDATOR")
-
-            }
-
-            vcs {
-                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
-                cleanCheckout = true
-            }
-
-            triggers {
                 vcs {
-                    triggerRules = """
+                    root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
+                    cleanCheckout = true
+                }
+
+                triggers {
+                    vcs {
+                        triggerRules = """
                         +:root=${vcs_root_id}:**
                     """.trimIndent()
 
-                    branchFilter = """
+                        branchFilter = """
                         +:*
                         -:<default>
                     """.trimIndent()
-                }
-            }
-
-            features {
-                commitStatusPublisher {
-                    vcsRootExtId = vcs_root_id.toString()
-                    publisher = bitbucketServer {
-                        url = "https://stash.guidewire.com"
-                        userName = "%serviceAccountUsername%"
-                        password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                     }
                 }
 
-                pullRequests {
-                    vcsRootExtId = vcs_root_id.toString()
-                    provider = bitbucketServer {
-                        serverUrl = "https://stash.guidewire.com"
-                        authType = password {
-                            username = "%serviceAccountUsername%"
+                features {
+                    commitStatusPublisher {
+                        vcsRootExtId = vcs_root_id.toString()
+                        publisher = bitbucketServer {
+                            url = "https://stash.guidewire.com"
+                            userName = "%serviceAccountUsername%"
                             password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                         }
                     }
+
+                    pullRequests {
+                        vcsRootExtId = vcs_root_id.toString()
+                        provider = bitbucketServer {
+                            serverUrl = "https://stash.guidewire.com"
+                            authType = password {
+                                username = "%serviceAccountUsername%"
+                                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                            }
+                        }
+                    }
                 }
-            }
-        })
+            })
 
-        class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) : BuildType({
-            id = RelativeId(removeSpecialCharacters(git_source_id + "cleanresults"))
-            name = "Clean validation results for $git_source_id"
+            class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) : BuildType({
+                id = RelativeId(removeSpecialCharacters(git_source_id + "cleanresults"))
+                name = "Clean validation results for $git_source_id"
 
-            params {
-                text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.S3_BUCKET_NAME", "tenant-doctools-int-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-            }
+                params {
+                    text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.S3_BUCKET_NAME", "tenant-doctools-int-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                }
 
-            steps {
+                steps {
 
-                script {
-                    name = "Run the results cleaner"
-                    id = "RUN_RESULTS_CLEANER"
-                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                    scriptContent = """
+                    script {
+                        name = "Run the results cleaner"
+                        id = "RUN_RESULTS_CLEANER"
+                        executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                        scriptContent = """
                         #!/bin/bash
                         set -xe
         
                         results_cleaner --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --git-source-id "%env.GIT_SOURCE_ID%" --git-source-url "%env.GIT_SOURCE_URL%" --s3-bucket-name "%env.S3_BUCKET_NAME%"
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    }
                 }
-            }
 
-            vcs {
-                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
-                cleanCheckout = true
-            }
-
-            triggers {
                 vcs {
-                    triggerRules = """
+                    root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
+                    cleanCheckout = true
+                }
+
+                triggers {
+                    vcs {
+                        triggerRules = """
                         +:root=${vcs_root_id}:**
                     """.trimIndent()
 
-                    branchFilter = """
+                        branchFilter = """
                         +:<default>
                     """.trimIndent()
-                }
-            }
-
-            features {
-                dockerSupport {
-                    loginToRegistry = on {
-                        dockerRegistryId = "PROJECT_EXT_155"
-                    }
-                }
-            }
-        })
-
-        val sourcesToValidate = mutableListOf<Project>()
-        for (i in 0 until sourceConfigs.length()) {
-            val source = sourceConfigs.getJSONObject(i)
-            if (!source.has("xdocsPathIds")) {
-                val sourceDocBuilds = mutableListOf<JSONObject>()
-                val sourceId = source.getString("id")
-                val sourceTitle = source.getString("title")
-                val sourceGitUrl = source.getString("gitUrl")
-                val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
-
-                for (j in 0 until buildConfigs.length()) {
-                    val build = buildConfigs.getJSONObject(j)
-                    val buildSrcId = build.getString("srcId")
-                    if (buildSrcId == sourceId) {
-                        sourceDocBuilds.add(build)
                     }
                 }
 
-                if (!sourceDocBuilds.isNullOrEmpty()) {
-                    sourcesToValidate.add(
-                            Project {
-                                id = RelativeId(removeSpecialCharacters(sourceId + sourceGitBranch))
-                                name = "$sourceTitle ($sourceId)"
+                features {
+                    dockerSupport {
+                        loginToRegistry = on {
+                            dockerRegistryId = "PROJECT_EXT_155"
+                        }
+                    }
+                }
+            })
 
-                                vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
-                                buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
+            val sourcesToValidate = mutableListOf<Project>()
+            for (i in 0 until sourceConfigs.length()) {
+                val source = sourceConfigs.getJSONObject(i)
+                if (!source.has("xdocsPathIds")) {
+                    val sourceDocBuilds = mutableListOf<JSONObject>()
+                    val sourceId = source.getString("id")
+                    val sourceTitle = source.getString("title")
+                    val sourceGitUrl = source.getString("gitUrl")
+                    val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
 
-                                for (docBuild in sourceDocBuilds) {
-                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId, sourceGitBranch))
+                    for (j in 0 until buildConfigs.length()) {
+                        val build = buildConfigs.getJSONObject(j)
+                        val buildSrcId = build.getString("srcId")
+                        if (buildSrcId == sourceId) {
+                            sourceDocBuilds.add(build)
+                        }
+                    }
+
+                    if (!sourceDocBuilds.isNullOrEmpty()) {
+                        sourcesToValidate.add(
+                                Project {
+                                    id = RelativeId(removeSpecialCharacters(sourceId + sourceGitBranch))
+                                    name = "$sourceTitle ($sourceId)"
+
+                                    vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
+                                    buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
+
+                                    for (docBuild in sourceDocBuilds) {
+                                        buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
+                                    }
+
                                 }
 
-                            }
-
-                    )
+                        )
+                    }
                 }
             }
+            return sourcesToValidate
         }
-        return sourcesToValidate
-    }
-}
-
-object ExportFilesFromXDocsToBitbucket : BuildType({
-    name = "Export files from XDocs to Bitbucket"
-
-    maxRunningBuilds = 1
-
-    params {
-        text("env.EXPORT_PATH_IDS", "", description = "A list of space-separated path IDs from XDocs", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_URL", "", description = "The URL of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_BRANCH", "", description = "The branch of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", display = ParameterDisplay.HIDDEN, allowEmpty = false)
     }
 
-    vcs {
-        root(AbsoluteId("DocumentationTools_XDocsClient"))
+    object ExportFilesFromXDocsToBitbucket : BuildType({
+        name = "Export files from XDocs to Bitbucket"
 
-        cleanCheckout = true
-    }
+        maxRunningBuilds = 1
 
-    steps {
-        script {
-            name = "Export files from XDocs"
-            id = "EXPORT_FILES_FROM_XDOCS"
-            workingDir = "LocalClient/sample/local/bin"
-            scriptContent = """
+        params {
+            text("env.EXPORT_PATH_IDS", "", description = "A list of space-separated path IDs from XDocs", display = ParameterDisplay.PROMPT, allowEmpty = true)
+            text("env.GIT_URL", "", description = "The URL of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
+            text("env.GIT_BRANCH", "", description = "The branch of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
+            text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        }
+
+        vcs {
+            root(AbsoluteId("DocumentationTools_XDocsClient"))
+
+            cleanCheckout = true
+        }
+
+        steps {
+            script {
+                name = "Export files from XDocs"
+                id = "EXPORT_FILES_FROM_XDOCS"
+                workingDir = "LocalClient/sample/local/bin"
+                scriptContent = """
                 #!/bin/bash
                 chmod 777 runExport.sh
                 for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
             """.trimIndent()
-        }
-        script {
-            name = "Add exported files to Bitbucket"
-            id = "RUNNER_2622"
-            scriptContent = """
+            }
+            script {
+                name = "Add exported files to Bitbucket"
+                id = "RUNNER_2622"
+                scriptContent = """
                 #!/bin/bash
                 set -xe
                 git config --global user.email "doctools@guidewire.com"
@@ -1738,40 +1740,40 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                   echo "No changes to commit"
                 fi
             """.trimIndent()
+            }
         }
-    }
 
-    features {
-        sshAgent {
-            id = "ssh-agent-build-feature"
-            teamcitySshKey = "sys-doc.rsa"
+        features {
+            sshAgent {
+                id = "ssh-agent-build-feature"
+                teamcitySshKey = "sys-doc.rsa"
+            }
         }
-    }
-})
+    })
 
-object CreateReleaseTag : BuildType({
-    name = "Create a release tag"
+    object CreateReleaseTag : BuildType({
+        name = "Create a release tag"
 
-    val gitRepositories = mutableListOf<String>()
-    for (i in 0 until HelperObjects.sourceConfigs.length()) {
-        val source = HelperObjects.sourceConfigs.getJSONObject(i)
-        val gitUrl = source.getString("gitUrl")
-        val branchName = if (source.has("branch")) source.getString("branch") else "master"
-        if (branchName == "master") {
-            gitRepositories.add(gitUrl)
+        val gitRepositories = mutableListOf<String>()
+        for (i in 0 until HelperObjects.sourceConfigs.length()) {
+            val source = HelperObjects.sourceConfigs.getJSONObject(i)
+            val gitUrl = source.getString("gitUrl")
+            val branchName = if (source.has("branch")) source.getString("branch") else "master"
+            if (branchName == "master") {
+                gitRepositories.add(gitUrl)
+            }
         }
-    }
 
-    params {
-        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.TAG_VERSION", "", description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0", display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer format")
-        select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
-    }
+        params {
+            text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            text("env.TAG_VERSION", "", description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0", display = ParameterDisplay.PROMPT,
+                    regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer format")
+            select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
+        }
 
-    steps {
-        script {
-            scriptContent = """
+        steps {
+            script {
+                scriptContent = """
                 #!/bin/bash
                 set -xe
                 export TAG_NAME="v%env.TAG_VERSION%"
@@ -1787,46 +1789,46 @@ object CreateReleaseTag : BuildType({
                 git push origin "${'$'}TAG_NAME"
                 echo "Pushed tag to the remote repository"
             """.trimIndent()
+            }
         }
-    }
 
-    features {
-        sshAgent {
-            teamcitySshKey = "sys-doc.rsa"
+        features {
+            sshAgent {
+                teamcitySshKey = "sys-doc.rsa"
+            }
         }
-    }
-})
+    })
 
-//TODO: This template may not be needed. We could merge it with the ValidateDoc class
-object RunContentValidations : Template({
-    name = "Run content validations"
+    //TODO: This template may not be needed. We could merge it with the ValidateDoc class
+    object RunContentValidations : Template({
+        name = "Run content validations"
 
-    artifactRules = """
+        artifactRules = """
         **/*.log => logs
         preview_url.txt
     """.trimIndent()
 
-    params {
-        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
-        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
-        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
-        text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
-        text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
-        text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
-        text("env.DITA_OT_WORKING_DIR", "%DITA_OT_WORKING_DIR%", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
-        text("env.S3_BUCKET_PREVIEW_PATH", "s3://tenant-doctools-int-builds/preview", display = ParameterDisplay.HIDDEN, allowEmpty = true)
-        text("env.NORMALIZED_DITA_DIR", "%env.DITA_OT_WORKING_DIR%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.DITA_OT_LOGS_DIR", "%env.DITA_OT_WORKING_DIR%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.SCHEMATRON_REPORTS_DIR", "%env.DITA_OT_WORKING_DIR%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-    }
+        params {
+            text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+            text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+            text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+            text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
+            text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
+            text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
+            text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
+            text("env.DITA_OT_WORKING_DIR", "%DITA_OT_WORKING_DIR%", allowEmpty = false)
+            text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+            text("env.S3_BUCKET_PREVIEW_PATH", "s3://tenant-doctools-int-builds/preview", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+            text("env.NORMALIZED_DITA_DIR", "%env.DITA_OT_WORKING_DIR%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            text("env.DITA_OT_LOGS_DIR", "%env.DITA_OT_WORKING_DIR%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+            text("env.SCHEMATRON_REPORTS_DIR", "%env.DITA_OT_WORKING_DIR%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        }
 
-    steps {
-        script {
-            name = "Create directories"
-            id = "CREATE_DIRECTORIES"
-            scriptContent = """
+        steps {
+            script {
+                name = "Create directories"
+                id = "CREATE_DIRECTORIES"
+                scriptContent = """
                 #!/bin/bash
                 set -xe
                 
@@ -1834,12 +1836,12 @@ object RunContentValidations : Template({
                 mkdir -p %env.DITA_OT_LOGS_DIR%
                 mkdir -p %env.SCHEMATRON_REPORTS_DIR%
             """.trimIndent()
-        }
+            }
 
-        script {
-            name = "Build Guidewire webhelp"
-            id = "BUILD_GUIDEWIRE_WEBHELP"
-            scriptContent = """
+            script {
+                name = "Build Guidewire webhelp"
+                id = "BUILD_GUIDEWIRE_WEBHELP"
+                scriptContent = """
                 #!/bin/bash
                 set -xe
 
@@ -1874,13 +1876,13 @@ object RunContentValidations : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
-        }
+            }
 
-        script {
-            name = "Build normalized DITA"
-            id = "BUILD_NORMALIZED_DITA"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            scriptContent = """
+            script {
+                name = "Build normalized DITA"
+                id = "BUILD_NORMALIZED_DITA"
+                executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                scriptContent = """
                 #!/bin/bash
                 set -xe
 
@@ -1907,13 +1909,13 @@ object RunContentValidations : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
-        }
+            }
 
-        script {
-            name = "Run Schematron validations"
-            id = "RUN_SCHEMATRON_VALIDATIONS"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            scriptContent = """
+            script {
+                name = "Run Schematron validations"
+                id = "RUN_SCHEMATRON_VALIDATIONS"
+                executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                scriptContent = """
                 #!/bin/bash
                 set -xe
                 
@@ -1935,13 +1937,13 @@ object RunContentValidations : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
-        }
+            }
 
-        script {
-            name = "Run the doc validator"
-            id = "RUN_DOC_VALIDATOR"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            scriptContent = """
+            script {
+                name = "Run the doc validator"
+                id = "RUN_DOC_VALIDATOR"
+                executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                scriptContent = """
                 #!/bin/bash
                 set -xe
                 
@@ -1952,47 +1954,47 @@ object RunContentValidations : Template({
                   && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.DITA_OT_LOGS_DIR%" dita-ot-logs \
                   && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.SCHEMATRON_REPORTS_DIR%" schematron-reports
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+
         }
 
-    }
-
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_155"
+        features {
+            dockerSupport {
+                loginToRegistry = on {
+                    dockerRegistryId = "PROJECT_EXT_155"
+                }
             }
         }
-    }
 
-})
+    })
 
-object BuildOutputFromDita : Template({
-    name = "Build the output from DITA"
+    object BuildOutputFromDita : Template({
+        name = "Build the output from DITA"
 
-    params {
-        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
-        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
-        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
-        text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
-        text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
-        text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
-        text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
-        text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
-        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-    }
+        params {
+            text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+            text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+            text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+            text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
+            text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
+            text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
+            text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
+            text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
+            text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
+            text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+        }
 
-    vcs {
-        cleanCheckout = true
-    }
+        vcs {
+            cleanCheckout = true
+        }
 
-    steps {
-        script {
-            name = "Build output from DITA"
-            id = "BUILD_OUTPUT_FROM_DITA"
-            scriptContent = """
+        steps {
+            script {
+                name = "Build output from DITA"
+                id = "BUILD_OUTPUT_FROM_DITA"
+                scriptContent = """
                 #!/bin/bash
                 set -xe
 
@@ -2025,85 +2027,85 @@ object BuildOutputFromDita : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
+            }
         }
-    }
 
-})
+    })
 
-object PublishDocCrawlerDockerImage : BuildType({
-    name = "Publish Doc Crawler docker image"
+    object PublishDocCrawlerDockerImage : BuildType({
+        name = "Publish Doc Crawler docker image"
 
-    params {
-        text("env.IMAGE_VERSION", "latest")
-    }
+        params {
+            text("env.IMAGE_VERSION", "latest")
+        }
 
-    vcs {
-        root(DslContext.settingsRoot)
-    }
+        vcs {
+            root(DslContext.settingsRoot)
+        }
 
-    steps {
-        script {
-            name = "Publish Doc Crawler Docker image to Artifactory"
-            scriptContent = """
+        steps {
+            script {
+                name = "Publish Doc Crawler Docker image to Artifactory"
+                scriptContent = """
                 set -xe
                 cd apps/doc_crawler
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
+            }
         }
-    }
 
-    triggers {
-        vcs {
-            branchFilter = "+:<default>"
-            triggerRules = """
+        triggers {
+            vcs {
+                branchFilter = "+:<default>"
+                triggerRules = """
                 +:apps/doc_crawler/**
                 -:user=doctools:**
             """.trimIndent()
-        }
-    }
-
-    features {
-        dockerSupport {
-            id = "TEMPLATE_BUILD_EXT_1"
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_155"
             }
         }
-    }
 
-    dependencies {
-        snapshot(TestDocCrawler) {
-            reuseBuilds = ReuseBuilds.SUCCESSFUL
-            onDependencyFailure = FailureAction.FAIL_TO_START
+        features {
+            dockerSupport {
+                id = "TEMPLATE_BUILD_EXT_1"
+                loginToRegistry = on {
+                    dockerRegistryId = "PROJECT_EXT_155"
+                }
+            }
         }
-    }
-})
 
-object CrawlDocumentAndUpdateSearchIndex : Template({
-    name = "Update the search index"
-    artifactRules = """
+        dependencies {
+            snapshot(TestDocCrawler) {
+                reuseBuilds = ReuseBuilds.SUCCESSFUL
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        }
+    })
+
+    object CrawlDocumentAndUpdateSearchIndex : Template({
+        name = "Update the search index"
+        artifactRules = """
         **/*.log => logs
     """.trimIndent()
 
-    params {
-        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", label = "Deployment environment", description = "The environment on which you want reindex documents", allowEmpty = false)
-        text("env.DOC_ID", "%DOC_ID%", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.", allowEmpty = true)
-        text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
-        text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
-        text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
-        text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
-    }
+        params {
+            text("env.DEPLOY_ENV", "%DEPLOY_ENV%", label = "Deployment environment", description = "The environment on which you want reindex documents", allowEmpty = false)
+            text("env.DOC_ID", "%DOC_ID%", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.", allowEmpty = true)
+            text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
+            text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
+            text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+            text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+            text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+            text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+            text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+            text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+            text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
+        }
 
-    steps {
-        script {
-            name = "Crawl the document and update the index"
-            id = "CRAWL_DOC"
-            scriptContent = """
+        steps {
+            script {
+                name = "Crawl the document and update the index"
+                id = "CRAWL_DOC"
+                scriptContent = """
                 #!/bin/bash
                 set -xe
                 
@@ -2124,55 +2126,55 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
 
                 doc_crawler
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    features {
-        dockerSupport {
-            id = "DockerSupport"
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_155"
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
-    }
-})
 
-object ServiceBuilds : Project({
-    name = "Service builds"
-    description = "Builds used as a service to other builds. You can also run the service builds manually."
+        features {
+            dockerSupport {
+                id = "DockerSupport"
+                loginToRegistry = on {
+                    dockerRegistryId = "PROJECT_EXT_155"
+                }
+            }
+        }
+    })
 
-    buildType(ExportFilesFromXDocsToBitbucket)
-    buildType(CreateReleaseTag)
-})
+    object ServiceBuilds : Project({
+        name = "Service builds"
+        description = "Builds used as a service to other builds. You can also run the service builds manually."
 
-object XdocsExportBuilds : Project({
-    name = "XDocs export builds"
+        buildType(ExportFilesFromXDocsToBitbucket)
+        buildType(CreateReleaseTag)
+    })
 
-    val builds = HelperObjects.createExportBuildsFromConfig()
-    builds.forEach(this::buildType)
-})
+    object XdocsExportBuilds : Project({
+        name = "XDocs export builds"
 
-object Content : Project({
-    name = "Content"
+        val builds = HelperObjects.createExportBuildsFromConfig()
+        builds.forEach(this::buildType)
+    })
 
-    subProject(ServiceBuilds)
-    subProject(XdocsExportBuilds)
-    buildType(UpdateSearchIndex)
-    buildType(CleanUpIndex)
-})
+    object Content : Project({
+        name = "Content"
 
-object Docs : Project({
-    name = "Docs"
+        subProject(ServiceBuilds)
+        subProject(XdocsExportBuilds)
+        buildType(UpdateSearchIndex)
+        buildType(CleanUpIndex)
+    })
 
-    HelperObjects.createProjects().forEach(this::subProject)
-})
+    object Docs : Project({
+        name = "Docs"
 
-object Sources : Project({
-    name = "Sources"
+        HelperObjects.createProjects().forEach(this::subProject)
+    })
 
-    HelperObjects.createSourceValidationsFromConfig().forEach(this::subProject)
-})
+    object Sources : Project({
+        name = "Sources"
+
+        HelperObjects.createSourceValidationsFromConfig().forEach(this::subProject)
+    })
 
 
