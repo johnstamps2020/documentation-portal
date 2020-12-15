@@ -26,6 +26,13 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git"
     },
     {
+      "id": "isupgradeguide1011src",
+      "title": "InsuranceSuite Upgrade Guide 10.1.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/10.1.1"
+    },
+    {
       "id": "isupgradeguide202011src",
       "title": "InsuranceSuite Upgrade Guide 2020.11",
       "sourceType": "git",
