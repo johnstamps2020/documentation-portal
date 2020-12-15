@@ -346,7 +346,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "dxapdclouddraft",
@@ -392,7 +392,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "clouddxpeclaimsdraft",
@@ -415,7 +415,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "clouddxsredraft",
@@ -438,7 +438,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "clouddxvedraft",
@@ -461,7 +461,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "cloudin20201xinternaldraft",
@@ -2203,7 +2203,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "dxceqb202011",
@@ -2359,7 +2359,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "dxsre202011",
@@ -7676,7 +7676,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "isbc202011admin",
@@ -8068,7 +8068,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "iscc202011admin",
@@ -8516,7 +8516,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "ispc202011admin",
@@ -8600,7 +8600,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "ispc202011config",
