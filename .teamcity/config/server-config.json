@@ -11835,8 +11835,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -11863,8 +11862,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -11891,8 +11889,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -11919,8 +11916,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -11947,8 +11943,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -11975,8 +11970,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12003,8 +11997,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12031,8 +12024,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12059,8 +12051,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12087,8 +12078,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12115,8 +12105,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12143,8 +12132,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12171,8 +12159,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12199,8 +12186,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12228,8 +12214,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12256,8 +12241,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12284,8 +12268,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12312,8 +12295,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12340,8 +12322,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12368,8 +12349,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12396,8 +12376,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12424,8 +12403,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12452,8 +12430,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12480,8 +12457,7 @@
       },
       "environments": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -12509,7 +12485,50 @@
       },
       "environments": [
         "dev",
-        "staging",
+        "staging"
+      ]
+    },
+    {
+      "id": "cloudinexternal20202",
+      "title": "InsuranceNow",
+      "url": "cloud/in/20202",
+      "metadata": {
+        "product": [
+          "InsuranceNow"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.2"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "prod"
+      ]
+    },
+    {
+      "id": "cloudinexternal20201",
+      "title": "InsuranceNow",
+      "url": "cloud/in/20201",
+      "metadata": {
+        "product": [
+          "InsuranceNow"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.1"
+        ],
+        "release": [
+          "Aspen"
+        ]
+      },
+      "environments": [
         "prod"
       ]
     }

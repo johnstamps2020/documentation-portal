@@ -2649,6 +2649,34 @@
       "srcId": "in20202xdraftsrc",
       "docId": "inupgradetoolsdraft",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-20202x-active.ditamap",
+      "srcId": "in20202src",
+      "docId": "cloudinexternal20202",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-20201x-active.ditamap",
+      "srcId": "in20201src",
+      "docId": "cloudinexternal20201",
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
     }
   ]
 }
