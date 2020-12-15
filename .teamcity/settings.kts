@@ -1129,9 +1129,11 @@ object HelperObjects {
         for (doc in docs) {
             val metadata = doc.getJSONObject("metadata")
             if (metadata.has("version")) {
-                val docVersion = metadata.getString("version")
-                if (!versions.contains(docVersion)) {
-                    versions.add(docVersion)
+                val docVersions = metadata.getJSONArray("version")
+                for (docVersion in docVersions) {
+                    if (!versions.contains(docVersion.toString())) {
+                        versions.add(docVersion.toString())
+                    }
                 }
             } else if (!versions.contains(noVersionLabel)) {
                 versions.add(noVersionLabel)
@@ -1144,7 +1146,7 @@ object HelperObjects {
             for (doc in docs) {
                 val metadata = doc.getJSONObject("metadata")
                 if (!docsInVersion.contains(doc)) {
-                    if (metadata.has("version") && metadata.getString("version") == version) {
+                    if (metadata.has("version") && metadata.getJSONArray("version").contains(version)) {
                         docsInVersion.add(doc)
                     } else if (!metadata.has("version") && version == noVersionLabel) {
                         docsInVersion.add(doc)
@@ -1501,7 +1503,7 @@ object HelperObjects {
 
     fun createSourceValidationsFromConfig(): List<Project> {
 
-        class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String, git_source_branch: String) : BuildType({
+        class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String) : BuildType({
             templates(RunContentValidations)
 
             val docBuildRootMap = build_info.getString("root")
@@ -1514,7 +1516,7 @@ object HelperObjects {
             val docMetadata = doc.getJSONObject("metadata")
             val docProduct = docMetadata.getJSONArray("product").joinToString(separator = ",")
             val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
-            val docVersion = docMetadata.getString("version")
+            val docVersion = docMetadata.getJSONArray("version").joinToString(separator = ",")
 
             id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
             name = "Validate $docTitle $docProduct $docVersion"
@@ -1649,12 +1651,12 @@ object HelperObjects {
         val sourcesToValidate = mutableListOf<Project>()
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
-            if (!source.has("xdocsPathIds")) {
+            val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
+            if (!source.has("xdocsPathIds") && sourceGitBranch == "master") {
                 val sourceDocBuilds = mutableListOf<JSONObject>()
                 val sourceId = source.getString("id")
                 val sourceTitle = source.getString("title")
                 val sourceGitUrl = source.getString("gitUrl")
-                val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
 
                 for (j in 0 until buildConfigs.length()) {
                     val build = buildConfigs.getJSONObject(j)
@@ -1674,7 +1676,7 @@ object HelperObjects {
                                 buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
                                 for (docBuild in sourceDocBuilds) {
-                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId, sourceGitBranch))
+                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
                                 }
 
                             }
