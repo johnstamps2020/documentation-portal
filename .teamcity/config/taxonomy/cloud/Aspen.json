@@ -287,8 +287,14 @@
           ]
         },
         {
-          "id": "insuranceNow",
-          "label": "InsuranceNow"
+          "id": "insNowAspen",
+          "label": "InsuranceNow",
+          "items":[
+            {
+              "id": "insNowAspen",
+              "label": "InsuranceNow"
+            }
+          ]
         }
       ]
     },
