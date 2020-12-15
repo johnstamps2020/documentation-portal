@@ -26,24 +26,26 @@
                                 <h2><%= category.label %></h2>
                                 <% category.docs.forEach(categoryDoc => { -%>
                                     <div class="docLink">
-                                        <% if (categoryDoc.docUrl.startsWith('http://') || categoryDoc.docUrl.startsWith('https://')) { -%>
-                                            <a href="<%= categoryDoc.docUrl %>" target="_blank"
-                                               rel="noopener noreferrer"><%= categoryDoc.docLabel %></a>
-                                        <% } else { -%>
-                                            <a href="<%= categoryDoc.docUrl %>"><%= categoryDoc.docLabel %></a>
-                                        <% } %>
+                                        <%- include('./parts/link.ejs', {
+                                            url: categoryDoc.docUrl, 
+                                            label: categoryDoc.docLabel, 
+                                            public: categoryDoc.public, 
+                                            userContext: userContext,
+                                            customClass: undefined,
+                                        }) %>
                                     </div>
                                 <% }) -%>
                                 <% category.groups.forEach(group => { -%>
                                     <h3><%= group.groupLabel %></h3>
                                     <% group.groupDocs.forEach(groupDoc => { -%>
                                         <div class="docLink">
-                                            <% if (groupDoc.docUrl.startsWith('http://') || groupDoc.docUrl.startsWith('https://')) { -%>
-                                                <a href="<%= groupDoc.docUrl %>" target="_blank"
-                                                   rel="noopener noreferrer"><%= groupDoc.docLabel %></a>
-                                            <% } else { -%>
-                                                <a href="<%= groupDoc.docUrl %>"><%= groupDoc.docLabel %></a>
-                                            <% } %>
+                                            <%- include('./parts/link.ejs', {
+                                                url: groupDoc.docUrl, 
+                                                label: groupDoc.docLabel, 
+                                                public: groupDoc.public, 
+                                                userContext: userContext,
+                                                customClass: undefined,
+                                            }) %>
                                         </div>
                                     <% }) -%>
                                 <% }) -%>

@@ -86,6 +86,11 @@ const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
 const userRouter = require('./routes/user');
 
+// app.use(function(req, res, next) {
+//   res.locals.authenticated = req.isAuthenticated() || false;
+//   next();
+// });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
