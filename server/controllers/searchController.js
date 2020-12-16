@@ -69,7 +69,7 @@ const runFilteredSearch = async (
 
   if (!isLoggedIn) {
     selectedFilters.push({
-      terms: {
+      term: {
         public: true,
       },
     });
