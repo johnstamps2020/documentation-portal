@@ -231,8 +231,8 @@
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
@@ -241,6 +241,10 @@
             {
               "id": "explore",
               "label": "Explore"
+            },
+            {
+              "id": "predictiveAnalytics",
+              "label": "Predictive Analytics"
             },
             {
               "id": "addOns",
