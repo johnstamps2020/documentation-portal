@@ -59,7 +59,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "clouddxceclaimsdraft",
@@ -89,7 +89,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "dxapdclouddraft",
@@ -119,7 +119,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "clouddxpeclaimsdraft",
@@ -134,7 +134,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "clouddxsredraft",
@@ -149,7 +149,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "clouddxvedraft",
@@ -164,7 +164,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "guidewireidentityfederationhublatest",
@@ -403,7 +403,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanageddxceclaimsdraft",
