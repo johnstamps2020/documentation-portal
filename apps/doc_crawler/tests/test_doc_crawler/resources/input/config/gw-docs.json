@@ -10,8 +10,12 @@
         "platform": "Cloud",
         "product": "BillingCenter",
         "version": "latest"
-      }
-    },    {
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "iscccloudlatest",
       "title": "ClaimCenter",
       "url": "cloud/cc/latest",
@@ -20,8 +24,12 @@
         "platform": "Cloud",
         "product": "ClaimCenter",
         "version": "latest"
-      }
-    },    {
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "ispccloudlatest",
       "title": "PolicyCenter",
       "url": "cloud/pc/latest",
@@ -30,7 +38,10 @@
         "platform": "Cloud",
         "product": "PolicyCenter",
         "version": "latest"
-      }
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     },
     {
       "id": "isgwcpcloudlatest",
@@ -41,8 +52,10 @@
         "platform": "Cloud",
         "product": "Guidewire Cloud Platform",
         "version": "latest"
-      }
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
-

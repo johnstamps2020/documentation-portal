@@ -32,6 +32,9 @@ class ElasticClient(Elasticsearch):
                 "version": {
                     "type": "keyword"
                 },
+                "public": {
+                    "type": "boolean"
+                },
             }
         }
     }
@@ -47,11 +50,15 @@ class ElasticClient(Elasticsearch):
     def create_index(self, search_index_name: str, search_index_settings: dict):
         operation_result = {}
         if not self.indices.exists(index=search_index_name):
-            self.logger_instance.info(f'Index "{search_index_name}" does not exist. Creating index.')
-            operation_result = self.indices.create(index=search_index_name, body=search_index_settings)
-            self.logger_instance.info(f'Index creation result: {operation_result}')
+            self.logger_instance.info(
+                f'Index "{search_index_name}" does not exist. Creating index.')
+            operation_result = self.indices.create(
+                index=search_index_name, body=search_index_settings)
+            self.logger_instance.info(
+                f'Index creation result: {operation_result}')
         else:
-            self.logger_instance.info(f'Skipping index creation. Index "{search_index_name}" already exists.')
+            self.logger_instance.info(
+                f'Skipping index creation. Index "{search_index_name}" already exists.')
         return operation_result
 
     @staticmethod
@@ -61,16 +68,20 @@ class ElasticClient(Elasticsearch):
     def delete_entries_by_query(self, search_index_name: str, elastic_query: dict):
         operation_result = {}
         if self.indices.exists(index=search_index_name):
-            self.logger_instance.info(f'{search_index_name}: Deleting entries for query: {elastic_query}')
-            operation_result = self.delete_by_query(index=search_index_name, body=elastic_query)
+            self.logger_instance.info(
+                f'{search_index_name}: Deleting entries for query: {elastic_query}')
+            operation_result = self.delete_by_query(
+                index=search_index_name, body=elastic_query)
             failed_entries = operation_result.get("failures")
             self.logger_instance.info(
                 f'{search_index_name}: Deleted entries/Failures: {operation_result.get("deleted")}/{len(failed_entries)}')
             if failed_entries:
-                self.logger_instance.warning(f'Failed to load the following entries:')
+                self.logger_instance.warning(
+                    f'Failed to load the following entries:')
                 for failed_entry in failed_entries:
                     self.logger_instance.warning(f'\t{failed_entry}')
         else:
-            self.logger_instance.info(f'Index "{search_index_name}" does not exist. No entries to delete.')
+            self.logger_instance.info(
+                f'Index "{search_index_name}" does not exist. No entries to delete.')
 
         return operation_result
