@@ -25,8 +25,8 @@
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
@@ -35,6 +35,10 @@
             {
               "id": "explore",
               "label": "Explore"
+            },
+            {
+              "id": "predictiveAnalytics",
+              "label": "Predictive Analytics"
             },
             {
               "id": "addOns",
@@ -47,10 +51,6 @@
                 {
                   "id": "icGwCloud",
                   "label": "InfoCenter for Guidewire Cloud"
-                },
-                {
-                  "id": "predictiveAnalytics",
-                  "label": "Predictive Analytics"
                 }
               ]
             }
