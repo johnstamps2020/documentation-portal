@@ -33,7 +33,8 @@ const runFilteredSearch = async (
   searchPhrase,
   urlParams,
   startIndex,
-  resultsPerPage
+  resultsPerPage,
+  isLoggedIn
 ) => {
   let queryBody = {
     bool: {
@@ -65,6 +66,14 @@ const runFilteredSearch = async (
       };
       selectedFilters.push(queryFilter);
     }
+  }
+
+  if (!isLoggedIn) {
+    selectedFilters.push({
+      terms: {
+        public: true,
+      },
+    });
   }
 
   if (selectedFilters.length > 0) {
@@ -121,7 +130,8 @@ const searchController = async (req, res, next) => {
       searchPhrase,
       req.query,
       startIndex,
-      resultsPerPage
+      resultsPerPage,
+      req.isAuthenticated()
     );
 
     const filters = results.filters;
@@ -177,6 +187,7 @@ const searchController = async (req, res, next) => {
       });
     }
   } catch (err) {
+    console.error(err);
     appLogger.log({
       level: 'error',
       message: `Exception while running search: ${err}`,
