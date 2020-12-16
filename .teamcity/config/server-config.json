@@ -8264,7 +8264,7 @@
       ],
       "indexForSearch": true,
       "displayOnLandingPages": true,
-      "public": false
+      "public": true
     },
     {
       "id": "iscc202011gosu",
