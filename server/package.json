@@ -1,10 +1,10 @@
 {
   "name": "documentation-portal",
-  "version": "1.9.1",
+  "version": "1.9.7",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "gulp",
+    "start:dev": "nodemon ./bin/www -e js,ejs,css,html,jpg,png",
     "test": "mocha"
   },
   "dependencies": {
@@ -18,13 +18,8 @@
     "express": "^4.16.4",
     "express-http-context": "^1.2.3",
     "express-session": "^1.17.0",
-    "gulp": "^4.0.2",
-    "gulp-env": "^0.4.0",
-    "gulp-mocha": "^7.0.2",
-    "gulp-nodemon": "^2.4.2",
     "http-errors": "~1.6.3",
     "http-proxy-middleware": "^0.20.0",
-    "morgan": "~1.9.1",
     "node-fetch": "^2.6.1",
     "node-mocks-http": "^1.8.1",
     "node-sass-middleware": "0.11.0",
@@ -34,13 +29,11 @@
     "serve-favicon": "^2.5.0",
     "sinon": "^9.0.0",
     "supertest": "^4.0.2",
-    "tap": "^14.10.6",
-    "winston": "^3.3.3",
-    "zipkin": "^0.19.1",
-    "zipkin-instrumentation-express": "^0.19.1",
-    "zipkin-transport-http": "^0.19.1"
+    "tap": "^14.10.6"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
   }
 }

@@ -10,6 +10,7 @@ class IndexEntry(scrapy.Item):
     product = scrapy.Field()
     platform = scrapy.Field()
     version = scrapy.Field()
+    public = scrapy.Field()
 
 
 class BrokenLink(scrapy.Item):

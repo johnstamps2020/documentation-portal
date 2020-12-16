@@ -1,293 +1,5 @@
 {
-  "productFamilies": [
-    {
-      "productFamilyName": "BillingCenter Cloud",
-      "product": [
-        "BillingCenter for Guidewire Cloud",
-        "InsuranceSuite Configuration Upgrade Tools",
-        "BillingCenter Upgrade Tools",
-        "Cloud Data Access",
-        "CustomerEngage Account Management",
-        "DataHub",
-        "Explore",
-        "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
-        "ProducerEngage",
-        "ServiceRepEngage"
-      ]
-    },
-    {
-      "productFamilyName": "ClaimCenter Cloud",
-      "product": [
-        "ClaimCenter for Guidewire Cloud",
-        "InsuranceSuite Configuration Upgrade Tools",
-        "Cloud Data Access",
-        "CustomerEngage Account Management",
-        "CustomerEngage Account Management for ClaimCenter",
-        "DataHub",
-        "Explore",
-        "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
-        "ProducerEngage",
-        "ProducerEngage for ClaimCenter",
-        "ServiceRepEngage",
-        "VendorEngage"
-      ]
-    },
-    {
-      "productFamilyName": "PolicyCenter Cloud",
-      "product": [
-        "PolicyCenter for Guidewire Cloud",
-        "InsuranceSuite Configuration Upgrade Tools",
-        "Businessowners Standards Based Template",
-        "Cloud Data Access",
-        "CustomerEngage Account Management",
-        "CustomerEngage Quote and Buy",
-        "DataHub",
-        "Digital Code Generation",
-        "Explore",
-        "Guidewire InsuranceSuite Package for Germany",
-        "InfoCenter",
-        "ProducerEngage",
-        "ServiceRepEngage"
-      ]
-    },
-    {
-      "productFamilyName": "InsuranceNow",
-      "product": [
-        "InsuranceNow 2020.1x - External Audience",
-        "InsuranceNow 2020.1x - Internal Audience",
-        "InsuranceNow 2020.2x - External Audience",
-        "InsuranceNow 2020.2x - Internal Audience",
-        "InsuranceNow"
-      ]
-    },
-    {
-      "productFamilyName": "Guidewire Cloud Platform",
-      "product": [
-        "Guidewire Cloud Console",
-        "Guidewire Identity Federation Hub"
-      ]
-    },
-    {
-      "productFamilyName": "Testing Frameworks",
-      "product": ["Testing Frameworks"]
-    },
-    {
-      "productFamilyName": "Jutro",
-      "product": ["Jutro"]
-    },
-    {
-      "productFamilyName": "Guidewire Feature Preview",
-      "product": ["Guidewire Feature Preview"]
-    },
-    {
-      "productFamilyName": "SurePath Standards",
-      "product": ["SurePath Standards"]
-    }
-  ],
   "docs": [
-    {
-      "id": "cloudbclatestvkeurqms",
-      "title": "BillingCenter for Guidewire Cloud",
-      "url": "cloud/bc/latest/",
-      "metadata": {
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-Cloud-Draft.ditaval",
-        "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudisdraftsrc",
-        "resources": [
-          {
-            "src": "insurancesuiteextrassrc",
-            "sourceFolder": "ReleaseNotes-files/bc/2020.05",
-            "targetFolder": "releasenotes/ReleaseNotes-files/bc/2020.05"
-          }
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudcclatestovwsjybk",
-      "title": "ClaimCenter for Guidewire Cloud",
-      "url": "cloud/cc/latest/",
-      "metadata": {
-        "product": [
-          "ClaimCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-Cloud-Draft.ditaval",
-        "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudisdraftsrc",
-        "resources": [
-          {
-            "src": "insurancesuiteextrassrc",
-            "sourceFolder": "ReleaseNotes-files/cc/2020.05",
-            "targetFolder": "releasenotes/ReleaseNotes-files/cc/2020.05"
-          }
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudpclatestltxfjual",
-      "title": "PolicyCenter for Guidewire Cloud",
-      "url": "cloud/pc/latest/",
-      "metadata": {
-        "product": [
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-Cloud-Draft.ditaval",
-        "root": "_supermap-cloud-active.ditamap",
-        "src": "cloudisdraftsrc",
-        "resources": [
-          {
-            "src": "insurancesuiteextrassrc",
-            "sourceFolder": "ReleaseNotes-files/pc/2020.05",
-            "targetFolder": "releasenotes/ReleaseNotes-files/pc/2020.05"
-          }
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudbcupgradeguidelatest",
-      "title": "BillingCenter Upgrade Guide",
-      "url": "cloud/bc/upgrade/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud"
-        ],
-        "version": "latest",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/IS-BillingCenter-Cloud-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": true,
-        "src": "isupgradeguidesrc"
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudccupgradeguidelatest",
-      "title": "ClaimCenter Upgrade Guide",
-      "url": "cloud/cc/upgrade/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "ClaimCenter for Guidewire Cloud"
-        ],
-        "version": "latest",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/IS-ClaimCenter-Cloud-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": true,
-        "src": "isupgradeguidesrc"
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "cloudpcupgradeguidelatest",
-      "title": "PolicyCenter Upgrade Guide",
-      "url": "cloud/pc/upgrade/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": "latest",
-        "category": [
-          "Core"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/IS-PolicyCenter-Cloud-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": true,
-        "src": "isupgradeguidesrc"
-      },
-      "environments": [
-        "int"
-      ]
-    },
     {
       "id": "isconfigupgradetools3x",
       "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
@@ -301,19 +13,11 @@
           "InsuranceSuite Configuration Upgrade Tools"
         ],
         "version": "3.x.x",
-        "category": [
-          "Core"
-        ],
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff",
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/GW-Generic-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": true,
-        "src": "isconfigupgradetools3xsrc"
       },
       "environments": [
         "int"
@@ -321,39 +25,18 @@
     },
     {
       "id": "clouddhdraft",
-      "title": "DataHub",
+      "title": "DataHub for Guidewire Cloud",
       "url": "cloud/dh/latest",
       "metadata": {
         "product": [
-          "DataHub"
+          "DataHub for Guidewire Cloud"
         ],
         "platform": [
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Data"
-        ],
         "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "DataHub-MS-DRAFT.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-            "targetFolder": "extras/DataHub"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-          }
+          "Cortina"
         ]
       },
       "environments": [
@@ -362,98 +45,19 @@
     },
     {
       "id": "cloudicdraft",
-      "title": "InfoCenter",
+      "title": "InfoCenter for Guidewire Cloud",
       "url": "cloud/ic/latest",
       "metadata": {
         "product": [
-          "InfoCenter"
+          "InfoCenter for Guidewire Cloud"
         ],
         "platform": [
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Data"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "InfoCenter-MS-DRAFT.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-            "targetFolder": "extras/InfoCenter"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-          }
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "clouddataplatformdraft",
-      "title": "Cloud Data Access",
-      "url": "cloud/cdp/latest",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Cloud Data Access"
-        ],
-        "version": "latest",
-        "category": [
-          "Data"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Release.ditaval",
-        "root": "_supermap-cda.ditamap",
-        "src": "cdpdraftsrc"
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "exploreclouddraft",
-      "title": "Explore",
-      "url": "cloud/explore/latest",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": "latest",
-        "category": [
-          "Data"
-        ],
-        "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Cloud-Release.ditaval",
-        "root": "supermapExplore.ditamap",
-        "src": "explorebadraftsrc"
       },
       "environments": [
         "int"
@@ -471,18 +75,9 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-am-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -500,18 +95,9 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-claims-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -529,18 +115,9 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-qb-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -548,28 +125,19 @@
     },
     {
       "id": "dxapdclouddraft",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/latest",
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-apd-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -587,18 +155,9 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -616,18 +175,9 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-claims-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -645,18 +195,9 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-sre-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -674,18 +215,9 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "Digital"
-        ],
         "release": [
-          "Aspen"
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ve-MgSvcs.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
       },
       "environments": [
         "int"
@@ -703,24 +235,8 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "InsuranceNow"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "_supermap-20201x-active.ditamap",
-        "src": "in20201xdraftsrc",
-        "resources": [
-          {
-            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
-            "sourceFolder": "ChangedFiles/2020.1",
-            "src": "insurancenowextrassrc"
-          }
         ]
       },
       "environments": [
@@ -739,24 +255,8 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "InsuranceNow"
-        ],
         "release": [
           "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Release.ditaval",
-        "root": "_supermap-20201x-active.ditamap",
-        "src": "in20201xdraftsrc",
-        "resources": [
-          {
-            "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
-            "sourceFolder": "ChangedFiles/2020.1",
-            "src": "insurancenowextrassrc"
-          }
         ]
       },
       "environments": [
@@ -775,24 +275,8 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "InsuranceNow"
-        ],
         "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "_supermap-20202x-active.ditamap",
-        "src": "in20202xdraftsrc",
-        "resources": [
-          {
-            "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
-            "sourceFolder": "ChangedFiles/2020.2",
-            "src": "insurancenowextrassrc"
-          }
+          "Banff"
         ]
       },
       "environments": [
@@ -811,24 +295,8 @@
           "Cloud"
         ],
         "version": "latest",
-        "category": [
-          "InsuranceNow"
-        ],
         "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Release.ditaval",
-        "root": "_supermap-20202x-active.ditamap",
-        "src": "in20202xdraftsrc",
-        "resources": [
-          {
-            "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
-            "sourceFolder": "ChangedFiles/2020.2",
-            "src": "insurancenowextrassrc"
-          }
+          "Banff"
         ]
       },
       "environments": [
@@ -836,8 +304,8 @@
       ]
     },
     {
-      "id": "guidewireidentityfederationhubqsvkhtgf",
-      "title": "Guidewire Identity Federation Hub",
+      "id": "guidewireidentityfederationhublatest",
+      "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": [
@@ -846,92 +314,17 @@
         "product": [
           "Guidewire Identity Federation Hub"
         ],
-        "category": [
-          "Authentication"
-        ],
-        "version": "2020.05",
+        "version": "latest",
         "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "root": "GuidewireHub.ditamap",
-        "filter": "GW-Generic-Cloud-Draft.ditaval",
-        "src": "guidewireidentityfederationhubdraft"
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "guidewirecloudconsoleguidetycvlqax",
-      "title": "Cloud Console Guide",
-      "url": "cloud/gcc-guide/latest/topics/c_initial-provisioning.html",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Console"
-        ],
-        "category": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
-        "release": [
-          "Aspen"
+          "Aspen",
+          "Banff"
         ]
       },
       "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "guidewirecloudconsolerelnotesijdxzmpe",
-      "title": "Cloud Console Release Notes",
-      "url": "cloud/gcc-guide/latest/topics/release-notes/c_new-and-changed.html",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Console"
-        ],
-        "category": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
-        "release": [
-          "Aspen"
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "dkeirtlsleeedc",
-      "title": "Cloud Console Root Doc",
-      "url": "cloud/gcc-guide/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Guidewire Cloud Console"
-        ],
-        "category": [
-          "Guidewire Cloud Console"
-        ],
-        "version": "2020.05",
-        "release": [
-          "Aspen"
-        ]
-      },
-      "environments": [
-        "int"
+        "dev",
+        "int",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -945,16 +338,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Draft.ditaval",
-        "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis10xdraft"
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -971,16 +355,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Draft.ditaval",
-        "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis10xdraft"
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -997,16 +372,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Draft.ditaval",
-        "root": "_supermap-10x-active.ditamap",
-        "src": "selfmanagedis10xdraft"
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -1024,17 +390,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/IS-BillingCenter-Self-managed-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": true,
-        "src": "isupgradeguidesrc"
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -1052,17 +408,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/IS-ClaimCenter-Self-managed-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": true,
-        "src": "isupgradeguidesrc"
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -1080,17 +426,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Other/IS-PolicyCenter-Self-managed-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": true,
-        "src": "isupgradeguidesrc"
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -1098,25 +434,17 @@
     },
     {
       "id": "selfmanagedbcupgradetools1x",
-      "title": "BillingCenter Upgrade Tools 1.x.x",
+      "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1x",
+      "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "BillingCenter Upgrade Tools"
+          "BillingCenter"
         ],
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Draft.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "isconfigupgradetools1xsrc"
+        "version": "9.x"
       },
       "environments": [
         "int"
@@ -1124,25 +452,17 @@
     },
     {
       "id": "selfmanagedccupgradetools1x",
-      "title": "ClaimCenter Upgrade Tools 1.x.x",
+      "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1x",
+      "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "ClaimCenter Upgrade Tools"
+          "ClaimCenter"
         ],
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Draft.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "isconfigupgradetools1xsrc"
+        "version": "9.x"
       },
       "environments": [
         "int"
@@ -1150,25 +470,17 @@
     },
     {
       "id": "selfmanagedpcupgradetools1x",
-      "title": "PolicyCenter Upgrade Tools 1.x.x",
+      "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1x",
+      "displayOnLandingPages": false,
       "metadata": {
         "product": [
-          "PolicyCenter Upgrade Tools"
+          "PolicyCenter"
         ],
         "platform": [
           "Self-managed"
         ],
-        "version": "1.x.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Draft.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "isconfigupgradetools1xsrc"
+        "version": "9.x"
       },
       "environments": [
         "int"
@@ -1185,16 +497,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "9.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-BC-OnPrem-Draft.ditaval",
-        "root": "_supermap-9x-active.ditamap",
-        "src": "exportisonprem9"
+        "version": "9.x"
       },
       "environments": [
         "int"
@@ -1211,16 +514,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "9.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-CC-OnPrem-Draft.ditaval",
-        "root": "_supermap-9x-active.ditamap",
-        "src": "exportisonprem9"
+        "version": "9.x"
       },
       "environments": [
         "int"
@@ -1237,16 +531,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "9.x",
-        "category": [
-          "Core"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-OnPrem-Draft.ditaval",
-        "root": "_supermap-9x-active.ditamap",
-        "src": "exportisonprem9"
+        "version": "9.x"
       },
       "environments": [
         "int"
@@ -1263,28 +548,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x",
-        "category": [
-          "Data"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "DataHub-DRAFT.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/autoGenFiles",
-            "targetFolder": "extras/DataHub"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/DataHub/releaseDiffFiles",
-            "targetFolder": "relnotes/DataHub/ReleaseNotes_files"
-          }
-        ]
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -1301,28 +565,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "10.x",
-        "category": [
-          "Data"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "InfoCenter-DRAFT.ditaval",
-        "root": "DM_all.ditamap",
-        "src": "dhicdraftsrc",
-        "resources": [
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/autoGenFiles",
-            "targetFolder": "extras/InfoCenter"
-          },
-          {
-            "src": "dhicextrassrc",
-            "sourceFolder": "Aspen-10.3/InfoCenter/releaseDiffFiles",
-            "targetFolder": "relnotes/InfoCenter/ReleaseNotes_files"
-          }
-        ]
+        "version": "10.x"
       },
       "environments": [
         "int"
@@ -1339,16 +582,7 @@
         "product": [
           "Business Analytics"
         ],
-        "version": "latest",
-        "category": [
-          "Data"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-OnPrem-Release.ditaval",
-        "root": "supermapExplore.ditamap",
-        "src": "explorebadraftsrc"
+        "version": "latest"
       },
       "environments": [
         "int"
@@ -1365,16 +599,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-am-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1391,16 +616,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-claims-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1417,16 +633,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ce-qb-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1434,25 +641,16 @@
     },
     {
       "id": "selfmanageddxapddraft",
-      "title": "Digital Code Generation",
+      "title": "Digital Code Generation Extension Pack",
       "url": "self-managed/dx/apd/latest",
       "metadata": {
         "product": [
-          "Digital Code Generation"
+          "Digital Code Generation Extension Pack"
         ],
         "platform": [
           "Self-managed"
         ],
-        "version": "latest",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-apd-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "latest"
       },
       "environments": [
         "int"
@@ -1469,16 +667,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1495,16 +684,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-pe-claims-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1521,16 +701,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-sre-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1547,16 +718,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ve-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1573,16 +735,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-di-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1599,16 +752,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-di-c-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1625,16 +769,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ed-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1651,16 +786,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-ed-c-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1677,16 +803,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-vod-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1703,16 +820,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.x",
-        "category": [
-          "Digital"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "Digital-vod-c-OnPrem.ditaval",
-        "root": "DX_superbook.ditamap",
-        "src": "dxstaging"
+        "version": "11.x"
       },
       "environments": [
         "int"
@@ -1731,40 +839,8 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
-        ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "TestingFrameworks_supermap.ditamap",
-        "src": "testingframeworkssrc",
-        "resources": [
-          {
-            "targetFolder": "javadoc/PTF",
-            "sourceFolder": "PTF",
-            "src": "testingframeworksextrassrc"
-          }
-        ]
-      },
-      "environments": [
-        "int"
-      ]
-    },
-    {
-      "id": "dkekdisievjfjrndjsj",
-      "title": "Jutro Designers",
-      "url": "jutro/designers/latest",
-      "metadata": {
-        "product": [
-          "Jutro"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": "latest",
-        "release": [
-          "Aspen"
+          "Banff",
+          "Cortina"
         ]
       },
       "environments": [
@@ -1779,22 +855,14 @@
         "product": [
           "Guidewire Feature Preview"
         ],
-        "category": [
-          "Early Access"
-        ],
         "platform": [
           "Cloud"
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff",
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-Cloud-Release.ditaval",
-        "root": "_supermap-hawaii.ditamap",
-        "src": "gwhawaii"
       },
       "environments": [
         "int"
@@ -1808,22 +876,14 @@
         "product": [
           "Guidewire Feature Preview"
         ],
-        "category": [
-          "Internal Draft"
-        ],
         "platform": [
           "Cloud"
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff",
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "IS-PC-Cloud-Draft.ditaval",
-        "root": "_supermap-hawaii.ditamap",
-        "src": "gwhawaii"
       },
       "environments": [
         "int"
@@ -1841,21 +901,255 @@
           "Cloud"
         ],
         "version": "2.x",
-        "category": [
-          "Core"
-        ],
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff",
+          "Cortina"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "_superbook.ditamap",
-        "src": "midipgdraftsrc"
+      "environments": [
+        "dev",
+        "int"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsoleguideinsurerdev",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsolerninsurerdev",
+      "title": "Cloud Console Release Notes",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdev",
+      "title": "Cloud Console Root Doc Insurer Developer",
+      "url": "cloud/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "guidewirecloudconsolerootgwadmin",
+      "title": "Cloud Console Root Doc GW Admin",
+      "url": "cloud/gcc-guide/gw-admin/latest",
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Guidewire Cloud Console"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff",
+          "Cortina"
+        ]
       },
       "environments": [
         "int"
+      ]
+    },
+    {
+      "id": "palatest",
+      "title": "Predictive Analytics",
+      "url": "cloud/pa/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Predictive Analytics"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "clouddataplatformlatest",
+      "title": "Cloud Data Access",
+      "url": "cloud/cdp/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Data Access"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "comparelatest",
+      "title": "Compare+",
+      "url": "cloud/compare/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Compare+"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "explorecloudstaging",
+      "title": "Explore",
+      "url": "cloud/explore/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Explore"
+        ],
+        "version": "latest",
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dkekdisievjfjrndjsj",
+      "title": "Jutro Design System",
+      "url": "jutro/documentation/4.1.1",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "4.1.1",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "id": "dsssekelmvkdnasjsjsnndddf",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/4.1.1",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "4.1.1",
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int",
+        "staging",
+        "prod"
       ]
     },
     {
@@ -1871,19 +1165,10 @@
           "Self-managed"
         ],
         "version": "latest",
-        "category": [
-          "Core"
-        ],
         "release": [
-          "Aspen"
+          "Banff",
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "_supermap.ditamap",
-        "indexRedirect": false,
-        "src": "restapi"
       },
       "environments": [
         "dev",
@@ -1903,48 +1188,36 @@
         ],
         "version": "latest",
         "release": [
-          "Aspen"
+          "Banff"
         ]
       },
       "displayOnLandingPages": false,
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "GuidewireCloudPlatform.ditamap",
-        "src": "configmgrhelpdraftsrc"
-      },
       "environments": [
         "dev",
-        "int"
+        "int",
+        "staging",
+        "prod"
       ]
     },
     {
       "id": "standardsdraft",
-      "title": "SurePath Standards",
+      "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/latest",
       "metadata": {
         "product": [
-          "SurePath Standards"
+          "Guidewire Cloud Standards"
         ],
         "platform": [
           "Cloud"
         ],
-        "version": "latest",
-        "category": [
-          "SurePath Standards"
-        ],
+        "version": "draft",
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff",
+          "Cortina"
         ]
       },
-      "build": {
-        "buildType": "dita",
-        "filter": "GW-Generic-Draft.ditaval",
-        "root": "surepath.ditamap",
-        "src": "standardsdraftsrc"
-      },
       "environments": [
-        "dev",
         "int"
       ]
     },
@@ -1960,21 +1233,2343 @@
           "Businessowners Standards Based Template"
         ],
         "version": "latest",
-        "category": [
-          "Core"
-        ],
         "release": [
-          "Aspen"
+          "Aspen",
+          "Banff",
+          "Cortina"
         ]
-      },
-      "build": {
-        "buildType": "dita",
-        "filter": "LOB_STANDARDS_filterSet.ditaval",
-        "root": "_supermap-lob-bop-10x.ditamap",
-        "src": "lobbopdraft"
       },
       "environments": [
         "dev",
+        "int"
+      ]
+    },
+    {
+      "id": "apiekdfksmds",
+      "title": "API Specifications",
+      "url": "cloud/bc/api-specs/latest/",
+      "metadata": {
+        "product": [
+          "BillingCenter API"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff",
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "pcappciekdfpcksmds",
+      "title": "API Specifications",
+      "url": "cloud/pc/api-specs/latest/",
+      "metadata": {
+        "product": [
+          "PolicyCenter API"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff",
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ccapcciekdfccksmds",
+      "title": "API Specifications",
+      "url": "cloud/cc/api-specs/latest/",
+      "metadata": {
+        "product": [
+          "ClaimCenter API"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Banff",
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftreleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/latest/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftnewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/bc/latest/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftupgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/latest/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftapp",
+      "title": "Application Guide",
+      "url": "cloud/bc/latest/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftadmin",
+      "title": "Administration",
+      "url": "cloud/bc/latest/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftbestpractice",
+      "title": "Best Practices",
+      "url": "cloud/bc/latest/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftconfig",
+      "title": "Configuration",
+      "url": "cloud/bc/latest/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftglobal",
+      "title": "Globalization",
+      "url": "cloud/bc/latest/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftrules",
+      "title": "Rules",
+      "url": "cloud/bc/latest/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftinteg",
+      "title": "Integration",
+      "url": "cloud/bc/latest/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftgosu",
+      "title": "Gosu Reference",
+      "url": "cloud/bc/latest/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddrafttesting",
+      "title": "Testing",
+      "url": "cloud/bc/latest/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isclouddraftrestapiclient",
+      "title": "REST API Client",
+      "url": "cloud/is/latest/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbcclouddraftinstall",
+      "title": "Installation",
+      "url": "cloud/bc/latest/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftreleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/latest/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftnewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/cc/latest/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftupgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/latest/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftapp",
+      "title": "Application Guide",
+      "url": "cloud/cc/latest/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftadmin",
+      "title": "Administration",
+      "url": "cloud/cc/latest/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftbestpractice",
+      "title": "Best Practices",
+      "url": "cloud/cc/latest/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftconfig",
+      "title": "Configuration",
+      "url": "cloud/cc/latest/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftglobal",
+      "title": "Globalization",
+      "url": "cloud/cc/latest/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftrules",
+      "title": "Rules",
+      "url": "cloud/cc/latest/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftinteg",
+      "title": "Integration",
+      "url": "cloud/cc/latest/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftcloudapi",
+      "title": "Cloud API",
+      "url": "cloud/cc/latest/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftgosu",
+      "title": "Gosu Reference",
+      "url": "cloud/cc/latest/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddrafttesting",
+      "title": "Testing",
+      "url": "cloud/cc/latest/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftrestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/latest/restapiframework",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isccclouddraftinstall",
+      "title": "Installation",
+      "url": "cloud/cc/latest/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftreleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/pc/latest/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftnewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/pc/latest/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftupgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/latest/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftapp",
+      "title": "Application Guide",
+      "url": "cloud/pc/latest/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftadmin",
+      "title": "Administration",
+      "url": "cloud/pc/latest/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftbestpractice",
+      "title": "Best Practices",
+      "url": "cloud/pc/latest/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftapd",
+      "title": "Advanced Product Designer",
+      "url": "cloud/pc/latest/apd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftconfig",
+      "title": "Configuration",
+      "url": "cloud/pc/latest/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftglobal",
+      "title": "Globalization",
+      "url": "cloud/pc/latest/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftrules",
+      "title": "Rules",
+      "url": "cloud/pc/latest/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftpd",
+      "title": "Product Designer",
+      "url": "cloud/pc/latest/pd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftpm",
+      "title": "Product Model",
+      "url": "cloud/pc/latest/productmodel",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftinteg",
+      "title": "Integration",
+      "url": "cloud/pc/latest/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftcloudapi",
+      "title": "Cloud API",
+      "url": "cloud/pc/latest/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftgosu",
+      "title": "Gosu Reference",
+      "url": "cloud/pc/latest/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddrafttesting",
+      "title": "Testing",
+      "url": "cloud/pc/latest/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftrestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/pc/latest/restapiframework",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispcclouddraftinstall",
+      "title": "Installation",
+      "url": "cloud/pc/latest/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isclouddraftcontact",
+      "title": "Contact Management",
+      "url": "cloud/is/latest/contact",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isclouddraftglossary",
+      "title": "Glossary",
+      "url": "cloud/is/latest/glossary",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "latest",
+        "subject": [
+          "Glossary"
+        ],
+        "release": [
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/ea/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/bc/ea/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/ea/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeaapp",
+      "title": "Application Guide",
+      "url": "cloud/bc/ea/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeaadmin",
+      "title": "Administration",
+      "url": "cloud/bc/ea/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeabestpractice",
+      "title": "Best Practices",
+      "url": "cloud/bc/ea/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeaconfig",
+      "title": "Configuration",
+      "url": "cloud/bc/ea/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeaglobal",
+      "title": "Globalization",
+      "url": "cloud/bc/ea/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudearules",
+      "title": "Rules",
+      "url": "cloud/bc/ea/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeainteg",
+      "title": "Integration",
+      "url": "cloud/bc/ea/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeagosu",
+      "title": "Gosu Reference",
+      "url": "cloud/bc/ea/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeatesting",
+      "title": "Testing",
+      "url": "cloud/bc/ea/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscloudearestapiclient",
+      "title": "REST API Client",
+      "url": "cloud/is/ea/restapiclient",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "isbccloudeainstall",
+      "title": "Installation",
+      "url": "cloud/bc/ea/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/ea/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/cc/ea/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/ea/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeaapp",
+      "title": "Application Guide",
+      "url": "cloud/cc/ea/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeaadmin",
+      "title": "Administration",
+      "url": "cloud/cc/ea/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeabestpractice",
+      "title": "Best Practices",
+      "url": "cloud/cc/ea/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeaconfig",
+      "title": "Configuration",
+      "url": "cloud/cc/ea/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeaglobal",
+      "title": "Globalization",
+      "url": "cloud/cc/ea/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudearules",
+      "title": "Rules",
+      "url": "cloud/cc/ea/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeainteg",
+      "title": "Integration",
+      "url": "cloud/cc/ea/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeacloudapi",
+      "title": "Cloud API",
+      "url": "cloud/cc/ea/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeagosu",
+      "title": "Gosu Reference",
+      "url": "cloud/cc/ea/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeatesting",
+      "title": "Testing",
+      "url": "cloud/cc/ea/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudearestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/ea/restapiframework",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscccloudeainstall",
+      "title": "Installation",
+      "url": "cloud/cc/ea/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "ClaimCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/pc/ea/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/pc/ea/newandchanged",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/ea/upgrade",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeaapp",
+      "title": "Application Guide",
+      "url": "cloud/pc/ea/app",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeaadmin",
+      "title": "Administration",
+      "url": "cloud/pc/ea/admin",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeabestpractice",
+      "title": "Best Practices",
+      "url": "cloud/pc/ea/bestpractice",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeaapd",
+      "title": "Advanced Product Designer",
+      "url": "cloud/pc/ea/apd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeaconfig",
+      "title": "Configuration",
+      "url": "cloud/pc/ea/config",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeaglobal",
+      "title": "Globalization",
+      "url": "cloud/pc/ea/global",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudearules",
+      "title": "Rules",
+      "url": "cloud/pc/ea/rules",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeapd",
+      "title": "Product Designer",
+      "url": "cloud/pc/ea/pd",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeapm",
+      "title": "Product Model",
+      "url": "cloud/pc/ea/productmodel",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeainteg",
+      "title": "Integration",
+      "url": "cloud/pc/ea/integration",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeacloudapi",
+      "title": "Cloud API",
+      "url": "cloud/pc/ea/cloudapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeagosu",
+      "title": "Gosu Reference",
+      "url": "cloud/pc/ea/gosu",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeatesting",
+      "title": "Testing",
+      "url": "cloud/pc/ea/testing",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudearestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/pc/ea/restapiframework",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "ispccloudeainstall",
+      "title": "Installation",
+      "url": "cloud/pc/ea/installation",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscloudeacontact",
+      "title": "Contact Management",
+      "url": "cloud/is/ea/contact",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ]
+    },
+    {
+      "id": "iscloudeaglossary",
+      "title": "Glossary",
+      "url": "cloud/is/ea/glossary",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": "earlyaccess",
+        "subject": [
+          "Glossary"
+        ],
+        "release": [
+          "Cortina"
+        ]
+      },
+      "environments": [
         "int"
       ]
     }

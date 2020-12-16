@@ -259,20 +259,40 @@
       "label": "InsuranceNow",
       "items": [
         {
-          "id": "iNowAspen",
+          "id": "insuranceNow20202xExt",
+          "label": "External Audience",
+          "items":[
+            {
+              "id": "IN20202xExt",
+              "label": "InsuranceNow 2020.2x - External Audience"
+            },
+            {
+              "id": "IN20201xExt",
+              "label": "InsuranceNow 2020.1x - External Audience"
+            }
+          ]
+        },
+        {
+          "id": "insuranceNow20201xInt",
+          "label": "Internal Audience",
+          "items":[
+            {
+              "id": "IN20202xInt",
+              "label": "InsuranceNow 2020.2x - Internal Audience"
+            },
+            {
+              "id": "IN20201xInt",
+              "label": "InsuranceNow 2020.1x - Internal Audience"
+            }
+          ]
+        },
+        {
+          "id": "insNowAspen",
           "label": "InsuranceNow",
-          "items": [
+          "items":[
             {
               "id": "insNowAspen",
               "label": "InsuranceNow"
-            },
-            {
-              "id": "insuranceNow20201xExt",
-              "label": "InsuranceNow 2020.1x - External Audience"
-            },
-            {
-              "id": "insuranceNow20201xInt",
-              "label": "InsuranceNow 2020.1x - Internal Audience"
             }
           ]
         }

@@ -52,8 +52,6 @@ spec:
               value: http://docsearch-us-east-2.doctools:9200
             - name: DOC_S3_URL
               value: https://ditaot.internal.${DEPLOY_ENV}.service.guidewire.net
-            - name: ZIPKIN_URL
-              value: https://zipkin.internal.${DEPLOY_ENV}.service.guidewire.net/api/v2/spans
             - name: PARTNERS_LOGIN_URL
               value: ${PARTNERS_LOGIN_URL}
             - name: PARTNERS_LOGIN_CERT

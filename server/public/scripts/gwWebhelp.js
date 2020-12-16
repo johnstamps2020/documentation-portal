@@ -111,34 +111,29 @@ async function getVersions() {
 
     const versions = [];
     for (doc of docsFromConfig) {
-      const sameVersionDocs = docsFromConfig.filter(
-        d => d.metadata.version === doc.metadata.version
+      const sameVersionDocs = docsFromConfig.filter(d =>
+        d.metadata.version.some(dd => doc.metadata.version.includes(dd))
       );
+      const docVersion = doc.metadata.version[0];
       if (sameVersionDocs.length > 1) {
         const productId = await findProductIdInTaxonomies(product[0]);
         const productVersionPageUrl =
-          baseUrl +
-          '/' +
-          'product' +
-          '/' +
-          productId +
-          '/' +
-          doc.metadata.version;
+          baseUrl + '/' + 'product' + '/' + productId + '/' + docVersion;
         if (!versions.some(ver => ver.link === productVersionPageUrl)) {
           versions.push({
-            label: doc.metadata.version,
+            label: docVersion,
             link: productVersionPageUrl,
           });
         }
       } else {
         if (doc.url.includes('portal2')) {
           versions.push({
-            label: doc.metadata.version,
+            label: docVersion,
             link: doc.url,
           });
         } else {
           versions.push({
-            label: doc.metadata.version,
+            label: docVersion,
             link: baseUrl + '/' + doc.url,
           });
         }
@@ -196,10 +191,10 @@ async function createVersionSelector() {
         option.text = val.label;
         option.value = val.link;
 
-        const currentVersion = document.querySelector(
-          "meta[name = 'gw-version']"
-        )['content'];
-        if (currentVersion && option.text === currentVersion) {
+        const currentVersion = document
+          .querySelector("meta[name = 'gw-version']")
+          ['content'].split(',');
+        if (currentVersion.includes(option.text)) {
           option.setAttribute('selected', 'selected');
         }
         select.appendChild(option);
@@ -228,16 +223,16 @@ async function addTopLinkToBreadcrumbs() {
     const platform = document
       .querySelector("meta[name = 'gw-platform']")
       ['content']?.split(',')[0];
-    const version = document.querySelector("meta[name = 'gw-version']")[
-      'content'
-    ];
+    const version = document
+      .querySelector("meta[name = 'gw-version']")
+      ['content']?.split(',')[0];
     const baseUrl = window.location.protocol + '//' + window.location.host;
     const json = await getConfig();
     const sameVersionDocs = json.docs.filter(
       d =>
         d.metadata.product.includes(product) &&
         d.metadata.platform.includes(platform) &&
-        d.metadata.version === version &&
+        d.metadata.version.includes(version) &&
         d.displayOnLandingPages !== false
     );
     if (sameVersionDocs.length > 1) {
