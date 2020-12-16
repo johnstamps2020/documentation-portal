@@ -20,7 +20,6 @@
     "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
     "http-proxy-middleware": "^0.20.0",
-    "morgan": "~1.9.1",
     "node-fetch": "^2.6.1",
     "node-mocks-http": "^1.8.1",
     "node-sass-middleware": "0.11.0",
@@ -30,11 +29,7 @@
     "serve-favicon": "^2.5.0",
     "sinon": "^9.0.0",
     "supertest": "^4.0.2",
-    "tap": "^14.10.6",
-    "winston": "^3.3.3",
-    "zipkin": "^0.19.1",
-    "zipkin-instrumentation-express": "^0.19.1",
-    "zipkin-transport-http": "^0.19.1"
+    "tap": "^14.10.6"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

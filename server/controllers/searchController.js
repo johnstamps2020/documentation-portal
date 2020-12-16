@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
-const appLogger = require('../logger');
 
 const getAllowedFilterValues = async function(fieldName, query) {
   const requestBody = {
@@ -188,10 +187,6 @@ const searchController = async (req, res, next) => {
     }
   } catch (err) {
     console.error(err);
-    appLogger.log({
-      level: 'error',
-      message: `Exception while running search: ${err}`,
-    });
     next(err);
   }
 };
