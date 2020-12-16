@@ -26,6 +26,13 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git"
     },
     {
+      "id": "isupgradeguide1011src",
+      "title": "InsuranceSuite Upgrade Guide 10.1.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/10.1.1"
+    },
+    {
       "id": "isupgradeguide202011src",
       "title": "InsuranceSuite Upgrade Guide 2020.11",
       "sourceType": "git",
@@ -173,14 +180,13 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-EA.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
-    },
-    {
-      "id": "cloudisnoxbook",
-      "title": "InsuranceSuite Cloud No Xbook",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud-no-xbook.git"
     },
     {
       "id": "exportisonprem9",
@@ -528,7 +534,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
       "branch": "10.1.1",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1011/_supermap-10x-active.ditamap",
+        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
@@ -622,6 +628,13 @@
         "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
       ]
+    },
+    {
+      "id": "standards202011src",
+      "title": "Standards 2020.11",
+      "sourceType": "git",
+      "branch": "2020.11",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202010src",

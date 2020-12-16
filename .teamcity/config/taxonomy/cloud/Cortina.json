@@ -327,11 +327,11 @@
           ]
         },
         {
-          "id": "insNowBanff",
+          "id": "insNowCortina",
           "label": "InsuranceNow",
           "items":[
             {
-              "id": "insNowBanff",
+              "id": "insNowCortina",
               "label": "InsuranceNow"
             }
           ]
