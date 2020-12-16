@@ -54,16 +54,16 @@ async function getCloudDocumentationPageInfo(release) {
     for (const productFamily of releaseTaxonomy.items) {
       const docs = [];
       getDocsForTaxonomy(productFamily, cloudDocsForRelease, docs);
-      if (docs.length === 1) {
-        productFamilies.push({
-          label: productFamily.label,
-          url: resolveUrl(docs[0].url),
-          public: isPublic(docs),
-        });
-      } else if (docs.length > 1) {
+      if (docs.length > 1 && productFamily.items.length > 1) {
         productFamilies.push({
           label: productFamily.label,
           url: `${cloudProductsEndpoint}/${release}/${productFamily.id}`,
+          public: isPublic(docs),
+        });
+      } else if (docs.length >= 1) {
+        productFamilies.push({
+          label: productFamily.label,
+          url: resolveUrl(docs[0].url),
           public: isPublic(docs),
         });
       }
@@ -102,11 +102,11 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
 
         function getDocUrl(listOfDocs, productId) {
           const highestProductVersion = getSortedVersions(
-            getUniqueInMetadataFields(listOfDocs, 'version')
+            getUniqueInMetadataArrays(listOfDocs, 'version')
           )[0];
           const docsForHighestVersion = listOfDocs.filter(
             d =>
-              d.metadata.version === highestProductVersion &&
+              d.metadata.version.includes(highestProductVersion) &&
               d.displayOnLandingPages !== false
           );
           if (docsForHighestVersion.length === 1) {
@@ -214,8 +214,8 @@ async function getProductPageInfo(
         d.metadata.product.includes(productName) &&
         d.displayOnLandingPages !== false
     );
-    const docsInVersion = productDocs.filter(
-      d => d.metadata.version === productVersion
+    const docsInVersion = productDocs.filter(d =>
+      d.metadata.version.includes(productVersion)
     );
 
     const docSubjectsInVersion = getUniqueInMetadataArrays(
@@ -250,7 +250,7 @@ async function getProductPageInfo(
         subjectIcon: getDefaultSubjectIcon(),
       });
     }
-    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
+    const availableVersions = getUniqueInMetadataArrays(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,

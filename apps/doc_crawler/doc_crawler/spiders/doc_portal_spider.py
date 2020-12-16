@@ -65,6 +65,7 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_product = doc_object['metadata']['product']
             index_entry_platform = doc_object['metadata']['platform']
             index_entry_version = doc_object['metadata']['version']
+            index_entry_public = doc_object['public']
 
             dita_default_selector = response.xpath(
                 '//*[contains(@class, "body")]')
@@ -98,7 +99,8 @@ class DocPortalSpider(scrapy.Spider):
                 body=index_entry_body,
                 product=index_entry_product,
                 platform=index_entry_platform,
-                version=index_entry_version
+                version=index_entry_version,
+                public=index_entry_public
             )
 
             yield index_entry
