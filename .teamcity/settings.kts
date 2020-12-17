@@ -1294,7 +1294,7 @@ object HelperObjects {
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
                     export WORKING_SUBDIR=%WORKING_DIR%
                     
-                    if [[ -z ${'$'}WORKING_SUBDIR ]]; then
+                    if [[ -z ${'$'}{WORKING_SUBDIR} ]]; then
                         export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/${'$'}WORKING_SUBDIR"
                     
                     if [[ -d "${'$'}WORKING_DIR/out" ]]; then
