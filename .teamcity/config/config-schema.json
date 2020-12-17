@@ -308,10 +308,6 @@
           "description": "The working folder where the build commands are executed",
           "examples": ["website", "frontend"]
         },
-        "customOutputFolder": {
-          "description": "The folder where the results are built, relative to the working dir",
-          "examples": ["node_modules/@jutro/jutro-components", "server/build/output"]
-        },
         "indexRedirect": {
           "description": "If set to true, add a script to the landing page that redirects the user to the first topic in the table of contents. Defaults to false if not set.",
           "type": "boolean"
