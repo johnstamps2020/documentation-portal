@@ -2011,7 +2011,7 @@ object BuildYarn : Template({
                 fi
                 
                 export BASE_URL=/%env.PUBLISH_PATH%/
-                cd %env.WORKING_DIR%
+                cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
                 yarn
                 yarn build
             """.trimIndent()
