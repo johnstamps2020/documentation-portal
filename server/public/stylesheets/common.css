@@ -209,7 +209,7 @@ a:active svg {
     width: 70px;
 }
 
-.gwButtonPrimary:hover .gwButtonSecondary:hover {
+.gwButtonPrimary:hover, .gwButtonSecondary:hover {
     text-decoration: none;
     color: var(--GW-COLOR-TEXT-3) !important;
     background: var(--GW-COLOR-BRAND-1-HOVER);
