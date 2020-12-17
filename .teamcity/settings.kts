@@ -1235,7 +1235,11 @@ object HelperObjects {
 
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
-        class BuildPublishToS3Index(buildType: String, product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean, workingDir: String) : BuildType({
+        class BuildPublishToS3Index(buildType: String, product: String, platform: String, version: String, doc_id: String,
+                                    ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
+                                    publish_path: String, git_source_url: String, git_source_branch: String,
+                                    resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
+                                    workingDir: String, customOutputFolder: String) : BuildType({
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
@@ -1277,6 +1281,7 @@ object HelperObjects {
                 text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("WORKING_DIR", workingDir, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.CUSTOM_OUTPUT_FOLDER", customOutputFolder, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             steps {
@@ -1288,11 +1293,13 @@ object HelperObjects {
                     set -xe
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
                     
-                    if [[ -d "./out" ]]; then
+                    if [[ %env.CUSTOM_OUTPUT_FOLDER% != "" ]]; then
+                        export OUTPUT_PATH="%env.CUSTOM_OUTPUT_FOLDER%"
+                    elif [[ -d "%WORKING_DIR%/out" ]]; then
                         export OUTPUT_PATH="./out"
-                    elif [[ -d "./dist" ]]; then
+                    elif [[ -d "%WORKING_DIR%/dist" ]]; then
                         export OUTPUT_PATH="./dist"
-                    elif [[ -d "./build" ]]; then
+                    elif [[ -d "%WORKING_DIR%/build" ]]; then
                         export OUTPUT_PATH="./build"
                     fi
 
@@ -1435,6 +1442,7 @@ object HelperObjects {
         val workingDir = if (build.has("workingDir")) build.getString("workingDir") else ""
         val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
         val root = if (build.has("root")) build.getString("root") else ""
+        val customOutputFolder = if (build.has("customOutputFolder")) build.getString("customOutputFolder") else ""
 
         val sourceId = build.getString("srcId")
         val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
@@ -1463,7 +1471,7 @@ object HelperObjects {
                 builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
             } else {
                 builds.add(BuildPublishToS3Index(buildType, product_name, platform, version, docId, filter, root, indexRedirect, env as String,
-                    publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch, workingDir))
+                    publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch, workingDir, customOutputFolder))
             }
         }
 
@@ -2005,6 +2013,9 @@ object BuildYarn : Template({
             scriptContent = """
                 #!/bin/bash
                 set -xe
+                
+                export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
+                sh ci/npmLogin.sh
                 
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export TARGET_URL="%env.TARGET_URL_PROD%"

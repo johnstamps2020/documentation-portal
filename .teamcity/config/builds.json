@@ -2707,6 +2707,13 @@
       "docId": "dkekdisievjfjrndjsj",
       "srcId": "dscnkjeekkss3kd",
       "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "dsssekelmvkdnasjsjsnndddf",
+      "srcId": "dscnkjeekkss3kd",
+      "workingDir": "storybook",
+      "customOutputFolder": "node_modules/@jutro/jutro-components"
     }
   ]
 }
