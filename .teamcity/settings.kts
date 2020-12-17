@@ -25,6 +25,7 @@ project {
     template(Deploy)
     template(BuildDockerImage)
     template(BuildOutputFromDita)
+    template(BuildYarn)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
 
@@ -1234,11 +1235,16 @@ object HelperObjects {
 
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
-        class BuildPublishToS3Index(product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean) : BuildType({
+        class BuildPublishToS3Index(buildType: String, product: String, platform: String, version: String, doc_id: String, ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String, publish_path: String, git_source_url: String, git_source_branch: String, resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean, workingDir: String) : BuildType({
+            var buildTemplate: Template = BuildOutputFromDita
+            when (buildType) {
+                "yarn" -> buildTemplate = BuildYarn
+            }
+
             if (index_for_search) {
-                templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
+                templates(buildTemplate, CrawlDocumentAndUpdateSearchIndex)
             } else {
-                templates(BuildOutputFromDita)
+                templates(buildTemplate)
             }
 
             id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
@@ -1270,6 +1276,7 @@ object HelperObjects {
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("WORKING_DIR", workingDir, display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             steps {
@@ -1280,7 +1287,14 @@ object HelperObjects {
                     #!/bin/bash
                     set -xe
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
-                    export OUTPUT_PATH="out"
+                    
+                    if [[ -d "./out" ]]; then
+                        export OUTPUT_PATH="./out"
+                    elif [[ -d "./dist" ]]; then
+                        export OUTPUT_PATH="./dist"
+                    elif [[ -d "./build" ]]; then
+                        export OUTPUT_PATH="./build"
+                    fi
 
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
                         echo "Creating a ZIP package"
@@ -1293,7 +1307,7 @@ object HelperObjects {
                 """.trimIndent()
                 }
 
-                stepsOrder = arrayListOf("BUILD_OUTPUT_FROM_DITA", "UPLOAD_GENERATED_CONTENT")
+                stepsOrder = arrayListOf("BUILD_OUTPUT", "UPLOAD_GENERATED_CONTENT")
                 if (index_for_search) {
                     stepsOrder.addAll(arrayListOf("BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC"))
                 }
@@ -1415,11 +1429,13 @@ object HelperObjects {
         val indexForSearch = if (doc.has("indexForSearch")) doc.getBoolean("indexForSearch") else true
 
         val build = getObjectById(buildConfigs, "docId", docId)
+
+        val buildType = if (build.has("buildType")) build.getString("buildType") else ""
         val filter = if (build.has("filter")) build.getString("filter") else ""
-
+        val workingDir = if (build.has("workingDir")) build.getString("workingDir") else ""
         val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
+        val root = if (build.has("root")) build.getString("root") else ""
 
-        val root = build.getString("root")
         val sourceId = build.getString("srcId")
         val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
         val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
@@ -1446,8 +1462,8 @@ object HelperObjects {
             if (env == "prod") {
                 builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
             } else {
-                builds.add(BuildPublishToS3Index(product_name, platform, version, docId, filter, root, indexRedirect, env as String,
-                        publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch))
+                builds.add(BuildPublishToS3Index(buildType, product_name, platform, version, docId, filter, root, indexRedirect, env as String,
+                    publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch, workingDir))
             }
         }
 
@@ -1970,6 +1986,45 @@ object RunContentValidations : Template({
 
 })
 
+object BuildYarn : Template({
+    name = "Build a yarn project"
+
+    params {
+        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
+        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
+        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+        text("env.WORKING_DIR", "%WORKING_DIR%")
+    }
+
+    steps {
+        script {
+            name = "Build the yarn project"
+            id = "BUILD_OUTPUT"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export TARGET_URL="%env.TARGET_URL_PROD%"
+                fi
+                
+                export BASE_URL=/%env.PUBLISH_PATH%/
+                cd %env.WORKING_DIR%
+                yarn
+                yarn build
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:12.14.1"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+        }
+    }
+
+    vcs {
+        cleanCheckout = true
+    }
+})
+
 object BuildOutputFromDita : Template({
     name = "Build the output from DITA"
 
@@ -1993,7 +2048,7 @@ object BuildOutputFromDita : Template({
     steps {
         script {
             name = "Build output from DITA"
-            id = "BUILD_OUTPUT_FROM_DITA"
+            id = "BUILD_OUTPUT"
             scriptContent = """
                 #!/bin/bash
                 set -xe
