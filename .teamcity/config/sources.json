@@ -672,11 +672,18 @@
       ]
     },
     {
-      "id": "dscnkjeekkss3kd",
+      "id": "srcjutro411",
       "title": "Jutro Design System 4.1.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
       "branch": "release/4.1.1"
+    },
+    {
+      "id": "srcjutro500",
+      "title": "Jutro Design System 5.0.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "branch": "release/5.0.0"
     }
   ]
 }

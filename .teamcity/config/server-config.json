@@ -1215,7 +1215,7 @@
       "public": false
     },
     {
-      "id": "dkekdisievjfjrndjsj",
+      "id": "jutro411",
       "title": "Jutro Design System",
       "url": "jutro/documentation/4.1.1",
       "metadata": {
@@ -1231,7 +1231,7 @@
       "public": false
     },
     {
-      "id": "dsssekelmvkdnasjsjsnndddf",
+      "id": "storybook411",
       "title": "Jutro Storybook",
       "url": "jutro/storybook/4.1.1",
       "metadata": {
@@ -1239,6 +1239,36 @@
         "platform": ["Cloud"],
         "version": ["4.1.1"],
         "release": ["Banff"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "jutro500",
+      "title": "Jutro Design System",
+      "url": "jutro/documentation/5.0.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.0.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook500",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/5.0.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.0.0"],
         "subject": ["Development"]
       },
       "environments": ["int", "staging", "prod"],
