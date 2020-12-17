@@ -1293,9 +1293,7 @@ object HelperObjects {
                     set -xe
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
                     
-                    if [[ %env.CUSTOM_OUTPUT_FOLDER% != "" ]]; then
-                        export OUTPUT_PATH="%env.CUSTOM_OUTPUT_FOLDER%"
-                    elif [[ -d "%WORKING_DIR%/out" ]]; then
+                    if [[ -d "%WORKING_DIR%/out" ]]; then
                         export OUTPUT_PATH="./out"
                     elif [[ -d "%WORKING_DIR%/dist" ]]; then
                         export OUTPUT_PATH="./dist"

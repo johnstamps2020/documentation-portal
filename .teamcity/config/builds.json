@@ -2712,8 +2712,7 @@
       "buildType": "yarn",
       "docId": "dsssekelmvkdnasjsjsnndddf",
       "srcId": "dscnkjeekkss3kd",
-      "workingDir": "storybook",
-      "customOutputFolder": "node_modules/@jutro/jutro-components"
+      "workingDir": "storybook"
     }
   ]
 }
