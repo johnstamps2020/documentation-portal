@@ -24,6 +24,7 @@ const majorOpenRoutes = [
   '/alive',
   '/userInformation',
   '/search',
+  '/config',
 ];
 
 const authGateway = async (req, res, next) => {
