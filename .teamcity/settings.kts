@@ -1995,6 +1995,7 @@ object BuildYarn : Template({
         text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
         text("env.WORKING_DIR", "%WORKING_DIR%")
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
     }
 
     steps {
