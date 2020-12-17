@@ -1293,11 +1293,11 @@ object HelperObjects {
                     set -xe
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
                     
-                    if [[ -d "%WORKING_DIR%/out" ]]; then
+                    if [[ -d "${'$'}WORKING_DIR/out" ]]; then
                         export OUTPUT_PATH="./out"
-                    elif [[ -d "%WORKING_DIR%/dist" ]]; then
+                    elif [[ -d "${'$'}"WORKING_DIR/dist" ]]; then
                         export OUTPUT_PATH="./dist"
-                    elif [[ -d "%WORKING_DIR%/build" ]]; then
+                    elif [[ -d "${'$'}"WORKING_DIR/build" ]]; then
                         export OUTPUT_PATH="./build"
                     fi
 
