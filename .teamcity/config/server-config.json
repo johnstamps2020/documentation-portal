@@ -1247,6 +1247,36 @@
       "public": false
     },
     {
+      "id": "rueofafafadse",
+      "title": "Jutro Design System",
+      "url": "jutro/documentation/5.0.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.0.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dsssekelmvkdnasjsjsnndddf",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/5.0.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.0.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "dxapd202011",
       "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/202011",
