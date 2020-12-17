@@ -1298,15 +1298,18 @@ object HelperObjects {
                         echo "working subdir not set"
                     else
                         export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/${'$'}WORKING_SUBDIR"
+                        echo "Working dir set to ${'$'}WORKING_DIR"
                     fi
                     
                     if [[ -d "${'$'}WORKING_DIR/out" ]]; then
                         export OUTPUT_PATH="out"
-                    elif [[ -d "${'$'}"WORKING_DIR/dist" ]]; then
+                    elif [[ -d "${'$'}WORKING_DIR/dist" ]]; then
                         export OUTPUT_PATH="dist"
-                    elif [[ -d "${'$'}"WORKING_DIR/build" ]]; then
+                    elif [[ -d "${'$'}WORKING_DIR/build" ]]; then
                         export OUTPUT_PATH="build"
                     fi
+                    
+                    echo "output path set to ${'$'}OUTPUT_PATH"
 
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
                         echo "Creating a ZIP package"
