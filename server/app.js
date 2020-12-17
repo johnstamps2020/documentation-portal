@@ -51,6 +51,7 @@ app.use(session(sessionSettings));
 
 const homeRouter = require('./routes/home');
 const gwLoginRouter = require('./routes/gw-login');
+const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const cloudProductsRouter = require('./routes/cloud-products');
@@ -72,6 +73,7 @@ app.use('/alive', (req, res, next) => {
 
 app.use('/support', supportRouter);
 app.use('/gw-login', gwLoginRouter);
+app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
 

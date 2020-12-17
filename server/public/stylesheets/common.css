@@ -183,3 +183,34 @@ a:active {
 a:active svg {
     fill: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
 }
+.loginButtonSmall {
+    font-size: 14px;
+    margin: auto;
+}
+
+.gwButtonPrimary, .gwButtonSecondary {
+    line-height: var(--button-height);
+    text-align: center;
+    color: var(--GW-COLOR-TEXT-3) !important;
+    border-radius: 4px;
+    background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
+    box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
+    display: inline-block;
+    height: var(--button-height);
+}
+
+.gwButtonPrimary {
+    --button-height: 48px;
+    width: 132px;
+}
+
+.gwButtonSecondary {
+    --button-height: 32px;
+    width: 70px;
+}
+
+.gwButtonPrimary:hover .gwButtonSecondary:hover {
+    text-decoration: none;
+    color: var(--GW-COLOR-TEXT-3) !important;
+    background: var(--GW-COLOR-BRAND-1-HOVER);
+}
