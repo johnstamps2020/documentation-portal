@@ -2006,6 +2006,10 @@ object BuildYarn : Template({
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
     }
 
+    vcs {
+        root(vcsrootmasteronly)
+    }
+
     steps {
         script {
             name = "Build the yarn project"
