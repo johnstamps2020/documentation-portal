@@ -1292,13 +1292,17 @@ object HelperObjects {
                     #!/bin/bash
                     set -xe
                     export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
+                    export WORKING_SUBDIR=%WORKING_DIR%
+                    
+                    if [[ -z ${'$'}WORKING_SUBDIR ]]; then
+                        export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/${'$'}WORKING_SUBDIR"
                     
                     if [[ -d "${'$'}WORKING_DIR/out" ]]; then
-                        export OUTPUT_PATH="./out"
+                        export OUTPUT_PATH="out"
                     elif [[ -d "${'$'}"WORKING_DIR/dist" ]]; then
-                        export OUTPUT_PATH="./dist"
+                        export OUTPUT_PATH="dist"
                     elif [[ -d "${'$'}"WORKING_DIR/build" ]]; then
-                        export OUTPUT_PATH="./build"
+                        export OUTPUT_PATH="build"
                     fi
 
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
