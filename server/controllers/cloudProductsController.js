@@ -45,7 +45,7 @@ async function getCloudDocumentationPageInfo(release) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
     const cloudDocsForRelease = cloudDocs.filter(d =>
-      d.metadata.release.includes(release)
+      d.metadata.release?.includes(release)
     );
     const releaseTaxonomy = await getTaxonomy(release);
     const pageTitle = releaseTaxonomy.label;
@@ -83,7 +83,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
   try {
     const cloudDocs = await getCloudDocsFromConfig();
     const cloudDocsForRelease = cloudDocs.filter(d =>
-      d.metadata.release.includes(release)
+      d.metadata.release?.includes(release)
     );
     const releaseTaxonomy = await getTaxonomy(release);
     const productFamilyNode = findNodeById(productFamilyId, releaseTaxonomy);
@@ -200,7 +200,7 @@ async function getProductPageInfo(
     const productName = productNode.label;
     const productDocs = cloudDocs.filter(
       d =>
-        d.metadata.release.includes(release) &&
+        d.metadata.release?.includes(release) &&
         d.metadata.product.includes(productName) &&
         d.displayOnLandingPages !== false
     );
@@ -215,7 +215,7 @@ async function getProductPageInfo(
     let docsWithSubject = [];
     for (const subject of docSubjectsInVersion) {
       const docsInSubject = docsInVersion.filter(d =>
-        d.metadata.subject.includes(subject)
+        d.metadata.subject?.includes(subject)
       );
       if (docsInSubject.length > 0) {
         docsWithSubject.push({
