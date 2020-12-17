@@ -1254,6 +1254,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.0.0"],
+        "release": ["Banff"],
         "subject": ["Best practices"]
       },
       "environments": ["int", "staging", "prod"],
@@ -1269,6 +1270,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.0.0"],
+        "release": ["Banff"],
         "subject": ["Development"]
       },
       "environments": ["int", "staging", "prod"],
