@@ -55,8 +55,8 @@
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/_supermap-202011.ditamap",
         "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-banff.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
@@ -670,6 +670,13 @@
         "/Content/doc/compare/Banff/A_Map01.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
+    },
+    {
+      "id": "dscnkjeekkss3kd",
+      "title": "Jutro Design System 4.1.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "branch": "release/4.1.1"
     }
   ]
 }
