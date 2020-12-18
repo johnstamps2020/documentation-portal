@@ -55,6 +55,15 @@ const runFilteredSearch = async (
   const mappings = mappingResults.body[searchIndexName].mappings.properties;
 
   let selectedFilters = [];
+
+  if (!isLoggedIn) {
+    selectedFilters.push({
+      term: {
+        public: true,
+      },
+    });
+  }
+
   for (const param in urlParams) {
     if (mappings[param] && mappings[param].type == 'keyword') {
       const values = decodeURI(urlParams[param]).split(',');
@@ -65,14 +74,6 @@ const runFilteredSearch = async (
       };
       selectedFilters.push(queryFilter);
     }
-  }
-
-  if (!isLoggedIn) {
-    selectedFilters.push({
-      term: {
-        public: true,
-      },
-    });
   }
 
   if (selectedFilters.length > 0) {
@@ -183,6 +184,7 @@ const searchController = async (req, res, next) => {
         resultsPerPage: resultsPerPage,
         searchResults: resultsToDisplay,
         filters: filters,
+        userContext: req.userContext,
       });
     }
   } catch (err) {

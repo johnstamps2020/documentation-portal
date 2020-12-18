@@ -777,3 +777,9 @@ a.returnLink {
     margin-left: 4px;
     margin-right: 10px;
 }
+
+.notLoggedInWarning {
+    color: gray;
+    font-size: 0.8em;
+    padding: 16px;
+}
