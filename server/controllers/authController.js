@@ -32,11 +32,12 @@ const authGateway = async (req, res, next) => {
     const reqUrl = new URL(req.url, 'relative:///');
     const isPublic = await isPublicDoc(reqUrl.pathname);
     if (
-      req.isAuthenticated() ||
-      process.env.ENABLE_AUTH === 'no' ||
-      reqUrl.pathname === '/' ||
-      majorOpenRoutes.some(r => reqUrl.pathname.startsWith(r)) ||
-      isPublic
+      process.env.ALLOW_PUBLIC_DOCS === 'yes' &&
+      (req.isAuthenticated() ||
+        process.env.ENABLE_AUTH === 'no' ||
+        reqUrl.pathname === '/' ||
+        majorOpenRoutes.some(r => reqUrl.pathname.startsWith(r)) ||
+        isPublic)
     ) {
       if (req.query.authSource) {
         res.redirect(reqUrl.pathname);
