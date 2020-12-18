@@ -130,11 +130,13 @@ async function getVersions() {
           versions.push({
             label: docVersion,
             link: doc.url,
+            public: doc.public,
           });
         } else {
           versions.push({
             label: docVersion,
             link: baseUrl + '/' + doc.url,
+            public: doc.public,
           });
         }
       }
@@ -171,7 +173,15 @@ async function createVersionSelector() {
       return null;
     }
 
-    const docVersions = await getVersions();
+    let docVersions = await getVersions();
+
+    const response = await fetch('/userInformation');
+    const responseBody = await response.json();
+    const isLoggedIn = responseBody.isLoggedIn;
+
+    if (!isLoggedIn && Array.isArray(docVersions)) {
+      docVersions = docVersions.filter(v => v.public);
+    }
 
     if (docVersions.length > 1) {
       const select = document.createElement('select');
