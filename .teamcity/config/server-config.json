@@ -1225,7 +1225,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -1241,7 +1241,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -1256,7 +1256,7 @@
         "version": ["5.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -1271,7 +1271,7 @@
         "version": ["5.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
