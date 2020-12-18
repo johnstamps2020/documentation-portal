@@ -77,6 +77,7 @@
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
+      "required": ["product", "platform", "version"],
       "properties": {
         "product": {
           "$ref": "#definitions/product"
@@ -93,16 +94,6 @@
           "description": "A version number, or a word like 'latest'",
           "type": "array",
           "examples": ["2020.05", "3.2.0", "latest"]
-        },
-        "category": {
-          "description": "A product category",
-          "type": "array",
-          "examples": ["Core", "Data", "Digital"]
-        },
-        "subcategory": {
-          "description": "A product subcategory",
-          "type": "string",
-          "examples": ["Add-ons"]
         },
         "release": {
           "description": "A major release",

@@ -133,7 +133,7 @@ async function getProductPageInfo(productId, productVersion) {
     let docsWithSubject = [];
     for (const subject of docSubjectsInVersion) {
       const docsInSubject = docsInVersion.filter(d =>
-        d.metadata.subject.includes(subject)
+        d.metadata.subject?.includes(subject)
       );
       if (docsInSubject.length > 0) {
         docsWithSubject.push({
@@ -147,7 +147,7 @@ async function getProductPageInfo(productId, productVersion) {
       }
     }
 
-    const docsWithoutSubject = docsInVersion.filter(d => !d.metadata.subject);
+    const docsWithoutSubject = docsInVersion.filter(d => !d.metadata?.subject);
     if (docsWithoutSubject && docsWithoutSubject.length > 0) {
       docsWithSubject.push({
         subjectName: 'Documents',

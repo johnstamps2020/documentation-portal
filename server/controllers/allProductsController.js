@@ -24,7 +24,7 @@ async function findProductRoute(productId, productVersion) {
           doc =>
             doc.metadata.platform.includes('Cloud') &&
             doc.metadata.product.includes(productName) &&
-            doc.metadata.release.includes(release) &&
+            doc.metadata.release?.includes(release) &&
             doc.displayOnLandingPages !== false
         );
         const productVersions = getSortedVersions(
