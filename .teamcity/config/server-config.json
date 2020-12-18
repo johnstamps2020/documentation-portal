@@ -1225,7 +1225,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -1241,7 +1241,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -1254,10 +1254,9 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.0.0"],
-        "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -1270,10 +1269,9 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.0.0"],
-        "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
