@@ -47,7 +47,7 @@
     },
     {
       "id": "cloudisadmin202011src",
-      "title": "InsuranceSuite Cloud 2020.11",
+      "title": "IS 2020.11 Administration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
@@ -60,7 +60,7 @@
     },
     {
       "id": "cloudisapd202011src",
-      "title": "InsuranceSuite Cloud 2020.11",
+      "title": "IS 2020.11 Advanced Product Designer",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
@@ -71,7 +71,7 @@
     },
     {
       "id": "cloudisbcapp202011src",
-      "title": "InsuranceSuite Cloud 2020.11",
+      "title": "IS 2020.11 BC Application",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
@@ -82,7 +82,7 @@
     },
     {
       "id": "cloudisccapp202011src",
-      "title": "InsuranceSuite Cloud 2020.11",
+      "title": "IS 2020.11 CC Application",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
@@ -93,7 +93,7 @@
     },
     {
       "id": "cloudispcapp202011src",
-      "title": "InsuranceSuite Cloud 2020.11",
+      "title": "IS 2020.11 PC Application",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
@@ -104,7 +104,7 @@
     },
     {
       "id": "cloudisbp202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Best Practices",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -116,7 +116,7 @@
     },
     {
       "id": "cloudiscloudapi202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Cloud API",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -128,7 +128,7 @@
     },
     {
       "id": "cloudisconfig202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Configuration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -140,7 +140,7 @@
     },
     {
       "id": "cloudiscontact202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Contact Mgmt",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -151,7 +151,7 @@
     },
     {
       "id": "cloudisglobal202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Globalization",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -163,7 +163,7 @@
     },
     {
       "id": "cloudisglossary202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Glossary",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -173,7 +173,7 @@
     },
     {
       "id": "cloudisgosu202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Gosu Reference",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -185,7 +185,7 @@
     },
     {
       "id": "cloudisinstall202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Installation",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -197,7 +197,7 @@
     },
     {
       "id": "cloudisinteg202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Integration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -209,7 +209,7 @@
     },
     {
       "id": "cloudisnew202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 New and Changed",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -221,7 +221,7 @@
     },
     {
       "id": "cloudispd202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Product Designer",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -231,7 +231,7 @@
     },
     {
       "id": "cloudispm202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Prouct Model",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -243,7 +243,7 @@
     },
     {
       "id": "cloudisrestapifw202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 REST API Framework",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -255,7 +255,7 @@
     },
     {
       "id": "cloudisrules202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Rules",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -267,7 +267,7 @@
     },
     {
       "id": "cloudistest202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Testing",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -279,7 +279,7 @@
     },
     {
       "id": "cloudisrn202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 Release Notes",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -291,7 +291,7 @@
     },
     {
       "id": "isrestapiclient202011src",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS 2020.11 REST API Client",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -405,7 +405,7 @@
     },
     {
       "id": "cloudisadmindraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Administration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -420,7 +420,7 @@
     },
     {
       "id": "cloudisapddraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Advanced Product Designer",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -431,7 +431,7 @@
     },
     {
       "id": "cloudisbcappdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft BC Application",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -442,7 +442,7 @@
     },
     {
       "id": "cloudisccappdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft CC Application",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -453,7 +453,7 @@
     },
     {
       "id": "cloudispcappdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft PC Application",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -464,7 +464,7 @@
     },
     {
       "id": "cloudisbpdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Best Practices",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -479,7 +479,7 @@
     },
     {
       "id": "cloudiscloudapidraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Cloud API",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -494,7 +494,7 @@
     },
     {
       "id": "cloudisconfigdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Configuration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -509,7 +509,7 @@
     },
     {
       "id": "cloudiscontactdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Contact Mgmt",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -520,7 +520,7 @@
     },
     {
       "id": "cloudisglobaldraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Globalization",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -535,7 +535,7 @@
     },
     {
       "id": "cloudisglossarydraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Glossary",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -545,7 +545,7 @@
     },
     {
       "id": "cloudisgosudraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Gosu Reference",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -560,7 +560,7 @@
     },
     {
       "id": "cloudisinstalldraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Installation",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -575,7 +575,7 @@
     },
     {
       "id": "cloudisintegdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Integration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -590,7 +590,7 @@
     },
     {
       "id": "cloudisnewdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft New and Changed",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -605,7 +605,7 @@
     },
     {
       "id": "cloudispddraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Product Designer",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -616,7 +616,7 @@
     },
     {
       "id": "cloudispmdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Product Model",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -631,7 +631,7 @@
     },
     {
       "id": "cloudisrestapifwdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft REST API Framework",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -646,7 +646,7 @@
     },
     {
       "id": "cloudisrulesdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Rules",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -661,7 +661,7 @@
     },
     {
       "id": "cloudistestdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Testing",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -676,7 +676,7 @@
     },
     {
       "id": "cloudisrndraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft Release Notes",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
@@ -691,7 +691,7 @@
     },
     {
       "id": "isrestapiclientdraftsrc",
-      "title": "InsuranceSuite Cloud",
+      "title": "IS Cloud Draft REST API Client",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
