@@ -1108,7 +1108,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-banff.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrn202011src",
       "docId": "isbc202011releasenotes",
       "indexRedirect": true,
       "resources": [
@@ -1128,7 +1128,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "NewAndChangedGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisnew202011src",
       "docId": "isbc202011newandchanged",
       "indexRedirect": true
     },
@@ -1144,7 +1144,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "BC-AppGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisbcapp202011src",
       "docId": "isbc202011app",
       "indexRedirect": true
     },
@@ -1152,7 +1152,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisadmin202011src",
       "docId": "isbc202011admin",
       "indexRedirect": true
     },
@@ -1160,7 +1160,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisbp202011src",
       "docId": "isbc202011bestpractice",
       "indexRedirect": true
     },
@@ -1168,7 +1168,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ConfigGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisconfig202011src",
       "docId": "isbc202011config",
       "indexRedirect": true
     },
@@ -1176,7 +1176,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "GlobalizationGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisglobal202011src",
       "docId": "isbc202011global",
       "indexRedirect": true
     },
@@ -1184,7 +1184,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "RulesGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrules202011src",
       "docId": "isbc202011rules",
       "indexRedirect": true
     },
@@ -1192,7 +1192,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "IntegrationGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisinteg202011src",
       "docId": "isbc202011integ",
       "indexRedirect": true
     },
@@ -1200,7 +1200,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisgosu202011src",
       "docId": "isbc202011gosu",
       "indexRedirect": true
     },
@@ -1208,7 +1208,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "TestingGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudistest202011src",
       "docId": "isbc202011testing",
       "indexRedirect": true
     },
@@ -1216,7 +1216,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "isrestapiclient202011src",
       "docId": "is202011restapiclient",
       "indexRedirect": true
     },
@@ -1224,7 +1224,7 @@
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisinstall202011src",
       "docId": "isbc202011install",
       "indexRedirect": true
     },
@@ -1232,7 +1232,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-banff.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrn202011src",
       "docId": "iscc202011releasenotes",
       "indexRedirect": true,
       "resources": [
@@ -1252,7 +1252,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "NewAndChangedGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisnew202011src",
       "docId": "iscc202011newandchanged",
       "indexRedirect": true
     },
@@ -1268,7 +1268,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CC-AppGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisccapp202011src",
       "docId": "iscc202011app",
       "indexRedirect": true
     },
@@ -1276,7 +1276,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisadmin202011src",
       "docId": "iscc202011admin",
       "indexRedirect": true
     },
@@ -1284,7 +1284,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisbp202011src",
       "docId": "iscc202011bestpractice",
       "indexRedirect": true
     },
@@ -1292,7 +1292,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "ConfigGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisconfig202011src",
       "docId": "iscc202011config",
       "indexRedirect": true
     },
@@ -1300,7 +1300,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "GlobalizationGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisglobal202011src",
       "docId": "iscc202011global",
       "indexRedirect": true
     },
@@ -1308,7 +1308,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "RulesGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrules202011src",
       "docId": "iscc202011rules",
       "indexRedirect": true
     },
@@ -1316,7 +1316,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "IntegrationGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisinteg202011src",
       "docId": "iscc202011integ",
       "indexRedirect": true
     },
@@ -1324,7 +1324,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudiscloudapi202011src",
       "docId": "iscc202011cloudapi",
       "indexRedirect": true
     },
@@ -1332,7 +1332,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisgosu202011src",
       "docId": "iscc202011gosu",
       "indexRedirect": true
     },
@@ -1340,7 +1340,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "TestingGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudistest202011src",
       "docId": "iscc202011testing",
       "indexRedirect": true
     },
@@ -1348,7 +1348,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrestapifw202011src",
       "docId": "iscc202011restapifw",
       "indexRedirect": true
     },
@@ -1356,7 +1356,7 @@
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisinstall202011src",
       "docId": "iscc202011install",
       "indexRedirect": true
     },
@@ -1364,7 +1364,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-banff.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrn202011src",
       "docId": "ispc202011releasenotes",
       "indexRedirect": true,
       "resources": [
@@ -1384,7 +1384,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "NewAndChangedGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisnew202011src",
       "docId": "ispc202011newandchanged",
       "indexRedirect": true
     },
@@ -1400,7 +1400,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "PC-AppGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudispcapp202011src",
       "docId": "ispc202011app",
       "indexRedirect": true
     },
@@ -1408,7 +1408,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisadmin202011src",
       "docId": "ispc202011admin",
       "indexRedirect": true
     },
@@ -1416,7 +1416,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisbp202011src",
       "docId": "ispc202011bestpractice",
       "indexRedirect": true
     },
@@ -1424,7 +1424,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisapd202011src",
       "docId": "ispc202011apd",
       "indexRedirect": true
     },
@@ -1432,7 +1432,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "ConfigGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisconfig202011src",
       "docId": "ispc202011config",
       "indexRedirect": true
     },
@@ -1440,7 +1440,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "GlobalizationGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisglobal202011src",
       "docId": "ispc202011global",
       "indexRedirect": true
     },
@@ -1448,7 +1448,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "RulesGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrules202011src",
       "docId": "ispc202011rules",
       "indexRedirect": true
     },
@@ -1456,7 +1456,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "ProductDesignerGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudispd202011src",
       "docId": "ispc202011pd",
       "indexRedirect": true
     },
@@ -1464,7 +1464,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "ProductModelGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudispm202011src",
       "docId": "ispc202011pm",
       "indexRedirect": true
     },
@@ -1472,7 +1472,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "IntegrationGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisinteg202011src",
       "docId": "ispc202011integ",
       "indexRedirect": true
     },
@@ -1480,7 +1480,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudiscloudapi202011src",
       "docId": "ispc202011cloudapi",
       "indexRedirect": true
     },
@@ -1488,7 +1488,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisgosu202011src",
       "docId": "ispc202011gosu",
       "indexRedirect": true
     },
@@ -1496,7 +1496,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "TestingGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudistest202011src",
       "docId": "ispc202011testing",
       "indexRedirect": true
     },
@@ -1504,7 +1504,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisrestapifw202011src",
       "docId": "ispc202011restapifw",
       "indexRedirect": true
     },
@@ -1512,7 +1512,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisinstall202011src",
       "docId": "ispc202011install",
       "indexRedirect": true
     },
@@ -1520,7 +1520,7 @@
       "buildType": "dita",
       "filter": "IS-CM-Cloud-Release.ditaval",
       "root": "ContactMgmtGuide.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudiscontact202011src",
       "docId": "is202011contact",
       "indexRedirect": true
     },
@@ -1528,7 +1528,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Glossary.ditamap",
-      "srcId": "cloudis202011src",
+      "srcId": "cloudisglossary202011src",
       "docId": "is202011glossary",
       "indexRedirect": true
     },

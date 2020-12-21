@@ -46,18 +46,256 @@
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git"
     },
     {
-      "id": "cloudis202011src",
+      "id": "cloudisadmin202011src",
       "title": "InsuranceSuite Cloud 2020.11",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/_supermap-202011.ditamap",
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdminGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisapd202011src",
+      "title": "InsuranceSuite Cloud 2020.11",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdvancedProductDesigner.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisbcapp202011src",
+      "title": "InsuranceSuite Cloud 2020.11",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/BC-AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisccapp202011src",
+      "title": "InsuranceSuite Cloud 2020.11",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CC-AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudispcapp202011src",
+      "title": "InsuranceSuite Cloud 2020.11",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/PC-AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisbp202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/BestPracticesGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudiscloudapi202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisconfig202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ConfigGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudiscontact202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ContactMgmtGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-EA.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisglobal202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/GlobalizationGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisglossary202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/Glossary.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisgosu202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/GosuRefGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisinstall202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisinteg202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/IntegrationGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisnew202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/NewAndChangedGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudispd202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductDesignerGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudispm202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductModelGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisrestapifw202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RESTAPIFramework.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisrules202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RulesGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudistest202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/TestingGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudisrn202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-banff.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "isrestapiclient202011src",
+      "title": "InsuranceSuite Cloud",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RESTAPIClientGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
