@@ -4,38 +4,14 @@ process.on('unhandledRejection', function(reason, p) {
 });
 
 require('dotenv').config();
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const proxy = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const httpContext = require('express-http-context');
-const zipkinMiddleware = require('zipkin-instrumentation-express')
-  .expressMiddleware;
-const addZipkinHeaders = require('zipkin').Request.addZipkinHeaders;
-const { HttpLogger } = require('zipkin-transport-http');
-const {
-  Tracer,
-  ExplicitContext,
-  BatchRecorder,
-  jsonEncoder: { JSON_V2 },
-} = require('zipkin');
-const localServiceName = require(__dirname + '/package.json').name;
-
-const ctxImpl = new ExplicitContext();
-const zipkinUrl = process.env.ZIPKIN_URL;
-const recorder = new BatchRecorder({
-  logger: new HttpLogger({
-    endpoint: zipkinUrl,
-    jsonEncoder: JSON_V2,
-  }),
-});
-
-const tracer = new Tracer({ ctxImpl, recorder, localServiceName });
 
 const port = process.env.PORT || 8081;
 const app = express();
@@ -52,22 +28,30 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
+const sessionSettings = {
+  secret: `${process.env.SESSION_KEY}`,
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: 'none',
+    secure: true,
+  },
+};
+
+if (process.env.LOCALHOST_SESSION_SETTINGS === 'yes') {
+  sessionSettings.cookie = {
+    sameSite: 'lax',
+    secure: false,
+  };
+}
+
 // session support is required to use ExpressOIDC
 app.set('trust proxy', 1);
-app.use(
-  session({
-    secret: `${process.env.SESSION_KEY}`,
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: 'none',
-      secure: true,
-    },
-  })
-);
+app.use(session(sessionSettings));
 
 const homeRouter = require('./routes/home');
 const gwLoginRouter = require('./routes/gw-login');
+const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const cloudProductsRouter = require('./routes/cloud-products');
@@ -77,6 +61,7 @@ const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
+const userRouter = require('./routes/user');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -88,6 +73,7 @@ app.use('/alive', (req, res, next) => {
 
 app.use('/support', supportRouter);
 app.use('/gw-login', gwLoginRouter);
+app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
 
@@ -101,7 +87,6 @@ const authGateway = require('./controllers/authController').authGateway;
 app.use(oktaOIDC.router);
 app.use(authGateway);
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -115,39 +100,11 @@ app.use(
 );
 
 app.use(httpContext.middleware);
-app.use(zipkinMiddleware({ tracer }));
-const xB3TraceId = 'x-b3-traceid';
-const xB3ParentSpanId = 'x-b3-parentspanid';
-const xB3SpanId = 'x-b3-spanid';
-const xB3Flags = 'x-b3-flags';
-const xB3Sampled = 'x-b3-sampled';
-
-// add incoming trace headers to the context.
-app.use(function(req, res, next) {
-  const traceId = ctxImpl.getContext().traceId;
-  const parentId = ctxImpl.getContext().parentId;
-  const spanId = ctxImpl.getContext().spanId;
-  const flags = ctxImpl.getContext().flags;
-  const sampled = ctxImpl.getContext().sampled;
-  httpContext.set(xB3TraceId, traceId);
-  httpContext.set(xB3ParentSpanId, parentId);
-  httpContext.set(xB3SpanId, spanId);
-  httpContext.set(xB3Flags, flags);
-  httpContext.set(xB3Sampled, sampled);
-  addZipkinHeaders(req, ctxImpl.getContext());
-
-  res.setHeader(xB3TraceId, traceId);
-  res.setHeader(xB3ParentSpanId, parentId);
-  res.setHeader(xB3SpanId, spanId);
-  res.setHeader(xB3Flags, xB3Flags);
-  res.setHeader(xB3Sampled, sampled);
-
-  next();
-});
 
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
+app.use('/userInformation', userRouter);
 
 app.use('/selfManagedProducts', selfManagedProductsRouter);
 app.use('/cloudProducts', cloudProductsRouter);

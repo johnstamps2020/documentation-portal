@@ -1,27 +1,51 @@
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript
+>
+    <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5"
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden"
+    ></iframe
+    >
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 <header class="pageHeader">
-  <div class="row">
-    <div class="col-sm">
-      <div class="logoWrapper">
-        <a href="/">
-          <img
-            class="pageLogo"
-            src="/images/guidewire-logo.svg"
-            alt="Guidewire Documentation"
-            role="img"
-            aria-label="Guidewire Documentation"
-          />
-        </a>
-      </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="logoWrapper">
+                <a href="/">
+                    <img
+                            class="pageLogo"
+                            src="/images/guidewire-logo.svg"
+                            alt="Guidewire Documentation"
+                            role="img"
+                            aria-label="Guidewire Documentation"
+                    />
+                </a>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="searchBoxContainer">
+                <% include search-bar %>
+            </div>
+        </div>
+        <div class="col-sm">
+            <% try { -%>
+                <% if (userContext) { -%>
+                    <div class="loginLogoutButtonWrapper">
+                        <a class="gwButtonSecondary loginButtonSmall" href="/gw-logout">Log out</a>
+                    </div>
+                <% } else { -%>
+                    <div class="loginLogoutButtonWrapper">
+                        <a class="gwButtonSecondary loginButtonSmall" href="/gw-login">Log in</a>
+                    </div>
+                <% } -%>
+            <% } catch (err) { -%>
+                <% if (err instanceof ReferenceError) { -%>
+                    <% console.log('No userContext defined'); -%>
+                <% } -%>
+            <% } -%>
+        </div>
     </div>
-    <div class="col-sm">
-      <div class="searchBoxContainer">
-        <% include search-bar %>
-      </div>
-    </div>
-    <div class="col-sm searchBoxPusher"></div>
-  </div>
 </header>

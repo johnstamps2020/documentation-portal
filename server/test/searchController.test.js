@@ -15,6 +15,7 @@ describe(`Search for phrase ${queryPhrase}`, async function() {
         query: {
           q: queryPhrase,
         },
+        isAuthenticated: () => true,
       });
       response = httpMocks.createResponse();
       await searchController(request, response);

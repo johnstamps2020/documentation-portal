@@ -46,13 +46,15 @@
                             <ul class="wh_category_items">
                                 <% subject.subjectDocs.forEach(doc => { -%>
                                     <li class="wh_category_item">
-                        <span class="topicref">
-                            <% if (doc.url.startsWith('http://') || doc.url.startsWith('https://')) { -%>
-                                <a href="<%= doc.url %>" target="_blank" rel="noopener noreferrer"><%= doc.title %></a>
-                            <% } else { -%>
-                                <a href="<%= doc.url %>"><%= doc.title %></a>
-                            <% } %>
-                        </span>
+                                        <span class="topicref">
+                                            <%- include('./parts/link.ejs', {
+                                                url: doc.url, 
+                                                label: doc.title, 
+                                                public: doc.public, 
+                                                userContext: userContext,
+                                                customClass: undefined,
+                                            }) %>
+                                        </span>
                                     </li>
                                 <% }) -%>
                             </ul>

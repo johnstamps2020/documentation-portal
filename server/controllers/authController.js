@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { ExpressOIDC } = require('@okta/oidc-middleware');
+const { isPublicDoc } = require('../controllers/configController');
 
 const loginGatewayRoute = '/gw-login';
 
@@ -14,11 +15,31 @@ const oktaOIDC = new ExpressOIDC({
   scope: 'openid profile',
 });
 
-const authGateway = (req, res, next) => {
+const majorOpenRoutes = [
+  '/cloudProducts',
+  '/selfManagedProducts',
+  '/404',
+  '/unauthorized',
+  '/product',
+  '/alive',
+  '/userInformation',
+  '/search',
+  '/portal-config',
+];
+
+const authGateway = async (req, res, next) => {
   try {
-    if (req.isAuthenticated() || process.env.DEV === 'yes') {
+    const reqUrl = new URL(req.url, 'relative:///');
+    const isPublic = await isPublicDoc(reqUrl.pathname);
+    if (
+      process.env.ALLOW_PUBLIC_DOCS === 'yes' &&
+      (req.isAuthenticated() ||
+        process.env.ENABLE_AUTH === 'no' ||
+        reqUrl.pathname === '/' ||
+        majorOpenRoutes.some(r => reqUrl.pathname.startsWith(r)) ||
+        isPublic)
+    ) {
       if (req.query.authSource) {
-        const reqUrl = new URL(req.url, 'relative:///');
         res.redirect(reqUrl.pathname);
       }
       if (req.session.redirectTo) {

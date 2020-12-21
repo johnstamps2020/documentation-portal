@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
-const appLogger = require('../logger');
 
 const getAllowedFilterValues = async function(fieldName, query) {
   const requestBody = {
@@ -33,7 +32,8 @@ const runFilteredSearch = async (
   searchPhrase,
   urlParams,
   startIndex,
-  resultsPerPage
+  resultsPerPage,
+  isLoggedIn
 ) => {
   let queryBody = {
     bool: {
@@ -55,6 +55,15 @@ const runFilteredSearch = async (
   const mappings = mappingResults.body[searchIndexName].mappings.properties;
 
   let selectedFilters = [];
+
+  if (!isLoggedIn) {
+    selectedFilters.push({
+      term: {
+        public: true,
+      },
+    });
+  }
+
   for (const param in urlParams) {
     if (mappings[param] && mappings[param].type == 'keyword') {
       const values = decodeURI(urlParams[param]).split(',');
@@ -121,7 +130,8 @@ const searchController = async (req, res, next) => {
       searchPhrase,
       req.query,
       startIndex,
-      resultsPerPage
+      resultsPerPage,
+      req.isAuthenticated()
     );
 
     const filters = results.filters;
@@ -174,13 +184,11 @@ const searchController = async (req, res, next) => {
         resultsPerPage: resultsPerPage,
         searchResults: resultsToDisplay,
         filters: filters,
+        userContext: req.userContext,
       });
     }
   } catch (err) {
-    appLogger.log({
-      level: 'error',
-      message: `Exception while running search: ${err}`,
-    });
+    console.error(err);
     next(err);
   }
 };

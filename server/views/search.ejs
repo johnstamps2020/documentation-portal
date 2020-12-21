@@ -24,6 +24,12 @@
                     <% }) %>
                 <% }) %>
             </div>
+            <% if (!userContext) { %>
+                <div class="notLoggedInWarning">
+                    You are not logged in, search results are limited to public 
+                    documents only.
+                </div>
+            <% } %>
         </div>
         <div class="col-sm-8 docPanelContainer">
             <div class="resultWrapper">

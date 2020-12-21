@@ -56,9 +56,14 @@ function resolveUrl(url) {
   }
 }
 
+function isPublic(arrayOfDocs) {
+  return arrayOfDocs.some(d => d.public);
+}
+
 module.exports = {
   getUniqueInMetadataArrays,
   getUniqueInMetadataFields,
   getSortedVersions,
   resolveUrl,
+  isPublic,
 };

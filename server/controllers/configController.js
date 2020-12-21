@@ -5,7 +5,7 @@ const { findNodeById } = require('./helpers/taxonomy');
 
 async function getConfig() {
   try {
-    if (process.env.DEV === 'yes') {
+    if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
         `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
       );
@@ -38,7 +38,7 @@ async function getTaxonomy(release) {
     const taxonomyFile = release
       ? `cloud/${release}.json`
       : 'self-managed.json';
-    if (process.env.DEV === 'yes') {
+    if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
         `Getting local taxonomy for the "${process.env.DEPLOY_ENV}" environment`
       );
@@ -61,7 +61,7 @@ async function getTaxonomy(release) {
 async function getReleasesFromTaxonomies(filterId) {
   try {
     let taxonomyFiles;
-    if (process.env.DEV === 'yes') {
+    if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
         `Getting releases from local taxonomies for the "${process.env.DEPLOY_ENV}" environment`
       );
@@ -93,4 +93,25 @@ async function getReleasesFromTaxonomies(filterId) {
   }
 }
 
-module.exports = { getConfig, getTaxonomy, getReleasesFromTaxonomies };
+async function isPublicDoc(url) {
+  let relativeUrl = url;
+  if (relativeUrl.startsWith('/')) {
+    relativeUrl = relativeUrl.substring(1);
+  }
+
+  const config = await getConfig();
+  const matchingDoc = config.docs.find(d => relativeUrl.startsWith(d.url));
+
+  if (matchingDoc && matchingDoc.public) {
+    return true;
+  }
+
+  return false;
+}
+
+module.exports = {
+  getConfig,
+  getTaxonomy,
+  getReleasesFromTaxonomies,
+  isPublicDoc,
+};

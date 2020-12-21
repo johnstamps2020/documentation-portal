@@ -8,6 +8,7 @@ const {
   getUniqueInMetadataArrays,
   getSortedVersions,
   resolveUrl,
+  isPublic,
 } = require('./helpers/metadata');
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
@@ -57,11 +58,13 @@ async function getCloudDocumentationPageInfo(release) {
         productFamilies.push({
           label: productFamily.label,
           url: `${cloudProductsEndpoint}/${release}/${productFamily.id}`,
+          public: isPublic(docs),
         });
       } else if (docs.length >= 1) {
         productFamilies.push({
           label: productFamily.label,
           url: resolveUrl(docs[0].url),
+          public: isPublic(docs),
         });
       }
     }
@@ -124,6 +127,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
               categoryDocsWithLinks.push({
                 docLabel: categoryDoc.label,
                 docUrl: docUrl,
+                public: isPublic(docsFromConfig),
               });
             }
           }
@@ -142,6 +146,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
                 categoryGroupDocsWithLinks.push({
                   docLabel: categoryGroupDoc.label,
                   docUrl: docUrl,
+                  public: isPublic(docsFromConfig),
                 });
               }
             }
@@ -150,6 +155,7 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
             categoryGroupsWithLinks.push({
               groupLabel: categoryGroup.label,
               groupDocs: categoryGroupDocsWithLinks,
+              public: isPublic(categoryGroupDocsWithLinks),
             });
           }
         }
@@ -162,6 +168,10 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
             label: productFamilyItem.label,
             groups: categoryGroupsWithLinks,
             docs: categoryDocsWithLinks,
+            public: isPublic([
+              ...categoryDocsWithLinks,
+              ...categoryGroupsWithLinks,
+            ]),
           });
         }
       }

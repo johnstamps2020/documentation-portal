@@ -24,7 +24,9 @@ router.get('/:release', async function(req, res, next) {
     const cloudDocumentationPageInfo = await getCloudDocumentationPageInfo(
       release
     );
+    const { userContext } = req;
     res.render('cloud-home', {
+      userContext: userContext,
       pageInfo: cloudDocumentationPageInfo,
     });
   } catch (err) {
@@ -39,7 +41,9 @@ router.get('/:release/:productFamilyId', async function(req, res, next) {
       release,
       productFamilyId
     );
+    const { userContext } = req;
     res.render('grouped-cards', {
+      userContext: userContext,
       pageInfo: productFamilyPageInfo,
     });
   } catch (err) {
@@ -80,7 +84,9 @@ router.get(
       if (subjects.length === 1 && subjects[0].subjectDocs.length === 1) {
         res.redirect(subjects[0].subjectDocs[0].url);
       } else {
+        const { userContext } = req;
         res.render('grouped-links', {
+          userContext: userContext,
           pageInfo: productPageInfo,
         });
       }

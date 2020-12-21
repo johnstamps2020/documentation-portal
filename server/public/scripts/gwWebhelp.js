@@ -130,11 +130,13 @@ async function getVersions() {
           versions.push({
             label: docVersion,
             link: doc.url,
+            public: doc.public,
           });
         } else {
           versions.push({
             label: docVersion,
             link: baseUrl + '/' + doc.url,
+            public: doc.public,
           });
         }
       }
@@ -155,6 +157,14 @@ async function getVersions() {
   }
 }
 
+function createContainerForCustomHeaderElements() {
+  const container = document.createElement('div');
+  container.setAttribute('id', 'customHeaderElements');
+  document
+    .getElementById('wh_top_menu_and_indexterms_link')
+    .appendChild(container);
+}
+
 async function createVersionSelector() {
   try {
     const docProduct = document.querySelector("meta[name = 'gw-product']")
@@ -163,7 +173,15 @@ async function createVersionSelector() {
       return null;
     }
 
-    const docVersions = await getVersions();
+    let docVersions = await getVersions();
+
+    const response = await fetch('/userInformation');
+    const responseBody = await response.json();
+    const isLoggedIn = responseBody.isLoggedIn;
+
+    if (!isLoggedIn && Array.isArray(docVersions)) {
+      docVersions = docVersions.filter(v => v.public);
+    }
 
     if (docVersions.length > 1) {
       const select = document.createElement('select');
@@ -205,7 +223,7 @@ async function createVersionSelector() {
       label.htmlFor = 'versionSelector';
 
       document
-        .getElementById('wh_top_menu_and_indexterms_link')
+        .getElementById('customHeaderElements')
         .appendChild(label)
         .appendChild(select);
     }
@@ -291,6 +309,27 @@ async function addPublicationDate() {
   }
 }
 
+async function addLoginLogoutButton() {
+  const response = await fetch('/userInformation');
+  const responseBody = await response.json();
+  const isLoggedIn = responseBody.isLoggedIn;
+  const buttonWrapper = document.createElement('div');
+  buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
+  const buttonTemplate = document.createElement('a');
+  buttonTemplate.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
+  if (isLoggedIn) {
+    buttonTemplate.setAttribute('href', '/gw-logout');
+    buttonTemplate.innerText = 'Log out';
+  } else {
+    buttonTemplate.setAttribute('href', '/gw-login');
+    buttonTemplate.innerText = 'Log in';
+  }
+  document
+    .getElementById('customHeaderElements')
+    .appendChild(buttonWrapper)
+    .appendChild(buttonTemplate);
+}
+
 function docReady(fn) {
   if (
     document.readyState === 'complete' ||
@@ -318,9 +357,11 @@ function hideByCssClass(cssClass) {
 }
 
 docReady(async function() {
+  createContainerForCustomHeaderElements();
   await createVersionSelector();
   await addTopLinkToBreadcrumbs();
   await addPublicationDate();
+  await addLoginLogoutButton();
   if (isInIframe()) {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
