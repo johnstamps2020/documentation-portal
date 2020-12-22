@@ -2677,9 +2677,10 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-20202x-active.ditamap",
-      "srcId": "in20202src",
-      "docId": "cloudinexternal20202",
+      "root": "InsuranceNowReleaseNotes20202.ditamap",
+      "srcId": "in20202rnsrc",
+      "docId": "in20202rn",
+      "indexRedirect": true,
       "resources": [
         {
           "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
@@ -2691,9 +2692,106 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-20201x-active.ditamap",
-      "srcId": "in20201src",
-      "docId": "cloudinexternal20201",
+      "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
+      "srcId": "in20202csp324rnsrc",
+      "docId": "in20202csp324rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV323.ditamap",
+      "srcId": "in20202csp323rnsrc",
+      "docId": "in20202csp323rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INStudioReleaseNotes20202.ditamap",
+      "srcId": "in20202studiornsrc",
+      "docId": "in20202studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "BusinessIntelligenceGettingStartedGuide20202x.ditamap",
+      "srcId": "in20202bisrc",
+      "docId": "in20202bi",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerSalesPortalFeatures20202x.ditamap",
+      "srcId": "in20202csalespsrc",
+      "docId": "in20202csalesp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalFeatures20202x.ditamap",
+      "srcId": "in20202cservicepsrc",
+      "docId": "in20202cservicep",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PredictiveAnalyticsIntegration20202x.ditamap",
+      "srcId": "in20202pasrc",
+      "docId": "in20202pa",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "AppReaderIntegrationGuide20202x.ditamap",
+      "srcId": "in20202appreaderintegsrc",
+      "docId": "in20202appreaderinteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Configuration20202x.ditamap",
+      "srcId": "in20202configsrc",
+      "docId": "in20202config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Studio20202x.ditamap",
+      "srcId": "in20202studiosrc",
+      "docId": "in20202studio",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PortalDevelopment20202x.ditamap",
+      "srcId": "in20202portaldevsrc",
+      "docId": "in20202portaldev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProductAttributeReference20202x.ditamap",
+      "srcId": "in20202prodattrefsrc",
+      "docId": "in20202prodattref",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20201.ditamap",
+      "srcId": "in20201rnsrc",
+      "docId": "in20201rn",
+      "indexRedirect": true,
       "resources": [
         {
           "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
@@ -2701,6 +2799,78 @@
           "srcId": "insurancenowextrassrc"
         }
       ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV323.ditamap",
+      "srcId": "in20201csp323rnsrc",
+      "docId": "in20201csp323rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INStudioReleaseNotes20201.ditamap",
+      "srcId": "in20201studiornsrc",
+      "docId": "in20201studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "BusinessIntelligenceGettingStartedGuide20201x.ditamap",
+      "srcId": "in20201bisrc",
+      "docId": "in20201bi",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalFeatures20201x.ditamap",
+      "srcId": "in20201cservicepsrc",
+      "docId": "in20201cservicep",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "AppReaderIntegrationGuide20201x.ditamap",
+      "srcId": "in20201appreaderintegsrc",
+      "docId": "in20201appreaderinteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PredictiveAnalyticsIntegration20201x.ditamap",
+      "srcId": "in20201pasrc",
+      "docId": "in20201pa",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Configuration20201x.ditamap",
+      "srcId": "in20201configsrc",
+      "docId": "in20201config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Studio20201x.ditamap",
+      "srcId": "in20201studiosrc",
+      "docId": "in20201studio",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PortalDevelopment20201x.ditamap",
+      "srcId": "in20201portaldevsrc",
+      "docId": "in20201portaldev",
+      "indexRedirect": true
     },
     {
       "buildType": "yarn",
