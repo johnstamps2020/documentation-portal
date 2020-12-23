@@ -8,7 +8,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const sassMiddleware = require('node-sass-middleware');
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const httpContext = require('express-http-context');
@@ -120,7 +120,7 @@ const portal2ProxyOptions = {
     proxySocket.on('data', hybiParseAndLogMessage);
   },
 };
-const portal2Proxy = proxy(portal2ProxyOptions);
+const portal2Proxy = createProxyMiddleware(portal2ProxyOptions);
 app.use('/portal', portal2Proxy);
 
 const s3ProxyOptions = {
@@ -130,7 +130,7 @@ const s3ProxyOptions = {
     proxySocket.on('data', hybiParseAndLogMessage);
   },
 };
-const s3Proxy = proxy(s3ProxyOptions);
+const s3Proxy = createProxyMiddleware(s3ProxyOptions);
 app.use(s3Proxy);
 
 app.use('/portal-config/*', (req, res) => {
