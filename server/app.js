@@ -62,6 +62,7 @@ const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
 const userRouter = require('./routes/user');
+const configRouter = require('./routes/config');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -105,21 +106,32 @@ app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
+app.use('/safeConfig', configRouter);
 
 app.use('/selfManagedProducts', selfManagedProductsRouter);
 app.use('/cloudProducts', cloudProductsRouter);
 app.use('/product', allProductsRouter);
 app.use('/', homeRouter);
 
-const proxyOptions = {
+const portal2ProxyOptions = {
+  target: 'https://portal2.guidewire.com',
+  changeOrigin: true,
+  onOpen: proxySocket => {
+    proxySocket.on('data', hybiParseAndLogMessage);
+  },
+};
+const portal2Proxy = proxy(portal2ProxyOptions);
+app.use('/portal', portal2Proxy);
+
+const s3ProxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
   changeOrigin: true,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
   },
 };
-const docProxy = proxy(proxyOptions);
-app.use(docProxy);
+const s3Proxy = proxy(s3ProxyOptions);
+app.use(s3Proxy);
 
 app.use('/portal-config/*', (req, res) => {
   res.redirect('/unauthorized');

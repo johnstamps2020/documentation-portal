@@ -14,7 +14,7 @@ function findNodeByLabel(labelValue, node) {
 
 async function getConfig() {
   try {
-    const configUrl = '/portal-config/config.json';
+    const configUrl = '/safeConfig';
     const result = await fetch(configUrl);
     return await result.json();
   } catch (err) {
