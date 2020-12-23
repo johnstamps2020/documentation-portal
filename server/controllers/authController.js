@@ -24,7 +24,7 @@ const majorOpenRoutes = [
   '/alive',
   '/userInformation',
   '/search',
-  '/portal-config',
+  '/safeConfig',
 ];
 
 const authGateway = async (req, res, next) => {
