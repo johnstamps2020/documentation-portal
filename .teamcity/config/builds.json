@@ -2725,6 +2725,30 @@
       "docId": "storybook500",
       "srcId": "srcjutro500",
       "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro510",
+      "srcId": "srcjutro510",
+      "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook510",
+      "srcId": "srcjutro510",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro520",
+      "srcId": "srcjutro520",
+      "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook520",
+      "srcId": "srcjutro520",
+      "workingDir": "storybook"
     }
   ]
 }
