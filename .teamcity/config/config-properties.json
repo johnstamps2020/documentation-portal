@@ -1,6 +1,21 @@
 {
   "configProperties": [
     {
+      "name": "subject",
+      "values": [
+        "Features and functionality",
+        "Installation",
+        "Release notes",
+        "Administration",
+        "Development",
+        "Integration",
+        "Configuration",
+        "Best practices",
+        "Glossary",
+        "About this documentation"
+      ]
+    },
+    {
       "name": "environments",
       "values": [
         "dev",
