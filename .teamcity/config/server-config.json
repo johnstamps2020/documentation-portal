@@ -7761,9 +7761,7 @@
         "platform": ["Cloud"],
         "product": [
           "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience",
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
+          "InsuranceNow 2020.1x - Internal Audience"
         ],
         "version": ["latest"],
         "subject": ["Configuration"],
@@ -7785,7 +7783,7 @@
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7801,7 +7799,7 @@
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7817,13 +7815,13 @@
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "incsp324rn",
+      "id": "in20202csp324rn",
       "title": "Consumer Service Portal 3.24 Release Notes",
       "url": "cloud/in/202002/csp324rn",
       "metadata": {
@@ -7833,7 +7831,23 @@
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20202csp323rn",
+      "title": "Consumer Service Portal 3.23 Release Notes",
+      "url": "cloud/in/20202/csp323rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2"],
+        "subject": ["Release Notes"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7849,7 +7863,7 @@
         "subject": ["Features and Functionality"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7865,7 +7879,7 @@
         "subject": ["Features and Functionality"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7881,7 +7895,7 @@
         "subject": ["Features and Functionality"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7897,7 +7911,7 @@
         "subject": ["Integration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7913,7 +7927,7 @@
         "subject": ["Integration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7929,7 +7943,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7945,7 +7959,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7961,7 +7975,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7977,7 +7991,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7993,7 +8007,7 @@
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8009,7 +8023,7 @@
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8025,23 +8039,23 @@
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "incsp323rn",
+      "id": "in20201csp323rn",
       "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/20202/csp323rn",
+      "url": "cloud/in/20201/csp323rn",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2020.2", "2020.1"],
+        "version": ["2020.1"],
         "subject": ["Release Notes"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8057,7 +8071,7 @@
         "subject": ["Features and Functionality"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8073,7 +8087,7 @@
         "subject": ["Features and Functionality"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8089,7 +8103,7 @@
         "subject": ["Integration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8105,7 +8119,7 @@
         "subject": ["Integration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8121,7 +8135,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8137,7 +8151,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8153,53 +8167,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "inupgradetools",
-      "title": "Upgrade Tools",
-      "url": "cloud/in/upgrade",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2", "2020.1"],
-        "subject": ["Configuration"],
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["dev", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "cloudinexternal20202",
-      "title": "InsuranceNow",
-      "url": "cloud/in/20202",
-      "metadata": {
-        "product": ["InsuranceNow"],
-        "platform": ["Cloud"],
-        "version": ["2020.2"],
-        "release": ["Banff"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "cloudinexternal20201",
-      "title": "InsuranceNow",
-      "url": "cloud/in/20201",
-      "metadata": {
-        "product": ["InsuranceNow"],
-        "platform": ["Cloud"],
-        "version": ["2020.1"],
-        "release": ["Aspen"]
-      },
-      "environments": ["prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
