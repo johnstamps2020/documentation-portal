@@ -7685,9 +7685,7 @@
         "platform": ["Cloud"],
         "product": [
           "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience",
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
+          "InsuranceNow 2020.1x - Internal Audience"
         ],
         "version": ["latest"],
         "subject": ["Configuration"],
