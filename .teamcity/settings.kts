@@ -2021,6 +2021,9 @@ object BuildYarn : Template({
     name = "Build a yarn project"
 
     params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
         text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
         text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
