@@ -7821,9 +7821,9 @@
       "public": false
     },
     {
-      "id": "in20202csp323rn",
-      "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/20202/csp323rn",
+      "id": "in20202csp324rn",
+      "title": "Consumer Service Portal 3.24 Release Notes",
+      "url": "cloud/in/202002/csp324rn",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -7837,9 +7837,9 @@
       "public": false
     },
     {
-      "id": "in20202csp324rn",
-      "title": "Consumer Service Portal 3.24 Release Notes",
-      "url": "cloud/in/202002/csp324rn",
+      "id": "in20202csp323rn",
+      "title": "Consumer Service Portal 3.23 Release Notes",
+      "url": "cloud/in/20202/csp323rn",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
