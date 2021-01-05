@@ -1226,6 +1226,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
       "branch": "release/5.2.0"
+    },
+    {
+      "id": "srcapiref202011",
+      "title": "Cloud API Reference",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/doctools/api-directory.git",
+      "branch": "master"
     }
   ]
 }
