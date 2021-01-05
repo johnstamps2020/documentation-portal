@@ -1277,6 +1277,66 @@
       "public": false
     },
     {
+      "id": "jutro510",
+      "title": "Jutro Design System",
+      "url": "jutro/documentation/5.1.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.1.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook510",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/5.1.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.1.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "jutro520",
+      "title": "Jutro Design System",
+      "url": "jutro/documentation/5.2.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.2.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook520",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/5.2.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.2.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "dxapd202011",
       "title": "Digital Code Generation Extension Pack",
       "url": "cloud/dx/apd/202011",
@@ -5004,6 +5064,22 @@
         "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202011apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202011/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

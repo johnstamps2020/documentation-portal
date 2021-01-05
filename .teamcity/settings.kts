@@ -116,8 +116,8 @@ object DeployDev : BuildType({
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.DEPLOY_ENV", "dev")
         param("env.TAG_VERSION", "latest")
-        param("env.PARTNERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/partners/idp/endpoint/HttpRedirect")
-        param("env.CUSTOMERS_LOGIN_URL", "https://dev-guidewire.cs123.force.com/customers/idp/endpoint/HttpRedirect")
+        param("env.PARTNERS_LOGIN_URL", "https://qaint-guidewire.cs4.force.com/partners/idp/endpoint/HttpRedirect")
+        param("env.CUSTOMERS_LOGIN_URL", "https://qaint-guidewire.cs4.force.com/customers/idp/endpoint/HttpRedirect")
     }
 
     vcs {
@@ -229,8 +229,8 @@ object DeployStaging : BuildType({
         param("env.DEPLOY_ENV", "staging")
         text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
-        param("env.PARTNERS_LOGIN_URL", "https://uat-guidewire.cs59.force.com/partners/idp/endpoint/HttpRedirect")
-        param("env.CUSTOMERS_LOGIN_URL", "https://uat-guidewire.cs59.force.com/customers/idp/endpoint/HttpRedirect")
+        param("env.PARTNERS_LOGIN_URL", "https://uat-guidewire.cs23.force.com/partners/idp/endpoint/HttpRedirect")
+        param("env.CUSTOMERS_LOGIN_URL", "https://uat-guidewire.cs23.force.com/customers/idp/endpoint/HttpRedirect")
     }
 
     vcs {
@@ -1536,9 +1536,15 @@ object HelperObjects {
     fun createSourceValidationsFromConfig(): List<Project> {
 
         class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String) : BuildType({
-            templates(RunContentValidations)
 
-            val docBuildRootMap = build_info.getString("root")
+            val docBuildType = if (build_info.has("buildType")) build_info.getString("buildType") else ""
+
+            when (docBuildType) {
+                "yarn" -> templates(BuildYarn)
+                "dita" -> templates(RunContentValidations)
+            }
+
+            val docBuildRootMap = if (build_info.has("root")) build_info.getString("root") else ""
             val docBuildFilter = if (build_info.has("filter")) build_info.getString("filter") else ""
             val docBuildIndexRedirect = if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
             val docBuildDocId = build_info.getString("docId")
@@ -1565,12 +1571,14 @@ object HelperObjects {
                 text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
                 text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
-            steps {
-                script {
-                    name = "Get document details"
-                    id = "GET_DOCUMENT_DETAILS"
 
-                    scriptContent = """
+            if (docBuildType == "dita") {
+                steps {
+                    script {
+                        name = "Get document details"
+                        id = "GET_DOCUMENT_DETAILS"
+
+                        scriptContent = """
                         #!/bin/bash
                         set -xe
                         
@@ -1578,10 +1586,17 @@ object HelperObjects {
                         cat %env.DOC_INFO%
                         
                     """.trimIndent()
+                    }
+
+                    stepsOrder = arrayListOf(
+                        "GET_DOCUMENT_DETAILS",
+                        "BUILD_GUIDEWIRE_WEBHELP",
+                        "BUILD_NORMALIZED_DITA",
+                        "RUN_SCHEMATRON_VALIDATIONS",
+                        "RUN_DOC_VALIDATOR"
+                    )
+
                 }
-
-                stepsOrder = arrayListOf("GET_DOCUMENT_DETAILS", "BUILD_GUIDEWIRE_WEBHELP", "BUILD_NORMALIZED_DITA", "RUN_SCHEMATRON_VALIDATIONS", "RUN_DOC_VALIDATOR")
-
             }
 
             vcs {
@@ -2006,6 +2021,9 @@ object BuildYarn : Template({
     name = "Build a yarn project"
 
     params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
         text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
         text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -2026,8 +2044,10 @@ object BuildYarn : Template({
                 #!/bin/bash
                 set -xe
                 
-                export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
-                sh ci/npmLogin.sh
+                if [[ -f "ci/npmLogin.sh" ]]; then
+                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
+                    sh ci/npmLogin.sh
+                fi
                 
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export TARGET_URL="%env.TARGET_URL_PROD%"
