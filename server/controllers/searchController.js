@@ -40,9 +40,10 @@ const runFilteredSearch = async (
       must: {
         multi_match: {
           query: searchPhrase,
+          fuzziness: 'AUTO',
           type: 'best_fields',
-          operator: 'and',
-          fields: ['title^3', 'body'],
+          minimum_should_match: '90%',
+          fields: ['title^12', 'body'],
         },
       },
     },
