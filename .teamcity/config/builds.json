@@ -2462,7 +2462,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "PredictiveAnalyticsIntegration20202x.ditamap",
+      "root": "PredictiveAnalyticsIntegration20202.ditamap",
       "srcId": "in20202xpadraftsrc",
       "docId": "in20202xpadraft",
       "indexRedirect": true
@@ -2526,7 +2526,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "ProductAttributeReference20202x.ditamap",
+      "root": "ProductAttributeReference20202.ditamap",
       "srcId": "in20202xprodattrefdraftsrc",
       "docId": "in20202xprodattrefdraft",
       "indexRedirect": true
@@ -2629,7 +2629,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "PredictiveAnalyticsIntegration20201x.ditamap",
+      "root": "PredictiveAnalyticsIntegration20201.ditamap",
       "srcId": "in20201xpadraftsrc",
       "docId": "in20201xpadraft",
       "indexRedirect": true
@@ -2732,7 +2732,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "PredictiveAnalyticsIntegration20202x.ditamap",
+      "root": "PredictiveAnalyticsIntegration20202.ditamap",
       "srcId": "in20202pasrc",
       "docId": "in20202pa",
       "indexRedirect": true
@@ -2772,7 +2772,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ProductAttributeReference20202x.ditamap",
+      "root": "ProductAttributeReference20202.ditamap",
       "srcId": "in20202prodattrefsrc",
       "docId": "in20202prodattref",
       "indexRedirect": true
@@ -2835,7 +2835,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "PredictiveAnalyticsIntegration20201x.ditamap",
+      "root": "PredictiveAnalyticsIntegration20201.ditamap",
       "srcId": "in20201pasrc",
       "docId": "in20201pa",
       "indexRedirect": true
