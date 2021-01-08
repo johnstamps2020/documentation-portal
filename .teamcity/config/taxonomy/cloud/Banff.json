@@ -305,24 +305,16 @@
             {
               "id": "IN20202xExt",
               "label": "InsuranceNow 2020.2x - External Audience"
-            },
-            {
-              "id": "IN20201xExt",
-              "label": "InsuranceNow 2020.1x - External Audience"
             }
           ]
         },
         {
-          "id": "insuranceNow20201xInt",
+          "id": "insuranceNow20202xInt",
           "label": "Internal Audience",
           "items":[
             {
               "id": "IN20202xInt",
               "label": "InsuranceNow 2020.2x - Internal Audience"
-            },
-            {
-              "id": "IN20201xInt",
-              "label": "InsuranceNow 2020.1x - Internal Audience"
             }
           ]
         },
