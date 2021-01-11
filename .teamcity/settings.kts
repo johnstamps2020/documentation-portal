@@ -82,7 +82,8 @@ object Checkmarx : BuildType({
             param("cxOsaEnabled", "false")
             param("cxPresetId", "100000")
             param("cxTeamId", "b78ac917-39fb-4a99-af12-55bf19131b16")
-            param("cxFilterPatterns", """
+            param(
+                "cxFilterPatterns", """
                 !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
                 !**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
                 !**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u,   !**/*.mid, !**/*.mp3,
@@ -95,7 +96,8 @@ object Checkmarx : BuildType({
                 !**/*.htmls,   !**/*.ihtml,     !**/*.mht,      !**/*.mhtm,     !**/*.mhtml,   !**/*.ssi,   !**/*.stm,
                 !**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/node_modules/**/*, !**/*.iml,
                 !**/tests/**/*,     !**/.teamcity/**/*,     !**/__tests__/**/*,     !**/images/**/*,        !**/fonts/**/*
-            """.trimIndent())
+            """.trimIndent()
+            )
             param("cxProjectName", "doctools")
         }
     }
@@ -184,8 +186,10 @@ object DeployProd : BuildType({
     params {
         param("env.DEPLOY_ENV", "us-east-2")
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
-        text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+        text(
+            "env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
+            regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format"
+        )
         param("env.AWS_ACCESS_KEY_ID", "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%")
         param("env.AWS_SECRET_ACCESS_KEY", "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%")
         param("env.AWS_DEFAULT_REGION", "%env.ATMOS_PROD_AWS_DEFAULT_REGION%")
@@ -214,7 +218,8 @@ object DeployProd : BuildType({
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+            dockerRunParameters =
+                "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
         stepsOrder = arrayListOf("PUSH_TO_ECR", "DEPLOY_TO_K8S", "CHECK_PODS_STATUS", "ACCEPTANCE_TESTS")
     }
@@ -227,8 +232,10 @@ object DeployStaging : BuildType({
     params {
         text("env.NAMESPACE", "doctools", label = "Namespace", display = ParameterDisplay.PROMPT, allowEmpty = false)
         param("env.DEPLOY_ENV", "staging")
-        text("env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format")
+        text(
+            "env.TAG_VERSION", "", label = "Deploy Version", display = ParameterDisplay.PROMPT,
+            regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer Format"
+        )
         param("env.PARTNERS_LOGIN_URL", "https://uat-guidewire.cs23.force.com/partners/idp/endpoint/HttpRedirect")
         param("env.CUSTOMERS_LOGIN_URL", "https://uat-guidewire.cs23.force.com/customers/idp/endpoint/HttpRedirect")
     }
@@ -247,8 +254,10 @@ object Release : BuildType({
     maxRunningBuilds = 1
 
     params {
-        select("semver-scope", "patch", label = "Version Scope", display = ParameterDisplay.PROMPT,
-                options = listOf("Patch" to "patch", "Minor" to "minor", "Major" to "major"))
+        select(
+            "semver-scope", "patch", label = "Version Scope", display = ParameterDisplay.PROMPT,
+            options = listOf("Patch" to "patch", "Minor" to "minor", "Major" to "major")
+        )
     }
 
     vcs {
@@ -281,7 +290,8 @@ object Release : BuildType({
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+            dockerRunParameters =
+                "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
     }
 
@@ -394,8 +404,10 @@ object DeploySearchService : BuildType({
     description = "Creates or updates an S3 ingress for a selected environment"
 
     params {
-        select("env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "us-east-2"))
+        select(
+            "env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "us-east-2")
+        )
     }
 
     vcs {
@@ -443,8 +455,10 @@ object DeployS3Ingress : BuildType({
     description = "Creates or updates an S3 ingress for a selected environment"
 
     params {
-        select("env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "us-east-2"))
+        select(
+            "env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "us-east-2")
+        )
     }
 
     vcs {
@@ -492,9 +506,22 @@ object UpdateSearchIndex : BuildType({
     name = "Update search index"
 
     params {
-        select("DEPLOY_ENV", "", label = "Deployment environment", description = "The environment on which you want reindex documents", display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod"))
-        text("DOC_ID", "", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        select(
+            "DEPLOY_ENV",
+            "",
+            label = "Deployment environment",
+            description = "The environment on which you want reindex documents",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod")
+        )
+        text(
+            "DOC_ID",
+            "",
+            label = "Doc ID",
+            description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+            display = ParameterDisplay.PROMPT,
+            allowEmpty = true
+        )
     }
 })
 
@@ -546,12 +573,34 @@ object CleanUpIndex : BuildType({
     description = "Remove documents from index which are not in the config"
 
     params {
-        select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want clean up the index", display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod"))
-        text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
-        text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        select(
+            "env.DEPLOY_ENV",
+            "",
+            label = "Deployment environment",
+            description = "Select an environment on which you want clean up the index",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod")
+        )
+        text(
+            "env.CONFIG_FILE_URL",
+            "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
+            allowEmpty = false
+        )
+        text(
+            "env.CONFIG_FILE_URL_PROD",
+            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS",
+            "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS_PROD",
+            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+            allowEmpty = false
+        )
 
     }
 
@@ -750,8 +799,14 @@ object DeployServerConfig : BuildType({
 
     params {
         text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json")
-        select("env.DEPLOY_ENV", "", label = "Deployment environment", description = "Select an environment on which you want deploy the config", display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod"))
+        select(
+            "env.DEPLOY_ENV",
+            "",
+            label = "Deployment environment",
+            description = "Select an environment on which you want deploy the config",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod")
+        )
     }
 
     vcs {
@@ -879,7 +934,8 @@ object BuildDockerImage : Template({
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
-            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+            dockerRunParameters =
+                "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
     }
 
@@ -967,7 +1023,8 @@ object Deploy : Template({
         script {
             name = "Acceptance Tests"
             id = "ACCEPTANCE_TESTS"
-            scriptContent = """echo "Acceptance tests should go here. Update this step to add your own acceptance tests.""""
+            scriptContent =
+                """echo "Acceptance tests should go here. Update this step to add your own acceptance tests.""""
         }
     }
 
@@ -1063,7 +1120,15 @@ object HelperObjects {
 
 
     fun createExportBuildsFromConfig(): MutableList<BuildType> {
-        class ExportFilesFromXDocsToBitbucketAbstract(build_id: String, source_title: String, export_path_ids: String, git_path: String, branch_name: String, nightly_build: Boolean) : BuildType({
+        class ExportFilesFromXDocsToBitbucketAbstract(
+            build_id: String,
+            source_title: String,
+            export_path_ids: String,
+            git_path: String,
+            branch_name: String,
+            nightly_build: Boolean,
+            doc_id: String
+        ) : BuildType({
 
             id = RelativeId(build_id)
             name = "Export $source_title from XDocs and add to git ($build_id)"
@@ -1075,6 +1140,7 @@ object HelperObjects {
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", export_path_ids)
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", git_path)
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_BRANCH", branch_name)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.DOC_ID", doc_id)
             }
 
             dependencies {
@@ -1111,13 +1177,23 @@ object HelperObjects {
 
                 val build = getObjectById(buildConfigs, "srcId", sourceId)
                 var nightlyBuild = false
-                if (build.has("docId")) {
-                    val buildDocId = build.getString("docId")
+                var buildDocId = ""
+                if (!build.isEmpty) {
+                    buildDocId = build.getString("docId")
                     val doc = getObjectById(docConfigs, "id", buildDocId)
                     nightlyBuild = doc.getJSONArray("environments").contains("int")
                 }
-
-                builds.add(ExportFilesFromXDocsToBitbucketAbstract(exportBuildId, sourceTitle, xdocsPathIds, gitUrl, branchName, nightlyBuild))
+                builds.add(
+                    ExportFilesFromXDocsToBitbucketAbstract(
+                        exportBuildId,
+                        sourceTitle,
+                        xdocsPathIds,
+                        gitUrl,
+                        branchName,
+                        nightlyBuild,
+                        buildDocId
+                    )
+                )
             }
         }
         return builds
@@ -1170,29 +1246,35 @@ object HelperObjects {
     private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
 
         class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId) : BuildType(
-                {
-                    name = "Build and publish Docker image with build content"
-                    id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
-                    params {
-                        text("doc-version", "", description = "Version", display = ParameterDisplay.PROMPT, allowEmpty = true)
+            {
+                name = "Build and publish Docker image with build content"
+                id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
+                params {
+                    text(
+                        "doc-version",
+                        "",
+                        description = "Version",
+                        display = ParameterDisplay.PROMPT,
+                        allowEmpty = true
+                    )
+                }
+                vcs {
+                    root(vcs_root_id)
+                }
+                steps {
+                    script {
+                        scriptContent = "./build_standalone.sh"
                     }
-                    vcs {
-                        root(vcs_root_id)
-                    }
-                    steps {
-                        script {
-                            scriptContent = "./build_standalone.sh"
-                        }
-                        script {
-                            scriptContent = """
+                    script {
+                        scriptContent = """
                                 export BRANCH_NAME=%doc-version%
                                 docker build -t gccwebhelp .
                                 docker tag gccwebhelp artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
                                 docker push artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:${'$'}{BRANCH_NAME}
                             """.trimIndent()
-                        }
                     }
                 }
+            }
         )
 
         val subProjects = mutableListOf<Project>()
@@ -1211,7 +1293,8 @@ object HelperObjects {
                 val docId = "guidewirecloudconsolerootinsurerdev"
                 val build = getObjectById(buildConfigs, "docId", docId)
                 val sourceId = build.getString("srcId")
-                val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "docker"))
+                val vcsRootId =
+                    RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "docker"))
                 val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
                 buildType(BuildAndPublishDockerImageWithContent(vcsRootId))
                 vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
@@ -1235,11 +1318,13 @@ object HelperObjects {
 
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
-        class BuildPublishToS3Index(buildType: String, product: String, platform: String, version: String, doc_id: String,
-                                    ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
-                                    publish_path: String, git_source_url: String, git_source_branch: String,
-                                    resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
-                                    workingDir: String, customOutputFolder: String) : BuildType({
+        class BuildPublishToS3Index(
+            buildType: String, product: String, platform: String, version: String, doc_id: String,
+            ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
+            publish_path: String, git_source_url: String, git_source_branch: String,
+            resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
+            workingDir: String, customOutputFolder: String
+        ) : BuildType({
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
@@ -1265,11 +1350,20 @@ object HelperObjects {
             }
 
             params {
-                password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+                password(
+                    "env.AUTH_TOKEN",
+                    "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083",
+                    display = ParameterDisplay.HIDDEN
+                )
                 text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.S3_BUCKET_NAME", "tenant-doctools-%env.DEPLOY_ENV%-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text(
+                    "env.S3_BUCKET_NAME",
+                    "tenant-doctools-%env.DEPLOY_ENV%-builds",
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1279,9 +1373,19 @@ object HelperObjects {
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("CREATE_INDEX_REDIRECT", create_index_redirect, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text(
+                    "CREATE_INDEX_REDIRECT",
+                    create_index_redirect,
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
                 text("WORKING_DIR", workingDir, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.CUSTOM_OUTPUT_FOLDER", customOutputFolder, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text(
+                    "env.CUSTOM_OUTPUT_FOLDER",
+                    customOutputFolder,
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
             }
 
             steps {
@@ -1386,7 +1490,7 @@ object HelperObjects {
                 triggers {
                     vcs {
                         triggerRules = """
-                        -:root=${vcsrootmasteronly.id}:**
+                        +:root=${vcs_root_id.id};comment=\[%env.DOC_ID%\]:**
                     """.trimIndent()
                     }
                 }
@@ -1399,7 +1503,11 @@ object HelperObjects {
             name = "Copy from staging to prod"
 
             params {
-                password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
+                password(
+                    "env.AUTH_TOKEN",
+                    "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083",
+                    display = ParameterDisplay.HIDDEN
+                )
                 text("DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("DEPLOY_ENV", "prod", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1478,8 +1586,27 @@ object HelperObjects {
             if (env == "prod") {
                 builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
             } else {
-                builds.add(BuildPublishToS3Index(buildType, product_name, platform, version, docId, filter, root, indexRedirect, env as String,
-                    publishPath, sourceGitUrl, sourceGitBranch, resourcesToCopy, vcsRootId, indexForSearch, workingDir, customOutputFolder))
+                builds.add(
+                    BuildPublishToS3Index(
+                        buildType,
+                        product_name,
+                        platform,
+                        version,
+                        docId,
+                        filter,
+                        root,
+                        indexRedirect,
+                        env as String,
+                        publishPath,
+                        sourceGitUrl,
+                        sourceGitBranch,
+                        resourcesToCopy,
+                        vcsRootId,
+                        indexForSearch,
+                        workingDir,
+                        customOutputFolder
+                    )
+                )
             }
         }
 
@@ -1546,7 +1673,8 @@ object HelperObjects {
 
             val docBuildRootMap = if (build_info.has("root")) build_info.getString("root") else ""
             val docBuildFilter = if (build_info.has("filter")) build_info.getString("filter") else ""
-            val docBuildIndexRedirect = if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
+            val docBuildIndexRedirect =
+                if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
             val docBuildDocId = build_info.getString("docId")
             val doc = getObjectById(docConfigs, "id", docBuildDocId)
             val docId = doc.getString("id")
@@ -1569,7 +1697,12 @@ object HelperObjects {
                 text("DOC_ID", docId, allowEmpty = false)
                 text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
-                text("env.DOC_INFO", "%teamcity.build.workingDir%/doc_info.json", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text(
+                    "env.DOC_INFO",
+                    "%teamcity.build.workingDir%/doc_info.json",
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
             }
 
             if (docBuildType == "dita") {
@@ -1640,60 +1773,71 @@ object HelperObjects {
             }
         })
 
-        class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) : BuildType({
-            id = RelativeId(removeSpecialCharacters(git_source_id + "cleanresults"))
-            name = "Clean validation results for $git_source_id"
+        class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) :
+            BuildType({
+                id = RelativeId(removeSpecialCharacters(git_source_id + "cleanresults"))
+                name = "Clean validation results for $git_source_id"
 
-            params {
-                text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.S3_BUCKET_NAME", "tenant-doctools-int-builds", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-            }
+                params {
+                    text(
+                        "env.ELASTICSEARCH_URLS",
+                        "https://docsearch-doctools.int.ccs.guidewire.net",
+                        display = ParameterDisplay.HIDDEN,
+                        allowEmpty = false
+                    )
+                    text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text(
+                        "env.S3_BUCKET_NAME",
+                        "tenant-doctools-int-builds",
+                        display = ParameterDisplay.HIDDEN,
+                        allowEmpty = false
+                    )
+                    text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                }
 
-            steps {
+                steps {
 
-                script {
-                    name = "Run the results cleaner"
-                    id = "RUN_RESULTS_CLEANER"
-                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                    scriptContent = """
+                    script {
+                        name = "Run the results cleaner"
+                        id = "RUN_RESULTS_CLEANER"
+                        executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                        scriptContent = """
                         #!/bin/bash
                         set -xe
         
                         results_cleaner --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --git-source-id "%env.GIT_SOURCE_ID%" --git-source-url "%env.GIT_SOURCE_URL%" --s3-bucket-name "%env.S3_BUCKET_NAME%"
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    }
                 }
-            }
 
-            vcs {
-                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
-                cleanCheckout = true
-            }
-
-            triggers {
                 vcs {
-                    triggerRules = """
+                    root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
+                    cleanCheckout = true
+                }
+
+                triggers {
+                    vcs {
+                        triggerRules = """
                         +:root=${vcs_root_id}:**
                     """.trimIndent()
 
-                    branchFilter = """
+                        branchFilter = """
                         +:<default>
                     """.trimIndent()
-                }
-            }
-
-            features {
-                dockerSupport {
-                    loginToRegistry = on {
-                        dockerRegistryId = "PROJECT_EXT_155"
                     }
                 }
-            }
-        })
+
+                features {
+                    dockerSupport {
+                        loginToRegistry = on {
+                            dockerRegistryId = "PROJECT_EXT_155"
+                        }
+                    }
+                }
+            })
 
         val sourcesToValidate = mutableListOf<Project>()
         for (i in 0 until sourceConfigs.length()) {
@@ -1715,18 +1859,18 @@ object HelperObjects {
 
                 if (!sourceDocBuilds.isNullOrEmpty()) {
                     sourcesToValidate.add(
-                            Project {
-                                id = RelativeId(removeSpecialCharacters(sourceId + sourceGitBranch))
-                                name = "$sourceTitle ($sourceId)"
+                        Project {
+                            id = RelativeId(removeSpecialCharacters(sourceId + sourceGitBranch))
+                            name = "$sourceTitle ($sourceId)"
 
-                                vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
-                                buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
+                            vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
+                            buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
-                                for (docBuild in sourceDocBuilds) {
-                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
-                                }
-
+                            for (docBuild in sourceDocBuilds) {
+                                buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
                             }
+
+                        }
 
                     )
                 }
@@ -1742,11 +1886,47 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
     maxRunningBuilds = 1
 
     params {
-        text("env.EXPORT_PATH_IDS", "", description = "A list of space-separated path IDs from XDocs", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_URL", "", description = "The URL of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_BRANCH", "", description = "The branch of the Bitbucket repository where the files exported from XDocs are added", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.XDOCS_EXPORT_DIR", "%system.teamcity.build.tempDir%/xdocs_export_dir", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text(
+            "env.EXPORT_PATH_IDS",
+            "",
+            description = "A list of space-separated path IDs from XDocs",
+            display = ParameterDisplay.PROMPT,
+            allowEmpty = true
+        )
+        text(
+            "env.GIT_URL",
+            "",
+            description = "The URL of the Bitbucket repository where the files exported from XDocs are added",
+            display = ParameterDisplay.PROMPT,
+            allowEmpty = true
+        )
+        text(
+            "env.GIT_BRANCH",
+            "",
+            description = "The branch of the Bitbucket repository where the files exported from XDocs are added",
+            display = ParameterDisplay.PROMPT,
+            allowEmpty = true
+        )
+        text(
+            "env.SOURCES_ROOT",
+            "src_root",
+            label = "Git clone directory",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = false
+        )
+        text(
+            "env.XDOCS_EXPORT_DIR",
+            "%system.teamcity.build.tempDir%/xdocs_export_dir",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = false
+        )
+        text(
+            "env.DOC_ID",
+            "",
+            description = "The ID of the document associated with the source",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = true
+        )
     }
 
     vcs {
@@ -1780,7 +1960,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 git add -A
                 if git status | grep "Changes to be committed"
                 then
-                  git commit -m "[TeamCity] Adds files exported from XDocs"
+                  git commit -m "[TeamCity][%env.DOC_ID%] Add files exported from XDocs"
                   git pull
                   git push
                 else
@@ -1812,9 +1992,21 @@ object CreateReleaseTag : BuildType({
     }
 
     params {
-        text("env.SOURCES_ROOT", "src_root", label = "Git clone directory", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.TAG_VERSION", "", description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0", display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""", validationMessage = "Invalid SemVer format")
+        text(
+            "env.SOURCES_ROOT",
+            "src_root",
+            label = "Git clone directory",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = false
+        )
+        text(
+            "env.TAG_VERSION",
+            "",
+            description = "Version of InsuranceSuite for which you want to create a documentation tag. Example: 10.1.0",
+            display = ParameterDisplay.PROMPT,
+            regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
+            validationMessage = "Invalid SemVer format"
+        )
         select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
     }
 
@@ -1864,11 +2056,36 @@ object RunContentValidations : Template({
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
         text("env.DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.DITA_OT_WORKING_DIR", "%DITA_OT_WORKING_DIR%", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.int.ccs.guidewire.net", display = ParameterDisplay.HIDDEN, allowEmpty = true)
-        text("env.S3_BUCKET_PREVIEW_PATH", "s3://tenant-doctools-int-builds/preview", display = ParameterDisplay.HIDDEN, allowEmpty = true)
-        text("env.NORMALIZED_DITA_DIR", "%env.DITA_OT_WORKING_DIR%/normalized_dita", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.DITA_OT_LOGS_DIR", "%env.DITA_OT_WORKING_DIR%/dita_ot_logs", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-        text("env.SCHEMATRON_REPORTS_DIR", "%env.DITA_OT_WORKING_DIR%/schematron_reports", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+        text(
+            "env.ELASTICSEARCH_URLS",
+            "https://docsearch-doctools.int.ccs.guidewire.net",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = true
+        )
+        text(
+            "env.S3_BUCKET_PREVIEW_PATH",
+            "s3://tenant-doctools-int-builds/preview",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = true
+        )
+        text(
+            "env.NORMALIZED_DITA_DIR",
+            "%env.DITA_OT_WORKING_DIR%/normalized_dita",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = false
+        )
+        text(
+            "env.DITA_OT_LOGS_DIR",
+            "%env.DITA_OT_WORKING_DIR%/dita_ot_logs",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = false
+        )
+        text(
+            "env.SCHEMATRON_REPORTS_DIR",
+            "%env.DITA_OT_WORKING_DIR%/schematron_reports",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = false
+        )
     }
 
     steps {
@@ -2187,14 +2404,42 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
     """.trimIndent()
 
     params {
-        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", label = "Deployment environment", description = "The environment on which you want reindex documents", allowEmpty = false)
-        text("env.DOC_ID", "%DOC_ID%", label = "Doc ID", description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.", allowEmpty = true)
-        text("env.CONFIG_FILE_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json", allowEmpty = false)
-        text("env.CONFIG_FILE_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json", allowEmpty = false)
+        text(
+            "env.DEPLOY_ENV",
+            "%DEPLOY_ENV%",
+            label = "Deployment environment",
+            description = "The environment on which you want reindex documents",
+            allowEmpty = false
+        )
+        text(
+            "env.DOC_ID",
+            "%DOC_ID%",
+            label = "Doc ID",
+            description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+            allowEmpty = true
+        )
+        text(
+            "env.CONFIG_FILE_URL",
+            "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
+            allowEmpty = false
+        )
+        text(
+            "env.CONFIG_FILE_URL_PROD",
+            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
+            allowEmpty = false
+        )
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS", "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.ELASTICSEARCH_URLS_PROD", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text(
+            "env.ELASTICSEARCH_URLS",
+            "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS_PROD",
+            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+            allowEmpty = false
+        )
         text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
         text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
