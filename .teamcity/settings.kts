@@ -14,7 +14,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
-version = "2019.2"
+version = "2020.1"
 
 project {
 
