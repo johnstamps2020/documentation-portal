@@ -1254,7 +1254,6 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.2.1"],
-        "release": ["Banff"],
         "subject": ["Best practices"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -1270,7 +1269,6 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.2.1"],
-        "release": ["Banff"],
         "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -1286,7 +1284,6 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.3.0"],
-        "release": ["Banff"],
         "subject": ["Best practices"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -1302,7 +1299,6 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.3.0"],
-        "release": ["Banff"],
         "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging", "prod"],
