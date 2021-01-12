@@ -1323,7 +1323,7 @@ object HelperObjects {
             ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
             publish_path: String, git_source_url: String, git_source_branch: String,
             resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
-            workingDir: String, customOutputFolder: String
+            workingDir: String, customOutputFolder: String, vcsRootIsExported: Boolean
         ) : BuildType({
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
@@ -1487,11 +1487,21 @@ object HelperObjects {
             }
 
             if (build_env == "int") {
-                triggers {
-                    vcs {
-                        triggerRules = """
+                if (vcsRootIsExported) {
+                    triggers {
+                        vcs {
+                            triggerRules = """
                         +:root=${vcs_root_id.id};comment=\[%env.DOC_ID%\]:**
                     """.trimIndent()
+                        }
+                    }
+                } else {
+                    triggers {
+                        vcs {
+                            triggerRules = """
+                        +:root=${vcs_root_id.id}:**
+                            """.trimIndent()
+                        }
                     }
                 }
             }
@@ -1562,6 +1572,8 @@ object HelperObjects {
 
         val sourceId = build.getString("srcId")
         val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
+        val source = getObjectById(sourceConfigs, "id", sourceId)
+        val sourceIsExportedFromXdocs = source.has("xdocsPathIds")
         val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
 
         val resourcesToCopy = mutableListOf<JSONObject>()
@@ -1604,7 +1616,8 @@ object HelperObjects {
                         vcsRootId,
                         indexForSearch,
                         workingDir,
-                        customOutputFolder
+                        customOutputFolder,
+                        sourceIsExportedFromXdocs
                     )
                 )
             }
