@@ -1119,13 +1119,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-vod-c-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "dxvodconpremstaging"
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "exportis908",
