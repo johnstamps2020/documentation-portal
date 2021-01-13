@@ -772,6 +772,19 @@
       ]
     },
     {
+      "id": "dxgwsf320",
+      "title": "Digital",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "3.2.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DX_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
+      ]
+    },
+    {
       "id": "dxstaging",
       "title": "Digital",
       "sourceType": "git",
