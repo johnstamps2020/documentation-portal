@@ -5522,7 +5522,7 @@
       "url": "cloud/pc/202011/apiref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
