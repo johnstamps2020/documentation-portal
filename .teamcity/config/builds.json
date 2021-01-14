@@ -2982,6 +2982,12 @@
       "docId": "iscc202011apiref",
       "srcId": "srcapiref202011",
       "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "ispc202011apiref",
+      "srcId": "srcapiref202011",
+      "workingDir": "website"
     }
   ]
 }
