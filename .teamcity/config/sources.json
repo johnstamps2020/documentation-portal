@@ -773,7 +773,7 @@
     },
     {
       "id": "dxgwsf320",
-      "title": "Digital GW for DF 3.2.0",
+      "title": "Digital GW for SF 3.2.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.2.0",
