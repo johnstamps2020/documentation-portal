@@ -5517,6 +5517,22 @@
       "public": false
     },
     {
+      "id": "ispc202011apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202011/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "ispc202011gosu",
       "title": "Gosu Reference",
       "url": "cloud/pc/202011/gosu",
