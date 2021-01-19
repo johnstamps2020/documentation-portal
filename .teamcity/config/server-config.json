@@ -609,7 +609,7 @@
       "metadata": {
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["earlyaccess"],
         "release": ["Banff", "Cortina"]
       },
       "environments": ["int"],
