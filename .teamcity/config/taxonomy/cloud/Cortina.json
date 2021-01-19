@@ -403,18 +403,8 @@
       "label": "Guidewire Feature Preview",
       "items": [
         {
-          "id": "earlyAccess",
-          "label": "Early Access",
-          "items": [
-            {
-              "id": "gwFeaturePreview",
-              "label": "Guidewire Feature Preview"
-            }
-          ]
-        },
-        {
-          "id": "internalDraft",
-          "label": "Internal Draft",
+          "id": "gwFeaturePreview",
+          "label": "Guidewire Feature Preview",
           "items": [
             {
               "id": "gwFeaturePreview",

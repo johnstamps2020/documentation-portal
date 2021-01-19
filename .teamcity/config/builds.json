@@ -404,16 +404,16 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaii",
+      "srcId": "gwhawaiiea",
       "docId": "gwfeaturepreviewearlyaccess"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaii",
+      "srcId": "gwhawaiidraft",
       "docId": "gwfeaturepreviewdraft"
     },
     {
