@@ -630,6 +630,13 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-cda.ditamap",
+      "srcId": "clouddataplatformreleasesrc",
+      "docId": "clouddataplatformlatestdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "A_Map01.ditamap",
       "indexRedirect": true,
       "srcId": "comparelatestsrc",
@@ -640,7 +647,14 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "supermapExplore.ditamap",
       "srcId": "explorebasrc",
-      "docId": "explorecloudstaging"
+      "docId": "explorecloudrelease"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "supermapExplore.ditamap",
+      "srcId": "explorebasrc",
+      "docId": "exploreclouddraft"
     },
     {
       "buildType": "dita",

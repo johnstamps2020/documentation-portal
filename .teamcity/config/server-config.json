@@ -1176,6 +1176,36 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
       },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouddataplatformlatestdraft",
+      "title": "Cloud Data Access",
+      "url": "cloud/cdp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouddataplatformlatestdraft",
+      "title": "Cloud Data Access",
+      "url": "cloud/cdp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -1197,7 +1227,7 @@
       "public": false
     },
     {
-      "id": "explorecloudstaging",
+      "id": "explorecloudrelease",
       "title": "Explore",
       "url": "cloud/explore/latest",
       "metadata": {
@@ -1206,7 +1236,22 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "exploreclouddraft",
+      "title": "Explore",
+      "url": "cloud/explore/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
