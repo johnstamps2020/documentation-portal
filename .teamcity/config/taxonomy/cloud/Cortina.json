@@ -404,13 +404,7 @@
       "items": [
         {
           "id": "gwFeaturePreview",
-          "label": "Guidewire Feature Preview",
-          "items": [
-            {
-              "id": "gwFeaturePreview",
-              "label": "Guidewire Feature Preview"
-            }
-          ]
+          "label": "Guidewire Feature Preview"
         }
       ]
     }

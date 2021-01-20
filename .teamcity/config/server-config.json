@@ -610,7 +610,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Cortina"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -625,7 +625,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Cortina"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
