@@ -1183,7 +1183,7 @@
     },
     {
       "id": "clouddataplatformlatestdraft",
-      "title": "Cloud Data Access",
+      "title": "Cloud Data Access Draft",
       "url": "cloud/cdp/latest",
       "metadata": {
         "platform": ["Cloud"],
@@ -1228,7 +1228,7 @@
     },
     {
       "id": "exploreclouddraft",
-      "title": "Explore",
+      "title": "Explore Draft",
       "url": "cloud/explore/latest",
       "metadata": {
         "platform": ["Cloud"],
