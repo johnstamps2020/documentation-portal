@@ -981,13 +981,34 @@
       ]
     },
     {
-      "id": "clouddataplatformreleasesrc",
-      "title": "Cloud Data Platform Release",
+      "id": "clouddataaccessdraftsrc",
+      "title": "Cloud Data Access Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "clouddataaccessaspensrc",
+      "title": "Cloud Data Access Aspen",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/cloud-data-access/release/aspen/_supermap-cda.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "clouddataaccessbanffsrc",
+      "title": "Cloud Data Access Banff",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/cloud-data-access/active/_supermap-cda.ditamap",
+        "/Content/doc/data-analytics/cloud/cloud-data-access/release/banff-Nov2020/_supermap-cda.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
