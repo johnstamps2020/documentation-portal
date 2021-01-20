@@ -1197,21 +1197,6 @@
       "public": false
     },
     {
-      "id": "clouddataplatformlatestdraft",
-      "title": "Cloud Data Access",
-      "url": "cloud/cdp/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "comparelatest",
       "title": "Compare+",
       "url": "cloud/compare/latest",
