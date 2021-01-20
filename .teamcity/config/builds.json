@@ -624,15 +624,22 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "_supermap-cda.ditamap",
-      "srcId": "clouddataplatformreleasesrc",
-      "docId": "clouddataplatformlatest"
+      "srcId": "clouddataaccessaspensrc",
+      "docId": "clouddataaccessaspen"
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "_supermap-cda.ditamap",
-      "srcId": "clouddataplatformreleasesrc",
-      "docId": "clouddataplatformlatestdraft"
+      "srcId": "clouddataaccessbanffsrc",
+      "docId": "clouddataaccessbanff"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_supermap-cda.ditamap",
+      "srcId": "clouddataaccessdraftsrc",
+      "docId": "clouddataaccesslatestdraft"
     },
     {
       "buildType": "dita",

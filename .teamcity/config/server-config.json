@@ -1167,14 +1167,14 @@
       "public": false
     },
     {
-      "id": "clouddataplatformlatest",
-      "title": "Cloud Data Access",
-      "url": "cloud/cdp/latest",
+      "id": "clouddataaccessaspen",
+      "title": "Cloud Data Access Aspen",
+      "url": "cloud/cda/aspen",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Data Access"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"]
+        "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -1182,14 +1182,29 @@
       "public": false
     },
     {
-      "id": "clouddataplatformlatestdraft",
-      "title": "Cloud Data Access Draft",
-      "url": "cloud/cdp/latest",
+      "id": "clouddataaccessbanff",
+      "title": "Cloud Data Access Banff",
+      "url": "cloud/cda/banff",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Data Access"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouddataaccesslatestdraft",
+      "title": "Cloud Data Access Draft",
+      "url": "cloud/cda/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Cortina"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
