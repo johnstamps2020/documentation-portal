@@ -1173,7 +1173,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Data Access"],
-        "version": ["latest"],
+        "version": ["Aspen"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -1188,7 +1188,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Data Access"],
-        "version": ["latest"],
+        "version": ["Banff"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
