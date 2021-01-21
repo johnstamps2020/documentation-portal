@@ -2277,11 +2277,6 @@ object BuildSphinx : Template({
                 #!/bin/bash
                 set -xe
                 
-                if [[ -f "ci/npmLogin.sh" ]]; then
-                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
-                    sh ci/npmLogin.sh
-                fi
-                
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export TARGET_URL="%env.TARGET_URL_PROD%"
                 fi
