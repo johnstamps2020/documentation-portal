@@ -2285,6 +2285,7 @@ object BuildSphinx : Template({
                 
                 pip install poetry
                 apt-get update && apt-get install -y build-essential
+                apt-get install -y python3-sphinx
                 cd %env.SOURCES_ROOT%
                 poetry install
                 poetry run python get_specs.py
