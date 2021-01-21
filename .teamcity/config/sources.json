@@ -1881,7 +1881,7 @@
       "id": "srcapiref202011",
       "title": "Cloud API Reference",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/doctools/api-directory.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-sphinx.git",
       "branch": "master"
     }
   ]
