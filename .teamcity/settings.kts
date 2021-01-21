@@ -26,6 +26,7 @@ project {
     template(BuildDockerImage)
     template(BuildOutputFromDita)
     template(BuildYarn)
+    template(BuildSphinx)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
 
@@ -1328,6 +1329,7 @@ object HelperObjects {
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
+                "sphinx" -> buildTemplate = BuildSphinx
             }
 
             if (index_for_search) {
@@ -1681,6 +1683,7 @@ object HelperObjects {
 
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
+                "sphinx" -> templates(BuildSphinx)
                 "dita" -> templates(RunContentValidations)
             }
 
@@ -2245,6 +2248,61 @@ object RunContentValidations : Template({
         }
     }
 
+})
+
+object BuildSphinx : Template({
+    name = "Build a Sphinx project"
+
+    params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
+        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
+        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+        text("env.WORKING_DIR", "%WORKING_DIR%")
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+    }
+
+    steps {
+        script {
+            name = "Build the Sphinx project"
+            id = "BUILD_OUTPUT"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ -f "ci/npmLogin.sh" ]]; then
+                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
+                    sh ci/npmLogin.sh
+                fi
+                
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export TARGET_URL="%env.TARGET_URL_PROD%"
+                fi
+                
+                export BASE_URL=/%env.PUBLISH_PATH%/
+                
+                pip install poetry
+                poetry install
+                poetry run python get_specs.py
+                make html
+                cp -r ./_build/html ./build
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:38-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+        }
+    }
+
+    vcs {
+        cleanCheckout = true
+    }
 })
 
 object BuildYarn : Template({
