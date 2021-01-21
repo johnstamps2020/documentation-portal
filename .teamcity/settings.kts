@@ -2284,6 +2284,7 @@ object BuildSphinx : Template({
                 export BASE_URL=/%env.PUBLISH_PATH%/
                 
                 pip install poetry
+                cd %env.SOURCES_ROOT%
                 poetry install
                 poetry run python get_specs.py
                 make html
