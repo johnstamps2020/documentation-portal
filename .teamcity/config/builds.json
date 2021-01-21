@@ -2999,13 +2999,13 @@
       "workingDir": "storybook"
     },
     {
-      "buildType": "yarn",
+      "buildType": "sphinx",
       "docId": "iscc202011apiref",
       "srcId": "srcapiref202011",
       "workingDir": "website"
     },
     {
-      "buildType": "yarn",
+      "buildType": "sphinx",
       "docId": "ispc202011apiref",
       "srcId": "srcapiref202011",
       "workingDir": "website"
