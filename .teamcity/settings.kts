@@ -2292,7 +2292,7 @@ object BuildSphinx : Template({
                 make html
                 cp -r ./_build/html ./build
             """.trimIndent()
-            dockerImage = "python:3.8"
+            dockerImage = "python:3.8.3"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
