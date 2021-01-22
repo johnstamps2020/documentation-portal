@@ -132,7 +132,7 @@ const searchController = async (req, res, next) => {
       req.query,
       startIndex,
       resultsPerPage,
-      req.isAuthenticated()
+      req.isAuthenticated() || process.env.ENABLE_AUTH === 'no'
     );
 
     const filters = results.filters;
