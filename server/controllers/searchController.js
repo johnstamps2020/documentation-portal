@@ -132,7 +132,7 @@ const searchController = async (req, res, next) => {
       req.query,
       startIndex,
       resultsPerPage,
-      req.isAuthenticated()
+      req.isAuthenticated() || process.env.ENABLE_AUTH === 'no'
     );
 
     const filters = results.filters;
@@ -152,7 +152,7 @@ const searchController = async (req, res, next) => {
         if (body) {
           return body.substr(0, 300) + '...';
         }
-        return 'DOCUMENT HAS NO CONTENT';
+        return '';
       };
 
       return {

@@ -35,6 +35,9 @@ class ElasticClient(Elasticsearch):
                 "public": {
                     "type": "boolean"
                 },
+                "title": {
+                    "type": "keyword"
+                }
             }
         }
     }
