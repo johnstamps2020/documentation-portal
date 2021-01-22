@@ -2292,7 +2292,7 @@ object BuildSphinx : Template({
                 make html
                 cp -r ./_build/html ./build
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
+            dockerImage = "sphinxdoc/sphinx"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
