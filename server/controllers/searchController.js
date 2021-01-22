@@ -152,7 +152,7 @@ const searchController = async (req, res, next) => {
         if (body) {
           return body.substr(0, 300) + '...';
         }
-        return 'DOCUMENT HAS NO CONTENT';
+        return '';
       };
 
       return {
