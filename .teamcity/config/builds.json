@@ -3001,14 +3001,12 @@
     {
       "buildType": "sphinx",
       "docId": "iscc202011apiref",
-      "srcId": "srcapiref202011",
-      "workingDir": "website"
+      "srcId": "srcapiref202011"
     },
     {
       "buildType": "sphinx",
       "docId": "ispc202011apiref",
-      "srcId": "srcapiref202011",
-      "workingDir": "website"
+      "srcId": "srcapiref202011"
     }
   ]
 }

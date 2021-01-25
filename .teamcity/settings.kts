@@ -1397,21 +1397,21 @@ object HelperObjects {
                     scriptContent = """
                     #!/bin/bash
                     set -xe
-                    export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
+                    export ROOT_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
                     export WORKING_SUBDIR=%WORKING_DIR%
                     
                     if [[ -z ${'$'}{WORKING_SUBDIR} ]]; then
                         echo "working subdir not set"
                     else
-                        export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/${'$'}WORKING_SUBDIR"
-                        echo "Working dir set to ${'$'}WORKING_DIR"
+                        export ROOT_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%/${'$'}WORKING_SUBDIR"
+                        echo "Working dir set to ${'$'}ROOT_DIR"
                     fi
                     
-                    if [[ -d "${'$'}WORKING_DIR/out" ]]; then
+                    if [[ -d "${'$'}ROOT_DIR/out" ]]; then
                         export OUTPUT_PATH="out"
-                    elif [[ -d "${'$'}WORKING_DIR/dist" ]]; then
+                    elif [[ -d "${'$'}ROOT_DIR/dist" ]]; then
                         export OUTPUT_PATH="dist"
-                    elif [[ -d "${'$'}WORKING_DIR/build" ]]; then
+                    elif [[ -d "${'$'}ROOT_DIR/build" ]]; then
                         export OUTPUT_PATH="build"
                     fi
                     
@@ -1419,12 +1419,12 @@ object HelperObjects {
 
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
                         echo "Creating a ZIP package"
-                        cd "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH" || exit
-                        zip -r "${'$'}WORKING_DIR/docs.zip" * &&
-                            mv "${'$'}WORKING_DIR/docs.zip" "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH/"
+                        cd "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH" || exit
+                        zip -r "${'$'}ROOT_DIR/docs.zip" * &&
+                            mv "${'$'}ROOT_DIR/docs.zip" "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH/"
                     fi
                     
-                    aws s3 sync ${'$'}WORKING_DIR/${'$'}OUTPUT_PATH s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
+                    aws s3 sync ${'$'}ROOT_DIR/${'$'}OUTPUT_PATH s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
                 }
 
