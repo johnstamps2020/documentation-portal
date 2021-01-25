@@ -69,6 +69,10 @@
           "label": "CustomerEngage Quote and Buy"
         },
         {
+          "id": "jutroDesignSystem",
+          "label": "Jutro Design System"
+        },
+        {
           "id": "producerEngage",
           "label": "ProducerEngage"
         },

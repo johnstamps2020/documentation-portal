@@ -1307,7 +1307,7 @@
       "url": "jutro/documentation/4.1.1",
       "metadata": {
         "product": ["Jutro Design System"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["4.1.1"],
         "release": ["Banff"],
         "subject": ["Best practices"]
@@ -1323,7 +1323,7 @@
       "url": "jutro/storybook/4.1.1",
       "metadata": {
         "product": ["Jutro Design System"],
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "version": ["4.1.1"],
         "release": ["Banff"],
         "subject": ["Development"]
