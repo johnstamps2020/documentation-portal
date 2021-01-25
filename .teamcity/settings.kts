@@ -2287,12 +2287,13 @@ object BuildSphinx : Template({
                 apt-get update && apt-get install -y build-essential
                 apt-get install -y python3-sphinx
                 cd %env.SOURCES_ROOT%
+                poetry config virtualenvs.create false
                 poetry install
                 poetry run python get_specs.py
                 make html
                 cp -r ./_build/html ./build
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
