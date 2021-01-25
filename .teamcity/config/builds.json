@@ -1164,7 +1164,7 @@
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BOP_SBT_ReleaseNotes.ditamap",
       "srcId": "lobbopsbtrndraftsrc",
-      "docId": "lobbopsbtdraft"
+      "docId": "lobbopsbtrndraft"
     },
     {
       "buildType": "dita",
@@ -1185,7 +1185,7 @@
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BOP_SBT_ReleaseNotes.ditamap",
       "srcId": "lobbopsbtrnbanffsrc",
-      "docId": "lobbopsbtbanff"
+      "docId": "lobbopsbtrnbanff"
     },
     {
       "buildType": "dita",
