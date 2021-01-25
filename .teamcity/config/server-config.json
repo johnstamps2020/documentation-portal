@@ -1856,14 +1856,47 @@
       "public": false
     },
     {
-      "id": "lobbopcloudstaging",
-      "title": "Businessowners Standards Based Template",
-      "url": "cloud/lob/bop/202005",
+      "id": "lobbopguidebanff",
+      "title": "Businessowners Standards Based Template Guide",
+      "url": "cloud/lob/bop/202011/guide",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Businessowners Standards Based Template"],
-        "version": ["2020.05"],
-        "release": ["Aspen"]
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobbopsbtrnbanff",
+      "title": "Businessowners Standards Based Template Countrywide Release Notes",
+      "url": "cloud/lob/bop/202011/cwrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobbopstaternbanff",
+      "title": "Businessowners Standards Based Template State Release Notes",
+      "url": "cloud/lob/bop/202011/statern",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
       },
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
@@ -4859,16 +4892,49 @@
       "public": false
     },
     {
-      "id": "lobbopclouddraft",
-      "title": "Businessowners Standards Based Template",
-      "url": "cloud/lob/bop/latest",
+      "id": "lobbopguidedraft",
+      "title": "Businessowners Standards Based Template Guide",
+      "url": "cloud/lob/bop/latest/guide",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Businessowners Standards Based Template"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Banff", "Cortina"],
+        "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int"],
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobbopsbtrndraft",
+      "title": "Businessowners Standards Based Template Countrywide Release Notes",
+      "url": "cloud/lob/bop/latest/cwrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobbopstaterndraft",
+      "title": "Businessowners Standards Based Template State Release Notes",
+      "url": "cloud/lob/bop/latest/statern",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

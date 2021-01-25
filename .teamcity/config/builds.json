@@ -855,13 +855,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "LOB_STANDARDS_filterSet.ditaval",
-      "root": "_supermap-lob-bop-10x.ditamap",
-      "srcId": "lobbop202005",
-      "docId": "lobbopcloudstaging"
-    },
-    {
-      "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1040",
@@ -1161,10 +1154,45 @@
     },
     {
       "buildType": "dita",
-      "filter": "LOB_STANDARDS_filterSet.ditaval",
-      "root": "_supermap-lob-bop-10x.ditamap",
-      "srcId": "lobbopdraft",
-      "docId": "lobbopclouddraft"
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-bop.ditamap",
+      "srcId": "lobbopguidedraftsrc",
+      "docId": "lobbopguidedraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "BOP_SBT_ReleaseNotes.ditamap",
+      "srcId": "lobbopsbtrndraftsrc",
+      "docId": "lobbopsbtrndraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "BOP160-ReleaseNotes.ditamap",
+      "srcId": "lobbopstaterndraftsrc",
+      "docId": "lobbopstaterndraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-bop.ditamap",
+      "srcId": "lobbopguidebanffsrc",
+      "docId": "lobbopguidebanff"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "BOP_SBT_ReleaseNotes.ditamap",
+      "srcId": "lobbopsbtrnbanffsrc",
+      "docId": "lobbopsbtrnbanff"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "BOP160-ReleaseNotes.ditamap",
+      "srcId": "lobbopstaternbanffsrc",
+      "docId": "lobbopstaternbanff"
     },
     {
       "buildType": "dita",
