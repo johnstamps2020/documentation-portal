@@ -661,7 +661,7 @@ object TestDocCrawler : BuildType({
                 cd apps/doc_crawler
                 ./test_doc_crawler.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -761,7 +761,7 @@ object TestConfigDeployer : BuildType({
                 cd apps/config_deployer
                 ./test_config_deployer.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
@@ -873,7 +873,7 @@ object TestConfig : BuildType({
                 cd apps/config_tester
                 ./test_config.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
