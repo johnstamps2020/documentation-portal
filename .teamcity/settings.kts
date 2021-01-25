@@ -1099,6 +1099,17 @@ object HelperObjects {
         return JSONObject()
     }
 
+    private fun getObjectsById(objectList: JSONArray, idName: String, idValue: String): JSONArray {
+        val matches = JSONArray();
+        for (i in 0 until objectList.length()) {
+            val obj = objectList.getJSONObject(i)
+            if (obj.getString(idName) == idValue) {
+                matches.put(obj)
+            }
+        }
+        return matches
+    }
+
     private fun removeSpecialCharacters(stringToClean: String): String {
         val re = Regex("[^A-Za-z0-9]")
         return re.replace(stringToClean, "")
@@ -1128,7 +1139,7 @@ object HelperObjects {
             git_path: String,
             branch_name: String,
             nightly_build: Boolean,
-            doc_id: String
+            source_id: String
         ) : BuildType({
 
             id = RelativeId(build_id)
@@ -1141,7 +1152,7 @@ object HelperObjects {
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_PATH_IDS", export_path_ids)
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", git_path)
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_BRANCH", branch_name)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.DOC_ID", doc_id)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.SRC_ID", source_id)
             }
 
             dependencies {
@@ -1175,14 +1186,19 @@ object HelperObjects {
                 val branchName = if (source.has("branch")) source.getString("branch") else "master"
                 val exportBuildId = source.getString("id") + "_export"
                 val xdocsPathIds = source.getJSONArray("xdocsPathIds").joinToString(" ")
-
-                val build = getObjectById(buildConfigs, "srcId", sourceId)
+                val matchBuilds = getObjectsById(buildConfigs, "srcId", sourceId)
                 var nightlyBuild = false
                 var buildDocId = ""
-                if (!build.isEmpty) {
-                    buildDocId = build.getString("docId")
-                    val doc = getObjectById(docConfigs, "id", buildDocId)
-                    nightlyBuild = doc.getJSONArray("environments").contains("int")
+
+                if (matchBuilds.length() > 0) {
+                    for (j in 0 until matchBuilds.length()) {
+                        val build = matchBuilds.getJSONObject(j)
+                        buildDocId = build.getString("docId")
+                        val doc = getObjectById(docConfigs, "id", buildDocId)
+                        if (doc.getJSONArray("environments").contains("int")) {
+                            nightlyBuild = true
+                        }
+                    }
                 }
                 builds.add(
                     ExportFilesFromXDocsToBitbucketAbstract(
@@ -1192,7 +1208,7 @@ object HelperObjects {
                         gitUrl,
                         branchName,
                         nightlyBuild,
-                        buildDocId
+                        sourceId
                     )
                 )
             }
@@ -1320,7 +1336,7 @@ object HelperObjects {
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
         class BuildPublishToS3Index(
-            buildType: String, product: String, platform: String, version: String, doc_id: String,
+            buildType: String, product: String, platform: String, version: String, doc_id: String, source_id: String,
             ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
             publish_path: String, git_source_url: String, git_source_branch: String,
             resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
@@ -1358,6 +1374,7 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN
                 )
                 text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.SRC_ID", source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text(
@@ -1493,7 +1510,7 @@ object HelperObjects {
                     triggers {
                         vcs {
                             triggerRules = """
-                        +:root=${vcs_root_id.id};comment=\[%env.DOC_ID%\]:**
+                        +:root=${vcs_root_id.id};comment=\[%env.SRC_ID%\]:**
                     """.trimIndent()
                         }
                     }
@@ -1607,6 +1624,7 @@ object HelperObjects {
                         platform,
                         version,
                         docId,
+                        sourceId,
                         filter,
                         root,
                         indexRedirect,
@@ -1937,11 +1955,11 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             allowEmpty = false
         )
         text(
-            "env.DOC_ID",
+            "env.SRC_ID",
             "",
-            description = "The ID of the document associated with the source",
+            description = "The ID of the source",
             display = ParameterDisplay.HIDDEN,
-            allowEmpty = true
+            allowEmpty = false
         )
     }
 
@@ -1976,7 +1994,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 git add -A
                 if git status | grep "Changes to be committed"
                 then
-                  git commit -m "[TeamCity][%env.DOC_ID%] Add files exported from XDocs"
+                  git commit -m "[TeamCity][%env.SRC_ID%] Add files exported from XDocs"
                   git pull
                   git push
                 else
