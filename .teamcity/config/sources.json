@@ -1791,7 +1791,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git"
     },
     {
-      "id": "testingframeworksapisrc",
+      "id": "testingframeworksapidraftsrc",
       "title": "Testing Frameworks API Testing Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
@@ -1801,7 +1801,7 @@
       ]
     },
     {
-      "id": "testingframeworksuisrc",
+      "id": "testingframeworksuidraftsrc",
       "title": "Testing Frameworks UI Testing Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
@@ -1811,10 +1811,26 @@
       ]
     },
     {
-      "id": "testingframeworksextrassrc",
-      "title": "Testing Frameworks Extras",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks-extras.git"
+      "id": "testingframeworksapibanffsrc",
+      "title": "Testing Frameworks API Testing Banff",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/2020.11/GT-API.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "testingframeworksuibanffsrc",
+      "title": "Testing Frameworks UI Testing Banff",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/2020.11/GT-UI.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
     },
     {
       "id": "gwhawaiiea",

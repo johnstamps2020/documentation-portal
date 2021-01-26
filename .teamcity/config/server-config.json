@@ -590,7 +590,7 @@
     {
       "id": "testingframeworksapidraft",
       "title": "Testing Frameworks API Draft",
-      "url": "cloud/testingframeworks/latest",
+      "url": "cloud/testingframeworks/latest/api",
       "metadata": {
         "product": ["Testing Frameworks"],
         "platform": ["Cloud"],
@@ -606,7 +606,7 @@
     {
       "id": "testingframeworksuidraft",
       "title": "Testing Frameworks UI Draft",
-      "url": "cloud/testingframeworks/latest",
+      "url": "cloud/testingframeworks/latest/ui",
       "metadata": {
         "product": ["Testing Frameworks"],
         "platform": ["Cloud"],
@@ -615,6 +615,38 @@
         "subject": ["Development"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksapibanff",
+      "title": "Testing Frameworks API Banff",
+      "url": "cloud/testingframeworks/202011/api",
+      "metadata": {
+        "product": ["Testing Frameworks"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksuibanff",
+      "title": "Testing Frameworks UI Banff",
+      "url": "cloud/testingframeworks/202011/ui",
+      "metadata": {
+        "product": ["Testing Frameworks"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
