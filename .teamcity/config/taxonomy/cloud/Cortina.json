@@ -401,8 +401,14 @@
       "label": "Testing Frameworks",
       "items": [
         {
-          "id": "testingFrameworks",
-          "label": "Testing Frameworks"
+          "id": "testingFwCategory",
+          "label": "Testing Frameworks",
+          "items": [
+            {
+              "id": "testingFwProduct",
+              "label": "Testing Frameworks"
+            }
+          ]
         }
       ]
     },
