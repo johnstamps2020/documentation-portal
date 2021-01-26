@@ -588,14 +588,31 @@
       "public": false
     },
     {
-      "id": "testingframeworksdraft",
-      "title": "Testing Frameworks",
+      "id": "testingframeworksapidraft",
+      "title": "Testing Frameworks API Draft",
       "url": "cloud/testingframeworks/latest",
       "metadata": {
         "product": ["Testing Frameworks"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksuidraft",
+      "title": "Testing Frameworks UI Draft",
+      "url": "cloud/testingframeworks/latest",
+      "metadata": {
+        "product": ["Testing Frameworks"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
