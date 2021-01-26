@@ -1791,12 +1791,22 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git"
     },
     {
-      "id": "testingframeworkssrc",
-      "title": "Testing Frameworks Draft",
+      "id": "testingframeworksapisrc",
+      "title": "Testing Frameworks API Testing Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/TestingFrameworks_supermap.ditamap",
+        "/Content/doc/testing_frameworks/2020.11/GT-API.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "testingframeworksuisrc",
+      "title": "Testing Frameworks UI Testing Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/2020.11/GT-UI.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
       ]
     },
