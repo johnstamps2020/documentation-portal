@@ -961,7 +961,7 @@
       "id": "lobbopguidedraftsrc",
       "title": "LOB BOP Guide Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/lob-bop.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
@@ -973,7 +973,7 @@
       "id": "lobbopsbtrndraftsrc",
       "title": "LOB BOP Countrywide Release Notes Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/BOP_SBT_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
@@ -985,7 +985,7 @@
       "id": "lobbopstaterndraftsrc",
       "title": "LOB BOP State Release Notes Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/BOP160-ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
@@ -997,7 +997,7 @@
       "id": "lobbopguidebanffsrc",
       "title": "LOB BOP Guide Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/lob-bop.ditamap",
@@ -1010,7 +1010,7 @@
       "id": "lobbopsbtrnbanffsrc",
       "title": "LOB BOP Countrywide Release Notes Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/BOP_SBT_ReleaseNotes.ditamap",
@@ -1023,7 +1023,7 @@
       "id": "lobbopstaternbanffsrc",
       "title": "LOB BOP State Release Notes Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/BOP160-ReleaseNotes.ditamap",
@@ -1036,7 +1036,7 @@
       "id": "lobbop202005",
       "title": "LOB BOP 2020.05",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business-bop.git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "2020.05",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x/_supermap-lob-bop-10x.ditamap",
