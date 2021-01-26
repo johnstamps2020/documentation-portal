@@ -392,31 +392,33 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "GT-API.ditamap",
-      "srcId": "testingframeworksapisrc",
+      "srcId": "testingframeworksapidraftsrc",
       "docId": "testingframeworksapidraft",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "javadoc/PTF",
-          "sourceFolder": "PTF",
-          "srcId": "testingframeworksextrassrc"
-        }
-      ]
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "GT-UI.ditamap",
-      "srcId": "testingframeworksuisrc",
+      "srcId": "testingframeworksuidraftsrc",
       "docId": "testingframeworksuidraft",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "javadoc/PTF",
-          "sourceFolder": "PTF",
-          "srcId": "testingframeworksextrassrc"
-        }
-      ]
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-API.ditamap",
+      "srcId": "testingframeworksapibanffsrc",
+      "docId": "testingframeworksapibanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-UI.ditamap",
+      "srcId": "testingframeworksuibanffsrc",
+      "docId": "testingframeworksuibanff",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
