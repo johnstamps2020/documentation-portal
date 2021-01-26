@@ -4989,6 +4989,102 @@
       "public": false
     },
     {
+      "id": "lobcaguidedraft",
+      "title": "Commercial Auto Standards Based Template Guide",
+      "url": "cloud/lob/ca/latest/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Commercial Auto Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcasbtrndraft",
+      "title": "Commercial Auto Standards Based Template Countrywide Release Notes",
+      "url": "cloud/lob/ca/latest/cwrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Commercial Auto Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcrimeguidedraft",
+      "title": "Crime Standards Based Template Guide",
+      "url": "cloud/lob/crime/latest/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Crime Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcrimesbtrndraft",
+      "title": "Crime Standards Based Template Countrywide Release Notes",
+      "url": "cloud/lob/crime/latest/cwrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Crime Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobglguidedraft",
+      "title": "General Liability Standards Based Template Guide",
+      "url": "cloud/lob/gl/latest/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["General Liability Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobglsbtrndraft",
+      "title": "General Liability Standards Based Template Countrywide Release Notes",
+      "url": "cloud/lob/gl/latest/cwrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["General Liability Standards Based Template"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isbc202011releasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/202011/releasenotes",

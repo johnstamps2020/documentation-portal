@@ -994,6 +994,78 @@
       ]
     },
     {
+      "id": "lobglguidedraftsrc",
+      "title": "LOB GL Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/lob-gl-9x-1003.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobglsbtrndraftsrc",
+      "title": "LOB GL Countrywide Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/GL_SBT_ReleaseNotes-9x-1003.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcaguidedraftsrc",
+      "title": "LOB CA Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/lob-ca-10x.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcasbtrndraftsrc",
+      "title": "LOB CA Countrywide Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcrimeguidedraftsrc",
+      "title": "LOB Crime Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/lob-crime.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcrimesbtrndraftsrc",
+      "title": "LOB Crime Countrywide Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/Crime_SBT_ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
       "id": "lobbopguidebanffsrc",
       "title": "LOB BOP Guide Banff",
       "sourceType": "git",
