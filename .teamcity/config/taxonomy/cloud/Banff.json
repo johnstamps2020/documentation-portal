@@ -19,9 +19,28 @@
               "label": "InsuranceSuite Configuration Upgrade Tools"
             },
             {
-              "id": "boStandardsBaseTemplate",
-              "label": "Businessowners Standards Based Template"
+              "id": "lobs",
+              "label": "Lines of business",
+              "items":[
+                {
+                  "id": "boStandardsBaseTemplate",
+                  "label": "Businessowners Standards Based Template"
+                },
+                {
+                  "id": "caStandardsBaseTemplate",
+                  "label": "Commercial Auto Standards Based Template"
+                },
+                {
+                  "id": "crimeStandardsBaseTemplate",
+                  "label": "Crime Standards Based Template"
+                },
+                {
+                  "id": "glStandardsBaseTemplate",
+                  "label": "General Liability Standards Based Template"
+                }
+              ]
             }
+            
           ]
         },
         {
