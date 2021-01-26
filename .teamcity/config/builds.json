@@ -98,8 +98,16 @@
       "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhublatestsrc",
-      "docId": "guidewireidentityfederationhublatest"
+      "srcId": "guidewireidentityfederationhubdraftsrc",
+      "docId": "guidewireidentityfederationhubdraft"
+    },
+    {
+      "buildType": "dita",
+      "root": "GuidewireHub.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewireidentityfederationhubbanffsrc",
+      "docId": "guidewireidentityfederationhubbanff"
     },
     {
       "buildType": "dita",

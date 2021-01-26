@@ -167,7 +167,22 @@
       "public": true
     },
     {
-      "id": "guidewireidentityfederationhublatest",
+      "id": "guidewireidentityfederationhubdraft",
+      "title": "Authentication with Guidewire Identity Federation Hub Draft",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "guidewireidentityfederationhubbanff",
       "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
       "metadata": {
@@ -176,7 +191,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

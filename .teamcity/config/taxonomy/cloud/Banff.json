@@ -391,13 +391,7 @@
       "items": [
         {
           "id": "testingFrameworks",
-          "label": "Testing Frameworks",
-          "items":[
-            {
-              "id": "testingFrameworks",
-              "label": "Testing Frameworks"
-            }
-          ]
+          "label": "Testing Frameworks"
         }
       ]
     },
