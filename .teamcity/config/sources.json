@@ -1780,8 +1780,8 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git"
     },
     {
-      "id": "guidewireidentityfederationhublatestsrc",
-      "title": "Guidewire Identity Federation Hub Latest",
+      "id": "guidewireidentityfederationhubbanffsrc",
+      "title": "Guidewire Identity Federation Hub Release",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "Banff",
