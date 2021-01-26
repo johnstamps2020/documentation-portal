@@ -963,7 +963,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x/lob-bop.ditamap",
+        "/Content/doc/LOB/active/lob-bop-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -975,7 +975,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x/BOP_SBT_ReleaseNotes.ditamap",
+        "/Content/doc/LOB/active/BOP_SBT_ReleaseNotes-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -987,7 +987,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x/BOP160-ReleaseNotes.ditamap",
+        "/Content/doc/LOB/active/BOP160-ReleaseNotes-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -1000,7 +1000,7 @@
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x/lob-bop.ditamap",
+        "/Content/doc/LOB/active/lob-bop-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -1013,7 +1013,7 @@
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x/BOP_SBT_ReleaseNotes.ditamap",
+        "/Content/doc/LOB/active/BOP_SBT_ReleaseNotes-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -1026,20 +1026,9 @@
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x/BOP160-ReleaseNotes.ditamap",
+        "/Content/doc/LOB/active/BOP160-ReleaseNotes-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobbop202005",
-      "title": "LOB BOP 2020.05",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "2020.05",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x/_supermap-lob-bop-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
