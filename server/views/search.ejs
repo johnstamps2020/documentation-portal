@@ -63,10 +63,10 @@
                                 <% } %>
                             <% }) %>
                         </div>
-                        <p><%= result.body %></p>
+                        <div><%= result.body %></div>
                         <% if (result.inner_hits) {
                             let versionsDisplayed = [] %>
-                        <div>Also found in:
+                        <div class="otherHits">Also found in:
                             <span>
                                 <% for (const innerHit of result.inner_hits) { 
                                     const hitHref = innerHit._source.href;

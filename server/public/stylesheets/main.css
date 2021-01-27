@@ -275,9 +275,14 @@ a.returnLink {
   padding-top: 3rem;
 }
 
+.otherHits {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
 .otherHit {
-    display: inline-block;
-    margin-left: 8px;
+  display: inline-block;
+  margin-left: 8px;
 }
 
 .card {
