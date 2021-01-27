@@ -1950,7 +1950,7 @@ object HelperObjects {
 object ExportFilesFromXDocsToBitbucket : BuildType({
     name = "Export files from XDocs to Bitbucket"
 
-    maxRunningBuilds = 1
+    maxRunningBuilds = 2
 
     params {
         text(
