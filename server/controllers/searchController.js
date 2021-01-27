@@ -108,6 +108,14 @@ const runFilteredSearch = async (
     size: resultsPerPage,
     body: {
       query: queryBody,
+      collapse: {
+        field: 'title.keyword',
+        inner_hits: {
+          name: 'same_title',
+          size: 20,
+        },
+        max_concurrent_group_searches: 4,
+      },
     },
   });
 
@@ -161,6 +169,7 @@ const searchController = async (req, res, next) => {
         title: doc.title,
         body: getBlurb(doc.body),
         docTags: docTags,
+        inner_hits: result.inner_hits.same_title.hits.hits,
       };
     });
 

@@ -64,6 +64,18 @@
                             <% }) %>
                         </div>
                         <p><%= result.body %></p>
+                        <% if (result.inner_hits) { %>
+                        <div class="otherHits">Also found in:
+                            <div class="otherHitsList">
+                                <% for (const innerHit of result.inner_hits) { 
+                                    const hitHref = innerHit._source.href;
+                                    const hitVersion = innerHit._source.version.join(', ');
+                                    %>
+                                    <div><a href="<%= hitHref %>"><%= hitVersion %></a></div>
+                                <% } %> 
+                            </div>
+                        </div>
+                        <% } %>
                     <% }) %>
                 </div>
                 <% if (pages > 0) { %>
