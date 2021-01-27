@@ -113,6 +113,7 @@ const runFilteredSearch = async (
         inner_hits: {
           name: 'same_title',
           size: 20,
+          sort: [{ version: 'desc' }],
         },
         max_concurrent_group_searches: 4,
       },
