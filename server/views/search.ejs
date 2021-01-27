@@ -63,7 +63,23 @@
                                 <% } %>
                             <% }) %>
                         </div>
-                        <p><%= result.body %></p>
+                        <div><%= result.body %></div>
+                        <% if (result.inner_hits) {
+                            let versionsDisplayed = [] %>
+                        <div class="otherHits">Also found in:
+                            <span>
+                                <% for (const innerHit of result.inner_hits) { 
+                                    const hitHref = innerHit._source.href;
+                                    const hitVersion = innerHit._source.version.join(', ');
+                                    if (!versionsDisplayed.includes(hitVersion)) {
+                                        versionsDisplayed.push(hitVersion)
+                                    %>
+                                    <a class="otherHit" href="<%= hitHref %>"><%= hitVersion %></a>
+                                <% }
+                            } %> 
+                            </span>
+                        </div>
+                        <% } %>
                     <% }) %>
                 </div>
                 <% if (pages > 0) { %>
