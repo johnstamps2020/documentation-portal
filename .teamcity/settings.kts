@@ -14,7 +14,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
-version = "2020.1"
+version = "2019.2"
 
 project {
 
@@ -1139,7 +1139,10 @@ object HelperObjects {
             git_path: String,
             branch_name: String,
             nightly_build: Boolean,
-            source_id: String
+            source_id: String,
+            export_server: String,
+            sch_hour: Int,
+            sch_minute: Int
         ) : BuildType({
 
             id = RelativeId(build_id)
@@ -1153,6 +1156,7 @@ object HelperObjects {
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_URL", git_path)
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.GIT_BRANCH", branch_name)
                 text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.SRC_ID", source_id)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucket.id}.env.EXPORT_SERVER", export_server)
             }
 
             dependencies {
@@ -1166,7 +1170,8 @@ object HelperObjects {
                 triggers {
                     schedule {
                         schedulingPolicy = daily {
-                            hour = 0
+                            hour = sch_hour
+                            minute = sch_minute
                         }
                         branchFilter = ""
                         triggerBuild = always()
@@ -1177,6 +1182,14 @@ object HelperObjects {
         })
 
         val builds = mutableListOf<BuildType>()
+
+        val exportServers = arrayOf("fc-xdocs-slave1", "fc-xdocs-slave2")
+        var exportServerIndex = 0
+
+        var sch_hour = 0
+        var sch_minute = 0
+        val minutesOffset = 2
+
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
             if (source.has("xdocsPathIds")) {
@@ -1200,6 +1213,7 @@ object HelperObjects {
                         }
                     }
                 }
+
                 builds.add(
                     ExportFilesFromXDocsToBitbucketAbstract(
                         exportBuildId,
@@ -1208,9 +1222,28 @@ object HelperObjects {
                         gitUrl,
                         branchName,
                         nightlyBuild,
-                        sourceId
+                        sourceId,
+                        exportServers[exportServerIndex],
+                        sch_hour,
+                        sch_minute
                     )
                 )
+                
+                if(nightlyBuild) {
+                    sch_minute += minutesOffset
+                    if(sch_minute >= 60) {
+                        sch_hour += 1
+                        sch_minute = 0
+                    }
+                    if(sch_hour >= 24) {
+                        sch_hour = 0
+                    }
+                    exportServerIndex++
+                    if(exportServerIndex == exportServers.size) {
+                        exportServerIndex = 0
+                    }
+
+                }        
             }
         }
         return builds
@@ -1961,6 +1994,13 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             display = ParameterDisplay.HIDDEN,
             allowEmpty = false
         )
+        text(
+            "env.EXPORT_SERVER",
+            "",
+            description = "The export server",
+            display = ParameterDisplay.HIDDEN,
+            allowEmpty = false
+        )
     }
 
     vcs {
@@ -1976,6 +2016,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             workingDir = "LocalClient/sample/local/bin"
             scriptContent = """
                 #!/bin/bash
+                sed -i "s/fc-xdocs-slave1/%env.EXPORT_SERVER%" ../../../conf/LocClientConfig.xml
                 chmod 777 runExport.sh
                 for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
             """.trimIndent()
