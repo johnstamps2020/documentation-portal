@@ -2016,7 +2016,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             workingDir = "LocalClient/sample/local/bin"
             scriptContent = """
                 #!/bin/bash
-                sed -i "s/fc-xdocs-slave1/%env.EXPORT_SERVER%" ../../../conf/LocClientConfig.xml
+                sed -i "s/fc-xdocs-slave1/%env.EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
                 chmod 777 runExport.sh
                 for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
             """.trimIndent()
