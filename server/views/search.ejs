@@ -64,16 +64,20 @@
                             <% }) %>
                         </div>
                         <p><%= result.body %></p>
-                        <% if (result.inner_hits) { %>
-                        <div class="otherHits">Also found in:
-                            <div class="otherHitsList">
+                        <% if (result.inner_hits) {
+                            let versionsDisplayed = [] %>
+                        <div>Also found in:
+                            <span>
                                 <% for (const innerHit of result.inner_hits) { 
                                     const hitHref = innerHit._source.href;
                                     const hitVersion = innerHit._source.version.join(', ');
+                                    if (!versionsDisplayed.includes(hitVersion)) {
+                                        versionsDisplayed.push(hitVersion)
                                     %>
-                                    <div><a href="<%= hitHref %>"><%= hitVersion %></a></div>
-                                <% } %> 
-                            </div>
+                                    <a class="otherHit" href="<%= hitHref %>"><%= hitVersion %></a>
+                                <% }
+                            } %> 
+                            </span>
                         </div>
                         <% } %>
                     <% }) %>

@@ -275,11 +275,9 @@ a.returnLink {
   padding-top: 3rem;
 }
 
-.otherHits,
-.otherHitsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.otherHit {
+    display: inline-block;
+    margin-left: 8px;
 }
 
 .card {
