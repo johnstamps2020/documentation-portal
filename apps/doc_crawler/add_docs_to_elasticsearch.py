@@ -8,27 +8,10 @@ import urllib3
 from doc_crawler.elasticsearch import ElasticClient
 
 current_dir = Path(__file__)
-server_config_file = current_dir.parent.parent.parent / '.teamcity' / 'config' / 'server-config.json'
+server_config_file = current_dir.parent / 'new-server-config.json'
+# server_config_file = current_dir.parent.parent.parent / '.teamcity' / 'config' / 'server-config.json'
 
 server_config_index_settings = {
-    "mappings": {
-        "properties": {
-            "id": {"type": "text"},
-            "title": {"type": "text"},
-            "url": {"type": "text"},
-            "displayOnLandingPages": {"type": "boolean"},
-            "indexForSearch": {"type": "boolean"},
-            "metadata": {
-                "properties": {
-                    "product": {"type": "text"},
-                    "platform": {"type": "text"},
-                    "version": {"type": "text"},
-                    "release": {"type": "text"},
-                    "subject": {"type": "text"},
-                }},
-            "environments": {"type": "text"}
-        }
-    },
     "settings": {
         "analysis": {
             "analyzer": {
