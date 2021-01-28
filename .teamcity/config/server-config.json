@@ -16108,7 +16108,7 @@
     {
       "id": "dhonpremdraftdevref",
       "title": "Developer Reference",
-      "url": "cloud/dh/10x/devref",
+      "url": "self-managed/dh/10x/devref",
       "metadata": {
         "product": [
           "DataHub"
@@ -16361,7 +16361,7 @@
     {
       "id": "iconpremdraftdevref",
       "title": "Developer Reference",
-      "url": "cloud/ic/10x/devref",
+      "url": "self-managed/ic/10x/devref",
       "metadata": {
         "product": [
           "InfoCenter"
@@ -16571,7 +16571,7 @@
     {
       "id": "dh1050devref",
       "title": "Developer Reference",
-      "url": "cloud/dh/1050/devref",
+      "url": "self-managed/dh/1050/devref",
       "metadata": {
         "product": [
           "DataHub"
@@ -16831,7 +16831,7 @@
     {
       "id": "ic1050devref",
       "title": "Developer Reference",
-      "url": "cloud/ic/1050/devref",
+      "url": "self-managed/ic/1050/devref",
       "metadata": {
         "product": [
           "InfoCenter"
