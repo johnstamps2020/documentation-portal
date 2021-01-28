@@ -29,8 +29,8 @@
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
@@ -113,8 +113,8 @@
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
