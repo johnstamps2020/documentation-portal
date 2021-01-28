@@ -2153,7 +2153,7 @@
     },
     {
       "id": "dmclouddevrefcortinasrc",
-      "title": "DataManagement Developer Reference Draft",
+      "title": "DataManagement Developer Reference Cortina",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "Cortina",
