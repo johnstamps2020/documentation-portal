@@ -16287,7 +16287,7 @@
     },
     {
       "id": "dh1050rn",
-      "title": "DataHub",
+      "title": "Release Notes",
       "url": "self-managed/dh/1050/releasenotes",
       "metadata": {
         "product": [
@@ -16313,7 +16313,7 @@
     },
     {
       "id": "dh1050product",
-      "title": "DataHub",
+      "title": "Product Guide",
       "url": "self-managed/dh/1050/product",
       "metadata": {
         "product": [
@@ -16469,7 +16469,7 @@
     },
     {
       "id": "ic1050rn",
-      "title": "InfoCenter",
+      "title": "Release Notes",
       "url": "self-managed/ic/1050/releasenotes",
       "metadata": {
         "product": [
@@ -16495,7 +16495,7 @@
     },
     {
       "id": "ic1050product",
-      "title": "InfoCenter",
+      "title": "Product Guide",
       "url": "self-managed/ic/1050/product",
       "metadata": {
         "product": [
