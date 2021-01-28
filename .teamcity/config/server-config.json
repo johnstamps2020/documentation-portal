@@ -30,31 +30,6 @@
       "public": false
     },
     {
-      "id": "cloudicdraft",
-      "title": "InfoCenter for Guidewire Cloud",
-      "url": "cloud/ic/latest",
-      "metadata": {
-        "product": [
-          "InfoCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Cortina"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "clouddxceamdraft",
       "title": "CustomerEngage Account Management",
       "url": "cloud/dx/ce-am/latest",
