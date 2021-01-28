@@ -15170,34 +15170,6 @@
       "public": false
     },
     {
-      "id": "dhclouddataspecdraft",
-      "title": "DataHub for Guidewire Cloud",
-      "url": "cloud/dh/latest/dataspec",
-      "metadata": {
-        "product": [
-          "DataHub for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Configuration"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "iccloudrndraft",
       "title": "InfoCenter for Guidewire Cloud",
       "url": "cloud/ic/latest/releasenotes",
@@ -15384,34 +15356,6 @@
         ],
         "subject": [
           "Administration"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "icclouddataspecdraft",
-      "title": "InfoCenter for Guidewire Cloud",
-      "url": "cloud/ic/latest/dataspec",
-      "metadata": {
-        "product": [
-          "InfoCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Cortina"
-        ],
-        "subject": [
-          "Configuration"
         ]
       },
       "environments": [
