@@ -11,34 +11,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "clouddhdraft",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/DataHub",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "InfoCenter-MS-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "cloudicdraft",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/InfoCenter",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
@@ -262,34 +234,6 @@
       "root": "_supermap-9x-active.ditamap",
       "srcId": "exportisonprem9",
       "docId": "selfmanagedpcxxbkttzbb"
-    },
-    {
-      "buildType": "dita",
-      "filter": "DataHub-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "selfmanageddhxoiefunwl",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/DataHub",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "InfoCenter-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "selfmanagedicxrsfjafti",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/InfoCenter",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
     },
     {
       "buildType": "dita",
@@ -3103,6 +3047,574 @@
       "buildType": "sphinx",
       "docId": "ispc202011apiref",
       "srcId": "srcapiref202011"
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmrndraftsrc",
+      "docId": "dhcloudrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmproductdraftsrc",
+      "docId": "dhcloudproductdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dminstalldraftsrc",
+      "docId": "dhcloudinstalldraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmupgradedraftsrc",
+      "docId": "dhcloudupgradedraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmconfigdraftsrc",
+      "docId": "dhcloudconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmdataspecdraftsrc",
+      "docId": "dhclouddataspecdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-DRAFT.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmadmindraftsrc",
+      "docId": "dhcloudadmindraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmrndraftsrc",
+      "docId": "iccloudrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmproductdraftsrc",
+      "docId": "iccloudproductdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dminstalldraftsrc",
+      "docId": "iccloudinstalldraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmupgradedraftsrc",
+      "docId": "iccloudupgradedraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmconfigdraftsrc",
+      "docId": "iccloudconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmdataspecdraftsrc",
+      "docId": "icclouddataspecdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmadmindraftsrc",
+      "docId": "iccloudadmindraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "icbiappdraftsrc",
+      "docId": "iccloudbiappdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-DRAFT.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "icreportsdraftsrc",
+      "docId": "iccloudreportsdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmcloudrncortinasrc",
+      "docId": "dhcloudrncortina",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmcloudproductcortinasrc",
+      "docId": "dhcloudproductcortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dmcloudinstallcortinasrc",
+      "docId": "dhcloudinstallcortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmcloudupgradecortinasrc",
+      "docId": "dhcloudupgradecortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmcloudconfigcortinasrc",
+      "docId": "dhcloudconfigcortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmclouddataspeccortinasrc",
+      "docId": "dhclouddataspeccortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmcloudadmincortinasrc",
+      "docId": "dhcloudadmincortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmcloudrncortinasrc",
+      "docId": "iccloudrncortina",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmcloudproductcortinasrc",
+      "docId": "iccloudproductcortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dmcloudinstallcortinasrc",
+      "docId": "iccloudinstallcortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmcloudupgradecortinasrc",
+      "docId": "iccloudupgradecortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmcloudconfigcortinasrc",
+      "docId": "iccloudconfigcortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmclouddataspeccortinasrc",
+      "docId": "icclouddataspeccortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmcloudadmincortinasrc",
+      "docId": "iccloudadmincortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "iccloudbiappcortinasrc",
+      "docId": "iccloudbiappcortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "iccloudreportscortinasrc",
+      "docId": "iccloudreportscortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmrndraftsrc",
+      "docId": "dhonpremdraftrn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmproductdraftsrc",
+      "docId": "dhonpremdraftproduct",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dminstalldraftsrc",
+      "docId": "dhonpremdraftinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmupgradedraftsrc",
+      "docId": "dhonpremdraftupgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmconfigdraftsrc",
+      "docId": "dhonpremdraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmdataspecdraftsrc",
+      "docId": "dhonpremdraftdataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmadmindraftsrc",
+      "docId": "dhonpremdraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmrndraftsrc",
+      "docId": "iconpremdraftrn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmproductdraftsrc",
+      "docId": "iconpremdraftproduct",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dminstalldraftsrc",
+      "docId": "iconpremdraftinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmupgradedraftsrc",
+      "docId": "iconpremdraftupgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmconfigdraftsrc",
+      "docId": "iconpremdraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmdataspecdraftsrc",
+      "docId": "iconpremdraftdataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmadmindraftsrc",
+      "docId": "iconpremdraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "icbiappdraftsrc",
+      "docId": "iconpremdraftbiapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "icreportsdraftsrc",
+      "docId": "iconpremdraftreports",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm1050rnsrc",
+      "docId": "dh1050rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm1050productsrc",
+      "docId": "dh1050product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm1050installsrc",
+      "docId": "dh1050install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm1050upgradesrc",
+      "docId": "dh1050upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm1050configsrc",
+      "docId": "dh1050config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm1050dataspecsrc",
+      "docId": "dh1050dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm1050adminsrc",
+      "docId": "dh1050admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm1050rnsrc",
+      "docId": "ic1050rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm1050productsrc",
+      "docId": "ic1050product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm1050installsrc",
+      "docId": "ic1050install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm1050upgradesrc",
+      "docId": "ic1050upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm1050configsrc",
+      "docId": "ic1050config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm1050dataspecsrc",
+      "docId": "ic1050dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm1050adminsrc",
+      "docId": "ic1050admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "ic1050biappsrc",
+      "docId": "ic1050biapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "ic1050reportssrc",
+      "docId": "ic1050reports",
+      "indexRedirect": true
     }
   ]
 }

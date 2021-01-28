@@ -1402,11 +1402,6 @@
         "/Content/doc/insuranceNow/PortalDevelopment20201x.ditamap"
       ]
     },
-
-
-
-
-
     {
       "id": "in20202xrndraftsrc",
       "title": "InsuranceNow 2020.2 Draft Release Notes",
@@ -1770,9 +1765,6 @@
         "/Content/doc/insuranceNow/UnderwritingProductConfigGuide20201x.ditamap"
       ]
     },
-
-
-
     {
       "id": "insurancenowextrassrc",
       "title": "InsuranceNow Extras",
@@ -2033,6 +2025,331 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-sphinx.git",
       "branch": "master"
+    },
+    {
+      "id": "dmrndraftsrc",
+      "title": "DataManagement Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/releasenotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dmproductdraftsrc",
+      "title": "DataManagement Product Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/product.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dminstalldraftsrc",
+      "title": "DataManagement Installation Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/install.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dmupgradedraftsrc",
+      "title": "DataManagement Upgrade Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/upgrade.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dmconfigdraftsrc",
+      "title": "DataManagement Configuration Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/config.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dmdataspecdraftsrc",
+      "title": "DataManagement Data Specifications Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dmadmindraftsrc",
+      "title": "DataManagement Administration Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "icbiappdraftsrc",
+      "title": "InfoCenter BI App Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/bi-applications.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "icreportsdraftsrc",
+      "title": "InfoCenter Reports Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/reports.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-DRAFT.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-DRAFT.ditaval"
+      ]
+    },
+    {
+      "id": "dmcloudrncortinasrc",
+      "title": "DataManagement Release Notes Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/releasenotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dmcloudproductcortinasrc",
+      "title": "DataManagement Product Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/product.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dmcloudinstallcortinasrc",
+      "title": "DataManagement Installation Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/install.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dmcloudupgradecortinasrc",
+      "title": "DataManagement Upgrade Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/upgrade.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dmcloudconfigcortinasrc",
+      "title": "DataManagement Configuration Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/config.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dmclouddataspeccortinasrc",
+      "title": "DataManagement Data Specifications Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dmcloudadmincortinasrc",
+      "title": "DataManagement Administration Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "iccloudbiappcortinasrc",
+      "title": "InfoCenter BI App Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/bi-applications.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "iccloudreportscortinasrc",
+      "title": "InfoCenter Reports Guide Cloud Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/reports.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dm1050rnsrc",
+      "title": "DataManagement Release Notes 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/releasenotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dm1050productsrc",
+      "title": "DataManagement Product Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/product.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dm1050installsrc",
+      "title": "DataManagement Installation Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/install.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dm1050upgradesrc",
+      "title": "DataManagement Upgrade Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/upgrade.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dm1050configsrc",
+      "title": "DataManagement Configuration Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/config.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dm1050dataspecsrc",
+      "title": "DataManagement Data Specifications Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "dm1050adminsrc",
+      "title": "DataManagement Administration Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "ic1050biappsrc",
+      "title": "InfoCenter BI App Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/bi-applications.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
+    },
+    {
+      "id": "ic1050reportssrc",
+      "title": "InfoCenter Reports Guide 10.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "10.5.0",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/reports.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
+      ]
     }
   ]
 }
