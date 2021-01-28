@@ -15420,6 +15420,1286 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "dhcloudrncortina",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202104/releasenotes",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudproductcortina",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202104/product",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudinstallcortina",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202104/install",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudupgradecortina",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202104/upgrade",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudconfigcortina",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202104/config",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhclouddataspeccortina",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202104/dataspec",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudadmincortina",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202104/admin",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudrncortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/releasenotes",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudproductcortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/product",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudinstallcortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/install",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudupgradecortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/upgrade",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudconfigcortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/config",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icclouddataspeccortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/dataspec",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudadmincortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/admin",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudbiappcortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/biapp",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudreportscortina",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202104/reports",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftrn",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x/releasenotes",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftproduct",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x/product",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftinstall",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x/install",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftupgrade",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x/upgrade",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftconfig",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x/config",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftdataspec",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x/dataspec",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftadmin",
+      "title": "DataHub",
+      "url": "self-managed/dh/10x/admin",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftrn",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/releasenotes",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftproduct",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/product",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftinstall",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/install",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftupgrade",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/upgrade",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftconfig",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/config",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftdataspec",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/dataspec",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftadmin",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/admin",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftbiapp",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/biapp",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftreports",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/10x/reports",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050rn",
+      "title": "DataHub",
+      "url": "self-managed/dh/1050/releasenotes",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050product",
+      "title": "DataHub",
+      "url": "self-managed/dh/1050/product",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050install",
+      "title": "DataHub",
+      "url": "self-managed/dh/1050/install",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050upgrade",
+      "title": "DataHub",
+      "url": "self-managed/dh/1050/upgrade",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050config",
+      "title": "DataHub",
+      "url": "self-managed/dh/1050/config",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050dataspec",
+      "title": "DataHub",
+      "url": "self-managed/dh/1050/dataspec",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050admin",
+      "title": "DataHub",
+      "url": "self-managed/dh/1050/admin",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050rn",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/releasenotes",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050product",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/product",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050install",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/install",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050upgrade",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/upgrade",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Installation"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050config",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/config",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050dataspec",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/dataspec",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Configuration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050admin",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/admin",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050biapp",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/biapp",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050reports",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1050/reports",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }

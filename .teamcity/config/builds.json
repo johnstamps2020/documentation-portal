@@ -11,34 +11,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "clouddhdraft",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/DataHub",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "InfoCenter-MS-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "cloudicdraft",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/InfoCenter",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
@@ -262,34 +234,6 @@
       "root": "_supermap-9x-active.ditamap",
       "srcId": "exportisonprem9",
       "docId": "selfmanagedpcxxbkttzbb"
-    },
-    {
-      "buildType": "dita",
-      "filter": "DataHub-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "selfmanageddhxoiefunwl",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/DataHub",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "InfoCenter-DRAFT.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhicdraftsrc",
-      "docId": "selfmanagedicxrsfjafti",
-      "resources": [
-        {
-          "sourceFolder": "Banff-10.4/InfoCenter",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
     },
     {
       "buildType": "dita",
@@ -3388,9 +3332,6 @@
       "docId": "iccloudreportscortina",
       "indexRedirect": true
     },
-
-
-
     {
       "buildType": "dita",
       "filter": "DataHub-DRAFT.ditaval",
