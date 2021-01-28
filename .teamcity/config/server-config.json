@@ -14975,7 +14975,7 @@
     },
     {
       "id": "dhcloudrndraft",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Release Notes",
       "url": "cloud/dh/latest/releasenotes",
       "metadata": {
         "product": [
@@ -15003,7 +15003,7 @@
     },
     {
       "id": "dhcloudproductdraft",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Product Guide",
       "url": "cloud/dh/latest/product",
       "metadata": {
         "product": [
@@ -15031,7 +15031,7 @@
     },
     {
       "id": "dhcloudinstalldraft",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Installation Guide",
       "url": "cloud/dh/latest/install",
       "metadata": {
         "product": [
@@ -15059,7 +15059,7 @@
     },
     {
       "id": "dhcloudupgradedraft",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Upgrade Guide",
       "url": "cloud/dh/latest/upgrade",
       "metadata": {
         "product": [
@@ -15087,7 +15087,7 @@
     },
     {
       "id": "dhcloudconfigdraft",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Configuration Guide",
       "url": "cloud/dh/latest/config",
       "metadata": {
         "product": [
@@ -15115,7 +15115,7 @@
     },
     {
       "id": "dhclouddataspecdraft",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Data Specifications Guide",
       "url": "cloud/dh/latest/dataspec",
       "metadata": {
         "product": [
@@ -15143,7 +15143,7 @@
     },
     {
       "id": "dhcloudadmindraft",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Administration Guide",
       "url": "cloud/dh/latest/admin",
       "metadata": {
         "product": [
@@ -15199,7 +15199,7 @@
     },
     {
       "id": "iccloudproductdraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Product Guide",
       "url": "cloud/ic/latest/product",
       "metadata": {
         "product": [
@@ -15227,7 +15227,7 @@
     },
     {
       "id": "iccloudinstalldraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Installation Guide",
       "url": "cloud/ic/latest/install",
       "metadata": {
         "product": [
@@ -15255,7 +15255,7 @@
     },
     {
       "id": "iccloudupgradedraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Upgrade Guide",
       "url": "cloud/ic/latest/upgrade",
       "metadata": {
         "product": [
@@ -15283,7 +15283,7 @@
     },
     {
       "id": "iccloudconfigdraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Configuration Guide",
       "url": "cloud/ic/latest/config",
       "metadata": {
         "product": [
@@ -15311,7 +15311,7 @@
     },
     {
       "id": "icclouddataspecdraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Data Specifications Guide",
       "url": "cloud/ic/latest/dataspec",
       "metadata": {
         "product": [
@@ -15339,7 +15339,7 @@
     },
     {
       "id": "iccloudadmindraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Administration Guide",
       "url": "cloud/ic/latest/admin",
       "metadata": {
         "product": [
@@ -15367,7 +15367,7 @@
     },
     {
       "id": "iccloudbiappdraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "BI Applicatons Guide",
       "url": "cloud/ic/latest/biapp",
       "metadata": {
         "product": [
@@ -15395,7 +15395,7 @@
     },
     {
       "id": "iccloudreportsdraft",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Reports Guide",
       "url": "cloud/ic/latest/reports",
       "metadata": {
         "product": [
@@ -15423,7 +15423,7 @@
     },
     {
       "id": "dhcloudrncortina",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Release Notes",
       "url": "cloud/dh/202104/releasenotes",
       "metadata": {
         "product": [
@@ -15452,7 +15452,7 @@
     },
     {
       "id": "dhcloudproductcortina",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Product Guide",
       "url": "cloud/dh/202104/product",
       "metadata": {
         "product": [
@@ -15481,7 +15481,7 @@
     },
     {
       "id": "dhcloudinstallcortina",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Installation Guide",
       "url": "cloud/dh/202104/install",
       "metadata": {
         "product": [
@@ -15510,7 +15510,7 @@
     },
     {
       "id": "dhcloudupgradecortina",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Upgrade Guide",
       "url": "cloud/dh/202104/upgrade",
       "metadata": {
         "product": [
@@ -15539,7 +15539,7 @@
     },
     {
       "id": "dhcloudconfigcortina",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Configuration Guide",
       "url": "cloud/dh/202104/config",
       "metadata": {
         "product": [
@@ -15568,7 +15568,7 @@
     },
     {
       "id": "dhclouddataspeccortina",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Data Specifications Guide",
       "url": "cloud/dh/202104/dataspec",
       "metadata": {
         "product": [
@@ -15597,7 +15597,7 @@
     },
     {
       "id": "dhcloudadmincortina",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "Administration Guide",
       "url": "cloud/dh/202104/admin",
       "metadata": {
         "product": [
@@ -15655,7 +15655,7 @@
     },
     {
       "id": "iccloudproductcortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Product Guide",
       "url": "cloud/ic/202104/product",
       "metadata": {
         "product": [
@@ -15684,7 +15684,7 @@
     },
     {
       "id": "iccloudinstallcortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Installation Guide",
       "url": "cloud/ic/202104/install",
       "metadata": {
         "product": [
@@ -15713,7 +15713,7 @@
     },
     {
       "id": "iccloudupgradecortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Upgrade Guide",
       "url": "cloud/ic/202104/upgrade",
       "metadata": {
         "product": [
@@ -15742,7 +15742,7 @@
     },
     {
       "id": "iccloudconfigcortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Configuration Guide",
       "url": "cloud/ic/202104/config",
       "metadata": {
         "product": [
@@ -15771,7 +15771,7 @@
     },
     {
       "id": "icclouddataspeccortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Data Specifications Guide",
       "url": "cloud/ic/202104/dataspec",
       "metadata": {
         "product": [
@@ -15800,7 +15800,7 @@
     },
     {
       "id": "iccloudadmincortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Administration Guide",
       "url": "cloud/ic/202104/admin",
       "metadata": {
         "product": [
@@ -15829,7 +15829,7 @@
     },
     {
       "id": "iccloudbiappcortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "BI Applicatons Guide",
       "url": "cloud/ic/202104/biapp",
       "metadata": {
         "product": [
@@ -15858,7 +15858,7 @@
     },
     {
       "id": "iccloudreportscortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Reports Guide",
       "url": "cloud/ic/202104/reports",
       "metadata": {
         "product": [
@@ -15887,7 +15887,7 @@
     },
     {
       "id": "dhonpremdraftrn",
-      "title": "DataHub",
+      "title": "Release Notes",
       "url": "self-managed/dh/10x/releasenotes",
       "metadata": {
         "product": [
@@ -15912,7 +15912,7 @@
     },
     {
       "id": "dhonpremdraftproduct",
-      "title": "DataHub",
+      "title": "Product Guide",
       "url": "self-managed/dh/10x/product",
       "metadata": {
         "product": [
@@ -15937,7 +15937,7 @@
     },
     {
       "id": "dhonpremdraftinstall",
-      "title": "DataHub",
+      "title": "Installation Guide",
       "url": "self-managed/dh/10x/install",
       "metadata": {
         "product": [
@@ -15962,7 +15962,7 @@
     },
     {
       "id": "dhonpremdraftupgrade",
-      "title": "DataHub",
+      "title": "Upgrade Guide",
       "url": "self-managed/dh/10x/upgrade",
       "metadata": {
         "product": [
@@ -15987,7 +15987,7 @@
     },
     {
       "id": "dhonpremdraftconfig",
-      "title": "DataHub",
+      "title": "Configuration Guide",
       "url": "self-managed/dh/10x/config",
       "metadata": {
         "product": [
@@ -16012,7 +16012,7 @@
     },
     {
       "id": "dhonpremdraftdataspec",
-      "title": "DataHub",
+      "title": "Data Specifications Guide",
       "url": "self-managed/dh/10x/dataspec",
       "metadata": {
         "product": [
@@ -16037,7 +16037,7 @@
     },
     {
       "id": "dhonpremdraftadmin",
-      "title": "DataHub",
+      "title": "Administration Guide",
       "url": "self-managed/dh/10x/admin",
       "metadata": {
         "product": [
@@ -16062,7 +16062,7 @@
     },
     {
       "id": "iconpremdraftrn",
-      "title": "InfoCenter",
+      "title": "Release Notes",
       "url": "self-managed/ic/10x/releasenotes",
       "metadata": {
         "product": [
@@ -16087,7 +16087,7 @@
     },
     {
       "id": "iconpremdraftproduct",
-      "title": "InfoCenter",
+      "title": "Product Guide",
       "url": "self-managed/ic/10x/product",
       "metadata": {
         "product": [
@@ -16112,7 +16112,7 @@
     },
     {
       "id": "iconpremdraftinstall",
-      "title": "InfoCenter",
+      "title": "Installation Guide",
       "url": "self-managed/ic/10x/install",
       "metadata": {
         "product": [
@@ -16137,7 +16137,7 @@
     },
     {
       "id": "iconpremdraftupgrade",
-      "title": "InfoCenter",
+      "title": "Upgrade Guide",
       "url": "self-managed/ic/10x/upgrade",
       "metadata": {
         "product": [
@@ -16162,7 +16162,7 @@
     },
     {
       "id": "iconpremdraftconfig",
-      "title": "InfoCenter",
+      "title": "Configuration Guide",
       "url": "self-managed/ic/10x/config",
       "metadata": {
         "product": [
@@ -16187,7 +16187,7 @@
     },
     {
       "id": "iconpremdraftdataspec",
-      "title": "InfoCenter",
+      "title": "Data Specifications Guide",
       "url": "self-managed/ic/10x/dataspec",
       "metadata": {
         "product": [
@@ -16212,7 +16212,7 @@
     },
     {
       "id": "iconpremdraftadmin",
-      "title": "InfoCenter",
+      "title": "Administration Guide",
       "url": "self-managed/ic/10x/admin",
       "metadata": {
         "product": [
@@ -16237,7 +16237,7 @@
     },
     {
       "id": "iconpremdraftbiapp",
-      "title": "InfoCenter",
+      "title": "BI Applicatons Guide",
       "url": "self-managed/ic/10x/biapp",
       "metadata": {
         "product": [
@@ -16262,7 +16262,7 @@
     },
     {
       "id": "iconpremdraftreports",
-      "title": "InfoCenter",
+      "title": "Reports Guide",
       "url": "self-managed/ic/10x/reports",
       "metadata": {
         "product": [
@@ -16339,7 +16339,7 @@
     },
     {
       "id": "dh1050install",
-      "title": "DataHub",
+      "title": "Installation Guide",
       "url": "self-managed/dh/1050/install",
       "metadata": {
         "product": [
@@ -16365,7 +16365,7 @@
     },
     {
       "id": "dh1050upgrade",
-      "title": "DataHub",
+      "title": "Upgrade Guide",
       "url": "self-managed/dh/1050/upgrade",
       "metadata": {
         "product": [
@@ -16391,7 +16391,7 @@
     },
     {
       "id": "dh1050config",
-      "title": "DataHub",
+      "title": "Configuration Guide",
       "url": "self-managed/dh/1050/config",
       "metadata": {
         "product": [
@@ -16417,7 +16417,7 @@
     },
     {
       "id": "dh1050dataspec",
-      "title": "DataHub",
+      "title": "Data Specifications Guide",
       "url": "self-managed/dh/1050/dataspec",
       "metadata": {
         "product": [
@@ -16443,7 +16443,7 @@
     },
     {
       "id": "dh1050admin",
-      "title": "DataHub",
+      "title": "Administration Guide",
       "url": "self-managed/dh/1050/admin",
       "metadata": {
         "product": [
@@ -16521,7 +16521,7 @@
     },
     {
       "id": "ic1050install",
-      "title": "InfoCenter",
+      "title": "Installation Guide",
       "url": "self-managed/ic/1050/install",
       "metadata": {
         "product": [
@@ -16547,7 +16547,7 @@
     },
     {
       "id": "ic1050upgrade",
-      "title": "InfoCenter",
+      "title": "Upgrade Guide",
       "url": "self-managed/ic/1050/upgrade",
       "metadata": {
         "product": [
@@ -16573,7 +16573,7 @@
     },
     {
       "id": "ic1050config",
-      "title": "InfoCenter",
+      "title": "Configuration Guide",
       "url": "self-managed/ic/1050/config",
       "metadata": {
         "product": [
@@ -16599,7 +16599,7 @@
     },
     {
       "id": "ic1050dataspec",
-      "title": "InfoCenter",
+      "title": "Data Specifications Guide",
       "url": "self-managed/ic/1050/dataspec",
       "metadata": {
         "product": [
@@ -16625,7 +16625,7 @@
     },
     {
       "id": "ic1050admin",
-      "title": "InfoCenter",
+      "title": "Administration Guide",
       "url": "self-managed/ic/1050/admin",
       "metadata": {
         "product": [
@@ -16651,7 +16651,7 @@
     },
     {
       "id": "ic1050biapp",
-      "title": "InfoCenter",
+      "title": "BI Applicatons Guide",
       "url": "self-managed/ic/1050/biapp",
       "metadata": {
         "product": [
@@ -16677,7 +16677,7 @@
     },
     {
       "id": "ic1050reports",
-      "title": "InfoCenter",
+      "title": "Reports Guide",
       "url": "self-managed/ic/1050/reports",
       "metadata": {
         "product": [
