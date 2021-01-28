@@ -148,8 +148,8 @@
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
@@ -164,6 +164,10 @@
               "label": "Explore"
             },
             {
+              "id": "predictiveAnalytics",
+              "label": "Predictive Analytics"
+            },
+            {
               "id": "addOns",
               "label": "Add-ons",
               "items": [
@@ -174,10 +178,6 @@
                 {
                   "id": "icGwCloud",
                   "label": "InfoCenter for Guidewire Cloud"
-                },
-                {
-                  "id": "predictiveAnalytics",
-                  "label": "Predictive Analytics"
                 }
               ]
             }
@@ -250,8 +250,8 @@
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
@@ -338,11 +338,11 @@
           ]
         },
         {
-          "id": "insNowBanff",
+          "id": "insuranceNow",
           "label": "InsuranceNow",
           "items":[
             {
-              "id": "insNowBanff",
+              "id": "insuranceNow",
               "label": "InsuranceNow"
             }
           ]

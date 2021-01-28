@@ -40,11 +40,12 @@
                 }
               ]
             }
+            
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
@@ -53,6 +54,10 @@
             {
               "id": "explore",
               "label": "Explore"
+            },
+            {
+              "id": "predictiveAnalytics",
+              "label": "Predictive Analytics"
             },
             {
               "id": "addOns",
@@ -65,10 +70,6 @@
                 {
                   "id": "icGwCloud",
                   "label": "InfoCenter for Guidewire Cloud"
-                },
-                {
-                  "id": "predictiveAnalytics",
-                  "label": "Predictive Analytics"
                 }
               ]
             }
@@ -147,8 +148,8 @@
           ]
         },
         {
-          "id": "data",
-          "label": "Data",
+          "id": "analytics",
+          "label": "Analytics",
           "items": [
             {
               "id": "cloudDataAccess",
@@ -163,6 +164,10 @@
               "label": "Explore"
             },
             {
+              "id": "predictiveAnalytics",
+              "label": "Predictive Analytics"
+            },
+            {
               "id": "addOns",
               "label": "Add-ons",
               "items": [
@@ -173,10 +178,6 @@
                 {
                   "id": "icGwCloud",
                   "label": "InfoCenter for Guidewire Cloud"
-                },
-                {
-                  "id": "predictiveAnalytics",
-                  "label": "Predictive Analytics"
                 }
               ]
             }
@@ -261,10 +262,6 @@
               "label": "Explore"
             },
             {
-              "id": "predictiveAnalytics",
-              "label": "Predictive Analytics"
-            },
-            {
               "id": "addOns",
               "label": "Add-ons",
               "items": [
@@ -327,33 +324,25 @@
             {
               "id": "IN20202xExt",
               "label": "InsuranceNow 2020.2x - External Audience"
-            },
-            {
-              "id": "IN20201xExt",
-              "label": "InsuranceNow 2020.1x - External Audience"
             }
           ]
         },
         {
-          "id": "insuranceNow20201xInt",
+          "id": "insuranceNow20202xInt",
           "label": "Internal Audience",
           "items":[
             {
               "id": "IN20202xInt",
               "label": "InsuranceNow 2020.2x - Internal Audience"
-            },
-            {
-              "id": "IN20201xInt",
-              "label": "InsuranceNow 2020.1x - Internal Audience"
             }
           ]
         },
         {
-          "id": "insNowCortina",
+          "id": "insuranceNow",
           "label": "InsuranceNow",
           "items":[
             {
-              "id": "insNowCortina",
+              "id": "insuranceNow",
               "label": "InsuranceNow"
             }
           ]
@@ -427,8 +416,24 @@
       "label": "Guidewire Feature Preview",
       "items": [
         {
-          "id": "gwFeaturePreview",
-          "label": "Guidewire Feature Preview"
+          "id": "earlyAccess",
+          "label": "Early Access",
+          "items": [
+            {
+              "id": "gwFeaturePreview",
+              "label": "Guidewire Feature Preview"
+            }
+          ]
+        },
+        {
+          "id": "internalDraft",
+          "label": "Internal Draft",
+          "items": [
+            {
+              "id": "gwFeaturePreview",
+              "label": "Guidewire Feature Preview"
+            }
+          ]
         }
       ]
     }
