@@ -549,50 +549,6 @@
       "public": false
     },
     {
-      "id": "selfmanageddhxoiefunwl",
-      "title": "DataHub",
-      "url": "self-managed/dh/10x",
-      "metadata": {
-        "product": [
-          "DataHub"
-        ],
-        "platform": [
-          "Self-managed"
-        ],
-        "version": [
-          "10.x"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "selfmanagedicxrsfjafti",
-      "title": "InfoCenter",
-      "url": "self-managed/ic/10x",
-      "metadata": {
-        "product": [
-          "InfoCenter"
-        ],
-        "platform": [
-          "Self-managed"
-        ],
-        "version": [
-          "10.x"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "selfmanagedbadraft",
       "title": "Business Analytics",
       "url": "self-managed/ba/latest",
@@ -15145,6 +15101,34 @@
       "public": false
     },
     {
+      "id": "dhclouddevrefdraft",
+      "title": "Developer Reference",
+      "url": "cloud/dh/latest/devref",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "iccloudrndraft",
       "title": "Release Notes",
       "url": "cloud/ic/latest/releasenotes",
@@ -15342,7 +15326,7 @@
     },
     {
       "id": "iccloudbiappdraft",
-      "title": "BI Applicatons Guide",
+      "title": "BI Applications Guide",
       "url": "cloud/ic/latest/biapp",
       "metadata": {
         "product": [
@@ -15387,6 +15371,34 @@
         ],
         "subject": [
           "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icclouddevrefdraft",
+      "title": "Developer Reference",
+      "url": "cloud/ic/latest/devref",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
         ]
       },
       "environments": [
@@ -15600,8 +15612,37 @@
       "public": false
     },
     {
+      "id": "dhclouddevrefcortina",
+      "title": "Developer Reference",
+      "url": "cloud/dh/202104/devref",
+      "metadata": {
+        "product": [
+          "DataHub for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "iccloudrncortina",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "Release Notes",
       "url": "cloud/ic/202104/releasenotes",
       "metadata": {
         "product": [
@@ -15804,7 +15845,7 @@
     },
     {
       "id": "iccloudbiappcortina",
-      "title": "BI Applicatons Guide",
+      "title": "BI Applications Guide",
       "url": "cloud/ic/202104/biapp",
       "metadata": {
         "product": [
@@ -15861,6 +15902,35 @@
       "public": false
     },
     {
+      "id": "icclouddevrefcortina",
+      "title": "Developer Reference",
+      "url": "cloud/ic/202104/devref",
+      "metadata": {
+        "product": [
+          "InfoCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.04"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "dhonpremdraftrn",
       "title": "Release Notes",
       "url": "self-managed/dh/10x/releasenotes",
@@ -15869,7 +15939,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -15894,7 +15964,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -15919,7 +15989,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -15944,7 +16014,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -15969,7 +16039,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -15994,7 +16064,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16019,13 +16089,41 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
         ],
         "subject": [
           "Administration"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhonpremdraftdevref",
+      "title": "Developer Reference",
+      "url": "cloud/dh/10x/devref",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
         ]
       },
       "environments": [
@@ -16044,7 +16142,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16069,7 +16167,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16094,7 +16192,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16119,7 +16217,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16144,7 +16242,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16169,7 +16267,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16194,7 +16292,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16219,7 +16317,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
@@ -16244,13 +16342,41 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.x"
         ],
         "subject": [
           "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iconpremdraftdevref",
+      "title": "Developer Reference",
+      "url": "cloud/ic/10x/devref",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "10.x"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Development"
         ]
       },
       "environments": [
@@ -16269,7 +16395,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16295,7 +16421,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16321,7 +16447,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16347,7 +16473,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16373,7 +16499,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16399,7 +16525,7 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16425,13 +16551,39 @@
           "DataHub"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
         ],
         "subject": [
           "Administration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1050devref",
+      "title": "Developer Reference",
+      "url": "cloud/dh/1050/devref",
+      "metadata": {
+        "product": [
+          "DataHub"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Development"
         ]
       },
       "environments": [
@@ -16451,7 +16603,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16477,7 +16629,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16503,7 +16655,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16529,7 +16681,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16555,7 +16707,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16581,7 +16733,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16607,7 +16759,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16633,7 +16785,7 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
@@ -16659,13 +16811,39 @@
           "InfoCenter"
         ],
         "platform": [
-          "Cloud"
+          "Self-managed"
         ],
         "version": [
           "10.5.0"
         ],
         "subject": [
           "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1050devref",
+      "title": "Developer Reference",
+      "url": "cloud/ic/1050/devref",
+      "metadata": {
+        "product": [
+          "InfoCenter"
+        ],
+        "platform": [
+          "Self-managed"
+        ],
+        "version": [
+          "10.5.0"
+        ],
+        "subject": [
+          "Development"
         ]
       },
       "environments": [
