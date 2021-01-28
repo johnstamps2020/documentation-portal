@@ -28,7 +28,7 @@ for doc in docs:
     if doc_source:
         doc['sourceUrl'] = doc_source['gitUrl']
         doc['gitBranch'] = doc_source.get('branch', 'master')
-        xdocs_path_ids = doc_source.get('xDocsPathIds', None)
+        xdocs_path_ids = doc_source.get('xdocsPathIds', None)
         if xdocs_path_ids:
             doc['xDocsPathIds'] = xdocs_path_ids
 
