@@ -138,13 +138,19 @@
         const searchParams = new URLSearchParams(queryString);
 
         if (('' + paramValue).length === 0) {
-            searchParams.delete(paramName);
+            if (searchParams.has(paramName)) {
+                searchParams.delete(paramName);
+            }
         } else {
             if (searchParams.has(paramName)) {
                 searchParams.set(paramName, paramValue)
             } else {
                 searchParams.append(paramName, paramValue);
             }
+        }
+
+        if (paramName !== 'page' && searchParams.has('page')) {
+            searchParams.delete('page');
         }
 
         url.search = searchParams.toString();
