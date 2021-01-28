@@ -168,6 +168,7 @@ const searchController = async (req, res, next) => {
         href: doc.href,
         score: result._score,
         title: doc.title,
+        version: doc.version.join(', '),
         body: getBlurb(doc.body),
         docTags: docTags,
         inner_hits: result.inner_hits.same_title.hits.hits,
