@@ -13233,67 +13233,6 @@
       "public": false
     },
     {
-      "id": "incsp324rndraft",
-      "title": "Consumer Service Portal 3.24 Release Notes",
-      "url": "cloud/in/csp324rn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": [
-          "latest"
-        ],
-        "subject": [
-          "Release Notes"
-        ],
-        "release": [
-          "Cortina"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "incsp323rndraft",
-      "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/csp323rn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience",
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": [
-          "latest"
-        ],
-        "subject": [
-          "Release Notes"
-        ],
-        "release": [
-          "Aspen",
-          "Cortina"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20211xappdraft",
       "title": "Application Guide",
       "url": "cloud/in/20202x/app",
@@ -13789,6 +13728,8 @@
           "Cloud"
         ],
         "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience",
           "InsuranceNow 2020.2x - Internal Audience",
           "InsuranceNow 2020.2x - External Audience"
         ],
@@ -13818,6 +13759,8 @@
           "Cloud"
         ],
         "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience",
           "InsuranceNow 2020.2x - Internal Audience",
           "InsuranceNow 2020.2x - External Audience",
           "InsuranceNow 2020.1x - Internal Audience",
