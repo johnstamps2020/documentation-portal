@@ -13740,7 +13740,8 @@
           "Release Notes"
         ],
         "release": [
-          "Banff"
+          "Banff",
+          "Cortina"
         ]
       },
       "environments": [
@@ -13774,7 +13775,8 @@
         ],
         "release": [
           "Aspen",
-          "Banff"
+          "Banff",
+          "Cortina"
         ]
       },
       "environments": [
