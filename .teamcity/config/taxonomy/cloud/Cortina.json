@@ -318,22 +318,22 @@
       "label": "InsuranceNow",
       "items": [
         {
-          "id": "insuranceNow20202xExt",
+          "id": "insuranceNow20211xExt",
           "label": "External Audience",
           "items":[
             {
-              "id": "IN20202xExt",
-              "label": "InsuranceNow 2020.2x - External Audience"
+              "id": "IN2020211Ext",
+              "label": "InsuranceNow 2021.1x - External Audience"
             }
           ]
         },
         {
-          "id": "insuranceNow20202xInt",
+          "id": "insuranceNow20211xInt",
           "label": "Internal Audience",
           "items":[
             {
-              "id": "IN20202xInt",
-              "label": "InsuranceNow 2020.2x - Internal Audience"
+              "id": "IN20211xInt",
+              "label": "InsuranceNow 2021.1x - Internal Audience"
             }
           ]
         },
