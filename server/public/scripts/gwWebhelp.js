@@ -192,7 +192,7 @@ async function createVersionSelector() {
         const topicDesc = document.querySelector("meta[name = 'description']")
           ?.content;
         const docVersion = e.target.options[e.target.selectedIndex].innerHTML;
-        const searchQuery = `${topicTitle} ${topicDesc}`;
+        const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
         const bestMatchingTopic = await findBestMatchingTopic(
           searchQuery,
           docProduct,
