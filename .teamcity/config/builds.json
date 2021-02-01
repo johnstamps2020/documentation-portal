@@ -1162,7 +1162,7 @@
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnaspensrc",
-      "docId": "lobbopsbtrn"
+      "docId": "lobbopsbtrnaspen"
     },
     {
       "buildType": "dita",
