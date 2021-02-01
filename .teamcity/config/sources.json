@@ -969,18 +969,6 @@
       ]
     },
     {
-      "id": "lobbopstaterndraftsrc",
-      "title": "LOB BOP State Release Notes Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/active/BOP160-ReleaseNotes-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
       "id": "lobglguidedraftsrc",
       "title": "LOB GL Guide Draft",
       "sourceType": "git",
@@ -1079,13 +1067,26 @@
       ]
     },
     {
-      "id": "lobbopstaternbanffsrc",
-      "title": "LOB BOP State Release Notes Banff",
+      "id": "lobbopguideaspensrc",
+      "title": "LOB BOP Guide Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/BOP160-ReleaseNotes-10x.ditamap",
+        "/Content/doc/LOB/active/lob-bop-10x.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobbopsbtrnaspensrc",
+      "title": "LOB BOP Countrywide Release Notes Aspen",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/active/BOP_SBT_ReleaseNotes-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"

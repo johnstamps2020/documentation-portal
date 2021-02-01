@@ -1139,13 +1139,6 @@
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
-      "root": "BOP160-ReleaseNotes-10x.ditamap",
-      "srcId": "lobbopstaterndraftsrc",
-      "docId": "lobbopstaterndraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguidebanffsrc",
       "docId": "lobbopguidebanff"
@@ -1160,9 +1153,16 @@
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
-      "root": "BOP160-ReleaseNotes-10x.ditamap",
-      "srcId": "lobbopstaternbanffsrc",
-      "docId": "lobbopstaternbanff"
+      "root": "lob-bop-10x.ditamap",
+      "srcId": "lobbopguideaspensrc",
+      "docId": "lobbopguideaspen"
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
+      "srcId": "lobbopsbtrnaspensrc",
+      "docId": "lobbopsbtrn"
     },
     {
       "buildType": "dita",
