@@ -1127,84 +1127,96 @@
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguidedraftsrc",
-      "docId": "lobbopguidedraft"
+      "docId": "lobbopguidedraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrndraftsrc",
-      "docId": "lobbopsbtrndraft"
+      "docId": "lobbopsbtrndraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguidebanffsrc",
-      "docId": "lobbopguidebanff"
+      "docId": "lobbopguidebanff",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnbanffsrc",
-      "docId": "lobbopsbtrnbanff"
+      "docId": "lobbopsbtrnbanff",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguideaspensrc",
-      "docId": "lobbopguideaspen"
+      "docId": "lobbopguideaspen",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnaspensrc",
-      "docId": "lobbopsbtrnaspen"
+      "docId": "lobbopsbtrnaspen",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-gl-9x-1003.ditamap",
       "srcId": "lobglguidedraftsrc",
-      "docId": "lobglguidedraft"
+      "docId": "lobglguidedraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
       "srcId": "lobglsbtrndraftsrc",
-      "docId": "lobglsbtrndraft"
+      "docId": "lobglsbtrndraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-ca-10x.ditamap",
       "srcId": "lobcaguidedraftsrc",
-      "docId": "lobcaguidedraft"
+      "docId": "lobcaguidedraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
       "srcId": "lobcasbtrndraftsrc",
-      "docId": "lobcasbtrndraft"
+      "docId": "lobcasbtrndraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-crime.ditamap",
       "srcId": "lobcrimeguidedraftsrc",
-      "docId": "lobcrimeguidedraft"
+      "docId": "lobcrimeguidedraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "Crime_SBT_ReleaseNotes.ditamap",
       "srcId": "lobcrimesbtrndraftsrc",
-      "docId": "lobcrimesbtrndraft"
+      "docId": "lobcrimesbtrndraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
