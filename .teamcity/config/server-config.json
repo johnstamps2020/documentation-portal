@@ -3358,9 +3358,9 @@
       "public": false
     },
     {
-      "id": "lobbopstaternbanff",
-      "title": "Businessowners Standards Based Template State Release Notes",
-      "url": "cloud/lob/bop/202011/statern",
+      "id": "lobbopguideaspen",
+      "title": "Businessowners Standards Based Template Guide",
+      "url": "cloud/lob/bop/202005/guide",
       "metadata": {
         "platform": [
           "Cloud"
@@ -3369,10 +3369,39 @@
           "Businessowners Standards Based Template"
         ],
         "version": [
-          "2020.11"
+          "2020.05"
         ],
         "release": [
-          "Banff"
+          "Aspen"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobbopsbtrnaspen",
+      "title": "Businessowners Standards Based Template Countrywide Release Notes",
+      "url": "cloud/lob/bop/202005/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Businessowners Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
         ],
         "subject": [
           "Release notes"
@@ -8554,35 +8583,6 @@
       "id": "lobbopsbtrndraft",
       "title": "Businessowners Standards Based Template Countrywide Release Notes",
       "url": "cloud/lob/bop/latest/cwrn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Businessowners Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobbopstaterndraft",
-      "title": "Businessowners Standards Based Template State Release Notes",
-      "url": "cloud/lob/bop/latest/statern",
       "metadata": {
         "platform": [
           "Cloud"
