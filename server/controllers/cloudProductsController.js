@@ -4,7 +4,6 @@ const {
   getReleasesFromTaxonomies,
 } = require('./configController');
 const {
-  getUniqueInMetadataFields,
   getUniqueInMetadataArrays,
   getSortedVersions,
   resolveUrl,
@@ -26,8 +25,9 @@ async function getHighestCloudRelease() {
         },
       },
     });
+    const cleanedUpDocs = docs.filter(o => Object.keys(o).length !== 0);
     const highestCloudRelease = getSortedVersions(
-      getUniqueInMetadataArrays(docs, 'release')
+      getUniqueInMetadataArrays(cleanedUpDocs, 'release')
     )[0];
     return highestCloudRelease;
   } catch (err) {
@@ -110,11 +110,11 @@ async function getProductFamilyPageInfo(release, productFamilyId) {
 
         function getDocUrl(listOfDocs, productId) {
           const highestProductVersion = getSortedVersions(
-            getUniqueInMetadataFields(listOfDocs, 'version')
+            getUniqueInMetadataArrays(listOfDocs, 'version')
           )[0];
           const docsForHighestVersion = listOfDocs.filter(
             d =>
-              d.metadata.version === highestProductVersion &&
+              d.metadata.version.includes(highestProductVersion) &&
               d.displayOnLandingPages !== false
           );
           if (docsForHighestVersion.length === 1) {
@@ -276,7 +276,7 @@ async function getProductPageInfo(
       },
     });
 
-    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
+    const availableVersions = getUniqueInMetadataArrays(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,

@@ -5,24 +5,24 @@ const { findNodeById } = require('./helpers/taxonomy');
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
-const searchIndexName = 'server-config';
+const serverConfigIndexName = 'server-config';
 
-async function getDocs(queryBody, indexName = searchIndexName) {
+async function getDocs(queryBody, indexName = serverConfigIndexName) {
   try {
     if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
-          `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
+        `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
       );
       const configPath = `${__dirname}/../../.teamcity/config/server-config.json`;
       const config = await fs.readFile(configPath, 'utf-8');
       const json = JSON.parse(config);
 
       const docs = json.docs.filter(d =>
-          d.environments.includes(process.env.DEPLOY_ENV)
+        d.environments.includes(process.env.DEPLOY_ENV)
       );
 
       const productFamilies = json.productFamilies;
-      const localConfig = {docs: docs, productFamilies: productFamilies};
+      const localConfig = { docs: docs, productFamilies: productFamilies };
       return localConfig;
     } else {
       const searchResults = await elasticClient.search({
@@ -39,6 +39,7 @@ async function getDocs(queryBody, indexName = searchIndexName) {
     }
   } catch (err) {
     console.log(err);
+    return { docs: [] };
   }
 }
 
@@ -108,8 +109,8 @@ async function isPublicDoc(url) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  const config = await getConfig();
-  const matchingDoc = config.docs.find(d => relativeUrl.startsWith(d.url));
+  const docs = await getDocs();
+  const matchingDoc = docs.find(d => relativeUrl.startsWith(d.url));
 
   if (matchingDoc && matchingDoc.public) {
     return true;

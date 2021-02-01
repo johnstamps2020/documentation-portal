@@ -4,7 +4,7 @@ const {
   getReleasesFromTaxonomies,
 } = require('./configController');
 const {
-  getUniqueInMetadataFields,
+  getUniqueInMetadataArrays,
   getSortedVersions,
 } = require('./helpers/metadata');
 const { findNodeById } = require('./helpers/taxonomy');
@@ -31,7 +31,7 @@ async function findProductRoute(productId, productVersion) {
           },
         });
         const productVersions = getSortedVersions(
-          getUniqueInMetadataFields(productDocs, 'version')
+          getUniqueInMetadataArrays(productDocs, 'version')
         );
         let highestProductVersion = productVersions[0];
         if (productVersion) {
@@ -64,7 +64,7 @@ async function findProductRoute(productId, productVersion) {
       },
     });
     const productVersions = getSortedVersions(
-      getUniqueInMetadataFields(productDocs, 'version')
+      getUniqueInMetadataArrays(productDocs, 'version')
     );
     let highestProductVersion = productVersions[0];
     if (productVersion) {

@@ -1,6 +1,5 @@
 const { getDocs, getTaxonomy } = require('./configController');
 const {
-  getUniqueInMetadataFields,
   getUniqueInMetadataArrays,
   getSortedVersions,
   resolveUrl,
@@ -174,7 +173,7 @@ async function getProductPageInfo(productId, productVersion) {
       },
     });
 
-    const availableVersions = getUniqueInMetadataFields(productDocs, 'version');
+    const availableVersions = getUniqueInMetadataArrays(productDocs, 'version');
     const productPageInfo = {
       title: `${productName} ${productVersion}`,
       subjects: docsWithSubject,

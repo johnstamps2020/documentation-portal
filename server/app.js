@@ -57,7 +57,6 @@ const customersLoginRouter = require('./routes/customers-login');
 const cloudProductsRouter = require('./routes/cloud-products');
 const selfManagedProductsRouter = require('./routes/self-managed-products');
 const searchRouter = require('./routes/search');
-const configRouter = require('./routes/config');
 const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
@@ -105,7 +104,6 @@ app.use(httpContext.middleware);
 
 app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
-app.use('/config', configRouter);
 app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
