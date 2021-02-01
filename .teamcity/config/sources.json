@@ -2164,7 +2164,7 @@
       ]
     },
     {
-      "id": "testingframeworksarndraftsrc",
+      "id": "testingframeworksrndraftsrc",
       "title": "Testing Frameworks Release Notes Testing Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
@@ -2196,7 +2196,7 @@
       ]
     },
     {
-      "id": "testingframeworksarnbanffsrc",
+      "id": "testingframeworksrnbanffsrc",
       "title": "Testing Frameworks Release Notes Testing Banff",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
