@@ -937,6 +937,35 @@
       "public": false
     },
     {
+      "id": "testingframeworksrndraft",
+      "title": "Testing Frameworks Release Notes Draft",
+      "url": "cloud/testingframeworks/latest/releasenotes",
+      "metadata": {
+        "product": [
+          "Testing Frameworks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Banff",
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "testingframeworksapibanff",
       "title": "Testing Frameworks API Banff",
       "url": "cloud/testingframeworks/202011/api",
@@ -984,6 +1013,35 @@
         ],
         "subject": [
           "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksrnbanff",
+      "title": "Testing Frameworks Release Notes Banff",
+      "url": "cloud/testingframeworks/202011/releasenotes",
+      "metadata": {
+        "product": [
+          "Testing Frameworks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
         ]
       },
       "environments": [

@@ -2164,6 +2164,16 @@
       ]
     },
     {
+      "id": "testingframeworksrndraftsrc",
+      "title": "Testing Frameworks Release Notes Testing Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/releasenotes/gt-api-maint-rel.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
       "id": "testingframeworksapibanffsrc",
       "title": "Testing Frameworks API Testing Banff",
       "sourceType": "xdocs",
@@ -2182,6 +2192,16 @@
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/2020.11/GT-UI.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "testingframeworksrnbanffsrc",
+      "title": "Testing Frameworks Release Notes Testing Banff",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/releasenotes/gt-api-maint-rel.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
