@@ -358,6 +358,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "gt-api-maint-rel.ditamap",
+      "srcId": "testingframeworksrndraftsrc",
+      "docId": "testingframeworksrndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-API.ditamap",
       "srcId": "testingframeworksapibanffsrc",
@@ -370,6 +378,14 @@
       "root": "GT-UI.ditamap",
       "srcId": "testingframeworksuibanffsrc",
       "docId": "testingframeworksuibanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "gt-api-maint-rel.ditamap",
+      "srcId": "testingframeworksrnbanffsrc",
+      "docId": "testingframeworksrnbanff",
       "indexRedirect": true
     },
     {
