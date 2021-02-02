@@ -1,9 +1,9 @@
 import json
 import os
-from pathlib import Path
-from elasticsearch.exceptions import NotFoundError as ElasticNotFoundError
-
 import urllib3
+from elasticsearch import helpers
+from elasticsearch.exceptions import NotFoundError as ElasticNotFoundError
+from pathlib import Path
 
 from doc_crawler.elasticsearch import ElasticClient
 
@@ -44,17 +44,18 @@ elastic_client.create_index(
 
 with server_config_file.open() as f:
     f_json = json.load(f)
-docs = [doc for doc in f_json['docs'] if deploy_env in doc['environments']]
 
-number_of_created_entries = 0
-failed_entries = []
-for doc in docs:
-    create_operation_result = elastic_client.index(
-        index=index_name, body=doc)
-    if create_operation_result.get('result') == 'created':
-        number_of_created_entries += 1
-    elif create_operation_result.get('result') != 'created':
-        failed_entries.append(doc)
+
+def generate_data_for_indexing():
+    docs = [doc for doc in f_json['docs']]
+    for doc in docs:
+        yield {
+            "_index": index_name,
+            "_source": doc,
+        }
+
+
+number_of_created_entries, failed_entries = helpers.bulk(elastic_client, generate_data_for_indexing())
 
 elastic_client.logger_instance.info(
     f'\nCreated entries/Failures: {number_of_created_entries}/{len(failed_entries)}')
