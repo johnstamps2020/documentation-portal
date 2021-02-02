@@ -68,7 +68,7 @@
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubdraftsrc",
       "docId": "guidewireidentityfederationhubdraft"
