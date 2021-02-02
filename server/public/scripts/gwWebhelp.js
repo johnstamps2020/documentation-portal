@@ -188,18 +188,22 @@ async function createVersionSelector() {
       select.id = 'versionSelector';
       select.onchange = async function(e) {
         let linkToOpen = document.getElementById('versionSelector').value;
-        const topicTitle = document.querySelector('head > title')?.textContent;
-        const topicDesc = document.querySelector("meta[name = 'description']")
-          ?.content;
-        const docVersion = e.target.options[e.target.selectedIndex].innerHTML;
-        const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
-        const bestMatchingTopic = await findBestMatchingTopic(
-          searchQuery,
-          docProduct,
-          docVersion
-        );
-        if (bestMatchingTopic) {
-          linkToOpen = bestMatchingTopic;
+        const isTopic = document.querySelector("meta[name = 'wh-toc-id']");
+        if (isTopic) {
+          const topicTitle = document.querySelector('head > title')
+            ?.textContent;
+          const topicDesc = document.querySelector("meta[name = 'description']")
+            ?.content;
+          const docVersion = e.target.options[e.target.selectedIndex].innerHTML;
+          const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
+          const bestMatchingTopic = await findBestMatchingTopic(
+            searchQuery,
+            docProduct,
+            docVersion
+          );
+          if (bestMatchingTopic) {
+            linkToOpen = bestMatchingTopic;
+          }
         }
         window.location.assign(linkToOpen);
       };
