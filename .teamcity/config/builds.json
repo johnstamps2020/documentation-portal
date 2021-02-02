@@ -359,7 +359,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "gt-api-maint-rel.ditamap",
+      "root": "Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
       "srcId": "testingframeworksrndraftsrc",
       "docId": "testingframeworksrndraft",
       "indexRedirect": true
@@ -383,7 +383,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "gt-api-maint-rel.ditamap",
+      "root": "Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
       "srcId": "testingframeworksrnbanffsrc",
       "docId": "testingframeworksrnbanff",
       "indexRedirect": true

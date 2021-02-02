@@ -2169,7 +2169,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/releasenotes/gt-api-maint-rel.ditamap",
+        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
       ]
     },
@@ -2201,7 +2201,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/releasenotes/gt-api-maint-rel.ditamap",
+        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
