@@ -6,6 +6,7 @@ require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const serverConfigIndexName = 'server-config';
+const deployEnv = process.env.DEPLOY_ENV;
 
 async function getDocs(queryBody, indexName = serverConfigIndexName) {
   try {
@@ -31,10 +32,9 @@ async function getDocs(queryBody, indexName = serverConfigIndexName) {
         body: queryBody,
       });
       const hits = searchResults.body.hits.hits;
-      let docs = [];
-      for (const hit of hits) {
-        docs.push(hit._source);
-      }
+      let docs = hits
+        .map(h => h._source)
+        .filter(d => d.environments.includes(deployEnv));
       return docs;
     }
   } catch (err) {
