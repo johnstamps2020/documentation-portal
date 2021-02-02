@@ -255,7 +255,7 @@
     },
     {
       "id": "cloudispm202011src",
-      "title": "IS 2020.11 Prouct Model",
+      "title": "IS 2020.11 Product Model",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
