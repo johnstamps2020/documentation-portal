@@ -9607,8 +9607,7 @@
       },
       "environments": [
         "dev",
-        "int",
-        "staging"
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -10195,8 +10194,7 @@
       },
       "environments": [
         "dev",
-        "int",
-        "staging"
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
