@@ -967,7 +967,7 @@
     },
     {
       "id": "testingframeworksapibanff",
-      "title": "Testing Frameworks API Banff",
+      "title": "Testing Frameworks API",
       "url": "cloud/testingframeworks/202011/api",
       "metadata": {
         "product": [
@@ -996,7 +996,7 @@
     },
     {
       "id": "testingframeworksuibanff",
-      "title": "Testing Frameworks UI Banff",
+      "title": "Testing Frameworks UI",
       "url": "cloud/testingframeworks/202011/ui",
       "metadata": {
         "product": [
@@ -1025,7 +1025,7 @@
     },
     {
       "id": "testingframeworksrnbanff",
-      "title": "Testing Frameworks Release Notes Banff",
+      "title": "Testing Frameworks Release Notes",
       "url": "cloud/testingframeworks/202011/releasenotes",
       "metadata": {
         "product": [
