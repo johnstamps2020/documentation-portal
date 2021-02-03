@@ -9,6 +9,9 @@ const {
   resolveUrl,
   isPublic,
 } = require('./helpers/metadata');
+require('dotenv').config();
+const { Client } = require('@elastic/elasticsearch');
+const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const { getDefaultSubjectIcon, getSubjectIcon } = require('./helpers/icons');
 const { findNodeById, getDocsForTaxonomy } = require('./helpers/taxonomy');
 
@@ -16,19 +19,21 @@ const cloudProductsEndpoint = '/cloudProducts';
 
 async function getHighestCloudRelease() {
   try {
-    const docs = await getDocs({
-      _source: 'metadata.release',
-      query: {
-        bool: {
-          must: [{ match_phrase: { 'metadata.platform': 'Cloud' } }],
-          must_not: [{ match: { displayOnLandingPages: 'false' } }],
+    const searchResult = await elasticClient.search({
+      index: 'config-properties',
+      body: {
+        _source: 'values',
+        query: {
+          match: {
+            name: {
+              query: 'release',
+            },
+          },
         },
       },
     });
-    const cleanedUpDocs = docs.filter(o => Object.keys(o).length !== 0);
-    const highestCloudRelease = getSortedVersions(
-      getUniqueInMetadataArrays(cleanedUpDocs, 'release')
-    )[0];
+    const releaseValues = searchResult.body.hits.hits[0]._source.values;
+    const highestCloudRelease = getSortedVersions(releaseValues)[0];
     return highestCloudRelease;
   } catch (err) {
     console.log(err);
