@@ -4038,6 +4038,34 @@
       "public": false
     },
     {
+      "id": "standards202101",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202101",
+      "metadata": {
+        "product": [
+          "Guidewire Cloud Standards"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.01"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "standards202011",
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202011",
