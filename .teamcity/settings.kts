@@ -2353,9 +2353,6 @@ object GetStorybook : Template({
                 export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_AWS_SECRET_ACCESS_KEY"
                 export AWS_DEFAULT_REGION="${'$'}ATMOS_AWS_DEFAULT_REGION"
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
         }
     }
 
