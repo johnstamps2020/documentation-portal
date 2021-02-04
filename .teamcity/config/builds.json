@@ -3303,7 +3303,8 @@
     {
       "buildType": "storybook",
       "docId": "storybook520",
-      "srcId": "srcjutro520"
+      "srcId": "srcjutrostorybook520",
+      "workingDir": "applications/jutro-app-storybook-new"
     },
     {
       "buildType": "yarn",
@@ -3314,7 +3315,8 @@
     {
       "buildType": "storybook",
       "docId": "storybook530",
-      "srcId": "srcjutro530"
+      "srcId": "srcjutrostorybook530",
+      "workingDir": "applications/jutro-app-storybook-new"
     },
     {
       "buildType": "sphinx",
