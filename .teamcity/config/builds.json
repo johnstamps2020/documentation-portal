@@ -3295,7 +3295,7 @@
     {
       "buildType": "storybook",
       "docId": "storybook520",
-      "srcId": "srcjutro520",
+      "srcId": "srcjutro520"
     },
     {
       "buildType": "yarn",
@@ -3306,7 +3306,7 @@
     {
       "buildType": "storybook",
       "docId": "storybook530",
-      "srcId": "srcjutro530",
+      "srcId": "srcjutro530"
     },
     {
       "buildType": "sphinx",
