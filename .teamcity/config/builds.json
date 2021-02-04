@@ -404,6 +404,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "Other/IS-PC-Cloud-Draft.ditaval",
+      "root": "GuidewireStringManager.ditamap",
+      "srcId": "gwstringmanagerlatestsrc",
+      "docId": "gwstringmanagerlatest",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "_supermap-202005.ditamap",
       "srcId": "cloudis202005src",
