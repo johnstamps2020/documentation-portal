@@ -3296,7 +3296,6 @@
       "buildType": "storybook",
       "docId": "storybook520",
       "srcId": "srcjutro520",
-      "workingDir": "storybook"
     },
     {
       "buildType": "yarn",
@@ -3308,7 +3307,6 @@
       "buildType": "storybook",
       "docId": "storybook530",
       "srcId": "srcjutro530",
-      "workingDir": "storybook"
     },
     {
       "buildType": "sphinx",
