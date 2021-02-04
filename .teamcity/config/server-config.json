@@ -1103,6 +1103,32 @@
       "public": false
     },
     {
+      "id": "gwstringmanagerlatest",
+      "title": "Guidewire String Manager Draft",
+      "url": "cloud/gw-feature-preview/gwstringmanager/latest",
+      "metadata": {
+        "product": [
+          "Guidewire String Manager"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Banff",
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "cloudbc202005",
       "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/202005",

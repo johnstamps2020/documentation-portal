@@ -1137,8 +1137,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Release.ditaval"
       ]
     },
-
-
     {
       "id": "in20211csp324rnsrc",
       "title": "InsuranceNow 2021.1 CSP 324 Release Notes",
@@ -1271,8 +1269,6 @@
         "/Content/doc/insuranceNow/ProductAttributeReference20211.ditamap"
       ]
     },
-
-
     {
       "id": "in20202rnsrc",
       "title": "InsuranceNow 2020.2 Release Notes",
@@ -2224,6 +2220,12 @@
         "/Content/doc/_supermap-hawaii.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
       ]
+    },
+    {
+      "id": "gwstringmanagerlatestsrc",
+      "title": "Guidewire String Manager",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-string-manager.git"
     },
     {
       "id": "cloudratingdraftsrc",
