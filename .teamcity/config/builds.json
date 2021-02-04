@@ -3293,7 +3293,7 @@
       "workingDir": "website"
     },
     {
-      "buildType": "yarn",
+      "buildType": "storybook",
       "docId": "storybook520",
       "srcId": "srcjutro520",
       "workingDir": "storybook"
@@ -3305,7 +3305,7 @@
       "workingDir": "website"
     },
     {
-      "buildType": "yarn",
+      "buildType": "storybook",
       "docId": "storybook530",
       "srcId": "srcjutro530",
       "workingDir": "storybook"
