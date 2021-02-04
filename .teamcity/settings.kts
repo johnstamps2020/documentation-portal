@@ -2342,7 +2342,7 @@ object GetStorybook : Template({
                 echo "Setting credentials to access Jutro"
                 export AWS_ACCESS_KEY_ID="${'$'}JUTRO_AWS_ACCESS_KEY_ID"
                 export AWS_SECRET_ACCESS_KEY="${'$'}JUTRO_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_AWS_DEFAULT_REGION"
+                export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 
                 echo "Copying from S3 to the build folder"
                 mkdir build
