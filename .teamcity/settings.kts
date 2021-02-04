@@ -27,6 +27,7 @@ project {
     template(BuildOutputFromDita)
     template(BuildYarn)
     template(BuildSphinx)
+    template(GetStorybook)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
 
