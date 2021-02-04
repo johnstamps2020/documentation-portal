@@ -2349,9 +2349,9 @@ object GetStorybook : Template({
                 aws s3 sync s3://tenant-jutro-suite-int/release/${'$'}GW_VERSION/jutro-storybook-new build --delete
                 
                 echo "Resetting credentials to default"
-                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_AWS_ACCESS_KEY_ID"
-                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_AWS_DEFAULT_REGION"
+                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
             """.trimIndent()
         }
     }
