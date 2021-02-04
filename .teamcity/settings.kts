@@ -2348,7 +2348,7 @@ object BuildStorybook : Template({
                     export TARGET_URL="%env.TARGET_URL_PROD%"
                 fi
                 
-                export JUTRO_VERSION=%emv.GW_VERSION%
+                export JUTRO_VERSION=%env.GW_VERSION%
                 
                 yarn
                 export BASE_URL=/%env.PUBLISH_PATH%/
