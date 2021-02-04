@@ -27,7 +27,7 @@ project {
     template(BuildOutputFromDita)
     template(BuildYarn)
     template(BuildSphinx)
-    template(GetStorybook)
+    template(BuildStorybook)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
 
@@ -1380,7 +1380,7 @@ object HelperObjects {
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
                 "sphinx" -> buildTemplate = BuildSphinx
-                "storybook" -> buildTemplate = GetStorybook
+                "storybook" -> buildTemplate = BuildStorybook
             }
 
             if (index_for_search) {
@@ -1737,7 +1737,7 @@ object HelperObjects {
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
                 "sphinx" -> templates(BuildSphinx)
-                "storybook" -> templates(GetStorybook)
+                "storybook" -> templates(BuildStorybook)
                 "dita" -> templates(RunContentValidations)
             }
 
@@ -2312,7 +2312,7 @@ object RunContentValidations : Template({
 
 })
 
-object GetStorybook : Template({
+object BuildStorybook : Template({
     name = "Get published Storybook"
 
     params {
@@ -2333,28 +2333,32 @@ object GetStorybook : Template({
 
     steps {
         script {
-            name = "Download Storybook from Jutro"
+            name = "Build Storybook"
             id = "BUILD_OUTPUT"
             scriptContent = """
                 #!/bin/bash
                 set -xe
                 
-                echo "Setting credentials to access Jutro"
-                export AWS_ACCESS_KEY_ID="${'$'}JUTRO_AWS_ACCESS_KEY_ID"
-                export AWS_SECRET_ACCESS_KEY="${'$'}JUTRO_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                if [[ -f "ci/npmLogin.sh" ]]; then
+                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
+                    sh ci/npmLogin.sh
+                fi
                 
-                cd %env.SOURCES_ROOT%
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export TARGET_URL="%env.TARGET_URL_PROD%"
+                fi
                 
-                echo "Copying from S3 to the build folder"
-                mkdir build
-                aws s3 sync s3://tenant-jutro-suite-int/release/${'$'}GW_VERSION/jutro-storybook-new build --delete
+                export JUTRO_VERSION=%emv.GW_VERSION%
                 
-                echo "Resetting credentials to default"
-                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                yarn
+                export BASE_URL=/%env.PUBLISH_PATH%/
+                cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
+                
+                NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
             """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:12.14.1"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
         }
     }
 
