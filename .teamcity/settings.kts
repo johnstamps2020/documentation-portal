@@ -1379,6 +1379,7 @@ object HelperObjects {
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
                 "sphinx" -> buildTemplate = BuildSphinx
+                "storybook" -> buildTemplate = GetStorybook
             }
 
             if (index_for_search) {
@@ -2307,6 +2308,58 @@ object RunContentValidations : Template({
         }
     }
 
+})
+
+object GetStorybook : Template({
+    name = "Get published Storybook"
+
+    params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
+        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
+        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+        text("env.WORKING_DIR", "%WORKING_DIR%")
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+    }
+
+    steps {
+        script {
+            name = "Download Storybook from Jutro"
+            id = "BUILD_OUTPUT"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                echo "Setting credentials to access Jutro"
+                export AWS_ACCESS_KEY_ID="${'$'}JUTRO_AWS_ACCESS_KEY_ID"
+                export AWS_SECRET_ACCESS_KEY="${'$'}JUTRO_AWS_SECRET_ACCESS_KEY"
+                export AWS_DEFAULT_REGION="${'$'}ATMOS_AWS_DEFAULT_REGION"
+                
+                echo "Copying from S3 to the build folder"
+                mkdir build
+                aws s3 sync s3://tenant-jutro-suite-int/release/${'$'}GW_VERSION/jutro-storybook-new build --delete
+                
+                echo "Resetting credentials to default"
+                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_AWS_ACCESS_KEY_ID"
+                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_AWS_SECRET_ACCESS_KEY"
+                export AWS_DEFAULT_REGION="${'$'}ATMOS_AWS_DEFAULT_REGION"
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+        }
+    }
+
+    vcs {
+        cleanCheckout = true
+    }
 })
 
 object BuildSphinx : Template({
