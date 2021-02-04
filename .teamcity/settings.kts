@@ -1736,6 +1736,7 @@ object HelperObjects {
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
                 "sphinx" -> templates(BuildSphinx)
+                "storybook" -> templates(GetStorybook)
                 "dita" -> templates(RunContentValidations)
             }
 
