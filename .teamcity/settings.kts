@@ -2344,6 +2344,8 @@ object GetStorybook : Template({
                 export AWS_SECRET_ACCESS_KEY="${'$'}JUTRO_AWS_SECRET_ACCESS_KEY"
                 export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 
+                cd %env.SOURCES_ROOT%
+                
                 echo "Copying from S3 to the build folder"
                 mkdir build
                 aws s3 sync s3://tenant-jutro-suite-int/release/${'$'}GW_VERSION/jutro-storybook-new build --delete
