@@ -27,6 +27,7 @@ project {
     template(BuildOutputFromDita)
     template(BuildYarn)
     template(BuildSphinx)
+    template(GetStorybook)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
 
@@ -1736,6 +1737,7 @@ object HelperObjects {
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
                 "sphinx" -> templates(BuildSphinx)
+                "storybook" -> templates(GetStorybook)
                 "dita" -> templates(RunContentValidations)
             }
 
