@@ -13313,7 +13313,7 @@
     },
     {
       "id": "in20202xrndraft",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20202x/releasenotes",
       "metadata": {
         "platform": [
@@ -13372,7 +13372,7 @@
     {
       "id": "in20211xstudiorndraft",
       "title": "Studio Release Notes",
-      "url": "cloud/in/20202x/studiorn",
+      "url": "cloud/in/20211x/studiorn",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13401,7 +13401,7 @@
     {
       "id": "in20211xappdraft",
       "title": "Application Guide",
-      "url": "cloud/in/20202x/app",
+      "url": "cloud/in/20211x/app",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13429,7 +13429,7 @@
     {
       "id": "in20211xbidraft",
       "title": "Business Intelligence Getting Started Guide",
-      "url": "cloud/in/20202x/bi",
+      "url": "cloud/in/20211x/bi",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13458,7 +13458,7 @@
     {
       "id": "in20211xcsalespdraft",
       "title": "Consumer Sales Portal Features",
-      "url": "cloud/in/20202x/csalesp",
+      "url": "cloud/in/20211x/csalesp",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13487,7 +13487,7 @@
     {
       "id": "in20211xcservicepdraft",
       "title": "Consumer Service Portal Features",
-      "url": "cloud/in/20202x/cservicep",
+      "url": "cloud/in/20211x/cservicep",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13516,7 +13516,7 @@
     {
       "id": "in20211xappreaderintegdraft",
       "title": "AppReader Integration",
-      "url": "cloud/in/20202x/appreaderinteg",
+      "url": "cloud/in/20211x/appreaderinteg",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13545,7 +13545,7 @@
     {
       "id": "in20211xpadraft",
       "title": "Predictive Analytics Integration",
-      "url": "cloud/in/20202x/pa",
+      "url": "cloud/in/20211x/pa",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13574,7 +13574,7 @@
     {
       "id": "in20211xbiintegdraft",
       "title": "Business Intelligence Integration",
-      "url": "cloud/in/20202x/biinteg",
+      "url": "cloud/in/20211x/biinteg",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13601,8 +13601,8 @@
     },
     {
       "id": "in20211xconfigdraft",
-      "title": "Configuration Guide",
-      "url": "cloud/in/20202x/config",
+      "title": "Core Configuration Guide",
+      "url": "cloud/in/20211x/config",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13631,7 +13631,7 @@
     {
       "id": "in20211xcservicepconfigdraft",
       "title": "Consumer Service Portal Configuration Guide",
-      "url": "cloud/in/20202x/cservicepconfig",
+      "url": "cloud/in/20211x/cservicepconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13659,7 +13659,7 @@
     {
       "id": "in20211xstudiodraft",
       "title": "Studio Configuration Guide",
-      "url": "cloud/in/20202x/studioconfig",
+      "url": "cloud/in/20211x/studioconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13688,7 +13688,7 @@
     {
       "id": "in20211xprovportaldraft",
       "title": "Provisioning Portal",
-      "url": "cloud/in/20202x/provportal",
+      "url": "cloud/in/20211x/provportal",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13716,7 +13716,7 @@
     {
       "id": "in20211xportaldevdraft",
       "title": "Portal Development",
-      "url": "cloud/in/20202x/portaldev",
+      "url": "cloud/in/20211x/portaldev",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13745,7 +13745,7 @@
     {
       "id": "in20211xprodattrefdraft",
       "title": "Product Attribute Reference",
-      "url": "cloud/in/20202x/prodattref",
+      "url": "cloud/in/20211x/prodattref",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13774,7 +13774,7 @@
     {
       "id": "in20211xuwconfigdraft",
       "title": "Underwriting Product Configuration Guide",
-      "url": "cloud/in/20202x/uwconfig",
+      "url": "cloud/in/20211x/uwconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13802,7 +13802,7 @@
     {
       "id": "in20211xclaimsconfigdraft",
       "title": "Claims Product Configuration Guide",
-      "url": "cloud/in/20202x/claimsconfig",
+      "url": "cloud/in/20211x/claimsconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -14155,7 +14155,7 @@
     },
     {
       "id": "in20202xconfigdraft",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20202x/config",
       "metadata": {
         "platform": [
@@ -14383,7 +14383,7 @@
     },
     {
       "id": "in20201xrndraft",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20201x/releasenotes",
       "metadata": {
         "platform": [
@@ -14670,7 +14670,7 @@
     },
     {
       "id": "in20201xconfigdraft",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20201x/config",
       "metadata": {
         "platform": [
