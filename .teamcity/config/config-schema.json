@@ -239,7 +239,7 @@
           "PolicyCenter API",
           "BillingCenter API",
           "ClaimCenter API",
-          "Guidewire String Manager"
+          "String Manager"
         ]
       }
     },
