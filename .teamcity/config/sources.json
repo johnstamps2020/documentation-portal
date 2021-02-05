@@ -945,7 +945,7 @@
       ]
     },
     {
-      "id": "configmgrcortinasrc",
+      "id": "configmgrhelpcortinasrc",
       "title": "Configuration Manager Help Cortina",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
@@ -956,7 +956,7 @@
       ]
     },
     {
-      "id": "configmgrbanffsrc",
+      "id": "configmgrhelpbanffsrc",
       "title": "Configuration Manager Help Banff",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
