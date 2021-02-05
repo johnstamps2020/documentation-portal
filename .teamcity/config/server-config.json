@@ -4010,7 +4010,7 @@
     {
       "id": "configmgrhelpdraft",
       "title": "Configuration Manager Help",
-      "url": "help/configuration-manager",
+      "url": "help/cortina/configuration-manager",
       "metadata": {
         "platform": [
           "Cloud"
@@ -4022,13 +4022,62 @@
           "latest"
         ],
         "release": [
-          "Banff"
+          "Cortina"
+        ]
+      },
+      "displayOnLandingPages": false,
+      "environments": [
+        "int"
+      ],
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "configmgrhelpcortina",
+      "title": "Configuration Manager Help",
+      "url": "help/cortina/configuration-manager",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Configuration Manager"
+        ],
+        "version": [
+          "Cortina"
+        ],
+        "release": [
+          "Cortina"
         ]
       },
       "displayOnLandingPages": false,
       "environments": [
         "dev",
-        "int",
+        "staging"
+      ],
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "configmgrhelpbanff",
+      "title": "Configuration Manager Help",
+      "url": "help/configuration-manager",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Configuration Manager"
+        ],
+        "version": [
+          "Banff"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "displayOnLandingPages": false,
+      "environments": [
         "staging",
         "prod"
       ],

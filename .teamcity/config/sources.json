@@ -939,8 +939,30 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
       "xdocsPathIds": [
-        "/Content/doc/help/cloudPlatform/GuidewireCloudPlatform.ditamap",
+        "/Content/doc/help/guidewireCloud/cortina/GuidewireCloudPlatform.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "configmgrhelpcortinasrc",
+      "title": "Configuration Manager Help Cortina",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/help/guidewireCloud/banff/GuidewireCloudPlatform.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "configmgrhelpbanffsrc",
+      "title": "Configuration Manager Help Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/help/guidewireCloud/banff/GuidewireCloudPlatform.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
