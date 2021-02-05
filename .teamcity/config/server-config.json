@@ -13341,6 +13341,35 @@
       "public": false
     },
     {
+      "id": "in20211xrndraft",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20211x/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20211xreleaseviddraft",
       "title": "Release Video",
       "url": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0",
@@ -14814,6 +14843,35 @@
       "public": false
     },
     {
+      "id": "in20211rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20211/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20211releasevid",
       "title": "Release Video",
       "url": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0",
@@ -15076,7 +15134,7 @@
     },
     {
       "id": "in20211config",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20211/config",
       "metadata": {
         "platform": [
@@ -15192,7 +15250,7 @@
     },
     {
       "id": "in20202rn",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20202/releasenotes",
       "metadata": {
         "platform": [
@@ -15492,7 +15550,7 @@
     },
     {
       "id": "in20202config",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20202/config",
       "metadata": {
         "platform": [
@@ -15612,7 +15670,7 @@
     },
     {
       "id": "in20201rn",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20201/releasenotes",
       "metadata": {
         "platform": [
@@ -15852,7 +15910,7 @@
     },
     {
       "id": "in20201config",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20201/config",
       "metadata": {
         "platform": [
