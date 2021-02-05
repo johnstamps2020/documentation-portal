@@ -238,7 +238,8 @@
           "Jutro Design System",
           "PolicyCenter API",
           "BillingCenter API",
-          "ClaimCenter API"
+          "ClaimCenter API",
+          "String Manager"
         ]
       }
     },
