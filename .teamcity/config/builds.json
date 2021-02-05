@@ -405,7 +405,7 @@
     {
       "buildType": "dita",
       "filter": "Other/IS-PC-Cloud-Draft.ditaval",
-      "root": "GuidewireStringManager.ditamap",
+      "root": "StringManager.ditamap",
       "srcId": "gwstringmanagerlatestsrc",
       "docId": "gwstringmanagerlatest",
       "indexRedirect": true
