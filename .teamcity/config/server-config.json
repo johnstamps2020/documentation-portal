@@ -1103,8 +1103,8 @@
       "public": false
     },
     {
-      "id": "gwstringmanagerlatest",
-      "title": "Guidewire String Manager Draft",
+      "id": "stringmanagerlatest",
+      "title": "String Manager Draft",
       "url": "cloud/gw-feature-preview/stringmanager/latest",
       "metadata": {
         "product": [

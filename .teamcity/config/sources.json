@@ -2222,10 +2222,10 @@
       ]
     },
     {
-      "id": "gwstringmanagerlatestsrc",
-      "title": "Guidewire String Manager",
+      "id": "stringmanagerlatestsrc",
+      "title": "String Manager",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-string-manager.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git"
     },
     {
       "id": "cloudratingdraftsrc",
