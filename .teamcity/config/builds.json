@@ -406,8 +406,8 @@
       "buildType": "dita",
       "filter": "Other/IS-PC-Cloud-Draft.ditaval",
       "root": "StringManager.ditamap",
-      "srcId": "gwstringmanagerlatestsrc",
-      "docId": "gwstringmanagerlatest",
+      "srcId": "stringmanagerlatestsrc",
+      "docId": "stringmanagerlatest",
       "indexRedirect": true
     },
     {
