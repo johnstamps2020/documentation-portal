@@ -1105,7 +1105,7 @@
     {
       "id": "gwstringmanagerlatest",
       "title": "Guidewire String Manager Draft",
-      "url": "cloud/gw-feature-preview/gwstringmanager/latest",
+      "url": "cloud/gw-feature-preview/stringmanager/latest",
       "metadata": {
         "product": [
           "Guidewire String Manager"
