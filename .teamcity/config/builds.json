@@ -1012,6 +1012,20 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "GuidewireCloudPlatform.ditamap",
+      "srcId": "configmgrhelpcortinasrc",
+      "docId": "configmgrhelpcortina"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GuidewireCloudPlatform.ditamap",
+      "srcId": "configmgrhelpbanffsrc",
+      "docId": "configmgrhelpbanff"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "surepath.ditamap",
       "srcId": "standards202101src",
       "docId": "standardslatest",
