@@ -2356,9 +2356,10 @@ object BuildStorybook : Template({
                 yarn
                 NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/jutro-docker-dev/testcafe:86.0_82.0-yarn"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
+            dockerRunParameters = """
+                -v /var/run/docker.sock:/var/run/docker.sock
+                -v ${'$'}HOME/.docker:/root/.docker
+            """.trimIndent()
         }
     }
 
