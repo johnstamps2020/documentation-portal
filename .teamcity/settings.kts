@@ -2350,10 +2350,10 @@ object BuildStorybook : Template({
                 
                 export JUTRO_VERSION=%env.GW_VERSION%
                 
-                yarn
                 export BASE_URL=/%env.PUBLISH_PATH%/
                 cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
                 
+                yarn
                 NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn"
