@@ -3315,10 +3315,10 @@
       "workingDir": "website"
     },
     {
-      "buildType": "storybook",
+      "buildType": "yarn",
       "docId": "storybook520",
-      "srcId": "srcjutrostorybook520",
-      "workingDir": "applications/jutro-app-storybook-new"
+      "srcId": "srcjutro520",
+      "workingDir": "storybook"
     },
     {
       "buildType": "yarn",
