@@ -2357,7 +2357,7 @@ object BuildStorybook : Template({
                 
                 NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:14.14.0"
+            dockerImage = "artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
