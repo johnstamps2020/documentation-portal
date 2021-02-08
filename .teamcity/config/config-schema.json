@@ -238,7 +238,8 @@
           "Jutro Design System",
           "PolicyCenter API",
           "BillingCenter API",
-          "ClaimCenter API"
+          "ClaimCenter API",
+          "String Manager"
         ]
       }
     },
@@ -285,7 +286,7 @@
         "buildType": {
           "description": "The build type to apply",
           "type": "string",
-          "enum": ["dita", "dita-dev", "yarn", "sphinx"]
+          "enum": ["dita", "dita-dev", "sphinx", "storybook", "yarn"]
         },
         "filter": {
           "description": "The name of the ditaval file to use in the build, including the extension",

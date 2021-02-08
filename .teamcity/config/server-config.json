@@ -937,8 +937,37 @@
       "public": false
     },
     {
+      "id": "testingframeworksrndraft",
+      "title": "Testing Frameworks Release Notes Draft",
+      "url": "cloud/testingframeworks/latest/releasenotes",
+      "metadata": {
+        "product": [
+          "Testing Frameworks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Banff",
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "testingframeworksapibanff",
-      "title": "Testing Frameworks API Banff",
+      "title": "Testing Frameworks API",
       "url": "cloud/testingframeworks/202011/api",
       "metadata": {
         "product": [
@@ -967,7 +996,7 @@
     },
     {
       "id": "testingframeworksuibanff",
-      "title": "Testing Frameworks UI Banff",
+      "title": "Testing Frameworks UI",
       "url": "cloud/testingframeworks/202011/ui",
       "metadata": {
         "product": [
@@ -984,6 +1013,35 @@
         ],
         "subject": [
           "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksrnbanff",
+      "title": "Testing Frameworks Release Notes",
+      "url": "cloud/testingframeworks/202011/releasenotes",
+      "metadata": {
+        "product": [
+          "Testing Frameworks"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
         ]
       },
       "environments": [
@@ -1041,6 +1099,32 @@
         "int"
       ],
       "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "stringmanagerlatest",
+      "title": "String Manager Draft",
+      "url": "cloud/gw-feature-preview/stringmanager/latest",
+      "metadata": {
+        "product": [
+          "String Manager"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Banff",
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false
     },
@@ -3358,9 +3442,9 @@
       "public": false
     },
     {
-      "id": "lobbopstaternbanff",
-      "title": "Businessowners Standards Based Template State Release Notes",
-      "url": "cloud/lob/bop/202011/statern",
+      "id": "lobbopguideaspen",
+      "title": "Businessowners Standards Based Template Guide",
+      "url": "cloud/lob/bop/202005/guide",
       "metadata": {
         "platform": [
           "Cloud"
@@ -3369,10 +3453,39 @@
           "Businessowners Standards Based Template"
         ],
         "version": [
-          "2020.11"
+          "2020.05"
         ],
         "release": [
-          "Banff"
+          "Aspen"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobbopsbtrnaspen",
+      "title": "Businessowners Standards Based Template Countrywide Release Notes",
+      "url": "cloud/lob/bop/202005/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Businessowners Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
         ],
         "subject": [
           "Release notes"
@@ -3897,7 +4010,7 @@
     {
       "id": "configmgrhelpdraft",
       "title": "Configuration Manager Help",
-      "url": "help/configuration-manager",
+      "url": "help/cortina/configuration-manager",
       "metadata": {
         "platform": [
           "Cloud"
@@ -3909,13 +4022,62 @@
           "latest"
         ],
         "release": [
-          "Banff"
+          "Cortina"
+        ]
+      },
+      "displayOnLandingPages": false,
+      "environments": [
+        "int"
+      ],
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "configmgrhelpcortina",
+      "title": "Configuration Manager Help",
+      "url": "help/cortina/configuration-manager",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Configuration Manager"
+        ],
+        "version": [
+          "Cortina"
+        ],
+        "release": [
+          "Cortina"
         ]
       },
       "displayOnLandingPages": false,
       "environments": [
         "dev",
-        "int",
+        "staging"
+      ],
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "configmgrhelpbanff",
+      "title": "Configuration Manager Help",
+      "url": "help/configuration-manager",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Configuration Manager"
+        ],
+        "version": [
+          "Banff"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "displayOnLandingPages": false,
+      "environments": [
         "staging",
         "prod"
       ],
@@ -3948,6 +4110,34 @@
         "staging",
         "prod"
       ],
+      "public": false
+    },
+    {
+      "id": "standards202101",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202101",
+      "metadata": {
+        "product": [
+          "Guidewire Cloud Standards"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2021.01"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false
     },
     {
@@ -8580,35 +8770,6 @@
       "public": false
     },
     {
-      "id": "lobbopstaterndraft",
-      "title": "Businessowners Standards Based Template State Release Notes",
-      "url": "cloud/lob/bop/latest/statern",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Businessowners Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "lobcaguidedraft",
       "title": "Commercial Auto Standards Based Template Guide",
       "url": "cloud/lob/ca/latest/guide",
@@ -9549,8 +9710,7 @@
       },
       "environments": [
         "dev",
-        "int",
-        "staging"
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -10137,8 +10297,7 @@
       },
       "environments": [
         "dev",
-        "int",
-        "staging"
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -13203,7 +13362,7 @@
     },
     {
       "id": "in20202xrndraft",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20202x/releasenotes",
       "metadata": {
         "platform": [
@@ -13221,6 +13380,35 @@
         ],
         "release": [
           "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20211xrndraft",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20211x/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Cortina"
         ]
       },
       "environments": [
@@ -13262,7 +13450,7 @@
     {
       "id": "in20211xstudiorndraft",
       "title": "Studio Release Notes",
-      "url": "cloud/in/20202x/studiorn",
+      "url": "cloud/in/20211x/studiorn",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13291,7 +13479,7 @@
     {
       "id": "in20211xappdraft",
       "title": "Application Guide",
-      "url": "cloud/in/20202x/app",
+      "url": "cloud/in/20211x/app",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13319,7 +13507,7 @@
     {
       "id": "in20211xbidraft",
       "title": "Business Intelligence Getting Started Guide",
-      "url": "cloud/in/20202x/bi",
+      "url": "cloud/in/20211x/bi",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13348,7 +13536,7 @@
     {
       "id": "in20211xcsalespdraft",
       "title": "Consumer Sales Portal Features",
-      "url": "cloud/in/20202x/csalesp",
+      "url": "cloud/in/20211x/csalesp",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13377,7 +13565,7 @@
     {
       "id": "in20211xcservicepdraft",
       "title": "Consumer Service Portal Features",
-      "url": "cloud/in/20202x/cservicep",
+      "url": "cloud/in/20211x/cservicep",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13406,7 +13594,7 @@
     {
       "id": "in20211xappreaderintegdraft",
       "title": "AppReader Integration",
-      "url": "cloud/in/20202x/appreaderinteg",
+      "url": "cloud/in/20211x/appreaderinteg",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13435,7 +13623,7 @@
     {
       "id": "in20211xpadraft",
       "title": "Predictive Analytics Integration",
-      "url": "cloud/in/20202x/pa",
+      "url": "cloud/in/20211x/pa",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13464,7 +13652,7 @@
     {
       "id": "in20211xbiintegdraft",
       "title": "Business Intelligence Integration",
-      "url": "cloud/in/20202x/biinteg",
+      "url": "cloud/in/20211x/biinteg",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13491,8 +13679,8 @@
     },
     {
       "id": "in20211xconfigdraft",
-      "title": "Configuration Guide",
-      "url": "cloud/in/20202x/config",
+      "title": "Core Configuration Guide",
+      "url": "cloud/in/20211x/config",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13521,7 +13709,7 @@
     {
       "id": "in20211xcservicepconfigdraft",
       "title": "Consumer Service Portal Configuration Guide",
-      "url": "cloud/in/20202x/cservicepconfig",
+      "url": "cloud/in/20211x/cservicepconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13549,7 +13737,7 @@
     {
       "id": "in20211xstudiodraft",
       "title": "Studio Configuration Guide",
-      "url": "cloud/in/20202x/studioconfig",
+      "url": "cloud/in/20211x/studioconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13578,7 +13766,7 @@
     {
       "id": "in20211xprovportaldraft",
       "title": "Provisioning Portal",
-      "url": "cloud/in/20202x/provportal",
+      "url": "cloud/in/20211x/provportal",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13606,7 +13794,7 @@
     {
       "id": "in20211xportaldevdraft",
       "title": "Portal Development",
-      "url": "cloud/in/20202x/portaldev",
+      "url": "cloud/in/20211x/portaldev",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13635,7 +13823,7 @@
     {
       "id": "in20211xprodattrefdraft",
       "title": "Product Attribute Reference",
-      "url": "cloud/in/20202x/prodattref",
+      "url": "cloud/in/20211x/prodattref",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13664,7 +13852,7 @@
     {
       "id": "in20211xuwconfigdraft",
       "title": "Underwriting Product Configuration Guide",
-      "url": "cloud/in/20202x/uwconfig",
+      "url": "cloud/in/20211x/uwconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -13692,7 +13880,7 @@
     {
       "id": "in20211xclaimsconfigdraft",
       "title": "Claims Product Configuration Guide",
-      "url": "cloud/in/20202x/claimsconfig",
+      "url": "cloud/in/20211x/claimsconfig",
       "metadata": {
         "platform": [
           "Cloud"
@@ -14045,7 +14233,7 @@
     },
     {
       "id": "in20202xconfigdraft",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20202x/config",
       "metadata": {
         "platform": [
@@ -14273,7 +14461,7 @@
     },
     {
       "id": "in20201xrndraft",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20201x/releasenotes",
       "metadata": {
         "platform": [
@@ -14560,7 +14748,7 @@
     },
     {
       "id": "in20201xconfigdraft",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20201x/config",
       "metadata": {
         "platform": [
@@ -14698,6 +14886,35 @@
       },
       "environments": [
         "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20211rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20211/releasenotes",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow"
+        ],
+        "version": [
+          "2021.1"
+        ],
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -14966,7 +15183,7 @@
     },
     {
       "id": "in20211config",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20211/config",
       "metadata": {
         "platform": [
@@ -15082,7 +15299,7 @@
     },
     {
       "id": "in20202rn",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20202/releasenotes",
       "metadata": {
         "platform": [
@@ -15382,7 +15599,7 @@
     },
     {
       "id": "in20202config",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20202/config",
       "metadata": {
         "platform": [
@@ -15502,7 +15719,7 @@
     },
     {
       "id": "in20201rn",
-      "title": "Release Notes",
+      "title": "Core Release Notes",
       "url": "cloud/in/20201/releasenotes",
       "metadata": {
         "platform": [
@@ -15742,7 +15959,7 @@
     },
     {
       "id": "in20201config",
-      "title": "Configuration Guide",
+      "title": "Core Configuration Guide",
       "url": "cloud/in/20201/config",
       "metadata": {
         "platform": [
