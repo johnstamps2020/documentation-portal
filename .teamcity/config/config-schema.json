@@ -239,7 +239,8 @@
           "PolicyCenter API",
           "BillingCenter API",
           "ClaimCenter API",
-          "String Manager"
+          "String Manager",
+          "Checksums"
         ]
       }
     },

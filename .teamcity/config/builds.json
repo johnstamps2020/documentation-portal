@@ -3973,6 +3973,11 @@
       "srcId": "dm1050devrefsrc",
       "docId": "ic1050devref",
       "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "checksumssrc",
+      "docId": "checksums"
     }
   ]
 }

@@ -2752,6 +2752,12 @@
         "/Content/doc/data-analytics/dh-ic/10.x/active/reports.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
+    },
+    {
+      "id": "checksumssrc",
+      "title": "Checksums source in git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/checksums.git",
+      "sourceType": "git"
     }
   ]
 }
