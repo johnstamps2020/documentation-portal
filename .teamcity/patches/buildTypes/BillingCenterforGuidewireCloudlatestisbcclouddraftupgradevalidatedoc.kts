@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'BillingCenterforGuidewireClo
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("BillingCenterforGuidewireCloudlatestisbcclouddraftupgradevalidatedoc")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Get document details"

@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'GuidewireCloudStandardsdraft
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("GuidewireCloudStandardsdraftstandardsdraftvalidatedoc")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Get document details"

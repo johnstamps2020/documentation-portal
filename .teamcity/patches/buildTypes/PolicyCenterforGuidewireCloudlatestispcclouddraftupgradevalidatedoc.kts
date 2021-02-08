@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'PolicyCenterforGuidewireClou
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("PolicyCenterforGuidewireCloudlatestispcclouddraftupgradevalidatedoc")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Get document details"

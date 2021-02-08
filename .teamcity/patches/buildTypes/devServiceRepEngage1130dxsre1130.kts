@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'devServiceRepEngage1130dxsre
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("devServiceRepEngage1130dxsre1130")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     params {
         expect {
             password("env.AUTH_TOKEN", "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083", display = ParameterDisplay.HIDDEN)
