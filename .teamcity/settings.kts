@@ -2350,6 +2350,7 @@ object BuildStorybook : Template({
                 
                 export JUTRO_VERSION=%env.GW_VERSION%
                 
+                yarn
                 export BASE_URL=/%env.PUBLISH_PATH%/
                 cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
                 
