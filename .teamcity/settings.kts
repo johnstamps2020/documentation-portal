@@ -2356,10 +2356,9 @@ object BuildStorybook : Template({
                 yarn
                 NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
             """.trimIndent()
-            dockerRunParameters = """
-                -v /var/run/docker.sock:/var/run/docker.sock
-                -v ${'$'}HOME/.docker:/root/.docker
-            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:14.14.0"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
         }
     }
 
