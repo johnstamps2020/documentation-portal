@@ -2353,6 +2353,7 @@ object BuildStorybook : Template({
                 yarn
                 export BASE_URL=/%env.PUBLISH_PATH%/
                 cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
+                yarn
                 
                 NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
             """.trimIndent()
