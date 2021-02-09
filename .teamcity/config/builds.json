@@ -3343,6 +3343,11 @@
       "srcId": "srcapiref202011"
     },
     {
+      "buildType": "sphinx",
+      "docId": "is202011contactapi",
+      "srcId": "srcapiref202011"
+    },
+    {
       "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
