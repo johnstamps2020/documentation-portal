@@ -795,7 +795,7 @@
       ]
     },
     {
-      "id": "dxclouddraftdgc",
+      "id": "dxclouddraftdcg",
       "title": "Digital Code Generation Guide Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
@@ -806,7 +806,7 @@
       ]
     },
     {
-      "id": "dxclouddraftdgcrn",
+      "id": "dxclouddraftdcgrn",
       "title": "Digital Code Generation Release Notes Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",

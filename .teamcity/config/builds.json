@@ -293,15 +293,17 @@
       "buildType": "dita",
       "filter": "Digital-apd-MgSvcs.ditaval",
       "root": "DigitalCodeGenerationGuide.ditamap",
-      "srcId": "dxclouddraftdgc",
-      "docId": "dxclouddraftdgc"
+      "srcId": "dxclouddraftdcg",
+      "docId": "dxclouddraftdcg",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-apd-MgSvcs.ditaval",
       "root": "digital-codegen-release-notes.ditamap",
-      "srcId": "dxclouddraftdgcrn",
-      "docId": "dxclouddraftdgcrn"
+      "srcId": "dxclouddraftdcgrn",
+      "docId": "dxclouddraftdcgrn",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
