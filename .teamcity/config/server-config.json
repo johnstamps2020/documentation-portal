@@ -24,7 +24,8 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -39,7 +40,8 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Installation"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -54,7 +56,8 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -69,7 +72,8 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -84,7 +88,8 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -99,7 +104,8 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -114,7 +120,8 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Installation"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -129,7 +136,8 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -144,7 +152,8 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -159,7 +168,8 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -174,7 +184,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -189,7 +200,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Installation"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -204,7 +216,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -219,7 +232,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -234,7 +248,8 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -249,7 +264,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -264,7 +280,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Installation"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -279,7 +296,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -294,7 +312,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -309,7 +328,8 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -324,7 +344,8 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -339,7 +360,8 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Installation"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -354,7 +376,8 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -369,7 +392,8 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -384,7 +408,8 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -399,7 +424,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -414,7 +440,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Installation"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -429,7 +456,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -444,7 +472,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -459,7 +488,8 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -474,7 +504,8 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -489,7 +520,8 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Installation"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -504,7 +536,8 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -519,7 +552,8 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -534,7 +568,8 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -549,7 +584,8 @@
         "product": ["Digital Code Generation Extension Pack"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -564,7 +600,8 @@
         "product": ["Digital Code Generation Extension Pack"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
