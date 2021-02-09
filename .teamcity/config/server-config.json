@@ -577,7 +577,7 @@
       "public": true
     },
     {
-      "id": "dxclouddraftdgc",
+      "id": "dxclouddraftdcg",
       "title": "Digital Code Generation Guide",
       "url": "cloud/dx/dcg/latest/guide",
       "metadata": {
@@ -593,7 +593,7 @@
       "public": false
     },
     {
-      "id": "dxclouddraftdgcrn",
+      "id": "dxclouddraftdcgrn",
       "title": "Release Notes",
       "url": "cloud/dx/dcg/latest/relnotes",
       "metadata": {
