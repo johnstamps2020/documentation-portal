@@ -5964,7 +5964,7 @@
         ],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "subject": ["Features and functionality"]
+        "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
