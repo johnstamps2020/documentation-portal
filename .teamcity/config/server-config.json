@@ -18,7 +18,7 @@
     },
     {
       "id": "dxclouddraftceamapp",
-      "title": "CustomerEngage Account Management Application Guide",
+      "title": "Application Guide",
       "url": "cloud/dx/ce-am/latest/app",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -34,7 +34,7 @@
     },
     {
       "id": "dxclouddraftceaminstall",
-      "title": "CustomerEngage Account Management Installation Guide",
+      "title": "Installation Guide",
       "url": "cloud/dx/ce-am/latest/install",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -50,7 +50,7 @@
     },
     {
       "id": "dxclouddraftceamdev",
-      "title": "CustomerEngage Account Management Developers Guide",
+      "title": "Developers Guide",
       "url": "cloud/dx/ce-am/latest/dev",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -66,7 +66,7 @@
     },
     {
       "id": "dxclouddraftceamrefguides",
-      "title": "CustomerEngage Account Management Digital Services Reference Guides",
+      "title": "Digital Services Reference Guides",
       "url": "cloud/dx/ce-am/latest/ref",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -82,7 +82,7 @@
     },
     {
       "id": "dxclouddraftceamrelnotes",
-      "title": "CustomerEngage Account Management Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/ce-am/latest/relnotes",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -98,7 +98,7 @@
     },
     {
       "id": "dxclouddraftceclaimsapp",
-      "title": "CustomerEngage Account Management for ClaimCenter Application Guide",
+      "title": "Application Guide",
       "url": "cloud/dx/ce-claims/latest/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -114,7 +114,7 @@
     },
     {
       "id": "dxclouddraftceclaimsinstall",
-      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide",
+      "title": "Installation Guide",
       "url": "cloud/dx/ce-claims/latest/install",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -130,7 +130,7 @@
     },
     {
       "id": "dxclouddraftceclaimsdev",
-      "title": "CustomerEngage Account Management for ClaimCenter Developers Guide",
+      "title": "Developers Guide",
       "url": "cloud/dx/ce-claims/latest/dev",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -146,7 +146,7 @@
     },
     {
       "id": "dxclouddraftceclaimsrefguides",
-      "title": "CustomerEngage Account Management for ClaimCenter Digital Services Reference Guides",
+      "title": "Digital Services Reference Guides",
       "url": "cloud/dx/ce-claims/latest/ref",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -162,7 +162,7 @@
     },
     {
       "id": "dxclouddraftceclaimsrelnotes",
-      "title": "CustomerEngage Account Management for ClaimCenter Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/ce-claims/latest/relnotes",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -178,7 +178,7 @@
     },
     {
       "id": "dxclouddraftceqbapp",
-      "title": "CustomerEngage Quote and Buy Application Guide",
+      "title": "Application Guide",
       "url": "cloud/dx/ce-qb/latest/app",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -194,7 +194,7 @@
     },
     {
       "id": "dxclouddraftceqbinstall",
-      "title": "CustomerEngage Quote and Buy Installation Guide",
+      "title": "Installation Guide",
       "url": "cloud/dx/ce-qb/latest/install",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -210,7 +210,7 @@
     },
     {
       "id": "dxclouddraftceqbdev",
-      "title": "CustomerEngage Quote and Buy Developers Guide",
+      "title": "Developers Guide",
       "url": "cloud/dx/ce-qb/latest/dev",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -226,7 +226,7 @@
     },
     {
       "id": "dxclouddraftceqbrefguides",
-      "title": "CustomerEngage Quote and Buy Digital Services Reference Guides",
+      "title": "Digital Services Reference Guides",
       "url": "cloud/dx/ce-qb/latest/ref",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -242,7 +242,7 @@
     },
     {
       "id": "dxclouddraftceqbrelnotes",
-      "title": "CustomerEngage Quote and Buy Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/ce-qb/latest/relnotes",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -258,7 +258,7 @@
     },
     {
       "id": "dxclouddraftpeapp",
-      "title": "ProducerEngage Application Guide",
+      "title": "Application Guide",
       "url": "cloud/dx/pe/latest/app",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -274,7 +274,7 @@
     },
     {
       "id": "dxclouddraftpeinstall",
-      "title": "ProducerEngage Installation Guide",
+      "title": "Installation Guide",
       "url": "cloud/dx/pe/latest/install",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -290,7 +290,7 @@
     },
     {
       "id": "dxclouddraftpedev",
-      "title": "ProducerEngage Developers Guide",
+      "title": "Developers Guide",
       "url": "cloud/dx/pe/latest/dev",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -306,7 +306,7 @@
     },
     {
       "id": "dxclouddraftperefguides",
-      "title": "ProducerEngage Digital Services Reference Guides",
+      "title": "Digital Services Reference Guides",
       "url": "cloud/dx/pe/latest/ref",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -322,7 +322,7 @@
     },
     {
       "id": "dxclouddraftperelnotes",
-      "title": "ProducerEngage Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/pe/latest/relnotes",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -338,7 +338,7 @@
     },
     {
       "id": "dxclouddraftpeclaimsapp",
-      "title": "ProducerEngage for ClaimCenter Application Guide",
+      "title": "Application Guide",
       "url": "cloud/dx/pe-claims/latest/app",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -354,7 +354,7 @@
     },
     {
       "id": "dxclouddraftpeclaimsinstall",
-      "title": "ProducerEngage for ClaimCenter Installation Guide",
+      "title": "Installation Guide",
       "url": "cloud/dx/pe-claims/latest/install",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -370,7 +370,7 @@
     },
     {
       "id": "dxclouddraftpeclaimsdev",
-      "title": "ProducerEngage for ClaimCenter Developers Guide",
+      "title": "Developers Guide",
       "url": "cloud/dx/pe-claims/latest/dev",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -386,7 +386,7 @@
     },
     {
       "id": "dxclouddraftpeclaimsrefguides",
-      "title": "ProducerEngage for ClaimCenter Digital Services Reference Guides",
+      "title": "Digital Services Reference Guides",
       "url": "cloud/dx/pe-claims/latest/ref",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -402,7 +402,7 @@
     },
     {
       "id": "dxclouddraftpeclaimsrelnotes",
-      "title": "ProducerEngage for ClaimCenter Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/pe-claims/latest/relnotes",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -418,7 +418,7 @@
     },
     {
       "id": "dxclouddraftsreapp",
-      "title": "ServiceRepEngage Application Guide",
+      "title": "Application Guide",
       "url": "cloud/dx/sre/latest/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -434,7 +434,7 @@
     },
     {
       "id": "dxclouddraftsreinstall",
-      "title": "ServiceRepEngage Installation Guide",
+      "title": "Installation Guide",
       "url": "cloud/dx/sre/latest/install",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -450,7 +450,7 @@
     },
     {
       "id": "dxclouddraftsredev",
-      "title": "ServiceRepEngage Developers Guide",
+      "title": "Developers Guide",
       "url": "cloud/dx/sre/latest/dev",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -466,7 +466,7 @@
     },
     {
       "id": "dxclouddraftsrerefguides",
-      "title": "ServiceRepEngage Digital Services Reference Guides",
+      "title": "Digital Services Reference Guides",
       "url": "cloud/dx/sre/latest/ref",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -482,7 +482,7 @@
     },
     {
       "id": "dxclouddraftsrerelnotes",
-      "title": "ServiceRepEngage Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/sre/latest/relnotes",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -498,7 +498,7 @@
     },
     {
       "id": "dxclouddraftveapp",
-      "title": "VendorEngage Application Guide",
+      "title": "Application Guide",
       "url": "cloud/dx/ve/latest/app",
       "metadata": {
         "product": ["VendorEngage"],
@@ -514,7 +514,7 @@
     },
     {
       "id": "dxclouddraftveinstall",
-      "title": "VendorEngage Installation Guide",
+      "title": "Installation Guide",
       "url": "cloud/dx/ve/latest/install",
       "metadata": {
         "product": ["VendorEngage"],
@@ -530,7 +530,7 @@
     },
     {
       "id": "dxclouddraftvedev",
-      "title": "VendorEngage Developers Guide",
+      "title": "Developers Guide",
       "url": "cloud/dx/ve/latest/dev",
       "metadata": {
         "product": ["VendorEngage"],
@@ -546,7 +546,7 @@
     },
     {
       "id": "dxclouddraftverefguides",
-      "title": "VendorEngage Digital Services Reference Guides",
+      "title": "Digital Services Reference Guides",
       "url": "cloud/dx/ve/latest/ref",
       "metadata": {
         "product": ["VendorEngage"],
@@ -562,7 +562,7 @@
     },
     {
       "id": "dxclouddraftverelnotes",
-      "title": "VendorEngage Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/ve/latest/relnotes",
       "metadata": {
         "product": ["VendorEngage"],
@@ -578,7 +578,7 @@
     },
     {
       "id": "dxclouddraftdgc",
-      "title": "Digital Code Generation Extension Pack Guide",
+      "title": "Digital Code Generation Guide",
       "url": "cloud/dx/dcg/latest/guide",
       "metadata": {
         "product": ["Digital Code Generation Extension Pack"],
@@ -594,7 +594,7 @@
     },
     {
       "id": "dxclouddraftdgcrn",
-      "title": "Digital Code Generation Extension Pack Release Notes",
+      "title": "Release Notes",
       "url": "cloud/dx/dcg/latest/relnotes",
       "metadata": {
         "product": ["Digital Code Generation Extension Pack"],
