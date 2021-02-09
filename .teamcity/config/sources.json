@@ -778,28 +778,427 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/active/DX_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftdgc",
+      "title": "Digital Code Generation Guide Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalCodeGenerationGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftdgcrn",
+      "title": "Digital Code Generation Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/digital-codegen-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceamapp",
+      "title": "Digital CustomerEngage Account Management Application Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/CustomerEngage_AccountManagement_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceaminstall",
+      "title": "Digital CustomerEngage Account Management Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceamdev",
+      "title": "Digital CustomerEngage Account Management Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceamrefguides",
+      "title": "Digital CustomerEngage Account Management DX Services Ref Guides Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceamrelnotes",
+      "title": "Digital CustomerEngage Account Management Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceclaimsapp",
+      "title": "Digital CustomerEngage Account Management for CC Application Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/CustomerEngage_Claims_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceclaimsinstall",
+      "title": "Digital CustomerEngage Account Management for CC Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceclaimsdev",
+      "title": "Digital CustomerEngage Account Management for CC Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceclaimsrefguides",
+      "title": "Digital CustomerEngage Account Management for CC DX Services Ref Guides Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceclaimsrelnotes",
+      "title": "Digital CustomerEngage Account Management for CC Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceqbapp",
+      "title": "Digital CustomerEngage Quote and Buy Application Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceqbinstall",
+      "title": "Digital CustomerEngage Quote and Buy Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceqbdev",
+      "title": "Digital CustomerEngage Quote and Buy Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceqbrefguides",
+      "title": "Digital CustomerEngage Quote and Buy DX Services Ref Guides Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftceqbrelnotes",
+      "title": "Digital CustomerEngage Quote and Buy Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpeapp",
+      "title": "Digital ProducerEngage Application Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/ProducerEngage_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpeinstall",
+      "title": "Digital ProducerEngage Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpedev",
+      "title": "Digital ProducerEngage Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftperefguides",
+      "title": "Digital ProducerEngage DX Services Ref Guides Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftperelnotes",
+      "title": "Digital ProducerEngage Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpeclaimsapp",
+      "title": "Digital ProducerEngage for CC Application Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/ProducerEngage_Claims_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpeclaimsinstall",
+      "title": "Digital ProducerEngage for CC Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpeclaimsdev",
+      "title": "Digital ProducerEngage for CC Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpeclaimsrefguides",
+      "title": "Digital ProducerEngage for CC DX Services Ref Guides Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftpeclaimsrelnotes",
+      "title": "Digital ProducerEngage for CC Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftsreapp",
+      "title": "Digital ServiceRepEngage Application Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/ServiceRepEngage_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftsreinstall",
+      "title": "Digital ServiceRepEngage Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftsredev",
+      "title": "Digital ServiceRepEngage Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftsrerefguides",
+      "title": "Digital ServiceRepEngage DX Services Ref Guides Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftsrerelnotes",
+      "title": "Digital ServiceRepEngage Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftveapp",
+      "title": "Digital VendorEngage Application Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/VendorEngage_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftveinstall",
+      "title": "Digital VendorEngage Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftvedev",
+      "title": "Digital VendorEngage Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftverefguides",
+      "title": "Digital VendorEngage DX Services Ref Guides Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval"
+      ]
+    },
+    {
+      "id": "dxclouddraftverelnotes",
+      "title": "Digital VendorEngage Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval"
       ]
     },
     {

@@ -17,9 +17,9 @@
       "public": false
     },
     {
-      "id": "clouddxceamdraft",
-      "title": "CustomerEngage Account Management",
-      "url": "cloud/dx/ce-am/latest",
+      "id": "dxclouddraftceamapp",
+      "title": "CustomerEngage Account Management Application Guide",
+      "url": "cloud/dx/ce-am/latest/app",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
@@ -32,9 +32,69 @@
       "public": true
     },
     {
-      "id": "clouddxceclaimsdraft",
-      "title": "CustomerEngage Account Management for ClaimCenter",
-      "url": "cloud/dx/ce-claims/latest",
+      "id": "dxclouddraftceaminstall",
+      "title": "CustomerEngage Account Management Installation Guide",
+      "url": "cloud/dx/ce-am/latest/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceamdev",
+      "title": "CustomerEngage Account Management Developers Guide",
+      "url": "cloud/dx/ce-am/latest/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceamrefguides",
+      "title": "CustomerEngage Account Management Digital Services Reference Guides",
+      "url": "cloud/dx/ce-am/latest/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceamrelnotes",
+      "title": "CustomerEngage Account Management Release Notes",
+      "url": "cloud/dx/ce-am/latest/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceclaimsapp",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide",
+      "url": "cloud/dx/ce-claims/latest/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
@@ -44,12 +104,72 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
-      "id": "clouddxceqbdraft",
-      "title": "CustomerEngage Quote and Buy",
-      "url": "cloud/dx/ce-qb/latest",
+      "id": "dxclouddraftceclaimsinstall",
+      "title": "CustomerEngage Account Management for ClaimCenter Installation Guide",
+      "url": "cloud/dx/ce-claims/latest/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceclaimsdev",
+      "title": "CustomerEngage Account Management for ClaimCenter Developers Guide",
+      "url": "cloud/dx/ce-claims/latest/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceclaimsrefguides",
+      "title": "CustomerEngage Account Management for ClaimCenter Digital Services Reference Guides",
+      "url": "cloud/dx/ce-claims/latest/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceclaimsrelnotes",
+      "title": "CustomerEngage Account Management for ClaimCenter Release Notes",
+      "url": "cloud/dx/ce-claims/latest/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceqbapp",
+      "title": "CustomerEngage Quote and Buy Application Guide",
+      "url": "cloud/dx/ce-qb/latest/app",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
@@ -62,11 +182,11 @@
       "public": true
     },
     {
-      "id": "dxapdclouddraft",
-      "title": "Digital Code Generation Extension Pack",
-      "url": "cloud/dx/apd/latest",
+      "id": "dxclouddraftceqbinstall",
+      "title": "CustomerEngage Quote and Buy Installation Guide",
+      "url": "cloud/dx/ce-qb/latest/install",
       "metadata": {
-        "product": ["Digital Code Generation Extension Pack"],
+        "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Cortina"]
@@ -74,12 +194,57 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
-      "id": "clouddxpedraft",
-      "title": "ProducerEngage",
-      "url": "cloud/dx/pe/latest",
+      "id": "dxclouddraftceqbdev",
+      "title": "CustomerEngage Quote and Buy Developers Guide",
+      "url": "cloud/dx/ce-qb/latest/dev",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceqbrefguides",
+      "title": "CustomerEngage Quote and Buy Digital Services Reference Guides",
+      "url": "cloud/dx/ce-qb/latest/ref",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftceqbrelnotes",
+      "title": "CustomerEngage Quote and Buy Release Notes",
+      "url": "cloud/dx/ce-qb/latest/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftpeapp",
+      "title": "ProducerEngage Application Guide",
+      "url": "cloud/dx/pe/latest/app",
       "metadata": {
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
@@ -92,9 +257,69 @@
       "public": true
     },
     {
-      "id": "clouddxpeclaimsdraft",
-      "title": "ProducerEngage for ClaimCenter",
-      "url": "cloud/dx/pe-claims/latest",
+      "id": "dxclouddraftpeinstall",
+      "title": "ProducerEngage Installation Guide",
+      "url": "cloud/dx/pe/latest/install",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftpedev",
+      "title": "ProducerEngage Developers Guide",
+      "url": "cloud/dx/pe/latest/dev",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftperefguides",
+      "title": "ProducerEngage Digital Services Reference Guides",
+      "url": "cloud/dx/pe/latest/ref",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftperelnotes",
+      "title": "ProducerEngage Release Notes",
+      "url": "cloud/dx/pe/latest/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftpeclaimsapp",
+      "title": "ProducerEngage for ClaimCenter Application Guide",
+      "url": "cloud/dx/pe-claims/latest/app",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
@@ -107,9 +332,69 @@
       "public": true
     },
     {
-      "id": "clouddxsredraft",
-      "title": "ServiceRepEngage",
-      "url": "cloud/dx/sre/latest",
+      "id": "dxclouddraftpeclaimsinstall",
+      "title": "ProducerEngage for ClaimCenter Installation Guide",
+      "url": "cloud/dx/pe-claims/latest/install",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftpeclaimsdev",
+      "title": "ProducerEngage for ClaimCenter Developers Guide",
+      "url": "cloud/dx/pe-claims/latest/dev",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftpeclaimsrefguides",
+      "title": "ProducerEngage for ClaimCenter Digital Services Reference Guides",
+      "url": "cloud/dx/pe-claims/latest/ref",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftpeclaimsrelnotes",
+      "title": "ProducerEngage for ClaimCenter Release Notes",
+      "url": "cloud/dx/pe-claims/latest/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftsreapp",
+      "title": "ServiceRepEngage Application Guide",
+      "url": "cloud/dx/sre/latest/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
@@ -122,9 +407,69 @@
       "public": true
     },
     {
-      "id": "clouddxvedraft",
-      "title": "VendorEngage",
-      "url": "cloud/dx/ve/latest",
+      "id": "dxclouddraftsreinstall",
+      "title": "ServiceRepEngage Installation Guide",
+      "url": "cloud/dx/sre/latest/install",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftsredev",
+      "title": "ServiceRepEngage Developers Guide",
+      "url": "cloud/dx/sre/latest/dev",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftsrerefguides",
+      "title": "ServiceRepEngage Digital Services Reference Guides",
+      "url": "cloud/dx/sre/latest/ref",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftsrerelnotes",
+      "title": "ServiceRepEngage Release Notes",
+      "url": "cloud/dx/sre/latest/relnotes",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftveapp",
+      "title": "VendorEngage Application Guide",
+      "url": "cloud/dx/ve/latest/app",
       "metadata": {
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
@@ -135,6 +480,96 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
+    },
+    {
+      "id": "dxclouddraftveinstall",
+      "title": "VendorEngage Installation Guide",
+      "url": "cloud/dx/ve/latest/install",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftvedev",
+      "title": "VendorEngage Developers Guide",
+      "url": "cloud/dx/ve/latest/dev",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftverefguides",
+      "title": "VendorEngage Digital Services Reference Guides",
+      "url": "cloud/dx/ve/latest/ref",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftverelnotes",
+      "title": "VendorEngage Release Notes",
+      "url": "cloud/dx/ve/latest/relnotes",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dxclouddraftdgc",
+      "title": "Digital Code Generation Extension Pack Guide",
+      "url": "cloud/dx/dcg/latest/guide",
+      "metadata": {
+        "product": ["Digital Code Generation Extension Pack"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxclouddraftdgcrn",
+      "title": "Digital Code Generation Extension Pack Release Notes",
+      "url": "cloud/dx/dcg/latest/relnotes",
+      "metadata": {
+        "product": ["Digital Code Generation Extension Pack"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     },
     {
       "id": "guidewireidentityfederationhubdraft",
