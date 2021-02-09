@@ -800,7 +800,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -815,7 +815,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -831,7 +831,52 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev","staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "guidewirecloudconsoleguideinsurerdevdraft",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "guidewirecloudconsolerninsurerdevdraft",
+      "title": "Cloud Console Release Notes",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevdraft",
+      "title": "Cloud Console Root Doc Insurer Developer",
+      "url": "cloud/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
       "indexForSearch": true,
       "public": false
     },
