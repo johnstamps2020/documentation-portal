@@ -110,7 +110,7 @@ async function isPublicDoc(url) {
   }
 
   const docs = await getDocs();
-  const matchingDoc = docs.find(d => relativeUrl.startsWith(d.url));
+  const matchingDoc = docs.find(d => d.url.startsWith(relativeUrl));
 
   if (matchingDoc && matchingDoc.public) {
     return true;
