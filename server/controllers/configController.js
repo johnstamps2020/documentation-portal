@@ -3,13 +3,15 @@ const fs = require('fs').promises;
 const path = require('path');
 const { findNodeById } = require('./helpers/taxonomy');
 
+const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config`);
+
 async function getConfig() {
   try {
     if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
         `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
       );
-      const configPath = `${__dirname}/../../.teamcity/config/server-config.json`;
+      const configPath = path.join(localConfigDir, 'server-config.json');
       const config = await fs.readFile(configPath, 'utf-8');
       const json = JSON.parse(config);
 
@@ -42,7 +44,10 @@ async function getTaxonomy(release) {
       console.log(
         `Getting local taxonomy for the "${process.env.DEPLOY_ENV}" environment`
       );
-      const taxonomyFilePath = `${__dirname}/../../.teamcity/config/taxonomy/${taxonomyFile}`;
+      const taxonomyFilePath = path.join(
+        localConfigDir,
+        `taxonomy/${taxonomyFile}`
+      );
       const taxonomy = await fs.readFile(taxonomyFilePath, 'utf-8');
       const json = JSON.parse(taxonomy);
       return json;
@@ -65,9 +70,8 @@ async function getReleasesFromTaxonomies(filterId) {
       console.log(
         `Getting releases from local taxonomies for the "${process.env.DEPLOY_ENV}" environment`
       );
-      taxonomyFiles = await fs.readdir(
-        `${__dirname}/../../.teamcity/config/taxonomy/cloud`
-      );
+      const taxonomyDir = path.join(localConfigDir, 'taxonomy/cloud');
+      taxonomyFiles = await fs.readdir(taxonomyDir);
     } else {
       const result = await fetch(
         `${process.env.DOC_S3_URL}/portal-config/taxonomy/cloud/index.json`
@@ -94,13 +98,15 @@ async function getReleasesFromTaxonomies(filterId) {
 }
 
 async function isPublicDoc(url) {
-  let relativeUrl = url;
+  let relativeUrl = url + '/';
   if (relativeUrl.startsWith('/')) {
     relativeUrl = relativeUrl.substring(1);
   }
 
   const config = await getConfig();
-  const matchingDoc = config.docs.find(d => d.url.startsWith(relativeUrl));
+  const matchingDoc = config.docs.find(d =>
+    relativeUrl.startsWith(d.url + '/')
+  );
 
   if (matchingDoc && matchingDoc.public) {
     return true;

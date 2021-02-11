@@ -25,10 +25,13 @@ async function getConfig() {
 
 async function getTaxonomy(release) {
   try {
-    const taxonomyFile = release
-      ? `cloud/${release}.json`
-      : 'self-managed.json';
-    const result = await fetch(`/portal-config/taxonomy/${taxonomyFile}`);
+    let result;
+    if (release) {
+      result = await fetch(`/safeConfig/taxonomy/${release}`);
+    } else {
+      result = await fetch('/safeConfig/taxonomy');
+    }
+
     const json = await result.json();
     return json;
   } catch (err) {
@@ -38,7 +41,7 @@ async function getTaxonomy(release) {
 
 async function findProductIdInTaxonomies(productName) {
   try {
-    const result = await fetch('/portal-config/taxonomy/cloud/index.json');
+    const result = await fetch('/safeConfig/taxonomy/index');
     const json = await result.json();
     const taxonomyFiles = json.paths;
     const availableReleases = [];

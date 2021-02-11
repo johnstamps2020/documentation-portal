@@ -30,17 +30,19 @@ const majorOpenRoutes = [
 const authGateway = async (req, res, next) => {
   try {
     const reqUrl = new URL(req.url, 'relative:///');
-    const isPublic = await isPublicDoc(reqUrl.pathname);
-    if (
-      (process.env.ALLOW_PUBLIC_DOCS === 'yes' &&
-        (req.isAuthenticated() ||
-          process.env.ENABLE_AUTH === 'no' ||
-          reqUrl.pathname === '/' ||
-          majorOpenRoutes.some(r => reqUrl.pathname.startsWith(r)) ||
-          isPublic)) ||
-      (process.env.ALLOW_PUBLIC_DOCS !== 'yes' &&
-        (req.isAuthenticated() || process.env.ENABLE_AUTH === 'no'))
-    ) {
+
+    function redirectToLoginPage() {
+      req.session.redirectTo = req.path;
+      if (req.query.authSource === gwCommunityCustomerParam) {
+        res.redirect('/customers-login');
+      } else if (req.query.authSource === gwCommunityPartnerParam) {
+        res.redirect('/partners-login');
+      } else {
+        res.redirect(loginGatewayRoute);
+      }
+    }
+
+    function openRequestedPage() {
       if (req.query.authSource) {
         res.redirect(reqUrl.pathname);
       }
@@ -51,15 +53,38 @@ const authGateway = async (req, res, next) => {
       } else {
         next();
       }
-    } else {
-      req.session.redirectTo = req.path;
-      if (req.query.authSource === gwCommunityCustomerParam) {
-        res.redirect('/customers-login');
-      } else if (req.query.authSource === gwCommunityPartnerParam) {
-        res.redirect('/partners-login');
-      } else {
-        res.redirect(loginGatewayRoute);
+    }
+
+    async function checkIfRouteIsOpen(pathname) {
+      if (pathname === '/') {
+        return true;
       }
+
+      if (majorOpenRoutes.some(r => pathname.startsWith(r))) {
+        return true;
+      }
+
+      const isPublicInConfig = await isPublicDoc(reqUrl.pathname);
+      if (isPublicInConfig === true) {
+        return true;
+      }
+
+      return false;
+    }
+
+    const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
+    const userLoggedIn = req.isAuthenticated();
+    const authenticationEnabled = process.env.ENABLE_AUTH === 'yes';
+    const isOpenRoute = await checkIfRouteIsOpen(reqUrl.pathname);
+
+    if (!authenticationEnabled) {
+      openRequestedPage();
+    } else if (authenticationEnabled && userLoggedIn) {
+      openRequestedPage();
+    } else if (authenticationEnabled && publicDocsAllowed && isOpenRoute) {
+      openRequestedPage();
+    } else {
+      redirectToLoginPage();
     }
   } catch (err) {
     next(err);
