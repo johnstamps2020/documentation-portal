@@ -54,4 +54,9 @@ router.get('/docs/findMany', async function(req, res, next) {
   }
 });
 
+router.get('/taxonomy/:release', async function(req, res) {
+  const config = await getTaxonomy(req.params.release);
+  res.send(config);
+});
+
 module.exports = router;

@@ -29,8 +29,8 @@
       ]
     },
     {
-      "id": "data",
-      "label": "Data",
+      "id": "analytics",
+      "label": "Analytics",
       "items": [
         {
           "id": "addOns",

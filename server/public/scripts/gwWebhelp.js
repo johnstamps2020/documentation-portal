@@ -14,10 +14,13 @@ function findNodeByLabel(labelValue, node) {
 
 async function getTaxonomy(release) {
   try {
-    const taxonomyFile = release
-      ? `cloud/${release}.json`
-      : 'self-managed.json';
-    const result = await fetch(`/portal-config/taxonomy/${taxonomyFile}`);
+    let result;
+    if (release) {
+      result = await fetch(`/safeConfig/taxonomy/${release}`);
+    } else {
+      result = await fetch('/safeConfig/taxonomy');
+    }
+
     const json = await result.json();
     return json;
   } catch (err) {
@@ -27,7 +30,7 @@ async function getTaxonomy(release) {
 
 async function findProductIdInTaxonomies(productName) {
   try {
-    const result = await fetch('/portal-config/taxonomy/cloud/index.json');
+    const result = await fetch('/safeConfig/taxonomy/index');
     const json = await result.json();
     const taxonomyFiles = json.paths;
     const availableReleases = [];
@@ -189,18 +192,22 @@ async function createVersionSelector() {
       select.id = 'versionSelector';
       select.onchange = async function(e) {
         let linkToOpen = document.getElementById('versionSelector').value;
-        const topicTitle = document.querySelector('head > title')?.textContent;
-        const topicDesc = document.querySelector("meta[name = 'description']")
-          ?.content;
-        const docVersion = e.target.options[e.target.selectedIndex].innerHTML;
-        const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
-        const bestMatchingTopic = await findBestMatchingTopic(
-          searchQuery,
-          docProduct,
-          docVersion
-        );
-        if (bestMatchingTopic) {
-          linkToOpen = bestMatchingTopic;
+        const isTopic = document.querySelector("meta[name = 'wh-toc-id']");
+        if (isTopic) {
+          const topicTitle = document.querySelector('head > title')
+            ?.textContent;
+          const topicDesc = document.querySelector("meta[name = 'description']")
+            ?.content;
+          const docVersion = e.target.options[e.target.selectedIndex].innerHTML;
+          const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
+          const bestMatchingTopic = await findBestMatchingTopic(
+            searchQuery,
+            docProduct,
+            docVersion
+          );
+          if (bestMatchingTopic) {
+            linkToOpen = bestMatchingTopic;
+          }
         }
         window.location.assign(linkToOpen);
       };

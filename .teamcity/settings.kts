@@ -14,7 +14,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
-version = "2019.2"
+version = "2020.1"
 
 project {
 
@@ -27,6 +27,7 @@ project {
     template(BuildOutputFromDita)
     template(BuildYarn)
     template(BuildSphinx)
+    template(BuildStorybook)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
 
@@ -1379,6 +1380,7 @@ object HelperObjects {
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
                 "sphinx" -> buildTemplate = BuildSphinx
+                "storybook" -> buildTemplate = BuildStorybook
             }
 
             if (index_for_search) {
@@ -1735,6 +1737,7 @@ object HelperObjects {
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
                 "sphinx" -> templates(BuildSphinx)
+                "storybook" -> templates(BuildStorybook)
                 "dita" -> templates(RunContentValidations)
             }
 
@@ -2307,6 +2310,61 @@ object RunContentValidations : Template({
         }
     }
 
+})
+
+object BuildStorybook : Template({
+    name = "Get published Storybook"
+
+    params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
+        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
+        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+        text("env.WORKING_DIR", "%WORKING_DIR%")
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+    }
+
+    steps {
+        script {
+            name = "Build Storybook"
+            id = "BUILD_OUTPUT"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ -f "ci/npmLogin.sh" ]]; then
+                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
+                    sh ci/npmLogin.sh
+                fi
+                
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export TARGET_URL="%env.TARGET_URL_PROD%"
+                fi
+                
+                export JUTRO_VERSION=%env.GW_VERSION%
+                
+                export BASE_URL=/%env.PUBLISH_PATH%/
+                cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
+                
+                yarn
+                NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+        }
+    }
+
+    vcs {
+        cleanCheckout = true
+    }
 })
 
 object BuildSphinx : Template({
