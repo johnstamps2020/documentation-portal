@@ -152,7 +152,7 @@
           "description": "How often (daily or weekly) the export for this source runs if there is an associated int build. Defaults to daily if not set.",
           "type": "string",
           "enum": ["daily", "weekly"]
-        },
+        }
       }
     },
     "productFamily": {
