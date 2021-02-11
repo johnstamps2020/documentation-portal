@@ -69,7 +69,7 @@ async function findProductIdInTaxonomies(productName) {
 async function findMatchingDocsInConfig(docProduct, docPlatform, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    const configUrl = new URL('/config/docs/findMany', baseUrl);
+    const configUrl = new URL('/safeConfig/docs/findMany', baseUrl);
     configUrl.searchParams.append('product', `${docProduct}`);
     configUrl.searchParams.append('platform', `${docPlatform}`);
     if (docVersion) {
@@ -115,8 +115,8 @@ async function getVersions() {
 
     const versions = [];
     for (doc of docs) {
-      const sameVersionDocs = docs.filter(
-        d => d.metadata.version.some(dd => doc.metadata.version.includes(dd))
+      const sameVersionDocs = docs.filter(d =>
+        d.metadata.version.some(dd => doc.metadata.version.includes(dd))
       );
       const docVersion = doc.metadata.version[0];
       if (sameVersionDocs.length > 1) {
