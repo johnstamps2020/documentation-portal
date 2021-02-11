@@ -1,0 +1,115 @@
+{
+  "title": "BillingCenter for Guidewire Cloud 2020.11",
+  "template": "product",
+  "subjects": [
+    {
+      "label": "Release Notes",
+      "docs": [
+        {
+          "label": "Release Notes",
+          "id": "isbc202011releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "isbc202011newandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "docs": [
+        {
+          "label": "Installation",
+          "id": "isbc202011install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "isbc202011upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "docs": [
+        {
+          "label": "Application Guide",
+          "id": "isbc202011app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202011contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "docs": [
+        {
+          "label": "Administration",
+          "id": "isbc202011admin"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "docs": [
+        {
+          "label": "Best practices",
+          "id": "isbc202011bestpractice"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "docs": [
+        {
+          "label": "Configuration",
+          "id": "isbc202011config"
+        },
+        {
+          "label": "Globalization",
+          "id": "isbc202011global"
+        },
+        {
+          "label": "Rules",
+          "id": "isbc202011rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "docs": [
+        {
+          "label": "Integration",
+          "id": "isbc202011integ"
+        },
+        {
+          "label": "REST API Client",
+          "id": "is202011restapiclient"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "docs": [
+        {
+          "label": "Gosu Reference",
+          "id": "isbc202011gosu"
+        },
+        {
+          "label": "Testing",
+          "id": "isbc202011testing"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "docs": [
+        {
+          "label": "Glossary",
+          "id": "is202011glossary"
+        }
+      ]
+    }
+  ]
+}

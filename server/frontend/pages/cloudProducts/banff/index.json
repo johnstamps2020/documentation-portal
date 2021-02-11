@@ -1,0 +1,18 @@
+{
+  "title": "Guidewire Cloud Documentation",
+  "template": "release",
+  "productFamilies": [
+    {
+      "label": "BillingCenter Cloud",
+      "page": "billingCenterCloud"
+    },
+    {
+      "label": "ClaimCenter Cloud",
+      "page": "claimCenterCloud"
+    },
+    {
+      "label": "PolicyCenter Cloud",
+      "page": "policyCenterCloud"
+    }
+  ]
+}

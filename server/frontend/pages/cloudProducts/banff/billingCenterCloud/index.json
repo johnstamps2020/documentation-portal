@@ -1,0 +1,80 @@
+{
+  "title": "BillingCenter Cloud",
+  "template": "productFamily",
+  "categories": [
+    {
+      "label": "Core",
+      "products": [
+        {
+          "label": "BillingCenter for Guidewire Cloud",
+          "page": "billingCenterForGuidewireCloud"
+        }
+      ],
+      "docs": [
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools310"
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "groups": [
+        {
+          "label": "Add-ons",
+          "docs": [
+          {
+            "label": "DataHub for Guidewire Cloud",
+            "id": "dh202011"
+          },
+          {
+            "label": "InfoCenter for Guidewire Cloud",
+            "id": "ic202011"
+          }
+        ]
+        }
+      ],
+      "docs": [
+        {
+          "label": "Cloud Data Access",
+          "id": "clouddataaccessaspen"
+        },
+        {
+          "label": "Explore",
+          "id": "explorecloudrelease"
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "groups": [
+        {
+          "label": "Digital Applications",
+          "docs": [
+            {
+              "label": "CustomerEngage Account Management",
+              "id": "dxceam202011"
+            },
+            {
+              "label": "ProducerEngage",
+              "id": "dxpe202011"
+            },
+            {
+              "label": "ServiceRepEngage",
+              "id": "dxsre202011"
+            }
+          ]
+        },
+        {
+          "label": "Digital Framework",
+          "products": [
+            {
+              "label": "Jutro Design System",
+              "page": "jutroDesignSystem"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

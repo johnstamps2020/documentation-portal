@@ -1,0 +1,108 @@
+{
+  "title": "Self-managed product documentation",
+  "template": "productFamily",
+  "categories": [
+    {
+      "label": "Core",
+      "docs": [
+        {
+          "label": "BillingCenter",
+          "id": "bc1011"
+        },
+        {
+          "label": "ClaimCenter",
+          "id": "cc1011"
+        },
+        {
+          "label": "PolicyCenter",
+          "id": "pc1011"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools310"
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "groups": [
+        {
+          "label": "Add-ons",
+          "docs": [
+            {
+              "label": "DataHub",
+              "id": "dh1040"
+            },
+            {
+              "label": "InfoCenter",
+              "id": "ic1040"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "products": [
+        {
+          "label": "Jutro Design System",
+          "page": "jutroDesignSystem"
+        }
+      ],
+      "docs": [
+        {
+          "label": "CustomerEngage Account Management",
+          "id": "dxceam1130"
+        },
+        {
+          "label": "CustomerEngage Account Management for ClaimCenter",
+          "id": "dxceclaims1130"
+        },
+        {
+          "label": "CustomerEngage Quote and Buy",
+          "id": "dxceqb1130"
+        },
+        {
+          "label": "ProducerEngage",
+          "id": "dxpe1130"
+        },
+        {
+          "label": "ProducerEngage for ClaimCenter",
+          "id": "dxpeclaims1130"
+        },
+        {
+          "label": "ServiceRepEngage",
+          "id": "dxsre1130"
+        },
+        {
+          "label": "VendorEngage",
+          "id": "dxve1130"
+        },
+        {
+          "label": "Guidewire for Salesforce Data Integrations",
+          "id": "dxdionprem320"
+        },
+        {
+          "label": "Guidewire for Salesforce Data Integrations for Claims",
+          "id": "dxdiconprem310"
+        },
+        {
+          "label": "Guidewire for Salesforce Digital Gateway",
+          "id": "dxedonprem320"
+        },
+        {
+          "label": "Guidewire for Salesforce Digital Gateway for Claims",
+          "id": "dxedconprem310"
+        },
+        {
+          "label": "Guidewire for Salesforce View on Demand",
+          "id": "dxvodonprem320"
+        },
+        {
+          "label": "Guidewire for Salesforce View on Demand for Claims",
+          "id": "dxvodconprem310"
+        }
+      ]
+    }
+  ]
+}
