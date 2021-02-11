@@ -100,7 +100,7 @@ async function isPublicDoc(url) {
   }
 
   const config = await getConfig();
-  const matchingDoc = config.docs.find(d => relativeUrl.startsWith(d.url));
+  const matchingDoc = config.docs.find(d => d.url.startsWith(relativeUrl));
 
   if (matchingDoc && matchingDoc.public) {
     return true;
