@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div>
+    <h1>{{ data.get('title') }}</h1>
+
+    {% for category in data.get('categories') %}
+    <h2>{{ category.get('label') }}</h2>
+    {% if category.get('docs') %}
+    {% for doc in category.get('docs') %}
+    <a href="{{ doc.get('id') }}">{{ doc.get('label') }}</a>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+</div>
+</body>
+</html>
