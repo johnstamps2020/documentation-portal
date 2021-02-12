@@ -2380,38 +2380,8 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git"
     },
     {
-      "id": "testingframeworksapidraftsrc",
-      "title": "Testing Frameworks API Testing Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/2020.11/GT-API.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
-      "id": "testingframeworksuidraftsrc",
-      "title": "Testing Frameworks UI Testing Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/2020.11/GT-UI.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
-      "id": "testingframeworksrndraftsrc",
-      "title": "Testing Frameworks Release Notes Testing Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
       "id": "testingframeworksapibanffsrc",
-      "title": "Testing Frameworks API Testing Banff",
+      "title": "API Testing Banff",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "branch": "Banff",
@@ -2422,7 +2392,7 @@
     },
     {
       "id": "testingframeworksuibanffsrc",
-      "title": "Testing Frameworks UI Testing Banff",
+      "title": "User Interface Testing Banff",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "branch": "Banff",
@@ -2433,7 +2403,7 @@
     },
     {
       "id": "testingframeworksrnbanffsrc",
-      "title": "Testing Frameworks Release Notes Testing Banff",
+      "title": "Test Automation Release Notes Banff",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "xdocsPathIds": [

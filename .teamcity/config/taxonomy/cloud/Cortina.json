@@ -386,22 +386,6 @@
       ]
     },
     {
-      "id": "testingFrameworks",
-      "label": "Testing Frameworks",
-      "items": [
-        {
-          "id": "testingFwCategory",
-          "label": "Testing Frameworks",
-          "items": [
-            {
-              "id": "testingFwProduct",
-              "label": "Testing Frameworks"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "gwCloudStandards",
       "label": "Guidewire Cloud Standards",
       "items": [

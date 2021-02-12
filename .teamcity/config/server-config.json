@@ -2589,99 +2589,14 @@
       "public": false
     },
     {
-      "id": "testingframeworksapidraft",
-      "title": "Testing Frameworks API Draft",
-      "url": "cloud/testingframeworks/latest/api",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksuidraft",
-      "title": "Testing Frameworks UI Draft",
-      "url": "cloud/testingframeworks/latest/ui",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksrndraft",
-      "title": "Testing Frameworks Release Notes Draft",
-      "url": "cloud/testingframeworks/latest/releasenotes",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "testingframeworksapibanff",
-      "title": "Testing Frameworks API",
+      "title": "API Testing",
       "url": "cloud/testingframeworks/202011/api",
       "metadata": {
         "product": [
-          "Testing Frameworks"
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
         ],
         "platform": [
           "Cloud"
@@ -2698,7 +2613,9 @@
       },
       "environments": [
         "dev",
-        "staging"
+        "int",
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -2706,11 +2623,13 @@
     },
     {
       "id": "testingframeworksuibanff",
-      "title": "Testing Frameworks UI",
+      "title": "User Interface Testing",
       "url": "cloud/testingframeworks/202011/ui",
       "metadata": {
         "product": [
-          "Testing Frameworks"
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
         ],
         "platform": [
           "Cloud"
@@ -2727,7 +2646,9 @@
       },
       "environments": [
         "dev",
-        "staging"
+        "int",
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -2735,11 +2656,13 @@
     },
     {
       "id": "testingframeworksrnbanff",
-      "title": "Testing Frameworks Release Notes",
+      "title": "Test Automation Release Notes",
       "url": "cloud/testingframeworks/202011/releasenotes",
       "metadata": {
         "product": [
-          "Testing Frameworks"
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
         ],
         "platform": [
           "Cloud"
@@ -11074,7 +10997,7 @@
     },
     {
       "id": "isbc202011testing",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/bc/202011/testing",
       "metadata": {
         "platform": [
@@ -11538,7 +11461,7 @@
     },
     {
       "id": "iscc202011testing",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/cc/202011/testing",
       "metadata": {
         "platform": [
@@ -11585,7 +11508,7 @@
           "Banff"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -12126,7 +12049,7 @@
     },
     {
       "id": "ispc202011testing",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/pc/202011/testing",
       "metadata": {
         "platform": [
@@ -12173,7 +12096,7 @@
           "Banff"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -12277,6 +12200,39 @@
         "dev",
         "int",
         "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksrnbanff",
+      "title": "Test Automation Release Notes",
+      "url": "cloud/testingframeworks/202011/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -12736,7 +12692,7 @@
     },
     {
       "id": "isbcclouddrafttesting",
-      "title": "Testing",
+      "title": "Test Automation Guide",
       "url": "cloud/bc/latest/testing",
       "metadata": {
         "platform": [
@@ -13128,7 +13084,7 @@
     },
     {
       "id": "isccclouddrafttesting",
-      "title": "Testing",
+      "title": "Test Automation Guide",
       "url": "cloud/cc/latest/testing",
       "metadata": {
         "platform": [
@@ -13172,7 +13128,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -13632,7 +13588,7 @@
     },
     {
       "id": "ispcclouddrafttesting",
-      "title": "Testing",
+      "title": "Test Automation Guide",
       "url": "cloud/pc/latest/testing",
       "metadata": {
         "platform": [
@@ -13676,7 +13632,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -13765,6 +13721,37 @@
         ],
         "subject": [
           "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksrndraft",
+      "title": "Test Automation Release Notes",
+      "url": "cloud/testingframeworks/latest/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Banff",
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
         ]
       },
       "environments": [
@@ -14114,7 +14101,7 @@
     },
     {
       "id": "isbccloudeatesting",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/bc/ea/testing",
       "metadata": {
         "platform": [
@@ -14506,7 +14493,7 @@
     },
     {
       "id": "iscccloudeatesting",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/cc/ea/testing",
       "metadata": {
         "platform": [
@@ -14550,7 +14537,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -15010,7 +14997,7 @@
     },
     {
       "id": "ispccloudeatesting",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/pc/ea/testing",
       "metadata": {
         "platform": [
@@ -15054,7 +15041,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
