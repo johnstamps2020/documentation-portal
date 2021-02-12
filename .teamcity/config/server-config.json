@@ -2655,37 +2655,6 @@
       "public": false
     },
     {
-      "id": "testingframeworksrnbanff",
-      "title": "Test Automation Release Notes",
-      "url": "cloud/testingframeworks/202011/releasenotes",
-      "metadata": {
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "gwfeaturepreviewearlyaccess",
       "title": "Guidewire Feature Preview Early Access",
       "url": "cloud/gw-feature-preview/earlyaccess",
