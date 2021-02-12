@@ -1,7 +1,7 @@
 {
   "title": "Cloud",
-  "template": "home",
-  "releases": [
+  "template": "page.html",
+  "items": [
     {
       "label": "Aspen",
       "page": "aspen"

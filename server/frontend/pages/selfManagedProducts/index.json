@@ -1,10 +1,11 @@
 {
   "title": "Self-managed product documentation",
-  "template": "productFamily",
-  "categories": [
+  "template": "page.html",
+  "items": [
     {
       "label": "Core",
-      "docs": [
+      "class": "categoryCard",
+      "items": [
         {
           "label": "BillingCenter",
           "id": "bc1011"
@@ -25,10 +26,12 @@
     },
     {
       "label": "Analytics",
-      "groups": [
+      "class": "categoryCard",
+      "items": [
         {
           "label": "Add-ons",
-          "docs": [
+          "class": "group",
+          "items": [
             {
               "label": "DataHub",
               "id": "dh1040"
@@ -43,13 +46,8 @@
     },
     {
       "label": "Digital",
-      "products": [
-        {
-          "label": "Jutro Design System",
-          "page": "jutroDesignSystem"
-        }
-      ],
-      "docs": [
+      "class": "categoryCard",
+      "items": [
         {
           "label": "CustomerEngage Account Management",
           "id": "dxceam1130"
@@ -101,6 +99,10 @@
         {
           "label": "Guidewire for Salesforce View on Demand for Claims",
           "id": "dxvodconprem310"
+        },
+        {
+          "label": "Jutro Design System",
+          "page": "jutroDesignSystem"
         }
       ]
     }

@@ -1,10 +1,11 @@
 {
   "title": "BillingCenter for Guidewire Cloud 2020.11",
-  "template": "product",
-  "subjects": [
+  "template": "page.html",
+  "items": [
     {
       "label": "Release Notes",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Release Notes",
           "id": "isbc202011releasenotes"
@@ -17,7 +18,8 @@
     },
     {
       "label": "Installation",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Installation",
           "id": "isbc202011install"
@@ -30,7 +32,8 @@
     },
     {
       "label": "Features and functionality",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Application Guide",
           "id": "isbc202011app"
@@ -43,7 +46,8 @@
     },
     {
       "label": "Administration",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Administration",
           "id": "isbc202011admin"
@@ -52,7 +56,8 @@
     },
     {
       "label": "Best Practices",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Best practices",
           "id": "isbc202011bestpractice"
@@ -61,7 +66,8 @@
     },
     {
       "label": "Configuration",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Configuration",
           "id": "isbc202011config"
@@ -78,7 +84,8 @@
     },
     {
       "label": "Integration",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Integration",
           "id": "isbc202011integ"
@@ -91,7 +98,8 @@
     },
     {
       "label": "Development",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Gosu Reference",
           "id": "isbc202011gosu"
@@ -104,7 +112,8 @@
     },
     {
       "label": "Glossary",
-      "docs": [
+      "class": "subject",
+      "items": [
         {
           "label": "Glossary",
           "id": "is202011glossary"

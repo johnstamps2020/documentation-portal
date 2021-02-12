@@ -1,16 +1,15 @@
 {
   "title": "BillingCenter Cloud",
-  "template": "productFamily",
-  "categories": [
+  "template": "page.html",
+  "items": [
     {
       "label": "Core",
-      "products": [
+      "class": "categoryCard",
+      "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud"
-        }
-      ],
-      "docs": [
+          "page": "billingCenterForGuidewireCloud/202011"
+        },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools310"
@@ -19,10 +18,12 @@
     },
     {
       "label": "Analytics",
-      "groups": [
+      "class": "categoryCard",
+      "items": [
         {
           "label": "Add-ons",
-          "docs": [
+          "class": "group",
+          "items": [
           {
             "label": "DataHub for Guidewire Cloud",
             "id": "dh202011"
@@ -32,9 +33,7 @@
             "id": "ic202011"
           }
         ]
-        }
-      ],
-      "docs": [
+        },
         {
           "label": "Cloud Data Access",
           "id": "clouddataaccessaspen"
@@ -47,10 +46,12 @@
     },
     {
       "label": "Digital",
-      "groups": [
+      "class": "categoryCard",
+      "items": [
         {
           "label": "Digital Applications",
-          "docs": [
+          "class": "group",
+          "items": [
             {
               "label": "CustomerEngage Account Management",
               "id": "dxceam202011"
@@ -67,7 +68,8 @@
         },
         {
           "label": "Digital Framework",
-          "products": [
+          "class": "group",
+          "items": [
             {
               "label": "Jutro Design System",
               "page": "jutroDesignSystem"

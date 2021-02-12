@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+<div>
+    <h1>{{ data.get('title') }}</h1>
+
+    {% macro create_block(label, class, items, id, page) -%}
+    <div {%- if class -%}class="{{ class }}"{%- endif -%}>
+        {% if id -%}
+        <a href="{{ id }}">{{ label }}</a>
+        {% elif page %}
+        <a href="{{ page }}">{{ label }}</a>
+        {% else %}
+        <div>{{ label }}</div>
+        {%- endif %}
+        {% if items -%}
+        {% for item in items -%}
+        {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+        {%- endfor %}
+        {%- endif %}
+    </div>
+    {%- endmacro %}
+
+    {% for item in data.get('items') %}
+    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+    {% endfor %}
+</div>
+</body>
+</html>
