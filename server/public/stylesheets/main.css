@@ -12,6 +12,14 @@ body {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 
+header {
+  background-color: #3c4c5e;
+  display: flex;
+  padding: 16px 32px;
+  flex-wrap: wrap;
+  gap: 16px
+}
+
 main {
   padding: 64px 0;
   background-color: #fafafa;
@@ -24,10 +32,19 @@ main > * {
 
 a {
   color: #00739d;
+  text-decoration: none;
 }
 
 h1 {
   font-weight: 600;
+}
+
+.cardShadow {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cardShadow:hover {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .threeCards > div {
@@ -49,17 +66,28 @@ h1 {
   justify-content: center;
   flex-direction: column;
   height: 100%;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   text-align: center;
-  text-decoration: none;
 }
 
 .categoryCard {
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: white;
 }
 
-.categoryCard > div:first-child {
+.categoryCard > .label {
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+.group > .label {
+  font-weight: 600;
+  padding: 16px 0;
+}
+
+.categoryCard a {
+  display: inline-block;
+  padding: 4px 0;
 }

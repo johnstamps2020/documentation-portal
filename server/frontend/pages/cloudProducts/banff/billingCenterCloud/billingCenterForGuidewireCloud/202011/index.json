@@ -1,6 +1,6 @@
 {
   "title": "BillingCenter for Guidewire Cloud 2020.11",
-  "template": "page.html",
+  "template": "page.j2",
   "class": "threeCards",
   "items": [
     {

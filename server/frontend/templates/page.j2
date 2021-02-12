@@ -4,9 +4,19 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
+<header>
+    <a href="/">
+        <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img" aria-label="Guidewire Documentation">
+    </a>
+    <form action="/search">
+        <input name="q" id="searchField" class="searchField" type="search" placeholder="Search Guidewire documentation" aria-label="Search Guidewire documentation"/>
+        <button type="submit" class="searchButton" aria-label="Search">Search</button>
+    </form>
+</header>
 <main>
     <div {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
         <h1>{{ data.get('title') }}</h1>
+        
         {% macro create_block(label, class, items, id, page) -%}
         <div {% if class -%}class="{{ class }}"{%- endif -%}>
             {% if id -%}
@@ -14,7 +24,7 @@
             {% elif page %}
             <a href="{{ page }}">{{ label }}</a>
             {% else %}
-            <div>{{ label }}</div>
+            <div class="label">{{ label }}</div>
             {%- endif %}
             {% if items -%}
             {% for item in items -%}

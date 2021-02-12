@@ -1,31 +1,31 @@
 {
   "title": "Guidewire Cloud Documentation",
-  "template": "page.html",
+  "template": "page.j2",
   "class": "threeCards",
   "items": [
     {
       "label": "BillingCenter Cloud",
-      "class": "productFamily",
+      "class": "productFamily cardShadow",
       "page": "billingCenterCloud"
     },
     {
       "label": "ClaimCenter Cloud",
-      "class": "productFamily",
+      "class": "productFamily cardShadow",
       "page": "claimCenterCloud"
     },
     {
       "label": "PolicyCenter Cloud",
-      "class": "productFamily",
+      "class": "productFamily cardShadow",
       "page": "policyCenterCloud"
     },
     {
       "label": "Guidewire Cloud Standards",
-      "class": "productFamily",
+      "class": "productFamily cardShadow",
       "id": "standardslatest"
     },
     {
       "label": "Guidewire Cloud Platform",
-      "class": "productFamily",
+      "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform"
     }
   ]

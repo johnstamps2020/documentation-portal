@@ -1,10 +1,10 @@
 {
   "title": "Self-managed product documentation",
-  "template": "page.html",
+  "template": "page.j2",
   "items": [
     {
       "label": "Core",
-      "class": "categoryCard",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "BillingCenter",
@@ -26,7 +26,7 @@
     },
     {
       "label": "Analytics",
-      "class": "categoryCard",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Add-ons",
@@ -46,7 +46,7 @@
     },
     {
       "label": "Digital",
-      "class": "categoryCard",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "CustomerEngage Account Management",

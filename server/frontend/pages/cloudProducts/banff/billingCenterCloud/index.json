@@ -1,11 +1,11 @@
 {
   "title": "BillingCenter Cloud",
-  "template": "page.html",
+  "template": "page.j2",
   "class": "threeCards",
   "items": [
     {
       "label": "Core",
-      "class": "categoryCard",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
@@ -19,21 +19,21 @@
     },
     {
       "label": "Analytics",
-      "class": "categoryCard",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Add-ons",
           "class": "group",
           "items": [
-          {
-            "label": "DataHub for Guidewire Cloud",
-            "id": "dh202011"
-          },
-          {
-            "label": "InfoCenter for Guidewire Cloud",
-            "id": "ic202011"
-          }
-        ]
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "id": "dh202011"
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "id": "ic202011"
+            }
+          ]
         },
         {
           "label": "Cloud Data Access",
@@ -47,7 +47,7 @@
     },
     {
       "label": "Digital",
-      "class": "categoryCard",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Digital Applications",
