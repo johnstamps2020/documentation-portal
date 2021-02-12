@@ -7,11 +7,13 @@ from jinja2 import FileSystemLoader
 from pathlib import Path
 from typing import Dict, List
 
-CURRENT_DIR = Path(__file__).parent
+CURRENT_DIR = Path(__file__).parent.resolve()
 PAGES_DIR = CURRENT_DIR / 'pages'
 TEMPLATES_DIR = CURRENT_DIR / 'templates'
 BUILD_DIR = CURRENT_DIR / 'build'
-CONFIG_FILE = CURRENT_DIR.parent.parent / '.teamcity' / 'config' / 'server-config.json'
+PUBLIC_DIR = CURRENT_DIR.parent / 'public'
+CONFIG_FILE = CURRENT_DIR.parent.parent / \
+    '.teamcity' / 'config' / 'server-config.json'
 
 
 def write_to_file(out_file_path: Path, data: Dict, template_file: Path):
@@ -48,7 +50,8 @@ def convert_id_to_url(items: List):
     converted_items = copy.deepcopy(items)
     for item in converted_items:
         if item.get('id'):
-            matching_doc_object = next(doc for doc in docs if doc['id'] == item['id'])
+            matching_doc_object = next(
+                doc for doc in docs if doc['id'] == item['id'])
             item['id'] = f'/{matching_doc_object["url"]}'
         if item.get('items'):
             item['items'] = convert_id_to_url(item['items'])
@@ -57,15 +60,13 @@ def convert_id_to_url(items: List):
 
 for json_file in BUILD_DIR.rglob('**/*.json'):
     json_data = json.load(json_file.open())
-    page_title = json_data['title']
     page_template = TEMPLATES_DIR / json_data['template']
-    page_items = convert_id_to_url(json_data['items'])
+    json_data['items'] = convert_id_to_url(json_data['items'])
 
     write_to_file(
         json_file.parent / 'index.html',
-        {
-            'title': page_title,
-            'items': page_items
-        },
+        json_data,
         page_template
     )
+
+shutil.copytree(BUILD_DIR, PUBLIC_DIR, dirs_exist_ok=True)

@@ -1,6 +1,7 @@
 {
   "title": "BillingCenter Cloud",
   "template": "page.html",
+  "class": "threeCards",
   "items": [
     {
       "label": "Core",

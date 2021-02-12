@@ -1,6 +1,7 @@
 {
   "title": "Guidewire Cloud Documentation",
   "template": "page.html",
+  "class": "threeCards",
   "items": [
     {
       "label": "BillingCenter Cloud",
