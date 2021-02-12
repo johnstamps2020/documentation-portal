@@ -2589,72 +2589,6 @@
       "public": false
     },
     {
-      "id": "testingframeworksapibanff",
-      "title": "API Testing",
-      "url": "cloud/testingframeworks/202011/api",
-      "metadata": {
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "dev",
-        "int",
-        "staging",
-        "prod"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksuibanff",
-      "title": "User Interface Testing",
-      "url": "cloud/testingframeworks/202011/ui",
-      "metadata": {
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "dev",
-        "int",
-        "staging",
-        "prod"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "gwfeaturepreviewearlyaccess",
       "title": "Guidewire Feature Preview Early Access",
       "url": "cloud/gw-feature-preview/earlyaccess",
@@ -12169,6 +12103,72 @@
         "dev",
         "int",
         "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksapibanff",
+      "title": "API Testing",
+      "url": "cloud/testingframeworks/202011/api",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksuibanff",
+      "title": "User Interface Testing",
+      "url": "cloud/testingframeworks/202011/ui",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
