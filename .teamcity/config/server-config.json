@@ -12077,38 +12077,6 @@
       "public": false
     },
     {
-      "id": "is202011contactapi",
-      "title": "Contact Management API Reference",
-      "url": "cloud/is/202011/contactapi",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Integration"
-        ]
-      },
-      "environments": [
-        "dev",
-        "int",
-        "staging"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "testingframeworksapibanff",
       "title": "API Testing",
       "url": "cloud/testingframeworks/202011/api",
@@ -12268,6 +12236,37 @@
         "int",
         "staging",
         "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "is202011contactapi",
+      "title": "Contact Management API Reference",
+      "url": "cloud/is/202011/contactapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
