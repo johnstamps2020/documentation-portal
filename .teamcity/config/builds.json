@@ -875,30 +875,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "GT-API.ditamap",
-      "srcId": "testingframeworksapidraftsrc",
-      "docId": "testingframeworksapidraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "GT-UI.ditamap",
-      "srcId": "testingframeworksuidraftsrc",
-      "docId": "testingframeworksuidraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
-      "srcId": "testingframeworksrndraftsrc",
-      "docId": "testingframeworksrndraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-API.ditamap",
       "srcId": "testingframeworksapibanffsrc",

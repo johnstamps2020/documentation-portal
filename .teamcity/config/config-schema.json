@@ -179,8 +179,7 @@
         "Guidewire Cloud Platform",
         "Guidewire Feature Preview",
         "Integration Framework",
-        "Guidewire Cloud Standards",
-        "Testing Frameworks"
+        "Guidewire Cloud Standards"
       ]
     },
     "product": {
@@ -239,7 +238,6 @@
           "InsuranceNow 2021.1x - Internal Audience",
           "InsuranceNow 2021.1x - External Audience",
           "REST API Client",
-          "Testing Frameworks",
           "Jutro Design System",
           "PolicyCenter API",
           "BillingCenter API",
