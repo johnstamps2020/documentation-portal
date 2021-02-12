@@ -13700,37 +13700,6 @@
       "public": false
     },
     {
-      "id": "testingframeworksrndraft",
-      "title": "Test Automation Release Notes",
-      "url": "cloud/testingframeworks/latest/releasenotes",
-      "metadata": {
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isclouddraftglossary",
       "title": "Glossary",
       "url": "cloud/is/latest/glossary",
