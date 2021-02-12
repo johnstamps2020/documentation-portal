@@ -1,11 +1,11 @@
 {
   "title": "BillingCenter for Guidewire Cloud 2020.11",
   "template": "page.j2",
-  "class": "threeCards",
+  "class": "twoColumns",
   "items": [
     {
       "label": "Release Notes",
-      "class": "subject",
+      "class": "subject releaseNotes",
       "items": [
         {
           "label": "Release Notes",
@@ -19,7 +19,7 @@
     },
     {
       "label": "Installation",
-      "class": "subject",
+      "class": "subject installation",
       "items": [
         {
           "label": "Installation",
@@ -33,7 +33,7 @@
     },
     {
       "label": "Features and functionality",
-      "class": "subject",
+      "class": "subject featuresAndFunctionality",
       "items": [
         {
           "label": "Application Guide",
@@ -47,7 +47,7 @@
     },
     {
       "label": "Administration",
-      "class": "subject",
+      "class": "subject administration",
       "items": [
         {
           "label": "Administration",
@@ -57,7 +57,7 @@
     },
     {
       "label": "Best Practices",
-      "class": "subject",
+      "class": "subject bestPractices",
       "items": [
         {
           "label": "Best practices",
@@ -67,7 +67,7 @@
     },
     {
       "label": "Configuration",
-      "class": "subject",
+      "class": "subject configuration",
       "items": [
         {
           "label": "Configuration",
@@ -85,7 +85,7 @@
     },
     {
       "label": "Integration",
-      "class": "subject",
+      "class": "subject integration",
       "items": [
         {
           "label": "Integration",
@@ -99,7 +99,7 @@
     },
     {
       "label": "Development",
-      "class": "subject",
+      "class": "subject development",
       "items": [
         {
           "label": "Gosu Reference",
@@ -113,7 +113,7 @@
     },
     {
       "label": "Glossary",
-      "class": "subject",
+      "class": "subject glossary",
       "items": [
         {
           "label": "Glossary",

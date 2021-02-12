@@ -5,13 +5,20 @@
 </head>
 <body>
 <header>
-    <a href="/">
-        <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img" aria-label="Guidewire Documentation">
-    </a>
-    <form action="/search">
-        <input name="q" id="searchField" class="searchField" type="search" placeholder="Search Guidewire documentation" aria-label="Search Guidewire documentation"/>
-        <button type="submit" class="searchButton" aria-label="Search">Search</button>
-    </form>
+    <div id="headerLeft">
+        <a href="/">
+            <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img" aria-label="Guidewire Documentation">
+        </a>
+    </div>
+    <div id="headerCenter">
+        <form action="/search">
+            <div class="searchWrapper">
+                <input name="q" id="searchField" class="searchField" type="search" placeholder="Search Guidewire documentation" aria-label="Search Guidewire documentation"/>
+                <button type="submit" class="searchButton" aria-label="Search">Search</button>
+            </div>
+        </form>
+    </div>
+    <div id="headerRight"></div>
 </header>
 <main>
     <div {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
@@ -41,5 +48,13 @@
         </div>
     </div>
 </main>
+<footer>
+  <div class="footerLinks">
+    <span class="footerLink"><a href="/support">Legal and Support Information</a></span>
+  </div>
+  <div class="footerCopyright">
+    Copyright &#169; 2001-<script>document.write(new Date().getFullYear())</script> Guidewire Software, Inc.
+  </div>
+</footer>
 </body>
 </html>
