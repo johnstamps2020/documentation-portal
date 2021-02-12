@@ -80,7 +80,7 @@ app.use('/customers-login', customersLoginRouter);
 
 // serve docs from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const oktaOIDC = require('./controllers/authController').oktaOIDC;
 const authGateway = require('./controllers/authController').authGateway;
