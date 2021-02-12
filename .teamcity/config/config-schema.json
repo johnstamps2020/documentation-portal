@@ -147,6 +147,11 @@
           "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",
           "type": "string",
           "examples": ["release-1.0", "usaa-experimental"]
+        },
+        "exportFrequency": {
+          "description": "How often (daily or weekly) the export for this source runs if there is an associated int build. Defaults to daily if not set.",
+          "type": "string",
+          "enum": ["daily", "weekly"]
         }
       }
     },
