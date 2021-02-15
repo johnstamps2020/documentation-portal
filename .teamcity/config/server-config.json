@@ -11303,7 +11303,7 @@
     },
     {
       "id": "iscc202011apiref",
-      "title": "Cloud API Reference",
+      "title": "ClaimCenter Cloud API Reference",
       "url": "cloud/cc/202011/apiref",
       "metadata": {
         "platform": [
@@ -11891,7 +11891,7 @@
     },
     {
       "id": "ispc202011apiref",
-      "title": "Cloud API Reference",
+      "title": "PolicyCenter Cloud API Reference",
       "url": "cloud/pc/202011/apiref",
       "metadata": {
         "platform": [
