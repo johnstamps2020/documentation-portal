@@ -3952,7 +3952,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -3984,7 +3983,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4012,7 +4010,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4040,7 +4037,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4068,7 +4064,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4096,7 +4091,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4124,7 +4118,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4152,7 +4145,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4180,7 +4172,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4208,7 +4199,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4236,7 +4226,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4264,7 +4253,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4292,7 +4280,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4320,9 +4307,58 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "jutronext",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/next",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "next"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybooknext",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/next",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "next"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
