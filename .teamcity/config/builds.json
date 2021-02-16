@@ -3849,7 +3849,7 @@
     },
     {
       "buildType": "storybook",
-      "docId": "storyboonext",
+      "docId": "storybooknext",
       "srcId": "srcjutrostorybooknext",
       "workingDir": "applications/jutro-app-storybook-new"
     },
