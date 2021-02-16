@@ -3842,6 +3842,18 @@
       "workingDir": "applications/jutro-app-storybook-new"
     },
     {
+      "buildType": "yarn",
+      "docId": "jutronext",
+      "srcId": "srcjutronext",
+      "workingDir": "website"
+    },
+    {
+      "buildType": "storybook",
+      "docId": "storybooknext",
+      "srcId": "srcjutrostorybooknext",
+      "workingDir": "applications/jutro-app-storybook-new"
+    },
+    {
       "buildType": "sphinx",
       "docId": "iscc202011apiref",
       "srcId": "srcapiref202011"

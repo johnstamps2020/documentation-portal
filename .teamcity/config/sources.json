@@ -2583,6 +2583,20 @@
       "branch": "release/5.3.x"
     },
     {
+      "id": "srcjutronext",
+      "title": "Jutro Design System Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "branch": "master"
+    },
+    {
+      "id": "srcjutrostorybooknext",
+      "title": "Jutro Storybook Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-main.git",
+      "branch": "master"
+    },
+    {
       "id": "srcapiref202011",
       "title": "Cloud API Reference",
       "sourceType": "git",
