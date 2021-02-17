@@ -1,7 +1,7 @@
 import copy
-
 import json
 import shutil
+import sys
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
 from pathlib import Path
@@ -51,8 +51,11 @@ def convert_id_to_url(items: List):
     for item in converted_items:
         if item.get('id'):
             matching_doc_object = next(
-                doc for doc in docs if doc['id'] == item['id'])
-            item['id'] = f'/{matching_doc_object["url"]}'
+                (doc for doc in docs if doc['id'] == item['id']), None)
+            if matching_doc_object:
+                item['id'] = f'/{matching_doc_object["url"]}'
+            else:
+                print(f'NO MATCHING ID FOR {item["id"]}')
         if item.get('items'):
             item['items'] = convert_id_to_url(item['items'])
     return converted_items
