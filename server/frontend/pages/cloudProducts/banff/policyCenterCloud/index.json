@@ -1,5 +1,5 @@
 {
-  "title": "BillingCenter Cloud",
+  "title": "PolicyCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
   "items": [
@@ -8,8 +8,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/2020.12",
+          "label": "PolicyCenter for Guidewire Cloud",
+          "page": "PolicyCenterForGuidewireCloud/2020.12",
           "env": [
             "dev",
             "staging",
@@ -17,15 +17,18 @@
           ]
         },
         {
-          "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/latest",
-          "env": [
-            "int"
-          ]
+          "label": "PolicyCenter for Guidewire Cloud",
+          "page": "PolicyCenterForGuidewireCloud/latest",
+          "env": ["int"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools310"
+        },
+        {
+          "label": "Lines of Business Standards-based Templates",
+          "page": "linesOfBusiness",
+          "env": ["int"]
         }
       ]
     },

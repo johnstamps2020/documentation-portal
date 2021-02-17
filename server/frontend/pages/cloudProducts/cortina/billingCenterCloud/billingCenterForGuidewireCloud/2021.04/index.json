@@ -1,0 +1,126 @@
+{
+    "title": "BillingCenter for Guidewire Cloud 2021.04",
+    "template": "page.j2",
+    "class": "twoColumns",
+    "items": [
+      {
+        "label": "Release Notes",
+        "class": "subject releaseNotes",
+        "items": [
+          {
+            "label": "Release Notes",
+            "id": "isbc202104releasenotes"
+          },
+          {
+            "label": "New and Changed",
+            "id": "isbc202104newandchanged"
+          }
+        ]
+      },
+      {
+        "label": "Installation",
+        "class": "subject installation",
+        "items": [
+          {
+            "label": "Installation",
+            "id": "isbc202104install"
+          },
+          {
+            "label": "Upgrade",
+            "id": "isbc202104upgrade"
+          }
+        ]
+      },
+      {
+        "label": "Features and functionality",
+        "class": "subject featuresAndFunctionality",
+        "items": [
+          {
+            "label": "Application Guide",
+            "id": "isbc202104app"
+          },
+          {
+            "label": "Contact Management",
+            "id": "is202104contact"
+          }
+        ]
+      },
+      {
+        "label": "Administration",
+        "class": "subject administration",
+        "items": [
+          {
+            "label": "Administration",
+            "id": "isbc202104admin"
+          }
+        ]
+      },
+      {
+        "label": "Best Practices",
+        "class": "subject bestPractices",
+        "items": [
+          {
+            "label": "Best practices",
+            "id": "isbc202104bestpractice"
+          }
+        ]
+      },
+      {
+        "label": "Configuration",
+        "class": "subject configuration",
+        "items": [
+          {
+            "label": "Configuration",
+            "id": "isbc202104config"
+          },
+          {
+            "label": "Globalization",
+            "id": "isbc202104global"
+          },
+          {
+            "label": "Rules",
+            "id": "isbc202104rules"
+          }
+        ]
+      },
+      {
+        "label": "Integration",
+        "class": "subject integration",
+        "items": [
+          {
+            "label": "Integration",
+            "id": "isbc202104integ"
+          },
+          {
+            "label": "REST API Client",
+            "id": "is202104restapiclient"
+          }
+        ]
+      },
+      {
+        "label": "Development",
+        "class": "subject development",
+        "items": [
+          {
+            "label": "Gosu Reference",
+            "id": "isbc202104gosu"
+          },
+          {
+            "label": "Testing",
+            "id": "isbc202104testing"
+          }
+        ]
+      },
+      {
+        "label": "Glossary",
+        "class": "subject glossary",
+        "items": [
+          {
+            "label": "Glossary",
+            "id": "is202104glossary"
+          }
+        ]
+      }
+    ]
+  }
+  

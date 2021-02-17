@@ -1,0 +1,28 @@
+{
+    "title": "Businessowners Standards Based Template",
+    "template": "page.j2",
+    "class": "twoColumns",
+    "items": [
+      {
+        "label": "Release Notes",
+        "class": "subject releaseNotes",
+        "items": [
+          {
+            "label": "Countrywide Release Notes",
+            "id": "lobbopsbtrncortina"
+          }
+        ]
+      },
+      {
+        "label": "Features and functionality",
+        "class": "subject featuresAndFunctionality",
+        "items": [
+          {
+            "label": "Businessowners Standards Based Template Guide",
+            "id": "lopbopguidecortina"
+          }
+        ]
+      }
+    ]
+  }
+  

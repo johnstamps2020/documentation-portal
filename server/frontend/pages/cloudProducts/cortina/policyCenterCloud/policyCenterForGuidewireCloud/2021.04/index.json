@@ -1,0 +1,146 @@
+{
+    "title": "PolicyCenter for Guidewire Cloud 2021.04",
+    "template": "page.j2",
+    "class": "twoColumns",
+    "items": [
+      {
+        "label": "Release Notes",
+        "class": "subject releaseNotes",
+        "items": [
+          {
+            "label": "Release Notes",
+            "id": "ispc202104releasenotes"
+          },
+          {
+            "label": "New and Changed",
+            "id": "ispc202104newandchanged"
+          }
+        ]
+      },
+      {
+        "label": "Installation",
+        "class": "subject installation",
+        "items": [
+          {
+            "label": "Installation",
+            "id": "ispc202104install"
+          },
+          {
+            "label": "Upgrade",
+            "id": "ispc202104upgrade"
+          }
+        ]
+      },
+      {
+        "label": "Features and functionality",
+        "class": "subject featuresAndFunctionality",
+        "items": [
+          {
+            "label": "Application Guide",
+            "id": "ispc202104app"
+          },
+          {
+            "label": "Contact Management",
+            "id": "is202104contact"
+          }
+        ]
+      },
+      {
+        "label": "Administration",
+        "class": "subject administration",
+        "items": [
+          {
+            "label": "Administration",
+            "id": "ispc202104admin"
+          }
+        ]
+      },
+      {
+        "label": "Best Practices",
+        "class": "subject bestPractices",
+        "items": [
+          {
+            "label": "Best practices",
+            "id": "ispc202104bestpractice"
+          }
+        ]
+      },
+      {
+        "label": "Configuration",
+        "class": "subject configuration",
+        "items": [
+          {
+            "label": "Configuration",
+            "id": "ispc202104config"
+          },
+          {
+            "label": "Globalization",
+            "id": "ispc202104global"
+          },
+          {
+            "label": "Rules",
+            "id": "ispc202104rules"
+          }
+        ]
+      },
+      {
+        "label": "Integration",
+        "class": "subject integration",
+        "items": [
+          {
+            "label": "Integration",
+            "id": "ispc202104integ"
+          },
+          {
+            "label": "REST API Client",
+            "id": "is202104restapiclient"
+          }
+        ]
+      },
+      {
+        "label": "Development",
+        "class": "subject development",
+        "items": [
+          {
+            "label": "Gosu Reference",
+            "id": "ispc202104gosu"
+          },
+          {
+            "label": "Testing",
+            "id": "ispc202104testing"
+          },
+          {
+            "label": "Cloud API Reference",
+            "id": "ispc202104apiref",
+            "env": ["int"]
+          }
+        ]
+      },
+      {
+        "label": "Glossary",
+        "class": "subject glossary",
+        "items": [
+          {
+            "label": "Glossary",
+            "id": "is202104glossary"
+          }
+        ]
+      }
+      {
+        "label": "Super secret in-development docs",
+        "class": "subject topsecret",
+        "env": ["int"],
+        "items": [
+          {
+            "label": "Shhh",
+            "id": "is202104shhh"
+          },
+          {
+            "label": "Don't tell anyone",
+            "id": "is202104donttellanyone"
+          }
+        ]
+      }
+    ]
+  }
+  

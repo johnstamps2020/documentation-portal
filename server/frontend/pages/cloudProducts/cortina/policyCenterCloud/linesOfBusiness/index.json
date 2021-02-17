@@ -1,0 +1,28 @@
+{
+    "title": "Lines of Business Standards Based Templates",
+    "template": "page.j2",
+    "class": "threeCards",
+    "items": [
+      {
+        "label": "Businessowners",
+        "class": "productFamily cardShadow",
+        "page": "businessowners"
+      },
+      {
+        "label": "Commercial Auto",
+        "class": "productFamily cardShadow",
+        "page": "commercialauto"
+      },
+      {
+        "label": "Crime",
+        "class": "productFamily cardShadow",
+        "page": "crime"
+      },
+      {
+        "label": "General Liability",
+        "class": "productFamily cardShadow",
+        "page": "generalliability"
+      },
+    ]
+}
+  

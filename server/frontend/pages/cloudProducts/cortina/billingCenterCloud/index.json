@@ -9,19 +9,12 @@
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/2020.12",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ]
+          "page": "billingCenterForGuidewireCloud/2021.04"
         },
         {
           "label": "BillingCenter for Guidewire Cloud",
           "page": "billingCenterForGuidewireCloud/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",

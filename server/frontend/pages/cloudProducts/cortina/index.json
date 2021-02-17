@@ -19,6 +19,11 @@
       "page": "policyCenterCloud"
     },
     {
+      "label": "InsuranceNow",
+      "class": "productFamily cardShadow",
+      "page": "insuranceNow/2021.04"
+    },
+    {
       "label": "Guidewire Cloud Standards",
       "class": "productFamily cardShadow",
       "id": "standardslatest"

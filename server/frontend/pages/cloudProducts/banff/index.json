@@ -28,5 +28,12 @@
       "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform"
     }
+    {
+      "label": "Integration Framework",
+      "class": "productFamily cardShadow",
+      "page": "integrationFramework",
+      "env": ["int"]
+    }
+
   ]
 }

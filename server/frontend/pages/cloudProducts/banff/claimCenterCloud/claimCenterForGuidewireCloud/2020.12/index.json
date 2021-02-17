@@ -1,0 +1,126 @@
+{
+    "title": "BillingCenter for Guidewire Cloud 2020.12",
+    "template": "page.j2",
+    "class": "twoColumns",
+    "items": [
+      {
+        "label": "Release Notes",
+        "class": "subject releaseNotes",
+        "items": [
+          {
+            "label": "Release Notes",
+            "id": "isbc202012releasenotes"
+          },
+          {
+            "label": "New and Changed",
+            "id": "isbc202012newandchanged"
+          }
+        ]
+      },
+      {
+        "label": "Installation",
+        "class": "subject installation",
+        "items": [
+          {
+            "label": "Installation",
+            "id": "isbc202012install"
+          },
+          {
+            "label": "Upgrade",
+            "id": "isbc202012upgrade"
+          }
+        ]
+      },
+      {
+        "label": "Features and functionality",
+        "class": "subject featuresAndFunctionality",
+        "items": [
+          {
+            "label": "Application Guide",
+            "id": "isbc202012app"
+          },
+          {
+            "label": "Contact Management",
+            "id": "is202012contact"
+          }
+        ]
+      },
+      {
+        "label": "Administration",
+        "class": "subject administration",
+        "items": [
+          {
+            "label": "Administration",
+            "id": "isbc202012admin"
+          }
+        ]
+      },
+      {
+        "label": "Best Practices",
+        "class": "subject bestPractices",
+        "items": [
+          {
+            "label": "Best practices",
+            "id": "isbc202012bestpractice"
+          }
+        ]
+      },
+      {
+        "label": "Configuration",
+        "class": "subject configuration",
+        "items": [
+          {
+            "label": "Configuration",
+            "id": "isbc202012config"
+          },
+          {
+            "label": "Globalization",
+            "id": "isbc202012global"
+          },
+          {
+            "label": "Rules",
+            "id": "isbc202012rules"
+          }
+        ]
+      },
+      {
+        "label": "Integration",
+        "class": "subject integration",
+        "items": [
+          {
+            "label": "Integration",
+            "id": "isbc202012integ"
+          },
+          {
+            "label": "REST API Client",
+            "id": "is202012restapiclient"
+          }
+        ]
+      },
+      {
+        "label": "Development",
+        "class": "subject development",
+        "items": [
+          {
+            "label": "Gosu Reference",
+            "id": "isbc202012gosu"
+          },
+          {
+            "label": "Testing",
+            "id": "isbc202012testing"
+          }
+        ]
+      },
+      {
+        "label": "Glossary",
+        "class": "subject glossary",
+        "items": [
+          {
+            "label": "Glossary",
+            "id": "is202012glossary"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -4,7 +4,12 @@
   "items": [
     {
       "label": "Aspen",
-      "page": "aspen"
+      "page": "aspen",
+      "env": [
+        "dev",
+        "staging",
+        "prod"
+      ]
     },
     {
       "label": "Banff",
@@ -12,7 +17,8 @@
     },
     {
       "label": "Cortina",
-      "page": "cortina"
+      "page": "cortina",
+      "env": ["int"]
     }
   ]
 }
