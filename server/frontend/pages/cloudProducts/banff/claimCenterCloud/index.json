@@ -90,7 +90,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "jutroDesignSystem"
+              "page": "../../jutro/4.1.1"
             }
           ]
         }
