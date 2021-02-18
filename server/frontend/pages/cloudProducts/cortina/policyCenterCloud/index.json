@@ -60,15 +60,19 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "id": "dxceam202011"
+              "page": "../digital/ce-am/2021.04"
+            },
+            {
+              "label": "CustomerEngage Quote and Buy",
+              "page": "../digital/ce-qb/2021.04"
             },
             {
               "label": "ProducerEngage",
-              "id": "dxpe202011"
+              "page": "../digital/pe/2021.04"
             },
             {
               "label": "ServiceRepEngage",
-              "id": "dxsre202011"
+              "page": "../digital/sre/2021.04"
             }
           ]
         },

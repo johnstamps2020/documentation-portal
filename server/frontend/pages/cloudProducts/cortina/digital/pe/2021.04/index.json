@@ -1,0 +1,62 @@
+{
+    "title": "ProducerEngage 2021.04",
+    "template": "page.j2",
+    "class": "twoColumns",
+    "items": [
+      {
+        "label": "Features and functionality",
+        "class": "subject featuresAndFunctionality",
+        "items": [
+          {
+            "label": "Application Guide",
+            "id": "dx202104peapp"
+          }
+        ]
+      },
+      {
+        "label": "Installation",
+        "class": "subject installation",
+        "items": [
+          {
+            "label": "Installation",
+            "id": "dx202104peinstall"
+          }
+        ]
+      },
+      {
+        "label": "Development",
+        "class": "subject development",
+        "items": [
+          {
+            "label": "Developer's Guide",
+            "id": "dx202104pedev"
+          },
+          {
+            "label": "Digital Services Reference Guides",
+            "id": "dx202104perefguides"
+          }
+        ]
+      },
+      {
+        "label": "Release Notes",
+        "class": "subject releaseNotes",
+        "items": [
+          {
+            "label": "Release Notes",
+            "id": "dx202104perelnotes"
+          }
+        ]
+      },
+      {
+        "label": "Glossary",
+        "class": "subject glossary",
+        "items": [
+          {
+            "label": "Glossary",
+            "id": "is202104glossary"
+          }
+        ]
+      }
+    ]
+  }
+  
