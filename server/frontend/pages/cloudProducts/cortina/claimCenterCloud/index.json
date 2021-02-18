@@ -22,6 +22,22 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Cloud Data Access",
+          "id": "clouddataaccesscortina"
+        },
+        {
+          "label": "Compare+",
+          "id": "comparelatest"
+        },
+        {
+          "label": "Explore",
+          "id": "explorecloudrelease"
+        },
+        {
+          "label": "Predictive Analytics",
+          "id": "palatest"
+        },
+        {
           "label": "Add-ons",
           "class": "group",
           "items": [

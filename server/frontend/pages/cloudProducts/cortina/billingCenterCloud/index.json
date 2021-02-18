@@ -27,6 +27,14 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Cloud Data Access",
+          "id": "clouddataaccesscortina"
+        },
+        {
+          "label": "Explore",
+          "id": "explorecloudrelease"
+        },
+        {
           "label": "Add-ons",
           "class": "group",
           "items": [

@@ -38,11 +38,15 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccessaspen"
+          "id": "clouddataaccessbanff"
         },
         {
           "label": "Explore",
           "id": "explorecloudrelease"
+        },
+        {
+          "label": "Predictive Analytics",
+          "id": "palatest"
         },
         {
           "label": "Add-ons",
