@@ -31,7 +31,7 @@
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "id": "../infocenter"
+              "page": "../infocenter"
             }
           ]
         },

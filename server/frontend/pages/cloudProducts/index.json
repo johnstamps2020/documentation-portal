@@ -5,11 +5,7 @@
     {
       "label": "Aspen",
       "page": "aspen",
-      "env": [
-        "dev",
-        "staging",
-        "prod"
-      ]
+      "env": ["dev", "staging", "prod"]
     },
     {
       "label": "Banff",
