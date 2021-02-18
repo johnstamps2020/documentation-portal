@@ -37,6 +37,14 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Cloud Data Access",
+          "id": "clouddataaccessaspen"
+        },
+        {
+          "label": "Explore",
+          "id": "explorecloudrelease"
+        },
+        {
           "label": "Add-ons",
           "class": "group",
           "items": [
@@ -49,14 +57,6 @@
               "id": "ic202011"
             }
           ]
-        },
-        {
-          "label": "Cloud Data Access",
-          "id": "clouddataaccessaspen"
-        },
-        {
-          "label": "Explore",
-          "id": "explorecloudrelease"
         }
       ]
     },
@@ -71,6 +71,10 @@
             {
               "label": "CustomerEngage Account Management",
               "id": "dxceam202011"
+            },
+            {
+              "label": "CustomerEngage Quote and Buy",
+              "id": "dxceqb202011"
             },
             {
               "label": "ProducerEngage",

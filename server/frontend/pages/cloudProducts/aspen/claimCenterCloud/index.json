@@ -1,5 +1,5 @@
 {
-  "title": "BillingCenter Cloud",
+  "title": "ClaimCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
   "items": [
@@ -8,20 +8,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/2020.12",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ]
-        },
-        {
-          "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/latest",
-          "env": [
-            "int"
-          ]
+          "label": "ClaimCenter for Guidewire Cloud",
+          "id": "cloudcc202005"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -35,7 +23,7 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccessbanff"
+          "id": "clouddataaccessaspen"
         },
         {
           "label": "Explore",
@@ -47,11 +35,11 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "id": "dh202011"
+              "id": "dh202005"
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "id": "ic202011"
+              "id": "ic202005"
             }
           ]
         }
@@ -67,25 +55,27 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "id": "dxceam202011"
+              "id": "dxceam202010"
+            },
+            {
+              "label": "CustomerEngage Account Management for ClaimCenter",
+              "id": "dxceclaims202010"
             },
             {
               "label": "ProducerEngage",
-              "id": "dxpe202011"
+              "id": "dxpe202010"
+            },
+            {
+              "label": "ProducerEngage for ClaimCenter",
+              "id": "dxpeclaims202010"
             },
             {
               "label": "ServiceRepEngage",
-              "id": "dxsre202011"
-            }
-          ]
-        },
-        {
-          "label": "Digital Framework",
-          "class": "group",
-          "items": [
+              "id": "dxsre202010"
+            },
             {
-              "label": "Jutro Design System",
-              "page": "jutroDesignSystem"
+              "label": "VendorEngage",
+              "id": "dxve202010"
             }
           ]
         }

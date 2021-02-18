@@ -27,6 +27,14 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Cloud Data Access",
+          "id": "clouddataaccessaspen"
+        },
+        {
+          "label": "Explore",
+          "id": "explorecloudrelease"
+        },
+        {
           "label": "Add-ons",
           "class": "group",
           "items": [
@@ -39,14 +47,6 @@
               "id": "ic202011"
             }
           ]
-        },
-        {
-          "label": "Cloud Data Access",
-          "id": "clouddataaccessaspen"
-        },
-        {
-          "label": "Explore",
-          "id": "explorecloudrelease"
         }
       ]
     },
@@ -63,12 +63,24 @@
               "id": "dxceam202011"
             },
             {
+              "label": "CustomerEngage Account Management for ClaimCenter",
+              "id": "dxceclaims202011"
+            },
+            {
               "label": "ProducerEngage",
               "id": "dxpe202011"
             },
             {
+              "label": "ProducerEngage for ClaimCenter",
+              "id": "dxpeclaims202011"
+            },
+            {
               "label": "ServiceRepEngage",
               "id": "dxsre202011"
+            },
+            {
+              "label": "VendorEngage",
+              "id": "dxve202011"
             }
           ]
         },

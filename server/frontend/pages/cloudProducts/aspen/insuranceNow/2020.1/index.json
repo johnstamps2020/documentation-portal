@@ -1,0 +1,75 @@
+{
+    "title": "InsuranceNow 2020.1",
+    "template": "page.j2",
+    "class": "twoColumns",
+    "items": [
+      {
+        "label": "Release Notes",
+        "class": "subject releaseNotes",
+        "items": [
+          {
+            "label": "Core Release Notes",
+            "id": "in20201rn"
+          },
+          {
+            "label": "Release Video",
+            "id": "in20201releasevid"
+          },
+          {
+            "label": "Studio Release Notes",
+            "id": "in20201studiorn"
+          },
+          {
+            "label": "Consumer Service Portal 3.23 Release Notes",
+            "id": "in20201csp323rn"
+          }
+        ]
+      },
+      {
+        "label": "Features and functionality",
+        "class": "subject featuresAndFunctionality",
+        "items": [
+          {
+            "label": "Business Intelligence Getting Started Guide",
+            "id": "in20201bi"
+          },
+          {
+            "label": "Consumer Service Portal Features",
+            "id": "in20201cservicep"
+          }
+        ]
+      },
+      {
+        "label": "Integration",
+        "class": "subject integration",
+        "items": [
+          {
+            "label": "AppReader Integration",
+            "id": "in20201appreaderinteg"
+          },
+          {
+            "label": "Predictive Analytics Integration",
+            "id": "in20201pa"
+          }
+        ]
+      },
+      {
+        "label": "Configuration",
+        "class": "subject configuration",
+        "items": [
+          {
+            "label": "Core Configuration",
+            "id": "in20201config"
+          },
+          {
+            "label": "Studio Configuration",
+            "id": "in20201studio"
+          },
+          {
+            "label": "Portal Development",
+            "id": "in20201portaldev"
+          }
+        ]
+      }
+    ]
+}

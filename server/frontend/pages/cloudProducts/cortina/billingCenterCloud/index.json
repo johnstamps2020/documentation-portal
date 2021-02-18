@@ -32,17 +32,17 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "id": "dh202011"
+              "page": "../datahub"
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "id": "ic202011"
+              "id": "../infocenter"
             }
           ]
         },
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccessaspen"
+          "id": "clouddataaccessbanff"
         },
         {
           "label": "Explore",

@@ -1,0 +1,28 @@
+{
+    "title": "Crime Standards Based Template",
+    "template": "page.j2",
+    "class": "twoColumns",
+    "items": [
+      {
+        "label": "Release Notes",
+        "class": "subject releaseNotes",
+        "items": [
+          {
+            "label": "Countrywide Release Notes",
+            "id": "lobcrimesbtrnbanff"
+          }
+        ]
+      },
+      {
+        "label": "Features and functionality",
+        "class": "subject featuresAndFunctionality",
+        "items": [
+          {
+            "label": "Crime Standards Based Template Guide",
+            "id": "lobcrimeguidebanff"
+          }
+        ]
+      }
+    ]
+  }
+  
