@@ -1146,7 +1146,8 @@ object HelperObjects {
             sch_freq: String,
             sch_hour_daily: Int,
             sch_minute_daily: Int,
-            sch_hour_weekly: Int
+            sch_hour_weekly: Int,
+            sch_minute_weekly: Int
         ) : BuildType({
 
             id = RelativeId(build_id)
@@ -1202,7 +1203,9 @@ object HelperObjects {
         var sch_hour_daily = 0
         var sch_minute_daily = 0
         var sch_hour_weekly = 12
-        val minutesOffset = 2
+        var sch_minute_weekly = 0
+        val dailyMinutesOffset = 2
+        val weeklyMinutesOffset = 10
 
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
@@ -1242,12 +1245,13 @@ object HelperObjects {
                         exportFreq,
                         sch_hour_daily,
                         sch_minute_daily,
-                        sch_hour_weekly
+                        sch_hour_weekly,
+                        sch_minute_weekly
                     )
                 )
                 
                 if(scheduledBuild && exportFreq == "daily") {
-                    sch_minute_daily += minutesOffset
+                    sch_minute_daily += dailyMinutesOffset
                     if(sch_minute_daily >= 60) {
                         sch_hour_daily += 1
                         sch_minute_daily = 0
@@ -1261,8 +1265,12 @@ object HelperObjects {
                     }
                 }
                 if(scheduledBuild && exportFreq == "weekly") {
-                    sch_hour_weekly += 1
+                    sch_minute_weekly += weeklyMinutesOffset
                     
+                    if(sch_minute_weekly >= 60) {
+                        sch_hour_weekly += 1
+                        sch_minute_weekly = 0
+                    }
                     if(sch_hour_weekly >= 24) {
                         sch_hour_weekly = 0
                     }

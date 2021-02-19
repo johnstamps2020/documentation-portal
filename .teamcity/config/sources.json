@@ -64,6 +64,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdminGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -77,6 +78,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdvancedProductDesigner.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
@@ -88,6 +90,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/BC-AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
@@ -99,6 +102,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/CC-AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval"
@@ -110,6 +114,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/PC-AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
@@ -121,6 +126,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/BestPracticesGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -134,6 +140,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -147,6 +154,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/ConfigGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -160,6 +168,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/ContactMgmtGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval",
@@ -172,6 +181,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/GlobalizationGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -185,6 +195,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/Glossary.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
@@ -196,6 +207,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/GosuRefGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -209,6 +221,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/InstallGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -222,6 +235,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/IntegrationGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -235,6 +249,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/NewAndChangedGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -248,6 +263,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductDesignerGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
@@ -259,6 +275,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductModelGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -272,6 +289,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/RESTAPIFramework.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -285,6 +303,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/RulesGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -298,6 +317,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/TestingGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -311,6 +331,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-banff.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -324,6 +345,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202011/RESTAPIClientGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
