@@ -1365,7 +1365,7 @@
       ]
     },
     {
-      "id": "clouddataaccessdraftrnsrc",
+      "id": "clouddataaccessrndraftsrc",
       "title": "Cloud Data Access Release Notes Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
