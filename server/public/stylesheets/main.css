@@ -5,6 +5,13 @@
   --GW-BLUE-HOVER: #006083;
   --GW-WHITE: #fafafa;
   --GRADIENT-BACKGROUND: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
+  --GW-BLACK: #28333f;
+  --GW-BLACKISH: #657580;
+  --body-height: calc(100vh - 68px);
+}
+
+input.searchField:-internal-autofill-selected {
+  background-color: transparent !important;
 }
 
 *,
@@ -92,10 +99,10 @@ header img {
 main {
   padding: 64px 0;
   background-color: var(--GW-WHITE);
-  min-height: calc(100vh - 68px);
+  min-height: var(--body-height);
 }
 
-main > * {
+main:not(.fullWidth) > * {
   max-width: 950px;
   margin: auto;
 }
@@ -362,4 +369,141 @@ div.pageHero {
   width: fit-content;
   margin: auto;
   padding: 64px 0;
+}
+
+.searchPage {
+  display: grid;
+  grid-template-columns: 275px 800px;
+  padding: 0 0;
+}
+
+.searchPage a:hover {
+  text-decoration: underline;
+}
+
+.filterSearchResults {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 32px 16px;
+  min-height: var(--body-height);
+  overflow-y: scroll;
+}
+
+.filterGroup {
+  padding-bottom: 32px;
+}
+
+.filterHeader {
+  font-size: 14px;
+  font-weight: 600;
+  padding-bottom: 16px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.checkboxRowContainer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--GW-BLACK);
+}
+
+.filterCheckbox {
+  cursor: pointer;
+}
+
+.docCount {
+  width: fit-content;
+  margin-left: auto;
+  color: var(--GW-BLACKISH);
+}
+
+.resultWrapper {
+  padding: 32px 64px;
+}
+
+.notLoggedInWarning {
+  background-color: orange;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 16px 32px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.resultsSubheading {
+  padding: 16px 0;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.paginationWrapper {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.searchResults h2 {
+  font-size: 22px;
+  font-weight: 600;
+  padding: 16px 0;
+}
+
+.resultBadges {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.infoLabel {
+  font-size: 11px;
+  background-color: var(--GW-BLUE);
+  color: var(--GW-WHITE);
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.resultBody {
+  line-height: 24px;
+  padding: 16px 0;
+}
+
+.otherHits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.pagination .disabled {
+  color: gray;
+  padding: 6px;
+}
+
+.pagination button {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  border: none;
+  background-color: transparent;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--GW-BLUE);
+  font-size: 1rem;
+}
+
+.pagination button:hover {
+  text-decoration: underline;
 }
