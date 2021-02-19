@@ -3740,8 +3740,33 @@
       "public": false
     },
     {
-      "id": "clouddataaccesslatestdraft",
-      "title": "Cloud Data Access Draft",
+      "id": "clouddataaccessguidedraft",
+      "title": "Understanding Cloud Data Access",
+      "url": "cloud/cda/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Data Access"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouddataaccessrndraft",
+      "title": "Cloud Data Access Release Notes",
       "url": "cloud/cda/latest",
       "metadata": {
         "platform": [
