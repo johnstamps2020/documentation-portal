@@ -1,7 +1,7 @@
 import copy
 import json
 import shutil
-from typing import List
+from typing import List, Dict
 from flail_ssg.template_writer import write_to_file
 from pathlib import Path
 
@@ -22,30 +22,32 @@ def process_page(index_file: Path, docs: List, build_dir: Path):
     print(f'Processed {index_file}')
     index_json = json.load(index_file.open())
     index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
-    print(index_json['breadcrumbs'])
-    page_items = index_json.get('items')
 
-    if page_items:
-        converted_items = copy.deepcopy(page_items)
-        for item in converted_items:
+    def process_items(items: List):
+        for item in items:
+            item_envs = []
             if item.get('id'):
                 matching_doc_object = next(
                     (doc for doc in docs if doc['id'] == item['id']), None)
                 if matching_doc_object:
-                    doc_envs = matching_doc_object['environments']
+                    item_envs = matching_doc_object['environments']
                     item['id'] = f'/{matching_doc_object["url"]}'
                 else:
                     print(f'NO MATCHING ID FOR {item["id"]}')
             elif item.get('page'):
+                item_envs = item.get('env')
                 page_path = Path(page_dir / item['page'])
                 if page_path.exists():
                     process_page(page_path / 'index.json', docs, build_dir)
                 else:
                     print(f'PAGE PATH DOES NOT EXIST: {page_path}')
-            elif item.get('items'):
-                # FIXME: Need to convert nested items recursively
-                item['items'] = item['items']
-        index_json['items'] = converted_items
+            if item.get('items'):
+                process_items(item['items'])
+        return items
+
+    page_items = index_json.get('items')
+    if page_items:
+        index_json['items'] = process_items(page_items)
     json.dump(index_json, index_file.open('w'), indent=2)
 
 
@@ -75,5 +77,7 @@ def generate_pages():
             index_json,
             page_template
         )
+
+        index_json_file.unlink()
 
     shutil.copytree(build_dir, public_dir, dirs_exist_ok=True)
