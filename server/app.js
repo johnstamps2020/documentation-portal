@@ -49,14 +49,12 @@ if (process.env.LOCALHOST_SESSION_SETTINGS === 'yes') {
 app.set('trust proxy', 1);
 app.use(session(sessionSettings));
 
-const homeRouter = require('./routes/home');
 const gwLoginRouter = require('./routes/gw-login');
 const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
-const cloudProductsRouter = require('./routes/cloud-products');
-const selfManagedProductsRouter = require('./routes/self-managed-products');
 const searchRouter = require('./routes/search');
+// TODO: re-implement this controller in the new setup
 const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
@@ -108,10 +106,7 @@ app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
 
-app.use('/selfManagedProducts', selfManagedProductsRouter);
-app.use('/cloudProducts', cloudProductsRouter);
 app.use('/product', allProductsRouter);
-app.use('/', homeRouter);
 
 const portal2ProxyOptions = {
   target: 'https://portal2.guidewire.com',
