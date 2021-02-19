@@ -45,7 +45,19 @@
 </header>
 <main>
     <div {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
-        <h1>{{ data.get('title') }}</h1>
+        <div class="pageHero">
+            <h1>{{ data.get('title') }}</h1>
+            <div class="heroControls">
+                <div id="cloudToggle">
+                    <a href="/" data-root="/cloudProducts">Guidewire Cloud</a>
+                    <a href="/selfManagedProducts" data-root="/selfManagedProducts">Self-managed</a>
+                </div>
+                <div class="usefulLinks">
+                    <a href="https://community.guidewire.com" target="_blank" rel="noopener noreferrer">Guidewire Community for customers</a>
+                    <a href="https://partner.guidewire.com" target="_blank" rel="noopener noreferrer">Guidewire Community for partners</a>
+                </div>
+            </div>
+        </div>
         
         {% macro create_block(label, class, items, id, page) -%}
         <div {% if class -%}class="{{ class }}"{%- endif -%}>
@@ -79,5 +91,6 @@
     Copyright &#169; 2001-<script>document.write(new Date().getFullYear())</script> Guidewire Software, Inc.
   </div>
 </footer>
+<script src="/scripts/main.js"></script>
 </body>
 </html>

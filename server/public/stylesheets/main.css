@@ -238,3 +238,48 @@ footer a {
   font-weight: 600;
   margin-bottom: 12px;
 }
+
+div.pageHero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0 8px;
+}
+
+.heroControls {
+  width: fit-content;
+  margin-left: auto;
+}
+
+#cloudToggle {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+#cloudToggle > a {
+  margin: 0;
+  display: inline-block;
+  width: 150px;
+  height: 100%;
+  padding: 12px 0;
+  text-align: center;
+  background-color: white;
+}
+
+#cloudToggle > .selected {
+  background-color: #00739d;
+  color: #fafafa;
+}
+
+.usefulLinks {
+  padding: 32px 6px;
+  text-align: right;
+}
+
+.usefulLinks > a {
+  display: block;
+  padding: 6px 0;
+}
