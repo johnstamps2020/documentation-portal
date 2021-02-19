@@ -6,25 +6,27 @@ from jinja2 import FileSystemLoader
 from pathlib import Path
 from typing import Dict, List
 
-# -------------------------
-#        :::TO DO:::
-# -------------------------
+# ----------------------------------------------
+#        :::TO DO: generator stuff:::
+# ----------------------------------------------
 # crawl files starting from the top and following "page" links
 # pages can have relative links, IDs can only be a single value
 # don't crawl the same page twice, even if more than one link points to it
-# if an object has an env which does not match current env, don't add it and 
+# if an object has an env which does not match current env, don't add it and
 #   don't crawl down from it
 # throw an error when a docs ID does not exist
 # throw an error when an ID contains a forward slash /
 # if an object has an ID, check the env of the doc and see if we want to display it
 # if the env on the doc does not match, throw an error
-# create a schema that helps validate the JSON file, make sure env is not 
-#   allowed on an object with an ID
 # allow a 'loose' mode where errors become warnings
-# something to the home page which will make the browser skip this page and 
+
+# ----------------------------------------------
+#        :::TO DO: template stuff:::
+# ----------------------------------------------
+# add something to the home page which will make the browser skip this page and
 #   redirect ot a selected link
 # on each page, add a breadcrumb
-# on each page, add a dropdown which allows you to switch to a sibling page, 
+# on each page, add a dropdown which allows you to switch to a sibling page,
 #   e.g., on the billingCenterForGuidewireCloud allow the user to switch to
 #   policyCenterForGuidewireCloud and claimCenterForGuidewireCloud
 # add the toggle between cloud/self-managed
@@ -32,6 +34,12 @@ from typing import Dict, List
 # add the log in/log out button
 # implement the search page
 # implement the login page
+
+# ----------------------------------------------
+#        :::TO DO: nice-to-have stuff:::
+# ----------------------------------------------
+# create a schema that helps validate the JSON file, make sure env is not
+#   allowed on an object with an ID
 
 CURRENT_DIR = Path(__file__).parent.resolve()
 PAGES_DIR = CURRENT_DIR / 'pages'
