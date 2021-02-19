@@ -54,8 +54,8 @@ CURRENT_DIR = Path(__file__).parent.resolve()
 PAGES_DIR = CURRENT_DIR / 'pages'
 TEMPLATES_DIR = CURRENT_DIR / 'templates'
 BUILD_DIR = CURRENT_DIR / 'build'
-PUBLIC_DIR = CURRENT_DIR.parent / 'public'
-CONFIG_FILE = CURRENT_DIR.parent.parent / \
+PUBLIC_DIR = CURRENT_DIR.parent / 'server' / 'public'
+CONFIG_FILE = CURRENT_DIR.parent / \
     '.teamcity' / 'config' / 'server-config.json'
 
 
