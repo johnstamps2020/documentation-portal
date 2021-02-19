@@ -7,7 +7,7 @@ from pathlib import Path
 
 CURRENT_DIR = Path(__file__).parent.resolve()
 
-
+# FIXME: Each breadcrumb element must be a separate link
 def create_breadcrumbs(page_dir: Path, build_dir: Path):
     if page_dir == build_dir:
         return None
