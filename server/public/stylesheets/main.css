@@ -297,7 +297,8 @@ div.pageHero {
   background: var(--GRADIENT-BACKGROUND);
   color: var(--GW-WHITE);
   padding: 8px 16px;
-  border-radius: 3px;
+  border-radius: 4px;
+  font-size: 0.9rem;
 }
 
 .button:hover {
