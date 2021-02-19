@@ -34,11 +34,6 @@ from typing import Dict, List
 # allow a 'loose' mode where errors become warnings
 
 # ----------------------------------------------
-#        :::TO DO: template stuff:::
-# ----------------------------------------------
-# implement the search page
-
-# ----------------------------------------------
 #        :::TO DO: nice-to-have stuff:::
 # ----------------------------------------------
 # create a schema that helps validate the JSON file, make sure env is not
