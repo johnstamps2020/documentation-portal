@@ -3742,7 +3742,7 @@
     {
       "id": "clouddataaccessguidedraft",
       "title": "Understanding Cloud Data Access",
-      "url": "cloud/cda/latest",
+      "url": "cloud/cda/guide/latest",
       "metadata": {
         "platform": [
           "Cloud"
@@ -3766,8 +3766,8 @@
     },
     {
       "id": "clouddataaccessrndraft",
-      "title": "Cloud Data Access Release Notes",
-      "url": "cloud/cda/latest",
+      "title": "Release Notes",
+      "url": "cloud/cda/rn/latest",
       "metadata": {
         "platform": [
           "Cloud"
