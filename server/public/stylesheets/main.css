@@ -507,3 +507,12 @@ div.pageHero {
 .pagination button:hover {
   text-decoration: underline;
 }
+
+main.support h1 {
+  margin-bottom: 24px;
+}
+
+main.support h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}

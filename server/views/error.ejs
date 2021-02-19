@@ -3,17 +3,11 @@
   <% include parts/head %>
   <body>
     <% include parts/header %>
-    <div class="docPanelContainer">
-      <div class="container">
-        <div class="row">
-          <div class="docPageTitle docPageHeaderItems">
-            <h1><%= message %></h1>
-            <h2><%= error.status %></h2>
-            <pre><%= error.stack %></pre>
-          </div>
-        </div>
-      </div>
-    </div>
+    <main>
+      <h1><%= message %></h1>
+      <h2><%= error.status %></h2>
+      <pre><%= error.stack %></pre>
+    </main>
+    <% include parts/footer %>
   </body>
-  <% include parts/footer %>
 </html>
