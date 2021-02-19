@@ -1140,9 +1140,16 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-cda.ditamap",
-      "srcId": "clouddataaccessdraftsrc",
-      "docId": "clouddataaccesslatestdraft"
+      "root": "UnderstandingCloudDataAccess.ditamap",
+      "srcId": "clouddataaccessguidedraftsrc",
+      "docId": "clouddataaccessguidedraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "b_relNotesCda.ditamap",
+      "srcId": "clouddataaccessrndraftsrc",
+      "docId": "clouddataaccessrndraft"
     },
     {
       "buildType": "dita",
