@@ -15,7 +15,11 @@ from typing import Dict, List
 # if an object has an env which does not match current env, don't add it and 
 #   don't crawl down from it
 # throw an error when a docs ID does not exist
-# throw an error when an ID contains a /
+# throw an error when an ID contains a forward slash /
+# if an object has an ID, check the env of the doc and see if we want to display it
+# if the env on the doc does not match, throw an error
+# create a schema that helps validate the JSON file, make sure env is not 
+#   allowed on an object with an ID
 # allow a 'loose' mode where errors become warnings
 # something to the home page which will make the browser skip this page and 
 #   redirect ot a selected link
