@@ -3,26 +3,26 @@
 <head>
     <!-- Google Tag Manager -->
     <script>
-        (function(w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s),
-            dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-PLXG9H5');
     </script>
     <!-- End Google Tag Manager -->
     <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <meta
+    />
+    <meta
             name="Description"
             content="Technical documentation for Guidewire customers and partners"
-        />
+    />
     <link rel="stylesheet" href="/stylesheets/main.css">
     <title>{{ data.get('title') }} | Guidewire Documentation</title>
 </head>
@@ -30,13 +30,15 @@
 <header>
     <div id="headerLeft">
         <a href="/">
-            <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img" aria-label="Guidewire Documentation">
+            <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img"
+                 aria-label="Guidewire Documentation">
         </a>
     </div>
     <div id="headerCenter">
         <form action="/search">
             <div class="searchWrapper">
-                <input name="q" id="searchField" class="searchField" type="search" placeholder="Search Guidewire documentation" aria-label="Search Guidewire documentation"/>
+                <input name="q" id="searchField" class="searchField" type="search"
+                       placeholder="Search Guidewire documentation" aria-label="Search Guidewire documentation"/>
                 <button type="submit" class="searchButton" aria-label="Search">Search</button>
             </div>
         </form>
@@ -44,40 +46,46 @@
     <div id="headerRight"></div>
 </header>
 <main>
+    {% if data.get('breadcrumbs') %}
+        <div><a href="{{ data.get('breadcrumbs') }}">{{ data.get('breadcrumbs') }}</a></div>
+    {% endif %}
+
     <div {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
         <h1>{{ data.get('title') }}</h1>
-        
+
         {% macro create_block(label, class, items, id, page) -%}
-        <div {% if class -%}class="{{ class }}"{%- endif -%}>
-            {% if id -%}
-            <a href="{{ id }}">{{ label }}</a>
-            {% elif page %}
-            <a href="{{ page }}">{{ label }}</a>
-            {% else %}
-            <div class="label">{{ label }}</div>
-            {%- endif %}
-            {% if items -%}
-            {% for item in items -%}
-            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
-            {%- endfor %}
-            {%- endif %}
-        </div>
+            <div {% if class -%}class="{{ class }}"{%- endif -%}>
+                {% if id -%}
+                    <a href="{{ id }}">{{ label }}</a>
+                {% elif page %}
+                    <a href="{{ page }}">{{ label }}</a>
+                {% else %}
+                    <div class="label">{{ label }}</div>
+                {%- endif %}
+                {% if items -%}
+                    {% for item in items -%}
+                        {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+                    {%- endfor %}
+                {%- endif %}
+            </div>
         {%- endmacro %}
-    
+
         <div>
             {% for item in data.get('items') %}
-            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+                {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
             {% endfor %}
         </div>
     </div>
 </main>
 <footer>
-  <div class="footerLinks">
-    <span class="footerLink"><a href="/support">Legal and Support Information</a></span>
-  </div>
-  <div class="footerCopyright">
-    Copyright &#169; 2001-<script>document.write(new Date().getFullYear())</script> Guidewire Software, Inc.
-  </div>
+    <div class="footerLinks">
+        <span class="footerLink"><a href="/support">Legal and Support Information</a></span>
+    </div>
+    <div class="footerCopyright">
+        Copyright &#169; 2001-
+        <script>document.write(new Date().getFullYear())</script>
+        Guidewire Software, Inc.
+    </div>
 </footer>
 </body>
 </html>
