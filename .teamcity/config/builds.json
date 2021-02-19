@@ -3060,6 +3060,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20211.ditamap",
+      "srcId": "in20211xrndraftsrc",
+      "docId": "in20211xrndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20211.ditamap",
       "srcId": "in20211xstudiorndraftsrc",
       "docId": "in20211xstudiorndraft",
@@ -3461,6 +3469,14 @@
       "root": "UnderwritingProductConfigGuide20201x.ditamap",
       "srcId": "in20201xuwconfigdraftsrc",
       "docId": "in20201xuwconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20211.ditamap",
+      "srcId": "in20211rnsrc",
+      "docId": "in20211rn",
       "indexRedirect": true
     },
     {
