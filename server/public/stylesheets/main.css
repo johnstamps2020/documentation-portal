@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
+:root {
+  --GW-BLUE: #00739d;
+  --GW-BLUE-HOVER: #006083;
+  --GW-WHITE: #fafafa;
+  --GRADIENT-BACKGROUND: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
+}
+
 *,
 ::after,
 ::before {
@@ -69,7 +76,7 @@ header img {
 }
 
 .searchField::placeholder {
-  color: #fafafa;
+  color: var(--GW-WHITE);
 }
 
 .searchButton {
@@ -84,7 +91,7 @@ header img {
 
 main {
   padding: 64px 0;
-  background-color: #fafafa;
+  background-color: var(--GW-WHITE);
   min-height: calc(100vh - 68px);
 }
 
@@ -94,7 +101,7 @@ main > * {
 }
 
 a {
-  color: #00739d;
+  color: var(--GW-BLUE);
   text-decoration: none;
 }
 
@@ -228,7 +235,7 @@ h1 {
 
 footer {
   background-color: #28333f;
-  color: #fafafa;
+  color: var(--GW-WHITE);
   padding: 16px 32px;
   font-size: 10px;
 }
@@ -272,8 +279,8 @@ div.pageHero {
 }
 
 #cloudToggle > .selected {
-  background-color: #00739d;
-  color: #fafafa;
+  background: var(--GRADIENT-BACKGROUND);
+  color: var(--GW-WHITE);
 }
 
 .usefulLinks {
@@ -284,4 +291,74 @@ div.pageHero {
 .usefulLinks > a {
   display: block;
   padding: 6px 0;
+}
+
+.button {
+  background: var(--GRADIENT-BACKGROUND);
+  color: var(--GW-WHITE);
+  padding: 8px 16px;
+  border-radius: 3px;
+}
+
+.button:hover {
+  background: var(--GW-BLUE-HOVER);
+}
+
+.loginPageTitle {
+  text-align: center;
+  padding-bottom: 64px;
+}
+
+.loginPageTitle > h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.loginPageTitle > p {
+  font-size: 24px;
+  line-height: 31px;
+}
+
+.loginCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 24px;
+  row-gap: 16px;
+}
+
+.loginCard {
+  background-color: white;
+  padding: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loginCard > h2 {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 32px 0 0;
+}
+
+.loginCardDescription {
+  flex: 1;
+  padding: 16px 0 64px;
+}
+
+.cardButton {
+  align-items: flex-end;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+  font-size: 1.3em;
+  border-radius: 6px;
+  padding: 8px 32px;
+}
+
+.employeeLogin {
+  width: fit-content;
+  margin: auto;
+  padding: 64px 0;
 }

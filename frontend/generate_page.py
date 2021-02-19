@@ -36,9 +36,7 @@ from typing import Dict, List
 # ----------------------------------------------
 #        :::TO DO: template stuff:::
 # ----------------------------------------------
-# add the log in/log out button
 # implement the search page
-# implement the login page
 
 # ----------------------------------------------
 #        :::TO DO: nice-to-have stuff:::
