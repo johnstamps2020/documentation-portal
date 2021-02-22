@@ -124,8 +124,6 @@ async function getVersionsForProductOnPlatform(product, platform, isLoggedIn) {
       d.metadata.product.some(p => p === product)
   );
 
-  console.log('THE USER I LOGGED IN ===============', isLoggedIn);
-
   let versions = [];
   for (const doc of matchingDocs) {
     for (const version of doc.metadata.version) {
