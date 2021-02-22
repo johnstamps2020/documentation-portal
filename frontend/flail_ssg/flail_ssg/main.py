@@ -42,11 +42,13 @@
 # ----------------------------------------------
 # create a schema that helps validate the JSON file, make sure env is not
 #   allowed on an object with an ID
+import os
+
 from flail_ssg.generator import generate_pages
 
 
 def main():
-    generate_pages()
+    generate_pages(os.environ['DEPLOY_ENV'])
 
 
 if __name__ == '__main__':

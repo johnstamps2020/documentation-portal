@@ -40,6 +40,17 @@ def doc_id_is_valid(doc_id: str):
     return match
 
 
+def include_item(env: str, item_envs: List, higher_order_envs: List):
+    if not item_envs:
+        return True
+    if item_envs and env in item_envs:
+        if not higher_order_envs:
+            return True
+        if higher_order_envs and env in higher_order_envs:
+            return True
+    return False
+
+
 def create_breadcrumbs(page_dir: Path, build_dir: Path):
     if page_dir == build_dir:
         return None
@@ -59,7 +70,13 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     return breadcrumbs
 
 
-def process_page(index_file: Path, docs: List, build_dir: Path, func_logger: logging.Logger, processed_pages=None):
+def process_page(index_file: Path,
+                 deploy_env: str,
+                 docs: List,
+                 build_dir: Path,
+                 func_logger: logging.Logger,
+                 parent_envs: List,
+                 processed_pages=None):
     if not processed_pages:
         processed_pages = []
     errors = []
@@ -80,10 +97,17 @@ def process_page(index_file: Path, docs: List, build_dir: Path, func_logger: log
                 else:
                     errors.append(InvalidDocIdError(details=item_id))
             elif item.get('page'):
-                item_envs = item.get('env')
                 page_path = Path(page_dir / item['page'])
                 if page_path.exists():
-                    process_page(page_path / 'index.json', docs, build_dir, func_logger, processed_pages)
+                    item_envs = item.get('env', [])
+                    item_ok = include_item(deploy_env, item_envs, parent_envs)
+                    if item_ok:
+                        new_parent_envs = parent_envs + item_envs
+                        process_page(page_path / 'index.json', deploy_env, docs, build_dir, func_logger,
+                                     new_parent_envs,
+                                     processed_pages)
+                    else:
+                        items.remove(item)
                 else:
                     errors.append(PageNotFoundError(details=page_path))
             if item.get('items'):
@@ -106,7 +130,7 @@ def process_page(index_file: Path, docs: List, build_dir: Path, func_logger: log
             func_logger.error(f'{error.message}: {error.details}')
 
 
-def generate_pages():
+def generate_pages(deploy_env: str):
     current_dir = Path(__file__).parent.resolve()
     pages_dir = current_dir.parent.parent / 'pages'
     build_dir = current_dir / 'build'
@@ -128,7 +152,7 @@ def generate_pages():
 
     shutil.copytree(pages_dir, build_dir)
 
-    process_page(build_dir / 'index.json', docs, build_dir, generator_logger)
+    process_page(build_dir / 'index.json', deploy_env, docs, build_dir, generator_logger, [])
 
     for index_json_file in build_dir.rglob('**/*.json'):
         index_json = json.load(index_json_file.open())
