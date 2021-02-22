@@ -1,6 +1,6 @@
 {
   "title": "Pages",
-  "template": "page.j2",
+  "template": "index.j2",
   "items": [
     {
       "label": "Cloud",
