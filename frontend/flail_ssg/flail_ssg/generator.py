@@ -1,11 +1,14 @@
-import copy
 import json
+import logging
 import shutil
 from typing import List, Dict
-from flail_ssg.template_writer import write_to_file
+from flail_ssg import template_writer
+from flail_ssg import logger
+
 from pathlib import Path
 
 CURRENT_DIR = Path(__file__).parent.resolve()
+
 
 # FIXME: Each breadcrumb element must be a separate link
 def create_breadcrumbs(page_dir: Path, build_dir: Path):
@@ -17,9 +20,13 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     return str(breadcrumbs)
 
 
-def process_page(index_file: Path, docs: List, build_dir: Path):
+def process_page(index_file: Path, docs: List, build_dir: Path, logger: logging.Logger):
+    errors = {
+        'missing_pages': [],
+        'missing_doc_ids': []
+    }
     page_dir = index_file.parent
-    print(f'Processed {index_file}')
+    logger.info(f'Processing {index_file}')
     index_json = json.load(index_file.open())
     index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
 
@@ -33,14 +40,14 @@ def process_page(index_file: Path, docs: List, build_dir: Path):
                     item_envs = matching_doc_object['environments']
                     item['id'] = f'/{matching_doc_object["url"]}'
                 else:
-                    print(f'NO MATCHING ID FOR {item["id"]}')
+                    errors['missing_doc_ids'].append(item['id'])
             elif item.get('page'):
                 item_envs = item.get('env')
                 page_path = Path(page_dir / item['page'])
                 if page_path.exists():
-                    process_page(page_path / 'index.json', docs, build_dir)
+                    process_page(page_path / 'index.json', docs, build_dir, logger)
                 else:
-                    print(f'PAGE PATH DOES NOT EXIST: {page_path}')
+                    errors['missing_pages'].append(page_path)
             if item.get('items'):
                 process_items(item['items'])
         return items
@@ -49,6 +56,10 @@ def process_page(index_file: Path, docs: List, build_dir: Path):
     if page_items:
         index_json['items'] = process_items(page_items)
     json.dump(index_json, index_file.open('w'), indent=2)
+    for missing_page in errors['missing_pages']:
+        logger.error(f'No page found: {missing_page}')
+    for missing_doc_id in errors['missing_doc_ids']:
+        logger.error(f'No doc ID found: {missing_doc_id}')
 
 
 def generate_pages():
@@ -61,18 +72,25 @@ def generate_pages():
     docs = config_file['docs']
     templates_dir = CURRENT_DIR.parent.parent / 'templates'
 
+    log_file = current_dir / 'generator.log'
+    if log_file.exists():
+        log_file.unlink()
+    generator_logger = logger.create_logger('generator_logger')
+    logger.configure_logger(generator_logger, 'info', log_file)
+    generator_logger.info('PROCESS STARTED: Generate pages')
+
     if build_dir.exists():
         shutil.rmtree(build_dir)
 
     shutil.copytree(pages_dir, build_dir)
 
-    process_page(build_dir / 'index.json', docs, build_dir)
+    process_page(build_dir / 'index.json', docs, build_dir, generator_logger)
 
     for index_json_file in build_dir.rglob('**/*.json'):
         index_json = json.load(index_json_file.open())
         page_template = templates_dir / index_json['template']
 
-        write_to_file(
+        template_writer.write_to_file(
             index_json_file.parent / 'index.html',
             index_json,
             page_template
