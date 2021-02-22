@@ -10,14 +10,23 @@ from pathlib import Path
 CURRENT_DIR = Path(__file__).parent.resolve()
 
 
-# FIXME: Each breadcrumb element must be a separate link
 def create_breadcrumbs(page_dir: Path, build_dir: Path):
     if page_dir == build_dir:
         return None
-    parents_names = [parent.name for parent in page_dir.parents if
-                     (parent / 'index.json').exists() and parent != build_dir][::-1]
-    breadcrumbs = Path('/', '/'.join(parents_names))
-    return str(breadcrumbs)
+    breadcrumbs = []
+    path = ''
+    for parent in sorted(page_dir.parents, key=lambda p: page_dir.parents.index(p), reverse=True):
+        if (parent / 'index.json').exists() and parent != build_dir:
+            parent_title = json.load((parent / 'index.json').open())['title']
+            path += f'/{parent.name}'
+            breadcrumbs.append(
+                {
+                    'label': parent_title,
+                    'path': path
+                }
+            )
+
+    return breadcrumbs
 
 
 def process_page(index_file: Path, docs: List, build_dir: Path, logger: logging.Logger):
