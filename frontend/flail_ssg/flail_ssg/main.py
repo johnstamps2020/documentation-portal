@@ -7,19 +7,20 @@
 # ----------------------------------------------
 #        :::TO DO: generator stuff:::
 # ----------------------------------------------
-# crawl files starting from the top and following "page" links
-# if the env in environment variables does not match, do not generate the
-#   link or crawl pages
-# pages can have relative links, IDs can only be a single value
-# on each page, add a breadcrumb
+# crawl files starting from the top and following "page" links [x]
+# pages can have relative links, IDs can only be a single value [x]
+# on each page, add a breadcrumb [x]
 # on each page, add a dropdown which allows you to switch to a sibling page,
 #   e.g., on the billingCenterForGuidewireCloud allow the user to switch to
 #   policyCenterForGuidewireCloud and claimCenterForGuidewireCloud
-# don't crawl the same page twice, even if more than one link points to it
+# don't crawl the same page twice, even if more than one link points to it [x]
+
+# throw an error when a docs ID does not exist [x]
+# throw an error when an ID contains a forward slash / [x]
 # if an object has an env which does not match current env, don't add it and
 #   don't crawl down from it
-# throw an error when a docs ID does not exist
-# throw an error when an ID contains a forward slash /
+# if the env in environment variables does not match, do not generate the
+#   link or crawl pages
 # if an object has an ID, check the env of the doc and see if we want to
 #   display it
 # if the env on the doc does not match, throw an error

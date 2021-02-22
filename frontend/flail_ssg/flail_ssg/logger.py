@@ -18,5 +18,7 @@ def configure_logger(logger_instance: logging.Logger, logging_level: str, log_pa
             log_file_handler = logging.FileHandler(log_path)
             log_file_handler.setLevel(weights[logging_level.lower()])
             logger_instance.addHandler(log_file_handler)
+        for h in logger_instance.handlers:
+            h.setFormatter(logging.Formatter('%(message)s'))
     else:
         logging.error('Logging level not found. Try one of these levels: critical, error, warning, info, debug')
