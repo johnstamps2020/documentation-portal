@@ -34,17 +34,6 @@ from typing import Dict, List
 # allow a 'loose' mode where errors become warnings
 
 # ----------------------------------------------
-#        :::TO DO: template stuff:::
-# ----------------------------------------------
-# add something to the home page which will make the browser skip this page and
-#   redirect ot a selected link
-# add the toggle between cloud/self-managed
-# add the links to community
-# add the log in/log out button
-# implement the search page
-# implement the login page
-
-# ----------------------------------------------
 #        :::TO DO: nice-to-have stuff:::
 # ----------------------------------------------
 # create a schema that helps validate the JSON file, make sure env is not
