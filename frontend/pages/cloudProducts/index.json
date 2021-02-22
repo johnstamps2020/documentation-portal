@@ -1,6 +1,7 @@
 {
   "title": "Cloud",
   "template": "page.j2",
+  "class": "threeCards",
   "items": [
     {
       "label": "Aspen",

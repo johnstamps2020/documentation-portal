@@ -1,51 +1,43 @@
 <!-- Google Tag Manager (noscript) -->
-<noscript
->
-    <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5"
-            height="0"
-            width="0"
-            style="display:none;visibility:hidden"
-    ></iframe
-    >
+<noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden"
+  ></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="pageHeader">
-    <div class="row">
-        <div class="col-sm">
-            <div class="logoWrapper">
-                <a href="/">
-                    <img
-                            class="pageLogo"
-                            src="/images/guidewire-logo.svg"
-                            alt="Guidewire Documentation"
-                            role="img"
-                            aria-label="Guidewire Documentation"
-                    />
-                </a>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="searchBoxContainer">
-                <% include search-bar %>
-            </div>
-        </div>
-        <div class="col-sm">
-            <% try { -%>
-                <% if (userContext) { -%>
-                    <div class="loginLogoutButtonWrapper">
-                        <a class="gwButtonSecondary loginButtonSmall" href="/gw-logout">Log out</a>
-                    </div>
-                <% } else { -%>
-                    <div class="loginLogoutButtonWrapper">
-                        <a class="gwButtonSecondary loginButtonSmall" href="/gw-login">Log in</a>
-                    </div>
-                <% } -%>
-            <% } catch (err) { -%>
-                <% if (err instanceof ReferenceError) { -%>
-                    <% console.log('No userContext defined'); -%>
-                <% } -%>
-            <% } -%>
-        </div>
-    </div>
+<header>
+  <div id="headerLeft">
+    <a href="/">
+      <img
+        class="pageLogo"
+        src="/images/guidewire-logo.svg"
+        alt="Guidewire Documentation"
+        role="img"
+        aria-label="Guidewire Documentation"
+      />
+    </a>
+  </div>
+  <div id="headerCenter">
+    <form action="/search">
+      <div class="searchWrapper">
+        <input
+          name="q"
+          id="searchField"
+          class="searchField"
+          type="search"
+          placeholder="Search Guidewire documentation"
+          aria-label="Search Guidewire documentation"
+        />
+        <button type="submit" class="searchButton" aria-label="Search">
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="headerRight">
+    <a class="button small" id="loginButton" href="/gw-login">Log in</a>
+  </div>
 </header>

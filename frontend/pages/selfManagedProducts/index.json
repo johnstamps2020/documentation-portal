@@ -1,6 +1,7 @@
 {
   "title": "Self-managed product documentation",
   "template": "page.j2",
+  "class": "threeCards",
   "items": [
     {
       "label": "Core",
