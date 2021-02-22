@@ -33,6 +33,13 @@ class PageNotFoundError:
     message: str = 'Page not found'
 
 
+@dataclass
+class IncorrectEnvSettingsWarning:
+    details: str
+    level: int = logging.WARNING
+    message: str = 'Env settings incorrect'
+
+
 def doc_id_is_valid(doc_id: str):
     """Verify the doc ID does not start with "." or "/\""""
     regexp = re.compile("[^./].+")
@@ -40,13 +47,22 @@ def doc_id_is_valid(doc_id: str):
     return match
 
 
-def include_item(env: str, item_envs: List, higher_order_envs: List):
+def include_item(env: str, item_envs: List):
     if not item_envs:
         return True
-    if item_envs and env in item_envs:
+    elif env in item_envs:
+        return True
+    return False
+
+
+# Test if env settings are correct
+def env_settings_are_correct(item_envs: List, higher_order_envs: List):
+    if not item_envs:
+        return True
+    if item_envs:
         if not higher_order_envs:
             return True
-        if higher_order_envs and env in higher_order_envs:
+        elif all(env in higher_order_envs for env in item_envs):
             return True
     return False
 
@@ -83,15 +99,22 @@ def process_page(index_file: Path,
 
     def process_items(items: List):
         for item in items:
-            item_envs = []
             if item.get('id'):
                 item_id = item['id']
                 if doc_id_is_valid(item_id):
                     matching_doc_object = next(
                         (doc for doc in docs if doc['id'] == item_id), None)
                     if matching_doc_object:
-                        item_envs = matching_doc_object['environments']
-                        item['id'] = f'/{matching_doc_object["url"]}'
+                        item_envs = matching_doc_object.get('environments')
+                        if not env_settings_are_correct(item_envs, parent_envs):
+                            errors.append(IncorrectEnvSettingsWarning(details=f'\n\t\tItem label: {item["label"]}'
+                                                                              f'\n\t\tItem ID: {item["id"]}'
+                                                                              f'\n\t\tItem envs: {item_envs}'
+                                                                              f'\n\t\tEnv settings of higher order elements: {parent_envs}'))
+                        if include_item(deploy_env, item_envs):
+                            item['id'] = f'/{matching_doc_object["url"]}'
+                        else:
+                            items.remove(item)
                     else:
                         errors.append(DocIdNotFoundError(details=item_id))
                 else:
@@ -100,8 +123,12 @@ def process_page(index_file: Path,
                 page_path = Path(page_dir / item['page'])
                 if page_path.exists():
                     item_envs = item.get('env', [])
-                    item_ok = include_item(deploy_env, item_envs, parent_envs)
-                    if item_ok:
+                    if not env_settings_are_correct(item_envs, parent_envs):
+                        errors.append(IncorrectEnvSettingsWarning(details=f'\n\t\tItem label: {item["label"]}'
+                                                                          f'\n\t\tItem page: {item["page"]}'
+                                                                          f'\n\t\tItem envs: {item_envs}'
+                                                                          f'\n\t\tEnv settings of higher order elements: {parent_envs}'))
+                    if include_item(deploy_env, item_envs):
                         new_parent_envs = parent_envs + item_envs
                         process_page(page_path / 'index.json', deploy_env, docs, build_dir, func_logger,
                                      new_parent_envs,
@@ -126,8 +153,10 @@ def process_page(index_file: Path,
         if page_items:
             index_json['items'] = process_items(page_items)
         json.dump(index_json, index_file_absolute.open('w'), indent=2)
-        for error in errors:
-            func_logger.error(f'{error.message}: {error.details}')
+        if errors:
+            func_logger.info(f'Issues found:')
+            for error in sorted(errors, key=lambda e: e.message):
+                func_logger.error(f'\t{error.message}: {error.details}')
 
 
 def generate_pages(deploy_env: str):
