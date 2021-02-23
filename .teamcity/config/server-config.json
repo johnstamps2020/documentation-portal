@@ -2228,7 +2228,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
-        "version": [""],
+        "version": [" "],
         "release": ["Aspen", "Banff"],
         "subject": ["Release notes"]
       },
@@ -2244,7 +2244,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
-        "version": [""],
+        "version": [" "],
         "release": ["Aspen", "Banff"],
         "subject": ["Features and functionality"]
       },
@@ -2260,7 +2260,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
-        "version": [""],
+        "version": [" "],
         "release": ["Aspen", "Banff"],
         "subject": ["Development"]
       },
