@@ -306,7 +306,6 @@
       "indexRedirect": true
     },
 
-
     {
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
@@ -643,8 +642,6 @@
       "docId": "dxonpremdraftverelnotes",
       "indexRedirect": true
     },
-
-
 
     {
       "buildType": "dita",
@@ -1172,27 +1169,6 @@
       "root": "m_dataDictionaries.ditamap",
       "srcId": "exploredatadictsrc",
       "docId": "exploredatadictrelease"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "m_relNotes.ditamap",
-      "srcId": "explorernsrc",
-      "docId": "explorernrelease"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "m_cloud-usingExplore.ditamap",
-      "srcId": "exploreusingsrc",
-      "docId": "exploreusingdraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "m_dataDictionaries.ditamap",
-      "srcId": "exploredatadictsrc",
-      "docId": "exploredatadictdraft"
     },
     {
       "buildType": "dita",

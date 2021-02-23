@@ -2222,54 +2222,6 @@
       "public": false
     },
     {
-      "id": "explorerndraft",
-      "title": "Release Notes",
-      "url": "cloud/explore/latest/relnotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "exploreusingdraft",
-      "title": "Using Explore",
-      "url": "cloud/explore/latest/using",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "exploredatadictdraft",
-      "title": "Data Dictionaries",
-      "url": "cloud/explore/latest/datadict",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "explorernrelease",
       "title": "Release Notes",
       "url": "cloud/explore/latest/relnotes",
@@ -2280,7 +2232,7 @@
         "release": ["Aspen", "Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2296,7 +2248,7 @@
         "release": ["Aspen", "Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2312,7 +2264,7 @@
         "release": ["Aspen", "Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
