@@ -2179,18 +2179,10 @@
       "title": "Understanding Cloud Data Access",
       "url": "cloud/cda/guide/latest",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Cloud Data Access"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -2203,18 +2195,10 @@
       "title": "Release Notes",
       "url": "cloud/cda/rn/latest",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Cloud Data Access"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Cortina"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -2242,25 +2226,13 @@
       "title": "Release Notes",
       "url": "cloud/explore/latest/relnotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Aspen",
-          "Banff",
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": [
-        "int"
-      ],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2270,20 +2242,10 @@
       "title": "Using Explore",
       "url": "cloud/explore/latest/using",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Aspen",
-          "Banff",
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -2296,25 +2258,13 @@
       "title": "Data Dictionaries",
       "url": "cloud/explore/latest/datadict",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Aspen",
-          "Banff",
-          "Cortina"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"],
         "subject": ["Development"]
       },
-      "environments": [
-        "int"
-      ],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2324,24 +2274,13 @@
       "title": "Release Notes",
       "url": "cloud/explore/latest/relnotes",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff"],
         "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "staging", "prod"
-      ],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2351,24 +2290,13 @@
       "title": "Using Explore",
       "url": "cloud/explore/latest/using",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "staging", "prod"
-      ],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2378,24 +2306,13 @@
       "title": "Data Dictionaries",
       "url": "cloud/explore/latest/datadict",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Explore"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Aspen",
-          "Banff"
-        ],
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff"],
         "subject": ["Development"]
       },
-      "environments": [
-        "dev", "staging", "prod"
-      ],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3070,9 +2987,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3088,9 +3003,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3100,25 +3013,13 @@
       "title": "Commercial Auto Standards Based Template Guide",
       "url": "cloud/lob/ca/202011/guide",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Commercial Auto Standards Based Template"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Commercial Auto Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3128,25 +3029,13 @@
       "title": "Release Notes",
       "url": "cloud/lob/ca/202011/cwrn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Commercial Auto Standards Based Template"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Commercial Auto Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3156,25 +3045,13 @@
       "title": "Crime Standards Based Template Guide",
       "url": "cloud/lob/crime/202011/guide",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Crime Standards Based Template"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Crime Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3184,25 +3061,13 @@
       "title": "Release Notes",
       "url": "cloud/lob/crime/202011/cwrn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Crime Standards Based Template"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Crime Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3212,25 +3077,13 @@
       "title": "General Liability Standards Based Template Guide",
       "url": "cloud/lob/gl/202011/guide",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "General Liability Standards Based Template"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
+        "platform": ["Cloud"],
+        "product": ["General Liability Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3240,25 +3093,13 @@
       "title": "Release Notes",
       "url": "cloud/lob/gl/202011/cwrn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "General Liability Standards Based Template"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
+        "platform": ["Cloud"],
+        "product": ["General Liability Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "int", "staging"
-      ],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3268,26 +3109,13 @@
       "title": "Businessowners Standards Based Template Guide",
       "url": "cloud/lob/bop/202005/guide",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Businessowners Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev",
-        "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3297,26 +3125,13 @@
       "title": "Release Notes",
       "url": "cloud/lob/bop/202005/cwrn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Businessowners Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Release notes"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Businessowners Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Release notes"]
       },
-      "environments": [
-        "dev",
-        "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3326,25 +3141,13 @@
       "title": "Commercial Auto Standards Based Template Guide",
       "url": "cloud/lob/ca/202005/guide",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Commercial Auto Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Commercial Auto Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3354,25 +3157,13 @@
       "title": "Release Notes",
       "url": "cloud/lob/ca/202005/cwrn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Commercial Auto Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Release notes"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Commercial Auto Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3382,25 +3173,13 @@
       "title": "Crime Standards Based Template Guide",
       "url": "cloud/lob/crime/202005/guide",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Crime Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Crime Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3410,25 +3189,13 @@
       "title": "Release Notes",
       "url": "cloud/lob/crime/202005/cwrn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Crime Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Release notes"
-        ]
+        "platform": ["Cloud"],
+        "product": ["Crime Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3438,25 +3205,13 @@
       "title": "General Liability Standards Based Template Guide",
       "url": "cloud/lob/gl/202005/guide",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "General Liability Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
+        "platform": ["Cloud"],
+        "product": ["General Liability Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Features and functionality"]
       },
-      "environments": [
-        "dev", "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3466,25 +3221,13 @@
       "title": "Release Notes",
       "url": "cloud/lob/gl/202005/cwrn",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "General Liability Standards Based Template"
-        ],
-        "version": [
-          "2020.05"
-        ],
-        "release": [
-          "Aspen"
-        ],
-        "subject": [
-          "Release notes"
-        ]
+        "platform": ["Cloud"],
+        "product": ["General Liability Standards Based Template"],
+        "version": ["2020.05"],
+        "release": ["Aspen"],
+        "subject": ["Release notes"]
       },
-      "environments": [
-        "dev", "staging"
-      ],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
