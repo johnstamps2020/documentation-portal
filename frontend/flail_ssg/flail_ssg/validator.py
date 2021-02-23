@@ -1,17 +1,17 @@
 import json
 import logging
 import re
-import shutil
 from dataclasses import dataclass
 from typing import List, Dict
-from flail_ssg import template_writer
 from flail_ssg import logger
 
 from pathlib import Path
+from itertools import groupby
 
 
 @dataclass
 class InvalidDocIdError:
+    config_file: Path
     details: str
     level: int = logging.ERROR
     message: str = 'Invalid doc ID'
@@ -19,6 +19,7 @@ class InvalidDocIdError:
 
 @dataclass
 class DocIdNotFoundError:
+    config_file: Path
     details: str
     level: int = logging.ERROR
     message: str = 'Doc ID not found'
@@ -26,6 +27,7 @@ class DocIdNotFoundError:
 
 @dataclass
 class PageNotFoundError:
+    config_file: Path
     details: str
     level: int = logging.ERROR
     message: str = 'Page not found'
@@ -33,21 +35,39 @@ class PageNotFoundError:
 
 @dataclass
 class IncorrectEnvSettingsWarning:
+    config_file: Path
     details: str
     level: int = logging.WARNING
     message: str = 'Env settings incorrect'
 
 
-def process_validation_results(mode: str, results: List):
-    # hero - I'll take care of everything. If I notice a problem, I'll step in and stop you from getting into more trouble.
-    # friend - I'll warn you about things that can hurt you but you're an adult and it's up to you what to do with the information
+def process_validation_results(results: List, func_logger: logging.Logger, bouncer_mode=True):
+    """
+    bouncer_mode:
+        If I notice any errors, I'll raise hell right away!
+    """
 
-    if mode == 'hero':
-        pass
-    # Raise exception for errors
-    elif mode == 'friend':
-        pass
-    # Don't raise exceptions, just log the issues
+    def group_and_sort_results(raw_results: List, group_key: str, sort_key: str):
+        grouped_results = groupby(raw_results, key=lambda r: getattr(r, group_key))
+        sorted_results = [(key, sorted(group, key=lambda r: getattr(r, sort_key))) for (key, group) in grouped_results]
+        return sorted_results
+
+    for config_file, file_issues in group_and_sort_results(results, 'config_file', 'level'):
+        func_logger.error(f'>>> {config_file}')
+        for issue_type, issues in group_and_sort_results(file_issues, 'message', 'level'):
+            formatted_details = "".join(
+                [
+                    "".join([f'\n\t\t{line}' for line in i.details.splitlines()])
+                    for i in issues
+                ]
+            )
+            func_logger.error(f'\t{issue_type}: '
+                              f'{formatted_details}')
+    if bouncer_mode:
+        errors = [issue for issue in results if issue.level == logging.ERROR]
+        if errors:
+            raise SyntaxError('Validation failed with errors!'
+                              f'\nTotal number of errors: {len(errors)}')
 
 
 def doc_id_is_valid(doc_id: str):
@@ -67,14 +87,15 @@ def env_settings_are_correct(item_envs: List, higher_order_envs: List):
             return True
     return False
 
+
 # TODO: Add info about the file where the issues were found
 def validate_page(index_file: Path,
                   docs: List,
                   envs: List,
                   validated_pages: List,
                   validation_results: List):
-    def validate_items(items: List, parent_envs: List, issues: List):
-        for item in items:
+    def validate_items(page_config_file: Path, page_items: List, parent_envs: List, issues: List):
+        for item in page_items:
             if item.get('id'):
                 item_id = item['id']
                 if doc_id_is_valid(item_id):
@@ -84,41 +105,56 @@ def validate_page(index_file: Path,
                         item_envs = matching_doc_object.get('environments')
                         if not env_settings_are_correct(item_envs, parent_envs):
                             issues.append(
-                                IncorrectEnvSettingsWarning(details=f'\n\t\tItem label: {item["label"]}'
-                                                                    f'\n\t\tItem ID: {item["id"]}'
-                                                                    f'\n\t\tItem envs: {item_envs}'
-                                                                    f'\n\t\tEnv settings of higher order elements: {parent_envs}'))
+                                IncorrectEnvSettingsWarning(
+                                    config_file=page_config_file,
+                                    details=f'Item label: {item["label"]} '
+                                            f'Item ID: {item["id"]} | '
+                                            f'Item envs: {item_envs} | '
+                                            f'Env settings of higher order elements: {parent_envs}'
+                                )
+                            )
                     else:
-                        issues.append(DocIdNotFoundError(details=item_id))
+                        issues.append(DocIdNotFoundError(
+                            config_file=page_config_file,
+                            details=item_id)
+                        )
                 else:
-                    issues.append(InvalidDocIdError(details=item_id))
+                    issues.append(InvalidDocIdError(
+                        config_file=page_config_file,
+                        details=item_id)
+                    )
             elif item.get('page'):
-                page_path = Path(page_dir / item['page'])
+                page_path = Path(page_config_file.parent / item['page'])
                 if page_path.exists():
                     item_envs = item.get('env', [])
                     if not env_settings_are_correct(item_envs, parent_envs):
                         issues.append(
-                            IncorrectEnvSettingsWarning(details=f'\n\t\tItem label: {item["label"]}'
-                                                                f'\n\t\tItem page: {item["page"]}'
-                                                                f'\n\t\tItem envs: {item_envs}'
-                                                                f'\n\t\tEnv settings of higher order elements: {parent_envs}'))
+                            IncorrectEnvSettingsWarning(
+                                config_file=page_config_file,
+                                details=f'Item label: {item["label"]} '
+                                        f'Item page: {item["page"]} | '
+                                        f'Item envs: {item_envs} | '
+                                        f'Env settings of higher order elements: {parent_envs}'
+                            )
+                        )
                     new_parent_envs = parent_envs + item_envs
                     validate_page(page_path / 'index.json', docs, new_parent_envs, validated_pages, issues)
                 else:
-                    issues.append(PageNotFoundError(details=page_path))
+                    issues.append(PageNotFoundError(
+                        config_file=page_config_file,
+                        details=str(page_path)))
             if item.get('items'):
-                validate_items(item['items'], parent_envs, issues)
+                validate_items(page_config_file, item['items'], parent_envs, issues)
         return issues
 
     index_file_absolute = index_file.resolve()
     if index_file_absolute not in validated_pages:
-        page_dir = index_file_absolute.parent
         validated_pages.append(index_file_absolute)
         index_json = json.load(index_file_absolute.open())
 
-        page_items = index_json.get('items')
-        if page_items:
-            validate_items(page_items, envs, validation_results)
+        items = index_json.get('items')
+        if items:
+            validate_items(index_file_absolute, items, envs, validation_results)
     return validation_results
 
 
@@ -136,24 +172,23 @@ def main():
     logger.configure_logger(validator_logger, 'info', log_file)
     validator_logger.info('PROCESS STARTED: Generate pages')
 
-    cloud_products_validation = validate_page(
+    cloud_products_validation_results = validate_page(
         pages_dir / 'cloudProducts' / 'index.json',
         docs,
         envs=[],
         validated_pages=[],
         validation_results=[]
     )
-    self_managed_products_validation = validate_page(
+    self_managed_products_validation_results = validate_page(
         pages_dir / 'selfManagedProducts' / 'index.json',
         docs,
         envs=[],
         validated_pages=[],
         validation_results=[]
     )
-    # TODO: Move this logic to the function processing results
-    validator_logger.info(f'Issues found:')
-    for error in sorted(cloud_products_validation + self_managed_products_validation, key=lambda e: e.message):
-        validator_logger.error(f'\t{error.message}: {error.details}')
+
+    process_validation_results(cloud_products_validation_results + self_managed_products_validation_results,
+                               validator_logger)
 
     validator_logger.info('PROCESS ENDED: Validate pages')
 
