@@ -2633,8 +2633,8 @@
       "id": "srcjutrostorybook530",
       "title": "Jutro Storybook 5.3.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-main.git",
-      "branch": "release/5.3.x"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "branch": "release/5.3.0"
     },
     {
       "id": "srcjutronext",
