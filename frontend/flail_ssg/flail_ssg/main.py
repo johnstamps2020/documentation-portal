@@ -24,7 +24,7 @@
 # if an object has an ID, check the env of the doc and see if we want to
 #   display it [x]
 # if the env on the doc does not match, throw an error [x]
-# allow a 'loose' mode where errors become warnings
+# allow a 'loose' mode where errors become warnings [x]
 
 # ----------------------------------------------
 #        :::TO DO: template stuff:::
@@ -44,11 +44,16 @@
 #   allowed on an object with an ID
 import os
 
-from flail_ssg.generator import generate_pages
+from flail_ssg.generator import run_generator
+from flail_ssg.validator import run_validator
 
 
 def main():
-    generate_pages(os.environ['DEPLOY_ENV'])
+    bouncer_mode = True
+    if os.environ['SEND_BOUNCER_HOME'] == 'yes':
+        bouncer_mode = False
+    run_validator(bouncer_mode)
+    run_generator(os.environ['DEPLOY_ENV'])
 
 
 if __name__ == '__main__':

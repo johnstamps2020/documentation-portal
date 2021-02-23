@@ -2,7 +2,7 @@ import json
 import logging
 import re
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List
 from flail_ssg import logger
 
 from pathlib import Path
@@ -41,7 +41,7 @@ class IncorrectEnvSettingsWarning:
     message: str = 'Env settings incorrect'
 
 
-def process_validation_results(results: List, func_logger: logging.Logger, bouncer_mode=False):
+def process_validation_results(results: List, func_logger: logging.Logger, bouncer_mode: bool):
     """
     bouncer_mode:
         If I notice any errors, I'll raise hell right away!
@@ -157,7 +157,7 @@ def validate_page(index_file: Path,
     return validation_results
 
 
-def main():
+def run_validator(bouncer_mode):
     current_dir = Path(__file__).parent.resolve()
     pages_dir = current_dir.parent.parent / 'pages'
     config_file = current_dir.parent.parent.parent / '.teamcity' / 'config' / 'server-config.json'
@@ -187,9 +187,6 @@ def main():
     )
 
     process_validation_results(cloud_products_validation_results + self_managed_products_validation_results,
-                               validator_logger)
+                               validator_logger, bouncer_mode)
 
     validator_logger.info('PROCESS ENDED: Validate pages')
-
-
-main()
