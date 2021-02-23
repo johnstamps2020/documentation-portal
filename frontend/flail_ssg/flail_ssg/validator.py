@@ -41,7 +41,7 @@ class IncorrectEnvSettingsWarning:
     message: str = 'Env settings incorrect'
 
 
-def process_validation_results(results: List, func_logger: logging.Logger, bouncer_mode=True):
+def process_validation_results(results: List, func_logger: logging.Logger, bouncer_mode=False):
     """
     bouncer_mode:
         If I notice any errors, I'll raise hell right away!
@@ -52,17 +52,17 @@ def process_validation_results(results: List, func_logger: logging.Logger, bounc
         sorted_results = [(key, sorted(group, key=lambda r: getattr(r, sort_key))) for (key, group) in grouped_results]
         return sorted_results
 
-    for config_file, file_issues in group_and_sort_results(results, 'config_file', 'level'):
-        func_logger.error(f'>>> {config_file}')
-        for issue_type, issues in group_and_sort_results(file_issues, 'message', 'level'):
+    for config_file, file_issues in group_and_sort_results(results, 'config_file', 'message'):
+        func_logger.info(f'{config_file}')
+        for issue_type, issues in group_and_sort_results(file_issues, 'message', 'details'):
             formatted_details = "".join(
                 [
                     "".join([f'\n\t\t{line}' for line in i.details.splitlines()])
                     for i in issues
                 ]
             )
-            func_logger.error(f'\t{issue_type}: '
-                              f'{formatted_details}')
+            func_logger.info(f'\t{issue_type}: '
+                             f'{formatted_details}')
     if bouncer_mode:
         errors = [issue for issue in results if issue.level == logging.ERROR]
         if errors:
@@ -88,7 +88,6 @@ def env_settings_are_correct(item_envs: List, higher_order_envs: List):
     return False
 
 
-# TODO: Add info about the file where the issues were found
 def validate_page(index_file: Path,
                   docs: List,
                   envs: List,
