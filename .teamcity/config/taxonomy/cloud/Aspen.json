@@ -23,8 +23,26 @@
               "label": "InsuranceSuite Configuration Upgrade Tools"
             },
             {
-              "id": "boStandardsBaseTemplate",
-              "label": "Businessowners Standards Based Template"
+              "id": "lobs",
+              "label": "Lines of business",
+              "items": [
+                {
+                  "id": "boStandardsBasedTemplate",
+                  "label": "Businessowners Standards Based Template"
+                },
+                {
+                  "id": "caStandardsBasedTemplate",
+                  "label": "Commercial Auto Standards Based Template"
+                },
+                {
+                  "id": "crimeStandardsBasedTemplate",
+                  "label": "Crime Standards Based Template"
+                },
+                {
+                  "id": "glStandardsBasedTemplate",
+                  "label": "General Liability Standards Based Template"
+                }
+              ]
             }
           ]
         },
@@ -261,7 +279,7 @@
         {
           "id": "insuranceNow20201xExt",
           "label": "External Audience",
-          "items":[
+          "items": [
             {
               "id": "IN20201xExt",
               "label": "InsuranceNow 2020.1x - External Audience"
@@ -271,7 +289,7 @@
         {
           "id": "insuranceNow20201xInt",
           "label": "Internal Audience",
-          "items":[
+          "items": [
             {
               "id": "IN20201xInt",
               "label": "InsuranceNow 2020.1x - Internal Audience"
@@ -281,7 +299,7 @@
         {
           "id": "insNowAspen",
           "label": "InsuranceNow",
-          "items":[
+          "items": [
             {
               "id": "insNowAspen",
               "label": "InsuranceNow"
