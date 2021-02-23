@@ -826,13 +826,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-OnPrem-Draft.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebasrc",
-      "docId": "selfmanagedbadraft"
-    },
-    {
-      "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
@@ -1162,16 +1155,44 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebasrc",
-      "docId": "explorecloudrelease"
+      "root": "m_relNotes.ditamap",
+      "srcId": "explorernsrc",
+      "docId": "explorernrelease"
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebasrc",
-      "docId": "exploreclouddraft"
+      "root": "m_cloud-usingExplore.ditamap",
+      "srcId": "exploreusingsrc",
+      "docId": "exploreusingrelease"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "m_dataDictionaries.ditamap",
+      "srcId": "exploredatadictsrc",
+      "docId": "exploredatadictrelease"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "m_relNotes.ditamap",
+      "srcId": "explorernsrc",
+      "docId": "explorernrelease"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "m_cloud-usingExplore.ditamap",
+      "srcId": "exploreusingsrc",
+      "docId": "exploreusingdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "m_dataDictionaries.ditamap",
+      "srcId": "exploredatadictsrc",
+      "docId": "exploredatadictdraft"
     },
     {
       "buildType": "dita",
@@ -1688,22 +1709,6 @@
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
-      "srcId": "lobbopguidedraftsrc",
-      "docId": "lobbopguidedraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "LOB_STANDARDS_Cloud.ditaval",
-      "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
-      "srcId": "lobbopsbtrndraftsrc",
-      "docId": "lobbopsbtrndraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "LOB_STANDARDS_Cloud.ditaval",
-      "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguidebanffsrc",
       "docId": "lobbopguidebanff",
       "indexRedirect": true
@@ -1714,6 +1719,54 @@
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnbanffsrc",
       "docId": "lobbopsbtrnbanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-gl-9x-1003.ditamap",
+      "srcId": "lobglguidebanffsrc",
+      "docId": "lobglguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
+      "srcId": "lobglsbtrnbanffsrc",
+      "docId": "lobglsbtrnbanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-ca-10x.ditamap",
+      "srcId": "lobcaguidebanffsrc",
+      "docId": "lobcaguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
+      "srcId": "lobcasbtrnbanffsrc",
+      "docId": "lobcasbtrnbanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-crime.ditamap",
+      "srcId": "lobcrimeguidebanffsrc",
+      "docId": "lobcrimeguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "Crime_SBT_ReleaseNotes.ditamap",
+      "srcId": "lobcrimesbtrnbanffsrc",
+      "docId": "lobcrimesbtrnbanff",
       "indexRedirect": true
     },
     {
@@ -1736,48 +1789,48 @@
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-gl-9x-1003.ditamap",
-      "srcId": "lobglguidedraftsrc",
-      "docId": "lobglguidedraft",
+      "srcId": "lobglguideaspensrc",
+      "docId": "lobglguideaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
-      "srcId": "lobglsbtrndraftsrc",
-      "docId": "lobglsbtrndraft",
+      "srcId": "lobglsbtrnaspensrc",
+      "docId": "lobglsbtrnaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-ca-10x.ditamap",
-      "srcId": "lobcaguidedraftsrc",
-      "docId": "lobcaguidedraft",
+      "srcId": "lobcaguideaspensrc",
+      "docId": "lobcaguideaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
-      "srcId": "lobcasbtrndraftsrc",
-      "docId": "lobcasbtrndraft",
+      "srcId": "lobcasbtrnaspensrc",
+      "docId": "lobcasbtrnaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-crime.ditamap",
-      "srcId": "lobcrimeguidedraftsrc",
-      "docId": "lobcrimeguidedraft",
+      "srcId": "lobcrimeguideaspensrc",
+      "docId": "lobcrimeguideaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "Crime_SBT_ReleaseNotes.ditamap",
-      "srcId": "lobcrimesbtrndraftsrc",
-      "docId": "lobcrimesbtrndraft",
+      "srcId": "lobcrimesbtrnaspensrc",
+      "docId": "lobcrimesbtrnaspen",
       "indexRedirect": true
     },
     {

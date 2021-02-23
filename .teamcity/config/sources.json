@@ -1207,96 +1207,104 @@
       ]
     },
     {
-      "id": "lobbopguidedraftsrc",
-      "title": "LOB BOP Guide Draft",
+      "id": "lobbopguideaspensrc",
+      "title": "LOB BOP Guide Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x.ditamap",
+        "/Content/doc/LOB/aspen/lob-bop-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobbopsbtrndraftsrc",
-      "title": "LOB BOP Countrywide Release Notes Draft",
+      "id": "lobbopsbtrnaspensrc",
+      "title": "LOB BOP Countrywide Release Notes Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/BOP_SBT_ReleaseNotes-10x.ditamap",
+        "/Content/doc/LOB/aspen/BOP_SBT_ReleaseNotes-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobglguidedraftsrc",
-      "title": "LOB GL Guide Draft",
+      "id": "lobglguideaspensrc",
+      "title": "LOB GL Guide Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-gl-9x-1003.ditamap",
+        "/Content/doc/LOB/aspen/lob-gl-9x-1003.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobglsbtrndraftsrc",
-      "title": "LOB GL Countrywide Release Notes Draft",
+      "id": "lobglsbtrnaspensrc",
+      "title": "LOB GL Countrywide Release Notes Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/GL_SBT_ReleaseNotes-9x-1003.ditamap",
+        "/Content/doc/LOB/aspen/GL_SBT_ReleaseNotes-9x-1003.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobcaguidedraftsrc",
-      "title": "LOB CA Guide Draft",
+      "id": "lobcaguideaspensrc",
+      "title": "LOB CA Guide Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-ca-10x.ditamap",
+        "/Content/doc/LOB/aspen/lob-ca-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobcasbtrndraftsrc",
-      "title": "LOB CA Countrywide Release Notes Draft",
+      "id": "lobcasbtrnaspensrc",
+      "title": "LOB CA Countrywide Release Notes Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
+        "/Content/doc/LOB/aspen/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobcrimeguidedraftsrc",
-      "title": "LOB Crime Guide Draft",
+      "id": "lobcrimeguideaspensrc",
+      "title": "LOB Crime Guide Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-crime.ditamap",
+        "/Content/doc/LOB/aspen/lob-crime.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobcrimesbtrndraftsrc",
-      "title": "LOB Crime Countrywide Release Notes Draft",
+      "id": "lobcrimesbtrnaspensrc",
+      "title": "LOB Crime Countrywide Release Notes Aspen",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Aspen",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/Crime_SBT_ReleaseNotes.ditamap",
+        "/Content/doc/LOB/aspen/Crime_SBT_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -1329,26 +1337,78 @@
       ]
     },
     {
-      "id": "lobbopguideaspensrc",
-      "title": "LOB BOP Guide Aspen",
+      "id": "lobglguidebanffsrc",
+      "title": "LOB GL Guide Banff",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
+      "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x.ditamap",
+        "/Content/doc/LOB/banff/lob-gl-9x-1003.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
       ]
     },
     {
-      "id": "lobbopsbtrnaspensrc",
-      "title": "LOB BOP Countrywide Release Notes Aspen",
+      "id": "lobglsbtrnbanffsrc",
+      "title": "LOB GL Countrywide Release Notes Banff",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
+      "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/LOB/active/BOP_SBT_ReleaseNotes-10x.ditamap",
+        "/Content/doc/LOB/banff/GL_SBT_ReleaseNotes-9x-1003.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcaguidebanffsrc",
+      "title": "LOB CA Guide Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/banff/lob-ca-10x.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcasbtrnbanffsrc",
+      "title": "LOB CA Countrywide Release Notes Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/banff/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcrimeguidebanffsrc",
+      "title": "LOB Crime Guide Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/banff/lob-crime.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobcrimesbtrnbanffsrc",
+      "title": "LOB Crime Countrywide Release Notes Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/banff/Crime_SBT_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -1397,16 +1457,38 @@
       ]
     },
     {
-      "id": "explorebasrc",
-      "title": "Explore and Business Analytics",
+      "id": "explorernsrc",
+      "title": "Explore Release Notes",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/business-analytics/active/supermapExplore.ditamap",
+        "/Content/doc/data-analytics/cloud/business-analytics/active/m_relNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Release.ditaval"
+      ]
+    },
+    {
+      "id": "exploreusingsrc",
+      "title": "Explore Using Explore",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/business-analytics/active/m_cloud-usingExplore.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "exploredatadictsrc",
+      "title": "Explore Data Dictionaries",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/business-analytics/active/m_dataDictionaries.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
     {
