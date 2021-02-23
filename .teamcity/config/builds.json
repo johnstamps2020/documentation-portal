@@ -1154,21 +1154,24 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_relNotes.ditamap",
       "srcId": "explorernsrc",
-      "docId": "explorernrelease"
+      "docId": "explorernrelease",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_cloud-usingExplore.ditamap",
       "srcId": "exploreusingsrc",
-      "docId": "exploreusingrelease"
+      "docId": "exploreusingrelease",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_dataDictionaries.ditamap",
       "srcId": "exploredatadictsrc",
-      "docId": "exploredatadictrelease"
+      "docId": "exploredatadictrelease",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
