@@ -6266,6 +6266,22 @@
       "public": false
     },
     {
+      "id": "isbc202011releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/202011/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isbc202011newandchanged",
       "title": "New and Changed",
       "url": "cloud/bc/202011/newandchanged",
