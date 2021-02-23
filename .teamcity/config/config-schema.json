@@ -77,7 +77,7 @@
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["product", "platform", "version"],
+      "required": ["product", "platform"],
       "properties": {
         "product": {
           "$ref": "#definitions/product"
