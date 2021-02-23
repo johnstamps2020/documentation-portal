@@ -1,3 +1,6 @@
+# TODO: Modify this code to simply generate HTML pages from JSON files
+# The validator takes care of making sure that the data inside JSON files is correct
+# The generator is only for building pages
 import json
 import logging
 import re
@@ -8,8 +11,6 @@ from flail_ssg import template_writer
 from flail_ssg import logger
 
 from pathlib import Path
-
-CURRENT_DIR = Path(__file__).parent.resolve()
 
 
 @dataclass
@@ -164,10 +165,10 @@ def generate_pages(deploy_env: str):
     pages_dir = current_dir.parent.parent / 'pages'
     build_dir = current_dir / 'build'
     public_dir = current_dir.parent.parent.parent / 'server' / 'public'
-    config_file = CURRENT_DIR.parent.parent.parent / '.teamcity' / 'config' / 'server-config.json'
-    config_file = json.load(config_file.open())
-    docs = config_file['docs']
-    templates_dir = CURRENT_DIR.parent.parent / 'templates'
+    config_file = current_dir.parent.parent.parent / '.teamcity' / 'config' / 'server-config.json'
+    config_file_json = json.load(config_file.open())
+    docs = config_file_json['docs']
+    templates_dir = current_dir.parent.parent / 'templates'
 
     log_file = current_dir / 'generator.log'
     if log_file.exists():
