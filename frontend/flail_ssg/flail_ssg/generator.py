@@ -68,15 +68,11 @@ def process_page(index_file: Path,
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
-def run_generator(deploy_env: str):
+def run_generator(deploy_env: str, pages_dir: Path, templates_dir: Path, output_dir: Path, docs_config_file: Path):
     current_dir = Path(__file__).parent.resolve()
-    pages_dir = current_dir.parent.parent / 'pages'
     build_dir = current_dir / 'build'
-    public_dir = current_dir.parent.parent.parent / 'server' / 'public'
-    config_file = current_dir.parent.parent.parent / '.teamcity' / 'config' / 'server-config.json'
-    config_file_json = json.load(config_file.open())
+    config_file_json = json.load(docs_config_file.open())
     docs = config_file_json['docs']
-    templates_dir = current_dir.parent.parent / 'templates'
 
     log_file = Path.cwd() / 'generator.log'
     if log_file.exists():
@@ -106,5 +102,5 @@ def run_generator(deploy_env: str):
     for index_json_file in build_dir.rglob('**/*.json'):
         index_json_file.unlink()
 
-    shutil.copytree(build_dir, public_dir, dirs_exist_ok=True)
+    shutil.copytree(build_dir, output_dir, dirs_exist_ok=True)
     generator_logger.info('PROCESS ENDED: Generate pages')

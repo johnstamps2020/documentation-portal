@@ -88,7 +88,11 @@ def main():
     run_validator(app_config.send_bouncer_home,
                   app_config.pages_dir,
                   app_config.docs_config_file)
-    # run_generator(os.environ['DEPLOY_ENV'])
+    run_generator(app_config.deploy_env,
+                  app_config.pages_dir,
+                  app_config.templates_dir,
+                  app_config.output_dir,
+                  app_config.docs_config_file)
 
 
 if __name__ == '__main__':
