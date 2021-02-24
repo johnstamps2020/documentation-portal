@@ -85,9 +85,9 @@ class AppConfig:
 def main():
     app_config = AppConfig().get_app_config()
     app_config.pages_dir
-    # run_validator(app_config.pages_dir,
-    #               app_config.templates_dir,
-    #               app_config.docs_config_file)
+    run_validator(app_config.send_bouncer_home,
+                  app_config.pages_dir,
+                  app_config.docs_config_file)
     # run_generator(os.environ['DEPLOY_ENV'])
 
 

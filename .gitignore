@@ -217,3 +217,5 @@ server/config-schema.json
 search_indexer.log
 
 venv/
+.env
+*.log

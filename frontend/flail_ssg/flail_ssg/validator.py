@@ -48,8 +48,10 @@ def process_validation_results(results: List, func_logger: logging.Logger, bounc
     """
 
     def group_and_sort_results(raw_results: List, group_key: str, sort_key: str):
-        grouped_results = groupby(raw_results, key=lambda r: getattr(r, group_key))
-        sorted_results = [(key, sorted(group, key=lambda r: getattr(r, sort_key))) for (key, group) in grouped_results]
+        grouped_results = groupby(
+            raw_results, key=lambda r: getattr(r, group_key))
+        sorted_results = [(key, sorted(group, key=lambda r: getattr(
+            r, sort_key))) for (key, group) in grouped_results]
         return sorted_results
 
     for config_file, file_issues in group_and_sort_results(results, 'config_file', 'message'):
@@ -57,7 +59,8 @@ def process_validation_results(results: List, func_logger: logging.Logger, bounc
         for issue_type, issues in group_and_sort_results(file_issues, 'message', 'details'):
             formatted_details = "".join(
                 [
-                    "".join([f'\n\t\t{line}' for line in i.details.splitlines()])
+                    "".join(
+                        [f'\n\t\t{line}' for line in i.details.splitlines()])
                     for i in issues
                 ]
             )
@@ -137,13 +140,15 @@ def validate_page(index_file: Path,
                             )
                         )
                     new_parent_envs = parent_envs + item_envs
-                    validate_page(page_path / 'index.json', docs, new_parent_envs, validated_pages, issues)
+                    validate_page(page_path / 'index.json', docs,
+                                  new_parent_envs, validated_pages, issues)
                 else:
                     issues.append(PageNotFoundError(
                         config_file=page_config_file,
                         details=str(page_path)))
             if item.get('items'):
-                validate_items(page_config_file, item['items'], parent_envs, issues)
+                validate_items(page_config_file,
+                               item['items'], parent_envs, issues)
         return issues
 
     index_file_absolute = index_file.resolve()
@@ -153,15 +158,13 @@ def validate_page(index_file: Path,
 
         items = index_json.get('items')
         if items:
-            validate_items(index_file_absolute, items, envs, validation_results)
+            validate_items(index_file_absolute, items,
+                           envs, validation_results)
     return validation_results
 
 
-def run_validator(bouncer_mode):
-    current_dir = Path(__file__).parent.resolve()
-    pages_dir = current_dir.parent.parent / 'pages'
-    config_file = current_dir.parent.parent.parent / '.teamcity' / 'config' / 'server-config.json'
-    config_file_json = json.load(config_file.open())
+def run_validator(send_bounder_home: bool, pages_dir: Path, docs_config_file: Path):
+    config_file_json = json.load(docs_config_file.open())
     docs = config_file_json['docs']
 
     log_file = Path.cwd() / 'validator.log'
@@ -187,6 +190,6 @@ def run_validator(bouncer_mode):
     )
 
     process_validation_results(cloud_products_validation_results + self_managed_products_validation_results,
-                               validator_logger, bouncer_mode)
+                               validator_logger, send_bounder_home)
 
     validator_logger.info('PROCESS ENDED: Validate pages')
