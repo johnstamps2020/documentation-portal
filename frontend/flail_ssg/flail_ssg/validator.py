@@ -43,18 +43,24 @@ class IncorrectEnvSettingsWarning:
 
 def process_validation_results(results: List, func_logger: logging.Logger, send_bouncer_home: bool):
     """
-    send_bouncer_home:
+    bouncer_mode:
         If I notice any errors, I'll raise hell right away!
     """
 
-    def group_and_sort_results(raw_results: List, group_key: str, sort_key: str):
-        grouped_results = groupby(
-            raw_results, key=lambda r: getattr(r, group_key))
-        sorted_results = [(key, sorted(group, key=lambda r: getattr(
-            r, sort_key))) for (key, group) in grouped_results]
-        return sorted_results
+    def group_and_sort_results(raw_results: List, group_key: str, sort_key: str = None):
+        grouped_results = groupby(raw_results, key=lambda r: getattr(r, group_key))
+        if sort_key:
+            sorted_results = [
+                (key, sorted(group, key=lambda r: getattr(r, sort_key)))
+                for (key, group) in grouped_results
+            ]
+            return sorted_results
+        return grouped_results
 
-    for config_file, file_issues in group_and_sort_results(results, 'config_file', 'message'):
+    for level, level_issues in group_and_sort_results(results, 'level'):
+        issues = [i for i in level_issues]
+
+    for config_file, file_issues in group_and_sort_results(results, 'config_file'):
         func_logger.info(f'{config_file}')
         for issue_type, issues in group_and_sort_results(file_issues, 'message', 'details'):
             formatted_details = "".join(
@@ -163,7 +169,7 @@ def validate_page(index_file: Path,
     return validation_results
 
 
-def run_validator(send_bounder_home: bool, pages_dir: Path, docs_config_file: Path):
+def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Path):
     config_file_json = json.load(docs_config_file.open())
     docs = config_file_json['docs']
 
@@ -190,6 +196,6 @@ def run_validator(send_bounder_home: bool, pages_dir: Path, docs_config_file: Pa
     )
 
     process_validation_results(cloud_products_validation_results + self_managed_products_validation_results,
-                               validator_logger, send_bounder_home)
+                               validator_logger, send_bouncer_home)
 
     validator_logger.info('PROCESS ENDED: Validate pages')
