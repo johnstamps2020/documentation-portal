@@ -78,7 +78,7 @@ def run_generator(deploy_env: str):
     docs = config_file_json['docs']
     templates_dir = current_dir.parent.parent / 'templates'
 
-    log_file = current_dir / 'generator.log'
+    log_file = Path.cwd() / 'generator.log'
     if log_file.exists():
         log_file.unlink()
     generator_logger = logger.create_logger('generator_logger')

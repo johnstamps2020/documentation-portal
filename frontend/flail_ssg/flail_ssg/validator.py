@@ -164,7 +164,7 @@ def run_validator(bouncer_mode):
     config_file_json = json.load(config_file.open())
     docs = config_file_json['docs']
 
-    log_file = current_dir / 'validator.log'
+    log_file = Path.cwd() / 'validator.log'
     if log_file.exists():
         log_file.unlink()
     validator_logger = logger.create_logger('validator_logger')
