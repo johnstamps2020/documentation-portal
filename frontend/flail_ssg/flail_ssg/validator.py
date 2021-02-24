@@ -41,9 +41,9 @@ class IncorrectEnvSettingsWarning:
     message: str = 'Env settings incorrect'
 
 
-def process_validation_results(results: List, func_logger: logging.Logger, bouncer_mode: bool):
+def process_validation_results(results: List, func_logger: logging.Logger, send_bouncer_home: bool):
     """
-    bouncer_mode:
+    send_bouncer_home:
         If I notice any errors, I'll raise hell right away!
     """
 
@@ -66,7 +66,7 @@ def process_validation_results(results: List, func_logger: logging.Logger, bounc
             )
             func_logger.info(f'\t{issue_type}: '
                              f'{formatted_details}')
-    if bouncer_mode:
+    if not send_bouncer_home:
         errors = [issue for issue in results if issue.level == logging.ERROR]
         if errors:
             raise SyntaxError('Validation failed with errors!'
