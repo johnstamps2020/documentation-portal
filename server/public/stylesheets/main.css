@@ -327,6 +327,12 @@ footer a {
   margin-bottom: 12px;
 }
 
+footer .releaseInfo {
+  display: flex; 
+  align-items: center; 
+  gap: 6px;
+}
+
 div.pageHero {
   display: flex;
   flex-wrap: wrap;

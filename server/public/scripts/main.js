@@ -36,7 +36,7 @@ function addReleaseBadge() {
       releaseName.slice(1)} Release`;
 
     const div = document.createElement('div');
-    div.setAttribute('style', 'display: flex; align-items: center; gap: 6px');
+    div.setAttribute('class', 'releaseInfo');
     div.appendChild(img);
     div.appendChild(p);
 
