@@ -294,6 +294,29 @@ footer {
   color: var(--GW-WHITE);
   padding: 16px 32px;
   font-size: 10px;
+  display: flex;
+}
+
+#footerLeft {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#footerCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footerRight {
+  flex: 1;
+  display: flex;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 footer a {

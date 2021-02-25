@@ -21,7 +21,34 @@ function selectToggleButton() {
   }
 }
 
+function addReleaseBadge() {
+  const cloudReleaseMatch = window.location.href.match(
+    /\/cloudProducts\/([^/]+)\//
+  );
+  if (cloudReleaseMatch) {
+    const releaseName = cloudReleaseMatch[1];
+    const img = document.createElement('img');
+    img.setAttribute('src', `/images/${releaseName}-badge.svg`);
+    img.setAttribute('alt', '');
+
+    const p = document.createElement('p');
+    p.innerHTML = `${releaseName.charAt(0).toUpperCase() +
+      releaseName.slice(1)} Release`;
+
+    const div = document.createElement('div');
+    div.setAttribute('style', 'display: flex; align-items: center; gap: 6px');
+    div.appendChild(img);
+    div.appendChild(p);
+
+    const footerLeft = document.querySelector('#footerLeft');
+    if (footerLeft) {
+      footerLeft.appendChild(div);
+    }
+  }
+}
+
 window.onload = function() {
   setLogInButton();
   selectToggleButton();
+  addReleaseBadge();
 };
