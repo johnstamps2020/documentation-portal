@@ -2666,63 +2666,63 @@
       "id": "srcjutro411",
       "title": "Jutro Design System 4.1.1",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/4.1.1"
     },
     {
       "id": "srcjutro421",
       "title": "Jutro Design System 4.2.1",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/4.2.1"
     },
     {
       "id": "srcjutro430",
       "title": "Jutro Design System 4.3.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/4.3.0"
     },
     {
       "id": "srcjutro500",
       "title": "Jutro Design System 5.0.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/5.0.0"
     },
     {
       "id": "srcjutro510",
       "title": "Jutro Design System 5.1.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/5.1.0"
     },
     {
       "id": "srcjutro520",
       "title": "Jutro Design System 5.2.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/5.2.0"
     },
     {
       "id": "srcjutro530",
       "title": "Jutro Design System 5.3.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/5.3.0"
     },
     {
       "id": "srcjutrostorybook530",
       "title": "Jutro Storybook 5.3.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/5.3.0"
     },
     {
       "id": "srcjutronext",
       "title": "Jutro Design System Next",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-designers.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "master"
     },
     {
