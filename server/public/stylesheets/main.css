@@ -127,22 +127,23 @@ main.cortina {
   background-size: cover;
 }
 
-main.cortina h1 {
+main.cortina h1,
+main.cortina label {
   color: var(--GW-WHITE);
 }
 main.cortina .docBreadcrumb a {
-    color: var(--GW-BLUE-LIGHTER);
+  color: var(--GW-BLUE-LIGHTER);
 }
 
 main.cortina .docBreadcrumb a:hover {
-    color: var(--GW-BLUE-LIGHTER-HOVER);
+  color: var(--GW-BLUE-LIGHTER-HOVER);
 }
 main.cortina .usefulLinks a {
-    color: var(--GW-BLUE-LIGHTER);
+  color: var(--GW-BLUE-LIGHTER);
 }
 
 main.cortina .usefulLinks a:hover {
-    color: var(--GW-BLUE-LIGHTER-HOVER);
+  color: var(--GW-BLUE-LIGHTER-HOVER);
 }
 
 a {
@@ -622,4 +623,3 @@ main.support h2 {
   border: 1px solid var(--GW-NAVY-BLUE);
   margin: 8px;
 }
-
