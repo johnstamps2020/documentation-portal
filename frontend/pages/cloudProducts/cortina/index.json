@@ -1,8 +1,7 @@
 {
   "title": "Guidewire Cloud Documentation",
   "template": "page.j2",
-  "mainClass": "cortina",
-  "class": "threeCards",
+  "class": "cortina threeCards",
   "items": [
     {
       "label": "PolicyCenter Cloud",

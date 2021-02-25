@@ -47,54 +47,52 @@
         <a class="button" id="loginButton" href="/gw-login">Log in</a>
     </div>
 </header>
-<main {% if data.get('mainClass') -%}class="{{ data.get('mainClass') }}"{%- endif -%}>
-    <div {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
-        <div class="pageHero">
-            <h1>{{ data.get('title') }}</h1>
-            <div class="heroControls">
-                <div id="cloudToggle">
-                    <a href="/" data-root="/cloudProducts">Guidewire Cloud</a>
-                    <a href="/selfManagedProducts" data-root="/selfManagedProducts">Self-managed</a>
-                </div>
-                <div class="usefulLinks">
-                    <a href="https://community.guidewire.com" target="_blank" rel="noopener noreferrer">Guidewire
-                        Community for customers</a>
-                    <a href="https://partner.guidewire.com" target="_blank" rel="noopener noreferrer">Guidewire
-                        Community for partners</a>
-                </div>
+<main {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
+    <div class="pageHero">
+        <h1>{{ data.get('title') }}</h1>
+        <div class="heroControls">
+            <div id="cloudToggle">
+                <a href="/" data-root="/cloudProducts">Guidewire Cloud</a>
+                <a href="/selfManagedProducts" data-root="/selfManagedProducts">Self-managed</a>
+            </div>
+            <div class="usefulLinks">
+                <a href="https://community.guidewire.com" target="_blank" rel="noopener noreferrer">Guidewire
+                    Community for customers</a>
+                <a href="https://partner.guidewire.com" target="_blank" rel="noopener noreferrer">Guidewire
+                    Community for partners</a>
             </div>
         </div>
+    </div>
 
-        {% if data.get('breadcrumbs') %}
-            <div class="docBreadcrumb">
-                {% for breadcrumb in data.get('breadcrumbs') %}
-                    <a href="{{ breadcrumb.get('path') }}">{{ breadcrumb.get('label') }}</a>
-                {% endfor %}
-            </div>
-        {% endif %}
-
-        {% macro create_block(label, class, items, id, page) -%}
-            <div {% if class -%}class="{{ class }}"{%- endif -%}>
-                {% if id -%}
-                    <a href="{{ id }}">{{ label }}</a>
-                {% elif page %}
-                    <a href="{{ page }}">{{ label }}</a>
-                {% else %}
-                    <div class="label">{{ label }}</div>
-                {%- endif %}
-                {% if items -%}
-                    {% for item in items -%}
-                        {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
-                    {%- endfor %}
-                {%- endif %}
-            </div>
-        {%- endmacro %}
-
-        <div class="items">
-            {% for item in data.get('items') %}
-                {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+    {% if data.get('breadcrumbs') %}
+        <div class="docBreadcrumb">
+            {% for breadcrumb in data.get('breadcrumbs') %}
+                <a href="{{ breadcrumb.get('path') }}">{{ breadcrumb.get('label') }}</a>
             {% endfor %}
         </div>
+    {% endif %}
+
+    {% macro create_block(label, class, items, id, page) -%}
+        <div {% if class -%}class="{{ class }}"{%- endif -%}>
+            {% if id -%}
+                <a href="{{ id }}">{{ label }}</a>
+            {% elif page %}
+                <a href="{{ page }}">{{ label }}</a>
+            {% else %}
+                <div class="label">{{ label }}</div>
+            {%- endif %}
+            {% if items -%}
+                {% for item in items -%}
+                    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+                {%- endfor %}
+            {%- endif %}
+        </div>
+    {%- endmacro %}
+
+    <div class="items">
+        {% for item in data.get('items') %}
+            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+        {% endfor %}
     </div>
 </main>
 <footer>

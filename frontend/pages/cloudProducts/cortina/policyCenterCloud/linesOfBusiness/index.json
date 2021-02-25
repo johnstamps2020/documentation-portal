@@ -1,8 +1,7 @@
 {
   "title": "Lines of Business Standards Based Templates",
   "template": "page.j2",
-  "mainClass": "cortina",
-  "class": "threeCards",
+  "class": "cortina threeCards",
   "items": [
     {
       "label": "Businessowners",

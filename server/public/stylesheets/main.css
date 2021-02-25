@@ -13,7 +13,8 @@
   --GW-BLACKISH: #657580;
   --GW-HEADER-FOOTER-BKG-COLOR: rgb(19, 30, 46);
   --GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24)
-  --body-height: calc(100vh - 68px);
+  --header-height: 70px;
+  --body-height: calc(100vh - var(--header-height));
 }
 
 input.searchField:-internal-autofill-selected {
@@ -155,7 +156,7 @@ h1 {
 
 .cardShadow {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .cardShadow:hover {

@@ -1,8 +1,7 @@
 {
   "title": "Guidewire Cloud Documentation",
   "template": "page.j2",
-  "mainClass": "aspen",
-  "class": "threeCards",
+  "class": "aspen threeCards",
   "items": [
     {
       "label": "PolicyCenter Cloud",
