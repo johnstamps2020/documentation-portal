@@ -47,7 +47,7 @@
         <a class="button" id="loginButton" href="/gw-login">Log in</a>
     </div>
 </header>
-<main>
+<main {% if data.get('mainClass') -%}class="{{ data.get('mainClass') }}"{%- endif -%}>
     <div {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
         <div class="pageHero">
             <h1>{{ data.get('title') }}</h1>

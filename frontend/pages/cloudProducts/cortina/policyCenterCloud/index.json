@@ -1,6 +1,7 @@
 {
   "title": "PolicyCenter Cloud",
   "template": "page.j2",
+  "mainClass": "cortina",
   "class": "threeCards",
   "items": [
     {

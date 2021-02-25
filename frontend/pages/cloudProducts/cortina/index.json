@@ -1,12 +1,13 @@
 {
   "title": "Guidewire Cloud Documentation",
   "template": "page.j2",
+  "mainClass": "cortina",
   "class": "threeCards",
   "items": [
     {
-      "label": "BillingCenter Cloud",
+      "label": "PolicyCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "billingCenterCloud"
+      "page": "policyCenterCloud"
     },
     {
       "label": "ClaimCenter Cloud",
@@ -14,9 +15,9 @@
       "page": "claimCenterCloud"
     },
     {
-      "label": "PolicyCenter Cloud",
+      "label": "BillingCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "policyCenterCloud"
+      "page": "billingCenterCloud"
     },
     {
       "label": "InsuranceNow",
