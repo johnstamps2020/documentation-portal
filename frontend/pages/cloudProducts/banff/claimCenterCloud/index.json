@@ -9,12 +9,7 @@
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ClaimCenterForGuidewireCloud/2020.12"
-        },
-        {
-          "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ClaimCenterForGuidewireCloud/latest",
-          "env": ["int"]
+          "page": "ClaimCenterForGuidewireCloud/2020.11"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",

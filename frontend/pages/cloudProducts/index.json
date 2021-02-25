@@ -1,6 +1,6 @@
 {
-  "title": "Cloud",
-  "template": "page.j2",
+  "title": "Guidewire Cloud",
+  "template": "index.j2",
   "class": "threeCards",
   "items": [
     {

@@ -1,7 +1,7 @@
 {
   "title": "PolicyCenter Cloud",
   "template": "page.j2",
-  "class": "threeCards",
+  "class": "cortina threeCards",
   "items": [
     {
       "label": "Core",
@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "PolicyCenter for Guidewire Cloud",
-          "page": "PolicyCenterForGuidewireCloud/2021.04"
+          "page": "policyCenterForGuidewireCloud/2021.04"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",

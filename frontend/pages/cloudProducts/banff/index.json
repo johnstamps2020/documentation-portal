@@ -1,7 +1,7 @@
 {
-  "title": "Guidewire Cloud Documentation",
+  "title": "Banff Documentation",
   "template": "page.j2",
-  "class": "threeCards",
+  "class": "banff threeCards",
   "items": [
     {
       "label": "PolicyCenter Cloud",
@@ -39,6 +39,5 @@
       "page": "integrationFramework",
       "env": ["int"]
     }
-
   ]
 }

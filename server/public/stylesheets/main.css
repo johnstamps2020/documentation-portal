@@ -2,12 +2,20 @@
 
 :root {
   --GW-BLUE: #00739d;
+  --GW-NAVY-BLUE: #3c4c5e;
   --GW-BLUE-HOVER: #006083;
+  /* --GW-BLUE-LIGHTER and --GW-BLUE-LIGHTER-HOVER are not approved colors. Get approved versions. */
+  --GW-BLUE-LIGHTER: #61c1e5;
+  --GW-BLUE-LIGHTER-HOVER: #30b7e9;
+
   --GW-WHITE: #fafafa;
   --GRADIENT-BACKGROUND: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
   --GW-BLACK: #28333f;
   --GW-BLACKISH: #657580;
-  --body-height: calc(100vh - 68px);
+  --GW-HEADER-FOOTER-BKG-COLOR: rgb(19, 30, 46);
+  --GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
+  --header-height: 70px;
+  --body-height: calc(100vh - var(--header-height));
 }
 
 input.searchField:-internal-autofill-selected {
@@ -27,7 +35,8 @@ body {
 }
 
 header {
-  background-color: #3c4c5e;
+  background-color: var(--GW-HEADER-FOOTER-BKG-COLOR);
+  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
   display: flex;
   flex-wrap: wrap;
   padding: 16px;
@@ -51,7 +60,6 @@ header {
 #headerRight {
   flex: 1;
   display: flex;
-  display: flex;
   justify-content: flex-end;
   align-items: center;
 }
@@ -67,7 +75,10 @@ header img {
   display: flex;
   align-items: center;
   gap: 16px;
+  /*background-color: var(--GW-WHITE);
+  color: rgb(40, 51, 63);*/
   background-color: #46596e;
+
   border-radius: 4px;
   border: 1px solid #50657d;
   width: var(--container-width);
@@ -107,6 +118,34 @@ main:not(.fullWidth) > * {
   margin: auto;
 }
 
+main.cortina {
+  background-color: transparent;
+  background: url(/images/Cortina-Background.svg) no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+main.cortina h1,
+main.cortina label {
+  color: var(--GW-WHITE);
+}
+main.cortina .docBreadcrumb a {
+  color: var(--GW-BLUE-LIGHTER);
+}
+
+main.cortina .docBreadcrumb a:hover {
+  color: var(--GW-BLUE-LIGHTER-HOVER);
+}
+main.cortina .usefulLinks a {
+  color: var(--GW-BLUE-LIGHTER);
+}
+
+main.cortina .usefulLinks a:hover {
+  color: var(--GW-BLUE-LIGHTER-HOVER);
+}
+
 a {
   color: var(--GW-BLUE);
   text-decoration: none;
@@ -118,6 +157,7 @@ h1 {
 
 .cardShadow {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .cardShadow:hover {
@@ -193,30 +233,39 @@ h1 {
 .featuresAndFunctionality::before {
   background-image: url(/images/object-group-regular.svg);
 }
+
 .installation::before {
   background-image: url(/images/wrench-solid.svg);
 }
+
 .releaseNotes::before {
   background-image: url(/images/file-alt-regular.svg);
 }
+
 .administration::before {
   background-image: url(/images/users-cog-solid.svg);
 }
+
 .development::before {
   background-image: url(/images/code-solid.svg);
 }
+
 .integration::before {
   background-image: url(/images/puzzle-piece-solid.svg);
 }
+
 .configuration::before {
   background-image: url(/images/cogs-solid.svg);
 }
+
 .bestPractices::before {
   background-image: url(/images/lightbulb-regular.svg);
 }
+
 .glossary::before {
   background-image: url(/images/book-open-solid.svg);
 }
+
 .aboutThisDocumentation::before {
   background-image: url(/images/book-solid.svg);
 }
@@ -241,10 +290,33 @@ h1 {
 }
 
 footer {
-  background-color: #28333f;
+  background-color: var(--GW-HEADER-FOOTER-BKG-COLOR);
+  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
   color: var(--GW-WHITE);
   padding: 16px 32px;
   font-size: 10px;
+  display: flex;
+}
+
+#footerLeft {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#footerCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footerRight {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 footer a {
@@ -253,6 +325,12 @@ footer a {
   color: white;
   font-weight: 600;
   margin-bottom: 12px;
+}
+
+footer .releaseInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 div.pageHero {
@@ -515,4 +593,33 @@ main.support h1 {
 main.support h2 {
   margin-top: 32px;
   margin-bottom: 16px;
+}
+
+.docBreadcrumb {
+  padding: 8px 0;
+}
+
+.docBreadcrumb a {
+  display: inline-block;
+}
+
+.docBreadcrumb:hover a {
+  text-decoration: none;
+}
+
+.docBreadcrumb a::after {
+  content: '>';
+  margin: 0 8px;
+  color: gray;
+}
+
+.docBreadcrumb a:last-child::after {
+  content: none;
+}
+
+#pageSelector {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--GW-NAVY-BLUE);
+  margin: 8px;
 }
