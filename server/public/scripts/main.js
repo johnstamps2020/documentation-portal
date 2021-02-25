@@ -21,15 +21,12 @@ function selectToggleButton() {
   }
 }
 
-function addReleaseBadge() {
+async function addReleaseBadge() {
   const cloudReleaseMatch = window.location.href.match(
     /\/cloudProducts\/([^/]+)\//
   );
   if (cloudReleaseMatch) {
     const releaseName = cloudReleaseMatch[1];
-    const img = document.createElement('img');
-    img.setAttribute('src', `/images/${releaseName}-badge.svg`);
-    img.setAttribute('alt', '');
 
     const p = document.createElement('p');
     p.innerHTML = `${releaseName.charAt(0).toUpperCase() +
@@ -37,7 +34,16 @@ function addReleaseBadge() {
 
     const div = document.createElement('div');
     div.setAttribute('class', 'releaseInfo');
-    div.appendChild(img);
+    
+    const imgHref = `/images/${releaseName}-badge.svg`;
+    const imgRequest = await fetch(imgHref);
+    if (imgRequest.ok) {
+      const img = document.createElement('img');
+      img.setAttribute('src', imgHref);
+      img.setAttribute('alt', '');
+      div.appendChild(img);
+    }
+    
     div.appendChild(p);
 
     const footerLeft = document.querySelector('#footerLeft');
