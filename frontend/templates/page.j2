@@ -63,7 +63,6 @@
             </div>
         </div>
     </div>
-
     {% if data.get('breadcrumbs') %}
         <div class="docBreadcrumb">
             {% for breadcrumb in data.get('breadcrumbs') %}
@@ -71,7 +70,30 @@
             {% endfor %}
         </div>
     {% endif %}
+    {% if data.get('siblings') %}
+        <script>
+            function selectPage() {
+                const selectedPage = document.getElementById("pageSelector").value;
+                const urlParts = window.location.pathname.split('/');
+                urlParts[urlParts.length - 2] = selectedPage;
+                window.location.replace(urlParts.join('/'));
+            }
+        </script>
 
+        <div>
+            <label for="pageSelector">Select page:
+                <select onchange="selectPage()" id="pageSelector">
+                    <option value="{{ data.get('current_page').get('path') }}"
+                            selected="selected">{{ data.get('current_page').get('label') }}</option>
+                    {% for sibling in data.get('siblings') %}
+                        <option value="{{ sibling.get('path') }}">
+                            {{ sibling.get('label') }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+    {% endif %}
     {% macro create_block(label, class, items, id, page) -%}
         <div {% if class -%}class="{{ class }}"{%- endif -%}>
             {% if id -%}

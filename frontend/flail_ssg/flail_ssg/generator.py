@@ -34,6 +34,21 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     return breadcrumbs
 
 
+def get_siblings(page_dir: Path):
+    siblings = []
+    for path in page_dir.parent.iterdir():
+        index_json = path / 'index.json'
+        if path.is_dir() and index_json.exists() and path != page_dir:
+            sibling_json = json.load(index_json.open())
+            siblings.append(
+                {
+                    'label': sibling_json['title'],
+                    'path': path.name
+                }
+            )
+    return sorted(siblings, key=lambda s: s['label'])
+
+
 def process_page(index_file: Path,
                  deploy_env: str,
                  docs: List,
@@ -67,6 +82,11 @@ def process_page(index_file: Path,
     index_file_absolute = index_file.resolve()
     page_dir = index_file_absolute.parent
     index_json = json.load(index_file_absolute.open())
+    index_json['current_page'] = {
+        'label': index_json['title'],
+        'path': page_dir.name
+    }
+    index_json['siblings'] = get_siblings(page_dir)
     index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
 
     page_items = index_json.get('items')
