@@ -54,7 +54,7 @@ def process_page(index_file: Path,
                  docs: List,
                  build_dir: Path,
                  send_bouncer_home: bool):
-    def process_items(items: List, ignore_errors: bool):
+    def process_items(current_page_dir: Path, items: List, ignore_errors: bool):
         try:
             for item in items:
                 if item.get('id'):
@@ -70,8 +70,9 @@ def process_page(index_file: Path,
                     item_envs = item.get('env', [])
                     if not include_item(deploy_env, item_envs):
                         items.remove(item)
+                        shutil.rmtree(current_page_dir / item['page'])
                 if item.get('items'):
-                    process_items(item['items'], ignore_errors)
+                    process_items(current_page_dir, item['items'], ignore_errors)
             return items
         except Exception as e:
             if ignore_errors:
@@ -91,7 +92,7 @@ def process_page(index_file: Path,
 
     page_items = index_json.get('items')
     if page_items:
-        index_json['items'] = process_items(page_items, send_bouncer_home)
+        index_json['items'] = process_items(page_dir, page_items, send_bouncer_home)
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
