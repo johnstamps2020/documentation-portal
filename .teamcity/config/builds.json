@@ -3909,17 +3909,17 @@
       "workingDir": "applications/jutro-app-storybook-new"
     },
     {
-      "buildType": "sphinx",
+      "buildType": "yarn",
       "docId": "iscc202011apiref",
       "srcId": "srcapiref202011"
     },
     {
-      "buildType": "sphinx",
+      "buildType": "yarn",
       "docId": "ispc202011apiref",
       "srcId": "srcapiref202011"
     },
     {
-      "buildType": "sphinx",
+      "buildType": "yarn",
       "docId": "is202011contactapi",
       "srcId": "srcapiref202011"
     },
