@@ -57,13 +57,12 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
             item_envs = matching_doc_object['environments']
-            if not include_item(deploy_env, item_envs):
-                items.remove(item)
-        elif item.get('page'):
+        else:
             item_envs = item.get('env', [])
-            if not include_item(deploy_env, item_envs):
-                items.remove(item)
+        if not include_item(deploy_env, item_envs):
+            if item.get('page'):
                 shutil.rmtree(current_page_dir / item['page'])
+            items.remove(item)
         if item.get('items'):
             filter_by_env(deploy_env, current_page_dir, item['items'], docs)
     return items
