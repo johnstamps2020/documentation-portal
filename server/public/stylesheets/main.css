@@ -623,3 +623,7 @@ main.support h2 {
   border: 1px solid var(--GW-NAVY-BLUE);
   margin: 8px;
 }
+
+.public {
+  background-color: green;
+}

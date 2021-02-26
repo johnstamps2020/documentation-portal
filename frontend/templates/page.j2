@@ -94,18 +94,18 @@
             </label>
         </div>
     {% endif %}
-    {% macro create_block(label, class, items, id, page) -%}
+    {% macro create_block(label, class, items, id, page, public) -%}
         <div {% if class -%}class="{{ class }}"{%- endif -%}>
             {% if id -%}
-                <a href="{{ id }}">{{ label }}</a>
+                <a href="{{ id }}" {% if public -%}class="public"{%- endif -%}>{{ label }}</a>
             {% elif page %}
-                <a href="{{ page }}">{{ label }}</a>
+                <a href="{{ page }}" {% if public -%}class="public"{%- endif -%}>{{ label }}</a>
             {% else %}
-                <div class="label">{{ label }}</div>
+                <div class="label" {% if public -%}class="public"{%- endif -%}>{{ label }}</div>
             {%- endif %}
             {% if items -%}
                 {% for item in items -%}
-                    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+                    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page'), item.get('public')) }}
                 {%- endfor %}
             {%- endif %}
         </div>

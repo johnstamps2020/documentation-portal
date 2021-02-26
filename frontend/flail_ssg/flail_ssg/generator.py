@@ -96,6 +96,53 @@ def process_page(index_file: Path,
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
+def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool):
+    try:
+        file_json = json.load(file_path.open())
+        found_some_public_items = False
+
+        def get_annotated_items(item_list: list, any_item_is_public: bool):
+            try:
+                for item in item_list:
+                    item_id = item.get('id')
+                    if item_id:
+                        matching_doc_object = next(
+                            (doc for doc in docs if doc['id'] == item_id), None)
+                        if matching_doc_object:
+                            public = matching_doc_object.get('public')
+                            if public:
+                                item['public'] = True
+                                any_item_is_public = True
+
+                    inner_items = item.get('items')
+                    if inner_items:
+                        item['items'] = get_annotated_items(inner_items, any_item_is_public)
+
+                    page_link = item.get('page')
+                    if page_link:
+                        result = mark_public_on_page(file_path.parent / page_link / 'index.json', docs, allow_errors)
+                        if result:
+                            page_link['public'] = True
+                            any_item_is_public = True
+                return item_list
+            except Exception as e:
+                if allow_errors:
+                    print(f'We are deep into it, but the bouncer is not here, so we will let this one slide: {e}')
+                else:
+                    raise e
+
+        items = file_json.get('items')
+        if items:
+            file_json['items'] = get_annotated_items(items, found_some_public_items)
+        file_path.write_text(json.dumps(file_json))
+        return found_some_public_items
+    except Exception as e:
+        if allow_errors:
+            print(f'The bouncer is home, so we are letting this one in {e}')
+        else:
+            raise e
+
+
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, templates_dir: Path, output_dir: Path,
                   docs_config_file: Path):
     current_dir = Path(__file__).parent.resolve()
@@ -114,6 +161,7 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, tem
         shutil.rmtree(build_dir)
 
     shutil.copytree(pages_dir, build_dir)
+    mark_public_on_page(list(build_dir.rglob('**/*.json'))[0], docs, send_bouncer_home)
 
     for index_json_file in build_dir.rglob('**/*.json'):
         generator_logger.info(f'Generating page from {index_json_file}')
