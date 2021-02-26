@@ -59,6 +59,18 @@
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git"
     },
     {
+      "id": "isrestapiclientrn202011src",
+      "title": "IS 2020.11 REST API Client Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/REST-API-Client/releasenotes/Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
+      ]
+    },
+    {
       "id": "cloudisadmin202011src",
       "title": "IS 2020.11 Administration",
       "sourceType": "xdocs",

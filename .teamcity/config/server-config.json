@@ -7086,6 +7086,26 @@
       "public": false
     },
     {
+      "id": "isrestapiclientrn202011",
+      "title": "REST API Client Release Notes",
+      "url": "cloud/is/202011/restapiclientrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": ["2020.11"],
+        "subject": ["Release notes"],
+        "release": ["Banff"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "is202011restapiclient",
       "title": "REST API Client",
       "url": "cloud/is/202011/restapiclient",
