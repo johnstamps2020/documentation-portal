@@ -6,6 +6,9 @@ from flail_ssg import logger
 
 from pathlib import Path
 
+_log_file = Path.cwd() / 'generator.log'
+_generator_logger = logger.configure_logger('generator_logger', 'info', _log_file)
+
 
 def include_item(env: str, item_envs: List):
     if not item_envs:
@@ -76,7 +79,7 @@ def process_page(index_file: Path,
             return items
         except Exception as e:
             if ignore_errors:
-                print(f'Ignoring issue: {e}')
+                _generator_logger.warning(f'Ignoring issue: {e}')
                 return items
             raise e
 
@@ -103,12 +106,7 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, tem
     config_file_json = json.load(docs_config_file.open())
     docs = config_file_json['docs']
 
-    log_file = Path.cwd() / 'generator.log'
-    if log_file.exists():
-        log_file.unlink()
-    generator_logger = logger.create_logger('generator_logger')
-    logger.configure_logger(generator_logger, 'info', log_file)
-    generator_logger.info('PROCESS STARTED: Generate pages')
+    _generator_logger.info('PROCESS STARTED: Generate pages')
 
     if build_dir.exists():
         shutil.rmtree(build_dir)
@@ -116,7 +114,7 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, tem
     shutil.copytree(pages_dir, build_dir)
 
     for index_json_file in build_dir.rglob('**/*.json'):
-        generator_logger.info(f'Generating page from {index_json_file}')
+        _generator_logger.info(f'Generating page from {index_json_file}')
         process_page(index_json_file, deploy_env, docs, build_dir, send_bouncer_home)
         index_json = json.load(index_json_file.open())
         page_template = templates_dir / index_json['template']
@@ -127,9 +125,9 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, tem
             page_template
         )
 
-    generator_logger.info('Removing JSON files')
+    _generator_logger.info('Removing JSON files')
     for index_json_file in build_dir.rglob('**/*.json'):
         index_json_file.unlink()
 
     shutil.copytree(build_dir, output_dir, dirs_exist_ok=True)
-    generator_logger.info('PROCESS ENDED: Generate pages')
+    _generator_logger.info('PROCESS ENDED: Generate pages')
