@@ -13,7 +13,7 @@
 crawl files starting from the top and following "page" links [x]
 pages can have relative links, IDs can only be a single value [x]
 on each page, add a breadcrumb [x]
-on each page, add a dropdown which allows you to switch to a sibling page, e.g., on the billingCenterForGuidewireCloud
+on each page, add a dropdown which allows you to switch to a sibling page, e.g., on the billingCenterForGuidewireCloud [x]
 allow the user to switch to policyCenterForGuidewireCloud and claimCenterForGuidewireCloud don't crawl the same page [x]
 twice, even if more than one link points to it [x]
 
@@ -28,7 +28,7 @@ allow a 'loose' mode where errors become warnings [x]
 enable support for public docs:
     - While building pages, add the public attribute to each doc
     - Based on the attribute, change how the doc link is shown
-
+group issues reported by validator by severity
 
 # TO DO: template stuff
 

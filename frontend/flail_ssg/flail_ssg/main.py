@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from flail_ssg.generator import run_generator
+from flail_ssg.template_writer import run_template_writer
 from flail_ssg.validator import run_validator
 from enum import Enum
 
@@ -31,6 +32,7 @@ def validate_path(path: Path):
 
 @dataclass
 class AppConfig:
+    build_dir: Path = Path.cwd() / 'build'
     _deploy_env: str = os.environ.get('DEPLOY_ENV')
     _pages_dir: str = os.environ.get('PAGES_DIR')
     _templates_dir: str = os.environ.get('TEMPLATES_DIR')
@@ -84,16 +86,18 @@ class AppConfig:
 
 def main():
     app_config = AppConfig().get_app_config()
-    app_config.pages_dir
     run_validator(app_config.send_bouncer_home,
                   app_config.pages_dir,
                   app_config.docs_config_file)
     run_generator(app_config.send_bouncer_home,
                   app_config.deploy_env,
                   app_config.pages_dir,
-                  app_config.templates_dir,
-                  app_config.output_dir,
+                  app_config.build_dir,
                   app_config.docs_config_file)
+    run_template_writer(app_config.send_bouncer_home,
+                        app_config.templates_dir,
+                        app_config.build_dir,
+                        app_config.output_dir)
 
 
 if __name__ == '__main__':

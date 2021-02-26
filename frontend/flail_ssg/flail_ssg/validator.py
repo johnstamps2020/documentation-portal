@@ -1,3 +1,4 @@
+import dataclasses
 import json
 import logging
 import re
@@ -7,6 +8,9 @@ from flail_ssg import logger
 
 from pathlib import Path
 from itertools import groupby
+
+_log_file = Path.cwd() / 'validator.log'
+_validator_logger = logger.configure_logger('validator_logger', 'info', _log_file)
 
 
 @dataclass
@@ -41,7 +45,7 @@ class IncorrectEnvSettingsWarning:
     message: str = 'Env settings incorrect'
 
 
-def process_validation_results(results: List, func_logger: logging.Logger, send_bouncer_home: bool):
+def process_validation_results(results: List, send_bouncer_home: bool):
     """
     bouncer_mode:
         If I notice any errors, I'll raise hell right away!
@@ -57,11 +61,8 @@ def process_validation_results(results: List, func_logger: logging.Logger, send_
             return sorted_results
         return grouped_results
 
-    for level, level_issues in group_and_sort_results(results, 'level'):
-        issues = [i for i in level_issues]
-
     for config_file, file_issues in group_and_sort_results(results, 'config_file'):
-        func_logger.info(f'{config_file}')
+        _validator_logger.info(f'{config_file}')
         for issue_type, issues in group_and_sort_results(file_issues, 'message', 'details'):
             formatted_details = "".join(
                 [
@@ -70,8 +71,8 @@ def process_validation_results(results: List, func_logger: logging.Logger, send_
                     for i in issues
                 ]
             )
-            func_logger.info(f'\t{issue_type}: '
-                             f'{formatted_details}')
+            _validator_logger.info(f'\t{issue_type}: '
+                                   f'{formatted_details}')
     if not send_bouncer_home:
         errors = [issue for issue in results if issue.level == logging.ERROR]
         if errors:
@@ -173,12 +174,7 @@ def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Pa
     config_file_json = json.load(docs_config_file.open())
     docs = config_file_json['docs']
 
-    log_file = Path.cwd() / 'validator.log'
-    if log_file.exists():
-        log_file.unlink()
-    validator_logger = logger.create_logger('validator_logger')
-    logger.configure_logger(validator_logger, 'info', log_file)
-    validator_logger.info('PROCESS STARTED: Generate pages')
+    _validator_logger.info('PROCESS STARTED: Generate pages')
 
     cloud_products_validation_results = validate_page(
         pages_dir / 'cloudProducts' / 'index.json',
@@ -196,6 +192,6 @@ def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Pa
     )
 
     process_validation_results(cloud_products_validation_results + self_managed_products_validation_results,
-                               validator_logger, send_bouncer_home)
+                               send_bouncer_home)
 
-    validator_logger.info('PROCESS ENDED: Validate pages')
+    _validator_logger.info('PROCESS ENDED: Validate pages')
