@@ -1,7 +1,6 @@
 import json
 import shutil
 from typing import List
-from flail_ssg import template_writer
 from flail_ssg import logger
 
 from pathlib import Path
@@ -101,10 +100,8 @@ def process_page(index_file: Path,
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
-def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, templates_dir: Path, output_dir: Path,
+def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
                   docs_config_file: Path):
-    current_dir = Path(__file__).parent.resolve()
-    build_dir = current_dir / 'build'
     config_file_json = json.load(docs_config_file.open())
     docs = config_file_json['docs']
 
@@ -119,23 +116,10 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, tem
         try:
             _generator_logger.info(f'Generating page from {index_json_file}')
             process_page(index_json_file, deploy_env, docs, build_dir)
-            index_json = json.load(index_json_file.open())
-            page_template = templates_dir / index_json['template']
-
-            template_writer.write_to_file(
-                index_json_file.parent / 'index.html',
-                index_json,
-                page_template
-            )
         except Exception as e:
             if send_bouncer_home:
                 _generator_logger.warning('**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
             else:
                 raise e
 
-    _generator_logger.info('Removing JSON files')
-    for index_json_file in build_dir.rglob('**/*.json'):
-        index_json_file.unlink()
-
-    shutil.copytree(build_dir, output_dir, dirs_exist_ok=True)
     _generator_logger.info('PROCESS ENDED: Generate pages')
