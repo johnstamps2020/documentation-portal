@@ -2734,9 +2734,9 @@
     },
     {
       "id": "srcapiref202011",
-      "title": "Cloud API Reference",
+      "title": "Cloud API Reference in Redoc",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-sphinx.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
       "branch": "master"
     },
     {
