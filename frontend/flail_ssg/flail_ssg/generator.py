@@ -39,15 +39,16 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
 def get_siblings(page_dir: Path):
     siblings = []
     for path in page_dir.parent.iterdir():
-        index_json = path / 'index.json'
-        if path.is_dir() and index_json.exists() and path != page_dir:
-            sibling_json = json.load(index_json.open())
-            siblings.append(
-                {
-                    'label': sibling_json['title'],
-                    'path': path.name
-                }
-            )
+        if path.is_dir():
+            index_json = path / 'index.json'
+            if index_json.exists() and path != page_dir:
+                sibling_json = json.load(index_json.open())
+                siblings.append(
+                    {
+                        'label': sibling_json['title'],
+                        'path': path.name
+                    }
+                )
     return sorted(siblings, key=lambda s: s['label'])
 
 
