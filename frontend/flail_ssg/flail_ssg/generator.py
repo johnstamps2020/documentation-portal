@@ -84,6 +84,13 @@ def process_page(index_file: Path,
     index_file_absolute = index_file.resolve()
     page_dir = index_file_absolute.parent
     index_json = json.load(index_file_absolute.open())
+
+    page_items = index_json.get('items')
+    if page_items:
+        filtered_items = filter_by_env(deploy_env, page_dir, page_items, docs)
+        items_with_resolved_links = resolve_links(filtered_items, docs)
+        index_json['items'] = items_with_resolved_links
+
     index_json['current_page'] = {
         'label': index_json['title'],
         'path': page_dir.name
@@ -91,11 +98,6 @@ def process_page(index_file: Path,
     index_json['siblings'] = get_siblings(page_dir)
     index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
 
-    page_items = index_json.get('items')
-    if page_items:
-        filtered_items = filter_by_env(deploy_env, page_dir, page_items, docs)
-        items_with_resolved_links = resolve_links(filtered_items, docs)
-        index_json['items'] = items_with_resolved_links
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
