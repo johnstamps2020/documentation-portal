@@ -365,10 +365,10 @@ function hideByCssClass(cssClass) {
 
 docReady(async function() {
   createContainerForCustomHeaderElements();
-  await createVersionSelector();
-  await addTopLinkToBreadcrumbs();
-  await addPublicationDate();
-  await addLoginLogoutButton();
+  createVersionSelector();
+  addTopLinkToBreadcrumbs();
+  addPublicationDate();
+  addLoginLogoutButton();
   if (isInIframe()) {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
