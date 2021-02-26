@@ -52,37 +52,37 @@ def get_siblings(page_dir: Path):
     return sorted(siblings, key=lambda s: s['label'])
 
 
+def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: List):
+    for item in items:
+        if item.get('id'):
+            matching_doc_object = next(
+                (doc for doc in docs if doc['id'] == item['id']), None)
+            item_envs = matching_doc_object['environments']
+            if not include_item(deploy_env, item_envs):
+                items.remove(item)
+        elif item.get('page'):
+            item_envs = item.get('env', [])
+            if not include_item(deploy_env, item_envs):
+                items.remove(item)
+                shutil.rmtree(current_page_dir / item['page'])
+        if item.get('items'):
+            filter_by_env(deploy_env, current_page_dir, item['items'], docs)
+    return items
+
+
+def resolve_links(items: List, docs: List):
+    for item in items:
+        if item.get('id'):
+            matching_doc_object = next(
+                (doc for doc in docs if doc['id'] == item['id']), None)
+            item['id'] = f'/{matching_doc_object["url"]}'
+    return items
+
+
 def process_page(index_file: Path,
                  deploy_env: str,
                  docs: List,
-                 build_dir: Path,
-                 send_bouncer_home: bool):
-    def process_items(current_page_dir: Path, items: List, ignore_errors: bool):
-        try:
-            for item in items:
-                if item.get('id'):
-                    item_id = item['id']
-                    matching_doc_object = next(
-                        (doc for doc in docs if doc['id'] == item_id), None)
-                    item_envs = matching_doc_object.get('environments')
-                    if not include_item(deploy_env, item_envs):
-                        items.remove(item)
-                    else:
-                        item['id'] = f'/{matching_doc_object["url"]}'
-                elif item.get('page'):
-                    item_envs = item.get('env', [])
-                    if not include_item(deploy_env, item_envs):
-                        items.remove(item)
-                        shutil.rmtree(current_page_dir / item['page'])
-                if item.get('items'):
-                    process_items(current_page_dir, item['items'], ignore_errors)
-            return items
-        except Exception as e:
-            if ignore_errors:
-                _generator_logger.warning(f'Ignoring issue: {e}')
-                return items
-            raise e
-
+                 build_dir: Path):
     index_file_absolute = index_file.resolve()
     page_dir = index_file_absolute.parent
     index_json = json.load(index_file_absolute.open())
@@ -95,7 +95,9 @@ def process_page(index_file: Path,
 
     page_items = index_json.get('items')
     if page_items:
-        index_json['items'] = process_items(page_dir, page_items, send_bouncer_home)
+        filtered_items = filter_by_env(deploy_env, page_dir, page_items, docs)
+        items_with_resolved_links = resolve_links(filtered_items, docs)
+        index_json['items'] = items_with_resolved_links
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
@@ -114,16 +116,22 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, tem
     shutil.copytree(pages_dir, build_dir)
 
     for index_json_file in build_dir.rglob('**/*.json'):
-        _generator_logger.info(f'Generating page from {index_json_file}')
-        process_page(index_json_file, deploy_env, docs, build_dir, send_bouncer_home)
-        index_json = json.load(index_json_file.open())
-        page_template = templates_dir / index_json['template']
+        try:
+            _generator_logger.info(f'Generating page from {index_json_file}')
+            process_page(index_json_file, deploy_env, docs, build_dir)
+            index_json = json.load(index_json_file.open())
+            page_template = templates_dir / index_json['template']
 
-        template_writer.write_to_file(
-            index_json_file.parent / 'index.html',
-            index_json,
-            page_template
-        )
+            template_writer.write_to_file(
+                index_json_file.parent / 'index.html',
+                index_json,
+                page_template
+            )
+        except Exception as e:
+            if send_bouncer_home:
+                _generator_logger.warning('**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+            else:
+                raise e
 
     _generator_logger.info('Removing JSON files')
     for index_json_file in build_dir.rglob('**/*.json'):
