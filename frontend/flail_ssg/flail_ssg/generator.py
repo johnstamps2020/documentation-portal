@@ -74,6 +74,8 @@ def resolve_links(items: List, docs: List):
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
             item['id'] = f'/{matching_doc_object["url"]}'
+        if item.get('items'):
+            resolve_links(item['items'], docs)
     return items
 
 
