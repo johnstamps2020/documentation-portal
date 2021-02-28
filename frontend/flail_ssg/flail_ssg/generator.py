@@ -83,25 +83,32 @@ def resolve_links(items: List, docs: List):
 def process_page(index_file: Path,
                  deploy_env: str,
                  docs: List,
-                 build_dir: Path):
+                 build_dir: Path,
+                 send_bouncer_home: bool):
     index_file_absolute = index_file.resolve()
     page_dir = index_file_absolute.parent
     index_json = json.load(index_file_absolute.open())
+    try:
+        page_items = index_json.get('items')
+        if page_items:
+            filtered_items = filter_by_env(deploy_env, page_dir, page_items, docs)
+            items_with_resolved_links = resolve_links(filtered_items, docs)
+            index_json['items'] = items_with_resolved_links
 
-    page_items = index_json.get('items')
-    if page_items:
-        filtered_items = filter_by_env(deploy_env, page_dir, page_items, docs)
-        items_with_resolved_links = resolve_links(filtered_items, docs)
-        index_json['items'] = items_with_resolved_links
-
-    index_json['current_page'] = {
-        'label': index_json['title'],
-        'path': page_dir.name
-    }
-    index_json['siblings'] = get_siblings(page_dir)
-    index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
-
-    json.dump(index_json, index_file_absolute.open('w'), indent=2)
+        index_json['current_page'] = {
+            'label': index_json['title'],
+            'path': page_dir.name
+        }
+        index_json['siblings'] = get_siblings(page_dir)
+        index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
+    except Exception as e:
+        if send_bouncer_home:
+            _generator_logger.warning('**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+            index_json['title'] = f'{index_json["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
+        else:
+            raise e
+    finally:
+        json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
@@ -117,13 +124,7 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
     shutil.copytree(pages_dir, build_dir)
 
     for index_json_file in build_dir.rglob('**/*.json'):
-        try:
-            _generator_logger.info(f'Generating page from {index_json_file}')
-            process_page(index_json_file, deploy_env, docs, build_dir)
-        except Exception as e:
-            if send_bouncer_home:
-                _generator_logger.warning('**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
-            else:
-                raise e
+        _generator_logger.info(f'Generating page from {index_json_file}')
+        process_page(index_json_file, deploy_env, docs, build_dir, send_bouncer_home)
 
     _generator_logger.info('PROCESS ENDED: Generate pages')
