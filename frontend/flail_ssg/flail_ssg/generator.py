@@ -110,7 +110,7 @@ def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool, logger:
         file_json = json.load(file_path.open())
         found_some_public_items = False
 
-        def get_annotated_items(item_list: list, any_item_is_public: bool):
+        def get_annotated_items(item_list: List, any_item_is_public: bool):
             try:
                 for item in item_list:
                     item_id = item.get('id')
