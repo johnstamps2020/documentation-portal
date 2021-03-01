@@ -1528,14 +1528,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "GuidewireCloudPlatform.ditamap",
+      "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpdraftsrc",
       "docId": "configmgrhelpdraft"
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "GuidewireCloudPlatform.ditamap",
+      "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpcortinasrc",
       "docId": "configmgrhelpcortina"
     },

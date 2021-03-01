@@ -1191,7 +1191,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
       "xdocsPathIds": [
-        "/Content/doc/help/guidewireCloud/cortina/GuidewireCloudPlatform.ditamap",
+        "/Content/doc/help/guidewireCloud/cortina/GuidewireCloud.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
@@ -1203,7 +1203,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
       "branch": "Cortina",
       "xdocsPathIds": [
-        "/Content/doc/help/guidewireCloud/banff/GuidewireCloudPlatform.ditamap",
+        "/Content/doc/help/guidewireCloud/banff/GuidewireCloud.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
