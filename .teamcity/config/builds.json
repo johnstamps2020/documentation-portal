@@ -1152,6 +1152,13 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "supermap-forExportOnly.ditamap",
+      "srcId": "explorereleasesrc",
+      "docId": "explorerelease"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_relNotes.ditamap",
       "srcId": "explorernsrc",
       "docId": "explorernrelease",

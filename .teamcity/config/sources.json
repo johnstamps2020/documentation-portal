@@ -1469,6 +1469,16 @@
       ]
     },
     {
+      "id": "explorereleasesrc",
+      "title": "Explore",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/business-analytics/active/supermap-forExportOnly.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
+      ]
+    },
+    {
       "id": "explorernsrc",
       "title": "Explore Release Notes",
       "sourceType": "git",
