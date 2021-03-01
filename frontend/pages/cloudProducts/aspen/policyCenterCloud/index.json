@@ -19,7 +19,9 @@
           "label": "Lines of Business Standards-based Templates",
           "page": "linesOfBusiness",
           "env": [
-            "int"
+            "dev",
+            "int",
+            "staging"
           ]
         }
       ]
