@@ -2435,28 +2435,6 @@
       "public": false
     },
     {
-      "id": "selfmanagedbadraft",
-      "title": "Business Analytics",
-      "url": "self-managed/ba/latest",
-      "metadata": {
-        "platform": [
-          "Self-managed"
-        ],
-        "product": [
-          "Business Analytics"
-        ],
-        "version": [
-          "latest"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "selfmanageddxdixowqwwrfu",
       "title": "Guidewire for Salesforce Data Integrations",
       "url": "self-managed/dx/di/11x",
@@ -2583,180 +2561,6 @@
       },
       "environments": [
         "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksapidraft",
-      "title": "Testing Frameworks API Draft",
-      "url": "cloud/testingframeworks/latest/api",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksuidraft",
-      "title": "Testing Frameworks UI Draft",
-      "url": "cloud/testingframeworks/latest/ui",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksrndraft",
-      "title": "Testing Frameworks Release Notes Draft",
-      "url": "cloud/testingframeworks/latest/releasenotes",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksapibanff",
-      "title": "Testing Frameworks API",
-      "url": "cloud/testingframeworks/202011/api",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksuibanff",
-      "title": "Testing Frameworks UI",
-      "url": "cloud/testingframeworks/202011/ui",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Development"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "testingframeworksrnbanff",
-      "title": "Testing Frameworks Release Notes",
-      "url": "cloud/testingframeworks/202011/releasenotes",
-      "metadata": {
-        "product": [
-          "Testing Frameworks"
-        ],
-        "platform": [
-          "Cloud"
-        ],
-        "version": [
-          "2020.11"
-        ],
-        "release": [
-          "Banff"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "dev",
-        "staging"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -3914,9 +3718,9 @@
       "public": false
     },
     {
-      "id": "clouddataaccesslatestdraft",
-      "title": "Cloud Data Access Draft",
-      "url": "cloud/cda/latest",
+      "id": "clouddataaccessguidedraft",
+      "title": "Understanding Cloud Data Access",
+      "url": "cloud/cda/guide/latest",
       "metadata": {
         "platform": [
           "Cloud"
@@ -3929,6 +3733,37 @@
         ],
         "release": [
           "Cortina"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouddataaccessrndraft",
+      "title": "Release Notes",
+      "url": "cloud/cda/rn/latest",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Cloud Data Access"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Cortina"
+        ],
+        "subject": [
+          "Release notes"
         ]
       },
       "environments": [
@@ -3967,9 +3802,9 @@
       "public": false
     },
     {
-      "id": "explorecloudrelease",
-      "title": "Explore",
-      "url": "cloud/explore/latest",
+      "id": "explorernrelease",
+      "title": "Release Notes",
+      "url": "cloud/explore/relnotes",
       "metadata": {
         "platform": [
           "Cloud"
@@ -3983,10 +3818,14 @@
         "release": [
           "Aspen",
           "Banff"
+        ],
+        "subject": [
+          "Release notes"
         ]
       },
       "environments": [
         "dev",
+        "int",
         "staging",
         "prod"
       ],
@@ -3995,9 +3834,9 @@
       "public": false
     },
     {
-      "id": "exploreclouddraft",
-      "title": "Explore Draft",
-      "url": "cloud/explore/latest",
+      "id": "exploreusingrelease",
+      "title": "Using Explore",
+      "url": "cloud/explore/using",
       "metadata": {
         "platform": [
           "Cloud"
@@ -4010,12 +3849,49 @@
         ],
         "release": [
           "Aspen",
-          "Banff",
-          "Cortina"
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
         ]
       },
       "environments": [
-        "int"
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "exploredatadictrelease",
+      "title": "Data Dictionaries",
+      "url": "cloud/explore/datadict",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Explore"
+        ],
+        "version": [
+          "latest"
+        ],
+        "release": [
+          "Aspen",
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4126,9 +4002,9 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4158,7 +4034,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4186,9 +4061,9 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4214,7 +4089,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4242,9 +4116,9 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4270,7 +4144,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4298,9 +4171,9 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4326,7 +4199,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4354,9 +4226,9 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4382,7 +4254,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4410,9 +4281,9 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4438,7 +4309,6 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
       ],
@@ -4466,9 +4336,9 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -4494,9 +4364,58 @@
       },
       "environments": [
         "dev",
-        "int",
         "staging",
         "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "jutronext",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/next",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "next"
+        ],
+        "subject": [
+          "Best practices"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybooknext",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/next",
+      "metadata": {
+        "product": [
+          "Jutro Design System"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "next"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -5194,6 +5113,7 @@
       },
       "environments": [
         "dev",
+        "int",
         "staging"
       ],
       "displayOnLandingPages": true,
@@ -5202,7 +5122,7 @@
     },
     {
       "id": "lobbopsbtrnbanff",
-      "title": "Businessowners Standards Based Template Countrywide Release Notes",
+      "title": "Release Notes",
       "url": "cloud/lob/bop/202011/cwrn",
       "metadata": {
         "platform": [
@@ -5223,6 +5143,187 @@
       },
       "environments": [
         "dev",
+        "int",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcaguidebanff",
+      "title": "Commercial Auto Standards Based Template Guide",
+      "url": "cloud/lob/ca/202011/guide",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Commercial Auto Standards Based Template"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcasbtrnbanff",
+      "title": "Release Notes",
+      "url": "cloud/lob/ca/202011/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Commercial Auto Standards Based Template"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcrimeguidebanff",
+      "title": "Crime Standards Based Template Guide",
+      "url": "cloud/lob/crime/202011/guide",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Crime Standards Based Template"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcrimesbtrnbanff",
+      "title": "Release Notes",
+      "url": "cloud/lob/crime/202011/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Crime Standards Based Template"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobglguidebanff",
+      "title": "General Liability Standards Based Template Guide",
+      "url": "cloud/lob/gl/202011/guide",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "General Liability Standards Based Template"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobglsbtrnbanff",
+      "title": "Release Notes",
+      "url": "cloud/lob/gl/202011/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "General Liability Standards Based Template"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
         "staging"
       ],
       "displayOnLandingPages": true,
@@ -5260,7 +5361,7 @@
     },
     {
       "id": "lobbopsbtrnaspen",
-      "title": "Businessowners Standards Based Template Countrywide Release Notes",
+      "title": "Release Notes",
       "url": "cloud/lob/bop/202005/cwrn",
       "metadata": {
         "platform": [
@@ -5268,6 +5369,180 @@
         ],
         "product": [
           "Businessowners Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcaguideaspen",
+      "title": "Commercial Auto Standards Based Template Guide",
+      "url": "cloud/lob/ca/202005/guide",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Commercial Auto Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcasbtrnaspen",
+      "title": "Release Notes",
+      "url": "cloud/lob/ca/202005/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Commercial Auto Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcrimeguideaspen",
+      "title": "Crime Standards Based Template Guide",
+      "url": "cloud/lob/crime/202005/guide",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Crime Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobcrimesbtrnaspen",
+      "title": "Release Notes",
+      "url": "cloud/lob/crime/202005/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "Crime Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobglguideaspen",
+      "title": "General Liability Standards Based Template Guide",
+      "url": "cloud/lob/gl/202005/guide",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "General Liability Standards Based Template"
+        ],
+        "version": [
+          "2020.05"
+        ],
+        "release": [
+          "Aspen"
+        ],
+        "subject": [
+          "Features and functionality"
+        ]
+      },
+      "environments": [
+        "dev",
+        "staging"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lobglsbtrnaspen",
+      "title": "Release Notes",
+      "url": "cloud/lob/gl/202005/cwrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "General Liability Standards Based Template"
         ],
         "version": [
           "2020.05"
@@ -10500,238 +10775,6 @@
       "public": false
     },
     {
-      "id": "lobbopguidedraft",
-      "title": "Businessowners Standards Based Template Guide",
-      "url": "cloud/lob/bop/latest/guide",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Businessowners Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobbopsbtrndraft",
-      "title": "Businessowners Standards Based Template Countrywide Release Notes",
-      "url": "cloud/lob/bop/latest/cwrn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Businessowners Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobcaguidedraft",
-      "title": "Commercial Auto Standards Based Template Guide",
-      "url": "cloud/lob/ca/latest/guide",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Commercial Auto Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobcasbtrndraft",
-      "title": "Commercial Auto Standards Based Template Countrywide Release Notes",
-      "url": "cloud/lob/ca/latest/cwrn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Commercial Auto Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobcrimeguidedraft",
-      "title": "Crime Standards Based Template Guide",
-      "url": "cloud/lob/crime/latest/guide",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Crime Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobcrimesbtrndraft",
-      "title": "Crime Standards Based Template Countrywide Release Notes",
-      "url": "cloud/lob/crime/latest/cwrn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "Crime Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobglguidedraft",
-      "title": "General Liability Standards Based Template Guide",
-      "url": "cloud/lob/gl/latest/guide",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "General Liability Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Features and functionality"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "lobglsbtrndraft",
-      "title": "General Liability Standards Based Template Countrywide Release Notes",
-      "url": "cloud/lob/gl/latest/cwrn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "General Liability Standards Based Template"
-        ],
-        "version": [
-          "latest"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ],
-        "subject": [
-          "Release notes"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isbc202011releasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/202011/releasenotes",
@@ -11074,7 +11117,7 @@
     },
     {
       "id": "isbc202011testing",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/bc/202011/testing",
       "metadata": {
         "platform": [
@@ -11477,7 +11520,7 @@
     },
     {
       "id": "iscc202011apiref",
-      "title": "Cloud API Reference",
+      "title": "ClaimCenter Cloud API Reference",
       "url": "cloud/cc/202011/apiref",
       "metadata": {
         "platform": [
@@ -11538,7 +11581,7 @@
     },
     {
       "id": "iscc202011testing",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/cc/202011/testing",
       "metadata": {
         "platform": [
@@ -11585,7 +11628,7 @@
           "Banff"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -12065,7 +12108,7 @@
     },
     {
       "id": "ispc202011apiref",
-      "title": "Cloud API Reference",
+      "title": "PolicyCenter Cloud API Reference",
       "url": "cloud/pc/202011/apiref",
       "metadata": {
         "platform": [
@@ -12126,7 +12169,7 @@
     },
     {
       "id": "ispc202011testing",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/pc/202011/testing",
       "metadata": {
         "platform": [
@@ -12173,7 +12216,7 @@
           "Banff"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -12251,17 +12294,17 @@
       "public": false
     },
     {
-      "id": "is202011contactapi",
-      "title": "Contact Management API Reference",
-      "url": "cloud/is/202011/contactapi",
+      "id": "testingframeworksapibanff",
+      "title": "API Testing",
+      "url": "cloud/testingframeworks/202011/api",
       "metadata": {
-        "platform": [
-          "Cloud"
-        ],
         "product": [
           "BillingCenter for Guidewire Cloud",
           "ClaimCenter for Guidewire Cloud",
           "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
         ],
         "version": [
           "2020.11"
@@ -12270,13 +12313,80 @@
           "Banff"
         ],
         "subject": [
-          "Integration"
+          "Development"
         ]
       },
       "environments": [
         "dev",
         "int",
-        "staging"
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksuibanff",
+      "title": "User Interface Testing",
+      "url": "cloud/testingframeworks/202011/ui",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Development"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksrnbanff",
+      "title": "Test Automation Release Notes",
+      "url": "cloud/testingframeworks/202011/releasenotes",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": [
+          "Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Release notes"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -12300,6 +12410,39 @@
         ],
         "subject": [
           "Glossary"
+        ],
+        "release": [
+          "Banff"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int",
+        "staging",
+        "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isrestapiclientrn202011",
+      "title": "REST API Client Release Notes",
+      "url": "cloud/is/202011/restapiclientrn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "subject": [
+          "Release notes"
         ],
         "release": [
           "Banff"
@@ -12343,6 +12486,37 @@
         "int",
         "staging",
         "prod"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "is202011contactapi",
+      "title": "Contact Management API Reference",
+      "url": "cloud/is/202011/contactapi",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": [
+          "2020.11"
+        ],
+        "release": [
+          "Banff"
+        ],
+        "subject": [
+          "Integration"
+        ]
+      },
+      "environments": [
+        "dev",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -12736,7 +12910,7 @@
     },
     {
       "id": "isbcclouddrafttesting",
-      "title": "Testing",
+      "title": "Test Automation Guide",
       "url": "cloud/bc/latest/testing",
       "metadata": {
         "platform": [
@@ -13128,7 +13302,7 @@
     },
     {
       "id": "isccclouddrafttesting",
-      "title": "Testing",
+      "title": "Test Automation Guide",
       "url": "cloud/cc/latest/testing",
       "metadata": {
         "platform": [
@@ -13172,7 +13346,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -13632,7 +13806,7 @@
     },
     {
       "id": "ispcclouddrafttesting",
-      "title": "Testing",
+      "title": "Test Automation Guide",
       "url": "cloud/pc/latest/testing",
       "metadata": {
         "platform": [
@@ -13676,7 +13850,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -14114,7 +14288,7 @@
     },
     {
       "id": "isbccloudeatesting",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/bc/ea/testing",
       "metadata": {
         "platform": [
@@ -14506,7 +14680,7 @@
     },
     {
       "id": "iscccloudeatesting",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/cc/ea/testing",
       "metadata": {
         "platform": [
@@ -14550,7 +14724,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -15010,7 +15184,7 @@
     },
     {
       "id": "ispccloudeatesting",
-      "title": "Testing",
+      "title": "ISBTF and GUnit Testing",
       "url": "cloud/pc/ea/testing",
       "metadata": {
         "platform": [
@@ -15054,7 +15228,7 @@
           "Cortina"
         ],
         "subject": [
-          "Development"
+          "Integration"
         ]
       },
       "environments": [
@@ -15776,73 +15950,6 @@
         ],
         "release": [
           "Banff"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "incsp324rndraft",
-      "title": "Consumer Service Portal 3.24 Release Notes",
-      "url": "cloud/in/csp324rn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience",
-          "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience"
-        ],
-        "version": [
-          "latest"
-        ],
-        "subject": [
-          "Release Notes"
-        ],
-        "release": [
-          "Banff",
-          "Cortina"
-        ]
-      },
-      "environments": [
-        "int"
-      ],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "incsp323rndraft",
-      "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/csp323rn",
-      "metadata": {
-        "platform": [
-          "Cloud"
-        ],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience",
-          "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience",
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": [
-          "latest"
-        ],
-        "subject": [
-          "Release Notes"
-        ],
-        "release": [
-          "Aspen",
-          "Banff",
-          "Cortina"
         ]
       },
       "environments": [
@@ -16704,6 +16811,73 @@
         "release": [
           "Aspen",
           "Banff"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "incsp324rndraft",
+      "title": "Consumer Service Portal 3.24 Release Notes",
+      "url": "cloud/in/csp324rn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience",
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Banff",
+          "Cortina"
+        ]
+      },
+      "environments": [
+        "int"
+      ],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "incsp323rndraft",
+      "title": "Consumer Service Portal 3.23 Release Notes",
+      "url": "cloud/in/csp323rn",
+      "metadata": {
+        "platform": [
+          "Cloud"
+        ],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience",
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.2x - External Audience",
+          "InsuranceNow 2020.1x - Internal Audience",
+          "InsuranceNow 2020.1x - External Audience"
+        ],
+        "version": [
+          "latest"
+        ],
+        "subject": [
+          "Release Notes"
+        ],
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina"
         ]
       },
       "environments": [
