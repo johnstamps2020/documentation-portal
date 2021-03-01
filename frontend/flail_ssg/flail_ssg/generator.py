@@ -6,7 +6,8 @@ from flail_ssg import logger
 from pathlib import Path
 
 _log_file = Path.cwd() / 'generator.log'
-_generator_logger = logger.configure_logger('generator_logger', 'info', _log_file)
+_generator_logger = logger.configure_logger(
+    'generator_logger', 'info', _log_file)
 
 
 def include_item(env: str, item_envs: List):
@@ -104,6 +105,58 @@ def process_page(index_file: Path,
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
+def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool, logger: any):
+    try:
+        file_json = json.load(file_path.open())
+        found_some_public_items = False
+
+        def get_annotated_items(item_list: List, any_item_is_public: bool):
+            try:
+                for item in item_list:
+                    item_id = item.get('id')
+                    if item_id:
+                        matching_doc_object = next(
+                            (doc for doc in docs if doc['id'] == item_id), None)
+                        if matching_doc_object:
+                            public = matching_doc_object.get('public')
+                            if public:
+                                item['public'] = True
+                                any_item_is_public = True
+
+                    inner_items = item.get('items')
+                    if inner_items:
+                        item['items'] = get_annotated_items(
+                            inner_items, any_item_is_public)
+
+                    page_link = item.get('page')
+                    if page_link:
+                        result = mark_public_on_page(
+                            file_path.parent / page_link / 'index.json', docs, allow_errors, logger)
+                        if result:
+                            page_link['public'] = True
+                            any_item_is_public = True
+                return item_list
+            except Exception as e:
+                if allow_errors:
+                    logger.warning(
+                        f'**WATCH YOUR BACK: We are deep into it, but the bouncer is not here, so we will let this one slide: {e}**')
+                else:
+                    raise e
+
+        items = file_json.get('items')
+        if items:
+            file_json['items'] = get_annotated_items(
+                items, found_some_public_items)
+        file_path.write_text(json.dumps(file_json))
+        return found_some_public_items
+    except Exception as e:
+        if allow_errors:
+            logger.warning(
+                f'**WATCH YOUR BACK: The bouncer is home, so we are letting this one in {e}**')
+        else:
+            raise e
+
+
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
                   docs_config_file: Path):
     config_file_json = json.load(docs_config_file.open())
@@ -116,13 +169,19 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
 
     shutil.copytree(pages_dir, build_dir)
 
+    _generator_logger.info('SUBPROCESS STARTED: Mark pages as public')
+    mark_public_on_page(list(build_dir.rglob('**/*.json'))
+                        [0], docs, send_bouncer_home, _generator_logger)
+    _generator_logger.info('SUBPROCESS ENDED: Mark pages as public')
+
     for index_json_file in build_dir.rglob('**/*.json'):
         try:
             _generator_logger.info(f'Generating page from {index_json_file}')
             process_page(index_json_file, deploy_env, docs, build_dir)
         except Exception as e:
             if send_bouncer_home:
-                _generator_logger.warning('**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+                _generator_logger.warning(
+                    '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
             else:
                 raise e
 
