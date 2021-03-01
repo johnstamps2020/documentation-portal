@@ -1,146 +1,147 @@
 {
-    "title": "PolicyCenter for Guidewire Cloud 2020.11",
-    "template": "page.j2",
-    "class": "twoColumns",
-    "items": [
-      {
-        "label": "Release Notes",
-        "class": "subject releaseNotes",
-        "items": [
-          {
-            "label": "Release Notes",
-            "id": "ispc202011releasenotes"
-          },
-          {
-            "label": "New and Changed",
-            "id": "ispc202011newandchanged"
-          }
-        ]
-      },
-      {
-        "label": "Installation",
-        "class": "subject installation",
-        "items": [
-          {
-            "label": "Installation",
-            "id": "ispc202011install"
-          },
-          {
-            "label": "Upgrade",
-            "id": "ispc202011upgrade"
-          }
-        ]
-      },
-      {
-        "label": "Features and functionality",
-        "class": "subject featuresAndFunctionality",
-        "items": [
-          {
-            "label": "Application Guide",
-            "id": "ispc202011app"
-          },
-          {
-            "label": "Contact Management",
-            "id": "is202011contact"
-          }
-        ]
-      },
-      {
-        "label": "Administration",
-        "class": "subject administration",
-        "items": [
-          {
-            "label": "Administration",
-            "id": "ispc202011admin"
-          }
-        ]
-      },
-      {
-        "label": "Best Practices",
-        "class": "subject bestPractices",
-        "items": [
-          {
-            "label": "Best practices",
-            "id": "ispc202011bestpractice"
-          }
-        ]
-      },
-      {
-        "label": "Configuration",
-        "class": "subject configuration",
-        "items": [
-          {
-            "label": "Configuration",
-            "id": "ispc202011config"
-          },
-          {
-            "label": "Globalization",
-            "id": "ispc202011global"
-          },
-          {
-            "label": "Rules",
-            "id": "ispc202011rules"
-          }
-        ]
-      },
-      {
-        "label": "Integration",
-        "class": "subject integration",
-        "items": [
-          {
-            "label": "Integration",
-            "id": "ispc202011integ"
-          },
-          {
-            "label": "REST API Client",
-            "id": "is202011restapiclient"
-          }
-        ]
-      },
-      {
-        "label": "Development",
-        "class": "subject development",
-        "items": [
-          {
-            "label": "Gosu Reference",
-            "id": "ispc202011gosu"
-          },
-          {
-            "label": "Testing",
-            "id": "ispc202011testing"
-          },
-          {
-            "label": "Cloud API Reference",
-            "id": "ispc202011apiref",
-            "env": ["int"]
-          }
-        ]
-      },
-      {
-        "label": "Glossary",
-        "class": "subject glossary",
-        "items": [
-          {
-            "label": "Glossary",
-            "id": "is202011glossary"
-          }
-        ]
-      },
-      {
-        "label": "Super secret in-development docs",
-        "class": "subject topsecret",
-        "env": ["int"],
-        "items": [
-          {
-            "label": "Shhh",
-            "id": "is202011shhh"
-          },
-          {
-            "label": "Don't tell anyone",
-            "id": "is202011donttellanyone"
-          }
-        ]
-      }
-    ]
-  }
+  "title": "PolicyCenter for Guidewire Cloud 2020.11",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispc202011releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispc202011newandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "ispc202011install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispc202011upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispc202011app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202011contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispc202011admin"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best practices",
+          "id": "ispc202011bestpractice"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "ispc202011config"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc202011global"
+        },
+        {
+          "label": "Rules",
+          "id": "ispc202011rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "ispc202011integ"
+        },
+        {
+          "label": "REST API Client",
+          "id": "is202011restapiclient"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "ispc202011gosu"
+        },
+        {
+          "label": "Testing",
+          "id": "ispc202011testing"
+        },
+        {
+          "label": "Cloud API Reference",
+          "id": "ispc202011apiref"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "is202011glossary"
+        }
+      ]
+    },
+    {
+      "label": "Super secret in-development docs",
+      "class": "subject topsecret",
+      "env": [
+        "int"
+      ],
+      "items": [
+        {
+          "label": "Shhh",
+          "id": "is202011shhh"
+        },
+        {
+          "label": "Don't tell anyone",
+          "id": "is202011donttellanyone"
+        }
+      ]
+    }
+  ]
+}
   

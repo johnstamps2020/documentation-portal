@@ -36,8 +36,7 @@
     {
       "label": "Integration Framework",
       "class": "productFamily cardShadow",
-      "id": "restapidraft",
-      "env": ["int"]
+      "id": "restapidraft"
     }
   ]
 }

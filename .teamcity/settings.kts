@@ -796,6 +796,106 @@ object TestConfigDeployer : BuildType({
 
 })
 
+object PublishFlailSsgDockerImage : BuildType({
+    name = "Publish Flail SSG image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Flail SSG image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd frontend/flail_ssg
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:frontend/flail_ssg/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestFlailSsg) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestFlailSsg : BuildType({
+    name = "Test Flail SSG"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for Flail SSG"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd frontend/flail_ssg
+                ./test_flail_ssg.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:frontend/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
@@ -1055,6 +1155,7 @@ object Testing : Project({
     buildType(TestSettingsKts)
     buildType(TestConfig)
     buildType(TestDocCrawler)
+    buildType(TestFlailSsg)
 })
 
 object Deployment : Project({
@@ -1063,6 +1164,7 @@ object Deployment : Project({
     buildType(PublishConfigDeployerDockerImage)
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
+    buildType(PublishFlailSsgDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
 })

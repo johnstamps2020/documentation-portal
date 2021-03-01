@@ -18,7 +18,7 @@
         {
           "label": "Lines of Business Standards-based Templates",
           "page": "linesOfBusiness",
-          "env": ["int", "this-should-fail"]
+          "env": ["int"]
         }
       ]
     },

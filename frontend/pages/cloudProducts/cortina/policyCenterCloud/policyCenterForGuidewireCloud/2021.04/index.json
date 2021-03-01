@@ -111,8 +111,7 @@
           },
           {
             "label": "Cloud API Reference",
-            "id": "ispc202104apiref",
-            "env": ["int"]
+            "id": "ispc202104apiref"
           }
         ]
       },
