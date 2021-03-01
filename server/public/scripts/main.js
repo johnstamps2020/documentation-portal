@@ -34,7 +34,7 @@ async function addReleaseBadge() {
 
     const div = document.createElement('div');
     div.setAttribute('class', 'releaseInfo');
-    
+
     const imgHref = `/images/${releaseName}-badge.svg`;
     const imgRequest = await fetch(imgHref);
     if (imgRequest.ok) {
@@ -43,7 +43,7 @@ async function addReleaseBadge() {
       img.setAttribute('alt', '');
       div.appendChild(img);
     }
-    
+
     div.appendChild(p);
 
     const footerLeft = document.querySelector('#footerLeft');
@@ -53,7 +53,21 @@ async function addReleaseBadge() {
   }
 }
 
+function markDocsAsNotPublic() {
+  const privateDocs = document.querySelectorAll('.private');
+  for (const private of privateDocs) {
+    private.removeAttribute('href');
+
+    const span = document.createElement('span');
+    span.className = 'lockTooltipText';
+    span.innerHTML = 'Log in to view this content';
+
+    private.appendChild(span);
+  }
+}
+
 window.onload = function() {
+  markDocsAsNotPublic();
   setLogInButton();
   selectToggleButton();
   addReleaseBadge();

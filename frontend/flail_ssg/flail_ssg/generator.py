@@ -105,7 +105,7 @@ def process_page(index_file: Path,
     json.dump(index_json, index_file_absolute.open('w'), indent=2)
 
 
-def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool):
+def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool, logger: any):
     try:
         file_json = json.load(file_path.open())
         found_some_public_items = False
@@ -131,15 +131,15 @@ def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool):
                     page_link = item.get('page')
                     if page_link:
                         result = mark_public_on_page(
-                            file_path.parent / page_link / 'index.json', docs, allow_errors)
+                            file_path.parent / page_link / 'index.json', docs, allow_errors, logger)
                         if result:
                             page_link['public'] = True
                             any_item_is_public = True
                 return item_list
             except Exception as e:
                 if allow_errors:
-                    print(
-                        f'We are deep into it, but the bouncer is not here, so we will let this one slide: {e}')
+                    logger.warning(
+                        f'**WATCH YOUR BACK: We are deep into it, but the bouncer is not here, so we will let this one slide: {e}**')
                 else:
                     raise e
 
@@ -151,7 +151,8 @@ def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool):
         return found_some_public_items
     except Exception as e:
         if allow_errors:
-            print(f'The bouncer is home, so we are letting this one in {e}')
+            logger.warning(
+                f'**WATCH YOUR BACK: The bouncer is home, so we are letting this one in {e}**')
         else:
             raise e
 
@@ -167,8 +168,11 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
         shutil.rmtree(build_dir)
 
     shutil.copytree(pages_dir, build_dir)
+
+    _generator_logger.info('SUBPROCESS STARTED: Mark pages as public')
     mark_public_on_page(list(build_dir.rglob('**/*.json'))
-                        [0], docs, send_bouncer_home)
+                        [0], docs, send_bouncer_home, _generator_logger)
+    _generator_logger.info('SUBPROCESS ENDED: Mark pages as public')
 
     for index_json_file in build_dir.rglob('**/*.json'):
         try:
