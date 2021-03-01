@@ -2222,6 +2222,21 @@
       "public": false
     },
     {
+      "id": "explorerelease",
+      "title": "Explore",
+      "url": "cloud/explore/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "explorernrelease",
       "title": "Release Notes",
       "url": "cloud/explore/relnotes",
@@ -2232,7 +2247,7 @@
         "release": ["Aspen", "Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2248,7 +2263,7 @@
         "release": ["Aspen", "Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2264,7 +2279,7 @@
         "release": ["Aspen", "Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
