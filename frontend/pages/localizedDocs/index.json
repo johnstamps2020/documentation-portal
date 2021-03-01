@@ -1,0 +1,32 @@
+{
+  "title": "Localized Documentation",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "Deutsch",
+      "class": "productFamily cardShadow",
+      "page": "de-DE"
+    },
+    {
+      "label": "Français",
+      "class": "productFamily cardShadow",
+      "page": "fr-FR"
+    },
+    {
+      "label": "Italiana",
+      "class": "productFamily cardShadow",
+      "page": "it-IT"
+    },
+    {
+      "label": "日本語",
+      "class": "productFamily cardShadow",
+      "page": "ja-JP"
+    },
+    {
+      "label": "Português do Brasil",
+      "class": "productFamily cardShadow",
+      "page": "pt-BR"
+    }
+  ]
+}
