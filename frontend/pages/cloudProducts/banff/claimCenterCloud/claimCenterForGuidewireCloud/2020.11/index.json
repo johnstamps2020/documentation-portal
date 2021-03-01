@@ -124,24 +124,6 @@
           "id": "is202011glossary"
         }
       ]
-    },
-    {
-      "label": "Super secret in-development docs",
-      "class": "subject topsecret",
-      "env": [
-        "int"
-      ],
-      "items": [
-        {
-          "label": "Shhh",
-          "id": "is202011shhh"
-        },
-        {
-          "label": "Don't tell anyone",
-          "id": "is202011donttellanyone"
-        }
-      ]
     }
   ]
 }
-  

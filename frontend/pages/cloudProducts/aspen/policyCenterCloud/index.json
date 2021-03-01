@@ -18,7 +18,9 @@
         {
           "label": "Lines of Business Standards-based Templates",
           "page": "linesOfBusiness",
-          "env": ["int"]
+          "env": [
+            "int"
+          ]
         }
       ]
     },
@@ -32,7 +34,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         },
         {
           "label": "Add-ons",

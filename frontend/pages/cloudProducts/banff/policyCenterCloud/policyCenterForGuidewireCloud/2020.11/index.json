@@ -134,14 +134,13 @@
       "items": [
         {
           "label": "Shhh",
-          "id": "is202011shhh"
+          "id": null
         },
         {
           "label": "Don't tell anyone",
-          "id": "is202011donttellanyone"
+          "id": null
         }
       ]
     }
   ]
 }
-  

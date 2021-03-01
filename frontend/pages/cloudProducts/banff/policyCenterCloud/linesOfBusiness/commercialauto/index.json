@@ -1,28 +1,27 @@
 {
-    "title": "Commercial Auto Standards Based Template",
-    "template": "page.j2",
-    "class": "twoColumns",
-    "items": [
-      {
-        "label": "Release Notes",
-        "class": "subject releaseNotes",
-        "items": [
-          {
-            "label": "Countrywide Release Notes",
-            "id": "lobcasbtrnbanff"
-          }
-        ]
-      },
-      {
-        "label": "Features and functionality",
-        "class": "subject featuresAndFunctionality",
-        "items": [
-          {
-            "label": "Commercial Auto Standards Based Template Guide",
-            "id": "lopcaguidebanff"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "title": "Commercial Auto Standards Based Template",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Countrywide Release Notes",
+          "id": "lobcasbtrnbanff"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Commercial Auto Standards Based Template Guide",
+          "id": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,62 +1,61 @@
 {
-    "title": "ServiceRepEngage 2021.04",
-    "template": "page.j2",
-    "class": "twoColumns",
-    "items": [
-      {
-        "label": "Features and functionality",
-        "class": "subject featuresAndFunctionality",
-        "items": [
-          {
-            "label": "Application Guide",
-            "id": "dx202104sreapp"
-          }
-        ]
-      },
-      {
-        "label": "Installation",
-        "class": "subject installation",
-        "items": [
-          {
-            "label": "Installation",
-            "id": "dx202104sreinstall"
-          }
-        ]
-      },
-      {
-        "label": "Development",
-        "class": "subject development",
-        "items": [
-          {
-            "label": "Developer's Guide",
-            "id": "dx202104sredev"
-          },
-          {
-            "label": "Digital Services Reference Guides",
-            "id": "dx202104srerefguides"
-          }
-        ]
-      },
-      {
-        "label": "Release Notes",
-        "class": "subject releaseNotes",
-        "items": [
-          {
-            "label": "Release Notes",
-            "id": "dx202104srerelnotes"
-          }
-        ]
-      },
-      {
-        "label": "Glossary",
-        "class": "subject glossary",
-        "items": [
-          {
-            "label": "Glossary",
-            "id": "is202104glossary"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "title": "ServiceRepEngage 2021.04",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": null
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": null
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": null
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": null
+        }
+      ]
+    },
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": null
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": null
+        }
+      ]
+    }
+  ]
+}

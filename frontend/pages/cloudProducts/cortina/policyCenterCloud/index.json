@@ -18,7 +18,9 @@
         {
           "label": "Lines of Business Standards-based Templates",
           "page": "linesOfBusiness",
-          "env": ["int"]
+          "env": [
+            "int"
+          ]
         }
       ]
     },
@@ -28,11 +30,11 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccesscortina"
+          "id": null
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         },
         {
           "label": "Predictive Analytics",
@@ -58,7 +60,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         }
       ]
     },
