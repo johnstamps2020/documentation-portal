@@ -62,6 +62,10 @@
           "id": "dxceqb1130"
         },
         {
+          "label": "Jutro Design System",
+          "page": "../jutro/4.1.1"
+        },
+        {
           "label": "ProducerEngage",
           "id": "dxpe1130"
         },
@@ -100,10 +104,6 @@
         {
           "label": "Guidewire for Salesforce View on Demand for Claims",
           "id": "dxvodconprem310"
-        },
-        {
-          "label": "Jutro Design System",
-          "page": "../jutro/4.1.1"
         }
       ]
     }
