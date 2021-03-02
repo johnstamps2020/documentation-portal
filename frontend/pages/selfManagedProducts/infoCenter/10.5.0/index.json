@@ -1,0 +1,84 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InfoCenter 10.5.0",
+  "class": "twoColumns",
+  "template": "page.j2",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ic1050rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "ic1050product"
+        },
+        {
+          "label": "BI Applications Guide",
+          "id": "ic1050biapp"
+        },
+        {
+          "label": "Reports Guide",
+          "id": "ic1050reports"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "ic1050install"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "ic1050upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "ic1050config"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "ic1050dataspec"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "ic1050admin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "ic1050devref"
+        }
+      ]
+    }
+  ]
+}
