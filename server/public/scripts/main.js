@@ -53,7 +53,7 @@ async function addReleaseBadge() {
   }
 }
 
-function markDocsAsNotPublic() {
+function markDocsAsNotPrivate() {
   const privateDocs = document.querySelectorAll('.private');
   for (const private of privateDocs) {
     private.removeAttribute('href');
@@ -67,7 +67,7 @@ function markDocsAsNotPublic() {
 }
 
 window.onload = function() {
-  markDocsAsNotPublic();
+  markDocsAsNotPrivate();
   setLogInButton();
   selectToggleButton();
   addReleaseBadge();
