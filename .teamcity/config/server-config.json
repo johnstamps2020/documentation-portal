@@ -7142,15 +7142,11 @@
     },
     {
       "id": "is202011apisecretbuild",
-      "title": "Generate IS API Reference",
+      "title": "Generate IS API Reference (secret build)",
       "url": "cloud/is/202011/apiref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"]
       },
