@@ -11517,6 +11517,20 @@
       "public": false,
       "indexForSearch": true,
       "environments": ["dev", "int", "staging"]
+    },
+    {
+      "id": "gwglossary",
+      "title": "Glossary",
+      "url": "glossary",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Glossary"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
