@@ -4564,6 +4564,14 @@
       "buildType": "yarn",
       "srcId": "checksumssrc",
       "docId": "checksums"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Glossary.ditamap",
+      "srcId": "gwglossarysrc",
+      "docId": "gwglossary",
+      "indexRedirect": true
     }
   ]
 }
