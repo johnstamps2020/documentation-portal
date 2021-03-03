@@ -60,6 +60,22 @@
               "id"
             ]
           }
+        },
+        "items": {
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "id"
+                ]
+              },
+              {
+                "required": [
+                  "page"
+                ]
+              }
+            ]
+          }
         }
       },
       "properties": {
