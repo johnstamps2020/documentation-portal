@@ -3929,16 +3929,6 @@
       "srcId": "srcapiref202011"
     },
     {
-      "buildType": "yarn",
-      "docId": "ispc202011apiref",
-      "srcId": "srcapiref202011"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "is202011contactapi",
-      "srcId": "srcapiref202011"
-    },
-    {
       "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",

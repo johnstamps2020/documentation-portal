@@ -6619,7 +6619,7 @@
     {
       "id": "iscc202011apiref",
       "title": "ClaimCenter Cloud API Reference",
-      "url": "cloud/cc/202011/apiref",
+      "url": "cloud/is/202011/apiref/docs/cc-admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
@@ -6923,7 +6923,7 @@
     {
       "id": "ispc202011apiref",
       "title": "PolicyCenter Cloud API Reference",
-      "url": "cloud/pc/202011/apiref",
+      "url": "cloud/is/202011/apiref/docs/pc-account",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
@@ -7143,7 +7143,7 @@
     {
       "id": "is202011contactapi",
       "title": "Contact Management API Reference",
-      "url": "cloud/is/202011/contactapi",
+      "url": "cloud/is/202011/apiref/docs/cm-admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": [
