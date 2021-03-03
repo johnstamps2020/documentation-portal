@@ -6617,6 +6617,22 @@
       "public": false
     },
     {
+      "id": "is202011apisecretbuild",
+      "title": "Build all IS API References",
+      "url": "cloud/is/202011/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "iscc202011apiref",
       "title": "ClaimCenter Cloud API Reference",
       "url": "cloud/is/202011/apiref/docs/cc-admin",
@@ -7138,21 +7154,6 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "is202011apisecretbuild",
-      "title": "Generate IS API Reference",
-      "url": "cloud/is/202011/apiref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
       "public": false
     },
     {
