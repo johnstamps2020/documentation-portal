@@ -113,7 +113,7 @@
 
     <div class="items">
         {% for item in data.get('items') %}
-            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page')) }}
+            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page'), item.get('public')) }}
         {% endfor %}
     </div>
 </main>
