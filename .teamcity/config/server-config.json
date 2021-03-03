@@ -11207,7 +11207,7 @@
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": false
     },
     {
       "id": "iscc202011newandchanged",
