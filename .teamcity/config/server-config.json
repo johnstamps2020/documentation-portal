@@ -7142,7 +7142,7 @@
     },
     {
       "id": "is202011apisecretbuild",
-      "title": "Generate IS API Reference (secret build)",
+      "title": "Generate IS API Reference",
       "url": "cloud/is/202011/apiref",
       "metadata": {
         "platform": ["Cloud"],
