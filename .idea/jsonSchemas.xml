@@ -48,6 +48,9 @@
                   <Item>
                     <option name="path" value="frontend/pages/cloudProducts/banff/index.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/selfManagedProducts/dataHub/10.5.0/index.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

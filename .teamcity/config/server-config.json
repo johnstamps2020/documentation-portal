@@ -4035,7 +4035,8 @@
       "environments": [
         "dev",
         "staging",
-        "prod"
+        "prod",
+        "int"
       ],
       "displayOnLandingPages": true,
       "indexForSearch": true,
