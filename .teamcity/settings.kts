@@ -896,6 +896,114 @@ object TestFlailSsg : BuildType({
 
 })
 
+
+
+object PublishConfigDeployerDockerImage : BuildType({
+    name = "Publish Config Deployer image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Config Deployer image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/config_deployer
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/config_deployer/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestL10nPageBuilder) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestL10nPageBuilder : BuildType({
+    name = "Test L10N Page Builder"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for config deployer"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/config_deployer
+                ./test_config_deployer.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/config_deployer/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
+
+
+
+
+
+
 object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
