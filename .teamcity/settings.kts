@@ -896,10 +896,8 @@ object TestFlailSsg : BuildType({
 
 })
 
-
-
-object PublishConfigDeployerDockerImage : BuildType({
-    name = "Publish Config Deployer image"
+object PublishL10NPageBuilderDockerImage : BuildType({
+    name = "Publish L10N Page Builder image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
@@ -911,10 +909,10 @@ object PublishConfigDeployerDockerImage : BuildType({
 
     steps {
         script {
-            name = "Publish Config Deployer image to Artifactory"
+            name = "Publish L10N Page Builder image to Artifactory"
             scriptContent = """
                 set -xe
-                cd apps/config_deployer
+                cd apps/l10n-page-builder
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
@@ -924,7 +922,7 @@ object PublishConfigDeployerDockerImage : BuildType({
         vcs {
             branchFilter = "+:<default>"
             triggerRules = """
-                +:apps/config_deployer/**
+                +:apps/l10n_page_builder/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -940,14 +938,14 @@ object PublishConfigDeployerDockerImage : BuildType({
     }
 
     dependencies {
-        snapshot(TestL10nPageBuilder) {
+        snapshot(TestL10NPageBuilder) {
             reuseBuilds = ReuseBuilds.SUCCESSFUL
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
 })
 
-object TestL10nPageBuilder : BuildType({
+object TestL10NPageBuilder : BuildType({
     name = "Test L10N Page Builder"
 
     vcs {
@@ -957,12 +955,12 @@ object TestL10nPageBuilder : BuildType({
 
     steps {
         script {
-            name = "Run tests for config deployer"
+            name = "Run tests for L10N Page Builder"
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                cd apps/config_deployer
-                ./test_config_deployer.sh
+                cd apps/l10n-page-builder
+                ./test_l10n-page-builder.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -973,7 +971,7 @@ object TestL10nPageBuilder : BuildType({
     triggers {
         vcs {
             triggerRules = """
-                +:apps/config_deployer/**
+                +:apps/l10n_page_builder/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -997,12 +995,6 @@ object TestL10nPageBuilder : BuildType({
     }
 
 })
-
-
-
-
-
-
 
 object DeployServerConfig : BuildType({
     name = "Deploy server config"
@@ -1264,6 +1256,7 @@ object Testing : Project({
     buildType(TestConfig)
     buildType(TestDocCrawler)
     buildType(TestFlailSsg)
+    buildType(TestL10NPageBuilder)
 })
 
 object Deployment : Project({
@@ -1273,6 +1266,7 @@ object Deployment : Project({
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
     buildType(PublishFlailSsgDockerImage)
+    buildType(PublishL10NPageBuilderDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
 })
