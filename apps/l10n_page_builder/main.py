@@ -176,6 +176,10 @@ def empty_tree(path: Path):
 # TODO: add pyproject.toml
 # TODO: create docker image
 # TODO: add readme.md
+# TODO: add logging, including errors for undefined locales or product codes
+# TODO: add strict mode
+# TODO: catch empty PDF title and use file name instead or throw error
+# TODO: default output path if not specified
 
 
 def main():
