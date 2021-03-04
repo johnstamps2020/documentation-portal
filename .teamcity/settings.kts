@@ -1378,13 +1378,12 @@ object HelperObjects {
             if (scheduled_build) {
                 triggers {
                     schedule {
-                        if(sch_freq == "daily") {
+                        if (sch_freq == "daily") {
                             schedulingPolicy = daily {
                                 hour = sch_hour_daily
                                 minute = sch_minute_daily
                             }
-                        }
-                        else if (sch_freq == "weekly") {
+                        } else if (sch_freq == "weekly") {
                             schedulingPolicy = weekly {
                                 dayOfWeek = ScheduleTrigger.DAY.Saturday
                                 hour = sch_hour_weekly
@@ -1453,32 +1452,32 @@ object HelperObjects {
                         sch_minute_weekly
                     )
                 )
-                
-                if(scheduledBuild && exportFreq == "daily") {
+
+                if (scheduledBuild && exportFreq == "daily") {
                     sch_minute_daily += dailyMinutesOffset
-                    if(sch_minute_daily >= 60) {
+                    if (sch_minute_daily >= 60) {
                         sch_hour_daily += 1
                         sch_minute_daily = 0
                     }
-                    if(sch_hour_daily >= 24) {
+                    if (sch_hour_daily >= 24) {
                         sch_hour_daily = 0
                     }
                     exportServerIndex++
-                    if(exportServerIndex == exportServers.size) {
+                    if (exportServerIndex == exportServers.size) {
                         exportServerIndex = 0
                     }
                 }
-                if(scheduledBuild && exportFreq == "weekly") {
+                if (scheduledBuild && exportFreq == "weekly") {
                     sch_minute_weekly += weeklyMinutesOffset
 
-                    if(sch_minute_weekly >= 60) {
+                    if (sch_minute_weekly >= 60) {
                         sch_hour_weekly += 1
                         sch_minute_weekly = 0
                     }
-                    if(sch_hour_weekly >= 24) {
+                    if (sch_hour_weekly >= 24) {
                         sch_hour_weekly = 0
                     }
-                }        
+                }
             }
         }
         return builds
