@@ -60,7 +60,6 @@ def get_paths(path: Path) -> []:
 
 
 def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
-
     index_json = {
         "title": "Localized Documentation",
         "template": "page.j2",
@@ -84,7 +83,6 @@ def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
 
 
 def write_locale_index(locale_path, loc_docs_output_path):
-
     index_json = {
         "title": get_locale_name_from_code(locale_path.name),
         "template": "page.j2",
@@ -108,8 +106,6 @@ def write_locale_index(locale_path, loc_docs_output_path):
 
 
 def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
-    version_paths = get_paths(product_path)
-
     index_json = {
         "title": get_product_name_from_code(product_path.name),
         "template": "page.j2",
@@ -117,6 +113,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
         "items": []
     }
 
+    version_paths = get_paths(product_path)
     for version_path in reversed(version_paths):
         version_json = {
             "label": version_path.name,
