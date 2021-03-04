@@ -127,7 +127,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
                 pdf_info = pdf.getDocumentInfo()
 
             short_title = re.sub(
-                f"^\d+", "", pdf_info.title.rpartition('.')[2]).strip()
+                "^\d+", "", pdf_info.title.rpartition('.')[2]).strip()
 
             pdf_link = pdf_file.relative_to(loc_docs_root_path)
 
@@ -147,7 +147,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
 
 
 def clear_output(loc_docs_output_path: Path):
-    if(loc_docs_output_path.exists()):
+    if loc_docs_output_path.exists():
         try:
             empty_tree(loc_docs_output_path)
         except OSError as e:
@@ -170,7 +170,6 @@ def empty_tree(path: Path):
 # TODO: by default check for PDFs in the folders to avoid creating
 #       configs that go nowhere. Give an option to ignore that as
 #       it is useful for testing to build more.
-# TODO: add pyproject.toml
 # TODO: create docker image
 # TODO: add readme.md
 # TODO: add logging, including errors for undefined locales or product codes
