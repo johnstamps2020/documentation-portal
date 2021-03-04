@@ -306,7 +306,6 @@
       "indexRedirect": true
     },
 
-
     {
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
@@ -644,8 +643,6 @@
       "indexRedirect": true
     },
 
-
-
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
@@ -826,13 +823,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-OnPrem-Draft.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebasrc",
-      "docId": "selfmanagedbadraft"
-    },
-    {
-      "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
@@ -872,30 +862,6 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
       "docId": "selfmanageddxvodcxeajkygfs"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "GT-API.ditamap",
-      "srcId": "testingframeworksapidraftsrc",
-      "docId": "testingframeworksapidraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "GT-UI.ditamap",
-      "srcId": "testingframeworksuidraftsrc",
-      "docId": "testingframeworksuidraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
-      "srcId": "testingframeworksrndraftsrc",
-      "docId": "testingframeworksrndraft",
-      "indexRedirect": true
     },
     {
       "buildType": "dita",
@@ -1164,9 +1130,16 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap-cda.ditamap",
-      "srcId": "clouddataaccessdraftsrc",
-      "docId": "clouddataaccesslatestdraft"
+      "root": "UnderstandingCloudDataAccess.ditamap",
+      "srcId": "clouddataaccessguidedraftsrc",
+      "docId": "clouddataaccessguidedraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "b_relNotesCda.ditamap",
+      "srcId": "clouddataaccessrndraftsrc",
+      "docId": "clouddataaccessrndraft"
     },
     {
       "buildType": "dita",
@@ -1179,16 +1152,33 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebasrc",
-      "docId": "explorecloudrelease"
+      "root": "supermap-forExportOnly.ditamap",
+      "srcId": "explorereleasesrc",
+      "docId": "explorerelease"
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "supermapExplore.ditamap",
-      "srcId": "explorebasrc",
-      "docId": "exploreclouddraft"
+      "root": "m_relNotes.ditamap",
+      "srcId": "explorernsrc",
+      "docId": "explorernrelease",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "m_cloud-usingExplore.ditamap",
+      "srcId": "exploreusingsrc",
+      "docId": "exploreusingrelease",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "m_dataDictionaries.ditamap",
+      "srcId": "exploredatadictsrc",
+      "docId": "exploredatadictrelease",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
@@ -1538,14 +1528,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "GuidewireCloudPlatform.ditamap",
+      "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpdraftsrc",
       "docId": "configmgrhelpdraft"
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "GuidewireCloudPlatform.ditamap",
+      "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpcortinasrc",
       "docId": "configmgrhelpcortina"
     },
@@ -1705,22 +1695,6 @@
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
-      "srcId": "lobbopguidedraftsrc",
-      "docId": "lobbopguidedraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "LOB_STANDARDS_Cloud.ditaval",
-      "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
-      "srcId": "lobbopsbtrndraftsrc",
-      "docId": "lobbopsbtrndraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "LOB_STANDARDS_Cloud.ditaval",
-      "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguidebanffsrc",
       "docId": "lobbopguidebanff",
       "indexRedirect": true
@@ -1731,6 +1705,54 @@
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnbanffsrc",
       "docId": "lobbopsbtrnbanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-gl-9x-1003.ditamap",
+      "srcId": "lobglguidebanffsrc",
+      "docId": "lobglguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
+      "srcId": "lobglsbtrnbanffsrc",
+      "docId": "lobglsbtrnbanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-ca-10x.ditamap",
+      "srcId": "lobcaguidebanffsrc",
+      "docId": "lobcaguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
+      "srcId": "lobcasbtrnbanffsrc",
+      "docId": "lobcasbtrnbanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-crime.ditamap",
+      "srcId": "lobcrimeguidebanffsrc",
+      "docId": "lobcrimeguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "Crime_SBT_ReleaseNotes.ditamap",
+      "srcId": "lobcrimesbtrnbanffsrc",
+      "docId": "lobcrimesbtrnbanff",
       "indexRedirect": true
     },
     {
@@ -1753,48 +1775,48 @@
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-gl-9x-1003.ditamap",
-      "srcId": "lobglguidedraftsrc",
-      "docId": "lobglguidedraft",
+      "srcId": "lobglguideaspensrc",
+      "docId": "lobglguideaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
-      "srcId": "lobglsbtrndraftsrc",
-      "docId": "lobglsbtrndraft",
+      "srcId": "lobglsbtrnaspensrc",
+      "docId": "lobglsbtrnaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-ca-10x.ditamap",
-      "srcId": "lobcaguidedraftsrc",
-      "docId": "lobcaguidedraft",
+      "srcId": "lobcaguideaspensrc",
+      "docId": "lobcaguideaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
-      "srcId": "lobcasbtrndraftsrc",
-      "docId": "lobcasbtrndraft",
+      "srcId": "lobcasbtrnaspensrc",
+      "docId": "lobcasbtrnaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-crime.ditamap",
-      "srcId": "lobcrimeguidedraftsrc",
-      "docId": "lobcrimeguidedraft",
+      "srcId": "lobcrimeguideaspensrc",
+      "docId": "lobcrimeguideaspen",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "Crime_SBT_ReleaseNotes.ditamap",
-      "srcId": "lobcrimesbtrndraftsrc",
-      "docId": "lobcrimesbtrndraft",
+      "srcId": "lobcrimesbtrnaspensrc",
+      "docId": "lobcrimesbtrnaspen",
       "indexRedirect": true
     },
     {
@@ -2223,6 +2245,14 @@
       "root": "Glossary.ditamap",
       "srcId": "cloudisglossary202011src",
       "docId": "is202011glossary",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
+      "srcId": "isrestapiclientrn202011src",
+      "docId": "isrestapiclientrn202011",
       "indexRedirect": true
     },
     {
@@ -3084,6 +3114,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20211.ditamap",
+      "srcId": "in20211xrndraftsrc",
+      "docId": "in20211xrndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20211.ditamap",
       "srcId": "in20211xstudiorndraftsrc",
       "docId": "in20211xstudiorndraft",
@@ -3490,6 +3528,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20211.ditamap",
+      "srcId": "in20211rnsrc",
+      "docId": "in20211rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
       "srcId": "in20211csp324rnsrc",
       "docId": "in20211csp324rn",
@@ -3860,24 +3906,26 @@
       "workingDir": "website"
     },
     {
-      "buildType": "storybook",
+      "buildType": "yarn",
       "docId": "storybook530",
       "srcId": "srcjutrostorybook530",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutronext",
+      "srcId": "srcjutronext",
+      "workingDir": "website"
+    },
+    {
+      "buildType": "storybook",
+      "docId": "storybooknext",
+      "srcId": "srcjutrostorybooknext",
       "workingDir": "applications/jutro-app-storybook-new"
     },
     {
-      "buildType": "sphinx",
-      "docId": "iscc202011apiref",
-      "srcId": "srcapiref202011"
-    },
-    {
-      "buildType": "sphinx",
-      "docId": "ispc202011apiref",
-      "srcId": "srcapiref202011"
-    },
-    {
-      "buildType": "sphinx",
-      "docId": "is202011contactapi",
+      "buildType": "yarn",
+      "docId": "is202011apisecretbuild",
       "srcId": "srcapiref202011"
     },
     {
@@ -4516,6 +4564,14 @@
       "buildType": "yarn",
       "srcId": "checksumssrc",
       "docId": "checksums"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Glossary.ditamap",
+      "srcId": "gwglossarysrc",
+      "docId": "gwglossary",
+      "indexRedirect": true
     }
   ]
 }

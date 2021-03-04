@@ -77,10 +77,10 @@
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["product", "platform", "version"],
+      "required": ["product", "platform"],
       "properties": {
         "product": {
-          "$ref": "#/definitions/product"
+          "$ref": "#definitions/product"
         },
         "platform": {
           "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
@@ -147,6 +147,11 @@
           "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",
           "type": "string",
           "examples": ["release-1.0", "usaa-experimental"]
+        },
+        "exportFrequency": {
+          "description": "How often (daily or weekly) the export for this source runs if there is an associated int build. Defaults to daily if not set.",
+          "type": "string",
+          "enum": ["daily", "weekly"]
         }
       }
     },
@@ -174,8 +179,7 @@
         "Guidewire Cloud Platform",
         "Guidewire Feature Preview",
         "Integration Framework",
-        "Guidewire Cloud Standards",
-        "Testing Frameworks"
+        "Guidewire Cloud Standards"
       ]
     },
     "product": {
@@ -234,13 +238,13 @@
           "InsuranceNow 2021.1x - Internal Audience",
           "InsuranceNow 2021.1x - External Audience",
           "REST API Client",
-          "Testing Frameworks",
           "Jutro Design System",
           "PolicyCenter API",
           "BillingCenter API",
           "ClaimCenter API",
           "String Manager",
-          "Checksums"
+          "Checksums",
+          "Glossary"
         ]
       }
     },
