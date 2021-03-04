@@ -14,7 +14,9 @@
         {
           "label": "BillingCenter for Guidewire Cloud",
           "page": "billingCenterForGuidewireCloud/latest",
-          "env": ["int"]
+          "env": [
+            "int"
+          ]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -28,11 +30,11 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccesscortina"
+          "id": null
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         },
         {
           "label": "Add-ons",
@@ -54,7 +56,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         }
       ]
     },
@@ -86,7 +88,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../jutro/4.1.1"
+              "page": "../../../jutro/4.1.1"
             }
           ]
         }

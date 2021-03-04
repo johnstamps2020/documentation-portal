@@ -5,8 +5,7 @@
   "items": [
     {
       "label": "Aspen",
-      "page": "aspen",
-      "env": ["dev", "staging", "prod"]
+      "page": "aspen"
     },
     {
       "label": "Banff",
@@ -15,7 +14,9 @@
     {
       "label": "Cortina",
       "page": "cortina",
-      "env": ["int"]
+      "env": [
+        "int"
+      ]
     }
   ]
 }

@@ -21,7 +21,7 @@
     {
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.04"
+      "page": "insuranceNow/2021.1"
     },
     {
       "label": "Guidewire Cloud Standards",
@@ -31,7 +31,7 @@
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "guidewireCloudPlatform"
+      "page": "../guidewireCloudPlatform"
     }
   ]
 }

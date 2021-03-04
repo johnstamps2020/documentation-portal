@@ -14,14 +14,6 @@ _validator_logger = logger.configure_logger('validator_logger', 'info', _log_fil
 
 
 @dataclass
-class InvalidDocIdError:
-    config_file: Path
-    details: str
-    level: int = logging.ERROR
-    message: str = 'Invalid doc ID'
-
-
-@dataclass
 class DocIdNotFoundError:
     config_file: Path
     details: str
@@ -80,13 +72,6 @@ def process_validation_results(results: List, send_bouncer_home: bool):
                               f'\nTotal number of errors: {len(errors)}')
 
 
-def doc_id_is_valid(doc_id: str):
-    """Verify the doc ID does not start with "." or "/\""""
-    regexp = re.compile("[^./].+")
-    match = re.match(regexp, doc_id)
-    return match
-
-
 def env_settings_are_correct(item_envs: List, higher_order_envs: List):
     if not item_envs:
         return True
@@ -107,28 +92,22 @@ def validate_page(index_file: Path,
         for item in page_items:
             if item.get('id'):
                 item_id = item['id']
-                if doc_id_is_valid(item_id):
-                    matching_doc_object = next(
-                        (doc for doc in docs if doc['id'] == item_id), None)
-                    if matching_doc_object:
-                        item_envs = matching_doc_object.get('environments')
-                        if not env_settings_are_correct(item_envs, parent_envs):
-                            issues.append(
-                                IncorrectEnvSettingsWarning(
-                                    config_file=page_config_file,
-                                    details=f'Item label: {item["label"]} '
-                                            f'Item ID: {item["id"]} | '
-                                            f'Item envs: {item_envs} | '
-                                            f'Env settings of higher order elements: {parent_envs}'
-                                )
+                matching_doc_object = next(
+                    (doc for doc in docs if doc['id'] == item_id), None)
+                if matching_doc_object:
+                    item_envs = matching_doc_object.get('environments')
+                    if not env_settings_are_correct(item_envs, parent_envs):
+                        issues.append(
+                            IncorrectEnvSettingsWarning(
+                                config_file=page_config_file,
+                                details=f'Item label: {item["label"]} '
+                                        f'Item ID: {item["id"]} | '
+                                        f'Item envs: {item_envs} | '
+                                        f'Env settings of higher order elements: {parent_envs}'
                             )
-                    else:
-                        issues.append(DocIdNotFoundError(
-                            config_file=page_config_file,
-                            details=item_id)
                         )
                 else:
-                    issues.append(InvalidDocIdError(
+                    issues.append(DocIdNotFoundError(
                         config_file=page_config_file,
                         details=item_id)
                     )

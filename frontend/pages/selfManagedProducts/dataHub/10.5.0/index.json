@@ -1,0 +1,76 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub 10.5.0",
+  "class": "twoColumns",
+  "template": "page.j2",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dh1050rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dh1050product"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dh1050install"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dh1050upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dh1050config"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dh1050dataspec"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dh1050admin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dh1050devref"
+        }
+      ]
+    }
+  ]
+}

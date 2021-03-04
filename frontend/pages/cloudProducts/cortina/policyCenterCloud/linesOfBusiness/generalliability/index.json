@@ -1,28 +1,27 @@
 {
-    "title": "General Liability Standards Based Template",
-    "template": "page.j2",
-    "class": "twoColumns",
-    "items": [
-      {
-        "label": "Release Notes",
-        "class": "subject releaseNotes",
-        "items": [
-          {
-            "label": "Countrywide Release Notes",
-            "id": "lobglsbtrncortina"
-          }
-        ]
-      },
-      {
-        "label": "Features and functionality",
-        "class": "subject featuresAndFunctionality",
-        "items": [
-          {
-            "label": "General Liability Standards Based Template Guide",
-            "id": "lobglguidecortina"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "title": "General Liability Standards Based Template",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Countrywide Release Notes",
+          "id": null
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "General Liability Standards Based Template Guide",
+          "id": null
+        }
+      ]
+    }
+  ]
+}

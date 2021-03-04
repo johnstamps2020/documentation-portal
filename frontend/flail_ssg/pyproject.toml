@@ -18,6 +18,8 @@ python = "^3.8"
 jinja2 = "^2.11.3"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.2"
+jsonschema = "^3.2.0"
 
 [build-system]
 requires = ["poetry>=1.0"]
