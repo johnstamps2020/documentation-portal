@@ -84,77 +84,70 @@ def resolve_links(items: List, docs: List):
 def process_page(index_file: Path,
                  deploy_env: str,
                  docs: List,
-                 build_dir: Path):
+                 build_dir: Path,
+                 send_bouncer_home: bool):
     index_file_absolute = index_file.resolve()
     page_dir = index_file_absolute.parent
     index_json = json.load(index_file_absolute.open())
-
-    page_items = index_json.get('items')
-    if page_items:
-        filtered_items = filter_by_env(deploy_env, page_dir, page_items, docs)
-        items_with_resolved_links = resolve_links(filtered_items, docs)
-        index_json['items'] = items_with_resolved_links
-
-    index_json['current_page'] = {
-        'label': index_json['title'],
-        'path': page_dir.name
-    }
-    index_json['siblings'] = get_siblings(page_dir)
-    index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
-
-    json.dump(index_json, index_file_absolute.open('w'), indent=2)
-
-
-def mark_public_on_page(file_path: Path, docs: list, allow_errors: bool, logger: any):
     try:
-        file_json = json.load(file_path.open())
-        found_some_public_items = False
+        page_items = index_json.get('items')
+        if page_items:
+            filtered_items = filter_by_env(
+                deploy_env, page_dir, page_items, docs)
+            items_with_resolved_links = resolve_links(filtered_items, docs)
+            index_json['items'] = items_with_resolved_links
 
-        def get_annotated_items(item_list: List, any_item_is_public: bool):
-            try:
-                for item in item_list:
-                    item_id = item.get('id')
-                    if item_id:
-                        matching_doc_object = next(
-                            (doc for doc in docs if doc['id'] == item_id), None)
-                        if matching_doc_object:
-                            public = matching_doc_object.get('public')
-                            if public:
-                                item['public'] = True
-                                any_item_is_public = True
-
-                    inner_items = item.get('items')
-                    if inner_items:
-                        item['items'] = get_annotated_items(
-                            inner_items, any_item_is_public)
-
-                    page_link = item.get('page')
-                    if page_link:
-                        result = mark_public_on_page(
-                            file_path.parent / page_link / 'index.json', docs, allow_errors, logger)
-                        if result:
-                            page_link['public'] = True
-                            any_item_is_public = True
-                return item_list
-            except Exception as e:
-                if allow_errors:
-                    logger.warning(
-                        f'**WATCH YOUR BACK: We are deep into it, but the bouncer is not here, so we will let this one slide: {e}**')
-                else:
-                    raise e
-
-        items = file_json.get('items')
-        if items:
-            file_json['items'] = get_annotated_items(
-                items, found_some_public_items)
-        file_path.write_text(json.dumps(file_json))
-        return found_some_public_items
+        index_json['current_page'] = {
+            'label': index_json['title'],
+            'path': page_dir.name
+        }
+        index_json['siblings'] = get_siblings(page_dir)
+        index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
     except Exception as e:
-        if allow_errors:
-            logger.warning(
-                f'**WATCH YOUR BACK: The bouncer is home, so we are letting this one in {e}**')
+        if send_bouncer_home:
+            _generator_logger.warning(
+                '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+            index_json['title'] = f'{index_json["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
         else:
             raise e
+    finally:
+        json.dump(index_json, index_file_absolute.open('w'), indent=2)
+
+
+def mark_public_on_page(page_path: Path, any_doc_or_page_is_public: bool, docs: List):
+    def mark_items_as_public(page_items: List, marked_any_item_as_public: bool):
+        for item in page_items:
+            item_id = item.get('id')
+            item_page_ref = item.get('page')
+            if item_id:
+                matching_doc_object = next(
+                    (doc for doc in docs if doc['id'] == item_id), None)
+                item_is_public = matching_doc_object['public']
+                item['public'] = item_is_public
+                if item_is_public:
+                    marked_any_item_as_public = True
+            elif item_page_ref:
+                subpage_path = Path(page_path.parent /
+                                    item_page_ref / 'index.json')
+                marked_any_item_as_public = mark_public_on_page(
+                    subpage_path, marked_any_item_as_public, docs)
+                item['public'] = marked_any_item_as_public
+            inner_items = item.get('items')
+            if inner_items:
+                inner_items, marked_any_item_as_public = mark_items_as_public(
+                    inner_items, marked_any_item_as_public)
+        return page_items, marked_any_item_as_public
+
+    try:
+        file_json = json.load(page_path.open())
+        items = file_json.get('items')
+        if items:
+            file_json['items'], any_doc_or_page_is_public = mark_items_as_public(
+                items, any_doc_or_page_is_public)
+            json.dump(file_json, page_path.open('w'), indent=2)
+        return any_doc_or_page_is_public
+    except Exception as e:
+        raise e
 
 
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
@@ -170,19 +163,14 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
     shutil.copytree(pages_dir, build_dir)
 
     _generator_logger.info('SUBPROCESS STARTED: Mark pages as public')
-    mark_public_on_page(list(build_dir.rglob('**/*.json'))
-                        [0], docs, send_bouncer_home, _generator_logger)
+    top_index_file_path = list(build_dir.rglob('**/*.json'))[0]
+    # FIXME: mark public on page after we filter out environments
+    mark_public_on_page(top_index_file_path, False, docs)
     _generator_logger.info('SUBPROCESS ENDED: Mark pages as public')
 
     for index_json_file in build_dir.rglob('**/*.json'):
-        try:
-            _generator_logger.info(f'Generating page from {index_json_file}')
-            process_page(index_json_file, deploy_env, docs, build_dir)
-        except Exception as e:
-            if send_bouncer_home:
-                _generator_logger.warning(
-                    '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
-            else:
-                raise e
+        _generator_logger.info(f'Generating page from {index_json_file}')
+        process_page(index_json_file, deploy_env, docs,
+                     build_dir, send_bouncer_home)
 
     _generator_logger.info('PROCESS ENDED: Generate pages')

@@ -18,7 +18,11 @@
         {
           "label": "Lines of Business Standards-based Templates",
           "page": "linesOfBusiness",
-          "env": ["int"]
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
         }
       ]
     },
@@ -32,7 +36,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         },
         {
           "label": "Predictive Analytics",
@@ -86,7 +90,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../jutro/4.1.1"
+              "page": "../../../jutro/4.1.1"
             }
           ]
         }

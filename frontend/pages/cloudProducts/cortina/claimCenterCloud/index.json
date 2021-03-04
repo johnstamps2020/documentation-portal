@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccesscortina"
+          "id": null
         },
         {
           "label": "Compare+",
@@ -31,7 +31,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         },
         {
           "label": "Predictive Analytics",
@@ -57,7 +57,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         }
       ]
     },
@@ -101,7 +101,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../jutro/4.1.1"
+              "page": "../../../jutro/4.1.1"
             }
           ]
         }

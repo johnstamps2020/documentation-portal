@@ -18,7 +18,11 @@
         {
           "label": "Lines of Business Standards-based Templates",
           "page": "linesOfBusiness",
-          "env": ["int", "this-should-fail"]
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
         }
       ]
     },
@@ -32,7 +36,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         },
         {
           "label": "Add-ons",

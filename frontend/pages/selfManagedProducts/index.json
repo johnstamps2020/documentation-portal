@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "Self-managed",
   "template": "page.j2",
   "class": "threeCards",
@@ -12,16 +13,36 @@
           "id": "bc1011"
         },
         {
+          "label": "BillingCenter",
+          "id": "selfmanagedbcxufesxuwl"
+        },
+        {
           "label": "ClaimCenter",
           "id": "cc1011"
+        },
+        {
+          "label": "ClaimCenter",
+          "id": "selfmanagedccxbvqtoakg"
         },
         {
           "label": "PolicyCenter",
           "id": "pc1011"
         },
         {
+          "label": "PolicyCenter",
+          "id": "selfmanagedpcxrwjcdamu"
+        },
+        {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools310"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
+        },
+        {
+          "label": "REST API Client",
+          "id": "restapidraft"
         }
       ]
     },
@@ -35,7 +56,37 @@
           "items": [
             {
               "label": "DataHub",
+              "page": "dataHub/10.5.0",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "DataHub",
+              "page": "dataHub/10.x",
+              "env": [
+                "int"
+              ]
+            },
+            {
+              "label": "DataHub",
               "id": "dh1040"
+            },
+            {
+              "label": "InfoCenter",
+              "page": "infoCenter/10.5.0",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "InfoCenter",
+              "page": "infoCenter/10.x",
+              "env": [
+                "int"
+              ]
             },
             {
               "label": "InfoCenter",
@@ -54,56 +105,135 @@
           "id": "dxceam1130"
         },
         {
+          "label": "CustomerEngage Account Management",
+          "page": "customerEngageAccountManagement/latest",
+          "env": [
+            "int"
+          ]
+        },
+        {
           "label": "CustomerEngage Account Management for ClaimCenter",
           "id": "dxceclaims1130"
+        },
+        {
+          "label": "CustomerEngage Account Management for ClaimCenter",
+          "page": "customerEngageAccountManagementCc/latest",
+          "env": [
+            "int"
+          ]
         },
         {
           "label": "CustomerEngage Quote and Buy",
           "id": "dxceqb1130"
         },
         {
+          "label": "CustomerEngage Quote and Buy",
+          "page": "customerEngageQuoteAndBuy/latest",
+          "env": [
+            "int"
+          ]
+        },
+        {
+          "label": "Jutro Design System",
+          "page": "../jutro/4.1.1",
+          "env": [
+            "dev",
+            "staging",
+            "prod",
+            "int"
+          ]
+        },
+        {
           "label": "ProducerEngage",
           "id": "dxpe1130"
+        },
+        {
+          "label": "ProducerEngage",
+          "page": "producerEngage/latest",
+          "env": [
+            "int"
+          ]
         },
         {
           "label": "ProducerEngage for ClaimCenter",
           "id": "dxpeclaims1130"
         },
         {
+          "label": "ProducerEngage for ClaimCenter",
+          "page": "producerEngageCc/latest",
+          "env": [
+            "int"
+          ]
+        },
+        {
           "label": "ServiceRepEngage",
           "id": "dxsre1130"
+        },
+        {
+          "label": "ServiceRepEngage",
+          "page": "serviceRepEngage/latest",
+          "env": [
+            "int"
+          ]
         },
         {
           "label": "VendorEngage",
           "id": "dxve1130"
         },
         {
+          "label": "VendorEngage",
+          "page": "vendorEngage/latest",
+          "env": [
+            "int"
+          ]
+        },
+        {
           "label": "Guidewire for Salesforce Data Integrations",
           "id": "dxdionprem320"
+        },
+        {
+          "label": "Guidewire for Salesforce Data Integrations",
+          "id": "selfmanageddxdixowqwwrfu"
         },
         {
           "label": "Guidewire for Salesforce Data Integrations for Claims",
           "id": "dxdiconprem310"
         },
         {
+          "label": "Guidewire for Salesforce Data Integrations for Claims",
+          "id": "selfmanageddxdicxyhksqnkf"
+        },
+        {
           "label": "Guidewire for Salesforce Digital Gateway",
           "id": "dxedonprem320"
+        },
+        {
+          "label": "Guidewire for Salesforce Digital Gateway",
+          "id": "selfmanageddxedxqqjwvkln"
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway for Claims",
           "id": "dxedconprem310"
         },
         {
+          "label": "Guidewire for Salesforce Digital Gateway for Claims",
+          "id": "selfmanageddxedcxvpeswwmn"
+        },
+        {
           "label": "Guidewire for Salesforce View on Demand",
           "id": "dxvodonprem320"
+        },
+        {
+          "label": "Guidewire for Salesforce View on Demand",
+          "id": "selfmanageddxvodxqjomllcj"
         },
         {
           "label": "Guidewire for Salesforce View on Demand for Claims",
           "id": "dxvodconprem310"
         },
         {
-          "label": "Jutro Design System",
-          "page": "jutroDesignSystem"
+          "label": "Guidewire for Salesforce View on Demand for Claims",
+          "id": "selfmanageddxvodcxeajkygfs"
         }
       ]
     }

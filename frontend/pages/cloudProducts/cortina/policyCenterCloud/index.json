@@ -13,12 +13,14 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools310"
+          "id": "isconfigupgradetools3x"
         },
         {
           "label": "Lines of Business Standards-based Templates",
           "page": "linesOfBusiness",
-          "env": ["int"]
+          "env": [
+            "int"
+          ]
         }
       ]
     },
@@ -28,11 +30,11 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccesscortina"
+          "id": null
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         },
         {
           "label": "Predictive Analytics",
@@ -58,7 +60,7 @@
         },
         {
           "label": "Explore",
-          "id": "explorecloudrelease"
+          "id": null
         }
       ]
     },
@@ -94,7 +96,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../jutro/4.1.1"
+              "page": "../../../jutro/4.1.1"
             }
           ]
         }

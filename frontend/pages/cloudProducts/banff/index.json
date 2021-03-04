@@ -26,7 +26,7 @@
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "guidewireCloudPlatform"
+      "page": "../guidewireCloudPlatform"
     },
     {
       "label": "Guidewire Cloud Standards",
@@ -36,8 +36,7 @@
     {
       "label": "Integration Framework",
       "class": "productFamily cardShadow",
-      "page": "integrationFramework",
-      "env": ["int"]
+      "id": "restapidraft"
     }
   ]
 }

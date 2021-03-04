@@ -9,12 +9,27 @@
       "page": "de-DE"
     },
     {
+      "label": "Español",
+      "class": "productFamily cardShadow",
+      "page": "en-LA"
+    },
+    {
+      "label": "Español (España)",
+      "class": "productFamily cardShadow",
+      "page": "en-LA"
+    },
+    {
+      "label": "Deutsch",
+      "class": "productFamily cardShadow",
+      "page": "de-DE"
+    },
+    {
       "label": "Français",
       "class": "productFamily cardShadow",
       "page": "fr-FR"
     },
     {
-      "label": "Italiana",
+      "label": "Italiano",
       "class": "productFamily cardShadow",
       "page": "it-IT"
     },
@@ -24,9 +39,19 @@
       "page": "ja-JP"
     },
     {
-      "label": "Português do Brasil",
+      "label": "Nederlands",
+      "class": "productFamily cardShadow",
+      "page": "nl-NL"
+    },
+    {
+      "label": "Português",
       "class": "productFamily cardShadow",
       "page": "pt-BR"
+    },
+    {
+      "label": "Pусский",
+      "class": "productFamily cardShadow",
+      "page": "ru"
     }
   ]
 }
