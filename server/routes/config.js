@@ -59,4 +59,14 @@ router.get('/taxonomy/:release', async function(req, res) {
   res.send(config);
 });
 
+router.get('/versions/:product/:platform', async function(req, res) {
+  const { product, platform } = req.params;
+  const versions = await getVersionsForProductOnPlatform(
+    product,
+    platform,
+    req.isAuthenticated()
+  );
+  res.send(versions);
+});
+
 module.exports = router;

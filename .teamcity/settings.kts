@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -1139,11 +1140,14 @@ object HelperObjects {
             export_path_ids: String,
             git_path: String,
             branch_name: String,
-            nightly_build: Boolean,
+            scheduled_build: Boolean,
             source_id: String,
             export_server: String,
-            sch_hour: Int,
-            sch_minute: Int
+            sch_freq: String,
+            sch_hour_daily: Int,
+            sch_minute_daily: Int,
+            sch_hour_weekly: Int,
+            sch_minute_weekly: Int
         ) : BuildType({
 
             id = RelativeId(build_id)
@@ -1167,13 +1171,22 @@ object HelperObjects {
                 }
             }
 
-            if (nightly_build) {
+            if (scheduled_build) {
                 triggers {
                     schedule {
-                        schedulingPolicy = daily {
-                            hour = sch_hour
-                            minute = sch_minute
+                        if(sch_freq == "daily") {
+                            schedulingPolicy = daily {
+                                hour = sch_hour_daily
+                                minute = sch_minute_daily
+                            }
                         }
+                        else if (sch_freq == "weekly") {
+                            schedulingPolicy = weekly {
+                                dayOfWeek = ScheduleTrigger.DAY.Saturday
+                                hour = sch_hour_weekly
+                            }
+                        }
+
                         branchFilter = ""
                         triggerBuild = always()
                         withPendingChangesOnly = false
@@ -1187,9 +1200,12 @@ object HelperObjects {
         val exportServers = arrayOf("fc-xdocs-slave1", "fc-xdocs-slave2")
         var exportServerIndex = 0
 
-        var sch_hour = 0
-        var sch_minute = 0
-        val minutesOffset = 2
+        var sch_hour_daily = 0
+        var sch_minute_daily = 0
+        var sch_hour_weekly = 12
+        var sch_minute_weekly = 0
+        val dailyMinutesOffset = 2
+        val weeklyMinutesOffset = 10
 
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
@@ -1198,10 +1214,11 @@ object HelperObjects {
                 val gitUrl = source.getString("gitUrl")
                 val sourceTitle = source.getString("title")
                 val branchName = if (source.has("branch")) source.getString("branch") else "master"
+                val exportFreq = if (source.has("exportFrequency")) source.getString("exportFrequency") else "daily"
                 val exportBuildId = source.getString("id") + "_export"
                 val xdocsPathIds = source.getJSONArray("xdocsPathIds").joinToString(" ")
                 val matchBuilds = getObjectsById(buildConfigs, "srcId", sourceId)
-                var nightlyBuild = false
+                var scheduledBuild = false
                 var buildDocId = ""
 
                 if (matchBuilds.length() > 0) {
@@ -1210,7 +1227,7 @@ object HelperObjects {
                         buildDocId = build.getString("docId")
                         val doc = getObjectById(docConfigs, "id", buildDocId)
                         if (doc.getJSONArray("environments").contains("int")) {
-                            nightlyBuild = true
+                            scheduledBuild = true
                         }
                     }
                 }
@@ -1222,28 +1239,41 @@ object HelperObjects {
                         xdocsPathIds,
                         gitUrl,
                         branchName,
-                        nightlyBuild,
+                        scheduledBuild,
                         sourceId,
                         exportServers[exportServerIndex],
-                        sch_hour,
-                        sch_minute
+                        exportFreq,
+                        sch_hour_daily,
+                        sch_minute_daily,
+                        sch_hour_weekly,
+                        sch_minute_weekly
                     )
                 )
                 
-                if(nightlyBuild) {
-                    sch_minute += minutesOffset
-                    if(sch_minute >= 60) {
-                        sch_hour += 1
-                        sch_minute = 0
+                if(scheduledBuild && exportFreq == "daily") {
+                    sch_minute_daily += dailyMinutesOffset
+                    if(sch_minute_daily >= 60) {
+                        sch_hour_daily += 1
+                        sch_minute_daily = 0
                     }
-                    if(sch_hour >= 24) {
-                        sch_hour = 0
+                    if(sch_hour_daily >= 24) {
+                        sch_hour_daily = 0
                     }
                     exportServerIndex++
                     if(exportServerIndex == exportServers.size) {
                         exportServerIndex = 0
                     }
-
+                }
+                if(scheduledBuild && exportFreq == "weekly") {
+                    sch_minute_weekly += weeklyMinutesOffset
+                    
+                    if(sch_minute_weekly >= 60) {
+                        sch_hour_weekly += 1
+                        sch_minute_weekly = 0
+                    }
+                    if(sch_hour_weekly >= 24) {
+                        sch_hour_weekly = 0
+                    }
                 }        
             }
         }
