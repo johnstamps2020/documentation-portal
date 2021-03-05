@@ -63,7 +63,11 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
             item_envs = item.get('env', [])
         if not include_item(deploy_env, item_envs):
             if item.get('page'):
-                shutil.rmtree(current_page_dir / item['page'])
+                page_path = current_page_dir / item['page']
+                if page_path.exists():
+                    # FIXME: The empty parent dir is not deleted. For example, when we have explore/latest and latest
+                    # FIXME: contains index.json and explore is empty, only latest is deleted
+                    shutil.rmtree(page_path)
             items.remove(item)
         if item.get('items'):
             filter_by_env(deploy_env, current_page_dir, item['items'], docs)
