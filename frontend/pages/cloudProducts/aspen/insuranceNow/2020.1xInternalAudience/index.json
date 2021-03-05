@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceNow 2020.1",
+  "title": "InsuranceNow 2020.1x - Internal Audience",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,19 +10,19 @@
       "items": [
         {
           "label": "Core Release Notes",
-          "id": "in20201rn"
+          "id": "in20201xrndraft"
         },
         {
           "label": "Release Video",
-          "id": "in20201releasevid"
+          "id": "in20201xreleaseviddraft"
         },
         {
           "label": "Studio Release Notes",
-          "id": "in20201studiorn"
+          "id": "in20201xstudiorndraft"
         },
         {
           "label": "Consumer Service Portal 3.23 Release Notes",
-          "id": "in20201csp323rn"
+          "id": "incsp323rndraft"
         }
       ]
     },
@@ -31,12 +31,16 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
+          "label": "Application Guide",
+          "id": "in20201xappdraft"
+        },
+        {
           "label": "Business Intelligence Getting Started Guide",
-          "id": "in20201bi"
+          "id": "in20201xbidraft"
         },
         {
           "label": "Consumer Service Portal Features",
-          "id": "in20201cservicep"
+          "id": "in20201xcservicepdraft"
         }
       ]
     },
@@ -46,11 +50,19 @@
       "items": [
         {
           "label": "AppReader Integration",
-          "id": "in20201appreaderinteg"
+          "id": "in20201xappreaderintegdraft"
+        },
+        {
+          "label": "Business Intelligence Integration",
+          "id": "in20201xbiintegdraft"
+        },
+        {
+          "label": "Guidewire Payments API Integration",
+          "id": "in20201xpaymentapiintegdraft"
         },
         {
           "label": "Predictive Analytics Integration",
-          "id": "in20201pa"
+          "id": "in20201xpadraft"
         }
       ]
     },
@@ -60,15 +72,23 @@
       "items": [
         {
           "label": "Core Configuration Guide",
-          "id": "in20201config"
+          "id": "in20201xconfigdraft"
         },
         {
           "label": "Studio Configuration Guide",
-          "id": "in20201studio"
+          "id": "in20201xstudiodraft"
         },
         {
           "label": "Portal Development",
-          "id": "in20201portaldev"
+          "id": "in20201xportaldevdraft"
+        },
+        {
+          "label": "Underwriting Product Configuration Guide",
+          "id": "in20201xuwconfigdraft"
+        },
+        {
+          "label": "Upgrade Tools",
+          "id": "inupgradetoolsdraft"
         }
       ]
     }

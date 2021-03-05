@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "BillingCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
@@ -12,8 +13,16 @@
           "id": "cloudbc202005"
         },
         {
+          "label": "Guidewire InsuranceSuite Package for Germany",
+          "id": "midipg2x"
+        },
+        {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools310"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
         }
       ]
     },
@@ -27,11 +36,25 @@
         },
         {
           "label": "Explore",
-          "id": null
+          "page": "../explore/latest",
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
+        },
+        {
+          "label": "Explore",
+          "id": "explorerelease"
         },
         {
           "label": "Add-ons",
           "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
@@ -48,6 +71,11 @@
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": [
+        "dev",
+        "staging",
+        "prod"
+      ],
       "items": [
         {
           "label": "Digital Applications",
