@@ -55,19 +55,19 @@ async function addReleaseBadge() {
 
 function markDocsAsNotPrivate() {
   const privateDocs = document.querySelectorAll('.private');
-  for (const private of privateDocs) {
-    private.removeAttribute('href');
+  for (const privateDoc of privateDocs) {
+    privateDoc.removeAttribute('href');
 
     const span = document.createElement('span');
     span.className = 'lockTooltipText';
     span.innerHTML = 'Log in to view this content';
 
-    private.appendChild(span);
+    privateDoc.appendChild(span);
   }
 }
 
 window.onload = function() {
-  markDocsAsNotPrivate();
+  // markDocsAsNotPrivate();
   setLogInButton();
   selectToggleButton();
   addReleaseBadge();

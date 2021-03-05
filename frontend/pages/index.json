@@ -1,14 +1,12 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "Automated redirect",
+  "class": "",
   "template": "index.j2",
   "items": [
     {
       "label": "cloud",
       "page": "cloudProducts"
-    },
-    {
-      "label": "localized",
-      "page": "localizedDocs"
     },
     {
       "label": "self-managed",

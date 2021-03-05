@@ -51,6 +51,21 @@
                   <Item>
                     <option name="path" value="frontend/pages/selfManagedProducts/dataHub/10.5.0/index.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/aspen/policyCenterCloud/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/aspen/policyCenterCloud/explore/latest/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/aspen/claimCenterCloud/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/aspen/billingCenterCloud/index.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
