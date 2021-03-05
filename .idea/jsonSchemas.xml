@@ -66,6 +66,9 @@
                   <Item>
                     <option name="path" value="frontend/pages/cloudProducts/aspen/billingCenterCloud/index.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/aspen/insuranceNow/2020.1/index.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

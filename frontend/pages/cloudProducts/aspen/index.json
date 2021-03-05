@@ -27,12 +27,7 @@
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "../guidewireCloudPlatform"
-    },
-    {
-      "label": "Guidewire Cloud Standards",
-      "class": "productFamily cardShadow",
-      "id": "standardslatest"
+      "page": "guidewireCloudPlatform"
     }
   ]
 }
