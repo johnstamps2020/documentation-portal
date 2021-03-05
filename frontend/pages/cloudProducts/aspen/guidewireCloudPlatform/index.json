@@ -13,8 +13,16 @@
           "id": "guidewirecloudconsoleguideinsurerdev"
         },
         {
+          "label": "Cloud Console Guide",
+          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+        },
+        {
           "label": "Cloud Console Release Notes",
           "id": "guidewirecloudconsolerninsurerdev"
+        },
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdevdraft"
         }
       ]
     }
