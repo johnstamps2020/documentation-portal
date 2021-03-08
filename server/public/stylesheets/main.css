@@ -119,12 +119,25 @@ main:not(.fullWidth) > * {
 }
 
 main.cortina {
-  background-color: transparent;
-  background: url(/images/Cortina-Background.svg) no-repeat fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: rgba(19, 30, 46, 0.15);
+  background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
+    linear-gradient(
+      -60deg,
+      #131e2e,
+      rgba(40, 64, 99, 0.8),
+      rgba(47, 79, 126, 0)
+    );
+}
+
+@media screen and (min-width: 750px) {
+  main.cortina {
+    background: url(/images/Cortina-Background.svg) no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: bottom right;
+  }
 }
 
 main.cortina h1,
