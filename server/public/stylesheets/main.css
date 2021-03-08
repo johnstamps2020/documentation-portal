@@ -93,6 +93,9 @@ header img {
   width: calc(var(--container-width) - var(--button-width));
 }
 
+input#searchField:focus {
+  outline: none;
+}
 .searchField::placeholder {
   color: var(--GW-WHITE);
 }
@@ -361,8 +364,7 @@ div.pageHero {
   width: fit-content;
   display: flex;
   align-items: center;
-  border: 1px solid gray;
-  border-radius: 3px;
+  box-shadow: 0 0 1pt gray;
 }
 
 #cloudToggle > a {
@@ -396,6 +398,7 @@ div.pageHero {
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .button:hover {
