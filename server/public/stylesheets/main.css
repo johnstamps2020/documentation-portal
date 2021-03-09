@@ -32,6 +32,7 @@ input.searchField:-internal-autofill-selected {
 
 body {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  color: var(--GW-HEADER-FOOTER-BKG-COLOR);
 }
 
 header {
