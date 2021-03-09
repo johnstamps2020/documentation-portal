@@ -4,15 +4,20 @@ const router = express.Router();
 router.get('/', function(req, res) {
   const isLoggedIn = req.isAuthenticated() || process.env.ENABLE_AUTH === 'no';
   const user = req.userContext;
-  let name = undefined;
 
   if (user) {
-    name = user.userinfo.name;
+    const { name, preferred_username, locale } = user.userinfo;
+    res.send({
+      isLoggedIn: isLoggedIn,
+      name: name,
+      preferred_username: preferred_username,
+      locale: locale,
+    });
+  } else {
+    res.send({
+      isLoggedIn: isLoggedIn,
+    });
   }
-  res.send({
-    isLoggedIn: isLoggedIn,
-    name: name,
-  });
 });
 
 module.exports = router;
