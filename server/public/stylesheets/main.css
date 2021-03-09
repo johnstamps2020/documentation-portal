@@ -176,7 +176,8 @@ h1 {
   color: var(--GW-HEADER-FOOTER-BKG-COLOR);
 }
 
-label {
+label,
+.label {
   color: var(--GW-HEADER-FOOTER-BKG-COLOR);
 }
 
@@ -303,6 +304,11 @@ label {
 
 .subject > div {
   margin-left: 42px;
+}
+
+.subject div > .label {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .subject > div:not(.label):not(:first-child) {
