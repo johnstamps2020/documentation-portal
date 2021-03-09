@@ -2570,23 +2570,14 @@
       ]
     },
     {
-      "id": "gwhawaiiea",
-      "title": "Guidewire Feature Preview Early Access",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-feature-preview.git",
-      "xdocsPathIds": [
-        "/Content/doc/_supermap-hawaii.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval"
-      ]
-    },
-    {
       "id": "gwhawaiidraft",
-      "title": "Guidewire Feature Preview Early Access",
+      "title": "Guidewire Feature Preview Draft and Early Access",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-feature-preview.git",
       "xdocsPathIds": [
         "/Content/doc/_supermap-hawaii.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval"
       ]
     },
     {

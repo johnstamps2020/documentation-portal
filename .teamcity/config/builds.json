@@ -891,7 +891,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaiiea",
+      "srcId": "gwhawaiidraft",
       "docId": "gwfeaturepreviewearlyaccess"
     },
     {
