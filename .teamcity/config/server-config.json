@@ -6648,6 +6648,22 @@
       "public": false
     },
     {
+      "id": "is202011apisecretbuildalternate",
+      "title": "ClaimCenter API reference with alterante layout",
+      "url": "cloud/is/202011/apirefalternate",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "iscc202011apiref",
       "title": "ClaimCenter Cloud API Reference",
       "url": "cloud/is/202011/apiref/docs/cc-admin",

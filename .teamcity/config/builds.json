@@ -3937,6 +3937,11 @@
       "srcId": "srcapiref202011"
     },
     {
+      "buildType": "yarn",
+      "docId": "is202011apisecretbuildalternate",
+      "srcId": "srcapiref202011alternate"
+    },
+    {
       "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
