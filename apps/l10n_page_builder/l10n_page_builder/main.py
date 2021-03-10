@@ -63,7 +63,7 @@ def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
     index_json = {
         "title": "Localized Documentation",
         "template": "page.j2",
-        "class": "threeCards",
+        "class": "threeCards l10n",
         "items": []
     }
 
@@ -86,7 +86,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
     index_json = {
         "title": get_locale_name_from_code(locale_path.name),
         "template": "page.j2",
-        "class": "threeCards",
+        "class": f"threeCards product {locale_path.name} l10n",
         "items": []
     }
 
@@ -106,10 +106,11 @@ def write_locale_index(locale_path, loc_docs_output_path):
 
 
 def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
+
     index_json = {
         "title": get_product_name_from_code(product_path.name),
         "template": "page.j2",
-        "class": "threeCards",
+        "class": f"threeCards version {product_path.parent.name} l10n",
         "items": []
     }
 
@@ -170,7 +171,6 @@ def empty_tree(path: Path):
 # TODO: by default check for PDFs in the folders to avoid creating
 #       configs that go nowhere. Give an option to ignore that as
 #       it is useful for testing to build more.
-# TODO: create docker image
 # TODO: add readme.md
 # TODO: add logging, including errors for undefined locales or product codes
 # TODO: add strict mode

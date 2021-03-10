@@ -386,6 +386,10 @@ div.pageHero {
   box-shadow: 0 0 1pt gray;
 }
 
+.l10n #cloudToggle {
+  display: none;
+}
+
 #cloudToggle > a {
   margin: 0;
   display: inline-block;
@@ -650,6 +654,26 @@ main.support h2 {
 
 .docBreadcrumb a:last-child::after {
   content: none;
+}
+
+#pageSelectorContainer::before {
+  content: 'Select page: ';
+}
+
+.l10n #pageSelectorContainer::before {
+  content: 'Select locale: ';
+}
+.de-DE.product #pageSelectorContainer::before {
+  content: 'Sprache wählen: ';
+}
+.de-DE.version #pageSelectorContainer::before {
+  content: 'Produkt auswählen: ';
+}
+.fr-FR.product #pageSelectorContainer::before {
+  content: 'Choisir la langue: ';
+}
+.fr-FR.version #pageSelectorContainer::before {
+  content: 'Choisissez un produit: ';
 }
 
 #pageSelector {

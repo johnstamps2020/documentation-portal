@@ -161,18 +161,16 @@
             }
         </script>
 
-        <div>
-            <label for="pageSelector">Select page:
-                <select onchange="selectPage()" id="pageSelector">
-                    <option value="{{ data.get('current_page').get('path') }}"
-                            selected="selected">{{ data.get('current_page').get('label') }}</option>
-                    {% for sibling in data.get('siblings') %}
-                        <option value="{{ sibling.get('path') }}">
-                            {{ sibling.get('label') }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </label>
+        <div id="pageSelectorContainer">
+            <select onchange="selectPage()" id="pageSelector">
+                <option value="{{ data.get('current_page').get('path') }}"
+                        selected="selected">{{ data.get('current_page').get('label') }}</option>
+                {% for sibling in data.get('siblings') %}
+                    <option value="{{ sibling.get('path') }}">
+                        {{ sibling.get('label') }}
+                    </option>
+                {% endfor %}
+            </select>
         </div>
     {% endif %}
     {% macro create_block(label, class, items, id, page, public) -%}
