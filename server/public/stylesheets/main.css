@@ -739,15 +739,12 @@ html:not(.has-tabbed) .GuidewireSites-module--ItemWrapper--2ifWD {
   position: absolute;
   z-index: 10;
   min-width: 180px;
-  top: 48px;
+  top: 22px;
   right: 0;
-  padding: 20px;
-  background-color: #e5f1f5;
+  padding: 44px 20px 20px 20px;
+  /* background-color: #e5f1f5; */
+  background: linear-gradient(180deg, transparent 26px, #e5f1f5 26px 100%);
   list-style: none;
-}
-
-.GuidewireSites-module--SubNavigation--7D7mT {
-  padding: 20px;
 }
 
 .GuidewireSites-module--HasSubmenu--9DJq1 {
