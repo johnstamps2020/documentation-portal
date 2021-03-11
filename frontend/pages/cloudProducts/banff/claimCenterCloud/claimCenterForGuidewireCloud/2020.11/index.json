@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "ClaimCenter for Guidewire Cloud 2020.11",
   "template": "page.j2",
   "class": "twoColumns",
@@ -14,6 +15,14 @@
         {
           "label": "New and Changed",
           "id": "iscc202011newandchanged"
+        },
+        {
+          "label": "Test Automation Release Notes",
+          "id": "testingframeworksrnbanff"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn202011"
         }
       ]
     },
@@ -92,8 +101,24 @@
           "id": "iscc202011integ"
         },
         {
+          "label": "Cloud API",
+          "id": "iscc202011cloudapi"
+        },
+        {
+          "label": "ClaimCenter Cloud API Reference",
+          "id": "iscc202011apiref"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc202011restapifw"
+        },
+        {
           "label": "REST API Client",
           "id": "is202011restapiclient"
+        },
+        {
+          "label": "Contact Management API Reference",
+          "id": "is202011contactapi"
         }
       ]
     },
@@ -106,12 +131,16 @@
           "id": "iscc202011gosu"
         },
         {
-          "label": "Testing",
+          "label": "ISBTF and GUnit Testing",
           "id": "iscc202011testing"
         },
         {
-          "label": "Cloud API Reference",
-          "id": "iscc202011apiref"
+          "label": "API Testing",
+          "id": "testingframeworksapibanff"
+        },
+        {
+          "label": "User Interface Testing",
+          "id": "testingframeworksuibanff"
         }
       ]
     },

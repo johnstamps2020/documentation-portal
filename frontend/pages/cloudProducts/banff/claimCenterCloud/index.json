@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "ClaimCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
@@ -9,7 +10,7 @@
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ClaimCenterForGuidewireCloud/2020.11"
+          "page": "claimCenterForGuidewireCloud/2020.11"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -31,7 +32,12 @@
         },
         {
           "label": "Explore",
-          "id": null
+          "page": "../../explore/latest",
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
         },
         {
           "label": "Predictive Analytics",
