@@ -660,6 +660,10 @@ main.support h2 {
   content: 'Select page: ';
 }
 
+.cortina #pageSelectorContainer::before {
+  color: white;
+}
+
 .l10n #pageSelectorContainer::before {
   content: 'Select locale: ';
 }
