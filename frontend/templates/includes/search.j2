@@ -1,0 +1,48 @@
+{% set ns = namespace(found=false) %}
+{% set ns.placeholder = 'Search' %}
+{% if data.get('class') %}
+    {% if 'l10n' in data.get('class') %}
+        {% if ' de-DE ' in data.get('class') %}
+            {% set ns.placeholder = 'Suche' %}
+        {% endif %}
+        {% if ' fr-FR ' in data.get('class') %}
+            {% set ns.placeholder = 'Chercher' %}
+        {% endif %}
+        {% if ' es-ES ' in data.get('class') %}
+            {% set ns.placeholder = 'Buscar' %}
+        {% endif %}
+        {% if ' es-LA ' in data.get('class') %}
+            {% set ns.placeholder = 'Buscar' %}
+        {% endif %}
+        {% if ' it-IT ' in data.get('class') %}
+            {% set ns.placeholder = 'Ricerca' %}
+        {% endif %}
+        {% if ' ja-JP ' in data.get('class') %}
+            {% set ns.placeholder = '探す' %}
+        {% endif %}
+        {% if ' nl-NL ' in data.get('class') %}
+            {% set ns.placeholder = 'Zoeken' %}
+        {% endif %}
+        {% if ' pt-BR ' in data.get('class') %}
+            {% set ns.placeholder = 'Procurar' %}
+        {% endif %}
+        {% if ' ru ' in data.get('class') %}
+            {% set ns.placeholder = 'Поиск' %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+<form action="/search">
+  <div class="searchWrapper">
+    <input
+      name="q"
+      id="searchField"
+      class="searchField"
+      type="search"
+      placeholder="{{ ns.placeholder }}"
+      aria-label="{{ ns.placeholder }}"
+    />
+    <button type="submit" class="searchButton" aria-label="{{ ns.placeholder }}">
+      {{ ns.placeholder }}
+    </button>
+  </div>
+</form>
