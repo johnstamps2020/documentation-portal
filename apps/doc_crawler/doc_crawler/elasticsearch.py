@@ -34,6 +34,9 @@ class ElasticClient(Elasticsearch):
                 },
                 "public": {
                     "type": "boolean"
+                },
+                "internal": {
+                    "type": "boolean"
                 }
             }
         }

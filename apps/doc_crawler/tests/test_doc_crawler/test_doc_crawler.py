@@ -70,6 +70,18 @@ def test_index_has_entries(elastic_client):
     assert number_of_index_entries == 27
 
 
+def test_topic_has_internal_property(elastic_client):
+    search_results = elastic_client.search(index=index_name, body={
+        "query": {
+            "match": {
+                "id": "/cloud/gcp/latest/topics/c_accessing-deployed-applications.html"
+            }
+        }
+    })
+    found_doc = search_results['hits']['hits'][0]['_source']
+    assert found_doc['internal'] is True
+
+
 def test_delete_entries_by_query(elastic_client):
     entries_with_id_existed = False
     entries_with_id_deleted = False

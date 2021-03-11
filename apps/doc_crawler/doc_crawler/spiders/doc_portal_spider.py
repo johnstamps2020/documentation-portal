@@ -67,6 +67,10 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_version = doc_object['metadata']['version']
             index_entry_public = doc_object['public']
 
+            is_index_entry_internal = response.xpath(
+                '/html/head/meta[@name="internal" and @content="true"]').get()
+            index_entry_internal = True if is_index_entry_internal else False
+
             dita_default_selector = response.xpath(
                 '//*[contains(@class, "body")]')
             dita_chunk_selector = response.xpath(
@@ -104,7 +108,8 @@ class DocPortalSpider(scrapy.Spider):
                 product=index_entry_product,
                 platform=index_entry_platform,
                 version=index_entry_version,
-                public=index_entry_public
+                public=index_entry_public,
+                internal=index_entry_internal
             )
 
             yield index_entry
