@@ -68,7 +68,7 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_public = doc_object['public']
 
             is_index_entry_internal = response.xpath(
-                '/html/head/meta[property="internal" and value="true"]')
+                '/html/head/meta[@name="internal" and @content="true"]').get()
             index_entry_internal = True if is_index_entry_internal else False
 
             dita_default_selector = response.xpath(
