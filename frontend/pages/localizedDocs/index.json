@@ -11,12 +11,12 @@
     {
       "label": "Español (España)",
       "class": "productFamily cardShadow",
-      "page": "en-ES"
+      "page": "es-ES"
     },
     {
       "label": "Español",
       "class": "productFamily cardShadow",
-      "page": "en-LA"
+      "page": "es-LA"
     },
     {
       "label": "Français",

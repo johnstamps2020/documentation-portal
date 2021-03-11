@@ -10,8 +10,8 @@ import re
 
 locale_codes_labels = {
     'de-DE': {'label': 'Deutsch'},
-    'en-ES': {'label': 'Español (España)'},
-    'en-LA': {'label': 'Español'},
+    'es-ES': {'label': 'Español (España)'},
+    'es-LA': {'label': 'Español'},
     'fr-FR': {'label': 'Français'},
     'it-IT': {'label': 'Italiano'},
     'ja-JP': {'label': '日本語'},

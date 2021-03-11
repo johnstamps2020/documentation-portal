@@ -1,6 +1,6 @@
 {
   "title": "Español (España)",
   "template": "page.j2",
-  "class": "threeCards product en-ES l10n",
+  "class": "threeCards product es-ES l10n",
   "items": []
 }
