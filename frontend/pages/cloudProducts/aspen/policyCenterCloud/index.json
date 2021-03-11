@@ -62,7 +62,7 @@
         },
         {
           "label": "Explore",
-          "page": "../explore/latest",
+          "page": "../../explore/latest",
           "env": [
             "dev",
             "int",

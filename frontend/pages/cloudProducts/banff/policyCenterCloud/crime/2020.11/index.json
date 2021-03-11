@@ -1,0 +1,29 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Crime Standards Based Template 2020.11",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "lobcrimesbtrnbanff"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Crime Standards Based Template Guide",
+          "id": "lobcrimeguidebanff"
+        }
+      ]
+    }
+  ]
+}
+  

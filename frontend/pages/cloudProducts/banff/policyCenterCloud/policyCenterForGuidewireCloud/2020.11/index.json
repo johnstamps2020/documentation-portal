@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "PolicyCenter for Guidewire Cloud 2020.11",
   "template": "page.j2",
   "class": "twoColumns",
@@ -14,6 +15,14 @@
         {
           "label": "New and Changed",
           "id": "ispc202011newandchanged"
+        },
+        {
+          "label": "Test Automation Release Notes",
+          "id": "testingframeworksrnbanff"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn202011"
         }
       ]
     },
@@ -70,6 +79,10 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Advanced Product Designer",
+          "id": "ispc202011apd"
+        },
+        {
           "label": "Configuration",
           "id": "ispc202011config"
         },
@@ -80,6 +93,14 @@
         {
           "label": "Rules",
           "id": "ispc202011rules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc202011pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc202011pm"
         }
       ]
     },
@@ -92,8 +113,20 @@
           "id": "ispc202011integ"
         },
         {
+          "label": "Cloud API",
+          "id": "ispc202011cloudapi"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc202011restapifw"
+        },
+        {
           "label": "REST API Client",
           "id": "is202011restapiclient"
+        },
+        {
+          "label": "Contact Management API Reference",
+          "id": "is202011contactapi"
         }
       ]
     },
@@ -106,12 +139,16 @@
           "id": "ispc202011gosu"
         },
         {
-          "label": "Testing",
+          "label": "ISBTF and GUnit Testing",
           "id": "ispc202011testing"
         },
         {
-          "label": "Cloud API Reference",
-          "id": null
+          "label": "API Testing",
+          "id": "testingframeworksapibanff"
+        },
+        {
+          "label": "User Interface Testing",
+          "id": "testingframeworksuibanff"
         }
       ]
     },
@@ -122,23 +159,6 @@
         {
           "label": "Glossary",
           "id": "is202011glossary"
-        }
-      ]
-    },
-    {
-      "label": "Super secret in-development docs",
-      "class": "subject topsecret",
-      "env": [
-        "int"
-      ],
-      "items": [
-        {
-          "label": "Shhh",
-          "id": null
-        },
-        {
-          "label": "Don't tell anyone",
-          "id": null
         }
       ]
     }
