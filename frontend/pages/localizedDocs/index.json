@@ -1,7 +1,7 @@
 {
   "title": "Localized Documentation",
   "template": "page.j2",
-  "class": "threeCards",
+  "class": "threeCards l10n",
   "items": [
     {
       "label": "Deutsch",
@@ -9,19 +9,14 @@
       "page": "de-DE"
     },
     {
+      "label": "Español (España)",
+      "class": "productFamily cardShadow",
+      "page": "en-ES"
+    },
+    {
       "label": "Español",
       "class": "productFamily cardShadow",
       "page": "en-LA"
-    },
-    {
-      "label": "Español (España)",
-      "class": "productFamily cardShadow",
-      "page": "en-LA"
-    },
-    {
-      "label": "Deutsch",
-      "class": "productFamily cardShadow",
-      "page": "de-DE"
     },
     {
       "label": "Français",
@@ -39,19 +34,14 @@
       "page": "ja-JP"
     },
     {
-      "label": "Nederlands",
-      "class": "productFamily cardShadow",
-      "page": "nl-NL"
-    },
-    {
       "label": "Português",
       "class": "productFamily cardShadow",
       "page": "pt-BR"
     },
     {
-      "label": "Pусский",
+      "label": "Undefined",
       "class": "productFamily cardShadow",
-      "page": "ru"
+      "page": "xx-YY"
     }
   ]
 }

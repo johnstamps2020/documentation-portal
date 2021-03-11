@@ -1,0 +1,22 @@
+{
+  "title": "Français",
+  "template": "page.j2",
+  "class": "threeCards product fr-FR l10n",
+  "items": [
+    {
+      "label": "BillingCenter",
+      "class": "productFamily cardShadow",
+      "page": "bc"
+    },
+    {
+      "label": "ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "cc"
+    },
+    {
+      "label": "PolicyCenter",
+      "class": "productFamily cardShadow",
+      "page": "pc"
+    }
+  ]
+}

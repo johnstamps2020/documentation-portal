@@ -1,0 +1,6 @@
+{
+  "title": "日本語",
+  "template": "page.j2",
+  "class": "threeCards product ja-JP l10n",
+  "items": []
+}

@@ -1,0 +1,31 @@
+{
+  "title": "BillingCenter",
+  "template": "page.j2",
+  "class": "threeCards version fr-FR l10n",
+  "items": [
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "link": "/fr-FR/bc/2020.11/InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/bc/2020.05/ISCL_202005_fr_BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/fr-FR/bc/2020.05/ISCL_202005_fr_BC_ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

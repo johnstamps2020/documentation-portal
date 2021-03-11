@@ -1,0 +1,6 @@
+{
+  "title": "Italiano",
+  "template": "page.j2",
+  "class": "threeCards product it-IT l10n",
+  "items": []
+}
