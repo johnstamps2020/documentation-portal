@@ -10,17 +10,20 @@
       "items": [
         {
           "label": "Core Release Notes",
-          "id": "in20201xrndraft"
+          "id": "in20202xrndraft"
         },
         {
           "label": "Release Video",
-          "id": "in20201xreleaseviddraft"
+          "id": "in20202xreleaseviddraft"
         },
         {
           "label": "Studio Release Notes",
-          "id": "in20201xstudiorndraft"
+          "id": "in20202xstudiorndraft"
         },
         {
+          "label": "Consumer Service Portal 3.24 Release Notes",
+          "id": "incsp324rndraft"
+        },        {
           "label": "Consumer Service Portal 3.23 Release Notes",
           "id": "incsp323rndraft"
         }
@@ -32,11 +35,15 @@
       "items": [
         {
           "label": "Business Intelligence Getting Started Guide",
-          "id": "in20201xbidraft"
+          "id": "in20202xbidraft"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20202xcsalespdraft"
         },
         {
           "label": "Consumer Service Portal Features",
-          "id": "in20201xcservicepdraft"
+          "id": "in20202xcservicepdraft"
         }
       ]
     },
@@ -46,11 +53,11 @@
       "items": [
         {
           "label": "AppReader Integration",
-          "id": "in20201xappreaderintegdraft"
+          "id": "in20202xappreaderintegdraft"
         },
         {
           "label": "Predictive Analytics Integration",
-          "id": "in20201xpadraft"
+          "id": "in20202xpadraft"
         }
       ]
     },
@@ -60,15 +67,19 @@
       "items": [
         {
           "label": "Core Configuration Guide",
-          "id": "in20201xconfigdraft"
+          "id": "in20202xconfigdraft"
         },
         {
           "label": "Studio Configuration Guide",
-          "id": "in20201xstudiodraft"
+          "id": "in20202xstudiodraft"
         },
         {
           "label": "Portal Development",
-          "id": "in20201xportaldevdraft"
+          "id": "in20202xportaldevdraft"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20202xprodattrefdraft"
         }
       ]
     }

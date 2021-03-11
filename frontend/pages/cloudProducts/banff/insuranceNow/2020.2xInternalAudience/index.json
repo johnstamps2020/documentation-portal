@@ -10,15 +10,19 @@
       "items": [
         {
           "label": "Core Release Notes",
-          "id": "in20201xrndraft"
+          "id": "in20202xrndraft"
         },
         {
           "label": "Release Video",
-          "id": "in20201xreleaseviddraft"
+          "id": "in20202xreleaseviddraft"
         },
         {
           "label": "Studio Release Notes",
-          "id": "in20201xstudiorndraft"
+          "id": "in20202xstudiorndraft"
+        },
+        {
+          "label": "Consumer Service Portal 3.24 Release Notes",
+          "id": "incsp324rndraft"
         },
         {
           "label": "Consumer Service Portal 3.23 Release Notes",
@@ -32,15 +36,19 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "in20201xappdraft"
+          "id": "in20202xappdraft"
         },
         {
           "label": "Business Intelligence Getting Started Guide",
-          "id": "in20201xbidraft"
+          "id": "in20202xbidraft"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20202xcsalespdraft"
         },
         {
           "label": "Consumer Service Portal Features",
-          "id": "in20201xcservicepdraft"
+          "id": "in20202xcservicepdraft"
         }
       ]
     },
@@ -50,19 +58,15 @@
       "items": [
         {
           "label": "AppReader Integration",
-          "id": "in20201xappreaderintegdraft"
+          "id": "in20202xappreaderintegdraft"
         },
         {
           "label": "Business Intelligence Integration",
-          "id": "in20201xbiintegdraft"
-        },
-        {
-          "label": "Guidewire Payments API Integration",
-          "id": "in20201xpaymentapiintegdraft"
+          "id": "in20202xbiintegdraft"
         },
         {
           "label": "Predictive Analytics Integration",
-          "id": "in20201xpadraft"
+          "id": "in20202xpadraft"
         }
       ]
     },
@@ -72,19 +76,35 @@
       "items": [
         {
           "label": "Core Configuration Guide",
-          "id": "in20201xconfigdraft"
+          "id": "in20202xconfigdraft"
+        },
+        {
+          "label": "Consumer Service Portal Configuration Guide",
+          "id": "in20202xcservicepconfigdraft"
         },
         {
           "label": "Studio Configuration Guide",
-          "id": "in20201xstudiodraft"
+          "id": "in20202xstudiodraft"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20202xprovportaldraft"
         },
         {
           "label": "Portal Development",
-          "id": "in20201xportaldevdraft"
+          "id": "in20202xportaldevdraft"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20202xprodattrefdraft"
         },
         {
           "label": "Underwriting Product Configuration Guide",
-          "id": "in20201xuwconfigdraft"
+          "id": "in20202xuwconfigdraft"
+        },
+        {
+          "label": "Claims Product Configuration Guide",
+          "id": "in20202xclaimsconfigdraft"
         },
         {
           "label": "Upgrade Tools",

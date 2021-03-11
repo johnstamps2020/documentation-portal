@@ -53,7 +53,12 @@
     {
       "label": "Guidewire Cloud Standards",
       "class": "productFamily cardShadow",
-      "id": "standardslatest"
+      "id": "standards202102"
+    },
+    {
+      "label": "Guidewire Cloud Standards",
+      "class": "productFamily cardShadow",
+      "id": "standardsdraft"
     },
     {
       "label": "Integration Framework",
