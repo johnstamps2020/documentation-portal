@@ -1,3 +1,5 @@
+import copy
+
 import json
 import shutil
 from typing import List
@@ -54,6 +56,7 @@ def get_siblings(page_dir: Path):
 
 
 def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: List):
+    filtered_items = []
     for item in items:
         if item.get('id'):
             matching_doc_object = next(
@@ -68,13 +71,13 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
                     # FIXME: The empty parent dir is not deleted. For example, when we have explore/latest and latest
                     # FIXME: contains index.json and explore is empty, only latest is deleted
                     shutil.rmtree(page_path)
-            # FIXME: Not all items are filtered out. It happens when you have two similar items next to each other.
-            # FIXME: For example, DataHub and InfoCenter for Self-managed. One doc is for dev, staging, prod and the
-            # FIXME: other for int. Another example, InsuranceNow - External Audience is not filtered from staging, dev, prod
-            items.remove(item)
-        if item.get('items'):
-            filter_by_env(deploy_env, current_page_dir, item['items'], docs)
-    return items
+        else:
+            item_to_include = copy.deepcopy(item)
+            if item_to_include.get('items'):
+                inner_items = filter_by_env(deploy_env, current_page_dir, item['items'], docs)
+                item_to_include['items'] = inner_items
+            filtered_items.append(item_to_include)
+    return filtered_items
 
 
 def resolve_links(items: List, docs: List):
