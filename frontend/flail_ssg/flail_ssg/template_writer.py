@@ -8,7 +8,8 @@ from jinja2 import FileSystemLoader
 from flail_ssg import logger
 
 _log_file = Path.cwd() / 'template_writer_logger.log'
-_template_writer_logger = logger.configure_logger('template_writer_logger', 'info', _log_file)
+_template_writer_logger = logger.configure_logger(
+    'template_writer_logger', 'info', _log_file)
 
 
 def write_to_file(out_file_path: Path, data: Dict, template_file: Path):
@@ -28,7 +29,7 @@ def write_to_file(out_file_path: Path, data: Dict, template_file: Path):
 
     out_file_path.parent.mkdir(exist_ok=True)
 
-    new_file = out_file_path.open('w')
+    new_file = out_file_path.open('w', encoding='utf-8')
     new_file.write(content)
 
 
@@ -37,7 +38,7 @@ def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir:
 
     for index_json_file in build_dir.rglob('**/*.json'):
         try:
-            index_json = json.load(index_json_file.open())
+            index_json = json.load(index_json_file.open(encoding='utf-8'))
             _template_writer_logger.info(
                 f'Building "{index_json["title"]}" page from "{index_json["template"]}" template')
             page_template = templates_dir / index_json['template']
@@ -49,7 +50,8 @@ def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir:
             )
         except Exception as e:
             if send_bouncer_home:
-                _template_writer_logger.warning('**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+                _template_writer_logger.warning(
+                    '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
             else:
                 raise e
 

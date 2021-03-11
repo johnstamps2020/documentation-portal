@@ -27,7 +27,8 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     path = ''
     for parent in sorted(page_dir.parents, key=lambda p: page_dir.parents.index(p), reverse=True):
         if (parent / 'index.json').exists() and parent != build_dir:
-            parent_title = json.load((parent / 'index.json').open())['title']
+            parent_title = json.load(
+                (parent / 'index.json').open(encoding='utf-8'))['title']
             path += f'/{parent.name}'
             breadcrumbs.append(
                 {
@@ -45,7 +46,7 @@ def get_siblings(page_dir: Path):
         if path.is_dir():
             index_json = path / 'index.json'
             if index_json.exists() and path != page_dir:
-                sibling_json = json.load(index_json.open())
+                sibling_json = json.load(index_json.open(encoding='utf-8'))
                 siblings.append(
                     {
                         'label': sibling_json['title'],
@@ -74,7 +75,8 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
         else:
             item_to_include = copy.deepcopy(item)
             if item_to_include.get('items'):
-                inner_items = filter_by_env(deploy_env, current_page_dir, item['items'], docs)
+                inner_items = filter_by_env(
+                    deploy_env, current_page_dir, item['items'], docs)
                 item_to_include['items'] = inner_items
             filtered_items.append(item_to_include)
     return filtered_items
@@ -98,7 +100,7 @@ def process_page(index_file: Path,
                  send_bouncer_home: bool):
     index_file_absolute = index_file.resolve()
     page_dir = index_file_absolute.parent
-    index_json = json.load(index_file_absolute.open())
+    index_json = json.load(index_file_absolute.open(encoding='utf-8'))
     try:
         page_items = index_json.get('items')
         if page_items:
@@ -121,7 +123,8 @@ def process_page(index_file: Path,
         else:
             raise e
     finally:
-        json.dump(index_json, index_file_absolute.open('w'), indent=2)
+        json.dump(index_json, index_file_absolute.open(
+            'w', encoding='utf-8'), indent=2)
 
 
 def mark_public_on_page(page_path: Path, any_doc_or_page_is_public: bool, docs: List):
@@ -149,12 +152,13 @@ def mark_public_on_page(page_path: Path, any_doc_or_page_is_public: bool, docs: 
         return page_items, marked_any_item_as_public
 
     try:
-        file_json = json.load(page_path.open())
+        file_json = json.load(page_path.open(encoding='utf-8'))
         items = file_json.get('items')
         if items:
             file_json['items'], any_doc_or_page_is_public = mark_items_as_public(
                 items, any_doc_or_page_is_public)
-            json.dump(file_json, page_path.open('w'), indent=2)
+            json.dump(file_json, page_path.open(
+                'w', encoding='utf-8'), indent=2)
         return any_doc_or_page_is_public
     except Exception as e:
         raise e
@@ -162,7 +166,7 @@ def mark_public_on_page(page_path: Path, any_doc_or_page_is_public: bool, docs: 
 
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
                   docs_config_file: Path):
-    config_file_json = json.load(docs_config_file.open())
+    config_file_json = json.load(docs_config_file.open(encoding='utf-8'))
     docs = config_file_json['docs']
 
     _generator_logger.info('PROCESS STARTED: Generate pages')
