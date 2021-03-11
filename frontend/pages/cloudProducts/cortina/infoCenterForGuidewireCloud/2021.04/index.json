@@ -1,0 +1,11 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InfoCenter for Guidewire Cloud 2021.04",
+  "template": "page.j2",
+  "class": "cortina threeCards",
+  "items": [
+    {
+      "title": "Release Notes"
+    }
+  ]
+}

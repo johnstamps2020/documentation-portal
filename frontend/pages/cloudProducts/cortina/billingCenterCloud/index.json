@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "BillingCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
@@ -6,21 +7,17 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
+      "env": [
+        "int"
+      ],
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/2021.04"
-        },
-        {
-          "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/latest",
-          "env": [
-            "int"
-          ]
+          "page": "billingCenterForGuidewireCloud/latest"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools310"
+          "id": "isconfigupgradetools3x"
         }
       ]
     },
@@ -29,12 +26,11 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Cloud Data Access",
-          "id": null
-        },
-        {
-          "label": "Explore",
-          "id": null
+          "title": "Cloud Data Access",
+          "page": "../cloudDataAccess/latest",
+          "env": [
+            "int"
+          ]
         },
         {
           "label": "Add-ons",
@@ -42,27 +38,22 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../datahub"
+              "page": "../dataHubForGuidewireCloud/2021.04"
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../infocenter"
+              "page": "../infoCenterForGuidewireCloud/2021.04"
             }
           ]
-        },
-        {
-          "label": "Cloud Data Access",
-          "id": "clouddataaccessbanff"
-        },
-        {
-          "label": "Explore",
-          "id": null
         }
       ]
     },
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": [
+        "int"
+      ],
       "items": [
         {
           "label": "Digital Applications",
@@ -70,25 +61,15 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../digital/ce-am/2021.04"
+              "page": "../customerEngageAccountManagement/latest"
             },
             {
               "label": "ProducerEngage",
-              "page": "../digital/pe/2021.04"
+              "page": "../producerEngage/latest"
             },
             {
               "label": "ServiceRepEngage",
-              "page": "../digital/sre/2021.04"
-            }
-          ]
-        },
-        {
-          "label": "Digital Framework",
-          "class": "group",
-          "items": [
-            {
-              "label": "Jutro Design System",
-              "page": "../../../jutro/4.1.1"
+              "page": "../serviceRepEngage/latest"
             }
           ]
         }

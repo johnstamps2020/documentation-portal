@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceNow 2021.1",
+  "title": "InsuranceNow 2021.1x - External Audience",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,23 +10,22 @@
       "items": [
         {
           "label": "Core Release Notes",
-          "id": "in20211rn"
+          "id": "in20211xrndraft"
         },
         {
           "label": "Release Video",
-          "id": "in20211releasevid"
+          "id": "in20211xreleaseviddraft"
         },
         {
           "label": "Studio Release Notes",
-          "id": "in20211studiorn"
+          "id": "in20211xstudiorndraft"
         },
         {
           "label": "Consumer Service Portal 3.24 Release Notes",
-          "id": "in20211csp324rn"
-        },
-        {
+          "id": "incsp324rndraft"
+        },        {
           "label": "Consumer Service Portal 3.23 Release Notes",
-          "id": "in20211csp323rn"
+          "id": "incsp323rndraft"
         }
       ]
     },
@@ -36,15 +35,15 @@
       "items": [
         {
           "label": "Business Intelligence Getting Started Guide",
-          "id": "in20211bi"
+          "id": "in20211xbidraft"
         },
         {
           "label": "Consumer Sales Portal Features",
-          "id": "in20211csalesp"
+          "id": "in20211xcsalespdraft"
         },
         {
           "label": "Consumer Service Portal Features",
-          "id": "in20211cservicep"
+          "id": "in20211xcservicepdraft"
         }
       ]
     },
@@ -54,11 +53,11 @@
       "items": [
         {
           "label": "AppReader Integration",
-          "id": "in20211appreaderinteg"
+          "id": "in20211xappreaderintegdraft"
         },
         {
           "label": "Predictive Analytics Integration",
-          "id": "in20211pa"
+          "id": "in20211xpadraft"
         }
       ]
     },
@@ -68,22 +67,21 @@
       "items": [
         {
           "label": "Core Configuration Guide",
-          "id": "in20211config"
+          "id": "in20211xconfigdraft"
         },
         {
           "label": "Studio Configuration Guide",
-          "id": "in20211studio"
+          "id": "in20211xstudiodraft"
         },
         {
           "label": "Portal Development",
-          "id": "in20211portaldev"
+          "id": "in20211xportaldevdraft"
         },
         {
           "label": "Product Attribute Reference",
-          "id": "in20211prodattref"
+          "id": "in20211xprodattrefdraft"
         }
       ]
     }
   ]
 }
-  
