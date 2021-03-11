@@ -15,6 +15,10 @@
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools310"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
         }
       ]
     },
@@ -38,6 +42,11 @@
         {
           "label": "Add-ons",
           "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
@@ -58,6 +67,11 @@
         {
           "label": "Digital Applications",
           "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
           "items": [
             {
               "label": "CustomerEngage Account Management",
