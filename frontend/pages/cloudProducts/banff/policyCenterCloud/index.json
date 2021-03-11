@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "PolicyCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
@@ -9,19 +10,41 @@
       "items": [
         {
           "label": "PolicyCenter for Guidewire Cloud",
-          "page": "PolicyCenterForGuidewireCloud/2020.11"
+          "page": "policyCenterForGuidewireCloud/2020.11"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools310"
         },
         {
-          "label": "Lines of Business Standards-based Templates",
-          "page": "linesOfBusiness",
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
+        },
+        {
+          "label": "Lines of business",
+          "class": "group",
           "env": [
             "dev",
             "int",
             "staging"
+          ],
+          "items": [
+            {
+              "label": "Businessowners Standards Based Template",
+              "page": "businessowners/2020.11"
+            },
+            {
+              "label": "Commercial Auto Standards Based Template",
+              "page": "commercialAuto/2020.11"
+            },
+            {
+              "label": "Crime Standards Based Template",
+              "page": "crime/2020.11"
+            },
+            {
+              "label": "General Liability Standards Based Template",
+              "page": "generalLiability/2020.11"
+            }
           ]
         }
       ]
@@ -36,7 +59,12 @@
         },
         {
           "label": "Explore",
-          "id": null
+          "page": "../../explore/latest",
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
         },
         {
           "label": "Predictive Analytics",
@@ -45,6 +73,11 @@
         {
           "label": "Add-ons",
           "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
@@ -65,6 +98,11 @@
         {
           "label": "Digital Applications",
           "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
           "items": [
             {
               "label": "CustomerEngage Account Management",
@@ -91,6 +129,21 @@
             {
               "label": "Jutro Design System",
               "page": "../../../jutro/4.1.1"
+            }
+          ]
+        },
+        {
+          "label": "Add-ons",
+          "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
+          "items": [
+            {
+              "label": "Digital Code Generation Extension Pack",
+              "id": "dxapd202011"
             }
           ]
         }

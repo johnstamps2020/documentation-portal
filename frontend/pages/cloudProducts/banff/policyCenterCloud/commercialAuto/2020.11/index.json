@@ -1,5 +1,6 @@
 {
-  "title": "Commercial Auto Standards Based Template",
+  "$schema": "/frontend/page-schema.json",
+  "title": "Commercial Auto Standards Based Template 2020.11",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -8,7 +9,7 @@
       "class": "subject releaseNotes",
       "items": [
         {
-          "label": "Countrywide Release Notes",
+          "label": "Release Notes",
           "id": "lobcasbtrnbanff"
         }
       ]
@@ -19,7 +20,7 @@
       "items": [
         {
           "label": "Commercial Auto Standards Based Template Guide",
-          "id": null
+          "id": "lobcaguidebanff"
         }
       ]
     }

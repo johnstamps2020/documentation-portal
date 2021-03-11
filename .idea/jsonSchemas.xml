@@ -75,6 +75,18 @@
                   <Item>
                     <option name="path" value="frontend/pages/cloudProducts/aspen/insuranceNow/2020.1xExternalAudience/index.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/banff/policyCenterCloud/policyCenterForGuidewireCloud/2020.11/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/banff/claimCenterCloud/claimCenterForGuidewireCloud/2020.11/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/banff/claimCenterCloud/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/banff/billingCenterCloud/billingCenterForGuidewireCloud/2020.11/index.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
