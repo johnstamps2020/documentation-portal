@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceNow 2020.2",
+  "title": "InsuranceNow 2020.2x - External Audience",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,23 +10,22 @@
       "items": [
         {
           "label": "Core Release Notes",
-          "id": "in20202rn"
+          "id": "in20202xrndraft"
         },
         {
           "label": "Release Video",
-          "id": "in20202releasevid"
+          "id": "in20202xreleaseviddraft"
         },
         {
           "label": "Studio Release Notes",
-          "id": "in20202studiorn"
+          "id": "in20202xstudiorndraft"
         },
         {
           "label": "Consumer Service Portal 3.24 Release Notes",
-          "id": "in20202csp324rn"
-        },
-        {
+          "id": "incsp324rndraft"
+        },        {
           "label": "Consumer Service Portal 3.23 Release Notes",
-          "id": "in20202csp323rn"
+          "id": "incsp323rndraft"
         }
       ]
     },
@@ -36,15 +35,15 @@
       "items": [
         {
           "label": "Business Intelligence Getting Started Guide",
-          "id": "in20202bi"
+          "id": "in20202xbidraft"
         },
         {
           "label": "Consumer Sales Portal Features",
-          "id": "in20202csalesp"
+          "id": "in20202xcsalespdraft"
         },
         {
           "label": "Consumer Service Portal Features",
-          "id": "in20202cservicep"
+          "id": "in20202xcservicepdraft"
         }
       ]
     },
@@ -54,11 +53,11 @@
       "items": [
         {
           "label": "AppReader Integration",
-          "id": "in20202appreaderinteg"
+          "id": "in20202xappreaderintegdraft"
         },
         {
           "label": "Predictive Analytics Integration",
-          "id": "in20202pa"
+          "id": "in20202xpadraft"
         }
       ]
     },
@@ -68,22 +67,21 @@
       "items": [
         {
           "label": "Core Configuration Guide",
-          "id": "in20202config"
+          "id": "in20202xconfigdraft"
         },
         {
           "label": "Studio Configuration Guide",
-          "id": "in20202studio"
+          "id": "in20202xstudiodraft"
         },
         {
           "label": "Portal Development",
-          "id": "in20202portaldev"
+          "id": "in20202xportaldevdraft"
         },
         {
           "label": "Product Attribute Reference",
-          "id": "in20202prodattref"
+          "id": "in20202xprodattrefdraft"
         }
       ]
     }
   ]
 }
-  

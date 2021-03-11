@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "BillingCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
@@ -14,6 +15,10 @@
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools310"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
         }
       ]
     },
@@ -27,11 +32,21 @@
         },
         {
           "label": "Explore",
-          "id": null
+          "page": "../../explore/latest",
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
         },
         {
           "label": "Add-ons",
           "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
@@ -52,6 +67,11 @@
         {
           "label": "Digital Applications",
           "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
           "items": [
             {
               "label": "CustomerEngage Account Management",

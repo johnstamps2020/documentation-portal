@@ -82,9 +82,7 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
 
 def resolve_links(items: List, docs: List):
     for item in items:
-        if item.get('link'):
-            item['id'] = item.get('link')
-        elif item.get('id'):
+        if item.get('id'):
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
             item['id'] = f'/{matching_doc_object["url"]}'
