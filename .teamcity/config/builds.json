@@ -891,7 +891,7 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaiiea",
+      "srcId": "gwhawaiidraft",
       "docId": "gwfeaturepreviewearlyaccess"
     },
     {
@@ -1132,14 +1132,16 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccessguidedraftsrc",
-      "docId": "clouddataaccessguidedraft"
+      "docId": "clouddataaccessguidedraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "b_relNotesCda.ditamap",
       "srcId": "clouddataaccessrndraftsrc",
-      "docId": "clouddataaccessrndraft"
+      "docId": "clouddataaccessrndraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
@@ -3935,6 +3937,11 @@
       "buildType": "yarn",
       "docId": "is202011apisecretbuild",
       "srcId": "srcapiref202011"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "is202011apisecretbuildalternate",
+      "srcId": "srcapiref202011alternate"
     },
     {
       "buildType": "dita",
