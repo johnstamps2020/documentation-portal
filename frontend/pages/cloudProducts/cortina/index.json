@@ -25,8 +25,7 @@
       "page": "insuranceNow/2021.1",
       "env": [
         "dev",
-        "staging",
-        "prod"
+        "staging"
       ]
     },
     {
@@ -48,7 +47,10 @@
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "../guidewireCloudPlatform"
+      "page": "guidewireCloudPlatform",
+      "env": [
+        "int"
+      ]
     },
     {
       "label": "Guidewire Cloud Standards",

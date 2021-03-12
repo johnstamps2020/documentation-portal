@@ -38,11 +38,33 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dataHubForGuidewireCloud/2021.04"
+              "page": "../dataHubForGuidewireCloud/2021.04",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "page": "../dataHubForGuidewireCloud/latest",
+              "env": [
+                "int"
+              ]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../infoCenterForGuidewireCloud/2021.04"
+              "page": "../infoCenterForGuidewireCloud/2021.04",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "page": "../infoCenterForGuidewireCloud/latest",
+              "env": [
+                "int"
+              ]
             }
           ]
         }

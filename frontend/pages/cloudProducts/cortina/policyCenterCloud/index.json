@@ -83,7 +83,7 @@
           "items": [
             {
               "label": "Digital Code Generation Extension Pack",
-              "id": "dxapd202011"
+              "page": "digitalCodeGenerationExtensionPack/latest"
             }
           ]
         }

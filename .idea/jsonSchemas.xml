@@ -87,6 +87,21 @@
                   <Item>
                     <option name="path" value="frontend/pages/cloudProducts/banff/billingCenterCloud/billingCenterForGuidewireCloud/2020.11/index.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/guidewireCloudPlatform/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/cortina/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/cortina/cloudDataAccess/latest/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/cortina/dataHubForGuidewireCloud/2021.04/index.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="frontend/pages/cloudProducts/cortina/infoCenterForGuidewireCloud/2021.04/index.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InfoCenter for Guidewire Cloud 2021.04",
+  "title": "InfoCenter for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "cortina threeCards",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "iccloudrncortina"
+          "id": "iccloudrndraft"
         }
       ]
     },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "iccloudinstallcortina"
+          "id": "iccloudinstalldraft"
         },
         {
           "label": "Upgrade Guide",
-          "id": "iccloudupgradecortina"
+          "id": "iccloudupgradedraft"
         }
       ]
     },
@@ -34,15 +34,15 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "iccloudproductcortina"
+          "id": "iccloudproductdraft"
         },
         {
           "label": "BI Application Guide",
-          "id": "iccloudbiappcortina"
+          "id": "iccloudbiappdraft"
         },
         {
           "label": "Reports Guide",
-          "id": "iccloudreportscortina"
+          "id": "iccloudreportsdraft"
         }
       ]
     },
@@ -52,7 +52,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "iccloudadmincortina"
+          "id": "iccloudadmindraft"
         }
       ]
     },
@@ -62,11 +62,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "iccloudconfigcortina"
+          "id": "iccloudconfigdraft"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "icclouddataspeccortina"
+          "id": "icclouddataspecdraft"
         }
       ]
     },
@@ -76,7 +76,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "icclouddevrefcortina"
+          "id": "icclouddevrefdraft"
         }
       ]
     }

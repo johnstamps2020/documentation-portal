@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InfoCenter for Guidewire Cloud 2021.04",
+  "title": "DataHub for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "cortina threeCards",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "iccloudrncortina"
+          "id": "dhcloudrndraft"
         }
       ]
     },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "iccloudinstallcortina"
+          "id": "dhcloudinstalldraft"
         },
         {
           "label": "Upgrade Guide",
-          "id": "iccloudupgradecortina"
+          "id": "dhcloudupgradedraft"
         }
       ]
     },
@@ -34,15 +34,7 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "iccloudproductcortina"
-        },
-        {
-          "label": "BI Application Guide",
-          "id": "iccloudbiappcortina"
-        },
-        {
-          "label": "Reports Guide",
-          "id": "iccloudreportscortina"
+          "id": "dhcloudproductdraft"
         }
       ]
     },
@@ -52,7 +44,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "iccloudadmincortina"
+          "id": "dhcloudadmindraft"
         }
       ]
     },
@@ -62,11 +54,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "iccloudconfigcortina"
+          "id": "dhcloudconfigdraft"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "icclouddataspeccortina"
+          "id": "dhclouddataspecdraft"
         }
       ]
     },
@@ -76,7 +68,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "icclouddevrefcortina"
+          "id": "dhclouddevrefdraft"
         }
       ]
     }

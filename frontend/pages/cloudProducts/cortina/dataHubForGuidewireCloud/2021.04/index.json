@@ -5,7 +5,72 @@
   "class": "cortina threeCards",
   "items": [
     {
-      "title": "Release Notes"
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dhcloudrncortina"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dhcloudinstallcortina"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dhcloudupgradecortina"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dhcloudproductcortina"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dhcloudadmincortina"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dhcloudconfigcortina"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dhclouddataspeccortina"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dhclouddevrefcortina"
+        }
+      ]
     }
   ]
 }
