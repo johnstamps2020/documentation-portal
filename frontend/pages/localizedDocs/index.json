@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "Localized Documentation",
   "template": "page.j2",
   "class": "threeCards l10n",
@@ -34,14 +35,24 @@
       "page": "ja-JP"
     },
     {
+      "label": "Nederlands",
+      "class": "productFamily cardShadow",
+      "page": "nl-NL"
+    },
+    {
       "label": "Português",
       "class": "productFamily cardShadow",
       "page": "pt-BR"
     },
     {
-      "label": "Undefined",
+      "label": "Pусский",
       "class": "productFamily cardShadow",
-      "page": "xx-YY"
+      "page": "ru"
+    },
+    {
+      "label": "Chinese",
+      "class": "productFamily cardShadow",
+      "page": "zh-CN"
     }
   ]
 }

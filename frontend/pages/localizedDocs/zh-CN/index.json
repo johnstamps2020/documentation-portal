@@ -1,11 +1,11 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Español",
+  "title": "Chinese",
   "template": "page.j2",
-  "class": "threeCards product es-LA l10n",
+  "class": "threeCards product zh-CN l10n",
   "selector": {
-    "label": "Seleccione el idioma",
-    "selectedItem": "Español",
+    "label": "选择语言",
+    "selectedItem": "Chinese",
     "items": [
       {
         "label": "Deutsch",
@@ -14,6 +14,10 @@
       {
         "label": "Español (España)",
         "page": "../es-ES"
+      },
+      {
+        "label": "Español",
+        "page": "../es-LA"
       },
       {
         "label": "Français",
@@ -38,10 +42,6 @@
       {
         "label": "Pусский",
         "page": "../ru"
-      },
-      {
-        "label": "Chinese",
-        "page": "../zh-CN"
       }
     ]
   },

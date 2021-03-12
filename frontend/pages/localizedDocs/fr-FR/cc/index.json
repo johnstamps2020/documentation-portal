@@ -1,7 +1,22 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "ClaimCenter",
   "template": "page.j2",
   "class": "threeCards version fr-FR l10n",
+  "selector": {
+    "label": "Choisissez un produit",
+    "selectedItem": "ClaimCenter",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      }
+    ]
+  },
   "items": [
     {
       "label": "2020.05",
@@ -14,6 +29,58 @@
         {
           "label": "Guide des personnes-ressources de Guidewire",
           "link": "/fr-FR/cc/2020.05/ISCL_202005_fr_CC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/cc/10.0.2/CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/fr-FR/cc/10.0.2/ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/fr-FR/cc/10.0.2/ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/cc/10.0.2/InstallGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/fr-FR/cc/10.0.2/RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/cc/10.0.0/fr-CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/fr-FR/cc/10.0.0/fr-CC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide de gestion des contacts",
+          "link": "/fr-FR/cc/10.0.0/fr-CC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/cc/10.0.0/fr-CC-InstallGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/fr-FR/cc/10.0.0/fr-CC-RulesGuide.pdf"
         }
       ]
     }
