@@ -12,14 +12,6 @@ _generator_logger = logger.configure_logger(
     'generator_logger', 'info', _log_file)
 
 
-def include_item(env: str, item_envs: List):
-    if not item_envs:
-        return True
-    elif env in item_envs:
-        return True
-    return False
-
-
 def create_breadcrumbs(page_dir: Path, build_dir: Path):
     if page_dir == build_dir:
         return None
@@ -40,6 +32,14 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     return breadcrumbs
 
 
+def include_item(env: str, item_envs: List):
+    if not item_envs:
+        return True
+    elif env in item_envs:
+        return True
+    return False
+
+
 def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: List):
     filtered_items = []
     for item in items:
@@ -53,8 +53,6 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
             if item.get('page'):
                 page_path = current_page_dir / item['page']
                 if page_path.exists():
-                    # FIXME: The empty parent dir is not deleted. For example, when we have explore/latest and latest
-                    # FIXME: contains index.json and explore is empty, only latest is deleted
                     shutil.rmtree(page_path)
         else:
             item_to_include = copy.deepcopy(item)
@@ -75,6 +73,34 @@ def resolve_links(items: List, docs: List):
         if item.get('items'):
             resolve_links(item['items'], docs)
     return items
+
+
+def remove_empty_dirs(root_path: Path):
+    removed_dirs = []
+    failed_removals = []
+    empty_dirs = [p for p in root_path.rglob(
+        '*') if p.is_dir() and not list(p.iterdir())]
+    for empty_dir in empty_dirs:
+        try:
+            empty_dir.rmdir()
+            removed_dirs.append(empty_dir)
+        except Exception as e:
+            failed_removals.append(
+                {'path': empty_dir,
+                 'error': e}
+            )
+
+    if removed_dirs:
+        _generator_logger.info(
+            f'Removed empty directories: {len(removed_dirs)}/{len(empty_dirs)}')
+        for i, removed_dir in enumerate(removed_dirs):
+            _generator_logger.info(f'\t{i + 1} {removed_dir}')
+    if failed_removals:
+        _generator_logger.info(
+            f'Failed to remove empty directories: {len(failed_removals)}/{len(empty_dirs)}')
+        for i, failed_removal in enumerate(failed_removals):
+            _generator_logger.info(
+                f'\t{i + 1} {failed_removal["path"]} | Error: {failed_removal["error"]}')
 
 
 def process_page(index_file: Path,
@@ -170,4 +196,5 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
         process_page(index_json_file, deploy_env, docs,
                      build_dir, send_bouncer_home)
 
+    remove_empty_dirs(build_dir)
     _generator_logger.info('PROCESS ENDED: Generate pages')
