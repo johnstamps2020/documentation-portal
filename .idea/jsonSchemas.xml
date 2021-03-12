@@ -50,6 +50,9 @@
                     <option name="path" value="frontend/pages" />
                     <option name="mappingKind" value="Directory" />
                   </Item>
+                  <Item>
+                    <option name="path" value="frontend/flail_ssg/tests/resources/expected/selfManagedProducts/index.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

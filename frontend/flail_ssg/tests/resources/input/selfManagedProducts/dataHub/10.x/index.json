@@ -1,0 +1,76 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub 10.x",
+  "class": "twoColumns",
+  "template": "page.j2",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dhonpremdraftrn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dhonpremdraftproduct"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dhonpremdraftinstall"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dhonpremdraftupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dhonpremdraftconfig"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dhonpremdraftdataspec"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dhonpremdraftadmin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dhonpremdraftdevref"
+        }
+      ]
+    }
+  ]
+}
