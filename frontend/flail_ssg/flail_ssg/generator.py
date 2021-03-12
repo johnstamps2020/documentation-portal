@@ -69,8 +69,6 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
             if item.get('page'):
                 page_path = current_page_dir / item['page']
                 if page_path.exists():
-                    # FIXME: The empty parent dir is not deleted. For example, when we have explore/latest and latest
-                    # FIXME: contains index.json and explore is empty, only latest is deleted
                     shutil.rmtree(page_path)
         else:
             item_to_include = copy.deepcopy(item)
