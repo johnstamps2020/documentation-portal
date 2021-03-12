@@ -46,61 +46,9 @@
               <option name="patterns">
                 <list>
                   <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/banff/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/selfManagedProducts/dataHub/10.5.0/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/aspen/policyCenterCloud/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/aspen/policyCenterCloud/explore/latest/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/aspen/claimCenterCloud/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/aspen/billingCenterCloud/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/aspen/insuranceNow/2020.1/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/aspen/insuranceNow/2020.1xInternalAudience/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/aspen/insuranceNow/2020.1xExternalAudience/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/banff/policyCenterCloud/policyCenterForGuidewireCloud/2020.11/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/banff/claimCenterCloud/claimCenterForGuidewireCloud/2020.11/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/banff/claimCenterCloud/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/banff/billingCenterCloud/billingCenterForGuidewireCloud/2020.11/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/guidewireCloudPlatform/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/cortina/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/cortina/cloudDataAccess/latest/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/cortina/dataHubForGuidewireCloud/2021.04/index.json" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="frontend/pages/cloudProducts/cortina/infoCenterForGuidewireCloud/2021.04/index.json" />
+                    <option name="directory" value="true" />
+                    <option name="path" value="frontend/pages" />
+                    <option name="mappingKind" value="Directory" />
                   </Item>
                 </list>
               </option>

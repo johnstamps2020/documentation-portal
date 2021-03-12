@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "DataHub for Guidewire Cloud 2021.04",
   "template": "page.j2",
-  "class": "cortina threeCards",
+  "class": "twoColumns",
   "items": [
     {
       "label": "Release Notes",

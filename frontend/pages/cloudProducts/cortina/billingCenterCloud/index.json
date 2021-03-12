@@ -26,7 +26,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "title": "Cloud Data Access",
+          "label": "Cloud Data Access",
           "page": "../cloudDataAccess/latest",
           "env": [
             "int"

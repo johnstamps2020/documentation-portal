@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "CustomerEngage Quote and Buy latest",
   "template": "page.j2",
-  "class": "cortina threeCards",
+  "class": "twoColumns",
   "items": [
     {
       "label": "Release Notes",
