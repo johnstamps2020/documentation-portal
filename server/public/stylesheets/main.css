@@ -141,9 +141,35 @@ main.cortina {
   background-position: bottom right;
 }
 
+main.banff {
+  background: url(/images/background-gradient-cortina.svg) no-repeat fixed;
+  /* background-color: rgba(19, 30, 46, 0.15);
+  background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
+    linear-gradient(
+      -60deg,
+      #131e2e,
+      rgba(40, 64, 99, 0.8),
+      rgba(47, 79, 126, 0)
+    ); */
+  /* background-position: top left; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: bottom right;
+}
+
 @media screen and (min-width: 750px) {
   main.cortina {
-    background: url(/images/Cortina-Background.svg) no-repeat fixed;
+    background: url(/images/background-cortina.svg) no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: bottom right;
+  }
+  main.banff {
+    background: url(/images/background-banff.svg) no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -153,21 +179,27 @@ main.cortina {
 }
 
 main.cortina h1,
-main.cortina label {
+main.cortina label,
+main.banff h1,
+main.banff label {
   color: #fff;
 }
-main.cortina .docBreadcrumb a {
+main.cortina .docBreadcrumb a,
+main.banff .docBreadcrumb a {
   color: var(--GW-BLUE-LIGHTER);
 }
 
-main.cortina .docBreadcrumb a:hover {
+main.cortina .docBreadcrumb a:hover,
+main.banff .docBreadcrumb a:hover {
   color: var(--GW-BLUE-LIGHTER-HOVER);
 }
-main.cortina .usefulLinks a {
+main.cortina .usefulLinks a,
+main.banff .usefulLinks a {
   color: var(--GW-BLUE-LIGHTER);
 }
 
-main.cortina .usefulLinks a:hover {
+main.cortina .usefulLinks a:hover,
+main.banff .usefulLinks a:hover {
   color: var(--GW-BLUE-LIGHTER-HOVER);
 }
 
@@ -656,24 +688,9 @@ main.support h2 {
   content: none;
 }
 
-.cortina #pageSelectorContainer .selectorLabel {
+.cortina #pageSelectorContainer .selectorLabel,
+.banff #pageSelectorContainer .selectorLabel {
   color: white;
-}
-
-.l10n #pageSelectorContainer::before {
-  content: 'Select locale: ';
-}
-.de-DE.product #pageSelectorContainer::before {
-  content: 'Sprache wählen: ';
-}
-.de-DE.version #pageSelectorContainer::before {
-  content: 'Produkt auswählen: ';
-}
-.fr-FR.product #pageSelectorContainer::before {
-  content: 'Choisir la langue: ';
-}
-.fr-FR.version #pageSelectorContainer::before {
-  content: 'Choisissez un produit: ';
 }
 
 #pageSelector {
