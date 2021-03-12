@@ -35,12 +35,14 @@ async function addReleaseBadge() {
     const div = document.createElement('div');
     div.setAttribute('class', 'releaseInfo');
 
-    const imgHref = `/images/${releaseName}-badge.svg`;
+    const imgHref = `/images/badge-${releaseName}.svg`;
     const imgRequest = await fetch(imgHref);
     if (imgRequest.ok) {
       const img = document.createElement('img');
       img.setAttribute('src', imgHref);
       img.setAttribute('alt', '');
+      img.setAttribute('height', '24px');
+      img.setAttribute('width', '24px')
       div.appendChild(img);
     }
 
