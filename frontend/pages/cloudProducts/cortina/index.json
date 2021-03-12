@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "Cortina Documentation",
   "template": "page.j2",
   "class": "cortina threeCards",
@@ -21,17 +22,55 @@
     {
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.1"
+      "page": "insuranceNow/2021.1",
+      "env": [
+        "dev",
+        "staging"
+      ]
     },
     {
-      "label": "Guidewire Cloud Standards",
+      "label": "InsuranceNow Internal Audience",
       "class": "productFamily cardShadow",
-      "id": "standardslatest"
+      "page": "insuranceNow/2021.1xInternalAudience",
+      "env": [
+        "int"
+      ]
+    },
+    {
+      "label": "InsuranceNow External Audience",
+      "class": "productFamily cardShadow",
+      "page": "insuranceNow/2021.1xExternalAudience",
+      "env": [
+        "int"
+      ]
     },
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "../guidewireCloudPlatform"
+      "page": "guidewireCloudPlatform",
+      "env": [
+        "int"
+      ]
+    },
+    {
+      "label": "Guidewire Cloud Standards",
+      "class": "productFamily cardShadow",
+      "id": "standardsdraft"
+    },
+    {
+      "label": "Integration Framework",
+      "class": "productFamily cardShadow",
+      "id": "restapidraft"
+    },
+    {
+      "label": "Guidewire Feature Preview Early Access",
+      "class": "productFamily cardShadow",
+      "id": "gwfeaturepreviewearlyaccess"
+    },
+    {
+      "label": "Guidewire Feature Preview Internal Draft",
+      "class": "productFamily cardShadow",
+      "id": "gwfeaturepreviewdraft"
     }
   ]
 }

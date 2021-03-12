@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "BillingCenter for Guidewire Cloud latest",
+  "title": "ClaimCenter for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,11 +10,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbcclouddraftreleasenotes"
+          "id": "isccclouddraftreleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "isbcclouddraftnewandchanged"
+          "id": "isccclouddraftnewandchanged"
         }
       ]
     },
@@ -24,11 +24,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "isbcclouddraftinstall"
+          "id": "isccclouddraftinstall"
         },
         {
           "label": "Upgrade",
-          "id": "isbcclouddraftupgrade"
+          "id": "isccclouddraftupgrade"
         }
       ]
     },
@@ -38,7 +38,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbcclouddraftapp"
+          "id": "isccclouddraftapp"
         },
         {
           "label": "Contact Management",
@@ -52,7 +52,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbcclouddraftadmin"
+          "id": "isccclouddraftadmin"
         }
       ]
     },
@@ -62,7 +62,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "isbcclouddraftbestpractice"
+          "id": "isccclouddraftbestpractice"
         }
       ]
     },
@@ -72,15 +72,15 @@
       "items": [
         {
           "label": "Configuration",
-          "id": "isbcclouddraftconfig"
+          "id": "isccclouddraftconfig"
         },
         {
           "label": "Globalization",
-          "id": "isbcclouddraftglobal"
+          "id": "isccclouddraftglobal"
         },
         {
           "label": "Rules",
-          "id": "isbcclouddraftrules"
+          "id": "isccclouddraftrules"
         }
       ]
     },
@@ -90,7 +90,15 @@
       "items": [
         {
           "label": "Integration",
-          "id": "isbcclouddraftinteg"
+          "id": "isccclouddraftinteg"
+        },
+        {
+          "label": "Cloud API",
+          "id": "isccclouddraftcloudapi"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "isccclouddraftrestapifw"
         },
         {
           "label": "REST API Client",
@@ -104,11 +112,11 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "isbcclouddraftgosu"
+          "id": "isccclouddraftgosu"
         },
         {
           "label": "Test Automation Guide",
-          "id": "isbcclouddrafttesting"
+          "id": "isccclouddrafttesting"
         }
       ]
     },
@@ -124,4 +132,3 @@
     }
   ]
 }
-  

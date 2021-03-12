@@ -16,7 +16,9 @@
       "label": "Cortina",
       "page": "cortina",
       "env": [
-        "int"
+        "dev",
+        "int",
+        "staging"
       ]
     }
   ]

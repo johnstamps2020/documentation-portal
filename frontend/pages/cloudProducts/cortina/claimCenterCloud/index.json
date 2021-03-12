@@ -1,4 +1,5 @@
 {
+  "$schema": "/frontend/page-schema.json",
   "title": "ClaimCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
@@ -6,14 +7,17 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
+      "env": [
+        "int"
+      ],
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ClaimCenterForGuidewireCloud/2021.04"
+          "page": "claimCenterForGuidewireCloud/latest"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools310"
+          "id": "isconfigupgradetools3x"
         }
       ]
     },
@@ -23,19 +27,10 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": null
-        },
-        {
-          "label": "Compare+",
-          "id": "comparelatest"
-        },
-        {
-          "label": "Explore",
-          "id": null
-        },
-        {
-          "label": "Predictive Analytics",
-          "id": "palatest"
+          "page": "../cloudDataAccess/latest",
+          "env": [
+            "int"
+          ]
         },
         {
           "label": "Add-ons",
@@ -43,27 +38,44 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../datahub"
+              "page": "../dataHubForGuidewireCloud/2021.04",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "page": "../dataHubForGuidewireCloud/latest",
+              "env": [
+                "int"
+              ]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../infocenter"
+              "page": "../infoCenterForGuidewireCloud/2021.04",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "page": "../infoCenterForGuidewireCloud/latest",
+              "env": [
+                "int"
+              ]
             }
           ]
-        },
-        {
-          "label": "Cloud Data Access",
-          "id": "clouddataaccessbanff"
-        },
-        {
-          "label": "Explore",
-          "id": null
         }
       ]
     },
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": [
+        "int"
+      ],
       "items": [
         {
           "label": "Digital Applications",
@@ -71,37 +83,27 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../digital/ce-am/2021.04"
+              "page": "../customerEngageAccountManagement/latest"
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "../digital/ce-claims/2021.04"
+              "page": "customerEngageAccountManagementForClaimCenter/latest"
             },
             {
               "label": "ProducerEngage",
-              "page": "../digital/pe/2021.04"
+              "page": "../producerEngage/latest"
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "../digital/pe-claims/2021.04"
+              "page": "producerEngageForClaimCenter/latest"
             },
             {
               "label": "ServiceRepEngage",
-              "page": "../digital/sre/2021.04"
+              "page": "../serviceRepEngage/latest"
             },
             {
               "label": "VendorEngage",
-              "page": "../digital/ve/2021.04"
-            }
-          ]
-        },
-        {
-          "label": "Digital Framework",
-          "class": "group",
-          "items": [
-            {
-              "label": "Jutro Design System",
-              "page": "../../../jutro/4.1.1"
+              "page": "vendorEngage/latest"
             }
           ]
         }
