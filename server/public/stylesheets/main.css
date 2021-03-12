@@ -792,3 +792,15 @@ a.returnLink {
   font-size: 0.8em;
   padding: 16px;
 }
+
+.surveyLinkWrapper {
+  background-color: #E5F1F5;
+  gap: 8px;
+  padding: 4px;
+  text-align: center;
+}
+
+.surveyLinkWrapper a {
+  display: inline-block;
+  margin-left: 8px;
+}
