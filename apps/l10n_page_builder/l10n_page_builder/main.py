@@ -1,12 +1,9 @@
 import json
-import sys
 import os
-import shutil
-from pathlib import Path
-from typing import Dict, List
-import logging
-from PyPDF2 import PdfFileReader
 import re
+from pathlib import Path
+
+from PyPDF2 import PdfFileReader
 
 locale_codes_labels = {
     'de-DE': {'label': 'Deutsch'},
@@ -38,14 +35,14 @@ product_codes_labels = {
 
 
 def get_locale_name_from_code(code: str) -> str:
-    if(locale_codes_labels.get(code)):
+    if locale_codes_labels.get(code):
         return locale_codes_labels.get(code).get('label')
     else:
         return 'Undefined'
 
 
 def get_product_name_from_code(code: str) -> str:
-    if(product_codes_labels.get(code)):
+    if product_codes_labels.get(code):
         return product_codes_labels.get(code).get('label')
     else:
         return 'Undefined'
@@ -61,6 +58,7 @@ def get_paths(path: Path) -> []:
 
 def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
     index_json = {
+        "$schema": "/frontend/page-schema.json",
         "title": "Localized Documentation",
         "template": "page.j2",
         "class": "threeCards l10n",
@@ -84,6 +82,7 @@ def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
 
 def write_locale_index(locale_path, loc_docs_output_path):
     index_json = {
+        "$schema": "/frontend/page-schema.json",
         "title": get_locale_name_from_code(locale_path.name),
         "template": "page.j2",
         "class": f"threeCards product {locale_path.name} l10n",
@@ -106,8 +105,8 @@ def write_locale_index(locale_path, loc_docs_output_path):
 
 
 def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
-
     index_json = {
+        "$schema": "/frontend/page-schema.json",
         "title": get_product_name_from_code(product_path.name),
         "template": "page.j2",
         "class": f"threeCards version {product_path.parent.name} l10n",
@@ -128,7 +127,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
                 pdf_info = pdf.getDocumentInfo()
 
             short_title = re.sub(
-                "^\d+", "", pdf_info.title.rpartition('.')[2]).strip()
+                "^\\d+", "", pdf_info.title.rpartition('.')[2]).strip()
 
             pdf_link = pdf_file.relative_to(loc_docs_root_path)
 
@@ -143,7 +142,8 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
 
     Path.mkdir(loc_docs_output_path /
                product_path.parent.name / product_path.name)
-    with open(loc_docs_output_path / product_path.parent.name / product_path.name / 'index.json', 'w', encoding='utf-8') as outfile:
+    with open(loc_docs_output_path / product_path.parent.name / product_path.name / 'index.json', 'w',
+              encoding='utf-8') as outfile:
         json.dump(index_json, outfile, indent=2, ensure_ascii=False)
 
 
@@ -167,6 +167,7 @@ def empty_tree(path: Path):
             child.unlink()
         elif child.is_dir():
             child.rmdir()
+
 
 # TODO: by default check for PDFs in the folders to avoid creating
 #       configs that go nowhere. Give an option to ignore that as
