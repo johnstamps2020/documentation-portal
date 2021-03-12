@@ -3,6 +3,20 @@
   "title": "Aspen Documentation",
   "template": "page.j2",
   "class": "aspen threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Aspen",
+    "items": [
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      }
+    ]
+  },
   "items": [
     {
       "label": "PolicyCenter Cloud",

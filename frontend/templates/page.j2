@@ -32,23 +32,24 @@
             {% endfor %}
         </div>
     {% endif %}
-    {% if data.get('siblings') %}
+    {% if data.get('selector') %}
         <script>
-            function selectPage() {
-                const selectedPage = document.getElementById("pageSelector").value;
-                const urlParts = window.location.pathname.split('/');
-                urlParts[urlParts.length - 2] = selectedPage;
-                window.location.replace(urlParts.join('/'));
+            function selectPage(selectedPage) {
+                if (selectedPage) {
+                    window.location = selectedPage;
+                }
             }
         </script>
 
         <div id="pageSelectorContainer">
-            <select onchange="selectPage()" id="pageSelector">
-                <option value="{{ data.get('current_page').get('path') }}"
-                        selected="selected">{{ data.get('current_page').get('label') }}</option>
-                {% for sibling in data.get('siblings') %}
-                    <option value="{{ sibling.get('path') }}">
-                        {{ sibling.get('label') }}
+            {% if data.get('selector').get('label') %}
+                <span class="selectorLabel">{{ data.get('selector').get('label') }}</span>
+            {% endif %}
+            <select onchange="selectPage(this.value)" id="pageSelector">
+                <option selected="selected">{{ data.get('selector').get('selectedItem') }}</option>
+                {% for item in data.get('selector').get('items') %}
+                    <option value="{{ item.get('page') }}">
+                        {{ item.get('label') }}
                     </option>
                 {% endfor %}
             </select>

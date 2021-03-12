@@ -3,6 +3,20 @@
   "title": "Cortina Documentation",
   "template": "page.j2",
   "class": "cortina threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Cortina",
+    "items": [
+      {
+        "label": "Banff",
+        "page": "../banff"
+      },
+      {
+        "label": "Aspen",
+        "page": "../aspen"
+      }
+    ]
+  },
   "items": [
     {
       "label": "PolicyCenter Cloud",

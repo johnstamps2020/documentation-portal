@@ -3,6 +3,20 @@
   "title": "Banff Documentation",
   "template": "page.j2",
   "class": "banff threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Banff",
+    "items": [
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Aspen",
+        "page": "../aspen"
+      }
+    ]
+  },
   "items": [
     {
       "label": "PolicyCenter Cloud",

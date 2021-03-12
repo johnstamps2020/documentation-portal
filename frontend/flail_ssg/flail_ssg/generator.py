@@ -40,22 +40,6 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     return breadcrumbs
 
 
-def get_siblings(page_dir: Path):
-    siblings = []
-    for path in page_dir.parent.iterdir():
-        if path.is_dir():
-            index_json = path / 'index.json'
-            if index_json.exists() and path != page_dir:
-                sibling_json = json.load(index_json.open(encoding='utf-8'))
-                siblings.append(
-                    {
-                        'label': sibling_json['title'],
-                        'path': path.name
-                    }
-                )
-    return sorted(siblings, key=lambda s: s['label'])
-
-
 def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: List):
     filtered_items = []
     for item in items:
@@ -113,7 +97,6 @@ def process_page(index_file: Path,
             'label': index_json['title'],
             'path': page_dir.name
         }
-        index_json['siblings'] = get_siblings(page_dir)
         index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
     except Exception as e:
         if send_bouncer_home:
