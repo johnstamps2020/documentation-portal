@@ -656,11 +656,7 @@ main.support h2 {
   content: none;
 }
 
-#pageSelectorContainer::before {
-  content: 'Select page: ';
-}
-
-.cortina #pageSelectorContainer::before {
+.cortina #pageSelectorContainer .selectorLabel {
   color: white;
 }
 

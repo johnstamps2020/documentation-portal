@@ -35,11 +35,57 @@
     "class": {
       "$ref": "#/definitions/class"
     },
+    "selector": {
+      "description": "A set of links to display in a dropdown on the page",
+      "type": "object",
+      "examples": [
+        {
+          "label": "Select release",
+          "class": "releaseSelector",
+          "selectedItem": "Cortina",
+          "items": [
+            {
+              "label": "Banff",
+              "page": "../banff"
+            },
+            {
+              "label": "Aspen",
+              "page": "../aspen"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/label"
+        },
+        "class": {
+          "$ref": "#/definitions/class"
+        },
+        "selectedItem": {
+          "type": "string",
+          "description": "Item representing the current page. This item is selected in the dropdown."
+        },
+        "items": {
+          "$ref": "#/definitions/items"
+        }
+      }
+    },
     "items": {
       "$ref": "#/definitions/items"
     }
   },
   "definitions": {
+    "label": {
+      "description": "Text to display on the page",
+      "type": "string",
+      "examples": [
+        "Core Release Notes",
+        "InsuranceSuite Configuration Upgrade Tools",
+        "PolicyCenter Cloud",
+        "Select release"
+      ]
+    },
     "items": {
       "description": "List of child objects. An object can point to a page, a document or an external link",
       "type": "array",
@@ -64,13 +110,7 @@
       },
       "properties": {
         "label": {
-          "description": "Name of the item that is shown in the page",
-          "type": "string",
-          "examples": [
-            "Core Release Notes",
-            "InsuranceSuite Configuration Upgrade Tools",
-            "PolicyCenter Cloud"
-          ]
+          "$ref": "#/definitions/label"
         },
         "class": {
           "$ref": "#/definitions/class"

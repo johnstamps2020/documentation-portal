@@ -32,22 +32,6 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     return breadcrumbs
 
 
-def get_siblings(page_dir: Path):
-    siblings = []
-    for path in page_dir.parent.iterdir():
-        if path.is_dir():
-            index_json = path / 'index.json'
-            if index_json.exists() and path != page_dir:
-                sibling_json = json.load(index_json.open(encoding='utf-8'))
-                siblings.append(
-                    {
-                        'label': sibling_json['title'],
-                        'path': path.name
-                    }
-                )
-    return sorted(siblings, key=lambda s: s['label'])
-
-
 def include_item(env: str, item_envs: List):
     if not item_envs:
         return True
@@ -94,7 +78,8 @@ def resolve_links(items: List, docs: List):
 def remove_empty_dirs(root_path: Path):
     removed_dirs = []
     failed_removals = []
-    empty_dirs = [p for p in root_path.rglob('*') if p.is_dir() and not list(p.iterdir())]
+    empty_dirs = [p for p in root_path.rglob(
+        '*') if p.is_dir() and not list(p.iterdir())]
     for empty_dir in empty_dirs:
         try:
             empty_dir.rmdir()
@@ -114,7 +99,8 @@ def remove_empty_dirs(root_path: Path):
         _generator_logger.info(
             f'Failed to remove empty directories: {len(failed_removals)}/{len(empty_dirs)}')
         for i, failed_removal in enumerate(failed_removals):
-            _generator_logger.info(f'\t{i + 1} {failed_removal["path"]} | Error: {failed_removal["error"]}')
+            _generator_logger.info(
+                f'\t{i + 1} {failed_removal["path"]} | Error: {failed_removal["error"]}')
 
 
 def process_page(index_file: Path,
@@ -137,7 +123,6 @@ def process_page(index_file: Path,
             'label': index_json['title'],
             'path': page_dir.name
         }
-        index_json['siblings'] = get_siblings(page_dir)
         index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
     except Exception as e:
         if send_bouncer_home:
