@@ -6,16 +6,36 @@ from pathlib import Path
 from PyPDF2 import PdfFileReader
 
 locale_codes_labels = {
-    'de-DE': {'label': 'Deutsch'},
-    'es-ES': {'label': 'Español (España)'},
-    'es-LA': {'label': 'Español'},
-    'fr-FR': {'label': 'Français'},
-    'it-IT': {'label': 'Italiano'},
-    'ja-JP': {'label': '日本語'},
-    'nl-NL': {'label': 'Nederlands'},
-    'pt-BR': {'label': 'Português'},
-    'ru': {'label': 'Pусский'},
-    'zh-CN': {'label': 'Chinese'}
+    'de-DE': {'label': 'Deutsch',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'},
+    'es-ES': {'label': 'Español (España)',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'},
+    'es-LA': {'label': 'Español',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'},
+    'fr-FR': {'label': 'Français',
+              'localeSelect': 'Choisir la langue',
+              'productSelect': 'Choisissez un produit'},
+    'it-IT': {'label': 'Italiano',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'},
+    'ja-JP': {'label': '日本語',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'},
+    'nl-NL': {'label': 'Nederlands',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'},
+    'pt-BR': {'label': 'Português',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'},
+    'ru': {'label': 'Pусский',
+           'localeSelect': 'Sprache wählen',
+           'productSelect': 'Produkt auswählen'},
+    'zh-CN': {'label': 'Chinese',
+              'localeSelect': 'Sprache wählen',
+              'productSelect': 'Produkt auswählen'}
 }
 
 product_codes_labels = {
@@ -48,10 +68,38 @@ def get_product_name_from_code(code: str) -> str:
         return 'Undefined'
 
 
+def get_locale_selector_label_from_code(code: str) -> str:
+    if locale_codes_labels.get(code):
+        if locale_codes_labels.get(code).get('localeSelect'):
+            return locale_codes_labels.get(code).get('localeSelect')
+        else:
+            return 'Select locale'
+    else:
+        return 'Select locale'
+
+
+def get_product_selector_label_from_code(code: str) -> str:
+    if locale_codes_labels.get(code):
+        if locale_codes_labels.get(code).get('productSelect'):
+            return locale_codes_labels.get(code).get('productSelect')
+        else:
+            return 'Select product'
+    else:
+        return 'Select product'
+
+
 def get_paths(path: Path) -> []:
     paths = []
     for f in path.iterdir():
         if f.is_dir():
+            paths.append(f)
+    return paths
+
+
+def get_sibling_paths(path: Path) -> []:
+    paths = []
+    for f in path.parent.iterdir():
+        if f.is_dir() and f != path:
             paths.append(f)
     return paths
 
@@ -86,8 +134,21 @@ def write_locale_index(locale_path, loc_docs_output_path):
         "title": get_locale_name_from_code(locale_path.name),
         "template": "page.j2",
         "class": f"threeCards product {locale_path.name} l10n",
+        "selector": {
+            "label": get_locale_selector_label_from_code(locale_path.name),
+            "selectedItem": get_locale_name_from_code(locale_path.name),
+            "items": []
+        },
         "items": []
     }
+
+    for path in get_sibling_paths(locale_path):
+        index_json["selector"]["items"].append(
+            {
+                "label": get_locale_name_from_code(path.name),
+                "page": "../" + path.name
+            }
+        )
 
     product_paths = get_paths(locale_path)
     for product_path in product_paths:
@@ -110,8 +171,21 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
         "title": get_product_name_from_code(product_path.name),
         "template": "page.j2",
         "class": f"threeCards version {product_path.parent.name} l10n",
+        "selector": {
+            "label": get_product_selector_label_from_code(product_path.parent.name),
+            "selectedItem": get_product_name_from_code(product_path.name),
+            "items": []
+        },
         "items": []
     }
+
+    for path in get_sibling_paths(product_path):
+        index_json["selector"]["items"].append(
+            {
+                "label": get_product_name_from_code(path.name),
+                "page": "../" + path.name
+            }
+        )
 
     version_paths = get_paths(product_path)
     for version_path in reversed(version_paths):
