@@ -793,14 +793,17 @@ a.returnLink {
   padding: 16px;
 }
 
-.surveyLinkWrapper {
-  background-color: #E5F1F5;
+.surveyWrapper {
+  background-color: var(--GW-COLOR-BKGD-1);
   gap: 8px;
-  padding: 4px;
+  padding-top: 3rem;
   text-align: center;
 }
 
+.surveyTextWrapper {
+  font-size: 1.1rem;
+}
+
 .surveyLinkWrapper a {
-  display: inline-block;
-  margin-left: 8px;
+  font-size: .9rem;
 }

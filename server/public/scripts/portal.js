@@ -7,12 +7,18 @@ async function insertSurveyLink() {
   const col = document.createElement('div');
   col.className = 'col';
 
-  const linkWrapper = document.createElement('div');
-  linkWrapper.className = 'surveyLinkWrapper';
-  linkWrapper.innerText = 'Would you like to take a suuuuurveeey.';
+  const surveyWrapper = document.createElement('div');
+  surveyWrapper.className = 'surveyWrapper';
+
+  const surveyTextWrapper = document.createElement('div');
+  surveyTextWrapper.className = 'surveyTextWrapper';
+  surveyTextWrapper.innerText = 'Help us improve our product documentation by taking this short survey.';
+
+  const surveyLinkWrapper = document.createElement('div');
+  surveyLinkWrapper.className = 'surveyLinkWrapper';
 
   const link = document.createElement('a');
-  link.innerText = 'Click here to take the survey';
+  link.innerText = 'Click here to take the survey.';
   link.setAttribute('href', '#');
 
   await fetch('/userInformation')
@@ -32,8 +38,10 @@ async function insertSurveyLink() {
       }
 
       if (userInfo.isLoggedIn) {
-        linkWrapper.append(link);
-        col.append(linkWrapper);
+        surveyLinkWrapper.append(link);
+        surveyWrapper.append(surveyTextWrapper);
+        surveyWrapper.append(surveyLinkWrapper);
+        col.append(surveyWrapper);
         row.appendChild(col);
         header.appendChild(row);
       }
