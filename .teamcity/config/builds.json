@@ -1374,6 +1374,27 @@
     },
     {
       "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "selfmanagedis1002src",
+      "docId": "selfmanagedbc1002"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "selfmanagedis1002src",
+      "docId": "selfmanagedcc1002"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "selfmanagedis1002src",
+      "docId": "selfmanagedpc1002"
+    },
+    {
+      "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1040",

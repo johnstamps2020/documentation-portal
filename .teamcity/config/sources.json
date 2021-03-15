@@ -2532,6 +2532,19 @@
       ]
     },
     {
+      "id": "selfmanagedis1002src",
+      "title": "InsuranceSuite 10.0.2",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.0.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1002/_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
       "id": "insurancesuiteextrassrc",
       "title": "InsuranceSuite Extras",
       "sourceType": "git",
