@@ -3,6 +3,20 @@
   "title": "ClaimCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "ClaimCenter Cloud",
+    "items": [
+      {
+        "label": "BillingCenter Cloud",
+        "page": "../billingCenterCloud"
+      },
+      {
+        "label": "PolicyCenter Cloud",
+        "page": "../policyCenterCloud"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Core",
