@@ -19,15 +19,17 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     path = ''
     for parent in sorted(page_dir.parents, key=lambda p: page_dir.parents.index(p), reverse=True):
         if (parent / 'index.json').exists() and parent != build_dir:
-            parent_title = json.load(
-                (parent / 'index.json').open(encoding='utf-8'))['title']
+            json_data = json.load(
+                (parent / 'index.json').open(encoding='utf-8'))
             path += f'/{parent.name}'
-            breadcrumbs.append(
-                {
-                    'label': parent_title,
-                    'path': path
-                }
-            )
+            if json_data.get('includeInBreadcrumbs', True):
+                parent_title = json_data['title']
+                breadcrumbs.append(
+                    {
+                        'label': parent_title,
+                        'path': path
+                    }
+                )
 
     return breadcrumbs
 

@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Automated redirect",
   "class": "",
-  "template": "index.j2",
+  "template": "redirect.j2",
   "items": [
     {
       "label": "cloud",

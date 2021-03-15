@@ -5,11 +5,7 @@
   "description": "A config for pages",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "title",
-    "template",
-    "class"
-  ],
+  "required": ["title", "template", "class"],
   "properties": {
     "$schema": {
       "description": "A link to the JSON schema",
@@ -27,10 +23,11 @@
     "template": {
       "description": "Filename of the template in the templates directory that is used to build the page",
       "pattern": ".+\\..+",
-      "examples": [
-        "page.j2",
-        "index.html"
-      ]
+      "examples": ["page.j2", "index.html"]
+    },
+    "includeInBreadcrumbs": {
+      "description": "If set to false, the page is not included in the list of breadcrumbs for descendant pages",
+      "type": "boolean"
     },
     "class": {
       "$ref": "#/definitions/class"
@@ -96,15 +93,11 @@
     "item": {
       "description": "An object that points to a page, a document or an external link",
       "type": "object",
-      "required": [
-        "label"
-      ],
+      "required": ["label"],
       "dependencies": {
         "env": {
           "not": {
-            "required": [
-              "id"
-            ]
+            "required": ["id"]
           }
         }
       },
@@ -147,23 +140,9 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "dev",
-              "int",
-              "staging",
-              "prod"
-            ]
+            "enum": ["dev", "int", "staging", "prod"]
           },
-          "examples": [
-            [
-              "dev",
-              "staging",
-              "prod"
-            ],
-            [
-              "int"
-            ]
-          ]
+          "examples": [["dev", "staging", "prod"], ["int"]]
         },
         "items": {
           "$ref": "#/definitions/items"
