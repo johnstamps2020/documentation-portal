@@ -1,7 +1,5 @@
-import dataclasses
 import json
 import logging
-import re
 from dataclasses import dataclass
 from typing import List
 from flail_ssg import logger
@@ -88,7 +86,9 @@ def validate_page(index_file: Path,
                   envs: List,
                   validated_pages: List,
                   validation_results: List):
-    def validate_items(page_config_file: Path, page_items: List, parent_envs: List, issues: List):
+    index_file_absolute = index_file.resolve()
+
+    def validate_items(page_items: List, parent_envs: List, issues: List):
         for item in page_items:
             if item.get('id'):
                 item_id = item['id']
@@ -99,7 +99,7 @@ def validate_page(index_file: Path,
                     if not env_settings_are_correct(item_envs, parent_envs):
                         issues.append(
                             IncorrectEnvSettingsWarning(
-                                config_file=page_config_file,
+                                config_file=index_file_absolute,
                                 details=f'Item label: {item["label"]} '
                                         f'Item ID: {item["id"]} | '
                                         f'Item envs: {item_envs} | '
@@ -108,17 +108,17 @@ def validate_page(index_file: Path,
                         )
                 else:
                     issues.append(DocIdNotFoundError(
-                        config_file=page_config_file,
+                        config_file=index_file_absolute,
                         details=item_id)
                     )
             elif item.get('page'):
-                page_path = Path(page_config_file.parent / item['page'])
+                page_path = Path(index_file_absolute.parent / item['page'])
                 if page_path.exists():
                     item_envs = item.get('env', [])
                     if not env_settings_are_correct(item_envs, parent_envs):
                         issues.append(
                             IncorrectEnvSettingsWarning(
-                                config_file=page_config_file,
+                                config_file=index_file_absolute,
                                 details=f'Item label: {item["label"]} '
                                         f'Item page: {item["page"]} | '
                                         f'Item envs: {item_envs} | '
@@ -130,22 +130,19 @@ def validate_page(index_file: Path,
                                   new_parent_envs, validated_pages, issues)
                 else:
                     issues.append(PageNotFoundError(
-                        config_file=page_config_file,
+                        config_file=index_file_absolute,
                         details=str(page_path)))
             if item.get('items'):
-                validate_items(page_config_file,
-                               item['items'], parent_envs, issues)
+                validate_items(item['items'], parent_envs, issues)
         return issues
 
-    index_file_absolute = index_file.resolve()
     if index_file_absolute not in validated_pages:
         validated_pages.append(index_file_absolute)
         index_json = json.load(index_file_absolute.open())
 
         items = index_json.get('items')
         if items:
-            validate_items(index_file_absolute, items,
-                           envs, validation_results)
+            validate_items(items, envs, validation_results)
     return validation_results
 
 
