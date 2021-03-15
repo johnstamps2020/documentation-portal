@@ -1,0 +1,42 @@
+{% set ns.placeholder = 'Search' %}
+{% set ns.lang = 'en' %}
+{% if data.get('class') %}
+    {% if 'l10n' in data.get('class') %}
+        {% if ' de-DE ' in data.get('class') %}
+            {% set ns.placeholder = 'Suche' %}
+            {% set ns.lang = 'de' %}
+        {% endif %}
+        {% if ' fr-FR ' in data.get('class') %}
+            {% set ns.placeholder = 'Chercher' %}
+            {% set ns.lang = 'fr' %}
+        {% endif %}
+        {% if ' es-ES ' in data.get('class') %}
+            {% set ns.placeholder = 'Buscar' %}
+            {% set ns.lang = 'es' %}
+        {% endif %}
+        {% if ' es-LA ' in data.get('class') %}
+            {% set ns.placeholder = 'Buscar' %}
+            {% set ns.lang = 'es' %}
+        {% endif %}
+        {% if ' it-IT ' in data.get('class') %}
+            {% set ns.placeholder = 'Ricerca' %}
+            {% set ns.lang = 'it' %}
+        {% endif %}
+        {% if ' ja-JP ' in data.get('class') %}
+            {% set ns.placeholder = '探す' %}
+            {% set ns.lang = 'ja' %}
+        {% endif %}
+        {% if ' nl-NL ' in data.get('class') %}
+            {% set ns.placeholder = 'Zoeken' %}
+            {% set ns.lang = 'nl' %}
+        {% endif %}
+        {% if ' pt-BR ' in data.get('class') %}
+            {% set ns.placeholder = 'Procurar' %}
+            {% set ns.lang = 'pt' %}
+        {% endif %}
+        {% if ' ru ' in data.get('class') %}
+            {% set ns.placeholder = 'Поиск' %}
+            {% set ns.lang = 'ru' %}
+        {% endif %}
+    {% endif %}
+{% endif %}
