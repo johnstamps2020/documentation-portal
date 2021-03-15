@@ -2356,7 +2356,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

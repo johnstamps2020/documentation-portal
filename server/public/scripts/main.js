@@ -12,13 +12,15 @@ async function setLogInButton() {
 
 function selectToggleButton() {
   const toggleButtons = document.querySelectorAll('#cloudToggle > a');
-  for (const button of toggleButtons) {
+  let matchingButton = toggleButtons[0];
+  const currentPath = window.location.pathname;
+  toggleButtons.forEach(button => {
     const root = button.getAttribute('data-root');
-    const currentPath = window.location.pathname;
     if (currentPath.startsWith(root)) {
-      button.classList.toggle('selected');
+      matchingButton = button;
     }
-  }
+  });
+  matchingButton.classList.toggle('selected');
 }
 
 async function addReleaseBadge() {
@@ -42,7 +44,7 @@ async function addReleaseBadge() {
       img.setAttribute('src', imgHref);
       img.setAttribute('alt', '');
       img.setAttribute('height', '24px');
-      img.setAttribute('width', '24px')
+      img.setAttribute('width', '24px');
       div.appendChild(img);
     }
 

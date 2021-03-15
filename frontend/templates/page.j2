@@ -25,13 +25,13 @@
             </div>
         </div>
     </div>
-    {% if data.get('breadcrumbs') %}
-        <div class="docBreadcrumb">
-            {% for breadcrumb in data.get('breadcrumbs') %}
-                <a href="{{ breadcrumb.get('path') }}">{{ breadcrumb.get('label') }}</a>
-            {% endfor %}
-        </div>
-    {% endif %}
+    <div class="docBreadcrumb">
+        {% if data.get('breadcrumbs') %}
+                {% for breadcrumb in data.get('breadcrumbs') %}
+                    <a href="{{ breadcrumb.get('path') }}">{{ breadcrumb.get('label') }}</a>
+                {% endfor %}
+        {% endif %}
+    </div>
     {% if data.get('selector') %}
         <script>
             function selectPage(selectedPage) {
