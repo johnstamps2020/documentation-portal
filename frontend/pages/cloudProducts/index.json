@@ -6,14 +6,17 @@
   "items": [
     {
       "label": "Aspen",
+      "class": "productFamily cardShadow",
       "page": "aspen"
     },
     {
       "label": "Banff",
+      "class": "productFamily cardShadow",
       "page": "banff"
     },
     {
       "label": "Cortina",
+      "class": "productFamily cardShadow",
       "page": "cortina",
       "env": [
         "dev",
