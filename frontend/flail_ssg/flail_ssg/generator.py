@@ -71,7 +71,7 @@ def resolve_links(items: List, docs: List):
         if item.get('id'):
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
-            item['id'] = f'/{matching_doc_object["url"]}'
+            item['doc_url'] = f'/{matching_doc_object["url"]}'
         if item.get('items'):
             resolve_links(item['items'], docs)
     return items
@@ -187,16 +187,16 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
 
     shutil.copytree(pages_dir, build_dir)
 
-    _generator_logger.info('SUBPROCESS STARTED: Mark pages as public')
-    top_index_file_path = list(build_dir.rglob('**/*.json'))[0]
-    # FIXME: mark public on page after we filter out environments
-    mark_public_on_page(top_index_file_path, False, docs)
-    _generator_logger.info('SUBPROCESS ENDED: Mark pages as public')
-
     for index_json_file in build_dir.rglob('**/*.json'):
         _generator_logger.info(f'Generating page from {index_json_file}')
         process_page(index_json_file, deploy_env, docs,
                      build_dir, send_bouncer_home)
 
     remove_empty_dirs(build_dir)
+
+    _generator_logger.info('SUBPROCESS STARTED: Mark pages as public')
+    top_index_file_path = build_dir / 'index.json'
+    mark_public_on_page(top_index_file_path, False, docs)
+    _generator_logger.info('SUBPROCESS ENDED: Mark pages as public')
+
     _generator_logger.info('PROCESS ENDED: Generate pages')

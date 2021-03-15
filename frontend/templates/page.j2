@@ -68,7 +68,7 @@
             {%- endif %}
             {% if items -%}
                 {% for item in items -%}
-                    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page'), item.get('link'), item.get('public')) }}
+                    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
                 {%- endfor %}
             {%- endif %}
         </div>
@@ -76,7 +76,7 @@
 
     <div class="items">
         {% for item in data.get('items') %}
-            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('id'), item.get('page'), item.get('link'), item.get('public')) }}
+            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
         {% endfor %}
     </div>
 </main>
