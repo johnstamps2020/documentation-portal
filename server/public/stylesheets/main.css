@@ -812,3 +812,7 @@ html:not(.has-tabbed) .GuidewireSites-module--ItemWrapper--2ifWD {
   letter-spacing: -0.43px;
   line-height: 1.6875;
 }
+
+.private {
+  color: red;
+}

@@ -138,43 +138,6 @@ def process_page(index_file: Path,
             'w', encoding='utf-8'), indent=2)
 
 
-def mark_public_on_page(page_path: Path, any_doc_or_page_is_public: bool, docs: List):
-    def mark_items_as_public(page_items: List, marked_any_item_as_public: bool):
-        for item in page_items:
-            item_id = item.get('id')
-            item_page_ref = item.get('page')
-            if item_id:
-                matching_doc_object = next(
-                    (doc for doc in docs if doc['id'] == item_id), None)
-                item_is_public = matching_doc_object['public']
-                item['public'] = item_is_public
-                if item_is_public:
-                    marked_any_item_as_public = True
-            elif item_page_ref:
-                subpage_path = Path(page_path.parent /
-                                    item_page_ref / 'index.json')
-                marked_any_item_as_public = mark_public_on_page(
-                    subpage_path, marked_any_item_as_public, docs)
-                item['public'] = marked_any_item_as_public
-            inner_items = item.get('items')
-            if inner_items:
-                inner_items, marked_any_item_as_public = mark_items_as_public(
-                    inner_items, marked_any_item_as_public)
-        return page_items, marked_any_item_as_public
-
-    try:
-        file_json = json.load(page_path.open(encoding='utf-8'))
-        items = file_json.get('items')
-        if items:
-            file_json['items'], any_doc_or_page_is_public = mark_items_as_public(
-                items, any_doc_or_page_is_public)
-            json.dump(file_json, page_path.open(
-                'w', encoding='utf-8'), indent=2)
-        return any_doc_or_page_is_public
-    except Exception as e:
-        raise e
-
-
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
                   docs_config_file: Path):
     config_file_json = json.load(docs_config_file.open(encoding='utf-8'))
@@ -193,10 +156,5 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
                      build_dir, send_bouncer_home)
 
     remove_empty_dirs(build_dir)
-
-    _generator_logger.info('SUBPROCESS STARTED: Mark pages as public')
-    top_index_file_path = build_dir / 'index.json'
-    mark_public_on_page(top_index_file_path, False, docs)
-    _generator_logger.info('SUBPROCESS ENDED: Mark pages as public')
 
     _generator_logger.info('PROCESS ENDED: Generate pages')
