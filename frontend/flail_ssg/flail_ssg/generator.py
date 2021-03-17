@@ -1,10 +1,11 @@
 import copy
-import json
 import shutil
 from pathlib import Path
 from typing import List
 
 from flail_ssg.helpers import configure_logger
+from flail_ssg.helpers import load_json_file
+from flail_ssg.helpers import write_json_object_to_file
 
 _log_file = Path.cwd() / 'generator.log'
 _generator_logger = configure_logger(
@@ -18,11 +19,10 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     path = ''
     for parent in sorted(page_dir.parents, key=lambda p: page_dir.parents.index(p), reverse=True):
         if (parent / 'index.json').exists() and parent != build_dir:
-            json_data = json.load(
-                (parent / 'index.json').open(encoding='utf-8'))
+            parent_config = load_json_file((parent / 'index.json'))
             path += f'/{parent.name}'
-            if json_data.get('includeInBreadcrumbs', True):
-                parent_title = json_data['title']
+            if parent_config.json_object.get('includeInBreadcrumbs', True):
+                parent_title = parent_config.json_object['title']
                 breadcrumbs.append(
                     {
                         'label': parent_title,
@@ -109,38 +109,35 @@ def process_page(index_file: Path,
                  docs: List,
                  build_dir: Path,
                  send_bouncer_home: bool):
-    index_file_absolute = index_file.resolve()
-    page_dir = index_file_absolute.parent
-    index_json = json.load(index_file_absolute.open(encoding='utf-8'))
+    page_config = load_json_file(index_file)
     try:
-        page_items = index_json.get('items')
+        page_items = page_config.json_object.get('items')
         if page_items:
             filtered_items = filter_by_env(
-                deploy_env, page_dir, page_items, docs)
+                deploy_env, page_config.dir, page_items, docs)
             items_with_resolved_links = resolve_links(filtered_items, docs)
-            index_json['items'] = items_with_resolved_links
+            page_config.json_object['items'] = items_with_resolved_links
 
-        index_json['current_page'] = {
-            'label': index_json['title'],
-            'path': page_dir.name
+        page_config.json_object['current_page'] = {
+            'label': page_config.json_object['title'],
+            'path': page_config.dir.name
         }
-        index_json['breadcrumbs'] = create_breadcrumbs(page_dir, build_dir)
+        page_config.json_object['breadcrumbs'] = create_breadcrumbs(page_config.dir, build_dir)
     except Exception as e:
         if send_bouncer_home:
             _generator_logger.warning(
                 '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
-            index_json['title'] = f'{index_json["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
+            page_config.json_object[
+                'title'] = f'{page_config.json_object["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
         else:
             raise e
     finally:
-        json.dump(index_json, index_file_absolute.open(
-            'w', encoding='utf-8'), indent=2)
+        write_json_object_to_file(page_config.json_object, page_config.absolute_path)
 
 
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
                   docs_config_file: Path):
-    config_file_json = json.load(docs_config_file.open(encoding='utf-8'))
-    docs = config_file_json['docs']
+    docs = load_json_file(docs_config_file).json_object['docs']
 
     _generator_logger.info('PROCESS STARTED: Generate pages')
 
