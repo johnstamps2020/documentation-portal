@@ -54,8 +54,6 @@ const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const searchRouter = require('./routes/search');
-// TODO: re-implement this controller in the new setup
-const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
@@ -105,8 +103,6 @@ app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
-
-app.use('/product', allProductsRouter);
 
 const portal2ProxyOptions = {
   target: 'https://portal2.guidewire.com',
