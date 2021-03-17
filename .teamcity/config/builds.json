@@ -3448,6 +3448,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "UpgradeTools.ditamap",
+      "srcId": "ininstallassistdraftsrc",
+      "docId": "ininstallassistdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20201.ditamap",
       "srcId": "in20201xrndraftsrc",
       "docId": "in20201xrndraft",

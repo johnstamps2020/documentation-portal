@@ -9755,18 +9755,39 @@
       "public": false
     },
     {
+      "id": "ininstallassistdraft",
+      "title": "Install Assist",
+      "url": "cloud/in/installassist",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": ["latest"],
+        "subject": ["Insallation"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "inupgradetoolsdraft",
       "title": "Upgrade Tools",
       "url": "cloud/in/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
           "InsuranceNow 2020.2x - Internal Audience",
           "InsuranceNow 2020.1x - Internal Audience"
         ],
         "version": ["latest"],
-        "subject": ["Configuration"],
-        "release": ["Aspen", "Banff"]
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,

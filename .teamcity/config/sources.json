@@ -2306,6 +2306,17 @@
       ]
     },
     {
+      "id": "ininstallassistdraftsrc",
+      "title": "InsuranceNow Upgrade Tools Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/InsuranceNow_InstallAssist_5.0.ditamap"
+      ]
+    },
+    {
       "id": "in20202xprodattrefdraftsrc",
       "title": "InsuranceNow 2020.2 Product Attribute Reference Draft",
       "sourceType": "xdocs",
