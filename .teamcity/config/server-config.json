@@ -2516,6 +2516,7 @@
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/5.3.0",
       "metadata": {
+        "release": ["Cortina"],
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.3.0"],
@@ -2531,12 +2532,13 @@
       "title": "Jutro Storybook",
       "url": "jutro/storybook/5.3.0",
       "metadata": {
+        "release": ["Cortina"],
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
