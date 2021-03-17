@@ -66,6 +66,8 @@ spec:
               value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net/customers-login
             - name: ALLOW_PUBLIC_DOCS
               value: 'yes'
+            - name: ENABLE_AUTH
+              value: 'yes'
           resources:
             requests:
               memory: "1Gi"
