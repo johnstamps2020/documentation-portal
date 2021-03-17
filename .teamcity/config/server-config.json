@@ -9766,7 +9766,7 @@
           "InsuranceNow 2020.1x - Internal Audience"
         ],
         "version": ["latest"],
-        "subject": ["Insallation"],
+        "subject": ["Installation"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["int"],
