@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List
+from typing import Callable, List
 
 from flail_ssg.helpers import configure_logger
 from flail_ssg.helpers import load_json_file
@@ -96,16 +96,25 @@ def set_public_prop_on_docs(build_dir: Path,
         write_json_object_to_file(page_config.json_object, page_config.absolute_path)
 
 
-# TODO: Add a step for checking if bouncer is home
 def run_access_controller(send_bouncer_home: bool, build_dir: Path, docs_config_file: Path):
+    def run_process(func: Callable, *args):
+        try:
+            return func(*args)
+        except Exception as e:
+            if send_bouncer_home:
+                _access_controller_logger.warning(
+                    f'**WATCH YOUR BACK: Bouncer is home, errors got inside.**'
+                    f'\n{e}')
+            else:
+                raise e
+
     docs_config = load_json_file(docs_config_file)
     docs = docs_config.json_object['docs']
 
     _access_controller_logger.info('PROCESS STARTED: Mark pages as public')
-
-    set_public_prop_on_docs(build_dir, docs)
-    public_paths = find_public_pages(build_dir)
-    all_public_paths = find_all_public_paths(build_dir, public_paths)
+    run_process(set_public_prop_on_docs, build_dir, docs)
+    public_paths = run_process(find_public_pages, build_dir)
+    all_public_paths = run_process(find_all_public_paths, build_dir, public_paths)
     write_marked_pages(build_dir, all_public_paths)
 
     _access_controller_logger.info('PROCESS ENDED: Mark pages as public')
