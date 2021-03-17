@@ -1,0 +1,127 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "BillingCenter for Guidewire Cloud latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "isbcclouddraftreleasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "isbcclouddraftnewandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "isbcclouddraftinstall"
+        },
+        {
+          "label": "Upgrade",
+          "id": "isbcclouddraftupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "isbcclouddraftapp"
+        },
+        {
+          "label": "Contact Management",
+          "id": "isclouddraftcontact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "isbcclouddraftadmin"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best practices",
+          "id": "isbcclouddraftbestpractice"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "isbcclouddraftconfig"
+        },
+        {
+          "label": "Globalization",
+          "id": "isbcclouddraftglobal"
+        },
+        {
+          "label": "Rules",
+          "id": "isbcclouddraftrules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "isbcclouddraftinteg"
+        },
+        {
+          "label": "REST API Client",
+          "id": "iscloudearestapiclient"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "isbcclouddraftgosu"
+        },
+        {
+          "label": "Test Automation Guide",
+          "id": "isbcclouddrafttesting"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "isclouddraftglossary"
+        }
+      ]
+    }
+  ]
+}
+  

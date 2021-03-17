@@ -797,6 +797,206 @@ object TestConfigDeployer : BuildType({
 
 })
 
+object PublishFlailSsgDockerImage : BuildType({
+    name = "Publish Flail SSG image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Flail SSG image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd frontend/flail_ssg
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:frontend/flail_ssg/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestFlailSsg) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestFlailSsg : BuildType({
+    name = "Test Flail SSG"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for Flail SSG"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd frontend/flail_ssg
+                ./test_flail_ssg.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:frontend/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
+object PublishL10NPageBuilderDockerImage : BuildType({
+    name = "Publish L10N Page Builder image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish L10N Page Builder image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/l10n-page-builder
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/l10n_page_builder/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestL10NPageBuilder) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestL10NPageBuilder : BuildType({
+    name = "Test L10N Page Builder"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for L10N Page Builder"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/l10n-page-builder
+                ./test_l10n-page-builder.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/l10n_page_builder/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
@@ -1056,6 +1256,8 @@ object Testing : Project({
     buildType(TestSettingsKts)
     buildType(TestConfig)
     buildType(TestDocCrawler)
+    buildType(TestFlailSsg)
+    buildType(TestL10NPageBuilder)
 })
 
 object Deployment : Project({
@@ -1064,6 +1266,8 @@ object Deployment : Project({
     buildType(PublishConfigDeployerDockerImage)
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
+    buildType(PublishFlailSsgDockerImage)
+    buildType(PublishL10NPageBuilderDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
 })
@@ -1174,13 +1378,12 @@ object HelperObjects {
             if (scheduled_build) {
                 triggers {
                     schedule {
-                        if(sch_freq == "daily") {
+                        if (sch_freq == "daily") {
                             schedulingPolicy = daily {
                                 hour = sch_hour_daily
                                 minute = sch_minute_daily
                             }
-                        }
-                        else if (sch_freq == "weekly") {
+                        } else if (sch_freq == "weekly") {
                             schedulingPolicy = weekly {
                                 dayOfWeek = ScheduleTrigger.DAY.Saturday
                                 hour = sch_hour_weekly
@@ -1249,32 +1452,32 @@ object HelperObjects {
                         sch_minute_weekly
                     )
                 )
-                
-                if(scheduledBuild && exportFreq == "daily") {
+
+                if (scheduledBuild && exportFreq == "daily") {
                     sch_minute_daily += dailyMinutesOffset
-                    if(sch_minute_daily >= 60) {
+                    if (sch_minute_daily >= 60) {
                         sch_hour_daily += 1
                         sch_minute_daily = 0
                     }
-                    if(sch_hour_daily >= 24) {
+                    if (sch_hour_daily >= 24) {
                         sch_hour_daily = 0
                     }
                     exportServerIndex++
-                    if(exportServerIndex == exportServers.size) {
+                    if (exportServerIndex == exportServers.size) {
                         exportServerIndex = 0
                     }
                 }
-                if(scheduledBuild && exportFreq == "weekly") {
+                if (scheduledBuild && exportFreq == "weekly") {
                     sch_minute_weekly += weeklyMinutesOffset
-                    
-                    if(sch_minute_weekly >= 60) {
+
+                    if (sch_minute_weekly >= 60) {
                         sch_hour_weekly += 1
                         sch_minute_weekly = 0
                     }
-                    if(sch_hour_weekly >= 24) {
+                    if (sch_hour_weekly >= 24) {
                         sch_hour_weekly = 0
                     }
-                }        
+                }
             }
         }
         return builds

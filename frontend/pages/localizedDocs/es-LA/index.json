@@ -1,0 +1,49 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Español",
+  "template": "page.j2",
+  "class": "threeCards product es-LA l10n",
+  "selector": {
+    "label": "Seleccione el idioma",
+    "selectedItem": "Español",
+    "items": [
+      {
+        "label": "Deutsch",
+        "page": "../de-DE"
+      },
+      {
+        "label": "Español (España)",
+        "page": "../es-ES"
+      },
+      {
+        "label": "Français",
+        "page": "../fr-FR"
+      },
+      {
+        "label": "Italiano",
+        "page": "../it-IT"
+      },
+      {
+        "label": "日本語",
+        "page": "../ja-JP"
+      },
+      {
+        "label": "Nederlands",
+        "page": "../nl-NL"
+      },
+      {
+        "label": "Português",
+        "page": "../pt-BR"
+      },
+      {
+        "label": "Pусский",
+        "page": "../ru"
+      },
+      {
+        "label": "Chinese",
+        "page": "../zh-CN"
+      }
+    ]
+  },
+  "items": []
+}

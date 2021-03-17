@@ -97,3 +97,10 @@ typings/
 .dynamodb/
 
 # End of https://www.gitignore.io/api/node
+
+public/*
+!public/images
+!public/scripts
+!public/stylesheets
+!public/robots.txt
+!public/favicon.ico

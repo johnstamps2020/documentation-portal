@@ -1,0 +1,147 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "BillingCenter for Guidewire Cloud 2020.11",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "isbc202011releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "isbc202011newandchanged"
+        },
+        {
+          "label": "Test Automation Release Notes",
+          "id": "testingframeworksrnbanff"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn202011"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "isbc202011install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "isbc202011upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "isbc202011app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202011contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "isbc202011admin"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best practices",
+          "id": "isbc202011bestpractice"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "isbc202011config"
+        },
+        {
+          "label": "Globalization",
+          "id": "isbc202011global"
+        },
+        {
+          "label": "Rules",
+          "id": "isbc202011rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "isbc202011integ"
+        },
+        {
+          "label": "REST API Client",
+          "id": "is202011restapiclient"
+        },
+        {
+          "label": "Contact Management API Reference",
+          "id": "is202011contactapi"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "isbc202011gosu"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "isbc202011testing"
+        },
+        {
+          "label": "API Testing",
+          "id": "testingframeworksapibanff"
+        },
+        {
+          "label": "User Interface Testing",
+          "id": "testingframeworksuibanff"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "is202011glossary"
+        }
+      ]
+    }
+  ]
+}
+  

@@ -1,0 +1,88 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter",
+  "template": "page.j2",
+  "class": "threeCards version fr-FR l10n",
+  "selector": {
+    "label": "Choisissez un produit",
+    "selectedItem": "PolicyCenter",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/pc/2020.05/ISCL_202005_fr_PC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/fr-FR/pc/2020.05/ISCL_202005_fr_PC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de configuration",
+          "link": "/fr-FR/pc/10.0.2/ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/fr-FR/pc/10.0.2/ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/pc/10.0.2/InstallGuide.pdf"
+        },
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/pc/10.0.2/PC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/fr-FR/pc/10.0.2/RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/pc/10.0.0/fr-PC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/fr-FR/pc/10.0.0/fr-PC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide de gestion des contacts",
+          "link": "/fr-FR/pc/10.0.0/fr-PC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/pc/10.0.0/fr-PC-InstallGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/fr-FR/pc/10.0.0/fr-PC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -12,17 +12,6 @@ function findNodeByLabel(labelValue, node) {
   }
 }
 
-async function getConfig() {
-  try {
-    const configUrl = '/safeConfig';
-    const result = await fetch(configUrl);
-    return await result.json();
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-}
-
 async function getTaxonomy(release) {
   try {
     let result;
@@ -77,6 +66,24 @@ async function findProductIdInTaxonomies(productName) {
   }
 }
 
+async function findMatchingDocsInConfig(docProduct, docPlatform, docVersion) {
+  try {
+    const baseUrl = window.location.protocol + '//' + window.location.host;
+    const configUrl = new URL('/safeConfig/docs/findMany', baseUrl);
+    configUrl.searchParams.append('product', `${docProduct}`);
+    configUrl.searchParams.append('platform', `${docPlatform}`);
+    if (docVersion) {
+      configUrl.searchParams.append('version', `${docVersion}`);
+    }
+    const response = await fetch(configUrl.href);
+    const responseBody = await response.json();
+    return responseBody;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
@@ -98,28 +105,22 @@ async function getVersions() {
   try {
     const product = document
       .querySelector("meta[name = 'gw-product']")
-      ['content'].split(',');
-    const platform = document
-      .querySelector("meta[name = 'gw-platform']")
-      ['content'].split(',');
+      ['content'].split(',')[0];
+    const platform = document.querySelector("meta[name = 'gw-platform']")[
+      'content'
+    ];
 
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    const json = await getConfig();
-    const docsFromConfig = json.docs.filter(
-      d =>
-        d.metadata.product.some(p => product.includes(p)) &&
-        d.metadata.platform.some(pl => platform.includes(pl)) &&
-        d.displayOnLandingPages !== false
-    );
+    const docs = await findMatchingDocsInConfig(product, platform);
 
     const versions = [];
-    for (doc of docsFromConfig) {
-      const sameVersionDocs = docsFromConfig.filter(d =>
+    for (doc of docs) {
+      const sameVersionDocs = docs.filter(d =>
         d.metadata.version.some(dd => doc.metadata.version.includes(dd))
       );
       const docVersion = doc.metadata.version[0];
       if (sameVersionDocs.length > 1) {
-        const productId = await findProductIdInTaxonomies(product[0]);
+        const productId = await findProductIdInTaxonomies(product);
         const productVersionPageUrl =
           baseUrl + '/' + 'product' + '/' + productId + '/' + docVersion;
         if (!versions.some(ver => ver.link === productVersionPageUrl)) {
@@ -252,13 +253,10 @@ async function addTopLinkToBreadcrumbs() {
       .querySelector("meta[name = 'gw-version']")
       ['content']?.split(',')[0];
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    const json = await getConfig();
-    const sameVersionDocs = json.docs.filter(
-      d =>
-        d.metadata.product.includes(product) &&
-        d.metadata.platform.includes(platform) &&
-        d.metadata.version.includes(version) &&
-        d.displayOnLandingPages !== false
+    const sameVersionDocs = await findMatchingDocsInConfig(
+      product,
+      platform,
+      version
     );
     if (sameVersionDocs.length > 1) {
       const productId = await findProductIdInTaxonomies(product);

@@ -1,0 +1,88 @@
+{% set ns = namespace(found=false) %}
+{% include 'includes/setVars.j2' %}
+{% include 'includes/head.j2' %}
+<body>
+<header>
+    <div id="headerLeft">
+        <a href="/">
+            <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img"
+                 aria-label="Guidewire Documentation">
+        </a>
+    </div>
+    <div id="headerCenter">
+        {% include 'includes/search.j2' %}
+    </div>
+    <div id="headerRight">
+        {% include 'includes/links-menu.j2' %}
+        <a class="button" id="loginButton" href="/gw-login">Log in</a>
+    </div>
+</header>
+<main {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
+    <div class="pageHero">
+        <h1>{{ data.get('title') }}</h1>
+        <div class="heroControls">
+            <div id="cloudToggle">
+                <a href="/" data-root="/cloudProducts">Guidewire Cloud</a>
+                <a href="/selfManagedProducts" data-root="/selfManagedProducts">Self-managed</a>
+            </div>
+        </div>
+    </div>
+    <div class="docBreadcrumb">
+        {% if data.get('breadcrumbs') %}
+                {% for breadcrumb in data.get('breadcrumbs') %}
+                    <a href="{{ breadcrumb.get('path') }}">{{ breadcrumb.get('label') }}</a>
+                {% endfor %}
+        {% endif %}
+    </div>
+    {% if data.get('selector') %}
+        <script>
+            function selectPage(selectedPage) {
+                if (selectedPage) {
+                    window.location = selectedPage;
+                }
+            }
+        </script>
+
+        <div id="pageSelectorContainer">
+            {% if data.get('selector').get('label') %}
+                <span class="selectorLabel">{{ data.get('selector').get('label') }}</span>
+            {% endif %}
+            <select onchange="selectPage(this.value)" id="pageSelector">
+                <option selected="selected">{{ data.get('selector').get('selectedItem') }}</option>
+                {% for item in data.get('selector').get('items') %}
+                    <option value="{{ item.get('page') }}">
+                        {{ item.get('label') }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    {% endif %}
+    {% macro create_block(label, class, items, id, page, link, public) -%}
+        <div {% if class -%}class="{{ class }}"{%- endif -%}>
+            {% if id -%}
+                <a href="{{ id }}" {% if not public -%}class="private"{%- endif -%}>{{ label }}</a>
+            {% elif page %}
+                <a href="{{ page }}" {% if not public -%}class="private"{%- endif -%}>{{ label }}</a>
+            {% elif link %}
+                <a href="{{ link }}" {% if not public -%}class="private"{%- endif -%}>{{ label }}</a>
+            {% else %}
+                <div class="label" {% if not public -%}class="private"{%- endif -%}>{{ label }}</div>
+            {%- endif %}
+            {% if items -%}
+                {% for item in items -%}
+                    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
+                {%- endfor %}
+            {%- endif %}
+        </div>
+    {%- endmacro %}
+
+    <div class="items">
+        {% for item in data.get('items') %}
+            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
+        {% endfor %}
+    </div>
+</main>
+{% include 'includes/footer.j2' %}
+<script src="/scripts/main.js"></script>
+</body>
+</html>

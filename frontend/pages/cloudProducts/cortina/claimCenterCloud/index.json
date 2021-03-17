@@ -1,0 +1,127 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter Cloud",
+  "template": "page.j2",
+  "class": "threeCards",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "ClaimCenter Cloud",
+    "items": [
+      {
+        "label": "BillingCenter Cloud",
+        "page": "../billingCenterCloud"
+      },
+      {
+        "label": "PolicyCenter Cloud",
+        "page": "../policyCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Core",
+      "class": "categoryCard cardShadow",
+      "env": [
+        "int"
+      ],
+      "items": [
+        {
+          "label": "ClaimCenter for Guidewire Cloud",
+          "page": "claimCenterForGuidewireCloud/latest"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Data Access",
+          "page": "../cloudDataAccess/latest",
+          "env": [
+            "int"
+          ]
+        },
+        {
+          "label": "Add-ons",
+          "class": "group",
+          "items": [
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "page": "../dataHubForGuidewireCloud/2021.04",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "page": "../dataHubForGuidewireCloud/latest",
+              "env": [
+                "int"
+              ]
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "page": "../infoCenterForGuidewireCloud/2021.04",
+              "env": [
+                "dev",
+                "staging"
+              ]
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "page": "../infoCenterForGuidewireCloud/latest",
+              "env": [
+                "int"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "class": "categoryCard cardShadow",
+      "env": [
+        "int"
+      ],
+      "items": [
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "items": [
+            {
+              "label": "CustomerEngage Account Management",
+              "page": "../customerEngageAccountManagement/latest"
+            },
+            {
+              "label": "CustomerEngage Account Management for ClaimCenter",
+              "page": "customerEngageAccountManagementForClaimCenter/latest"
+            },
+            {
+              "label": "ProducerEngage",
+              "page": "../producerEngage/latest"
+            },
+            {
+              "label": "ProducerEngage for ClaimCenter",
+              "page": "producerEngageForClaimCenter/latest"
+            },
+            {
+              "label": "ServiceRepEngage",
+              "page": "../serviceRepEngage/latest"
+            },
+            {
+              "label": "VendorEngage",
+              "page": "vendorEngage/latest"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

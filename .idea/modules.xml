@@ -8,7 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/apps/dita_processor/dita_processor.iml" filepath="$PROJECT_DIR$/apps/dita_processor/dita_processor.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/doc_crawler/doc_crawler.iml" filepath="$PROJECT_DIR$/apps/doc_crawler/doc_crawler.iml" />
       <module fileurl="file://$PROJECT_DIR$/documentation-portal.iml" filepath="$PROJECT_DIR$/documentation-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/flail_ssg/flail_ssg.iml" filepath="$PROJECT_DIR$/frontend/flail_ssg/flail_ssg.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/index_cleaner/index_cleaner.iml" filepath="$PROJECT_DIR$/apps/index_cleaner/index_cleaner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/l10n_page_builder/l10n_page_builder.iml" filepath="$PROJECT_DIR$/apps/l10n_page_builder/l10n_page_builder.iml" />
       <module fileurl="file://$PROJECT_DIR$/s3/s3.iml" filepath="$PROJECT_DIR$/s3/s3.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
     </modules>
