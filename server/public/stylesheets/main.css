@@ -453,36 +453,40 @@ a.returnLink {
 
 .docPageHeaderItems {
   padding-top: 64px;
-  padding-bottom: 64px;
+  padding-bottom: 32px;
 }
 
 .docPageTitle h1 {
   font-size: 32px;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 40px;
 }
 
 .loginPageTitle {
   text-align: center;
+  border-bottom: 1px solid gray;
 }
 
 .loginPageTitle h1 {
   font-size: 40px;
   font-weight: 600;
-  letter-spacing: 0;
-  line-height: 50px;
 }
 
 .loginPageTitle p {
   font-size: 24px;
-  letter-spacing: 0;
-  line-height: 31px;
   text-align: center;
 }
 
+.loginPageTitle .apiLink {
+  font-size: 20px;
+}
+
+.loginCardsHeader {
+  text-align: center;
+  font-size: 24px;
+  padding: 32px 0;
+}
+
 .loginCards {
-  --login-card-width: 324px;
+  --login-card-width: 322px;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, var(--login-card-width));
@@ -491,9 +495,6 @@ a.returnLink {
 }
 
 .loginCard {
-  position: relative;
-  max-width: var(--login-card-width);
-  min-height: 300px;
   padding: 32px;
   color: var(--GW-COLOR-TEXT-1);
   background-color: #ffffff;
@@ -509,24 +510,11 @@ a.returnLink {
 .loginCardTitle {
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0;
-  line-height: 23px;
-  margin-top: 32px;
-  height: 2rem;
 }
 
 .loginCardDescription {
   font-size: 16px;
-  letter-spacing: 0;
-  line-height: 20px;
-  margin-top: 16px;
-}
-
-.loginButtonWrapper {
-  position: absolute;
-  left: 0;
-  bottom: 32px;
-  width: 100%;
+  padding: 16px 0;
 }
 
 .loginLogoutButtonWrapper {
@@ -538,8 +526,16 @@ a.returnLink {
 }
 
 .loginButton {
-  font-size: 20px;
-  margin: auto;
+  color: white !important;
+  background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
+  font-size: 14px;
+  padding: 6px 16px;
+}
+
+.loginButton:hover {
+  color: white !important;
+  text-decoration: none;
+  background: var(--GW-COLOR-BRAND-1-HOVER);
 }
 
 .employeeLogin {
