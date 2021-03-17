@@ -16,20 +16,17 @@ const oktaOIDC = new ExpressOIDC({
 });
 
 const majorOpenRoutes = [
-  '/cloudProducts',
-  '/selfManagedProducts',
   '/404',
   '/unauthorized',
   '/product',
   '/alive',
   '/userInformation',
-  '/search',
   '/safeConfig',
 ];
 
 const authGateway = async (req, res, next) => {
   try {
-    const reqUrl = new URL(req.url, 'relative:///');
+    const reqUrl = req.url;
 
     function redirectToLoginPage() {
       req.session.redirectTo = req.path;
@@ -44,7 +41,7 @@ const authGateway = async (req, res, next) => {
 
     function openRequestedPage() {
       if (req.query.authSource) {
-        res.redirect(reqUrl.pathname);
+        res.redirect(reqUrl);
       }
       if (req.session.redirectTo) {
         const redirectTo = req.session.redirectTo;
@@ -55,16 +52,16 @@ const authGateway = async (req, res, next) => {
       }
     }
 
-    async function checkIfRouteIsOpen(pathname) {
-      if (pathname === '/') {
-        return true;
-      }
+    function openPublicPage() {
+      req.next();
+    }
 
+    async function checkIfRouteIsOpen(pathname) {
       if (majorOpenRoutes.some(r => pathname.startsWith(r))) {
         return true;
       }
 
-      const isPublicInConfig = await isPublicDoc(reqUrl.pathname);
+      const isPublicInConfig = await isPublicDoc(reqUrl);
       if (isPublicInConfig === true) {
         return true;
       }
@@ -75,14 +72,14 @@ const authGateway = async (req, res, next) => {
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
     const userLoggedIn = req.isAuthenticated();
     const authenticationEnabled = process.env.ENABLE_AUTH === 'yes';
-    const isOpenRoute = await checkIfRouteIsOpen(reqUrl.pathname);
+    const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
 
     if (!authenticationEnabled) {
       openRequestedPage();
     } else if (authenticationEnabled && userLoggedIn) {
       openRequestedPage();
     } else if (authenticationEnabled && publicDocsAllowed && isOpenRoute) {
-      openRequestedPage();
+      openPublicPage();
     } else {
       redirectToLoginPage();
     }
