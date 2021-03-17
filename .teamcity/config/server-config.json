@@ -6661,7 +6661,7 @@
     },
     {
       "id": "iscc202011cloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/202011/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -6693,7 +6693,7 @@
     },
     {
       "id": "cc202011apiref",
-      "title": "ClaimCenter Cloud API Reference",
+      "title": "Cloud API Reference",
       "url": "cloud/cc/202011/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -6706,22 +6706,6 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
-    },
-    {
-      "id": "is202011apisecretbuildalternate",
-      "title": "ClaimCenter API reference with alterante layout",
-      "url": "cloud/is/202011/apirefalternate",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": false,
-      "indexForSearch": true,
-      "public": false
     },
     {
       "id": "iscc202011apiref",
@@ -7013,7 +6997,7 @@
     },
     {
       "id": "ispc202011cloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/202011/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -7227,26 +7211,6 @@
         "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "is202011contactapi",
-      "title": "Contact Management API Reference",
-      "url": "cloud/is/202011/apiref/docs/cm-admin",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7666,7 +7630,7 @@
     },
     {
       "id": "isccclouddraftcloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/latest/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -7954,7 +7918,7 @@
     },
     {
       "id": "ispcclouddraftcloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/latest/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -8462,7 +8426,7 @@
     },
     {
       "id": "iscccloudeacloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/ea/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -8750,7 +8714,7 @@
     },
     {
       "id": "ispccloudeacloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/ea/cloudapi",
       "metadata": {
         "platform": ["Cloud"],

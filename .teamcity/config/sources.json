@@ -2773,13 +2773,6 @@
       "branch": "master"
     },
     {
-      "id": "srcapiref202011alternate",
-      "title": "Cloud API Reference in Redoc - alternate layout",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
-      "branch": "pawels-good-old-layout"
-    },
-    {
       "id": "dmrndraftsrc",
       "title": "DataManagement Release Notes Draft",
       "sourceType": "git",
