@@ -1,14 +1,15 @@
 import json
 import logging
 from dataclasses import dataclass
-from typing import List
-from flail_ssg import logger
-
 from pathlib import Path
+from typing import List
+
 from itertools import groupby
 
+from flail_ssg.helpers import configure_logger
+
 _log_file = Path.cwd() / 'validator.log'
-_validator_logger = logger.configure_logger('validator_logger', 'info', _log_file)
+_validator_logger = configure_logger('validator_logger', 'info', _log_file)
 
 
 @dataclass

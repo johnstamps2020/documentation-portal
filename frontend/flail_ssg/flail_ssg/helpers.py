@@ -1,5 +1,25 @@
+import json
 import logging
+from collections import namedtuple
 from pathlib import Path
+from typing import Dict
+
+
+def load_json_file(page_config_file: Path):
+    FileConfig = namedtuple(
+        'PageConfig',
+        ['absolute_path', 'dir', 'json_object']
+    )
+    return FileConfig(
+        page_config_file.resolve(),
+        page_config_file.parent,
+        json.load(page_config_file.open(encoding='utf-8'))
+    )
+
+
+def write_json_object_to_file(json_object: Dict, output_file: Path):
+    json.dump(json_object, output_file.open(
+        'w', encoding='utf-8'), indent=2)
 
 
 def configure_logger(name: str, logging_level: str, log_path: Path):

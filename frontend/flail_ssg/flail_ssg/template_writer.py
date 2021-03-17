@@ -5,10 +5,10 @@ from typing import Dict
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
 
-from flail_ssg import logger
+from flail_ssg.helpers import configure_logger
 
 _log_file = Path.cwd() / 'template_writer_logger.log'
-_template_writer_logger = logger.configure_logger(
+_template_writer_logger = configure_logger(
     'template_writer_logger', 'info', _log_file)
 
 

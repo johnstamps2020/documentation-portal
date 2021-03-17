@@ -1,11 +1,12 @@
-import json
-from typing import List
-from flail_ssg import logger
-
 from pathlib import Path
+from typing import List
+
+from flail_ssg.helpers import configure_logger
+from flail_ssg.helpers import load_json_file
+from flail_ssg.helpers import write_json_object_to_file
 
 _log_file = Path.cwd() / 'access_controller.log'
-_access_controller_logger = logger.configure_logger(
+_access_controller_logger = configure_logger(
     'access_controller_logger', 'info', _log_file)
 
 
@@ -20,13 +21,12 @@ def find_public_pages(build_dir: Path):
 
     public_paths = []
     for index_json_file in build_dir.rglob('**/*.json'):
-        index_file_absolute = index_json_file.resolve()
-        index_json = json.load(index_file_absolute.open(encoding='utf-8'))
-        items = index_json.get('items')
+        page_config = load_json_file(index_json_file)
+        items = page_config.json_object.get('items')
         if items:
             page_is_public = check_any_item_is_public(items, False)
-            if page_is_public and index_file_absolute not in public_paths:
-                public_paths.append(index_file_absolute)
+            if page_is_public and page_config.absolute_path not in public_paths:
+                public_paths.append(page_config.absolute_path)
 
     return public_paths
 
@@ -45,12 +45,10 @@ def find_all_public_paths(build_dir: Path, all_public_paths: List):
         return page_items
 
     for index_json_file in build_dir.rglob('**/*.json'):
-        index_file_absolute = index_json_file.resolve()
-        page_dir = index_file_absolute.parent
-        index_json = json.load(index_file_absolute.open(encoding='utf-8'))
-        items = index_json.get('items')
+        page_config = load_json_file(index_json_file)
+        items = page_config.json_object.get('items')
         if items:
-            find_public_path_in_items(page_dir, items)
+            find_public_path_in_items(page_config.dir, items)
     unique_public_paths = sorted([p for p in set(all_public_paths)])
     return unique_public_paths
 
@@ -69,19 +67,16 @@ def write_marked_pages(build_dir: Path, public_paths: List):
         return page_items
 
     for index_json_file in build_dir.rglob('**/*.json'):
-        index_file_absolute = index_json_file.resolve()
-        page_dir = index_file_absolute.parent
-        index_json = json.load(index_file_absolute.open(encoding='utf-8'))
-        items = index_json.get('items')
+        page_config = load_json_file(index_json_file)
+        items = page_config.json_object.get('items')
         if items:
-            mark_page_refs_with_public_prop(page_dir, items)
-        json.dump(index_json, index_json_file.open(
-            'w', encoding='utf-8'), indent=2)
+            mark_page_refs_with_public_prop(page_config.dir, items)
+        write_json_object_to_file(page_config.json_object, page_config.absolute_path)
 
 
 def set_public_prop_on_docs(build_dir: Path,
                             docs: List):
-    def mark_docs_with_public_prop(page_items: List, docs: List):
+    def mark_docs_with_public_prop(page_items: List):
         for item in page_items:
             item_id = item.get('id')
             if item_id:
@@ -89,25 +84,22 @@ def set_public_prop_on_docs(build_dir: Path,
                     (doc for doc in docs if doc['id'] == item_id), None)
                 item['public'] = matching_doc_object['public']
             if item.get('items'):
-                mark_docs_with_public_prop(item['items'], docs)
+                mark_docs_with_public_prop(item['items'])
         return page_items
 
     for index_json_file in build_dir.rglob('**/*.json'):
-        index_file_absolute = index_json_file.resolve()
-        index_json = json.load(index_file_absolute.open(encoding='utf-8'))
-        items = index_json.get('items')
+        page_config = load_json_file(index_json_file)
+        items = page_config.json_object.get('items')
         if items:
-            items_with_public_prop = mark_docs_with_public_prop(items, docs)
-            index_json['items'] = items_with_public_prop
+            mark_docs_with_public_prop(items)
 
-        json.dump(index_json, index_file_absolute.open(
-            'w', encoding='utf-8'), indent=2)
+        write_json_object_to_file(page_config.json_object, page_config.absolute_path)
 
 
 # TODO: Add a step for checking if bouncer is home
 def run_access_controller(send_bouncer_home: bool, build_dir: Path, docs_config_file: Path):
-    config_file_json = json.load(docs_config_file.open(encoding='utf-8'))
-    docs = config_file_json['docs']
+    docs_config = load_json_file(docs_config_file)
+    docs = docs_config.json_object['docs']
 
     _access_controller_logger.info('PROCESS STARTED: Mark pages as public')
 

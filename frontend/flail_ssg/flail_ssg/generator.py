@@ -1,14 +1,13 @@
 import copy
-
 import json
 import shutil
-from typing import List
-from flail_ssg import logger
-
 from pathlib import Path
+from typing import List
+
+from flail_ssg.helpers import configure_logger
 
 _log_file = Path.cwd() / 'generator.log'
-_generator_logger = logger.configure_logger(
+_generator_logger = configure_logger(
     'generator_logger', 'info', _log_file)
 
 
