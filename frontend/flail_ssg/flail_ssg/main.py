@@ -6,6 +6,7 @@ from pathlib import Path
 from flail_ssg.generator import run_generator
 from flail_ssg.template_writer import run_template_writer
 from flail_ssg.validator import run_validator
+from flail_ssg.access_controller import run_access_controller
 from enum import Enum
 
 
@@ -94,6 +95,9 @@ def main():
                   app_config.pages_dir,
                   app_config.build_dir,
                   app_config.docs_config_file)
+    run_access_controller(app_config.send_bouncer_home,
+                          app_config.build_dir,
+                          app_config.docs_config_file)
     run_template_writer(app_config.send_bouncer_home,
                         app_config.templates_dir,
                         app_config.build_dir,
