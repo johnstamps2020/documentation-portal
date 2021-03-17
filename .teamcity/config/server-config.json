@@ -6691,7 +6691,7 @@
     },
     {
       "id": "cc202011apiref",
-      "title": "ClaimCenter API Reference",
+      "title": "ClaimCenter Cloud API Reference",
       "url": "cloud/cc/202011/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -6723,7 +6723,7 @@
     },
     {
       "id": "iscc202011apiref",
-      "title": "ClaimCenter Cloud API Reference",
+      "title": "Get ready to delete this",
       "url": "cloud/is/202011/apiref/docs/cc-admin",
       "metadata": {
         "platform": ["Cloud"],
@@ -6732,9 +6732,9 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
       "public": false
     },
     {
