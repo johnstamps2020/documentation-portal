@@ -176,53 +176,55 @@ async function addTopLinkToBreadcrumbs() {
     const product = document
       .querySelector("meta[name = 'gw-product']")
       ['content']?.split(',')[0];
-    const platform = document
-      .querySelector("meta[name = 'gw-platform']")
-      ['content']?.split(',')[0];
     const version = document
       .querySelector("meta[name = 'gw-version']")
       ['content']?.split(',')[0];
-    const json = await getConfig();
-    const sameVersionDocs = json.docs.filter(
-      d =>
-        d.metadata.product.includes(product) &&
-        d.metadata.platform.includes(platform) &&
-        d.metadata.version.includes(version) &&
-        d.displayOnLandingPages !== false
-    );
-    if (sameVersionDocs.length > 1) {
-      //FIXME
-      const productVersionPageUrl = sameVersionDocs[0].url;
-      const listItem = document.createElement('li');
-      const topicrefSpan = document.createElement('span');
-      topicrefSpan.setAttribute('class', 'topicref');
-      const titleSpan = document.createElement('span');
-      titleSpan.setAttribute('class', 'title');
-      const listItemLink = document.createElement('a');
-      listItemLink.setAttribute('href', productVersionPageUrl);
-      listItemLink.innerText = product + ' ' + version;
+    const breadcrumbsMappingUrl =
+      window.location.protocol +
+      '//' +
+      window.location.host +
+      '/' +
+      'breadcrumbs.json';
+    const result = await fetch(breadcrumbsMappingUrl);
+    const breadcrumbsMapping = await result.json();
+    const currentPagePathname = window.location.pathname;
+    for (breadcrumb of breadcrumbsMapping) {
+      if (
+        currentPagePathname.startsWith(breadcrumb.docUrl) &&
+        breadcrumb.rootPages.length() === 1
+      ) {
+        const productVersionPageUrl = breadcrumb.rootPages[0].path;
+        const listItem = document.createElement('li');
+        const topicrefSpan = document.createElement('span');
+        topicrefSpan.setAttribute('class', 'topicref');
+        const titleSpan = document.createElement('span');
+        titleSpan.setAttribute('class', 'title');
+        const listItemLink = document.createElement('a');
+        listItemLink.setAttribute('href', productVersionPageUrl);
+        listItemLink.innerText = product + ' ' + version;
 
-      titleSpan.appendChild(listItemLink);
-      topicrefSpan.appendChild(titleSpan);
-      listItem.appendChild(topicrefSpan);
+        titleSpan.appendChild(listItemLink);
+        topicrefSpan.appendChild(titleSpan);
+        listItem.appendChild(topicrefSpan);
 
-      function getBreadcrumbs() {
-        try {
-          let breadcrumbs = document.querySelector(
-            '.wh_breadcrumb > .d-print-inline-block'
-          );
-          if (!breadcrumbs) {
-            window.requestAnimationFrame(getBreadcrumbs);
-          } else {
-            breadcrumbs.prepend(listItem);
+        function getBreadcrumbs() {
+          try {
+            let breadcrumbs = document.querySelector(
+              '.wh_breadcrumb > .d-print-inline-block'
+            );
+            if (!breadcrumbs) {
+              window.requestAnimationFrame(getBreadcrumbs);
+            } else {
+              breadcrumbs.prepend(listItem);
+            }
+          } catch (err) {
+            console.log(err);
+            return null;
           }
-        } catch (err) {
-          console.log(err);
-          return null;
         }
-      }
 
-      getBreadcrumbs();
+        getBreadcrumbs();
+      }
     }
   } catch (err) {
     console.log(err);
