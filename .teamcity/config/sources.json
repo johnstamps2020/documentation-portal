@@ -2307,7 +2307,7 @@
     },
     {
       "id": "ininstallassistdraftsrc",
-      "title": "InsuranceNow Upgrade Tools Draft",
+      "title": "InsuranceNow Install Assist Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
