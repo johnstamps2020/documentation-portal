@@ -1,5 +1,5 @@
 import shutil
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Callable, List
 
 from flail_ssg.helpers import configure_logger
@@ -31,11 +31,13 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
                 for doc_url in page_doc_urls:
                     matching_breadcrumb = next(
                         (item for item in breadcrumbs if item.get('docUrl') == doc_url), None)
+                    breadcrumb_path = f'/{str(PurePosixPath(index_json_file.relative_to(pages_build_dir).parent))}'
+
                     if matching_breadcrumb:
                         matching_breadcrumb['rootPages'].append(
                             {
                                 "label": page_config.json_object['title'],
-                                "path": str(index_json_file.relative_to(pages_build_dir).parent)
+                                "path": breadcrumb_path
                             }
                         )
                     else:
@@ -45,13 +47,14 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
                                 "rootPages": [
                                     {
                                         "label": page_config.json_object['title'],
-                                        "path": f'/{str(index_json_file.relative_to(pages_build_dir).parent)}'
+                                        "path": breadcrumb_path
                                     }
                                 ]
                             }
                         )
 
-    write_json_object_to_file(breadcrumbs, config_build_dir / 'breadcrumbs.json')
+    write_json_object_to_file(
+        breadcrumbs, config_build_dir / 'breadcrumbs.json')
 
 
 def run_config_generator(send_bouncer_home: bool, pages_build_dir: Path, config_build_dir: Path):
@@ -66,7 +69,8 @@ def run_config_generator(send_bouncer_home: bool, pages_build_dir: Path, config_
             else:
                 raise e
 
-    _config_generator_logger.info('PROCESS STARTED: Generate frontend configuration')
+    _config_generator_logger.info(
+        'PROCESS STARTED: Generate frontend configuration')
 
     if config_build_dir.exists():
         shutil.rmtree(config_build_dir)
@@ -74,4 +78,5 @@ def run_config_generator(send_bouncer_home: bool, pages_build_dir: Path, config_
 
     run_process(create_breadcrumbs_mapping, pages_build_dir, config_build_dir)
 
-    _config_generator_logger.info('PROCESS ENDED: Generate frontend configuration')
+    _config_generator_logger.info(
+        'PROCESS ENDED: Generate frontend configuration')
