@@ -147,7 +147,7 @@ def validate_page(index_file: Path,
 def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Path):
     docs = load_json_file(docs_config_file).json_object['docs']
 
-    _validator_logger.info('PROCESS STARTED: Generate pages')
+    _validator_logger.info('PROCESS STARTED: Validate pages')
 
     cloud_products_validation_results = validate_page(
         pages_dir / 'cloudProducts' / 'index.json',

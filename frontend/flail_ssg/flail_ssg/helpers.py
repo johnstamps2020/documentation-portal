@@ -2,7 +2,7 @@ import json
 import logging
 from collections import namedtuple
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List, Union
 
 
 def load_json_file(json_file: Path):
@@ -18,9 +18,8 @@ def load_json_file(json_file: Path):
     )
 
 
-def write_json_object_to_file(json_object: Dict, output_file: Path):
-    json.dump(json_object, output_file.resolve().open(
-        'w', encoding='utf-8'), indent=2)
+def write_json_object_to_file(json_data: Union[Dict, List], output_file: Path):
+    output_file.resolve().open('w', encoding='utf-8').write(json.dumps(json_data, indent=2))
 
 
 def configure_logger(name: str, logging_level: str, log_path: Path):

@@ -33,7 +33,7 @@ def write_to_file(out_file_path: Path, data: Dict, template_file: Path):
     new_file.write(content)
 
 
-def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir: Path, output_dir: Path):
+def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir: Path):
     _template_writer_logger.info('PROCESS STARTED: Build pages from templates')
 
     for index_json_file in build_dir.rglob('**/*.json'):
@@ -58,5 +58,4 @@ def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir:
     for index_json_file in build_dir.rglob('**/*.json'):
         index_json_file.unlink()
 
-    shutil.copytree(build_dir, output_dir, dirs_exist_ok=True)
     _template_writer_logger.info('PROCESS ENDED: Build pages from templates')

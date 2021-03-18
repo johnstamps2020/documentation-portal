@@ -1,13 +1,15 @@
 import dataclasses
 import os
 from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
 
+from flail_ssg.access_controller import run_access_controller
+from flail_ssg.config_generator import run_config_generator
 from flail_ssg.generator import run_generator
+from flail_ssg.publisher import run_publisher
 from flail_ssg.template_writer import run_template_writer
 from flail_ssg.validator import run_validator
-from flail_ssg.access_controller import run_access_controller
-from enum import Enum
 
 
 class Bouncer(Enum):
@@ -33,7 +35,9 @@ def validate_path(path: Path):
 
 @dataclass
 class AppConfig:
-    build_dir: Path = Path.cwd() / 'build'
+    root_build_dir: Path = Path.cwd() / 'build'
+    pages_build_dir: Path = root_build_dir / 'pages'
+    config_build_dir: Path = root_build_dir / 'config'
     _deploy_env: str = os.environ.get('DEPLOY_ENV')
     _pages_dir: str = os.environ.get('PAGES_DIR')
     _templates_dir: str = os.environ.get('TEMPLATES_DIR')
@@ -93,15 +97,19 @@ def main():
     run_generator(app_config.send_bouncer_home,
                   app_config.deploy_env,
                   app_config.pages_dir,
-                  app_config.build_dir,
+                  app_config.pages_build_dir,
                   app_config.docs_config_file)
     run_access_controller(app_config.send_bouncer_home,
-                          app_config.build_dir,
+                          app_config.pages_build_dir,
                           app_config.docs_config_file)
+    run_config_generator(app_config.send_bouncer_home,
+                         app_config.pages_build_dir,
+                         app_config.config_build_dir)
     run_template_writer(app_config.send_bouncer_home,
                         app_config.templates_dir,
-                        app_config.build_dir,
-                        app_config.output_dir)
+                        app_config.pages_build_dir)
+    run_publisher([app_config.pages_build_dir, app_config.config_build_dir],
+                  app_config.output_dir)
 
 
 if __name__ == '__main__':
