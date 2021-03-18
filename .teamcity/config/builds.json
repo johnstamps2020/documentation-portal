@@ -3448,7 +3448,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "UpgradeTools.ditamap",
+      "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "ininstallassistdraftsrc",
       "docId": "ininstallassistdraft",
       "indexRedirect": true
