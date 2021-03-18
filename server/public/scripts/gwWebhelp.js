@@ -173,12 +173,6 @@ async function createVersionSelector() {
 
 async function addTopLinkToBreadcrumbs() {
   try {
-    const product = document
-      .querySelector("meta[name = 'gw-product']")
-      ['content']?.split(',')[0];
-    const version = document
-      .querySelector("meta[name = 'gw-version']")
-      ['content']?.split(',')[0];
     const breadcrumbsMappingUrl =
       window.location.protocol +
       '//' +
@@ -191,7 +185,7 @@ async function addTopLinkToBreadcrumbs() {
     for (breadcrumb of breadcrumbsMapping) {
       if (
         currentPagePathname.startsWith(breadcrumb.docUrl) &&
-        breadcrumb.rootPages.length() === 1
+        breadcrumb.rootPages.length === 1
       ) {
         const productVersionPageUrl = breadcrumb.rootPages[0].path;
         const listItem = document.createElement('li');
@@ -201,7 +195,7 @@ async function addTopLinkToBreadcrumbs() {
         titleSpan.setAttribute('class', 'title');
         const listItemLink = document.createElement('a');
         listItemLink.setAttribute('href', productVersionPageUrl);
-        listItemLink.innerText = product + ' ' + version;
+        listItemLink.innerText = breadcrumb.rootPages[0].label;
 
         titleSpan.appendChild(listItemLink);
         topicrefSpan.appendChild(titleSpan);
