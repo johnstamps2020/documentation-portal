@@ -51,8 +51,27 @@ async function getVersions() {
       );
       const docVersion = doc.metadata.version[0];
       if (sameVersionDocs.length > 1) {
-        //FIXME
-        const productVersionPageUrl = sameVersionDocs[0].url;
+        const versionSelectorsMappingUrl =
+          window.location.protocol +
+          '//' +
+          window.location.host +
+          '/' +
+          'versionSelectors.json';
+        const result = await fetch(versionSelectorsMappingUrl);
+        const versionSelectorsMapping = await result.json();
+        const rootPages = [];
+        for (doc of sameVersionDocs) {
+          const matchingRootPages = versionSelectorsMapping.filter(r =>
+            r.docUrls.some(d => d === '/' + doc.url)
+          );
+          if (matchingRootPages) {
+            if (!rootPages.includes(matchingRootPages[0].rootPagePath)) {
+              rootPages.push(matchingRootPages[0].rootPagePath);
+            }
+          }
+        }
+        const productVersionPageUrl =
+          rootPages.length === 1 ? rootPages[0] : sameVersionDocs[0].url;
         if (!versions.some(ver => ver.link === productVersionPageUrl)) {
           versions.push({
             label: docVersion,

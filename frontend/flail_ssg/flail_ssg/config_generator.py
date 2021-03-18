@@ -11,22 +11,23 @@ _config_generator_logger = configure_logger(
     'config_generator_logger', 'info', _log_file)
 
 
-def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
-    def get_root_pages_for_doc_urls(page_items: List, doc_urls: List):
-        for item in page_items:
-            item_doc_url = item.get('doc_url')
-            if item_doc_url:
-                doc_urls.append(item_doc_url)
-            if item.get('items'):
-                get_root_pages_for_doc_urls(item['items'], doc_urls)
-        return doc_urls
+def get_doc_urls(page_items: List, doc_urls: List):
+    for item in page_items:
+        item_doc_url = item.get('doc_url')
+        if item_doc_url:
+            doc_urls.append(item_doc_url)
+        if item.get('items'):
+            get_doc_urls(item['items'], doc_urls)
+    return doc_urls
 
+
+def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
     breadcrumbs = []
     for index_json_file in pages_build_dir.rglob('**/*.json'):
         page_config = load_json_file(index_json_file)
         items = page_config.json_object.get('items')
         if items:
-            page_doc_urls = get_root_pages_for_doc_urls(items, [])
+            page_doc_urls = get_doc_urls(items, [])
             if page_doc_urls:
                 for doc_url in page_doc_urls:
                     matching_breadcrumb = next(
@@ -57,6 +58,33 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
         breadcrumbs, config_build_dir / 'breadcrumbs.json')
 
 
+def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Path):
+    root_pages = []
+    for index_json_file in pages_build_dir.rglob('**/*.json'):
+        page_config = load_json_file(index_json_file)
+        items = page_config.json_object.get('items')
+        if items:
+            page_doc_urls = get_doc_urls(items, [])
+            if page_doc_urls:
+                root_page_title = page_config.json_object['title']
+                root_page_path = f'/{str(PurePosixPath(index_json_file.relative_to(pages_build_dir).parent))}'
+                matching_root_page = next(
+                    (item for item in root_pages if item.get('rootPageTitle') == root_page_title), None)
+                if matching_root_page:
+                    matching_root_page['docUrls'] += page_doc_urls
+                else:
+                    root_pages.append(
+                        {
+                            "rootPageTitle": root_page_title,
+                            "rootPagePath": root_page_path,
+                            "docUrls": page_doc_urls
+                        }
+                    )
+
+    write_json_object_to_file(
+        root_pages, config_build_dir / 'versionSelectors.json')
+
+
 def run_config_generator(send_bouncer_home: bool, pages_build_dir: Path, config_build_dir: Path):
     def run_process(func: Callable, *args):
         try:
@@ -77,6 +105,7 @@ def run_config_generator(send_bouncer_home: bool, pages_build_dir: Path, config_
     config_build_dir.mkdir(parents=True)
 
     run_process(create_breadcrumbs_mapping, pages_build_dir, config_build_dir)
+    run_process(create_version_selector_mapping, pages_build_dir, config_build_dir)
 
     _config_generator_logger.info(
         'PROCESS ENDED: Generate frontend configuration')
