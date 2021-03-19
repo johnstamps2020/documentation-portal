@@ -12,13 +12,15 @@ async function insertSurveyLink() {
 
   const surveyTextWrapper = document.createElement('div');
   surveyTextWrapper.className = 'surveyTextWrapper';
-  surveyTextWrapper.innerText = 'Help us improve our product documentation by taking this short survey.';
+  surveyTextWrapper.innerText = 'Help us improve our documentation by taking this short survey.';
 
   const surveyLinkWrapper = document.createElement('div');
   surveyLinkWrapper.className = 'surveyLinkWrapper';
 
   const link = document.createElement('a');
-  link.innerText = 'Click here to take the survey.';
+  link.innerText = 'Start Survey';
+  link.setAttribute('class', 'gwSecondaryButton');
+  link.setAttribute('id', 'surveyButton')
   link.setAttribute('href', '#');
 
   await fetch('/userInformation')
@@ -37,7 +39,7 @@ async function insertSurveyLink() {
         );
       }
 
-      if (userInfo.isLoggedIn) {
+      if (userInfo.isLoggedIn && isEmployee) {
         surveyLinkWrapper.append(link);
         surveyWrapper.append(surveyTextWrapper);
         surveyWrapper.append(surveyLinkWrapper);

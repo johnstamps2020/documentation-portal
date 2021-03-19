@@ -542,6 +542,12 @@ a.returnLink {
   margin: auto;
 }
 
+#surveyButton {
+    margin-top: .5em;
+    width: auto;
+    padding: 0 1em;
+}
+
 .employeeLogin {
   text-align: center;
   margin-top: 32px;
