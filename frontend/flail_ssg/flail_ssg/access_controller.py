@@ -108,8 +108,7 @@ def run_access_controller(send_bouncer_home: bool, build_dir: Path, docs_config_
             else:
                 raise e
 
-    docs_config = load_json_file(docs_config_file)
-    docs = docs_config.json_object['docs']
+    docs = load_json_file(docs_config_file).json_object['docs']
 
     _access_controller_logger.info('PROCESS STARTED: Mark pages as public')
     run_process(set_public_prop_on_docs, build_dir, docs)
