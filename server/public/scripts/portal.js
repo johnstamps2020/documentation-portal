@@ -22,6 +22,7 @@ async function insertSurveyLink() {
   link.setAttribute('class', 'gwButtonSecondary');
   link.setAttribute('id', 'surveyButton')
   link.setAttribute('href', '#');
+  link.setAttribute('target', '_blank');
 
   await fetch('/userInformation')
     .then(result => result.json())
