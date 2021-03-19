@@ -1,6 +1,6 @@
 import shutil
 from pathlib import Path, PurePosixPath
-from typing import Callable, Dict, List
+from typing import Callable, List
 
 from flail_ssg.helpers import configure_logger
 from flail_ssg.helpers import load_json_file
@@ -60,22 +60,20 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
     return breadcrumbs
 
 
-def filter_docs_by_property(docs: List, property_name: str, doc: Dict):
+def get_visible_docs_for_env(docs: List, env: str):
     filtered_docs = []
-    filter_values = doc.get('metadata').get(property_name)
-    doc_id = doc.get('id')
     for doc in docs:
-        if doc.get('id') != doc_id:
-            if doc.get('displayOnLandingPages'):
-                if any(value for value in filter_values if value in doc.get('metadata').get(property_name)):
-                    filtered_docs.append(doc)
+        if doc.get('displayOnLandingPages'):
+            if any(value for value in doc.get('environments') if value == env):
+                filtered_docs.append(doc)
 
     return filtered_docs
 
 
-def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Path, docs: List):
+def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Path, docs: List, deploy_env: str):
     version_selectors = []
-    for doc in docs:
+    visible_docs_for_env = get_visible_docs_for_env(docs, deploy_env)
+    for doc in visible_docs_for_env:
         doc_products = doc.get('metadata').get('product')
         doc_platforms = doc.get('metadata').get('platform')
         doc_versions = doc.get('metadata').get('version')
@@ -98,7 +96,7 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
                         )
 
     doc_urls_with_root_pages = create_breadcrumbs_mapping(pages_build_dir, config_build_dir)
-    for doc in docs:
+    for doc in visible_docs_for_env:
         doc_products = doc.get('metadata').get('product')
         doc_platforms = doc.get('metadata').get('platform')
         doc_versions = doc.get('metadata').get('version')
@@ -144,7 +142,7 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
         version_selectors, config_build_dir / 'versionSelectors.json')
 
 
-def run_config_generator(send_bouncer_home: bool, pages_build_dir: Path, config_build_dir: Path,
+def run_config_generator(send_bouncer_home: bool, deploy_env: str, pages_build_dir: Path, config_build_dir: Path,
                          docs_config_file: Path):
     def run_process(func: Callable, *args):
         try:
@@ -167,7 +165,7 @@ def run_config_generator(send_bouncer_home: bool, pages_build_dir: Path, config_
     config_build_dir.mkdir(parents=True)
 
     run_process(create_breadcrumbs_mapping, pages_build_dir, config_build_dir)
-    run_process(create_version_selector_mapping, pages_build_dir, config_build_dir, docs)
+    run_process(create_version_selector_mapping, pages_build_dir, config_build_dir, docs, deploy_env)
 
     _config_generator_logger.info(
         'PROCESS ENDED: Generate frontend configuration')

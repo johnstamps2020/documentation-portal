@@ -103,6 +103,7 @@ def main():
                           app_config.pages_build_dir,
                           app_config.docs_config_file)
     run_config_generator(app_config.send_bouncer_home,
+                         app_config.deploy_env,
                          app_config.pages_build_dir,
                          app_config.config_build_dir,
                          app_config.docs_config_file)

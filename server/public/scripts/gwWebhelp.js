@@ -1,14 +1,3 @@
-async function getConfig() {
-  try {
-    const configUrl = '/safeConfig';
-    const result = await fetch(configUrl);
-    return await result.json();
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-}
-
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
@@ -23,90 +12,6 @@ async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   } catch (err) {
     console.log(err);
     return null;
-  }
-}
-
-async function getVersions() {
-  try {
-    const product = document
-      .querySelector("meta[name = 'gw-product']")
-      ['content'].split(',');
-    const platform = document
-      .querySelector("meta[name = 'gw-platform']")
-      ['content'].split(',');
-
-    const baseUrl = window.location.protocol + '//' + window.location.host;
-    const json = await getConfig();
-    const docsFromConfig = json.docs.filter(
-      d =>
-        d.metadata.product.some(p => product.includes(p)) &&
-        d.metadata.platform.some(pl => platform.includes(pl)) &&
-        d.displayOnLandingPages !== false
-    );
-
-    const versions = [];
-    for (doc of docsFromConfig) {
-      const sameVersionDocs = docsFromConfig.filter(d =>
-        d.metadata.version.some(dd => doc.metadata.version.includes(dd))
-      );
-      const docVersion = doc.metadata.version[0];
-      if (sameVersionDocs.length > 1) {
-        const versionSelectorsMappingUrl =
-          window.location.protocol +
-          '//' +
-          window.location.host +
-          '/' +
-          'versionSelectors.json';
-        const result = await fetch(versionSelectorsMappingUrl);
-        const versionSelectorsMapping = await result.json();
-        const rootPages = [];
-        for (doc of sameVersionDocs) {
-          const matchingRootPages = versionSelectorsMapping.filter(r =>
-            r.docUrls.some(d => d === '/' + doc.url)
-          );
-          if (matchingRootPages) {
-            if (!rootPages.includes(matchingRootPages[0].rootPagePath)) {
-              rootPages.push(matchingRootPages[0].rootPagePath);
-            }
-          }
-        }
-        const productVersionPageUrl =
-          rootPages.length === 1 ? rootPages[0] : sameVersionDocs[0].url;
-        if (!versions.some(ver => ver.link === productVersionPageUrl)) {
-          versions.push({
-            label: docVersion,
-            link: productVersionPageUrl,
-          });
-        }
-      } else {
-        if (doc.url.includes('portal2')) {
-          versions.push({
-            label: docVersion,
-            link: doc.url,
-            public: doc.public,
-          });
-        } else {
-          versions.push({
-            label: docVersion,
-            link: baseUrl + '/' + doc.url,
-            public: doc.public,
-          });
-        }
-      }
-    }
-
-    versions
-      .sort((a, b) =>
-        a.label
-          .replace(/\d+/g, n => +n + 100)
-          .localeCompare(b.label.replace(/\d+/g, n => +n + 100))
-      )
-      .reverse();
-
-    return versions;
-  } catch (err) {
-    console.log(err);
-    return { docs: [] };
   }
 }
 
@@ -125,18 +30,28 @@ async function createVersionSelector() {
     if (!docProduct) {
       return null;
     }
+    const product = docProduct.split(',');
+    const platform = document
+      .querySelector("meta[name = 'gw-platform']")
+      ['content'].split(',');
+    const version = document
+      .querySelector("meta[name = 'gw-version']")
+      ['content'].split(',');
 
-    let docVersions = await getVersions();
+    //START TODO: Move to an endpoint
+    const result = await fetch('/versionSelectors.json');
+    const versionSelectorMapping = await result.json();
 
-    const response = await fetch('/userInformation');
-    const responseBody = await response.json();
-    const isLoggedIn = responseBody.isLoggedIn;
+    const matchingVersionSelector = versionSelectorMapping.find(
+      s =>
+        product.some(p => p === s.product) &&
+        platform.some(pl => pl === s.platform) &&
+        version.some(v => v === s.version)
+    );
+    //END TODO
 
-    if (!isLoggedIn && Array.isArray(docVersions)) {
-      docVersions = docVersions.filter(v => v.public);
-    }
-
-    if (docVersions.length > 1) {
+    const otherVersions = matchingVersionSelector.otherVersions;
+    if (otherVersions.length > 0) {
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
@@ -161,19 +76,22 @@ async function createVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of docVersions) {
+      for (const val of otherVersions) {
         const option = document.createElement('option');
         option.text = val.label;
-        option.value = val.link;
-
-        const currentVersion = document
-          .querySelector("meta[name = 'gw-version']")
-          ['content'].split(',');
-        if (currentVersion.includes(option.text)) {
-          option.setAttribute('selected', 'selected');
+        let value = val.path;
+        if (val.fallbackPaths) {
+          value = val.fallbackPaths[0];
         }
+        option.value = value;
+
         select.appendChild(option);
       }
+
+      const currentlySelectedOption = document.createElement('option');
+      currentlySelectedOption.text = matchingVersionSelector.version;
+      currentlySelectedOption.setAttribute('selected', 'selected');
+      select.appendChild(currentlySelectedOption);
 
       const label = document.createElement('label');
       label.innerHTML = 'Select version:';
@@ -192,14 +110,10 @@ async function createVersionSelector() {
 
 async function addTopLinkToBreadcrumbs() {
   try {
-    const breadcrumbsMappingUrl =
-      window.location.protocol +
-      '//' +
-      window.location.host +
-      '/' +
-      'breadcrumbs.json';
-    const result = await fetch(breadcrumbsMappingUrl);
+    //START TODO: Move to an endpoint
+    const result = await fetch('/breadcrumbs.json');
     const breadcrumbsMapping = await result.json();
+    //END TODO
     const currentPagePathname = window.location.pathname;
     for (breadcrumb of breadcrumbsMapping) {
       if (
