@@ -543,7 +543,6 @@ a.returnLink {
 }
 
 #surveyButton {
-    margin-top: .5em;
     width: auto;
     padding: 0 1em;
 }
@@ -808,6 +807,7 @@ a.returnLink {
 
 .surveyTextWrapper {
   font-size: 1.1rem;
+  margin-bottom: .5rem;
 }
 
 .surveyLinkWrapper a {

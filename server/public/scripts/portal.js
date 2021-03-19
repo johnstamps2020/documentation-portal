@@ -19,7 +19,7 @@ async function insertSurveyLink() {
 
   const link = document.createElement('a');
   link.innerText = 'Start Survey';
-  link.setAttribute('class', 'gwSecondaryButton');
+  link.setAttribute('class', 'gwButtonSecondary');
   link.setAttribute('id', 'surveyButton')
   link.setAttribute('href', '#');
 
