@@ -31,12 +31,12 @@ async function insertSurveyLink() {
       if (isEmployee) {
         link.setAttribute(
           'href',
-          'https://www.surveymonkey.com/r/gwre-docsurvey-internal'
+          'https://www.surveymonkey.com/r/docsurvey-site-int'
         );
       } else {
         link.setAttribute(
           'href',
-          'https://www.surveymonkey.com/r/gwre-docsurvey-external'
+          'https://www.surveymonkey.com/r/docsurvey-site-ext'
         );
       }
 
