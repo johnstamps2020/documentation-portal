@@ -544,6 +544,11 @@ a.returnLink {
   background: var(--GW-COLOR-BRAND-1-HOVER);
 }
 
+#surveyButton {
+    width: auto;
+    padding: 0 1em;
+}
+
 .employeeLogin {
   text-align: center;
   margin-top: 32px;
@@ -793,4 +798,20 @@ a.returnLink {
   color: gray;
   font-size: 0.8em;
   padding: 16px;
+}
+
+.surveyWrapper {
+  background-color: var(--GW-COLOR-BKGD-1);
+  gap: 8px;
+  padding-top: 3rem;
+  text-align: center;
+}
+
+.surveyTextWrapper {
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
+}
+
+.surveyLinkWrapper a {
+  font-size: .9rem;
 }
