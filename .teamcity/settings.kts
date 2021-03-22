@@ -1059,6 +1059,78 @@ object DeployServerConfig : BuildType({
     }
 })
 
+object DeployFrontend : BuildType({
+    name = "Deploy frontend"
+
+    params {
+        text("env.DOCS_CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json", display = ParameterDisplay.HIDDEN)
+        text("env.PAGES_DIR", "%teamcity.build.checkoutDir%/frontend/pages", display = ParameterDisplay.HIDDEN)
+        text("env.TEMPLATES_DIR", "%teamcity.build.checkoutDir%/frontend/templates", display = ParameterDisplay.HIDDEN)
+        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/output", display = ParameterDisplay.HIDDEN)
+        text("env.SEND_BOUNCER_HOME", "no", display = ParameterDisplay.HIDDEN)
+        select(
+            "env.DEPLOY_ENV",
+            "",
+            label = "Deployment environment",
+            description = "Select an environment on which you want deploy the config",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod")
+        )
+    }
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Build frontend"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                flail_ssg
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Upload frontend to S3"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ %env.DEPLOY_ENV% == "prod" ]]; then
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                fi
+                
+                aws s3 sync %env.OUTPUT_DIR%/cloudProducts s3://tenant-doctools-%env.DEPLOY_ENV%-builds/cloudProducts --delete
+                aws s3 sync %env.OUTPUT_DIR%/jutro s3://tenant-doctools-%env.DEPLOY_ENV%-builds/jutro --delete
+                aws s3 sync %env.OUTPUT_DIR%/localizedDocs s3://tenant-doctools-%env.DEPLOY_ENV%-builds/localizedDocs --delete
+                aws s3 sync %env.OUTPUT_DIR%/selfManagedProducts s3://tenant-doctools-%env.DEPLOY_ENV%-builds/selfManagedProducts --delete
+                aws s3 sync %env.OUTPUT_DIR%/index.html s3://tenant-doctools-%env.DEPLOY_ENV%-builds/index.html --delete
+                aws s3 sync %env.OUTPUT_DIR%/breadcrumbs.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/breadcrumbs.jsong --delete
+                aws s3 sync %env.OUTPUT_DIR%/versionSelectors.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/versionSelectors.json --delete
+                """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
 object TestConfig : BuildType({
     name = "Test config"
 
@@ -1282,6 +1354,7 @@ object Server : Project({
     buildType(Release)
     buildType(DeployProd)
     buildType(DeployServerConfig)
+    buildType(DeployFrontend)
 
 })
 
