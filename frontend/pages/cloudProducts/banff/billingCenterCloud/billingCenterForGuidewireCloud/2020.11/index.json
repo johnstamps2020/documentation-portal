@@ -103,10 +103,6 @@
         {
           "label": "REST API Client",
           "id": "is202011restapiclient"
-        },
-        {
-          "label": "Contact Management API Reference",
-          "id": "is202011contactapi"
         }
       ]
     },
@@ -144,4 +140,3 @@
     }
   ]
 }
-  

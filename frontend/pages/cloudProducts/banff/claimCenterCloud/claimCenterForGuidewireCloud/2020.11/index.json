@@ -101,7 +101,7 @@
           "id": "iscc202011integ"
         },
         {
-          "label": "Cloud API",
+          "label": "Cloud API Developer Guide",
           "id": "iscc202011cloudapi"
         },
         {
@@ -115,10 +115,6 @@
         {
           "label": "REST API Client",
           "id": "is202011restapiclient"
-        },
-        {
-          "label": "Contact Management API Reference",
-          "id": "is202011contactapi"
         }
       ]
     },
