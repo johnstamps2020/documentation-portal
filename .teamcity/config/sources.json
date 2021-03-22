@@ -2306,6 +2306,17 @@
       ]
     },
     {
+      "id": "ininstallassistdraftsrc",
+      "title": "InsuranceNow Install Assist Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/InsuranceNow_InstallAssist_5.0.ditamap"
+      ]
+    },
+    {
       "id": "in20202xprodattrefdraftsrc",
       "title": "InsuranceNow 2020.2 Product Attribute Reference Draft",
       "sourceType": "xdocs",
@@ -2771,13 +2782,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
       "branch": "master"
-    },
-    {
-      "id": "srcapiref202011alternate",
-      "title": "Cloud API Reference in Redoc - alternate layout",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
-      "branch": "pawels-good-old-layout"
     },
     {
       "id": "dmrndraftsrc",

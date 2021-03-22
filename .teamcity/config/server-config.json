@@ -2516,12 +2516,13 @@
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/5.3.0",
       "metadata": {
+        "release": ["Cortina"],
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.3.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["dev", "staging", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2531,12 +2532,13 @@
       "title": "Jutro Storybook",
       "url": "jutro/storybook/5.3.0",
       "metadata": {
+        "release": ["Cortina"],
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "staging", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3910,20 +3912,6 @@
       "public": false
     },
     {
-      "id": "httpsportalguidewirecomportalsecuredocbcillingentercqsywzuj",
-      "title": "BillingCenter",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.2/",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
-        "version": ["10.0.2"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "httpsportalguidewirecomportalsecuredocbcillingentervdugkpgr",
       "title": "BillingCenter",
       "url": "https://portal2.guidewire.com/portal/secure/doc/bc/BillingCenter_10.0.1/",
@@ -4435,20 +4423,6 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["3.0.0"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "httpsportalguidewirecomportalsecuredoccclaimenterbfthnlvf",
-      "title": "ClaimCenter",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/cc/ClaimCenter_10.0.2/",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
-        "version": ["10.0.2"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -5107,20 +5081,6 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["5.0.0"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterzvxwgqku",
-      "title": "PolicyCenter",
-      "url": "https://portal2.guidewire.com/portal/secure/doc/pc/PolicyCenter_10.0.2/",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
-        "version": ["10.0.2"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -6659,7 +6619,7 @@
     },
     {
       "id": "iscc202011cloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/202011/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -6671,7 +6631,7 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "is202011apisecretbuild",
@@ -6691,7 +6651,7 @@
     },
     {
       "id": "cc202011apiref",
-      "title": "ClaimCenter API Reference",
+      "title": "Cloud API Reference",
       "url": "cloud/cc/202011/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -6706,24 +6666,8 @@
       "public": true
     },
     {
-      "id": "is202011apisecretbuildalternate",
-      "title": "ClaimCenter API reference with alterante layout",
-      "url": "cloud/is/202011/apirefalternate",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": false,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "iscc202011apiref",
-      "title": "ClaimCenter Cloud API Reference",
+      "title": "Get ready to delete this",
       "url": "cloud/is/202011/apiref/docs/cc-admin",
       "metadata": {
         "platform": ["Cloud"],
@@ -6732,9 +6676,9 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
       "public": false
     },
     {
@@ -7011,7 +6955,7 @@
     },
     {
       "id": "ispc202011cloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/202011/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -7225,26 +7169,6 @@
         "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "is202011contactapi",
-      "title": "Contact Management API Reference",
-      "url": "cloud/is/202011/apiref/docs/cm-admin",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -7664,7 +7588,7 @@
     },
     {
       "id": "isccclouddraftcloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/latest/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -7952,7 +7876,7 @@
     },
     {
       "id": "ispcclouddraftcloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/latest/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -8460,7 +8384,7 @@
     },
     {
       "id": "iscccloudeacloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/ea/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -8748,7 +8672,7 @@
     },
     {
       "id": "ispccloudeacloudapi",
-      "title": "Cloud API",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/ea/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -9789,18 +9713,39 @@
       "public": false
     },
     {
+      "id": "ininstallassistdraft",
+      "title": "Install Assist",
+      "url": "cloud/in/installassist",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": ["latest"],
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "inupgradetoolsdraft",
       "title": "Upgrade Tools",
       "url": "cloud/in/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
           "InsuranceNow 2020.2x - Internal Audience",
           "InsuranceNow 2020.1x - Internal Audience"
         ],
         "version": ["latest"],
-        "subject": ["Configuration"],
-        "release": ["Aspen", "Banff"]
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,

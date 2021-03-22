@@ -3448,6 +3448,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "InsuranceNow_InstallAssist_5.0.ditamap",
+      "srcId": "ininstallassistdraftsrc",
+      "docId": "ininstallassistdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20201.ditamap",
       "srcId": "in20201xrndraftsrc",
       "docId": "in20201xrndraft",
@@ -3963,11 +3971,6 @@
       "buildType": "yarn",
       "docId": "cc202011apiref",
       "srcId": "srcapiref202011"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "is202011apisecretbuildalternate",
-      "srcId": "srcapiref202011alternate"
     },
     {
       "buildType": "dita",
