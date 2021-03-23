@@ -2069,9 +2069,17 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapi202011src",
-      "docId": "iscc202011cloudapi",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "cloudiscloudapibf202011src",
+      "docId": "iscc202011cloudapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "srcId": "cloudiscloudapica202011src",
+      "docId": "iscc202011cloudapica",
       "indexRedirect": true
     },
     {

@@ -147,14 +147,28 @@
       ]
     },
     {
-      "id": "cloudiscloudapi202011src",
-      "title": "IS 2020.11 Cloud API",
+      "id": "cloudiscloudapibf202011src",
+      "title": "IS 2020.11 Cloud API Business Flows",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Banff",
       "exportFrequency": "weekly",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide.ditamap",
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide-BusinessFlows.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudiscloudapica202011src",
+      "title": "IS 2020.11 Cloud API Configuration and Authentication",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide-ConfigAuth.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
