@@ -3957,10 +3957,10 @@
       "workingDir": "website"
     },
     {
-      "buildType": "yarn",
+      "buildType": "storybook",
       "docId": "storybook540",
       "srcId": "srcjutrostorybook540",
-      "workingDir": "storybook",
+      "workingDir": "applications/jutro-app-storybook-new",
       "customEnv": [
         {
           "name": "STORYBOOK_GA_ID",
