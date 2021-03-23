@@ -954,6 +954,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "IPFHelp.ditamap",
+      "srcId": "midipfdraftsrc",
+      "docId": "midipfdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "midipgdraftsrc",
       "docId": "midipg2x"

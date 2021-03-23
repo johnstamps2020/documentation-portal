@@ -1441,6 +1441,17 @@
       ]
     },
     {
+      "id": "midipfdraftsrc",
+      "title": "Insurance Product for France",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
+      "branch": "main",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipf/1.x/active/IPFHelp.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
       "id": "clouddataaccessguidedraftsrc",
       "title": "Cloud Data Access Guide Draft",
       "sourceType": "git",
