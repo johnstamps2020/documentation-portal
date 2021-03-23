@@ -2553,7 +2553,7 @@
         "version": ["5.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2568,7 +2568,7 @@
         "version": ["5.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
