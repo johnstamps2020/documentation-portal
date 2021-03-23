@@ -1441,7 +1441,7 @@
       ]
     },
     {
-      "id": "midipfdraft",
+      "id": "midipfdraftsrc",
       "title": "Insurance Product for France",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
