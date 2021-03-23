@@ -325,6 +325,20 @@
           "items": {
             "$ref": "#/definitions/resource"
           }
+        },
+        "customEnv": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }
