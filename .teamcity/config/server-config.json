@@ -6648,9 +6648,9 @@
       "public": false
     },
     {
-      "id": "iscc202011cloudapi",
-      "title": "Cloud API Developer Guide",
-      "url": "cloud/cc/202011/cloudapi",
+      "id": "iscc202011cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/cc/202011/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
@@ -6658,10 +6658,26 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
+    },
+    {
+      "id": "iscc202011cloudapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/cc/202011/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     },
     {
       "id": "is202011apisecretbuild",
@@ -6984,9 +7000,9 @@
       "public": false
     },
     {
-      "id": "ispc202011cloudapi",
-      "title": "Cloud API Developer Guide",
-      "url": "cloud/pc/202011/cloudapi",
+      "id": "ispc202011cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/pc/202011/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
@@ -6994,7 +7010,23 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202011cloudapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/pc/202011/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
