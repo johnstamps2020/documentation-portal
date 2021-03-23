@@ -1071,7 +1071,6 @@ object DeployFrontend : BuildType({
         text("env.PAGES_DIR", "%teamcity.build.checkoutDir%/frontend/pages", display = ParameterDisplay.HIDDEN)
         text("env.TEMPLATES_DIR", "%teamcity.build.checkoutDir%/frontend/templates", display = ParameterDisplay.HIDDEN)
         text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/output", display = ParameterDisplay.HIDDEN)
-        text("env.ASSETS_DIR", "%teamcity.build.checkoutDir%/frontend/assets", display = ParameterDisplay.HIDDEN)
         text("env.SEND_BOUNCER_HOME", "no", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
@@ -1123,9 +1122,6 @@ object DeployFrontend : BuildType({
                 aws s3 sync %env.OUTPUT_DIR%/breadcrumbs.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/breadcrumbs.jsong --delete
                 aws s3 sync %env.OUTPUT_DIR%/versionSelectors.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/versionSelectors.json --delete
                 aws s3 sync %env.OUTPUT_DIR%/versionSelectors.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/versionSelectors.json --delete
-                aws s3 sync %env.ASSETS_DIR%/images s3://tenant-doctools-%env.DEPLOY_ENV%-builds/images --delete
-                aws s3 sync %env.ASSETS_DIR%/scripts s3://tenant-doctools-%env.DEPLOY_ENV%-builds/scripts --delete
-                aws s3 sync %env.ASSETS_DIR%/stylesheets s3://tenant-doctools-%env.DEPLOY_ENV%-builds/stylesheets --delete
                 """.trimIndent()
         }
     }
