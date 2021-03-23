@@ -138,12 +138,16 @@
           "label": "Core",
           "items": [
             {
-              "id": "ccGwCloud",
+              "id": "ccGwCloud", 
               "label": "ClaimCenter for Guidewire Cloud"
             },
             {
               "id": "isConfigUpgradeTools",
               "label": "InsuranceSuite Configuration Upgrade Tools"
+            },
+            {
+              "id": "midipf",
+              "label": "Insurance Product for France"
             }
           ]
         },
