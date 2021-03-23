@@ -2544,6 +2544,36 @@
       "public": false
     },
     {
+      "id": "jutro540",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/5.4.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.4.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook540",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/5.4.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["5.4.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "jutronext",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/next",

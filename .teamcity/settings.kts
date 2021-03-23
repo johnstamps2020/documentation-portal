@@ -1404,7 +1404,7 @@ object HelperObjects {
             ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
             publish_path: String, git_source_url: String, git_source_branch: String,
             resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
-            workingDir: String, customOutputFolder: String, vcsRootIsExported: Boolean
+            workingDir: String, customOutputFolder: String, vcsRootIsExported: Boolean, customEnvironmentVars: JSONArray?
         ) : BuildType({
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
@@ -1470,6 +1470,13 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN,
                     allowEmpty = false
                 )
+
+                if (customEnvironmentVars != null) {
+                    for (i in 0 until customEnvironmentVars.length()) {
+                        val item = customEnvironmentVars.getJSONObject(i)
+                        text(item.getString("name"), item.getString("value"))
+                    }
+                }
             }
 
             steps {
@@ -1653,6 +1660,7 @@ object HelperObjects {
         val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
         val root = if (build.has("root")) build.getString("root") else ""
         val customOutputFolder = if (build.has("customOutputFolder")) build.getString("customOutputFolder") else ""
+        val customEnvironment: JSONArray? = if (build.has("customEnv")) build.getJSONArray("customEnv") else null
 
         val sourceId = build.getString("srcId")
         val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
@@ -1702,7 +1710,8 @@ object HelperObjects {
                         indexForSearch,
                         workingDir,
                         customOutputFolder,
-                        sourceIsExportedFromXdocs
+                        sourceIsExportedFromXdocs,
+                        customEnvironment
                     )
                 )
             }
