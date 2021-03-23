@@ -2763,6 +2763,20 @@
       "branch": "release/5.3.0"
     },
     {
+      "id": "srcjutro540",
+      "title": "Jutro Design System 5.4.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/5.4.0"
+    },
+    {
+      "id": "srcjutrostorybook540",
+      "title": "Jutro Storybook 5.4.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-main.git",
+      "branch": "release/5.4.x"
+    },
+    {
       "id": "srcjutronext",
       "title": "Jutro Design System Next",
       "sourceType": "git",
