@@ -6663,22 +6663,6 @@
       "public": false
     },
     {
-      "id": "iscc202011cloudapibf",
-      "title": "Cloud API Business Flows",
-      "url": "cloud/cc/202011/cloudapibf",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true
-    },
-    {
       "id": "iscc202011cloudapi",
       "title": "Cloud API",
       "url": "cloud/cc/202011/cloudapi",
@@ -7042,6 +7026,22 @@
         "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202011cloudapi",
+      "title": "Cloud API",
+      "url": "cloud/pc/202011/cloudapi",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
