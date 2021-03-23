@@ -242,7 +242,7 @@ label,
 
 .productFamily {
   height: 100px;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
   background-color: white;
 }
@@ -265,12 +265,12 @@ label,
 
 .categoryCard > .label {
   font-weight: 600;
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 
 .group > .label {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
   padding: 16px 0;
 }
 
@@ -340,7 +340,7 @@ label,
 
 .subject .label {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   padding-bottom: 12px;
 }
 
@@ -366,7 +366,7 @@ footer {
   box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
   color: var(--GW-WHITE);
   padding: 16px 32px;
-  font-size: 10px;
+  font-size: .625rem;
   display: flex;
 }
 
@@ -393,7 +393,7 @@ footer {
 
 footer a {
   display: block;
-  font-size: 14px;
+  font-size: .875rem;
   color: white;
   font-weight: 600;
   margin-bottom: 12px;
@@ -435,6 +435,9 @@ div.pageHero {
   text-align: center;
   background-color: white;
 }
+#cloudToggle > a:hover {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
 
 #cloudToggle > .selected {
   background: var(--GRADIENT-BACKGROUND);
@@ -471,12 +474,12 @@ div.pageHero {
 }
 
 .loginPageTitle > h1 {
-  font-size: 40px;
+  font-size: 2.5rem;
   margin-bottom: 16px;
 }
 
 .loginPageTitle > p {
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 31px;
 }
 
@@ -498,7 +501,7 @@ div.pageHero {
 
 .loginCard > h2 {
   flex: 1;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   padding: 32px 0 0;
 }
@@ -547,7 +550,7 @@ div.pageHero {
 }
 
 .filterHeader {
-  font-size: 14px;
+  font-size: .875rem;
   font-weight: 600;
   padding-bottom: 16px;
 }
@@ -556,7 +559,7 @@ div.pageHero {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-size: 14px;
+  font-size: .875rem;
   padding: 8px 0;
 }
 
@@ -604,7 +607,7 @@ div.pageHero {
 }
 
 .searchResults h2 {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 600;
   padding: 16px 0;
 }
@@ -617,7 +620,7 @@ div.pageHero {
 }
 
 .infoLabel {
-  font-size: 11px;
+  font-size: .6875rem;
   background-color: var(--GW-BLUE);
   color: var(--GW-WHITE);
   padding: 4px 12px;
@@ -740,19 +743,23 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 
 .externalSitesMenu:focus-within .externalSitesSubNavigation,
 .externalSitesMenu:hover .externalSitesSubNavigation {
-  display: block;
+  opacity:1;
+  visibility: visible;
+  transform: translateY(0%);
 }
 
 .externalSitesSubNavigation {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
-  z-index: 10;
   min-width: 180px;
-  top: 22px;
+  top: 24px;
   right: 0;
   padding: 44px 20px 20px 20px;
   background: linear-gradient(180deg, transparent 26px, #e5f1f5 26px 100%);
   list-style: none;
+  transform: translateY(calc(-30% + 26px));
+  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;  
 }
 
 .externalSitesHasSubmenu {
