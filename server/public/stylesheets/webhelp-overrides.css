@@ -142,6 +142,8 @@ div.wh_publication_title {
 
 .navbar-fixed-top nav.wh_tools.hidden-print {
   background: var(--GW-COLOR-BKGD-1) !important;
+  margin-top: auto;
+  margin-right: -1.3em;
 }
 
 header.navbar.navbar-default.wh_header {
