@@ -2774,7 +2774,7 @@
       "title": "Jutro Storybook 5.4.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-main.git",
-      "branch": "v5.4.0"
+      "branch": "release/5.4.x"
     },
     {
       "id": "srcjutronext",
