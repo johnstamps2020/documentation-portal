@@ -70,10 +70,6 @@
               ]
             },
             {
-              "label": "DataHub",
-              "id": "dh1040"
-            },
-            {
               "label": "InfoCenter",
               "page": "infoCenter/10.5.0",
               "env": [
@@ -87,10 +83,6 @@
               "env": [
                 "int"
               ]
-            },
-            {
-              "label": "InfoCenter",
-              "id": "ic1040"
             }
           ]
         }
