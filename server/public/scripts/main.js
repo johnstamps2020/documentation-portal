@@ -1,12 +1,44 @@
+function toggleAvatar(e) {
+  e.target.classList.toggle('expanded');
+}
+
 async function setLogInButton() {
   const response = await fetch('/userInformation');
   const responseBody = await response.json();
-  const { isLoggedIn, name } = responseBody;
+  const { isLoggedIn, name, preferred_username } = responseBody;
 
   if (isLoggedIn) {
     const loginButton = document.querySelector('#loginButton');
-    loginButton.innerHTML = `Log out ${name}`;
-    loginButton.setAttribute('href', '/gw-logout');
+    if (loginButton) {
+      const avatar = document.createElement('div');
+      avatar.setAttribute('id', 'avatar');
+      avatar.innerHTML = `
+      <button 
+        id="avatarButton" 
+        onClick="toggleAvatar(e)" 
+        aria-label="user information"
+      >
+        <div class="avatarMenu">
+          <div class="avatarMenuHeader">
+            <div class="avatarMenuIcon">&nbsp;</div>
+            <div class="avatarMenuInfo">
+              <div class="avatarMenuName">${name}</div>
+              <div class="avatarMenuEmail">${preferred_username}</div>
+            </div>
+          </div>
+          <div class="avatarMenuDivider"></div>
+          <div class="avatarMenuActions">
+            <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+          </div>
+        </div>
+      </button>
+    `;
+
+      let newAvatar = loginButton.parentElement.replaceChild(
+        avatar,
+        loginButton
+      );
+    }
   }
 }
 

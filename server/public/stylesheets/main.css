@@ -832,3 +832,75 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   letter-spacing: -0.43px;
   line-height: 1.6875;
 }
+
+#avatarButton {
+  position: relative;
+  background: url(/images/account_circle-24px.svg);
+  border: none;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+
+#avatarButton svg {
+  fill: white;
+}
+
+.avatarMenu {
+  position: absolute;
+  top: 27px;
+  right: 0;
+  display: none;
+  background-color: white;
+  padding: 24px;
+  text-align: left;
+  border-radius: 4px;
+  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
+}
+
+#avatarButton:hover .avatarMenu,
+#avatarButton:active .avatarMenu,
+.avatarMenu:hover {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1;
+  animation-delay: 0.5s;
+}
+
+.avatarMenuHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatarMenuIcon {
+  background: url(/images/account_circle-inverse-24px.svg);
+  width: 28px;
+  height: 28px;
+}
+
+.avatarMenuInfo {
+  padding: 0 6px;
+}
+
+.avatarMenuName {
+  color: var(--GW-BLACK);
+}
+
+.avatarMenuEmail {
+  color: var(--GW-BLACKISH);
+  font-size: 0.9rem;
+}
+
+.avatarMenuDivider {
+  border-bottom: 1px solid #7d91ac;
+}
+
+.avatarMenuActions {
+  padding: 8px 6px;
+}
+
+.avatarMenuLogout {
+  color: var(--GW-BLACK);
+}
