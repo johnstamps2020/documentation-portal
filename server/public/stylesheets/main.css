@@ -876,7 +876,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 }
 
 .avatarMenuIcon {
-  background: url(/images/account_circle-inverse-24px.svg);
+  background: url(/images/account_inverse-24px.svg);
   width: 28px;
   height: 28px;
 }
