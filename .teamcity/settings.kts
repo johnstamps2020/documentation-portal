@@ -1099,30 +1099,25 @@ object DeployFrontend : BuildType({
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
         script {
-            name = "Upload frontend to S3"
+            name = "Deploy to Kubernetes"
             scriptContent = """
-                #!/bin/bash
+                #!/bin/bash 
                 set -xe
-                
-                if [[ %env.DEPLOY_ENV% == "prod" ]]; then
-                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                 else
-                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 fi
-                
-                aws s3 sync %env.OUTPUT_DIR%/cloudProducts s3://tenant-doctools-%env.DEPLOY_ENV%-builds/cloudProducts --delete
-                aws s3 sync %env.OUTPUT_DIR%/jutro s3://tenant-doctools-%env.DEPLOY_ENV%-builds/jutro --delete
-                aws s3 sync %env.OUTPUT_DIR%/localizedDocs s3://tenant-doctools-%env.DEPLOY_ENV%-builds/localizedDocs --delete
-                aws s3 sync %env.OUTPUT_DIR%/selfManagedProducts s3://tenant-doctools-%env.DEPLOY_ENV%-builds/selfManagedProducts --delete
-                aws s3 sync %env.OUTPUT_DIR%/index.html s3://tenant-doctools-%env.DEPLOY_ENV%-builds/index.html --delete
-                aws s3 sync %env.OUTPUT_DIR%/breadcrumbs.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/breadcrumbs.jsong --delete
-                aws s3 sync %env.OUTPUT_DIR%/versionSelectors.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/versionSelectors.json --delete
-                aws s3 sync %env.OUTPUT_DIR%/versionSelectors.json s3://tenant-doctools-%env.DEPLOY_ENV%-builds/versionSelectors.json --delete
-                """.trimIndent()
+                sh ci/deployFrontend.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -1461,8 +1456,7 @@ object HelperObjects {
                                 hour = sch_hour_daily
                                 minute = sch_minute_daily
                             }
-                        }
-                        else if (sch_freq == "weekly") {
+                        } else if (sch_freq == "weekly") {
                             schedulingPolicy = weekly {
                                 dayOfWeek = ScheduleTrigger.DAY.Saturday
                                 hour = sch_hour_weekly
@@ -1682,11 +1676,26 @@ object HelperObjects {
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
         class BuildPublishToS3Index(
-            buildType: String, product: String, platform: String, version: String, doc_id: String, source_id: String,
-            ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
-            publish_path: String, git_source_url: String, git_source_branch: String,
-            resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
-            workingDir: String, customOutputFolder: String, vcsRootIsExported: Boolean, customEnvironmentVars: JSONArray?
+            buildType: String,
+            product: String,
+            platform: String,
+            version: String,
+            doc_id: String,
+            source_id: String,
+            ditaval_file: String,
+            input_path: String,
+            create_index_redirect: String,
+            build_env: String,
+            publish_path: String,
+            git_source_url: String,
+            git_source_branch: String,
+            resources_to_copy: List<JSONObject>,
+            vcs_root_id: RelativeId,
+            index_for_search: Boolean,
+            workingDir: String,
+            customOutputFolder: String,
+            vcsRootIsExported: Boolean,
+            customEnvironmentVars: JSONArray?
         ) : BuildType({
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
