@@ -14,8 +14,8 @@
   --GW-BLACKISH: #657580;
   --GW-HEADER-FOOTER-BKG-COLOR: rgb(19, 30, 46);
   --GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
-  --header-height: 70px;
-  --body-height: calc(100vh - var(--header-height));
+  --estimated-header-height: 68px;
+  --body-height: calc(100vh - var(--estimated-header-height));
 }
 
 input.searchField:-webkit-autofill {
@@ -719,7 +719,7 @@ main.support h2 {
 /* External site navigation */
 
 .externalSitesItemWrapper {
-  padding: 3px 40px 3px 40px;
+  padding: 0 40px 0 40px;
   border: none;
   background-color: transparent;
 }
@@ -746,7 +746,6 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   width: auto;
   position: relative;
   padding: 0;
-  top: -1px;
 }
 
 .externalSitesMenu:focus-within .externalSitesSubNavigation,
@@ -761,10 +760,11 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   visibility: hidden;
   position: absolute;
   min-width: 180px;
-  top: 24px;
+  top: 28px;
   right: 0;
-  padding: 44px 20px 20px 20px;
-  background: linear-gradient(180deg, transparent 26px, #e5f1f5 26px 100%);
+  padding: 40px 20px 20px 20px;
+  background: linear-gradient(180deg, transparent 22px, white 22px 100%);
+  border-radius: 4px;
   list-style: none;
   transform: translateY(calc(-30% + 26px));
   transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
@@ -847,14 +847,16 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 }
 
 .avatarMenu {
+  display: flex;
   position: absolute;
-  top: 27px;
+  top: 22px;
   right: 0;
   opacity: 0;
   visibility: hidden;
-  display: none;
-  background-color: white;
-  padding: 24px;
+  transform: translateY(calc(-30% + 26px));
+  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
+  background: linear-gradient(180deg, transparent 26px, white 26px 100%);
+  padding: 48px 24px 24px 24px;
   text-align: left;
   border-radius: 4px;
   box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
@@ -864,8 +866,8 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 #avatarButton:hover .avatarMenu,
 #avatarButton:focus-within .avatarMenu,
 .avatarMenu:hover {
-  display: flex;
   visibility: visible;
+  transform: translateY(0);
   opacity: 1;
   flex-direction: column;
   gap: 12px;
