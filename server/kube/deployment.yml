@@ -65,7 +65,9 @@ spec:
             - name: CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
               value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net/customers-login
             - name: ALLOW_PUBLIC_DOCS
-              value: 'no'
+              value: 'yes'
+            - name: ENABLE_AUTH
+              value: 'yes'
           resources:
             requests:
               memory: "1Gi"
