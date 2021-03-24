@@ -144,10 +144,6 @@
             {
               "id": "isConfigUpgradeTools",
               "label": "InsuranceSuite Configuration Upgrade Tools"
-            },
-            {
-              "id": "midipf",
-              "label": "Insurance Product for France"
             }
           ]
         },

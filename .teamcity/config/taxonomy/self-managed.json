@@ -25,6 +25,10 @@
         {
           "id": "restApiClient",
           "label": "REST API Client"
+        },
+        {
+          "id": "midipf",
+          "label": "ClaimCenter Adapter for IRSA"
         }
       ]
     },

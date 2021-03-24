@@ -1657,13 +1657,12 @@
     },
     {
       "id": "midipfdraft",
-      "title": "Insurance Product for France",
-      "url": "cloud/mid/ipf/latest",
+      "title": "ClaimCenter Adapter for IRSA",
+      "url": "self-managed/mid/ipf/latest",
       "metadata": {
-        "product": ["Insurance Product for France"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
+        "product": ["ClaimCenter Adapter for IRSA"],
+        "platform": ["Self-managed"],
+        "version": ["latest"]
       },
       "environments": ["dev", "int"],
       "displayOnLandingPages": true,
