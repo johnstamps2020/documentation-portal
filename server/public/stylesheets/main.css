@@ -856,6 +856,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   text-align: left;
   border-radius: 4px;
   box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
+  cursor: default;
 }
 
 #avatarButton:hover .avatarMenu,
@@ -903,4 +904,8 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 
 .avatarMenuLogout {
   color: var(--GW-BLACK);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 4px 0;
 }
