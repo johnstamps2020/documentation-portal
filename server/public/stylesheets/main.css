@@ -850,6 +850,8 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   position: absolute;
   top: 27px;
   right: 0;
+  opacity: 0;
+  visibility: hidden;
   display: none;
   background-color: white;
   padding: 24px;
@@ -860,9 +862,11 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 }
 
 #avatarButton:hover .avatarMenu,
-#avatarButton:active .avatarMenu,
+#avatarButton:focus-within .avatarMenu,
 .avatarMenu:hover {
   display: flex;
+  visibility: visible;
+  opacity: 1;
   flex-direction: column;
   gap: 12px;
   z-index: 1;
