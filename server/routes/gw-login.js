@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
   if (
     cameFrom &&
     cameFrom.startsWith(process.env.APP_BASE_URL) &&
+    !cameFrom.endsWith('gw-login') &&
     !cameFrom.endsWith('gw-login/')
   ) {
     req.session.redirectTo = cameFrom;
