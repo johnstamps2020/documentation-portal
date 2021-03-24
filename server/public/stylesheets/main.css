@@ -14,8 +14,8 @@
   --GW-BLACKISH: #657580;
   --GW-HEADER-FOOTER-BKG-COLOR: rgb(19, 30, 46);
   --GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
-  --header-height: 70px;
-  --body-height: calc(100vh - var(--header-height));
+  --estimated-header-height: 68px;
+  --body-height: calc(100vh - var(--estimated-header-height));
 }
 
 input.searchField:-webkit-autofill {
@@ -366,7 +366,7 @@ footer {
   box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
   color: var(--GW-WHITE);
   padding: 16px 32px;
-  font-size: .625rem;
+  font-size: 0.625rem;
   display: flex;
 }
 
@@ -393,7 +393,7 @@ footer {
 
 footer a {
   display: block;
-  font-size: .875rem;
+  font-size: 0.875rem;
   color: white;
   font-weight: 600;
   margin-bottom: 12px;
@@ -470,7 +470,7 @@ div.pageHero {
 
 .loginPageTitle {
   text-align: center;
-  padding-bottom: 64px;
+  padding: 32px 0;
 }
 
 .loginPageTitle > h1 {
@@ -481,6 +481,14 @@ div.pageHero {
 .loginPageTitle > p {
   font-size: 1.5rem;
   line-height: 31px;
+}
+
+.loginPublicLinks {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 32px;
+  gap: 16px;
+  font-size: 1.3rem;
 }
 
 .loginCards {
@@ -508,7 +516,7 @@ div.pageHero {
 
 .loginCardDescription {
   flex: 1;
-  padding: 16px 0 64px;
+  padding: 16px 0 28px;
 }
 
 .cardButton {
@@ -550,7 +558,7 @@ div.pageHero {
 }
 
 .filterHeader {
-  font-size: .875rem;
+  font-size: 0.875rem;
   font-weight: 600;
   padding-bottom: 16px;
 }
@@ -559,7 +567,7 @@ div.pageHero {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-size: .875rem;
+  font-size: 0.875rem;
   padding: 8px 0;
 }
 
@@ -620,7 +628,7 @@ div.pageHero {
 }
 
 .infoLabel {
-  font-size: .6875rem;
+  font-size: 0.6875rem;
   background-color: var(--GW-BLUE);
   color: var(--GW-WHITE);
   padding: 4px 12px;
@@ -711,7 +719,7 @@ main.support h2 {
 /* External site navigation */
 
 .externalSitesItemWrapper {
-  padding: 3px 40px 3px 40px;
+  padding: 0 40px 0 40px;
   border: none;
   background-color: transparent;
 }
@@ -738,12 +746,11 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   width: auto;
   position: relative;
   padding: 0;
-  top: -1px;
 }
 
 .externalSitesMenu:focus-within .externalSitesSubNavigation,
 .externalSitesMenu:hover .externalSitesSubNavigation {
-  opacity:1;
+  opacity: 1;
   visibility: visible;
   transform: translateY(0%);
 }
@@ -753,13 +760,14 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   visibility: hidden;
   position: absolute;
   min-width: 180px;
-  top: 24px;
+  top: 28px;
   right: 0;
-  padding: 44px 20px 20px 20px;
-  background: linear-gradient(180deg, transparent 26px, #e5f1f5 26px 100%);
+  padding: 40px 20px 20px 20px;
+  background: linear-gradient(180deg, transparent 22px, white 22px 100%);
+  border-radius: 4px;
   list-style: none;
   transform: translateY(calc(-30% + 26px));
-  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;  
+  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
 }
 
 .externalSitesHasSubmenu {
@@ -823,4 +831,88 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   font-weight: 700;
   letter-spacing: -0.43px;
   line-height: 1.6875;
+}
+
+#avatarButton {
+  position: relative;
+  background: url(/images/account_circle-24px.svg);
+  border: none;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+
+#avatarButton svg {
+  fill: white;
+}
+
+.avatarMenu {
+  display: flex;
+  position: absolute;
+  top: 22px;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(calc(-30% + 26px));
+  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
+  background: linear-gradient(180deg, transparent 26px, white 26px 100%);
+  padding: 48px 24px 24px 24px;
+  text-align: left;
+  border-radius: 4px;
+  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
+  cursor: default;
+}
+
+#avatarButton:hover .avatarMenu,
+#avatarButton:focus-within .avatarMenu,
+.avatarMenu:hover {
+  visibility: visible;
+  transform: translateY(0);
+  opacity: 1;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1;
+  animation-delay: 0.5s;
+}
+
+.avatarMenuHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatarMenuIcon {
+  background: url(/images/account_inverse-24px.svg);
+  width: 28px;
+  height: 28px;
+}
+
+.avatarMenuInfo {
+  padding: 0 6px;
+}
+
+.avatarMenuName {
+  color: var(--GW-BLACK);
+  font-size: 1rem;
+}
+
+.avatarMenuEmail {
+  color: var(--GW-BLACKISH);
+  font-size: 0.9rem;
+}
+
+.avatarMenuDivider {
+  border-bottom: 1px solid #7d91ac;
+}
+
+.avatarMenuActions {
+  padding: 8px 6px;
+}
+
+.avatarMenuLogout {
+  color: var(--GW-BLACK);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 4px 0;
 }
