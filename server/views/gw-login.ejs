@@ -2,12 +2,20 @@
 <html lang="en">
   <% include parts/head %>
   <body>
-    <% include parts/header %>
+    <%- include('parts/header', { hideLoginButton: true }) %>
     <main>
       <div class="loginPageTitle">
         <h1>Welcome to Guidewire documentation</h1>
+      </div>
+      <div class="loginPublicLinks loginPageTitle">
         <p>
-          Log in using one of the following methods.
+          Browse through these Developer Resources
+        </p>
+        <a href="/cloud/cc/202011/apiref/">ClaimCenter Cloud API Reference</a>
+      </div>
+      <div class="loginPageTitle">
+        <p>
+          Log in to view the complete documentation
         </p>
       </div>
       <div class="loginCards">

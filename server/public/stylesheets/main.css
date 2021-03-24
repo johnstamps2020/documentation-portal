@@ -366,7 +366,7 @@ footer {
   box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
   color: var(--GW-WHITE);
   padding: 16px 32px;
-  font-size: .625rem;
+  font-size: 0.625rem;
   display: flex;
 }
 
@@ -393,7 +393,7 @@ footer {
 
 footer a {
   display: block;
-  font-size: .875rem;
+  font-size: 0.875rem;
   color: white;
   font-weight: 600;
   margin-bottom: 12px;
@@ -470,7 +470,7 @@ div.pageHero {
 
 .loginPageTitle {
   text-align: center;
-  padding-bottom: 64px;
+  padding: 32px 0;
 }
 
 .loginPageTitle > h1 {
@@ -481,6 +481,14 @@ div.pageHero {
 .loginPageTitle > p {
   font-size: 1.5rem;
   line-height: 31px;
+}
+
+.loginPublicLinks {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 32px;
+  gap: 16px;
+  font-size: 1.3rem;
 }
 
 .loginCards {
@@ -508,7 +516,7 @@ div.pageHero {
 
 .loginCardDescription {
   flex: 1;
-  padding: 16px 0 64px;
+  padding: 16px 0 28px;
 }
 
 .cardButton {
@@ -550,7 +558,7 @@ div.pageHero {
 }
 
 .filterHeader {
-  font-size: .875rem;
+  font-size: 0.875rem;
   font-weight: 600;
   padding-bottom: 16px;
 }
@@ -559,7 +567,7 @@ div.pageHero {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-size: .875rem;
+  font-size: 0.875rem;
   padding: 8px 0;
 }
 
@@ -620,7 +628,7 @@ div.pageHero {
 }
 
 .infoLabel {
-  font-size: .6875rem;
+  font-size: 0.6875rem;
   background-color: var(--GW-BLUE);
   color: var(--GW-WHITE);
   padding: 4px 12px;
@@ -743,7 +751,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 
 .externalSitesMenu:focus-within .externalSitesSubNavigation,
 .externalSitesMenu:hover .externalSitesSubNavigation {
-  opacity:1;
+  opacity: 1;
   visibility: visible;
   transform: translateY(0%);
 }
@@ -759,7 +767,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   background: linear-gradient(180deg, transparent 26px, #e5f1f5 26px 100%);
   list-style: none;
   transform: translateY(calc(-30% + 26px));
-  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;  
+  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
 }
 
 .externalSitesHasSubmenu {
