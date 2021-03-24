@@ -2,7 +2,7 @@
 <html lang="en">
   <% include parts/head %>
   <body>
-    <% include parts/header %>
+    <%- include('parts/header', { hideLoginButton: false }) %>
     <main>
       <h1><%= message %></h1>
       <h2><%= error.status %></h2>
