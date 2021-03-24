@@ -1442,7 +1442,7 @@
     },
     {
       "id": "midipfdraftsrc",
-      "title": "Insurance Product for France",
+      "title": "ClaimCenter Adapter for IRSA",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
       "branch": "main",
