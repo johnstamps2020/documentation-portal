@@ -63,6 +63,7 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 3px 0;
 }
 
 header img {
@@ -718,10 +719,17 @@ main.support h2 {
 
 /* External site navigation */
 
+.externalSitesMenu {
+  width: auto;
+  position: relative;
+  padding: 3px 0;
+}
+
 .externalSitesItemWrapper {
   padding: 0 40px 0 40px;
   border: none;
   background-color: transparent;
+  display:flex;
 }
 
 .externalSitesItemWrapper svg {
@@ -742,12 +750,6 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   }
 }
 
-.externalSitesMenu {
-  width: auto;
-  position: relative;
-  padding: 0;
-}
-
 .externalSitesMenu:focus-within .externalSitesSubNavigation,
 .externalSitesMenu:hover .externalSitesSubNavigation {
   opacity: 1;
@@ -760,13 +762,13 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   visibility: hidden;
   position: absolute;
   min-width: 180px;
-  top: 28px;
+  top: 25px;
   right: 0;
-  padding: 40px 20px 20px 20px;
-  background: linear-gradient(180deg, transparent 22px, white 22px 100%);
+  padding: 44px 20px 20px 20px;
+  background: linear-gradient(180deg, transparent 23px, white 23px 100%);
   border-radius: 4px;
   list-style: none;
-  transform: translateY(calc(-30% + 26px));
+  transform: translateY(-30%);
   transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
 }
 
@@ -853,7 +855,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   right: 0;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(calc(-30% + 26px));
+  transform: translateY(-30%);
   transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
   background: linear-gradient(180deg, transparent 26px, white 26px 100%);
   padding: 48px 24px 24px 24px;
