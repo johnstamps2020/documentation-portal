@@ -719,11 +719,10 @@ main.support h2 {
 .externalSitesMenu {
   width: auto;
   position: relative;
-  padding: 3px 0;
+  padding: 3px 40px;
 }
 
 .externalSitesItemWrapper {
-  padding: 0 40px 0 40px;
   border: none;
   background-color: transparent;
   display:flex;
@@ -733,12 +732,13 @@ main.support h2 {
   fill: white;
 }
 
-html:not(.has-tabbed) .externalSitesItemWrapper {
-  outline: none;
+.externalSitesItemWrapper:hover svg,
+.externalSitesMenu:focus-within svg {
+  fill: var(--GW-BLUE-LIGHTER-HOVER);
 }
 
-.externalSitesItemWrapper:hover .externalSitesIcon {
-  fill: var(--GW-BLUE-LIGHTER-HOVER);
+html:not(.has-tabbed) .externalSitesItemWrapper {
+  outline: none;
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -748,7 +748,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 }
 
 .externalSitesMenu:focus-within .externalSitesSubNavigation,
-.externalSitesMenu:hover .externalSitesSubNavigation {
+.externalSitesItemWrapper:hover .externalSitesSubNavigation {
   opacity: 1;
   visibility: visible;
   transform: translateY(0%);
@@ -758,11 +758,13 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  min-width: 180px;
+  /* min-width: 200px; */
+  display: flex;
+  flex-direction: column;
   top: 25px;
   right: 40px;
   padding: 44px 20px 20px 20px;
-  background: linear-gradient(180deg, transparent 23px, white 23px 100%);
+  background: linear-gradient(180deg, transparent 23px, var(--GW-WHITE) 23px 100%);
   border-radius: 4px;
   list-style: none;
   transform: translateY(-30%);
@@ -773,6 +775,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   margin-left: 0;
   margin-top: 0;
   list-style: none;
+  text-align: left;
 }
 
 .externalSitesFirstLevelLink {
@@ -817,19 +820,13 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   left: -3px;
 }
 
-.externalSitesIcon {
-  width: 23px;
-  height: 19px;
-  /* fill: #0878a0; */
-  fill: var(--GW-WHITE);
-}
-
 .externalSitesMainItem {
   color: #00739d;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.43px;
   line-height: 1.6875;
+  white-space: nowrap;
 }
 
 #avatarButton {
