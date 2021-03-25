@@ -44,15 +44,17 @@ async function setLogInButton() {
 
 function selectToggleButton() {
   const toggleButtons = document.querySelectorAll('#cloudToggle > a');
-  let matchingButton = toggleButtons[0];
-  const currentPath = window.location.pathname;
-  toggleButtons.forEach(button => {
-    const root = button.getAttribute('data-root');
-    if (currentPath.startsWith(root)) {
-      matchingButton = button;
-    }
-  });
-  matchingButton.classList.toggle('selected');
+  if(toggleButtons) {
+    let matchingButton = toggleButtons[0];
+    const currentPath = window.location.pathname;
+    toggleButtons.forEach(button => {
+      const root = button.getAttribute('data-root');
+      if (currentPath.startsWith(root)) {
+        matchingButton = button;
+      }
+    });
+    matchingButton.classList.toggle('selected');
+  }
 }
 
 async function addReleaseBadge() {
