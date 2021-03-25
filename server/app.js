@@ -74,7 +74,7 @@ app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
 
-// serve docs from the public folder
+// serve static assets from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
@@ -83,6 +83,9 @@ const authGateway = require('./controllers/authController').authGateway;
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oktaOIDC.router);
 app.use(authGateway);
+
+// server static pages from the pages folder
+app.use(express.static(path.join(__dirname, 'pages')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
