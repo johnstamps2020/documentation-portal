@@ -768,6 +768,8 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   background: linear-gradient(180deg, transparent 23px, var(--GW-WHITE) 23px 100%);
   border-radius: 4px;
   list-style: none;
+  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
+  cursor: default;
   transform: translateY(-30%);
   transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
 }
