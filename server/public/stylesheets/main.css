@@ -725,7 +725,8 @@ main.support h2 {
 .externalSitesItemWrapper {
   border: none;
   background-color: transparent;
-  display:flex;
+  display: flex;
+  cursor: pointer;
 }
 
 .externalSitesItemWrapper svg {
