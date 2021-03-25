@@ -1406,6 +1406,7 @@ object Server : Project({
     buildType(DeployProd)
     buildType(DeployServerConfig)
     buildType(DeployFrontend)
+    buildType(RunLION)
 
 })
 
