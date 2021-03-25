@@ -22,6 +22,7 @@ project {
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
     vcsRoot(DocValidator)
+    vcsRoot(LocalizedPDFs)
 
     template(Deploy)
     template(BuildDockerImage)
@@ -64,6 +65,14 @@ object vcsroot : GitVcsRoot({
 object DocValidator : GitVcsRoot({
     name = "Documentation validator"
     url = "ssh://git@stash.guidewire.com/doctools/doc-validator.git"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object LocalizedPDFs : GitVcsRoot({
+    name = "Localization PDFs"
+    url = "ssh://git@stash.guidewire.com/doctools/localization-pdfs.git"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
@@ -995,6 +1004,48 @@ object TestL10NPageBuilder : BuildType({
         }
     }
 
+})
+
+object RunLION : BuildType({
+    name = "Run LION for localized PDFs"
+    artifactRules = "%env.LOC_DOCS_OUT% => out"
+    params {
+        text("SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
+        text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
+        text("env.LOC_DOCS_OUT", "%teamcity.build.workingDir%/out", display = ParameterDisplay.HIDDEN)
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+        cleanCheckout = true
+    }
+
+    vcs {
+        root(LocalizedPDFs, "+:. => %SOURCES_ROOT%")
+        cleanCheckout = true
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:root=${LocalizedPDFs.id}:**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    steps {
+        script {
+            name = "Generate localization page configurations for Flail"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                l10n_page_builder
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/l10n_page_builder:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
 })
 
 object DeployServerConfig : BuildType({
