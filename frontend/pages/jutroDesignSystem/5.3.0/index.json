@@ -1,5 +1,5 @@
 {
-  "title": "Jutro Design System 4.1.1",
+  "title": "Jutro Design System 5.3.0",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -8,8 +8,8 @@
       "class": "subject bestPractices",
       "items": [
         {
-          "label": "Jutro Design System",
-          "id": "jutro411"
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro530"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Jutro Storybook",
-          "id": "storybook411"
+          "id": "storybook530"
         }
       ]
     }

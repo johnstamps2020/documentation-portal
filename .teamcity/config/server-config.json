@@ -1656,6 +1656,20 @@
       "public": false
     },
     {
+      "id": "midipfdraft",
+      "title": "ClaimCenter Adapter for IRSA",
+      "url": "self-managed/mid/ipf/latest",
+      "metadata": {
+        "product": ["ClaimCenter Adapter for IRSA"],
+        "platform": ["Self-managed"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "midipg2x",
       "title": "Guidewire InsuranceSuite Package for Germany",
       "url": "cloud/mid/ipg/latest",
@@ -2553,7 +2567,7 @@
         "version": ["5.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2568,7 +2582,7 @@
         "version": ["5.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -6649,7 +6663,7 @@
     },
     {
       "id": "iscc202011cloudapi",
-      "title": "Cloud API Developer Guide",
+      "title": "Cloud API",
       "url": "cloud/cc/202011/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -6658,10 +6672,42 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202011cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/cc/202011/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
+    },
+    {
+      "id": "iscc202011cloudapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/cc/202011/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     },
     {
       "id": "is202011apisecretbuild",
@@ -6985,7 +7031,7 @@
     },
     {
       "id": "ispc202011cloudapi",
-      "title": "Cloud API Developer Guide",
+      "title": "Cloud API",
       "url": "cloud/pc/202011/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
@@ -6994,7 +7040,39 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202011cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/pc/202011/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202011cloudapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/pc/202011/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
