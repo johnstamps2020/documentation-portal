@@ -1025,15 +1025,6 @@ object RunLION : BuildType({
         cleanCheckout = true
     }
 
-    triggers {
-        vcs {
-            triggerRules = """
-                +:root=${LocalizedPDFs.id}:**
-                -:user=doctools:**
-            """.trimIndent()
-        }
-    }
-
     steps {
         script {
             name = "Generate localization page configurations for Flail"
@@ -1114,6 +1105,7 @@ object DeployFrontend : BuildType({
     name = "Deploy frontend"
 
     params {
+        text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
         text(
             "env.DOCS_CONFIG_FILE",
             "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json",
@@ -1137,6 +1129,12 @@ object DeployFrontend : BuildType({
         root(vcsroot)
         cleanCheckout = true
     }
+
+    vcs {
+        root(LocalizedPDFs, "+:. => %LION_SOURCES_ROOT%")
+        cleanCheckout = true
+    }
+
 
     steps {
         script {
@@ -1169,6 +1167,22 @@ object DeployFrontend : BuildType({
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:root=${LocalizedPDFs.id}:**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    dependencies {
+        artifacts(RelativeId("RunLION")) {
+            buildRule = lastSuccessful()
+            artifactRules = "out/** => %env.PAGES_DIR%/localizedDocs"
         }
     }
 
@@ -1406,6 +1420,7 @@ object Server : Project({
     buildType(DeployProd)
     buildType(DeployServerConfig)
     buildType(DeployFrontend)
+    buildType(RunLION)
 
 })
 
