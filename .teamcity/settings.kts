@@ -571,6 +571,49 @@ object PublishIndexCleanerDockerImage : BuildType({
 
 })
 
+object PublishSitemapGeneratorDockerImage : BuildType({
+    name = "Publish the image for Sitemap Generator"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish the image for Sitemap Generator to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/sitemap_generator
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/sitemap_generator/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object CleanUpIndex : BuildType({
     name = "Clean up index"
     description = "Remove documents from index which are not in the config"
@@ -624,6 +667,64 @@ object CleanUpIndex : BuildType({
                 index_cleaner
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object GenerateSitemap : BuildType({
+    name = "Generate sitemap.xml"
+    description = "Create a sitemap based on the search index"
+
+    params {
+        select(
+            "env.DEPLOY_ENV",
+            "",
+            label = "Deployment environment",
+            description = "Select an environment on which you want clean up the index",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod")
+        )
+        text(
+            "env.OUTPUT_FILE",
+            "build/sitemap.xml",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS",
+            "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS_PROD",
+            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+            allowEmpty = false
+        )
+
+    }
+
+    steps {
+        script {
+            name = "Run the script which generates the sitemap"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                fi
+                
+                sitemap_generator
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
