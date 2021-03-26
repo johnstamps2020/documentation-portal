@@ -1,47 +1,43 @@
 import json
 import os
+from pathlib import Path
 
 from elasticsearch import Elasticsearch, helpers
 
+index_name = 'gw-docs'
 search_app_urls = os.environ.get('ELASTICSEARCH_URLS', None).split(' ')
-path_to_config = os.environ.get('CONFIG_FILE', None)
+output_file_path = Path(os.environ.get('OUTPUT_FILE', None))
 
 print(f'Connecting to the search service: {"".join(search_app_urls)}')
 client = Elasticsearch(search_app_urls, use_ssl=False, verify_certs=False,
                        ssl_show_warn=False)
 
-print(f'Reading from config: {path_to_config}')
-with open(path_to_config) as json_file:
-    config_json = json.load(json_file)
 
-searchable_ids_from_config = set([doc['id'] for doc in config_json['docs'] if doc.get('indexForSearch', True)])
-
-
-def clean_index(index_name):
-    print(f'Cleaning the {index_name} index...')
+def generate_sitemap():
+    if os.path.exists(output_file_path):
+        os.remove(output_file_path)
+    output_folder = output_file_path.parent
+    if not os.path.exists(output_folder):
+        print(f'Creating output directory {output_folder}')
+        os.makedirs(output_folder)
+    print(f'Scanning the {index_name} index...')
     if client.indices.exists(index=index_name):
         resp = helpers.scan(client, index=index_name)
         count = 0
-        all_indexed_ids = set([indexed_doc['_source']['doc_id'] for indexed_doc in resp])
-        for indexed_id in all_indexed_ids:
-            if indexed_id not in searchable_ids_from_config:
-                print(f'Deleting docs with id "{indexed_id}"')
-                client.delete_by_query(index=index_name, body={
-                    "query": {
-                        "match": {
-                            "doc_id": {
-                                "query": indexed_id
-                            }
-                        },
-                    }
-                })
+        indexed_docs = [indexed_doc for indexed_doc in resp]
+        with open(output_file_path, 'a') as output_file:
+            output_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+            output_file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+            for doc in indexed_docs:
+                url = doc['_source']['href']
+                output_file.write(f'<url><loc>{url}</loc></url>\n')
                 count += 1
-        print(f'Deleted {count} ids from {index_name}')
+            output_file.write('</urlset>\n')
+        print(f'Processed {count} docs from {index_name}')
 
 
 def main():
-    clean_index('gw-docs')
-    clean_index('broken-links')
+    generate_sitemap()
 
 
 if __name__ == '__main__':
