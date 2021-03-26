@@ -226,8 +226,22 @@ label,
   border-radius: 4px;
 }
 
-.cardShadow:hover {
+.cardShadow:hover,
+.cardShadow:focus {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cardShadow:hover a,
+.cardShadow:focus a {
+  color: var(--GW-BLUE-HOVER);  
+}
+
+
+.cortina .cardShadow:hover,
+.cortina .cardShadow:focus,
+.banff .cardShadow:hover,
+.banff .cardShadow:focus {
+  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5); 
 }
 
 .threeCards > div.items {
@@ -433,9 +447,24 @@ div.pageHero {
   text-align: center;
   background-color: white;
 }
-#cloudToggle > a:hover {
+
+#cloudToggle > a:not(.selected):hover,
+#cloudToggle > a:not(.selected):focus {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  /* background-color: var(--GW-COLOR-BRAND-1-HOVER); */
+  color: var(--GW-BLUE-HOVER) !important;
 }
+
+.cortina #cloudToggle > a:not(.selected):hover,
+.cortina #cloudToggle > a:not(.selected):focus,
+.banff #cloudToggle > a:not(.selected):hover,
+.banff #cloudToggle > a:not(.selected):focus
+ {
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+  /* background-color: var(--GW-COLOR-BRAND-1-HOVER); */
+  color: var(--GW-BLUE-HOVER) !important;
+}
+
 
 #cloudToggle > .selected {
   background: var(--GRADIENT-BACKGROUND);
