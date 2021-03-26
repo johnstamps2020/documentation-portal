@@ -97,11 +97,11 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../customerEngageAccountManagement/latest"
+              "page": "../ceAccountMgmt/latest"
             },
             {
               "label": "CustomerEngage Quote and Buy",
-              "page": "../customerEngageQuoteAndBuy/latest"
+              "page": "ceQuoteAndBuy/latest"
             },
             {
               "label": "ProducerEngage",

@@ -97,7 +97,7 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../customerEngageAccountManagement/latest"
+              "page": "../ceAccountMgmt/latest"
             },
             {
               "label": "ProducerEngage",

@@ -97,11 +97,11 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../customerEngageAccountManagement/latest"
+              "page": "../ceAccountMgmt/latest"
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "customerEngageAccountManagementForClaimCenter/latest"
+              "page": "ceAccountMgmtCc/latest"
             },
             {
               "label": "ProducerEngage",
@@ -109,7 +109,7 @@
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageForClaimCenter/latest"
+              "page": "producerEngageCc/latest"
             },
             {
               "label": "ServiceRepEngage",

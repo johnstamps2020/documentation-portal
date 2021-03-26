@@ -106,7 +106,7 @@
         },
         {
           "label": "CustomerEngage Account Management",
-          "page": "customerEngageAccountManagement/latest",
+          "page": "ceAccountMgmt/latest",
           "env": [
             "int"
           ]
@@ -117,7 +117,7 @@
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
-          "page": "customerEngageAccountManagementCc/latest",
+          "page": "ceAccountMgmtCc/latest",
           "env": [
             "int"
           ]
@@ -128,7 +128,7 @@
         },
         {
           "label": "CustomerEngage Quote and Buy",
-          "page": "customerEngageQuoteAndBuy/latest",
+          "page": "ceQuoteAndBuy/latest",
           "env": [
             "int"
           ]
