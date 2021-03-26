@@ -24,7 +24,7 @@
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/2020.11"
+          "page": "bcGwCloud/2020.11"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -107,7 +107,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutro/4.1.1"
+              "page": "../../../jutroDesignSystem/4.1.1"
             }
           ]
         }

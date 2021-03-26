@@ -1,0 +1,31 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire Cloud Platform",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Guidewire Cloud Console",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Console Guide",
+          "id": "guidewirecloudconsoleguideinsurerdev"
+        },
+        {
+          "label": "Cloud Console Guide",
+          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+        },
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdev"
+        },
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdevdraft"
+        }
+      ]
+    }
+  ]
+}
+  

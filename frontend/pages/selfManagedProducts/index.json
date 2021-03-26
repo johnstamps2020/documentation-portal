@@ -56,7 +56,7 @@
           "items": [
             {
               "label": "DataHub",
-              "page": "dataHub/10.5.0",
+              "page": "dh/10.5.0",
               "env": [
                 "dev",
                 "staging"
@@ -64,14 +64,14 @@
             },
             {
               "label": "DataHub",
-              "page": "dataHub/10.x",
+              "page": "dh/10.x",
               "env": [
                 "int"
               ]
             },
             {
               "label": "InfoCenter",
-              "page": "infoCenter/10.5.0",
+              "page": "ic/10.5.0",
               "env": [
                 "dev",
                 "staging"
@@ -79,7 +79,7 @@
             },
             {
               "label": "InfoCenter",
-              "page": "infoCenter/10.x",
+              "page": "ic/10.x",
               "env": [
                 "int"
               ]
@@ -127,7 +127,7 @@
         },
         {
           "label": "Jutro Design System",
-          "page": "../jutro/4.1.1",
+          "page": "../jutroDesignSystem/4.1.1",
           "env": [
             "dev",
             "staging",

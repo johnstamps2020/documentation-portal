@@ -24,7 +24,7 @@
       "items": [
         {
           "label": "PolicyCenter for Guidewire Cloud",
-          "page": "policyCenterForGuidewireCloud/2020.11"
+          "page": "pcGwCloud/2020.11"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -45,19 +45,19 @@
           "items": [
             {
               "label": "Businessowners Standards Based Template",
-              "page": "businessowners/2020.11"
+              "page": "boStandardsBasedTemplate/2020.11"
             },
             {
               "label": "Commercial Auto Standards Based Template",
-              "page": "commercialAuto/2020.11"
+              "page": "caStandardsBasedTemplate/2020.11"
             },
             {
               "label": "Crime Standards Based Template",
-              "page": "crime/2020.11"
+              "page": "crimeStandardsBasedTemplate/2020.11"
             },
             {
               "label": "General Liability Standards Based Template",
-              "page": "generalLiability/2020.11"
+              "page": "glStandardsBasedTemplate/2020.11"
             }
           ]
         }
@@ -142,7 +142,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutro/4.1.1"
+              "page": "../../../jutroDesignSystem/4.1.1"
             }
           ]
         },

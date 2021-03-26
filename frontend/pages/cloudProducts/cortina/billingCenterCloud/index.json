@@ -27,7 +27,7 @@
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
-          "page": "billingCenterForGuidewireCloud/latest"
+          "page": "bcGwCloud/latest"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -52,7 +52,7 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dataHubForGuidewireCloud/2021.04",
+              "page": "../dhGwCloud/2021.04",
               "env": [
                 "dev",
                 "staging"
@@ -60,14 +60,14 @@
             },
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dataHubForGuidewireCloud/latest",
+              "page": "../dhGwCloud/latest",
               "env": [
                 "int"
               ]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../infoCenterForGuidewireCloud/2021.04",
+              "page": "../icGwCloud/2021.04",
               "env": [
                 "dev",
                 "staging"
@@ -75,7 +75,7 @@
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../infoCenterForGuidewireCloud/latest",
+              "page": "../icGwCloud/latest",
               "env": [
                 "int"
               ]

@@ -24,7 +24,7 @@
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "claimCenterForGuidewireCloud/2020.11"
+          "page": "ccGwCloud/2020.11"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -127,7 +127,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutro/4.1.1"
+              "page": "../../../jutroDesignSystem/4.1.1"
             }
           ]
         }
