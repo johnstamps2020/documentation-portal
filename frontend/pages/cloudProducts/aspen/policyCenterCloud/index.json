@@ -43,7 +43,8 @@
           "class": "group",
           "env": [
             "dev",
-            "staging"
+            "staging",
+            "prod"
           ],
           "items": [
             {

@@ -64,6 +64,10 @@
             },
             {
               "label": "DataHub",
+              "id": "dh1040"
+            },
+            {
+              "label": "DataHub",
               "page": "dh/10.x",
               "env": [
                 "int"
@@ -76,6 +80,10 @@
                 "dev",
                 "staging"
               ]
+            },
+            {
+              "label": "InfoCenter",
+              "id": "ic1040"
             },
             {
               "label": "InfoCenter",
