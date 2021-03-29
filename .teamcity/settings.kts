@@ -744,7 +744,7 @@ object GenerateSitemap : BuildType({
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                     export KUBE_FILE=apps/doc_crawler/kube/deployment.yml
                 fi
-                sh ci/deploySitemap.sh
+                sh %teamcity.build.workingDir%/ci/deploySitemap.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
