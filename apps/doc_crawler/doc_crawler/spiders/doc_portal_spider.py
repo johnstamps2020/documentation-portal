@@ -112,7 +112,7 @@ class DocPortalSpider(scrapy.Spider):
                 version=index_entry_version,
                 public=index_entry_public,
                 internal=index_entry_internal,
-                date=index_entry_date
+                indexed_date=index_entry_date
             )
 
             yield index_entry
