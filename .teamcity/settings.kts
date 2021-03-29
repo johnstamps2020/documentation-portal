@@ -727,6 +727,30 @@ object GenerateSitemap : BuildType({
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
+        script {
+            name = "Deploy to Kubernetes"
+            id = "DEPLOY_TO_K8S"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment-prod.yml
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment.yml
+                fi
+                sh ci/deploySitemap.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
     }
 
     features {
@@ -1165,6 +1189,7 @@ object Deployment : Project({
     buildType(PublishConfigDeployerDockerImage)
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
+    buildType(PublishSitemapGeneratorDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
 })
@@ -2834,6 +2859,7 @@ object Content : Project({
     subProject(XdocsExportBuilds)
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
+    buildType(GenerateSitemap)
 })
 
 object Docs : Project({
