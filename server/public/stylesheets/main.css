@@ -179,6 +179,11 @@ main.banff {
   main.banff::after {
     content: '';
     background: url(/images/background-gradient.svg) no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: bottom right;
     z-index: -1;
     position: absolute;
     top: 0;
