@@ -1121,7 +1121,7 @@ object DeployFrontend : BuildType({
             label = "Deployment environment",
             description = "Select an environment on which you want deploy the config",
             display = ParameterDisplay.PROMPT,
-            options = listOf("dev", "int", "staging", "prod")
+            options = listOf("dev", "int", "staging", "prod" to "us-east-2")
         )
     }
 
@@ -1152,7 +1152,7 @@ object DeployFrontend : BuildType({
             scriptContent = """
                 #!/bin/bash 
                 set -xe
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
@@ -1161,7 +1161,7 @@ object DeployFrontend : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 fi
-                sh ci/deployFrontend.sh
+                sh %teamcity.build.workingDir%/ci/deployFrontend.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
