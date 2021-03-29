@@ -692,7 +692,7 @@ object GenerateSitemap : BuildType({
             label = "Deployment environment",
             description = "Select an environment on which you want clean up the index",
             display = ParameterDisplay.PROMPT,
-            options = listOf("dev", "int", "staging", "prod")
+            options = listOf("dev", "int", "staging", "prod" to "us-east-2")
         )
         text(
             "env.OUTPUT_FILE",
@@ -718,7 +718,7 @@ object GenerateSitemap : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
                     export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
                 fi
                 
