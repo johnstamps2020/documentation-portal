@@ -91,7 +91,7 @@ def get_product_selector_label_from_code(code: str) -> str:
 def get_paths(path: Path) -> []:
     paths = []
     for f in path.iterdir():
-        if f.is_dir():
+        if f.is_dir() and not f.name.startswith('.'):
             paths.append(f)
     return paths
 
