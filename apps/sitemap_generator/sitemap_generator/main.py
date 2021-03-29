@@ -1,4 +1,3 @@
-import json
 import os
 from pathlib import Path
 
@@ -29,8 +28,13 @@ def generate_sitemap():
             output_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
             output_file.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
             for doc in indexed_docs:
+                output_file.write(f'<url>\n')
                 url = doc['_source']['href']
-                output_file.write(f'<url><loc>{url}</loc></url>\n')
+                output_file.write(f'<loc>{url}?authSource=guidewire-customer</loc>\n')
+                date = doc['_source'].get('date', None)
+                if date:
+                    output_file.write(f'<lastmod>{date}</lastmod>\n')
+                output_file.write(f'</url>\n')
                 count += 1
             output_file.write('</urlset>\n')
         print(f'Processed {count} docs from {index_name}')
