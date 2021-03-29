@@ -688,7 +688,7 @@ object GenerateSitemap : BuildType({
     params {
         select(
             "env.DEPLOY_ENV",
-            "",
+            "us-east-2",
             label = "Deployment environment",
             description = "Select an environment on which you want clean up the index",
             display = ParameterDisplay.PROMPT,
