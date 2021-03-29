@@ -571,6 +571,49 @@ object PublishIndexCleanerDockerImage : BuildType({
 
 })
 
+object PublishSitemapGeneratorDockerImage : BuildType({
+    name = "Publish the image for Sitemap Generator"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish the image for Sitemap Generator to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/sitemap_generator
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/sitemap_generator/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object CleanUpIndex : BuildType({
     name = "Clean up index"
     description = "Remove documents from index which are not in the config"
@@ -633,6 +676,97 @@ object CleanUpIndex : BuildType({
             id = "TEMPLATE_BUILD_EXT_1"
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object GenerateSitemap : BuildType({
+    name = "Generate sitemap.xml"
+    description = "Create a sitemap based on the search index"
+
+    params {
+        select(
+            "env.DEPLOY_ENV",
+            "",
+            label = "Deployment environment",
+            description = "Select an environment on which you want clean up the index",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod")
+        )
+        text(
+            "env.OUTPUT_FILE",
+            "build/sitemap.xml",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS",
+            "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS_PROD",
+            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+            allowEmpty = false
+        )
+
+    }
+
+    steps {
+        script {
+            name = "Run the script which generates the sitemap"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                fi
+                
+                sitemap_generator
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Deploy to Kubernetes"
+            id = "DEPLOY_TO_K8S"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment-prod.yml
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=apps/doc_crawler/kube/deployment.yml
+                fi
+                sh ci/deploySitemap.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    triggers {
+        schedule {
+            schedulingPolicy = daily {
+                hour = 1
+                minute = 1
             }
         }
     }
@@ -1064,6 +1198,7 @@ object Deployment : Project({
     buildType(PublishConfigDeployerDockerImage)
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
+    buildType(PublishSitemapGeneratorDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
 })
@@ -1174,13 +1309,12 @@ object HelperObjects {
             if (scheduled_build) {
                 triggers {
                     schedule {
-                        if(sch_freq == "daily") {
+                        if (sch_freq == "daily") {
                             schedulingPolicy = daily {
                                 hour = sch_hour_daily
                                 minute = sch_minute_daily
                             }
-                        }
-                        else if (sch_freq == "weekly") {
+                        } else if (sch_freq == "weekly") {
                             schedulingPolicy = weekly {
                                 dayOfWeek = ScheduleTrigger.DAY.Saturday
                                 hour = sch_hour_weekly
@@ -1249,32 +1383,32 @@ object HelperObjects {
                         sch_minute_weekly
                     )
                 )
-                
-                if(scheduledBuild && exportFreq == "daily") {
+
+                if (scheduledBuild && exportFreq == "daily") {
                     sch_minute_daily += dailyMinutesOffset
-                    if(sch_minute_daily >= 60) {
+                    if (sch_minute_daily >= 60) {
                         sch_hour_daily += 1
                         sch_minute_daily = 0
                     }
-                    if(sch_hour_daily >= 24) {
+                    if (sch_hour_daily >= 24) {
                         sch_hour_daily = 0
                     }
                     exportServerIndex++
-                    if(exportServerIndex == exportServers.size) {
+                    if (exportServerIndex == exportServers.size) {
                         exportServerIndex = 0
                     }
                 }
-                if(scheduledBuild && exportFreq == "weekly") {
+                if (scheduledBuild && exportFreq == "weekly") {
                     sch_minute_weekly += weeklyMinutesOffset
-                    
-                    if(sch_minute_weekly >= 60) {
+
+                    if (sch_minute_weekly >= 60) {
                         sch_hour_weekly += 1
                         sch_minute_weekly = 0
                     }
-                    if(sch_hour_weekly >= 24) {
+                    if (sch_hour_weekly >= 24) {
                         sch_hour_weekly = 0
                     }
-                }        
+                }
             }
         }
         return builds
@@ -1400,11 +1534,26 @@ object HelperObjects {
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
         class BuildPublishToS3Index(
-            buildType: String, product: String, platform: String, version: String, doc_id: String, source_id: String,
-            ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
-            publish_path: String, git_source_url: String, git_source_branch: String,
-            resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
-            workingDir: String, customOutputFolder: String, vcsRootIsExported: Boolean, customEnvironmentVars: JSONArray?
+            buildType: String,
+            product: String,
+            platform: String,
+            version: String,
+            doc_id: String,
+            source_id: String,
+            ditaval_file: String,
+            input_path: String,
+            create_index_redirect: String,
+            build_env: String,
+            publish_path: String,
+            git_source_url: String,
+            git_source_branch: String,
+            resources_to_copy: List<JSONObject>,
+            vcs_root_id: RelativeId,
+            index_for_search: Boolean,
+            workingDir: String,
+            customOutputFolder: String,
+            vcsRootIsExported: Boolean,
+            customEnvironmentVars: JSONArray?
         ) : BuildType({
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
@@ -2733,6 +2882,7 @@ object Content : Project({
     subProject(XdocsExportBuilds)
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
+    buildType(GenerateSitemap)
 })
 
 object Docs : Project({
