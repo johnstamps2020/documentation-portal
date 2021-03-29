@@ -67,7 +67,7 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_platform = doc_object['metadata']['platform']
             index_entry_version = doc_object['metadata']['version']
             index_entry_public = doc_object['public']
-            index_entry_date = date.today()
+            index_entry_date = date.today().isoformat()
 
             is_index_entry_internal = response.xpath(
                 '/html/head/meta[@name="internal" and @content="true"]').get()
