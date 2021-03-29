@@ -761,6 +761,15 @@ object GenerateSitemap : BuildType({
             }
         }
     }
+
+    triggers {
+        schedule {
+            schedulingPolicy = daily {
+                hour = 1
+                minute = 1
+            }
+        }
+    }
 })
 
 object TestDocCrawler : BuildType({
@@ -1300,13 +1309,12 @@ object HelperObjects {
             if (scheduled_build) {
                 triggers {
                     schedule {
-                        if(sch_freq == "daily") {
+                        if (sch_freq == "daily") {
                             schedulingPolicy = daily {
                                 hour = sch_hour_daily
                                 minute = sch_minute_daily
                             }
-                        }
-                        else if (sch_freq == "weekly") {
+                        } else if (sch_freq == "weekly") {
                             schedulingPolicy = weekly {
                                 dayOfWeek = ScheduleTrigger.DAY.Saturday
                                 hour = sch_hour_weekly
@@ -1375,32 +1383,32 @@ object HelperObjects {
                         sch_minute_weekly
                     )
                 )
-                
-                if(scheduledBuild && exportFreq == "daily") {
+
+                if (scheduledBuild && exportFreq == "daily") {
                     sch_minute_daily += dailyMinutesOffset
-                    if(sch_minute_daily >= 60) {
+                    if (sch_minute_daily >= 60) {
                         sch_hour_daily += 1
                         sch_minute_daily = 0
                     }
-                    if(sch_hour_daily >= 24) {
+                    if (sch_hour_daily >= 24) {
                         sch_hour_daily = 0
                     }
                     exportServerIndex++
-                    if(exportServerIndex == exportServers.size) {
+                    if (exportServerIndex == exportServers.size) {
                         exportServerIndex = 0
                     }
                 }
-                if(scheduledBuild && exportFreq == "weekly") {
+                if (scheduledBuild && exportFreq == "weekly") {
                     sch_minute_weekly += weeklyMinutesOffset
-                    
-                    if(sch_minute_weekly >= 60) {
+
+                    if (sch_minute_weekly >= 60) {
                         sch_hour_weekly += 1
                         sch_minute_weekly = 0
                     }
-                    if(sch_hour_weekly >= 24) {
+                    if (sch_hour_weekly >= 24) {
                         sch_hour_weekly = 0
                     }
-                }        
+                }
             }
         }
         return builds
@@ -1526,11 +1534,26 @@ object HelperObjects {
     private fun createDocProjectWithBuilds(doc: JSONObject, product_name: String, version: String): Project {
 
         class BuildPublishToS3Index(
-            buildType: String, product: String, platform: String, version: String, doc_id: String, source_id: String,
-            ditaval_file: String, input_path: String, create_index_redirect: String, build_env: String,
-            publish_path: String, git_source_url: String, git_source_branch: String,
-            resources_to_copy: List<JSONObject>, vcs_root_id: RelativeId, index_for_search: Boolean,
-            workingDir: String, customOutputFolder: String, vcsRootIsExported: Boolean, customEnvironmentVars: JSONArray?
+            buildType: String,
+            product: String,
+            platform: String,
+            version: String,
+            doc_id: String,
+            source_id: String,
+            ditaval_file: String,
+            input_path: String,
+            create_index_redirect: String,
+            build_env: String,
+            publish_path: String,
+            git_source_url: String,
+            git_source_branch: String,
+            resources_to_copy: List<JSONObject>,
+            vcs_root_id: RelativeId,
+            index_for_search: Boolean,
+            workingDir: String,
+            customOutputFolder: String,
+            vcsRootIsExported: Boolean,
+            customEnvironmentVars: JSONArray?
         ) : BuildType({
             var buildTemplate: Template = BuildOutputFromDita
             when (buildType) {
