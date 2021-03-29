@@ -36,7 +36,7 @@ def generate_sitemap():
             for doc in indexed_docs:
                 output_file.write(f'<url>\n')
                 url = doc['_source']['href']
-                output_file.write(f'<loc>{url}?authSource=guidewire-customer</loc>\n')
+                output_file.write(f'<loc><![CDATA[{url}?authSource=guidewire-customer]]></loc>\n')
                 date = doc['_source'].get('indexed_date', None)
                 if date:
                     output_file.write(f'<lastmod>{date}</lastmod>\n')
