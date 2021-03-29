@@ -64,7 +64,10 @@
             },
             {
               "label": "DataHub",
-              "id": "dh1040"
+              "id": "dh1040",
+              "env": [
+                "prod"
+              ]
             },
             {
               "label": "DataHub",
@@ -83,7 +86,10 @@
             },
             {
               "label": "InfoCenter",
-              "id": "ic1040"
+              "id": "ic1040",
+              "env": [
+                "prod"
+              ]
             },
             {
               "label": "InfoCenter",
