@@ -14,7 +14,9 @@
     </div>
     <div id="headerRight">
         {% include 'includes/links-menu.j2' %}
-        <a class="button" id="loginButton" href="/gw-login">Log in</a>
+        <div id="loginContainer">
+            <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
+        </div>
     </div>
 </header>
 <main {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>

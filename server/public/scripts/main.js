@@ -3,42 +3,52 @@ function toggleAvatar(e) {
 }
 
 async function setLogInButton() {
-  const response = await fetch('/userInformation');
-  const responseBody = await response.json();
-  const { isLoggedIn, name, preferred_username } = responseBody;
-
-  if (isLoggedIn) {
+  // /userInformation is not available for a few milliseconds
+  // after login, so if fetching the response fails, try again
+  // in 10ms.
+  try {
+    const response = await fetch('/userInformation');
+    const responseBody = await response.json();
+    const { isLoggedIn, name, preferred_username } = responseBody;
     const loginButton = document.querySelector('#loginButton');
-    if (loginButton) {
-      const avatar = document.createElement('div');
-      avatar.setAttribute('id', 'avatar');
-      avatar.innerHTML = `
-      <button 
-        id="avatarButton" 
-        onClick="toggleAvatar(e)" 
-        aria-label="user information"
-      >
-        <div class="avatarMenu">
-          <div class="avatarMenuHeader">
-            <div class="avatarMenuIcon">&nbsp;</div>
-            <div class="avatarMenuInfo">
-              <div class="avatarMenuName">${name}</div>
-              <div class="avatarMenuEmail">${preferred_username}</div>
+
+    if (isLoggedIn && loginButton) {
+      
+        const avatar = document.createElement('div');
+        avatar.setAttribute('id', 'avatar');
+        avatar.innerHTML = `
+        <button 
+          id="avatarButton" 
+          onClick="toggleAvatar(e)" 
+          aria-label="user information"
+        >
+          <div class="avatarMenu">
+            <div class="avatarMenuHeader">
+              <div class="avatarMenuIcon">&nbsp;</div>
+              <div class="avatarMenuInfo">
+                <div class="avatarMenuName">${name}</div>
+                <div class="avatarMenuEmail">${preferred_username}</div>
+              </div>
+            </div>
+            <div class="avatarMenuDivider"></div>
+            <div class="avatarMenuActions">
+              <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
             </div>
           </div>
-          <div class="avatarMenuDivider"></div>
-          <div class="avatarMenuActions">
-            <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
-          </div>
-        </div>
-      </button>
-    `;
+        </button>
+      `;
 
-      let newAvatar = loginButton.parentElement.replaceChild(
-        avatar,
-        loginButton
-      );
+        let newAvatar = loginButton.parentElement.replaceChild(
+          avatar,
+          loginButton
+        );
     }
+    else if (loginButton) {
+      loginButton.classList.remove('invisible')
+    }
+  }
+  catch (error) {
+    setTimeout(setLogInButton, 10);
   }
 }
 

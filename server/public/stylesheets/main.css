@@ -16,6 +16,7 @@
   --GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
   --estimated-header-height: 68px;
   --body-height: calc(100vh - var(--estimated-header-height));
+  --main-width: 950px;
 }
 
 input.searchField:-webkit-autofill {
@@ -60,7 +61,6 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 3px 0;
 }
 
 header img {
@@ -118,7 +118,7 @@ main {
 }
 
 main:not(.fullWidth) > * {
-  max-width: 950px;
+  max-width: var(--main-width);
   margin: auto;
 }
 
@@ -143,8 +143,6 @@ main.aspen {
 }
 
 @media screen and (min-width: 750px) {
-
-
   main.cortina {
     background: url(/images/background-cortina.svg) no-repeat fixed;
   }
@@ -240,9 +238,8 @@ label,
 
 .cardShadow:hover a,
 .cardShadow:focus a {
-  color: var(--GW-BLUE-HOVER);  
+  color: var(--GW-BLUE-HOVER);
 }
-
 
 .cortina .cardShadow:hover,
 .cortina .cardShadow:focus,
@@ -250,15 +247,37 @@ label,
 .banff .cardShadow:focus,
 .aspen .cardShadow:hover,
 .aspen .cardShadow:focus {
-  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5); 
+  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
 }
 
 .threeCards > div.items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, .5fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
   column-gap: 16px;
   row-gap: 16px;
   padding: 64px 0;
+}
+
+.twoCards > div.items {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  padding: 64px 0;
+}
+
+.twoColumns > div.items {
+  columns: 2;
+}
+@media screen and (max-width: 750px) {
+  .twoColumns > div.items {
+    columns: 1;
+  }
+}
+
+.twoCards > div.items > .categoryCard {
+  min-width: 300px;
+  width: calc(50% - 8px);
 }
 
 .productFamily {
@@ -274,6 +293,7 @@ label,
   flex-direction: column;
   height: 100%;
   text-align: center;
+  padding: 8px;
 }
 
 .categoryCard {
@@ -304,8 +324,6 @@ label,
   break-inside: avoid;
   padding-bottom: 32px;
   padding-left: 16px;
-  width: 300px;
-  margin: auto;
 }
 
 .subject::before {
@@ -378,10 +396,6 @@ label,
   padding-top: 8px;
 }
 
-.twoColumns > div.items {
-  columns: 2;
-}
-
 footer {
   background-color: var(--GW-HEADER-FOOTER-BKG-COLOR);
   box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
@@ -428,12 +442,13 @@ footer .releaseInfo {
 
 div.pageHero {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   gap: 16px;
 }
 
 .heroControls {
   width: fit-content;
+  margin-left: auto;
 }
 
 #cloudToggle {
@@ -468,14 +483,12 @@ div.pageHero {
 .cortina #cloudToggle > a:not(.selected):focus,
 .banff #cloudToggle > a:not(.selected):hover,
 .banff #cloudToggle > a:not(.selected):focus,
-.aspen #cloudToggle > a:not(.selected):focus
-.aspen #cloudToggle > a:not(.selected):hover,
- {
+.aspen #cloudToggle > a:not(.selected):focus,
+.aspen #cloudToggle > a:not(.selected):hover {
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
   /* background-color: var(--GW-COLOR-BRAND-1-HOVER); */
   color: var(--GW-BLUE-HOVER) !important;
 }
-
 
 #cloudToggle > .selected {
   background: var(--GRADIENT-BACKGROUND);
@@ -567,6 +580,10 @@ div.pageHero {
   padding: 8px 32px;
 }
 
+.loginCard:hover > .cardButton {
+  color: #fff;
+}
+
 .employeeLogin {
   width: fit-content;
   margin: auto;
@@ -587,7 +604,7 @@ div.pageHero {
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 32px 16px;
-  min-height: var(--body-height);
+  height: var(--body-height);
   overflow-y: scroll;
 }
 
@@ -806,7 +823,11 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   top: 25px;
   right: 40px;
   padding: 44px 20px 20px 20px;
-  background: linear-gradient(180deg, transparent 23px, var(--GW-WHITE) 23px 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 23px,
+    var(--GW-WHITE) 23px 100%
+  );
   border-radius: 4px;
   list-style: none;
   box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
@@ -873,6 +894,19 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   white-space: nowrap;
 }
 
+#loginContainer {
+  display: flex;
+  width: 70px;
+}
+
+#loginButton.invisible {
+  visibility: hidden;
+}
+
+#avatar {
+  margin-left: auto;
+}
+
 #avatarButton {
   position: relative;
   background: url(/images/account_circle-24px.svg);
@@ -895,7 +929,11 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   visibility: hidden;
   transform: translateY(-100px);
   transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
-  background: linear-gradient(180deg, transparent 26px, var(--GW-WHITE) 26px 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 26px,
+    var(--GW-WHITE) 26px 100%
+  );
   padding: 48px 24px 24px 24px;
   text-align: left;
   border-radius: 4px;
