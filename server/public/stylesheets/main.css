@@ -122,25 +122,9 @@ main:not(.fullWidth) > * {
   margin: auto;
 }
 
-main.cortina {
-  background: url(/images/background-gradient.svg) no-repeat fixed;
-  /* background-color: rgba(19, 30, 46, 0.15);
-          background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
-            linear-gradient(
-              -60deg,
-              #131e2e,
-              rgba(40, 64, 99, 0.8),
-              rgba(47, 79, 126, 0)
-            ); */
-  /* background-position: top left; */
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: bottom right;
-}
-
-main.banff {
+main.cortina,
+main.banff,
+main.aspen {
   background: url(/images/background-gradient.svg) no-repeat fixed;
   /* background-color: rgba(19, 30, 46, 0.15);
           background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
@@ -159,8 +143,18 @@ main.banff {
 }
 
 @media screen and (min-width: 750px) {
+
+
   main.cortina {
     background: url(/images/background-cortina.svg) no-repeat fixed;
+  }
+
+  main.banff {
+    background: url(/images/background-banff.svg) no-repeat fixed;
+  }
+
+  main.cortina,
+  main.banff {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -168,14 +162,6 @@ main.banff {
     background-position: bottom right;
   }
 
-  main.banff {
-    background: url(/images/background-banff.svg) no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: bottom right;
-  }
   main.banff::after {
     content: '';
     background: url(/images/background-gradient.svg) no-repeat fixed;
@@ -196,27 +182,33 @@ main.banff {
 main.cortina h1,
 main.cortina label,
 main.banff h1,
-main.banff label {
+main.banff label,
+main.aspen h1,
+main.aspen label {
   color: #fff;
 }
 
 main.cortina .docBreadcrumb a,
-main.banff .docBreadcrumb a {
+main.banff .docBreadcrumb a,
+main.aspen .docBreadcrumb a {
   color: var(--GW-BLUE-LIGHTER);
 }
 
 main.cortina .docBreadcrumb a:hover,
-main.banff .docBreadcrumb a:hover {
+main.banff .docBreadcrumb a:hover,
+main.aspen .docBreadcrumb a:hover {
   color: var(--GW-BLUE-LIGHTER-HOVER);
 }
 
 main.cortina .usefulLinks a,
-main.banff .usefulLinks a {
+main.banff .usefulLinks a,
+main.aspen .usefulLinks a {
   color: var(--GW-BLUE-LIGHTER);
 }
 
 main.cortina .usefulLinks a:hover,
-main.banff .usefulLinks a:hover {
+main.banff .usefulLinks a:hover,
+main.aspen .usefulLinks a:hover {
   color: var(--GW-BLUE-LIGHTER-HOVER);
 }
 
@@ -255,7 +247,9 @@ label,
 .cortina .cardShadow:hover,
 .cortina .cardShadow:focus,
 .banff .cardShadow:hover,
-.banff .cardShadow:focus {
+.banff .cardShadow:focus,
+.aspen .cardShadow:hover,
+.aspen .cardShadow:focus {
   box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5); 
 }
 
@@ -473,7 +467,9 @@ div.pageHero {
 .cortina #cloudToggle > a:not(.selected):hover,
 .cortina #cloudToggle > a:not(.selected):focus,
 .banff #cloudToggle > a:not(.selected):hover,
-.banff #cloudToggle > a:not(.selected):focus
+.banff #cloudToggle > a:not(.selected):focus,
+.aspen #cloudToggle > a:not(.selected):focus
+.aspen #cloudToggle > a:not(.selected):hover,
  {
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
   /* background-color: var(--GW-COLOR-BRAND-1-HOVER); */
@@ -746,7 +742,8 @@ main.support h2 {
 }
 
 .cortina #pageSelectorContainer .selectorLabel,
-.banff #pageSelectorContainer .selectorLabel {
+.banff #pageSelectorContainer .selectorLabel,
+.aspen #pageSelectorContainer .selectorLabel {
   color: white;
 }
 
