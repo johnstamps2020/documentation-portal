@@ -35,9 +35,9 @@ def validate_path(path: Path):
 
 @dataclass
 class AppConfig:
-    root_build_dir: Path = Path.cwd() / 'build'
-    pages_build_dir: Path = root_build_dir / 'pages'
-    config_build_dir: Path = root_build_dir / 'config'
+    _root_build_dir: Path = Path.cwd() / 'build'
+    pages_build_dir: Path = _root_build_dir / 'pages'
+    config_build_dir: Path = _root_build_dir / 'config'
     _deploy_env: str = os.environ.get('DEPLOY_ENV')
     _pages_dir: str = os.environ.get('PAGES_DIR')
     _templates_dir: str = os.environ.get('TEMPLATES_DIR')
@@ -107,6 +107,9 @@ def main():
                          app_config.pages_build_dir,
                          app_config.config_build_dir,
                          app_config.docs_config_file)
+    run_validator(app_config.send_bouncer_home,
+                  app_config.pages_build_dir,
+                  app_config.docs_config_file)
     run_template_writer(app_config.send_bouncer_home,
                         app_config.templates_dir,
                         app_config.pages_build_dir)
