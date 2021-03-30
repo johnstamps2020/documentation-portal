@@ -770,7 +770,7 @@ object GenerateSitemap : BuildType({
     }
 
     vcs {
-        root(vcsroot)
+        root(vcsrootmasteronly)
 
         cleanCheckout = true
     }
