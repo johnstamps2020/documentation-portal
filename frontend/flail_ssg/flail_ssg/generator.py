@@ -117,6 +117,13 @@ def process_page(index_file: Path,
             items_with_resolved_links = resolve_links(filtered_items, docs)
             page_config.json_object['items'] = items_with_resolved_links
 
+        selector = page_config.json_object.get('selector')
+        if selector:
+            filtered_selector_items = filter_by_env(
+                deploy_env, page_config.dir, selector.get('items'), docs)
+            selector_items_with_resolved_links = resolve_links(filtered_selector_items, docs)
+            page_config.json_object['selector']['items'] = selector_items_with_resolved_links
+
         page_config.json_object['current_page'] = {
             'label': page_config.json_object['title'],
             'path': page_config.dir.name

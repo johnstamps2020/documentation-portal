@@ -9,7 +9,12 @@
     "items": [
       {
         "label": "Cortina",
-        "page": "../cortina"
+        "page": "../cortina",
+        "env": [
+          "dev",
+          "int",
+          "staging"
+        ]
       },
       {
         "label": "Banff",
