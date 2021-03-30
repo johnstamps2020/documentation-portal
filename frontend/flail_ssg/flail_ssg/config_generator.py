@@ -61,13 +61,12 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
 
 
 def get_visible_docs_for_env(docs: List, env: str):
-    filtered_docs = []
-    for doc in docs:
-        if doc.get('displayOnLandingPages'):
-            if any(value for value in doc.get('environments') if value == env):
-                filtered_docs.append(doc)
-
-    return filtered_docs
+    return [
+        doc
+        for doc in docs
+        if doc.get('displayOnLandingPages')
+        and any(value for value in doc.get('environments') if value == env)
+    ]
 
 
 def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Path, docs: List, deploy_env: str):

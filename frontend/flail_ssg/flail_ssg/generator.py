@@ -34,11 +34,7 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
 
 
 def include_item(env: str, item_envs: List):
-    if not item_envs:
-        return True
-    elif env in item_envs:
-        return True
-    return False
+    return not item_envs or env in item_envs
 
 
 def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: List):
@@ -130,13 +126,12 @@ def process_page(index_file: Path,
         }
         page_config.json_object['breadcrumbs'] = create_breadcrumbs(page_config.dir, build_dir)
     except Exception as e:
-        if send_bouncer_home:
-            _generator_logger.warning(
-                '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
-            page_config.json_object[
-                'title'] = f'{page_config.json_object["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
-        else:
+        if not send_bouncer_home:
             raise e
+        _generator_logger.warning(
+            '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+        page_config.json_object[
+            'title'] = f'{page_config.json_object["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
     finally:
         write_json_object_to_file(page_config.json_object, page_config.absolute_path)
 

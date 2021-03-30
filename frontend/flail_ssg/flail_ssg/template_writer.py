@@ -1,9 +1,7 @@
-import shutil
-from pathlib import Path
-from typing import Dict
-
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
+from pathlib import Path
+from typing import Dict
 
 from flail_ssg.helpers import configure_logger, load_json_file
 
@@ -40,7 +38,8 @@ def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir:
         page_config = load_json_file(index_json_file)
         try:
             _template_writer_logger.info(
-                f'Building "{page_config.json_object["title"]}" page from "{page_config.json_object["template"]}" template')
+                f'Building "{page_config.json_object["title"]}" page from "{page_config.json_object["template"]}" '
+                f'template')
 
             write_to_file(
                 page_config.dir / 'index.html',

@@ -81,11 +81,10 @@ def process_validation_results(results: List, send_bouncer_home: bool):
 def env_settings_are_correct(item_envs: List, higher_order_envs: List):
     if not item_envs:
         return True
-    if item_envs:
-        if not higher_order_envs:
-            return True
-        elif all(env in higher_order_envs for env in item_envs):
-            return True
+    if not higher_order_envs:
+        return True
+    elif all(env in higher_order_envs for env in item_envs):
+        return True
     return False
 
 
