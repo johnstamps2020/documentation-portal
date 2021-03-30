@@ -135,10 +135,7 @@ def validate_page(index_file: Path,
                                         f'Env settings of the parent element: {parent_envs}'
                             )
                         )
-                    if item_envs:
-                        new_parent_envs = item_envs
-                    else:
-                        new_parent_envs = parent_envs
+                    new_parent_envs = item_envs or parent_envs
                     validate_page(page_path / 'index.json', docs,
                                   new_parent_envs, validated_pages, issues)
                 elif not page_path.exists():
@@ -156,10 +153,7 @@ def validate_page(index_file: Path,
                         )
                     )
             if item.get('items'):
-                if item_envs:
-                    new_parent_envs = item_envs
-                else:
-                    new_parent_envs = parent_envs
+                new_parent_envs = item_envs or parent_envs
                 validate_items(item['items'], new_parent_envs, issues)
         return issues
 
