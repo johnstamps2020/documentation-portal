@@ -94,13 +94,6 @@
       "description": "An object that points to a page, a document or an external link",
       "type": "object",
       "required": ["label"],
-      "dependencies": {
-        "env": {
-          "not": {
-            "required": ["id"]
-          }
-        }
-      },
       "properties": {
         "label": {
           "$ref": "#/definitions/label"

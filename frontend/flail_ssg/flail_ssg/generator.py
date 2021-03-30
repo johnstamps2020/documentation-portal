@@ -44,12 +44,11 @@ def include_item(env: str, item_envs: List):
 def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: List):
     filtered_items = []
     for item in items:
-        if item.get('id'):
+        item_envs = item.get('env', [])
+        if not item_envs and item.get('id'):
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
             item_envs = matching_doc_object['environments']
-        else:
-            item_envs = item.get('env', [])
         if not include_item(deploy_env, item_envs):
             if item.get('page'):
                 page_path = current_page_dir / item['page']

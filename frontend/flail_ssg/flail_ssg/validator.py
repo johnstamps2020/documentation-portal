@@ -90,50 +90,69 @@ def validate_page(index_file: Path,
 
     def validate_items(page_items: List, parent_envs: List, issues: List):
         for item in page_items:
+            item_envs = item.get('env', [])
+            item_label = item["label"]
             if item.get('id'):
                 item_id = item['id']
                 matching_doc_object = next(
                     (doc for doc in docs if doc['id'] == item_id), None)
-                if matching_doc_object:
+                if matching_doc_object and not item_envs:
                     item_envs = matching_doc_object.get('environments')
-                    if not env_settings_are_correct(item_envs, parent_envs):
-                        issues.append(
-                            IncorrectEnvSettingsWarning(
-                                config_file=page_config.absolute_path,
-                                details=f'Item label: {item["label"]} '
-                                        f'Item ID: {item["id"]} | '
-                                        f'Item envs: {item_envs} | '
-                                        f'Env settings of higher order elements: {parent_envs}'
-                            )
-                        )
-                else:
+                elif not matching_doc_object:
                     issues.append(DocIdNotFoundError(
                         config_file=page_config.absolute_path,
                         details=item_id)
                     )
+                if not env_settings_are_correct(item_envs, parent_envs):
+                    issues.append(
+                        IncorrectEnvSettingsWarning(
+                            config_file=page_config.absolute_path,
+                            details=f'Item label: {item_label} '
+                                    f'Item ID: {item_id} | '
+                                    f'Item envs: {item_envs} | '
+                                    f'Env settings of the parent element: {parent_envs}'
+                        )
+                    )
             elif item.get('page'):
-                page_path = Path(page_config.dir / item['page'])
+                item_page = item['page']
+                page_path = Path(page_config.dir / item_page)
                 if page_path.exists():
-                    item_envs = item.get('env', [])
                     if not env_settings_are_correct(item_envs, parent_envs):
                         issues.append(
                             IncorrectEnvSettingsWarning(
                                 config_file=page_config.absolute_path,
-                                details=f'Item label: {item["label"]} '
-                                        f'Item page: {item["page"]} | '
+                                details=f'Item label: {item_label} '
+                                        f'Item page: {item_page} | '
                                         f'Item envs: {item_envs} | '
-                                        f'Env settings of higher order elements: {parent_envs}'
+                                        f'Env settings of the parent element: {parent_envs}'
                             )
                         )
-                    new_parent_envs = parent_envs + item_envs
+                    if item_envs:
+                        new_parent_envs = item_envs
+                    else:
+                        new_parent_envs = parent_envs
                     validate_page(page_path / 'index.json', docs,
                                   new_parent_envs, validated_pages, issues)
-                else:
+                elif not page_path.exists():
                     issues.append(PageNotFoundError(
                         config_file=page_config.absolute_path,
                         details=str(page_path)))
+            else:
+                if not env_settings_are_correct(item_envs, parent_envs):
+                    issues.append(
+                        IncorrectEnvSettingsWarning(
+                            config_file=page_config.absolute_path,
+                            details=f'Item label: {item_label} '
+                                    f'Item envs: {item_envs} | '
+                                    f'Env settings of the parent element: {parent_envs}'
+                        )
+                    )
             if item.get('items'):
-                validate_items(item['items'], parent_envs, issues)
+                if item_envs:
+                    new_parent_envs = item_envs
+                else:
+                    new_parent_envs = parent_envs
+                validate_items(item['items'], new_parent_envs, issues)
         return issues
 
     if page_config.absolute_path not in validated_pages:
@@ -149,22 +168,14 @@ def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Pa
 
     _validator_logger.info('PROCESS STARTED: Validate pages')
 
-    cloud_products_validation_results = validate_page(
-        pages_dir / 'cloudProducts' / 'index.json',
-        docs,
-        envs=[],
-        validated_pages=[],
-        validation_results=[]
-    )
-    self_managed_products_validation_results = validate_page(
-        pages_dir / 'selfManagedProducts' / 'index.json',
+    validation_results = validate_page(
+        pages_dir / 'index.json',
         docs,
         envs=[],
         validated_pages=[],
         validation_results=[]
     )
 
-    process_validation_results(cloud_products_validation_results + self_managed_products_validation_results,
-                               send_bouncer_home)
+    process_validation_results(validation_results, send_bouncer_home)
 
     _validator_logger.info('PROCESS ENDED: Validate pages')
