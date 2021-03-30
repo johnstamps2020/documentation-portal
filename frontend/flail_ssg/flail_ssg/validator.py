@@ -28,6 +28,14 @@ class PageNotFoundError:
 
 
 @dataclass
+class ItemWithNoLinkError:
+    config_file: Path
+    details: str
+    level: int = logging.ERROR
+    message: str = 'Item does not link to anything. The item must have the "id", "page", or "link" property.'
+
+
+@dataclass
 class IncorrectEnvSettingsWarning:
     config_file: Path
     details: str
@@ -101,7 +109,7 @@ def validate_page(index_file: Path,
                 elif not matching_doc_object:
                     issues.append(DocIdNotFoundError(
                         config_file=page_config.absolute_path,
-                        details=item_id)
+                        details=f'Item ID: {item_id}')
                     )
                 if not env_settings_are_correct(item_envs, parent_envs):
                     issues.append(
@@ -136,7 +144,7 @@ def validate_page(index_file: Path,
                 elif not page_path.exists():
                     issues.append(PageNotFoundError(
                         config_file=page_config.absolute_path,
-                        details=str(page_path)))
+                        details=f'Item page: {str(page_path)}'))
             else:
                 if not env_settings_are_correct(item_envs, parent_envs):
                     issues.append(
@@ -155,11 +163,40 @@ def validate_page(index_file: Path,
                 validate_items(item['items'], new_parent_envs, issues)
         return issues
 
+    def validate_selector_items(selector_items: List, issues: List):
+        for item in selector_items:
+            item_label = item['label']
+            if not (item.get('id') or item.get('page') or item.get('link')):
+                issues.append(ItemWithNoLinkError(
+                    config_file=page_config.absolute_path,
+                    details=f'Selector item label: {item_label}'
+                ))
+            if item.get('id'):
+                item_id = item['id']
+                matching_doc_object = next(
+                    (doc for doc in docs if doc['id'] == item_id), None)
+                if not matching_doc_object:
+                    issues.append(DocIdNotFoundError(
+                        config_file=page_config.absolute_path,
+                        details=f'Selector item ID: {item_id}')
+                    )
+            elif item.get('page'):
+                item_page = item['page']
+                page_path = Path(page_config.dir / item_page)
+                if not page_path.exists():
+                    issues.append(PageNotFoundError(
+                        config_file=page_config.absolute_path,
+                        details=f'Selector item page: {str(page_path)}'))
+        return issues
+
     if page_config.absolute_path not in validated_pages:
         validated_pages.append(page_config.absolute_path)
         items = page_config.json_object.get('items')
         if items:
             validate_items(items, envs, validation_results)
+        selector = page_config.json_object.get('selector')
+        if selector:
+            validate_selector_items(selector.get('items'), validation_results)
     return validation_results
 
 
