@@ -109,7 +109,7 @@ def validate_page(index_file: Path,
                                         f'Env settings of higher order elements: {new_parent_envs}'
                             )
                         )
-                else:
+                elif not matching_doc_object:
                     issues.append(DocIdNotFoundError(
                         config_file=page_config.absolute_path,
                         details=item_id)
@@ -131,7 +131,7 @@ def validate_page(index_file: Path,
                     new_parent_envs = parent_envs + item_envs
                     validate_page(page_path / 'index.json', docs,
                                   new_parent_envs, validated_pages, issues)
-                else:
+                elif not page_path.exists():
                     issues.append(PageNotFoundError(
                         config_file=page_config.absolute_path,
                         details=str(page_path)))
