@@ -766,6 +766,7 @@ object GenerateSitemap : BuildType({
                 hour = 1
                 minute = 1
             }
+            branchFilter = "+:<default>"
         }
     }
 
