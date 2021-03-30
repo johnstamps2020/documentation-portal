@@ -90,20 +90,23 @@ def validate_page(index_file: Path,
 
     def validate_items(page_items: List, parent_envs: List, issues: List):
         for item in page_items:
+            item_envs = item.get('env', [])
+            item_label = item["label"]
             if item.get('id'):
                 item_id = item['id']
                 matching_doc_object = next(
                     (doc for doc in docs if doc['id'] == item_id), None)
                 if matching_doc_object:
-                    item_envs = matching_doc_object.get('environments')
-                    if not env_settings_are_correct(item_envs, parent_envs):
+                    doc_object_items_envs = matching_doc_object.get('environments')
+                    new_parent_envs = parent_envs + item_envs
+                    if not env_settings_are_correct(doc_object_items_envs, new_parent_envs):
                         issues.append(
                             IncorrectEnvSettingsWarning(
                                 config_file=page_config.absolute_path,
-                                details=f'Item label: {item["label"]} '
-                                        f'Item ID: {item["id"]} | '
-                                        f'Item envs: {item_envs} | '
-                                        f'Env settings of higher order elements: {parent_envs}'
+                                details=f'Item label: {item_label} '
+                                        f'Item ID: {item_id} | '
+                                        f'Item envs: {doc_object_items_envs} | '
+                                        f'Env settings of higher order elements: {new_parent_envs}'
                             )
                         )
                 else:
@@ -112,15 +115,15 @@ def validate_page(index_file: Path,
                         details=item_id)
                     )
             elif item.get('page'):
-                page_path = Path(page_config.dir / item['page'])
+                item_page = item['page']
+                page_path = Path(page_config.dir / item_page)
                 if page_path.exists():
-                    item_envs = item.get('env', [])
                     if not env_settings_are_correct(item_envs, parent_envs):
                         issues.append(
                             IncorrectEnvSettingsWarning(
                                 config_file=page_config.absolute_path,
-                                details=f'Item label: {item["label"]} '
-                                        f'Item page: {item["page"]} | '
+                                details=f'Item label: {item_label} '
+                                        f'Item page: {item_page} | '
                                         f'Item envs: {item_envs} | '
                                         f'Env settings of higher order elements: {parent_envs}'
                             )
@@ -132,8 +135,19 @@ def validate_page(index_file: Path,
                     issues.append(PageNotFoundError(
                         config_file=page_config.absolute_path,
                         details=str(page_path)))
+            else:
+                if not env_settings_are_correct(item_envs, parent_envs):
+                    issues.append(
+                        IncorrectEnvSettingsWarning(
+                            config_file=page_config.absolute_path,
+                            details=f'Item label: {item_label} '
+                                    f'Item envs: {item_envs} | '
+                                    f'Env settings of higher order elements: {parent_envs}'
+                        )
+                    )
             if item.get('items'):
-                validate_items(item['items'], parent_envs, issues)
+                new_parent_envs = parent_envs + item_envs
+                validate_items(item['items'], new_parent_envs, issues)
         return issues
 
     if page_config.absolute_path not in validated_pages:
