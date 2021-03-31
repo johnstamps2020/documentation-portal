@@ -1797,6 +1797,14 @@
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-wc.ditamap",
+      "srcId": "lobwcguidebanffsrc",
+      "docId": "lobwcguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguideaspensrc",
       "docId": "lobbopguideaspen",
