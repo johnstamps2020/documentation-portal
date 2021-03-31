@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Guidewire Cloud Platform",
   "template": "page.j2",
-  "class": "twoColumns",
+  "class": "twoCards",
   "items": [
     {
       "label": "Guidewire Cloud Console",
@@ -42,4 +42,3 @@
     }
   ]
 }
-  
