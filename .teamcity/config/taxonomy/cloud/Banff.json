@@ -21,26 +21,29 @@
             {
               "id": "lobs",
               "label": "Lines of business",
-              "items":[
+              "items": [
                 {
-                  "id": "boStandardsBaseTemplate",
+                  "id": "boStandardsBasedTemplate",
                   "label": "Businessowners Standards Based Template"
                 },
                 {
-                  "id": "caStandardsBaseTemplate",
+                  "id": "caStandardsBasedTemplate",
                   "label": "Commercial Auto Standards Based Template"
                 },
                 {
-                  "id": "crimeStandardsBaseTemplate",
+                  "id": "crimeStandardsBasedTemplate",
                   "label": "Crime Standards Based Template"
                 },
                 {
-                  "id": "glStandardsBaseTemplate",
+                  "id": "glStandardsBasedTemplate",
                   "label": "General Liability Standards Based Template"
+                },
+                {
+                  "id": "wcStandardsBasedTemplate",
+                  "label": "Workers' Compensation Standards Based Template"
                 }
               ]
             }
-            
           ]
         },
         {
@@ -138,7 +141,7 @@
           "label": "Core",
           "items": [
             {
-              "id": "ccGwCloud", 
+              "id": "ccGwCloud",
               "label": "ClaimCenter for Guidewire Cloud"
             },
             {
@@ -320,7 +323,7 @@
         {
           "id": "insuranceNow20202xExt",
           "label": "External Audience",
-          "items":[
+          "items": [
             {
               "id": "IN20202xExt",
               "label": "InsuranceNow 2020.2x - External Audience"
@@ -330,7 +333,7 @@
         {
           "id": "insuranceNow20202xInt",
           "label": "Internal Audience",
-          "items":[
+          "items": [
             {
               "id": "IN20202xInt",
               "label": "InsuranceNow 2020.2x - Internal Audience"
@@ -340,7 +343,7 @@
         {
           "id": "insuranceNow",
           "label": "InsuranceNow",
-          "items":[
+          "items": [
             {
               "id": "insuranceNow",
               "label": "InsuranceNow"
