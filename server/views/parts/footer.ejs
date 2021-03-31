@@ -1,38 +1,21 @@
 <footer>
-  <div id="footerLeft">
-    <span class="footerLink"
-      ><a href="/support">Legal and Support Information</a></span
-    >
-  </div>
+  <div id="footerLeft"></div>
+  <div id="footerCenter"></div>
   <div id="footerRight">
-    Copyright &#169; 2001-
-    <script>
-      document.write(new Date().getFullYear());
-    </script>
-    Guidewire Software, Inc.
+    <div>
+      <div class="footerLinks">
+        <span class="footerLink"
+          ><a href="/support">Legal and Support Information</a></span
+        >
+      </div>
+      <div class="footerCopyright">
+        Copyright &#169; 2001-
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Guidewire Software, Inc.
+      </div>
+    </div>
   </div>
 </footer>
 <script src="/scripts/main.js"></script>
-<script>
-  (function() {
-    function isInIframe() {
-      try {
-        return window.self !== window.top;
-      } catch (e) {
-        return true;
-      }
-    }
-
-    function hideByCssClass(cssClass) {
-      const el = document.getElementsByClassName(cssClass)[0];
-      if (el) {
-        el.style.display = 'none';
-      }
-    }
-
-    if (isInIframe()) {
-      hideByCssClass('pageHeader');
-      hideByCssClass('pageFooter');
-    }
-  })();
-</script>
