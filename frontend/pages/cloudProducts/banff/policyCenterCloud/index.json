@@ -37,11 +37,7 @@
         {
           "label": "Lines of business",
           "class": "group",
-          "env": [
-            "dev",
-            "int",
-            "staging"
-          ],
+          "env": ["dev", "int", "staging"],
           "items": [
             {
               "label": "Businessowners Standards Based Template",
@@ -58,6 +54,10 @@
             {
               "label": "General Liability Standards Based Template",
               "page": "glStandardsBasedTemplate/2020.11"
+            },
+            {
+              "label": "Workers' Compensation Standards Based Template",
+              "page": "wcStandardsBasedTemplate/2020.11"
             }
           ]
         }
@@ -74,11 +74,7 @@
         {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": [
-            "dev",
-            "int",
-            "staging"
-          ]
+          "env": ["dev", "int", "staging"]
         },
         {
           "label": "Predictive Analytics",
@@ -87,11 +83,7 @@
         {
           "label": "Add-ons",
           "class": "group",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ],
+          "env": ["dev", "staging", "prod"],
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
@@ -112,11 +104,7 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ],
+          "env": ["dev", "staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
@@ -149,11 +137,7 @@
         {
           "label": "Add-ons",
           "class": "group",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ],
+          "env": ["dev", "staging", "prod"],
           "items": [
             {
               "label": "Digital Code Generation Extension Pack",
