@@ -42,8 +42,10 @@
       </form>
     </div>
     <div id="headerRight">
-      <% if (!hideLoginButton) { %>}
-      <a class="button small" id="loginButton" href="/gw-login">Log in</a>
+      <% include links-menu %> <% if (!hideLoginButton) { %>
+      <div id="loginContainer">
+        <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
+      </div>
       <% } %>
     </div>
   </header>
