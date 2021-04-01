@@ -8,38 +8,43 @@
   ></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header>
-  <div id="headerLeft">
-    <a href="/">
-      <img
-        class="pageLogo"
-        src="/images/guidewire-logo.svg"
-        alt="Guidewire Documentation"
-        role="img"
-        aria-label="Guidewire Documentation"
-      />
-    </a>
-  </div>
-  <div id="headerCenter">
-    <form action="/search">
-      <div class="searchWrapper">
-        <input
-          name="q"
-          id="searchField"
-          class="searchField"
-          type="search"
-          placeholder="Search Guidewire documentation"
-          aria-label="Search Guidewire documentation"
-        />
-        <button type="submit" class="searchButton" aria-label="Search">
-          Search
-        </button>
-      </div>
-    </form>
-  </div>
-  <div id="headerRight">
-    <% if (!hideLoginButton) { %>}
-    <a class="button small" id="loginButton" href="/gw-login">Log in</a>
+<% if (typeof headerClass !== 'undefined') { %>
+<header class="<%= headerClass %>">
+  <% } else { %>
+  <header>
     <% } %>
-  </div>
+    <div id="headerLeft">
+      <a href="/">
+        <img
+          class="pageLogo"
+          src="/images/guidewire-logo.svg"
+          alt="Guidewire Documentation"
+          role="img"
+          aria-label="Guidewire Documentation"
+        />
+      </a>
+    </div>
+    <div id="headerCenter">
+      <form action="/search">
+        <div class="searchWrapper">
+          <input
+            name="q"
+            id="searchField"
+            class="searchField"
+            type="search"
+            placeholder="Search Guidewire documentation"
+            aria-label="Search Guidewire documentation"
+          />
+          <button type="submit" class="searchButton" aria-label="Search">
+            Search
+          </button>
+        </div>
+      </form>
+    </div>
+    <div id="headerRight">
+      <% if (!hideLoginButton) { %>}
+      <a class="button small" id="loginButton" href="/gw-login">Log in</a>
+      <% } %>
+    </div>
+  </header>
 </header>

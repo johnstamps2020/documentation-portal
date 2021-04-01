@@ -16,7 +16,9 @@
   --GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
   --estimated-header-height: 68px;
   --body-height: calc(100vh - var(--estimated-header-height));
+  --footer-height: 74px;
   --main-width: 950px;
+  --search-filter-width: 275px;
 }
 
 input.searchField:-webkit-autofill {
@@ -43,6 +45,11 @@ header {
   flex-wrap: wrap;
   padding: 16px;
   gap: 16px;
+}
+
+header.header-search {
+  position: fixed;
+  width: 100%;
 }
 
 #headerLeft {
@@ -405,6 +412,13 @@ footer {
   display: flex;
 }
 
+footer.footer-search {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 #footerLeft {
   flex: 1;
   display: flex;
@@ -591,8 +605,6 @@ div.pageHero {
 }
 
 .searchPage {
-  display: grid;
-  grid-template-columns: 275px 800px;
   padding: 0 0;
 }
 
@@ -604,8 +616,11 @@ div.pageHero {
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 32px 16px;
-  height: var(--body-height);
+  height: calc(var(--body-height) - var(--footer-height));
   overflow-y: scroll;
+  position: fixed;
+  top: var(--estimated-header-height);
+  width: var(--search-filter-width);
 }
 
 .filterGroup {
@@ -645,7 +660,8 @@ div.pageHero {
 }
 
 .resultWrapper {
-  padding: 32px 64px;
+  padding: calc(var(--estimated-header-height) + 32px) 64px
+    calc(var(--footer-height) + 32px) calc(var(--search-filter-width) + 64px);
 }
 
 .notLoggedInWarning {

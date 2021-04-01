@@ -2,23 +2,7 @@
 {% include 'includes/setVars.j2' %}
 {% include 'includes/head.j2' %}
 <body>
-<header>
-    <div id="headerLeft">
-        <a href="/">
-            <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img"
-                 aria-label="Guidewire Documentation">
-        </a>
-    </div>
-    <div id="headerCenter">
-        {% include 'includes/search.j2' %}
-    </div>
-    <div id="headerRight">
-        {% include 'includes/links-menu.j2' %}
-        <div id="loginContainer">
-            <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
-        </div>
-    </div>
-</header>
+{% include 'includes/header.j2' %}
 <main {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
     <div class="pageHero">
         <h1>{{ data.get('title') }}</h1>
