@@ -61,6 +61,7 @@ header.header-search {
 
 #headerCenter {
   flex-grow: 0;
+  position: relative;
 }
 
 #headerRight {
@@ -116,10 +117,29 @@ input[type='search']::-webkit-search-cancel-button {
   color: transparent;
   border: none;
   width: var(--button-width);
+  position: relative;
 }
 
 button.searchButton:focus {
   outline: none;
+}
+
+button.searchButton::after {
+  content: '';
+  border: 2px solid var(--GW-BLACK);
+  width: 28px;
+  height: 28px;
+  /* padding: 3px; */
+  top: -6px;
+  left: -6px;
+  position: absolute;
+  /* background-color: red; */
+  border-radius: 50%;
+  display: none;
+}
+button.searchButton:hover::after,
+button.searchButton:focus::after {
+  display: block;
 }
 
 main {
