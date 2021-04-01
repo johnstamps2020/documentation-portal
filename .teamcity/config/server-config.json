@@ -3160,6 +3160,22 @@
       "public": false
     },
     {
+      "id": "lobwcguidebanff",
+      "title": "Workers' Compensation Standards Based Template Guide",
+      "url": "cloud/lob/wc/202011/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Workers Compensation Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "lobbopguideaspen",
       "title": "Businessowners Standards Based Template Guide",
       "url": "cloud/lob/bop/202005/guide",
@@ -6662,22 +6678,6 @@
       "public": false
     },
     {
-      "id": "iscc202011cloudapi",
-      "title": "Cloud API",
-      "url": "cloud/cc/202011/cloudapi",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "iscc202011cloudapibf",
       "title": "Cloud API Business Flows",
       "url": "cloud/cc/202011/cloudapibf",
@@ -6688,7 +6688,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -6704,7 +6704,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -6736,7 +6736,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
