@@ -101,12 +101,16 @@
           "id": "iscc202011integ"
         },
         {
-          "label": "Cloud API Developer Guide",
-          "id": "iscc202011cloudapi"
+          "label": "Cloud API Business Flows",
+          "id": "iscc202011cloudapibf"
         },
         {
-          "label": "ClaimCenter Cloud API Reference",
-          "id": "iscc202011apiref"
+          "label": "Cloud API Configuration and Authentication",
+          "id": "iscc202011cloudapica"
+        },
+        {
+          "label": "Cloud API Reference",
+          "id": "cc202011apiref"
         },
         {
           "label": "REST API Framework",
