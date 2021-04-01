@@ -118,6 +118,10 @@ input[type='search']::-webkit-search-cancel-button {
   width: var(--button-width);
 }
 
+button.searchButton:focus {
+  outline: none;
+}
+
 main {
   padding: 64px 8px;
   background-color: var(--GW-WHITE);
@@ -622,6 +626,16 @@ div.pageHero {
   top: var(--estimated-header-height);
   width: var(--search-filter-width);
 }
+@media screen and (max-width: 952px) {
+  .filterSearchResults {
+    top: 114px;
+  }
+}
+@media screen and (max-width: 765px) {
+  .filterSearchResults {
+    top: 116px;
+  }
+}
 
 .filterGroup {
   padding-bottom: 32px;
@@ -662,6 +676,12 @@ div.pageHero {
 .resultWrapper {
   padding: calc(var(--estimated-header-height) + 32px) 64px
     calc(var(--footer-height) + 32px) calc(var(--search-filter-width) + 64px);
+}
+
+@media screen and (max-width: 952px) {
+  .resultWrapper {
+    padding-top: 146px;
+  }
 }
 
 .notLoggedInWarning {
