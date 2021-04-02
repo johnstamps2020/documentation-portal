@@ -9,7 +9,11 @@ router.get('/', function(req, res, next) {
   if (redirectUrl) {
     res.redirect(redirectUrl);
   } else {
-    res.render('404');
+    const pageInfo = {
+      cameFrom: cameFrom,
+      appBaseUrl: process.env.APP_BASE_URL,
+    };
+    res.render('404', { pageInfo });
   }
 });
 
