@@ -117,3 +117,14 @@ const redirectUrls = [
   },
 ];
 
+function getRedirectUrl(originUrl) {
+  const originPathname = new URL(originUrl).pathname;
+  for (const urlObj of redirectUrls) {
+    if (`/${urlObj.from}` === originPathname) {
+      return `/${urlObj.to}`;
+    }
+  }
+  return undefined;
+}
+
+module.exports = { getRedirectUrl };
