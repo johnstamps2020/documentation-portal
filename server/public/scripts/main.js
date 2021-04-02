@@ -3,6 +3,10 @@ function toggleAvatar(e) {
 }
 
 async function setLogInButton() {
+  const retryAttempts = 5;
+  let attemptNumber = 1;
+  let retryTimeout = 10;
+
   if(window.location.pathname.endsWith('gw-login')) {
     return;
   }
@@ -51,7 +55,13 @@ async function setLogInButton() {
     }
   }
   catch (error) {
-    setTimeout(setLogInButton, 10);
+    if (attemptNumber >= retryAttempts ) {
+      console.log('Could not access user information endpoint. ' + error);
+      return
+    }
+    attemptNumber++
+    retryTimeout += 100
+    setTimeout(setLogInButton, retryTimeout);
   }
 }
 
