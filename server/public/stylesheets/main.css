@@ -137,6 +137,7 @@ button.searchButton::after {
   border-radius: 50%;
   display: none;
 }
+
 button.searchButton:hover::after,
 button.searchButton:focus::after {
   display: block;

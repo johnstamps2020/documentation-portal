@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-@import "common.css";
+@import 'common.css';
 
 @media only screen and (max-width: 580px) {
   /* leaving this here if wne need it later */
@@ -79,12 +79,12 @@
 
 header.navbar.navbar-default.wh_header {
   min-height: var(--header-height) !important;
-  background-color: var(--GW-COLOR-BRAND-2) !important;
+  background-color: var(--GW-HEADER-FOOTER-BKG-COLOR) !important;
 }
 
 header {
   min-height: var(--header-height) !important;
-  background-color: var(--GW-COLOR-BRAND-2) !important;
+  background-color: var(--GW-HEADER-FOOTER-BKG-COLOR) !important;
 }
 
 div.wh_content_area {
@@ -168,11 +168,11 @@ div#affix3 form#searchForm {
   margin: 8px;
 }
 .wh_top_menu_and_indexterms_link > label {
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 
 .wh_topic_label:after {
-  content: "" !important
+  content: '' !important;
 }
 
 html {
