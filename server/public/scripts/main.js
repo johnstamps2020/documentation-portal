@@ -2,10 +2,8 @@ function toggleAvatar(e) {
   e.target.classList.toggle('expanded');
 }
 
-async function setLogInButton() {
+async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
-  let attemptNumber = 1;
-  let retryTimeout = 10;
 
   if(window.location.pathname.endsWith('gw-login')) {
     return;
@@ -61,7 +59,7 @@ async function setLogInButton() {
     }
     attemptNumber++
     retryTimeout += 100
-    setTimeout(setLogInButton, retryTimeout);
+    setTimeout(setLogInButton(attemptNumber, retryTimeout), retryTimeout);
   }
 }
 
