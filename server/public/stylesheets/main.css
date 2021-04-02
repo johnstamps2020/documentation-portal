@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
 :root {
-  --GW-BLUE: #00739d;
-  --GW-NAVY-BLUE: #3c4c5e;
-  --GW-BLUE-HOVER: #006083;
-  /* --GW-BLUE-LIGHTER and --GW-BLUE-LIGHTER-HOVER are not approved colors. Get approved versions. */
-  --GW-BLUE-LIGHTER: #61c1e5;
-  --GW-BLUE-LIGHTER-HOVER: #30b7e9;
+  --clr-GW-BLUE: #00739d;
+  --clr-GW-NAVY-BLUE: #3c4c5e;
+  --clr-GW-BLUE-HOVER: #006083;
+  /* --clr-GW-BLUE-LIGHTER and --clr-GW-BLUE-LIGHTER-HOVER are not approved colors. Get approved versions. */
+  --clr-GW-BLUE-LIGHTER: #61c1e5;
+  --clr-GW-BLUE-LIGHTER-HOVER: #30b7e9;
+  --clr-GW-WHITE: #fafafa;
+  --clr-GW-BLACK: #28333f;
+  --clr-GW-BLACKISH: #657580;
+  --clr-GW-HEADER-FOOTER-BKG: rgb(19, 30, 46);
+  --clr-GW-HEADER-BORDER: #7d91ac;
 
-  --GW-WHITE: #fafafa;
   --GRADIENT-BACKGROUND: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
-  --GW-BLACK: #28333f;
-  --GW-BLACKISH: #657580;
-  --GW-HEADER-FOOTER-BKG-COLOR: rgb(19, 30, 46);
-  --GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
+
+  --bs-GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
   --estimated-header-height: 68px;
   --body-height: calc(100vh - var(--estimated-header-height));
   --footer-height: 74px;
@@ -35,12 +37,12 @@ input.searchField:-webkit-autofill {
 
 body {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-  color: var(--GW-HEADER-FOOTER-BKG-COLOR);
+  color: var(--clr-GW-HEADER-FOOTER-BKG);
 }
 
 header {
-  background-color: var(--GW-HEADER-FOOTER-BKG-COLOR);
-  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
+  background-color: var(--clr-GW-HEADER-FOOTER-BKG);
+  box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
   display: flex;
   flex-wrap: wrap;
   padding: 16px;
@@ -82,15 +84,15 @@ header img {
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: var(--GW-WHITE);
+  background-color: #fff;
   border-radius: 4px;
-  border: 1px solid #50657d;
+  border: 1px solid var(--clr-GW-HEADER-BORDER);
   width: var(--container-width);
   margin: auto;
 }
 
 .searchField {
-  color: var(--GW-BLACKISH) !important;
+  color: var(--clr-GW-BLACK) !important;
   border: none;
   padding: 0 16px;
   background-color: transparent;
@@ -106,7 +108,7 @@ input[type='search']::-webkit-search-cancel-button {
 }
 
 .searchField::placeholder {
-  color: var(--GW-BLACKISH);
+  color: var(--clr-GW-BLACKISH);
 }
 
 .searchButton {
@@ -126,7 +128,7 @@ button.searchButton:focus {
 
 button.searchButton::after {
   content: '';
-  border: 2px solid var(--GW-BLACK);
+  border: 2px solid var(--clr-GW-BLACK);
   width: 28px;
   height: 28px;
   /* padding: 3px; */
@@ -145,7 +147,7 @@ button.searchButton:focus::after {
 
 main {
   padding: 64px 8px;
-  background-color: var(--GW-WHITE);
+  background-color: var(--clr-GW-WHITE);
   min-height: var(--body-height);
 }
 
@@ -221,41 +223,41 @@ main.aspen label {
 main.cortina .docBreadcrumb a,
 main.banff .docBreadcrumb a,
 main.aspen .docBreadcrumb a {
-  color: var(--GW-BLUE-LIGHTER);
+  color: var(--clr-GW-BLUE-LIGHTER);
 }
 
 main.cortina .docBreadcrumb a:hover,
 main.banff .docBreadcrumb a:hover,
 main.aspen .docBreadcrumb a:hover {
-  color: var(--GW-BLUE-LIGHTER-HOVER);
+  color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
 main.cortina .usefulLinks a,
 main.banff .usefulLinks a,
 main.aspen .usefulLinks a {
-  color: var(--GW-BLUE-LIGHTER);
+  color: var(--clr-GW-BLUE-LIGHTER);
 }
 
 main.cortina .usefulLinks a:hover,
 main.banff .usefulLinks a:hover,
 main.aspen .usefulLinks a:hover {
-  color: var(--GW-BLUE-LIGHTER-HOVER);
+  color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
 a {
-  color: var(--GW-BLUE);
+  color: var(--clr-GW-BLUE);
   text-decoration: none;
 }
 
 h1 {
   font-weight: 600;
-  color: var(--GW-HEADER-FOOTER-BKG-COLOR);
+  color: var(--clr-GW-HEADER-FOOTER-BKG);
   margin-right: auto;
 }
 
 label,
 .label {
-  color: var(--GW-HEADER-FOOTER-BKG-COLOR);
+  color: var(--clr-GW-HEADER-FOOTER-BKG);
 }
 
 .cardShadow {
@@ -270,7 +272,7 @@ label,
 
 .cardShadow:hover a,
 .cardShadow:focus a {
-  color: var(--GW-BLUE-HOVER);
+  color: var(--clr-GW-BLUE-HOVER);
 }
 
 .cortina .cardShadow:hover,
@@ -429,9 +431,9 @@ label,
 }
 
 footer {
-  background-color: var(--GW-HEADER-FOOTER-BKG-COLOR);
-  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
-  color: var(--GW-WHITE);
+  background-color: var(--clr-GW-HEADER-FOOTER-BKG);
+  box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
+  color: var(--clr-GW-WHITE);
   padding: 16px 32px;
   font-size: 0.625rem;
   display: flex;
@@ -514,8 +516,7 @@ div.pageHero {
 #cloudToggle > a:not(.selected):hover,
 #cloudToggle > a:not(.selected):focus {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-  /* background-color: var(--GW-COLOR-BRAND-1-HOVER); */
-  color: var(--GW-BLUE-HOVER) !important;
+  color: var(--clr-GW-BLUE-HOVER) !important;
 }
 
 .cortina #cloudToggle > a:not(.selected):hover,
@@ -525,13 +526,12 @@ div.pageHero {
 .aspen #cloudToggle > a:not(.selected):focus,
 .aspen #cloudToggle > a:not(.selected):hover {
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
-  /* background-color: var(--GW-COLOR-BRAND-1-HOVER); */
-  color: var(--GW-BLUE-HOVER) !important;
+  color: var(--clr-GW-BLUE-HOVER) !important;
 }
 
 #cloudToggle > .selected {
   background: var(--GRADIENT-BACKGROUND);
-  color: var(--GW-WHITE);
+  color: var(--clr-GW-WHITE);
 }
 
 .usefulLinks {
@@ -546,7 +546,6 @@ div.pageHero {
 
 .button {
   background: var(--GRADIENT-BACKGROUND);
-  /* color: var(--GW-WHITE); */
   color: #fff;
   padding: 8px 16px;
   border-radius: 4px;
@@ -555,7 +554,7 @@ div.pageHero {
 }
 
 .button:hover {
-  background: var(--GW-BLUE-HOVER);
+  background: var(--clr-GW-BLUE-HOVER);
 }
 
 .loginPageTitle {
@@ -681,7 +680,7 @@ div.pageHero {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--GW-BLACK);
+  color: var(--clr-GW-BLACK);
 }
 
 .filterCheckbox {
@@ -691,7 +690,7 @@ div.pageHero {
 .docCount {
   width: fit-content;
   margin-left: auto;
-  color: var(--GW-BLACKISH);
+  color: var(--clr-GW-BLACKISH);
 }
 
 .resultWrapper {
@@ -741,8 +740,8 @@ div.pageHero {
 
 .infoLabel {
   font-size: 0.6875rem;
-  background-color: var(--GW-BLUE);
-  color: var(--GW-WHITE);
+  background-color: var(--clr-GW-BLUE);
+  color: var(--clr-GW-WHITE);
   padding: 4px 12px;
   border-radius: 12px;
 }
@@ -776,7 +775,7 @@ div.pageHero {
   background-color: transparent;
   padding: 6px;
   cursor: pointer;
-  color: var(--GW-BLUE);
+  color: var(--clr-GW-BLUE);
   font-size: 1rem;
 }
 
@@ -824,9 +823,9 @@ main.support h2 {
 #pageSelector {
   padding: 4px 12px;
   border-radius: 6px;
-  border: 1px solid var(--GW-NAVY-BLUE);
+  border: 1px solid var(--clr-GW-NAVY-BLUE);
   margin: 8px;
-  color: var(--GW-HEADER-FOOTER-BKG-COLOR);
+  color: var(--clr-GW-HEADER-FOOTER-BKG);
 }
 
 /* External site navigation */
@@ -850,7 +849,7 @@ main.support h2 {
 
 .externalSitesItemWrapper:hover svg,
 .externalSitesMenu:focus-within svg {
-  fill: var(--GW-BLUE-LIGHTER-HOVER);
+  fill: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
 html:not(.has-tabbed) .externalSitesItemWrapper {
@@ -883,11 +882,11 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   background: linear-gradient(
     180deg,
     transparent 23px,
-    var(--GW-WHITE) 23px 100%
+    var(--clr-GW-WHITE) 23px 100%
   );
   border-radius: 4px;
   list-style: none;
-  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
+  box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
   cursor: default;
   transform: translateY(-100px);
   transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
@@ -989,12 +988,12 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   background: linear-gradient(
     180deg,
     transparent 26px,
-    var(--GW-WHITE) 26px 100%
+    var(--clr-GW-WHITE) 26px 100%
   );
   padding: 48px 24px 24px 24px;
   text-align: left;
   border-radius: 4px;
-  box-shadow: var(--GW-HEADER-FOOTER-BOX-SHADOW);
+  box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
   cursor: default;
 }
 
@@ -1027,17 +1026,17 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 }
 
 .avatarMenuName {
-  color: var(--GW-BLACK);
+  color: var(--clr-GW-BLACK);
   font-size: 1rem;
 }
 
 .avatarMenuEmail {
-  color: var(--GW-BLACKISH);
+  color: var(--clr-GW-BLACKISH);
   font-size: 0.9rem;
 }
 
 .avatarMenuDivider {
-  border-bottom: 1px solid #7d91ac;
+  border-bottom: 1px solid var(--clr-GW-HEADER-BORDER);
 }
 
 .avatarMenuActions {
@@ -1045,7 +1044,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 }
 
 .avatarMenuLogout {
-  color: var(--GW-BLACK);
+  color: var(--clr-GW-BLACK);
   cursor: pointer;
   display: block;
   width: 100%;
