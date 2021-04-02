@@ -3,6 +3,9 @@ function toggleAvatar(e) {
 }
 
 async function setLogInButton() {
+  if(window.location.pathname.endsWith('gw-login')) {
+    return;
+  }
   // /userInformation is not available for a few milliseconds
   // after login, so if fetching the response fails, try again
   // in 10ms.
