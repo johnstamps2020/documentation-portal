@@ -23,11 +23,12 @@ body {
   --GW-COLOR-FOCUS-1: #1e9acf;
   --GW-COLOR-BORDER: #acb9ca;
   --GW-COLOR-BACKGROUND-1-ACTIVE: #e6e6e6;
-  --clr-GW-HEADER-FOOTER-BKG: rgb(19, 30, 46);
   --bs-GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
+  --clr-GW-HEADER-FOOTER-BKG: rgb(19, 30, 46);
   --clr-GW-BLACK: #28333f;
   --clr-GW-BLACKISH: #657580;
   --clr-GW-HEADER-BORDER: #7d91ac;
+  --clr-GW-BREADCRUMB: #324c76; /* rgb(50, 76, 118) */
   /* TEXT COLOR */
   --GW-COLOR-TEXT-1: #28333f;
   --GW-COLOR-TEXT-2: #657580;
