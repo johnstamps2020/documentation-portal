@@ -29,7 +29,7 @@
       <excludeFolder url="file://$MODULE_DIR$/target_master" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="openjdk-16" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.json:json:20190722" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin:2020.1" level="project" />
