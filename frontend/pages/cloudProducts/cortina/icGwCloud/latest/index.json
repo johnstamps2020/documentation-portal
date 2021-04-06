@@ -1,0 +1,84 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InfoCenter for Guidewire Cloud latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "iccloudrndraft"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "iccloudinstalldraft"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "iccloudupgradedraft"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "iccloudproductdraft"
+        },
+        {
+          "label": "BI Application Guide",
+          "id": "iccloudbiappdraft"
+        },
+        {
+          "label": "Reports Guide",
+          "id": "iccloudreportsdraft"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "iccloudadmindraft"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "iccloudconfigdraft"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "icclouddataspecdraft"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "icclouddevrefdraft"
+        }
+      ]
+    }
+  ]
+}

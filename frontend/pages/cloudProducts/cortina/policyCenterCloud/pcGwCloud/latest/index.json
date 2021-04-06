@@ -1,0 +1,146 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispcclouddraftreleasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispcclouddraftnewandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "ispcclouddraftinstall"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispcclouddraftupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispcclouddraftapp"
+        },
+        {
+          "label": "Contact Management",
+          "id": "isclouddraftcontact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispcclouddraftadmin"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best practices",
+          "id": "ispcclouddraftbestpractice"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer",
+          "id": "ispcclouddraftapd"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispcclouddraftconfig"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispcclouddraftglobal"
+        },
+        {
+          "label": "Rules",
+          "id": "ispcclouddraftrules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispcclouddraftpd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispcclouddraftpm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "ispcclouddraftinteg"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "ispcclouddraftcloudapi"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispcclouddraftrestapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "iscloudearestapiclient"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "ispcclouddraftgosu"
+        },
+        {
+          "label": "Test Automation Guide",
+          "id": "ispcclouddrafttesting"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "isclouddraftglossary"
+        }
+      ]
+    }
+  ]
+}

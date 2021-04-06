@@ -1,0 +1,62 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "CustomerEngage Account Management for ClaimCenter latest",
+  "class": "twoColumns",
+  "template": "page.j2",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dxonpremdraftceclaimsrelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dxonpremdraftceclaimsapp"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dxonpremdraftceclaimsinstall"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration and Security Guide",
+          "id": "dxonpremdraftceclaimsadmin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dxonpremdraftceclaimsdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dxonpremdraftceclaimsrefguides"
+        }
+      ]
+    }
+  ]
+}

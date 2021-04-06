@@ -1,0 +1,52 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ProducerEngage latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dxclouddraftperelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dxclouddraftpeinstall"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dxclouddraftpeapp"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dxclouddraftpedev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dxclouddraftperefguides"
+        }
+      ]
+    }
+  ]
+}

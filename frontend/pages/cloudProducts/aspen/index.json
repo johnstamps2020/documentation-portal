@@ -1,0 +1,73 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Aspen Documentation",
+  "template": "page.j2",
+  "class": "aspen threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Aspen",
+    "items": [
+      {
+        "label": "Cortina",
+        "page": "../cortina",
+        "env": [
+          "dev",
+          "int",
+          "staging"
+        ]
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "PolicyCenter Cloud",
+      "class": "productFamily cardShadow",
+      "page": "policyCenterCloud"
+    },
+    {
+      "label": "ClaimCenter Cloud",
+      "class": "productFamily cardShadow",
+      "page": "claimCenterCloud"
+    },
+    {
+      "label": "BillingCenter Cloud",
+      "class": "productFamily cardShadow",
+      "page": "billingCenterCloud"
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "productFamily cardShadow",
+      "page": "insuranceNow/2020.1",
+      "env": [
+        "dev",
+        "staging",
+        "prod"
+      ]
+    },
+    {
+      "label": "InsuranceNow Internal Audience",
+      "class": "productFamily cardShadow",
+      "page": "insuranceNow/2020.1xInternalAudience",
+      "env": [
+        "int"
+      ]
+    },
+    {
+      "label": "InsuranceNow External Audience",
+      "class": "productFamily cardShadow",
+      "page": "insuranceNow/2020.1xExternalAudience",
+      "env": [
+        "int"
+      ]
+    },
+    {
+      "label": "Guidewire Cloud Platform",
+      "class": "productFamily cardShadow",
+      "page": "guidewireCloudPlatform"
+    }
+  ]
+}

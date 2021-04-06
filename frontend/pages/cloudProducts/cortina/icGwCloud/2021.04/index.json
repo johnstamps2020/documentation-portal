@@ -1,0 +1,84 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InfoCenter for Guidewire Cloud 2021.04",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "iccloudrncortina"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "iccloudinstallcortina"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "iccloudupgradecortina"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "iccloudproductcortina"
+        },
+        {
+          "label": "BI Application Guide",
+          "id": "iccloudbiappcortina"
+        },
+        {
+          "label": "Reports Guide",
+          "id": "iccloudreportscortina"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "iccloudadmincortina"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "iccloudconfigcortina"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "icclouddataspeccortina"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "icclouddevrefcortina"
+        }
+      ]
+    }
+  ]
+}

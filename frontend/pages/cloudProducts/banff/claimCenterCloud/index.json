@@ -1,0 +1,137 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter Cloud",
+  "template": "page.j2",
+  "class": "threeCards",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "ClaimCenter Cloud",
+    "items": [
+      {
+        "label": "BillingCenter Cloud",
+        "page": "../billingCenterCloud"
+      },
+      {
+        "label": "PolicyCenter Cloud",
+        "page": "../policyCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Core",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "ClaimCenter for Guidewire Cloud",
+          "page": "ccGwCloud/2020.11"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools310"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Data Access",
+          "id": "clouddataaccessbanff"
+        },
+        {
+          "label": "Compare+",
+          "id": "comparelatest"
+        },
+        {
+          "label": "Explore",
+          "page": "../../explore/latest",
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
+        },
+        {
+          "label": "Predictive Analytics",
+          "id": "palatest"
+        },
+        {
+          "label": "Add-ons",
+          "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
+          "items": [
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "id": "dh202011"
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "id": "ic202011"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
+          "items": [
+            {
+              "label": "CustomerEngage Account Management",
+              "id": "dxceam202011"
+            },
+            {
+              "label": "CustomerEngage Account Management for ClaimCenter",
+              "id": "dxceclaims202011"
+            },
+            {
+              "label": "ProducerEngage",
+              "id": "dxpe202011"
+            },
+            {
+              "label": "ProducerEngage for ClaimCenter",
+              "id": "dxpeclaims202011"
+            },
+            {
+              "label": "ServiceRepEngage",
+              "id": "dxsre202011"
+            },
+            {
+              "label": "VendorEngage",
+              "id": "dxve202011"
+            }
+          ]
+        },
+        {
+          "label": "Digital Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Jutro Design System",
+              "page": "../../../jutroDesignSystem/4.1.1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter Cloud",
+  "template": "page.j2",
+  "class": "threeCards",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "PolicyCenter Cloud",
+    "items": [
+      {
+        "label": "BillingCenter Cloud",
+        "page": "../billingCenterCloud"
+      },
+      {
+        "label": "ClaimCenter Cloud",
+        "page": "../claimCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Core",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "PolicyCenter for Guidewire Cloud",
+          "id": "cloudpc202005"
+        },
+        {
+          "label": "Guidewire InsuranceSuite Package for Germany",
+          "id": "midipg2x"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools310"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x"
+        },
+        {
+          "label": "Lines of business",
+          "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
+          "items": [
+            {
+              "label": "Businessowners Standards Based Template",
+              "page": "boStandardsBasedTemplate/2020.05"
+            },
+            {
+              "label": "Commercial Auto Standards Based Template",
+              "page": "caStandardsBasedTemplate/2020.05"
+            },
+            {
+              "label": "Crime Standards Based Template",
+              "page": "crimeStandardsBasedTemplate/2020.05"
+            },
+            {
+              "label": "General Liability Standards Based Template",
+              "page": "glStandardsBasedTemplate/2020.05"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Data Access",
+          "id": "clouddataaccessaspen"
+        },
+        {
+          "label": "Explore",
+          "page": "../../explore/latest",
+          "env": [
+            "dev",
+            "int",
+            "staging"
+          ]
+        },
+        {
+          "label": "Explore",
+          "id": "explorerelease"
+        },
+        {
+          "label": "Add-ons",
+          "class": "group",
+          "env": [
+            "dev",
+            "staging",
+            "prod"
+          ],
+          "items": [
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "id": "dh202005"
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "id": "ic202005"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "class": "categoryCard cardShadow",
+      "env": [
+        "dev",
+        "staging",
+        "prod"
+      ],
+      "items": [
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "items": [
+            {
+              "label": "CustomerEngage Account Management",
+              "id": "dxceam202010"
+            },
+            {
+              "label": "CustomerEngage Quote and Buy",
+              "id": "dxceqb202010"
+            },
+            {
+              "label": "ProducerEngage",
+              "id": "dxpe202010"
+            },
+            {
+              "label": "ServiceRepEngage",
+              "id": "dxsre202010"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub for Guidewire Cloud latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dhcloudrndraft"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dhcloudinstalldraft"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dhcloudupgradedraft"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dhcloudproductdraft"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dhcloudadmindraft"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dhcloudconfigdraft"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dhclouddataspecdraft"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dhclouddevrefdraft"
+        }
+      ]
+    }
+  ]
+}
