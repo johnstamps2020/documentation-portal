@@ -1542,6 +1542,7 @@ object Deployment : Project({
     buildType(PublishConfigDeployerDockerImage)
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
+    buildType(PublishSitemapGeneratorDockerImage)
     buildType(PublishFlailSsgDockerImage)
     buildType(PublishL10NPageBuilderDockerImage)
     buildType(DeployS3Ingress)
