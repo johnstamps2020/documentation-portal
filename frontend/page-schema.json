@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://docs.guidewire.com/page.schema.json",
+  "title": "Page config",
+  "description": "A config for pages",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "template", "class"],
+  "properties": {
+    "$schema": {
+      "description": "A link to the JSON schema",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title of the page",
+      "type": "string",
+      "examples": [
+        "Cortina Documentation",
+        "BillingCenter for Guidewire Cloud 2020.11",
+        "Self-managed"
+      ]
+    },
+    "template": {
+      "description": "Filename of the template in the templates directory that is used to build the page",
+      "pattern": ".+\\..+",
+      "examples": ["page.j2", "index.html"]
+    },
+    "includeInBreadcrumbs": {
+      "description": "If set to false, the page is not included in the list of breadcrumbs for descendant pages",
+      "type": "boolean"
+    },
+    "class": {
+      "$ref": "#/definitions/class"
+    },
+    "selector": {
+      "description": "A set of links to display in a dropdown on the page",
+      "type": "object",
+      "examples": [
+        {
+          "label": "Select release",
+          "class": "releaseSelector",
+          "selectedItem": "Cortina",
+          "items": [
+            {
+              "label": "Banff",
+              "page": "../banff"
+            },
+            {
+              "label": "Aspen",
+              "page": "../aspen"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/label"
+        },
+        "class": {
+          "$ref": "#/definitions/class"
+        },
+        "selectedItem": {
+          "type": "string",
+          "description": "Item representing the current page. This item is selected in the dropdown."
+        },
+        "items": {
+          "$ref": "#/definitions/items"
+        }
+      }
+    },
+    "items": {
+      "$ref": "#/definitions/items"
+    }
+  },
+  "definitions": {
+    "label": {
+      "description": "Text to display on the page",
+      "type": "string",
+      "examples": [
+        "Core Release Notes",
+        "InsuranceSuite Configuration Upgrade Tools",
+        "PolicyCenter Cloud",
+        "Select release"
+      ]
+    },
+    "items": {
+      "description": "List of child objects. An object can point to a page, a document or an external link",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/item"
+      }
+    },
+    "item": {
+      "description": "An object that points to a page, a document or an external link",
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/label"
+        },
+        "class": {
+          "$ref": "#/definitions/class"
+        },
+        "id": {
+          "description": "Document ID from the doc site configuration file",
+          "pattern": "^[^./].*",
+          "examples": [
+            "pc1011",
+            "restapidraft",
+            "guidewirecloudconsoleguideinsurerdevdraft"
+          ]
+        },
+        "page": {
+          "description": "Path to a page directory",
+          "type": "string",
+          "examples": [
+            "billingCenterCloud",
+            "../../jutro/4.1.1",
+            "guidewireCloudPlatform"
+          ]
+        },
+        "link": {
+          "description": "External link",
+          "type": "string",
+          "examples": [
+            "./de-DE/cc/1003/ApplicationGuide.pdf",
+            "https://docs.guidewire.com/support",
+            "../../InstallationGuide.html"
+          ]
+        },
+        "env": {
+          "description": "List of environments for which the object is generated",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["dev", "int", "staging", "prod"]
+          },
+          "examples": [["dev", "staging", "prod"], ["int"]]
+        },
+        "items": {
+          "$ref": "#/definitions/items"
+        }
+      }
+    },
+    "class": {
+      "description": "Name of the CSS selector that is applied to the main page element. /server/public/stylesheets/main.css.",
+      "type": "string",
+      "examples": [
+        "threeCards",
+        "twoColumns",
+        "categoryCard cardShadow",
+        "banff threeCards",
+        "aspen threeCards"
+      ]
+    }
+  }
+}

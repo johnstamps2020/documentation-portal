@@ -1,0 +1,17 @@
+<header>
+    <div id="headerLeft">
+        <a href="/">
+            <img class="pageLogo" src="/images/guidewire-logo.svg" alt="Guidewire Documentation" role="img"
+                 aria-label="Guidewire Documentation">
+        </a>
+    </div>
+    <div id="headerCenter">
+        {% include 'includes/search.j2' %}
+    </div>
+    <div id="headerRight">
+        {% include 'includes/links-menu.j2' %}
+        <div id="loginContainer">
+            <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
+        </div>
+    </div>
+</header>

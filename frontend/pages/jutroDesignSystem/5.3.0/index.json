@@ -1,0 +1,28 @@
+{
+  "title": "Jutro Design System 5.3.0",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro530"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Jutro Storybook",
+          "id": "storybook530"
+        }
+      ]
+    }
+  ]
+}
+  
