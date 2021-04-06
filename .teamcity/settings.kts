@@ -73,7 +73,7 @@ object DocValidator : GitVcsRoot({
 object LocalizedPDFs : GitVcsRoot({
     name = "Localization PDFs"
     url = "ssh://git@stash.guidewire.com/docsources/localization-pdfs.git"
-    branch = "+:refs/heads/main"
+    branch = "refs/heads/main"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
