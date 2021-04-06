@@ -882,7 +882,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
+      "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
       "srcId": "testingframeworksrnbanffsrc",
       "docId": "testingframeworksrnbanff",
       "indexRedirect": true
