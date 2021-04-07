@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from l10n_page_builder import main as l10n_page_builder
+from lion_page_builder import main as lion_page_builder
 
 current_dir = Path.absolute(Path(__file__)).parent
 input_resources_path = current_dir / 'resources' / 'input'

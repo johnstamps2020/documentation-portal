@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "l10n_page_builder"
+name = "lion_page_builder"
 version = "1.0.0"
 description = "An application to build static page configurations for Flail for localized docs"
 authors = ["Guidewire <doctools@guidewire.com>"]
@@ -11,7 +11,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 [tool.poetry.scripts]
-l10n_page_builder = "l10n_page_builder.main:main"
+lion_page_builder = "lion_page_builder.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"

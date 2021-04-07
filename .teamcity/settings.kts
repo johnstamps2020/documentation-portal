@@ -907,8 +907,8 @@ object TestFlailSsg : BuildType({
 
 })
 
-object PublishL10NPageBuilderDockerImage : BuildType({
-    name = "Publish L10N Page Builder image"
+object PublishLionPageBuilderDockerImage : BuildType({
+    name = "Publish Lion Page Builder image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
@@ -920,10 +920,10 @@ object PublishL10NPageBuilderDockerImage : BuildType({
 
     steps {
         script {
-            name = "Publish L10N Page Builder image to Artifactory"
+            name = "Publish Lion Page Builder image to Artifactory"
             scriptContent = """
                 set -xe
-                cd apps/l10n-page-builder
+                cd apps/lion-page-builder
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
@@ -933,7 +933,7 @@ object PublishL10NPageBuilderDockerImage : BuildType({
         vcs {
             branchFilter = "+:<default>"
             triggerRules = """
-                +:apps/l10n_page_builder/**
+                +:apps/lion_page_builder/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -949,15 +949,15 @@ object PublishL10NPageBuilderDockerImage : BuildType({
     }
 
     dependencies {
-        snapshot(TestL10NPageBuilder) {
+        snapshot(TestLionPageBuilder) {
             reuseBuilds = ReuseBuilds.SUCCESSFUL
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
 })
 
-object TestL10NPageBuilder : BuildType({
-    name = "Test L10N Page Builder"
+object TestLionPageBuilder : BuildType({
+    name = "Test Lion Page Builder"
 
     vcs {
         root(vcsroot)
@@ -966,12 +966,12 @@ object TestL10NPageBuilder : BuildType({
 
     steps {
         script {
-            name = "Run tests for L10N Page Builder"
+            name = "Run tests for Lion Page Builder"
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                cd apps/l10n-page-builder
-                ./test_l10n-page-builder.sh
+                cd apps/lion-page-builder
+                ./test_lion-page-builder.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -982,7 +982,7 @@ object TestL10NPageBuilder : BuildType({
     triggers {
         vcs {
             triggerRules = """
-                +:apps/l10n_page_builder/**
+                +:apps/lion_page_builder/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -1007,8 +1007,8 @@ object TestL10NPageBuilder : BuildType({
 
 })
 
-object RunLION : BuildType({
-    name = "Run LION for localized PDFs"
+object RunLionPageBuilder : BuildType({
+    name = "Run Lion Page Builder for localized PDFs"
     artifactRules = "%env.LOC_DOCS_OUT% => out"
     params {
         text("SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
@@ -1028,13 +1028,13 @@ object RunLION : BuildType({
 
     steps {
         script {
-            name = "Generate localization page configurations for Flail"
+            name = "Generate localization page configurations for Flail SSG"
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                l10n_page_builder
+                lion_page_builder
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/l10n_page_builder:latest"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion_page_builder:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -1139,7 +1139,7 @@ object DeployFrontend : BuildType({
 
     steps {
         script {
-            name = "Build frontend"
+            name = "Run Flail SSG"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1181,7 +1181,7 @@ object DeployFrontend : BuildType({
     }
 
     dependencies {
-        artifacts(RelativeId("RunLION")) {
+        artifacts(RelativeId("RunLion")) {
             buildRule = lastSuccessful()
             artifactRules = "out/** => %env.PAGES_DIR%/localizedDocs"
         }
@@ -1395,7 +1395,7 @@ object Testing : Project({
     buildType(TestConfig)
     buildType(TestDocCrawler)
     buildType(TestFlailSsg)
-    buildType(TestL10NPageBuilder)
+    buildType(TestLionPageBuilder)
 })
 
 object Deployment : Project({
@@ -1405,7 +1405,7 @@ object Deployment : Project({
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
     buildType(PublishFlailSsgDockerImage)
-    buildType(PublishL10NPageBuilderDockerImage)
+    buildType(PublishLionPageBuilderDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
 })
@@ -1421,7 +1421,7 @@ object Server : Project({
     buildType(DeployProd)
     buildType(DeployServerConfig)
     buildType(DeployFrontend)
-    buildType(RunLION)
+    buildType(RunLionPageBuilder)
 
 })
 
