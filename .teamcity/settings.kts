@@ -1007,39 +1007,6 @@ object TestLionPageBuilder : BuildType({
 
 })
 
-object RunLionPageBuilder : BuildType({
-    name = "Run Lion Page Builder for localized PDFs"
-    artifactRules = "%env.LOC_DOCS_OUT% => out"
-    params {
-        text("SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
-        text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
-        text("env.LOC_DOCS_OUT", "%teamcity.build.workingDir%/out", display = ParameterDisplay.HIDDEN)
-    }
-
-    vcs {
-        root(vcsrootmasteronly)
-        cleanCheckout = true
-    }
-
-    vcs {
-        root(LocalizedPDFs, "+:. => %SOURCES_ROOT%")
-        cleanCheckout = true
-    }
-
-    steps {
-        script {
-            name = "Generate localization page configurations for Flail SSG"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                lion_page_builder
-            """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion_page_builder:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-})
-
 object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
@@ -1106,7 +1073,6 @@ object DeployFrontend : BuildType({
     name = "Deploy frontend"
 
     params {
-        text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
         text(
             "env.DOCS_CONFIG_FILE",
             "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json",
@@ -1116,6 +1082,9 @@ object DeployFrontend : BuildType({
         text("env.TEMPLATES_DIR", "%teamcity.build.checkoutDir%/frontend/templates", display = ParameterDisplay.HIDDEN)
         text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/output", display = ParameterDisplay.HIDDEN)
         text("env.SEND_BOUNCER_HOME", "no", display = ParameterDisplay.HIDDEN)
+        text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
+        text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
+        text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/localizedDocs", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
             "",
@@ -1139,7 +1108,17 @@ object DeployFrontend : BuildType({
 
     steps {
         script {
-            name = "Run Flail SSG"
+            name = "Generate localization page configurations"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                lion_page_builder
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion_page_builder:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Build pages"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1173,18 +1152,15 @@ object DeployFrontend : BuildType({
 
     triggers {
         vcs {
+            branchFilter = "+:<default>"
             triggerRules = """
                 +:root=${LocalizedPDFs.id}:**
+                +:root=${vcsroot.id}:apps/lion_page_builder/**
+                +:root=${vcsroot.id}:frontend/**
                 -:user=doctools:**
             """.trimIndent()
         }
-    }
 
-    dependencies {
-        artifacts(RelativeId("RunLion")) {
-            buildRule = lastSuccessful()
-            artifactRules = "out/** => %env.PAGES_DIR%/localizedDocs"
-        }
     }
 
     features {
@@ -1421,7 +1397,6 @@ object Server : Project({
     buildType(DeployProd)
     buildType(DeployServerConfig)
     buildType(DeployFrontend)
-    buildType(RunLionPageBuilder)
 
 })
 
@@ -1446,7 +1421,7 @@ object HelperObjects {
     }
 
     private fun getObjectsById(objectList: JSONArray, idName: String, idValue: String): JSONArray {
-        val matches = JSONArray();
+        val matches = JSONArray()
         for (i in 0 until objectList.length()) {
             val obj = objectList.getJSONObject(i)
             if (obj.getString(idName) == idValue) {
