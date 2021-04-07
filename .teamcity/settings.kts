@@ -923,7 +923,7 @@ object PublishLionPageBuilderDockerImage : BuildType({
             name = "Publish Lion Page Builder image to Artifactory"
             scriptContent = """
                 set -xe
-                cd apps/lion-page-builder
+                cd apps/lion_page_builder
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
@@ -970,8 +970,8 @@ object TestLionPageBuilder : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                cd apps/lion-page-builder
-                ./test_lion-page-builder.sh
+                cd apps/lion_page_builder
+                ./test_lion_page_builder.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
