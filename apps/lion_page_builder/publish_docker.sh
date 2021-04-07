@@ -18,7 +18,7 @@ fi
 
 docker login -u $ARTIFACTORY_USERNAME --password $ARTIFACTORY_PASSWORD artifactory.guidewire.com
 
-docker tag l10n-page-builder artifactory.guidewire.com/doctools-docker-dev/l10n-page-builder:$IMAGE_VERSION
-docker push artifactory.guidewire.com/doctools-docker-dev/l10n-page-builder:$IMAGE_VERSION
+docker tag lion-page-builder artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:$IMAGE_VERSION
+docker push artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:$IMAGE_VERSION
 
 echo "END TRANSMISSION"

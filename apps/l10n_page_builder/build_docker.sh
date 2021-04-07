@@ -1,1 +1,0 @@
-docker image build --no-cache -t l10n-page-builder .

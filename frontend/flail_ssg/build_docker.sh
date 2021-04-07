@@ -1,1 +1,1 @@
-docker image build --no-cache -t flail_ssg .
+docker image build --no-cache -t flail-ssg .
