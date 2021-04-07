@@ -1114,7 +1114,7 @@ object DeployFrontend : BuildType({
                 set -xe
                 lion_page_builder
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion_page_builder:latest"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
         script {
