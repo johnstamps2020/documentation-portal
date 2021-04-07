@@ -18,6 +18,7 @@ async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
 function createContainerForCustomHeaderElements() {
   const container = document.createElement('div');
   container.setAttribute('id', 'customHeaderElements');
+  container.setAttribute('class', 'invisible');
   document
     .getElementById('wh_top_menu_and_indexterms_link')
     .appendChild(container);
@@ -96,7 +97,7 @@ async function createVersionSelector() {
       const label = document.createElement('label');
       label.innerHTML = 'Select version:';
       label.htmlFor = 'versionSelector';
-
+ 
       document
         .getElementById('customHeaderElements')
         .appendChild(label)
@@ -174,25 +175,72 @@ async function addPublicationDate() {
   }
 }
 
-async function addLoginLogoutButton() {
-  const response = await fetch('/userInformation');
-  const responseBody = await response.json();
-  const isLoggedIn = responseBody.isLoggedIn;
-  const buttonWrapper = document.createElement('div');
-  buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
-  const buttonTemplate = document.createElement('a');
-  buttonTemplate.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
-  if (isLoggedIn) {
-    buttonTemplate.setAttribute('href', '/gw-logout');
-    buttonTemplate.innerText = 'Log out';
-  } else {
-    buttonTemplate.setAttribute('href', '/gw-login');
-    buttonTemplate.innerText = 'Log in';
+function toggleAvatar(e) {
+  e.target.classList.toggle('expanded');
+}
+
+// split to addAvatar and addLogInLogOut
+async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
+  const retryAttempts = 5;
+
+  if(window.location.pathname.endsWith('gw-login')) {
+    return;
   }
-  document
-    .getElementById('customHeaderElements')
-    .appendChild(buttonWrapper)
-    .appendChild(buttonTemplate);
+  // /userInformation is not available for a few milliseconds
+  // after login, so if fetching the response fails, try again
+  // in 10ms.
+  try {
+    const response = await fetch('/userInformation');
+    const responseBody = await response.json();
+    const { isLoggedIn, name, preferred_username } = responseBody;
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
+    let userButton;
+
+    if (isLoggedIn) {
+      
+        userButton = document.createElement('div');
+        userButton.setAttribute('id', 'avatar');
+        userButton.innerHTML = `
+        <button 
+          id="avatarButton" 
+          onClick="toggleAvatar(e)" 
+          aria-label="user information"
+        >
+          <div class="avatarMenu">
+            <div class="avatarMenuHeader">
+              <div class="avatarMenuIcon">&nbsp;</div>
+              <div class="avatarMenuInfo">
+                <div class="avatarMenuName">${name}</div>
+                <div class="avatarMenuEmail">${preferred_username}</div>
+              </div>
+            </div>
+            <div class="avatarMenuDivider"></div>
+            <div class="avatarMenuActions">
+              <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+            </div>
+          </div>
+        </button>
+      `;
+    }
+    else {
+      userButton = document.createElement('a');
+      loginButton.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
+      loginButton.setAttribute('href', '/gw-login');
+      loginButton.innerText = 'Log in';
+    }
+    buttonWrapper.appendChild(userButton);
+    document.getElementById('customHeaderElements').appendChild(buttonWrapper);
+  }
+  catch (error) {
+    if (attemptNumber >= retryAttempts ) {
+      console.log('Could not access user information endpoint. ' + error);
+      return;
+    }
+    attemptNumber++
+    retryTimeout += 100
+    setTimeout(setLogInButton(attemptNumber, retryTimeout), retryTimeout)
+  }
 }
 
 function docReady(fn) {
@@ -221,12 +269,20 @@ function hideByCssClass(cssClass) {
   }
 }
 
+async function addCustomElements() {
+  const customHeaderElements = document.getElementById('customHeaderElements');
+  if(customHeaderElements != null) {
+    await createVersionSelector();
+    await createUserButton();
+    customHeaderElements.classList.remove('invisible');
+  }
+}
+
 docReady(async function() {
-  createContainerForCustomHeaderElements();
+  await createContainerForCustomHeaderElements();
+  addCustomElements();
   addTopLinkToBreadcrumbs();
   addPublicationDate();
-  await createVersionSelector();
-  addLoginLogoutButton();
   if (isInIframe()) {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
