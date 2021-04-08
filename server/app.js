@@ -19,7 +19,7 @@ const app = express();
 const options = {
   etag: true,
   maxAge: 3600000,
-  redirect: true,
+  redirect: false,
   setHeaders: function(res, path, stat) {
     res.set({
       'x-timestamp': Date.now(),
