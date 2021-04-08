@@ -80,7 +80,6 @@ changeBuildType(RelativeId("stagingJutroDesignSystem531storybook531")) {
                     cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
                     yarn
                     yarn build
-                    whoami
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerPull = true
