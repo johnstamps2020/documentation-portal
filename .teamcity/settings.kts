@@ -421,6 +421,7 @@ object DeploySearchService : BuildType({
             "env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
             options = listOf("dev", "int", "staging", "us-east-2")
         )
+        text("env.DEPLOYMENT_NAME", "docsearch-%env.DEPLOY_ENV%", display = ParameterDisplay.HIDDEN)
     }
 
     vcs {
