@@ -80,13 +80,12 @@ changeBuildType(RelativeId("stagingJutroDesignSystem531storybook531")) {
                     cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
                     yarn
                     yarn build
-                    echo `id -u`
-                    echo `id -g`
+                    whoami
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerPull = true
                 dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:12.14.1"
-                dockerRunParameters = "--user ${'$'}(id -u):${'$'}(id -g)"
+                dockerRunParameters = "--user 1000:1000"
             }
         }
         check(stepsOrder == arrayListOf("BUILD_OUTPUT", "UPLOAD_GENERATED_CONTENT", "BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC")) {
