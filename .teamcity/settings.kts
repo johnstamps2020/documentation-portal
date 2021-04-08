@@ -1981,6 +1981,7 @@ object HelperObjects {
 
                     if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
                         echo "Creating a ZIP package"
+                        chmod -R 755 "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH"
                         cd "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH" || exit
                         zip -r "${'$'}ROOT_DIR/docs.zip" * &&
                             cp "${'$'}ROOT_DIR/docs.zip" "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH/"
