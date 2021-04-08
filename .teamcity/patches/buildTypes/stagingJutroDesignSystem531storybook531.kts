@@ -59,7 +59,7 @@ changeBuildType(RelativeId("stagingJutroDesignSystem531storybook531")) {
         }
     }
     steps {
-        insert(1) {
+        insert(0) {
             script {
                 name = "Build the yarn project"
                 id = "BUILD_OUTPUT"
@@ -80,6 +80,7 @@ changeBuildType(RelativeId("stagingJutroDesignSystem531storybook531")) {
                     cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
                     yarn
                     yarn build
+                    who
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerPull = true
