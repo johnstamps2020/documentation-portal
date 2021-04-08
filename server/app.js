@@ -15,6 +15,19 @@ const httpContext = require('express-http-context');
 
 const port = process.env.PORT || 8081;
 const app = express();
+
+const options = {
+  etag: true,
+  maxAge: 3600000,
+  redirect: true,
+  setHeaders: function(res, path, stat) {
+    res.set({
+      'x-timestamp': Date.now(),
+      'Cache-Control': 'public, max-age: 3600'
+    });
+  }
+}
+
 console.log('Server app instantiated!');
 
 // error handler
@@ -75,11 +88,12 @@ app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
 
 // serve static assets from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), options));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const oktaOIDC = require('./controllers/authController').oktaOIDC;
 const authGateway = require('./controllers/authController').authGateway;
+
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oktaOIDC.router);
 app.use(authGateway);
