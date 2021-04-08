@@ -85,6 +85,16 @@
         {
           "label": "Underwriting Product Configuration Guide",
           "id": "in20201xuwconfigdraft"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Install Assist",
+          "id": "ininstallassistdraft"
         },
         {
           "label": "Upgrade Tools",

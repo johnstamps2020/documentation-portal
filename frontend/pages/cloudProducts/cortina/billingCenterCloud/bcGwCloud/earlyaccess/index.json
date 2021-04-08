@@ -1,15 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "PolicyCenter for Guidewire Cloud latest",
+  "title": "BillingCenter for Guidewire Cloud earlyaccess",
   "template": "page.j2",
   "class": "twoColumns",
   "selector": {
     "label": "Select version",
-    "selectedItem": "latest",
+    "selectedItem": "earlyaccess",
     "items": [
       {
-        "label": "earlyaccess",
-        "page": "../earlyaccess"
+        "label": "latest",
+        "page": "../latest"
       }
     ]
   },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ispcclouddraftreleasenotes"
+          "id": "isbccloudeareleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "ispcclouddraftnewandchanged"
+          "id": "isbccloudeanewandchanged"
         }
       ]
     },
@@ -34,11 +34,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "ispcclouddraftinstall"
+          "id": "isbccloudeainstall"
         },
         {
           "label": "Upgrade",
-          "id": "ispcclouddraftupgrade"
+          "id": "isbccloudeaupgrade"
         }
       ]
     },
@@ -48,11 +48,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "ispcclouddraftapp"
+          "id": "isbccloudeaapp"
         },
         {
           "label": "Contact Management",
-          "id": "isclouddraftcontact"
+          "id": "iscloudeacontact"
         }
       ]
     },
@@ -62,7 +62,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "ispcclouddraftadmin"
+          "id": "isbccloudeaadmin"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "ispcclouddraftbestpractice"
+          "id": "isbccloudeabestpractice"
         }
       ]
     },
@@ -81,28 +81,16 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
-          "id": "ispcclouddraftapd"
-        },
-        {
           "label": "Configuration",
-          "id": "ispcclouddraftconfig"
+          "id": "isbccloudeaconfig"
         },
         {
           "label": "Globalization",
-          "id": "ispcclouddraftglobal"
+          "id": "isbccloudeaglobal"
         },
         {
           "label": "Rules",
-          "id": "ispcclouddraftrules"
-        },
-        {
-          "label": "Product Designer",
-          "id": "ispcclouddraftpd"
-        },
-        {
-          "label": "Product Model",
-          "id": "ispcclouddraftpm"
+          "id": "isbccloudearules"
         }
       ]
     },
@@ -112,19 +100,11 @@
       "items": [
         {
           "label": "Integration",
-          "id": "ispcclouddraftinteg"
-        },
-        {
-          "label": "Cloud API Developer Guide",
-          "id": "ispcclouddraftcloudapi"
-        },
-        {
-          "label": "REST API Framework",
-          "id": "ispcclouddraftrestapifw"
+          "id": "isbccloudeainteg"
         },
         {
           "label": "REST API Client",
-          "id": "isclouddraftrestapiclient"
+          "id": "iscloudearestapiclient"
         }
       ]
     },
@@ -134,11 +114,11 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "ispcclouddraftgosu"
+          "id": "isbccloudeagosu"
         },
         {
           "label": "Test Automation Guide",
-          "id": "ispcclouddrafttesting"
+          "id": "isbccloudeatesting"
         }
       ]
     },
@@ -148,9 +128,10 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "isclouddraftglossary"
+          "id": "iscloudeaglossary"
         }
       ]
     }
   ]
 }
+  
