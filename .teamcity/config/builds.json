@@ -882,7 +882,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
+      "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
       "srcId": "testingframeworksrnbanffsrc",
       "docId": "testingframeworksrnbanff",
       "indexRedirect": true
@@ -3980,14 +3980,14 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutro530",
-      "srcId": "srcjutro530",
+      "docId": "jutro531",
+      "srcId": "srcjutro531",
       "workingDir": "website"
     },
     {
       "buildType": "yarn",
-      "docId": "storybook530",
-      "srcId": "srcjutrostorybook530",
+      "docId": "storybook531",
+      "srcId": "srcjutrostorybook531",
       "workingDir": "storybook"
     },
     {
@@ -4018,7 +4018,7 @@
       "buildType": "storybook",
       "docId": "storybooknext",
       "srcId": "srcjutrostorybooknext",
-      "workingDir": "applications/jutro-app-storybook-new"
+      "workingDir": "applications/jutro-app-storybook"
     },
     {
       "buildType": "yarn",
