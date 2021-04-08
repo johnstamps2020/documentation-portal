@@ -10,4 +10,5 @@ kubectl create secret docker-registry artifactory-secret --docker-server=artifac
 
 sed -ie "s/\${DEPLOY_ENV}/${DEPLOY_ENV}/g" ${KUBE_FILE}
 
+kubectl delete deployment docsearch-${DEPLOY_ENV} --namespace=${NAMESPACE}
 kubectl apply -f ${KUBE_FILE} --namespace=${NAMESPACE}
