@@ -1983,7 +1983,7 @@ object HelperObjects {
                         echo "Creating a ZIP package"
                         cd "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH" || exit
                         zip -r "${'$'}ROOT_DIR/docs.zip" * &&
-                            mv "${'$'}ROOT_DIR/docs.zip" "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH/"
+                            cp "${'$'}ROOT_DIR/docs.zip" "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH/"
                     fi
                     
                     aws s3 sync ${'$'}ROOT_DIR/${'$'}OUTPUT_PATH s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
