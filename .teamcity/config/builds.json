@@ -4018,7 +4018,7 @@
       "buildType": "storybook",
       "docId": "storybooknext",
       "srcId": "srcjutrostorybooknext",
-      "workingDir": "applications/jutro-app-storybook-new"
+      "workingDir": "applications/jutro-app-storybook"
     },
     {
       "buildType": "yarn",
