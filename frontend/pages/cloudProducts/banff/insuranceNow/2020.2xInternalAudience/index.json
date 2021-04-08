@@ -105,6 +105,16 @@
         {
           "label": "Claims Product Configuration Guide",
           "id": "in20202xclaimsconfigdraft"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Install Assist",
+          "id": "ininstallassistdraft"
         },
         {
           "label": "Upgrade Tools",
