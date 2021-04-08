@@ -43,7 +43,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: docsearch-${DEPLOY_ENV}
-          image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
           imagePullPolicy: IfNotPresent
           env:
             - name: discovery.type
@@ -147,7 +147,7 @@ spec:
     spec:
       containers:
         - name: kibana
-          image: docker.elastic.co/kibana/kibana:7.5.1
+          image: docker.elastic.co/kibana/kibana:7.9.3
           resources:
             limits:
               cpu: 1000m

@@ -2,11 +2,11 @@
 # (the 'bridge' mode doesn't work in our test env on TeamCity agents).
 # For running tests locally, for example on Mac with Docker Desktop, we need to use the 'bridge' mode
 # (the 'host' mode works only on Linux).
-version: '3'
+version: "3"
 services:
   docsearch:
     network_mode: ${TEST_ENVIRONMENT_DOCKER_NETWORK}
-    image: artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.5.1
+    image: artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.9.3
     environment:
       - cluster.name=es-docker-cluster
       - discovery.type=single-node
