@@ -2536,7 +2536,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false
     },
@@ -2551,7 +2551,7 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false
     },
