@@ -2627,7 +2627,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation202011Patch1_ReleaseNotes.ditamap",
+        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
@@ -2794,18 +2794,18 @@
       "branch": "release/5.2.0"
     },
     {
-      "id": "srcjutro530",
-      "title": "Jutro Design System 5.3.0",
+      "id": "srcjutro531",
+      "title": "Jutro Design System 5.3.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "release/5.3.0"
+      "branch": "release/5.3.1"
     },
     {
-      "id": "srcjutrostorybook530",
-      "title": "Jutro Storybook 5.3.0",
+      "id": "srcjutrostorybook531",
+      "title": "Jutro Storybook 5.3.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "release/5.3.0"
+      "branch": "release/5.3.1"
     },
     {
       "id": "srcjutro540",

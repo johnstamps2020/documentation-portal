@@ -2526,34 +2526,32 @@
       "public": false
     },
     {
-      "id": "jutro530",
+      "id": "jutro531",
       "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/5.3.0",
+      "url": "jutro/documentation/5.3.1",
       "metadata": {
-        "release": ["Cortina"],
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["5.3.0"],
+        "version": ["5.3.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int"],
-      "displayOnLandingPages": true,
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "storybook530",
+      "id": "storybook531",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/5.3.0",
+      "url": "jutro/storybook/5.3.1",
       "metadata": {
-        "release": ["Cortina"],
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["5.3.0"],
+        "version": ["5.3.1"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int"],
-      "displayOnLandingPages": true,
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false
     },
