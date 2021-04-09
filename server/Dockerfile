@@ -3,6 +3,7 @@ FROM artifactory.guidewire.com/hub-docker-remote/node:14-alpine
 # Create app directory
 WORKDIR /usr/src/app
 
+RUN mkdir sitemap
 COPY package*.json ./
 RUN npm install
 
