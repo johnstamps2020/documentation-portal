@@ -60,14 +60,13 @@ def write_docs_to_sitemap(sitemap_path, docs):
             output_sitemap_file.write('<url>\n')
             url = doc['_source']['href']
             output_sitemap_file.write(f'<loc>{escape_entities(url)}</loc>\n')
-            date = doc['_source'].get('indexed_date', None)
-            if date:
-                if not latest_date:
+            date = doc['_source']['indexed_date']
+            if not latest_date:
+                latest_date = date
+            else:
+                if date > latest_date:
                     latest_date = date
-                else:
-                    if date > latest_date:
-                        latest_date = date
-                output_sitemap_file.write(f'<lastmod>{date}</lastmod>\n')
+            output_sitemap_file.write(f'<lastmod>{date}</lastmod>\n')
             output_sitemap_file.write('</url>\n')
         output_sitemap_file.write('</urlset>\n')
     return latest_date
