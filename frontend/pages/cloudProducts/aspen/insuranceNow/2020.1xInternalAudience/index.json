@@ -3,6 +3,16 @@
   "title": "InsuranceNow 2020.1x - Internal Audience",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "2020.1x - Internal Audience",
+    "items": [
+      {
+        "label": "2020.1x - External Audience",
+        "page": "../2020.1xExternalAudience"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",

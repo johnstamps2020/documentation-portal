@@ -3,6 +3,16 @@
   "title": "DataHub for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select product",
+    "selectedItem": "DataHub for Guidewire Cloud latest",
+    "items": [
+      {
+        "label": "InfoCenter for Guidewire Cloud latest",
+        "page": "../../icGwCloud/latest"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",

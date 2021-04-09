@@ -3,6 +3,24 @@
   "title": "Commercial Auto Standards Based Template 2020.05",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select product",
+    "selectedItem": "Commercial Auto Standards Based Template 2020.05",
+    "items": [
+      {
+        "label": "Businessowners Standards Based Template 2020.05",
+        "page": "../../boStandardsBasedTemplate/2020.05"
+      },
+      {
+        "label": "Crime Standards Based Template 2020.05",
+        "page": "../../crimeStandardsBasedTemplate/2020.05"
+      },
+      {
+        "label": "General Liability Standards Based Template 2020.05",
+        "page": "../../glStandardsBasedTemplate/2020.05"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
