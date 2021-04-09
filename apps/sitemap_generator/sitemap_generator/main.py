@@ -51,6 +51,7 @@ def get_indexed_docs():
 
 
 def write_docs_to_sitemap(sitemap_path, docs):
+    latest_date = None
     with open(sitemap_path, 'a') as output_sitemap_file:
         output_sitemap_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         output_sitemap_file.write(
@@ -61,9 +62,15 @@ def write_docs_to_sitemap(sitemap_path, docs):
             output_sitemap_file.write(f'<loc>{escape_entities(url)}</loc>\n')
             date = doc['_source'].get('indexed_date', None)
             if date:
+                if not latest_date:
+                    latest_date = date
+                else:
+                    if date > latest_date:
+                        latest_date = date
                 output_sitemap_file.write(f'<lastmod>{date}</lastmod>\n')
             output_sitemap_file.write('</url>\n')
         output_sitemap_file.write('</urlset>\n')
+    return latest_date
 
 
 def get_chunks(lst, length):
@@ -88,10 +95,12 @@ def generate_sitemap():
         for index, chunk in enumerate(chunks):
             chunk_file_name = f'sitemap{index}.xml'
             chunk_file_path = output_dir / chunk_file_name
-            write_docs_to_sitemap(chunk_file_path, chunk)
+            date = write_docs_to_sitemap(chunk_file_path, chunk)
             output_index_file.write('<sitemap>\n')
             output_index_file.write(
                 f'<loc>{escape_entities(f"{app_base_url}/{chunk_file_name}")}</loc>\n')
+            if date:
+                output_index_file.write(f'<lastmod>{date}</lastmod>\n')
             output_index_file.write('</sitemap>\n')
         output_index_file.write('</sitemapindex>\n')
 
