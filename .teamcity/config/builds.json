@@ -3496,6 +3496,22 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "DevelopersGuide_Java8.ditamap",
+      "srcId": "indevguidejava8draftsrc",
+      "docId": "indevguidejava8draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "DevelopersGuide_Java11.ditamap",
+      "srcId": "indevguidejava11draftsrc",
+      "docId": "indevguidejava11draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20201.ditamap",
       "srcId": "in20201xrndraftsrc",
       "docId": "in20201xrndraft",

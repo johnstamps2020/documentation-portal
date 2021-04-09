@@ -9854,6 +9854,41 @@
       "public": false
     },
     {
+      "id": "indevguidejava8draft",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava8",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": ["latest"],
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "indevguidejava11draft",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava11",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow 2021.1x - Internal Audience"],
+        "version": ["latest"],
+        "subject": ["Installation"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "inupgradetoolsdraft",
       "title": "Upgrade Tools",
       "url": "cloud/in/upgrade",
