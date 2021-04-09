@@ -705,7 +705,7 @@ object GenerateSitemap : BuildType({
             display = ParameterDisplay.PROMPT,
             options = listOf("dev", "int", "staging", "prod" to "us-east-2")
         )
-        text("env.OUTPUT_DIR", "build", allowEmpty = false)
+        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/build", allowEmpty = false)
         text(
             "env.ELASTICSEARCH_URLS",
             "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
