@@ -2355,6 +2355,28 @@
       ]
     },
     {
+      "id": "indevguidejava8draftsrc",
+      "title": "InsuranceNow Developers Java 8 Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/DevelopersGuide_Java8.ditamap"
+      ]
+    },
+    {
+      "id": "indevguidejava11draftsrc",
+      "title": "InsuranceNow Developers Java 11 Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/DevelopersGuide_Java11.ditamap"
+      ]
+    },
+    {
       "id": "in20202xprodattrefdraftsrc",
       "title": "InsuranceNow 2020.2 Product Attribute Reference Draft",
       "sourceType": "xdocs",
