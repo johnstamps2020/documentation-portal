@@ -705,11 +705,7 @@ object GenerateSitemap : BuildType({
             display = ParameterDisplay.PROMPT,
             options = listOf("dev", "int", "staging", "prod" to "us-east-2")
         )
-        text(
-            "env.OUTPUT_FILE",
-            "build/sitemap.xml",
-            allowEmpty = false
-        )
+        text("env.OUTPUT_DIR", "build", allowEmpty = false)
         text(
             "env.ELASTICSEARCH_URLS",
             "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
@@ -720,6 +716,8 @@ object GenerateSitemap : BuildType({
             "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
             allowEmpty = false
         )
+        text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
 
     }
 
@@ -731,6 +729,7 @@ object GenerateSitemap : BuildType({
                 set -xe
                 if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
                     export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                    export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
                 fi
                 
                 sitemap_generator

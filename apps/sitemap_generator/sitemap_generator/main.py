@@ -8,7 +8,8 @@ from elasticsearch import Elasticsearch, helpers
 
 index_name = 'gw-docs'
 search_app_urls = os.environ['ELASTICSEARCH_URLS'].split(' ')
-output_file_path = Path(os.environ['OUTPUT_FILE'])
+output_dir = Path(os.environ['OUTPUT_DIR'])
+app_base_url = os.environ['APP_BASE_URL']
 
 logger = logging.getLogger(__file__)
 logger.setLevel(logging.INFO)
@@ -49,32 +50,52 @@ def get_indexed_docs():
             return [indexed_doc for indexed_doc in resp]
 
 
-def generate_sitemap():
-    output_folder = output_file_path.parent
-    if output_folder.exists:
-        logger.info(
-            f'Deleting the pre-existing output directory {output_folder}')
-        shutil.rmtree(output_folder)
-    if not output_folder.exists():
-        logger.info(f'Creating output directory {output_folder}')
-        output_folder.mkdir(parents=True)
-    count = 0
-    indexed_docs = get_indexed_docs()
-    with open(output_file_path, 'a') as output_index_file:
-        output_index_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        output_index_file.write(
+def write_docs_to_sitemap(sitemap_path, docs):
+    with open(sitemap_path, 'a') as output_sitemap_file:
+        output_sitemap_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        output_sitemap_file.write(
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
-        for doc in indexed_docs:
-            output_index_file.write('<url>\n')
+        for doc in docs:
+            output_sitemap_file.write('<url>\n')
             url = doc['_source']['href']
-            output_index_file.write(f'<loc>{escape_entities(url)}</loc>\n')
+            output_sitemap_file.write(f'<loc>{escape_entities(url)}</loc>\n')
             date = doc['_source'].get('indexed_date', None)
             if date:
-                output_index_file.write(f'<lastmod>{date}</lastmod>\n')
-            output_index_file.write('</url>\n')
-            count += 1
-        output_index_file.write('</urlset>\n')
-    logger.info(f'Processed {count} docs from {index_name}')
+                output_sitemap_file.write(f'<lastmod>{date}</lastmod>\n')
+            output_sitemap_file.write('</url>\n')
+        output_sitemap_file.write('</urlset>\n')
+
+
+def get_chunks(lst, length):
+    for i in range(0, len(lst), length):
+        yield lst[i:i + length]
+
+
+def generate_sitemap():
+    if output_dir.exists:
+        logger.info(
+            f'Deleting the pre-existing output directory {output_dir}')
+        shutil.rmtree(output_dir)
+    if not output_dir.exists():
+        logger.info(f'Creating output directory {output_dir}')
+        output_dir.mkdir(parents=True)
+    indexed_docs = get_indexed_docs()
+    with open(output_dir / 'sitemap.xml', 'a') as output_index_file:
+        output_index_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        output_index_file.write(
+            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+        chunks = get_chunks(indexed_docs, 49999)
+        for index, chunk in enumerate(chunks):
+            chunk_file_name = f'sitemap{index}.xml'
+            chunk_file_path = output_dir / chunk_file_name
+            write_docs_to_sitemap(chunk_file_path, chunk)
+            output_index_file.write('<sitemap>\n')
+            output_index_file.write(
+                f'<loc>{escape_entities(f"{app_base_url}/{chunk_file_name}")}</loc>\n')
+            output_index_file.write('</sitemap>\n')
+        output_index_file.write('</sitemapindex>\n')
+
+    logger.info(f'Processed all docs from {index_name}')
 
 
 def main():
