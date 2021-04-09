@@ -1,0 +1,12 @@
+# Ignore everything
+**
+
+# Allow specific folders
+!bin/
+!controllers/
+!public/
+!routes/
+!views/
+!app.js
+!package.json
+!package-lock.json
