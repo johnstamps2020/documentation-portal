@@ -3182,7 +3182,7 @@
         "product": ["Workers Compensation Standards Based Template"],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "subject": ["Features and functionality"]
+        "subject": ["Release notes"]
       },
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
