@@ -89,6 +89,7 @@ app.use('/customers-login', customersLoginRouter);
 
 // serve static assets from the public folder
 app.use(express.static(path.join(__dirname, 'public'), options));
+app.use(express.static(path.join(__dirname, 'sitemap')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const oktaOIDC = require('./controllers/authController').oktaOIDC;
