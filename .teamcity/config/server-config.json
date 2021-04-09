@@ -3174,6 +3174,22 @@
       "public": false
     },
     {
+      "id": "lobwcsbtrnbanff",
+      "title": "Release Notes",
+      "url": "cloud/lob/wc/202011/cwrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Workers Compensation Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "lobbopguideaspen",
       "title": "Businessowners Standards Based Template Guide",
       "url": "cloud/lob/bop/202005/guide",

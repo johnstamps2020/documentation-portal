@@ -1454,6 +1454,19 @@
       ]
     },
     {
+      "id": "lobwcsbtrnbanffsrc",
+      "title": "LOB WC Countrywide Release Notes Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/banff/WC_SBT_ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
       "id": "midipfdraftsrc",
       "title": "ClaimCenter Adapter for IRSA",
       "sourceType": "git",

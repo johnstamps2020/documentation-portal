@@ -1813,6 +1813,14 @@
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "WC_SBT_ReleaseNotes.ditamap",
+      "srcId": "lobwcsbtrnbanffsrc",
+      "docId": "lobwcsbtrnbanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguideaspensrc",
       "docId": "lobbopguideaspen",
