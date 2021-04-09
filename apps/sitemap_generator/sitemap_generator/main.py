@@ -78,13 +78,12 @@ def get_chunks(lst, length):
 
 
 def generate_sitemap():
-    if output_dir.exists:
+    if output_dir.exists():
         logger.info(
             f'Deleting the pre-existing output directory {output_dir}')
         shutil.rmtree(output_dir)
-    if not output_dir.exists():
-        logger.info(f'Creating output directory {output_dir}')
-        output_dir.mkdir(parents=True)
+    logger.info(f'Creating a fresh output directory {output_dir}')
+    output_dir.mkdir(parents=True)
     indexed_docs = get_indexed_docs()
     with open(output_dir / 'sitemap.xml', 'a') as output_index_file:
         output_index_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
