@@ -2556,7 +2556,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap",
+        "/Content/doc/cloud-services/auth/GuidewireHub.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
@@ -2566,7 +2566,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap",
+        "/Content/doc/cloud-services/auth/GuidewireHub.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
@@ -2667,12 +2667,12 @@
       ]
     },
     {
-      "id": "gwhawaiidraft",
+      "id": "gwcloudservicesdraft",
       "title": "Guidewire Feature Preview Draft and Early Access",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-feature-preview.git",
       "xdocsPathIds": [
-        "/Content/doc/_supermap-hawaii.ditamap",
+        "/Content/doc/_supermap-cloud-services.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval"
       ]
@@ -2689,7 +2689,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rating.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/cloudRating/CloudRating.ditamap",
+        "/Content/doc/cloud-services/cloudRating/CloudRating.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
@@ -2699,7 +2699,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/cloudRules/RulesCloud.ditamap",
+        "/Content/doc/cloud-services/cloudRules/RulesCloud.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
@@ -2709,7 +2709,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/cloudRules/cloud-rules-release-notes.ditamap",
+        "/Content/doc/cloud-services/cloudRules/cloud-rules-release-notes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },

@@ -1521,7 +1521,7 @@
       "public": false
     },
     {
-      "id": "gwfeaturepreviewearlyaccess",
+      "id": "gwcloudservicesearlyaccess",
       "title": "Guidewire Feature Preview Early Access",
       "url": "cloud/gw-feature-preview/earlyaccess",
       "metadata": {
@@ -1536,7 +1536,7 @@
       "public": false
     },
     {
-      "id": "gwfeaturepreviewdraft",
+      "id": "gwcloudservicesdraft",
       "title": "Guidewire Feature Preview Draft",
       "url": "cloud/gw-feature-preview/latest",
       "metadata": {
