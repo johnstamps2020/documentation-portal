@@ -21,7 +21,7 @@
             {
               "id": "lobs",
               "label": "Lines of business",
-              "items":[
+              "items": [
                 {
                   "id": "boStandardsBaseTemplate",
                   "label": "Businessowners Standards Based Template"
@@ -40,7 +40,6 @@
                 }
               ]
             }
-            
           ]
         },
         {
@@ -98,10 +97,6 @@
                 {
                   "id": "serviceRepEngage",
                   "label": "ServiceRepEngage"
-                },
-                {
-                  "id": "digitalCodeGeneration",
-                  "label": "Digital Code Generation"
                 }
               ]
             },
@@ -112,16 +107,6 @@
                 {
                   "id": "jutroDesignSystem",
                   "label": "Jutro Design System"
-                }
-              ]
-            },
-            {
-              "id": "addOns",
-              "label": "Add-ons",
-              "items": [
-                {
-                  "id": "digitalCodeGenExtPack",
-                  "label": "Digital Code Generation Extension Pack"
                 }
               ]
             }
@@ -320,7 +305,7 @@
         {
           "id": "insuranceNow20211xExt",
           "label": "External Audience",
-          "items":[
+          "items": [
             {
               "id": "IN2020211Ext",
               "label": "InsuranceNow 2021.1x - External Audience"
@@ -330,7 +315,7 @@
         {
           "id": "insuranceNow20211xInt",
           "label": "Internal Audience",
-          "items":[
+          "items": [
             {
               "id": "IN20211xInt",
               "label": "InsuranceNow 2021.1x - Internal Audience"
@@ -340,7 +325,7 @@
         {
           "id": "insuranceNow",
           "label": "InsuranceNow",
-          "items":[
+          "items": [
             {
               "id": "insuranceNow",
               "label": "InsuranceNow"

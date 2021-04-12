@@ -299,15 +299,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
-      "root": "digital-codegen-release-notes.ditamap",
-      "srcId": "dxclouddraftdcgrn",
-      "docId": "dxclouddraftdcgrn",
-      "indexRedirect": true
-    },
-
-    {
-      "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dxclouddraftceamapp",
@@ -1470,6 +1461,55 @@
       "root": "DM_all.ditamap",
       "srcId": "dhic1020",
       "docId": "ic1020"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceam1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceclaims1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceqb1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpe1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpeclaims1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxsre1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxve1140"
     },
     {
       "buildType": "dita",
