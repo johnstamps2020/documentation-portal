@@ -890,16 +890,16 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaiidraft",
-      "docId": "gwfeaturepreviewearlyaccess"
+      "root": "_supermap-cloud-services.ditamap",
+      "srcId": "gwcloudservicesdraft",
+      "docId": "gwcloudservicesearlyaccess"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaiidraft",
-      "docId": "gwfeaturepreviewdraft"
+      "root": "_supermap-cloud-services.ditamap",
+      "srcId": "gwcloudservicesdraft",
+      "docId": "gwcloudservicesdraft"
     },
     {
       "buildType": "dita",
