@@ -2,6 +2,7 @@ import os
 import logging
 import json
 import shutil
+import semver
 from pathlib import Path
 
 from elasticsearch import Elasticsearch, helpers
@@ -31,13 +32,29 @@ def escape_entities(text_to_convert: str):
     return text_to_convert
 
 
+def is_not_old_insurance_suite(doc):
+    product = doc['_source'].get('product')
+    version = doc['_source'].get('version')
+    if product and version:
+        insurance_suite_products = [
+            'PolicyCenter', 'ClaimCenter', 'BillingCenter']
+        if any(item in product for item in insurance_suite_products):
+            for ver in version:
+                if semver.compare(ver, '8.0.0') >= 0:
+                    return True
+            return False
+    else:
+        return True
+
+
 def get_indexed_docs():
     index_source = os.environ.get('INDEX_SOURCE', None)
+    all_docs = None
     if index_source:
         logger.info(f'Reading local index file: {index_source}')
         with open(index_source) as local_index_file:
             local_index_json = json.load(local_index_file)
-            return local_index_json
+            all_docs = local_index_json
     else:
         logger.info(
             f'Connecting to the search service: {"".join(search_app_urls)}')
@@ -47,7 +64,9 @@ def get_indexed_docs():
         if client.indices.exists(index=index_name):
             logger.info(f'Scanning the {index_name} index...')
             resp = helpers.scan(client, index=index_name)
-            return [indexed_doc for indexed_doc in resp]
+            all_docs = list(indexed_doc for indexed_doc in resp)
+    filtered_docs = list(filter(is_not_old_insurance_suite, all_docs))
+    return filtered_docs
 
 
 def write_docs_to_sitemap(sitemap_path, docs):
