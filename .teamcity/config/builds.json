@@ -3313,6 +3313,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "CommonConfigGuide20211x.ditamap",
+      "srcId": "in20211xcommonconfigdraftsrc",
+      "docId": "in20211xcommonconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20211x.ditamap",
       "srcId": "in20211xcservicepconfigdraftsrc",
       "docId": "in20211xcservicepconfigdraft",

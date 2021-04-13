@@ -2096,6 +2096,17 @@
       ]
     },
     {
+      "id": "in20211xcommonconfigdraftsrc",
+      "title": "InsuranceNow 2021.1 Common Configuration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/CommonConfigGuide20211x.ditamap"
+      ]
+    },
+    {
       "id": "in20211xcservicepconfigdraftsrc",
       "title": "InsuranceNow 2021.1 Consumer Service Portal Configuration Draft",
       "sourceType": "xdocs",
