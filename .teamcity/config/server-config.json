@@ -9252,6 +9252,22 @@
       "public": false
     },
     {
+      "id": "in20211xcommonconfigdraft",
+      "title": "Common Configuration Guide",
+      "url": "cloud/in/20211x/commonconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow 2021.1x - Internal Audience"],
+        "version": ["latest"],
+        "subject": ["Configuration"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20211xcservicepconfigdraft",
       "title": "Consumer Service Portal Configuration Guide",
       "url": "cloud/in/20211x/cservicepconfig",
