@@ -2,7 +2,8 @@
 <html lang="en">
   <% include parts/head %>
   <body>
-    <% include parts/header %>
+    <%- include('parts/header', { hideLoginButton: false, headerClass:
+    'header-support' }) %>
     <main class="support">
       <h1>
         Legal and support information

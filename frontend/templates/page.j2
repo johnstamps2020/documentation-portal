@@ -6,64 +6,73 @@
 <body>
 {% include 'includes/header.j2' %}
 <main {% if data.get('class') -%}class="{{ data.get('class') }}"{%- endif -%}>
-    <div class="pageHero">
-        <h1>{{ data.get('title') }}</h1>
+    <div class="content">
+        <div class="pageHero">
+            <h1>{{ data.get('title') }}</h1>
+        </div>
+        <div class="docBreadcrumb">
+            {% if data.get('breadcrumbs') %}
+                {% for breadcrumb in data.get('breadcrumbs') %}
+                    <a href="{{ breadcrumb.get('path') }}">{{ breadcrumb.get('label') }}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% if data.get('selector') %}
+            <script>
+                function selectPage(selectedPage) {
+                    if (selectedPage) {
+                        window.location = selectedPage;
+                    }
+                }
+            </script>
+
+            <div id="pageSelectorContainer">
+                {% if data.get('selector').get('label') %}
+                    <span class="selectorLabel">{{ data.get('selector').get('label') }}</span>
+                {% endif %}
+                <select onchange="selectPage(this.value)" id="pageSelector">
+                    <option selected="selected">{{ data.get('selector').get('selectedItem') }}</option>
+                    {% for item in data.get('selector').get('items') %}
+                        <option value="{{ item.get('doc_url') or item.get('page') or item.get('link') }}">
+                            {{ item.get('label') }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+        {% macro create_block(label, class, items, doc_url, page, link, public) -%}
+            <div {% if class -%}class="{{ class }}"{%- endif -%}>
+                {% if (doc_url or page or link) -%}
+                    <a href="{{ doc_url or page or link }}" {% if not public -%}class="private"{%- endif -%}>{{ label }}</a>
+                {% else %}
+                    <div class="label" {% if not public -%}class="private"{%- endif -%}>{{ label }}</div>
+                {%- endif %}
+                {% if items -%}
+                    {% for item in items -%}
+                        {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
+                    {%- endfor %}
+                {%- endif %}
+            </div>
+        {%- endmacro %}
+
+        <div class="items">
+            {% for item in data.get('items') %}
+                {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="sidebar">
         <div class="heroControls">
             <div id="cloudToggle">
                 <a href="/" data-root="/cloudProducts">Guidewire Cloud</a>
                 <a href="/selfManagedProducts" data-root="/selfManagedProducts">Self-managed</a>
             </div>
         </div>
-    </div>
-    <div class="docBreadcrumb">
-        {% if data.get('breadcrumbs') %}
-            {% for breadcrumb in data.get('breadcrumbs') %}
-                <a href="{{ breadcrumb.get('path') }}">{{ breadcrumb.get('label') }}</a>
-            {% endfor %}
-        {% endif %}
-    </div>
-    {% if data.get('selector') %}
-        <script>
-            function selectPage(selectedPage) {
-                if (selectedPage) {
-                    window.location = selectedPage;
-                }
-            }
-        </script>
-
-        <div id="pageSelectorContainer">
-            {% if data.get('selector').get('label') %}
-                <span class="selectorLabel">{{ data.get('selector').get('label') }}</span>
-            {% endif %}
-            <select onchange="selectPage(this.value)" id="pageSelector">
-                <option selected="selected">{{ data.get('selector').get('selectedItem') }}</option>
-                {% for item in data.get('selector').get('items') %}
-                    <option value="{{ item.get('doc_url') or item.get('page') or item.get('link') }}">
-                        {{ item.get('label') }}
-                    </option>
-                {% endfor %}
-            </select>
+        <div class="usefulLinks">
+            <a href="cloud/cc/202011/apiref">ClaimCenter Cloud API Reference</a>
+            <a href="standards">Surepath Standards</a>
+            <a href="/glossary">Guidewire Glossary</a>
         </div>
-    {% endif %}
-    {% macro create_block(label, class, items, doc_url, page, link, public) -%}
-        <div {% if class -%}class="{{ class }}"{%- endif -%}>
-            {% if (doc_url or page or link) -%}
-                <a href="{{ doc_url or page or link }}" {% if not public -%}class="private"{%- endif -%}>{{ label }}</a>
-            {% else %}
-                <div class="label" {% if not public -%}class="private"{%- endif -%}>{{ label }}</div>
-            {%- endif %}
-            {% if items -%}
-                {% for item in items -%}
-                    {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
-                {%- endfor %}
-            {%- endif %}
-        </div>
-    {%- endmacro %}
-
-    <div class="items">
-        {% for item in data.get('items') %}
-            {{ create_block(item.get('label'), item.get('class'), item.get('items'), item.get('doc_url'), item.get('page'), item.get('link'), item.get('public')) }}
-        {% endfor %}
     </div>
 </main>
 {% include 'includes/footer.j2' %}

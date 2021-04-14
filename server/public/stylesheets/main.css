@@ -6,7 +6,8 @@
   --clr-GW-NAVY-BLUE: #3c4c5e;
   --clr-GW-BLUE-HOVER: #006083;
   /* --clr-GW-BLUE-LIGHTER and --clr-GW-BLUE-LIGHTER-HOVER are not approved colors. Get approved versions. */
-  --clr-GW-BLUE-LIGHTER: #61c1e5;
+  /* --clr-GW-BLUE-LIGHTER: #61c1e5; */
+  --clr-GW-BLUE-LIGHTER: rgb(50, 197, 255);
   --clr-GW-BLUE-LIGHTER-HOVER: #30b7e9;
   --clr-GW-WHITE: #fafafa;
   --clr-GW-BLACK: #28333f;
@@ -21,7 +22,8 @@
   --estimated-header-height: 68px;
   --body-height: calc(100vh - var(--estimated-header-height));
   --footer-height: 74px;
-  --main-width: 950px;
+  --content-width: 950px;
+  --sidebar-width: 300px;
   --search-filter-width: 275px;
 }
 
@@ -153,9 +155,25 @@ main {
   min-height: var(--body-height);
 }
 
-main:not(.fullWidth) > * {
-  max-width: var(--main-width);
+main:not(.fullWidth):not(.loginPage):not(.pageNotFound):not(.support) {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+main:not(.fullWidth) > .content {
+  max-width: var(--content-width);
   margin: auto;
+  flex-grow: 1;
+}
+
+main:not(.fullWidth) > .sidebar {
+  width: var(--sidebar-width);
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+main.fullWidth > .sidebar {
+  display: none;
 }
 
 main.cortina,
@@ -286,7 +304,7 @@ label,
   box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
 }
 
-.threeCards > div.items {
+.threeCards div.items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
   column-gap: 16px;
@@ -294,7 +312,7 @@ label,
   padding: 64px 0;
 }
 
-.twoCards > div.items {
+.twoCards div.items {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
@@ -302,16 +320,16 @@ label,
   padding: 64px 0;
 }
 
-.twoColumns > div.items {
+.twoColumns div.items {
   columns: 2;
 }
 @media screen and (max-width: 750px) {
-  .twoColumns > div.items {
+  .twoColumns div.items {
     columns: 1;
   }
 }
 
-.twoCards > div.items > .categoryCard {
+.twoCards div.items > .categoryCard {
   min-width: 300px;
   width: calc(50% - 8px);
 }
@@ -538,7 +556,7 @@ div.pageHero {
 
 .usefulLinks {
   padding: 32px 6px;
-  text-align: right;
+  /* text-align: right; */
 }
 
 .usefulLinks > a {
