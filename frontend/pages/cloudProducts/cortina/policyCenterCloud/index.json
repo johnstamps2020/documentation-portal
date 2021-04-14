@@ -112,29 +112,6 @@
               "page": "../serviceRepEngage/latest"
             }
           ]
-        },
-        {
-          "label": "Digital Framework",
-          "class": "group",
-          "items": [
-            {
-              "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/5.3.0"
-            }
-          ]
-        },
-        {
-          "label": "Add-ons",
-          "class": "group",
-          "env": [
-            "int"
-          ],
-          "items": [
-            {
-              "label": "Digital Code Generation Extension Pack",
-              "page": "digitalCodeGenerationExtensionPack/latest"
-            }
-          ]
         }
       ]
     }

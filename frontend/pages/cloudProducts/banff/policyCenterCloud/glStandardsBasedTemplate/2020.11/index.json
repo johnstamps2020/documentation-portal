@@ -3,6 +3,28 @@
   "title": "General Liability Standards Based Template 2020.11",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select product",
+    "selectedItem": "General Liability Standards Based Template 2020.11",
+    "items": [
+      {
+        "label": "Businessowners Standards Based Template 2020.11",
+        "page": "../../boStandardsBasedTemplate/2020.11"
+      },
+      {
+        "label": "Commercial Auto Standards Based Template 2020.11",
+        "page": "../../caStandardsBasedTemplate/2020.11"
+      },
+      {
+        "label": "Crime Standards Based Template 2020.11",
+        "page": "../../crimeStandardsBasedTemplate/2020.11"
+      },
+      {
+        "label": "Workers Compensation Standards Based Template 2020.11",
+        "page": "../../wcStandardsBasedTemplate/2020.11"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",

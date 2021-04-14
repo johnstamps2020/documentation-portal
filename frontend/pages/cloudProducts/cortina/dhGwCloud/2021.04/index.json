@@ -3,6 +3,16 @@
   "title": "DataHub for Guidewire Cloud 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select product",
+    "selectedItem": "DataHub for Guidewire Cloud 2021.04",
+    "items": [
+      {
+        "label": "InfoCenter for Guidewire Cloud 2021.04",
+        "page": "../../icGwCloud/2021.04"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",

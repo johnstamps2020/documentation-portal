@@ -79,6 +79,10 @@
           "id": "in20211xconfigdraft"
         },
         {
+          "label": "Common Configuration Guide",
+          "id": "in20211xcommonconfigdraft"
+        },
+        {
           "label": "Consumer Service Portal Configuration Guide",
           "id": "in20211xcservicepconfigdraft"
         },
@@ -115,6 +119,10 @@
         {
           "label": "Install Assist",
           "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Developers Setup",
+          "id": "indevguidejava11draft"
         },
         {
           "label": "Upgrade Tools",
