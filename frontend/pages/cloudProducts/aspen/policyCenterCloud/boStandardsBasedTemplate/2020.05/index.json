@@ -3,6 +3,24 @@
   "title": "Businessowners Standards Based Template 2020.05",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select product",
+    "selectedItem": "Businessowners Standards Based Template 2020.05",
+    "items": [
+      {
+        "label": "Commercial Auto Standards Based Template 2020.05",
+        "page": "../../caStandardsBasedTemplate/2020.05"
+      },
+      {
+        "label": "Crime Standards Based Template 2020.05",
+        "page": "../../crimeStandardsBasedTemplate/2020.05"
+      },
+      {
+        "label": "General Liability Standards Based Template 2020.05",
+        "page": "../../glStandardsBasedTemplate/2020.05"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
