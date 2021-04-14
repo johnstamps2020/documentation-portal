@@ -1088,7 +1088,7 @@ object DeployFrontend : BuildType({
         text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/localizedDocs", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
-            "",
+            "int",
             label = "Deployment environment",
             description = "Select an environment on which you want deploy the config",
             display = ParameterDisplay.PROMPT,
