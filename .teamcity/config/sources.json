@@ -1074,6 +1074,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2020.11",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/202011/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
@@ -1148,6 +1149,30 @@
       "branch": "11.2.0",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/1120/DX_superbook.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval"
+      ]
+    },
+    {
+      "id": "dx1140",
+      "title": "Digital 11.4.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "11.4.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/releases/1140/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-OnPrem.ditaval",
@@ -1448,6 +1473,19 @@
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/lob-wc.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
+      ]
+    },
+    {
+      "id": "lobwcsbtrnbanffsrc",
+      "title": "LOB WC Countrywide Release Notes Banff",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/LOB/banff/WC_SBT_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
@@ -2058,6 +2096,17 @@
       ]
     },
     {
+      "id": "in20211xcommonconfigdraftsrc",
+      "title": "InsuranceNow 2021.1 Common Configuration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/CommonConfigGuide20211x.ditamap"
+      ]
+    },
+    {
       "id": "in20211xcservicepconfigdraftsrc",
       "title": "InsuranceNow 2021.1 Consumer Service Portal Configuration Draft",
       "sourceType": "xdocs",
@@ -2355,6 +2404,28 @@
       ]
     },
     {
+      "id": "indevguidejava8draftsrc",
+      "title": "InsuranceNow Developers Java 8 Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/DevelopersGuide_Java8.ditamap"
+      ]
+    },
+    {
+      "id": "indevguidejava11draftsrc",
+      "title": "InsuranceNow Developers Java 11 Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/DevelopersGuide_Java11.ditamap"
+      ]
+    },
+    {
       "id": "in20202xprodattrefdraftsrc",
       "title": "InsuranceNow 2020.2 Product Attribute Reference Draft",
       "sourceType": "xdocs",
@@ -2521,7 +2592,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap",
+        "/Content/doc/cloud-services/auth/GuidewireHub.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
@@ -2531,7 +2602,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/auth/GuidewireHub.ditamap",
+        "/Content/doc/cloud-services/auth/GuidewireHub.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
@@ -2632,12 +2703,12 @@
       ]
     },
     {
-      "id": "gwhawaiidraft",
+      "id": "gwcloudservicesdraft",
       "title": "Guidewire Feature Preview Draft and Early Access",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-feature-preview.git",
       "xdocsPathIds": [
-        "/Content/doc/_supermap-hawaii.ditamap",
+        "/Content/doc/_supermap-cloud-services.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval"
       ]
@@ -2654,7 +2725,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rating.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/cloudRating/CloudRating.ditamap",
+        "/Content/doc/cloud-services/cloudRating/CloudRating.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
@@ -2664,7 +2735,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/cloudRules/RulesCloud.ditamap",
+        "/Content/doc/cloud-services/cloudRules/RulesCloud.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
@@ -2674,7 +2745,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/hawaii/cloudRules/cloud-rules-release-notes.ditamap",
+        "/Content/doc/cloud-services/cloudRules/cloud-rules-release-notes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },

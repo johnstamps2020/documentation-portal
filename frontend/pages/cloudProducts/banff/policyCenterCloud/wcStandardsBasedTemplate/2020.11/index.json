@@ -27,6 +27,16 @@
   },
   "items": [
     {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "lobwcsbtrnbanff"
+        }
+      ]
+    },
+    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [

@@ -299,15 +299,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
-      "root": "digital-codegen-release-notes.ditamap",
-      "srcId": "dxclouddraftdcgrn",
-      "docId": "dxclouddraftdcgrn",
-      "indexRedirect": true
-    },
-
-    {
-      "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dxclouddraftceamapp",
@@ -890,16 +881,16 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaiidraft",
-      "docId": "gwfeaturepreviewearlyaccess"
+      "root": "_supermap-cloud-services.ditamap",
+      "srcId": "gwcloudservicesdraft",
+      "docId": "gwcloudservicesearlyaccess"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "_supermap-hawaii.ditamap",
-      "srcId": "gwhawaiidraft",
-      "docId": "gwfeaturepreviewdraft"
+      "root": "_supermap-cloud-services.ditamap",
+      "srcId": "gwcloudservicesdraft",
+      "docId": "gwcloudservicesdraft"
     },
     {
       "buildType": "dita",
@@ -1476,6 +1467,55 @@
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxstaging",
+      "docId": "dxceam1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceclaims1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxceqb1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpe1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxpeclaims1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxsre1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
+      "docId": "dxve1140"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dxstaging",
       "docId": "dxceam1130"
     },
     {
@@ -1808,6 +1848,14 @@
       "root": "lob-wc.ditamap",
       "srcId": "lobwcguidebanffsrc",
       "docId": "lobwcguidebanff",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "WC_SBT_ReleaseNotes.ditamap",
+      "srcId": "lobwcsbtrnbanffsrc",
+      "docId": "lobwcsbtrnbanff",
       "indexRedirect": true
     },
     {
@@ -3265,6 +3313,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "CommonConfigGuide20211x.ditamap",
+      "srcId": "in20211xcommonconfigdraftsrc",
+      "docId": "in20211xcommonconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20211x.ditamap",
       "srcId": "in20211xcservicepconfigdraftsrc",
       "docId": "in20211xcservicepconfigdraft",
@@ -3491,6 +3547,22 @@
       "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "ininstallassistdraftsrc",
       "docId": "ininstallassistdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "DevelopersGuide_Java8.ditamap",
+      "srcId": "indevguidejava8draftsrc",
+      "docId": "indevguidejava8draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "DevelopersGuide_Java11.ditamap",
+      "srcId": "indevguidejava11draftsrc",
+      "docId": "indevguidejava11draft",
       "indexRedirect": true
     },
     {

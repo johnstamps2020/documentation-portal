@@ -127,6 +127,10 @@
           "id": "ininstallassistdraft"
         },
         {
+          "label": "Developers Setup",
+          "id": "indevguidejava8draft"
+        },
+        {
           "label": "Upgrade Tools",
           "id": "inupgradetoolsdraft"
         }

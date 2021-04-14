@@ -581,27 +581,11 @@
       "title": "Digital Code Generation Guide",
       "url": "cloud/dx/dcg/latest/guide",
       "metadata": {
-        "product": ["Digital Code Generation Extension Pack"],
+        "product": ["CustomerEngage Quote and Buy", "ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dxclouddraftdcgrn",
-      "title": "Release Notes",
-      "url": "cloud/dx/dcg/latest/relnotes",
-      "metadata": {
-        "product": ["Digital Code Generation Extension Pack"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Cortina"],
-        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -1521,7 +1505,7 @@
       "public": false
     },
     {
-      "id": "gwfeaturepreviewearlyaccess",
+      "id": "gwcloudservicesearlyaccess",
       "title": "Guidewire Feature Preview Early Access",
       "url": "cloud/gw-feature-preview/earlyaccess",
       "metadata": {
@@ -1536,7 +1520,7 @@
       "public": false
     },
     {
-      "id": "gwfeaturepreviewdraft",
+      "id": "gwcloudservicesdraft",
       "title": "Guidewire Feature Preview Draft",
       "url": "cloud/gw-feature-preview/latest",
       "metadata": {
@@ -2308,7 +2292,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2323,7 +2307,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2338,7 +2322,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2625,7 +2609,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2640,7 +2624,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2655,7 +2639,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2670,7 +2654,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2685,7 +2669,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3174,6 +3158,22 @@
       "public": false
     },
     {
+      "id": "lobwcsbtrnbanff",
+      "title": "Release Notes",
+      "url": "cloud/lob/wc/202011/cwrn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Workers Compensation Standards Based Template"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "lobbopguideaspen",
       "title": "Businessowners Standards Based Template Guide",
       "url": "cloud/lob/bop/202005/guide",
@@ -3423,6 +3423,104 @@
         "version": ["10.2.0"]
       },
       "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxceam1140",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/1140",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.0"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxceclaims1140",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "self-managed/dx/ce-claims/1140",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.0"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxceqb1140",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/1140",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.0"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxpe1140",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1140",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.0"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxpeclaims1140",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "self-managed/dx/pe-claims/1140",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.0"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxsre1140",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1140",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.0"]
+      },
+      "environments": ["dev", "staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxve1140",
+      "title": "VendorEngage",
+      "url": "self-managed/dx/ve/1140",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.0"]
+      },
+      "environments": ["dev", "staging", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -9154,6 +9252,22 @@
       "public": false
     },
     {
+      "id": "in20211xcommonconfigdraft",
+      "title": "Common Configuration Guide",
+      "url": "cloud/in/20211x/commonconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow 2021.1x - Internal Audience"],
+        "version": ["latest"],
+        "subject": ["Configuration"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20211xcservicepconfigdraft",
       "title": "Consumer Service Portal Configuration Guide",
       "url": "cloud/in/20211x/cservicepconfig",
@@ -9847,6 +9961,41 @@
         "version": ["latest"],
         "subject": ["Installation"],
         "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "indevguidejava8draft",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava8",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": ["latest"],
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "indevguidejava11draft",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava11",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow 2021.1x - Internal Audience"],
+        "version": ["latest"],
+        "subject": ["Installation"],
+        "release": ["Cortina"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,

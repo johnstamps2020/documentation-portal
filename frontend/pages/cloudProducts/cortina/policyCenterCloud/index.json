@@ -112,19 +112,6 @@
               "page": "../serviceRepEngage/latest"
             }
           ]
-        },
-        {
-          "label": "Add-ons",
-          "class": "group",
-          "env": [
-            "int"
-          ],
-          "items": [
-            {
-              "label": "Digital Code Generation Extension Pack",
-              "page": "digitalCodeGenerationExtensionPack/latest"
-            }
-          ]
         }
       ]
     }
