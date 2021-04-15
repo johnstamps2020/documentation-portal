@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: docportal-app-frontend-pv-claim-${DEPLOY_ENV}
+  namespace: doctools
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -68,7 +80,6 @@ spec:
               value: 'yes'
             - name: ENABLE_AUTH
               value: 'yes'
-
           resources:
             requests:
               memory: "1Gi"
@@ -76,5 +87,12 @@ spec:
             limits:
               memory: "1Gi"
               cpu: "1"
+          volumeMounts:
+            - mountPath: "/usr/src/app/pages"
+              name: frontend-storage
+      volumes:
+        - name: frontend-storage
+          persistentVolumeClaim:
+            claimName: docportal-app-frontend-pv-claim-${DEPLOY_ENV}
       imagePullSecrets:
         - name: artifactory-secret
