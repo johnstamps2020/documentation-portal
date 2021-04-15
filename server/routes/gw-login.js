@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function(req, res, next) {
-  const cameFrom = req.headers.referer;
-  if (cameFrom && cameFrom.startsWith(process.env.APP_BASE_URL)) {
-    req.session.redirectTo = cameFrom;
-  }
+router.get('/', function(req, res) {
   res.render('gw-login');
 });
 

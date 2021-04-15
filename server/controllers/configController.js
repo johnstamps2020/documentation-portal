@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 const fs = require('fs').promises;
 const path = require('path');
-const { findNodeById } = require('./helpers/taxonomy');
 
 const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config`);
 
@@ -32,68 +31,6 @@ async function getConfig() {
   } catch (err) {
     console.log(err);
     return { docs: [] };
-  }
-}
-
-async function getTaxonomy(release) {
-  try {
-    const taxonomyFile = release
-      ? `cloud/${release}.json`
-      : 'self-managed.json';
-    if (process.env.LOCAL_CONFIG === 'yes') {
-      console.log(
-        `Getting local taxonomy for the "${process.env.DEPLOY_ENV}" environment`
-      );
-      const taxonomyFilePath = path.join(
-        localConfigDir,
-        `taxonomy/${taxonomyFile}`
-      );
-      const taxonomy = await fs.readFile(taxonomyFilePath, 'utf-8');
-      const json = JSON.parse(taxonomy);
-      return json;
-    } else {
-      const result = await fetch(
-        `${process.env.DOC_S3_URL}/portal-config/taxonomy/${taxonomyFile}`
-      );
-      const json = await result.json();
-      return json;
-    }
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function getReleasesFromTaxonomies(filterId) {
-  try {
-    let taxonomyFiles;
-    if (process.env.LOCAL_CONFIG === 'yes') {
-      console.log(
-        `Getting releases from local taxonomies for the "${process.env.DEPLOY_ENV}" environment`
-      );
-      const taxonomyDir = path.join(localConfigDir, 'taxonomy/cloud');
-      taxonomyFiles = await fs.readdir(taxonomyDir);
-    } else {
-      const result = await fetch(
-        `${process.env.DOC_S3_URL}/portal-config/taxonomy/cloud/index.json`
-      );
-      const json = await result.json();
-      taxonomyFiles = json.paths;
-    }
-    const availableReleases = [];
-    for (const file of taxonomyFiles.filter(f => f.endsWith('.json'))) {
-      const release = path.basename(file, '.json');
-      if (!filterId) {
-        availableReleases.push(release);
-      } else {
-        const taxonomyFromFile = await getTaxonomy(release);
-        if (findNodeById(filterId, taxonomyFromFile)) {
-          availableReleases.push(release);
-        }
-      }
-    }
-    return availableReleases;
-  } catch (err) {
-    console.log(err);
   }
 }
 
@@ -148,8 +85,6 @@ async function getVersionsForProductOnPlatform(product, platform, isLoggedIn) {
 
 module.exports = {
   getConfig,
-  getTaxonomy,
-  getReleasesFromTaxonomies,
   isPublicDoc,
   getVersionsForProductOnPlatform,
 };

@@ -2,135 +2,132 @@
 <html lang="en">
 <% include parts/head %>
 <body>
-<% include parts/header %>
-<div>
-    <div class="row searchResultsPage">
-        <div class="col-sm-2 filterSearchResults">
-            <div class="container allFiltersWrapper">
-                <% filters.forEach(filter => { %>
-                    <h2>Filter by <%= filter.name %></h2>
-                    <% filter.values.forEach(checkboxValue => { %>
-                        <label class="checkboxRowContainer">
-                            <span class="checkboxLabelText"><%= checkboxValue.label %></span>
-                            <span class="docCount"><%= checkboxValue.doc_count %></span>
-                            <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
-                                   value="<%= checkboxValue.label %>"
-                            <% if (checkboxValue.checked) { %>
-                                   checked="true"
-                                    <% } %>
-                            />
-                            <span class="checkmark"></span>
-                        </label>
-                    <% }) %>
-                <% }) %>
-            </div>
-            <% if (!userContext) { %>
-                <div class="notLoggedInWarning">
-                    You are not logged in, search results are limited to public 
-                    documents only.
+<%- include('parts/header', { hideLoginButton: false, headerClass: 'header-search' }) %>
+<main class="fullWidth searchPage">
+    <div class="filterSearchResults">
+        <div>
+            <% filters.forEach(filter => { %>
+                <div class="filterGroup">
+                    <h2 class="filterHeader">Filter by <%= filter.name %></h2>
+                    <div class="filters">
+                        <% filter.values.forEach(checkboxValue => { %>
+                            <label class="checkboxRowContainer">
+                                <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
+                                       value="<%= checkboxValue.label %>"
+                                <% if (checkboxValue.checked) { %>
+                                       checked="true"
+                                        <% } %>
+                                />
+                                <span><%= checkboxValue.label %></span>
+                                <span class="docCount"><%= checkboxValue.doc_count %></span>
+                            </label>
+                        <% }) %>
+                    </div>
                 </div>
-            <% } %>
+            <% }) %>
         </div>
-        <div class="col-sm-8 docPanelContainer">
-            <div class="resultWrapper">
-                <h1>Search results for "<%= query %>"</h1>
-                <div class="resultsSubheading">
+    </div>
+    <div class="resultWrapper">
+        <% if (!userContext) { %>
+            <div class="notLoggedInWarning">
+                You are not logged in, search results are limited to public 
+                documents only.
+            </div>
+        <% } %>
+        <h1>Search results for "<%= query %>"</h1>
+        <div class="resultsSubheading">
             <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
                 %> results (page <%= currentPage %> of <%= pages %>)</span>
-                    <span class="paginationWrapper">
-              <span>View items:</span>
-              <select id="pagination">
-                  <% ['10', '25', '50', '100'].forEach(rpp => { %>
-                      <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
-                  <% }) %>
-              </select>
+            <span class="paginationWrapper">
+                <span>View items:</span>
+                <select id="pagination">
+                    <% ['10', '25', '50', '100'].forEach(rpp => { %>
+                        <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
+                    <% }) %>
+                </select>
             </span>
-                </div>
-                <div class="searchResults" id="searchResults">
-                    <% searchResults.forEach(result => { %>
-                        <h2>
-                            <a href="<%= result.href %>"
-                            ><%= result.title %></a>
-                        </h2>
-                        <div class="resultBadges">
-                            <% result.docTags.forEach(tag => { %>
-                                <% if (Array.isArray(tag)) { %>
-                                    <% tag.forEach(value => { %>
-                                        <span class="infoLabel"><%= value %></span>
-                                    <% }) %>
-                                <% } else { %>
-                                    <span class="infoLabel"><%= tag %></span>
-                                <% } %>
+        </div>
+        <div class="searchResults" id="searchResults">
+            <% searchResults.forEach(result => { %>
+                <h2>
+                    <a href="<%= result.href %>"
+                    ><%= result.title %></a>
+                </h2>
+                <div class="resultBadges">
+                    <% result.docTags.forEach(tag => { %>
+                        <% if (Array.isArray(tag)) { %>
+                            <% tag.forEach(value => { %>
+                                <span class="infoLabel"><%= value %></span>
                             <% }) %>
-                        </div>
-                        <div><%= result.body %></div>
-                        <% if (result.inner_hits) {
-                            let versionsToDisplay = [];
-                            for (const innerHit of result.inner_hits) {
-                                const hitHref = innerHit._source.href;
-                                const hitVersion = innerHit._source.version.join(', ');
-                                if (hitVersion !== result.version && !versionsToDisplay.some(v => v.version === hitVersion)) {
-                                    versionsToDisplay.push({
-                                        href: hitHref,
-                                        version: hitVersion
-                                    });
-                                }
-                            }
-                            if (versionsToDisplay.length > 0) { %>
-                                <div class="otherHits">Also found in:
-                                    <span>
-                                        <% for (const otherVersion of versionsToDisplay) { %>
-                                            <a class="otherHit" href="<%= otherVersion.href %>"><%= otherVersion.version %></a>
-                                        <% } %>
-                                    </span>
-                                </div>
-                            <% } %>
+                        <% } else { %>
+                            <span class="infoLabel"><%= tag %></span>
                         <% } %>
                     <% }) %>
                 </div>
-                <% if (pages > 0) { %>
-                    <ul class="pagination text-center">
-                        <% if (currentPage == 1) { %>
-                            <li class="disabled"><a>First</a></li>
-                        <% } else { %>
-                            <li>
-                                <button onclick="setUrlParam('page', '1')">First</button>
-                            </li>
-                        <% } %>
-                        <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
-                                4 : 1) %>
-                        <% if (i !== 1) { %>
-                            <li class="disabled"><a>...</a></li>
-                        <% } %>
-                        <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
-                        { %> <% if (i == currentPage) { %>
-                            <li class="disabled"><%= i %></li>
-                        <% } else { %>
-                            <li>
-                                <button onclick="setUrlParam('page', <%= i %>)">
-                                    <%= i %>
-                                </button>
-                            </li>
-                        <% } %> <% if (i == Number(currentPage) + 4 && i < pages) { %>
-                            <li class="disabled"><a>...</a></li>
-                        <% } %>
-                        <% } %>
-                        <% if (currentPage == pages) { %>
-                            <li class="disabled"><a>Last</a></li>
-                        <% } else { %>
-                            <li>
-                                <button onclick="setUrlParam('page', <%= pages %>)">
-                                    Last
-                                </button>
-                            </li>
-                        <% } %>
-                    </ul>
+                <div class="resultBody"><%= result.body %></div>
+                <% if (result.inner_hits) {
+                    let versionsToDisplay = [];
+                    for (const innerHit of result.inner_hits) {
+                        const hitHref = innerHit._source.href;
+                        const hitVersion = innerHit._source.version.join(', ');
+                        if (hitVersion !== result.version && !versionsToDisplay.some(v => v.version === hitVersion)) {
+                            versionsToDisplay.push({
+                                href: hitHref,
+                                version: hitVersion
+                            });
+                        }
+                    }
+                    if (versionsToDisplay.length > 0) { %>
+                        <div class="otherHits">
+                            <span>Also found in:</span>
+                            <% for (const otherVersion of versionsToDisplay) { %>
+                                <a class="otherHit" href="<%= otherVersion.href %>"><%= otherVersion.version %></a>
+                            <% } %>
+                        </div>
+                    <% } %>
                 <% } %>
-            </div>
+            <% }) %>
         </div>
-        <div class="col-sm-2 grayBackground">&nbsp;</div>
+        <% if (pages > 0) { %>
+            <ul class="pagination">
+                <% if (currentPage == 1) { %>
+                    <li class="disabled">First</li>
+                <% } else { %>
+                    <li>
+                        <button onclick="setUrlParam('page', '1')">First</button>
+                    </li>
+                <% } %>
+                <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
+                        4 : 1) %>
+                <% if (i !== 1) { %>
+                    <li class="disabled">...</li>
+                <% } %>
+                <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
+                { %> <% if (i == currentPage) { %>
+                    <li class="disabled"><%= i %></li>
+                <% } else { %>
+                    <li>
+                        <button onclick="setUrlParam('page', <%= i %>)">
+                            <%= i %>
+                        </button>
+                    </li>
+                <% } %> <% if (i == Number(currentPage) + 4 && i < pages) { %>
+                    <li class="disabled">...</li>
+                <% } %>
+                <% } %>
+                <% if (currentPage == pages) { %>
+                    <li class="disabled">Last</li>
+                <% } else { %>
+                    <li>
+                        <button onclick="setUrlParam('page', <%= pages %>)">
+                            Last
+                        </button>
+                    </li>
+                <% } %>
+            </ul>
+        <% } %>
     </div>
-</div>
+</main>
 <script>
     function setUrlParam(paramName, paramValue) {
         const url = new URL(window.location.href);
@@ -190,5 +187,5 @@
     }
 </script>
 </body>
-<% include parts/footer %>
+<%- include('parts/footer', { footerClass: 'footer-search' }) %>
 </html>

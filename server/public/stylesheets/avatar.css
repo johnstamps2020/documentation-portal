@@ -1,0 +1,96 @@
+.invisible {
+  visibility: hidden;
+}
+
+#avatar {
+  --clr-GW-WHITE: #fafafa;
+  margin-left: auto;
+}
+
+#avatarButton {
+  position: relative;
+  background: url(/images/account_circle-24px.svg);
+  border: none;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+
+#avatarButton svg {
+  fill: white;
+}
+
+.avatarMenu {
+  display: flex;
+  position: absolute;
+  top: 22px;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100px);
+  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
+  background: linear-gradient(
+    180deg,
+    transparent 26px,
+    var(--clr-GW-WHITE) 26px 100%
+  );
+  padding: 48px 24px 24px 24px;
+  text-align: left;
+  border-radius: 4px;
+  box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
+  cursor: default;
+}
+
+#avatarButton:hover .avatarMenu,
+#avatarButton:focus-within .avatarMenu,
+.avatarMenu:hover {
+  visibility: visible;
+  transform: translateY(0);
+  opacity: 1;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1;
+  animation-delay: 0.5s;
+}
+
+.avatarMenuHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatarMenuIcon {
+  background: url(/images/account_inverse-24px.svg);
+  width: 28px;
+  height: 28px;
+}
+
+.avatarMenuInfo {
+  padding: 0 6px;
+}
+
+.avatarMenuName {
+  color: var(--clr-GW-BLACK);
+  font-size: 1rem;
+}
+
+.avatarMenuEmail {
+  color: var(--clr-GW-BLACKISH);
+  font-size: 0.9rem;
+}
+
+.avatarMenuDivider {
+  border-bottom: 1px solid var(--clr-GW-HEADER-BORDER);
+}
+
+.avatarMenuActions {
+  padding: 8px 6px;
+}
+
+.avatarMenuLogout {
+  color: var(--clr-GW-BLACK);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 4px 0;
+}

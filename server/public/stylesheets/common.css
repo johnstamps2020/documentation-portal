@@ -3,214 +3,222 @@
 
 html,
 body {
-    /* PORTAL-SPECIFIC */
-    --footer-height: 84px;
-    --header-height: 64px;
-    --main-height: calc(100vh - var(--header-height) - var(--footer-height));
-    --search-bar-height: 104px;
-    --search-field-width: 360px;
-    --search-button-width: 16px;
-    /*  */
-    /* -------- JUTRO -------- */
-    /*  */
-    /* COLOR */
-    --GW-COLOR-BRAND-1: #00739d;
-    --GW-COLOR-BRAND-1-HOVER: #006083;
-    --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
-    --GW-COLOR-BRAND-2: #3c4c5e;
-    --GW-COLOR-BRAND-2-HOVER: #46596e;
-    --GW-COLOR-BRAND-2-ACTIVE: #50657d;
-    --GW-COLOR-FOCUS-1: #1e9acf;
-    --GW-COLOR-BORDER: #acb9ca;
-    --GW-COLOR-BACKGROUND-1-ACTIVE: #E6E6E6;
-    /* TEXT COLOR */
-    --GW-COLOR-TEXT-1: #28333f;
-    --GW-COLOR-TEXT-2: #657580;
-    --GW-COLOR-TEXT-3: #ffffff;
-    --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
-    --GW-COLOR-ALERT-INFO: #4074ce;
-    /* BACKGROUND */
-    --GW-COLOR-BKGD-1: #fafafa;
-    --GW-COLOR-BKGD-2: #e9f9ff;
-    --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
-    --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
-    /* SPACING */
-    --GW-SPACING-XXS: 0.25rem;
-    --GW-SPACING-XS: 0.5rem;
-    --GW-SPACING-SM: 0.75rem;
-    --GW-SPACING: 1rem;
-    --GW-SPACING-LG: 1.25rem;
-    --GW-SPACING-XL: 1.5rem;
-    --GW-SPACING-XXL: 2rem;
-    --GW-SPACING-XXXL: 2.5rem;
+  /* PORTAL-SPECIFIC */
+  --footer-height: 84px;
+  --header-height: 68px;
+  --main-height: calc(100vh - var(--header-height) - var(--footer-height));
+  --search-bar-height: 104px;
+  --search-field-width: 360px;
+  --search-button-width: 16px;
+  /*  */
+  /* -------- JUTRO -------- */
+  /*  */
+  /* COLOR */
+  --GW-COLOR-BRAND-1: #00739d;
+  --GW-COLOR-BRAND-1-HOVER: #006083;
+  --GW-COLOR-BRAND-1-ACTIVE: #004e6a;
+  --GW-COLOR-BRAND-2: #3c4c5e;
+  --GW-COLOR-BRAND-2-HOVER: #46596e;
+  --GW-COLOR-BRAND-2-ACTIVE: #50657d;
+  --GW-COLOR-FOCUS-1: #1e9acf;
+  --GW-COLOR-BORDER: #acb9ca;
+  --GW-COLOR-BACKGROUND-1-ACTIVE: #e6e6e6;
+  --bs-GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
+  --clr-GW-HEADER-FOOTER-BKG: rgb(19, 30, 46);
+  --clr-GW-BLACK: #28333f;
+  --clr-GW-BLACKISH: #657580;
+  --clr-GW-HEADER-BORDER: #7d91ac;
+  --clr-GW-BREADCRUMB: #324c76; /* rgb(50, 76, 118) */
+  /* TEXT COLOR */
+  --GW-COLOR-TEXT-1: #28333f;
+  --GW-COLOR-TEXT-2: #657580;
+  --GW-COLOR-TEXT-3: #ffffff;
+  --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
+  --GW-COLOR-ALERT-INFO: #4074ce;
+  /* BACKGROUND */
+  --GW-COLOR-BKGD-1: #fafafa;
+  --GW-COLOR-BKGD-2: #e9f9ff;
+  --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
+  --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
+  /* SPACING */
+  --GW-SPACING-XXS: 0.25rem;
+  --GW-SPACING-XS: 0.5rem;
+  --GW-SPACING-SM: 0.75rem;
+  --GW-SPACING: 1rem;
+  --GW-SPACING-LG: 1.25rem;
+  --GW-SPACING-XL: 1.5rem;
+  --GW-SPACING-XXL: 2rem;
+  --GW-SPACING-XXXL: 2.5rem;
 
-    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif !important;
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif !important;
 }
 
 .pageHeader {
-    min-height: var(--header-height);
-    background-color: var(--GW-COLOR-BRAND-2);
+  min-height: var(--header-height);
+  background-color: var(--GW-COLOR-BRAND-2);
 }
 
 .pageHeader div.col-sm {
-    padding: 0;
+  padding: 0;
 }
 
 .logoWrapper {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 .pageLogo {
-    padding-left: 32px;
-    height: 32px;
-    width: 340px;
+  padding-left: 32px;
+  height: 32px;
+  width: 340px;
 }
 
 .searchBoxContainer {
-    margin-top: 16px;
-    height: 32px;
+  margin-top: 16px;
+  height: 32px;
 }
 
 .searchBoxContainer * {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 div.searchBoxPusher {
-    padding: 0;
+  padding: 0;
 }
 
 .searchFieldWrapper {
-    background-color: var(--GW-COLOR-BRAND-2-HOVER);
-    border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 4px;
-    font-size: 14px;
-    padding-left: 14px;
-    padding-right: 14px;
-    width: var(--search-field-width);
-    margin: auto;
+  background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-left: 14px;
+  padding-right: 14px;
+  width: var(--search-field-width);
+  margin: auto;
 }
 
 .searchField {
-    color: var(--GW-COLOR-TEXT-3);
-    background-color: var(--GW-COLOR-BRAND-2-HOVER);
-    width: calc(100% - var(--search-button-width) - 16px);
-    border: none;
-    height: 32px;
+  color: var(--clr-GW-BLACKISH);
+  background-color: var(--GW-COLOR-BRAND-2-HOVER);
+  width: calc(100% - var(--search-button-width) - 16px);
+  border: none;
+  height: 32px;
 }
 
 .searchButton {
-    border: none;
-    margin-left: 12px;
-    background-image: url(../images/search.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: transparent;
-    height: 24px;
-    width: var(--search-button-width);
+  border: none;
+  margin-left: 12px;
+  background-image: url(../images/search.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  height: 24px;
+  width: var(--search-button-width);
 }
 
 .searchField::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: var(--GW-COLOR-TEXT-3);
-    opacity: 1; /* Firefox */
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--GW-COLOR-TEXT-3);
+  opacity: 1; /* Firefox */
 }
 
 .searchField:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: var(--GW-COLOR-TEXT-3);
+  /* Internet Explorer 10-11 */
+  color: var(--GW-COLOR-TEXT-3);
 }
 
 .searchField::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: var(--GW-COLOR-TEXT-3);
+  /* Microsoft Edge */
+  color: var(--GW-COLOR-TEXT-3);
 }
 
 .pageFooter {
-    min-height: var(--footer-height);
-    color: var(--GW-COLOR-TEXT-3);
-    background-color: var(--GW-COLOR-TEXT-1);
-    padding: 16px 32px;
+  min-height: var(--footer-height);
+  color: var(--GW-COLOR-TEXT-3);
+  background-color: var(--GW-COLOR-TEXT-1);
+  padding: 16px 32px;
 }
 
 .footerCopyright {
-    display: block;
-    font-size: 10px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+  display: block;
+  font-size: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .footerLinks {
-    display: block;
-    padding-top: 4px;
-    padding-bottom: 4px;
+  display: block;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .footerLink a {
-    margin-right: 32px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--GW-COLOR-TEXT-3) !important;
+  margin-right: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--GW-COLOR-TEXT-3) !important;
 }
 
 .footerLink a:hover {
-    text-decoration: none;
-    color: var(--GW-COLOR-TEXT-3-HOVER);
+  text-decoration: none;
+  color: var(--GW-COLOR-TEXT-3-HOVER);
 }
 
 a {
-    color: var(--GW-COLOR-BRAND-1) !important;
+  color: var(--GW-COLOR-BRAND-1) !important;
 }
 
 a svg {
-    fill: var(--GW-COLOR-BRAND-1) !important;
+  fill: var(--GW-COLOR-BRAND-1) !important;
 }
 
 a:hover {
-    color: var(--GW-COLOR-BRAND-1-HOVER) !important;
+  color: var(--GW-COLOR-BRAND-1-HOVER) !important;
 }
 
 a:hover svg {
-    fill: var(--GW-COLOR-BRAND-1-HOVER) !important;
+  fill: var(--GW-COLOR-BRAND-1-HOVER) !important;
 }
 
 a:active {
-    color: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
+  color: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
 }
 
 a:active svg {
-    fill: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
+  fill: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
 }
 .loginButtonSmall {
-    font-size: 14px;
-    margin: auto;
+  font-size: 14px;
+  margin: auto;
 }
 
-.gwButtonPrimary, .gwButtonSecondary {
-    line-height: var(--button-height);
-    text-align: center;
-    color: var(--GW-COLOR-TEXT-3) !important;
-    border-radius: 4px;
-    background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
-    box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
-    display: inline-block;
-    height: var(--button-height);
+.gwButtonPrimary,
+.gwButtonSecondary {
+  line-height: var(--button-height);
+  text-align: center;
+  color: var(--GW-COLOR-TEXT-3) !important;
+  border-radius: 4px;
+  background: linear-gradient(194.81deg, #0086b6 0%, #00739d 100%);
+  box-shadow: 0 2px 4px 0 rgba(40, 51, 63, 0.16);
+  display: inline-block;
+  height: var(--button-height);
 }
 
 .gwButtonPrimary {
-    --button-height: 48px;
-    width: 132px;
+  --button-height: 48px;
+  width: 132px;
 }
 
 .gwButtonSecondary {
-    --button-height: 32px;
-    width: 70px;
+  --button-height: 32px;
+  width: 70px;
 }
 
-.gwButtonPrimary:hover, .gwButtonSecondary:hover {
-    text-decoration: none;
-    color: var(--GW-COLOR-TEXT-3) !important;
-    background: var(--GW-COLOR-BRAND-1-HOVER);
+.gwButtonPrimary:hover,
+.gwButtonSecondary:hover {
+  text-decoration: none;
+  color: var(--GW-COLOR-TEXT-3) !important;
+  background: var(--GW-COLOR-BRAND-1-HOVER);
 }

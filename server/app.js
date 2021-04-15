@@ -15,6 +15,19 @@ const httpContext = require('express-http-context');
 
 const port = process.env.PORT || 8081;
 const app = express();
+
+const options = {
+  etag: true,
+  maxAge: 3600000,
+  redirect: false,
+  setHeaders: function(res, path, stat) {
+    res.set({
+      'x-timestamp': Date.now(),
+      'Cache-Control': 'public, max-age: 3600'
+    });
+  }
+}
+
 console.log('Server app instantiated!');
 
 // error handler
@@ -49,15 +62,11 @@ if (process.env.LOCALHOST_SESSION_SETTINGS === 'yes') {
 app.set('trust proxy', 1);
 app.use(session(sessionSettings));
 
-const homeRouter = require('./routes/home');
 const gwLoginRouter = require('./routes/gw-login');
 const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
-const cloudProductsRouter = require('./routes/cloud-products');
-const selfManagedProductsRouter = require('./routes/self-managed-products');
 const searchRouter = require('./routes/search');
-const allProductsRouter = require('./routes/all-products');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
@@ -78,16 +87,20 @@ app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
 
-// serve docs from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
+// serve static assets from the public folder
+app.use(express.static(path.join(__dirname, 'public'), options));
 app.use(express.static(path.join(__dirname, 'sitemap')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const oktaOIDC = require('./controllers/authController').oktaOIDC;
 const authGateway = require('./controllers/authController').authGateway;
+
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
 app.use(oktaOIDC.router);
 app.use(authGateway);
+
+// server static pages from the pages folder
+app.use(express.static(path.join(__dirname, 'pages')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -108,11 +121,6 @@ app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
-
-app.use('/selfManagedProducts', selfManagedProductsRouter);
-app.use('/cloudProducts', cloudProductsRouter);
-app.use('/product', allProductsRouter);
-app.use('/', homeRouter);
 
 const portal2ProxyOptions = {
   target: 'https://portal2.guidewire.com',

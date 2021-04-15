@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-@import "common.css";
+@import 'common.css';
+@import 'avatar.css';
 
 @media only screen and (max-width: 580px) {
-  /* leaving this here if wne need it later */
+  /* leaving this here if we need it later */
 }
 
 @media only screen and (min-width: 581px) {
@@ -15,12 +16,12 @@
   }
 
   input.wh_search_textfield {
-    border-color: var(--GW-COLOR-BRAND-2-ACTIVE);
+    border-color: 1px solid var(--clr-GW-HEADER-BORDER);
     border-style: solid;
     border-width: 1px;
     border-radius: 4px;
-    background-color: var(--GW-COLOR-BRAND-2-HOVER);
-    color: var(--GW-COLOR-TEXT-3);
+    background-color: #fff;
+    color: var(--clr-GW-BLACK) !important;
     padding-left: 14px;
     padding-right: 36px;
     width: var(--search-field-width);
@@ -29,23 +30,23 @@
 
   input.wh_search_textfield::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: var(--GW-COLOR-TEXT-3);
+    color: var(--clr-GW-BLACKISH);
     opacity: 1; /* Firefox */
   }
 
   input.wh_search_textfield:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: var(--GW-COLOR-TEXT-3);
+    color: var(--clr-GW-BLACKISH);
   }
 
   input.wh_search_textfield::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: var(--GW-COLOR-TEXT-3);
+    color: var(--clr-GW-BLACKISH);
   }
 
   button.wh_search_button {
     background-color: transparent;
-    color: var(--GW-COLOR-TEXT-3);
+    color: var(--clr-GW-BLACKISH);
     width: var(--search-button-width);
     height: 32px;
     left: calc(var(--search-field-width) - (var(--search-button-width) * 3));
@@ -79,12 +80,12 @@
 
 header.navbar.navbar-default.wh_header {
   min-height: var(--header-height) !important;
-  background-color: var(--GW-COLOR-BRAND-2) !important;
+  background-color: var(--clr-GW-HEADER-FOOTER-BKG) !important;
 }
 
 header {
   min-height: var(--header-height) !important;
-  background-color: var(--GW-COLOR-BRAND-2) !important;
+  background-color: var(--clr-GW-HEADER-FOOTER-BKG) !important;
 }
 
 div.wh_content_area {
@@ -102,7 +103,6 @@ div.wh_content_area {
 .wh_logo {
   display: inline-block;
   background-image: url('/images/guidewire-logo.svg') !important;
-  border-right: solid 1px var(--GW-COLOR-BRAND-2);
   margin-left: 16px;
   width: 340px;
   height: 32px;
@@ -118,7 +118,7 @@ div.wh_publication_title {
 
 .wh_footer {
   min-height: var(--footer-height) !important;
-  background-color: var(--GW-COLOR-TEXT-1) !important;
+  background-color: var(--clr-GW-HEADER-FOOTER-BKG) !important;
   padding: 32px !important;
   padding-top: 16px !important;
   padding-bottom: 16px !important;
@@ -167,14 +167,15 @@ div#affix3 form#searchForm {
   padding: 4px 12px;
   border-radius: 6px;
   border: 1px solid var(--GW-COLOR-BRAND-2);
-  margin: 8px;
+  margin: 0 8px;
+  height: 32px;
 }
 .wh_top_menu_and_indexterms_link > label {
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 
 .wh_topic_label:after {
-  content: "" !important
+  content: '' !important;
 }
 
 html {
@@ -193,11 +194,16 @@ html {
 
 #customHeaderElements {
   display: flex;
-  align-items: baseline;
   float: right;
 }
+#customHeaderElements label {
+  margin-bottom: 0;
+}
 
-.loginLogoutButtonWrapper {
-  padding: 4px 0;
-  text-align: right;
+code,
+kbd,
+pre,
+samp,
+.apiname {
+  font-size: 95%;
 }

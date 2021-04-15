@@ -1,49 +1,26 @@
-<footer class="pageFooter">
-  <div class="footerLinks">
-    <span class="footerLink"
-      ><a href="/support">Legal and Support Information</a></span
-    >
-  </div>
-  <div class="footerCopyright">
-    Copyright © 2001-<%= new Date().getFullYear() %> Guidewire Software, Inc.
-  </div>
+<% if (typeof footerClass !== 'undefined') { %>
+<footer class="<%= footerClass %>">
+  <% } else { %>
+  <footer>
+    <% } %>
+    <div id="footerLeft"></div>
+    <div id="footerCenter"></div>
+    <div id="footerRight">
+      <div>
+        <div class="footerLinks">
+          <span class="footerLink"
+            ><a href="/support">Legal and Support Information</a></span
+          >
+        </div>
+        <div class="footerCopyright">
+          Copyright &#169; 2001-
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Guidewire Software, Inc.
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/scripts/main.js"></script>
 </footer>
-<script
-  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-  crossorigin="anonymous"
-></script>
-<script>
-  (function() {
-    function isInIframe() {
-      try {
-        return window.self !== window.top;
-      } catch (e) {
-        return true;
-      }
-    }
-
-    function hideByCssClass(cssClass) {
-      const el = document.getElementsByClassName(cssClass)[0];
-      if (el) {
-        el.style.display = 'none';
-      }
-    }
-
-    if (isInIframe()) {
-      hideByCssClass('pageHeader');
-      hideByCssClass('pageFooter');
-    }
-  })();
-</script>
-<!-- <script src="/scripts/portal.js"></script> -->

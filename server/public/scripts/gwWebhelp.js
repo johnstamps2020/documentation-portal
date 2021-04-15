@@ -1,82 +1,3 @@
-function findNodeByLabel(labelValue, node) {
-  if (node.label === labelValue) {
-    return node;
-  }
-  if (node.items) {
-    for (const child of node.items) {
-      const result = findNodeByLabel(labelValue, child);
-      if (result) {
-        return result;
-      }
-    }
-  }
-}
-
-async function getConfig() {
-  try {
-    const configUrl = '/safeConfig';
-    const result = await fetch(configUrl);
-    return await result.json();
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-}
-
-async function getTaxonomy(release) {
-  try {
-    let result;
-    if (release) {
-      result = await fetch(`/safeConfig/taxonomy/${release}`);
-    } else {
-      result = await fetch('/safeConfig/taxonomy');
-    }
-
-    const json = await result.json();
-    return json;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function findProductIdInTaxonomies(productName) {
-  try {
-    const result = await fetch('/safeConfig/taxonomy/index');
-    const json = await result.json();
-    const taxonomyFiles = json.paths;
-    const availableReleases = [];
-    for (const file of taxonomyFiles.filter(f => f.endsWith('.json'))) {
-      const release = file
-        .split('/')
-        .pop()
-        .replace('.json', '');
-      availableReleases.push(release);
-    }
-    let productNode;
-    for (const release of availableReleases) {
-      const jsonTaxonomyContents = await getTaxonomy(release);
-      const matchingProductNode = findNodeByLabel(
-        productName,
-        jsonTaxonomyContents
-      );
-      if (matchingProductNode) {
-        productNode = matchingProductNode;
-        break;
-      }
-    }
-    if (!productNode) {
-      const jsonSelfManagedTaxonomyContents = await getTaxonomy();
-      productNode = findNodeByLabel(
-        productName,
-        jsonSelfManagedTaxonomyContents
-      );
-    }
-    return productNode.id;
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
@@ -94,75 +15,10 @@ async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   }
 }
 
-async function getVersions() {
-  try {
-    const product = document
-      .querySelector("meta[name = 'gw-product']")
-      ['content'].split(',');
-    const platform = document
-      .querySelector("meta[name = 'gw-platform']")
-      ['content'].split(',');
-
-    const baseUrl = window.location.protocol + '//' + window.location.host;
-    const json = await getConfig();
-    const docsFromConfig = json.docs.filter(
-      d =>
-        d.metadata.product.some(p => product.includes(p)) &&
-        d.metadata.platform.some(pl => platform.includes(pl)) &&
-        d.displayOnLandingPages !== false
-    );
-
-    const versions = [];
-    for (doc of docsFromConfig) {
-      const sameVersionDocs = docsFromConfig.filter(d =>
-        d.metadata.version.some(dd => doc.metadata.version.includes(dd))
-      );
-      const docVersion = doc.metadata.version[0];
-      if (sameVersionDocs.length > 1) {
-        const productId = await findProductIdInTaxonomies(product[0]);
-        const productVersionPageUrl =
-          baseUrl + '/' + 'product' + '/' + productId + '/' + docVersion;
-        if (!versions.some(ver => ver.link === productVersionPageUrl)) {
-          versions.push({
-            label: docVersion,
-            link: productVersionPageUrl,
-          });
-        }
-      } else {
-        if (doc.url.includes('portal2')) {
-          versions.push({
-            label: docVersion,
-            link: doc.url,
-            public: doc.public,
-          });
-        } else {
-          versions.push({
-            label: docVersion,
-            link: baseUrl + '/' + doc.url,
-            public: doc.public,
-          });
-        }
-      }
-    }
-
-    versions
-      .sort((a, b) =>
-        a.label
-          .replace(/\d+/g, n => +n + 100)
-          .localeCompare(b.label.replace(/\d+/g, n => +n + 100))
-      )
-      .reverse();
-
-    return versions;
-  } catch (err) {
-    console.log(err);
-    return { docs: [] };
-  }
-}
-
 function createContainerForCustomHeaderElements() {
   const container = document.createElement('div');
   container.setAttribute('id', 'customHeaderElements');
+  container.setAttribute('class', 'invisible');
   document
     .getElementById('wh_top_menu_and_indexterms_link')
     .appendChild(container);
@@ -175,18 +31,28 @@ async function createVersionSelector() {
     if (!docProduct) {
       return null;
     }
+    const product = docProduct.split(',');
+    const platform = document
+      .querySelector("meta[name = 'gw-platform']")
+      ['content'].split(',');
+    const version = document
+      .querySelector("meta[name = 'gw-version']")
+      ['content'].split(',');
 
-    let docVersions = await getVersions();
+    //START TODO: Move to an endpoint
+    const result = await fetch('/versionSelectors.json');
+    const versionSelectorMapping = await result.json();
 
-    const response = await fetch('/userInformation');
-    const responseBody = await response.json();
-    const isLoggedIn = responseBody.isLoggedIn;
+    const matchingVersionSelector = versionSelectorMapping.find(
+      s =>
+        product.some(p => p === s.product) &&
+        platform.some(pl => pl === s.platform) &&
+        version.some(v => v === s.version)
+    );
+    //END TODO
 
-    if (!isLoggedIn && Array.isArray(docVersions)) {
-      docVersions = docVersions.filter(v => v.public);
-    }
-
-    if (docVersions.length > 1) {
+    const otherVersions = matchingVersionSelector.otherVersions;
+    if (otherVersions.length > 0) {
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
@@ -211,24 +77,27 @@ async function createVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of docVersions) {
+      for (const val of otherVersions) {
         const option = document.createElement('option');
         option.text = val.label;
-        option.value = val.link;
-
-        const currentVersion = document
-          .querySelector("meta[name = 'gw-version']")
-          ['content'].split(',');
-        if (currentVersion.includes(option.text)) {
-          option.setAttribute('selected', 'selected');
+        let value = val.path;
+        if (val.fallbackPaths) {
+          value = val.fallbackPaths[0];
         }
+        option.value = value;
+
         select.appendChild(option);
       }
+
+      const currentlySelectedOption = document.createElement('option');
+      currentlySelectedOption.text = matchingVersionSelector.version;
+      currentlySelectedOption.setAttribute('selected', 'selected');
+      select.appendChild(currentlySelectedOption);
 
       const label = document.createElement('label');
       label.innerHTML = 'Select version:';
       label.htmlFor = 'versionSelector';
-
+ 
       document
         .getElementById('customHeaderElements')
         .appendChild(label)
@@ -242,58 +111,48 @@ async function createVersionSelector() {
 
 async function addTopLinkToBreadcrumbs() {
   try {
-    const product = document
-      .querySelector("meta[name = 'gw-product']")
-      ['content']?.split(',')[0];
-    const platform = document
-      .querySelector("meta[name = 'gw-platform']")
-      ['content']?.split(',')[0];
-    const version = document
-      .querySelector("meta[name = 'gw-version']")
-      ['content']?.split(',')[0];
-    const baseUrl = window.location.protocol + '//' + window.location.host;
-    const json = await getConfig();
-    const sameVersionDocs = json.docs.filter(
-      d =>
-        d.metadata.product.includes(product) &&
-        d.metadata.platform.includes(platform) &&
-        d.metadata.version.includes(version) &&
-        d.displayOnLandingPages !== false
-    );
-    if (sameVersionDocs.length > 1) {
-      const productId = await findProductIdInTaxonomies(product);
-      const productVersionPageUrl =
-        baseUrl + '/' + 'product' + '/' + productId + '/' + version;
-      const listItem = document.createElement('li');
-      const topicrefSpan = document.createElement('span');
-      topicrefSpan.setAttribute('class', 'topicref');
-      const titleSpan = document.createElement('span');
-      titleSpan.setAttribute('class', 'title');
-      const listItemLink = document.createElement('a');
-      listItemLink.setAttribute('href', productVersionPageUrl);
-      listItemLink.innerText = product + ' ' + version;
+    //START TODO: Move to an endpoint
+    const result = await fetch('/breadcrumbs.json');
+    const breadcrumbsMapping = await result.json();
+    //END TODO
+    const currentPagePathname = window.location.pathname;
+    for (breadcrumb of breadcrumbsMapping) {
+      if (
+        currentPagePathname.startsWith(breadcrumb.docUrl) &&
+        breadcrumb.rootPages.length === 1
+      ) {
+        const productVersionPageUrl = breadcrumb.rootPages[0].path;
+        const listItem = document.createElement('li');
+        const topicrefSpan = document.createElement('span');
+        topicrefSpan.setAttribute('class', 'topicref');
+        const titleSpan = document.createElement('span');
+        titleSpan.setAttribute('class', 'title');
+        const listItemLink = document.createElement('a');
+        listItemLink.setAttribute('href', productVersionPageUrl);
+        listItemLink.innerText = breadcrumb.rootPages[0].label;
 
-      titleSpan.appendChild(listItemLink);
-      topicrefSpan.appendChild(titleSpan);
-      listItem.appendChild(topicrefSpan);
+        titleSpan.appendChild(listItemLink);
+        topicrefSpan.appendChild(titleSpan);
+        listItem.appendChild(topicrefSpan);
 
-      function getBreadcrumbs() {
-        try {
-          let breadcrumbs = document.querySelector(
-            '.wh_breadcrumb > .d-print-inline-block'
-          );
-          if (!breadcrumbs) {
-            window.requestAnimationFrame(getBreadcrumbs);
-          } else {
-            breadcrumbs.prepend(listItem);
+        function getBreadcrumbs() {
+          try {
+            let breadcrumbs = document.querySelector(
+              '.wh_breadcrumb > .d-print-inline-block'
+            );
+            if (!breadcrumbs) {
+              window.requestAnimationFrame(getBreadcrumbs);
+            } else {
+              breadcrumbs.prepend(listItem);
+            }
+          } catch (err) {
+            console.log(err);
+            return null;
           }
-        } catch (err) {
-          console.log(err);
-          return null;
         }
-      }
 
-      getBreadcrumbs();
+        getBreadcrumbs();
+      }
     }
   } catch (err) {
     console.log(err);
@@ -316,25 +175,72 @@ async function addPublicationDate() {
   }
 }
 
-async function addLoginLogoutButton() {
-  const response = await fetch('/userInformation');
-  const responseBody = await response.json();
-  const isLoggedIn = responseBody.isLoggedIn;
-  const buttonWrapper = document.createElement('div');
-  buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
-  const buttonTemplate = document.createElement('a');
-  buttonTemplate.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
-  if (isLoggedIn) {
-    buttonTemplate.setAttribute('href', '/gw-logout');
-    buttonTemplate.innerText = 'Log out';
-  } else {
-    buttonTemplate.setAttribute('href', '/gw-login');
-    buttonTemplate.innerText = 'Log in';
+function toggleAvatar(e) {
+  e.target.classList.toggle('expanded');
+}
+
+// split to addAvatar and addLogInLogOut
+async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
+  const retryAttempts = 5;
+
+  if(window.location.pathname.endsWith('gw-login')) {
+    return;
   }
-  document
-    .getElementById('customHeaderElements')
-    .appendChild(buttonWrapper)
-    .appendChild(buttonTemplate);
+  // /userInformation is not available for a few milliseconds
+  // after login, so if fetching the response fails, try again
+  // in 10ms.
+  try {
+    const response = await fetch('/userInformation');
+    const responseBody = await response.json();
+    const { isLoggedIn, name, preferred_username } = responseBody;
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
+    let userButton;
+
+    if (isLoggedIn) {
+      
+        userButton = document.createElement('div');
+        userButton.setAttribute('id', 'avatar');
+        userButton.innerHTML = `
+        <button 
+          id="avatarButton" 
+          onClick="toggleAvatar(e)" 
+          aria-label="user information"
+        >
+          <div class="avatarMenu">
+            <div class="avatarMenuHeader">
+              <div class="avatarMenuIcon">&nbsp;</div>
+              <div class="avatarMenuInfo">
+                <div class="avatarMenuName">${name}</div>
+                <div class="avatarMenuEmail">${preferred_username}</div>
+              </div>
+            </div>
+            <div class="avatarMenuDivider"></div>
+            <div class="avatarMenuActions">
+              <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+            </div>
+          </div>
+        </button>
+      `;
+    }
+    else {
+      userButton = document.createElement('a');
+      loginButton.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
+      loginButton.setAttribute('href', '/gw-login');
+      loginButton.innerText = 'Log in';
+    }
+    buttonWrapper.appendChild(userButton);
+    document.getElementById('customHeaderElements').appendChild(buttonWrapper);
+  }
+  catch (error) {
+    if (attemptNumber >= retryAttempts ) {
+      console.log('Could not access user information endpoint. ' + error);
+      return;
+    }
+    attemptNumber++
+    retryTimeout += 100
+    setTimeout(setLogInButton(attemptNumber, retryTimeout), retryTimeout)
+  }
 }
 
 function docReady(fn) {
@@ -363,12 +269,20 @@ function hideByCssClass(cssClass) {
   }
 }
 
+async function addCustomElements() {
+  const customHeaderElements = document.getElementById('customHeaderElements');
+  if(customHeaderElements != null) {
+    await createVersionSelector();
+    await createUserButton();
+    customHeaderElements.classList.remove('invisible');
+  }
+}
+
 docReady(async function() {
-  createContainerForCustomHeaderElements();
+  await createContainerForCustomHeaderElements();
+  addCustomElements();
   addTopLinkToBreadcrumbs();
   addPublicationDate();
-  await createVersionSelector();
-  addLoginLogoutButton();
   if (isInIframe()) {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
