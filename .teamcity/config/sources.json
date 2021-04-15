@@ -2914,6 +2914,13 @@
       "branch": "master"
     },
     {
+      "id": "srcapirefswift202011",
+      "title": "Cloud API Reference in Redoc",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
+      "branch": "swift-specs"
+    },
+    {
       "id": "dmrndraftsrc",
       "title": "DataManagement Release Notes Draft",
       "sourceType": "git",
