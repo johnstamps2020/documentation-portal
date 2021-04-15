@@ -61,7 +61,7 @@ spec:
             - name: SESSION_KEY
               value: ${SESSION_KEY}
             - name: ELASTIC_SEARCH_URL
-              value: http://docsearch-us-east-2.doctools:9200
+              value: http://docsearch-${DEPLOY_ENV}.doctools:9200
             - name: DOC_S3_URL
               value: https://ditaot.internal.${DEPLOY_ENV}.service.guidewire.net
             - name: PARTNERS_LOGIN_URL
