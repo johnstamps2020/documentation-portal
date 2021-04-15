@@ -9,9 +9,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  selector:
-    matchLabels:
-      failure-domain.beta.kubernetes.io/zone: us-west-2a
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -24,9 +21,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  selector:
-    matchLabels:
-      failure-domain.beta.kubernetes.io/zone: us-west-2a
 ---
 apiVersion: apps/v1
 kind: Deployment
