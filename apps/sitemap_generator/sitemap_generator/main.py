@@ -40,6 +40,8 @@ def is_not_old_insurance_suite(doc):
             'PolicyCenter', 'ClaimCenter', 'BillingCenter']
         if any(item in product for item in insurance_suite_products):
             for ver in version:
+                if not semver.VersionInfo.isvalid(ver):
+                    return True
                 if semver.compare(ver, '8.0.0') >= 0:
                     return True
             return False
