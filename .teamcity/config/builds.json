@@ -4094,13 +4094,13 @@
     },
     {
       "buildType": "yarn",
-      "docId": "is202011apisecretbuild",
+      "docId": "cc202011apiref",
       "srcId": "srcapiref202011"
     },
     {
       "buildType": "yarn",
-      "docId": "cc202011apiref",
-      "srcId": "srcapiref202011"
+      "docId": "cc202011apirefswift",
+      "srcId": "srcapirefswift202011"
     },
     {
       "buildType": "dita",

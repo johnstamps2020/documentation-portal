@@ -6821,22 +6821,6 @@
       "public": false
     },
     {
-      "id": "is202011apisecretbuild",
-      "title": "Build all IS API References",
-      "url": "cloud/is/202011/apiref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "cc202011apiref",
       "title": "Cloud API Reference",
       "url": "cloud/cc/202011/apiref",
@@ -6847,7 +6831,23 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "cc202011apirefswift",
+      "title": "Cloud API Reference SWIFT",
+      "url": "cloud/cc/202011/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true

@@ -90,9 +90,14 @@ spec:
           volumeMounts:
             - mountPath: "/usr/src/app/pages"
               name: frontend-storage
+            - mountPath: "/usr/src/app/sitemap"
+              name: sitemap-storage
       volumes:
         - name: frontend-storage
           persistentVolumeClaim:
             claimName: docportal-app-frontend-pv-claim-${DEPLOY_ENV}
+        - name: sitemap-storage
+          persistentVolumeClaim:
+            claimName: docportal-app-sitemap-pv-claim-${DEPLOY_ENV}
       imagePullSecrets:
         - name: artifactory-secret

@@ -12,6 +12,7 @@ class IndexEntry(scrapy.Item):
     version = scrapy.Field()
     public = scrapy.Field()
     internal = scrapy.Field()
+    indexed_date = scrapy.Field()
 
 
 class BrokenLink(scrapy.Item):

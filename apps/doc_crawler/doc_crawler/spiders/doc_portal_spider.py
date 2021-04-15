@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 from urllib.parse import urlparse
+from datetime import date
 
 import scrapy
 from scrapy import Request
@@ -66,6 +67,7 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_platform = doc_object['metadata']['platform']
             index_entry_version = doc_object['metadata']['version']
             index_entry_public = doc_object['public']
+            index_entry_date = date.today().isoformat()
 
             is_index_entry_internal = response.xpath(
                 '/html/head/meta[@name="internal" and @content="true"]').get()
@@ -91,7 +93,7 @@ class DocPortalSpider(scrapy.Spider):
             elif docusaurus_selector:
                 body_elements = docusaurus_selector
             elif sphinx_selector:
-                body_element = sphinx_selector
+                body_elements = sphinx_selector
 
             index_entry_body = ''
             for body_element in body_elements:
@@ -109,7 +111,8 @@ class DocPortalSpider(scrapy.Spider):
                 platform=index_entry_platform,
                 version=index_entry_version,
                 public=index_entry_public,
-                internal=index_entry_internal
+                internal=index_entry_internal,
+                indexed_date=index_entry_date
             )
 
             yield index_entry

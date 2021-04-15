@@ -582,6 +582,49 @@ object PublishIndexCleanerDockerImage : BuildType({
 
 })
 
+object PublishSitemapGeneratorDockerImage : BuildType({
+    name = "Publish the image for Sitemap Generator"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish the image for Sitemap Generator to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/sitemap_generator
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/sitemap_generator/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object CleanUpIndex : BuildType({
     name = "Clean up index"
     description = "Remove documents from index which are not in the config"
@@ -646,6 +689,101 @@ object CleanUpIndex : BuildType({
                 dockerRegistryId = "PROJECT_EXT_155"
             }
         }
+    }
+})
+
+object GenerateSitemap : BuildType({
+    name = "Generate sitemap.xml"
+    description = "Create a sitemap based on the search index"
+
+    params {
+        select(
+            "env.DEPLOY_ENV",
+            "us-east-2",
+            label = "Deployment environment",
+            description = "Select an environment on which you want clean up the index",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod" to "us-east-2")
+        )
+        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/build", allowEmpty = false)
+        text(
+            "env.ELASTICSEARCH_URLS",
+            "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+            allowEmpty = false
+        )
+        text(
+            "env.ELASTICSEARCH_URLS_PROD",
+            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+            allowEmpty = false
+        )
+        text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+
+    }
+
+    steps {
+        script {
+            name = "Run the script which generates the sitemap"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                    export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
+                fi
+                
+                sitemap_generator
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Deploy sitemap to Kubernetes"
+            id = "DEPLOY_TO_K8S"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                fi
+                sh %teamcity.build.workingDir%/ci/deploySitemap.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    triggers {
+        schedule {
+            schedulingPolicy = daily {
+                hour = 1
+                minute = 1
+            }
+            branchFilter = "+:<default>"
+        }
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+
+        cleanCheckout = true
     }
 })
 
@@ -1383,6 +1521,7 @@ object Deployment : Project({
     buildType(PublishIndexCleanerDockerImage)
     buildType(PublishFlailSsgDockerImage)
     buildType(PublishLionPageBuilderDockerImage)
+    buildType(PublishSitemapGeneratorDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
 })
@@ -1767,11 +1906,7 @@ object HelperObjects {
             }
 
             params {
-                password(
-                    "env.AUTH_TOKEN",
-                    "zxxaeec8f6f6d499cc0f0456adfd76876510711db553bf4359d4b467411e68628e67b5785b904c4aeaf6847d4cb54386644e6a95f0b3a5ed7c6c2d0f461cc147a675cfa7d14a3d1af6ca3fc930f3765e9e9361acdb990f107a25d9043559a221834c6c16a63597f75da68982eb331797083",
-                    display = ParameterDisplay.HIDDEN
-                )
+                password("env.AUTH_TOKEN", "credentialsJSON:67d9216c-4183-4ebf-a9b3-374ea5e547ec", display = ParameterDisplay.HIDDEN)
                 text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.SRC_ID", source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -2838,6 +2973,7 @@ object BuildYarn : Template({
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:12.14.1"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
+            dockerRunParameters = "--user 1000:1000"
         }
     }
 
@@ -3067,6 +3203,7 @@ object Content : Project({
     subProject(XdocsExportBuilds)
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
+    buildType(GenerateSitemap)
 })
 
 object Docs : Project({

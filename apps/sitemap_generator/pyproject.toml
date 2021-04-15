@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "sitemap_generator"
+version = "1.0.0"
+description = "An application to clean the search index for the doc portal"
+authors = ["Guidewire <doctools@guidewire.com>"]
+readme = "README.md"
+repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Proprietary",
+    "Operating System :: OS Independent",
+]
+[tool.poetry.scripts]
+sitemap_generator = "sitemap_generator.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+elasticsearch = "^7.1"
+semver = "^2.13.0"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
