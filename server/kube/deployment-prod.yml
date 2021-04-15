@@ -1,3 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: docportal-app-sitemap-pv-claim-${DEPLOY_ENV}
+  namespace: doctools
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,7 +61,7 @@ spec:
             - name: SESSION_KEY
               value: ${SESSION_KEY}
             - name: ELASTIC_SEARCH_URL
-              value: http://docsearch-us-east-2.doctools:9200
+              value: http://docsearch-${DEPLOY_ENV}.doctools:9200
             - name: DOC_S3_URL
               value: https://ditaot.internal.${DEPLOY_ENV}.service.guidewire.net
             - name: PARTNERS_LOGIN_URL
@@ -68,7 +80,6 @@ spec:
               value: 'yes'
             - name: ENABLE_AUTH
               value: 'yes'
-
           resources:
             requests:
               memory: "1Gi"
@@ -76,5 +87,12 @@ spec:
             limits:
               memory: "1Gi"
               cpu: "1"
+          volumeMounts:
+            - mountPath: "/usr/src/app/sitemap"
+              name: sitemap-storage
+      volumes:
+        - name: sitemap-storage
+          persistentVolumeClaim:
+            claimName: docportal-app-sitemap-pv-claim-${DEPLOY_ENV}
       imagePullSecrets:
         - name: artifactory-secret
