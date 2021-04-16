@@ -2,6 +2,7 @@
 @import 'avatar.css';
 
 :root {
+  --gw-font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   --clr-GW-BLUE: #00739d;
   --clr-GW-NAVY-BLUE: #3c4c5e;
   --clr-GW-BLUE-HOVER: #006083;
@@ -40,7 +41,7 @@ input.searchField:-webkit-autofill {
 }
 
 body {
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-family: var(--gw-font-family);
   color: var(--clr-GW-HEADER-FOOTER-BKG);
 }
 
@@ -853,11 +854,19 @@ main.support h2 {
 }
 
 #pageSelector {
+  display: block;
+  width: 300px;
+  font-family: var(--gw-font-family);
+  font-size: 16px;
   padding: 4px 12px;
+  margin: 4px 0;
   border-radius: 6px;
   border: 1px solid var(--clr-GW-NAVY-BLUE);
-  margin: 8px;
   color: var(--clr-GW-HEADER-FOOTER-BKG);
+  -webkit-appearance: none;
+  background-image: url(/images/expand_more_black_24dp.svg);
+  background-position: right 6px top 3px, 0 0;
+  background-repeat: no-repeat;
 }
 
 /* External site navigation */
