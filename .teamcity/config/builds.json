@@ -880,17 +880,52 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "_supermap-cloud-services.ditamap",
-      "srcId": "gwcloudservicesdraft",
-      "docId": "gwcloudservicesearlyaccess"
+      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "root": "Autopilot.ditamap",
+      "srcId": "claimsautopilotdraftsrc",
+      "docId": "claimsautopilotdraft"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "_supermap-cloud-services.ditamap",
-      "srcId": "gwcloudservicesdraft",
-      "docId": "gwcloudservicesdraft"
+      "root": "CloudRating.ditamap",
+      "srcId": "cloudratingdraftsrc",
+      "docId": "cloudratingdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "RulesCloud.ditamap",
+      "srcId": "cloudrulesdraftsrc",
+      "docId": "cloudrulesdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "cloud-rules-release-notes.ditamap",
+      "srcId": "cloudrulesrndraftsrc",
+      "docId": "cloudrulesrndraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "CloudUnderwriting.ditamap",
+      "srcId": "clouduwdraftsrc",
+      "docId": "clouduwdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "ExperienceManager.ditamap",
+      "srcId": "experiencemgrdraftsrc",
+      "docId": "experiencemgrdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "GuidewireLifecycleManager.ditamap",
+      "srcId": "lifecyclemgrdraftsrc",
+      "docId": "lifecyclemgrdraft"
     },
     {
       "buildType": "dita",
@@ -1590,11 +1625,43 @@
     },
     {
       "buildType": "dita",
+      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "appeventsdevdraftsrc",
+      "docId": "ccappeventsdevdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "appeventsdevdraftsrc",
+      "docId": "pcappeventsdevdraft"
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "_supermap.ditamap",
-      "indexRedirect": false,
-      "srcId": "restapi",
-      "docId": "restapidraft"
+      "root": "IntegrationGatewayForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "integgatewaydevdraftsrc",
+      "docId": "integgatewaydevdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "InstallationGuideForInternalTeams.ditamap",
+      "indexRedirect": true,
+      "srcId": "integgatewayinstalldraftsrc",
+      "docId": "integgatewayinstalldraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "IntegrationGatewayReleaseNotes.ditamap",
+      "indexRedirect": true,
+      "srcId": "integgatewayrndraftsrc",
+      "docId": "integgatewayrndraft"
     },
     {
       "buildType": "dita",

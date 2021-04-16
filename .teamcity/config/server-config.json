@@ -1505,14 +1505,15 @@
       "public": false
     },
     {
-      "id": "gwcloudservicesearlyaccess",
-      "title": "Guidewire Feature Preview Early Access",
-      "url": "cloud/gw-feature-preview/earlyaccess",
+      "id": "claimsautopilotdraft",
+      "title": "Claims Autopilot",
+      "url": "cloud/gw-feature-preview/autopilot",
       "metadata": {
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
-        "version": ["earlyaccess"],
-        "release": ["Cortina"]
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -1520,14 +1521,63 @@
       "public": false
     },
     {
-      "id": "gwcloudservicesdraft",
-      "title": "Guidewire Feature Preview Draft",
-      "url": "cloud/gw-feature-preview/latest",
+      "id": "cloudratingdraft",
+      "title": "Cloud Rating",
+      "url": "cloud/gw-feature-preview/cloudrating",
       "metadata": {
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouduwdraft",
+      "title": "Cloud Underwriting",
+      "url": "cloud/gw-feature-preview/clouduw",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudrulesdraft",
+      "title": "Cloud Rules",
+      "url": "cloud/gw-feature-preview/cloudrules",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "lifecyclemgrdraft",
+      "title": "Lifecycle Manager",
+      "url": "cloud/gw-feature-preview/lifecyclemgr",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -1539,13 +1589,110 @@
       "title": "String Manager Draft",
       "url": "cloud/gw-feature-preview/stringmanager/latest",
       "metadata": {
-        "product": ["String Manager"],
+        "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina"],
+        "subject": ["Configuration"]
       },
       "environments": ["int"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "experiencemgrdraft",
+      "title": "Experience Manager",
+      "url": "cloud/gw-feature-preview/experiencemgr",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ccappeventsdevdraft",
+      "title": "ClaimCenter Application Events for Developers",
+      "url": "cloud/gw-feature-preview/ccappevents",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "pcappeventsdevdraft",
+      "title": "PolicyCenter Application Events for Developers",
+      "url": "cloud/gw-feature-preview/pcappevents",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "integgatewaydevdraft",
+      "title": "Integration Gateway for Developers",
+      "url": "cloud/gw-feature-preview/integgateway",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "integgatewayinstalldraft",
+      "title": "Integration Gateway Installation for Internal Teams",
+      "url": "cloud/gw-feature-preview/iginstall",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "integgatewayrndraft",
+      "title": "Integration Gateway",
+      "url": "cloud/gw-feature-preview/igrelnotes",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Release Notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
