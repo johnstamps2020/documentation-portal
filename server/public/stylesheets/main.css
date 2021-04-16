@@ -2,6 +2,7 @@
 @import 'avatar.css';
 
 :root {
+  --gw-font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   --clr-GW-BLUE: #00739d;
   --clr-GW-NAVY-BLUE: #3c4c5e;
   --clr-GW-BLUE-HOVER: #006083;
@@ -40,7 +41,7 @@ input.searchField:-webkit-autofill {
 }
 
 body {
-  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-family: var(--gw-font-family);
   color: var(--clr-GW-HEADER-FOOTER-BKG);
 }
 
@@ -150,7 +151,7 @@ button.searchButton:focus::after {
 }
 
 main {
-  padding: 64px 8px;
+  padding: 64px 32px;
   background-color: var(--clr-GW-WHITE);
   min-height: var(--body-height);
 }
@@ -252,10 +253,14 @@ main.aspen .docBreadcrumb a:hover {
   color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
-main.cortina .usefulLinks a,
-main.banff .usefulLinks a,
-main.aspen .usefulLinks a {
-  color: var(--clr-GW-BLUE-LIGHTER);
+main.cortina .usefulLinks,
+main.banff .usefulLinks,
+main.aspen .usefulLinks {
+  margin: 12px 0;
+  padding: 12px;
+  background-color: white;
+  box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
+  border-radius: 6px;
 }
 
 main.cortina .usefulLinks a:hover,
@@ -517,6 +522,9 @@ div.pageHero {
   display: flex;
   align-items: center;
   box-shadow: 0 0 1pt gray;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 6px;
 }
 
 .l10n #cloudToggle {
@@ -525,38 +533,33 @@ div.pageHero {
 
 #cloudToggle > a {
   margin: 0;
-  display: inline-block;
   width: 150px;
-  height: 100%;
   padding: 12px 0;
   text-align: center;
   background-color: white;
 }
 
-#cloudToggle > a:not(.selected):hover,
-#cloudToggle > a:not(.selected):focus {
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-  color: var(--clr-GW-BLUE-HOVER) !important;
+#cloudToggle > a:first-child {
+  border-radius: 6px 0 0 6px;
 }
 
-.cortina #cloudToggle > a:not(.selected):hover,
-.cortina #cloudToggle > a:not(.selected):focus,
-.banff #cloudToggle > a:not(.selected):hover,
-.banff #cloudToggle > a:not(.selected):focus,
-.aspen #cloudToggle > a:not(.selected):focus,
-.aspen #cloudToggle > a:not(.selected):hover {
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
-  color: var(--clr-GW-BLUE-HOVER) !important;
+#cloudToggle > a:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+#cloudToggle > a:not(.selected):hover,
+#cloudToggle > a:not(.selected):focus {
+  background: var(--GRADIENT-BACKGROUND);
+  color: var(--clr-GW-WHITE);
 }
 
 #cloudToggle > .selected {
-  background: var(--GRADIENT-BACKGROUND);
+  background: gray;
   color: var(--clr-GW-WHITE);
 }
 
 .usefulLinks {
   padding: 32px 6px;
-  /* text-align: right; */
 }
 
 .usefulLinks > a {
@@ -575,6 +578,18 @@ div.pageHero {
 
 .button:hover {
   background: var(--clr-GW-BLUE-HOVER);
+}
+
+.loginPage {
+  background: url(/images/background-cortina.svg) no-repeat fixed;
+  background-size: cover;
+  background-position: bottom right;
+  color: white;
+}
+
+.loginPage > * {
+  max-width: 1062px;
+  margin: auto;
 }
 
 .loginPageTitle {
@@ -614,6 +629,7 @@ div.pageHero {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  color: black;
 }
 
 .loginCard > h2 {
@@ -643,8 +659,7 @@ div.pageHero {
 }
 
 .employeeLogin {
-  width: fit-content;
-  margin: auto;
+  text-align: center;
   padding: 64px 0;
 }
 
@@ -841,11 +856,19 @@ main.support h2 {
 }
 
 #pageSelector {
+  display: block;
+  width: 300px;
+  font-family: var(--gw-font-family);
+  font-size: 16px;
   padding: 4px 12px;
+  margin: 4px 0;
   border-radius: 6px;
   border: 1px solid var(--clr-GW-NAVY-BLUE);
-  margin: 8px;
   color: var(--clr-GW-HEADER-FOOTER-BKG);
+  -webkit-appearance: none;
+  background-image: url(/images/expand_more_black_24dp.svg);
+  background-position: right 6px top 3px, 0 0;
+  background-repeat: no-repeat;
 }
 
 /* External site navigation */
