@@ -5,7 +5,7 @@ function toggleAvatar(e) {
 async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
 
-  if(window.location.pathname.endsWith('gw-login')) {
+  if (window.location.pathname.endsWith('gw-login')) {
     return;
   }
   // /userInformation is not available for a few milliseconds
@@ -18,10 +18,9 @@ async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
     const loginButton = document.querySelector('#loginButton');
 
     if (isLoggedIn && loginButton) {
-      
-        const avatar = document.createElement('div');
-        avatar.setAttribute('id', 'avatar');
-        avatar.innerHTML = `
+      const avatar = document.createElement('div');
+      avatar.setAttribute('id', 'avatar');
+      avatar.innerHTML = `
         <button 
           id="avatarButton" 
           onClick="toggleAvatar(e)" 
@@ -43,30 +42,28 @@ async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
         </button>
       `;
 
-        let newAvatar = loginButton.parentElement.replaceChild(
-          avatar,
-          loginButton
-        );
+      let newAvatar = loginButton.parentElement.replaceChild(
+        avatar,
+        loginButton
+      );
+    } else if (loginButton) {
+      loginButton.classList.remove('invisible');
     }
-    else if (loginButton) {
-      loginButton.classList.remove('invisible')
-    }
-  }
-  catch (error) {
-    if (attemptNumber >= retryAttempts ) {
+  } catch (error) {
+    if (attemptNumber >= retryAttempts) {
       console.log('Could not access user information endpoint. ' + error);
-      return
+      return;
     }
-    attemptNumber++
-    retryTimeout += 100
+    attemptNumber++;
+    retryTimeout += 100;
     setTimeout(setLogInButton(attemptNumber, retryTimeout), retryTimeout);
   }
 }
 
 function selectToggleButton() {
   const toggleButtons = document.querySelectorAll('#cloudToggle > a');
-  if(toggleButtons.length === 0) {
-    return
+  if (toggleButtons.length === 0) {
+    return;
   }
   let matchingButton = toggleButtons[0];
   const currentPath = window.location.pathname;
@@ -77,6 +74,7 @@ function selectToggleButton() {
     }
   });
   matchingButton.classList.toggle('selected');
+  matchingButton.removeAttribute('href');
 }
 
 async function addReleaseBadge() {
