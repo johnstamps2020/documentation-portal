@@ -23,10 +23,10 @@ const options = {
   setHeaders: function(res, path, stat) {
     res.set({
       'x-timestamp': Date.now(),
-      'Cache-Control': 'public, max-age: 3600'
+      'Cache-Control': 'public, max-age: 3600',
     });
-  }
-}
+  },
+};
 
 console.log('Server app instantiated!');
 
@@ -89,7 +89,7 @@ app.use('/customers-login', customersLoginRouter);
 
 // serve static assets from the public folder
 app.use(express.static(path.join(__dirname, 'public'), options));
-app.use(express.static(path.join(__dirname, 'sitemap')));
+app.use(express.static(path.join(__dirname, 'static', 'sitemap')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const oktaOIDC = require('./controllers/authController').oktaOIDC;
@@ -100,7 +100,7 @@ app.use(oktaOIDC.router);
 app.use(authGateway);
 
 // server static pages from the pages folder
-app.use(express.static(path.join(__dirname, 'pages')));
+app.use(express.static(path.join(__dirname, 'static', 'pages')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
