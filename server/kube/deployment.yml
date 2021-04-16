@@ -1,41 +1,7 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: docportal-app-frontend-pv-${DEPLOY_ENV}
-  namespace: doctools
-  labels:
-    failure-domain.beta.kubernetes.io/zone: us-west-2a
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  claimRef:
-    name: docportal-app-frontend-pv-claim-${DEPLOY_ENV}
-    namespace: doctools
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: docportal-app-sitemap-pv-${DEPLOY_ENV}
-  namespace: doctools
-  labels:
-    failure-domain.beta.kubernetes.io/zone: us-west-2a
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  claimRef:
-    name: docportal-app-sitemap-pv-claim-${DEPLOY_ENV}
-    namespace: doctools
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: docportal-app-frontend-pv-claim-${DEPLOY_ENV}
+  name: docportal-app-static-pv-claim-${DEPLOY_ENV}
   namespace: doctools
 spec:
   accessModes:
@@ -43,24 +9,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  selector:
-    matchLabels:
-      failure-domain.beta.kubernetes.io/zone: us-west-2a
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: docportal-app-sitemap-pv-claim-${DEPLOY_ENV}
-  namespace: doctools
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  selector:
-    matchLabels:
-      failure-domain.beta.kubernetes.io/zone: us-west-2a
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -82,8 +30,8 @@ spec:
       containers:
         - name: docportal
           image: artifactory.guidewire.com/doctools-docker-dev/docportal:${TAG_VERSION}
-          command: [\"/bin/sh\", \"-c\"]
-          args: [\"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; npm start\"]
+          command: [ \"/bin/sh\", \"-c\" ]
+          args: [ \"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; npm start\" ]
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -140,16 +88,11 @@ spec:
               memory: "1Gi"
               cpu: "1"
           volumeMounts:
-            - mountPath: "/usr/src/app/pages"
-              name: frontend-storage
-            - mountPath: "/usr/src/app/sitemap"
-              name: sitemap-storage
+            - mountPath: "/usr/src/app/static"
+              name: static-storage
       volumes:
-        - name: frontend-storage
+        - name: static-storage
           persistentVolumeClaim:
-            claimName: docportal-app-frontend-pv-claim-${DEPLOY_ENV}
-        - name: sitemap-storage
-          persistentVolumeClaim:
-            claimName: docportal-app-sitemap-pv-claim-${DEPLOY_ENV}
+            claimName: docportal-app-static-pv-claim-${DEPLOY_ENV}
       imagePullSecrets:
         - name: artifactory-secret
