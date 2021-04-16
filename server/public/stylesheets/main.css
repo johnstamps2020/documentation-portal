@@ -577,6 +577,18 @@ div.pageHero {
   background: var(--clr-GW-BLUE-HOVER);
 }
 
+.loginPage {
+  background: url(/images/background-cortina.svg) no-repeat fixed;
+  background-size: cover;
+  background-position: bottom right;
+  color: white;
+}
+
+.loginPage > * {
+  max-width: 1062px;
+  margin: auto;
+}
+
 .loginPageTitle {
   text-align: center;
   padding: 32px 0;
@@ -614,6 +626,7 @@ div.pageHero {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  color: black;
 }
 
 .loginCard > h2 {
@@ -643,8 +656,7 @@ div.pageHero {
 }
 
 .employeeLogin {
-  width: fit-content;
-  margin: auto;
+  text-align: center;
   padding: 64px 0;
 }
 
