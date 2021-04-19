@@ -85,7 +85,6 @@ object Checkmarx : BuildType({
 
     params {
         text("checkmarx.project.name", "doctools")
-        text("checkmarx.source.directory", "%teamcity.build.checkoutDir%")
         text(
             "checkmarx.location.files.exclude ", """
                 !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
