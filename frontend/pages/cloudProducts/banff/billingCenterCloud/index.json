@@ -47,20 +47,12 @@
         {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": [
-            "dev",
-            "int",
-            "staging"
-          ]
+          "env": ["dev", "int", "staging"]
         },
         {
           "label": "Add-ons",
           "class": "group",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ],
+          "env": ["dev", "staging", "prod"],
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
@@ -81,11 +73,7 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ],
+          "env": ["dev", "staging", "int", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
