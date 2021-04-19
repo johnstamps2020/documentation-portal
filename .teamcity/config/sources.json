@@ -1214,14 +1214,44 @@
       ]
     },
     {
-      "id": "restapi",
-      "title": "REST API",
+      "id": "appeventsdevdraftsrc",
+      "title": "Application Events for Developers Draft",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/DevConnect/cloud/active/_supermap.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+        "/Content/doc/insuranceSuite/DevConnect/cloud/active/ApplicationEventsForDevelopers.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "integgatewaydevdraftsrc",
+      "title": "Integration Gateway for Developers Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/DevConnect/cloud/active/IntegrationGatewayForDevelopers.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "integgatewayinstalldraftsrc",
+      "title": "Integration Gateway Installation Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/DevConnect/cloud/active/InstallationGuideForInternalTeams.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "integgatewayrndraftsrc",
+      "title": "Integration Gateway Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/DevConnect/cloud/active/IntegrationGatewayReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
       ]
     },
     {
@@ -2592,7 +2622,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "Banff",
       "xdocsPathIds": [
-        "/Content/doc/cloud-services/auth/GuidewireHub.ditamap",
+        "/Content/doc/cloud-services/GuidewireHub.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
@@ -2602,7 +2632,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "xdocsPathIds": [
-        "/Content/doc/cloud-services/auth/GuidewireHub.ditamap",
+        "/Content/doc/cloud-services/GuidewireHub.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },
@@ -2714,10 +2744,14 @@
       ]
     },
     {
-      "id": "stringmanagerlatestsrc",
-      "title": "String Manager",
+      "id": "claimsautopilotdraftsrc",
+      "title": "Claims Autopilot Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/claims-autopilot.git",
+      "xdocsPathIds": [
+        "/Content/doc/cloud-services/Autopilot.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval"
+      ]
     },
     {
       "id": "cloudratingdraftsrc",
@@ -2725,8 +2759,8 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rating.git",
       "xdocsPathIds": [
-        "/Content/doc/cloud-services/cloudRating/CloudRating.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+        "/Content/doc/cloud-services/CloudRating.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
       ]
     },
     {
@@ -2735,19 +2769,55 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
-        "/Content/doc/cloud-services/cloudRules/RulesCloud.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+        "/Content/doc/cloud-services/RulesCloud.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
       ]
     },
     {
       "id": "cloudrulesrndraftsrc",
-      "title": "Cloud Rules Release NotesDraft",
+      "title": "Cloud Rules Release Notes Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
-        "/Content/doc/cloud-services/cloudRules/cloud-rules-release-notes.ditamap",
+        "/Content/doc/cloud-services/cloud-rules-release-notes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "clouduwdraftsrc",
+      "title": "Cloud Underwriting Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-underwriting.git",
+      "xdocsPathIds": [
+        "/Content/doc/cloud-services/CloudUnderwriting.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "experiencemgrdraftsrc",
+      "title": "Experience Manager Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/experience-manager.git",
+      "xdocsPathIds": [
+        "/Content/doc/cloud-services/ExperienceManager.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
+    },
+    {
+      "id": "lifecyclemgrdraftsrc",
+      "title": "Lifecycle Manager Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lifecycle-manager.git",
+      "xdocsPathIds": [
+        "/Content/doc/cloud-services/GuidewireLifecycleManager.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "stringmanagerlatestsrc",
+      "title": "String Manager",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git"
     },
     {
       "id": "midipgdraftsrc",
