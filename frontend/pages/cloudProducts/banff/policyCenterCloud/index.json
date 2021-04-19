@@ -104,7 +104,7 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": ["dev", "staging", "prod"],
+          "env": ["dev", "int", "staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
