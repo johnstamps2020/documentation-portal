@@ -1570,7 +1570,7 @@
     },
     {
       "id": "cloudrulesrndraft",
-      "title": "Cloud Rules",
+      "title": "Cloud Rules Release Notes",
       "url": "cloud/gw-feature-preview/cloudrulesrn",
       "metadata": {
         "product": ["Guidewire Feature Preview"],
@@ -1698,14 +1698,14 @@
     },
     {
       "id": "integgatewayrndraft",
-      "title": "Integration Gateway",
+      "title": "Integration Gateway Release Notes",
       "url": "cloud/gw-feature-preview/igrelnotes",
       "metadata": {
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Cortina"],
-        "subject": ["Release Notes"]
+        "subject": ["Release notes"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9203,7 +9203,7 @@
           "InsuranceNow 2020.2x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["int"],
@@ -9222,7 +9222,7 @@
           "InsuranceNow 2021.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
@@ -9241,7 +9241,7 @@
           "InsuranceNow 2021.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
@@ -9260,7 +9260,7 @@
           "InsuranceNow 2021.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
@@ -9276,7 +9276,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow 2021.1x - Internal Audience"],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
@@ -9295,7 +9295,7 @@
           "InsuranceNow 2021.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
@@ -9314,7 +9314,7 @@
           "InsuranceNow 2021.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
@@ -9333,7 +9333,7 @@
           "InsuranceNow 2021.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
@@ -9562,7 +9562,7 @@
           "InsuranceNow 2020.2x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["int"],
@@ -9581,7 +9581,7 @@
           "InsuranceNow 2020.2x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["int"],
@@ -9597,7 +9597,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow 2020.2x - Internal Audience"],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Banff"]
       },
       "environments": ["int"],
@@ -9616,7 +9616,7 @@
           "InsuranceNow 2020.2x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Banff"]
       },
       "environments": ["int"],
@@ -9635,7 +9635,7 @@
           "InsuranceNow 2020.2x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Banff"]
       },
       "environments": ["int"],
@@ -9654,7 +9654,7 @@
           "InsuranceNow 2020.2x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Banff"]
       },
       "environments": ["int"],
@@ -9867,7 +9867,7 @@
           "InsuranceNow 2020.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen"]
       },
       "environments": ["int"],
@@ -9886,7 +9886,7 @@
           "InsuranceNow 2020.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen"]
       },
       "environments": ["int"],
@@ -9905,7 +9905,7 @@
           "InsuranceNow 2020.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen"]
       },
       "environments": ["int"],
@@ -9921,7 +9921,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow 2020.1x - Internal Audience"],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Aspen"]
       },
       "environments": ["int"],
@@ -9940,7 +9940,7 @@
           "InsuranceNow 2020.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Aspen"]
       },
       "environments": ["int"],
@@ -9959,7 +9959,7 @@
           "InsuranceNow 2020.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Aspen"]
       },
       "environments": ["int"],
@@ -10198,7 +10198,7 @@
           "InsuranceNow 2020.2x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff", "Cortina"]
       },
       "environments": ["int"],
@@ -10221,7 +10221,7 @@
           "InsuranceNow 2020.1x - External Audience"
         ],
         "version": ["latest"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["int"],
@@ -10237,7 +10237,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10253,7 +10253,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10269,7 +10269,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10285,7 +10285,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10301,7 +10301,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10317,7 +10317,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10333,7 +10333,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10349,7 +10349,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging"],
@@ -10461,7 +10461,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10477,7 +10477,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10493,7 +10493,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10509,7 +10509,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10525,7 +10525,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10541,7 +10541,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10557,7 +10557,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10573,7 +10573,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Banff"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10685,7 +10685,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10701,7 +10701,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10717,7 +10717,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10733,7 +10733,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10749,7 +10749,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -10765,7 +10765,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
-        "subject": ["Features and Functionality"],
+        "subject": ["Features and functionality"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
