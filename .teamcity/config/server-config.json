@@ -1569,6 +1569,22 @@
       "public": false
     },
     {
+      "id": "cloudrulesrndraft",
+      "title": "Cloud Rules",
+      "url": "cloud/gw-feature-preview/cloudrulesrn",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "lifecyclemgrdraft",
       "title": "Lifecycle Manager",
       "url": "cloud/gw-feature-preview/lifecyclemgr",
