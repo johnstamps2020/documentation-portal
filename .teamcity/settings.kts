@@ -1920,6 +1920,7 @@ object HelperObjects {
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("USE_DOC_PORTAL_PARAMS", "yes", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -2988,6 +2989,7 @@ object BuildOutputFromDita : Template({
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
+        text("env.USE_DOC_PORTAL_PARAMS", "%USE_DOC_PORTAL_PARAMS%", allowEmpty = false)
         text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
         text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
         text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
@@ -3010,7 +3012,7 @@ object BuildOutputFromDita : Template({
                 export OUTPUT_PATH="out"
                 export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
 
-                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
+                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params \"%env.USE_DOC_PORTAL_PARAMS%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
