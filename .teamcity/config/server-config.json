@@ -11986,6 +11986,20 @@
       "environments": ["dev", "int", "staging", "prod"]
     },
     {
+      "id": "easyguide",
+      "title": "EasyGuide",
+      "url": "easyguide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["EasyGuide"],
+        "version": ["latest"]
+      },
+      "displayOnLandingPages": false,
+      "public": false,
+      "indexForSearch": false,
+      "environments": ["dev", "int", "staging", "prod"]
+    },
+    {
       "id": "gwglossary",
       "title": "Glossary",
       "url": "glossary",

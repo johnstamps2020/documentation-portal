@@ -4807,6 +4807,11 @@
       "docId": "checksums"
     },
     {
+      "buildType": "yarn",
+      "srcId": "easyguidesrc",
+      "docId": "easyguide"
+    },
+    {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Glossary.ditamap",

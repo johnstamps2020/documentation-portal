@@ -3352,6 +3352,12 @@
       "sourceType": "git"
     },
     {
+      "id": "easyguidesrc",
+      "title": "EasyGuide source in git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/easyguide.git",
+      "sourceType": "git"
+    },
+    {
       "id": "gwglossarysrc",
       "title": "Guidewire Glossary",
       "sourceType": "xdocs",
