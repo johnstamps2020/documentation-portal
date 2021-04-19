@@ -65,7 +65,7 @@
     {
       "label": "Guidewire Feature Preview",
       "class": "productFamily cardShadow",
-      "page": "gwFeaturePreview",
+      "page": "guidewireFeaturePreview",
       "env": ["int"]
     }
   ]
