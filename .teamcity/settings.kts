@@ -84,7 +84,7 @@ object Checkmarx : BuildType({
     name = "Checkmarx"
 
     params {
-        text("checkmarx.project.name", "docportal")
+        text("checkmarx.project.name", "doctools")
         text("checkmarx.source.directory", "%teamcity.build.checkoutDir%")
         text(
             "checkmarx.location.files.exclude ", """
