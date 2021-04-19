@@ -80,23 +80,14 @@ object LocalizedPDFs : GitVcsRoot({
 })
 
 object Checkmarx : BuildType({
+    templates(AbsoluteId("CheckmarxSastScan"))
     name = "Checkmarx"
 
-    vcs {
-        root(DslContext.settingsRoot)
-
-        cleanCheckout = true
-    }
-
-    steps {
-        step {
-            type = "checkmarx"
-            param("cxUseDefaultSastConfig", "false")
-            param("cxOsaEnabled", "false")
-            param("cxPresetId", "100000")
-            param("cxTeamId", "b78ac917-39fb-4a99-af12-55bf19131b16")
-            param(
-                "cxFilterPatterns", """
+    params {
+        text("checkmarx.project.name", "docportal")
+        text("checkmarx.source.directory", "%teamcity.build.checkoutDir%")
+        text(
+            "checkmarx.location.files.exclude ", """
                 !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
                 !**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
                 !**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u,   !**/*.mid, !**/*.mp3,
@@ -110,9 +101,12 @@ object Checkmarx : BuildType({
                 !**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/node_modules/**/*, !**/*.iml,
                 !**/tests/**/*,     !**/.teamcity/**/*,     !**/__tests__/**/*,     !**/images/**/*,        !**/fonts/**/*
             """.trimIndent()
-            )
-            param("cxProjectName", "doctools")
-        }
+        )
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
     }
 
     triggers {
