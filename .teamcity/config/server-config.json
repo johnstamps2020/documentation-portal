@@ -6831,23 +6831,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true
-    },
-    {
-      "id": "cc202011apirefswift",
-      "title": "Cloud API Reference SWIFT",
-      "url": "cloud/cc/202011/apiref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true

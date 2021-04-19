@@ -4098,11 +4098,6 @@
       "srcId": "srcapiref202011"
     },
     {
-      "buildType": "yarn",
-      "docId": "cc202011apirefswift",
-      "srcId": "srcapirefswift202011"
-    },
-    {
       "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
