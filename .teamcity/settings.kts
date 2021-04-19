@@ -80,23 +80,14 @@ object LocalizedPDFs : GitVcsRoot({
 })
 
 object Checkmarx : BuildType({
+    templates(AbsoluteId("CheckmarxSastScan"))
     name = "Checkmarx"
 
-    vcs {
-        root(DslContext.settingsRoot)
-
-        cleanCheckout = true
-    }
-
-    steps {
-        step {
-            type = "checkmarx"
-            param("cxUseDefaultSastConfig", "false")
-            param("cxOsaEnabled", "false")
-            param("cxPresetId", "100000")
-            param("cxTeamId", "b78ac917-39fb-4a99-af12-55bf19131b16")
-            param(
-                "cxFilterPatterns", """
+    params {
+        text("checkmarx.project.name", "docportal")
+        text("checkmarx.source.directory", "%teamcity.build.checkoutDir%")
+        text(
+            "checkmarx.location.files.exclude ", """
                 !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
                 !**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
                 !**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u,   !**/*.mid, !**/*.mp3,
@@ -110,9 +101,12 @@ object Checkmarx : BuildType({
                 !**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/node_modules/**/*, !**/*.iml,
                 !**/tests/**/*,     !**/.teamcity/**/*,     !**/__tests__/**/*,     !**/images/**/*,        !**/fonts/**/*
             """.trimIndent()
-            )
-            param("cxProjectName", "doctools")
-        }
+        )
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
     }
 
     triggers {
@@ -1658,10 +1652,10 @@ object HelperObjects {
         val exportServers = arrayOf("fc-xdocs-slave1", "fc-xdocs-slave2")
         var exportServerIndex = 0
 
-        var sch_hour_daily = 0
-        var sch_minute_daily = 0
-        var sch_hour_weekly = 12
-        var sch_minute_weekly = 0
+        var schHourDaily = 0
+        var schMinuteDaily = 0
+        var schHourWeekly = 12
+        var schMinuteWeekly = 0
         val dailyMinutesOffset = 2
         val weeklyMinutesOffset = 10
 
@@ -1677,7 +1671,7 @@ object HelperObjects {
                 val xdocsPathIds = source.getJSONArray("xdocsPathIds").joinToString(" ")
                 val matchBuilds = getObjectsById(buildConfigs, "srcId", sourceId)
                 var scheduledBuild = false
-                var buildDocId = ""
+                var buildDocId: String
 
                 if (matchBuilds.length() > 0) {
                     for (j in 0 until matchBuilds.length()) {
@@ -1701,21 +1695,21 @@ object HelperObjects {
                         sourceId,
                         exportServers[exportServerIndex],
                         exportFreq,
-                        sch_hour_daily,
-                        sch_minute_daily,
-                        sch_hour_weekly,
-                        sch_minute_weekly
+                        schHourDaily,
+                        schMinuteDaily,
+                        schHourWeekly,
+                        schMinuteWeekly
                     )
                 )
 
                 if (scheduledBuild && exportFreq == "daily") {
-                    sch_minute_daily += dailyMinutesOffset
-                    if (sch_minute_daily >= 60) {
-                        sch_hour_daily += 1
-                        sch_minute_daily = 0
+                    schMinuteDaily += dailyMinutesOffset
+                    if (schMinuteDaily >= 60) {
+                        schHourDaily += 1
+                        schMinuteDaily = 0
                     }
-                    if (sch_hour_daily >= 24) {
-                        sch_hour_daily = 0
+                    if (schHourDaily >= 24) {
+                        schHourDaily = 0
                     }
                     exportServerIndex++
                     if (exportServerIndex == exportServers.size) {
@@ -1723,14 +1717,14 @@ object HelperObjects {
                     }
                 }
                 if (scheduledBuild && exportFreq == "weekly") {
-                    sch_minute_weekly += weeklyMinutesOffset
+                    schMinuteWeekly += weeklyMinutesOffset
 
-                    if (sch_minute_weekly >= 60) {
-                        sch_hour_weekly += 1
-                        sch_minute_weekly = 0
+                    if (schMinuteWeekly >= 60) {
+                        schHourWeekly += 1
+                        schMinuteWeekly = 0
                     }
-                    if (sch_hour_weekly >= 24) {
-                        sch_hour_weekly = 0
+                    if (schHourWeekly >= 24) {
+                        schHourWeekly = 0
                     }
                 }
             }
@@ -1906,7 +1900,11 @@ object HelperObjects {
             }
 
             params {
-                password("env.AUTH_TOKEN", "credentialsJSON:67d9216c-4183-4ebf-a9b3-374ea5e547ec", display = ParameterDisplay.HIDDEN)
+                password(
+                    "env.AUTH_TOKEN",
+                    "credentialsJSON:67d9216c-4183-4ebf-a9b3-374ea5e547ec",
+                    display = ParameterDisplay.HIDDEN
+                )
                 text("env.DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.SRC_ID", source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.DEPLOY_ENV", build_env, display = ParameterDisplay.HIDDEN, allowEmpty = false)
