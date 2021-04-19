@@ -37,34 +37,25 @@
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2021.1",
-      "env": [
-        "dev",
-        "staging"
-      ]
+      "env": ["dev", "staging"]
     },
     {
       "label": "InsuranceNow Internal Audience",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2021.1xInternalAudience",
-      "env": [
-        "int"
-      ]
+      "env": ["int"]
     },
     {
       "label": "InsuranceNow External Audience",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2021.1xExternalAudience",
-      "env": [
-        "int"
-      ]
+      "env": ["int"]
     },
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform",
-      "env": [
-        "int"
-      ]
+      "env": ["int"]
     },
     {
       "label": "Guidewire Cloud Standards",
@@ -75,7 +66,7 @@
       "label": "Guidewire Feature Preview",
       "class": "productFamily cardShadow",
       "page": "gwFeaturePreview",
-      "env" ["int"]
+      "env": ["int"]
     }
   ]
 }
