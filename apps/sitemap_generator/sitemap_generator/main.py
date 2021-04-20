@@ -76,18 +76,33 @@ def write_docs_to_sitemap(sitemap_path, docs):
     with open(sitemap_path, 'a') as output_sitemap_file:
         output_sitemap_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         output_sitemap_file.write(
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+            """<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+                xmlns:coveo="https://www.coveo.com/schemas/metadata">\n""")
         for doc in docs:
             output_sitemap_file.write('<url>\n')
             url = doc['_source']['href']
             output_sitemap_file.write(f'<loc>{escape_entities(url)}</loc>\n')
+
             date = doc['_source']['indexed_date']
             if not latest_date:
                 latest_date = date
             else:
                 if date > latest_date:
                     latest_date = date
+
             output_sitemap_file.write(f'<lastmod>{date}</lastmod>\n')
+
+            output_sitemap_file.write('<coveo:metadata>\n')
+            platform = doc['_source'].get('platform')
+            output_sitemap_file.write(f'<platform>{";".join(platform)}</platform>\n')
+            product = doc['_source'].get('product')
+            output_sitemap_file.write(f'<product>{";".join(product)}</product>\n')
+            version = doc['_source'].get('version')
+            output_sitemap_file.write(f'<version>{";".join(version)}</version>\n')
+            output_sitemap_file.write('</coveo:metadata>\n')
+
             output_sitemap_file.write('</url>\n')
         output_sitemap_file.write('</urlset>\n')
     return latest_date
