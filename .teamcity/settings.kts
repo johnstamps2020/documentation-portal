@@ -1924,7 +1924,6 @@ object HelperObjects {
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("USE_DOC_PORTAL_PARAMS", "yes", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -1934,7 +1933,6 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN,
                     allowEmpty = false
                 )
-                text("CREATE_ZIP_PACKAGE", "false", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("WORKING_DIR", workingDir, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text(
                     "env.CUSTOM_OUTPUT_FOLDER",
@@ -2621,6 +2619,7 @@ object CreateReleaseTag : BuildType({
 })
 
 //TODO: This template may not be needed. We could merge it with the ValidateDoc class
+//TODO: Convert DITA OT scripts to use the dockerSupport feature instead of pulling and logging in the script
 object RunContentValidations : Template({
     name = "Run content validations"
 
@@ -2992,7 +2991,7 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
         text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-        text("env.WORKING_DIR","%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
+        text("env.WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
         text("env.OUTPUT_PATH", "out", allowEmpty = false)
     }
 
@@ -3001,7 +3000,6 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     }
 
     steps {
-//        TODO: Run the script in Docker image using Docker support. Don't pull the image in the script.
         script {
             name = "Build doc site output from DITA"
             id = "BUILD_OUTPUT"
@@ -3009,10 +3007,10 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 #!/bin/bash
                 set -xe
                 
-                export DITA_BASE_COMMAND="docker run -i -v %env.WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
+                export DITA_BASE_COMMAND="-i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
+                    export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
                 fi
                 
                 if [[ "%env.BUILD_PDF%" == "true" ]]; then
@@ -3026,8 +3024,6 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 fi
                 
                 SECONDS=0
-                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
-                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
 
                 echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 ${'$'}DITA_BASE_COMMAND
@@ -3035,6 +3031,9 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+
         }
         if (createZipPackage) {
             script {
@@ -3046,10 +3045,10 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 
                 export OUTPUT_DIR="zip"
 
-                export DITA_BASE_COMMAND="docker run -i -v %env.WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_DIR/%env.OUTPUT_PATH%/\" --use-doc-portal-params no"
+                export DITA_BASE_COMMAND="-i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/${'$'}OUTPUT_DIR/%env.OUTPUT_PATH%/\" --use-doc-portal-params no"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
+                    export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
                 fi
                 
                 if [[ "%env.BUILD_PDF%" == "true" ]]; then
@@ -3063,8 +3062,6 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 fi
                 
                 SECONDS=0
-                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
-                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
 
                 echo "Building local output"
                 ${'$'}DITA_BASE_COMMAND
@@ -3078,10 +3075,20 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
     }
 
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
 })
 
 object PublishDocCrawlerDockerImage : BuildType({
