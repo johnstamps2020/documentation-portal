@@ -1,5 +1,17 @@
 const redirectUrls = [
   {
+    from: 'cloudProducts/Aspen',
+    to: 'cloudProducts/aspen',
+  },
+  {
+    from: 'cloudProducts/Banff',
+    to: 'cloudProducts/banff',
+  },
+  {
+    from: 'cloudProducts/Cortina',
+    to: 'cloudProducts/cortina',
+  },
+  {
     from: 'jutro/documentation/4.1.1',
     to: 'jutroDesignSystem/4.1.1',
   },
