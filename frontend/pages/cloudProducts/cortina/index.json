@@ -55,18 +55,19 @@
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform",
-      "env": ["int"]
+      "env": ["dev", "int"]
     },
     {
       "label": "Guidewire Cloud Standards",
       "class": "productFamily cardShadow",
-      "id": "standardsdraft"
+      "id": "standardsdraft",
+      "env": ["dev", "int"]
     },
     {
-      "label": "Guidewire Feature Preview",
+      "label": "Feature Preview",
       "class": "productFamily cardShadow",
-      "page": "guidewireFeaturePreview",
-      "env": ["int"]
+      "page": "featurePreview",
+      "env": ["dev", "int"]
     }
   ]
 }
