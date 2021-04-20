@@ -205,5 +205,5 @@ kbd,
 pre,
 samp,
 .apiname {
-  font-size: 95%;
+  font-size: 95% !important;
 }
