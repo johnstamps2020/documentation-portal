@@ -1979,7 +1979,7 @@ object HelperObjects {
 
                 stepsOrder = arrayListOf("BUILD_OUTPUT", "UPLOAD_GENERATED_CONTENT")
                 if (index_for_search) {
-                    stepsOrder.addAll(arrayListOf("BUILD_CRAWLER_DOCKER_IMAGE", "CRAWL_DOC"))
+                    stepsOrder.addAll(arrayListOf("CRAWL_DOC"))
                 }
 
             }
@@ -2058,38 +2058,10 @@ object HelperObjects {
             }
         })
 
-        class PublishToS3IndexProd(
-            buildType: String,
-            product: String,
-            platform: String,
-            version: String,
-            doc_id: String,
-            ditaval_file: String,
-            input_path: String,
-            create_index_redirect: String,
-            publish_path: String,
-            git_source_url: String,
-            git_source_branch: String,
-            vcs_root_id: RelativeId,
-            index_for_search: Boolean
-        ) : BuildType({
-
-            val ditaBuild = buildType == "dita"
-            if (ditaBuild) {
-                templates(BuildOutputFromDita)
-            }
-            if (index_for_search) {
-                templates(CrawlDocumentAndUpdateSearchIndex)
-            }
-            if (ditaBuild && index_for_search) {
-                templates(BuildOutputFromDita, CrawlDocumentAndUpdateSearchIndex)
-            }
-            id = RelativeId(removeSpecialCharacters("prod$doc_id$product"))
+        class PublishToS3IndexProd(publish_path: String, doc_id: String, prod_name: String) : BuildType({
+            templates(CrawlDocumentAndUpdateSearchIndex)
+            id = RelativeId(removeSpecialCharacters("prod$doc_id$prod_name"))
             name = "Copy from staging to prod"
-
-            vcs {
-                root(vcs_root_id, "+:. => %SOURCES_ROOT%")
-            }
 
             params {
                 password(
@@ -2100,22 +2072,6 @@ object HelperObjects {
                 text("DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("DEPLOY_ENV", "prod", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("env.PUBLISH_PATH", publish_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("USE_DOC_PORTAL_PARAMS", "yes", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("BUILD_PDF", "true", display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text(
-                    "CREATE_INDEX_REDIRECT",
-                    create_index_redirect,
-                    display = ParameterDisplay.HIDDEN,
-                    allowEmpty = false
-                )
             }
 
             steps {
@@ -2138,13 +2094,8 @@ object HelperObjects {
                     aws s3 sync %env.PUBLISH_PATH%/ s3://tenant-doctools-prod-builds/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
                 }
-                if (ditaBuild) {
-//                Add a step to upload the local webhelp ZIP to the bucket
-//                Change the steps order
-                }
 
-
-                stepsOrder = arrayListOf("BUILD_OUTPUT", "COPY_FROM_STAGING_TO_PROD", "CRAWL_DOC")
+                stepsOrder = arrayListOf("COPY_FROM_STAGING_TO_PROD", "CRAWL_DOC")
 
             }
 
@@ -2197,23 +2148,7 @@ object HelperObjects {
 
         for (env in environments) {
             if (env == "prod") {
-                builds.add(
-                    PublishToS3IndexProd(
-                        buildType,
-                        product_name,
-                        platform,
-                        version,
-                        docId,
-                        filter,
-                        root,
-                        indexRedirect,
-                        publishPath,
-                        sourceGitUrl,
-                        sourceGitBranch,
-                        vcsRootId,
-                        indexForSearch
-                    )
-                )
+                builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
             } else {
                 builds.add(
                     BuildPublishToS3Index(
