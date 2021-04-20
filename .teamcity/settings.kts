@@ -1973,13 +1973,6 @@ object HelperObjects {
                     
                     echo "output path set to ${'$'}OUTPUT_PATH"
 
-                    if [[ "%env.DEPLOY_ENV%" == "staging" ]]; then
-                        echo "Creating a ZIP package"
-                        cd "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH" || exit
-                        zip -r "${'$'}ROOT_DIR/docs.zip" * &&
-                            mv "${'$'}ROOT_DIR/docs.zip" "${'$'}ROOT_DIR/${'$'}OUTPUT_PATH/"
-                    fi
-                    
                     aws s3 sync ${'$'}ROOT_DIR/${'$'}OUTPUT_PATH s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH% --delete
                 """.trimIndent()
                 }
@@ -2994,6 +2987,7 @@ object BuildOutputFromDita : Template({
         text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
         text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
         text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
+        text("env.CREATE_ZIP_PACKAGE", "%CREATE_ZIP_PACKAGE%", allowEmpty = false)
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
     }
 
@@ -3009,6 +3003,7 @@ object BuildOutputFromDita : Template({
                 #!/bin/bash
                 set -xe
 
+                export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
                 export OUTPUT_PATH="out"
                 export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
 
@@ -3034,7 +3029,14 @@ object BuildOutputFromDita : Template({
 
                 echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 ${'$'}DITA_BASE_COMMAND
-
+                
+                if [[ "%env.CREATE_ZIP_PACKAGE%" == "true" ]]; then
+                    echo "Creating a ZIP package"
+                    cd "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH" || exit
+                    zip -r "${'$'}WORKING_DIR/docs.zip" * &&
+                        mv "${'$'}WORKING_DIR/docs.zip" "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH/"
+                fi
+                    
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
