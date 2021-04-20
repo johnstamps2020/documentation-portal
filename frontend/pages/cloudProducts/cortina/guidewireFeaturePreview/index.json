@@ -2,11 +2,11 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Guidewire Cloud Platform",
   "template": "page.j2",
-  "class": "twoCards",
+  "class": "twoColumns",
   "items": [
     {
       "label": "Features and functionality",
-      "class": "categoryCard cardShadow",
+      "class": "subject featuresAndFunctionality",
       "items": [
         {
           "label": "Claims Autopilot",
@@ -28,7 +28,7 @@
     },
     {
       "label": "Configuration",
-      "class": "categoryCard cardShadow",
+      "class": "subject configuration",
       "items": [
         {
           "label": "Cloud Rules",
@@ -50,7 +50,7 @@
     },
     {
       "label": "Integration",
-      "class": "categoryCard cardShadow",
+      "class": "subject integration",
       "items": [
         {
           "label": "ClaimCenter Application Events for Developers",
@@ -72,7 +72,7 @@
     },
     {
       "label": "Release notes",
-      "class": "categoryCard cardShadow",
+      "class": "subject releaseNotes",
       "items": [
         {
           "label": "Cloud Rules",
