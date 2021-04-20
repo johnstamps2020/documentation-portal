@@ -925,7 +925,8 @@
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "GuidewireLifecycleManager.ditamap",
       "srcId": "lifecyclemgrdraftsrc",
-      "docId": "lifecyclemgrdraft"
+      "docId": "lifecyclemgrdraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
