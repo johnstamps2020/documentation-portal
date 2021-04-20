@@ -26,7 +26,6 @@ project {
 
     template(Deploy)
     template(BuildDockerImage)
-    template(BuildOutputFromDita)
     template(BuildYarn)
     template(BuildSphinx)
     template(BuildStorybook)
@@ -1872,7 +1871,12 @@ object HelperObjects {
             vcsRootIsExported: Boolean,
             customEnvironmentVars: JSONArray?
         ) : BuildType({
-            var buildTemplate: Template = BuildOutputFromDita
+            var buildTemplate: Template = if (build_env == "staging") {
+                BuildOutputFromDita(createZipPackage = true)
+            } else {
+                BuildOutputFromDita(createZipPackage = false)
+            }
+
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
                 "sphinx" -> buildTemplate = BuildSphinx
@@ -1885,14 +1889,14 @@ object HelperObjects {
                 templates(buildTemplate)
             }
 
-            id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
-            name = "Publish to $build_env"
-            maxRunningBuilds = 1
-
             var buildPdf = "true"
             if (build_env == "int") {
                 buildPdf = "false"
             }
+
+            id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
+            name = "Publish to $build_env"
+            maxRunningBuilds = 1
 
             vcs {
                 root(vcs_root_id, "+:. => %SOURCES_ROOT%")
@@ -1930,6 +1934,7 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN,
                     allowEmpty = false
                 )
+                text("CREATE_ZIP_PACKAGE", "false", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("WORKING_DIR", workingDir, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text(
                     "env.CUSTOM_OUTPUT_FOLDER",
@@ -2973,7 +2978,7 @@ object BuildYarn : Template({
     }
 })
 
-object BuildOutputFromDita : Template({
+class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     name = "Build the output from DITA"
 
     params {
@@ -2982,13 +2987,13 @@ object BuildOutputFromDita : Template({
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
-        text("env.USE_DOC_PORTAL_PARAMS", "%USE_DOC_PORTAL_PARAMS%", allowEmpty = false)
         text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
         text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
         text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
         text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
-        text("env.CREATE_ZIP_PACKAGE", "%CREATE_ZIP_PACKAGE%", allowEmpty = false)
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+        text("env.WORKING_DIR","%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
+        text("env.OUTPUT_PATH", "out", allowEmpty = false)
     }
 
     vcs {
@@ -2996,17 +3001,15 @@ object BuildOutputFromDita : Template({
     }
 
     steps {
+//        TODO: Run the script in Docker image using Docker support. Don't pull the image in the script.
         script {
-            name = "Build output from DITA"
+            name = "Build doc site output from DITA"
             id = "BUILD_OUTPUT"
             scriptContent = """
                 #!/bin/bash
                 set -xe
-
-                export WORKING_DIR="%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%"
-                export OUTPUT_PATH="out"
-
-                export DITA_BASE_COMMAND="docker run -i -v ${'$'}WORKING_DIR:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" --use-doc-portal-params \"%env.USE_DOC_PORTAL_PARAMS%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
+                
+                export DITA_BASE_COMMAND="docker run -i -v %env.WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
@@ -3028,17 +3031,54 @@ object BuildOutputFromDita : Template({
 
                 echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 ${'$'}DITA_BASE_COMMAND
+                                    
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+        if (createZipPackage) {
+            script {
+                name = "Build local output from DITA and create a ZIP package"
+                id = "BUILD_LOCAL_OUTPUT_ZIP_PACKAGE"
+                scriptContent = """
+                #!/bin/bash
+                set -xe
                 
-                if [[ "%env.CREATE_ZIP_PACKAGE%" == "true" ]]; then
-                    echo "Creating a ZIP package"
-                    cd "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH" || exit
-                    zip -r "${'$'}WORKING_DIR/docs.zip" * &&
-                        mv "${'$'}WORKING_DIR/docs.zip" "${'$'}WORKING_DIR/${'$'}OUTPUT_PATH/"
+                export OUTPUT_DIR="zip"
+
+                export DITA_BASE_COMMAND="docker run -i -v %env.WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_DIR/%env.OUTPUT_PATH%/\" --use-doc-portal-params no"
+                
+                if [[ ! -z "%env.FILTER_PATH%" ]]; then
+                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
                 fi
+                
+                if [[ "%env.BUILD_PDF%" == "true" ]]; then
+                    export DITA_BASE_COMMAND+=" -f wh-pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
+                elif [[ "%env.BUILD_PDF%" == "false" ]]; then
+                    export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
+                fi
+                
+                if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
+                    export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
+                fi
+                
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+
+                echo "Building local output"
+                ${'$'}DITA_BASE_COMMAND
+                
+                echo "Creating a ZIP package"
+                cd "%env.WORKING_DIR%/${'$'}OUTPUT_DIR/%env.OUTPUT_PATH%" || exit
+                zip -r "%env.WORKING_DIR%/${'$'}OUTPUT_DIR/docs.zip" * &&
+                    mv "%env.WORKING_DIR%/${'$'}OUTPUT_DIR/docs.zip" "%env.WORKING_DIR%/%env.OUTPUT_PATH%/" &&
+                    rm -rf "%env.WORKING_DIR%/${'$'}OUTPUT_DIR"
                     
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
+            }
         }
     }
 
