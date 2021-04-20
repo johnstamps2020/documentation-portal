@@ -2451,13 +2451,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/bc/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/bc/2020.11",
+          "sourceFolder": "ReleaseNotes-files/bc/2021.04",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2021.04",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -2575,13 +2575,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/cc/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2020.11",
+          "sourceFolder": "ReleaseNotes-files/cc/2021.04",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2021.04",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -2707,13 +2707,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/pc/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/pc/2020.11",
+          "sourceFolder": "ReleaseNotes-files/pc/2021.04",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2021.04",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
