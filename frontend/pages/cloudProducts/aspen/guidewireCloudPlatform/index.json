@@ -5,6 +5,20 @@
   "class": "twoCards",
   "items": [
     {
+      "label": "Guidewire Identity Federation Hub",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhubbanff"
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhubdraft"
+        }
+      ]
+    },
+    {
       "label": "Guidewire Cloud Console",
       "class": "categoryCard cardShadow",
       "items": [
