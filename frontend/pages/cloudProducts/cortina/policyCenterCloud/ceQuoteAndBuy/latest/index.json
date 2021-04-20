@@ -25,6 +25,16 @@
       ]
     },
     {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Digital Code Generation Guide",
+          "id": "dxclouddraftdcg"
+        }
+      ]
+    },
+    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [
