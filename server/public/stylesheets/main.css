@@ -581,7 +581,7 @@ div.pageHero {
 }
 
 .loginPage {
-  background: url(/images/background-cortina.svg) no-repeat fixed;
+  background: url(/images/background-login.svg) no-repeat fixed;
   background-size: cover;
   background-position: bottom right;
   color: white;
@@ -598,6 +598,7 @@ div.pageHero {
 }
 
 .loginPageTitle > h1 {
+  color: white;
   font-size: 2.5rem;
   margin-bottom: 16px;
 }
