@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Guidewire Cloud Platform",
+  "title": "Feature Preview",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
