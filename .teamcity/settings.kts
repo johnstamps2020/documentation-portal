@@ -2978,7 +2978,11 @@ object BuildYarn : Template({
 })
 
 class BuildOutputFromDita(createZipPackage: Boolean) : Template({
-    name = "Build the output from DITA"
+    name = if (createZipPackage) {
+        "Build the doc site and local output from DITA"
+    } else {
+        "Build the doc site output from DITA"
+    }
 
     params {
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
