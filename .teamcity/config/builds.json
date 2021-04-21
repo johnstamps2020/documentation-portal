@@ -913,8 +913,8 @@
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "CloudUnderwriting.ditamap",
-      "srcId": "clouduwdraftsrc",
-      "docId": "clouduwdraft",
+      "srcId": "submissionintakedraftsrc",
+      "docId": "submissionintakedraft",
       "indexRedirect": true
     },
     {

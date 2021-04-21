@@ -1537,9 +1537,9 @@
       "public": false
     },
     {
-      "id": "clouduwdraft",
-      "title": "Cloud Underwriting",
-      "url": "cloud/gw-feature-preview/clouduw",
+      "id": "submissionintakedraft",
+      "title": "Submission Intake",
+      "url": "cloud/gw-feature-preview/subintake",
       "metadata": {
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],

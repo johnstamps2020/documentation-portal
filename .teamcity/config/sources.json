@@ -2784,12 +2784,12 @@
       ]
     },
     {
-      "id": "clouduwdraftsrc",
-      "title": "Cloud Underwriting Draft",
+      "id": "submissionintakedraftsrc",
+      "title": "Submission Intake Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-underwriting.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
       "xdocsPathIds": [
-        "/Content/doc/cloud-services/CloudUnderwriting.ditamap",
+        "/Content/doc/cloud-services/SubmissionIntake.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
       ]
     },
