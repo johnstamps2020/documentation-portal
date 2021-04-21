@@ -12,6 +12,10 @@ const redirectUrls = [
     to: 'cloudProducts/cortina',
   },
   {
+    from: 'cloud/gw-feature-preview/latest',
+    to: 'cloudProducts/cortina/featurePreview',
+  },
+  {
     from: 'jutro/documentation/4.1.1',
     to: 'jutroDesignSystem/4.1.1',
   },
