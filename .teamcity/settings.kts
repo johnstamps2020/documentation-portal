@@ -1778,7 +1778,7 @@ object HelperObjects {
 
     private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
 
-        class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId) : BuildType(
+        class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId, ga4Id: String) : BuildType(
             {
                 name = "Build and publish Docker image with build content"
                 id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
@@ -1790,6 +1790,7 @@ object HelperObjects {
                         display = ParameterDisplay.PROMPT,
                         allowEmpty = true
                     )
+                    text("env.GA4_ID", ga4Id, allowEmpty = true)
                 }
                 vcs {
                     root(vcs_root_id)
@@ -1829,7 +1830,7 @@ object HelperObjects {
                 val vcsRootId =
                     RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "docker"))
                 val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
-                buildType(BuildAndPublishDockerImageWithContent(vcsRootId))
+                buildType(BuildAndPublishDockerImageWithContent(vcsRootId, "G-6XJD083TC6"))
                 vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
             }
         }

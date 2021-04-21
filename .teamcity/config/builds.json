@@ -655,13 +655,7 @@
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdev",
-      "customEnv": [
-        {
-          "name": "GA4_ID",
-          "value": "G-6XJD083TC6"
-        }
-      ]
+      "docId": "guidewirecloudconsolerootinsurerdev"
     },
     {
       "buildType": "dita",
@@ -669,13 +663,7 @@
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevdraft",
-      "customEnv": [
-        {
-          "name": "GA4_ID",
-          "value": "G-6XJD083TC6"
-        }
-      ]
+      "docId": "guidewirecloudconsolerootinsurerdevdraft"
     },
     {
       "buildType": "dita",
@@ -683,13 +671,7 @@
       "filter": "assets/gw-admin.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootgwadmin",
-      "customEnv": [
-        {
-          "name": "GA4_ID",
-          "value": "G-6XJD083TC6"
-        }
-      ]
+      "docId": "guidewirecloudconsolerootgwadmin"
     },
     {
       "buildType": "dita",
