@@ -10,11 +10,7 @@
       {
         "label": "Cortina",
         "page": "../cortina",
-        "env": [
-          "dev",
-          "int",
-          "staging"
-        ]
+        "env": ["dev", "int", "staging"]
       },
       {
         "label": "Aspen",
@@ -42,27 +38,19 @@
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2020.2",
-      "env": [
-        "dev",
-        "staging",
-        "prod"
-      ]
+      "env": ["dev", "staging", "prod"]
     },
     {
       "label": "InsuranceNow Internal Audience",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2020.2xInternalAudience",
-      "env": [
-        "int"
-      ]
+      "env": ["int"]
     },
     {
       "label": "InsuranceNow External Audience",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2020.2xExternalAudience",
-      "env": [
-        "int"
-      ]
+      "env": ["int"]
     },
     {
       "label": "Guidewire Cloud Platform",
@@ -72,7 +60,7 @@
     {
       "label": "Guidewire Cloud Standards",
       "class": "productFamily cardShadow",
-      "id": "standards202102"
+      "id": "standards202103"
     },
     {
       "label": "Guidewire Cloud Standards",

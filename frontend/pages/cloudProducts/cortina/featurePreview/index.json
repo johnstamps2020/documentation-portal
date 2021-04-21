@@ -1,0 +1,88 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Feature Preview",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Claims Autopilot",
+          "id": "claimsautopilotdraft"
+        },
+        {
+          "label": "Cloud Rating",
+          "id": "cloudratingdraft"
+        },
+        {
+          "label": "Cloud Underwriting",
+          "id": "clouduwdraft"
+        },
+        {
+          "label": "Cloud Underwriting",
+          "id": "clouduwdraft"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Cloud Rules",
+          "id": "cloudrulesdraft"
+        },
+        {
+          "label": "Lifecycle Manager",
+          "id": "lifecyclemgrdraft"
+        },
+        {
+          "label": "String Manager",
+          "id": "stringmanagerlatest"
+        },
+        {
+          "label": "Experience Manager",
+          "id": "experiencemgrdraft"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "ClaimCenter Application Events for Developers",
+          "id": "ccappeventsdevdraft"
+        },
+        {
+          "label": "PolicyCenter Application Events for Developers",
+          "id": "pcappeventsdevdraft"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevdraft"
+        },
+        {
+          "label": "Integration Gateway Installation for Internal Teams",
+          "id": "integgatewayinstalldraft"
+        }
+      ]
+    },
+    {
+      "label": "Release notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Cloud Rules",
+          "id": "cloudrulesrndraft"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewayrndraft"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,5 @@
 # Rules added manually
 
-server/config.json
 .teamcity/target/
 .vscode
 
