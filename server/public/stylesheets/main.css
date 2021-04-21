@@ -309,12 +309,15 @@ label,
   box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
 }
 
+div.items {
+  padding: 4rem 0;
+}
+
 .threeCards div.items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
   column-gap: 16px;
   row-gap: 16px;
-  padding: 64px 0;
 }
 
 .twoCards div.items {
@@ -322,7 +325,6 @@ label,
   gap: 16px;
   flex-wrap: wrap;
   flex: 1 1 auto;
-  padding: 64px 0;
 }
 
 .twoColumns div.items {
