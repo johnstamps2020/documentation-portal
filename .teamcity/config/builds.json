@@ -633,7 +633,6 @@
       "docId": "dxonpremdraftverelnotes",
       "indexRedirect": true
     },
-
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
@@ -656,7 +655,13 @@
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdev"
+      "docId": "guidewirecloudconsolerootinsurerdev",
+      "customEnv": [
+        {
+          "name": "GA4_ID",
+          "value": "G-6XJD083TC6"
+        }
+      ]
     },
     {
       "buildType": "dita",
@@ -664,7 +669,13 @@
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevdraft"
+      "docId": "guidewirecloudconsolerootinsurerdevdraft",
+      "customEnv": [
+        {
+          "name": "GA4_ID",
+          "value": "G-6XJD083TC6"
+        }
+      ]
     },
     {
       "buildType": "dita",
@@ -672,7 +683,13 @@
       "filter": "assets/gw-admin.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootgwadmin"
+      "docId": "guidewirecloudconsolerootgwadmin",
+      "customEnv": [
+        {
+          "name": "GA4_ID",
+          "value": "G-6XJD083TC6"
+        }
+      ]
     },
     {
       "buildType": "dita",
