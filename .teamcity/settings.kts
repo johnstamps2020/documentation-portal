@@ -1982,11 +1982,18 @@ object HelperObjects {
                 """.trimIndent()
                 }
 
-                stepsOrder = arrayListOf("BUILD_OUTPUT", "UPLOAD_GENERATED_CONTENT")
+                stepsOrder = arrayListOf("UPLOAD_GENERATED_CONTENT")
+                if (build_env == "staging") {
+                    stepsOrder.addAll(
+                        0,
+                        arrayListOf("BUILD_DOC_SITE_OUTPUT", "BUILD_LOCAL_OUTPUT", "CREATE_ZIP_PACKAGE")
+                    )
+                } else {
+                    stepsOrder.addAll(0, arrayListOf("BUILD_DOC_SITE_OUTPUT"))
+                }
                 if (index_for_search) {
                     stepsOrder.addAll(arrayListOf("CRAWL_DOC"))
                 }
-
             }
 
 
@@ -2999,6 +3006,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
         text("env.WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
         text("env.OUTPUT_PATH", "out", allowEmpty = false)
+        text("env.ZIP_SRC_DIR", "zip")
     }
 
     vcs {
@@ -3008,7 +3016,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     steps {
         script {
             name = "Build doc site output from DITA"
-            id = "BUILD_OUTPUT"
+            id = "BUILD_DOC_SITE_OUTPUT"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -3043,15 +3051,13 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         }
         if (createZipPackage) {
             script {
-                name = "Build local output from DITA and create a ZIP package"
-                id = "BUILD_LOCAL_OUTPUT_ZIP_PACKAGE"
+                name = "Build local output from DITA"
+                id = "BUILD_LOCAL_OUTPUT"
                 scriptContent = """
                 #!/bin/bash
                 set -xe
                 
-                export OUTPUT_DIR="zip"
-
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/${'$'}OUTPUT_DIR/%env.OUTPUT_PATH%/\" --use-doc-portal-params no"
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%/\" --use-doc-portal-params no"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
@@ -3071,18 +3077,26 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
 
                 echo "Building local output"
                 ${'$'}DITA_BASE_COMMAND
-                
-                echo "Creating a ZIP package"
-                cd "%env.WORKING_DIR%/${'$'}OUTPUT_DIR/%env.OUTPUT_PATH%" || exit
-                zip -r "%env.WORKING_DIR%/${'$'}OUTPUT_DIR/docs.zip" * &&
-                    mv "%env.WORKING_DIR%/${'$'}OUTPUT_DIR/docs.zip" "%env.WORKING_DIR%/%env.OUTPUT_PATH%/" &&
-                    rm -rf "%env.WORKING_DIR%/${'$'}OUTPUT_DIR"
-                    
+                                    
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
                 dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            script {
+                name = "Create a ZIP package"
+                id = "CREATE_ZIP_PACKAGE"
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+                             
+                echo "Creating a ZIP package"
+                cd "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%" || exit
+                zip -r "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/docs.zip" * &&
+                    mv "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/docs.zip" "%env.WORKING_DIR%/%env.OUTPUT_PATH%/" &&
+                    rm -rf "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%"
+            """.trimIndent()
             }
         }
     }
@@ -3097,8 +3111,8 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     }
 })
 
-object BuildDocSiteOutputFromDita: BuildOutputFromDita(createZipPackage = false)
-object BuildDocSiteAndLocalOutputFromDita: BuildOutputFromDita(createZipPackage = true)
+object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false)
+object BuildDocSiteAndLocalOutputFromDita : BuildOutputFromDita(createZipPackage = true)
 
 object PublishDocCrawlerDockerImage : BuildType({
     name = "Publish Doc Crawler docker image"
