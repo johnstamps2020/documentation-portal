@@ -3057,16 +3057,10 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 #!/bin/bash
                 set -xe
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%/\" --use-doc-portal-params no"
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params no -f webhelp_Guidewire_validate"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
-                fi
-                
-                if [[ "%env.BUILD_PDF%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" -f wh-pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
-                elif [[ "%env.BUILD_PDF%" == "false" ]]; then
-                    export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
                 fi
                 
                 if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
@@ -3077,6 +3071,11 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
 
                 echo "Building local output"
                 ${'$'}DITA_BASE_COMMAND
+                
+                if [[ "%env.BUILD_PDF%" == "true" ]]; then
+                    echo "Copying PDF from the doc site output to the local output"
+                    cp -avR "%env.WORKING_DIR%/%env.OUTPUT_PATH%/pdf" "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%"
+                fi
                                     
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
