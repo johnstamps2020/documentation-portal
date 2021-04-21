@@ -25,6 +25,8 @@ project {
     vcsRoot(LocalizedPDFs)
 
     template(Deploy)
+    template(BuildDocSiteOutputFromDita)
+    template(BuildDocSiteAndLocalOutputFromDita)
     template(BuildDockerImage)
     template(BuildYarn)
     template(BuildSphinx)
@@ -1872,9 +1874,9 @@ object HelperObjects {
             customEnvironmentVars: JSONArray?
         ) : BuildType({
             var buildTemplate: Template = if (build_env == "staging") {
-                BuildOutputFromDita(createZipPackage = true)
+                BuildDocSiteAndLocalOutputFromDita
             } else {
-                BuildOutputFromDita(createZipPackage = false)
+                BuildDocSiteOutputFromDita
             }
 
             when (buildType) {
@@ -2977,7 +2979,7 @@ object BuildYarn : Template({
     }
 })
 
-class BuildOutputFromDita(createZipPackage: Boolean) : Template({
+open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     name = if (createZipPackage) {
         "Build the doc site and local output from DITA"
     } else {
@@ -3094,6 +3096,9 @@ class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         }
     }
 })
+
+object BuildDocSiteOutputFromDita: BuildOutputFromDita(createZipPackage = false)
+object BuildDocSiteAndLocalOutputFromDita: BuildOutputFromDita(createZipPackage = true)
 
 object PublishDocCrawlerDockerImage : BuildType({
     name = "Publish Doc Crawler docker image"
