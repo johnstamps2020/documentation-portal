@@ -17,6 +17,10 @@
           "id": "cloudratingdraft"
         },
         {
+          "label": "Data Studio",
+          "id": "datastudiodraft"
+        },
+        {
           "label": "Submission Intake",
           "id": "submissionintakedraft"
         }

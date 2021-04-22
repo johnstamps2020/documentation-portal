@@ -935,6 +935,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "b_data-studio.ditamap",
+      "srcId": "datastudiodraftsrc",
+      "docId": "datastudiodraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "Other/IS-PC-Cloud-Draft.ditaval",
       "root": "StringManager.ditamap",
       "srcId": "stringmanagerlatestsrc",
