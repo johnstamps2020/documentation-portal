@@ -17,6 +17,16 @@
       "label": "Cortina",
       "page": "cortina",
       "env": ["dev", "int", "staging"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/banff",
+      "env": ["staging", "prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/cortina",
+      "env": ["dev", "int"]
     }
   ]
 }
