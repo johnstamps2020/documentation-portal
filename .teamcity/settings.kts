@@ -2562,13 +2562,13 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
 object CreateReleaseTag : BuildType({
     name = "Create a release tag"
 
-    val gitRepositories = mutableListOf<String>()
+    val gitUrls = mutableListOf<String>()
     for (i in 0 until HelperObjects.sourceConfigs.length()) {
         val source = HelperObjects.sourceConfigs.getJSONObject(i)
         val gitUrl = source.getString("gitUrl")
         val branchName = if (source.has("branch")) source.getString("branch") else "master"
-        if (branchName == "master") {
-            gitRepositories.add(gitUrl)
+        if (branchName == "master" && !gitUrls.contains(gitUrl)) {
+            gitUrls.add(gitUrl)
         }
     }
 
@@ -2588,7 +2588,7 @@ object CreateReleaseTag : BuildType({
             regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
             validationMessage = "Invalid SemVer format"
         )
-        select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitRepositories)
+        select("env.GIT_URL", "", display = ParameterDisplay.PROMPT, options = gitUrls)
     }
 
     steps {
