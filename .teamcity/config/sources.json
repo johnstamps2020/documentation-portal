@@ -2127,7 +2127,7 @@
     },
     {
       "id": "in20211xcommonconfigdraftsrc",
-      "title": "InsuranceNow 2021.1 Common Configuration Draft",
+      "title": "InsuranceNow 2021.1 Common Templates Configuration Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
