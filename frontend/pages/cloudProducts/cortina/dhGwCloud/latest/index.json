@@ -25,6 +25,16 @@
       ]
     },
     {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dhcloudproductdraft"
+        }
+      ]
+    },
+    {
       "label": "Installation",
       "class": "subject installation",
       "items": [
@@ -39,26 +49,6 @@
       ]
     },
     {
-      "label": "Features and functionality",
-      "class": "subject featuresAndFunctionality",
-      "items": [
-        {
-          "label": "Product Guide",
-          "id": "dhcloudproductdraft"
-        }
-      ]
-    },
-    {
-      "label": "Administration",
-      "class": "subject administration",
-      "items": [
-        {
-          "label": "Administration Guide",
-          "id": "dhcloudadmindraft"
-        }
-      ]
-    },
-    {
       "label": "Configuration",
       "class": "subject configuration",
       "items": [
@@ -69,6 +59,16 @@
         {
           "label": "Data Specifications Guide",
           "id": "dhclouddataspecdraft"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dhcloudadmindraft"
         }
       ]
     },

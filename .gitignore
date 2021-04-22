@@ -9,6 +9,7 @@ tmp/
 
 .idea/libraries/
 
+frontend/pages/localizedDocs/
 # Created by https://www.gitignore.io/api/intellij
 # Edit at https://www.gitignore.io/?templates=intellij
 

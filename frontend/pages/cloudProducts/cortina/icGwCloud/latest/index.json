@@ -25,20 +25,6 @@
       ]
     },
     {
-      "label": "Installation",
-      "class": "subject installation",
-      "items": [
-        {
-          "label": "Installation Guide",
-          "id": "iccloudinstalldraft"
-        },
-        {
-          "label": "Upgrade Guide",
-          "id": "iccloudupgradedraft"
-        }
-      ]
-    },
-    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [
@@ -57,12 +43,16 @@
       ]
     },
     {
-      "label": "Administration",
-      "class": "subject administration",
+      "label": "Installation",
+      "class": "subject installation",
       "items": [
         {
-          "label": "Administration Guide",
-          "id": "iccloudadmindraft"
+          "label": "Installation Guide",
+          "id": "iccloudinstalldraft"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "iccloudupgradedraft"
         }
       ]
     },
@@ -77,6 +67,16 @@
         {
           "label": "Data Specifications Guide",
           "id": "icclouddataspecdraft"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "iccloudadmindraft"
         }
       ]
     },
