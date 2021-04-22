@@ -278,8 +278,8 @@ object Release : BuildType({
             name = "Bump And Tag Version"
             scriptContent = """
                 set -xe
-                git config --global user.email "doctools@guidewire.com"
-                git config --global user.name "sys-doc"
+                git config --local user.email "doctools@guidewire.com"
+                git config --local user.name "sys-doc"
                 git fetch --tags
 
                 cd server/
@@ -2542,8 +2542,8 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                git config --global user.email "doctools@guidewire.com"
-                git config --global user.name "%serviceAccountUsername%"
+                git config --local user.email "doctools@guidewire.com"
+                git config --local user.name "%serviceAccountUsername%"
                 git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
                 cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
                 cd %env.SOURCES_ROOT%
@@ -2607,8 +2607,8 @@ object CreateReleaseTag : BuildType({
                 set -xe
                 export TAG_NAME="v%env.TAG_VERSION%"
 
-                git config --global user.email "doctools@guidewire.com"
-                git config --global user.name "%serviceAccountUsername%"
+                git config --local user.email "doctools@guidewire.com"
+                git config --local user.name "%serviceAccountUsername%"
                 
                 git clone %env.GIT_URL% %env.SOURCES_ROOT%
                 cd %env.SOURCES_ROOT%
