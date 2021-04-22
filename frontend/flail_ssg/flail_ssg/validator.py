@@ -36,6 +36,14 @@ class ItemWithNoLinkError:
 
 
 @dataclass
+class MissingItemError:
+    config_file: Path
+    details: str
+    level: int = logging.ERROR
+    message: str = 'Missing item'
+
+
+@dataclass
 class IncorrectEnvSettingsWarning:
     config_file: Path
     details: str
@@ -182,9 +190,23 @@ def validate_page(index_file: Path,
                         details=f'Selector item page: {str(page_path)}'))
         return issues
 
+    def validate_page_has_redirect_link(page_items: List, issues: List):
+        redirect_links = [item for item in page_items if item.get('label', 'not found').casefold() == '_redirect']
+        if not redirect_links:
+            issues.append(MissingItemError(
+                config_file=page_config.absolute_path,
+                details='Redirect link not found. If you use the redirect template, the page items must contain'
+                        ' the following item: { "label": "_redirect", "link": "redirectUrl"}.'
+                        'For example, { "label": "_redirect", "link": "/cloudProducts/cortina"}'
+            ))
+        return issues
+
     if page_config.absolute_path not in validated_pages:
         validated_pages.append(page_config.absolute_path)
+        page_template = page_config.json_object.get('template')
         items = page_config.json_object.get('items')
+        if 'redirect'.casefold() in page_template.casefold():
+            validate_page_has_redirect_link(items, validation_results)
         if items:
             validate_items(items, envs, validation_results)
         selector = page_config.json_object.get('selector')
