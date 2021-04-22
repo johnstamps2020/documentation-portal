@@ -1553,6 +1553,22 @@
       "public": false
     },
     {
+      "id": "datastudiodraft",
+      "title": "Data Studio",
+      "url": "cloud/gw-feature-preview/datastudio",
+      "metadata": {
+        "product": ["Guidewire Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "cloudrulesdraft",
       "title": "Cloud Rules",
       "url": "cloud/gw-feature-preview/cloudrules",

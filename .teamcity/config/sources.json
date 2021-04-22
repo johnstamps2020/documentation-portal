@@ -2814,6 +2814,16 @@
       ]
     },
     {
+      "id": "datastudiodraftsrc",
+      "title": "Data Studio Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/cloud/earlyAccess/data-studio/b_data-studio.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+      ]
+    },
+    {
       "id": "stringmanagerlatestsrc",
       "title": "String Manager",
       "sourceType": "git",
