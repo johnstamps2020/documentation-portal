@@ -21,7 +21,6 @@ project {
 
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
-    vcsRoot(DocValidator)
     vcsRoot(LocalizedPDFs)
 
     template(Deploy)
@@ -58,14 +57,6 @@ object vcsroot : GitVcsRoot({
     name = "vcsroot"
     url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
     branchSpec = "+:refs/heads/*"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object DocValidator : GitVcsRoot({
-    name = "Documentation validator"
-    url = "ssh://git@stash.guidewire.com/doctools/doc-validator.git"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
