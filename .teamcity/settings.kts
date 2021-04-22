@@ -269,8 +269,8 @@ object Release : BuildType({
             name = "Bump And Tag Version"
             scriptContent = """
                 set -xe
-                git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "sys-doc"
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "sys-doc"
                 git fetch --tags
 
                 cd server/
@@ -284,6 +284,9 @@ object Release : BuildType({
                 docker build -t docportal .
                 docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
                 docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
+                
+                git config --global --unset user.email
+                git config --global --unset user.name
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2533,8 +2536,9 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%serviceAccountUsername%"
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "%serviceAccountUsername%"
+                
                 git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
                 cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
                 cd %env.SOURCES_ROOT%
@@ -2547,6 +2551,9 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 else
                   echo "No changes to commit"
                 fi
+                
+                git config --global --unset user.email
+                git config --global --unset user.name
             """.trimIndent()
         }
     }
@@ -2598,8 +2605,8 @@ object CreateReleaseTag : BuildType({
                 set -xe
                 export TAG_NAME="v%env.TAG_VERSION%"
 
-                git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%serviceAccountUsername%"
+                git config --global user.email "doctools@guidewire.com"
+                git config --global user.name "%serviceAccountUsername%"
                 
                 git clone %env.GIT_URL% %env.SOURCES_ROOT%
                 cd %env.SOURCES_ROOT%
@@ -2608,6 +2615,9 @@ object CreateReleaseTag : BuildType({
                 echo "Created tag ${'$'}TAG_NAME"
                 git push origin "${'$'}TAG_NAME"
                 echo "Pushed tag to the remote repository"
+                
+                git config --global --unset user.email
+                git config --global --unset user.name
             """.trimIndent()
         }
     }
