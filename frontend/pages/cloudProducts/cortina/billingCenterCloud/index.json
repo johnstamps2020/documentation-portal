@@ -21,9 +21,7 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
-      "env": [
-        "int"
-      ],
+      "env": ["int"],
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
@@ -42,9 +40,12 @@
         {
           "label": "Cloud Data Access",
           "page": "../cloudDataAccess/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
+        },
+        {
+          "label": "Explore",
+          "page": "../../explore/latest",
+          "env": ["dev", "int", "staging"]
         },
         {
           "label": "Add-ons",
@@ -53,32 +54,22 @@
             {
               "label": "DataHub for Guidewire Cloud",
               "page": "../dhGwCloud/2021.04",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "DataHub for Guidewire Cloud",
               "page": "../dhGwCloud/latest",
-              "env": [
-                "int"
-              ]
+              "env": ["int"]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
               "page": "../icGwCloud/2021.04",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
               "page": "../icGwCloud/latest",
-              "env": [
-                "int"
-              ]
+              "env": ["int"]
             }
           ]
         }
@@ -91,9 +82,7 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": [
-            "int"
-          ],
+          "env": ["int"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
