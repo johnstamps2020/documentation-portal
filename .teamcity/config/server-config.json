@@ -2749,6 +2749,21 @@
       "public": false
     },
     {
+      "id": "jutrohackathon",
+      "title": "Jutro Hackathon Microsite",
+      "url": "jutro/hackathon/latest",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
+    },
+    {
       "id": "storybooknext",
       "title": "Jutro Storybook",
       "url": "jutro/storybook/next",
