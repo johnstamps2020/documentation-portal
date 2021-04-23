@@ -62,6 +62,16 @@ object vcsroot : GitVcsRoot({
     }
 })
 
+object docsiteRecoveryRoot : GitVcsRoot({
+    name = "docsiterecovery"
+    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+    branchSpec = "+:refs/heads/*"
+    branch = "refs/heads/doc-site-recovery"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
 object LocalizedPDFs : GitVcsRoot({
     name = "Localization PDFs"
     url = "ssh://git@stash.guidewire.com/docsources/localization-pdfs.git"
@@ -707,7 +717,7 @@ object GenerateSitemap : BuildType({
     }
 
     vcs {
-        root(vcsroot)
+        root(docsiteRecoveryRoot)
         cleanCheckout = true
     }
 
