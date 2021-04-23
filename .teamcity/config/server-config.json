@@ -7496,6 +7496,46 @@
       "public": false
     },
     {
+      "id": "testingframeworksapicortina",
+      "title": "API Testing",
+      "url": "cloud/testingframeworks/202104/api",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksuicortina",
+      "title": "User Interface Testing",
+      "url": "cloud/testingframeworks/202104/ui",
+      "metadata": {
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "is202011glossary",
       "title": "Glossary",
       "url": "cloud/is/202011/glossary",

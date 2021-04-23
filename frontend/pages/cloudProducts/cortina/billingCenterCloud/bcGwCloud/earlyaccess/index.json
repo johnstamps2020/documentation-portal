@@ -117,7 +117,7 @@
           "id": "isbccloudeagosu"
         },
         {
-          "label": "Test Automation Guide",
+          "label": "ISBTF and GUnit Testing",
           "id": "isbccloudeatesting"
         }
       ]
@@ -134,4 +134,3 @@
     }
   ]
 }
-  
