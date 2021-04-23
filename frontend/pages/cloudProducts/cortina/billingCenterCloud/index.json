@@ -97,6 +97,16 @@
               "page": "../serviceRepEngage/latest"
             }
           ]
+        },
+        {
+          "label": "Digital Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Jutro Design System",
+              "page": "../../../jutroDesignSystem/5.3.1"
+            }
+          ]
         }
       ]
     }
