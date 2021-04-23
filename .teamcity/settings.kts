@@ -21,6 +21,7 @@ project {
 
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
+    vcsRoot(docsiteRecoveryRoot)
     vcsRoot(LocalizedPDFs)
 
     template(Deploy)
