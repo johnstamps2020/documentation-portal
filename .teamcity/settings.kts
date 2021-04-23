@@ -709,6 +709,11 @@ object GenerateSitemap : BuildType({
 
     }
 
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
     steps {
         script {
             name = "Run the script which generates the sitemap"
@@ -766,12 +771,6 @@ object GenerateSitemap : BuildType({
             }
             branchFilter = "+:<default>"
         }
-    }
-
-    vcs {
-        root(vcsrootmasteronly)
-
-        cleanCheckout = true
     }
 })
 
