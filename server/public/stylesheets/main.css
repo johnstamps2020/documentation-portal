@@ -159,6 +159,7 @@ main {
 main:not(.fullWidth):not(.loginPage):not(.pageNotFound):not(.support) {
   display: flex;
   flex-wrap: wrap-reverse;
+  column-gap: 2rem;
 }
 
 main:not(.fullWidth) > .content {
@@ -310,7 +311,7 @@ label,
 }
 
 div.items {
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .threeCards div.items {
@@ -509,13 +510,14 @@ footer .releaseInfo {
 }
 
 div.pageHero {
-  display: flex;
-  flex-wrap: wrap-reverse;
-  gap: 16px;
+  display: block;
+  /* flex-wrap: wrap-reverse;
+  gap: 16px; */
 }
 
 .heroControls {
   width: fit-content;
+  padding-top: 36px;
   margin-left: auto;
 }
 
@@ -561,7 +563,7 @@ div.pageHero {
 }
 
 .usefulLinks {
-  padding: 3, 25rem 0.375rem;
+  padding: 9rem 0.375rem;
 }
 
 .usefulLinks > a {
@@ -831,7 +833,7 @@ main.support h2 {
 }
 
 .docBreadcrumb {
-  padding: 4rem 0;
+  padding: 0.5rem 0;
 }
 
 .docBreadcrumb a {
@@ -852,6 +854,10 @@ main.support h2 {
   content: none;
 }
 
+#pageSelectorContainer {
+  padding: 2rem 0;
+  height: 120px;
+}
 .cortina #pageSelectorContainer .selectorLabel,
 .banff #pageSelectorContainer .selectorLabel,
 .aspen #pageSelectorContainer .selectorLabel {
