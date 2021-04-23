@@ -24,7 +24,7 @@
         },
         {
           "label": "Release Video",
-          "id": "in20202xreleaseviddraft"
+          "link": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0"
         },
         {
           "label": "Studio Release Notes",
@@ -33,7 +33,8 @@
         {
           "label": "Consumer Service Portal 3.24 Release Notes",
           "id": "incsp324rndraft"
-        },        {
+        },
+        {
           "label": "Consumer Service Portal 3.23 Release Notes",
           "id": "incsp323rndraft"
         }
