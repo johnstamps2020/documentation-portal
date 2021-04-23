@@ -912,7 +912,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "CloudUnderwriting.ditamap",
+      "root": "SubmissionIntake.ditamap",
       "srcId": "submissionintakedraftsrc",
       "docId": "submissionintakedraft",
       "indexRedirect": true
