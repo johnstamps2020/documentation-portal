@@ -257,11 +257,9 @@ main.aspen .docBreadcrumb a:hover {
 main.cortina .usefulLinks,
 main.banff .usefulLinks,
 main.aspen .usefulLinks {
-  margin: 12px 0;
-  padding: 12px;
   background-color: white;
   box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 main.cortina .usefulLinks a:hover,
@@ -563,7 +561,8 @@ div.pageHero {
 }
 
 .usefulLinks {
-  padding: 9rem 0.375rem;
+  padding: 0.75rem;
+  margin: 7.85rem 0 0 0;
 }
 
 .usefulLinks > a {
@@ -866,7 +865,7 @@ main.support h2 {
 
 #pageSelector {
   display: block;
-  width: 300px;
+  width: 306px;
   font-family: var(--gw-font-family);
   font-size: 16px;
   padding: 4px 12px;
