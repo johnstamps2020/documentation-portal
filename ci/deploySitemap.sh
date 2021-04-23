@@ -11,6 +11,7 @@ for i in {1..5}; do
     sleep 15
   else
     echo "Persistent Volume available. Copying files..."
+    break
   fi
 done
 kubectl cp ${OUTPUT_DIR} ${POD_NAME}:/tmp/out --namespace=${NAMESPACE}
