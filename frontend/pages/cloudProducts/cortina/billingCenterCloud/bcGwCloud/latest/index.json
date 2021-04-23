@@ -117,8 +117,16 @@
           "id": "isbcclouddraftgosu"
         },
         {
-          "label": "Test Automation Guide",
+          "label": "ISBTF and GUnit Testing",
           "id": "isbcclouddrafttesting"
+        },
+        {
+          "label": "API Testing",
+          "id": "testingframeworksapicortina"
+        },
+        {
+          "label": "User Interface Testing",
+          "id": "testingframeworksuicortina"
         }
       ]
     },
@@ -134,4 +142,3 @@
     }
   ]
 }
-  

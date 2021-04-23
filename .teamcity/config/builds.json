@@ -879,6 +879,22 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-API.ditamap",
+      "srcId": "testingframeworksapicortinasrc",
+      "docId": "testingframeworksapicortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-UI.ditamap",
+      "srcId": "testingframeworksuicortinasrc",
+      "docId": "testingframeworksuicortina",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
       "root": "Autopilot.ditamap",
       "srcId": "claimsautopilotdraftsrc",

@@ -2733,14 +2733,25 @@
       ]
     },
     {
-      "id": "gwcloudservicesdraft",
-      "title": "Guidewire Feature Preview Draft and Early Access",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-feature-preview.git",
+      "id": "testingframeworksapicortinasrc",
+      "title": "API Testing Cortina",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "Cortina",
       "xdocsPathIds": [
-        "/Content/doc/_supermap-cloud-services.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval"
+        "/Content/doc/testing_frameworks/2021.04/GT-API.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "testingframeworksuicortinasrc",
+      "title": "User Interface Testing Cortina",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/2021.04/GT-UI.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
     {
