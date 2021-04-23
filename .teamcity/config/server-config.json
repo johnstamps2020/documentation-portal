@@ -9247,25 +9247,6 @@
       "public": false
     },
     {
-      "id": "in20211xreleaseviddraft",
-      "title": "Release Video",
-      "url": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20211xstudiorndraft",
       "title": "Studio Release Notes",
       "url": "cloud/in/20211x/studiorn",
@@ -9568,25 +9549,6 @@
       "public": false
     },
     {
-      "id": "in20202xreleaseviddraft",
-      "title": "Release Video",
-      "url": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20202xstudiorndraft",
       "title": "Studio Release Notes",
       "url": "cloud/in/20202x/studiorn",
@@ -9876,25 +9838,6 @@
       "id": "in20201xrndraft",
       "title": "Core Release Notes",
       "url": "cloud/in/20201x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20201xreleaseviddraft",
-      "title": "Release Video",
-      "url": "https://www.brainshark.com/guidewire/vu?pi=zHUzBobpCzM6iUz0",
       "metadata": {
         "platform": ["Cloud"],
         "product": [
@@ -10262,22 +10205,6 @@
       "public": false
     },
     {
-      "id": "in20211releasevid",
-      "title": "Release Video",
-      "url": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20211studiorn",
       "title": "Studio Release Notes",
       "url": "cloud/in/20211/studiorn",
@@ -10486,22 +10413,6 @@
       "public": false
     },
     {
-      "id": "in20202releasevid",
-      "title": "Release Video",
-      "url": "https://www.brainshark.com/guidewire/vu?pi=zH9zTn2rKzM6iUz0",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20202studiorn",
       "title": "Studio Release Notes",
       "url": "cloud/in/20202/studiorn",
@@ -10697,22 +10608,6 @@
       "id": "in20201rn",
       "title": "Core Release Notes",
       "url": "cloud/in/20201/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.1"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20201releasevid",
-      "title": "Release Video",
-      "url": "https://www.brainshark.com/guidewire/vu?pi=zHUzBobpCzM6iUz0",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
