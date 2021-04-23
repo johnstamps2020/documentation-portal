@@ -782,6 +782,27 @@ object GenerateSitemap : BuildType({
             }
             branchFilter = "+:<default>"
         }
+        schedule {
+            schedulingPolicy = daily {
+                hour = 10
+                minute = 10
+            }
+            branchFilter = "+:<default>"
+        }
+        schedule {
+            schedulingPolicy = daily {
+                hour = 14
+                minute = 14
+            }
+            branchFilter = "+:<default>"
+        }
+        schedule {
+            schedulingPolicy = daily {
+                hour = 18
+                minute = 18
+            }
+            branchFilter = "+:<default>"
+        }
     }
 })
 
