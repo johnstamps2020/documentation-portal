@@ -135,11 +135,11 @@
           "id": "iscc202011testing"
         },
         {
-          "label": "API Testing",
+          "label": "API Testing (GT-API)",
           "id": "testingframeworksapibanff"
         },
         {
-          "label": "User Interface Testing",
+          "label": "User Interface Testing (GT-UI)",
           "id": "testingframeworksuibanff"
         }
       ]
