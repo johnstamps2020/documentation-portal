@@ -833,6 +833,7 @@ main.support h2 {
 
 .docBreadcrumb {
   padding: 0.5rem 0;
+  height: 2.25rem;
 }
 
 .docBreadcrumb a {
