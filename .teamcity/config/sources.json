@@ -3055,6 +3055,7 @@
       "title": "Test Automation Release Notes Banff",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation_ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
