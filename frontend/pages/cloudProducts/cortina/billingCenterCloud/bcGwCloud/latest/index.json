@@ -121,11 +121,11 @@
           "id": "isbcclouddrafttesting"
         },
         {
-          "label": "API Testing",
+          "label": "API Testing (GT-API)",
           "id": "testingframeworksapicortina"
         },
         {
-          "label": "User Interface Testing",
+          "label": "User Interface Testing (GT-UI)",
           "id": "testingframeworksuicortina"
         }
       ]
