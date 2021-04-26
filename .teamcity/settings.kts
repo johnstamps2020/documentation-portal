@@ -753,7 +753,7 @@ object GenerateSitemap : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 fi
-                sh %teamcity.build.workingDir%/ci/deploySitemap.sh
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh sitemap
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1296,7 +1296,7 @@ object DeployFrontend : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 fi
-                sh %teamcity.build.workingDir%/ci/deployFrontend.sh
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh frontend
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
