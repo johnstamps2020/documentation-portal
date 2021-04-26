@@ -1,0 +1,148 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter for Guidewire Cloud 2021.04",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "iscc202104releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "iscc202104newandchanged"
+        },
+        {
+          "label": "Test Automation Release Notes",
+          "id": "testingframeworksrncortina"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn202104"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "iscc202104install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "iscc202104upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "iscc202104app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202104contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "iscc202104admin"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best practices",
+          "id": "iscc202104bestpractice"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "iscc202104config"
+        },
+        {
+          "label": "Globalization",
+          "id": "iscc202104global"
+        },
+        {
+          "label": "Rules",
+          "id": "iscc202104rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "iscc202104integ"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "iscc202104cloudapibf"
+        },
+        {
+          "label": "Cloud API Configuration and Authentication",
+          "id": "iscc202104cloudapica"
+        },
+        {
+          "label": "Cloud API Reference",
+          "id": "cc202104apiref"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc202104restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "is202104restapiclient"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "iscc202104gosu"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "iscc202104testing"
+        },
+        {
+          "label": "API Testing (GT-API)",
+          "id": "testingframeworksapicortina"
+        },
+        {
+          "label": "User Interface Testing (GT-UI)",
+          "id": "testingframeworksuicortina"
+        }
+      ]
+    }
+  ]
+}

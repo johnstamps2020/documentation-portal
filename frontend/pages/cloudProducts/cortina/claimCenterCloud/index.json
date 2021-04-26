@@ -21,11 +21,16 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ccGwCloud/latest"
+          "page": "ccGwCloud/latest",
+          "env": ["int"]
+        },
+        {
+          "label": "ClaimCenter for Guidewire Cloud",
+          "page": "ccGwCloud/2021.04",
+          "env": ["dev", "staging", "prod"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",

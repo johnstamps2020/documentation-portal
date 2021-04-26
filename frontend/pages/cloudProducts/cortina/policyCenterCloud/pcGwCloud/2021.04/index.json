@@ -1,0 +1,166 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud 2020.11",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispc202104releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispc202104newandchanged"
+        },
+        {
+          "label": "Test Automation Release Notes",
+          "id": "testingframeworksrncortina"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn202104"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "ispc202104install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispc202104upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispc202104app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202104contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispc202104admin"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best practices",
+          "id": "ispc202104bestpractice"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer",
+          "id": "ispc202104apd"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispc202104config"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc202104global"
+        },
+        {
+          "label": "Rules",
+          "id": "ispc202104rules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc202104pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc202104pm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "ispc202104integ"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "ispc202104cloudapibf"
+        },
+        {
+          "label": "Cloud API Configuration and Authentication",
+          "id": "ispc202104cloudapica"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc202104restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "is202104restapiclient"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "ispc202104gosu"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "ispc202104testing"
+        },
+        {
+          "label": "API Testing (GT-API)",
+          "id": "testingframeworksapicortina"
+        },
+        {
+          "label": "User Interface Testing (GT-UI)",
+          "id": "testingframeworksuicortina"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "is202104glossary"
+        }
+      ]
+    }
+  ]
+}
