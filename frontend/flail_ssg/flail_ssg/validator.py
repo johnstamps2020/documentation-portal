@@ -51,6 +51,14 @@ class IncorrectEnvSettingsWarning:
     message: str = 'Env settings incorrect'
 
 
+@dataclass
+class EmptyItemWarning:
+    config_file: Path
+    details: str
+    level: int = logging.WARNING
+    message: str = 'Item does not contain any child items'
+
+
 def process_validation_results(results: List, send_bouncer_home: bool):
     """
     bouncer_mode:
@@ -157,6 +165,13 @@ def validate_page(index_file: Path,
                             details=f'Item label: {item_label} '
                                     f'Item envs: {item_envs} | '
                                     f'Env settings of the parent element: {parent_envs}'
+                        )
+                    )
+                if not item.get('link') and not item.get('items'):
+                    issues.append(
+                        EmptyItemWarning(
+                            config_file=page_config.absolute_path,
+                            details=f'Item label: {item_label}'
                         )
                     )
             if item.get('items'):
