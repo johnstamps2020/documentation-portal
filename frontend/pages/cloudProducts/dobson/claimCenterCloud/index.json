@@ -21,6 +21,7 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
@@ -34,7 +35,8 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools3x"
+          "id": "isconfigupgradetools3x",
+          "env": ["int"]
         }
       ]
     },
@@ -55,12 +57,12 @@
         {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": ["dev", "int", "staging"]
+          "env": ["int"]
         },
         {
           "label": "Predictive Analytics",
           "id": "palatest",
-          "env": ["dev", "int", "staging"]
+          "env": ["int"]
         },
         {
           "label": "Add-ons",
@@ -118,6 +120,7 @@
         {
           "label": "Digital Framework",
           "class": "group",
+          "env": ["int"],
           "items": [
             {
               "label": "Jutro Design System",

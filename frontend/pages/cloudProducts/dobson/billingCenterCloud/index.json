@@ -21,6 +21,7 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
@@ -34,13 +35,15 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools3x"
+          "id": "isconfigupgradetools3x",
+          "env": ["int"]
         }
       ]
     },
     {
       "label": "Analytics",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Cloud Data Access",
@@ -50,7 +53,7 @@
         {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": ["dev", "int", "staging"]
+          "env": ["int"]
         },
         {
           "label": "Add-ons",
@@ -73,6 +76,7 @@
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Digital Applications",
