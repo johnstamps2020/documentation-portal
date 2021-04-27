@@ -66,8 +66,8 @@
     left: 37px;
   }
 
-  div.wh_search_input.navbar-form.wh_main_page_search
-    input.wh_search_textfield {
+  div.wh_search_input.navbar-form.wh_main_page_search,
+  input.wh_search_textfield {
     width: var(--search-field-width);
     padding-right: 36px;
   }
@@ -102,10 +102,11 @@ div.wh_content_area {
 
 .wh_logo {
   display: inline-block;
-  background-image: url('/images/guidewire-logo.svg') !important;
-  margin-left: 16px;
   width: 340px;
   height: 32px;
+  background-image: url('/images/logo-gw-doc.svg') !important;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .wh_logo img {
@@ -170,6 +171,7 @@ div#affix3 form#searchForm {
   margin: 0 8px;
   height: 32px;
 }
+
 .wh_top_menu_and_indexterms_link > label {
   margin-bottom: 0;
 }
@@ -196,6 +198,7 @@ html {
   display: flex;
   float: right;
 }
+
 #customHeaderElements label {
   margin-bottom: 0;
 }
