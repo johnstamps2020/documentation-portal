@@ -4,6 +4,7 @@ const {
   getConfig,
   getTaxonomy,
   getVersionsForProductOnPlatform,
+  getRootBreadcrumb,
 } = require('../controllers/configController');
 
 router.get('/', async function(req, res) {
@@ -24,6 +25,12 @@ router.get('/versions/:product/:platform', async function(req, res) {
     req.isAuthenticated()
   );
   res.send(versions);
+});
+
+router.get('/breadcrumbs', async function(req, res) {
+  const { pagePathname } = req.query;
+  const rootBreadcrumb = await getRootBreadcrumb(pagePathname);
+  res.send(rootBreadcrumb);
 });
 
 module.exports = router;

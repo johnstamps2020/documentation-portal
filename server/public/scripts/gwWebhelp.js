@@ -97,7 +97,7 @@ async function createVersionSelector() {
       const label = document.createElement('label');
       label.innerHTML = 'Select version:';
       label.htmlFor = 'versionSelector';
- 
+
       document
         .getElementById('customHeaderElements')
         .appendChild(label)
@@ -111,48 +111,43 @@ async function createVersionSelector() {
 
 async function addTopLinkToBreadcrumbs() {
   try {
-    //START TODO: Move to an endpoint
-    const result = await fetch('/breadcrumbs.json');
-    const breadcrumbsMapping = await result.json();
-    //END TODO
     const currentPagePathname = window.location.pathname;
-    for (breadcrumb of breadcrumbsMapping) {
-      if (
-        currentPagePathname.startsWith(breadcrumb.docUrl) &&
-        breadcrumb.rootPages.length === 1
-      ) {
-        const productVersionPageUrl = breadcrumb.rootPages[0].path;
-        const listItem = document.createElement('li');
-        const topicrefSpan = document.createElement('span');
-        topicrefSpan.setAttribute('class', 'topicref');
-        const titleSpan = document.createElement('span');
-        titleSpan.setAttribute('class', 'title');
-        const listItemLink = document.createElement('a');
-        listItemLink.setAttribute('href', productVersionPageUrl);
-        listItemLink.innerText = breadcrumb.rootPages[0].label;
+    const response = await fetch(
+      `/safeConfig/breadcrumbs?pagePathname=${currentPagePathname}`
+    );
+    const jsonResponse = await response.json();
+    const rootPageObject = jsonResponse.rootPage;
+    if (Object.keys(rootPageObject).length !== 0) {
+      const listItem = document.createElement('li');
+      const topicrefSpan = document.createElement('span');
+      topicrefSpan.setAttribute('class', 'topicref');
+      const titleSpan = document.createElement('span');
+      titleSpan.setAttribute('class', 'title');
+      const listItemLink = document.createElement('a');
+      listItemLink.setAttribute('href', rootPageObject.path);
+      listItemLink.innerText = rootPageObject.label;
 
-        titleSpan.appendChild(listItemLink);
-        topicrefSpan.appendChild(titleSpan);
-        listItem.appendChild(topicrefSpan);
+      titleSpan.appendChild(listItemLink);
+      topicrefSpan.appendChild(titleSpan);
+      listItem.appendChild(topicrefSpan);
 
-        function getBreadcrumbs() {
-          try {
-            let breadcrumbs = document.querySelector(
-              '.wh_breadcrumb > .d-print-inline-block'
-            );
-            if (!breadcrumbs) {
-              window.requestAnimationFrame(getBreadcrumbs);
-            } else {
-              breadcrumbs.prepend(listItem);
-            }
-          } catch (err) {
-            console.log(err);
-            return null;
+      function getBreadcrumbs() {
+        try {
+          let breadcrumbs = document.querySelector(
+            '.wh_breadcrumb > .d-print-inline-block'
+          );
+          if (!breadcrumbs) {
+            window.requestAnimationFrame(getBreadcrumbs);
+          } else {
+            breadcrumbs.prepend(listItem);
           }
+        } catch (err) {
+          console.log(err);
+          return null;
         }
-
-        getBreadcrumbs();
       }
+
+      getBreadcrumbs();
     }
   } catch (err) {
     console.log(err);
@@ -183,7 +178,7 @@ function toggleAvatar(e) {
 async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
 
-  if(window.location.pathname.endsWith('gw-login')) {
+  if (window.location.pathname.endsWith('gw-login')) {
     return;
   }
   // /userInformation is not available for a few milliseconds
@@ -198,10 +193,9 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
     let userButton;
 
     if (isLoggedIn) {
-      
-        userButton = document.createElement('div');
-        userButton.setAttribute('id', 'avatar');
-        userButton.innerHTML = `
+      userButton = document.createElement('div');
+      userButton.setAttribute('id', 'avatar');
+      userButton.innerHTML = `
         <button 
           id="avatarButton" 
           onClick="toggleAvatar(e)" 
@@ -222,8 +216,7 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
           </div>
         </button>
       `;
-    }
-    else {
+    } else {
       userButton = document.createElement('a');
       loginButton.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
       loginButton.setAttribute('href', '/gw-login');
@@ -231,15 +224,14 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
     }
     buttonWrapper.appendChild(userButton);
     document.getElementById('customHeaderElements').appendChild(buttonWrapper);
-  }
-  catch (error) {
-    if (attemptNumber >= retryAttempts ) {
+  } catch (error) {
+    if (attemptNumber >= retryAttempts) {
       console.log('Could not access user information endpoint. ' + error);
       return;
     }
-    attemptNumber++
-    retryTimeout += 100
-    setTimeout(setLogInButton(attemptNumber, retryTimeout), retryTimeout)
+    attemptNumber++;
+    retryTimeout += 100;
+    setTimeout(setLogInButton(attemptNumber, retryTimeout), retryTimeout);
   }
 }
 
@@ -271,7 +263,7 @@ function hideByCssClass(cssClass) {
 
 async function addCustomElements() {
   const customHeaderElements = document.getElementById('customHeaderElements');
-  if(customHeaderElements != null) {
+  if (customHeaderElements != null) {
     await createVersionSelector();
     await createUserButton();
     customHeaderElements.classList.remove('invisible');
