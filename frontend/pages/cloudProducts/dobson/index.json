@@ -38,12 +38,6 @@
       "page": "billingCenterCloud"
     },
     {
-      "label": "InsuranceNow",
-      "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.1",
-      "env": ["int"]
-    },
-    {
       "label": "InsuranceNow Internal Audience",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2021.1xInternalAudience",
