@@ -2431,8 +2431,8 @@
     },
     {
       "id": "exploreusingrelease",
-      "title": "Using Explore",
-      "url": "cloud/explore/using",
+      "title": "Application Guide",
+      "url": "cloud/explore/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
@@ -12886,7 +12886,7 @@
         "version": ["latest"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     }

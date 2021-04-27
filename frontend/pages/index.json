@@ -14,12 +14,12 @@
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/banff",
+      "link": "/cloudProducts/cortina",
       "env": ["staging", "prod"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/cortina",
+      "link": "/cloudProducts/dobson",
       "env": ["dev", "int"]
     }
   ]

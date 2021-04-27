@@ -17,10 +17,6 @@
           "id": "iscc202104newandchanged"
         },
         {
-          "label": "Test Automation Release Notes",
-          "id": "testingframeworksrncortina"
-        },
-        {
           "label": "REST API Client Release Notes",
           "id": "isrestapiclientrn202104"
         }
@@ -141,6 +137,16 @@
         {
           "label": "User Interface Testing (GT-UI)",
           "id": "testingframeworksuicortina"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
         }
       ]
     }

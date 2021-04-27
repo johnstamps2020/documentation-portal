@@ -24,8 +24,8 @@
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ccGwCloud/2021.04",
-          "env": ["dev", "int", "staging", "prod"]
+          "page": "ccGwCloud/latest",
+          "env": ["int"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -45,17 +45,17 @@
         {
           "label": "Compare+",
           "id": "comparelatest",
-          "env": ["dev", "int", "staging", "prod"]
+          "env": ["int"]
         },
         {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": ["dev", "int", "staging", "prod"]
+          "env": ["dev", "int", "staging"]
         },
         {
           "label": "Predictive Analytics",
           "id": "palatest",
-          "env": ["dev", "int", "staging", "prod"]
+          "env": ["dev", "int", "staging"]
         },
         {
           "label": "Add-ons",
@@ -63,13 +63,13 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../dhGwCloud/latest",
+              "env": ["int"]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../icGwCloud/latest",
+              "env": ["int"]
             }
           ]
         }

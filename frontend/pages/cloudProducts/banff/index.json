@@ -1,12 +1,17 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Banff Documentation",
+  "title": "Banff",
   "template": "page.j2",
   "class": "banff threeCards",
   "selector": {
     "label": "Select release",
     "selectedItem": "Banff",
     "items": [
+      {
+        "label": "Dobson",
+        "page": "../dobson",
+        "env": ["int"]
+      },
       {
         "label": "Cortina",
         "page": "../cortina",
@@ -56,16 +61,6 @@
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform"
-    },
-    {
-      "label": "Guidewire Cloud Standards",
-      "class": "productFamily cardShadow",
-      "id": "standards202103"
-    },
-    {
-      "label": "Guidewire Cloud Standards",
-      "class": "productFamily cardShadow",
-      "id": "standardsdraft"
     },
     {
       "label": "Integration Framework",

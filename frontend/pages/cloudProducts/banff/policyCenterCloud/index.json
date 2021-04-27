@@ -137,7 +137,7 @@
         {
           "label": "Add-ons",
           "class": "group",
-          "env": ["dev", "staging", "prod"],
+          "env": ["dev", "int", "staging", "prod"],
           "items": [
             {
               "label": "Digital Code Generation Extension Pack",

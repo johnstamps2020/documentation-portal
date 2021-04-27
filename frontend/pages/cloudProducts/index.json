@@ -15,17 +15,20 @@
     },
     {
       "label": "Cortina",
-      "page": "cortina",
-      "env": ["dev", "int", "staging"]
+      "page": "cortina"
     },
     {
-      "label": "_redirect",
-      "link": "/cloudProducts/banff",
-      "env": ["staging", "prod"]
+      "label": "Dobson",
+      "page": "dobson"
     },
     {
       "label": "_redirect",
       "link": "/cloudProducts/cortina",
+      "env": ["staging", "prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/dobson",
       "env": ["dev", "int"]
     }
   ]

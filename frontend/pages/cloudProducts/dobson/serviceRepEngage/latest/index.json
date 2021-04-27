@@ -1,0 +1,52 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ServiceRepEngage latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dxclouddraftsrerelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dxclouddraftsreinstall"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dxclouddraftsreapp"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dxclouddraftsredev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dxclouddraftsrerefguides"
+        }
+      ]
+    }
+  ]
+}

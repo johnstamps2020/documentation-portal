@@ -24,12 +24,7 @@
       "items": [
         {
           "label": "PolicyCenter for Guidewire Cloud",
-          "page": "pcGwCloud/latest",
-          "env": ["int"]
-        },
-        {
-          "label": "PolicyCenter for Guidewire Cloud",
-          "page": "pcGwCloud/latest",
+          "page": "pcGwCloud/2021.04",
           "env": ["dev", "int", "staging", "prod"]
         },
         {
@@ -50,12 +45,12 @@
         {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": ["dev", "int", "staging"]
+          "env": ["dev", "int", "staging", "prod"]
         },
         {
           "label": "Predictive Analytics",
           "id": "palatest",
-          "env": ["dev", "int", "staging"]
+          "env": ["dev", "int", "staging", "prod"]
         },
         {
           "label": "Add-ons",
@@ -67,19 +62,9 @@
               "env": ["dev", "staging", "prod"]
             },
             {
-              "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/latest",
-              "env": ["int"]
-            },
-            {
               "label": "InfoCenter for Guidewire Cloud",
               "page": "../icGwCloud/2021.04",
               "env": ["dev", "staging", "prod"]
-            },
-            {
-              "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/latest",
-              "env": ["int"]
             }
           ]
         }

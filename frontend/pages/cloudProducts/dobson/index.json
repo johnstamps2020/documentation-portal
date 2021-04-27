@@ -1,25 +1,23 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Aspen",
+  "title": "Dobson",
   "template": "page.j2",
-  "class": "aspen threeCards",
+  "class": "dobson threeCards",
   "selector": {
     "label": "Select release",
-    "selectedItem": "Aspen",
+    "selectedItem": "Dobson",
     "items": [
       {
-        "label": "Dobson",
-        "page": "../dobson",
-        "env": ["int"]
-      },
-      {
         "label": "Cortina",
-        "page": "../cortina",
-        "env": ["dev", "int", "staging"]
+        "page": "../cortina"
       },
       {
         "label": "Banff",
         "page": "../banff"
+      },
+      {
+        "label": "Aspen",
+        "page": "../aspen"
       }
     ]
   },
@@ -42,25 +40,32 @@
     {
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.1",
-      "env": ["dev", "staging", "prod"]
+      "page": "insuranceNow/2021.1",
+      "env": ["dev"]
     },
     {
       "label": "InsuranceNow Internal Audience",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.1xInternalAudience",
-      "env": ["int"]
+      "page": "insuranceNow/2021.1xInternalAudience",
+      "env": ["dev"]
     },
     {
       "label": "InsuranceNow External Audience",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.1xExternalAudience",
-      "env": ["int"]
+      "page": "insuranceNow/2021.1xExternalAudience",
+      "env": ["dev"]
     },
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "guidewireCloudPlatform"
+      "page": "guidewireCloudPlatform",
+      "env": ["dev", "int"]
+    },
+    {
+      "label": "Feature Preview",
+      "class": "productFamily cardShadow",
+      "page": "featurePreview",
+      "env": ["dev", "int"]
     }
   ]
 }

@@ -17,10 +17,6 @@
           "id": "ispc202104newandchanged"
         },
         {
-          "label": "Test Automation Release Notes",
-          "id": "testingframeworksrncortina"
-        },
-        {
           "label": "REST API Client Release Notes",
           "id": "isrestapiclientrn202104"
         }
@@ -158,7 +154,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "is202104glossary"
+          "id": "gwglossary"
         }
       ]
     }
