@@ -25,17 +25,20 @@
     {
       "label": "PolicyCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "policyCenterCloud"
+      "page": "policyCenterCloud",
+      "env": ["int"]
     },
     {
       "label": "ClaimCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "claimCenterCloud"
+      "page": "claimCenterCloud",
+      "env": ["int"]
     },
     {
       "label": "BillingCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "billingCenterCloud"
+      "page": "billingCenterCloud",
+      "env": ["int"]
     },
     {
       "label": "InsuranceNow Internal Audience",
