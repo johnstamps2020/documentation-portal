@@ -1601,9 +1601,9 @@
       "public": false
     },
     {
-      "id": "lifecyclemgrdraft",
-      "title": "Lifecycle Manager",
-      "url": "cloud/gw-feature-preview/lifecyclemgr",
+      "id": "worksetmgrdraft",
+      "title": "Workset Manager",
+      "url": "cloud/gw-feature-preview/worksetmgr",
       "metadata": {
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
