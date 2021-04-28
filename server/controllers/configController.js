@@ -55,37 +55,6 @@ async function isPublicDoc(url) {
   return false;
 }
 
-async function getVersionsForProductOnPlatform(product, platform, isLoggedIn) {
-  const config = await getConfig();
-  const docs = config.docs;
-  const matchingDocs = docs.filter(
-    d =>
-      d.metadata.platform.some(p => p === platform) &&
-      d.metadata.product.some(p => p === product)
-  );
-
-  let versions = [];
-  for (const doc of matchingDocs) {
-    for (const version of doc.metadata.version) {
-      if (!versions.some(v => v.label === version)) {
-        const isAbsoluteLink =
-          doc.url.startsWith('http://') || doc.url.startsWith('https://');
-        const url = isAbsoluteLink ? doc.url : '/' + doc.url;
-        const link = isLoggedIn ? url : doc.public ? url : undefined;
-        versions.push({
-          label: version,
-          link: link,
-          public: doc.public,
-        });
-      }
-    }
-  }
-
-  versions.sort((a, b) => (a.label < b.label ? 1 : -1));
-
-  return versions;
-}
-
 async function getRootBreadcrumb(pagePathname) {
   try {
     const breadcrumbsFile = await fs.readFile(breadcrumbsConfigPath, 'utf-8');
@@ -113,6 +82,5 @@ async function getRootBreadcrumb(pagePathname) {
 module.exports = {
   getConfig,
   isPublicDoc,
-  getVersionsForProductOnPlatform,
   getRootBreadcrumb,
 };
