@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   getConfig,
   getRootBreadcrumb,
+  getVersionSelector,
 } = require('../controllers/configController');
 
 router.get('/', async function(req, res) {
@@ -14,6 +15,12 @@ router.get('/breadcrumbs', async function(req, res) {
   const { pagePathname } = req.query;
   const rootBreadcrumb = await getRootBreadcrumb(pagePathname);
   res.send(rootBreadcrumb);
+});
+
+router.get('/versionSelectors', async function(req, res) {
+  const { platform, product, version } = req.query;
+  const otherVersions = await getVersionSelector(platform, product, version);
+  res.send(otherVersions);
 });
 
 module.exports = router;

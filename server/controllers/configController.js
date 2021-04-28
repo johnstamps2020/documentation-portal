@@ -6,6 +6,9 @@ const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config`);
 const breadcrumbsConfigPath = path.resolve(
   `${__dirname}/../static/pages/breadcrumbs.json`
 );
+const versionSelectorsConfigPath = path.resolve(
+  `${__dirname}/../static/pages/versionSelectors.json`
+);
 
 async function getConfig() {
   try {
@@ -79,8 +82,29 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
+async function getVersionSelector(platform, product, version) {
+  try {
+    const versionSelectorsFile = await fs.readFile(
+      versionSelectorsConfigPath,
+      'utf-8'
+    );
+    const versionSelectorMapping = JSON.parse(versionSelectorsFile);
+    const matchingVersionSelector = versionSelectorMapping.find(
+      s =>
+        product.split(',').some(p => p === s.product) &&
+        platform.split(',').some(pl => pl === s.platform) &&
+        version.split(',').some(v => v === s.version)
+    );
+    return { matchingVersionSelector: matchingVersionSelector };
+  } catch (err) {
+    console.log(err);
+    return { matchingVersionSelector: {} };
+  }
+}
+
 module.exports = {
   getConfig,
   isPublicDoc,
   getRootBreadcrumb,
+  getVersionSelector,
 };

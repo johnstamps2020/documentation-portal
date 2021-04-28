@@ -31,28 +31,19 @@ async function createVersionSelector() {
     if (!docProduct) {
       return null;
     }
-    const product = docProduct.split(',');
-    const platform = document
-      .querySelector("meta[name = 'gw-platform']")
-      ['content'].split(',');
-    const version = document
-      .querySelector("meta[name = 'gw-version']")
-      ['content'].split(',');
+    const docPlatform = document.querySelector("meta[name = 'gw-platform']")[
+      'content'
+    ];
+    const docVersion = document.querySelector("meta[name = 'gw-version']")[
+      'content'
+    ];
 
-    //START TODO: Move to an endpoint
-    const result = await fetch('/versionSelectors.json');
-    const versionSelectorMapping = await result.json();
-
-    const matchingVersionSelector = versionSelectorMapping.find(
-      s =>
-        product.some(p => p === s.product) &&
-        platform.some(pl => pl === s.platform) &&
-        version.some(v => v === s.version)
+    const response = await fetch(
+      `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}`
     );
-    //END TODO
-
-    const otherVersions = matchingVersionSelector.otherVersions;
-    if (otherVersions.length > 0) {
+    const jsonResponse = await response.json();
+    const matchingVersionSelector = jsonResponse.matchingVersionSelector;
+    if (matchingVersionSelector.otherVersions.length > 0) {
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
@@ -63,12 +54,13 @@ async function createVersionSelector() {
             ?.textContent;
           const topicDesc = document.querySelector("meta[name = 'description']")
             ?.content;
-          const docVersion = e.target.options[e.target.selectedIndex].innerHTML;
+          const targetDocVersion =
+            e.target.options[e.target.selectedIndex].innerHTML;
           const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
           const bestMatchingTopic = await findBestMatchingTopic(
             searchQuery,
             docProduct,
-            docVersion
+            targetDocVersion
           );
           if (bestMatchingTopic) {
             linkToOpen = bestMatchingTopic;
@@ -77,7 +69,7 @@ async function createVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of otherVersions) {
+      for (const val of matchingVersionSelector.otherVersions) {
         const option = document.createElement('option');
         option.text = val.label;
         let value = val.path;
