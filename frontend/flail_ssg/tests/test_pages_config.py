@@ -1,11 +1,12 @@
 import shutil
 
 import json
+from collections import namedtuple
 from pathlib import Path
 
+import flail_ssg.validator
 from flail_ssg.validator import run_validator
 from flail_ssg.generator import filter_by_env
-from typing import Dict
 from jsonschema import validate as jsonschema_validate
 
 
@@ -53,3 +54,30 @@ def test_all_pages_are_valid_with_schema():
     for index_json_file in TestConfig.pages_dir.rglob('**/*.json'):
         index_json = load_json_file(index_json_file)
         jsonschema_validate(instance=index_json, schema=page_schema_json)
+
+
+def test_env_settings_are_correct():
+    EnvSettings = namedtuple('EnvSettings', 'parent_element_envs item_envs')
+    correct_settings = [
+        EnvSettings(['prod'], ['int', 'prod']),
+        EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev', 'int', 'staging', 'prod']),
+        EnvSettings(['dev', 'staging', 'prod'], ['staging', 'prod']),
+        EnvSettings(['staging'], ['dev', 'int', 'staging', 'prod']),
+        EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev']),
+        EnvSettings([], ['dev']),
+        EnvSettings(['dev', 'int', 'staging', 'prod'], []),
+        EnvSettings([], []),
+    ]
+    incorrect_settings = [
+        EnvSettings(['prod'], ['int']),
+        EnvSettings(['dev', 'staging', 'prod'], ['int']),
+        EnvSettings(['dev', 'staging'], ['int', 'prod']),
+        EnvSettings(['staging'], ['dev', 'int']),
+    ]
+    for i in correct_settings:
+        assert flail_ssg.validator.env_settings_are_correct(
+            higher_order_envs=i[0], item_envs=i[1]) is True
+
+    for i in incorrect_settings:
+        assert flail_ssg.validator.env_settings_are_correct(
+            higher_order_envs=i[0], item_envs=i[1]) is False
