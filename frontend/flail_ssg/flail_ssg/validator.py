@@ -48,7 +48,7 @@ class IncorrectEnvSettingsWarning:
     config_file: Path
     details: str
     level: int = logging.WARNING
-    message: str = 'Env settings incorrect'
+    message: str = f'None of the item envs is included in the envs of the parent element'
 
 
 @dataclass
@@ -95,13 +95,9 @@ def process_validation_results(results: List, send_bouncer_home: bool):
 
 
 def env_settings_are_correct(item_envs: List, higher_order_envs: List):
-    if not item_envs:
+    if not item_envs or not higher_order_envs:
         return True
-    if not higher_order_envs:
-        return True
-    elif all(env in higher_order_envs for env in item_envs):
-        return True
-    return False
+    return any(env in higher_order_envs for env in item_envs)
 
 
 def validate_page(index_file: Path,
@@ -133,7 +129,8 @@ def validate_page(index_file: Path,
                             details=f'Item label: {item_label} '
                                     f'Item ID: {item_id} | '
                                     f'Item envs: {item_envs} | '
-                                    f'Env settings of the parent element: {parent_envs}'
+                                    f'Envs of the parent element: {parent_envs} '
+
                         )
                     )
             elif item.get('page'):
@@ -147,7 +144,7 @@ def validate_page(index_file: Path,
                                 details=f'Item label: {item_label} '
                                         f'Item page: {item_page} | '
                                         f'Item envs: {item_envs} | '
-                                        f'Env settings of the parent element: {parent_envs}'
+                                        f'Envs of the parent element: {parent_envs}'
                             )
                         )
                     new_parent_envs = item_envs or parent_envs
