@@ -1,18 +1,8 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "BillingCenter for Guidewire Cloud latest",
+  "title": "ClaimCenter for Guidewire Cloud 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
-  "selector": {
-    "label": "Select version",
-    "selectedItem": "latest",
-    "items": [
-      {
-        "label": "earlyaccess",
-        "page": "../earlyaccess"
-      }
-    ]
-  },
   "items": [
     {
       "label": "Release Notes",
@@ -20,11 +10,15 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbcclouddraftreleasenotes"
+          "id": "iscc202104releasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "isbcclouddraftnewandchanged"
+          "id": "iscc202104newandchanged"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn202104"
         }
       ]
     },
@@ -34,11 +28,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "isbcclouddraftinstall"
+          "id": "iscc202104install"
         },
         {
           "label": "Upgrade",
-          "id": "isbcclouddraftupgrade"
+          "id": "iscc202104upgrade"
         }
       ]
     },
@@ -48,11 +42,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbcclouddraftapp"
+          "id": "iscc202104app"
         },
         {
           "label": "Contact Management",
-          "id": "isclouddraftcontact"
+          "id": "is202104contact"
         }
       ]
     },
@@ -62,7 +56,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbcclouddraftadmin"
+          "id": "iscc202104admin"
         }
       ]
     },
@@ -72,7 +66,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "isbcclouddraftbestpractice"
+          "id": "iscc202104bestpractice"
         }
       ]
     },
@@ -82,15 +76,15 @@
       "items": [
         {
           "label": "Configuration",
-          "id": "isbcclouddraftconfig"
+          "id": "iscc202104config"
         },
         {
           "label": "Globalization",
-          "id": "isbcclouddraftglobal"
+          "id": "iscc202104global"
         },
         {
           "label": "Rules",
-          "id": "isbcclouddraftrules"
+          "id": "iscc202104rules"
         }
       ]
     },
@@ -100,11 +94,27 @@
       "items": [
         {
           "label": "Integration",
-          "id": "isbcclouddraftinteg"
+          "id": "iscc202104integ"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "iscc202104cloudapibf"
+        },
+        {
+          "label": "Cloud API Configuration and Authentication",
+          "id": "iscc202104cloudapica"
+        },
+        {
+          "label": "Cloud API Reference",
+          "id": "cc202104apiref"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc202104restapifw"
         },
         {
           "label": "REST API Client",
-          "id": "isclouddraftrestapiclient"
+          "id": "is202104restapiclient"
         }
       ]
     },
@@ -114,18 +124,18 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "isbcclouddraftgosu"
+          "id": "iscc202104gosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "isbcclouddrafttesting"
+          "id": "iscc202104testing"
         },
         {
-          "label": "API Testing (GT-API)",
+          "label": "API Testing (GT:API)",
           "id": "testingframeworksapicortina"
         },
         {
-          "label": "User Interface Testing (GT-UI)",
+          "label": "User Interface Testing (GT:UI)",
           "id": "testingframeworksuicortina"
         }
       ]
@@ -136,7 +146,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "isclouddraftglossary"
+          "id": "gwglossary"
         }
       ]
     }

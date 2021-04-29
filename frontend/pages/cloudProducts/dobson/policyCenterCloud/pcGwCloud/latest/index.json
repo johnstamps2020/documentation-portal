@@ -1,15 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "ClaimCenter for Guidewire Cloud earlyaccess",
+  "title": "PolicyCenter for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "twoColumns",
   "selector": {
     "label": "Select version",
-    "selectedItem": "earlyaccess",
+    "selectedItem": "latest",
     "items": [
       {
-        "label": "latest",
-        "page": "../latest"
+        "label": "earlyaccess",
+        "page": "../earlyaccess"
       }
     ]
   },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "iscccloudeareleasenotes"
+          "id": "ispcclouddraftreleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "iscccloudeanewandchanged"
+          "id": "ispcclouddraftnewandchanged"
         }
       ]
     },
@@ -34,11 +34,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "iscccloudeainstall"
+          "id": "ispcclouddraftinstall"
         },
         {
           "label": "Upgrade",
-          "id": "iscccloudeaupgrade"
+          "id": "ispcclouddraftupgrade"
         }
       ]
     },
@@ -48,11 +48,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "iscccloudeaapp"
+          "id": "ispcclouddraftapp"
         },
         {
           "label": "Contact Management",
-          "id": "iscloudeacontact"
+          "id": "isclouddraftcontact"
         }
       ]
     },
@@ -62,7 +62,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "iscccloudeaadmin"
+          "id": "ispcclouddraftadmin"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "iscccloudeabestpractice"
+          "id": "ispcclouddraftbestpractice"
         }
       ]
     },
@@ -81,16 +81,28 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Advanced Product Designer",
+          "id": "ispcclouddraftapd"
+        },
+        {
           "label": "Configuration",
-          "id": "iscccloudeaconfig"
+          "id": "ispcclouddraftconfig"
         },
         {
           "label": "Globalization",
-          "id": "iscccloudeaglobal"
+          "id": "ispcclouddraftglobal"
         },
         {
           "label": "Rules",
-          "id": "iscccloudearules"
+          "id": "ispcclouddraftrules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispcclouddraftpd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispcclouddraftpm"
         }
       ]
     },
@@ -100,19 +112,19 @@
       "items": [
         {
           "label": "Integration",
-          "id": "iscccloudeainteg"
+          "id": "ispcclouddraftinteg"
         },
         {
           "label": "Cloud API Developer Guide",
-          "id": "iscccloudeacloudapi"
+          "id": "ispcclouddraftcloudapi"
         },
         {
           "label": "REST API Framework",
-          "id": "iscccloudearestapifw"
+          "id": "ispcclouddraftrestapifw"
         },
         {
           "label": "REST API Client",
-          "id": "iscloudearestapiclient"
+          "id": "isclouddraftrestapiclient"
         }
       ]
     },
@@ -122,11 +134,19 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "iscccloudeagosu"
+          "id": "ispcclouddraftgosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "iscccloudeatesting"
+          "id": "ispcclouddrafttesting"
+        },
+        {
+          "label": "API Testing (GT:API)",
+          "id": "testingframeworksapicortina"
+        },
+        {
+          "label": "User Interface Testing (GT:UI)",
+          "id": "testingframeworksuicortina"
         }
       ]
     },
@@ -136,7 +156,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "iscloudeaglossary"
+          "id": "gwglossary"
         }
       ]
     }

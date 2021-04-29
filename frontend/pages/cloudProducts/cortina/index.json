@@ -1,12 +1,17 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Cortina Documentation",
+  "title": "Cortina",
   "template": "page.j2",
   "class": "cortina threeCards",
   "selector": {
     "label": "Select release",
     "selectedItem": "Cortina",
     "items": [
+      {
+        "label": "Dobson",
+        "page": "../dobson",
+        "env": ["int"]
+      },
       {
         "label": "Banff",
         "page": "../banff"
@@ -37,7 +42,7 @@
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
       "page": "insuranceNow/2021.1",
-      "env": ["dev", "staging"]
+      "env": ["dev", "staging", "prod"]
     },
     {
       "label": "InsuranceNow Internal Audience",
@@ -55,19 +60,7 @@
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform",
-      "env": ["dev", "int"]
-    },
-    {
-      "label": "Guidewire Cloud Standards",
-      "class": "productFamily cardShadow",
-      "id": "standardsdraft",
-      "env": ["dev", "int"]
-    },
-    {
-      "label": "Feature Preview",
-      "class": "productFamily cardShadow",
-      "page": "featurePreview",
-      "env": ["dev", "int"]
+      "env": ["dev", "int", "staging", "prod"]
     }
   ]
 }

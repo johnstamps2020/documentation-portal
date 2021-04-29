@@ -1,8 +1,18 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "PolicyCenter for Guidewire Cloud 2020.11",
+  "title": "BillingCenter for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "latest",
+    "items": [
+      {
+        "label": "earlyaccess",
+        "page": "../earlyaccess"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
@@ -10,19 +20,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ispc202011releasenotes"
+          "id": "isbcclouddraftreleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "ispc202011newandchanged"
-        },
-        {
-          "label": "Test Automation Release Notes",
-          "id": "testingframeworksrnbanff"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn202011"
+          "id": "isbcclouddraftnewandchanged"
         }
       ]
     },
@@ -32,11 +34,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "ispc202011install"
+          "id": "isbcclouddraftinstall"
         },
         {
           "label": "Upgrade",
-          "id": "ispc202011upgrade"
+          "id": "isbcclouddraftupgrade"
         }
       ]
     },
@@ -46,11 +48,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "ispc202011app"
+          "id": "isbcclouddraftapp"
         },
         {
           "label": "Contact Management",
-          "id": "is202011contact"
+          "id": "isclouddraftcontact"
         }
       ]
     },
@@ -60,7 +62,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "ispc202011admin"
+          "id": "isbcclouddraftadmin"
         }
       ]
     },
@@ -70,7 +72,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "ispc202011bestpractice"
+          "id": "isbcclouddraftbestpractice"
         }
       ]
     },
@@ -79,28 +81,16 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
-          "id": "ispc202011apd"
-        },
-        {
           "label": "Configuration",
-          "id": "ispc202011config"
+          "id": "isbcclouddraftconfig"
         },
         {
           "label": "Globalization",
-          "id": "ispc202011global"
+          "id": "isbcclouddraftglobal"
         },
         {
           "label": "Rules",
-          "id": "ispc202011rules"
-        },
-        {
-          "label": "Product Designer",
-          "id": "ispc202011pd"
-        },
-        {
-          "label": "Product Model",
-          "id": "ispc202011pm"
+          "id": "isbcclouddraftrules"
         }
       ]
     },
@@ -110,23 +100,11 @@
       "items": [
         {
           "label": "Integration",
-          "id": "ispc202011integ"
-        },
-        {
-          "label": "Cloud API Business Flows",
-          "id": "ispc202011cloudapibf"
-        },
-        {
-          "label": "Cloud API Configuration and Authentication",
-          "id": "ispc202011cloudapica"
-        },
-        {
-          "label": "REST API Framework",
-          "id": "ispc202011restapifw"
+          "id": "isbcclouddraftinteg"
         },
         {
           "label": "REST API Client",
-          "id": "is202011restapiclient"
+          "id": "isclouddraftrestapiclient"
         }
       ]
     },
@@ -136,19 +114,19 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "ispc202011gosu"
+          "id": "isbcclouddraftgosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "ispc202011testing"
+          "id": "isbcclouddrafttesting"
         },
         {
-          "label": "API Testing (GT-API)",
-          "id": "testingframeworksapibanff"
+          "label": "API Testing (GT:API)",
+          "id": "testingframeworksapicortina"
         },
         {
-          "label": "User Interface Testing (GT-UI)",
-          "id": "testingframeworksuibanff"
+          "label": "User Interface Testing (GT:UI)",
+          "id": "testingframeworksuicortina"
         }
       ]
     },

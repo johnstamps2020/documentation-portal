@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "PolicyCenter for Guidewire Cloud 2020.11",
+  "title": "BillingCenter for Guidewire Cloud 2020.11",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,19 +10,15 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ispc202011releasenotes"
+          "id": "isbc202104releasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "ispc202011newandchanged"
-        },
-        {
-          "label": "Test Automation Release Notes",
-          "id": "testingframeworksrnbanff"
+          "id": "isbc202104newandchanged"
         },
         {
           "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn202011"
+          "id": "isrestapiclientrn202104"
         }
       ]
     },
@@ -32,11 +28,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "ispc202011install"
+          "id": "isbc202104install"
         },
         {
           "label": "Upgrade",
-          "id": "ispc202011upgrade"
+          "id": "isbc202104upgrade"
         }
       ]
     },
@@ -46,11 +42,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "ispc202011app"
+          "id": "isbc202104app"
         },
         {
           "label": "Contact Management",
-          "id": "is202011contact"
+          "id": "is202104contact"
         }
       ]
     },
@@ -60,7 +56,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "ispc202011admin"
+          "id": "isbc202104admin"
         }
       ]
     },
@@ -70,7 +66,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "ispc202011bestpractice"
+          "id": "isbc202104bestpractice"
         }
       ]
     },
@@ -79,28 +75,16 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
-          "id": "ispc202011apd"
-        },
-        {
           "label": "Configuration",
-          "id": "ispc202011config"
+          "id": "isbc202104config"
         },
         {
           "label": "Globalization",
-          "id": "ispc202011global"
+          "id": "isbc202104global"
         },
         {
           "label": "Rules",
-          "id": "ispc202011rules"
-        },
-        {
-          "label": "Product Designer",
-          "id": "ispc202011pd"
-        },
-        {
-          "label": "Product Model",
-          "id": "ispc202011pm"
+          "id": "isbc202104rules"
         }
       ]
     },
@@ -110,23 +94,11 @@
       "items": [
         {
           "label": "Integration",
-          "id": "ispc202011integ"
-        },
-        {
-          "label": "Cloud API Business Flows",
-          "id": "ispc202011cloudapibf"
-        },
-        {
-          "label": "Cloud API Configuration and Authentication",
-          "id": "ispc202011cloudapica"
-        },
-        {
-          "label": "REST API Framework",
-          "id": "ispc202011restapifw"
+          "id": "isbc202104integ"
         },
         {
           "label": "REST API Client",
-          "id": "is202011restapiclient"
+          "id": "is202104restapiclient"
         }
       ]
     },
@@ -136,19 +108,19 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "ispc202011gosu"
+          "id": "isbc202104gosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "ispc202011testing"
+          "id": "isbc202104testing"
         },
         {
-          "label": "API Testing (GT-API)",
-          "id": "testingframeworksapibanff"
+          "label": "API Testing (GT:API)",
+          "id": "testingframeworksapicortina"
         },
         {
-          "label": "User Interface Testing (GT-UI)",
-          "id": "testingframeworksuibanff"
+          "label": "User Interface Testing (GT:UI)",
+          "id": "testingframeworksuicortina"
         }
       ]
     },

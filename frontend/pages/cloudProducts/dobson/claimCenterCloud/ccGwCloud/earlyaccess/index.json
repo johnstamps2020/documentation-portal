@@ -1,15 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "ClaimCenter for Guidewire Cloud latest",
+  "title": "ClaimCenter for Guidewire Cloud earlyaccess",
   "template": "page.j2",
   "class": "twoColumns",
   "selector": {
     "label": "Select version",
-    "selectedItem": "latest",
+    "selectedItem": "earlyaccess",
     "items": [
       {
-        "label": "earlyaccess",
-        "page": "../earlyaccess"
+        "label": "latest",
+        "page": "../latest"
       }
     ]
   },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isccclouddraftreleasenotes"
+          "id": "iscccloudeareleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "isccclouddraftnewandchanged"
+          "id": "iscccloudeanewandchanged"
         }
       ]
     },
@@ -34,11 +34,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "isccclouddraftinstall"
+          "id": "iscccloudeainstall"
         },
         {
           "label": "Upgrade",
-          "id": "isccclouddraftupgrade"
+          "id": "iscccloudeaupgrade"
         }
       ]
     },
@@ -48,11 +48,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isccclouddraftapp"
+          "id": "iscccloudeaapp"
         },
         {
           "label": "Contact Management",
-          "id": "isclouddraftcontact"
+          "id": "iscloudeacontact"
         }
       ]
     },
@@ -62,7 +62,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isccclouddraftadmin"
+          "id": "iscccloudeaadmin"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "isccclouddraftbestpractice"
+          "id": "iscccloudeabestpractice"
         }
       ]
     },
@@ -82,15 +82,15 @@
       "items": [
         {
           "label": "Configuration",
-          "id": "isccclouddraftconfig"
+          "id": "iscccloudeaconfig"
         },
         {
           "label": "Globalization",
-          "id": "isccclouddraftglobal"
+          "id": "iscccloudeaglobal"
         },
         {
           "label": "Rules",
-          "id": "isccclouddraftrules"
+          "id": "iscccloudearules"
         }
       ]
     },
@@ -100,19 +100,19 @@
       "items": [
         {
           "label": "Integration",
-          "id": "isccclouddraftinteg"
+          "id": "iscccloudeainteg"
         },
         {
           "label": "Cloud API Developer Guide",
-          "id": "isccclouddraftcloudapi"
+          "id": "iscccloudeacloudapi"
         },
         {
           "label": "REST API Framework",
-          "id": "isccclouddraftrestapifw"
+          "id": "iscccloudearestapifw"
         },
         {
           "label": "REST API Client",
-          "id": "isclouddraftrestapiclient"
+          "id": "iscloudearestapiclient"
         }
       ]
     },
@@ -122,19 +122,11 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "isccclouddraftgosu"
+          "id": "iscccloudeagosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "isccclouddrafttesting"
-        },
-        {
-          "label": "API Testing (GT-API)",
-          "id": "testingframeworksapicortina"
-        },
-        {
-          "label": "User Interface Testing (GT-UI)",
-          "id": "testingframeworksuicortina"
+          "id": "iscccloudeatesting"
         }
       ]
     },
@@ -144,7 +136,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "isclouddraftglossary"
+          "id": "gwglossary"
         }
       ]
     }

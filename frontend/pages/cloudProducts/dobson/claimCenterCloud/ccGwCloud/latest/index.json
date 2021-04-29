@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "PolicyCenter for Guidewire Cloud latest",
+  "title": "ClaimCenter for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "twoColumns",
   "selector": {
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ispcclouddraftreleasenotes"
+          "id": "isccclouddraftreleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "ispcclouddraftnewandchanged"
+          "id": "isccclouddraftnewandchanged"
         }
       ]
     },
@@ -34,11 +34,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "ispcclouddraftinstall"
+          "id": "isccclouddraftinstall"
         },
         {
           "label": "Upgrade",
-          "id": "ispcclouddraftupgrade"
+          "id": "isccclouddraftupgrade"
         }
       ]
     },
@@ -48,7 +48,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "ispcclouddraftapp"
+          "id": "isccclouddraftapp"
         },
         {
           "label": "Contact Management",
@@ -62,7 +62,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "ispcclouddraftadmin"
+          "id": "isccclouddraftadmin"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "items": [
         {
           "label": "Best practices",
-          "id": "ispcclouddraftbestpractice"
+          "id": "isccclouddraftbestpractice"
         }
       ]
     },
@@ -81,28 +81,16 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
-          "id": "ispcclouddraftapd"
-        },
-        {
           "label": "Configuration",
-          "id": "ispcclouddraftconfig"
+          "id": "isccclouddraftconfig"
         },
         {
           "label": "Globalization",
-          "id": "ispcclouddraftglobal"
+          "id": "isccclouddraftglobal"
         },
         {
           "label": "Rules",
-          "id": "ispcclouddraftrules"
-        },
-        {
-          "label": "Product Designer",
-          "id": "ispcclouddraftpd"
-        },
-        {
-          "label": "Product Model",
-          "id": "ispcclouddraftpm"
+          "id": "isccclouddraftrules"
         }
       ]
     },
@@ -112,15 +100,15 @@
       "items": [
         {
           "label": "Integration",
-          "id": "ispcclouddraftinteg"
+          "id": "isccclouddraftinteg"
         },
         {
           "label": "Cloud API Developer Guide",
-          "id": "ispcclouddraftcloudapi"
+          "id": "isccclouddraftcloudapi"
         },
         {
           "label": "REST API Framework",
-          "id": "ispcclouddraftrestapifw"
+          "id": "isccclouddraftrestapifw"
         },
         {
           "label": "REST API Client",
@@ -134,18 +122,18 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "ispcclouddraftgosu"
+          "id": "isccclouddraftgosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "ispcclouddrafttesting"
+          "id": "isccclouddrafttesting"
         },
         {
-          "label": "API Testing (GT-API)",
+          "label": "API Testing (GT:API)",
           "id": "testingframeworksapicortina"
         },
         {
-          "label": "User Interface Testing (GT-UI)",
+          "label": "User Interface Testing (GT:UI)",
           "id": "testingframeworksuicortina"
         }
       ]
@@ -156,7 +144,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "isclouddraftglossary"
+          "id": "gwglossary"
         }
       ]
     }

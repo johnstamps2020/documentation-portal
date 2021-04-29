@@ -1,25 +1,23 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Aspen",
+  "title": "Dobson",
   "template": "page.j2",
-  "class": "aspen threeCards",
+  "class": "dobson threeCards",
   "selector": {
     "label": "Select release",
-    "selectedItem": "Aspen",
+    "selectedItem": "Dobson",
     "items": [
       {
-        "label": "Dobson",
-        "page": "../dobson",
-        "env": ["int"]
-      },
-      {
         "label": "Cortina",
-        "page": "../cortina",
-        "env": ["dev", "int", "staging"]
+        "page": "../cortina"
       },
       {
         "label": "Banff",
         "page": "../banff"
+      },
+      {
+        "label": "Aspen",
+        "page": "../aspen"
       }
     ]
   },
@@ -27,40 +25,44 @@
     {
       "label": "PolicyCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "policyCenterCloud"
+      "page": "policyCenterCloud",
+      "env": ["int"]
     },
     {
       "label": "ClaimCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "claimCenterCloud"
+      "page": "claimCenterCloud",
+      "env": ["int"]
     },
     {
       "label": "BillingCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "billingCenterCloud"
-    },
-    {
-      "label": "InsuranceNow",
-      "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.1",
-      "env": ["dev", "staging", "prod"]
+      "page": "billingCenterCloud",
+      "env": ["int"]
     },
     {
       "label": "InsuranceNow Internal Audience",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.1xInternalAudience",
+      "page": "insuranceNow/2021.1xInternalAudience",
       "env": ["int"]
     },
     {
       "label": "InsuranceNow External Audience",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.1xExternalAudience",
+      "page": "insuranceNow/2021.1xExternalAudience",
       "env": ["int"]
     },
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "guidewireCloudPlatform"
+      "page": "guidewireCloudPlatform",
+      "env": ["int"]
+    },
+    {
+      "label": "Feature Preview",
+      "class": "productFamily cardShadow",
+      "page": "featurePreview",
+      "env": ["int"]
     }
   ]
 }

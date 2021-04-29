@@ -21,11 +21,11 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "PolicyCenter for Guidewire Cloud",
-          "page": "pcGwCloud/latest"
+          "page": "pcGwCloud/2021.04",
+          "env": ["dev", "int", "staging", "prod"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -45,12 +45,12 @@
         {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": ["dev", "int", "staging"]
+          "env": ["dev", "int", "staging", "prod"]
         },
         {
           "label": "Predictive Analytics",
           "id": "palatest",
-          "env": ["dev", "int", "staging"]
+          "env": ["dev", "int", "staging", "prod"]
         },
         {
           "label": "Add-ons",
@@ -59,22 +59,12 @@
             {
               "label": "DataHub for Guidewire Cloud",
               "page": "../dhGwCloud/2021.04",
-              "env": ["dev", "staging"]
-            },
-            {
-              "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/latest",
-              "env": ["int"]
+              "env": ["dev", "staging", "prod"]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
               "page": "../icGwCloud/2021.04",
-              "env": ["dev", "staging"]
-            },
-            {
-              "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/latest",
-              "env": ["int"]
+              "env": ["dev", "staging", "prod"]
             }
           ]
         }

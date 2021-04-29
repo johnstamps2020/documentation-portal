@@ -1,15 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "ClaimCenter Cloud",
+  "title": "BillingCenter Cloud",
   "template": "page.j2",
   "class": "threeCards",
   "selector": {
     "label": "Select page",
-    "selectedItem": "ClaimCenter Cloud",
+    "selectedItem": "BillingCenter Cloud",
     "items": [
       {
-        "label": "BillingCenter Cloud",
-        "page": "../billingCenterCloud"
+        "label": "ClaimCenter Cloud",
+        "page": "../claimCenterCloud"
       },
       {
         "label": "PolicyCenter Cloud",
@@ -21,21 +21,29 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
-          "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ccGwCloud/2021.04",
-          "env": ["dev", "int", "staging", "prod"]
+          "label": "BillingCenter for Guidewire Cloud",
+          "page": "bcGwCloud/latest",
+          "env": ["int"]
+        },
+        {
+          "label": "BillingCenter for Guidewire Cloud",
+          "page": "bcGwCloud/earlyaccess",
+          "env": ["int"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools3x"
+          "id": "isconfigupgradetools3x",
+          "env": ["int"]
         }
       ]
     },
     {
       "label": "Analytics",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Cloud Data Access",
@@ -43,19 +51,9 @@
           "env": ["int"]
         },
         {
-          "label": "Compare+",
-          "id": "comparelatest",
-          "env": ["dev", "int", "staging", "prod"]
-        },
-        {
           "label": "Explore",
           "page": "../../explore/latest",
-          "env": ["dev", "int", "staging", "prod"]
-        },
-        {
-          "label": "Predictive Analytics",
-          "id": "palatest",
-          "env": ["dev", "int", "staging", "prod"]
+          "env": ["int"]
         },
         {
           "label": "Add-ons",
@@ -63,13 +61,13 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../dhGwCloud/latest",
+              "env": ["int"]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../icGwCloud/latest",
+              "env": ["int"]
             }
           ]
         }
@@ -78,6 +76,7 @@
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Digital Applications",
@@ -89,24 +88,12 @@
               "page": "../ceAccountMgmt/latest"
             },
             {
-              "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/latest"
-            },
-            {
               "label": "ProducerEngage",
               "page": "../producerEngage/latest"
             },
             {
-              "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/latest"
-            },
-            {
               "label": "ServiceRepEngage",
               "page": "../serviceRepEngage/latest"
-            },
-            {
-              "label": "VendorEngage",
-              "page": "vendorEngage/latest"
             }
           ]
         },
