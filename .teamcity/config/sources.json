@@ -216,18 +216,6 @@
       ]
     },
     {
-      "id": "cloudisglossary202011src",
-      "title": "IS 2020.11 Glossary",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/Glossary.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-    {
       "id": "cloudisgosu202011src",
       "title": "IS 2020.11 Gosu Reference",
       "sourceType": "xdocs",
@@ -540,18 +528,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisglossary202104src",
-      "title": "IS 2021.04 Glossary",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Cortina",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202104/Glossary.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
     {
@@ -928,16 +904,6 @@
       ]
     },
     {
-      "id": "cloudisglossarydraftsrc",
-      "title": "IS Cloud Draft Glossary",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/active/Glossary.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
-      ]
-    },
-    {
       "id": "cloudisgosudraftsrc",
       "title": "IS Cloud Draft Gosu Reference",
       "sourceType": "xdocs",
@@ -1091,6 +1057,17 @@
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/RESTAPIClientGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+      ]
+    },
+    {
+      "id": "isrestapiclientrndraftsrc",
+      "title": "IS Cloud Draft REST API Client Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/REST-API-Client/releasenotes/Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
     {

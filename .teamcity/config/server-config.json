@@ -7542,26 +7542,6 @@
       "public": false
     },
     {
-      "id": "is202011glossary",
-      "title": "Glossary",
-      "url": "cloud/is/202011/glossary",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2020.11"],
-        "subject": ["Glossary"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isrestapiclientrn202011",
       "title": "REST API Client Release Notes",
       "url": "cloud/is/202011/restapiclientrn",
@@ -8478,26 +8458,6 @@
       "public": false
     },
     {
-      "id": "is202104glossary",
-      "title": "Glossary",
-      "url": "cloud/is/202104/glossary",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2021.04"],
-        "subject": ["Glossary"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isrestapiclientrn202104",
       "title": "REST API Client Release Notes",
       "url": "cloud/is/202104/restapiclientrn",
@@ -9359,26 +9319,6 @@
       "public": false
     },
     {
-      "id": "isclouddraftglossary",
-      "title": "Glossary",
-      "url": "cloud/is/latest/glossary",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["latest"],
-        "subject": ["Glossary"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isbccloudeareleasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/ea/releasenotes",
@@ -10148,26 +10088,6 @@
         "version": ["earlyaccess"],
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "iscloudeaglossary",
-      "title": "Glossary",
-      "url": "cloud/is/ea/glossary",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["earlyaccess"],
-        "subject": ["Glossary"],
-        "release": ["Cortina"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
