@@ -35,8 +35,8 @@
           "id": "cloudrulesdraft"
         },
         {
-          "label": "Lifecycle Manager",
-          "id": "lifecyclemgrdraft"
+          "label": "Workset Manager",
+          "id": "worksetmgrdraft"
         },
         {
           "label": "String Manager",
