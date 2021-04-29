@@ -43,7 +43,7 @@ async function createVersionSelector() {
     );
     const jsonResponse = await response.json();
     const matchingVersionSelector = jsonResponse.matchingVersionSelector;
-    if (matchingVersionSelector.otherVersions.length > 0) {
+    if (matchingVersionSelector?.otherVersions.length > 0) {
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
