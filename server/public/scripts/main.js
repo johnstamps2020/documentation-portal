@@ -1,7 +1,3 @@
-function toggleAvatar(e) {
-  e.target.classList.toggle('expanded');
-}
-
 async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
 
@@ -23,7 +19,6 @@ async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
       avatar.innerHTML = `
         <button 
           id="avatarButton" 
-          onClick="toggleAvatar(e)" 
           aria-label="user information"
         >
           <div class="avatarMenu">
@@ -42,10 +37,7 @@ async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
         </button>
       `;
 
-      let newAvatar = loginButton.parentElement.replaceChild(
-        avatar,
-        loginButton
-      );
+      loginButton.parentElement.replaceChild(avatar, loginButton);
     } else if (loginButton) {
       loginButton.classList.remove('invisible');
     }

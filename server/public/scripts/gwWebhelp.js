@@ -162,10 +162,6 @@ async function addPublicationDate() {
   }
 }
 
-function toggleAvatar(e) {
-  e.target.classList.toggle('expanded');
-}
-
 // split to addAvatar and addLogInLogOut
 async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
@@ -190,7 +186,6 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
       userButton.innerHTML = `
         <button 
           id="avatarButton" 
-          onClick="toggleAvatar(e)" 
           aria-label="user information"
         >
           <div class="avatarMenu">
@@ -210,9 +205,6 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
       `;
     } else {
       userButton = document.createElement('a');
-      loginButton.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
-      loginButton.setAttribute('href', '/gw-login');
-      loginButton.innerText = 'Log in';
     }
     buttonWrapper.appendChild(userButton);
     document.getElementById('customHeaderElements').appendChild(buttonWrapper);
