@@ -59,20 +59,22 @@ def test_all_pages_are_valid_with_schema():
 def test_env_settings_are_correct():
     EnvSettings = namedtuple('EnvSettings', 'parent_element_envs item_envs')
     correct_settings = [
-        EnvSettings(['prod'], ['int', 'prod']),
         EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev', 'int', 'staging', 'prod']),
+        EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev', 'staging', 'prod']),
         EnvSettings(['dev', 'staging', 'prod'], ['staging', 'prod']),
-        EnvSettings(['staging'], ['dev', 'int', 'staging', 'prod']),
+        EnvSettings(['staging', 'prod'], ['prod']),
         EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev']),
         EnvSettings([], ['dev']),
         EnvSettings(['dev', 'int', 'staging', 'prod'], []),
         EnvSettings([], []),
     ]
     incorrect_settings = [
+        EnvSettings(['prod'], ['int', 'prod']),
         EnvSettings(['prod'], ['int']),
         EnvSettings(['dev', 'staging', 'prod'], ['int']),
         EnvSettings(['dev', 'staging'], ['int', 'prod']),
         EnvSettings(['staging'], ['dev', 'int']),
+        EnvSettings(['dev', 'staging'], ['staging', 'prod']),
     ]
     for i in correct_settings:
         assert flail_ssg.validator.env_settings_are_correct(
