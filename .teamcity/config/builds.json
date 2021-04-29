@@ -2458,14 +2458,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "Glossary.ditamap",
-      "srcId": "cloudisglossary202011src",
-      "docId": "is202011glossary",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrn202011src",
       "docId": "isrestapiclientrn202011",
@@ -2910,14 +2902,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "Glossary.ditamap",
-      "srcId": "cloudisglossary202104src",
-      "docId": "is202104glossary",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrn202104src",
       "docId": "isrestapiclientrn202104",
@@ -3345,14 +3329,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "Glossary.ditamap",
-      "srcId": "cloudisglossarydraftsrc",
-      "docId": "isclouddraftglossary",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "ReleaseNotesBook-cortina.ditamap",
       "srcId": "cloudisrndraftsrc",
@@ -3769,14 +3745,6 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "cloudiscontactdraftsrc",
       "docId": "iscloudeacontact",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "Glossary.ditamap",
-      "srcId": "cloudisglossarydraftsrc",
-      "docId": "iscloudeaglossary",
       "indexRedirect": true
     },
     {
