@@ -8452,7 +8452,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8472,7 +8472,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

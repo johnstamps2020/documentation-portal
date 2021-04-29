@@ -3736,7 +3736,7 @@
       "branch": "main",
       "exportFrequency": "weekly",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/active/Glossary.ditamap",
+        "/Content/doc/glossary/Glossary.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     }

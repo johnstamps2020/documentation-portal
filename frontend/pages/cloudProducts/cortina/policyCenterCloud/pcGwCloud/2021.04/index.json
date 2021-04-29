@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "PolicyCenter for Guidewire Cloud 2020.11",
+  "title": "PolicyCenter for Guidewire Cloud 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
