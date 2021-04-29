@@ -162,11 +162,32 @@ async function addPublicationDate() {
   }
 }
 
-function toggleAvatar(e) {
-  e.target.classList.toggle('expanded');
+function createAvatarButton(fullName, username) {
+  const avatar = document.createElement('div');
+  avatar.setAttribute('id', 'avatar');
+  avatar.innerHTML = `
+        <button 
+          id="avatarButton" 
+          aria-label="user information"
+        >
+          <div class="avatarMenu">
+            <div class="avatarMenuHeader">
+              <div class="avatarMenuIcon">&nbsp;</div>
+              <div class="avatarMenuInfo">
+                <div class="avatarMenuName">${fullName}</div>
+                <div class="avatarMenuEmail">${username}</div>
+              </div>
+            </div>
+            <div class="avatarMenuDivider"></div>
+            <div class="avatarMenuActions">
+              <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+            </div>
+          </div>
+        </button>
+      `;
+  return avatar;
 }
 
-// split to addAvatar and addLogInLogOut
 async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
 
@@ -177,42 +198,16 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
   // after login, so if fetching the response fails, try again
   // in 10ms.
   try {
-    const response = await fetch('/userInformation');
-    const responseBody = await response.json();
-    const { isLoggedIn, name, preferred_username } = responseBody;
     const buttonWrapper = document.createElement('div');
     buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
     let userButton;
+    const response = await fetch('/userInformation');
+    const { isLoggedIn, name, preferred_username } = await response.json();
 
     if (isLoggedIn) {
-      userButton = document.createElement('div');
-      userButton.setAttribute('id', 'avatar');
-      userButton.innerHTML = `
-        <button 
-          id="avatarButton" 
-          onClick="toggleAvatar(e)" 
-          aria-label="user information"
-        >
-          <div class="avatarMenu">
-            <div class="avatarMenuHeader">
-              <div class="avatarMenuIcon">&nbsp;</div>
-              <div class="avatarMenuInfo">
-                <div class="avatarMenuName">${name}</div>
-                <div class="avatarMenuEmail">${preferred_username}</div>
-              </div>
-            </div>
-            <div class="avatarMenuDivider"></div>
-            <div class="avatarMenuActions">
-              <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
-            </div>
-          </div>
-        </button>
-      `;
+      userButton = createAvatarButton(name, preferred_username);
     } else {
       userButton = document.createElement('a');
-      loginButton.setAttribute('class', 'gwButtonSecondary loginButtonSmall');
-      loginButton.setAttribute('href', '/gw-login');
-      loginButton.innerText = 'Log in';
     }
     buttonWrapper.appendChild(userButton);
     document.getElementById('customHeaderElements').appendChild(buttonWrapper);
@@ -223,7 +218,10 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
     }
     attemptNumber++;
     retryTimeout += 100;
-    setTimeout(setLogInButton(attemptNumber, retryTimeout), retryTimeout);
+    setTimeout(
+      async () => createUserButton(attemptNumber, retryTimeout),
+      retryTimeout
+    );
   }
 }
 
