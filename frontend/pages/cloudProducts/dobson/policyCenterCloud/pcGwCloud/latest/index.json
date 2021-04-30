@@ -115,8 +115,12 @@
           "id": "ispcclouddraftinteg"
         },
         {
-          "label": "Cloud API Developer Guide",
-          "id": "ispcclouddraftcloudapi"
+          "label": "Cloud API Business Flows",
+          "id": "ispcclouddraftapibf"
+        },
+        {
+          "label": "Cloud API Configuration and Authentication",
+          "id": "ispcclouddraftapica"
         },
         {
           "label": "REST API Framework",

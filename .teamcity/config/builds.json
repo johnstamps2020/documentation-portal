@@ -3109,10 +3109,18 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapidraftsrc",
-      "docId": "isccclouddraftcloudapi",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "cloudiscloudapibfdraftsrc",
+      "docId": "isccclouddraftapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "srcId": "cloudiscloudapicadraftsrc",
+      "docId": "isccclouddraftapica",
       "indexRedirect": true
     },
     {
@@ -3257,10 +3265,18 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapidraftsrc",
-      "docId": "ispcclouddraftcloudapi",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "cloudiscloudapibfdraftsrc",
+      "docId": "ispcclouddraftapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "srcId": "cloudiscloudapicadraftsrc",
+      "docId": "ispcclouddraftapica",
       "indexRedirect": true
     },
     {
@@ -3514,14 +3530,6 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-EA.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapidraftsrc",
-      "docId": "iscccloudeacloudapi",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistestdraftsrc",
       "docId": "iscccloudeatesting",
@@ -3657,14 +3665,6 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "cloudisintegdraftsrc",
       "docId": "ispccloudeainteg",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapidraftsrc",
-      "docId": "ispccloudeacloudapi",
       "indexRedirect": true
     },
     {
