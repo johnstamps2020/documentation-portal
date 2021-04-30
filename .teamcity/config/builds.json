@@ -2698,14 +2698,6 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosu202104src",
-      "docId": "iscc202104gosu",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistest202104src",
       "docId": "iscc202104testing",
@@ -2857,14 +2849,6 @@
       "root": "CloudAPIGuide-ConfigAuth.ditamap",
       "srcId": "cloudiscloudapica202104src",
       "docId": "ispc202104cloudapica",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosu202104src",
-      "docId": "ispc202104gosu",
       "indexRedirect": true
     },
     {
