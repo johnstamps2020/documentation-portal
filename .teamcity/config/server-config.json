@@ -8018,22 +8018,6 @@
       "public": false
     },
     {
-      "id": "iscc202104gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/cc/202104/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2021.04"],
-        "release": ["Cortina"],
-        "subject": ["Development"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "iscc202104testing",
       "title": "ISBTF and GUnit Testing",
       "url": "cloud/cc/202104/testing",
@@ -8333,22 +8317,6 @@
         "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "ispc202104gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/pc/202104/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter for Guidewire Cloud"],
-        "version": ["2021.04"],
-        "release": ["Cortina"],
-        "subject": ["Development"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
