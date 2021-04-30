@@ -3530,14 +3530,6 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-EA.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapidraftsrc",
-      "docId": "iscccloudeacloudapi",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistestdraftsrc",
       "docId": "iscccloudeatesting",
@@ -3673,14 +3665,6 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "cloudisintegdraftsrc",
       "docId": "ispccloudeainteg",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapidraftsrc",
-      "docId": "ispccloudeacloudapi",
       "indexRedirect": true
     },
     {
