@@ -22,7 +22,7 @@
         },
         {
           "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn202011"
+          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -102,7 +102,7 @@
         },
         {
           "label": "REST API Client",
-          "id": "is202011restapiclient"
+          "id": "isrestapiclient"
         }
       ]
     },

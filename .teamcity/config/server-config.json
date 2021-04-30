@@ -7542,46 +7542,6 @@
       "public": false
     },
     {
-      "id": "isrestapiclientrn202011",
-      "title": "REST API Client Release Notes",
-      "url": "cloud/is/202011/restapiclientrn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2020.11"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "is202011restapiclient",
-      "title": "REST API Client",
-      "url": "cloud/is/202011/restapiclient",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isbc202104releasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/202104/releasenotes",
@@ -8430,46 +8390,6 @@
       "public": false
     },
     {
-      "id": "isrestapiclientrn202104",
-      "title": "REST API Client Release Notes",
-      "url": "cloud/is/202104/restapiclientrn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2021.04"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "is202104restapiclient",
-      "title": "REST API Client",
-      "url": "cloud/is/202104/restapiclient",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2021.04"],
-        "release": ["Cortina"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "apiekdfksmds",
       "title": "API Specifications",
       "url": "cloud/bc/api-specs/latest/",
@@ -9257,7 +9177,27 @@
     {
       "id": "isclouddraftrestapiclient",
       "title": "REST API Client",
-      "url": "cloud/is/latest/restapiclient",
+      "url": "cloud/is/restapiclient/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isclouddraftrestapiclientrn",
+      "title": "REST API Client",
+      "url": "cloud/is/restapiclient/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": [
@@ -10005,7 +9945,7 @@
     {
       "id": "iscloudearestapiclient",
       "title": "REST API Client",
-      "url": "cloud/is/ea/restapiclient",
+      "url": "cloud/is/ea/restapiclient/guide",
       "metadata": {
         "platform": ["Cloud"],
         "product": [
@@ -12743,6 +12683,46 @@
       "public": false,
       "indexForSearch": false,
       "environments": ["dev", "int", "staging", "prod"]
+    },
+    {
+      "id": "isrestapiclientrn",
+      "title": "REST API Client Release Notes",
+      "url": "cloud/is/restapiclient/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": ["2020.11", "2021.04"],
+        "subject": ["Release notes"],
+        "release": ["Banff", "Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isrestapiclient",
+      "title": "REST API Client",
+      "url": "cloud/is/restapiclient/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": ["2020.11", "2021.04"],
+        "release": ["Banff", "Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     },
     {
       "id": "gwglossary",

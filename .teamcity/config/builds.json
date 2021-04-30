@@ -2129,14 +2129,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclient202011src",
-      "docId": "is202011restapiclient",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "cloudisinstall202011src",
@@ -2457,14 +2449,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-      "srcId": "isrestapiclientrn202011src",
-      "docId": "isrestapiclientrn202011",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-cortina.ditamap",
       "srcId": "cloudisrn202104src",
@@ -2569,14 +2553,6 @@
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistest202104src",
       "docId": "isbc202104testing",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclient202104src",
-      "docId": "is202104restapiclient",
       "indexRedirect": true
     },
     {
@@ -2885,14 +2861,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-      "srcId": "isrestapiclientrn202104src",
-      "docId": "isrestapiclientrn202104",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "ReleaseNotesBook-cortina.ditamap",
       "srcId": "cloudisrndraftsrc",
@@ -3003,8 +2971,16 @@
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclientdraftsrc",
+      "srcId": "isrestapiclientsrc",
       "docId": "isclouddraftrestapiclient",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "Guidewire_REST-API-Client112_ReleaseNotes",
+      "srcId": "isrestapiclientrnsrc",
+      "docId": "isclouddraftrestapiclientrn",
       "indexRedirect": true
     },
     {
@@ -3421,9 +3397,9 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-EA.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclientdraftsrc",
+      "srcId": "isrestapiclientsrc",
       "docId": "iscloudearestapiclient",
       "indexRedirect": true
     },
@@ -5231,6 +5207,14 @@
       "buildType": "yarn",
       "srcId": "easyguidesrc",
       "docId": "easyguide"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "RESTAPIClientGuide.ditamap",
+      "srcId": "isrestapiclientsrc",
+      "docId": "isrestapiclient",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
