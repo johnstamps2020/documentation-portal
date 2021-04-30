@@ -59,12 +59,12 @@
             {
               "label": "DataHub for Guidewire Cloud",
               "page": "../dhGwCloud/2021.04",
-              "env": ["dev", "staging", "prod"]
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
               "page": "../icGwCloud/2021.04",
-              "env": ["dev", "staging", "prod"]
+              "env": ["dev", "int", "staging", "prod"]
             }
           ]
         }
