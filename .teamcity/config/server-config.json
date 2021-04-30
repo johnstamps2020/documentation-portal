@@ -9175,9 +9175,25 @@
       "public": false
     },
     {
-      "id": "ispcclouddraftcloudapi",
-      "title": "Cloud API Developer Guide",
-      "url": "cloud/pc/latest/cloudapi",
+      "id": "ispcclouddraftapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/pc/latest/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "ispcclouddraftapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/pc/latest/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],

@@ -3265,10 +3265,18 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "CloudAPIGuide.ditamap",
-      "srcId": "cloudiscloudapidraftsrc",
-      "docId": "ispcclouddraftcloudapi",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "cloudiscloudapibfdraftsrc",
+      "docId": "ispcclouddraftapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "srcId": "cloudiscloudapicadraftsrc",
+      "docId": "ispcclouddraftapica",
       "indexRedirect": true
     },
     {
