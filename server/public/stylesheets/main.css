@@ -260,6 +260,7 @@ main.aspen .usefulLinks {
   background-color: white;
   box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
   border-radius: 4px;
+  display: block;
 }
 
 main.cortina .usefulLinks a:hover,
@@ -561,6 +562,7 @@ div.pageHero {
 }
 
 .usefulLinks {
+  display: none;
   padding: 0.75rem;
   margin: 7.85rem 0 0 0;
 }
