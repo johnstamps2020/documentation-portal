@@ -59,18 +59,6 @@
       "branch": "release/2020.11.0"
     },
     {
-      "id": "isrestapiclientrn202011src",
-      "title": "IS 2020.11 REST API Client Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/REST-API-Client/releasenotes/Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-    {
       "id": "cloudisadmin202011src",
       "title": "IS 2020.11 Administration",
       "sourceType": "xdocs",
@@ -354,36 +342,11 @@
       ]
     },
     {
-      "id": "isrestapiclient202011src",
-      "title": "IS 2020.11 REST API Client",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RESTAPIClientGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-
-    {
       "id": "isupgradeguide202104src",
       "title": "InsuranceSuite Upgrade Guide 2021.04",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/2021.04.0"
-    },
-    {
-      "id": "isrestapiclientrn202104src",
-      "title": "IS 2021.04 REST API Client Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Cortina",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/REST-API-Client/releasenotes/Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
     },
     {
       "id": "cloudisadmin202104src",
@@ -666,19 +629,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
       ]
     },
-    {
-      "id": "isrestapiclient202104src",
-      "title": "IS 2021.04 REST API Client",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Cortina",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202104/RESTAPIClientGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-
     {
       "id": "cloudis202005src",
       "title": "InsuranceSuite Cloud 2020.05",
@@ -1053,23 +1003,26 @@
       ]
     },
     {
-      "id": "isrestapiclientdraftsrc",
-      "title": "IS Cloud Draft REST API Client",
+      "id": "isrestapiclientsrc",
+      "title": "IS Cloud REST API Client",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/RESTAPIClientGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-EA.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
     {
-      "id": "isrestapiclientrndraftsrc",
-      "title": "IS Cloud Draft REST API Client Release Notes",
+      "id": "isrestapiclientrnsrc",
+      "title": "IS Cloud REST API Client Release Notes",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/REST-API-Client/releasenotes/Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-EA.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
     },
