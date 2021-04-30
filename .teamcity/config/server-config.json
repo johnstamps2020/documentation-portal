@@ -9181,7 +9181,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["REST API Client"],
-        "version": ["latest"],
+        "version": ["draft"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9196,7 +9196,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["REST API Client"],
-        "version": ["latest"],
+        "version": ["draft"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
