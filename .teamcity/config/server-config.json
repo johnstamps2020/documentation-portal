@@ -7742,12 +7742,16 @@
       "public": false
     },
     {
-      "id": "isbc202104gosu",
+      "id": "is202104gosu",
       "title": "Gosu Reference",
-      "url": "cloud/bc/202104/gosu",
+      "url": "cloud/is/202104/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter for Guidewire Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Development"]
@@ -8703,12 +8707,16 @@
       "public": false
     },
     {
-      "id": "isbcclouddraftgosu",
+      "id": "isclouddraftgosu",
       "title": "Gosu Reference",
-      "url": "cloud/bc/latest/gosu",
+      "url": "cloud/is/latest/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter for Guidewire Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["latest"],
         "release": ["Cortina"],
         "subject": ["Development"]
@@ -8920,22 +8928,6 @@
         "version": ["latest"],
         "release": ["Cortina"],
         "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "isccclouddraftgosu",
-      "title": "Gosu Reference",
-      "url": "cloud/cc/latest/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["latest"],
-        "release": ["Cortina"],
-        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9215,22 +9207,6 @@
       "public": false
     },
     {
-      "id": "ispcclouddraftgosu",
-      "title": "Gosu Reference",
-      "url": "cloud/pc/latest/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter for Guidewire Cloud"],
-        "version": ["latest"],
-        "release": ["Cortina"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "ispcclouddrafttesting",
       "title": "Test Automation Guide",
       "url": "cloud/pc/latest/testing",
@@ -9479,12 +9455,16 @@
       "public": false
     },
     {
-      "id": "isbccloudeagosu",
+      "id": "iscloudeagosu",
       "title": "Gosu Reference",
-      "url": "cloud/bc/ea/gosu",
+      "url": "cloud/is/ea/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter for Guidewire Cloud"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["earlyaccess"],
         "release": ["Cortina"],
         "subject": ["Development"]
@@ -9696,22 +9676,6 @@
         "version": ["earlyaccess"],
         "release": ["Cortina"],
         "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "iscccloudeagosu",
-      "title": "Gosu Reference",
-      "url": "cloud/cc/ea/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["earlyaccess"],
-        "release": ["Cortina"],
-        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9984,22 +9948,6 @@
         "version": ["earlyaccess"],
         "release": ["Cortina"],
         "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "ispccloudeagosu",
-      "title": "Gosu Reference",
-      "url": "cloud/pc/ea/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter for Guidewire Cloud"],
-        "version": ["earlyaccess"],
-        "release": ["Cortina"],
-        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,

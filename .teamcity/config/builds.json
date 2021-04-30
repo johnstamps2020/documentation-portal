@@ -2557,10 +2557,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "GosuRefGuide.ditamap",
       "srcId": "cloudisgosu202104src",
-      "docId": "isbc202104gosu",
+      "docId": "is202104gosu",
       "indexRedirect": true
     },
     {
@@ -3001,10 +3001,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "GosuRefGuide.ditamap",
       "srcId": "cloudisgosudraftsrc",
-      "docId": "isbcclouddraftgosu",
+      "docId": "isclouddraftgosu",
       "indexRedirect": true
     },
     {
@@ -3129,14 +3129,6 @@
       "root": "CloudAPIGuide.ditamap",
       "srcId": "cloudiscloudapidraftsrc",
       "docId": "isccclouddraftcloudapi",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosudraftsrc",
-      "docId": "isccclouddraftgosu",
       "indexRedirect": true
     },
     {
@@ -3290,14 +3282,6 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosudraftsrc",
-      "docId": "ispcclouddraftgosu",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistestdraftsrc",
       "docId": "ispcclouddrafttesting",
@@ -3421,10 +3405,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-EA.ditaval",
+      "filter": "GW-Generic-Cloud-EA.ditaval",
       "root": "GosuRefGuide.ditamap",
       "srcId": "cloudisgosudraftsrc",
-      "docId": "isbccloudeagosu",
+      "docId": "iscloudeagosu",
       "indexRedirect": true
     },
     {
@@ -3549,14 +3533,6 @@
       "root": "CloudAPIGuide.ditamap",
       "srcId": "cloudiscloudapidraftsrc",
       "docId": "iscccloudeacloudapi",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-EA.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosudraftsrc",
-      "docId": "iscccloudeagosu",
       "indexRedirect": true
     },
     {
@@ -3705,14 +3681,6 @@
       "root": "CloudAPIGuide.ditamap",
       "srcId": "cloudiscloudapidraftsrc",
       "docId": "ispccloudeacloudapi",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosudraftsrc",
-      "docId": "ispccloudeagosu",
       "indexRedirect": true
     },
     {
