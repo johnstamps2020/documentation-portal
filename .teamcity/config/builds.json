@@ -5219,6 +5219,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Guidewire_REST-API-Client112_ReleaseNotes",
+      "srcId": "isrestapiclientrnsrc",
+      "docId": "isrestapiclientrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Glossary.ditamap",
       "srcId": "gwglossarysrc",
       "docId": "gwglossary",
