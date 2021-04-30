@@ -5219,7 +5219,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "Guidewire_REST-API-Client112_ReleaseNotes",
+      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrnsrc",
       "docId": "isrestapiclientrn",
       "indexRedirect": true
