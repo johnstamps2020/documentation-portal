@@ -8522,7 +8522,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -8538,7 +8538,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -8554,7 +8554,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -8570,7 +8570,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -8586,7 +8586,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -8602,7 +8602,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Best practices"]
       },
       "environments": ["int"],
@@ -8618,7 +8618,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -8634,7 +8634,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -8650,7 +8650,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -8666,7 +8666,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -8686,7 +8686,7 @@
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -8702,7 +8702,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -8718,7 +8718,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -8734,7 +8734,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -8750,7 +8750,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -8766,7 +8766,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -8782,7 +8782,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -8798,7 +8798,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -8814,7 +8814,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Best practices"]
       },
       "environments": ["int"],
@@ -8830,7 +8830,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -8846,7 +8846,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -8862,7 +8862,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -8878,7 +8878,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -8887,14 +8887,30 @@
       "public": false
     },
     {
-      "id": "isccclouddraftcloudapi",
-      "title": "Cloud API Developer Guide",
-      "url": "cloud/cc/latest/cloudapi",
+      "id": "isccclouddraftapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/cc/latest/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "isccclouddraftapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/cc/latest/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -8910,7 +8926,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -8926,7 +8942,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -8942,7 +8958,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -8958,7 +8974,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -8974,7 +8990,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -8990,7 +9006,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9006,7 +9022,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -9022,7 +9038,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -9038,7 +9054,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Best practices"]
       },
       "environments": ["int"],
@@ -9054,7 +9070,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9070,7 +9086,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9086,7 +9102,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9102,7 +9118,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9118,7 +9134,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9134,7 +9150,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9150,7 +9166,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9166,7 +9182,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9182,7 +9198,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -9198,7 +9214,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9214,7 +9230,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9234,7 +9250,7 @@
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9254,7 +9270,7 @@
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -9270,7 +9286,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -9286,7 +9302,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -9302,7 +9318,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9318,7 +9334,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -9334,7 +9350,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -9350,7 +9366,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Best practices"]
       },
       "environments": ["int"],
@@ -9366,7 +9382,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9382,7 +9398,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9398,7 +9414,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9414,7 +9430,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9434,7 +9450,7 @@
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -9450,7 +9466,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -9466,7 +9482,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9482,7 +9498,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -9498,7 +9514,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -9514,7 +9530,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9530,7 +9546,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -9546,7 +9562,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -9562,7 +9578,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Best practices"]
       },
       "environments": ["int"],
@@ -9578,7 +9594,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9594,7 +9610,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9610,7 +9626,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9626,7 +9642,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9642,7 +9658,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9658,7 +9674,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -9674,7 +9690,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9690,7 +9706,7 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9706,7 +9722,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -9722,7 +9738,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -9738,7 +9754,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9754,7 +9770,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -9770,7 +9786,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -9786,7 +9802,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Best practices"]
       },
       "environments": ["int"],
@@ -9802,7 +9818,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9818,7 +9834,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9834,7 +9850,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9850,7 +9866,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9866,7 +9882,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9882,7 +9898,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -9898,7 +9914,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9914,7 +9930,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9930,7 +9946,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -9946,7 +9962,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -9962,7 +9978,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -9982,7 +9998,7 @@
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -10002,7 +10018,7 @@
           "PolicyCenter for Guidewire Cloud"
         ],
         "version": ["earlyaccess"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],

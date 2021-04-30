@@ -100,7 +100,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["Aspen", "Banff", "Cortina"]
+            "enum": ["Aspen", "Banff", "Cortina", "Dobson"]
           }
         },
         "subject": {
