@@ -190,8 +190,6 @@ main.blue-theme {
             ); */
   /* background-position: top left; */
   -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   background-position: bottom right;
 }
@@ -200,8 +198,6 @@ main.blue-theme {
   main.cortina {
     background: url(/images/background-cortina.svg) no-repeat fixed;
     -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     background-position: bottom right;
   }
@@ -209,20 +205,16 @@ main.blue-theme {
   main.banff {
     background: url(/images/background-banff.svg) no-repeat fixed;
     -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
-    background-position: bottom right;
+    background-position: top left;
   }
 
   main.banff::after {
     content: '';
     background: url(/images/background-gradient.svg) no-repeat fixed;
     -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
-    background-position: bottom right;
+    background-position: top left;
     z-index: -1;
     position: fixed;
     top: 0;
