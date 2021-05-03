@@ -178,9 +178,7 @@ main.fullWidth > .sidebar {
   display: none;
 }
 
-main.cortina,
-main.banff,
-main.aspen {
+main.blue-theme {
   background: url(/images/background-gradient.svg) no-repeat fixed;
   /* background-color: rgba(19, 30, 46, 0.15);
           background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
@@ -207,15 +205,6 @@ main.aspen {
     background: url(/images/background-banff.svg) no-repeat fixed;
   }
 
-  main.cortina,
-  main.banff {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: bottom right;
-  }
-
   main.banff::after {
     content: '';
     background: url(/images/background-gradient.svg) no-repeat fixed;
@@ -233,39 +222,27 @@ main.aspen {
   }
 }
 
-main.cortina h1,
-main.cortina label,
-main.banff h1,
-main.banff label,
-main.aspen h1,
-main.aspen label {
+main.blue-theme h1,
+main.blue-theme label {
   color: #fff;
 }
 
-main.cortina .docBreadcrumb a,
-main.banff .docBreadcrumb a,
-main.aspen .docBreadcrumb a {
+main.blue-theme .docBreadcrumb a {
   color: var(--clr-GW-BLUE-LIGHTER);
 }
 
-main.cortina .docBreadcrumb a:hover,
-main.banff .docBreadcrumb a:hover,
-main.aspen .docBreadcrumb a:hover {
+main.blue-theme .docBreadcrumb a:hover {
   color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
-main.cortina .usefulLinks,
-main.banff .usefulLinks,
-main.aspen .usefulLinks {
+main.blue-theme .usefulLinks {
   background-color: white;
   box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
   border-radius: 4px;
   display: block;
 }
 
-main.cortina .usefulLinks a:hover,
-main.banff .usefulLinks a:hover,
-main.aspen .usefulLinks a:hover {
+main.blue-theme .usefulLinks a:hover {
   color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
