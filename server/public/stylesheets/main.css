@@ -205,6 +205,15 @@ main.blue-theme {
     background: url(/images/background-banff.svg) no-repeat fixed;
   }
 
+  main.banff,
+  main.cortina {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: bottom right;
+  }
+
   main.banff::after {
     content: '';
     background: url(/images/background-gradient.svg) no-repeat fixed;
