@@ -164,7 +164,8 @@ main:not(.fullWidth):not(.loginPage):not(.pageNotFound):not(.support) {
 
 main:not(.fullWidth) > .content {
   max-width: var(--content-width);
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   flex-grow: 1;
 }
 
