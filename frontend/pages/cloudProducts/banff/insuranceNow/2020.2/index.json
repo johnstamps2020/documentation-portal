@@ -45,6 +45,10 @@
         {
           "label": "Consumer Service Portal Features",
           "id": "in20202cservicep"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "in20202excelrating23"
         }
       ]
     },

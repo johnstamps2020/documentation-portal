@@ -2024,6 +2024,17 @@
       ]
     },
     {
+      "id": "in20211excelrating30src",
+      "title": "InsuranceNow 2021.1 Excel Designed Rating",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2021.1",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ExcelDesignedRating30.ditamap"
+      ]
+    },
+    {
       "id": "in20202rnsrc",
       "title": "InsuranceNow 2020.2 Core Release Notes",
       "sourceType": "xdocs",
@@ -2167,6 +2178,17 @@
       ]
     },
     {
+      "id": "in20202excelrating23src",
+      "title": "InsuranceNow 2020.2 Excel Designed Rating",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2020.2",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
+      ]
+    },
+    {
       "id": "in20201rnsrc",
       "title": "InsuranceNow 2020.1 Core Release Notes",
       "sourceType": "xdocs",
@@ -2274,6 +2296,17 @@
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/PortalDevelopment20201x.ditamap"
+      ]
+    },
+    {
+      "id": "in20201excelrating23src",
+      "title": "InsuranceNow 2020.1 Excel Designed Rating",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2020.1",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
       ]
     },
     {
@@ -2736,6 +2769,26 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20201.ditamap"
+      ]
+    },
+    {
+      "id": "inexcelrating23draftsrc",
+      "title": "InsuranceNow Excel Designed Rating 2.3 Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
+      ]
+    },
+    {
+      "id": "inexcelrating30draftsrc",
+      "title": "InsuranceNow Excel Designed Rating 3.0 Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
       ]
     },
     {
