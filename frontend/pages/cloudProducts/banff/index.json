@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Banff",
   "template": "page.j2",
-  "class": "banff threeCards",
+  "class": "blue-theme banff threeCards",
   "selector": {
     "label": "Select release",
     "selectedItem": "Banff",
