@@ -4228,6 +4228,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "ExcelDesignedRating30.ditamap",
+      "srcId": "in20211excelrating30src",
+      "docId": "in20211excelrating30",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "InsuranceNowReleaseNotes20202.ditamap",
       "srcId": "in20202rnsrc",
       "docId": "in20202rn",
@@ -4339,6 +4347,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "ExcelDesignedRating23.ditamap",
+      "srcId": "in20202excelrating23src",
+      "docId": "in20202excelrating23",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "InsuranceNowReleaseNotes20201.ditamap",
       "srcId": "in20201rnsrc",
       "docId": "in20201rn",
@@ -4421,6 +4437,30 @@
       "root": "PortalDevelopment20201x.ditamap",
       "srcId": "in20201portaldevsrc",
       "docId": "in20201portaldev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ExcelDesignedRating23.ditamap",
+      "srcId": "in20201excelrating23src",
+      "docId": "in20201excelrating23",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ExcelDesignedRating23.ditamap",
+      "srcId": "inexcelrating23draftsrc",
+      "docId": "inexcelrating23draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ExcelDesignedRating30.ditamap",
+      "srcId": "inexcelrating30draftsrc",
+      "docId": "inexcelrating30draft",
       "indexRedirect": true
     },
     {
