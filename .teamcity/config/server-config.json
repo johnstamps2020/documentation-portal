@@ -2695,7 +2695,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["5.3.1"],
+        "version": ["5.3.1 LTS"],
         "subject": ["Best practices"],
         "release": ["Cortina"]
       },
@@ -2711,7 +2711,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["5.3.1"],
+        "version": ["5.3.1 LTS"],
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
