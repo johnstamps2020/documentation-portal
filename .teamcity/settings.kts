@@ -2073,7 +2073,7 @@ object HelperObjects {
                         fi
                         
                         echo "Copying files to the doc output dir"
-                        cp -R ./${'$'}RESOURCE_DIR/$resourceSourceFolder/* %env.WORKING_DIR%/%env.OUTPUT_PATH%/$resourceTargetFolder/
+                        mv ./${'$'}RESOURCE_DIR/$resourceSourceFolder %env.WORKING_DIR%/%env.OUTPUT_PATH%/$resourceTargetFolder
                     """.trimIndent()
                     })
 
