@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "CustomerEngage Quote and Buy latest",
+  "title": "CustomerEngage Quote and Buy 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftceqbrelnotes"
+          "id": "dx202104ceqbrelnotes"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftceqbinstall"
+          "id": "dx202104ceqbinstall"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Digital Code Generation Guide",
-          "id": "dxclouddraftdcg"
+          "id": "dx202104dcg"
         }
       ]
     },
@@ -40,7 +40,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftceqbapp"
+          "id": "dx202104ceqbapp"
         }
       ]
     },
@@ -50,11 +50,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftceqbdev"
+          "id": "dx202104ceqbdev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftceqbrefguides"
+          "id": "dx202104ceqbrefguides"
         }
       ]
     }

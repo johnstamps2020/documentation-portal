@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "VendorEngage latest",
+  "title": "ProducerEngage for ClaimCenter 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftverelnotes"
+          "id": "dx202104peclaimsrelnotes"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftveinstall"
+          "id": "dx202104peclaimsinstall"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftveapp"
+          "id": "dx202104peclaimsapp"
         }
       ]
     },
@@ -40,11 +40,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftvedev"
+          "id": "dx202104peclaimsdev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftverefguides"
+          "id": "dx202104peclaimsrefguides"
         }
       ]
     }

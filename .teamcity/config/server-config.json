@@ -24,7 +24,7 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -40,7 +40,7 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -56,7 +56,7 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -72,7 +72,7 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -88,7 +88,7 @@
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -104,7 +104,7 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -120,7 +120,7 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -136,7 +136,7 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -152,7 +152,7 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -168,7 +168,7 @@
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -184,7 +184,7 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -200,7 +200,7 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -216,7 +216,7 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -232,7 +232,7 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -248,7 +248,7 @@
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -264,7 +264,7 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -280,7 +280,7 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -296,7 +296,7 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -312,7 +312,7 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -328,7 +328,7 @@
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -344,7 +344,7 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -360,7 +360,7 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -376,7 +376,7 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -392,7 +392,7 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -408,7 +408,7 @@
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -424,7 +424,7 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -440,7 +440,7 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -456,7 +456,7 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -472,7 +472,7 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -488,7 +488,7 @@
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -504,7 +504,7 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -520,7 +520,7 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -536,7 +536,7 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -552,7 +552,7 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -568,7 +568,7 @@
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -584,10 +584,586 @@
         "product": ["CustomerEngage Quote and Buy", "ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dx202104ceamapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-am/202104/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceaminstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-am/202104/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceamdev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/ce-am/202104/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceamrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-am/202104/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceamrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-am/202104/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-claims/202104/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceclaimsinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-claims/202104/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceclaimsdev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/ce-claims/202104/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceclaimsrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-claims/202104/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceclaimsrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-claims/202104/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceqbapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-qb/202104/app",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceqbinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-qb/202104/install",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceqbdev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/ce-qb/202104/dev",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceqbrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-qb/202104/ref",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104ceqbrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-qb/202104/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104peapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/pe/202104/app",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104peinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/pe/202104/install",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104pedev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/pe/202104/dev",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104perefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/pe/202104/ref",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104perelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/pe/202104/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104peclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/pe-claims/202104/app",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104peclaimsinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/pe-claims/202104/install",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104peclaimsdev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/pe-claims/202104/dev",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104peclaimsrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/pe-claims/202104/ref",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104peclaimsrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/pe-claims/202104/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104sreapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/sre/202104/app",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104sreinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/sre/202104/install",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104sredev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/sre/202104/dev",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104srerefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/sre/202104/ref",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104srerelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/sre/202104/relnotes",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104veapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ve/202104/app",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104veinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ve/202104/install",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104vedev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/ve/202104/dev",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104verefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ve/202104/ref",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104verelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ve/202104/relnotes",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "dx202104dcg",
+      "title": "Digital Code Generation Guide",
+      "url": "cloud/dx/dcg/202104/guide",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy", "ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

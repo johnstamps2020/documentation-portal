@@ -81,19 +81,23 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../ceAccountMgmt/latest"
+              "page": "../ceAccountMgmt/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "CustomerEngage Quote and Buy",
-              "page": "ceQuoteAndBuy/latest"
+              "page": "ceQuoteAndBuy/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "ProducerEngage",
-              "page": "../producerEngage/latest"
+              "page": "../producerEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "ServiceRepEngage",
-              "page": "../serviceRepEngage/latest"
+              "page": "../serviceRepEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             }
           ]
         },
