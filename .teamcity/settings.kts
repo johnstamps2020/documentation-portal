@@ -2056,7 +2056,7 @@ object HelperObjects {
 
                     extraSteps.add(ScriptBuildStep {
                         id = stepId
-                        name = "Copy resources from git to S3"
+                        name = "Copy resources from git to the doc output dir"
                         scriptContent = """
                         #!/bin/bash
                         set -xe
@@ -2072,8 +2072,8 @@ object HelperObjects {
                             export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                         fi
                         
-                        echo "Copying files to S3"
-                        aws s3 sync ./${'$'}RESOURCE_DIR/$resourceSourceFolder/ s3://%env.S3_BUCKET_NAME%/%env.PUBLISH_PATH%/$resourceTargetFolder --delete
+                        echo "Copying files to the doc output dir"
+                        cp -R ./${'$'}RESOURCE_DIR/$resourceSourceFolder/* %env.WORKING_DIR%/%env.OUTPUT_PATH%/$resourceTargetFolder/
                     """.trimIndent()
                     })
 
