@@ -29,11 +29,6 @@
           "env": ["int"]
         },
         {
-          "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ccGwCloud/earlyaccess",
-          "env": ["int"]
-        },
-        {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools3x",
           "env": ["int"]

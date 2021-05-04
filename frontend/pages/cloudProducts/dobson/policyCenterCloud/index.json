@@ -29,11 +29,6 @@
           "env": ["int"]
         },
         {
-          "label": "PolicyCenter for Guidewire Cloud",
-          "page": "pcGwCloud/earlyaccess",
-          "env": ["int"]
-        },
-        {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools3x",
           "env": ["int"]
