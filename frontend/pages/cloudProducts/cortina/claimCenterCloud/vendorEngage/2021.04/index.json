@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "CustomerEngage Account Management for ClaimCenter latest",
+  "title": "VendorEngage 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftceclaimsrelnotes"
+          "id": "dx202104verelnotes"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftceclaimsinstall"
+          "id": "dx202104veinstall"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftceclaimsapp"
+          "id": "dx202104veapp"
         }
       ]
     },
@@ -40,11 +40,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftceclaimsdev"
+          "id": "dx202104vedev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftceclaimsrefguides"
+          "id": "dx202104verefguides"
         }
       ]
     }

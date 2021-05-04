@@ -72,19 +72,22 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": ["int"],
+          "env": ["dev", "int", "staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../ceAccountMgmt/latest"
+              "page": "../ceAccountMgmt/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "ProducerEngage",
-              "page": "../producerEngage/latest"
+              "page": "../producerEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "ServiceRepEngage",
-              "page": "../serviceRepEngage/latest"
+              "page": "../serviceRepEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             }
           ]
         },
@@ -94,7 +97,8 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/5.3.1"
+              "page": "../../../jutroDesignSystem/5.3.1",
+              "env": ["int"]
             }
           ]
         }

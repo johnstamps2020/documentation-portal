@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "CustomerEngage Account Management latest",
+  "title": "ProducerEngage 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftceamrelnotes"
+          "id": "dx202104perelnotes"
         }
       ]
     },
@@ -20,7 +20,17 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftceaminstall"
+          "id": "dx202104peinstall"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Digital Code Generation Guide",
+          "id": "dx202104dcg"
         }
       ]
     },
@@ -30,7 +40,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftceamapp"
+          "id": "dx202104peapp"
         }
       ]
     },
@@ -40,11 +50,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftceamdev"
+          "id": "dx202104pedev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftceamrefguides"
+          "id": "dx202104perefguides"
         }
       ]
     }

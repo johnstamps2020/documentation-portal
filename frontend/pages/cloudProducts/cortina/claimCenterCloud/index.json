@@ -82,31 +82,37 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": ["int"],
+          "env": ["dev", "int", "staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../ceAccountMgmt/latest"
+              "page": "../ceAccountMgmt/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/latest"
+              "page": "ceAccountMgmtCc/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "ProducerEngage",
-              "page": "../producerEngage/latest"
+              "page": "../producerEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/latest"
+              "page": "producerEngageCc/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "ServiceRepEngage",
-              "page": "../serviceRepEngage/latest"
+              "page": "../serviceRepEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             },
             {
               "label": "VendorEngage",
-              "page": "vendorEngage/latest"
+              "page": "vendorEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"]
             }
           ]
         },

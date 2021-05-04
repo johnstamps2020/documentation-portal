@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "ServiceRepEngage latest",
+  "title": "ServiceRepEngage 2021.04",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftsrerelnotes"
+          "id": "dx202104srerelnotes"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftsreinstall"
+          "id": "dx202104sreinstall"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftsreapp"
+          "id": "dx202104sreapp"
         }
       ]
     },
@@ -40,11 +40,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftsredev"
+          "id": "dx202104sredev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftsrerefguides"
+          "id": "dx202104srerefguides"
         }
       ]
     }
