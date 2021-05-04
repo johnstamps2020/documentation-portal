@@ -56,30 +56,80 @@ def test_all_pages_are_valid_with_schema():
         jsonschema_validate(instance=index_json, schema=page_schema_json)
 
 
-def test_env_settings_are_correct():
-    EnvSettings = namedtuple('EnvSettings', 'parent_element_envs item_envs')
-    correct_settings = [
-        EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev', 'int', 'staging', 'prod']),
-        EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev', 'staging', 'prod']),
-        EnvSettings(['dev', 'staging', 'prod'], ['staging', 'prod']),
-        EnvSettings(['staging', 'prod'], ['prod']),
-        EnvSettings(['dev', 'int', 'staging', 'prod'], ['dev']),
-        EnvSettings([], ['dev']),
-        EnvSettings(['dev', 'int', 'staging', 'prod'], []),
-        EnvSettings([], []),
-    ]
-    incorrect_settings = [
-        EnvSettings(['prod'], ['int', 'prod']),
-        EnvSettings(['prod'], ['int']),
-        EnvSettings(['dev', 'staging', 'prod'], ['int']),
-        EnvSettings(['dev', 'staging'], ['int', 'prod']),
-        EnvSettings(['staging'], ['dev', 'int']),
-        EnvSettings(['dev', 'staging'], ['staging', 'prod']),
-    ]
-    for i in correct_settings:
-        assert flail_ssg.validator.env_settings_are_correct(
-            higher_order_envs=i[0], item_envs=i[1]) is True
+def test_env_settings():
+    def test_id_item_with_item_envs():
+        EnvSettings = namedtuple('EnvSettings', 'parent_envs item_envs doc_config_envs')
+        correct_settings = [
+            EnvSettings(['dev', 'staging', 'prod'], ['dev', 'staging'], ['dev', 'staging', 'prod']),
+            EnvSettings(['staging', 'prod'], ['staging'], ['dev', 'int', 'staging', 'prod']),
+            EnvSettings([], ['int'], ['dev', 'int'])
+        ]
 
-    for i in incorrect_settings:
-        assert flail_ssg.validator.env_settings_are_correct(
-            higher_order_envs=i[0], item_envs=i[1]) is False
+        incorrect_settings = [
+            EnvSettings(['dev', 'staging', 'prod'], ['dev', 'int', 'staging'], ['dev', 'int', 'staging', 'prod']),
+            EnvSettings(['staging', 'prod'], ['prod'], ['dev', 'int', 'staging']),
+            EnvSettings([], ['int'], ['dev', 'staging', 'prod'])
+        ]
+
+        for i in correct_settings:
+            env_settings_correct = flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[0]) \
+                                   and \
+                                   flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[2])
+            assert env_settings_correct is True
+
+        for i in incorrect_settings:
+            env_settings_correct = flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[0]) \
+                                   and \
+                                   flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[2])
+            assert env_settings_correct is False
+
+    def test_id_item_without_item_envs():
+        EnvSettings = namedtuple('EnvSettings', 'parent_envs doc_config_envs')
+        correct_settings = [
+            EnvSettings(['dev', 'staging', 'prod'], ['dev', 'int', 'staging']),
+            EnvSettings(['int'], ['dev', 'int', 'staging']),
+            EnvSettings([], ['int'])
+        ]
+
+        incorrect_settings = [
+            EnvSettings(['dev'], ['int']),
+            EnvSettings(['dev', 'int'], ['staging', 'prod']),
+            EnvSettings(['staging', 'prod'], ['dev', 'int'])
+        ]
+
+        for i in correct_settings:
+            env_settings_correct = flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[0],
+                                                                                partial_match=True)
+            assert env_settings_correct is True
+
+        for i in incorrect_settings:
+            env_settings_correct = flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[0],
+                                                                                partial_match=True)
+            assert env_settings_correct is False
+
+    def test_other_item():
+        EnvSettings = namedtuple('EnvSettings', 'parent_envs item_envs')
+        correct_settings = [
+            EnvSettings(['dev', 'staging', 'prod'], ['dev', 'staging']),
+            EnvSettings(['dev', 'int'], ['int'], ),
+            EnvSettings([], ['dev']),
+            EnvSettings(['staging', 'prod'], [])
+        ]
+
+        incorrect_settings = [
+            EnvSettings(['dev'], ['int']),
+            EnvSettings(['dev', 'int'], ['staging', 'prod']),
+            EnvSettings(['staging', 'prod'], ['dev', 'int'])
+        ]
+
+        for i in correct_settings:
+            env_settings_correct = flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[0])
+            assert env_settings_correct is True
+
+        for i in incorrect_settings:
+            env_settings_correct = flail_ssg.validator.env_settings_are_correct(envs=i[1], higher_order_envs=i[0])
+            assert env_settings_correct is False
+
+    test_id_item_with_item_envs()
+    test_id_item_without_item_envs()
+    test_other_item()

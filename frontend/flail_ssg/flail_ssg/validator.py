@@ -94,17 +94,12 @@ def process_validation_results(results: List, send_bouncer_home: bool):
                               f'\nTotal number of errors: {len(errors)}')
 
 
-def env_settings_are_correct(item_envs: List, higher_order_envs: List):
-    """
-    FIXME: Is this correct? If there are no envs provided, it means the item is included for all envs.
-    Now, we do not perform any check if either item envs or parent envs are empty.
-    Maybe, in case of empty envs we should check against all env values (dev, int, staging, prod)?
-    But it may be too much.
-    We have a validation for empty items, so if all docs are filtered out, we will know about it.
-    """
-    if not item_envs or not higher_order_envs:
+def env_settings_are_correct(envs: List, higher_order_envs: List, partial_match: bool = False):
+    if not envs or not higher_order_envs:
         return True
-    return all(env in higher_order_envs for env in item_envs)
+    if partial_match:
+        return any(env in higher_order_envs for env in envs)
+    return all(env in higher_order_envs for env in envs)
 
 
 def validate_page(index_file: Path,
@@ -120,23 +115,44 @@ def validate_page(index_file: Path,
             item_label = item["label"]
             if item.get('id'):
                 item_id = item['id']
-                page_config_envs = item_envs or parent_envs
                 matching_doc_object = next(
                     (doc for doc in docs if doc['id'] == item_id), None)
                 if matching_doc_object:
                     doc_config_envs = matching_doc_object.get('environments')
-                    if not env_settings_are_correct(item_envs=page_config_envs, higher_order_envs=doc_config_envs):
-                        issues.append(
-                            IncorrectEnvSettingsWarning(
-                                config_file=page_config.absolute_path,
-                                details=f'Doc config envs do not include some of the page config envs. '
-                                        f'\nItem label: {item_label} | '
-                                        f'Item ID: {item_id} | '
-                                        f'Page config envs: {page_config_envs} | '
-                                        f'Doc config envs: {doc_config_envs}'
+                    if item_envs:
+                        env_settings_correct = env_settings_are_correct(envs=item_envs,
+                                                                        higher_order_envs=parent_envs) and \
+                                               env_settings_are_correct(envs=item_envs,
+                                                                        higher_order_envs=doc_config_envs)
+                        if not env_settings_correct:
+                            issues.append(
+                                IncorrectEnvSettingsWarning(
+                                    config_file=page_config.absolute_path,
+                                    details=f'All item envs must be included in the parent envs AND in the doc config envs.'
+                                            f'\nItem label: {item_label} | '
+                                            f'Item ID: {item_id} | '
+                                            f'Item envs: {item_envs} | '
+                                            f'Parent envs: {parent_envs} | '
+                                            f'Doc config envs: {doc_config_envs}'
 
+                                )
                             )
-                        )
+                    elif not item_envs:
+                        env_settings_correct = env_settings_are_correct(envs=doc_config_envs,
+                                                                        higher_order_envs=parent_envs,
+                                                                        partial_match=True)
+                        if not env_settings_correct:
+                            issues.append(
+                                IncorrectEnvSettingsWarning(
+                                    config_file=page_config.absolute_path,
+                                    details=f'At least one doc config env must be included in the parent envs.'
+                                            f'\nItem label: {item_label} | '
+                                            f'Item ID: {item_id} | '
+                                            f'Parent envs: {parent_envs} | '
+                                            f'Doc config envs: {doc_config_envs}'
+
+                                )
+                            )
                 elif not matching_doc_object:
                     issues.append(DocIdNotFoundError(
                         config_file=page_config.absolute_path,
@@ -146,11 +162,11 @@ def validate_page(index_file: Path,
                 item_page = item['page']
                 page_path = Path(page_config.dir / item_page)
                 if page_path.exists():
-                    if not env_settings_are_correct(item_envs=item_envs, higher_order_envs=parent_envs):
+                    if not env_settings_are_correct(envs=item_envs, higher_order_envs=parent_envs):
                         issues.append(
                             IncorrectEnvSettingsWarning(
                                 config_file=page_config.absolute_path,
-                                details=f'Parent envs do not include some of the item envs. '
+                                details=f'All item envs must be included in the parent envs. '
                                         f'\nItem label: {item_label} | '
                                         f'Item page: {item_page} | '
                                         f'Item envs: {item_envs} | '
@@ -165,11 +181,11 @@ def validate_page(index_file: Path,
                         config_file=page_config.absolute_path,
                         details=f'Item page: {str(page_path)}'))
             else:
-                if not env_settings_are_correct(item_envs=item_envs, higher_order_envs=parent_envs):
+                if not env_settings_are_correct(envs=item_envs, higher_order_envs=parent_envs):
                     issues.append(
                         IncorrectEnvSettingsWarning(
                             config_file=page_config.absolute_path,
-                            details=f'Parent envs do not include some of the item envs. '
+                            details=f'All item envs must be included in the parent envs. '
                                     f'\nItem label: {item_label} | '
                                     f'Item envs: {item_envs} | '
                                     f'Env settings of the parent element: {parent_envs}'
