@@ -83,7 +83,7 @@ def write_docs_to_sitemap(sitemap_path, docs):
         for doc in docs:
             output_sitemap_file.write('<url>\n')
             url = doc['_source']['href']
-            output_sitemap_file.write(f'<loc>{escape_entities(url)}</loc>\n')
+            output_sitemap_file.write(f'<loc>{escape_entities(url)}?authSource=guidewire-customer</loc>\n')
 
             date = doc['_source']['indexed_date']
             if not latest_date:
