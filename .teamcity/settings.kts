@@ -492,6 +492,7 @@ object DeployS3Ingress : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                     export KUBE_FILE=s3/kube/ingress-portal2.yml
+                    export DEPLOY_ENV="us-east-2"
                 else
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
