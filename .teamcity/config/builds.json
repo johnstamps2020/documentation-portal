@@ -5094,7 +5094,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Banff-10.4/DataHub",
+          "sourceFolder": "Cortina-10.5/DataHub",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
@@ -5165,7 +5165,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Banff-10.4/DataHub",
+          "sourceFolder": "Cortina-10.5/DataHub",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
