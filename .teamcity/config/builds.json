@@ -3969,7 +3969,14 @@
       "root": "InsuranceNowReleaseNotes20211.ditamap",
       "srcId": "in20211xrndraftsrc",
       "docId": "in20211xrndraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
     },
     {
       "buildType": "dita",
@@ -4415,7 +4422,14 @@
       "root": "InsuranceNowReleaseNotes20211.ditamap",
       "srcId": "in20211rnsrc",
       "docId": "in20211rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
     },
     {
       "buildType": "dita",
