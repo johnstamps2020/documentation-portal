@@ -410,7 +410,7 @@ object TestSettingsKts : BuildType({
 
 object DeploySearchService : BuildType({
     name = "Deploy a search service"
-    description = "Creates or updates an S3 ingress for a selected environment"
+    description = "Creates or updates a search service ingress for a selected environment"
 
     params {
         select(
@@ -467,7 +467,7 @@ object DeployS3Ingress : BuildType({
     params {
         select(
             "env.DEPLOY_ENV", "", display = ParameterDisplay.PROMPT,
-            options = listOf("dev", "int", "staging", "us-east-2")
+            options = listOf("dev", "int", "staging", "prod" to "us-east-2", "portal2")
         )
     }
 
@@ -487,6 +487,11 @@ object DeployS3Ingress : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                     export KUBE_FILE=s3/kube/ingress-prod.yml
+                if [[ "%env.DEPLOY_ENV%" == "portal2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    export KUBE_FILE=s3/kube/ingress-portal2.yml
                 else
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
