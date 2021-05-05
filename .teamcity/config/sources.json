@@ -2049,6 +2049,17 @@
       ]
     },
     {
+      "id": "in20211csp325rnsrc",
+      "title": "InsuranceNow 2021.1 CSP 325 Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2021.1",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV325.ditamap"
+      ]
+    },
+    {
       "id": "in20211csp324rnsrc",
       "title": "InsuranceNow 2021.1 CSP 324 Release Notes",
       "sourceType": "xdocs",
@@ -2203,6 +2214,17 @@
       ]
     },
     {
+      "id": "in20202csp325rnsrc",
+      "title": "InsuranceNow 2020.2 CSP 325 Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2020.2",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV325.ditamap"
+      ]
+    },
+    {
       "id": "in20202csp324rnsrc",
       "title": "InsuranceNow 2020.2 CSP 324 Release Notes",
       "sourceType": "xdocs",
@@ -2354,6 +2376,28 @@
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20201.ditamap"
+      ]
+    },
+    {
+      "id": "in20201csp325rnsrc",
+      "title": "InsuranceNow 2020.1 CSP 325 Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2020.1",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV325.ditamap"
+      ]
+    },
+    {
+      "id": "in20201csp324rnsrc",
+      "title": "InsuranceNow 2020.1 CSP 324 Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2020.1",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV324.ditamap"
       ]
     },
     {
@@ -2673,6 +2717,17 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20202.ditamap"
+      ]
+    },
+    {
+      "id": "incsp325rndraftsrc",
+      "title": "InsuranceNow CSP 325 Release Notes Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV325.ditamap"
       ]
     },
     {
