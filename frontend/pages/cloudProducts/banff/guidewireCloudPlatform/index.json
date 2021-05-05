@@ -10,11 +10,7 @@
       "items": [
         {
           "label": "Authentication with Guidewire Identity Federation Hub",
-          "id": "guidewireidentityfederationhubbanff"
-        },
-        {
-          "label": "Authentication with Guidewire Identity Federation Hub",
-          "id": "guidewireidentityfederationhubdraft"
+          "id": "guidewireidentityfederationhub"
         }
       ]
     },
@@ -27,16 +23,8 @@
           "id": "guidewirecloudconsoleguideinsurerdev"
         },
         {
-          "label": "Cloud Console Guide",
-          "id": "guidewirecloudconsoleguideinsurerdevdraft"
-        },
-        {
           "label": "Cloud Console Release Notes",
           "id": "guidewirecloudconsolerninsurerdev"
-        },
-        {
-          "label": "Cloud Console Release Notes",
-          "id": "guidewirecloudconsolerninsurerdevdraft"
         }
       ]
     }
