@@ -4111,6 +4111,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
+      "srcId": "incsp325rndraftsrc",
+      "docId": "incsp325rndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
       "srcId": "incsp324rndraftsrc",
       "docId": "incsp324rndraft",
@@ -4413,6 +4421,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
+      "srcId": "in20211csp325rnsrc",
+      "docId": "in20211csp325rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
       "srcId": "in20211csp324rnsrc",
       "docId": "in20211csp324rn",
@@ -4532,6 +4548,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
+      "srcId": "in20202csp325rnsrc",
+      "docId": "in20202csp325rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
       "srcId": "in20202csp324rnsrc",
       "docId": "in20202csp324rn",
@@ -4647,6 +4671,22 @@
           "srcId": "insurancenowextrassrc"
         }
       ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
+      "srcId": "in20201csp325rnsrc",
+      "docId": "in20201csp325rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
+      "srcId": "in20201csp324rnsrc",
+      "docId": "in20201csp324rn",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
