@@ -123,7 +123,7 @@ app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
 
 const portal2ProxyOptions = {
-  target: 'https://portal2.guidewire.com',
+  target: `${process.env.PORTAL2_S3_URL}`,
   changeOrigin: true,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
