@@ -4936,8 +4936,8 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Cortina-10.5/DataHub",
-          "targetFolder": "extras",
+          "sourceFolder": "Cortina-10.5/DataHub/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -4996,7 +4996,14 @@
       "root": "developer-ref.ditamap",
       "srcId": "dmdevrefdraftsrc",
       "docId": "dhclouddevrefdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Cortina-10.5/DataHub/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ]
     },
     {
       "buildType": "dita",
@@ -5007,8 +5014,8 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Cortina-10.5/InfoCenter",
-          "targetFolder": "extras",
+          "sourceFolder": "Cortina-10.5/InfoCenter/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
       ]
@@ -5083,7 +5090,14 @@
       "root": "developer-ref.ditamap",
       "srcId": "dmdevrefdraftsrc",
       "docId": "icclouddevrefdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Cortina-10.5/InfoCenter/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ]
     },
     {
       "buildType": "dita",

@@ -12233,7 +12233,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -12249,7 +12249,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -12265,7 +12265,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -12281,7 +12281,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -12297,7 +12297,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -12313,7 +12313,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -12329,7 +12329,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -12345,7 +12345,7 @@
         "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -12361,7 +12361,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -12377,7 +12377,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -12393,7 +12393,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -12409,7 +12409,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -12425,7 +12425,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -12441,7 +12441,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -12457,7 +12457,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -12473,7 +12473,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -12489,7 +12489,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -12505,7 +12505,7 @@
         "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
