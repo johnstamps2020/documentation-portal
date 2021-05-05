@@ -39,7 +39,7 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest"
+          "page": "../../cloudDataAccess/latest"
         },
         {
           "label": "Explore",
