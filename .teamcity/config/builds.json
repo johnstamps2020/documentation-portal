@@ -5172,7 +5172,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Cortina-10.5/DataHub/releaseDiffFiles/cloud",
+          "sourceFolder": "Cortina-10.5/InfoCenter/releaseDiffFiles/cloud",
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
