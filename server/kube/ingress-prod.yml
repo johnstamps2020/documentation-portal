@@ -9,17 +9,17 @@ metadata:
       http-response add-header X-Frame-Options SAMEORIGIN
 spec:
   rules:
-  - host: docs.guidewire.com
-    http:
-      paths:
-      - backend:
-          serviceName: docportal-app
-          servicePort: 8081
-        path: /
-  - host: docs.guidewire.com
-    http:
-      paths:
-      - backend:
-          serviceName: docportal-app
-          servicePort: 8081
-        path: /
+    - host: docs.guidewire.com
+      http:
+        paths:
+          - backend:
+              serviceName: docportal-app
+              servicePort: 8081
+            path: /
+    - host: portal2.guidewire.com
+      http:
+        paths:
+          - backend:
+              serviceName: docportal-app
+              servicePort: 8081
+            path: /
