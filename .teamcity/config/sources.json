@@ -3142,23 +3142,13 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git"
     },
     {
-      "id": "guidewireidentityfederationhubbanffsrc",
+      "id": "guidewireidentityfederationhubsrc",
       "title": "Guidewire Identity Federation Hub Release",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
-      "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/cloud-services/GuidewireHub.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "guidewireidentityfederationhubdraftsrc",
-      "title": "Guidewire Identity Federation Hub Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
-      "xdocsPathIds": [
-        "/Content/doc/cloud-services/GuidewireHub.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
     },

@@ -1806,7 +1806,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Identity Federation Hub"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -1814,14 +1814,14 @@
       "public": false
     },
     {
-      "id": "guidewireidentityfederationhubbanff",
+      "id": "guidewireidentityfederationhub",
       "title": "Authentication with Guidewire Identity Federation Hub",
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Identity Federation Hub"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -2431,7 +2431,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -2446,7 +2446,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -2462,7 +2462,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -2476,7 +2476,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -2491,7 +2491,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -2507,7 +2507,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
       "indexForSearch": true,
@@ -2523,7 +2523,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
       "public": false
