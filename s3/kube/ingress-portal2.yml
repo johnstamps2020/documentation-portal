@@ -1,0 +1,31 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: portal2-content-prod
+  namespace: doctools
+spec:
+  type: ExternalName
+  externalName: tenant-doctools-portal2-builds.s3-website.us-east-2.amazonaws.com
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: doctools
+  name: doctools-portal2-builds-ingress
+  annotations:
+    ingress.kubernetes.io/config-backend: |
+      http-request set-header Host tenant-doctools-portal2-builds.s3-website.us-east-2.amazonaws.com
+spec:
+  rules:
+    - host: "portal2.internal.us-east-2.service.guidewire.net"
+      http:
+        paths:
+          - backend:
+              serviceName: portal2-content-prod
+              servicePort: 80
+            path: /
