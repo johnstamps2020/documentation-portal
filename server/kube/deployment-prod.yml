@@ -66,6 +66,8 @@ spec:
               value: http://docsearch-${DEPLOY_ENV}.doctools:9200
             - name: DOC_S3_URL
               value: https://ditaot.internal.${DEPLOY_ENV}.service.guidewire.net
+            - name: PORTAL2_S3_URL
+              value: https://portal2.internal.us-east-2.service.guidewire.net
             - name: PARTNERS_LOGIN_URL
               value: ${PARTNERS_LOGIN_URL}
             - name: PARTNERS_LOGIN_CERT

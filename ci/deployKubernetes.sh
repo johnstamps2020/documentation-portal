@@ -10,7 +10,7 @@ kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjs
 
 sed -ie "s/\${DEPLOY_ENV}/${DEPLOY_ENV}/g" ${KUBE_FILE}
 
-if [[ ! -z "${DEPLOYMENT_NAME}" ]]; then
+if [[ ! -z "${DEPLOYMENT_NAME+x}" ]]; then
   kubectl delete deployment ${DEPLOYMENT_NAME} --namespace=${NAMESPACE}
 fi
 kubectl apply -f ${KUBE_FILE} --namespace=${NAMESPACE}

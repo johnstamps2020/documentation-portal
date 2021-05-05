@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: portal2-content-prod
+  name: portal2-content-us-east-2
   namespace: doctools
 spec:
   type: ExternalName
@@ -26,6 +26,6 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: portal2-content-prod
+              serviceName: portal2-content-us-east-2
               servicePort: 80
             path: /
