@@ -122,7 +122,8 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/5.3.1"
+              "page": "../../../jutroDesignSystem/5.3.1",
+              "env": ["dev", "int", "staging", "prod"]
             }
           ]
         }
