@@ -39,13 +39,11 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest",
-          "env": ["int"]
+          "page": "../../cloudDataAccess/latest"
         },
         {
           "label": "Explore",
-          "page": "../../explore/latest",
-          "env": ["dev", "int", "staging", "prod"]
+          "page": "../../explore/latest"
         },
         {
           "label": "Add-ons",

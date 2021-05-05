@@ -46,29 +46,16 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "id": "clouddataaccessaspen"
+          "page": "../../cloudDataAccess/latest"
         },
         {
           "label": "Explore",
-          "page": "../../explore/latest",
-          "env": [
-            "dev",
-            "int",
-            "staging"
-          ]
-        },
-        {
-          "label": "Explore",
-          "id": "explorerelease"
+          "page": "../../explore/latest"
         },
         {
           "label": "Add-ons",
           "class": "group",
-          "env": [
-            "dev",
-            "staging",
-            "prod"
-          ],
+          "env": ["dev", "staging", "prod"],
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
@@ -85,11 +72,7 @@
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
-      "env": [
-        "dev",
-        "staging",
-        "prod"
-      ],
+      "env": ["dev", "staging", "prod"],
       "items": [
         {
           "label": "Digital Applications",
