@@ -2898,63 +2898,33 @@
       "public": false
     },
     {
-      "id": "clouddataaccessaspen",
-      "title": "Cloud Data Access Aspen",
-      "url": "cloud/cda/aspen",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": ["Aspen"],
-        "release": ["Aspen"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "clouddataaccessbanff",
-      "title": "Cloud Data Access Banff",
-      "url": "cloud/cda/banff",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": ["Banff"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "clouddataaccessguidedraft",
-      "title": "Understanding Cloud Data Access",
+      "id": "clouddataaccessguide",
+      "title": "Application Guide",
       "url": "cloud/cda/guide/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Data Access"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "clouddataaccessrndraft",
+      "id": "clouddataaccessrn",
       "title": "Release Notes",
       "url": "cloud/cda/rn/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Data Access"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2975,21 +2945,6 @@
       "public": false
     },
     {
-      "id": "explorerelease",
-      "title": "Explore",
-      "url": "cloud/explore/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "explorernrelease",
       "title": "Release Notes",
       "url": "cloud/explore/relnotes",
@@ -2997,10 +2952,10 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3013,10 +2968,10 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -3029,10 +2984,10 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

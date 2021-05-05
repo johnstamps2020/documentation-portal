@@ -39,23 +39,19 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest",
-          "env": ["int"]
+          "page": "../cloudDataAccess/latest"
         },
         {
           "label": "Compare+",
-          "id": "comparelatest",
-          "env": ["dev", "int", "staging", "prod"]
+          "id": "comparelatest"
         },
         {
           "label": "Explore",
-          "page": "../../explore/latest",
-          "env": ["dev", "int", "staging", "prod"]
+          "page": "../../explore/latest"
         },
         {
           "label": "Predictive Analytics",
-          "id": "palatest",
-          "env": ["dev", "int", "staging", "prod"]
+          "id": "palatest"
         },
         {
           "label": "Add-ons",

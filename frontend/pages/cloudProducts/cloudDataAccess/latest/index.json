@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "clouddataaccessrndraft"
+          "id": "clouddataaccessrn"
         }
       ]
     },
@@ -19,8 +19,8 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
-          "label": "Understanding Cloud Data Access",
-          "id": "clouddataaccessguidedraft"
+          "label": "Application Guide",
+          "id": "clouddataaccessguide"
         }
       ]
     }
