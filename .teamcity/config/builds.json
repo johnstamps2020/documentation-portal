@@ -1116,41 +1116,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-c-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "selfmanageddxdicxyhksqnkf"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ed-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "selfmanageddxedxqqjwvkln"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ed-c-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "selfmanageddxedcxvpeswwmn"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-vod-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "selfmanageddxvodxqjomllcj"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-vod-c-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "selfmanageddxvodcxeajkygfs"
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-API.ditamap",
       "srcId": "testingframeworksapibanffsrc",
@@ -2150,20 +2115,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "dxdionprem310"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-di-c-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "dxdiconprem310"
-    },
-    {
-      "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxgwsf320",
@@ -2171,38 +2122,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ed-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "dxedonprem310"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ed-c-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "dxedconprem310"
-    },
-    {
-      "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxgwsf320",
       "docId": "dxvodonprem320"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-vod-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "dxvodonprem310"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-vod-c-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "dxvodconprem310"
     },
     {
       "buildType": "dita",
