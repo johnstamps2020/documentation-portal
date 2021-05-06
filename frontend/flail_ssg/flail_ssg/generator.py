@@ -2,6 +2,7 @@ import copy
 import shutil
 from pathlib import Path
 from typing import List
+from urllib.parse import urlparse
 
 from flail_ssg.helpers import configure_logger
 from flail_ssg.helpers import load_json_file
@@ -65,7 +66,9 @@ def resolve_links(items: List, docs: List):
         if item.get('id'):
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
-            item['doc_url'] = f'/{matching_doc_object["url"]}'
+            matching_doc_object_url = matching_doc_object["url"]
+            item['doc_url'] = matching_doc_object_url if bool(
+                urlparse(matching_doc_object_url).netloc) else f'/{matching_doc_object_url}'
         if item.get('items'):
             resolve_links(item['items'], docs)
     return items
