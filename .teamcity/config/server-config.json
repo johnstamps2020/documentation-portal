@@ -1999,25 +1999,11 @@
     {
       "id": "selfmanageddxdixowqwwrfu",
       "title": "Guidewire for Salesforce Data Integrations",
-      "url": "self-managed/dx/di/11x",
+      "url": "self-managed/dx/di/3x",
       "metadata": {
         "product": ["Guidewire for Salesforce Data Integrations"],
         "platform": ["Self-managed"],
-        "version": ["11.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "selfmanageddxdicxyhksqnkf",
-      "title": "Guidewire for Salesforce Data Integrations for Claims",
-      "url": "self-managed/dx/di-c/11x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations for Claims"],
-        "platform": ["Self-managed"],
-        "version": ["11.x"]
+        "version": ["latest"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -2030,20 +2016,6 @@
       "url": "self-managed/dx/ed/11x",
       "metadata": {
         "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["11.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "selfmanageddxedcxvpeswwmn",
-      "title": "Guidewire for Salesforce Digital Gateway for Claims",
-      "url": "self-managed/dx/ed-c/11x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
         "platform": ["Self-managed"],
         "version": ["11.x"]
       },
@@ -2067,20 +2039,6 @@
       "public": false
     },
     {
-      "id": "selfmanageddxvodcxeajkygfs",
-      "title": "Guidewire for Salesforce View on Demand for Claims",
-      "url": "self-managed/dx/vod-c/11x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand for Claims"],
-        "platform": ["Self-managed"],
-        "version": ["11.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "claimsautopilotdraft",
       "title": "Claims Autopilot",
       "url": "cloud/gw-feature-preview/autopilot",
@@ -2088,7 +2046,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -2104,7 +2062,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -2120,7 +2078,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -2136,7 +2094,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -2152,7 +2110,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -2168,7 +2126,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -2184,7 +2142,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -2200,7 +2158,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -2216,7 +2174,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -2232,7 +2190,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -2248,7 +2206,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -2264,7 +2222,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
       "environments": ["int"],
@@ -2280,7 +2238,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -2296,7 +2254,7 @@
         "product": ["Guidewire Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -4686,6 +4644,186 @@
       "public": false
     },
     {
+      "id": "dxdiapp330",
+      "title": "Application Guide",
+      "url": "self-managed/dx/di/330/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxdiinstall330",
+      "title": "Installation Guide",
+      "url": "self-managed/dx/di/330/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxdiadmin330",
+      "title": "Administration Guide",
+      "url": "self-managed/dx/di/330/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxdirelnotes330",
+      "title": "Release Notes",
+      "url": "self-managed/dx/di/330/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedapp330",
+      "title": "Application Guide",
+      "url": "self-managed/dx/ed/330/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedinstall330",
+      "title": "Installation Guide",
+      "url": "self-managed/dx/ed/330/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedadmin330",
+      "title": "Administration Guide",
+      "url": "self-managed/dx/ed/330/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedrelnotes330",
+      "title": "Release Notes",
+      "url": "self-managed/dx/ed/330/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodapp330",
+      "title": "Application Guide",
+      "url": "self-managed/dx/vod/330/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodinstall330",
+      "title": "Installation Guide",
+      "url": "self-managed/dx/vod/330/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodadmin330",
+      "title": "Administration Guide",
+      "url": "self-managed/dx/vod/330/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodrelnotes330",
+      "title": "Release Notes",
+      "url": "self-managed/dx/vod/330/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "dxdionprem320",
       "title": "Guidewire for Salesforce Data Integrations",
       "url": "self-managed/dx/di/320",
@@ -4693,34 +4831,6 @@
         "product": ["Guidewire for Salesforce Data Integrations"],
         "platform": ["Self-managed"],
         "version": ["3.2.0"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dxdionprem310",
-      "title": "Guidewire for Salesforce Data Integrations",
-      "url": "self-managed/dx/di/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dxdiconprem310",
-      "title": "Guidewire for Salesforce Data Integrations for Claims",
-      "url": "self-managed/dx/di-c/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations for Claims"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -4742,34 +4852,6 @@
       "public": false
     },
     {
-      "id": "dxedonprem310",
-      "title": "Guidewire for Salesforce Digital Gateway",
-      "url": "self-managed/dx/ed/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dxedconprem310",
-      "title": "Guidewire for Salesforce Digital Gateway for Claims",
-      "url": "self-managed/dx/ed-c/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "dxvodonprem320",
       "title": "Guidewire for Salesforce View on Demand",
       "url": "self-managed/dx/vod/320",
@@ -4784,6 +4866,62 @@
       "public": false
     },
     {
+      "id": "dxdionprem310",
+      "title": "Guidewire for Salesforce Data Integrations",
+      "url": "self-managed/dx/di/310",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxdiconprem310",
+      "title": "Guidewire for Salesforce Data Integrations for Claims",
+      "url": "self-managed/dx/di-c/310",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations for Claims"],
+        "platform": ["Self-managed"],
+        "version": ["3.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedonprem310",
+      "title": "Guidewire for Salesforce Digital Gateway",
+      "url": "self-managed/dx/ed/310",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Self-managed"],
+        "version": ["3.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedconprem310",
+      "title": "Guidewire for Salesforce Digital Gateway for Claims",
+      "url": "self-managed/dx/ed-c/310",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
+        "platform": ["Self-managed"],
+        "version": ["3.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "dxvodonprem310",
       "title": "Guidewire for Salesforce View on Demand",
       "url": "self-managed/dx/vod/310",
@@ -4792,7 +4930,7 @@
         "platform": ["Self-managed"],
         "version": ["3.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4806,7 +4944,7 @@
         "platform": ["Self-managed"],
         "version": ["3.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
