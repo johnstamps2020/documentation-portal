@@ -3747,7 +3747,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.2.0"],
-        "release": ["Aspen", "Banff"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
