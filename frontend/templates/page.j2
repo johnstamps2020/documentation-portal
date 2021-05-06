@@ -18,32 +18,33 @@
             <h1>{{ data.get('title') }}</h1>
         </div>
         <div id="pageSelectorContainer">
-        {% if data.get('selector') %}
-            <script>
-                function selectPage(selectedPage) {
-                    if (selectedPage) {
-                        window.location = selectedPage;
+            {% if data.get('selector') %}
+                <script>
+                    function selectPage(selectedPage) {
+                        if (selectedPage) {
+                            window.location = selectedPage;
+                        }
                     }
-                }
-            </script>
-        
-            {% if data.get('selector').get('label') %}
-                <span class="selectorLabel">{{ data.get('selector').get('label') }}</span>
+                </script>
+
+                {% if data.get('selector').get('label') %}
+                    <span class="selectorLabel">{{ data.get('selector').get('label') }}</span>
+                {% endif %}
+                <select onchange="selectPage(this.value)" id="pageSelector">
+                    <option selected="selected">{{ data.get('selector').get('selectedItem') }}</option>
+                    {% for item in data.get('selector').get('items') %}
+                        <option value="{{ item.get('doc_url') or item.get('page') or item.get('link') }}">
+                            {{ item.get('label') }}
+                        </option>
+                    {% endfor %}
+                </select>
             {% endif %}
-            <select onchange="selectPage(this.value)" id="pageSelector">
-                <option selected="selected">{{ data.get('selector').get('selectedItem') }}</option>
-                {% for item in data.get('selector').get('items') %}
-                    <option value="{{ item.get('doc_url') or item.get('page') or item.get('link') }}">
-                        {{ item.get('label') }}
-                    </option>
-                {% endfor %}
-            </select>
-        {% endif %}
         </div>
         {% macro create_block(label, class, items, doc_url, page, link, public) -%}
             <div {% if class -%}class="{{ class }}"{%- endif -%}>
                 {% if (doc_url or page or link) -%}
-                    <a href="{{ doc_url or page or link }}" {% if not public -%}class="private"{%- endif -%}>{{ label }}</a>
+                    <a href="{{ doc_url or page or link }}"
+                       {% if not public -%}class="private"{%- endif -%}>{{ label }}</a>
                 {% else %}
                     <div class="label" {% if not public -%}class="private"{%- endif -%}>{{ label }}</div>
                 {%- endif %}
@@ -63,9 +64,10 @@
     </div>
     <div class="sidebar">
         <div class="heroControls">
-            <div id="cloudToggle">
-                <a href="/" data-root="/cloudProducts">Guidewire Cloud</a>
-                <a href="/selfManagedProducts" data-root="/selfManagedProducts">Self-managed</a>
+            <div id="platformToggle">
+                <a id="cloudButton" class="toggleButton" href="/" data-root="/cloudProducts">Guidewire Cloud</a>
+                <a id="selfManagedButton" class="toggleButton" href="/selfManagedProducts"
+                   data-root="/selfManagedProducts">Self-managed</a>
             </div>
         </div>
         <div class="usefulLinks">

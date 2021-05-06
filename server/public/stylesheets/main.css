@@ -182,13 +182,13 @@ main.fullWidth > .sidebar {
 main.blue-theme {
   background: url(/images/background-gradient.svg) no-repeat fixed;
   /* background-color: rgba(19, 30, 46, 0.15);
-          background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
-            linear-gradient(
-              -60deg,
-              #131e2e,
-              rgba(40, 64, 99, 0.8),
-              rgba(47, 79, 126, 0)
-            ); */
+                            background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
+                              linear-gradient(
+                                -60deg,
+                                #131e2e,
+                                rgba(40, 64, 99, 0.8),
+                                rgba(47, 79, 126, 0)
+                              ); */
   /* background-position: top left; */
   -webkit-background-size: cover;
   background-size: cover;
@@ -310,6 +310,7 @@ div.items {
 .twoColumns div.items {
   columns: 2;
 }
+
 @media screen and (max-width: 750px) {
   .twoColumns div.items {
     columns: 1;
@@ -491,7 +492,7 @@ footer .releaseInfo {
 div.pageHero {
   display: block;
   /* flex-wrap: wrap-reverse;
-  gap: 16px; */
+                    gap: 16px; */
 }
 
 .heroControls {
@@ -500,45 +501,65 @@ div.pageHero {
   margin-left: auto;
 }
 
-#cloudToggle {
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 1pt gray;
-  border: 1px solid white;
-  background-color: white;
-  border-radius: 6px;
+#platformToggle {
+  display: inline-flex;
+  width: 100%;
+  color: rgb(40, 51, 63);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  box-sizing: border-box;
 }
 
-.l10n #cloudToggle {
+#platformToggle > .toggleButton {
+  align-items: center;
+  display: flex;
+  height: 32px;
+  width: 150px;
+  cursor: pointer;
+  justify-content: center;
+  box-sizing: border-box;
+  outline-style: none;
+  outline-width: 0;
+  text-align: center;
+  padding: 0 1.25rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgb(101, 117, 128);
+  background: rgb(255, 255, 255);
+  border: rgb(125, 145, 172) solid 1px;
+  box-shadow: rgba(40, 51, 63, 0.24) 0 2px 4px 0;
+}
+
+#platformToggle > .toggleButton:not(.selected):hover {
+  background: rgb(207, 242, 255);
+  box-shadow: rgba(40, 51, 63, 0.24) 0 2px 4px 0 !important;
+}
+
+#platformToggle > #cloudButton {
+  border-radius: 4px 0 0 4px;
+}
+
+#platformToggle > #selfManagedButton {
+  border-width: 1px 1px 1px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.l10n #platformToggle {
   display: none;
 }
 
-#cloudToggle > a {
-  margin: 0;
-  width: 150px;
-  padding: 12px 0;
-  text-align: center;
-  background-color: white;
-}
-
-#cloudToggle > a:first-child {
-  border-radius: 6px 0 0 6px;
-}
-
-#cloudToggle > a:last-child {
-  border-radius: 0 6px 6px 0;
-}
-
-#cloudToggle > a:not(.selected):hover,
-#cloudToggle > a:not(.selected):focus {
-  background: var(--GRADIENT-BACKGROUND);
+#platformToggle > .selected {
+  background: rgb(0, 115, 157);
   color: var(--clr-GW-WHITE);
+  border: rgb(30, 154, 207) solid 1px;
+  font-weight: 600;
 }
 
-#cloudToggle > .selected {
-  background: gray;
-  color: var(--clr-GW-WHITE);
+#platformToggle > .selected:hover {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(30, 154, 207, 0.4) !important;
 }
 
 .usefulLinks {
@@ -681,11 +702,13 @@ div.pageHero {
   top: var(--estimated-header-height);
   width: var(--search-filter-width);
 }
+
 @media screen and (max-width: 952px) {
   .filterSearchResults {
     top: 114px;
   }
 }
+
 @media screen and (max-width: 765px) {
   .filterSearchResults {
     top: 116px;
@@ -854,6 +877,7 @@ main.support h2 {
   padding: 2rem 0;
   height: 120px;
 }
+
 .cortina #pageSelectorContainer .selectorLabel,
 .banff #pageSelectorContainer .selectorLabel,
 .aspen #pageSelectorContainer .selectorLabel {
