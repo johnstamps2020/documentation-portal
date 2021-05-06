@@ -2755,7 +2755,7 @@
       "filter": "Other/IS-BillingCenter-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
+      "srcId": "isupgradeguide202104src",
       "docId": "isbc202104upgrade"
     },
     {
@@ -2871,7 +2871,7 @@
       "filter": "Other/IS-ClaimCenter-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
+      "srcId": "isupgradeguide202104src",
       "docId": "iscc202104upgrade"
     },
     {
@@ -3003,7 +3003,7 @@
       "filter": "Other/IS-PolicyCenter-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
+      "srcId": "isupgradeguide202104src",
       "docId": "ispc202104upgrade"
     },
     {
