@@ -1,6 +1,7 @@
 import shutil
 from pathlib import Path, PurePosixPath
 from typing import Callable, List
+from urllib.parse import urlparse
 
 from flail_ssg.helpers import configure_logger
 from flail_ssg.helpers import load_json_file
@@ -65,7 +66,7 @@ def get_visible_docs_for_env(docs: List, env: str):
         doc
         for doc in docs
         if doc.get('displayOnLandingPages')
-        and any(value for value in doc.get('environments') if value == env)
+           and any(value for value in doc.get('environments') if value == env)
     ]
 
 
@@ -123,10 +124,12 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
                                     matching_other_version['fallbackPaths'] = []
                                 matching_other_version['fallbackPaths'] += [item['path'] for item in root_pages]
                         else:
+                            doc_url = doc.get("url")
+                            path = doc_url if bool(urlparse(doc_url).netloc) else f'/{doc_url}'
                             obj['otherVersions'].append(
                                 {
                                     "label": version,
-                                    "path": f'/{doc.get("url")}',
+                                    "path": path,
                                 }
 
                             )
