@@ -1077,6 +1077,58 @@
       ]
     },
     {
+      "id": "dxgwsfapp330",
+      "title": "GW for SF 3.3.0 Application Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "3.3.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/Guidewire_For_Salesforce_AppGuide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
+      ]
+    },
+    {
+      "id": "dxgwsfinstall330",
+      "title": "GW for SF 3.3.0 Installation Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "3.3.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/Guidewire_For_Salesforce_install-guide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
+      ]
+    },
+    {
+      "id": "dxgwsfadmin330",
+      "title": "GW for SF 3.3.0 Administration Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "3.3.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/gw-for-sf-developer-admin-guide.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
+      ]
+    },
+    {
+      "id": "dxgwsfrelnotes330",
+      "title": "GW for SF 3.3.0 Release Notes",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "3.3.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/active/Digital-Salesforce-ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
+      ]
+    },
+    {
       "id": "dxgwsf320",
       "title": "Digital GW for SF 3.2.0",
       "sourceType": "git",

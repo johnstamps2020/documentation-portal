@@ -61,46 +61,32 @@
             {
               "label": "DataHub",
               "page": "dh/10.5.0",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "DataHub",
               "id": "dh1040",
-              "env": [
-                "prod"
-              ]
+              "env": ["prod"]
             },
             {
               "label": "DataHub",
               "page": "dh/10.x",
-              "env": [
-                "int"
-              ]
+              "env": ["int"]
             },
             {
               "label": "InfoCenter",
               "page": "ic/10.5.0",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "InfoCenter",
               "id": "ic1040",
-              "env": [
-                "prod"
-              ]
+              "env": ["prod"]
             },
             {
               "label": "InfoCenter",
               "page": "ic/10.x",
-              "env": [
-                "int"
-              ]
+              "env": ["int"]
             }
           ]
         }
@@ -117,9 +103,7 @@
         {
           "label": "CustomerEngage Account Management",
           "page": "ceAccountMgmt/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
@@ -128,9 +112,7 @@
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
           "page": "ceAccountMgmtCc/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "CustomerEngage Quote and Buy",
@@ -139,19 +121,12 @@
         {
           "label": "CustomerEngage Quote and Buy",
           "page": "ceQuoteAndBuy/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "Jutro Design System",
           "page": "../jutroDesignSystem/4.1.1",
-          "env": [
-            "dev",
-            "staging",
-            "prod",
-            "int"
-          ]
+          "env": ["dev", "staging", "prod", "int"]
         },
         {
           "label": "ProducerEngage",
@@ -160,9 +135,7 @@
         {
           "label": "ProducerEngage",
           "page": "producerEngage/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "ProducerEngage for ClaimCenter",
@@ -171,9 +144,7 @@
         {
           "label": "ProducerEngage for ClaimCenter",
           "page": "producerEngageCc/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "ServiceRepEngage",
@@ -182,9 +153,7 @@
         {
           "label": "ServiceRepEngage",
           "page": "serviceRepEngage/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "VendorEngage",
@@ -193,57 +162,34 @@
         {
           "label": "VendorEngage",
           "page": "vendorEngage/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "Guidewire for Salesforce Data Integrations",
-          "id": "dxdionprem320"
-        },
-        {
-          "label": "Guidewire for Salesforce Data Integrations",
-          "id": "selfmanageddxdixowqwwrfu"
+          "page": "gwsf/di/3.3.0"
         },
         {
           "label": "Guidewire for Salesforce Data Integrations for Claims",
-          "id": "dxdiconprem310"
-        },
-        {
-          "label": "Guidewire for Salesforce Data Integrations for Claims",
-          "id": "selfmanageddxdicxyhksqnkf"
+          "id": "dxdiconprem310",
+          "env": ["dev", "staging", "prod"]
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway",
-          "id": "dxedonprem320"
-        },
-        {
-          "label": "Guidewire for Salesforce Digital Gateway",
-          "id": "selfmanageddxedxqqjwvkln"
+          "page": "gwsf/ed/3.3.0"
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway for Claims",
-          "id": "dxedconprem310"
-        },
-        {
-          "label": "Guidewire for Salesforce Digital Gateway for Claims",
-          "id": "selfmanageddxedcxvpeswwmn"
+          "id": "dxedconprem310",
+          "env": ["dev", "staging", "prod"]
         },
         {
           "label": "Guidewire for Salesforce View on Demand",
-          "id": "dxvodonprem320"
-        },
-        {
-          "label": "Guidewire for Salesforce View on Demand",
-          "id": "selfmanageddxvodxqjomllcj"
+          "page": "gwsf/vod/3.3.0"
         },
         {
           "label": "Guidewire for Salesforce View on Demand for Claims",
-          "id": "dxvodconprem310"
-        },
-        {
-          "label": "Guidewire for Salesforce View on Demand for Claims",
-          "id": "selfmanageddxvodcxeajkygfs"
+          "id": "dxvodconprem310",
+          "env": ["dev", "staging", "prod"]
         }
       ]
     }
