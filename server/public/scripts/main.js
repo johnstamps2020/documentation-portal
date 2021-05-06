@@ -58,11 +58,13 @@ async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
 }
 
 function selectToggleButton() {
-  const toggleButtons = document.querySelectorAll('#cloudToggle > a');
+  const toggleButtons = document.querySelectorAll(
+    '#platformToggle > .toggleButton'
+  );
   if (toggleButtons.length === 0) {
     return;
   }
-  let matchingButton = toggleButtons[0];
+  let matchingButton = document.querySelector('#platformToggle > #cloudButton');
   const currentPath = window.location.pathname;
   toggleButtons.forEach(button => {
     const root = button.getAttribute('data-root');
