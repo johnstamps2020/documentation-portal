@@ -171,7 +171,7 @@
         {
           "label": "Guidewire for Salesforce Data Integrations for Claims",
           "id": "dxdiconprem310",
-          "env": ["dev", "staging", "prod"]
+          "env": ["prod"]
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway",
@@ -180,7 +180,7 @@
         {
           "label": "Guidewire for Salesforce Digital Gateway for Claims",
           "id": "dxedconprem310",
-          "env": ["dev", "staging", "prod"]
+          "env": ["prod"]
         },
         {
           "label": "Guidewire for Salesforce View on Demand",
@@ -189,7 +189,7 @@
         {
           "label": "Guidewire for Salesforce View on Demand for Claims",
           "id": "dxvodconprem310",
-          "env": ["dev", "staging", "prod"]
+          "env": ["prod"]
         }
       ]
     }
