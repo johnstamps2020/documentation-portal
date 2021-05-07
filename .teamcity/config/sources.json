@@ -1356,7 +1356,7 @@
     },
     {
       "id": "dx202104dcg",
-      "title": "Digital Code Generation Guide 2021.04",
+      "title": "Digital 2021.04 Code Generation Guide",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1367,7 +1367,7 @@
     },
     {
       "id": "dx202104dcgrn",
-      "title": "Digital Code Generation Release Notes 2021.04",
+      "title": "Digital 2021.04 Code Generation Release Notes",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1378,7 +1378,7 @@
     },
     {
       "id": "dx202104ceamapp",
-      "title": "Digital CustomerEngage Account Management Application 2021.04",
+      "title": "Digital 2021.04 CustomerEngage Account Management Application",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1390,7 +1390,7 @@
     },
     {
       "id": "dx202104install",
-      "title": "Digital Installation 2021.04",
+      "title": "Digital 2021.04 Installation",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1414,7 +1414,7 @@
     },
     {
       "id": "dx202104dev",
-      "title": "Digital Developers 2021.04",
+      "title": "Digital 2021.04 Developers",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1438,7 +1438,7 @@
     },
     {
       "id": "dx202104refguides",
-      "title": "Digital DX Services Ref Guides 2021.04",
+      "title": "Digital 2021.04 DX Services Ref Guides",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1462,7 +1462,7 @@
     },
     {
       "id": "dx202104relnotes",
-      "title": "Digital Cloud Release Notes 2021.04",
+      "title": "Digital 2021.04 Cloud Release Notes",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1479,7 +1479,7 @@
     },
     {
       "id": "dx202104ceclaimsapp",
-      "title": "Digital CustomerEngage Account Management for CC Application 2021.04",
+      "title": "Digital 2021.04 CustomerEngage Account Management for CC Application",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1490,7 +1490,7 @@
     },
     {
       "id": "dx202104ceqbapp",
-      "title": "Digital CustomerEngage Quote and Buy Application 2021.04",
+      "title": "Digital 2021.04 CustomerEngage Quote and Buy Application",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1501,7 +1501,7 @@
     },
     {
       "id": "dx202104peapp",
-      "title": "Digital ProducerEngage Application 2021.04",
+      "title": "Digital 2021.04 ProducerEngage Application",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1512,7 +1512,7 @@
     },
     {
       "id": "dx202104peclaimsapp",
-      "title": "Digital ProducerEngage for CC Application 2021.04",
+      "title": "Digital 2021.04 ProducerEngage for CC Application",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1523,7 +1523,7 @@
     },
     {
       "id": "dx202104sreapp",
-      "title": "Digital ServiceRepEngage Application 2021.04",
+      "title": "Digital 2021.04 ServiceRepEngage Application",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
@@ -1534,7 +1534,7 @@
     },
     {
       "id": "dx202104veapp",
-      "title": "Digital VendorEngage Application 2021.04",
+      "title": "Digital 2021.04 VendorEngage Application",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
