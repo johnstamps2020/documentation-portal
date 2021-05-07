@@ -2033,20 +2033,15 @@ object HelperObjects {
                 """.trimIndent()
                 }
 
-                stepsOrder = arrayListOf("UPLOAD_GENERATED_CONTENT")
+                stepsOrder = arrayListOf("BUILD_DOC_SITE_OUTPUT")
                 if (buildZipPackage) {
-                    stepsOrder.addAll(
-                        0,
-                        arrayListOf("BUILD_DOC_SITE_OUTPUT", "BUILD_LOCAL_OUTPUT", "CREATE_ZIP_PACKAGE")
-                    )
-                } else {
-                    stepsOrder.addAll(0, arrayListOf("BUILD_DOC_SITE_OUTPUT"))
+                    stepsOrder.addAll(arrayListOf("BUILD_LOCAL_OUTPUT", "CREATE_ZIP_PACKAGE"))
                 }
+                stepsOrder.add("UPLOAD_GENERATED_CONTENT")
                 if (index_for_search) {
-                    stepsOrder.addAll(arrayListOf("CRAWL_DOC"))
+                    stepsOrder.add("CRAWL_DOC")
                 }
             }
-
 
             if (!resources_to_copy.isNullOrEmpty()) {
                 val extraSteps = mutableListOf<ScriptBuildStep>()
@@ -2091,7 +2086,7 @@ object HelperObjects {
 
                 steps {
                     extraSteps.forEach(this::step)
-                    stepsOrder.addAll(2, stepIds)
+                    stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_GENERATED_CONTENT"), stepIds)
                 }
             }
 
