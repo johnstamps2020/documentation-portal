@@ -1923,7 +1923,8 @@ object HelperObjects {
             vcsRootIsExported: Boolean,
             customEnvironmentVars: JSONArray?
         ) : BuildType({
-            var buildTemplate: Template = if (build_env == "staging") {
+            val buildZipPackage = (build_env == "staging" && "self-managed" in platform.toLowerCase())
+            var buildTemplate: Template = if (buildZipPackage) {
                 BuildDocSiteAndLocalOutputFromDita
             } else {
                 BuildDocSiteOutputFromDita
@@ -2033,7 +2034,7 @@ object HelperObjects {
                 }
 
                 stepsOrder = arrayListOf("UPLOAD_GENERATED_CONTENT")
-                if (build_env == "staging") {
+                if (buildZipPackage) {
                     stepsOrder.addAll(
                         0,
                         arrayListOf("BUILD_DOC_SITE_OUTPUT", "BUILD_LOCAL_OUTPUT", "CREATE_ZIP_PACKAGE")
