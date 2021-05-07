@@ -66,6 +66,12 @@
       "label": "Integration Framework",
       "class": "productFamily cardShadow",
       "id": "restapidraft"
+    },
+    {
+      "label": "Feature Preview",
+      "class": "productFamily cardShadow",
+      "page": "../featurePreview",
+      "env": ["int"]
     }
   ]
 }

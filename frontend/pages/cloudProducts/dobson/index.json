@@ -61,7 +61,7 @@
     {
       "label": "Feature Preview",
       "class": "productFamily cardShadow",
-      "page": "featurePreview",
+      "page": "../featurePreview",
       "env": ["int"]
     }
   ]

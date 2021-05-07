@@ -61,6 +61,12 @@
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform"
+    },
+    {
+      "label": "Feature Preview",
+      "class": "productFamily cardShadow",
+      "page": "../featurePreview",
+      "env": ["int"]
     }
   ]
 }

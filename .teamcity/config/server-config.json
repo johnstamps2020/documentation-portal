@@ -2043,13 +2043,13 @@
       "title": "Claims Autopilot",
       "url": "cloud/gw-feature-preview/autopilot",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2059,13 +2059,13 @@
       "title": "Cloud Rating",
       "url": "cloud/gw-feature-preview/cloudrating",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2075,13 +2075,13 @@
       "title": "Submission Intake",
       "url": "cloud/gw-feature-preview/subintake",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2091,13 +2091,13 @@
       "title": "Data Studio",
       "url": "cloud/gw-feature-preview/datastudio",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2107,13 +2107,13 @@
       "title": "Cloud Rules",
       "url": "cloud/gw-feature-preview/cloudrules",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2123,13 +2123,13 @@
       "title": "Cloud Rules Release Notes",
       "url": "cloud/gw-feature-preview/cloudrulesrn",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2139,13 +2139,13 @@
       "title": "Workset Manager",
       "url": "cloud/gw-feature-preview/worksetmgr",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2155,13 +2155,13 @@
       "title": "String Manager Draft",
       "url": "cloud/gw-feature-preview/stringmanager/latest",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2171,13 +2171,13 @@
       "title": "Experience Manager",
       "url": "cloud/gw-feature-preview/experiencemgr",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2187,13 +2187,13 @@
       "title": "ClaimCenter Application Events for Developers",
       "url": "cloud/gw-feature-preview/ccappevents",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2203,13 +2203,13 @@
       "title": "PolicyCenter Application Events for Developers",
       "url": "cloud/gw-feature-preview/pcappevents",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2219,13 +2219,13 @@
       "title": "Integration Gateway for Developers",
       "url": "cloud/gw-feature-preview/integgateway",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2235,13 +2235,13 @@
       "title": "Integration Gateway Installation for Internal Teams",
       "url": "cloud/gw-feature-preview/iginstall",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Development"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2251,13 +2251,13 @@
       "title": "Integration Gateway Release Notes",
       "url": "cloud/gw-feature-preview/igrelnotes",
       "metadata": {
-        "product": ["Guidewire Feature Preview"],
+        "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
