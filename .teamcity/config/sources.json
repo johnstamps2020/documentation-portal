@@ -3394,11 +3394,7 @@
       "id": "worksetmgrdraftsrc",
       "title": "Workset Manager Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workset-manager.git",
-      "xdocsPathIds": [
-        "/Content/doc/cloud-services/WorksetManager.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
-      ]
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workset-manager.git"
     },
     {
       "id": "datastudiodraftsrc",
