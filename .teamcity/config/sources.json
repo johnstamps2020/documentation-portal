@@ -1361,7 +1361,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/DigitalCodeGenerationGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/DigitalCodeGenerationGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval"
       ]
     },
@@ -1372,7 +1372,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/digital-codegen-release-notes.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/digital-codegen-release-notes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval"
       ]
     },
@@ -1383,7 +1383,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/CustomerEngage_AccountManagement_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/CustomerEngage_AccountManagement_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval"
       ]
@@ -1395,7 +1395,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/InstallGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/InstallGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
@@ -1419,7 +1419,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/DevelopersGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/DevelopersGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
@@ -1443,7 +1443,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/DigitalServicesRefGuides.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/DigitalServicesRefGuides.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
@@ -1467,7 +1467,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/cloud_digital-release-notes.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/cloud_digital-release-notes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
@@ -1484,7 +1484,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/CustomerEngage_Claims_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/CustomerEngage_Claims_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval"
       ]
     },
@@ -1495,7 +1495,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval"
       ]
     },
@@ -1506,7 +1506,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/ProducerEngage_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/ProducerEngage_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval"
       ]
     },
@@ -1517,7 +1517,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/ProducerEngage_Claims_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/ProducerEngage_Claims_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval"
       ]
     },
@@ -1528,7 +1528,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/ServiceRepEngage_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/ServiceRepEngage_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval"
       ]
     },
@@ -1539,7 +1539,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "2021.04",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/VendorEngage_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/VendorEngage_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval"
       ]
     },
