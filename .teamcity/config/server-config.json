@@ -2818,7 +2818,7 @@
         "platform": ["Cloud"],
         "product": ["Predictive Analytics"],
         "version": ["latest"],
-        "release": ["Banff"]
+        "release": ["Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -2895,7 +2895,7 @@
         "platform": ["Cloud"],
         "product": ["Compare+"],
         "version": ["latest"],
-        "release": ["Banff"]
+        "release": ["Banff", "Cortina"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -4449,7 +4449,7 @@
         "release": ["Cortina"]
       },
       "displayOnLandingPages": false,
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": false,
       "public": false
     },
@@ -13532,7 +13532,8 @@
         "platform": ["Cloud"],
         "product": ["REST API Client"],
         "version": ["latest"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "release": ["Banff", "Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -13547,7 +13548,8 @@
         "platform": ["Cloud"],
         "product": ["REST API Client"],
         "version": ["latest"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Banff", "Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
