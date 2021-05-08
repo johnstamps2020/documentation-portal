@@ -471,8 +471,12 @@ footer.footer-search {
 #footerRight {
   flex: 1;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.footerLink a {
+  margin-bottom: 0px;
 }
 
 footer a {
