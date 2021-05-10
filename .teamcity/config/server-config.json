@@ -13067,7 +13067,6 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.x"],
-        "release": ["Cortina"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -13218,7 +13217,6 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.x"],
-        "release": ["Cortina"],
         "subject": ["Development"]
       },
       "environments": ["int"],
