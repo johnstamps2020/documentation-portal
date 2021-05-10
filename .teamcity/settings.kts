@@ -1304,6 +1304,11 @@ object DeployFrontend : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
+                
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export DEPLOY_ENV=prod
+                fi
+                
                 flail_ssg
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
