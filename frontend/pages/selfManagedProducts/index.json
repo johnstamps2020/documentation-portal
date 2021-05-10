@@ -166,7 +166,13 @@
         },
         {
           "label": "Guidewire for Salesforce Data Integrations",
-          "page": "gwsf/di/3.3.0"
+          "page": "gwsf/di/3.3.0",
+          "env": ["dev", "int", "staging"]
+        },
+        {
+          "label": "Guidewire for Salesforce Data Integrations",
+          "id": "dxdionprem320",
+          "env": ["prod"]
         },
         {
           "label": "Guidewire for Salesforce Data Integrations for Claims",
@@ -175,7 +181,13 @@
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway",
-          "page": "gwsf/ed/3.3.0"
+          "page": "gwsf/ed/3.3.0",
+          "env": ["dev", "int", "staging"]
+        },
+        {
+          "label": "Guidewire for Salesforce Digital Gateway",
+          "id": "dxedonprem320",
+          "env": ["prod"]
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway for Claims",
@@ -184,7 +196,13 @@
         },
         {
           "label": "Guidewire for Salesforce View on Demand",
-          "page": "gwsf/vod/3.3.0"
+          "page": "gwsf/vod/3.3.0",
+          "env": ["dev", "int", "staging"]
+        },
+        {
+          "label": "Guidewire for Salesforce View on Demand",
+          "id": "dxvodonprem320",
+          "env": ["prod"]
         },
         {
           "label": "Guidewire for Salesforce View on Demand for Claims",

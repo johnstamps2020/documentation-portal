@@ -14,8 +14,13 @@
     },
     {
       "label": "_redirect",
+      "link": "/cloudProducts/banff",
+      "env": ["prod"]
+    },
+    {
+      "label": "_redirect",
       "link": "/cloudProducts/cortina",
-      "env": ["dev", "staging", "prod"]
+      "env": ["dev", "staging"]
     },
     {
       "label": "_redirect",
