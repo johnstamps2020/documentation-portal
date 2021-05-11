@@ -903,6 +903,7 @@ main.support h2 {
   background-position: right 6px top 3px, 0 0;
   background-repeat: no-repeat;
   background-color: white;
+  cursor: pointer;
 }
 
 .pageSelectorDropdown {
@@ -911,10 +912,6 @@ main.support h2 {
 
 .pageSelectorDropdown.visible {
   display: block;
-}
-
-.dropdownOption {
-  cursor: pointer;
 }
 
 .dropdownOption:hover {
