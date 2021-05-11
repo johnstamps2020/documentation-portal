@@ -3611,7 +3611,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Cloud-EA.ditaval",
+      "filter": "Other/IS-BC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
@@ -3735,7 +3735,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Cloud-EA.ditaval",
+      "filter": "Other/IS-CC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
@@ -3851,7 +3851,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Cloud-EA.ditaval",
+      "filter": "Other/IS-PC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
