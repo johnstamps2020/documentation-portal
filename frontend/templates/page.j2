@@ -25,19 +25,30 @@
                             window.location = selectedPage;
                         }
                     }
+
+                    function toggleDropdown() {
+                        const dropdown = document.querySelector('.pageSelectorDropdown');
+                        if (dropdown) {
+                            dropdown.classList.toggle('visible');
+                        }
+                    }
                 </script>
 
                 {% if data.get('selector').get('label') %}
                     <span class="selectorLabel">{{ data.get('selector').get('label') }}</span>
                 {% endif %}
-                <select onchange="selectPage(this.value)" id="pageSelector">
-                    <option selected="selected">{{ data.get('selector').get('selectedItem') }}</option>
-                    {% for item in data.get('selector').get('items') %}
-                        <option value="{{ item.get('doc_url') or item.get('page') or item.get('link') }}">
-                            {{ item.get('label') }}
-                        </option>
-                    {% endfor %}
-                </select>
+                <div onchange="selectPage(this.value)" id="pageSelector">
+                    <div selected="selectedOption" onclick="toggleDropdown()"
+                         aria-haspopup="listbox">{{ data.get('selector').get('selectedItem') }}</div>
+                    <div class="pageSelectorDropdown" role="listbox">
+                        {% for item in data.get('selector').get('items') %}
+                            <div onclick="selectPage('{{ item.get('doc_url') or item.get('page') or item.get('link') }}')"
+                                 class="dropdownOption" role="option">
+                                {{ item.get('label') }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endif %}
         </div>
         {% macro create_block(label, class, items, doc_url, page, link, public) -%}
