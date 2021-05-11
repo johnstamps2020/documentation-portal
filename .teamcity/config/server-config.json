@@ -9951,7 +9951,7 @@
         "release": ["Dobson"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10163,7 +10163,7 @@
         "release": ["Dobson"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10387,7 +10387,7 @@
         "release": ["Dobson"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
