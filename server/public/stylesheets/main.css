@@ -902,6 +902,23 @@ main.support h2 {
   background-image: url(/images/expand_more_black_24dp.svg);
   background-position: right 6px top 3px, 0 0;
   background-repeat: no-repeat;
+  background-color: white;
+}
+
+.pageSelectorDropdown {
+  display: none;
+}
+
+.pageSelectorDropdown.visible {
+  display: block;
+}
+
+.dropdownOption {
+  cursor: pointer;
+}
+
+.dropdownOption:hover {
+  background-color: rgb(207, 242, 255);
 }
 
 /* External site navigation */
