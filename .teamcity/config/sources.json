@@ -3848,7 +3848,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/releasenotes.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/releasenotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
@@ -3860,7 +3860,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/developer-ref.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/developer-ref.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
       ]
@@ -3872,7 +3872,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/product.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/product.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
@@ -3884,7 +3884,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/install.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/install.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
@@ -3896,7 +3896,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/upgrade.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/upgrade.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
@@ -3908,7 +3908,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/config.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/config.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
@@ -3920,7 +3920,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/dataspec.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
@@ -3932,7 +3932,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/admin.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/admin.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
@@ -3944,7 +3944,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/bi-applications.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/bi-applications.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
     },
@@ -3955,7 +3955,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "10.5.0",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/active/reports.ditamap",
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/reports.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
       ]
     },
