@@ -83,7 +83,8 @@ def write_docs_to_sitemap(sitemap_path, docs):
         for doc in docs:
             output_sitemap_file.write('<url>\n')
             url = doc['_source']['href']
-            output_sitemap_file.write(f'<loc>{escape_entities(url)}?authSource=guidewire-customer</loc>\n')
+            output_sitemap_file.write(
+                f'<loc>{escape_entities(url)}?authSource=guidewire-customer</loc>\n')
 
             date = doc['_source']['indexed_date']
             if not latest_date:
@@ -96,11 +97,14 @@ def write_docs_to_sitemap(sitemap_path, docs):
 
             output_sitemap_file.write('<coveo:metadata>\n')
             platform = doc['_source'].get('platform')
-            output_sitemap_file.write(f'<platform>{";".join(platform)}</platform>\n')
+            output_sitemap_file.write(
+                f'<platform>{";".join(platform)}</platform>\n')
             product = doc['_source'].get('product')
-            output_sitemap_file.write(f'<product>{";".join(product)}</product>\n')
+            output_sitemap_file.write(
+                f'<product>{";".join(product)}</product>\n')
             version = doc['_source'].get('version')
-            output_sitemap_file.write(f'<version>{";".join(version)}</version>\n')
+            output_sitemap_file.write(
+                f'<version>{";".join(version)}</version>\n')
             output_sitemap_file.write('</coveo:metadata>\n')
 
             output_sitemap_file.write('</url>\n')
@@ -137,6 +141,14 @@ def generate_sitemap():
                 output_index_file.write(f'<lastmod>{date}</lastmod>\n')
             output_index_file.write('</sitemap>\n')
         output_index_file.write('</sitemapindex>\n')
+
+    five_from_doc_site = [
+        doc for doc in indexed_docs if '/portal/' not in doc['_source']['href']][:5]
+    five_from_portal2 = [
+        doc for doc in indexed_docs if '/portal/' in doc['_source']['href']][:5]
+    small_sitemap_path = output_dir / 'small-sitemap.xml'
+    write_docs_to_sitemap(small_sitemap_path,
+                          five_from_doc_site + five_from_portal2)
 
     logger.info(f'Processed all docs from {index_name}')
 
