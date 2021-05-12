@@ -113,12 +113,8 @@
           "id": "ispc202011integ"
         },
         {
-          "label": "Cloud API Business Flows",
-          "id": "ispc202011cloudapibf"
-        },
-        {
-          "label": "Cloud API Configuration and Authentication",
-          "id": "ispc202011cloudapica"
+          "label": "Cloud API",
+          "id": "ispc202011cloudapi"
         },
         {
           "label": "REST API Framework",
