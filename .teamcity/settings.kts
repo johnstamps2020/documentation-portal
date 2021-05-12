@@ -21,7 +21,6 @@ project {
 
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
-    vcsRoot(docsiteRecoveryRoot)
     vcsRoot(LocalizedPDFs)
 
     template(Deploy)
@@ -58,16 +57,6 @@ object vcsroot : GitVcsRoot({
     name = "vcsroot"
     url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
     branchSpec = "+:refs/heads/*"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object docsiteRecoveryRoot : GitVcsRoot({
-    name = "docsiterecovery"
-    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
-    branchSpec = "+:refs/heads/*"
-    branch = "refs/heads/doc-site-recovery"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
     }
@@ -724,7 +713,7 @@ object GenerateSitemap : BuildType({
     }
 
     vcs {
-        root(docsiteRecoveryRoot)
+        root(vcsrootmasteronly)
         cleanCheckout = true
     }
 
@@ -782,48 +771,6 @@ object GenerateSitemap : BuildType({
             schedulingPolicy = daily {
                 hour = 1
                 minute = 1
-            }
-            branchFilter = "+:<default>"
-        }
-        schedule {
-            schedulingPolicy = daily {
-                hour = 4
-                minute = 4
-            }
-            branchFilter = "+:<default>"
-        }
-        schedule {
-            schedulingPolicy = daily {
-                hour = 8
-                minute = 8
-            }
-            branchFilter = "+:<default>"
-        }
-        schedule {
-            schedulingPolicy = daily {
-                hour = 10
-                minute = 10
-            }
-            branchFilter = "+:<default>"
-        }
-        schedule {
-            schedulingPolicy = daily {
-                hour = 14
-                minute = 14
-            }
-            branchFilter = "+:<default>"
-        }
-        schedule {
-            schedulingPolicy = daily {
-                hour = 18
-                minute = 18
-            }
-            branchFilter = "+:<default>"
-        }
-        schedule {
-            schedulingPolicy = daily {
-                hour = 22
-                minute = 22
             }
             branchFilter = "+:<default>"
         }
