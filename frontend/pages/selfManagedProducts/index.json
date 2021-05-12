@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Self-managed",
   "template": "page.j2",
-  "class": "threeCards",
+  "class": "threeCards self-managed",
   "items": [
     {
       "label": "Core",
