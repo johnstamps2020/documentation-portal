@@ -1095,7 +1095,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.3.0",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/Guidewire_For_Salesforce_AppGuide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
@@ -1108,7 +1108,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.3.0",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/Guidewire_For_Salesforce_install-guide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_install-guide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
@@ -1121,7 +1121,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.3.0",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/gw-for-sf-developer-admin-guide.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/gw-for-sf-developer-admin-guide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
@@ -1134,7 +1134,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.3.0",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/Digital-Salesforce-ReleaseNotes.ditamap",
+        "/Content/doc/digital/11.x/releases/202104/Digital-Salesforce-ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
