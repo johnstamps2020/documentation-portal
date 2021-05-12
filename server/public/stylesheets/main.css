@@ -238,7 +238,8 @@ main.blue-theme .docBreadcrumb a:hover {
   color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
-main.blue-theme .usefulLinks {
+main.blue-theme .usefulLinks,
+main.self-managed .usefulLinks {
   background-color: white;
   box-shadow: var(--bs-GW-HEADER-FOOTER-BOX-SHADOW);
   border-radius: 4px;
