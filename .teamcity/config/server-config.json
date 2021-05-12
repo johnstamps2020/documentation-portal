@@ -8044,7 +8044,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["prod"],
+      "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
