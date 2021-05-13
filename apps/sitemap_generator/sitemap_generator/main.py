@@ -71,7 +71,7 @@ def get_indexed_docs():
     return filtered_docs
 
 
-def write_docs_to_sitemap(sitemap_path, docs):
+def write_docs_to_sitemap(sitemap_path, docs, include_auth_param=True):
     latest_date = None
     with open(sitemap_path, 'a') as output_sitemap_file:
         output_sitemap_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
@@ -83,8 +83,11 @@ def write_docs_to_sitemap(sitemap_path, docs):
         for doc in docs:
             output_sitemap_file.write('<url>\n')
             url = doc['_source']['href']
+            url_to_include = escape_entities(url)
+            if include_auth_param:
+                url_to_include += '?authSource=guidewire-customer'
             output_sitemap_file.write(
-                f'<loc>{escape_entities(url)}?authSource=guidewire-customer</loc>\n')
+                f'<loc>{url_to_include}</loc>\n')
 
             date = doc['_source']['indexed_date']
             if not latest_date:
@@ -97,6 +100,10 @@ def write_docs_to_sitemap(sitemap_path, docs):
 
             output_sitemap_file.write('<coveo:metadata>\n')
             platform = doc['_source'].get('platform')
+            public = doc['_source'].get('public')
+            doc_visibility = 'Private'
+            if public and public is True:
+                doc_visibility = 'Public'
             output_sitemap_file.write(
                 f'<platform>{";".join(platform)}</platform>\n')
             product = doc['_source'].get('product')
@@ -105,6 +112,8 @@ def write_docs_to_sitemap(sitemap_path, docs):
             version = doc['_source'].get('version')
             output_sitemap_file.write(
                 f'<version>{";".join(version)}</version>\n')
+            output_sitemap_file.write(
+                f'<ContentVisibility>{doc_visibility}</ContentVisibility>\n')
             output_sitemap_file.write('</coveo:metadata>\n')
 
             output_sitemap_file.write('</url>\n')
@@ -142,13 +151,16 @@ def generate_sitemap():
             output_index_file.write('</sitemap>\n')
         output_index_file.write('</sitemapindex>\n')
 
-    five_from_doc_site = [
-        doc for doc in indexed_docs if '/portal/' not in doc['_source']['href']][:5]
-    five_from_portal2 = [
-        doc for doc in indexed_docs if '/portal/' in doc['_source']['href']][:5]
-    small_sitemap_path = output_dir / 'small-sitemap.xml'
-    write_docs_to_sitemap(small_sitemap_path,
-                          five_from_doc_site + five_from_portal2)
+    nine_from_doc_site = [
+        doc for doc in indexed_docs if '/portal/' not in doc['_source']['href']][:9]
+    one_public_doc = [
+        doc for doc in indexed_docs if '/portal/' not in doc['_source']['href'] and doc['_source']['public']][:9]
+
+    ten_from_doc_site = nine_from_doc_site + one_public_doc
+
+    write_docs_to_sitemap(output_dir / 'small-sitemap0.xml', ten_from_doc_site)
+    write_docs_to_sitemap(output_dir / 'small-sitemap1.xml',
+                          ten_from_doc_site, include_auth_param=False)
 
     logger.info(f'Processed all docs from {index_name}')
 
