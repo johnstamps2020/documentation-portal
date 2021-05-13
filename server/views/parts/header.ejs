@@ -24,6 +24,7 @@
         />
       </a>
     </div>
+    <% if (!hideSearchBox) { %>
     <div id="headerCenter">
       <form action="/search">
         <div class="searchWrapper">
@@ -41,6 +42,7 @@
         </div>
       </form>
     </div>
+    <% } %>
     <div id="headerRight">
       <% include links-menu %> <% if (!hideLoginButton) { %>
       <div id="loginContainer">
