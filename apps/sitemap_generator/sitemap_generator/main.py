@@ -154,7 +154,7 @@ def generate_sitemap():
     nine_from_doc_site = [
         doc for doc in indexed_docs if '/portal/' not in doc['_source']['href']][:9]
     one_public_doc = [
-        doc for doc in indexed_docs if '/portal/' not in doc['_source']['href'] and doc['_source']['public']][:9]
+        doc for doc in indexed_docs if '/portal/' not in doc['_source']['href'] and doc['_source']['public'] is True][:9]
 
     ten_from_doc_site = nine_from_doc_site + one_public_doc
 
