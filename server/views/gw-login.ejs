@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include parts/head %>
-  <body>
-    <%- include('parts/header', { hideSearchBox: true, hideLoginButton: true }) %>
-    <main class="loginPage">
-      <div class="loginPageTitle">
+<% include parts/head %>
+<body>
+<%- include('parts/header', { hideSearchBox: true, hideLoginButton: true }) %>
+<div class="loginPageHeroGraphic">
+    <div class="loginPageHeroGraphicTitle">
         <h1>Welcome to Guidewire documentation</h1>
-      </div>
-      <div class="loginPublicLinks loginPageTitle">
+    </div>
+</div>
+<main class="loginPage">
+    <div class="loginPublicLinks">
         <p>
-          Browse through these Developer Resources
+            Browse through these Developer Resources
         </p>
         <a href="/cloud/cc/202011/apiref/">ClaimCenter Cloud API Reference</a>
-      </div>
-      <div class="loginPageTitle">
+    </div>
+    <div class="loginPageTitle">
         <p>
-          Log in to view the complete documentation
+            Log in to view the complete documentation
         </p>
-      </div>
-      <div class="loginCards">
+    </div>
+    <div class="loginCards">
         <div class="loginCard cardShadow">
-          <h2>Guidewire Cloud Account</h2>
-          <div class="loginCardDescription">
-            Use your Guidewire Cloud Platform account to access documentation.
-          </div>
-          <a
-            class="button cardButton"
-            href="/login"
-            aria-expanded="false"
-            aria-controls="partnerLogin"
+            <h2>Guidewire Cloud Account</h2>
+            <div class="loginCardDescription">
+                Use your Guidewire Cloud Platform account to access documentation.
+            </div>
+            <a
+                    class="button cardButton"
+                    href="/login"
+                    aria-expanded="false"
+                    aria-controls="partnerLogin"
             >Continue</a
-          >
+            >
         </div>
         <div class="loginCard cardShadow">
-          <h2>
-            Customer Community Account
-          </h2>
-          <div class="loginCardDescription">
-            Use your community.guidewire.com account to access documentation.
-          </div>
-          <a
-            class="button cardButton"
-            href="/customers-login"
-            aria-expanded="false"
-            aria-controls="partnerLogin"
+            <h2>
+                Customer Community Account
+            </h2>
+            <div class="loginCardDescription">
+                Use your community.guidewire.com account to access documentation.
+            </div>
+            <a
+                    class="button cardButton"
+                    href="/customers-login"
+                    aria-expanded="false"
+                    aria-controls="partnerLogin"
             >Continue</a
-          >
+            >
         </div>
         <div class="loginCard cardShadow">
-          <h2>
-            Partner Community Account
-          </h2>
-          <div class="loginCardDescription">
-            Use your partner.guidewire.com account to access documentation.
-          </div>
-          <a
-            class="button cardButton"
-            href="/partners-login"
-            aria-expanded="false"
-            aria-controls="partnerLogin"
+            <h2>
+                Partner Community Account
+            </h2>
+            <div class="loginCardDescription">
+                Use your partner.guidewire.com account to access documentation.
+            </div>
+            <a
+                    class="button cardButton"
+                    href="/partners-login"
+                    aria-expanded="false"
+                    aria-controls="partnerLogin"
             >Continue</a
-          >
+            >
         </div>
-      </div>
-      <div class="employeeLogin">
+    </div>
+    <div class="employeeLogin">
         Guidewire employee? <a href="/login">Click here to log in</a>.
-      </div>
-    </main>
-    <% include parts/footer %>
-  </body>
+    </div>
+</main>
+<% include parts/footer %>
+</body>
 </html>
