@@ -3188,7 +3188,7 @@
         "subject": ["Best practices"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false
