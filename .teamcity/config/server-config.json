@@ -4434,7 +4434,7 @@
         "release": ["Cortina"]
       },
       "displayOnLandingPages": false,
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "indexForSearch": false,
       "public": false
     },
@@ -8656,7 +8656,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false
@@ -10684,7 +10684,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10703,7 +10703,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10719,7 +10719,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10738,7 +10738,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10757,7 +10757,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10776,7 +10776,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10795,7 +10795,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10814,7 +10814,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10830,7 +10830,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10849,7 +10849,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10865,7 +10865,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10881,7 +10881,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10900,7 +10900,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10916,7 +10916,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10935,7 +10935,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10954,7 +10954,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10970,7 +10970,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10986,7 +10986,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11562,7 +11562,7 @@
         "subject": ["Installation"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11664,7 +11664,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
