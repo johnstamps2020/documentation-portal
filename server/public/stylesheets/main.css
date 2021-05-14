@@ -596,16 +596,24 @@ div.pageHero {
   background: var(--clr-GW-BLUE-HOVER);
 }
 
-.loginPageHeroGraphic {
-  background: url(/images/hero-login.svg) no-repeat;
-  background-size: cover;
+.loginPageHeroGraphicContainer {
+  background: linear-gradient(to right, #324c76, #719fe8);
   height: var(--login-page-hero-graphic-height);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.loginPageHeroGraphic {
+  background: url('/images/login-hero.svg') no-repeat;
+  height: var(--login-page-hero-graphic-height);
+  flex: 1;
 }
 
 .loginPageHeroGraphicTitle > h1 {
   color: white;
   font-size: 2.5rem;
   padding: 150px 150px 0;
+  flex: 1;
 }
 
 .loginPage {
