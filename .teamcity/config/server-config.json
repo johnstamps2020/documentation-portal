@@ -603,7 +603,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -619,7 +619,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -635,7 +635,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -651,7 +651,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -667,7 +667,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -683,7 +683,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -699,7 +699,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -715,7 +715,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -731,7 +731,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -747,7 +747,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -763,7 +763,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -779,7 +779,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -795,7 +795,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -811,7 +811,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -827,7 +827,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -843,7 +843,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -859,7 +859,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -875,7 +875,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -891,7 +891,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -907,7 +907,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -923,7 +923,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -939,7 +939,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -955,7 +955,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -971,7 +971,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -987,7 +987,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1003,7 +1003,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1019,7 +1019,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1035,7 +1035,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1051,7 +1051,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1067,7 +1067,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1083,7 +1083,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1099,7 +1099,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1115,7 +1115,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1131,7 +1131,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1147,7 +1147,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -1163,7 +1163,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4434,7 +4434,7 @@
         "release": ["Cortina"]
       },
       "displayOnLandingPages": false,
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "indexForSearch": false,
       "public": false
     },
@@ -8236,7 +8236,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8252,7 +8252,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8268,7 +8268,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8284,7 +8284,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8300,7 +8300,7 @@
         "release": ["Cortina"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8316,7 +8316,7 @@
         "release": ["Cortina"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8332,7 +8332,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8348,7 +8348,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8364,7 +8364,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8380,7 +8380,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8400,7 +8400,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8416,7 +8416,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8432,7 +8432,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8448,7 +8448,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8464,7 +8464,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8480,7 +8480,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8496,7 +8496,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8512,7 +8512,7 @@
         "release": ["Cortina"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8528,7 +8528,7 @@
         "release": ["Cortina"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8544,7 +8544,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8560,7 +8560,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8576,7 +8576,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8592,7 +8592,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8608,7 +8608,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -8624,7 +8624,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8640,7 +8640,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -8656,7 +8656,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false
@@ -8672,7 +8672,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8688,7 +8688,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8704,7 +8704,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8720,7 +8720,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8736,7 +8736,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8752,7 +8752,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8768,7 +8768,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8784,7 +8784,7 @@
         "release": ["Cortina"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8800,7 +8800,7 @@
         "release": ["Cortina"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8816,7 +8816,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8832,7 +8832,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8848,7 +8848,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8864,7 +8864,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8880,7 +8880,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8896,7 +8896,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8912,7 +8912,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8928,7 +8928,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": [],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8944,7 +8944,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8960,7 +8960,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8976,7 +8976,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8992,7 +8992,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -9008,7 +9008,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -9028,7 +9028,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -9048,7 +9048,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -9068,7 +9068,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10684,7 +10684,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10703,7 +10703,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10719,7 +10719,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10738,7 +10738,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10757,7 +10757,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10776,7 +10776,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10795,7 +10795,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10814,7 +10814,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10830,7 +10830,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10849,7 +10849,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10865,7 +10865,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10881,7 +10881,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10900,7 +10900,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10916,7 +10916,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10935,7 +10935,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10954,7 +10954,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10970,7 +10970,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10986,7 +10986,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11562,7 +11562,7 @@
         "subject": ["Installation"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11664,7 +11664,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11701,7 +11701,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11717,7 +11717,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11733,7 +11733,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11749,7 +11749,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11765,7 +11765,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11781,7 +11781,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11797,7 +11797,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11813,7 +11813,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11829,7 +11829,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11845,7 +11845,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11861,7 +11861,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11877,7 +11877,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11893,7 +11893,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11909,7 +11909,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11925,7 +11925,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12677,7 +12677,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12693,7 +12693,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12709,7 +12709,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12725,7 +12725,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12741,7 +12741,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12757,7 +12757,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12773,7 +12773,7 @@
         "release": ["Cortina"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12789,7 +12789,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12805,7 +12805,7 @@
         "release": ["Cortina"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12821,7 +12821,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12837,7 +12837,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12853,7 +12853,7 @@
         "release": ["Cortina"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12869,7 +12869,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12885,7 +12885,7 @@
         "release": ["Cortina"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12901,7 +12901,7 @@
         "release": ["Cortina"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12917,7 +12917,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12933,7 +12933,7 @@
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12949,7 +12949,7 @@
         "release": ["Cortina"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
