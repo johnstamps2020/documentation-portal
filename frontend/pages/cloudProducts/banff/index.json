@@ -14,8 +14,7 @@
       },
       {
         "label": "Cortina",
-        "page": "../cortina",
-        "env": ["dev", "int", "staging"]
+        "page": "../cortina"
       },
       {
         "label": "Aspen",
