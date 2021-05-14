@@ -600,18 +600,32 @@ div.pageHero {
   background: linear-gradient(to right, #324c76, #719fe8);
   height: var(--login-page-hero-graphic-height);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+  .loginPageHeroGraphic {
+    display: none;
+  }
 }
 
 .loginPageHeroGraphic {
   height: var(--login-page-hero-graphic-height);
-  flex: 1;
+  flex: 0;
+}
+
+.loginPageHeroGraphicTitle {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .loginPageHeroGraphicTitle > h1 {
   color: white;
   font-size: 2.5rem;
-  padding: 150px 150px 0;
+  padding-top: 150px;
   flex: 1;
 }
 
@@ -666,11 +680,11 @@ div.pageHero {
 
 .loginCard {
   background-color: white;
-  padding: 32px;
+  padding: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   color: black;
 }
 
@@ -678,7 +692,7 @@ div.pageHero {
   flex: 1;
   font-size: 1.125rem;
   font-weight: 600;
-  padding: 32px 0 0;
+  padding: 0;
 }
 
 .loginCardDescription {
