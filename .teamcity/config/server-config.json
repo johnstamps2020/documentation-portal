@@ -4478,7 +4478,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
       },
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": false,
       "environments": ["dev", "staging", "prod"],
       "public": false
