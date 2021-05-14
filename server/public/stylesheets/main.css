@@ -21,7 +21,7 @@
 
   --bs-GW-HEADER-FOOTER-BOX-SHADOW: 0px 1px 2px 1px rgba(40, 51, 63, 0.24);
   --estimated-header-height: 68px;
-  --login-page-hero-graphic-height: 420px;
+  --login-page-hero-graphic-height: 400px;
   --body-height: calc(100vh - var(--estimated-header-height));
   --footer-height: 74px;
   --content-width: 950px;
@@ -602,6 +602,8 @@ div.pageHero {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -612,7 +614,10 @@ div.pageHero {
 
 .loginPageHeroGraphic {
   height: var(--login-page-hero-graphic-height);
-  flex: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .loginPageHeroGraphicTitle {
@@ -625,7 +630,6 @@ div.pageHero {
 .loginPageHeroGraphicTitle > h1 {
   color: white;
   font-size: 2.5rem;
-  padding-top: 150px;
   flex: 1;
 }
 
