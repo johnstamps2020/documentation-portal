@@ -604,7 +604,6 @@ div.pageHero {
 }
 
 .loginPageHeroGraphic {
-  background: url('/images/login-hero.svg') no-repeat;
   height: var(--login-page-hero-graphic-height);
   flex: 1;
 }
