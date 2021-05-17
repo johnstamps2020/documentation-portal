@@ -7746,22 +7746,6 @@
       "public": true
     },
     {
-      "id": "cc202104apiref",
-      "title": "Cloud API Reference",
-      "url": "cloud/cc/202104/apiref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2021.04"],
-        "release": ["Cortina"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true
-    },
-    {
       "id": "iscc202011gosu",
       "title": "Gosu Reference",
       "url": "cloud/cc/202011/gosu",
