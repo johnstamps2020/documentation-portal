@@ -42,12 +42,14 @@
                     (page <%= currentPage %> of <%= pages %>)
                 <% } %></span>
             <span class="paginationWrapper">
+                <% if (totalNumOfResults > 0) { %>
                 <span>View items:</span>
                 <select id="pagination">
                     <% ['10', '25', '50', '100'].forEach(rpp => { %>
                         <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
                     <% }) %>
                 </select>
+                <% } %>
             </span>
         </div>
         <div class="searchResults" id="searchResults">
