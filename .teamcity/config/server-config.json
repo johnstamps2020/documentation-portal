@@ -7746,22 +7746,6 @@
       "public": true
     },
     {
-      "id": "iscc202011apiref",
-      "title": "Get ready to delete this",
-      "url": "cloud/is/202011/apiref/docs/cc-admin",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false
-    },
-    {
       "id": "iscc202011gosu",
       "title": "Gosu Reference",
       "url": "cloud/cc/202011/gosu",
