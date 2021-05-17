@@ -7746,20 +7746,20 @@
       "public": true
     },
     {
-      "id": "iscc202011apiref",
-      "title": "Get ready to delete this",
-      "url": "cloud/is/202011/apiref/docs/cc-admin",
+      "id": "cc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202104/apiref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter for Guidewire Cloud"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
     },
     {
       "id": "iscc202011gosu",

@@ -3610,6 +3610,13 @@
       "branch": "master"
     },
     {
+      "id": "srcapiref202104",
+      "title": "Cloud API Reference in Redoc",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
+      "branch": "releases/cortina"
+    },
+    {
       "id": "dmrndraftsrc",
       "title": "DataManagement Release Notes Draft",
       "sourceType": "git",
