@@ -37,14 +37,19 @@
         <h1>Search results for "<%= query %>"</h1>
         <div class="resultsSubheading">
             <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
-                %> results (page <%= currentPage %> of <%= pages %>)</span>
+                %> results 
+                <% if (totalNumOfResults > 0) { %>
+                    (page <%= currentPage %> of <%= pages %>)
+                <% } %></span>
             <span class="paginationWrapper">
+                <% if (totalNumOfResults > 0) { %>
                 <span>View items:</span>
                 <select id="pagination">
                     <% ['10', '25', '50', '100'].forEach(rpp => { %>
                         <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
                     <% }) %>
                 </select>
+                <% } %>
             </span>
         </div>
         <div class="searchResults" id="searchResults">
