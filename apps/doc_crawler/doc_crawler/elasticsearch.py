@@ -37,6 +37,10 @@ class ElasticClient(Elasticsearch):
                 },
                 "internal": {
                     "type": "boolean"
+                },
+                "body": {
+                    "type": "text",
+                    "analyzer": "simple"
                 }
             }
         }
