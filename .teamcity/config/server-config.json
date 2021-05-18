@@ -8630,6 +8630,25 @@
       "public": true
     },
     {
+      "id": "redocsandbox",
+      "title": "CC and PC API Reference Sandbox",
+      "url": "cloud/apiref/preview",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
       "id": "iscc202104apiref",
       "title": "Get ready to delete this",
       "url": "cloud/is/202104/apiref/docs/cc-admin",

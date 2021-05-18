@@ -4968,6 +4968,11 @@
       "srcId": "srcapiref202104"
     },
     {
+      "buildType": "yarn",
+      "docId": "cc202104apiref",
+      "srcId": "redocsandboxsrc"
+    },
+    {
       "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
