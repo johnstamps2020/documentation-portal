@@ -3631,6 +3631,13 @@
       "branch": "releases/cortina"
     },
     {
+      "id": "redocsandboxsrc",
+      "title": "API Reference from Redoc - preview",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
+      "branch": "adding-pc-specs"
+    },
+    {
       "id": "dmrndraftsrc",
       "title": "DataManagement Release Notes Draft",
       "sourceType": "git",
