@@ -8665,11 +8665,8 @@
       "url": "cloud/apiref/preview",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
-        ],
-        "version": ["2021.04"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["latest"],
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
