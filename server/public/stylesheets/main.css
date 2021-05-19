@@ -88,9 +88,18 @@ header img {
 }
 
 .searchWrapper {
-  --button-width: 32px;
   --container-width: 360px;
-  height: 32px;
+  --button-width: 32px;
+}
+
+.searchWrapperLarge {
+  --container-width: 760px;
+  --button-width: 48px;
+}
+
+.searchWrapper,
+.searchWrapperLarge {
+  height: var(--button-width);
   display: flex;
   align-items: center;
   gap: 16px;
