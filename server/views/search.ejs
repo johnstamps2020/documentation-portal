@@ -2,7 +2,7 @@
 <html lang="en">
 <% include parts/head %>
 <body>
-<%- include('parts/header', { hideSearchBox: false, hideLoginButton: false, headerClass: 'header-search' }) %>
+<%- include('parts/header', { hideSearchBox: true, hideLoginButton: false, headerClass: 'header-search' }) %>
 <main class="fullWidth searchPage">
     <div class="filterSearchResults">
         <div>
@@ -30,25 +30,51 @@
     <div class="resultWrapper">
         <% if (!userContext) { %>
             <div class="notLoggedInWarning">
-                You are not logged in, search results are limited to public 
+                You are not logged in, search results are limited to public
                 documents only.
             </div>
         <% } %>
+        <div class="searchBoxWrapper">
+            <form action="/search">
+                <div class="searchWrapper">
+                    <input
+                            name="q"
+                            value="<%= query %>"
+                            id="searchField"
+                            class="searchField"
+                            type="search"
+                            placeholder="Search Guidewire documentation"
+                            aria-label="Search Guidewire documentation"
+                    />
+                    <% filters.forEach(searchFilter => { %>
+                        <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
+                        <% if (checkedFilters.length > 0) { %>
+                            <input type="hidden" name="<%= searchFilter.name %>"
+                                   value="<%= checkedFilters.map(f => f.label).join(',') %>">
+                        <% } %>
+                    <% }) %>
+                    <button type="submit" class="searchButton" aria-label="Search">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
         <h1>Search results for "<%= query %>"</h1>
         <div class="resultsSubheading">
             <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
-                %> results 
+                %> results
                 <% if (totalNumOfResults > 0) { %>
                     (page <%= currentPage %> of <%= pages %>)
-                <% } %></span>
+                <% } %>
+            </span>
             <span class="paginationWrapper">
                 <% if (totalNumOfResults > 0) { %>
-                <span>View items:</span>
-                <select id="pagination">
-                    <% ['10', '25', '50', '100'].forEach(rpp => { %>
-                        <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
-                    <% }) %>
-                </select>
+                    <span>View items:</span>
+                    <select id="pagination">
+                        <% ['10', '25', '50', '100'].forEach(rpp => { %>
+                            <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
+                        <% }) %>
+                    </select>
                 <% } %>
             </span>
         </div>
@@ -82,14 +108,14 @@
                             });
                         }
                     }
-                    if (versionsToDisplay.length > 0) { %>
-                        <div class="otherHits">
-                            <span>Also found in:</span>
-                            <% for (const otherVersion of versionsToDisplay) { %>
-                                <a class="otherHit" href="<%= otherVersion.href %>"><%= otherVersion.version %></a>
-                            <% } %>
-                        </div>
-                    <% } %>
+                if (versionsToDisplay.length > 0) { %>
+                    <div class="otherHits">
+                        <span>Also found in:</span>
+                        <% for (const otherVersion of versionsToDisplay) { %>
+                            <a class="otherHit" href="<%= otherVersion.href %>"><%= otherVersion.version %></a>
+                        <% } %>
+                    </div>
+                <% } %>
                 <% } %>
             <% }) %>
         </div>
