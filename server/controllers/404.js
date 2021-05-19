@@ -1,5 +1,21 @@
 const redirectUrls = [
   {
+    from: 'cloud/cda/banff',
+    to: 'cloudProducts/cloudDataAccess/latest',
+  },
+  {
+    from: 'cloud/cda/aspen',
+    to: 'cloudProducts/cloudDataAccess/latest',
+  },
+  {
+    from: 'cloud/restapi/latest/release-notes',
+    to: 'cloud/gw-feature-preview/igrelnotes',
+  },
+  {
+    from: 'cloud/restapi/latest/Integration',
+    to: 'cloud/gw-feature-preview/integgateway',
+  },
+  {
     from: 'cloudProducts/Aspen',
     to: 'cloudProducts/aspen',
   },
