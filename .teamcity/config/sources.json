@@ -3631,6 +3631,13 @@
       "branch": "releases/cortina"
     },
     {
+      "id": "srcpcapiref202011",
+      "title": "PC Cloud API Reference in Redoc",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "releases/cortina"
+    },
+    {
       "id": "redocsandboxsrc",
       "title": "API Reference from Redoc - preview",
       "sourceType": "git",
