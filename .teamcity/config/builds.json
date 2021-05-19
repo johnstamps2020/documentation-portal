@@ -4982,6 +4982,11 @@
     },
     {
       "buildType": "yarn",
+      "docId": "pc202011apiref",
+      "srcId": "srcpcapiref202011"
+    },
+    {
+      "buildType": "yarn",
       "docId": "cc202104apiref",
       "srcId": "srcapiref202104"
     },

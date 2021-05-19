@@ -8660,6 +8660,22 @@
       "public": true
     },
     {
+      "id": "pc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202104/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
       "id": "redocsandbox",
       "title": "CC and PC API Reference Sandbox",
       "url": "cloud/apiref/preview",
