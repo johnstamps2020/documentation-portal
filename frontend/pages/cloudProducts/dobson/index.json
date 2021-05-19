@@ -57,6 +57,12 @@
       "class": "productFamily cardShadow",
       "page": "guidewireCloudPlatform",
       "env": ["int"]
+    },
+    {
+      "label": "Feature Preview",
+      "class": "productFamily cardShadow",
+      "page": "../featurePreview",
+      "env": ["int"]
     }
   ]
 }
