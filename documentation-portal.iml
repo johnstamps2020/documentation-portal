@@ -16,9 +16,10 @@
       <excludeFolder url="file://$MODULE_DIR$/remark42-deployment/var" />
       <excludeFolder url="file://$MODULE_DIR$/.vscode" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/doc-crawler/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Python 3.9 (doc-crawler) interpreter library" level="application" />
+    <orderEntry type="library" name="Python (doc-crawler) interpreter library" level="application" />
   </component>
 </module>
