@@ -260,6 +260,92 @@ async function addCustomElements() {
   }
 }
 
+function hideFeedbackForm() {
+  const forms = document.querySelectorAll('.feedbackFormWrapper');
+  for (const form of forms) {
+    if (!form.classList.contains('hidden')) {
+      form.classList.add('hidden');
+    }
+  }
+}
+
+function renderForm(feedbackType, email) {
+  return `
+<form>
+    ${
+      feedbackType === 'negative'
+        ? `<div class="feedbackFormCheckBoxes">
+          <label>
+            <input type="checkbox" name="missing" />
+            <span>Some information is incorrect or missing</span>
+          </label>
+          <label>
+            <input type="checkbox" name="graphics" />
+            <span>More graphics or examples would be helpful</span>
+          </label>
+          <label>
+            <input type="checkbox" name="typos" />
+            <span>There are typos</span>
+          </label>
+          <label>
+            <input type="checkbox" name="broken" />
+            <span>Some links are broken</span>
+          </label>
+          <label>
+            <input type="checkbox" name="other" />
+            <span>Other</span>
+          </label>
+        </div>`
+        : ''
+    }
+    <div>Your comment:</div>
+    <textarea name="userComment"></textarea>
+    <div>Your email:</div> 
+    <input name="user" type="text" value="${email}" />
+    <div>Leave this field empty if you want to stay anonymous</div>
+    <button type="submit" onclick="sendFeedback(e)">Submit</button>
+    <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
+</form>
+  `;
+}
+
+function toggleFeedbackForm(id) {
+  const form = document.querySelector(`#${id}`);
+  form.classList.toggle('hidden');
+}
+
+async function addFeedbackButtons() {
+  const response = await fetch('/userInformation');
+  const { isLoggedIn, name, preferred_username } = await response.json();
+
+  const feedbackButtons = document.createElement('div');
+  feedbackButtons.setAttribute('class', 'feedbackButtons');
+  feedbackButtons.innerHTML = `
+    <span>Was this page helpful?</span>
+    <div role="button" class="feedbackButtonPositive" onclick="toggleFeedbackForm('positiveFeedback')"></div>
+    <div role="button" class="feedbackButtonNegative" onclick="toggleFeedbackForm('negativeFeedback')"></div>
+  `;
+
+  const positiveFormWrapper = document.createElement('div');
+  positiveFormWrapper.setAttribute('class', 'feedbackFormWrapper hidden');
+  positiveFormWrapper.setAttribute('id', 'positiveFeedback');
+  positiveFormWrapper.innerHTML = renderForm('positive', preferred_username);
+
+  const negativeFormWrapper = document.createElement('div');
+  negativeFormWrapper.setAttribute('class', 'feedbackFormWrapper hidden');
+  negativeFormWrapper.setAttribute('id', 'negativeFeedback');
+  negativeFormWrapper.innerHTML = renderForm('negative', preferred_username);
+
+  const body = document.querySelector('body');
+  body.appendChild(positiveFormWrapper);
+  body.appendChild(negativeFormWrapper);
+
+  const topicBody = document.getElementById('wh_topic_body');
+  if (topicBody) {
+    topicBody.appendChild(feedbackButtons);
+  }
+}
+
 docReady(async function() {
   await createContainerForCustomHeaderElements();
   addCustomElements();
@@ -269,4 +355,5 @@ docReady(async function() {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
   }
+  addFeedbackButtons();
 });

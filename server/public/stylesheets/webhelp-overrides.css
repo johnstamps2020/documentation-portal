@@ -210,3 +210,90 @@ samp,
 .apiname {
   font-size: 95% !important;
 }
+
+.feedbackFormWrapper.hidden {
+  display: none;
+}
+
+.feedbackFormWrapper {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedbackFormWrapper form {
+  --form-width: 500px;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  padding: 32px;
+  width: var(--form-width);
+  max-width: 100%;
+  background-color: white;
+  height: fit-content;
+}
+
+.feedbackFormCloseButton {
+  --feedback-form-close-button-size: 2rem;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 1rem);
+  content: ' ';
+  width: var(--feedback-form-close-button-size);
+  height: var(--feedback-form-close-button-size);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23FFFFFF'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none' opacity='.87'/%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: 50% 50%;
+  cursor: pointer;
+}
+
+.feedbackFormCloseButton:hover {
+  background-color: gray;
+  border-radius: 50%;
+}
+
+.feedbackFormWrapper form button {
+  border: none;
+  background-color: #0e181e;
+  color: white;
+  padding: 16px 0;
+  border-radius: 6px;
+}
+
+.feedbackFormCheckBoxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedbackButtons {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.feedbackButtons div[role='button'] {
+  --feedback-button-size: 1.5rem;
+  content: ' ';
+  width: var(--feedback-button-size);
+  height: var(--feedback-button-size);
+  background-position: 50% 50%;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.feedbackButtonPositive {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0zm0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M13.12 2.06L7.58 7.6c-.37.37-.58.88-.58 1.41V19c0 1.1.9 2 2 2h9c.8 0 1.52-.48 1.84-1.21l3.26-7.61C23.94 10.2 22.49 8 20.34 8h-5.65l.95-4.58c.1-.5-.05-1.01-.41-1.37-.59-.58-1.53-.58-2.11.01zM3 21c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2s-2 .9-2 2v8c0 1.1.9 2 2 2z'/%3E%3C/svg%3E");
+}
+
+.feedbackButtonNegative {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0zm0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M10.88 21.94l5.53-5.54c.37-.37.58-.88.58-1.41V5c0-1.1-.9-2-2-2H6c-.8 0-1.52.48-1.83 1.21L.91 11.82C.06 13.8 1.51 16 3.66 16h5.65l-.95 4.58c-.1.5.05 1.01.41 1.37.59.58 1.53.58 2.11-.01zM21 3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2s2-.9 2-2V5c0-1.1-.9-2-2-2z'/%3E%3C/svg%3E");
+}
