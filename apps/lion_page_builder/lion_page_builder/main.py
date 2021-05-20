@@ -99,7 +99,7 @@ def get_paths(path: Path) -> []:
 def get_sibling_paths(path: Path) -> []:
     paths = []
     for f in path.parent.iterdir():
-        if f.is_dir() and f != path:
+        if f.is_dir() and f != path and not f.name.startswith('.'):
             paths.append(f)
     return paths
 
@@ -134,21 +134,26 @@ def write_locale_index(locale_path, loc_docs_output_path):
         "title": get_locale_name_from_code(locale_path.name),
         "template": "page.j2",
         "class": f"threeCards product {locale_path.name} l10n",
-        "selector": {
-            "label": get_locale_selector_label_from_code(locale_path.name),
-            "selectedItem": get_locale_name_from_code(locale_path.name),
-            "items": []
-        },
         "items": []
     }
-
-    for path in get_sibling_paths(locale_path):
-        index_json["selector"]["items"].append(
-            {
-                "label": get_locale_name_from_code(path.name),
-                "page": "../" + path.name
+    sibling_paths = get_sibling_paths(locale_path)
+    if sibling_paths:
+        index_json.update(
+            {"selector":
+                {
+                    "label": get_locale_selector_label_from_code(locale_path.name),
+                    "selectedItem": get_locale_name_from_code(locale_path.name),
+                    "items": []
+                }
             }
         )
+        for path in sibling_paths:
+            index_json["selector"]["items"].append(
+                {
+                    "label": get_locale_name_from_code(path.name),
+                    "page": "../" + path.name
+                }
+            )
 
     product_paths = get_paths(locale_path)
     for product_path in product_paths:
@@ -171,21 +176,27 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
         "title": get_product_name_from_code(product_path.name),
         "template": "page.j2",
         "class": f"threeCards version {product_path.parent.name} l10n",
-        "selector": {
-            "label": get_product_selector_label_from_code(product_path.parent.name),
-            "selectedItem": get_product_name_from_code(product_path.name),
-            "items": []
-        },
         "items": []
     }
 
-    for path in get_sibling_paths(product_path):
-        index_json["selector"]["items"].append(
+    sibling_paths = get_sibling_paths(product_path)
+    if sibling_paths:
+        index_json.update(
             {
-                "label": get_product_name_from_code(path.name),
-                "page": "../" + path.name
+                "selector": {
+                    "label": get_product_selector_label_from_code(product_path.parent.name),
+                    "selectedItem": get_product_name_from_code(product_path.name),
+                    "items": []
+                }
             }
         )
+        for path in get_sibling_paths(product_path):
+            index_json["selector"]["items"].append(
+                {
+                    "label": get_product_name_from_code(path.name),
+                    "page": "../" + path.name
+                }
+            )
 
     version_paths = get_paths(product_path)
     for version_path in reversed(version_paths):
@@ -208,7 +219,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
             version_json["items"].append(
                 {
                     "label": short_title,
-                    "link": '/' + str(pdf_link).replace('\\', '/')
+                    "link": '/' + loc_docs_output_path.name + '/' + str(pdf_link).replace('\\', '/')
                 }
             )
 
