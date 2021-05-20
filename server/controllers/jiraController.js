@@ -64,7 +64,7 @@ async function sendJiraRequest(requestBody) {
       },
       components: [
         {
-          id: '11281',
+          id: '12320',
         },
       ],
     },
