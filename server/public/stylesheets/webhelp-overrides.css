@@ -263,10 +263,17 @@ samp,
 
 .feedbackFormWrapper form button {
   border: none;
-  background-color: #0e181e;
+  background-color: black;
+  border: 1px solid white;
   color: white;
   padding: 16px 0;
   border-radius: 6px;
+}
+
+.feedbackFormWrapper form button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
 .feedbackFormCheckBoxes {
