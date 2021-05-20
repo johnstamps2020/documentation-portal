@@ -275,6 +275,19 @@ async function sendFeedback(formId) {
   submitButton.classList.add('disabled');
   submitButton.removeAttribute('onclick');
 
+  let selectedCheckboxes = [];
+
+  const checkboxes = document
+    .getElementById('negativeFeedbackForm')
+    .querySelector('div[class="feedbackFormCheckBoxes"]')
+    .querySelectorAll('label');
+
+  for (const checkbox of checkboxes) {
+    if (checkbox.querySelector('input:checked')) {
+      selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
+    }
+  }
+
   const feedbackRequest = {
     summary: 'User feedback: ' + document.querySelector('title').innerHTML,
     version: document.querySelector("meta[name = 'gw-version']")?.content,
@@ -282,7 +295,10 @@ async function sendFeedback(formId) {
     platform: document.querySelector("meta[name = 'gw-platform']")?.content,
     user: form.querySelector('input[name="user"]')?.value,
     originatingUrl: window.location.href,
-    userComment: form.querySelector('textarea[name="userComment"]')?.value,
+    userComment:
+      selectedCheckboxes.join('\n') +
+      '\n' +
+      form.querySelector('textarea[name="userComment"]')?.value,
     topicId: document.querySelector('body').id,
   };
 
