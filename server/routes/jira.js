@@ -90,7 +90,7 @@ router.post('/', async (req, res) => {
   fetch('https://guidewirejira.atlassian.net/rest/api/3/issue', {
     method: 'POST',
     headers: {
-      Authorization: `Basic ${process.env.JIRA_AUTH_STRING}`,
+      Authorization: `Basic ${process.env.JIRA_AUTH_TOKEN}`,
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
