@@ -44,6 +44,7 @@ input.searchField:-webkit-autofill {
 body {
   font-family: var(--gw-font-family);
   color: var(--clr-GW-HEADER-FOOTER-BKG);
+  background-color: var(--clr-GW-WHITE);
 }
 
 header {
