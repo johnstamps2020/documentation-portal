@@ -288,7 +288,7 @@ async function sendFeedback(formId) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: feedbackRequest,
+    body: JSON.stringify(feedbackRequest),
   });
 
   return result;
