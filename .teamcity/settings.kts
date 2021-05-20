@@ -1263,7 +1263,7 @@ object DeployFrontend : BuildType({
                   export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
                 fi
                 
-                aws s3 sync %env.LOC_DOCS_SRC% s3://tenant-doctools-%env.DEPLOY_ENV%-builds/l10n --delete
+                aws s3 sync %env.LOC_DOCS_SRC% s3://tenant-doctools-%env.DEPLOY_ENV%-builds/l10n --exclude ".git/*" --delete
             """.trimIndent()
         }
         script {
