@@ -303,7 +303,7 @@ function renderForm(feedbackType, email) {
     <div>Your email:</div> 
     <input name="user" type="text" value="${email}" />
     <div>Leave this field empty if you want to stay anonymous</div>
-    <button type="submit" onclick="sendFeedback(e)">Submit</button>
+    <div role="button" onclick="sendFeedback(e)" class="feedbackSubmitButton">Submit</div>
     <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
 </form>
   `;
