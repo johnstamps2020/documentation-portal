@@ -1213,7 +1213,7 @@ object DeployFrontend : BuildType({
         text("env.SEND_BOUNCER_HOME", "no", display = ParameterDisplay.HIDDEN)
         text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
         text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
-        text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/localizedDocs", display = ParameterDisplay.HIDDEN)
+        text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
             "dev",
@@ -1245,6 +1245,26 @@ object DeployFrontend : BuildType({
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Copy localized PDFs to the S3 bucket"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
+                  export DEPLOY_ENV=prod
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                fi
+                
+                aws s3 sync %env.LOC_DOCS_SRC% s3://tenant-doctools-%env.DEPLOY_ENV%-builds/l10n --delete
+            """.trimIndent()
         }
         script {
             name = "Build pages"
