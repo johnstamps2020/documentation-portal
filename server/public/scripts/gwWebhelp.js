@@ -271,7 +271,10 @@ function hideFeedbackForm() {
 
 async function sendFeedback(formId) {
   const form = document.getElementById(formId);
-  console.log('submitting', form);
+  const submitButton = form.querySelector('.feedbackSubmitButton');
+  submitButton.classList.add('disabled');
+  submitButton.removeAttribute('onclick');
+
   const feedbackRequest = {
     summary: 'User feedback: ' + document.querySelector('title').innerHTML,
     version: document.querySelector("meta[name = 'gw-version']")?.content,
@@ -290,6 +293,15 @@ async function sendFeedback(formId) {
     },
     body: JSON.stringify(feedbackRequest),
   });
+
+  const thanks = `
+    <div class="thanks">
+        <div>Thank you for your feedback!</div>
+        <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
+    </div>
+  `;
+
+  form.innerHTML = thanks;
 
   return result;
 }
