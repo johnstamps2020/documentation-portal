@@ -274,6 +274,10 @@ samp,
   flex-direction: column;
 }
 
+.feedbackFormCheckBoxes label {
+  cursor: pointer;
+}
+
 .feedbackButtons {
   display: flex;
   align-content: center;
