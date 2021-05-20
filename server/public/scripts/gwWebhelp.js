@@ -373,11 +373,13 @@ async function addFeedbackButtons() {
   const { isLoggedIn, name, preferred_username } = await response.json();
 
   const feedbackButtons = document.createElement('div');
-  feedbackButtons.setAttribute('class', 'feedbackButtons');
+  feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `
     <span>Was this page helpful?</span>
+    <div class="feedbackThumbs">
     <div role="button" class="feedbackButtonPositive" onclick="toggleFeedbackForm('positiveFeedback')"></div>
     <div role="button" class="feedbackButtonNegative" onclick="toggleFeedbackForm('negativeFeedback')"></div>
+    </div>
   `;
 
   const positiveFormWrapper = document.createElement('div');
