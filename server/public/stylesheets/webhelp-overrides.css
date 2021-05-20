@@ -283,6 +283,7 @@ samp,
   align-content: center;
   justify-content: center;
   gap: 6px;
+  padding-top: 4rem;
 }
 
 .feedbackButtons div[role='button'] {
