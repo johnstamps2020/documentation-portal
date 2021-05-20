@@ -274,9 +274,9 @@ async function sendFeedback(formId) {
   console.log('submitting', form);
   const feedbackRequest = {
     summary: 'User feedback: ' + document.querySelector('title').innerHTML,
-    version: document.querySelector("meta[name = 'gw-product']")?.content,
-    product: document.querySelector("meta[name = 'gw-platform']")?.content,
-    platform: document.querySelector("meta[name = 'gw-version']")?.content,
+    version: document.querySelector("meta[name = 'gw-version']")?.content,
+    product: document.querySelector("meta[name = 'gw-product']")?.content,
+    platform: document.querySelector("meta[name = 'gw-platform']")?.content,
     user: form.querySelector('input[name="user"]')?.value,
     originatingUrl: window.location.href,
     userComment: form.querySelector('textarea[name="userComment"]')?.value,
