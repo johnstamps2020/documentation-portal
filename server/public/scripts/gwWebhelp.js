@@ -269,9 +269,15 @@ function hideFeedbackForm() {
   }
 }
 
+function sendFeedback(formId) {
+  const form = document.getElementById(formId);
+  console.log('submitting', form);
+}
+
 function renderForm(feedbackType, email) {
+  const formId = `${feedbackType}FeedbackForm`;
   return `
-<form>
+<form id="${formId}">
     ${
       feedbackType === 'negative'
         ? `<div class="feedbackFormCheckBoxes">
@@ -303,7 +309,7 @@ function renderForm(feedbackType, email) {
     <div>Your email:</div> 
     <input name="user" type="text" value="${email}" />
     <div>Leave this field empty if you want to stay anonymous</div>
-    <div role="button" onclick="sendFeedback(e)" class="feedbackSubmitButton">Submit</div>
+    <div role="button" onclick="sendFeedback('${formId}')" class="feedbackSubmitButton">Submit</div>
     <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
 </form>
   `;
