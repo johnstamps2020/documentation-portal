@@ -231,15 +231,21 @@ samp,
 
 .feedbackFormWrapper form {
   --form-width: 500px;
+  --form-padding: 32px;
   position: relative;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  padding: 32px;
+  display: block;
+  padding: var(--form-padding);
   width: var(--form-width);
   max-width: 100%;
   background-color: white;
   height: fit-content;
+}
+
+.feedbackFormTitle {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 .feedbackFormWrapper label {
@@ -253,9 +259,17 @@ samp,
   margin-bottom: auto;
 }
 
+.feedbackFormWrapper textarea {
+  margin-bottom: 1rem;
+  height: 5rem;
+  width: 100%;
+}
+
 .feedbackFormWrapper input[type='text'] {
   margin-top: 0px;
+  margin-bottom: 0.25rem;
   padding: 2px;
+  width: 100%;
 }
 
 .feedbackFormCloseButton {
@@ -279,7 +293,7 @@ samp,
 
 .feedbackSubmitButton {
   border: none;
-  background-color: black;
+  background-color: var(--GW-COLOR-BRAND-1);
   border: 1px solid white;
   color: white;
   padding: 16px 0;
@@ -292,8 +306,8 @@ samp,
 
 .feedbackSubmitButton:hover {
   background-color: white;
-  color: black;
-  border: 1px solid black;
+  color: var(--GW-COLOR-BRAND-1);
+  border: 1px solid var(--GW-COLOR-BRAND-1);
 }
 
 .feedbackSubmitButton.disabled {
@@ -305,6 +319,7 @@ samp,
 .feedbackFormCheckBoxes {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .feedbackFormCheckBoxes label {

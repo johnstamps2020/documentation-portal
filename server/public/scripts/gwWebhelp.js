@@ -345,7 +345,8 @@ function renderForm(feedbackType, email) {
 <form id="${formId}">
     ${
       feedbackType === 'negative'
-        ? `<div class="feedbackFormCheckBoxes">
+        ? `<div class="feedbackFormTitle">Please let us know how we can improve this content.</div>
+          <div class="feedbackFormCheckBoxes">
           <label>
             <input type="checkbox" name="missing" />
             <span>Some information is incorrect or missing</span>
@@ -367,7 +368,7 @@ function renderForm(feedbackType, email) {
             <span>Other</span>
           </label>
         </div>`
-        : ''
+        : '<div class="feedbackFormTitle">Good to know! Anything more to tell us?</div>'
     }
     <div>Your comment:</div>
     <textarea name="userComment"></textarea>
