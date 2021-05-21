@@ -242,6 +242,22 @@ samp,
   height: fit-content;
 }
 
+.feedbackFormWrapper label {
+  display: flex;
+  align-content: center;
+  gap: 1rem;
+}
+
+.feedbackFormWrapper input[type='checkbox'] {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.feedbackFormWrapper input[type='text'] {
+  margin-top: 0px;
+  padding: 2px;
+}
+
 .feedbackFormCloseButton {
   --feedback-form-close-button-size: 2rem;
   position: absolute;
@@ -271,6 +287,7 @@ samp,
   cursor: pointer;
   text-align: center;
   font-size: 1.1rem;
+  margin-top: 2rem;
 }
 
 .feedbackSubmitButton:hover {

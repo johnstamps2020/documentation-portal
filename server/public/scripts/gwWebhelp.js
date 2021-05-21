@@ -277,14 +277,16 @@ async function sendFeedback(formId) {
 
   let selectedCheckboxes = [];
 
-  const checkboxes = document
-    .getElementById('negativeFeedbackForm')
-    .querySelector('div[class="feedbackFormCheckBoxes"]')
-    .querySelectorAll('label');
+  if(document.getElementById('negativeFeedbackForm')) {
+    const checkboxes = document
+        .getElementById('negativeFeedbackForm')
+        .querySelector('div[class="feedbackFormCheckBoxes"]')
+        .querySelectorAll('label');
 
-  for (const checkbox of checkboxes) {
-    if (checkbox.querySelector('input:checked')) {
-      selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
+    for (const checkbox of checkboxes) {
+        if (checkbox.querySelector('input:checked')) {
+        selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
+        }
     }
   }
 
@@ -293,8 +295,10 @@ async function sendFeedback(formId) {
     version: document.querySelector("meta[name = 'gw-version']")?.content,
     product: document.querySelector("meta[name = 'gw-product']")?.content,
     platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-    user: form.querySelector('input[name="user"]')?.value,
+    category: document.querySelector("meta[name = 'DC.coverage']")?.content,
     originatingUrl: window.location.href,
+    sourcePath: document.querySelector("meta[name = 'wh-source-relpath']")?.content,
+    user: form.querySelector('input[name="user"]')?.value,
     userComment:
       selectedCheckboxes.join('\n') +
       '\n' +

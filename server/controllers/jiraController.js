@@ -31,8 +31,10 @@ async function sendJiraRequest(requestBody) {
     version,
     product,
     platform,
-    user,
+    category,
     originatingUrl,
+    sourcePath,
+    user, 
     userComment,
     topicId,
   } = requestBody;
@@ -42,8 +44,10 @@ async function sendJiraRequest(requestBody) {
     `Product: ${product}`,
     `Platform: ${platform}`,
     `Version: ${version}`,
+    `Category: ${category}`,
     `Topic ID: ${topicId || 'unknown'}`,
     `Originating URL: ${originatingUrl}`,
+    `Source path: ${sourcePath}`,
     `User comment: ${makeSafe(userComment)}`,
   ]);
 
