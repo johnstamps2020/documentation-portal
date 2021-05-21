@@ -269,41 +269,54 @@ function hideFeedbackForm() {
   }
 }
 
-async function sendFeedback(formId) {
+async function sendFeedback(formId, feedbackType) {
   const form = document.getElementById(formId);
   const submitButton = form.querySelector('.feedbackSubmitButton');
   submitButton.classList.add('disabled');
   submitButton.removeAttribute('onclick');
 
   let selectedCheckboxes = [];
-
-  if(document.getElementById('negativeFeedbackForm')) {
+  if (feedbackType === 'negative') {
     const checkboxes = document
-        .getElementById('negativeFeedbackForm')
-        .querySelector('div[class="feedbackFormCheckBoxes"]')
-        .querySelectorAll('label');
+      .getElementById('negativeFeedbackForm')
+      .querySelector('div[class="feedbackFormCheckBoxes"]')
+      .querySelectorAll('label');
 
     for (const checkbox of checkboxes) {
-        if (checkbox.querySelector('input:checked')) {
+      if (checkbox.querySelector('input:checked')) {
         selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
-        }
+      }
     }
   }
 
+  let reportedIssues = '';
+  if (selectedCheckboxes.length > 0) {
+    reportedIssues += '\n----------\n';
+    for (const box of selectedCheckboxes) {
+      reportedIssues += `[X] ${box}\n`;
+    }
+    reportedIssues += '----------\n';
+  }
+
   const feedbackRequest = {
-    summary: 'User feedback: ' + document.querySelector('title').innerHTML,
-    version: document.querySelector("meta[name = 'gw-version']")?.content,
-    product: document.querySelector("meta[name = 'gw-product']")?.content,
-    platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-    category: document.querySelector("meta[name = 'DC.coverage']")?.content,
-    originatingUrl: window.location.href,
-    sourcePath: document.querySelector("meta[name = 'wh-source-relpath']")?.content,
-    user: form.querySelector('input[name="user"]')?.value,
-    userComment:
-      selectedCheckboxes.join('\n') +
-      '\n' +
-      form.querySelector('textarea[name="userComment"]')?.value,
-    topicId: document.querySelector('body').id,
+    summaryText: 'User feedback: ' + document.querySelector('title').innerHTML,
+    descriptionText: {
+      //The key is also the label
+      'Feedback type': feedbackType,
+      'Reported by': form.querySelector('input[name="user"]')?.value,
+      'Originating URL': window.location.href,
+      'Source path': document.querySelector("meta[name = 'wh-source-relpath']")
+        ?.content,
+      'Topic ID': document.querySelector('body').id?.content,
+      Version: document.querySelector("meta[name = 'gw-version']")?.content,
+      Product: document.querySelector("meta[name = 'gw-product']")?.content,
+      Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
+      Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
+      'User comment':
+        reportedIssues +
+        form.querySelector('textarea[name="userComment"]')?.value,
+    },
+    feedbackType: feedbackType,
   };
 
   const result = await fetch('/jira', {
@@ -361,7 +374,7 @@ function renderForm(feedbackType, email) {
     <div>Your email:</div> 
     <input name="user" type="text" value="${email}" />
     <div>Leave this field empty if you want to stay anonymous</div>
-    <div role="button" onclick="sendFeedback('${formId}')" class="feedbackSubmitButton">Submit</div>
+    <div role="button" onclick="sendFeedback('${formId}', '${feedbackType}')" class="feedbackSubmitButton">Submit</div>
     <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
 </form>
   `;
@@ -374,7 +387,7 @@ function toggleFeedbackForm(id) {
 
 async function addFeedbackButtons() {
   const response = await fetch('/userInformation');
-  const { isLoggedIn, name, preferred_username } = await response.json();
+  const { preferred_username } = await response.json();
 
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');

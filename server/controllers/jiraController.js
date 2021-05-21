@@ -26,38 +26,22 @@ function makeSafe(string) {
 }
 
 async function sendJiraRequest(requestBody) {
-  const {
-    summary,
-    version,
-    product,
-    platform,
-    category,
-    originatingUrl,
-    sourcePath,
-    user, 
-    userComment,
-    topicId,
-  } = requestBody;
+  const { summaryText, descriptionText, feedbackType } = requestBody;
 
-  let description = getParas([
-    `Reported by: ${user || 'unknown'}`,
-    `Product: ${product}`,
-    `Platform: ${platform}`,
-    `Version: ${version}`,
-    `Category: ${category}`,
-    `Topic ID: ${topicId || 'unknown'}`,
-    `Originating URL: ${originatingUrl}`,
-    `Source path: ${sourcePath}`,
-    `User comment: ${makeSafe(userComment)}`,
-  ]);
+  let descriptionItems = [];
+  for (const [label, value] of Object.entries(descriptionText)) {
+    descriptionItems.push(`${label}: ${value}`);
+  }
+
+  const description = getParas(descriptionItems);
 
   const bodyData = {
     fields: {
       project: {
         key: 'DOCS',
       },
-      labels: ['feedback-from-doc-site'],
-      summary: makeSafe(summary),
+      labels: ['feedback-from-doc-site', `${feedbackType}-feedback`],
+      summary: makeSafe(summaryText),
       description: {
         type: 'doc',
         version: 1,
