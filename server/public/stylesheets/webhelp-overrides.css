@@ -6,6 +6,10 @@
   /* leaving this here if we need it later */
 }
 
+.wait {
+  cursor: wait;
+}
+
 @media only screen and (min-width: 581px) {
   div.wh_header_flex_container > div.wh_search_input {
     position: absolute;
@@ -313,7 +317,7 @@ samp,
 .feedbackSubmitButton.disabled {
   background-color: lightgray;
   color: gray;
-  cursor: default;
+  cursor: wait;
 }
 
 .feedbackFormCheckBoxes {

@@ -272,8 +272,10 @@ function hideFeedbackForm() {
 async function sendFeedback(formId, feedbackType) {
   const form = document.getElementById(formId);
   const submitButton = form.querySelector('.feedbackSubmitButton');
+  const body = document.body;
   submitButton.classList.add('disabled');
   submitButton.removeAttribute('onclick');
+  body.classList.add('wait');
 
   let selectedCheckboxes = [];
   if (feedbackType === 'negative') {
@@ -335,6 +337,8 @@ async function sendFeedback(formId, feedbackType) {
   `;
 
   form.innerHTML = thanks;
+
+  body.classList.remove('wait');
 
   return result;
 }
