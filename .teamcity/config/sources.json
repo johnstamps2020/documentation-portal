@@ -3435,6 +3435,13 @@
       ]
     },
     {
+      "id": "standards202104src",
+      "title": "Standards 2021.04",
+      "sourceType": "git",
+      "branch": "2021.04",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
       "id": "standards202103src",
       "title": "Standards 2021.03",
       "sourceType": "git",
