@@ -301,16 +301,20 @@ async function sendFeedback(formId, feedbackType) {
   const feedbackRequest = {
     summaryText: 'User feedback: ' + document.querySelector('title').innerHTML,
     descriptionText: {
+      //The key is also the label
+      'Feedback type': feedbackType,
+      'Reported by': form.querySelector('input[name="user"]')?.value,
+      'Originating URL': window.location.href,
+      'Source path': document.querySelector("meta[name = 'wh-source-relpath']")
+        ?.content,
+      'Topic ID': document.querySelector('body').id?.content,
       Version: document.querySelector("meta[name = 'gw-version']")?.content,
       Product: document.querySelector("meta[name = 'gw-product']")?.content,
       Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-      'Reported by': form.querySelector('input[name="user"]')?.value,
-      'Originating URL': window.location.href,
+      Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
       'User comment':
         reportedIssues +
         form.querySelector('textarea[name="userComment"]')?.value,
-      'Topic ID': document.querySelector('body').id,
-      'Feedback type': feedbackType,
     },
     feedbackType: feedbackType,
   };
@@ -383,7 +387,7 @@ function toggleFeedbackForm(id) {
 
 async function addFeedbackButtons() {
   const response = await fetch('/userInformation');
-  const { isLoggedIn, name, preferred_username } = await response.json();
+  const { preferred_username } = await response.json();
 
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
