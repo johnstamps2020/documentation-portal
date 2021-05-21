@@ -269,23 +269,33 @@ function hideFeedbackForm() {
   }
 }
 
-async function sendFeedback(formId) {
+async function sendFeedback(formId, feedbackType) {
   const form = document.getElementById(formId);
   const submitButton = form.querySelector('.feedbackSubmitButton');
   submitButton.classList.add('disabled');
   submitButton.removeAttribute('onclick');
 
   let selectedCheckboxes = [];
+  if (feedbackType === 'negative') {
+    const checkboxes = document
+      .getElementById('negativeFeedbackForm')
+      .querySelector('div[class="feedbackFormCheckBoxes"]')
+      .querySelectorAll('label');
 
-  const checkboxes = document
-    .getElementById('negativeFeedbackForm')
-    .querySelector('div[class="feedbackFormCheckBoxes"]')
-    .querySelectorAll('label');
-
-  for (const checkbox of checkboxes) {
-    if (checkbox.querySelector('input:checked')) {
-      selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
+    for (const checkbox of checkboxes) {
+      if (checkbox.querySelector('input:checked')) {
+        selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
+      }
     }
+  }
+
+  let reportedIssues = '';
+  if (selectedCheckboxes.length > 0) {
+    reportedIssues += '\n----------\n';
+    for (const box of selectedCheckboxes) {
+      reportedIssues += `[X] ${box}\n`;
+    }
+    reportedIssues += '----------\n';
   }
 
   const feedbackRequest = {
@@ -296,10 +306,10 @@ async function sendFeedback(formId) {
     user: form.querySelector('input[name="user"]')?.value,
     originatingUrl: window.location.href,
     userComment:
-      selectedCheckboxes.join('\n') +
-      '\n' +
+      reportedIssues +
       form.querySelector('textarea[name="userComment"]')?.value,
     topicId: document.querySelector('body').id,
+    feedbackType: feedbackType,
   };
 
   const result = await fetch('/jira', {
@@ -357,7 +367,7 @@ function renderForm(feedbackType, email) {
     <div>Your email:</div> 
     <input name="user" type="text" value="${email}" />
     <div>Leave this field empty if you want to stay anonymous</div>
-    <div role="button" onclick="sendFeedback('${formId}')" class="feedbackSubmitButton">Submit</div>
+    <div role="button" onclick="sendFeedback('${formId}', '${feedbackType}')" class="feedbackSubmitButton">Submit</div>
     <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
 </form>
   `;

@@ -35,6 +35,7 @@ async function sendJiraRequest(requestBody) {
     originatingUrl,
     userComment,
     topicId,
+    feedbackType,
   } = requestBody;
 
   let description = getParas([
@@ -44,6 +45,7 @@ async function sendJiraRequest(requestBody) {
     `Version: ${version}`,
     `Topic ID: ${topicId || 'unknown'}`,
     `Originating URL: ${originatingUrl}`,
+    `Feedback type: ${feedbackType}`,
     `User comment: ${makeSafe(userComment)}`,
   ]);
 
@@ -52,7 +54,7 @@ async function sendJiraRequest(requestBody) {
       project: {
         key: 'DOCS',
       },
-      labels: ['feedback-from-doc-site'],
+      labels: ['feedback-from-doc-site', `${feedbackType}-feedback`],
       summary: makeSafe(summary),
       description: {
         type: 'doc',
