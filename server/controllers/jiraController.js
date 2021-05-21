@@ -26,28 +26,14 @@ function makeSafe(string) {
 }
 
 async function sendJiraRequest(requestBody) {
-  const {
-    summary,
-    version,
-    product,
-    platform,
-    user,
-    originatingUrl,
-    userComment,
-    topicId,
-    feedbackType,
-  } = requestBody;
+  const { summaryText, descriptionText, feedbackType } = requestBody;
 
-  let description = getParas([
-    `Reported by: ${user || 'unknown'}`,
-    `Product: ${product}`,
-    `Platform: ${platform}`,
-    `Version: ${version}`,
-    `Topic ID: ${topicId || 'unknown'}`,
-    `Originating URL: ${originatingUrl}`,
-    `Feedback type: ${feedbackType}`,
-    `User comment: ${makeSafe(userComment)}`,
-  ]);
+  let descriptionItems = [];
+  for (const [label, value] of Object.entries(descriptionText)) {
+    descriptionItems.push(`${label}: ${value}`);
+  }
+
+  const description = getParas(descriptionItems);
 
   const bodyData = {
     fields: {
@@ -55,7 +41,7 @@ async function sendJiraRequest(requestBody) {
         key: 'DOCS',
       },
       labels: ['feedback-from-doc-site', `${feedbackType}-feedback`],
-      summary: makeSafe(summary),
+      summary: makeSafe(summaryText),
       description: {
         type: 'doc',
         version: 1,

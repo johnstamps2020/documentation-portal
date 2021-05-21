@@ -299,16 +299,19 @@ async function sendFeedback(formId, feedbackType) {
   }
 
   const feedbackRequest = {
-    summary: 'User feedback: ' + document.querySelector('title').innerHTML,
-    version: document.querySelector("meta[name = 'gw-version']")?.content,
-    product: document.querySelector("meta[name = 'gw-product']")?.content,
-    platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-    user: form.querySelector('input[name="user"]')?.value,
-    originatingUrl: window.location.href,
-    userComment:
-      reportedIssues +
-      form.querySelector('textarea[name="userComment"]')?.value,
-    topicId: document.querySelector('body').id,
+    summaryText: 'User feedback: ' + document.querySelector('title').innerHTML,
+    descriptionText: {
+      Version: document.querySelector("meta[name = 'gw-version']")?.content,
+      Product: document.querySelector("meta[name = 'gw-product']")?.content,
+      Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
+      'Reported by': form.querySelector('input[name="user"]')?.value,
+      'Originating URL': window.location.href,
+      'User comment':
+        reportedIssues +
+        form.querySelector('textarea[name="userComment"]')?.value,
+      'Topic ID': document.querySelector('body').id,
+      'Feedback type': feedbackType,
+    },
     feedbackType: feedbackType,
   };
 
