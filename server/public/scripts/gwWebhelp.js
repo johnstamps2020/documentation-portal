@@ -300,6 +300,20 @@ async function sendFeedback(formId, feedbackType) {
     reportedIssues += '----------\n';
   }
 
+  const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
+  const emails = [];
+  if (creatorInfos.length > 0) {
+    const pattern  = /[A-z]*@guidewire.com/g;
+
+    for (const creatorInfo of creatorInfos) {   
+      matches = creatorInfo.content.matchAll(pattern);
+      for (const match of matches) {
+        console.log(match[0]);
+        emails.push(match[0]);
+      }
+    }
+  }
+  
   const feedbackRequest = {
     summaryText: 'User feedback: ' + document.querySelector('title').innerHTML,
     descriptionText: {
@@ -314,6 +328,7 @@ async function sendFeedback(formId, feedbackType) {
       Product: document.querySelector("meta[name = 'gw-product']")?.content,
       Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
       Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
+      'Possible contacts': emails,
       'User comment':
         reportedIssues +
         form.querySelector('textarea[name="userComment"]')?.value,
