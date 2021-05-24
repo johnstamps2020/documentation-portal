@@ -34,13 +34,14 @@ async function sendJiraRequest(requestBody) {
   }
 
   const description = getParas(descriptionItems);
+  const feedbackLabel = feedbackType === 'negative' ? 'critique' : 'kudos';
 
   const bodyData = {
     fields: {
       project: {
         key: 'DOCS',
       },
-      labels: ['feedback-from-doc-site', `${feedbackType}-feedback`],
+      labels: ['feedback-from-doc-site', `${feedbackLabel}-feedback`],
       summary: makeSafe(summaryText),
       description: {
         type: 'doc',

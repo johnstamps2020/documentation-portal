@@ -340,7 +340,7 @@ async function sendFeedback(formId, feedbackType) {
     summaryText: 'User feedback: ' + document.querySelector('title').innerHTML,
     descriptionText: {
       //The key is also the label
-      'Feedback type': feedbackType,
+      'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
       'Reported by': form.querySelector('input[name="user"]')?.value,
       'Originating URL': window.location.href,
       'Source path': document.querySelector("meta[name = 'wh-source-relpath']")
