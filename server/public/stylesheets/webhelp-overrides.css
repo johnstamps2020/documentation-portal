@@ -312,6 +312,7 @@ samp,
   background-color: white;
   color: var(--GW-COLOR-BRAND-1);
   border: 1px solid var(--GW-COLOR-BRAND-1);
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 30%);
 }
 
 .feedbackSubmitButton.disabled {
