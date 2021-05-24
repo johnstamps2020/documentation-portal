@@ -448,8 +448,12 @@ async function addFeedbackButtons() {
   feedbackButtons.innerHTML = `
     <span>Was this page helpful?</span>
     <div class="feedbackThumbs">
-    <div role="button" class="feedbackButtonPositive" onclick="toggleFeedbackForm('positiveFeedback')"></div>
-    <div role="button" class="feedbackButtonNegative" onclick="toggleFeedbackForm('negativeFeedback')"></div>
+    <div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('positiveFeedback')"> 
+    <div class="feedbackButton feedbackButtonPositive"></div>
+    </div>
+    <div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('negativeFeedback')">
+    <div class="feedbackButton feedbackButtonNegative"></div>
+    </div>
     </div>
   `;
 
