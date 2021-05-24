@@ -351,7 +351,7 @@ async function sendFeedback(formId, feedbackType) {
       Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
       Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
       'Possible contacts': emails,
-      'User comment': reportedIssues + userCommentText?.value,
+      'User comment': reportedIssues + userCommentText,
     },
     feedbackType: feedbackType,
   };
