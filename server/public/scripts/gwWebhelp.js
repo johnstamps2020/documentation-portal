@@ -1,3 +1,12 @@
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+gtag('config', 'G-QRTVTBY678');
+
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
@@ -420,7 +429,12 @@ function renderForm(feedbackType, email) {
   `;
 }
 
+//TODO: Disable feedback buttons after they are clicked
 function toggleFeedbackForm(id) {
+  const feedbackType = id.includes('negative') ? 'negative' : 'positive';
+  gtag('event', 'user_feedback', {
+    feedback_type: feedbackType,
+  });
   const form = document.querySelector(`#${id}`);
   form.classList.toggle('hidden');
 }
