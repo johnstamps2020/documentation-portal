@@ -11912,6 +11912,22 @@
       "public": false
     },
     {
+      "id": "in20211apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20211/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Integration"],
+        "release": ["Cortina"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20211config",
       "title": "Core Configuration Guide",
       "url": "cloud/in/20211/config",
