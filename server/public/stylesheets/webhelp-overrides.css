@@ -375,3 +375,10 @@ samp,
 .thanks {
   font-size: 1.2rem;
 }
+
+.emptyValueWarning {
+  color: red;
+  display: block;
+  text-align: center;
+  padding: 3px;
+}

@@ -273,13 +273,11 @@ async function sendFeedback(formId, feedbackType) {
   const form = document.getElementById(formId);
   const submitButton = form.querySelector('.feedbackSubmitButton');
   const body = document.body;
-  submitButton.classList.add('disabled');
-  submitButton.removeAttribute('onclick');
-  body.classList.add('wait');
 
+  let checkboxes = [];
   let selectedCheckboxes = [];
   if (feedbackType === 'negative') {
-    const checkboxes = document
+    checkboxes = document
       .getElementById('negativeFeedbackForm')
       .querySelector('div[class="feedbackFormCheckBoxes"]')
       .querySelectorAll('label');
@@ -303,17 +301,41 @@ async function sendFeedback(formId, feedbackType) {
   const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
   const emails = [];
   if (creatorInfos.length > 0) {
-    const pattern  = /[A-z]*@guidewire.com/g;
+    const pattern = /[A-z]*@guidewire.com/g;
 
-    for (const creatorInfo of creatorInfos) {   
-      matches = creatorInfo.content.matchAll(pattern);
+    for (const creatorInfo of creatorInfos) {
+      const matches = creatorInfo.content.matchAll(pattern);
       for (const match of matches) {
-        console.log(match[0]);
         emails.push(match[0]);
       }
     }
   }
-  
+
+  const userCommentText = form.querySelector('textarea[name="userComment"]')
+    ?.value;
+  let emptyValueWarningElement = document.createElement('span');
+  emptyValueWarningElement.setAttribute('class', 'emptyValueWarning');
+  emptyValueWarningElement.textContent =
+    checkboxes.length > 0
+      ? 'Select an issue and/or add a comment'
+      : 'Add a comment';
+  const emptyValueWarning = document.querySelector(
+    'span[class=emptyValueWarning]'
+  );
+  if (userCommentText || selectedCheckboxes.length > 0) {
+    if (emptyValueWarning) {
+      emptyValueWarning.remove();
+    }
+    submitButton.classList.add('disabled');
+    submitButton.removeAttribute('onclick');
+    body.classList.add('wait');
+  } else {
+    if (!emptyValueWarning) {
+      form.prepend(emptyValueWarningElement);
+    }
+    return null;
+  }
+
   const feedbackRequest = {
     summaryText: 'User feedback: ' + document.querySelector('title').innerHTML,
     descriptionText: {
@@ -329,9 +351,7 @@ async function sendFeedback(formId, feedbackType) {
       Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
       Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
       'Possible contacts': emails,
-      'User comment':
-        reportedIssues +
-        form.querySelector('textarea[name="userComment"]')?.value,
+      'User comment': reportedIssues + userCommentText?.value,
     },
     feedbackType: feedbackType,
   };
