@@ -75,6 +75,10 @@
         {
           "label": "Predictive Analytics Integration",
           "id": "in20211xpadraft"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20211apiref"
         }
       ]
     },
