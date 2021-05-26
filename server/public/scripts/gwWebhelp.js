@@ -278,6 +278,11 @@ function hideFeedbackForm() {
   }
 }
 
+function hideThanksForm() {
+  const thanks = document.getElementById('thanks');
+  thanks.classList.add('hidden');
+}
+
 async function sendFeedback(formId, feedbackType) {
   const form = document.getElementById(formId);
   const submitButton = form.querySelector('.feedbackSubmitButton');
@@ -373,16 +378,20 @@ async function sendFeedback(formId, feedbackType) {
     body: JSON.stringify(feedbackRequest),
   });
 
-  const thanks = `
-    <div class="thanks">
-        <div>Thank you for your feedback!</div>
-        <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
-    </div>
-  `;
+  // const thanks = `
+  //   <div class="thanks">
+  //       <div>Thank you for your feedback!</div>
+  //       <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
+  //   </div>
+  // `;
 
-  form.innerHTML = thanks;
+  // form.innerHTML = thanks;
 
   body.classList.remove('wait');
+  submitButton.classList.remove('disabled');
+  submitButton.setAttribute('onclick', 'sendFeedback(\'' + formId + '\', \'' + feedbackType + '\')');
+  const thanks = document.getElementById('thanks');
+  thanks.classList.remove('hidden');
 
   return result;
 }
@@ -426,7 +435,14 @@ function renderForm(feedbackType, email) {
     <div role="button" onclick="sendFeedback('${formId}', '${feedbackType}')" class="feedbackSubmitButton">Submit</div>
     <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
 </form>
-  `;
+<div id="thanks" class="feedbackFormWrapper hidden"> 
+  <form>
+    <div class="thanks">
+          <div>Thank you for your feedback!</div>
+          <div role="button" aria-label="Close" onclick="hideThanksForm()" class="feedbackFormCloseButton"/>
+    </div>
+  </form>
+</div>`;
 }
 
 //TODO: Disable feedback buttons after they are clicked
