@@ -480,9 +480,13 @@ async function toggleFeedbackForm(formId) {
     form.classList.remove('hidden');
   }
 
-  const thumb = document.querySelector('.feedbackButton' + feedbackType.charAt(0).toUpperCase() + feedbackType.slice(1));
-  if (!thumb.classList.contains('selected')) {
-    thumb.classList.add('selected');
+  const thumbs = document.querySelectorAll('.feedbackButton');
+
+  for (const thumb of thumbs) {
+    thumb.classList.remove('selected');
+    if (thumb.classList.contains('feedbackButton' + feedbackType.charAt(0).toUpperCase() + feedbackType.slice(1))) {
+      thumb.classList.add('selected');
+    }
   }
 }
 
