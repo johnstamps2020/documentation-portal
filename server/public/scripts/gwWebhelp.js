@@ -389,7 +389,10 @@ async function sendFeedback(formId, feedbackType) {
 
   body.classList.remove('wait');
   submitButton.classList.remove('disabled');
-  submitButton.setAttribute('onclick', 'sendFeedback(\'' + formId + '\', \'' + feedbackType + '\')');
+  submitButton.setAttribute(
+    'onclick',
+    "sendFeedback('" + formId + "', '" + feedbackType + "')"
+  );
   const thanks = document.getElementById('thanks');
   thanks.classList.remove('hidden');
 
@@ -433,7 +436,7 @@ function renderForm(feedbackType, email) {
     <input name="user" type="text" value="${email}" />
     <div>Leave this field empty if you want to stay anonymous</div>
     <div role="button" onclick="sendFeedback('${formId}', '${feedbackType}')" class="feedbackSubmitButton">Submit</div>
-    <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
+    <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"></div>
 </form>
 <div id="thanks" class="feedbackFormWrapper hidden"> 
   <form>
@@ -448,9 +451,9 @@ function renderForm(feedbackType, email) {
 //TODO: Disable feedback buttons after they are clicked
 function toggleFeedbackForm(id) {
   const feedbackType = id.includes('negative') ? 'negative' : 'positive';
-  gtag('event', 'user_feedback', {
-    feedback_type: feedbackType,
-  });
+  // gtag('event', 'user_feedback', {
+  //   feedback_type: feedbackType,
+  // });
   const form = document.querySelector(`#${id}`);
   form.classList.toggle('hidden');
 }
