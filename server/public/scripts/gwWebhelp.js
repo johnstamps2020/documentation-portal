@@ -269,22 +269,16 @@ async function addCustomElements() {
   }
 }
 
-function clearNotification(formId, notificationId) {
-  const notificationElement = document.querySelector(
-    `#${formId} > div[id=${notificationId}]`
-  );
-  if (notificationElement) {
-    notificationElement.remove();
-  }
-}
-
 function hideElement(elementId) {
   const element = document.getElementById(elementId);
   if (!element.classList.contains('hidden')) {
     element.classList.add('hidden');
   }
-  clearNotification(elementId, 'thanksMessage');
-  clearNotification(elementId, 'emptyValueWarning');
+}
+
+function closeForm(formId) {
+  hideElement(formId);
+  showThanksMessage();
 }
 
 async function sendFeedback(formId) {
@@ -332,67 +326,62 @@ async function sendFeedback(formId) {
 
   const userCommentText = form.querySelector('textarea[name="userComment"]')
     ?.value;
-  let emptyValueWarningElement = document.createElement('div');
-  emptyValueWarningElement.setAttribute('id', 'emptyValueWarning');
-  emptyValueWarningElement.textContent =
-    checkboxes.length > 0
-      ? 'Select an issue and/or add a comment'
-      : 'Add a comment';
-  const emptyValueWarningId = 'emptyValueWarning';
-  const emptyValueWarning = document.querySelector(
-    `#${formId} > div[id=${emptyValueWarningId}]`
-  );
   if (userCommentText || selectedCheckboxes.length > 0) {
-    clearNotification(formId, emptyValueWarningId);
-
     submitButton.classList.add('disabled');
     submitButton.removeAttribute('onclick');
     body.classList.add('wait');
+    const feedbackRequest = {
+      summaryText:
+        'User feedback: ' + document.querySelector('title').innerHTML,
+      descriptionText: {
+        //The key is also the label
+        'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
+        'Reported by': form.querySelector('input[name="user"]')?.value,
+        'Originating URL': window.location.href,
+        'Source path': document.querySelector(
+          "meta[name = 'wh-source-relpath']"
+        )?.content,
+        'Topic ID': document.querySelector('body').id?.content,
+        Version: document.querySelector("meta[name = 'gw-version']")?.content,
+        Product: document.querySelector("meta[name = 'gw-product']")?.content,
+        Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
+        Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
+        'Possible contacts': emails,
+        'User comment': reportedIssues + userCommentText,
+      },
+      feedbackType: feedbackType,
+    };
+
+    const descriptionText = feedbackRequest.descriptionText;
+    let cleanDescriptionText = {};
+    Object.keys(descriptionText).forEach(prop => {
+      if (descriptionText[prop] && descriptionText[prop] !== 'undefined') {
+        cleanDescriptionText[prop] = descriptionText[prop];
+      }
+    });
+
+    feedbackRequest.descriptionText = cleanDescriptionText;
+
+    const result = await fetch('/jira', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(feedbackRequest),
+    });
+
+    body.classList.remove('wait');
+    submitButton.classList.remove('disabled');
+    submitButton.setAttribute(
+      'onclick',
+      "sendFeedback('" + formId + "', '" + feedbackType + "')"
+    );
+    closeForm(formId);
+
+    return result;
   } else {
-    if (!emptyValueWarning) {
-      form.prepend(emptyValueWarningElement);
-    }
-    return null;
+    closeForm(formId);
   }
-
-  const feedbackRequest = {
-    summaryText: 'User feedback: ' + document.querySelector('title').innerHTML,
-    descriptionText: {
-      //The key is also the label
-      'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
-      'Reported by': form.querySelector('input[name="user"]')?.value,
-      'Originating URL': window.location.href,
-      'Source path': document.querySelector("meta[name = 'wh-source-relpath']")
-        ?.content,
-      'Topic ID': document.querySelector('body').id?.content,
-      Version: document.querySelector("meta[name = 'gw-version']")?.content,
-      Product: document.querySelector("meta[name = 'gw-product']")?.content,
-      Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-      Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
-      'Possible contacts': emails,
-      'User comment': reportedIssues + userCommentText,
-    },
-    feedbackType: feedbackType,
-  };
-
-  const result = await fetch('/jira', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(feedbackRequest),
-  });
-
-  body.classList.remove('wait');
-  submitButton.classList.remove('disabled');
-  submitButton.setAttribute(
-    'onclick',
-    "sendFeedback('" + formId + "', '" + feedbackType + "')"
-  );
-  const thanksMessage = renderThanksMessage();
-  form.prepend(thanksMessage);
-
-  return 'result';
 }
 
 function renderForm(feedbackType, email) {
@@ -405,7 +394,7 @@ function renderForm(feedbackType, email) {
   <div>Leave this field empty if you want to stay anonymous</div>`;
   const submitButton = `<div role="button" onClick="sendFeedback('${formWrapperId}')"
                        class="feedbackSubmitButton">Submit</div>`;
-  const closeButton = `<div role="button" aria-label="Close" onClick="hideElement('${formWrapperId}')" class="feedbackFormCloseButton"></div>`;
+  const closeButton = `<div role="button" aria-label="Close" onClick="closeForm('${formWrapperId}')" class="feedbackFormCloseButton"></div>`;
 
   const formWrapper = document.createElement('div');
   formWrapper.setAttribute('id', formWrapperId);
@@ -464,6 +453,14 @@ function renderThanksMessage() {
   return thanksMessageWrapper;
 }
 
+function showThanksMessage() {
+  const thanksMessage = document.getElementById('thanksMessage');
+  thanksMessage.className = 'show';
+  setTimeout(function() {
+    thanksMessage.classList.remove('show');
+  }, 3000);
+}
+
 async function toggleFeedbackForm(formId) {
   const form = document.getElementById(formId);
   const feedbackType = formId.includes('negative') ? 'negative' : 'positive';
@@ -490,7 +487,7 @@ async function toggleFeedbackForm(formId) {
   }
 }
 
-async function addFeedbackButtons() {
+async function addFeedbackElements() {
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `
@@ -513,6 +510,8 @@ async function addFeedbackButtons() {
   if (topicBody) {
     topicBody.appendChild(feedbackButtons);
   }
+  const body = document.querySelector('body');
+  body.appendChild(renderThanksMessage());
 }
 
 docReady(async function() {
@@ -524,5 +523,5 @@ docReady(async function() {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
   }
-  addFeedbackButtons();
+  addFeedbackElements();
 });
