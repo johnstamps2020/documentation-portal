@@ -368,7 +368,6 @@ samp,
   height: var(--feedback-button-size);
   background-position: 50% 50%;
   background-size: cover;
-  transition: transform 200ms ease-in-out;
 }
 
 .feedbackButtonPositive {
