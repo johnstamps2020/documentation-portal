@@ -334,7 +334,7 @@ async function sendFeedback(formId, feedbackType) {
       ? 'Select an issue and/or add a comment'
       : 'Add a comment';
   const emptyValueWarning = document.querySelector(
-    'span[class=emptyValueWarning]'
+    `#${formId} > span[class=emptyValueWarning]`
   );
   if (userCommentText || selectedCheckboxes.length > 0) {
     if (emptyValueWarning) {
