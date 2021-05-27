@@ -479,6 +479,11 @@ async function toggleFeedbackForm(formId) {
   } else {
     form.classList.remove('hidden');
   }
+
+  const thumb = document.querySelector('.feedbackButton' + feedbackType.charAt(0).toUpperCase() + feedbackType.slice(1));
+  if (!thumb.classList.contains('selected')) {
+    thumb.classList.add('selected');
+  }
 }
 
 async function addFeedbackButtons() {
