@@ -269,27 +269,32 @@ async function addCustomElements() {
   }
 }
 
-function hideFeedbackForm() {
-  const forms = document.querySelectorAll('.feedbackFormWrapper');
-  for (const form of forms) {
-    if (!form.classList.contains('hidden')) {
-      form.classList.add('hidden');
-    }
+function clearNotification(formId, notificationId) {
+  const notificationElement = document.querySelector(
+    `#${formId} > div[id=${notificationId}]`
+  );
+  if (notificationElement) {
+    notificationElement.remove();
   }
 }
 
-function hideThanksForm() {
-  const thanks = document.getElementById('thanks');
-  thanks.classList.add('hidden');
+function hideElement(elementId) {
+  const element = document.getElementById(elementId);
+  if (!element.classList.contains('hidden')) {
+    element.classList.add('hidden');
+  }
+  clearNotification(elementId, 'thanksMessage');
+  clearNotification(elementId, 'emptyValueWarning');
 }
 
-async function sendFeedback(formId, feedbackType) {
+async function sendFeedback(formId) {
   const form = document.getElementById(formId);
   const submitButton = form.querySelector('.feedbackSubmitButton');
   const body = document.body;
 
   let checkboxes = [];
   let selectedCheckboxes = [];
+  const feedbackType = formId.includes('negative') ? 'negative' : 'positive';
   if (feedbackType === 'negative') {
     checkboxes = document
       .getElementById('negativeFeedbackForm')
@@ -327,19 +332,19 @@ async function sendFeedback(formId, feedbackType) {
 
   const userCommentText = form.querySelector('textarea[name="userComment"]')
     ?.value;
-  let emptyValueWarningElement = document.createElement('span');
-  emptyValueWarningElement.setAttribute('class', 'emptyValueWarning');
+  let emptyValueWarningElement = document.createElement('div');
+  emptyValueWarningElement.setAttribute('id', 'emptyValueWarning');
   emptyValueWarningElement.textContent =
     checkboxes.length > 0
       ? 'Select an issue and/or add a comment'
       : 'Add a comment';
+  const emptyValueWarningId = 'emptyValueWarning';
   const emptyValueWarning = document.querySelector(
-    `#${formId} > span[class=emptyValueWarning]`
+    `#${formId} > div[id=${emptyValueWarningId}]`
   );
   if (userCommentText || selectedCheckboxes.length > 0) {
-    if (emptyValueWarning) {
-      emptyValueWarning.remove();
-    }
+    clearNotification(formId, emptyValueWarningId);
+
     submitButton.classList.add('disabled');
     submitButton.removeAttribute('onclick');
     body.classList.add('wait');
@@ -378,117 +383,122 @@ async function sendFeedback(formId, feedbackType) {
     body: JSON.stringify(feedbackRequest),
   });
 
-  // const thanks = `
-  //   <div class="thanks">
-  //       <div>Thank you for your feedback!</div>
-  //       <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"/>
-  //   </div>
-  // `;
-
-  // form.innerHTML = thanks;
-
   body.classList.remove('wait');
   submitButton.classList.remove('disabled');
   submitButton.setAttribute(
     'onclick',
     "sendFeedback('" + formId + "', '" + feedbackType + "')"
   );
-  const thanks = document.getElementById('thanks');
-  thanks.classList.remove('hidden');
+  const thanksMessage = renderThanksMessage();
+  form.prepend(thanksMessage);
 
-  return result;
+  return 'result';
 }
 
 function renderForm(feedbackType, email) {
-  const formId = `${feedbackType}FeedbackForm`;
-  return `
-<form id="${formId}">
-    ${
-      feedbackType === 'negative'
-        ? `<div class="feedbackFormTitle">Thanks. We have recorded your vote. Please let us know how we can improve this content.</div>
-          <div class="feedbackFormCheckBoxes">
-          <label>
-            <input type="checkbox" name="missing" />
-            <span>Some information is incorrect or missing</span>
-          </label>
-          <label>
-            <input type="checkbox" name="graphics" />
-            <span>More graphics or examples would be helpful</span>
-          </label>
-          <label>
-            <input type="checkbox" name="typos" />
-            <span>There are typos</span>
-          </label>
-          <label>
-            <input type="checkbox" name="broken" />
-            <span>Some links are broken</span>
-          </label>
-          <label>
-            <input type="checkbox" name="other" />
-            <span>Other</span>
-          </label>
-        </div>`
-        : '<div class="feedbackFormTitle">Thanks. We have recorded your vote.  Anything more to tell us?</div>'
-    }
-    <div>Your comment:</div>
-    <textarea name="userComment"></textarea>
-    <div>Your email:</div> 
-    <input name="user" type="text" value="${email}" />
-    <div>Leave this field empty if you want to stay anonymous</div>
-    <div role="button" onclick="sendFeedback('${formId}', '${feedbackType}')" class="feedbackSubmitButton">Submit</div>
-    <div role="button" aria-label="Close" onclick="hideFeedbackForm()" class="feedbackFormCloseButton"></div>
-</form>
-<div id="thanks" class="feedbackFormWrapper hidden"> 
-  <form>
-    <div class="thanks">
-          <div>Thank you for your feedback!</div>
-          <div role="button" aria-label="Close" onclick="hideThanksForm()" class="feedbackFormCloseButton"/>
-    </div>
-  </form>
-</div>`;
+  const formWrapperId = `${feedbackType.toLowerCase()}Feedback`;
+  const formId = `${feedbackType.toLowerCase()}FeedbackForm`;
+  const commentBox = `<div>Your comment:</div>
+  <textarea name="userComment"></textarea>`;
+  const username = `<div>Your email:</div>
+  <input name="user" type="text" value="${email}"/>
+  <div>Leave this field empty if you want to stay anonymous</div>`;
+  const submitButton = `<div role="button" onClick="sendFeedback('${formWrapperId}')"
+                       class="feedbackSubmitButton">Submit</div>`;
+  const closeButton = `<div role="button" aria-label="Close" onClick="hideElement('${formWrapperId}')" class="feedbackFormCloseButton"></div>`;
+
+  const formWrapper = document.createElement('div');
+  formWrapper.setAttribute('id', formWrapperId);
+  formWrapper.setAttribute('class', 'feedbackFormWrapper');
+  const feedbackForm = document.createElement('form');
+  feedbackForm.setAttribute('id', formId);
+  formWrapper.append(feedbackForm);
+
+  if (feedbackType === 'positive') {
+    feedbackForm.innerHTML =
+      `<div class="feedbackFormTitle">Thanks. We have recorded your vote. Anything more to tell us?</div>` +
+      commentBox +
+      username +
+      submitButton +
+      closeButton;
+  } else if (feedbackType === 'negative') {
+    feedbackForm.innerHTML =
+      `<div class="feedbackFormTitle">Thanks. We have recorded your vote. Please let us know how we can improve this content.</div>` +
+      `<div class="feedbackFormCheckBoxes">
+    <label>
+      <input type="checkbox" name="missing" />
+      <span>Some information is incorrect or missing</span>
+    </label>
+    <label>
+      <input type="checkbox" name="graphics" />
+      <span>More graphics or examples would be helpful</span>
+    </label>
+    <label>
+      <input type="checkbox" name="typos" />
+      <span>There are typos</span>
+    </label>
+    <label>
+      <input type="checkbox" name="broken" />
+      <span>Some links are broken</span>
+    </label>
+    <label>
+      <input type="checkbox" name="other" />
+      <span>Other</span>
+    </label>
+  </div>` +
+      commentBox +
+      username +
+      submitButton +
+      closeButton;
+  }
+
+  return formWrapper;
 }
 
-//TODO: Disable feedback buttons after they are clicked
-function toggleFeedbackForm(id) {
-  const feedbackType = id.includes('negative') ? 'negative' : 'positive';
-  // gtag('event', 'user_feedback', {
-  //   feedback_type: feedbackType,
-  // });
-  const form = document.querySelector(`#${id}`);
-  form.classList.toggle('hidden');
+function renderThanksMessage() {
+  const thanksMessageWrapper = document.createElement('div');
+  thanksMessageWrapper.setAttribute('id', 'thanksMessage');
+  thanksMessageWrapper.innerHTML = `
+        <div>Thank you for your feedback!</div>
+    `;
+  return thanksMessageWrapper;
+}
+
+async function toggleFeedbackForm(formId) {
+  const form = document.getElementById(formId);
+  const feedbackType = formId.includes('negative') ? 'negative' : 'positive';
+  const response = await fetch('/userInformation');
+  const { preferred_username } = await response.json();
+  gtag('event', 'user_feedback', {
+    feedback_type: feedbackType,
+  });
+
+  if (!form) {
+    const body = document.querySelector('body');
+    body.appendChild(renderForm(feedbackType, preferred_username));
+  } else {
+    form.classList.remove('hidden');
+  }
 }
 
 async function addFeedbackButtons() {
-  const response = await fetch('/userInformation');
-  const { preferred_username } = await response.json();
-
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `
-    <span>Was this page helpful?</span>
-    <div class="feedbackThumbs">
-    <div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('positiveFeedback')"> 
-    <div class="feedbackButton feedbackButtonPositive"></div>
-    </div>
-    <div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('negativeFeedback')">
-    <div class="feedbackButton feedbackButtonNegative"></div>
-    </div>
-    </div>
-  `;
-
-  const positiveFormWrapper = document.createElement('div');
-  positiveFormWrapper.setAttribute('class', 'feedbackFormWrapper hidden');
-  positiveFormWrapper.setAttribute('id', 'positiveFeedback');
-  positiveFormWrapper.innerHTML = renderForm('positive', preferred_username);
-
-  const negativeFormWrapper = document.createElement('div');
-  negativeFormWrapper.setAttribute('class', 'feedbackFormWrapper hidden');
-  negativeFormWrapper.setAttribute('id', 'negativeFeedback');
-  negativeFormWrapper.innerHTML = renderForm('negative', preferred_username);
-
-  const body = document.querySelector('body');
-  body.appendChild(positiveFormWrapper);
-  body.appendChild(negativeFormWrapper);
+    <span>Was
+    this
+    page
+    helpful ?
+</span>
+<div class="feedbackThumbs">
+<div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('positiveFeedback')">
+<div class="feedbackButton feedbackButtonPositive"></div>
+</div>
+<div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('negativeFeedback')">
+<div class="feedbackButton feedbackButtonNegative"></div>
+</div>
+</div>
+`;
 
   const topicBody = document.getElementById('wh_topic_body');
   if (topicBody) {

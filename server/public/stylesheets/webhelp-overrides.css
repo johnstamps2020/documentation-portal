@@ -388,15 +388,22 @@ samp,
   transform: translateY(var(--feedback-button-movement));
 }
 
-.thanks {
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.emptyValueWarning {
-  color: red;
+#emptyValueWarning,
+#thanksMessage {
+  color: #000000;
+  border: solid 2px;
   display: block;
   text-align: center;
-  padding: 3px;
+  padding: 6px 12px;
+  margin: 3px;
+}
+
+#emptyValueWarning {
+  background-color: #ffe5e5;
+  border-color: #e38181;
+}
+
+#thanksMessage {
+  background-color: #c0e3bc;
+  border-color: #4d8c45;
 }
