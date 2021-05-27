@@ -500,10 +500,10 @@ async function addFeedbackButtons() {
     helpful ?
 </span>
 <div class="feedbackThumbs">
-<div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('positiveFeedback')">
+<div role="button" aria-label="This topic was helpful" title="This topic was helpful" class="feedbackButtonContainer" onclick="toggleFeedbackForm('positiveFeedback')">
 <div class="feedbackButton feedbackButtonPositive"></div>
 </div>
-<div role="button" class="feedbackButtonContainer" onclick="toggleFeedbackForm('negativeFeedback')">
+<div role="button" aria-label="This topic needs improvement" title="This topic needs improvement" class="feedbackButtonContainer" onclick="toggleFeedbackForm('negativeFeedback')">
 <div class="feedbackButton feedbackButtonNegative"></div>
 </div>
 </div>
