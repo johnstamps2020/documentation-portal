@@ -313,6 +313,7 @@ object TestDocPortalServer : BuildType({
         text("env.ELASTICSEARCH_URL", "http://localhost:9200")
         text("env.DOC_S3_URL", "http://localhost/")
         text("env.CONFIG_FILE", "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json")
+        text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
     }
 
     vcs {
