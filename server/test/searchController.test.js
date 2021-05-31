@@ -18,6 +18,7 @@ describe(`Search for phrase ${queryPhrase}`, async function() {
         isAuthenticated: () => true,
       });
       response = httpMocks.createResponse();
+      console.log('Elastic node setting:', process.env.ELASTIC_SEARCH_URL);
       await searchController(request, response);
       results = response._getRenderData();
     } catch (err) {
