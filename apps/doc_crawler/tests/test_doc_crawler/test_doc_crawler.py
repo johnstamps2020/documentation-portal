@@ -1,5 +1,8 @@
+import ast
 import json
 import os
+from string import Template
+
 import time
 from pathlib import Path
 
@@ -67,19 +70,67 @@ def test_index_was_created(elastic_client):
 
 def test_index_has_entries(elastic_client):
     number_of_index_entries = elastic_client.count(index=index_name)['count']
-    assert number_of_index_entries == 27
+    assert number_of_index_entries == 52
 
 
 def test_topic_has_internal_property(elastic_client):
     search_results = elastic_client.search(index=index_name, body={
         "query": {
             "match": {
-                "id": "/cloud/gcp/latest/topics/c_accessing-deployed-applications.html"
+                "id": "/isconfigupgradetools/320/topics/c_error-log-files.html"
             }
         }
     })
     found_doc = search_results['hits']['hits'][0]['_source']
     assert found_doc['internal'] is True
+
+
+def test_exact_match(elastic_client):
+    def prepare_search_query(search_phrase: str, quoted_phrase: bool):
+        if quoted_phrase:
+            search_phrase = f"\"{search_phrase}\""
+        return {
+            "query": {
+                "query_string": {
+                    "query": search_phrase,
+                    "fields": [
+                        "title^12",
+                        "body"
+                    ],
+                    "minimum_should_match": "95%"
+                }
+            }
+        }
+
+    def test_matches_exist():
+        search_string = 'configuring merge tracker'
+        search_results = elastic_client.search(index=index_name,
+                                               body=prepare_search_query(search_string, True))
+
+        assert search_results['hits']['total']['value'] == 6
+        found_docs = (hit['_source'] for hit in search_results['hits']['hits'])
+        for doc in found_docs:
+            assert search_string.casefold() in doc['body'].casefold()
+
+    def test_matches_do_not_exist():
+        search_string = 'configure merge tracker'
+        no_search_results = elastic_client.search(index=index_name,
+                                                  body=prepare_search_query(search_string, True))
+        assert no_search_results['hits']['total']['value'] == 0
+
+    def test_number_of_matches():
+        search_string = 'com.guidewire.upgrade.steps.general.pl.TransformDocumentUpgradeStep'
+        exact_match_search_results = elastic_client.search(index=index_name,
+                                                           body=prepare_search_query(search_string, True))
+        regular_match_search_results = elastic_client.search(index=index_name,
+                                                             body=prepare_search_query(search_string, False))
+
+        assert regular_match_search_results['hits']['total']['value'] > exact_match_search_results['hits']['total'][
+            'value'] == 1
+
+    test_matches_exist()
+    test_matches_do_not_exist()
+    test_number_of_matches()
 
 
 def test_delete_entries_by_query(elastic_client):
@@ -88,7 +139,7 @@ def test_delete_entries_by_query(elastic_client):
     number_of_existing_eq_number_of_deleted = False
 
     elastic_del_query = elastic_client.prepare_del_query(elastic_client.elastic_del_query_template,
-                                                         id_to_delete='isgwcpcloudlatest')
+                                                         id_to_delete='isconfigupgradetools320')
 
     search_doc_id_before_delete = elastic_client.search(
         index=index_name, body=elastic_del_query)
@@ -115,7 +166,11 @@ def test_delete_entries_by_query(elastic_client):
     if number_of_existing_entries_before_delete == number_of_deleted_entries:
         number_of_existing_eq_number_of_deleted = True
 
-    assert entries_with_id_existed is True and entries_with_id_deleted is True and number_of_existing_eq_number_of_deleted is True
+    assert (
+            entries_with_id_existed
+            and entries_with_id_deleted
+            and number_of_existing_eq_number_of_deleted
+    )
 
 
 def test_broken_links_in_elastic(elastic_client):

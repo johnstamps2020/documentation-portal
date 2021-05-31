@@ -1,0 +1,7 @@
+<nav class="navbar navbar-default wh_footer navbar-bottom" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:whc="http://www.oxygenxml.com/webhelp/components" xmlns:gw="http://guidewire.com/docs/components">
+  <div class=" footer-container text-center ">
+    <whc:include_html href="${webhelp.fragment.footer}"/>
+  </div>
+  <gw:portal_ga_script/>
+</nav>

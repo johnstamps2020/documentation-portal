@@ -1,0 +1,1 @@
+define({"title":"<span class=\"title\"><span class=\"keyword\">InsuranceSuite Configuration Upgrade Tools</span>  <span class=\"keyword\">3.2.0</span></span>","topics" : [{"title":"<span class=\"keyword\">InsuranceSuite Configuration Upgrade Tools</span>","href":"topics\/c_release-notes.html","menu": {"hasChildren":true,},"tocID":"tocId-d50e193","next":"tocId-d50e193",}]});

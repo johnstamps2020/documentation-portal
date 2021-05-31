@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:gw="http://guidewire.com/docs/components"
+      xmlns:whc="http://www.oxygenxml.com/webhelp/components">
+
+<head>
+    <whc:include_html href="gw-head-elements.xml"/>
+    <gw:index_redirect/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <gw:doc_portal_params/>
+    <script>
+        /**
+         * If an old URL is given, redirect to the corresponding topic from the WebHelp Responsive
+         */
+        var actualLocation = window.location.href;
+        var newLocation;
+        if (actualLocation.indexOf('/#') != -1) {
+            newLocation = actualLocation.replace(/\/#/g, "/");
+            window.location.replace(newLocation);
+        }
+        if (actualLocation.match(/\/index\.(.*)#/gi) != null) {
+            newLocation = actualLocation.replace(/\/index\.(.*)#/gi, "/");
+            window.location.replace(newLocation);
+        }
+    </script>
+
+    <!-- preload and prefetch Start-->
+    <!-- fonts -->
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/arial-webfont.woff2" rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-regular.woff2"
+          rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-light-webfont.woff2"
+          rel="preload"/>
+    <link as="font"
+          href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-extralight-webfont.woff2"
+          rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-black-webfont.woff2"
+          rel="preload"/>
+    <link as="font"
+          href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-semibold-webfont.woff2"
+          rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/AvenirNextLTPro-Regular.woff"
+          rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/cour.woff2" rel="preload"/>
+    <!-- simplebar -->
+    <link as="script" href="${oxygen-webhelp-assets-dir}/template/resources/js/simplebar.js" rel="preload"/>
+    <link as="style" href="${oxygen-webhelp-assets-dir}/template/resources/css/simplebar.min.css" rel="preload"/>
+
+    <!-- svg -->
+    <!--			<link rel="preload" href="${oxygen-webhelp-assets-dir}/template/resources/images/dharmachakra.svg" as="image"/>-->
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/chevron-left.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/chevron-right.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/share-alt.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/print-solid.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/times.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/angle-double-left.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/note.svg" rel="preload"/>
+
+    <!-- preload and prefetch End -->
+
+    <link href="${oxygen-webhelp-assets-dir}/lib/jquery-ui/jquery-ui.min.css?buildId=${oxygen-webhelp-build-number}"
+          rel="stylesheet"/>
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link href="${oxygen-webhelp-assets-dir}/lib/bootstrap/css/bootstrap.min.css?buildId=${oxygen-webhelp-build-number}" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- Bootstrap Optional theme
+    <link rel="stylesheet" type="text/css"
+        href="${oxygen-webhelp-assets-dir}/lib/bootstrap/css/bootstrap-theme.min.css" />-->
+
+    <!-- Template default styles  -->
+    <link href="${oxygen-webhelp-assets-dir}/app/main-page.css?buildId=${oxygen-webhelp-build-number}" rel="stylesheet"
+          type="text/css"/>
+
+    <script src="${oxygen-webhelp-assets-dir}/lib/jquery/jquery-3.5.1.min.js?buildId=${oxygen-webhelp-build-number}" type="text/javascript"/>
+
+    <script data-main="${oxygen-webhelp-assets-dir}/app/main-page.js"
+            src="${oxygen-webhelp-assets-dir}/lib/requirejs/require.js"></script>
+    <!-- Skin resources -->
+    <whc:webhelp_skin_resources/>
+    <!-- EXM-36950 - Expand the args.hdf parameter here -->
+    <whc:include_html href="${args.hdf}"/>
+    <whc:include_html href="${webhelp.fragment.head}"/>
+</head>
+<body class="wh_main_page">
+<a class="sr-only sr-only-focusable" href="#content">
+    <whc:macro value="${i18n(jump.to.content)}"/>
+</a>
+<!-- EXM-36950 - Expand the args.hdr parameter here -->
+<whc:include_html href="${args.hdr}"/>
+<whc:include_html href="${webhelp.fragment.before.body}"/>
+
+<whc:include_html href="${webhelp.fragment.header}"/>
+
+<div class="wh_content_area " id="content">
+    <whc:include_html href="${webhelp.fragment.before.toc_or_tiles}"/>
+    <!-- This is the placeholder for the main page tiles. -->
+    <div class="container-fluid wh_content_flex_container">
+        <!-- This is the placeholder for the main page tiles. -->
+        <whc:webhelp_tiles>
+            <!-- Template for a tile. -->
+            <whc:webhelp_tile>
+                <div>
+                    <!-- Place holder for tile's image -->
+                    <whc:webhelp_tile_image/>
+
+                    <div class="wh_tile_text">
+                        <!-- Place holder for tile's title -->
+                        <whc:webhelp_tile_title/>
+
+                        <!-- Place holder for tile's shordesc -->
+                        <whc:webhelp_tile_shortdesc/>
+                    </div>
+                </div>
+            </whc:webhelp_tile>
+        </whc:webhelp_tiles>
+        <!--
+            This is the placeholder for the main page entries
+            presented in a tree-like fashion.
+        -->
+        <whc:webhelp_main_page_toc/>
+        <whc:include_html href="${webhelp.fragment.after.toc_or_tiles}"/>
+    </div>
+</div>
+
+<whc:include_html href="footer-index.xml"/>
+
+<whc:include_html href="${webhelp.fragment.after.body}"/>
+</body>
+</html>
