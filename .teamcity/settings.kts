@@ -325,7 +325,7 @@ object TestDocPortalServer : BuildType({
                 npm install
                 npm test
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:12.14.1"
             dockerPull = true
         }
     }
