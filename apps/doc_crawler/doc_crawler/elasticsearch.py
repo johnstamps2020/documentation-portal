@@ -17,6 +17,18 @@ class ElasticClient(Elasticsearch):
             }""")
 
     main_index_settings = {
+        "settings": {
+            "analysis": {
+                "analyzer": {
+                    "exact_match_analyzer": {
+                        "type": "standard"
+                    },
+                    "general_match_analyzer": {
+                        "type": "simple"
+                    }
+                }
+            }
+        },
         "mappings": {
             "properties": {
                 "id": {
@@ -40,7 +52,20 @@ class ElasticClient(Elasticsearch):
                 },
                 "body": {
                     "type": "text",
-                    "analyzer": "simple"
+                    "analyzer": "exact_match_analyzer",
+                    "search_analyzer": "general_match_analyzer",
+                    "search_quote_analyzer": "exact_match_analyzer"
+                },
+                "title": {
+                    "type": "text",
+                    "analyzer": "exact_match_analyzer",
+                    "search_analyzer": "general_match_analyzer",
+                    "search_quote_analyzer": "exact_match_analyzer",
+                    "fields": {
+                        "raw": {
+                            "type": "keyword"
+                        }
+                    }
                 }
             }
         }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=${env(GA_ID)}"></script>
+    <script type="text/javascript">
+        const gaId = '<whc:macro value="${env(GA_ID)}" xmlns:whc="http://www.oxygenxml.com/webhelp/components"/>';
+        if (gaId.length !== 0) {
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', gaId);
+        }
+    </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=${env(GA4_ID)}"></script>
+    <script type="text/javascript">
+        const ga4Id = '<whc:macro value="${env(GA4_ID)}" xmlns:whc="http://www.oxygenxml.com/webhelp/components"/>';
+        if (ga4Id.length !== 0) {
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', ga4Id);
+        }
+    </script>
+</head>

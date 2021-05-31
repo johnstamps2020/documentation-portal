@@ -1,0 +1,147 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:gw="http://guidewire.com/docs/components"
+      xmlns:whc="http://www.oxygenxml.com/webhelp/components">
+<head>
+    <whc:include_html href="gw-head-elements.xml"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <gw:doc_portal_params/>
+
+    <!-- preload and prefetch Start-->
+    <!-- fonts -->
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/arial-webfont.woff2" rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-regular.woff2"
+          rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-light-webfont.woff2"
+          rel="preload"/>
+    <link as="font"
+          href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-extralight-webfont.woff2"
+          rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-black-webfont.woff2"
+          rel="preload"/>
+    <link as="font"
+          href="${oxygen-webhelp-assets-dir}/template/resources/fonts/sourcesanspro-semibold-webfont.woff2" rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/AvenirNextLTPro-Regular.woff"
+          rel="preload"/>
+    <link as="font" href="${oxygen-webhelp-assets-dir}/template/resources/fonts/cour.woff2" rel="preload"/>
+    <!-- simplebar -->
+    <link as="script" href="${oxygen-webhelp-assets-dir}/template/resources/js/simplebar.js" rel="preload"/>
+    <link as="style" href="${oxygen-webhelp-assets-dir}/template/resources/css/simplebar.min.css" rel="preload"/>
+    <!-- svg -->
+    <!--        <link rel="preload" href="${oxygen-webhelp-assets-dir}/template/resources/images/dharmachakra.svg" as="image"/>-->
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/chevron-left.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/chevron-right.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/share-alt.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/print-solid.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/times.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/angle-double-left.svg" rel="preload"/>
+    <link as="image" href="${oxygen-webhelp-assets-dir}/template/resources/images/note.svg" rel="preload"/>
+
+    <!-- preload and prefetch End -->
+
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link href="${oxygen-webhelp-assets-dir}/lib/bootstrap/css/bootstrap.min.css?buildId=${oxygen-webhelp-build-number}" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- Bootstrap Optional theme
+    <link rel="stylesheet"
+        href="${oxygen-webhelp-assets-dir}/lib/bootstrap/css/bootstrap-theme.min.css" /> -->
+    <link href="${oxygen-webhelp-assets-dir}/lib/jquery-ui/jquery-ui.min.css?buildId=${oxygen-webhelp-build-number}"
+          rel="stylesheet"/>
+
+    <!-- Template default styles  -->
+    <link href="${oxygen-webhelp-assets-dir}/app/topic-page.css?buildId=${oxygen-webhelp-build-number}" rel="stylesheet"
+          type="text/css"/>
+
+    <script src="${oxygen-webhelp-assets-dir}/lib/jquery/jquery-3.5.1.min.js?buildId=${oxygen-webhelp-build-number}"
+            type="text/javascript"><!----></script>
+
+    <script data-main="${oxygen-webhelp-assets-dir}/app/topic-page.js"
+            src="${oxygen-webhelp-assets-dir}/lib/requirejs/require.js"></script>
+
+    <!-- preload and prefetch Start-->
+    <whc:webhelp_navigation_links_prefetch/>
+    <!-- Skin resources -->
+    <whc:webhelp_skin_resources/>
+    <!-- EXM-36950 - Expand the args.hdf parameter here -->
+    <whc:include_html href="${args.hdf}"/>
+    <whc:include_html href="${webhelp.fragment.head}"/>
+</head>
+
+<body class="wh_topic_page">
+
+<gw:portal_tag_manager_body_script/>
+<a class="sr-only sr-only-focusable" href="#wh_topic_body">
+    <whc:macro value="${i18n(jump.to.content)}"/>
+</a>
+<!-- EXM-36950 - Expand the args.hdr parameter here -->
+<whc:include_html href="${args.hdr}"/>
+<whc:include_html href="${webhelp.fragment.before.body}"/>
+
+<whc:include_html href="${webhelp.fragment.header}"/>
+
+<!--<whc:webhelp_search_input/>-->
+
+<div class="container-fluid">
+    <div class="row navbar navbar-fixed-top" id="affix2">
+        <nav class="wh_tools hidden-print">
+            <span aria-expanded="true" aria-label="Show contents and search" class="openNav" title="Show Contents and Search"
+                  type="button"><i class="fas fa-bars"></i></span>
+            <whc:webhelp_breadcrumb/>
+            <div class="wh_right_tools hidden-sm hidden-xs">
+                <whc:webhelp_navigation_links/>
+                <whc:webhelp_toggle_highlight/>
+                <!--<whc:webhelp_expand_collapse_sections/>-->
+                <whc:webhelp_share_link class="share"/>
+                <whc:webhelp_pdf_link class="pdf"/>
+                <whc:webhelp_print_link class="print"/>
+            </div>
+        </nav>
+    </div>
+
+    <div class="wh_content_area">
+        <div class="row justify-content-lg-end">
+            <whc:webhelp_publication_toc data-tooltip-position="${webhelp.publication.toc.tooltip.position}">
+                <nav class="col-lg-3 col-md-3 col-sm-3 hidden-xs navbar hidden-print" id="wh_publication_toc"
+                     role="navigation">
+                    <whc:component_content/>
+                </nav>
+                <div class="collapse-toc col-lg-1 col-md-1 col-sm-1 hidden-xs"><span class="collapse-toc-button"
+                                                                                     style="cursor: pointer;"
+                                                                                     title="Hide contents"/></div>
+            </whc:webhelp_publication_toc>
+
+            <div class="col-lg-6 col-md-9 col-sm-9 col-xs-12" id="wh_topic_body">
+                <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                <whc:webhelp_topic_content class="body"/>
+                <whc:webhelp_child_links/>
+                <whc:webhelp_related_links/>
+                <whc:webhelp_feedback/>
+            </div>
+            <whc:webhelp_topic_toc>
+                <nav class="col-lg-2 hidden-sm hidden-xs navbar hidden-print" id="wh_topic_toc"
+                     role="navigation">
+                    <!-- /*DOCS-323 WebHelp Feedback - Adjust column widths*/-->
+                    <whc:component_content/>
+                </nav>
+            </whc:webhelp_topic_toc>
+        </div>
+    </div>
+</div>
+<whc:include_html href="footer.xml"/>
+
+<div id="go2top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+</div>
+
+<!-- The modal container for images -->
+<div class="modal" id="modal_img_large">
+    <span class="close glyphicon glyphicon-remove"></span>
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="modal-img"/>
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+</div>
+
+<whc:include_html href="${webhelp.fragment.after.body}"/>
+</body>
+</html>

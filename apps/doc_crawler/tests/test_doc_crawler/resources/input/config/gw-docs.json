@@ -44,15 +44,16 @@
       "public": false
     },
     {
-      "id": "isgwcpcloudlatest",
-      "title": "Guidewire Cloud Platform",
-      "url": "cloud/gcp/latest",
+      "id": "isconfigupgradetools320",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0",
+      "url": "isconfigupgradetools/320",
       "metadata": {
-        "category": "Cloud",
-        "platform": "Cloud",
-        "product": "Guidewire Cloud Platform",
-        "version": "latest"
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["3.2.0"],
+        "release": ["Aspen", "Banff", "Cortina"]
       },
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
