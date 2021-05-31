@@ -367,7 +367,7 @@ object TestDocPortalServer : BuildType({
                 npm install
                 npm test
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:latest"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:14-alpine"
             dockerPull = true
         }
     }
