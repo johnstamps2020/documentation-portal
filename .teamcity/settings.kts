@@ -310,11 +310,9 @@ object TestDocPortalServer : BuildType({
         text("env.APP_BASE_URL", "http://localhost/", allowEmpty = false)
         text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
         text("env.ELASTICSEARCH_URLS", "http://localhost:9200")
+        text("env.ELASTICSEARCH_URL", "http://localhost:9200")
         text("env.DOC_S3_URL", "http://localhost/")
-        text(
-            "env.CONFIG_FILE",
-            "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json"
-        )
+        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json")
         text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
     }
 
@@ -365,7 +363,6 @@ object TestDocPortalServer : BuildType({
             scriptContent = """
                 set -e
                 export APP_BASE_URL=http://localhost:8081
-                export ELASTICSEARCH_URL=http://localhost:9200
                 cd server/
                 npm install
                 npm test
