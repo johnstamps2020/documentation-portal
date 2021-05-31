@@ -3,7 +3,7 @@ const searchController = require('../controllers/searchController');
 const httpMocks = require('node-mocks-http');
 const assert = require('assert');
 
-const queryPhrase = 'billing';
+const queryPhrase = 'configuring merge tracker';
 describe(`Search for phrase ${queryPhrase}`, async function() {
   this.timeout(8000);
   let results, request, response;
