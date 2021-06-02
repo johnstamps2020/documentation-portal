@@ -2165,6 +2165,17 @@
       ]
     },
     {
+      "id": "in20211appsrc",
+      "title": "InsuranceNow 2021.1 Application",
+      "sourceType": "xdocs",
+      "branch": "2021.1",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/ApplicationGuide20211x.ditamap"
+      ]
+    },
+    {
       "id": "in20211bisrc",
       "title": "InsuranceNow 2021.1 BI Getting Started",
       "sourceType": "xdocs",

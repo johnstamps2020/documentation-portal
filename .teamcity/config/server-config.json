@@ -10130,7 +10130,10 @@
       "url": "cloud/in/20211x/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience"
+        ],
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
@@ -11131,6 +11134,22 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Release notes"],
+        "release": ["Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20211app",
+      "title": "Application Guide",
+      "url": "cloud/in/20211/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging", "prod"],

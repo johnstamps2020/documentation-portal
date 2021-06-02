@@ -4152,6 +4152,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "ApplicationGuide20211x.ditamap",
+      "srcId": "in20211appsrc",
+      "docId": "in20211app",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20211x.ditamap",
       "srcId": "in20211bisrc",
       "docId": "in20211bi",
