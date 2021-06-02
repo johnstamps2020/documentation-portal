@@ -39,6 +39,10 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
+          "label": "Application Guide",
+          "id": "in20211app"
+        },
+        {
           "label": "Business Intelligence Getting Started Guide",
           "id": "in20211bi"
         },
