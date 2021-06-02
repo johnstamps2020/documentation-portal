@@ -6,5 +6,5 @@ set -xe
 # If you have Docker Compose installed, you can use this task to create an Elasticsearch instance before running
 # test-collect-documents and test-load-index locally.
 export TEST_ENVIRONMENT_DOCKER_NETWORK=bridge \
-  && docker-compose -f ./resources/docker-compose.yml build \
+  && docker-compose -f ./resources/docker-compose.yml build --no-cache \
   && docker-compose -f ./resources/docker-compose.yml up -d

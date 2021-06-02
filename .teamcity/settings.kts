@@ -3,9 +3,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
@@ -308,6 +306,16 @@ object Release : BuildType({
 object TestDocPortalServer : BuildType({
     name = "Test Doc Portal server app"
 
+    params {
+        text("env.APP_BASE_URL", "http://localhost/", allowEmpty = false)
+        text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
+        text("env.ELASTICSEARCH_URLS", "http://localhost:9200")
+        text("env.ELASTIC_SEARCH_URL", "http://localhost:9200")
+        text("env.DOC_S3_URL", "http://localhost/")
+        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json")
+        text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
+    }
+
     vcs {
         root(DslContext.settingsRoot)
 
@@ -315,17 +323,51 @@ object TestDocPortalServer : BuildType({
     }
 
     steps {
+        dockerCompose {
+            name = "Compose services"
+            file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
+        }
+
+        dockerCommand {
+            name = "Build the Doc Crawler Docker image locally"
+            commandType = build {
+                source = file {
+                    path = "apps/doc_crawler/Dockerfile"
+                }
+                namesAndTags = "doc-crawler:local"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+
+        script {
+            name = "Crawl the document and update the local index"
+            id = "CRAWL_DOC"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                cat > scrapy.cfg <<- EOM
+                [settings]
+                default = doc_crawler.settings
+                EOM
+
+                doc_crawler
+            """.trimIndent()
+            dockerImage = "doc-crawler:local"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
         script {
             name = "Test the Node.js server app"
             scriptContent = """
                 set -e
                 export APP_BASE_URL=http://localhost:8081
-                export ELASTIC_SEARCH_URL=https://docsearch-doctools.dev.ccs.guidewire.net
                 cd server/
                 npm install
                 npm test
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:14-alpine"
             dockerPull = true
         }
     }
@@ -1213,7 +1255,7 @@ object DeployFrontend : BuildType({
         text("env.SEND_BOUNCER_HOME", "no", display = ParameterDisplay.HIDDEN)
         text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
         text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
-        text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/localizedDocs", display = ParameterDisplay.HIDDEN)
+        text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
             "dev",
@@ -1245,6 +1287,26 @@ object DeployFrontend : BuildType({
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Copy localized PDFs to the S3 bucket"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
+                  export DEPLOY_ENV=prod
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                fi
+                
+                aws s3 sync %env.LOC_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/l10n --exclude ".git/*" --delete
+            """.trimIndent()
         }
         script {
             name = "Build pages"

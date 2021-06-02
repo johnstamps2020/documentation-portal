@@ -38,11 +38,10 @@ const runFilteredSearch = async (
   let queryBody = {
     bool: {
       must: {
-        multi_match: {
+        simple_query_string: {
           query: searchPhrase,
-          type: 'best_fields',
-          minimum_should_match: '95%',
           fields: ['title^12', 'body'],
+          quote_field_suffix: '.exact',
         },
       },
     },
@@ -108,7 +107,7 @@ const runFilteredSearch = async (
     body: {
       query: queryBody,
       collapse: {
-        field: 'title.keyword',
+        field: 'title.raw',
         inner_hits: {
           name: 'same_title',
           size: 20,

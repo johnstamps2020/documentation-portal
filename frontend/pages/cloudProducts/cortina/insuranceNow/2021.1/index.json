@@ -39,6 +39,10 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
+          "label": "Application Guide",
+          "id": "in20211app"
+        },
+        {
           "label": "Business Intelligence Getting Started Guide",
           "id": "in20211bi"
         },
@@ -67,6 +71,10 @@
         {
           "label": "Predictive Analytics Integration",
           "id": "in20211pa"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20211apiref"
         }
       ]
     },

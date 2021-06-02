@@ -3,14 +3,6 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Release.ditaval",
-      "root": "_supermap.ditamap",
-      "indexRedirect": true,
-      "srcId": "isconfigupgradetools320src",
-      "docId": "isconfigupgradetools320"
-    },
-    {
-      "buildType": "dita",
       "filter": "Other/GW-Generic-Draft.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
@@ -21,7 +13,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
-      "srcId": "dxclouddraftceamapp",
+      "srcId": "dxdraftceamapp",
       "docId": "dxclouddraftceamapp",
       "indexRedirect": true
     },
@@ -29,7 +21,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
+      "srcId": "dxdraftinstall",
       "docId": "dxclouddraftceaminstall",
       "indexRedirect": true
     },
@@ -37,7 +29,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
+      "srcId": "dxdraftdev",
       "docId": "dxclouddraftceamdev",
       "indexRedirect": true
     },
@@ -45,7 +37,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
+      "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftceamrefguides",
       "indexRedirect": true
     },
@@ -61,7 +53,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
-      "srcId": "dxclouddraftceclaimsapp",
+      "srcId": "dxdraftceclaimsapp",
       "docId": "dxclouddraftceclaimsapp",
       "indexRedirect": true
     },
@@ -69,7 +61,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
+      "srcId": "dxdraftinstall",
       "docId": "dxclouddraftceclaimsinstall",
       "indexRedirect": true
     },
@@ -77,7 +69,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
+      "srcId": "dxdraftdev",
       "docId": "dxclouddraftceclaimsdev",
       "indexRedirect": true
     },
@@ -85,7 +77,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
+      "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftceclaimsrefguides",
       "indexRedirect": true
     },
@@ -101,7 +93,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
-      "srcId": "dxclouddraftceqbapp",
+      "srcId": "dxdraftceqbapp",
       "docId": "dxclouddraftceqbapp",
       "indexRedirect": true
     },
@@ -109,7 +101,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
+      "srcId": "dxdraftinstall",
       "docId": "dxclouddraftceqbinstall",
       "indexRedirect": true
     },
@@ -117,7 +109,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
+      "srcId": "dxdraftdev",
       "docId": "dxclouddraftceqbdev",
       "indexRedirect": true
     },
@@ -125,7 +117,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
+      "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftceqbrefguides",
       "indexRedirect": true
     },
@@ -141,7 +133,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "ProducerEngage_AppGuide.ditamap",
-      "srcId": "dxclouddraftpeapp",
+      "srcId": "dxdraftpeapp",
       "docId": "dxclouddraftpeapp",
       "indexRedirect": true
     },
@@ -149,7 +141,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
+      "srcId": "dxdraftinstall",
       "docId": "dxclouddraftpeinstall",
       "indexRedirect": true
     },
@@ -157,7 +149,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
+      "srcId": "dxdraftdev",
       "docId": "dxclouddraftpedev",
       "indexRedirect": true
     },
@@ -165,7 +157,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
+      "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftperefguides",
       "indexRedirect": true
     },
@@ -181,7 +173,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "ProducerEngage_Claims_AppGuide.ditamap",
-      "srcId": "dxclouddraftpeclaimsapp",
+      "srcId": "dxdraftpeclaimsapp",
       "docId": "dxclouddraftpeclaimsapp",
       "indexRedirect": true
     },
@@ -189,7 +181,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
+      "srcId": "dxdraftinstall",
       "docId": "dxclouddraftpeclaimsinstall",
       "indexRedirect": true
     },
@@ -197,7 +189,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
+      "srcId": "dxdraftdev",
       "docId": "dxclouddraftpeclaimsdev",
       "indexRedirect": true
     },
@@ -205,7 +197,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
+      "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftpeclaimsrefguides",
       "indexRedirect": true
     },
@@ -221,7 +213,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "ServiceRepEngage_AppGuide.ditamap",
-      "srcId": "dxclouddraftsreapp",
+      "srcId": "dxdraftsreapp",
       "docId": "dxclouddraftsreapp",
       "indexRedirect": true
     },
@@ -229,7 +221,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
+      "srcId": "dxdraftinstall",
       "docId": "dxclouddraftsreinstall",
       "indexRedirect": true
     },
@@ -237,7 +229,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
+      "srcId": "dxdraftdev",
       "docId": "dxclouddraftsredev",
       "indexRedirect": true
     },
@@ -245,7 +237,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
+      "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftsrerefguides",
       "indexRedirect": true
     },
@@ -261,7 +253,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "VendorEngage_AppGuide.ditamap",
-      "srcId": "dxclouddraftveapp",
+      "srcId": "dxdraftveapp",
       "docId": "dxclouddraftveapp",
       "indexRedirect": true
     },
@@ -269,7 +261,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
+      "srcId": "dxdraftinstall",
       "docId": "dxclouddraftveinstall",
       "indexRedirect": true
     },
@@ -277,7 +269,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
+      "srcId": "dxdraftdev",
       "docId": "dxclouddraftvedev",
       "indexRedirect": true
     },
@@ -285,7 +277,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
+      "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftverefguides",
       "indexRedirect": true
     },
@@ -301,7 +293,7 @@
       "buildType": "dita",
       "filter": "Digital-apd-MgSvcs.ditaval",
       "root": "DigitalCodeGenerationGuide.ditamap",
-      "srcId": "dxclouddraftdcg",
+      "srcId": "dxdraftdcg",
       "docId": "dxclouddraftdcg",
       "indexRedirect": true
     },
@@ -591,342 +583,6 @@
       "root": "DigitalCodeGenerationGuide.ditamap",
       "srcId": "dx202104dcg",
       "docId": "dx202104dcg",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
-      "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
-      "srcId": "dxclouddraftceamapp",
-      "docId": "dxonpremdraftceamapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
-      "docId": "dxonpremdraftceaminstall",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
-      "root": "admin-and-security-guide.ditamap",
-      "srcId": "dxdraftadminsecurity",
-      "docId": "dxonpremdraftceamadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
-      "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
-      "docId": "dxonpremdraftceamdev",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
-      "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
-      "docId": "dxonpremdraftceamrefguides",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
-      "root": "digital-release-notes.ditamap",
-      "srcId": "dxonpremdraftrelnotes",
-      "docId": "dxonpremdraftceamrelnotes",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
-      "root": "CustomerEngage_Claims_AppGuide.ditamap",
-      "srcId": "dxclouddraftceclaimsapp",
-      "docId": "dxonpremdraftceclaimsapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
-      "docId": "dxonpremdraftceclaimsinstall",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
-      "root": "admin-and-security-guide.ditamap",
-      "srcId": "dxdraftadminsecurity",
-      "docId": "dxonpremdraftceclaimsadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
-      "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
-      "docId": "dxonpremdraftceclaimsdev",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
-      "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
-      "docId": "dxonpremdraftceclaimsrefguides",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
-      "root": "digital-release-notes.ditamap",
-      "srcId": "dxonpremdraftrelnotes",
-      "docId": "dxonpremdraftceclaimsrelnotes",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
-      "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
-      "srcId": "dxclouddraftceqbapp",
-      "docId": "dxonpremdraftceqbapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
-      "docId": "dxonpremdraftceqbinstall",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
-      "root": "admin-and-security-guide.ditamap",
-      "srcId": "dxdraftadminsecurity",
-      "docId": "dxonpremdraftceqbadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
-      "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
-      "docId": "dxonpremdraftceqbdev",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
-      "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
-      "docId": "dxonpremdraftceqbrefguides",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
-      "root": "digital-release-notes.ditamap",
-      "srcId": "dxonpremdraftrelnotes",
-      "docId": "dxonpremdraftceqbrelnotes",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
-      "root": "ProducerEngage_AppGuide.ditamap",
-      "srcId": "dxclouddraftpeapp",
-      "docId": "dxonpremdraftpeapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
-      "docId": "dxonpremdraftpeinstall",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
-      "root": "admin-and-security-guide.ditamap",
-      "srcId": "dxdraftadminsecurity",
-      "docId": "dxonpremdraftpeadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
-      "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
-      "docId": "dxonpremdraftpedev",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
-      "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
-      "docId": "dxonpremdraftperefguides",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
-      "root": "digital-release-notes.ditamap",
-      "srcId": "dxonpremdraftrelnotes",
-      "docId": "dxonpremdraftperelnotes",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
-      "root": "ProducerEngage_Claims_AppGuide.ditamap",
-      "srcId": "dxclouddraftpeclaimsapp",
-      "docId": "dxonpremdraftpeclaimsapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
-      "docId": "dxonpremdraftpeclaimsinstall",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
-      "root": "admin-and-security-guide.ditamap",
-      "srcId": "dxdraftadminsecurity",
-      "docId": "dxonpremdraftpeclaimsadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
-      "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
-      "docId": "dxonpremdraftpeclaimsdev",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
-      "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
-      "docId": "dxonpremdraftpeclaimsrefguides",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
-      "root": "digital-release-notes.ditamap",
-      "srcId": "dxonpremdraftrelnotes",
-      "docId": "dxonpremdraftpeclaimsrelnotes",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
-      "root": "ServiceRepEngage_AppGuide.ditamap",
-      "srcId": "dxclouddraftsreapp",
-      "docId": "dxonpremdraftsreapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
-      "docId": "dxonpremdraftsreinstall",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
-      "root": "admin-and-security-guide.ditamap",
-      "srcId": "dxdraftadminsecurity",
-      "docId": "dxonpremdraftsreadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
-      "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
-      "docId": "dxonpremdraftsredev",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
-      "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
-      "docId": "dxonpremdraftsrerefguides",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
-      "root": "digital-release-notes.ditamap",
-      "srcId": "dxonpremdraftrelnotes",
-      "docId": "dxonpremdraftsrerelnotes",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
-      "root": "VendorEngage_AppGuide.ditamap",
-      "srcId": "dxclouddraftveapp",
-      "docId": "dxonpremdraftveapp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "dxclouddraftinstall",
-      "docId": "dxonpremdraftveinstall",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
-      "root": "admin-and-security-guide.ditamap",
-      "srcId": "dxdraftadminsecurity",
-      "docId": "dxonpremdraftveadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
-      "root": "DevelopersGuide.ditamap",
-      "srcId": "dxclouddraftdev",
-      "docId": "dxonpremdraftvedev",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
-      "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dxclouddraftrefguides",
-      "docId": "dxonpremdraftverefguides",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
-      "root": "digital-release-notes.ditamap",
-      "srcId": "dxonpremdraftrelnotes",
-      "docId": "dxonpremdraftverelnotes",
       "indexRedirect": true
     },
     {
@@ -1771,98 +1427,98 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1140",
       "docId": "dxceam1140"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1140",
       "docId": "dxceclaims1140"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-qb-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1140",
       "docId": "dxceqb1140"
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1140",
       "docId": "dxpe1140"
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1140",
       "docId": "dxpeclaims1140"
     },
     {
       "buildType": "dita",
       "filter": "Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1140",
       "docId": "dxsre1140"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ve-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1140",
       "docId": "dxve1140"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1130",
       "docId": "dxceam1130"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1130",
       "docId": "dxceclaims1130"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-qb-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1130",
       "docId": "dxceqb1130"
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1130",
       "docId": "dxpe1130"
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1130",
       "docId": "dxpeclaims1130"
     },
     {
       "buildType": "dita",
       "filter": "Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1130",
       "docId": "dxsre1130"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ve-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
+      "srcId": "dx1130",
       "docId": "dxve1130"
     },
     {
@@ -1958,8 +1614,16 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "surepath.ditamap",
-      "srcId": "standards202103src",
+      "srcId": "standards202104src",
       "docId": "standardslatest",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standards202104src",
+      "docId": "standards202104",
       "indexRedirect": true
     },
     {
@@ -4488,6 +4152,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "ApplicationGuide20211x.ditamap",
+      "srcId": "in20211appsrc",
+      "docId": "in20211app",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20211x.ditamap",
       "srcId": "in20211bisrc",
       "docId": "in20211bi",
@@ -4989,6 +4661,11 @@
       "buildType": "yarn",
       "docId": "cc202104apiref",
       "srcId": "srcapiref202104"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "in20211apiref",
+      "srcId": "srcin20211apiref"
     },
     {
       "buildType": "yarn",
