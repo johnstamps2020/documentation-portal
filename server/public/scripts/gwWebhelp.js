@@ -311,17 +311,20 @@ async function sendFeedback(formId) {
     reportedIssues += '----------\n';
   }
 
-  const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
-  const emails = [];
-  if (creatorInfos.length > 0) {
+  function getPossibleContacts() {
+    const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
+    if (creatorInfos.length === 0) {
+      return undefined;
+    }
+    const emails = [];
     const pattern = /[A-z]*@guidewire.com/g;
-
     for (const creatorInfo of creatorInfos) {
       const matches = creatorInfo.content.matchAll(pattern);
       for (const match of matches) {
         emails.push(match[0]);
       }
     }
+    return emails;
   }
 
   const userCommentText = form.querySelector('textarea[name="userComment"]')
@@ -346,7 +349,7 @@ async function sendFeedback(formId) {
         Product: document.querySelector("meta[name = 'gw-product']")?.content,
         Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
         Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
-        'Possible contacts': emails,
+        'Possible contacts': getPossibleContacts(),
         'User comment': reportedIssues + userCommentText,
       },
       feedbackType: feedbackType,
@@ -481,7 +484,13 @@ async function toggleFeedbackForm(formId) {
 
   for (const thumb of thumbs) {
     thumb.classList.remove('selected');
-    if (thumb.classList.contains('feedbackButton' + feedbackType.charAt(0).toUpperCase() + feedbackType.slice(1))) {
+    if (
+      thumb.classList.contains(
+        'feedbackButton' +
+          feedbackType.charAt(0).toUpperCase() +
+          feedbackType.slice(1)
+      )
+    ) {
       thumb.classList.add('selected');
     }
   }
