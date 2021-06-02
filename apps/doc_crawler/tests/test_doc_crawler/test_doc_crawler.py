@@ -98,6 +98,7 @@ def test_exact_match(elastic_client):
                                 "query": search_phrase,
                                 "fields": ["title^12", "body"],
                                 "quote_field_suffix": ".exact",
+                                "default_operator": "AND",
                             },
                         },
                     }
@@ -121,14 +122,14 @@ def test_exact_match(elastic_client):
         assert no_search_results['hits']['total']['value'] == 0
 
     def test_number_of_matches():
-        search_string = 'com.guidewire.upgrade.steps.general.pl.TransformDocumentUpgradeStep'
+        search_string = 'upgrade.steps.general.pl.TransformDocumentUpgradeStep'
         exact_match_search_results = elastic_client.search(index=index_name,
                                                            body=prepare_search_query(search_string, True))
         regular_match_search_results = elastic_client.search(index=index_name,
                                                              body=prepare_search_query(search_string, False))
 
         assert regular_match_search_results['hits']['total']['value'] > exact_match_search_results['hits']['total'][
-            'value'] == 1
+            'value'] == 0
 
     test_matches_exist()
     test_matches_do_not_exist()

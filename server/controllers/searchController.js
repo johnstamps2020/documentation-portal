@@ -42,6 +42,7 @@ const runFilteredSearch = async (
           query: searchPhrase,
           fields: ['title^12', 'body'],
           quote_field_suffix: '.exact',
+          default_operator: 'AND',
         },
       },
     },
