@@ -90,16 +90,18 @@ def test_exact_match(elastic_client):
         if quoted_phrase:
             search_phrase = f"\"{search_phrase}\""
         return {
-            "query": {
-                "query_string": {
-                    "query": search_phrase,
-                    "fields": [
-                        "title^12",
-                        "body"
-                    ],
-                    "minimum_should_match": "95%"
-                }
-            }
+            "query":
+                {
+                    "bool": {
+                        "must": {
+                            "simple_query_string": {
+                                "query": search_phrase,
+                                "fields": ["title^12", "body"],
+                                "quote_field_suffix": ".exact",
+                            },
+                        },
+                    }
+                },
         }
 
     def test_matches_exist():
