@@ -19,12 +19,26 @@ class ElasticClient(Elasticsearch):
     main_index_settings = {
         "settings": {
             "analysis": {
+                "filter": {
+                    "english_stemmer": {
+                        "type": "stemmer",
+                        "language": "english"
+                    },
+                    "english_possessive_stemmer": {
+                        "type": "stemmer",
+                        "language": "possessive_english"
+                    }
+                },
                 "analyzer": {
                     "exact_match_analyzer": {
                         "type": "standard"
                     },
                     "general_match_analyzer": {
-                        "type": "simple"
+                        "tokenizer": "lowercase",
+                        "filter": [
+                            "english_stemmer",
+                            "english_possessive_stemmer"
+                        ]
                     }
                 }
             }
