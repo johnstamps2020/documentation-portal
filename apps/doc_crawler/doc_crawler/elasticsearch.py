@@ -52,16 +52,22 @@ class ElasticClient(Elasticsearch):
                 },
                 "body": {
                     "type": "text",
-                    "analyzer": "exact_match_analyzer",
-                    "search_analyzer": "general_match_analyzer",
-                    "search_quote_analyzer": "exact_match_analyzer"
+                    "analyzer": "general_match_analyzer",
+                    "fields": {
+                        "exact": {
+                            "type": "text",
+                            "analyzer": "exact_match_analyzer"
+                        }
+                    }
                 },
                 "title": {
                     "type": "text",
-                    "analyzer": "exact_match_analyzer",
-                    "search_analyzer": "general_match_analyzer",
-                    "search_quote_analyzer": "exact_match_analyzer",
+                    "analyzer": "general_match_analyzer",
                     "fields": {
+                        "exact": {
+                            "type": "text",
+                            "analyzer": "exact_match_analyzer"
+                        },
                         "raw": {
                             "type": "keyword"
                         }

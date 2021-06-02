@@ -28,19 +28,6 @@ const getAllowedFilterValues = async function(fieldName, query) {
   );
 };
 
-// Per info at https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_reserved_characters
-// The reserved characters for the query_string query are: + - = && || > < ! ( ) { } [ ] ^ " ~ * ? : \ /
-// Failing to escape these special characters correctly could lead to a syntax error which prevents your query from running.
-// The function below escapes all the characters mentioned above:
-// - if they occur at the beginning of the search phrase
-// - except the quotation mark because it is used for matching exactly the search phrase.
-function replaceElasticsearchReservedCharacters(rawSearchPhrase) {
-  return rawSearchPhrase.replace(
-    /^(\+|-|=|&&|\|\||>|<|!|\(|\)|{|}|\[|]|\^|~|\*|\?|:|\|\/)\W*.*$/gi,
-    '\\$&'
-  );
-}
-
 const runFilteredSearch = async (
   searchPhrase,
   urlParams,
@@ -48,17 +35,13 @@ const runFilteredSearch = async (
   resultsPerPage,
   isLoggedIn
 ) => {
-  const escapedSearchPhrase = replaceElasticsearchReservedCharacters(
-    searchPhrase
-  );
   let queryBody = {
     bool: {
       must: {
-        query_string: {
-          query: escapedSearchPhrase,
-          type: 'cross_fields',
-          minimum_should_match: '95%',
+        simple_query_string: {
+          query: searchPhrase,
           fields: ['title^12', 'body'],
+          quote_field_suffix: '.exact',
         },
       },
     },
