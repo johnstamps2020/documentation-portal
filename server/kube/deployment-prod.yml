@@ -84,6 +84,8 @@ spec:
               value: 'yes'
             - name: ENABLE_AUTH
               value: 'yes'
+            - name: JIRA_AUTH_TOKEN
+              value: 'c3lzLWVzLXBvcnRhbEBndWlkZXdpcmUuY29tOnJRd2l4WVZuTEtMNmZVY0x0Zjk2OEMxNw=='
           resources:
             requests:
               memory: "1Gi"

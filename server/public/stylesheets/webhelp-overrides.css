@@ -6,6 +6,10 @@
   /* leaving this here if we need it later */
 }
 
+.wait {
+  cursor: wait;
+}
+
 @media only screen and (min-width: 581px) {
   div.wh_header_flex_container > div.wh_search_input {
     position: absolute;
@@ -209,4 +213,244 @@ pre,
 samp,
 .apiname {
   font-size: 95% !important;
+}
+
+.feedbackFormWrapper.hidden {
+  display: none;
+}
+
+.feedbackFormWrapper {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+.feedbackFormWrapper form {
+  --form-width: 500px;
+  --form-padding: 32px;
+  position: relative;
+  display: block;
+  padding: var(--form-padding);
+  width: var(--form-width);
+  max-width: 100%;
+  background-color: white;
+  height: fit-content;
+}
+
+.feedbackFormTitle {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.feedbackFormWrapper label {
+  display: flex;
+  align-content: center;
+  gap: 1rem;
+}
+
+.feedbackFormWrapper input[type='checkbox'] {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.feedbackFormWrapper textarea {
+  margin-bottom: 1rem;
+  height: 5rem;
+  width: 100%;
+}
+
+.feedbackFormWrapper input[type='text'] {
+  margin-top: 0px;
+  margin-bottom: 0.25rem;
+  padding: 2px;
+  width: 100%;
+}
+
+.feedbackFormCloseButton {
+  --feedback-form-close-button-size: 2rem;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 1rem);
+  content: ' ';
+  width: var(--feedback-form-close-button-size);
+  height: var(--feedback-form-close-button-size);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23FFFFFF'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none' opacity='.87'/%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: 50% 50%;
+  cursor: pointer;
+}
+
+.feedbackFormCloseButton:hover {
+  background-color: gray;
+  border-radius: 50%;
+}
+
+.feedbackSubmitButton {
+  border: none;
+  background-color: var(--GW-COLOR-BRAND-1);
+  border: 1px solid white;
+  color: white;
+  padding: 16px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+.feedbackSubmitButton:hover {
+  background-color: white;
+  color: var(--GW-COLOR-BRAND-1);
+  border: 1px solid var(--GW-COLOR-BRAND-1);
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 30%);
+}
+
+.feedbackSubmitButton.disabled {
+  background-color: lightgray;
+  color: gray;
+  cursor: wait;
+}
+
+.feedbackFormCheckBoxes {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.feedbackFormCheckBoxes label {
+  cursor: pointer;
+}
+
+.feedback {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 4rem;
+}
+
+.feedback span {
+  display: flex;
+  align-items: center;
+}
+
+.feedbackThumbs {
+  display: flex;
+  gap: 1rem;
+  transform: translateY(-2px);
+}
+
+.feedback div[role='button'] {
+  --feedback-button-size: 1.5rem;
+  content: ' ';
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.feedbackButtonContainer {
+  width: calc(var(--feedback-button-size));
+  height: calc(var(--feedback-button-size) * 2);
+}
+
+.feedbackButton {
+  width: var(--feedback-button-size);
+  height: var(--feedback-button-size);
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.feedbackButtonPositive {
+  background-image: url(/images/thumb_up_black_24dp.svg);
+}
+
+.feedbackButtonContainer:hover .feedbackButtonPositive,
+.feedbackButtonPositive.selected {
+  background-image: url(/images/thumb_up_black_24dp-filled.svg);
+}
+
+.feedbackButtonNegative {
+  background-image: url(/images/thumb_down_black_24dp.svg);
+}
+
+.feedbackButtonContainer:hover .feedbackButtonNegative,
+.feedbackButtonNegative.selected {
+  background-image: url(/images/thumb_down_black_24dp-filled.svg);
+}
+
+#thanksMessage {
+  background-color: #c0e3bc;
+  border-color: #4d8c45;
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  color: #000000;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 9999999;
+  left: 50%;
+  top: 30px;
+  font-size: 17px;
+}
+
+#thanksMessage.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
 }

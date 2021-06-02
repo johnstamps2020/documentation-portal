@@ -1,3 +1,12 @@
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+gtag('config', 'G-QRTVTBY678');
+
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
@@ -260,6 +269,260 @@ async function addCustomElements() {
   }
 }
 
+function hideElement(elementId) {
+  const element = document.getElementById(elementId);
+  if (!element.classList.contains('hidden')) {
+    element.classList.add('hidden');
+  }
+}
+
+function closeForm(formId) {
+  hideElement(formId);
+  showThanksMessage();
+}
+
+async function sendFeedback(formId) {
+  const form = document.getElementById(formId);
+  const submitButton = form.querySelector('.feedbackSubmitButton');
+  const body = document.body;
+
+  let checkboxes = [];
+  let selectedCheckboxes = [];
+  const feedbackType = formId.includes('negative') ? 'negative' : 'positive';
+  if (feedbackType === 'negative') {
+    checkboxes = document
+      .getElementById('negativeFeedbackForm')
+      .querySelector('div[class="feedbackFormCheckBoxes"]')
+      .querySelectorAll('label');
+
+    for (const checkbox of checkboxes) {
+      if (checkbox.querySelector('input:checked')) {
+        selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
+      }
+    }
+  }
+
+  let reportedIssues = '';
+  if (selectedCheckboxes.length > 0) {
+    reportedIssues += '\n----------\n';
+    for (const box of selectedCheckboxes) {
+      reportedIssues += `[X] ${box}\n`;
+    }
+    reportedIssues += '----------\n';
+  }
+
+  function getPossibleContacts() {
+    const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
+    if (creatorInfos.length === 0) {
+      return undefined;
+    }
+    const emails = [];
+    const pattern = /[A-z]*@guidewire.com/g;
+    for (const creatorInfo of creatorInfos) {
+      const matches = creatorInfo.content.matchAll(pattern);
+      for (const match of matches) {
+        emails.push(match[0]);
+      }
+    }
+    return emails;
+  }
+
+  const userCommentText = form.querySelector('textarea[name="userComment"]')
+    ?.value;
+  if (userCommentText || selectedCheckboxes.length > 0) {
+    submitButton.classList.add('disabled');
+    submitButton.removeAttribute('onclick');
+    body.classList.add('wait');
+    const feedbackRequest = {
+      summaryText:
+        'User feedback: ' + document.querySelector('title').innerHTML,
+      descriptionText: {
+        //The key is also the label
+        'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
+        'Reported by': form.querySelector('input[name="user"]')?.value,
+        'Originating URL': window.location.href,
+        'Source path': document.querySelector(
+          "meta[name = 'wh-source-relpath']"
+        )?.content,
+        'Topic ID': document.querySelector('body').id?.content,
+        Version: document.querySelector("meta[name = 'gw-version']")?.content,
+        Product: document.querySelector("meta[name = 'gw-product']")?.content,
+        Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
+        Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
+        'Possible contacts': getPossibleContacts(),
+        'User comment': reportedIssues + userCommentText,
+      },
+      feedbackType: feedbackType,
+    };
+
+    const descriptionText = feedbackRequest.descriptionText;
+    let cleanDescriptionText = {};
+    Object.keys(descriptionText).forEach(prop => {
+      if (descriptionText[prop] && descriptionText[prop] !== 'undefined') {
+        cleanDescriptionText[prop] = descriptionText[prop];
+      }
+    });
+
+    feedbackRequest.descriptionText = cleanDescriptionText;
+
+    const result = await fetch('/jira', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(feedbackRequest),
+    });
+
+    body.classList.remove('wait');
+    submitButton.classList.remove('disabled');
+    submitButton.setAttribute(
+      'onclick',
+      "sendFeedback('" + formId + "', '" + feedbackType + "')"
+    );
+    closeForm(formId);
+
+    return result;
+  } else {
+    closeForm(formId);
+  }
+}
+
+function renderForm(feedbackType, email) {
+  const formWrapperId = `${feedbackType.toLowerCase()}Feedback`;
+  const formId = `${feedbackType.toLowerCase()}FeedbackForm`;
+  const commentBox = `<div>Your comment:</div>
+  <textarea name="userComment"></textarea>`;
+  const username = `<div>Your email:</div>
+  <input name="user" type="text" value="${email}"/>
+  <div>Leave this field empty if you want to stay anonymous</div>`;
+  const submitButton = `<div role="button" onClick="sendFeedback('${formWrapperId}')"
+                       class="feedbackSubmitButton">Submit</div>`;
+  const closeButton = `<div role="button" aria-label="Close" onClick="closeForm('${formWrapperId}')" class="feedbackFormCloseButton"></div>`;
+
+  const formWrapper = document.createElement('div');
+  formWrapper.setAttribute('id', formWrapperId);
+  formWrapper.setAttribute('class', 'feedbackFormWrapper');
+  const feedbackForm = document.createElement('form');
+  feedbackForm.setAttribute('id', formId);
+  formWrapper.append(feedbackForm);
+
+  if (feedbackType === 'positive') {
+    feedbackForm.innerHTML =
+      `<div class="feedbackFormTitle">Thanks. We have recorded your vote. Anything more to tell us?</div>` +
+      commentBox +
+      username +
+      submitButton +
+      closeButton;
+  } else if (feedbackType === 'negative') {
+    feedbackForm.innerHTML =
+      `<div class="feedbackFormTitle">Thanks. We have recorded your vote. Please let us know how we can improve this content.</div>` +
+      `<div class="feedbackFormCheckBoxes">
+    <label>
+      <input type="checkbox" name="missing" />
+      <span>Some information is incorrect or missing</span>
+    </label>
+    <label>
+      <input type="checkbox" name="graphics" />
+      <span>More graphics or examples would be helpful</span>
+    </label>
+    <label>
+      <input type="checkbox" name="typos" />
+      <span>There are typos</span>
+    </label>
+    <label>
+      <input type="checkbox" name="broken" />
+      <span>Some links are broken</span>
+    </label>
+    <label>
+      <input type="checkbox" name="other" />
+      <span>Other</span>
+    </label>
+  </div>` +
+      commentBox +
+      username +
+      submitButton +
+      closeButton;
+  }
+
+  return formWrapper;
+}
+
+function renderThanksMessage() {
+  const thanksMessageWrapper = document.createElement('div');
+  thanksMessageWrapper.setAttribute('id', 'thanksMessage');
+  thanksMessageWrapper.innerHTML = `
+        <div>Thank you for your feedback!</div>
+    `;
+  return thanksMessageWrapper;
+}
+
+function showThanksMessage() {
+  const thanksMessage = document.getElementById('thanksMessage');
+  thanksMessage.className = 'show';
+  setTimeout(function() {
+    thanksMessage.classList.remove('show');
+  }, 3000);
+}
+
+async function toggleFeedbackForm(formId) {
+  const form = document.getElementById(formId);
+  const feedbackType = formId.includes('negative') ? 'negative' : 'positive';
+  const response = await fetch('/userInformation');
+  const { preferred_username } = await response.json();
+  gtag('event', 'user_feedback', {
+    feedback_type: feedbackType,
+  });
+
+  if (!form) {
+    const body = document.querySelector('body');
+    body.appendChild(renderForm(feedbackType, preferred_username));
+  } else {
+    form.classList.remove('hidden');
+  }
+
+  const thumbs = document.querySelectorAll('.feedbackButton');
+
+  for (const thumb of thumbs) {
+    thumb.classList.remove('selected');
+    if (
+      thumb.classList.contains(
+        'feedbackButton' +
+          feedbackType.charAt(0).toUpperCase() +
+          feedbackType.slice(1)
+      )
+    ) {
+      thumb.classList.add('selected');
+    }
+  }
+}
+
+async function addFeedbackElements() {
+  const feedbackButtons = document.createElement('div');
+  feedbackButtons.setAttribute('class', 'feedback');
+  feedbackButtons.innerHTML = `
+    <span>Was
+    this
+    page
+    helpful ?
+</span>
+<div class="feedbackThumbs">
+<div role="button" aria-label="This topic was helpful" title="This topic was helpful" class="feedbackButtonContainer" onclick="toggleFeedbackForm('positiveFeedback')">
+<div class="feedbackButton feedbackButtonPositive"></div>
+</div>
+<div role="button" aria-label="This topic needs improvement" title="This topic needs improvement" class="feedbackButtonContainer" onclick="toggleFeedbackForm('negativeFeedback')">
+<div class="feedbackButton feedbackButtonNegative"></div>
+</div>
+</div>
+`;
+
+  const topicBody = document.getElementById('wh_topic_body');
+  if (topicBody) {
+    topicBody.appendChild(feedbackButtons);
+  }
+  const body = document.querySelector('body');
+  body.appendChild(renderThanksMessage());
+}
+
 docReady(async function() {
   await createContainerForCustomHeaderElements();
   addCustomElements();
@@ -269,4 +532,5 @@ docReady(async function() {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
   }
+  addFeedbackElements();
 });

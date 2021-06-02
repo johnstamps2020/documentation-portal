@@ -1,0 +1,86 @@
+const fetch = require('node-fetch');
+
+function getParas(items) {
+  const textBlocks = [];
+  items.forEach(item => {
+    item.split('\n').forEach(block => {
+      if (block.length > 0) {
+        textBlocks.push({
+          type: 'paragraph',
+          content: [
+            {
+              text: block,
+              type: 'text',
+            },
+          ],
+        });
+      }
+    });
+  });
+
+  return textBlocks;
+}
+
+function makeSafe(string) {
+  return string.replace(/"/g, "'");
+}
+
+async function sendJiraRequest(requestBody) {
+  const { summaryText, descriptionText, feedbackType } = requestBody;
+
+  let descriptionItems = [];
+  for (const [label, value] of Object.entries(descriptionText)) {
+    descriptionItems.push(`${label}: ${value}`);
+  }
+
+  const description = getParas(descriptionItems);
+  const feedbackLabel = feedbackType === 'negative' ? 'critique' : 'kudos';
+
+  const bodyData = {
+    fields: {
+      project: {
+        key: 'DOCS',
+      },
+      labels: ['feedback-from-doc-site', `${feedbackLabel}-feedback`],
+      summary: makeSafe(summaryText),
+      description: {
+        type: 'doc',
+        version: 1,
+        content: description,
+      },
+      issuetype: {
+        name: 'User Story',
+      },
+      components: [
+        {
+          id: '12320',
+        },
+      ],
+    },
+  };
+
+  let result;
+
+  await fetch('https://guidewirejira.atlassian.net/rest/api/3/issue', {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${process.env.JIRA_AUTH_TOKEN}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(bodyData),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      result = json;
+    })
+    .catch(err => {
+      result = err;
+    });
+
+  return result;
+}
+
+module.exports = { sendJiraRequest };
