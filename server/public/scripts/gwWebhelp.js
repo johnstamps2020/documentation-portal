@@ -302,14 +302,17 @@ async function sendFeedback(formId) {
     }
   }
 
-  let reportedIssues = '';
-  if (selectedCheckboxes.length > 0) {
-    reportedIssues += '\n----------\n';
-    for (const box of selectedCheckboxes) {
-      reportedIssues += `[X] ${box}\n`;
+  function getReportedIssues() {
+    if (selectedCheckboxes.length === 0) {
+      return undefined;
     }
-    reportedIssues += '----------\n';
+    let reportedIssues = [];
+    for (const box of selectedCheckboxes) {
+      reportedIssues.push(box);
+    }
+    return reportedIssues;
   }
+  
 
   function getPossibleContacts() {
     const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
@@ -338,19 +341,20 @@ async function sendFeedback(formId) {
         'User feedback: ' + document.querySelector('title').innerHTML,
       descriptionText: {
         //The key is also the label
-        'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
-        'Reported by': form.querySelector('input[name="user"]')?.value,
-        'Originating URL': window.location.href,
-        'Source path': document.querySelector(
+        Product: document.querySelector("meta[name = 'gw-product']")?.content,
+        Version: document.querySelector("meta[name = 'gw-version']")?.content,
+        Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
+        Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
+        'URL': window.location.href,
+        'Source file (parent if chunked or nested)': document.querySelector(
           "meta[name = 'wh-source-relpath']"
         )?.content,
         'Topic ID': document.querySelector('body').id?.content,
-        Version: document.querySelector("meta[name = 'gw-version']")?.content,
-        Product: document.querySelector("meta[name = 'gw-product']")?.content,
-        Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-        Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
+        'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
+        'Reported issues': getReportedIssues(),
+        'Comment': userCommentText,
+        'Reported by': form.querySelector('input[name="user"]')?.value,
         'Possible contacts': getPossibleContacts(),
-        'User comment': reportedIssues + userCommentText,
       },
       feedbackType: feedbackType,
     };

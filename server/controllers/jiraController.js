@@ -5,15 +5,170 @@ function getParas(items) {
   items.forEach(item => {
     item.split('\n').forEach(block => {
       if (block.length > 0) {
-        textBlocks.push({
-          type: 'paragraph',
-          content: [
-            {
-              text: block,
-              type: 'text',
-            },
-          ],
-        });
+        if (block.startsWith('URL')) {
+          block = block.substring(block.indexOf(' ') + 1);
+          textBlocks.push({
+            type: 'paragraph',
+            content: [
+              {
+                text: 'URL: ',
+                type: 'text',
+                marks: [
+                  {
+                    type: 'strong'
+                  }
+                ]
+              },
+              {
+                text: block,
+                type: 'text',
+                marks: [
+                  {
+                    type: 'link',
+                    attrs: {
+                      href: block
+                    }
+                  }
+                ]
+              },
+            ],
+          });
+        }
+        else if (block.startsWith('Reported issues')) {
+          textBlocks.push({
+            type: 'paragraph',
+            content: [
+              {
+                text: 'Reported issues: ',
+                type: 'text',
+                marks: [
+                  {
+                    type: 'strong'
+                  }
+                ]
+              },
+            ],
+          });
+          
+          block = block.substring(block.indexOf(': ') + 2);
+          const issues = block.split(',');
+          const listItems = [];
+          for(const issue of issues) {
+            listItems.push({
+              type: 'listItem',
+              content: [
+                {
+                  type: 'paragraph',
+                  content: [
+                    {
+                      type: 'text',
+                      text: issue
+                    }
+                  ]
+                }
+              ]
+            });
+          }
+          textBlocks.push({
+            type: 'bulletList',
+            content: listItems
+          });    
+        }
+        else if (block.startsWith('Possible contacts')) {
+          textBlocks.push({
+            type: 'paragraph',
+            content: [
+              {
+                text: 'Possible contacts: ',
+                type: 'text',
+              },
+            ],
+          });
+          
+          block = block.substring(block.indexOf(': ') + 2);
+          const contacts = block.split(',');
+          const listItems = [];
+          for(const contact of contacts) {
+            listItems.push({
+              type: 'listItem',
+              content: [
+                {
+                  type: 'paragraph',
+                  content: [
+                    {
+                      type: 'text',
+                      text: contact,
+                      marks: [
+                        {
+                          type: 'link',
+                          attrs: {
+                            href: 'mailto:' + contact,
+                            title: contact
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            });
+          }
+          textBlocks.push({
+            type: 'bulletList',
+            content: listItems
+          });    
+        }
+        else if (block.startsWith('Reported by')) {
+          const email = block.substring(block.indexOf(': ') + 2);
+          textBlocks.push({
+            type: 'paragraph',
+            content: [
+              {
+                text: 'Reported by: ',
+                type: 'text',
+                marks: [
+                  {
+                    type: 'strong'
+                  }
+                ]
+              },
+              {
+                text: email,
+                type: 'text',
+                marks: [
+                  {
+                    type: 'link',
+                    attrs: {
+                      href: 'mailto:' + email
+                    }
+                  }
+                ]
+              },
+            ],
+          }); 
+        }
+        else {
+          const identifier = block.substring(0, block.indexOf(': '));  
+          const data = block.substring(block.indexOf(': '));
+          textBlocks.push({
+            type: 'paragraph',
+            content: [
+              {
+                text: identifier,
+                type: 'text',
+                marks: [
+                  {
+                    type: 'strong'
+                  }
+                ]
+              },
+              {
+                text: data,
+                type: 'text'
+              },
+            ],
+          });
+        }
       }
     });
   });
