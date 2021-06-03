@@ -39,6 +39,13 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git"
     },
     {
+      "id": "isupgradeguide1012src",
+      "title": "InsuranceSuite Upgrade Guide 10.1.2",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/10.1.2"
+    },
+    {
       "id": "isupgradeguide1011src",
       "title": "InsuranceSuite Upgrade Guide 10.1.1",
       "sourceType": "git",
@@ -3240,6 +3247,19 @@
       "title": "Guidewire Cloud Console",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git"
+    },
+    {
+      "id": "selfmanagedis1012src",
+      "title": "InsuranceSuite 10.1.2",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.1.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1012/_supermap-1012.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
     },
     {
       "id": "selfmanagedis1011src",
