@@ -1063,6 +1063,19 @@
       ]
     },
     {
+      "id": "is9010",
+      "title": "InsuranceSuite OnPrem 9.0.10",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
+      "branch": "9.0.10",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/9.x/releases/9010/_supermap-9x-active.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+      ]
+    },
+    {
       "id": "is909",
       "title": "InsuranceSuite OnPrem 9.0.9",
       "sourceType": "xdocs",
