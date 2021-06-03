@@ -330,8 +330,15 @@ async function sendFeedback(formId) {
     return emails;
   }
 
-  const userCommentText = form.querySelector('textarea[name="userComment"]')
+  let userCommentText = form.querySelector('textarea[name="userComment"]')
     ?.value;
+  if(userCommentText.length > 0) {
+    // remove duplicate \n and then replace with 0x0A, which we undo in jiraController.js.
+    // this gets the comment through since we tokenize on \n.
+    userCommentText = userCommentText.replace(/(\n)\1{1,}/g, '$1');
+    userCommentText = userCommentText.replace(/\n/g, '0x0A');
+  }
+
   if (userCommentText || selectedCheckboxes.length > 0) {
     submitButton.classList.add('disabled');
     submitButton.removeAttribute('onclick');

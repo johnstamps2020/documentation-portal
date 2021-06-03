@@ -11,13 +11,17 @@ function getParas(items) {
             type: 'paragraph',
             content: [
               {
-                text: 'URL: ',
+                text: 'URL',
                 type: 'text',
                 marks: [
                   {
                     type: 'strong'
                   }
                 ]
+              },
+              {
+                text: ': ',
+                type: 'text'
               },
               {
                 text: block,
@@ -39,13 +43,17 @@ function getParas(items) {
             type: 'paragraph',
             content: [
               {
-                text: 'Reported issues: ',
+                text: 'Reported issues',
                 type: 'text',
                 marks: [
                   {
                     type: 'strong'
                   }
                 ]
+              },
+              {
+                text: ':',
+                type: 'text'
               },
             ],
           });
@@ -79,13 +87,17 @@ function getParas(items) {
             type: 'paragraph',
             content: [
               {
-                text: 'Possible contacts: ',
+                text: 'Possible contacts',
                 type: 'text',
                 marks: [
                   {
                     type: 'strong'
                   }
                 ]
+              },
+              {
+                text: ':',
+                type: 'text'
               },
             ],
           });
@@ -129,13 +141,17 @@ function getParas(items) {
             type: 'paragraph',
             content: [
               {
-                text: 'Reported by: ',
+                text: 'Reported by',
                 type: 'text',
                 marks: [
                   {
                     type: 'strong'
                   }
                 ]
+              },
+              {
+                text: ': ',
+                type: 'text'
               },
               {
                 text: email,
@@ -150,6 +166,42 @@ function getParas(items) {
                 ]
               },
             ],
+          }); 
+        }
+        else if (block.startsWith('Comment')) {
+          let comment = block.substring(block.indexOf(': ') + 2);
+          comment = comment.replace(/0x0A/g, '\n');
+          textBlocks.push({
+            type: 'paragraph',
+            content: [
+              {
+                text: 'Comment',
+                type: 'text',
+                marks: [
+                  {
+                    type: 'strong'
+                  }
+                ]
+              },
+              {
+                text: ': ',
+                type: 'text'
+              }
+            ],
+          }); 
+          textBlocks.push({
+            type: 'blockquote',
+            content: [
+              {
+                type: 'paragraph',
+                content: [
+                  {
+                    text: comment,
+                    type: 'text'
+                  }
+                ]
+              }
+            ]
           }); 
         }
         else {
