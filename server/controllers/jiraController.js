@@ -81,6 +81,11 @@ function getParas(items) {
               {
                 text: 'Possible contacts: ',
                 type: 'text',
+                marks: [
+                  {
+                    type: 'strong'
+                  }
+                ]
               },
             ],
           });
