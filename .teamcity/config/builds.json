@@ -1674,6 +1674,20 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "GuidewireCloud.ditamap",
+      "srcId": "gchhelpsrc",
+      "docId": "gchhelpdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GuidewireCloud.ditamap",
+      "srcId": "gchhelpsrc",
+      "docId": "gchhelprelease"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpdraftsrc",
       "docId": "configmgrhelpdraft"
     },

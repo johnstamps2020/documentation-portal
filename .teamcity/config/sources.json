@@ -1797,6 +1797,17 @@
       ]
     },
     {
+      "id": "gchhelpsrc",
+      "title": "Guidewire Cloud Home Help",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
+      "xdocsPathIds": [
+        "/Content/doc/help/GCH/GuidewireCloud.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
       "id": "configmgrhelpdraftsrc",
       "title": "Configuration Manager Help Draft",
       "sourceType": "git",
