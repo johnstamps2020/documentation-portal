@@ -3940,7 +3940,8 @@
       "url": "help/GCH",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Home"]
+        "product": ["Guidewire Cloud Home"],
+        "version": ["draft"]
       },
       "displayOnLandingPages": false,
       "environments": ["int"],
@@ -3953,7 +3954,8 @@
       "url": "help/GCH",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Home"]
+        "product": ["Guidewire Cloud Home"],
+        "version": ["latest"]
       },
       "displayOnLandingPages": false,
       "environments": ["dev", "staging", "prod"],
