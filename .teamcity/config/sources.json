@@ -1800,7 +1800,7 @@
       "id": "gchhelpsrc",
       "title": "Guidewire Cloud Home Help",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gch-help.git",
       "xdocsPathIds": [
         "/Content/doc/help/GCH/GuidewireCloud.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
