@@ -543,5 +543,5 @@ docReady(async function() {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
   }
-  addFeedbackElements();
+  // addFeedbackElements();
 });
