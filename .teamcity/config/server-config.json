@@ -3963,21 +3963,6 @@
       "public": false
     },
     {
-      "id": "configmgrhelpdraft",
-      "title": "Configuration Manager Help",
-      "url": "help/cortina/configuration-manager",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Configuration Manager"],
-        "version": ["latest"],
-        "release": ["Cortina"]
-      },
-      "displayOnLandingPages": false,
-      "environments": ["int"],
-      "indexForSearch": false,
-      "public": false
-    },
-    {
       "id": "configmgrhelpcortina",
       "title": "Configuration Manager Help",
       "url": "help/cortina/configuration-manager",

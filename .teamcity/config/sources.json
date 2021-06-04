@@ -1808,17 +1808,6 @@
       ]
     },
     {
-      "id": "configmgrhelpdraftsrc",
-      "title": "Configuration Manager Help Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
-      "xdocsPathIds": [
-        "/Content/doc/help/guidewireCloud/cortina/GuidewireCloud.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
       "id": "configmgrhelpcortinasrc",
       "title": "Configuration Manager Help Cortina",
       "sourceType": "git",

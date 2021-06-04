@@ -1686,13 +1686,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "GuidewireCloud.ditamap",
-      "srcId": "configmgrhelpdraftsrc",
-      "docId": "configmgrhelpdraft"
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpcortinasrc",
