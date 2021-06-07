@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'intPolicyCenterforGuidewireC
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("intPolicyCenterforGuidewireCloud202011ispc202011releasenotes")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Upload generated content to the S3 bucket"

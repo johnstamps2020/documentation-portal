@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'devJutroDesignSystem411jutro
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("devJutroDesignSystem411jutro411")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Upload generated content to the S3 bucket"

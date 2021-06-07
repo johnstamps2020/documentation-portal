@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'stagingInfoCenter1040ic1040'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("stagingInfoCenter1040ic1040")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Upload generated content to the S3 bucket"

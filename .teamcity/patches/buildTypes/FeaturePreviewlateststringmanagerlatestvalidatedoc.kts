@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'FeaturePreviewlateststringma
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("FeaturePreviewlateststringmanagerlatestvalidatedoc")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Get document details"

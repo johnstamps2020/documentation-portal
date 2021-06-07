@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'devClaimCenterforGuidewireCl
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("devClaimCenterforGuidewireCloud202011cc202011apiref")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Upload generated content to the S3 bucket"

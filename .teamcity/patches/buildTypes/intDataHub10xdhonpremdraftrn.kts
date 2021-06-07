@@ -10,11 +10,6 @@ To apply the patch, change the buildType with id = 'intDataHub10xdhonpremdraftrn
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("intDataHub10xdhonpremdraftrn")) {
-    check(paused == false) {
-        "Unexpected paused: '$paused'"
-    }
-    paused = true
-
     expectSteps {
         script {
             name = "Upload generated content to the S3 bucket"
