@@ -2100,7 +2100,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/business-analytics/active/m_relNotes.ditamap",
+        "/Content/doc/data-analytics/cloud/explore/active/m_relNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
@@ -2111,7 +2111,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/business-analytics/active/m_cloud-usingExplore.ditamap",
+        "/Content/doc/data-analytics/cloud/explore/active/m_cloud-usingExplore.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
@@ -2122,7 +2122,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/business-analytics/active/m_dataDictionaries.ditamap",
+        "/Content/doc/data-analytics/cloud/explore/active/m_dataDictionaries.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
