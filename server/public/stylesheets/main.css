@@ -547,6 +547,7 @@ div.pageHero {
   outline-style: none;
   outline-width: 0;
   text-align: center;
+  white-space: nowrap;
   padding: 0 1.25rem;
   text-decoration: none;
   font-size: 0.875rem;
