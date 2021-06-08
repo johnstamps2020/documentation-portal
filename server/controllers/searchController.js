@@ -3,7 +3,24 @@ const { Client } = require('@elastic/elasticsearch');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 
-const getAllowedFilterValues = async function(fieldName, query) {
+async function getFieldMappings() {
+  const mappingResults = await elasticClient.indices.getMapping({
+    index: searchIndexName,
+  });
+  return mappingResults.body[searchIndexName].mappings.properties;
+}
+
+function getFiltersFromUrl(fieldMappings, queryParams) {
+  let filtersFromUrl = {};
+  for (const param in queryParams) {
+    if (fieldMappings[param] && fieldMappings[param].type === 'keyword') {
+      filtersFromUrl[param] = decodeURI(queryParams[param]).split(',');
+    }
+  }
+  return filtersFromUrl;
+}
+
+async function getAllowedFilterValues(fieldName, query) {
   const requestBody = {
     index: searchIndexName,
     size: 0,
@@ -26,72 +43,18 @@ const getAllowedFilterValues = async function(fieldName, query) {
       return { label: bucket.key, doc_count: bucket.doc_count };
     }
   );
-};
+}
 
-const runFilteredSearch = async (
-  searchPhrase,
-  urlParams,
-  startIndex,
-  resultsPerPage,
-  isLoggedIn
-) => {
-  let queryBody = {
-    bool: {
-      must: {
-        simple_query_string: {
-          query: searchPhrase,
-          fields: ['title^12', 'body'],
-          quote_field_suffix: '.exact',
-          default_operator: 'AND',
-        },
-      },
-    },
-  };
-
-  const mappingResults = await elasticClient.indices.getMapping({
-    index: searchIndexName,
-  });
-
-  const mappings = mappingResults.body[searchIndexName].mappings.properties;
-
-  let selectedFilters = [];
-
-  if (!isLoggedIn) {
-    selectedFilters.push({
-      term: {
-        public: true,
-      },
-    });
-  }
-
-  for (const param in urlParams) {
-    if (mappings[param] && mappings[param].type == 'keyword') {
-      const values = decodeURI(urlParams[param]).split(',');
-      const queryFilter = {
-        terms: {
-          [param]: values,
-        },
-      };
-      selectedFilters.push(queryFilter);
-    }
-  }
-
-  if (selectedFilters.length > 0) {
-    queryBody.bool.filter = selectedFilters;
-  }
-
+async function getFiltersWithValues(fieldMappings, urlFilters, query) {
   let filtersWithValues = [];
-  for (const key in mappings) {
-    if (mappings[key].type === 'keyword') {
-      const allowedFilterValues = await getAllowedFilterValues(key, queryBody);
+  for (const key in fieldMappings) {
+    if (fieldMappings[key].type === 'keyword') {
+      const allowedFilterValues = await getAllowedFilterValues(key, query);
       const filterValuesWithStates = allowedFilterValues.map(value => {
-        const checked = decodeURI(urlParams[key])
-          .split(',')
-          .includes(value.label);
         return {
           label: value.label,
           doc_count: value.doc_count,
-          checked: checked,
+          checked: urlFilters[key]?.includes(value.label),
         };
       });
       filtersWithValues.push({
@@ -100,7 +63,10 @@ const runFilteredSearch = async (
       });
     }
   }
+  return filtersWithValues;
+}
 
+async function runSearch(queryBody, startIndex, resultsPerPage) {
   const searchResults = await elasticClient.search({
     index: searchIndexName,
     from: startIndex,
@@ -122,29 +88,61 @@ const runFilteredSearch = async (
   return {
     numberOfHits: searchResults.body.hits.total.value,
     hits: searchResults.body.hits.hits,
-    filters: filtersWithValues,
   };
-};
+}
 
-const searchController = async (req, res, next) => {
+async function searchController(req, res, next) {
   try {
-    const searchPhrase = decodeURI(req.query.q);
-    let resultsPerPage = 10;
-    if (req.query.pagination) {
-      resultsPerPage = req.query.pagination;
-    }
+    const urlQueryParameters = req.query;
+    const searchPhrase = decodeURI(urlQueryParameters.q);
+    const resultsPerPage = req.query.pagination || 10;
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
-    const results = await runFilteredSearch(
-      searchPhrase,
-      req.query,
-      startIndex,
-      resultsPerPage,
-      req.isAuthenticated() || process.env.ENABLE_AUTH === 'no'
+    const userIsLoggedIn =
+      req.isAuthenticated() || process.env.ENABLE_AUTH === 'no';
+
+    const mappings = await getFieldMappings();
+    const filtersFromUrl = getFiltersFromUrl(mappings, urlQueryParameters);
+
+    const queryBody = {
+      bool: {
+        must: {
+          simple_query_string: {
+            query: searchPhrase,
+            fields: ['title^12', 'body'],
+            quote_field_suffix: '.exact',
+            default_operator: 'AND',
+          },
+        },
+      },
+    };
+
+    if (filtersFromUrl) {
+      let queryFilters = [];
+      for (const [key, value] of Object.entries(filtersFromUrl)) {
+        queryFilters.push({
+          terms: {
+            [key]: value,
+          },
+        });
+      }
+      if (!userIsLoggedIn) {
+        queryFilters.push({
+          term: {
+            public: true,
+          },
+        });
+      }
+      queryBody.bool.filter = queryFilters;
+    }
+
+    const filters = await getFiltersWithValues(
+      mappings,
+      filtersFromUrl,
+      queryBody
     );
 
-    const filters = results.filters;
-
+    const results = await runSearch(queryBody, startIndex, resultsPerPage);
     const totalNumOfResults = results.numberOfHits;
 
     const resultsToDisplay = results.hits.map(result => {
@@ -156,19 +154,14 @@ const searchController = async (req, res, next) => {
         }
       }
 
-      const getBlurb = body => {
-        if (body) {
-          return body.substr(0, 300) + '...';
-        }
-        return '';
-      };
+      const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
 
       return {
         href: doc.href,
         score: result._score,
         title: doc.title,
         version: doc.version.join(', '),
-        body: getBlurb(doc.body),
+        body: bodyBlurb,
         docTags: docTags,
         inner_hits: result.inner_hits.same_title.hits.hits,
       };
@@ -202,6 +195,6 @@ const searchController = async (req, res, next) => {
     console.error(err);
     next(err);
   }
-};
+}
 
 module.exports = searchController;
