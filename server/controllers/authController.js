@@ -21,8 +21,7 @@ const majorOpenRoutes = [
   '/product',
   '/alive',
   '/userInformation',
-  '/safeConfig',
-  '/developerResources',
+  '/safeConfig'
 ];
 
 const authGateway = async (req, res, next) => {
