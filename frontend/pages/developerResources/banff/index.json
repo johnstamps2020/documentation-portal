@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Developer resources",
+  "title": "Developer Resources",
   "template": "page.j2",
   "class": "blue-theme banff threeCards",
   "selector": {
