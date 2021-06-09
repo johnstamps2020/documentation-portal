@@ -18,11 +18,6 @@
       "label": "ClaimCenter API reference",
       "class": "productFamily cardShadow",
       "id": "cc202011apiref"
-    },
-    {
-      "label": "Guidewire Cloud Standards",
-      "class": "productFamily cardShadow",
-      "page": "/cloud/standards/latest"
     }
   ]
 }

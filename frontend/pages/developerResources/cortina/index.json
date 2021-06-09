@@ -29,11 +29,6 @@
       "label": "InsuranceNow API reference",
       "class": "productFamily cardShadow",
       "id": "in20211apiref"
-    },
-    {
-      "label": "Guidewire Cloud Standards",
-      "class": "productFamily cardShadow",
-      "page": "/cloud/standards/latest"
     }
   ]
 }
