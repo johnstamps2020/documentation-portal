@@ -1723,7 +1723,7 @@
       "public": false
     },
     {
-      "id": "midipfdraft",
+      "id": "midipf",
       "title": "ClaimCenter Adapter for IRSA",
       "url": "self-managed/mid/ipf/latest",
       "metadata": {
@@ -1744,7 +1744,7 @@
         "product": ["Guidewire InsuranceSuite Package for Germany"],
         "platform": ["Cloud"],
         "version": ["2.x"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "int"],
       "displayOnLandingPages": true,

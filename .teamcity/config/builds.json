@@ -950,23 +950,23 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IPFHelp.ditamap",
-      "srcId": "midipfdraftsrc",
-      "docId": "midipfdraft",
+      "srcId": "midipfsrc",
+      "docId": "midipf",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "_superbook.ditamap",
-      "srcId": "midipgdraftsrc",
+      "srcId": "midipgsrc",
       "docId": "midipg2x"
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-1012.ditamap",
+      "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1012src",
       "docId": "bc1012",
       "resources": [
@@ -985,7 +985,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_supermap-1012.ditamap",
+      "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1012src",
       "docId": "cc1012",
       "resources": [
@@ -1004,7 +1004,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_supermap-1012.ditamap",
+      "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1012src",
       "docId": "pc1012",
       "resources": [

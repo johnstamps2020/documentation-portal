@@ -1069,7 +1069,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
       "branch": "9.0.10",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/9010/_supermap-9x-active.ditamap",
+        "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
@@ -2064,14 +2064,14 @@
       ]
     },
     {
-      "id": "midipfdraftsrc",
+      "id": "midipfsrc",
       "title": "ClaimCenter Adapter for IRSA",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
       "branch": "main",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/mid/ipf/1.x/active/IPFHelp.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
     {
@@ -3268,7 +3268,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
       "branch": "10.1.2",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1012/_supermap-1012.ditamap",
+        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
@@ -3470,13 +3470,13 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git"
     },
     {
-      "id": "midipgdraftsrc",
-      "title": "MID IPG Draft",
+      "id": "midipgsrc",
+      "title": "MID IPG",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
     {
