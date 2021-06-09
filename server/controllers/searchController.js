@@ -29,7 +29,12 @@ async function getAllowedFilterValues(fieldName, query) {
         allowedForField: {
           filter: query,
           aggs: {
-            keywordFilter: { terms: { field: fieldName, size: 50 } },
+            keywordFilter: {
+              terms: {
+                field: fieldName,
+                size: 50,
+              },
+            },
           },
         },
       },
@@ -67,6 +72,25 @@ async function getFiltersWithValues(fieldMappings, urlFilters, query) {
 }
 
 async function runSearch(queryBody, startIndex, resultsPerPage) {
+  const searchResultsCount = await elasticClient.search({
+    index: searchIndexName,
+    size: 0,
+    body: {
+      aggs: {
+        totalHits: {
+          filter: queryBody,
+          aggs: {
+            totalCollapsedHits: {
+              cardinality: {
+                field: 'title.raw',
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
   const searchResults = await elasticClient.search({
     index: searchIndexName,
     from: startIndex,
@@ -86,7 +110,9 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
   });
 
   return {
-    numberOfHits: searchResults.body.hits.total.value,
+    numberOfHits: searchResultsCount.body.aggregations.totalHits.doc_count,
+    numberOfCollapsedHits:
+      searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value,
     hits: searchResults.body.hits.hits,
   };
 }
@@ -143,7 +169,6 @@ async function searchController(req, res, next) {
     );
 
     const results = await runSearch(queryBody, startIndex, resultsPerPage);
-    const totalNumOfResults = results.numberOfHits;
 
     const resultsToDisplay = results.hits.map(result => {
       const doc = result._source;
@@ -180,16 +205,17 @@ async function searchController(req, res, next) {
     if (req.query.rawJSON) {
       res.send(resultsToDisplay);
     } else {
-      res.render('search', {
+      const searchData = {
         query: searchPhrase,
-        currentPage: currentPage,
-        pages: Math.ceil(totalNumOfResults / resultsPerPage),
-        totalNumOfResults: totalNumOfResults,
-        resultsPerPage: resultsPerPage,
         searchResults: resultsToDisplay,
+        totalNumOfResults: results.numberOfCollapsedHits,
+        currentPage: currentPage,
+        pages: Math.ceil(results.numberOfCollapsedHits / resultsPerPage),
+        resultsPerPage: resultsPerPage,
         filters: filters,
         userContext: req.userContext,
-      });
+      };
+      res.render('search', searchData);
     }
   } catch (err) {
     console.error(err);
