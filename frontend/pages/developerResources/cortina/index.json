@@ -1,0 +1,39 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Developer resources",
+  "template": "page.j2",
+  "class": "blue-theme cortina threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Cortina",
+    "items": [
+      {
+        "label": "Banff",
+        "page": "../banff"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "ClaimCenter API reference",
+      "class": "productFamily cardShadow",
+      "id": "cc202104apiref"
+    },
+    {
+      "label": "PolicyCenter API reference",
+      "class": "productFamily cardShadow",
+      "id": "pc202104apiref",
+      "env": ["dev", "int", "staging"]
+    },
+    {
+      "label": "InsuranceNow API reference",
+      "class": "productFamily cardShadow",
+      "id": "in20211apiref"
+    },
+    {
+      "label": "Guidewire Cloud Standards",
+      "class": "productFamily cardShadow",
+      "page": "/cloud/standards/latest"
+    }
+  ]
+}
