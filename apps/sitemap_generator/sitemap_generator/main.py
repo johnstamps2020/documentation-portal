@@ -35,6 +35,11 @@ def escape_entities(text_to_convert: str):
 def is_not_old_insurance_suite(doc):
     product = doc['_source'].get('product')
     version = doc['_source'].get('version')
+    url = doc['_source'].get('href')
+    if url and \
+            url.startswith('https://portal2.guidewire.com/portal/') or \
+            url.startswith('https://docs.guidewire.com/portal/'):
+        return False
     if product and version:
         insurance_suite_products = [
             'PolicyCenter', 'ClaimCenter', 'BillingCenter']
