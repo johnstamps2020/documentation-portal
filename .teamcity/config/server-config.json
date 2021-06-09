@@ -11438,7 +11438,7 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "in20211config",
