@@ -13,7 +13,7 @@
                         <% filter.values.forEach(checkboxValue => { %>
                             <label class="checkboxRowContainer">
                                 <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
-                                       value="<%= checkboxValue.filterLabels.join(',') %>"
+                                       value="<%= checkboxValue.label %>"
                                 <% if (checkboxValue.checked) { %>
                                        checked="true"
                                         <% } %>

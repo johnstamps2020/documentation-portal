@@ -50,57 +50,25 @@ async function getAllowedFilterValues(fieldName, query) {
   );
 }
 
-async function createFilters(fieldMappings, urlFilters, query) {
-  let filterConfiguration = [];
+async function getFiltersWithValues(fieldMappings, urlFilters, query) {
+  let filtersWithValues = [];
   for (const key in fieldMappings) {
     if (fieldMappings[key].type === 'keyword') {
       const allowedFilterValues = await getAllowedFilterValues(key, query);
-      const normalizedFilterValues = [];
-      for (const allowedValue of allowedFilterValues) {
-        let valueLabel = allowedValue.label;
-        const valueDocCount = allowedValue.doc_count;
-        const filterLabels = [valueLabel];
-        if (valueLabel.includes('for Guidewire Cloud')) {
-          valueLabel = valueLabel.replace('for Guidewire Cloud', '').trim();
-        }
-        if (normalizedFilterValues.some(f => f.label === valueLabel)) {
-          for (const normalizedFilterValue of normalizedFilterValues) {
-            if (normalizedFilterValue.label === valueLabel) {
-              const mergedFilterValue = {
-                label: valueLabel,
-                filterLabels: [
-                  ...normalizedFilterValue.filterLabels,
-                  ...filterLabels,
-                ],
-                doc_count: normalizedFilterValue.doc_count + valueDocCount,
-                checked:
-                  urlFilters[key]?.some(f =>
-                    normalizedFilterValue.filterLabels.includes(f)
-                  ) || urlFilters[key]?.some(f => filterLabels.includes(f)),
-              };
-              normalizedFilterValues.splice(
-                normalizedFilterValues.indexOf(normalizedFilterValue),
-                1,
-                mergedFilterValue
-              );
-            }
-          }
-        } else {
-          normalizedFilterValues.push({
-            label: valueLabel,
-            filterLabels: filterLabels,
-            doc_count: valueDocCount,
-            checked: urlFilters[key]?.some(f => filterLabels.includes(f)),
-          });
-        }
-      }
-      filterConfiguration.push({
+      const filterValuesWithStates = allowedFilterValues.map(value => {
+        return {
+          label: value.label,
+          doc_count: value.doc_count,
+          checked: urlFilters[key]?.includes(value.label),
+        };
+      });
+      filtersWithValues.push({
         name: key,
-        values: normalizedFilterValues,
+        values: filterValuesWithStates,
       });
     }
   }
-  return filterConfiguration;
+  return filtersWithValues;
 }
 
 async function runSearch(queryBody, startIndex, resultsPerPage) {
@@ -194,7 +162,11 @@ async function searchController(req, res, next) {
       queryBody.bool.filter = queryFilters;
     }
 
-    const filters = await createFilters(mappings, filtersFromUrl, queryBody);
+    const filters = await getFiltersWithValues(
+      mappings,
+      filtersFromUrl,
+      queryBody
+    );
 
     const results = await runSearch(queryBody, startIndex, resultsPerPage);
 
