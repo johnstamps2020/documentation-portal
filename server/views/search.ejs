@@ -81,48 +81,65 @@
         </div>
         <div class="searchResults" id="searchResults">
             <% searchResults.forEach(result => { %>
-                <h2>
-                    <a href="<%= result.href %>"
-                    ><%= result.title %></a>
-                </h2>
-                <div class="resultBadges">
-                    <% result.docTags.forEach(tag => { %>
-                        <% if (Array.isArray(tag)) { %>
-                            <% tag.forEach(value => { %>
-                                <span class="infoLabel"><%= value %></span>
-                            <% }) %>
-                        <% } else { %>
-                            <span class="infoLabel"><%= tag %></span>
-                        <% } %>
-                    <% }) %>
-                </div>
-                <div class="resultBody"><%= result.body %></div>
-                <% if (result.inner_hits) {
-                    let versionsToDisplay = [];
-                    for (const innerHit of result.inner_hits) {
-                        const hitHref = innerHit._source.href;
-                        const hitVersion = innerHit._source.version.join(', ');
-                        if (hitVersion !== result.version && !versionsToDisplay.some(v => v.version === hitVersion)) {
-                            versionsToDisplay.push({
-                                href: hitHref,
-                                version: hitVersion
-                            });
-                        }
-                    }
-                if (versionsToDisplay.length > 0) { %>
-                    <div class="otherHits">
-                        <span>Also found in:</span>
-                        <% for (const otherVersion of versionsToDisplay) { %>
-                            <a class="otherHit" href="<%= otherVersion.href %>"><%= otherVersion.version %></a>
-                        <% } %>
+                <div class="searchResult">
+                    <div class="searchResultUrl"><%= result.href %></div>
+                    <a class="searchResultLink" href="<%= result.href %>">
+                        <h2 class="searchResultTitle">
+                            <%= result.title %>
+                        </h2>
+                    </a>
+                    <div class="resultBadges">
+                        <% result.docTags.forEach(tag => { %>
+                            <% if (Array.isArray(tag)) { %>
+                                <% tag.forEach(value => { %>
+                                    <span class="infoLabel"><%= value %></span>
+                                <% }) %>
+                            <% } else { %>
+                                <span class="infoLabel"><%= tag %></span>
+                            <% } %>
+                        <% }) %>
                     </div>
-                <% } %>
-                <% } %>
+                    <div class="resultBody"><%= result.body %></div>
+                    <% if (result.inner_hits) {
+                        let hitsToDisplay = [];
+                        for (const innerHit of result.inner_hits) {
+                            const hitLabel = innerHit._source.title;
+                            const hitHref = innerHit._source.href;
+                            const hitPlatform = innerHit._source.platform;
+                            const hitProduct = innerHit._source.product;
+                            const hitVersion = innerHit._source.version;
+                            if (hitHref !== result.href) {
+                                hitsToDisplay.push({
+                                    label: hitLabel,
+                                    href: hitHref,
+                                    tags: [...hitProduct, ...hitPlatform, ...hitVersion]
+                                });
+                            }
+                        }
+                    if (hitsToDisplay.length > 0) { %>
+                        <details class="alsoFoundIn">
+                            <summary>
+                                Also found in <%= hitsToDisplay.length -%> pages with the same title
+                            </summary>
+                            <div class="otherHits">
+                                <% for (const hit of hitsToDisplay) { %>
+                                    <p class="otherHit">
+                                    <div class="searchResultUrl"><%= hit.href %></div>
+                                    <a href="<%= hit.href %>">
+                                        <%= hit.tags.join(', ') %>
+                                    </a>
+                                    </p>
+                                <% } %>
+                            </div>
+                        </details>
+                    <% } %>
+                    <% } %>
+                </div>
             <% }) %>
         </div>
         <% if (pages > 1) { %>
             <ul class="pagination">
-                <% if (currentPage == 1) { %>
+                <% if (currentPage === 1) { %>
                     <li class="disabled">First</li>
                 <% } else { %>
                     <li>
@@ -143,11 +160,11 @@
                             <%= i %>
                         </button>
                     </li>
-                <% } %> <% if (i == Number(currentPage) + 4 && i < pages) { %>
+                <% } %> <% if (i === Number(currentPage) + 4 && i < pages) { %>
                     <li class="disabled">...</li>
                 <% } %>
                 <% } %>
-                <% if (currentPage == pages) { %>
+                <% if (currentPage === pages) { %>
                     <li class="disabled">Last</li>
                 <% } else { %>
                     <li>

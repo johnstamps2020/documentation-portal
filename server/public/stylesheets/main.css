@@ -202,13 +202,13 @@ main.fullWidth > .sidebar {
 main.blue-theme {
   background: url(/images/background-gradient.svg) no-repeat fixed;
   /* background-color: rgba(19, 30, 46, 0.15);
-                                  background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
-                                    linear-gradient(
-                                      -60deg,
-                                      #131e2e,
-                                      rgba(40, 64, 99, 0.8),
-                                      rgba(47, 79, 126, 0)
-                                    ); */
+                                                      background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
+                                                        linear-gradient(
+                                                          -60deg,
+                                                          #131e2e,
+                                                          rgba(40, 64, 99, 0.8),
+                                                          rgba(47, 79, 126, 0)
+                                                        ); */
   /* background-position: top left; */
   -webkit-background-size: cover;
   background-size: cover;
@@ -517,7 +517,7 @@ footer .releaseInfo {
 div.pageHero {
   display: block;
   /* flex-wrap: wrap-reverse;
-                          gap: 16px; */
+                                              gap: 16px; */
 }
 
 .heroControls {
@@ -856,10 +856,20 @@ div.pageHero {
   margin-left: auto;
 }
 
-.searchResults h2 {
+.searchResult {
+  padding: 16px 0;
+}
+
+.searchResultUrl {
+  color: gray;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.searchResultTitle {
   font-size: 1.375rem;
   font-weight: 600;
-  padding: 16px 0;
+  padding-bottom: 16px;
 }
 
 .resultBadges {
@@ -883,10 +893,23 @@ div.pageHero {
 }
 
 .otherHits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
+  padding-left: 16px;
+  padding-bottom: 16px;
+}
+
+.otherHit {
+  padding-bottom: 16px;
+}
+
+.alsoFoundIn {
+  border-left: 2px solid var(--clr-GW-BLUE);
+  margin-left: 6px;
+  padding: 3px 8px;
+  width: fit-content;
+}
+
+.alsoFoundIn > summary {
+  cursor: pointer;
 }
 
 .pagination {
