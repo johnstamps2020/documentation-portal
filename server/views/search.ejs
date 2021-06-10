@@ -118,7 +118,9 @@
                         }
                     if (hitsToDisplay.length > 0) { %>
                         <details class="alsoFoundIn">
-                            <summary>Also found in</summary>
+                            <summary>
+                                Also found in <%= hitsToDisplay.length -%> pages with the same title
+                            </summary>
                             <div class="otherHits">
                                 <% for (const hit of hitsToDisplay) { %>
                                     <p class="otherHit">
