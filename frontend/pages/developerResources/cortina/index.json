@@ -22,8 +22,7 @@
     {
       "label": "PolicyCenter API reference",
       "class": "productFamily cardShadow",
-      "id": "pc202104apiref",
-      "env": ["dev", "int", "staging"]
+      "id": "pc202104apiref"
     },
     {
       "label": "InsuranceNow API reference",
