@@ -7990,6 +7990,22 @@
       "public": false
     },
     {
+      "id": "isbc202104restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/bc/202104/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter for Guidewire Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isbc202104install",
       "title": "Installation",
       "url": "cloud/bc/202104/installation",
@@ -8908,6 +8924,22 @@
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbcclouddraftrestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/bc/latest/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter for Guidewire Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,

@@ -2648,6 +2648,14 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "cloudisrestapifw202104src",
+      "docId": "isbc202104restapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "cloudisinstall202104src",
       "docId": "isbc202104install",
@@ -3055,6 +3063,14 @@
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistestdraftsrc",
       "docId": "isbcclouddrafttesting",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "cloudisrestapifwdraftsrc",
+      "docId": "isbcclouddraftrestapifw",
       "indexRedirect": true
     },
     {
