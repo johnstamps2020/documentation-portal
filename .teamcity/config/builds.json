@@ -1898,7 +1898,14 @@
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "_supermap-9x-active.ditamap",
       "srcId": "is9010",
-      "docId": "pc9010"
+      "docId": "pc9010",
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/9.0.10",
+          "targetFolder": "extras/ReleaseNotes-files/pc/9.0.10",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
     },
     {
       "buildType": "dita",
