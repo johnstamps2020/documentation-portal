@@ -103,6 +103,10 @@
           "id": "isbcclouddraftinteg"
         },
         {
+          "label": "REST API Framework",
+          "id": "isbcclouddraftrestapifw"
+        },
+        {
           "label": "REST API Client",
           "id": "isclouddraftrestapiclient"
         }
