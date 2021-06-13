@@ -15,16 +15,6 @@
   },
   "items": [
     {
-      "label": "ClaimCenter API reference",
-      "class": "productFamily cardShadow",
-      "id": "cc202104apiref"
-    },
-    {
-      "label": "PolicyCenter API reference",
-      "class": "productFamily cardShadow",
-      "id": "pc202104apiref"
-    },
-    {
       "label": "InsuranceNow API reference",
       "class": "productFamily cardShadow",
       "id": "in20211apiref"
