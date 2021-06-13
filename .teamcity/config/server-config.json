@@ -2242,7 +2242,7 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
-        "version": ["9.0.9"]
+        "version": ["9.0.10"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -2256,7 +2256,7 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
-        "version": ["9.0.9"]
+        "version": ["9.0.10"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -2270,7 +2270,7 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
-        "version": ["9.0.9"]
+        "version": ["9.0.10"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
