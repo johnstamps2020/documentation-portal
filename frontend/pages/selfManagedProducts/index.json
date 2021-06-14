@@ -79,12 +79,7 @@
             {
               "label": "DataHub",
               "page": "dh/10.5.0",
-              "env": ["dev", "staging"]
-            },
-            {
-              "label": "DataHub",
-              "id": "dh1040",
-              "env": ["prod"]
+              "env": ["dev", "staging", "prod"]
             },
             {
               "label": "DataHub",
@@ -94,12 +89,7 @@
             {
               "label": "InfoCenter",
               "page": "ic/10.5.0",
-              "env": ["dev", "staging"]
-            },
-            {
-              "label": "InfoCenter",
-              "id": "ic1040",
-              "env": ["prod"]
+              "env": ["dev", "staging", "prod"]
             },
             {
               "label": "InfoCenter",
