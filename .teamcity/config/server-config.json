@@ -12901,7 +12901,7 @@
         "version": ["10.5.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12916,7 +12916,7 @@
         "version": ["10.5.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12931,7 +12931,7 @@
         "version": ["10.5.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12946,7 +12946,7 @@
         "version": ["10.5.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12961,7 +12961,7 @@
         "version": ["10.5.0"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12976,7 +12976,7 @@
         "version": ["10.5.0"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -12991,7 +12991,7 @@
         "version": ["10.5.0"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13006,7 +13006,7 @@
         "version": ["10.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13021,7 +13021,7 @@
         "version": ["10.5.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13036,7 +13036,7 @@
         "version": ["10.5.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13051,7 +13051,7 @@
         "version": ["10.5.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13066,7 +13066,7 @@
         "version": ["10.5.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13081,7 +13081,7 @@
         "version": ["10.5.0"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13096,7 +13096,7 @@
         "version": ["10.5.0"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13111,7 +13111,7 @@
         "version": ["10.5.0"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13126,7 +13126,7 @@
         "version": ["10.5.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13141,7 +13141,7 @@
         "version": ["10.5.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -13156,7 +13156,7 @@
         "version": ["10.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
