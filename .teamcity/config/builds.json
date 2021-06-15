@@ -1633,6 +1633,14 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
+      "root": "appevents-releasenotes-cc.ditamap",
+      "indexRedirect": true,
+      "srcId": "appeventsccrndraftsrc",
+      "docId": "appeventsccrndraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Draft.ditaval",
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "appeventsdevdraftsrc",
