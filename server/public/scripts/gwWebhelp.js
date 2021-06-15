@@ -7,18 +7,14 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
-async function fetchMetadata() {
-  const docId = document.querySelector('[name="gw-doc-id"]');
-  if (docId) {
-    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
-    if (response.ok) {
-      const metadata = await response.json();
-      return metadata;
-    }
+let metadata = undefined;
+const docId = document.querySelector('[name="gw-doc-id"]');
+if (docId) {
+  const response = await fetch(`/safeConfig/docMetadata/${docId}`);
+  if (response.ok) {
+    metadata = await response.json();
   }
 }
-
-let metadata = undefined;
 
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
@@ -361,18 +357,10 @@ async function sendFeedback(formId) {
         'User feedback: ' + document.querySelector('title').innerHTML,
       descriptionText: {
         //The key is also the label
-        Product:
-          metadata?.product ||
-          document.querySelector("meta[name = 'gw-product']")?.content,
-        Version:
-          metadata?.version ||
-          document.querySelector("meta[name = 'gw-version']")?.content,
-        Platform:
-          metadata?.platform ||
-          document.querySelector("meta[name = 'gw-platform']")?.content,
-        Category:
-          metadata?.category ||
-          document.querySelector("meta[name = 'DC.coverage']")?.content,
+        Product: metadata?.product || document.querySelector("meta[name = 'gw-product']")?.content,
+        Version: metadata?.version || document.querySelector("meta[name = 'gw-version']")?.content,
+        Platform: metadata?.platform || document.querySelector("meta[name = 'gw-platform']")?.content,
+        Category: metadata?.category || document.querySelector("meta[name = 'DC.coverage']")?.content,
         URL: window.location.href,
         'Source file (parent if chunked or nested)': document.querySelector(
           "meta[name = 'wh-source-relpath']"
@@ -600,7 +588,6 @@ async function configureSearch() {
 }
 
 docReady(async function() {
-  metadata = await fetchMetadata();
   await createContainerForCustomHeaderElements();
   addCustomElements();
   addTopLinkToBreadcrumbs();
