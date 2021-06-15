@@ -102,9 +102,21 @@ async function getVersionSelector(platform, product, version) {
   }
 }
 
+async function getDocumentMetadata(docId) {
+  const config = await getConfig();
+  const doc = config.docs.find(d => d.id === docId);
+  if (doc) {
+    return {
+      title: doc.title,
+      ...doc.metadata,
+    };
+  }
+}
+
 module.exports = {
   getConfig,
   isPublicDoc,
   getRootBreadcrumb,
   getVersionSelector,
+  getDocumentMetadata,
 };
