@@ -8,9 +8,7 @@ gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
 async function fetchMetadata() {
-  const docId = document
-    .querySelector('[name="gw-doc-id"]')
-    ?.getAttribute('content');
+  const docId = document.querySelector('[name="gw-doc-id"]');
   if (docId) {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
