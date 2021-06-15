@@ -1986,7 +1986,7 @@ object HelperObjects {
                     allowEmpty = false
                 )
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("GW_DOC_ID", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)

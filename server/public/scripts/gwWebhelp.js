@@ -7,6 +7,15 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
+let metadata = undefined;
+const docId = document.querySelector('[name="gw-doc-id"]');
+if (docId) {
+  const response = await fetch(`/safeConfig/docMetadata/${docId}`);
+  if (response.ok) {
+    metadata = await response.json();
+  }
+}
+
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
@@ -35,17 +44,18 @@ function createContainerForCustomHeaderElements() {
 
 async function createVersionSelector() {
   try {
-    const docProduct = document.querySelector("meta[name = 'gw-product']")
-      ?.content;
+    const docProduct =
+      metadata?.product ||
+      document.querySelector("meta[name = 'gw-product']")?.content;
     if (!docProduct) {
       return null;
     }
-    const docPlatform = document.querySelector("meta[name = 'gw-platform']")[
-      'content'
-    ];
-    const docVersion = document.querySelector("meta[name = 'gw-version']")[
-      'content'
-    ];
+    const docPlatform =
+      metadata?.platform ||
+      document.querySelector("meta[name = 'gw-platform']")['content'];
+    const docVersion =
+      metadata?.version ||
+      document.querySelector("meta[name = 'gw-version']")['content'];
 
     const response = await fetch(
       `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}`
@@ -347,10 +357,10 @@ async function sendFeedback(formId) {
         'User feedback: ' + document.querySelector('title').innerHTML,
       descriptionText: {
         //The key is also the label
-        Product: document.querySelector("meta[name = 'gw-product']")?.content,
-        Version: document.querySelector("meta[name = 'gw-version']")?.content,
-        Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-        Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
+        Product: metadata?.product || document.querySelector("meta[name = 'gw-product']")?.content,
+        Version: metadata?.version || document.querySelector("meta[name = 'gw-version']")?.content,
+        Platform: metadata?.platform || document.querySelector("meta[name = 'gw-platform']")?.content,
+        Category: metadata?.category || document.querySelector("meta[name = 'DC.coverage']")?.content,
         URL: window.location.href,
         'Source file (parent if chunked or nested)': document.querySelector(
           "meta[name = 'wh-source-relpath']"
@@ -534,42 +544,35 @@ async function addFeedbackElements() {
 }
 
 async function configureSearch() {
-  const docId = document.querySelector('[name="gw-doc-id"]');
-  if (docId) {
-    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
-    if (response.ok) {
-      const metadata = await response.json();
-      if (metadata) {
-        const searchForms = document.querySelectorAll(
-          '#searchForm, #searchFormNav'
-        );
-        if (searchForms.length > 0) {
-          for (const searchForm of searchForms) {
-            let hiddenInputsToAdd = [];
-            for (const metadataKey of Object.keys(metadata)) {
-              const input = document.createElement('input');
-              input.setAttribute('type', 'hidden');
-              input.setAttribute('name', metadataKey);
-              if (typeof metadata[metadataKey] === 'string') {
-                input.setAttribute('value', metadata[metadataKey]);
-              } else {
-                input.setAttribute('value', metadata[metadataKey].join(','));
-              }
-              hiddenInputsToAdd.push(input);
-            }
-            const existingHiddenInputs = searchForm.querySelectorAll(
-              'div > [type="hidden"]'
-            );
-            if (existingHiddenInputs.length > 0) {
-              for (const existing of existingHiddenInputs) {
-                searchForm.firstChild.removeChild(existing);
-              }
-            }
-
-            for (const newInput of hiddenInputsToAdd) {
-              searchForm.firstChild.appendChild(newInput);
-            }
+  if (metadata) {
+    const searchForms = document.querySelectorAll(
+      '#searchForm, #searchFormNav'
+    );
+    if (searchForms.length > 0) {
+      for (const searchForm of searchForms) {
+        let hiddenInputsToAdd = [];
+        for (const metadataKey of Object.keys(metadata)) {
+          const input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', metadataKey);
+          if (typeof metadata[metadataKey] === 'string') {
+            input.setAttribute('value', metadata[metadataKey]);
+          } else {
+            input.setAttribute('value', metadata[metadataKey].join(','));
           }
+          hiddenInputsToAdd.push(input);
+        }
+        const existingHiddenInputs = searchForm.querySelectorAll(
+          'div > [type="hidden"]'
+        );
+        if (existingHiddenInputs.length > 0) {
+          for (const existing of existingHiddenInputs) {
+            searchForm.firstChild.removeChild(existing);
+          }
+        }
+
+        for (const newInput of hiddenInputsToAdd) {
+          searchForm.firstChild.appendChild(newInput);
         }
       }
     }
