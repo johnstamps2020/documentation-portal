@@ -1553,6 +1553,22 @@
       "public": false
     },
     {
+      "id": "appeventsccrndraft",
+      "title": "Application Events for Claims Release Notes",
+      "url": "cloud/gw-feature-preview/ccappeventsrn",
+      "metadata": {
+        "product": ["Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release Notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "ccappeventsdevdraft",
       "title": "ClaimCenter Application Events for Developers",
       "url": "cloud/gw-feature-preview/ccappevents",

@@ -75,6 +75,10 @@
       "class": "subject releaseNotes",
       "items": [
         {
+          "label": "Application Events for Claims",
+          "id": "appeventsccrndraft"
+        },
+        {
           "label": "Cloud Rules",
           "id": "cloudrulesrndraft"
         },

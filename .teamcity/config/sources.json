@@ -1767,6 +1767,17 @@
       ]
     },
     {
+      "id": "appeventsccrndraftsrc",
+      "title": "Application Events for Claims Release Notes Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/DevConnect/cloud/release-notes/app-events-cc/appevents-releasenotes-cc.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
+      ]
+    },
+    {
       "id": "integgatewaydevdraftsrc",
       "title": "Integration Gateway for Developers Draft",
       "sourceType": "git",
