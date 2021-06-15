@@ -51,16 +51,16 @@ function createContainerForCustomHeaderElements() {
 async function createVersionSelector() {
   try {
     const docProduct =
-      metadata?.product.join(',') ||
+      metadata?.product ||
       document.querySelector("meta[name = 'gw-product']")?.content;
     if (!docProduct) {
       return null;
     }
     const docPlatform =
-      metadata?.platform.join(',') ||
+      metadata?.platform ||
       document.querySelector("meta[name = 'gw-platform']")['content'];
     const docVersion =
-      metadata?.version.join(',') ||
+      metadata?.version ||
       document.querySelector("meta[name = 'gw-version']")['content'];
 
     const response = await fetch(
