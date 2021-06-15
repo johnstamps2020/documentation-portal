@@ -1986,7 +1986,9 @@ object HelperObjects {
                     allowEmpty = false
                 )
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("GW_DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("FILTER_PATH", ditaval_file, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("ROOT_MAP", input_path, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -2324,11 +2326,13 @@ object HelperObjects {
             val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
             val docVersion = docMetadata.getJSONArray("version").joinToString(separator = ",")
 
-            id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + docPlatform + "validatedoc"))
+            id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
             name = "Validate $docTitle $docProduct $docVersion"
 
             params {
-                text("GW_DOC_ID", docId, allowEmpty = false)
+                text("GW_PRODUCT", docProduct, allowEmpty = false)
+                text("GW_PLATFORM", docPlatform, allowEmpty = false)
+                text("GW_VERSION", docVersion, allowEmpty = false)
                 text("FILTER_PATH", docBuildFilter, allowEmpty = false)
                 text("CREATE_INDEX_REDIRECT", docBuildIndexRedirect, allowEmpty = false)
                 text("ROOT_MAP", docBuildRootMap, allowEmpty = false)
@@ -2698,7 +2702,9 @@ object RunContentValidations : Template({
     """.trimIndent()
 
     params {
-        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
         text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
@@ -2760,7 +2766,7 @@ object RunContentValidations : Template({
                 export OUTPUT_PATH="out/webhelp"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/webhelp_build.log"
 
-                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" -l \"/src/${'$'}LOG_FILE\""
+                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"/src/${'$'}LOG_FILE\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
@@ -2774,6 +2780,7 @@ object RunContentValidations : Template({
                 docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
                 docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
 
+                echo "Building Guidewire webhelp for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
                 ${'$'}DITA_BASE_COMMAND
                 
@@ -2885,6 +2892,9 @@ object BuildStorybook : Template({
     name = "Get published Storybook"
 
     params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
         text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
         text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -2937,6 +2947,9 @@ object BuildSphinx : Template({
     name = "Build a Sphinx project"
 
     params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
         text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
         text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -2988,6 +3001,9 @@ object BuildYarn : Template({
     name = "Build a yarn project"
 
     params {
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
         text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
         text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
@@ -3051,7 +3067,9 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     }
 
     params {
-        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
         text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
         text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
         text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
@@ -3076,7 +3094,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 #!/bin/bash
                 set -xe
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\""
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
@@ -3094,6 +3112,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 
                 SECONDS=0
 
+                echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 ${'$'}DITA_BASE_COMMAND
                                     
                 duration=${'$'}SECONDS
