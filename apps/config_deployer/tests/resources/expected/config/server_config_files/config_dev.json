@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../../../../../.teamcity/config/config-schema.json",
   "docs": [
     {
       "id": "guidewireidentityfederationhublatest",
@@ -11,7 +12,7 @@
         "product": [
           "Guidewire Identity Federation Hub"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff"
@@ -26,16 +27,16 @@
     },
     {
       "id": "cloudbc202005",
-      "title": "BillingCenter for Guidewire Cloud",
+      "title": "BillingCenter",
       "url": "cloud/bc/202005",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -48,16 +49,16 @@
     },
     {
       "id": "cloudcc202005",
-      "title": "ClaimCenter for Guidewire Cloud",
+      "title": "ClaimCenter",
       "url": "cloud/cc/202005",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -70,16 +71,16 @@
     },
     {
       "id": "cloudpc202005",
-      "title": "PolicyCenter for Guidewire Cloud",
+      "title": "PolicyCenter",
       "url": "cloud/pc/202005",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -100,9 +101,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -123,9 +124,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -146,9 +147,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -170,7 +171,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.2",
+        "version": ["2020.2"],
         "release": [
           "Banff"
         ]
@@ -192,7 +193,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.1",
+        "version": ["2020.1"],
         "release": [
           "Aspen"
         ]
@@ -214,7 +215,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2.x",
+        "version": ["2.x"],
         "release": [
           "Aspen",
           "Banff",
@@ -237,7 +238,7 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff"
@@ -261,7 +262,7 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff"
@@ -286,7 +287,7 @@
         "product": [
           "Guidewire Cloud Console"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff"
@@ -311,7 +312,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.1.1"
+        "version": ["10.1.1"]
       },
       "environments": [
         "dev",
@@ -330,7 +331,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.1.1"
+        "version": ["10.1.1"]
       },
       "environments": [
         "dev",
@@ -349,7 +350,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.1.1"
+        "version": ["10.1.1"]
       },
       "environments": [
         "dev",
@@ -368,7 +369,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -388,7 +389,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -408,7 +409,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -427,7 +428,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.1.1"
+        "version": ["10.1.1"]
       },
       "environments": [
         "dev",
@@ -445,7 +446,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.1.1"
+        "version": ["10.1.1"]
       },
       "environments": [
         "dev",
@@ -463,7 +464,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.1.1"
+        "version": ["10.1.1"]
       },
       "environments": [
         "dev",
@@ -481,7 +482,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -500,7 +501,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -519,7 +520,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -538,7 +539,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.9"
+        "version": ["9.0.9"]
       },
       "environments": [
         "dev",
@@ -557,7 +558,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.9"
+        "version": ["9.0.9"]
       },
       "environments": [
         "dev",
@@ -576,7 +577,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.9"
+        "version": ["9.0.9"]
       },
       "environments": [
         "dev",
@@ -596,7 +597,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.9"
+        "version": ["9.0.9"]
       },
       "environments": [
         "dev",
@@ -616,7 +617,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.9"
+        "version": ["9.0.9"]
       },
       "environments": [
         "dev",
@@ -636,7 +637,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.9"
+        "version": ["9.0.9"]
       },
       "environments": [
         "dev",
@@ -646,16 +647,16 @@
     },
     {
       "id": "dh202011",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "DataHub",
       "url": "cloud/dh/202011",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "DataHub for Guidewire Cloud"
+          "DataHub"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -668,16 +669,16 @@
     },
     {
       "id": "ic202011",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "InfoCenter",
       "url": "cloud/ic/202011",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "InfoCenter for Guidewire Cloud"
+          "InfoCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -699,7 +700,7 @@
         "product": [
           "Predictive Analytics"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Banff"
         ]
@@ -713,16 +714,16 @@
     },
     {
       "id": "dh202005",
-      "title": "DataHub for Guidewire Cloud",
+      "title": "DataHub",
       "url": "cloud/dh/202005",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "DataHub for Guidewire Cloud"
+          "DataHub"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -735,16 +736,16 @@
     },
     {
       "id": "ic202005",
-      "title": "InfoCenter for Guidewire Cloud",
+      "title": "InfoCenter",
       "url": "cloud/ic/202005",
       "metadata": {
         "platform": [
           "Cloud"
         ],
         "product": [
-          "InfoCenter for Guidewire Cloud"
+          "InfoCenter"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -766,7 +767,7 @@
         "product": [
           "Cloud Data Access"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff"
@@ -790,7 +791,7 @@
         "product": [
           "Compare+"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Banff"
         ]
@@ -813,7 +814,7 @@
         "product": [
           "Explore"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff"
@@ -837,7 +838,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -859,7 +860,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -881,7 +882,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -903,7 +904,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -925,7 +926,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -947,7 +948,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -969,7 +970,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -991,7 +992,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ]
@@ -1013,7 +1014,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen"
         ]
@@ -1035,7 +1036,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen"
         ]
@@ -1057,7 +1058,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen"
         ]
@@ -1079,7 +1080,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen"
         ]
@@ -1101,7 +1102,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen"
         ]
@@ -1123,7 +1124,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen"
         ]
@@ -1145,7 +1146,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen"
         ]
@@ -1167,7 +1168,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.08",
+        "version": ["2020.08"],
         "release": [
           "Aspen"
         ]
@@ -1189,7 +1190,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.08",
+        "version": ["2020.08"],
         "release": [
           "Aspen"
         ]
@@ -1211,7 +1212,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.08",
+        "version": ["2020.08"],
         "release": [
           "Aspen"
         ]
@@ -1233,7 +1234,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.08",
+        "version": ["2020.08"],
         "release": [
           "Aspen"
         ]
@@ -1255,7 +1256,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -1278,7 +1279,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -1300,7 +1301,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -1322,7 +1323,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -1344,7 +1345,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.3"
+        "version": ["10.0.3"]
       },
       "environments": [
         "dev",
@@ -1363,7 +1364,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.3"
+        "version": ["10.0.3"]
       },
       "environments": [
         "dev",
@@ -1382,7 +1383,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.3"
+        "version": ["10.0.3"]
       },
       "environments": [
         "dev",
@@ -1402,7 +1403,7 @@
         "product": [
           "InsuranceSuite Configuration Upgrade Tools"
         ],
-        "version": "3.1.0",
+        "version": ["3.1.0"],
         "release": [
           "Aspen",
           "Banff"
@@ -1426,7 +1427,7 @@
         "product": [
           "InsuranceSuite Configuration Upgrade Tools"
         ],
-        "version": "3.0.0",
+        "version": ["3.0.0"],
         "release": [
           "Aspen"
         ]
@@ -1448,7 +1449,7 @@
         "product": [
           "Businessowners Standards Based Template"
         ],
-        "version": "2020.05",
+        "version": ["2020.05"],
         "release": [
           "Aspen"
         ]
@@ -1470,7 +1471,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.3"
+        "version": ["10.0.3"]
       },
       "environments": [
         "dev",
@@ -1490,7 +1491,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.3"
+        "version": ["10.0.3"]
       },
       "environments": [
         "dev",
@@ -1510,7 +1511,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.3"
+        "version": ["10.0.3"]
       },
       "environments": [
         "dev",
@@ -1529,7 +1530,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.4.0"
+        "version": ["10.4.0"]
       },
       "environments": [
         "dev",
@@ -1547,7 +1548,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.4.0"
+        "version": ["10.4.0"]
       },
       "environments": [
         "dev",
@@ -1565,7 +1566,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.3.0"
+        "version": ["10.3.0"]
       },
       "environments": [
         "dev",
@@ -1584,7 +1585,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.3.0"
+        "version": ["10.3.0"]
       },
       "environments": [
         "dev",
@@ -1603,7 +1604,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.2.0"
+        "version": ["10.2.0"]
       },
       "environments": [
         "dev",
@@ -1622,7 +1623,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.2.0"
+        "version": ["10.2.0"]
       },
       "environments": [
         "dev",
@@ -1641,7 +1642,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.3.0"
+        "version": ["11.3.0"]
       },
       "environments": [
         "dev",
@@ -1660,7 +1661,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.3.0"
+        "version": ["11.3.0"]
       },
       "environments": [
         "dev",
@@ -1679,7 +1680,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.3.0"
+        "version": ["11.3.0"]
       },
       "environments": [
         "dev",
@@ -1698,7 +1699,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.3.0"
+        "version": ["11.3.0"]
       },
       "environments": [
         "dev",
@@ -1717,7 +1718,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.3.0"
+        "version": ["11.3.0"]
       },
       "environments": [
         "dev",
@@ -1736,7 +1737,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.3.0"
+        "version": ["11.3.0"]
       },
       "environments": [
         "dev",
@@ -1755,7 +1756,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.3.0"
+        "version": ["11.3.0"]
       },
       "environments": [
         "dev",
@@ -1774,7 +1775,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0"
+        "version": ["11.2.0"]
       },
       "environments": [
         "dev",
@@ -1793,7 +1794,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0"
+        "version": ["11.2.0"]
       },
       "environments": [
         "dev",
@@ -1812,7 +1813,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0"
+        "version": ["11.2.0"]
       },
       "environments": [
         "dev",
@@ -1831,7 +1832,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.2.0"
+        "version": ["11.2.0"]
       },
       "environments": [
         "dev",
@@ -1851,7 +1852,7 @@
           "Cloud",
           "Self-managed"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Banff",
           "Cortina"
@@ -1873,7 +1874,7 @@
         "product": [
           "Configuration Manager"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Banff"
         ]
@@ -1897,7 +1898,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff"
@@ -1922,7 +1923,7 @@
         "platform": [
           "Cloud"
         ],
-        "version": "2020.10",
+        "version": ["2020.10"],
         "release": [
           "Aspen",
           "Banff"
@@ -1945,7 +1946,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.1.0"
+        "version": ["11.1.0"]
       },
       "environments": [
         "dev",
@@ -1964,7 +1965,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.1.0"
+        "version": ["11.1.0"]
       },
       "environments": [
         "dev",
@@ -1983,7 +1984,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "11.1.0"
+        "version": ["11.1.0"]
       },
       "environments": [
         "dev",
@@ -2002,7 +2003,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -2021,7 +2022,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -2040,7 +2041,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0"
+        "version": ["3.1.0"]
       },
       "environments": [
         "dev",
@@ -2059,7 +2060,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0"
+        "version": ["3.1.0"]
       },
       "environments": [
         "dev",
@@ -2078,7 +2079,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0"
+        "version": ["3.1.0"]
       },
       "environments": [
         "dev",
@@ -2097,7 +2098,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0"
+        "version": ["3.1.0"]
       },
       "environments": [
         "dev",
@@ -2116,7 +2117,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0"
+        "version": ["3.1.0"]
       },
       "environments": [
         "dev",
@@ -2135,7 +2136,7 @@
         "platform": [
           "Self-managed"
         ],
-        "version": "3.1.0"
+        "version": ["3.1.0"]
       },
       "environments": [
         "dev",
@@ -2154,7 +2155,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -2173,7 +2174,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -2192,7 +2193,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -2211,7 +2212,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.2"
+        "version": ["10.0.2"]
       },
       "environments": [
         "dev",
@@ -2230,7 +2231,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -2249,7 +2250,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -2268,7 +2269,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.8"
+        "version": ["9.0.8"]
       },
       "environments": [
         "dev",
@@ -2287,7 +2288,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.7"
+        "version": ["9.0.7"]
       },
       "environments": [
         "dev",
@@ -2306,7 +2307,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.6"
+        "version": ["9.0.6"]
       },
       "environments": [
         "dev",
@@ -2325,7 +2326,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.5"
+        "version": ["9.0.5"]
       },
       "environments": [
         "dev",
@@ -2344,7 +2345,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.4"
+        "version": ["9.0.4"]
       },
       "environments": [
         "dev",
@@ -2363,7 +2364,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.3"
+        "version": ["9.0.3"]
       },
       "environments": [
         "dev",
@@ -2382,7 +2383,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.2"
+        "version": ["9.0.2"]
       },
       "environments": [
         "dev",
@@ -2401,7 +2402,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.1"
+        "version": ["9.0.1"]
       },
       "environments": [
         "dev",
@@ -2420,7 +2421,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "9.0.0"
+        "version": ["9.0.0"]
       },
       "environments": [
         "dev",
@@ -2439,7 +2440,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.7"
+        "version": ["8.0.7"]
       },
       "environments": [
         "dev",
@@ -2458,7 +2459,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.6"
+        "version": ["8.0.6"]
       },
       "environments": [
         "dev",
@@ -2477,7 +2478,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.5"
+        "version": ["8.0.5"]
       },
       "environments": [
         "dev",
@@ -2496,7 +2497,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.4"
+        "version": ["8.0.4"]
       },
       "environments": [
         "dev",
@@ -2515,7 +2516,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.3"
+        "version": ["8.0.3"]
       },
       "environments": [
         "dev",
@@ -2534,7 +2535,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.2"
+        "version": ["8.0.2"]
       },
       "environments": [
         "dev",
@@ -2553,7 +2554,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.1"
+        "version": ["8.0.1"]
       },
       "environments": [
         "dev",
@@ -2572,7 +2573,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -2591,7 +2592,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.8"
+        "version": ["7.0.8"]
       },
       "environments": [
         "dev",
@@ -2610,7 +2611,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.7"
+        "version": ["7.0.7"]
       },
       "environments": [
         "dev",
@@ -2629,7 +2630,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.6"
+        "version": ["7.0.6"]
       },
       "environments": [
         "dev",
@@ -2648,7 +2649,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.5"
+        "version": ["7.0.5"]
       },
       "environments": [
         "dev",
@@ -2667,7 +2668,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.4"
+        "version": ["7.0.4"]
       },
       "environments": [
         "dev",
@@ -2686,7 +2687,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.3"
+        "version": ["7.0.3"]
       },
       "environments": [
         "dev",
@@ -2705,7 +2706,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.2"
+        "version": ["7.0.2"]
       },
       "environments": [
         "dev",
@@ -2724,7 +2725,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.1"
+        "version": ["7.0.1"]
       },
       "environments": [
         "dev",
@@ -2743,7 +2744,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -2762,7 +2763,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.8"
+        "version": ["3.0.8"]
       },
       "environments": [
         "dev",
@@ -2781,7 +2782,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.7"
+        "version": ["3.0.7"]
       },
       "environments": [
         "dev",
@@ -2800,7 +2801,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.6"
+        "version": ["3.0.6"]
       },
       "environments": [
         "dev",
@@ -2819,7 +2820,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.5"
+        "version": ["3.0.5"]
       },
       "environments": [
         "dev",
@@ -2838,7 +2839,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.4"
+        "version": ["3.0.4"]
       },
       "environments": [
         "dev",
@@ -2857,7 +2858,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.3"
+        "version": ["3.0.3"]
       },
       "environments": [
         "dev",
@@ -2876,7 +2877,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.2"
+        "version": ["3.0.2"]
       },
       "environments": [
         "dev",
@@ -2895,7 +2896,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.1"
+        "version": ["3.0.1"]
       },
       "environments": [
         "dev",
@@ -2914,7 +2915,7 @@
         "product": [
           "BillingCenter"
         ],
-        "version": "3.0.0"
+        "version": ["3.0.0"]
       },
       "environments": [
         "dev",
@@ -2933,7 +2934,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.2"
+        "version": ["10.0.2"]
       },
       "environments": [
         "dev",
@@ -2952,7 +2953,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -2971,7 +2972,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -2990,7 +2991,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.8"
+        "version": ["9.0.8"]
       },
       "environments": [
         "dev",
@@ -3009,7 +3010,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.7"
+        "version": ["9.0.7"]
       },
       "environments": [
         "dev",
@@ -3028,7 +3029,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.6"
+        "version": ["9.0.6"]
       },
       "environments": [
         "dev",
@@ -3047,7 +3048,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.5"
+        "version": ["9.0.5"]
       },
       "environments": [
         "dev",
@@ -3066,7 +3067,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.4"
+        "version": ["9.0.4"]
       },
       "environments": [
         "dev",
@@ -3085,7 +3086,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.3"
+        "version": ["9.0.3"]
       },
       "environments": [
         "dev",
@@ -3104,7 +3105,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.2"
+        "version": ["9.0.2"]
       },
       "environments": [
         "dev",
@@ -3123,7 +3124,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.1"
+        "version": ["9.0.1"]
       },
       "environments": [
         "dev",
@@ -3142,7 +3143,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "9.0.0"
+        "version": ["9.0.0"]
       },
       "environments": [
         "dev",
@@ -3161,7 +3162,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.7"
+        "version": ["8.0.7"]
       },
       "environments": [
         "dev",
@@ -3180,7 +3181,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.6"
+        "version": ["8.0.6"]
       },
       "environments": [
         "dev",
@@ -3199,7 +3200,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.5"
+        "version": ["8.0.5"]
       },
       "environments": [
         "dev",
@@ -3218,7 +3219,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.4"
+        "version": ["8.0.4"]
       },
       "environments": [
         "dev",
@@ -3237,7 +3238,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.3"
+        "version": ["8.0.3"]
       },
       "environments": [
         "dev",
@@ -3256,7 +3257,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.2"
+        "version": ["8.0.2"]
       },
       "environments": [
         "dev",
@@ -3275,7 +3276,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.1"
+        "version": ["8.0.1"]
       },
       "environments": [
         "dev",
@@ -3294,7 +3295,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -3313,7 +3314,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.8"
+        "version": ["7.0.8"]
       },
       "environments": [
         "dev",
@@ -3332,7 +3333,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.7"
+        "version": ["7.0.7"]
       },
       "environments": [
         "dev",
@@ -3351,7 +3352,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.6"
+        "version": ["7.0.6"]
       },
       "environments": [
         "dev",
@@ -3370,7 +3371,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.5"
+        "version": ["7.0.5"]
       },
       "environments": [
         "dev",
@@ -3389,7 +3390,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.4"
+        "version": ["7.0.4"]
       },
       "environments": [
         "dev",
@@ -3408,7 +3409,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.3"
+        "version": ["7.0.3"]
       },
       "environments": [
         "dev",
@@ -3427,7 +3428,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.2"
+        "version": ["7.0.2"]
       },
       "environments": [
         "dev",
@@ -3446,7 +3447,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.1"
+        "version": ["7.0.1"]
       },
       "environments": [
         "dev",
@@ -3465,7 +3466,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -3484,7 +3485,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.8"
+        "version": ["6.0.8"]
       },
       "environments": [
         "dev",
@@ -3503,7 +3504,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.7"
+        "version": ["6.0.7"]
       },
       "environments": [
         "dev",
@@ -3522,7 +3523,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.6"
+        "version": ["6.0.6"]
       },
       "environments": [
         "dev",
@@ -3541,7 +3542,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.5"
+        "version": ["6.0.5"]
       },
       "environments": [
         "dev",
@@ -3560,7 +3561,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.4"
+        "version": ["6.0.4"]
       },
       "environments": [
         "dev",
@@ -3579,7 +3580,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.3"
+        "version": ["6.0.3"]
       },
       "environments": [
         "dev",
@@ -3598,7 +3599,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.2"
+        "version": ["6.0.2"]
       },
       "environments": [
         "dev",
@@ -3617,7 +3618,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.1"
+        "version": ["6.0.1"]
       },
       "environments": [
         "dev",
@@ -3636,7 +3637,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "6.0.0"
+        "version": ["6.0.0"]
       },
       "environments": [
         "dev",
@@ -3655,7 +3656,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.9"
+        "version": ["5.0.9"]
       },
       "environments": [
         "dev",
@@ -3674,7 +3675,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.8"
+        "version": ["5.0.8"]
       },
       "environments": [
         "dev",
@@ -3693,7 +3694,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.7"
+        "version": ["5.0.7"]
       },
       "environments": [
         "dev",
@@ -3712,7 +3713,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.6"
+        "version": ["5.0.6"]
       },
       "environments": [
         "dev",
@@ -3731,7 +3732,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.5"
+        "version": ["5.0.5"]
       },
       "environments": [
         "dev",
@@ -3750,7 +3751,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.4"
+        "version": ["5.0.4"]
       },
       "environments": [
         "dev",
@@ -3769,7 +3770,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.3"
+        "version": ["5.0.3"]
       },
       "environments": [
         "dev",
@@ -3788,7 +3789,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.2"
+        "version": ["5.0.2"]
       },
       "environments": [
         "dev",
@@ -3807,7 +3808,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.1"
+        "version": ["5.0.1"]
       },
       "environments": [
         "dev",
@@ -3826,7 +3827,7 @@
         "product": [
           "ClaimCenter"
         ],
-        "version": "5.0.0"
+        "version": ["5.0.0"]
       },
       "environments": [
         "dev",
@@ -3845,7 +3846,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.2"
+        "version": ["10.0.2"]
       },
       "environments": [
         "dev",
@@ -3864,7 +3865,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.1"
+        "version": ["10.0.1"]
       },
       "environments": [
         "dev",
@@ -3883,7 +3884,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -3902,7 +3903,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.8"
+        "version": ["9.0.8"]
       },
       "environments": [
         "dev",
@@ -3921,7 +3922,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.7"
+        "version": ["9.0.7"]
       },
       "environments": [
         "dev",
@@ -3940,7 +3941,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.6"
+        "version": ["9.0.6"]
       },
       "environments": [
         "dev",
@@ -3959,7 +3960,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.5"
+        "version": ["9.0.5"]
       },
       "environments": [
         "dev",
@@ -3978,7 +3979,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.4"
+        "version": ["9.0.4"]
       },
       "environments": [
         "dev",
@@ -3997,7 +3998,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.3"
+        "version": ["9.0.3"]
       },
       "environments": [
         "dev",
@@ -4016,7 +4017,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.2"
+        "version": ["9.0.2"]
       },
       "environments": [
         "dev",
@@ -4035,7 +4036,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.1"
+        "version": ["9.0.1"]
       },
       "environments": [
         "dev",
@@ -4054,7 +4055,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "9.0.0"
+        "version": ["9.0.0"]
       },
       "environments": [
         "dev",
@@ -4073,7 +4074,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.8"
+        "version": ["8.0.8"]
       },
       "environments": [
         "dev",
@@ -4092,7 +4093,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.7"
+        "version": ["8.0.7"]
       },
       "environments": [
         "dev",
@@ -4111,7 +4112,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.6"
+        "version": ["8.0.6"]
       },
       "environments": [
         "dev",
@@ -4130,7 +4131,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.5"
+        "version": ["8.0.5"]
       },
       "environments": [
         "dev",
@@ -4149,7 +4150,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.4"
+        "version": ["8.0.4"]
       },
       "environments": [
         "dev",
@@ -4168,7 +4169,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.3"
+        "version": ["8.0.3"]
       },
       "environments": [
         "dev",
@@ -4187,7 +4188,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.2"
+        "version": ["8.0.2"]
       },
       "environments": [
         "dev",
@@ -4206,7 +4207,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.1"
+        "version": ["8.0.1"]
       },
       "environments": [
         "dev",
@@ -4225,7 +4226,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -4244,7 +4245,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.9"
+        "version": ["7.0.9"]
       },
       "environments": [
         "dev",
@@ -4263,7 +4264,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.8"
+        "version": ["7.0.8"]
       },
       "environments": [
         "dev",
@@ -4282,7 +4283,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.7"
+        "version": ["7.0.7"]
       },
       "environments": [
         "dev",
@@ -4301,7 +4302,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.6"
+        "version": ["7.0.6"]
       },
       "environments": [
         "dev",
@@ -4320,7 +4321,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.5"
+        "version": ["7.0.5"]
       },
       "environments": [
         "dev",
@@ -4339,7 +4340,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.4"
+        "version": ["7.0.4"]
       },
       "environments": [
         "dev",
@@ -4358,7 +4359,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.3"
+        "version": ["7.0.3"]
       },
       "environments": [
         "dev",
@@ -4377,7 +4378,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.2"
+        "version": ["7.0.2"]
       },
       "environments": [
         "dev",
@@ -4396,7 +4397,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.1"
+        "version": ["7.0.1"]
       },
       "environments": [
         "dev",
@@ -4415,7 +4416,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -4434,7 +4435,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.6"
+        "version": ["4.0.6"]
       },
       "environments": [
         "dev",
@@ -4453,7 +4454,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.5"
+        "version": ["4.0.5"]
       },
       "environments": [
         "dev",
@@ -4472,7 +4473,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.4"
+        "version": ["4.0.4"]
       },
       "environments": [
         "dev",
@@ -4491,7 +4492,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.3"
+        "version": ["4.0.3"]
       },
       "environments": [
         "dev",
@@ -4510,7 +4511,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.2"
+        "version": ["4.0.2"]
       },
       "environments": [
         "dev",
@@ -4529,7 +4530,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.1"
+        "version": ["4.0.1"]
       },
       "environments": [
         "dev",
@@ -4548,7 +4549,7 @@
         "product": [
           "PolicyCenter"
         ],
-        "version": "4.0.0"
+        "version": ["4.0.0"]
       },
       "environments": [
         "dev",
@@ -4567,7 +4568,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -4586,7 +4587,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -4605,7 +4606,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.3.0"
+        "version": ["9.3.0"]
       },
       "environments": [
         "dev",
@@ -4624,7 +4625,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.2.0"
+        "version": ["9.2.0"]
       },
       "environments": [
         "dev",
@@ -4643,7 +4644,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.1.0"
+        "version": ["9.1.0"]
       },
       "environments": [
         "dev",
@@ -4662,7 +4663,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "9.0.0"
+        "version": ["9.0.0"]
       },
       "environments": [
         "dev",
@@ -4681,7 +4682,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.3.0"
+        "version": ["8.3.0"]
       },
       "environments": [
         "dev",
@@ -4700,7 +4701,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.2.0"
+        "version": ["8.2.0"]
       },
       "environments": [
         "dev",
@@ -4719,7 +4720,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.1.1"
+        "version": ["8.1.1"]
       },
       "environments": [
         "dev",
@@ -4738,7 +4739,7 @@
         "product": [
           "DataHub"
         ],
-        "version": "8.1.0"
+        "version": ["8.1.0"]
       },
       "environments": [
         "dev",
@@ -4757,7 +4758,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.1.0"
+        "version": ["10.1.0"]
       },
       "environments": [
         "dev",
@@ -4776,7 +4777,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -4795,7 +4796,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.3.0"
+        "version": ["9.3.0"]
       },
       "environments": [
         "dev",
@@ -4814,7 +4815,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.2.0"
+        "version": ["9.2.0"]
       },
       "environments": [
         "dev",
@@ -4833,7 +4834,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.1.0"
+        "version": ["9.1.0"]
       },
       "environments": [
         "dev",
@@ -4852,7 +4853,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "9.0.0"
+        "version": ["9.0.0"]
       },
       "environments": [
         "dev",
@@ -4871,7 +4872,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.3.0"
+        "version": ["8.3.0"]
       },
       "environments": [
         "dev",
@@ -4890,7 +4891,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.2.1"
+        "version": ["8.2.1"]
       },
       "environments": [
         "dev",
@@ -4909,7 +4910,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.2.0"
+        "version": ["8.2.0"]
       },
       "environments": [
         "dev",
@@ -4928,7 +4929,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.1.1"
+        "version": ["8.1.1"]
       },
       "environments": [
         "dev",
@@ -4947,7 +4948,7 @@
         "product": [
           "InfoCenter"
         ],
-        "version": "8.1.0"
+        "version": ["8.1.0"]
       },
       "environments": [
         "dev",
@@ -4966,7 +4967,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -4985,7 +4986,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "8.1.0"
+        "version": ["8.1.0"]
       },
       "environments": [
         "dev",
@@ -5004,7 +5005,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -5023,7 +5024,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "7.1.0"
+        "version": ["7.1.0"]
       },
       "environments": [
         "dev",
@@ -5042,7 +5043,7 @@
         "product": [
           "CustomerEngage Account Management"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -5061,7 +5062,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -5080,7 +5081,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "8.1.0"
+        "version": ["8.1.0"]
       },
       "environments": [
         "dev",
@@ -5099,7 +5100,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -5118,7 +5119,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "7.1.0"
+        "version": ["7.1.0"]
       },
       "environments": [
         "dev",
@@ -5137,7 +5138,7 @@
         "product": [
           "CustomerEngage Quote and Buy"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -5156,7 +5157,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -5175,7 +5176,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "8.1.0"
+        "version": ["8.1.0"]
       },
       "environments": [
         "dev",
@@ -5194,7 +5195,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -5213,7 +5214,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "7.1.0"
+        "version": ["7.1.0"]
       },
       "environments": [
         "dev",
@@ -5232,7 +5233,7 @@
         "product": [
           "ProducerEngage"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -5251,7 +5252,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -5270,7 +5271,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "8.1.0"
+        "version": ["8.1.0"]
       },
       "environments": [
         "dev",
@@ -5289,7 +5290,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -5308,7 +5309,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "7.1.0"
+        "version": ["7.1.0"]
       },
       "environments": [
         "dev",
@@ -5327,7 +5328,7 @@
         "product": [
           "ServiceRepEngage"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -5346,7 +5347,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "10.0.0"
+        "version": ["10.0.0"]
       },
       "environments": [
         "dev",
@@ -5365,7 +5366,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "8.1.0"
+        "version": ["8.1.0"]
       },
       "environments": [
         "dev",
@@ -5384,7 +5385,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "8.0.0"
+        "version": ["8.0.0"]
       },
       "environments": [
         "dev",
@@ -5403,7 +5404,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "7.1.0"
+        "version": ["7.1.0"]
       },
       "environments": [
         "dev",
@@ -5422,7 +5423,7 @@
         "product": [
           "VendorEngage"
         ],
-        "version": "7.0.0"
+        "version": ["7.0.0"]
       },
       "environments": [
         "dev",
@@ -5441,7 +5442,7 @@
         "product": [
           "Businessowners Standards Based Template"
         ],
-        "version": "latest",
+        "version": ["latest"],
         "release": [
           "Aspen",
           "Banff",
@@ -5462,9 +5463,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5487,9 +5488,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5512,9 +5513,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5537,9 +5538,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5562,9 +5563,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5587,9 +5588,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5612,9 +5613,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5637,9 +5638,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5662,9 +5663,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5687,9 +5688,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5712,9 +5713,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5737,9 +5738,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5762,11 +5763,11 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5789,9 +5790,9 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud"
+          "BillingCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5814,9 +5815,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5839,9 +5840,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5864,9 +5865,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5889,9 +5890,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5914,9 +5915,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5939,9 +5940,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5964,9 +5965,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -5989,9 +5990,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6014,9 +6015,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6039,9 +6040,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6064,9 +6065,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6089,9 +6090,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6114,9 +6115,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6139,9 +6140,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6164,9 +6165,9 @@
           "Cloud"
         ],
         "product": [
-          "ClaimCenter for Guidewire Cloud"
+          "ClaimCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6189,9 +6190,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6214,9 +6215,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6239,9 +6240,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6264,9 +6265,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6289,9 +6290,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6314,9 +6315,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6339,9 +6340,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6364,9 +6365,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6389,9 +6390,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6414,9 +6415,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6439,9 +6440,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6464,9 +6465,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6489,9 +6490,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6514,9 +6515,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6539,9 +6540,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6564,9 +6565,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6589,9 +6590,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6614,9 +6615,9 @@
           "Cloud"
         ],
         "product": [
-          "PolicyCenter for Guidewire Cloud"
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6639,11 +6640,11 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "release": [
           "Banff"
         ],
@@ -6666,11 +6667,11 @@
           "Cloud"
         ],
         "product": [
-          "BillingCenter for Guidewire Cloud",
-          "ClaimCenter for Guidewire Cloud",
-          "PolicyCenter for Guidewire Cloud"
+          "BillingCenter",
+          "ClaimCenter",
+          "PolicyCenter"
         ],
-        "version": "2020.11",
+        "version": ["2020.11"],
         "subject": [
           "Glossary"
         ],
