@@ -8,7 +8,9 @@ gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
 async function fetchMetadata() {
-  const docId = document.querySelector('[name="gw-doc-id"]');
+  const docId = document
+    .querySelector('[name="gw-doc-id"]')
+    ?.getAttribute('content');
   if (docId) {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
@@ -49,16 +51,16 @@ function createContainerForCustomHeaderElements() {
 async function createVersionSelector() {
   try {
     const docProduct =
-      metadata?.product ||
+      metadata?.product.join(',') ||
       document.querySelector("meta[name = 'gw-product']")?.content;
     if (!docProduct) {
       return null;
     }
     const docPlatform =
-      metadata?.platform ||
+      metadata?.platform.join(',') ||
       document.querySelector("meta[name = 'gw-platform']")['content'];
     const docVersion =
-      metadata?.version ||
+      metadata?.version.join(',') ||
       document.querySelector("meta[name = 'gw-version']")['content'];
 
     const response = await fetch(
