@@ -1866,7 +1866,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
       "public": false
     },
@@ -1880,7 +1880,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
       "public": false
     },
@@ -1894,7 +1894,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
       "public": false
     },
@@ -1991,7 +1991,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2005,7 +2005,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2019,7 +2019,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2117,7 +2117,7 @@
         "product": ["BillingCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2131,7 +2131,7 @@
         "product": ["ClaimCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -2145,7 +2145,7 @@
         "product": ["PolicyCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

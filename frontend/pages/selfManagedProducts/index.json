@@ -11,12 +11,7 @@
         {
           "label": "BillingCenter",
           "id": "bc1012",
-          "env": ["dev", "staging"]
-        },
-        {
-          "label": "BillingCenter",
-          "id": "bc1011",
-          "env": ["prod"]
+          "env": ["dev", "staging", "prod"]
         },
         {
           "label": "BillingCenter",
@@ -25,12 +20,7 @@
         {
           "label": "ClaimCenter",
           "id": "cc1012",
-          "env": ["dev", "staging"]
-        },
-        {
-          "label": "ClaimCenter",
-          "id": "cc1011",
-          "env": ["prod"]
+          "env": ["dev", "staging", "prod"]
         },
         {
           "label": "ClaimCenter",
@@ -39,12 +29,7 @@
         {
           "label": "PolicyCenter",
           "id": "pc1012",
-          "env": ["dev", "staging"]
-        },
-        {
-          "label": "PolicyCenter",
-          "id": "pc1011",
-          "env": ["prod"]
+          "env": ["dev", "staging", "prod"]
         },
         {
           "label": "PolicyCenter",
