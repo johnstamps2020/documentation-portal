@@ -4826,11 +4826,6 @@
       "srcId": "srcin20211apiref"
     },
     {
-      "buildType": "yarn",
-      "docId": "redocsandbox",
-      "srcId": "redocsandboxsrc"
-    },
-    {
       "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",

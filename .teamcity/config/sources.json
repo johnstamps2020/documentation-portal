@@ -3694,7 +3694,7 @@
       "title": "Cloud API Reference in Redoc",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
-      "branch": "master"
+      "branch": "releases/banff"
     },
     {
       "id": "srcapiref202104",
@@ -3716,13 +3716,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
       "branch": "releases/cortina"
-    },
-    {
-      "id": "redocsandboxsrc",
-      "title": "API Reference from Redoc - preview",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
-      "branch": "adding-pc-specs"
     },
     {
       "id": "dmrndraftsrc",

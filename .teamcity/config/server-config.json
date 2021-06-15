@@ -8246,38 +8246,6 @@
       "public": true
     },
     {
-      "id": "redocsandbox",
-      "title": "CC and PC API Reference Sandbox",
-      "url": "cloud/apiref/preview",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["latest"],
-        "release": ["Cortina"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true
-    },
-    {
-      "id": "iscc202104apiref",
-      "title": "Get ready to delete this",
-      "url": "cloud/is/202104/apiref/docs/cc-admin",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2021.04"],
-        "release": ["Cortina"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false
-    },
-    {
       "id": "iscc202104testing",
       "title": "ISBTF and GUnit Testing",
       "url": "cloud/cc/202104/testing",
