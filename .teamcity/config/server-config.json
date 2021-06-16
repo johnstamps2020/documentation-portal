@@ -1654,7 +1654,7 @@
       "url": "cloud/bc/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -1669,7 +1669,7 @@
       "url": "cloud/cc/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -1684,7 +1684,7 @@
       "url": "cloud/pc/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -1700,7 +1700,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -1715,7 +1715,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -1730,7 +1730,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -2298,7 +2298,7 @@
       "url": "cloud/dh/202011",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"]
       },
@@ -2313,7 +2313,7 @@
       "url": "cloud/ic/202011",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"]
       },
@@ -2343,7 +2343,7 @@
       "url": "cloud/dh/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -2358,7 +2358,7 @@
       "url": "cloud/ic/202005",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
@@ -6935,7 +6935,7 @@
       "url": "cloud/bc/202011/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Release notes"]
@@ -6951,7 +6951,7 @@
       "url": "cloud/bc/202011/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Release notes"]
@@ -6967,7 +6967,7 @@
       "url": "cloud/bc/202011/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Installation"]
@@ -6983,7 +6983,7 @@
       "url": "cloud/bc/202011/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Features and functionality"]
@@ -6999,7 +6999,7 @@
       "url": "cloud/bc/202011/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Administration"]
@@ -7015,7 +7015,7 @@
       "url": "cloud/bc/202011/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Best practices"]
@@ -7031,7 +7031,7 @@
       "url": "cloud/bc/202011/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7047,7 +7047,7 @@
       "url": "cloud/bc/202011/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7063,7 +7063,7 @@
       "url": "cloud/bc/202011/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7079,7 +7079,7 @@
       "url": "cloud/bc/202011/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7095,7 +7095,7 @@
       "url": "cloud/bc/202011/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Development"]
@@ -7111,7 +7111,7 @@
       "url": "cloud/bc/202011/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Development"]
@@ -7127,7 +7127,7 @@
       "url": "cloud/bc/202011/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Installation"]
@@ -7143,7 +7143,7 @@
       "url": "cloud/cc/202011/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Release notes"]
@@ -7159,7 +7159,7 @@
       "url": "cloud/cc/202011/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Release notes"]
@@ -7175,7 +7175,7 @@
       "url": "cloud/cc/202011/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Installation"]
@@ -7191,7 +7191,7 @@
       "url": "cloud/cc/202011/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Features and functionality"]
@@ -7207,7 +7207,7 @@
       "url": "cloud/cc/202011/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Administration"]
@@ -7223,7 +7223,7 @@
       "url": "cloud/cc/202011/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Best practices"]
@@ -7239,7 +7239,7 @@
       "url": "cloud/cc/202011/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7255,7 +7255,7 @@
       "url": "cloud/cc/202011/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7271,7 +7271,7 @@
       "url": "cloud/cc/202011/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7287,7 +7287,7 @@
       "url": "cloud/cc/202011/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7303,7 +7303,7 @@
       "url": "cloud/cc/202011/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7319,7 +7319,7 @@
       "url": "cloud/cc/202011/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7335,7 +7335,7 @@
       "url": "cloud/cc/202011/apiref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7351,7 +7351,7 @@
       "url": "cloud/cc/202011/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Development"]
@@ -7367,7 +7367,7 @@
       "url": "cloud/cc/202011/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Development"]
@@ -7383,7 +7383,7 @@
       "url": "cloud/cc/202011/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7399,7 +7399,7 @@
       "url": "cloud/cc/202011/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Installation"]
@@ -7415,7 +7415,7 @@
       "url": "cloud/pc/202011/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Release notes"]
@@ -7431,7 +7431,7 @@
       "url": "cloud/pc/202011/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Release notes"]
@@ -7447,7 +7447,7 @@
       "url": "cloud/pc/202011/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Installation"]
@@ -7463,7 +7463,7 @@
       "url": "cloud/pc/202011/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Features and functionality"]
@@ -7479,7 +7479,7 @@
       "url": "cloud/pc/202011/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Administration"]
@@ -7495,7 +7495,7 @@
       "url": "cloud/pc/202011/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Best practices"]
@@ -7511,7 +7511,7 @@
       "url": "cloud/pc/202011/apd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7527,7 +7527,7 @@
       "url": "cloud/pc/202011/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7543,7 +7543,7 @@
       "url": "cloud/pc/202011/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7559,7 +7559,7 @@
       "url": "cloud/pc/202011/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7575,7 +7575,7 @@
       "url": "cloud/pc/202011/pd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7591,7 +7591,7 @@
       "url": "cloud/pc/202011/productmodel",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Configuration"]
@@ -7607,7 +7607,7 @@
       "url": "cloud/pc/202011/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7623,7 +7623,7 @@
       "url": "cloud/pc/202011/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7639,7 +7639,7 @@
       "url": "cloud/pc/202011/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7655,7 +7655,7 @@
       "url": "cloud/pc/202011/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7671,7 +7671,7 @@
       "url": "cloud/pc/202011/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Development"]
@@ -7687,7 +7687,7 @@
       "url": "cloud/pc/202011/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Development"]
@@ -7703,7 +7703,7 @@
       "url": "cloud/pc/202011/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
@@ -7719,7 +7719,7 @@
       "url": "cloud/pc/202011/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Installation"]
@@ -7735,7 +7735,11 @@
       "url": "cloud/is/202011/contact",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Features and functionality"]
@@ -7750,7 +7754,11 @@
       "title": "API Testing",
       "url": "cloud/testingframeworks/202011/api",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "platform": ["Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
@@ -7766,7 +7774,11 @@
       "title": "User Interface Testing",
       "url": "cloud/testingframeworks/202011/ui",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "platform": ["Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
@@ -7782,7 +7794,11 @@
       "title": "Test Automation Release Notes",
       "url": "cloud/testingframeworks/202011/releasenotes",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "platform": ["Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
@@ -7799,7 +7815,7 @@
       "url": "cloud/bc/202104/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Release notes"]
@@ -7815,7 +7831,7 @@
       "url": "cloud/bc/202104/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Release notes"]
@@ -7831,7 +7847,7 @@
       "url": "cloud/bc/202104/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Installation"]
@@ -7847,7 +7863,7 @@
       "url": "cloud/bc/202104/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
@@ -7863,7 +7879,7 @@
       "url": "cloud/bc/202104/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Administration"]
@@ -7879,7 +7895,7 @@
       "url": "cloud/bc/202104/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Best practices"]
@@ -7895,7 +7911,7 @@
       "url": "cloud/bc/202104/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -7911,7 +7927,7 @@
       "url": "cloud/bc/202104/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -7927,7 +7943,7 @@
       "url": "cloud/bc/202104/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -7943,7 +7959,7 @@
       "url": "cloud/bc/202104/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -7959,7 +7975,11 @@
       "url": "cloud/is/202104/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Development"]
@@ -7975,7 +7995,7 @@
       "url": "cloud/bc/202104/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Development"]
@@ -7991,7 +8011,7 @@
       "url": "cloud/bc/202104/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8007,7 +8027,7 @@
       "url": "cloud/bc/202104/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Installation"]
@@ -8023,7 +8043,7 @@
       "url": "cloud/cc/202104/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Release notes"]
@@ -8039,7 +8059,7 @@
       "url": "cloud/cc/202104/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Release notes"]
@@ -8055,7 +8075,7 @@
       "url": "cloud/cc/202104/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Installation"]
@@ -8071,7 +8091,7 @@
       "url": "cloud/cc/202104/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
@@ -8087,7 +8107,7 @@
       "url": "cloud/cc/202104/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Administration"]
@@ -8103,7 +8123,7 @@
       "url": "cloud/cc/202104/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Best practices"]
@@ -8119,7 +8139,7 @@
       "url": "cloud/cc/202104/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8135,7 +8155,7 @@
       "url": "cloud/cc/202104/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8151,7 +8171,7 @@
       "url": "cloud/cc/202104/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8167,7 +8187,7 @@
       "url": "cloud/cc/202104/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8183,7 +8203,7 @@
       "url": "cloud/cc/202104/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8199,7 +8219,7 @@
       "url": "cloud/cc/202104/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8215,7 +8235,7 @@
       "url": "cloud/cc/202104/apiref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8231,7 +8251,7 @@
       "url": "cloud/pc/202104/apiref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8247,7 +8267,7 @@
       "url": "cloud/cc/202104/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Development"]
@@ -8263,7 +8283,7 @@
       "url": "cloud/cc/202104/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8279,7 +8299,7 @@
       "url": "cloud/cc/202104/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Installation"]
@@ -8295,7 +8315,7 @@
       "url": "cloud/pc/202104/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Release notes"]
@@ -8311,7 +8331,7 @@
       "url": "cloud/pc/202104/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Release notes"]
@@ -8327,7 +8347,7 @@
       "url": "cloud/pc/202104/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Installation"]
@@ -8343,7 +8363,7 @@
       "url": "cloud/pc/202104/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
@@ -8359,7 +8379,7 @@
       "url": "cloud/pc/202104/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Administration"]
@@ -8375,7 +8395,7 @@
       "url": "cloud/pc/202104/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Best practices"]
@@ -8391,7 +8411,7 @@
       "url": "cloud/pc/202104/apd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8407,7 +8427,7 @@
       "url": "cloud/pc/202104/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8423,7 +8443,7 @@
       "url": "cloud/pc/202104/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8439,7 +8459,7 @@
       "url": "cloud/pc/202104/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8455,7 +8475,7 @@
       "url": "cloud/pc/202104/pd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8471,7 +8491,7 @@
       "url": "cloud/pc/202104/productmodel",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Configuration"]
@@ -8487,7 +8507,7 @@
       "url": "cloud/pc/202104/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8503,7 +8523,7 @@
       "url": "cloud/pc/202104/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8519,7 +8539,7 @@
       "url": "cloud/pc/202104/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8535,7 +8555,7 @@
       "url": "cloud/pc/202104/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8551,7 +8571,7 @@
       "url": "cloud/pc/202104/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Development"]
@@ -8567,7 +8587,7 @@
       "url": "cloud/pc/202104/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Integration"]
@@ -8583,7 +8603,7 @@
       "url": "cloud/pc/202104/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Installation"]
@@ -8599,7 +8619,11 @@
       "url": "cloud/is/202104/contact",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["2021.04"],
         "release": ["Cortina"],
         "subject": ["Features and functionality"]
@@ -8614,7 +8638,11 @@
       "title": "API Testing",
       "url": "cloud/testingframeworks/202104/api",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -8630,7 +8658,11 @@
       "title": "User Interface Testing",
       "url": "cloud/testingframeworks/202104/ui",
       "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -8692,7 +8724,7 @@
       "url": "cloud/bc/latest/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -8708,7 +8740,7 @@
       "url": "cloud/bc/latest/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -8724,7 +8756,7 @@
       "url": "cloud/bc/latest/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -8740,7 +8772,7 @@
       "url": "cloud/bc/latest/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -8756,7 +8788,7 @@
       "url": "cloud/bc/latest/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Administration"]
@@ -8772,7 +8804,7 @@
       "url": "cloud/bc/latest/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Best practices"]
@@ -8788,7 +8820,7 @@
       "url": "cloud/bc/latest/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -8804,7 +8836,7 @@
       "url": "cloud/bc/latest/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -8820,7 +8852,7 @@
       "url": "cloud/bc/latest/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -8836,7 +8868,7 @@
       "url": "cloud/bc/latest/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -8852,7 +8884,11 @@
       "url": "cloud/is/latest/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -8868,7 +8904,7 @@
       "url": "cloud/bc/latest/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -8884,7 +8920,7 @@
       "url": "cloud/bc/latest/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -8900,7 +8936,7 @@
       "url": "cloud/bc/latest/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -8916,7 +8952,7 @@
       "url": "cloud/cc/latest/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -8932,7 +8968,7 @@
       "url": "cloud/cc/latest/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -8948,7 +8984,7 @@
       "url": "cloud/cc/latest/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -8964,7 +9000,7 @@
       "url": "cloud/cc/latest/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -8980,7 +9016,7 @@
       "url": "cloud/cc/latest/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Administration"]
@@ -8996,7 +9032,7 @@
       "url": "cloud/cc/latest/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Best practices"]
@@ -9012,7 +9048,7 @@
       "url": "cloud/cc/latest/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9028,7 +9064,7 @@
       "url": "cloud/cc/latest/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9044,7 +9080,7 @@
       "url": "cloud/cc/latest/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9060,7 +9096,7 @@
       "url": "cloud/cc/latest/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9076,7 +9112,7 @@
       "url": "cloud/cc/latest/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9092,7 +9128,7 @@
       "url": "cloud/cc/latest/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9108,7 +9144,7 @@
       "url": "cloud/cc/latest/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -9124,7 +9160,7 @@
       "url": "cloud/cc/latest/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9140,7 +9176,7 @@
       "url": "cloud/cc/latest/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9156,7 +9192,7 @@
       "url": "cloud/pc/latest/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9172,7 +9208,7 @@
       "url": "cloud/pc/latest/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9188,7 +9224,7 @@
       "url": "cloud/pc/latest/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9204,7 +9240,7 @@
       "url": "cloud/pc/latest/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -9220,7 +9256,7 @@
       "url": "cloud/pc/latest/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Administration"]
@@ -9236,7 +9272,7 @@
       "url": "cloud/pc/latest/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Best practices"]
@@ -9252,7 +9288,7 @@
       "url": "cloud/pc/latest/apd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9268,7 +9304,7 @@
       "url": "cloud/pc/latest/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9284,7 +9320,7 @@
       "url": "cloud/pc/latest/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9300,7 +9336,7 @@
       "url": "cloud/pc/latest/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9316,7 +9352,7 @@
       "url": "cloud/pc/latest/pd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9332,7 +9368,7 @@
       "url": "cloud/pc/latest/productmodel",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9348,7 +9384,7 @@
       "url": "cloud/pc/latest/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9364,7 +9400,7 @@
       "url": "cloud/pc/latest/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9380,7 +9416,7 @@
       "url": "cloud/pc/latest/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9396,7 +9432,7 @@
       "url": "cloud/pc/latest/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -9412,7 +9448,7 @@
       "url": "cloud/pc/latest/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9428,7 +9464,7 @@
       "url": "cloud/pc/latest/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9474,7 +9510,11 @@
       "url": "cloud/is/latest/contact",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -9490,7 +9530,7 @@
       "url": "cloud/bc/ea/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9506,7 +9546,7 @@
       "url": "cloud/bc/ea/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9522,7 +9562,7 @@
       "url": "cloud/bc/ea/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9538,7 +9578,7 @@
       "url": "cloud/bc/ea/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -9554,7 +9594,7 @@
       "url": "cloud/bc/ea/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Administration"]
@@ -9570,7 +9610,7 @@
       "url": "cloud/bc/ea/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Best practices"]
@@ -9586,7 +9626,7 @@
       "url": "cloud/bc/ea/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9602,7 +9642,7 @@
       "url": "cloud/bc/ea/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9618,7 +9658,7 @@
       "url": "cloud/bc/ea/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9634,7 +9674,7 @@
       "url": "cloud/bc/ea/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9650,7 +9690,11 @@
       "url": "cloud/is/ea/gosu",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -9666,7 +9710,7 @@
       "url": "cloud/bc/ea/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -9682,7 +9726,7 @@
       "url": "cloud/bc/ea/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9698,7 +9742,7 @@
       "url": "cloud/cc/ea/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9714,7 +9758,7 @@
       "url": "cloud/cc/ea/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9730,7 +9774,7 @@
       "url": "cloud/cc/ea/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9746,7 +9790,7 @@
       "url": "cloud/cc/ea/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -9762,7 +9806,7 @@
       "url": "cloud/cc/ea/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Administration"]
@@ -9778,7 +9822,7 @@
       "url": "cloud/cc/ea/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Best practices"]
@@ -9794,7 +9838,7 @@
       "url": "cloud/cc/ea/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9810,7 +9854,7 @@
       "url": "cloud/cc/ea/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9826,7 +9870,7 @@
       "url": "cloud/cc/ea/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -9842,7 +9886,7 @@
       "url": "cloud/cc/ea/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9858,7 +9902,7 @@
       "url": "cloud/cc/ea/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9874,7 +9918,7 @@
       "url": "cloud/cc/ea/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -9890,7 +9934,7 @@
       "url": "cloud/cc/ea/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -9906,7 +9950,7 @@
       "url": "cloud/cc/ea/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9922,7 +9966,7 @@
       "url": "cloud/pc/ea/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9938,7 +9982,7 @@
       "url": "cloud/pc/ea/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Release notes"]
@@ -9954,7 +9998,7 @@
       "url": "cloud/pc/ea/upgrade",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -9970,7 +10014,7 @@
       "url": "cloud/pc/ea/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -9986,7 +10030,7 @@
       "url": "cloud/pc/ea/admin",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Administration"]
@@ -10002,7 +10046,7 @@
       "url": "cloud/pc/ea/bestpractice",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Best practices"]
@@ -10018,7 +10062,7 @@
       "url": "cloud/pc/ea/apd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -10034,7 +10078,7 @@
       "url": "cloud/pc/ea/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -10050,7 +10094,7 @@
       "url": "cloud/pc/ea/global",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -10066,7 +10110,7 @@
       "url": "cloud/pc/ea/rules",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -10082,7 +10126,7 @@
       "url": "cloud/pc/ea/pd",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -10098,7 +10142,7 @@
       "url": "cloud/pc/ea/productmodel",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
@@ -10114,7 +10158,7 @@
       "url": "cloud/pc/ea/integration",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -10130,7 +10174,7 @@
       "url": "cloud/pc/ea/cloudapi",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -10146,7 +10190,7 @@
       "url": "cloud/pc/ea/testing",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Development"]
@@ -10162,7 +10206,7 @@
       "url": "cloud/pc/ea/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Integration"]
@@ -10178,7 +10222,7 @@
       "url": "cloud/pc/ea/installation",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Installation"]
@@ -10209,7 +10253,11 @@
       "url": "cloud/is/ea/contact",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "product": [
+          "BillingCenter for Guidewire Cloud",
+          "ClaimCenter for Guidewire Cloud",
+          "PolicyCenter for Guidewire Cloud"
+        ],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"]
@@ -11986,7 +12034,7 @@
       "title": "Release Notes",
       "url": "cloud/dh/latest/releasenotes",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12002,7 +12050,7 @@
       "title": "Product Guide",
       "url": "cloud/dh/latest/product",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12018,7 +12066,7 @@
       "title": "Installation Guide",
       "url": "cloud/dh/latest/install",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12034,7 +12082,7 @@
       "title": "Upgrade Guide",
       "url": "cloud/dh/latest/upgrade",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12050,7 +12098,7 @@
       "title": "Configuration Guide",
       "url": "cloud/dh/latest/config",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12066,7 +12114,7 @@
       "title": "Data Specifications Guide",
       "url": "cloud/dh/latest/dataspec",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12082,7 +12130,7 @@
       "title": "Administration Guide",
       "url": "cloud/dh/latest/admin",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12098,7 +12146,7 @@
       "title": "Developer Reference",
       "url": "cloud/dh/latest/devref",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12114,7 +12162,7 @@
       "title": "Release Notes",
       "url": "cloud/ic/latest/releasenotes",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12130,7 +12178,7 @@
       "title": "Product Guide",
       "url": "cloud/ic/latest/product",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12146,7 +12194,7 @@
       "title": "Installation Guide",
       "url": "cloud/ic/latest/install",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12162,7 +12210,7 @@
       "title": "Upgrade Guide",
       "url": "cloud/ic/latest/upgrade",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12178,7 +12226,7 @@
       "title": "Configuration Guide",
       "url": "cloud/ic/latest/config",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12194,7 +12242,7 @@
       "title": "Data Specifications Guide",
       "url": "cloud/ic/latest/dataspec",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12210,7 +12258,7 @@
       "title": "Administration Guide",
       "url": "cloud/ic/latest/admin",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12226,7 +12274,7 @@
       "title": "BI Applications Guide",
       "url": "cloud/ic/latest/biapp",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12242,7 +12290,7 @@
       "title": "Reports Guide",
       "url": "cloud/ic/latest/reports",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12258,7 +12306,7 @@
       "title": "Developer Reference",
       "url": "cloud/ic/latest/devref",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
@@ -12274,7 +12322,7 @@
       "title": "Release Notes",
       "url": "cloud/dh/202104/releasenotes",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12290,7 +12338,7 @@
       "title": "Product Guide",
       "url": "cloud/dh/202104/product",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12306,7 +12354,7 @@
       "title": "Installation Guide",
       "url": "cloud/dh/202104/install",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12322,7 +12370,7 @@
       "title": "Upgrade Guide",
       "url": "cloud/dh/202104/upgrade",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12338,7 +12386,7 @@
       "title": "Configuration Guide",
       "url": "cloud/dh/202104/config",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12354,7 +12402,7 @@
       "title": "Data Specifications Guide",
       "url": "cloud/dh/202104/dataspec",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12370,7 +12418,7 @@
       "title": "Administration Guide",
       "url": "cloud/dh/202104/admin",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12386,7 +12434,7 @@
       "title": "Developer Reference",
       "url": "cloud/dh/202104/devref",
       "metadata": {
-        "product": ["DataHub"],
+        "product": ["DataHub for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12402,7 +12450,7 @@
       "title": "Release Notes",
       "url": "cloud/ic/202104/releasenotes",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12418,7 +12466,7 @@
       "title": "Product Guide",
       "url": "cloud/ic/202104/product",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12434,7 +12482,7 @@
       "title": "Installation Guide",
       "url": "cloud/ic/202104/install",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12450,7 +12498,7 @@
       "title": "Upgrade Guide",
       "url": "cloud/ic/202104/upgrade",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12466,7 +12514,7 @@
       "title": "Configuration Guide",
       "url": "cloud/ic/202104/config",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12482,7 +12530,7 @@
       "title": "Data Specifications Guide",
       "url": "cloud/ic/202104/dataspec",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12498,7 +12546,7 @@
       "title": "Administration Guide",
       "url": "cloud/ic/202104/admin",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12514,7 +12562,7 @@
       "title": "BI Applications Guide",
       "url": "cloud/ic/202104/biapp",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12530,7 +12578,7 @@
       "title": "Reports Guide",
       "url": "cloud/ic/202104/reports",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
@@ -12546,7 +12594,7 @@
       "title": "Developer Reference",
       "url": "cloud/ic/202104/devref",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["InfoCenter for Guidewire Cloud"],
         "platform": ["Cloud"],
         "version": ["2021.04"],
         "release": ["Cortina"],
