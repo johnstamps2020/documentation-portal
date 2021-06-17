@@ -2,11 +2,35 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Guidewire Cloud Platform",
   "template": "page.j2",
-  "class": "twoCards",
+  "class": "twoColumns",
   "items": [
     {
-      "label": "Guidewire Identity Federation Hub",
-      "class": "categoryCard cardShadow",
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdevdraft"
+        }
+      ]
+    },
+    {
+      "label": "Getting Started",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Getting Started with Guidewire Cloud Platform",
+          "id": "cloudplatformdraft"
+        },
+        {
+          "label": "Getting Started with Guidewire Cloud Platform",
+          "id": "cloudplatformrelease"
+        }
+      ]
+    },
+    {
+      "label": "Authentication",
+      "class": "subject configuration",
       "items": [
         {
           "label": "Authentication with Guidewire Identity Federation Hub",
@@ -16,15 +40,11 @@
     },
     {
       "label": "Guidewire Cloud Console",
-      "class": "categoryCard cardShadow",
+      "class": "subject administration",
       "items": [
         {
           "label": "Cloud Console Guide",
           "id": "guidewirecloudconsoleguideinsurerdevdraft"
-        },
-        {
-          "label": "Cloud Console Release Notes",
-          "id": "guidewirecloudconsolerninsurerdevdraft"
         }
       ]
     }
