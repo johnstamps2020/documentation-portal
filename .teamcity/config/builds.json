@@ -603,6 +603,22 @@
     },
     {
       "buildType": "dita",
+      "root": "CloudPlatform.ditamap",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "indexRedirect": true,
+      "srcId": "cloudplatformsrc",
+      "docId": "cloudplatformdraft"
+    },
+    {
+      "buildType": "dita",
+      "root": "CloudPlatform.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "cloudplatformsrc",
+      "docId": "cloudplatformrelease"
+    },
+    {
+      "buildType": "dita",
       "root": "guidewire_cloud_platform_guide.ditamap",
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,

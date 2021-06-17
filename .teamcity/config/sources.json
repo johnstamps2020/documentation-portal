@@ -3266,6 +3266,12 @@
       ]
     },
     {
+      "id": "cloudplatformsrc",
+      "title": "Cloud Platform",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-platform.git"
+    },
+    {
       "id": "guidewirecloudconsolelatestsrc",
       "title": "Guidewire Cloud Console",
       "sourceType": "git",
