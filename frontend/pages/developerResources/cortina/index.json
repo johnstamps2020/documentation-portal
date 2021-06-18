@@ -18,6 +18,11 @@
       "label": "InsuranceNow API reference",
       "class": "productFamily cardShadow",
       "id": "in20211apiref"
+    },
+    {
+      "label": "ClaimCenter API reference",
+      "class": "productFamily cardShadow",
+      "id": "cc202104apiref"
     }
   ]
 }
