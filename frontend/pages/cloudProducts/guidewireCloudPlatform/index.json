@@ -11,6 +11,10 @@
         {
           "label": "Cloud Console Release Notes",
           "id": "guidewirecloudconsolerninsurerdevdraft"
+        },
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdev"
         }
       ]
     },
@@ -35,6 +39,10 @@
         {
           "label": "Authentication with Guidewire Identity Federation Hub",
           "id": "guidewireidentityfederationhubdraft"
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhub"
         }
       ]
     },
@@ -45,6 +53,10 @@
         {
           "label": "Cloud Console Guide",
           "id": "guidewirecloudconsoleguideinsurerdevdraft"
+        },
+        {
+          "label": "Cloud Console Guide",
+          "id": "guidewirecloudconsoleguideinsurerdev"
         }
       ]
     }
