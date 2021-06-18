@@ -59,8 +59,7 @@
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "guidewireCloudPlatform",
-      "env": ["dev", "staging", "prod"]
+      "page": "../guidewireCloudPlatform"
     }
   ]
 }
