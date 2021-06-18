@@ -173,7 +173,7 @@ main {
 }
 
 main.loginPage {
-  min-height: var(--body-height) -var(--login-page-hero-graphic-height);
+  min-height: calc(var(--body-height) - var(--login-page-hero-graphic-height));
 }
 
 main:not(.fullWidth):not(.loginPage):not(.pageNotFound):not(.support) {
