@@ -7,6 +7,13 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
+const docProduct = document.querySelector("meta[name = 'gw-product']")?.content;
+const docPlatform = document.querySelector("meta[name = 'gw-platform']")
+  ?.content;
+const docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
+const docCategory = document.querySelector("meta[name = 'DC.coverage']")
+  ?.content;
+
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
@@ -35,17 +42,9 @@ function createContainerForCustomHeaderElements() {
 
 async function createVersionSelector() {
   try {
-    const docProduct = document.querySelector("meta[name = 'gw-product']")
-      ?.content;
     if (!docProduct) {
       return null;
     }
-    const docPlatform = document.querySelector("meta[name = 'gw-platform']")[
-      'content'
-    ];
-    const docVersion = document.querySelector("meta[name = 'gw-version']")[
-      'content'
-    ];
 
     const response = await fetch(
       `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}`
@@ -312,7 +311,6 @@ async function sendFeedback(formId) {
     }
     return reportedIssues;
   }
-  
 
   function getPossibleContacts() {
     const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
@@ -332,7 +330,7 @@ async function sendFeedback(formId) {
 
   let userCommentText = form.querySelector('textarea[name="userComment"]')
     ?.value;
-  if(userCommentText.length > 0) {
+  if (userCommentText.length > 0) {
     // remove duplicate \n and then replace with 0x0A, which we undo in jiraController.js.
     // this gets the comment through since we tokenize on \n.
     userCommentText = userCommentText.replace(/(\n)\1{1,}/g, '$1');
@@ -348,18 +346,18 @@ async function sendFeedback(formId) {
         'User feedback: ' + document.querySelector('title').innerHTML,
       descriptionText: {
         //The key is also the label
-        Product: document.querySelector("meta[name = 'gw-product']")?.content,
-        Version: document.querySelector("meta[name = 'gw-version']")?.content,
-        Platform: document.querySelector("meta[name = 'gw-platform']")?.content,
-        Category: document.querySelector("meta[name = 'DC.coverage']")?.content,
-        'URL': window.location.href,
+        Product: docProduct,
+        Version: docVersion,
+        Platform: docPlatform,
+        Category: docCategory,
+        URL: window.location.href,
         'Source file (parent if chunked or nested)': document.querySelector(
           "meta[name = 'wh-source-relpath']"
         )?.content,
         'Topic ID': document.querySelector('body').id?.content,
         'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
         'Reported issues': getReportedIssues(),
-        'Comment': userCommentText,
+        Comment: userCommentText,
         'Reported by': form.querySelector('input[name="user"]')?.value,
         'Possible contacts': getPossibleContacts(),
       },
@@ -482,6 +480,10 @@ async function toggleFeedbackForm(formId) {
   const { preferred_username } = await response.json();
   gtag('event', 'user_feedback', {
     feedback_type: feedbackType,
+    product_name: docProduct,
+    doc_version: docVersion,
+    doc_platform: docPlatform,
+    doc_category: docCategory,
   });
 
   if (!form) {
@@ -508,6 +510,10 @@ async function toggleFeedbackForm(formId) {
 }
 
 async function addFeedbackElements() {
+  const { hostname } = window.location;
+  if (!['docs.int.ccs.guidewire.net', 'localhost'].includes(hostname)) {
+    return;
+  }
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `
@@ -543,5 +549,5 @@ docReady(async function() {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
   }
-  // addFeedbackElements();
+  addFeedbackElements();
 });
