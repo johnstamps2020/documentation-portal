@@ -1223,7 +1223,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
