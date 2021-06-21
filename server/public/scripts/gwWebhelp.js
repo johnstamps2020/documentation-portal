@@ -7,6 +7,13 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
+const docProduct = document.querySelector("meta[name = 'gw-product']")?.content;
+const docPlatform = document.querySelector("meta[name = 'gw-platform']")
+  ?.content;
+const docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
+const docCategory = document.querySelector("meta[name = 'DC.coverage']")
+  ?.content;
+
 async function fetchMetadata() {
   const docId = document
     .querySelector('[name="gw-doc-id"]')
@@ -56,18 +63,9 @@ function createContainerForCustomHeaderElements() {
 
 async function createVersionSelector() {
   try {
-    const docProduct =
-      metadata?.product?.join(',') ||
-      document.querySelector("meta[name = 'gw-product']")?.content;
     if (!docProduct) {
       return null;
     }
-    const docPlatform =
-      metadata?.platform?.join(',') ||
-      document.querySelector("meta[name = 'gw-platform']")['content'];
-    const docVersion =
-      metadata?.version?.join(',') ||
-      document.querySelector("meta[name = 'gw-version']")['content'];
 
     const response = await fetch(
       `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}`
@@ -369,18 +367,10 @@ async function sendFeedback(formId) {
         'User feedback: ' + document.querySelector('title').innerHTML,
       descriptionText: {
         //The key is also the label
-        Product:
-          metadata?.product?.join(',') ||
-          document.querySelector("meta[name = 'gw-product']")?.content,
-        Version:
-          metadata?.version?.join(',') ||
-          document.querySelector("meta[name = 'gw-version']")?.content,
-        Platform:
-          metadata?.platform?.join(',') ||
-          document.querySelector("meta[name = 'gw-platform']")?.content,
-        Category:
-          metadata?.category?.join(',') ||
-          document.querySelector("meta[name = 'DC.coverage']")?.content,
+        Product: docProduct,
+        Version: docVersion,
+        Platform: docPlatform,
+        Category: docCategory,
         URL: window.location.href,
         'Source file (parent if chunked or nested)': document.querySelector(
           "meta[name = 'wh-source-relpath']"
@@ -511,6 +501,10 @@ async function toggleFeedbackForm(formId) {
   const { preferred_username } = await response.json();
   gtag('event', 'user_feedback', {
     feedback_type: feedbackType,
+    product_name: docProduct,
+    doc_version: docVersion,
+    doc_platform: docPlatform,
+    doc_category: docCategory,
   });
 
   if (!form) {
@@ -537,6 +531,10 @@ async function toggleFeedbackForm(formId) {
 }
 
 async function addFeedbackElements() {
+  const { hostname } = window.location;
+  if (!['docs.int.ccs.guidewire.net', 'localhost'].includes(hostname)) {
+    return;
+  }
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `
@@ -618,5 +616,5 @@ docReady(async function() {
     hideByCssClass('wh_footer');
   }
   configureSearch();
-  // addFeedbackElements();
+  addFeedbackElements();
 });

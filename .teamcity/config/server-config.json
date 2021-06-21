@@ -1199,6 +1199,36 @@
       "public": false
     },
     {
+      "id": "cloudplatformdraft",
+      "title": "Cloud Platform Draft",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudplatformrelease",
+      "title": "Cloud Platform Release",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "selfmanagedbcxufesxuwl",
       "title": "BillingCenter",
       "url": "self-managed/bc/10x",
@@ -8256,7 +8286,7 @@
         "release": ["Cortina"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true

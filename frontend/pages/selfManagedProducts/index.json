@@ -121,7 +121,7 @@
         },
         {
           "label": "Jutro Design System",
-          "page": "../jutroDesignSystem/4.1.1",
+          "page": "../jutroDesignSystem/5.3.1",
           "env": ["dev", "staging", "prod", "int"]
         },
         {
