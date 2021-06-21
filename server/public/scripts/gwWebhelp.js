@@ -7,12 +7,10 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
-const docProduct = document.querySelector("meta[name = 'gw-product']")?.content;
-const docPlatform = document.querySelector("meta[name = 'gw-platform']")
-  ?.content;
-const docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
-const docCategory = document.querySelector("meta[name = 'DC.coverage']")
-  ?.content;
+let docProduct = document.querySelector("meta[name = 'gw-product']")?.content;
+let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
+let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
+let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
 
 async function fetchMetadata() {
   const docId = document
@@ -24,6 +22,10 @@ async function fetchMetadata() {
       try {
         const metadata = await response.json();
         if (!metadata.error) {
+          docProduct = metadata.product?.join(',') || docProduct;
+          docPlatform = metadata.platform?.join(',') || docPlatform;
+          docVersion = metadata.version?.join(',') || docVersion;
+          docCategory = metadata.category?.join(',') || docCategory;
           return metadata;
         }
       } catch (err) {
