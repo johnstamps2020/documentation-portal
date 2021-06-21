@@ -55,8 +55,7 @@
         },
         {
           "label": "Predictive Analytics",
-          "id": "palatest",
-          "env": ["dev", "int", "staging"]
+          "id": "palatest"
         },
         {
           "label": "Add-ons",
