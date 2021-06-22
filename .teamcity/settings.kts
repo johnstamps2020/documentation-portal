@@ -2485,7 +2485,7 @@ object HelperObjects {
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
             val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
-            if (!source.has("xdocsPathIds") && sourceGitBranch == "master") {
+            if (!source.has("xdocsPathIds") && (sourceGitBranch == "master" || sourceGitBranch == "main")) {
                 val sourceDocBuilds = mutableListOf<JSONObject>()
                 val sourceId = source.getString("id")
                 val sourceTitle = source.getString("title")
