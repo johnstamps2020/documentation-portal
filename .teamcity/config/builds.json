@@ -4396,6 +4396,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "UnderwritingProductConfigGuide20211x.ditamap",
+      "srcId": "in20211uwconfigsrc",
+      "docId": "in20211uwconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "ExcelDesignedRating30.ditamap",
       "srcId": "in20211excelrating30src",
       "docId": "in20211excelrating30",

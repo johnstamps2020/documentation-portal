@@ -10614,7 +10614,10 @@
       "url": "cloud/in/20211x/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
+        "product": [
+          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow 2021.1x - External Audience"
+        ],
         "version": ["latest"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
@@ -11583,6 +11586,22 @@
       "id": "in20211prodattref",
       "title": "Product Attribute Reference",
       "url": "cloud/in/20211/prodattref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Configuration"],
+        "release": ["Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20211uwconfig",
+      "title": "Underwriting Product Configuration Guide",
+      "url": "cloud/in/20211/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
