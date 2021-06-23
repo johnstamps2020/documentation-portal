@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include parts/head %>
+  <%- include('parts/head', { pageTitle: `404 (not found)`}) %>
   <body>
     <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
     <main class="pageNotFound">
