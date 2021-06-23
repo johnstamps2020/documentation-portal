@@ -596,14 +596,6 @@ async function configureSearch() {
         }
       }
     }
-  } else {
-    const productField = document.querySelector('[name="product"]');
-    if (productField) {
-      const newValue = productField
-        .getAttribute('value')
-        .replace(/ for Guidewire Cloud/g, '');
-      productField.setAttribute('value', newValue);
-    }
   }
 }
 
