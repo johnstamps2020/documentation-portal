@@ -1986,6 +1986,7 @@ object HelperObjects {
                     allowEmpty = false
                 )
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("env.GW_DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -2330,6 +2331,7 @@ object HelperObjects {
             name = "Validate $docTitle $docProduct $docVersion"
 
             params {
+                text("GW_DOC_ID", docId, allowEmpty = false)
                 text("GW_PRODUCT", docProduct, allowEmpty = false)
                 text("GW_PLATFORM", docPlatform, allowEmpty = false)
                 text("GW_VERSION", docVersion, allowEmpty = false)
@@ -2702,6 +2704,7 @@ object RunContentValidations : Template({
     """.trimIndent()
 
     params {
+        text("env.GW_DOC_ID", "%DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
