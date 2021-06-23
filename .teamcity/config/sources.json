@@ -2305,6 +2305,17 @@
       ]
     },
     {
+      "id": "in20211uwconfigsrc",
+      "title": "InsuranceNow 2021.1 Underwriting Product Configuration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2021.1",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/UnderwritingProductConfigGuide20211x.ditamap"
+      ]
+    },
+    {
       "id": "in20211excelrating30src",
       "title": "InsuranceNow 2021.1 Excel Designed Rating",
       "sourceType": "xdocs",
