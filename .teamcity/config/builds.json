@@ -5564,7 +5564,7 @@
       "srcId": "gwglossarysrc",
       "docId": "gwglossary",
       "indexRedirect": true
-    }
+    },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
