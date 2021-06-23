@@ -102,9 +102,27 @@ async function getVersionSelector(platform, product, version) {
   }
 }
 
+async function getDocumentMetadata(docId) {
+  const config = await getConfig();
+  const doc = config.docs.find(d => d.id === docId);
+  console.log('FOUND MATCHING DOC', doc, docId);
+  if (doc) {
+    return {
+      title: doc.title,
+      ...doc.metadata,
+    };
+  } else {
+    return {
+      error: true,
+      message: `Did not find a doc mathing ID ${docId}`,
+    };
+  }
+}
+
 module.exports = {
   getConfig,
   isPublicDoc,
   getRootBreadcrumb,
   getVersionSelector,
+  getDocumentMetadata,
 };

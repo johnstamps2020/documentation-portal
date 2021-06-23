@@ -7,12 +7,35 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
-const docProduct = document.querySelector("meta[name = 'gw-product']")?.content;
-const docPlatform = document.querySelector("meta[name = 'gw-platform']")
-  ?.content;
-const docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
-const docCategory = document.querySelector("meta[name = 'DC.coverage']")
-  ?.content;
+let docProduct = document.querySelector("meta[name = 'gw-product']")?.content;
+let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
+let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
+let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
+
+async function fetchMetadata() {
+  const docId = document
+    .querySelector('[name="gw-doc-id"]')
+    ?.getAttribute('content');
+  if (docId) {
+    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
+    if (response.ok) {
+      try {
+        const metadata = await response.json();
+        if (!metadata.error) {
+          docProduct = metadata.product?.join(',') || docProduct;
+          docPlatform = metadata.platform?.join(',') || docPlatform;
+          docVersion = metadata.version?.join(',') || docVersion;
+          docCategory = metadata.category?.join(',') || docCategory;
+          return metadata;
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+}
+
+let metadata = undefined;
 
 async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
   try {
@@ -540,7 +563,52 @@ async function addFeedbackElements() {
   body.appendChild(renderThanksMessage());
 }
 
+async function configureSearch() {
+  if (metadata) {
+    const searchForms = document.querySelectorAll(
+      '#searchForm, #searchFormNav'
+    );
+    if (searchForms.length > 0) {
+      for (const searchForm of searchForms) {
+        let hiddenInputsToAdd = [];
+        for (const metadataKey of Object.keys(metadata)) {
+          const input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', metadataKey);
+          if (typeof metadata[metadataKey] === 'string') {
+            input.setAttribute('value', metadata[metadataKey]);
+          } else {
+            input.setAttribute('value', metadata[metadataKey].join(','));
+          }
+          hiddenInputsToAdd.push(input);
+        }
+        const existingHiddenInputs = searchForm.querySelectorAll(
+          'div > [type="hidden"]'
+        );
+        if (existingHiddenInputs.length > 0) {
+          for (const existing of existingHiddenInputs) {
+            searchForm.firstChild.removeChild(existing);
+          }
+        }
+
+        for (const newInput of hiddenInputsToAdd) {
+          searchForm.firstChild.appendChild(newInput);
+        }
+      }
+    }
+  } else {
+    const productField = document.querySelector('[name="product"]');
+    if (productField) {
+      const newValue = productField
+        .getAttribute('value')
+        .replace(/ for Guidewire Cloud/g, '');
+      productField.setAttribute('value', newValue);
+    }
+  }
+}
+
 docReady(async function() {
+  metadata = await fetchMetadata();
   await createContainerForCustomHeaderElements();
   addCustomElements();
   addTopLinkToBreadcrumbs();
@@ -549,5 +617,6 @@ docReady(async function() {
     hideByCssClass('wh_header');
     hideByCssClass('wh_footer');
   }
+  configureSearch();
   addFeedbackElements();
 });
