@@ -13267,6 +13267,20 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "writingwithgit",
+      "title": "Writing with Git",
+      "url": "writing-with-git",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Writing with Git"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }

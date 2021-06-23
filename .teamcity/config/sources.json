@@ -4126,6 +4126,13 @@
         "/Content/doc/glossary/Glossary.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
       ]
+    },
+    {
+      "id": "writingwithgitsrc",
+      "title": "Writing with Git",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
+      "branch": "main"
     }
   ]
 }
