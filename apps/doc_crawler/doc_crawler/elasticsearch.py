@@ -58,11 +58,20 @@ class ElasticClient(Elasticsearch):
                 "version": {
                     "type": "keyword"
                 },
+                "release": {
+                    "type": "keyword"
+                },
+                "subject": {
+                    "type": "keyword"
+                },
                 "public": {
                     "type": "boolean"
                 },
                 "internal": {
                     "type": "boolean"
+                },
+                "docTitle": {
+                    "type": "keyword"
                 },
                 "body": {
                     "type": "text",

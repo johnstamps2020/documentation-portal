@@ -63,9 +63,12 @@ class DocPortalSpider(scrapy.Spider):
                 doc_object['url']).hostname else response.url
             index_entry_id = urlparse(response.url).path
             index_entry_title = response.xpath('/html/head/title/text()').get()
-            index_entry_product = doc_object['metadata']['product']
-            index_entry_platform = doc_object['metadata']['platform']
-            index_entry_version = doc_object['metadata']['version']
+            index_entry_product = doc_object.get('metadata').get('product')
+            index_entry_platform = doc_object.get('metadata').get('platform')
+            index_entry_version = doc_object.get('metadata').get('version')
+            index_entry_release = doc_object.get('metadata').get('release')
+            index_entry_subject = doc_object.get('metadata').get('subject')
+            index_entry_doc_title = doc_object['title']
             index_entry_public = doc_object['public']
             index_entry_date = date.today().isoformat()
 
@@ -110,6 +113,9 @@ class DocPortalSpider(scrapy.Spider):
                 product=index_entry_product,
                 platform=index_entry_platform,
                 version=index_entry_version,
+                release=index_entry_release,
+                subject=index_entry_subject,
+                doc_title=index_entry_doc_title,
                 public=index_entry_public,
                 internal=index_entry_internal,
                 indexed_date=index_entry_date
