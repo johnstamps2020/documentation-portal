@@ -100,7 +100,8 @@
         },
         {
           "label": "Underwriting Product Configuration Guide",
-          "id": "in20211uwconfig"
+          "id": "in20211uwconfig",
+          "env": ["dev", "int", "staging"]
         }
       ]
     }
