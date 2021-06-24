@@ -308,32 +308,7 @@ async function sendFeedback(formId) {
   const submitButton = form.querySelector('.feedbackSubmitButton');
   const body = document.body;
 
-  let checkboxes = [];
-  let selectedCheckboxes = [];
   const feedbackType = formId.includes('negative') ? 'negative' : 'positive';
-  if (feedbackType === 'negative') {
-    checkboxes = document
-      .getElementById('negativeFeedbackForm')
-      .querySelector('div[class="feedbackFormCheckBoxes"]')
-      .querySelectorAll('label');
-
-    for (const checkbox of checkboxes) {
-      if (checkbox.querySelector('input:checked')) {
-        selectedCheckboxes.push(checkbox.querySelector('span').innerHTML);
-      }
-    }
-  }
-
-  function getReportedIssues() {
-    if (selectedCheckboxes.length === 0) {
-      return undefined;
-    }
-    let reportedIssues = [];
-    for (const box of selectedCheckboxes) {
-      reportedIssues.push(box);
-    }
-    return reportedIssues;
-  }
 
   function getPossibleContacts() {
     const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
@@ -360,7 +335,7 @@ async function sendFeedback(formId) {
     userCommentText = userCommentText.replace(/\n/g, '0x0A');
   }
 
-  if (userCommentText || selectedCheckboxes.length > 0) {
+  if (userCommentText) {
     submitButton.classList.add('disabled');
     submitButton.removeAttribute('onclick');
     body.classList.add('wait');
@@ -379,7 +354,6 @@ async function sendFeedback(formId) {
         )?.content,
         'Topic ID': document.querySelector('body').id?.content,
         'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
-        'Reported issues': getReportedIssues(),
         Comment: userCommentText,
         'Reported by': form.querySelector('input[name="user"]')?.value,
         'Possible contacts': getPossibleContacts(),
@@ -448,28 +422,6 @@ function renderForm(feedbackType, email) {
   } else if (feedbackType === 'negative') {
     feedbackForm.innerHTML =
       `<div class="feedbackFormTitle">Thanks. We have recorded your vote. Please let us know how we can improve this content.</div>` +
-      `<div class="feedbackFormCheckBoxes">
-    <label>
-      <input type="checkbox" name="missing" />
-      <span>Some information is incorrect or missing</span>
-    </label>
-    <label>
-      <input type="checkbox" name="graphics" />
-      <span>More graphics or examples would be helpful</span>
-    </label>
-    <label>
-      <input type="checkbox" name="typos" />
-      <span>There are typos</span>
-    </label>
-    <label>
-      <input type="checkbox" name="broken" />
-      <span>Some links are broken</span>
-    </label>
-    <label>
-      <input type="checkbox" name="other" />
-      <span>Other</span>
-    </label>
-  </div>` +
       commentBox +
       username +
       submitButton +
