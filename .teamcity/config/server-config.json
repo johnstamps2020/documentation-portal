@@ -3744,99 +3744,99 @@
       "public": false
     },
     {
-      "id": "dxceam1140",
+      "id": "dxceam1141",
       "title": "CustomerEngage Account Management",
-      "url": "self-managed/dx/ce-am/1140",
+      "url": "self-managed/dx/ce-am/1141",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
         "platform": ["Self-managed"],
-        "version": ["11.4.0"]
+        "version": ["11.4.1"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "dxceclaims1140",
+      "id": "dxceclaims1141",
       "title": "CustomerEngage Account Management for ClaimCenter",
-      "url": "self-managed/dx/ce-claims/1140",
+      "url": "self-managed/dx/ce-claims/1141",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Self-managed"],
-        "version": ["11.4.0"]
+        "version": ["11.4.1"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "dxceqb1140",
+      "id": "dxceqb1141",
       "title": "CustomerEngage Quote and Buy",
-      "url": "self-managed/dx/ce-qb/1140",
+      "url": "self-managed/dx/ce-qb/1141",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Self-managed"],
-        "version": ["11.4.0"]
+        "version": ["11.4.1"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "dxpe1140",
+      "id": "dxpe1141",
       "title": "ProducerEngage",
-      "url": "self-managed/dx/pe/1140",
+      "url": "self-managed/dx/pe/1141",
       "metadata": {
         "product": ["ProducerEngage"],
         "platform": ["Self-managed"],
-        "version": ["11.4.0"]
+        "version": ["11.4.1"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "dxpeclaims1140",
+      "id": "dxpeclaims1141",
       "title": "ProducerEngage for ClaimCenter",
-      "url": "self-managed/dx/pe-claims/1140",
+      "url": "self-managed/dx/pe-claims/1141",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Self-managed"],
-        "version": ["11.4.0"]
+        "version": ["11.4.1"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "dxsre1140",
+      "id": "dxsre1141",
       "title": "ServiceRepEngage",
-      "url": "self-managed/dx/sre/1140",
+      "url": "self-managed/dx/sre/1141",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Self-managed"],
-        "version": ["11.4.0"]
+        "version": ["11.4.1"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "dxve1140",
+      "id": "dxve1141",
       "title": "VendorEngage",
-      "url": "self-managed/dx/ve/1140",
+      "url": "self-managed/dx/ve/1141",
       "metadata": {
         "product": ["VendorEngage"],
         "platform": ["Self-managed"],
-        "version": ["11.4.0"]
+        "version": ["11.4.1"]
       },
-      "environments": ["dev", "staging", "int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
