@@ -2310,7 +2310,6 @@ object HelperObjects {
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
                 "sphinx" -> templates(BuildSphinx)
-                "storybook" -> templates(BuildStorybook)
                 "dita" -> templates(RunContentValidations)
             }
 
@@ -2515,7 +2514,10 @@ object HelperObjects {
                             buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
                             for (docBuild in sourceDocBuilds) {
-                                buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
+                                val docBuildType = if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
+                                if (docBuildType != "storybook") {
+                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
+                                }
                             }
 
                         }
