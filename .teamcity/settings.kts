@@ -1986,7 +1986,7 @@ object HelperObjects {
                     allowEmpty = false
                 )
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("env.GW_DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -2704,7 +2704,7 @@ object RunContentValidations : Template({
     """.trimIndent()
 
     params {
-        text("env.GW_DOC_ID", "%DOC_ID%", allowEmpty = false)
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
@@ -2895,6 +2895,7 @@ object BuildStorybook : Template({
     name = "Get published Storybook"
 
     params {
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
@@ -2950,6 +2951,7 @@ object BuildSphinx : Template({
     name = "Build a Sphinx project"
 
     params {
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
@@ -3004,6 +3006,7 @@ object BuildYarn : Template({
     name = "Build a yarn project"
 
     params {
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
