@@ -1708,13 +1708,13 @@
       ]
     },
     {
-      "id": "dx1140",
-      "title": "Digital 11.4.0",
+      "id": "dx1141",
+      "title": "Digital 11.4.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "11.4.0",
+      "branch": "11.4.1",
       "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/1140/DX_superbook.ditamap",
+        "/Content/doc/digital/11.x/releases/1141/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-OnPrem.ditaval",
