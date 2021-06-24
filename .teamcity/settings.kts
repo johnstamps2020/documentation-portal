@@ -2318,6 +2318,7 @@ object HelperObjects {
             val docBuildFilter = if (build_info.has("filter")) build_info.getString("filter") else ""
             val docBuildIndexRedirect =
                 if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
+            val workingDir = if (build_info.has("workingDir")) build_info.getString("workingDir") else ""
             val docBuildDocId = build_info.getString("docId")
             val doc = getObjectById(docConfigs, "id", docBuildDocId)
             val docId = doc.getString("id")
@@ -2347,6 +2348,8 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN,
                     allowEmpty = false
                 )
+                text("WORKING_DIR", workingDir, allowEmpty = false)
+                text("DEPLOY_ENV", "dev", allowEmpty = false)
             }
 
             if (docBuildType == "dita") {
