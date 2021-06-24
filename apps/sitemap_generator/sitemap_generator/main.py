@@ -50,6 +50,8 @@ def is_not_old_insurance_suite(doc):
                 if semver.compare(ver, '8.0.0') >= 0:
                     return True
             return False
+        else:
+            return True
     else:
         return True
 
@@ -143,7 +145,7 @@ def generate_sitemap():
         output_index_file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         output_index_file.write(
             '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
-        chunks = get_chunks(indexed_docs, 49999)
+        chunks = get_chunks(indexed_docs, 10000)
         for index, chunk in enumerate(chunks):
             chunk_file_name = f'sitemap{index}.xml'
             chunk_file_path = output_dir / chunk_file_name
