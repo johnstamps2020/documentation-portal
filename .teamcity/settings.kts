@@ -2350,7 +2350,7 @@ object HelperObjects {
                 )
                 text("WORKING_DIR", workingDir, allowEmpty = false)
                 text("DEPLOY_ENV", "dev", allowEmpty = false)
-                text("env.PUBLISH_PATH", "", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("env.PUBLISH_PATH", "root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             if (docBuildType == "dita") {
