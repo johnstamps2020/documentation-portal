@@ -96,28 +96,15 @@
         },
         {
           "label": "CustomerEngage Account Management",
-          "id": "dxceam1141",
-          "env": ["dev", "int", "staging"]
+          "id": "dxceam1141"
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
-          "id": "dxceclaims1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "CustomerEngage Account Management for ClaimCenter",
-          "id": "dxceclaims1141",
-          "env": ["dev", "int", "staging"]
+          "id": "dxceclaims1141"
         },
         {
           "label": "CustomerEngage Quote and Buy",
-          "id": "dxceqb1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "CustomerEngage Quote and Buy",
-          "id": "dxceqb1141",
-          "env": ["dev", "int", "staging"]
+          "id": "dxceqb1141"
         },
         {
           "label": "Jutro Design System",
@@ -126,43 +113,19 @@
         },
         {
           "label": "ProducerEngage",
-          "id": "dxpe1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "ProducerEngage",
-          "id": "dxpe1141",
-          "env": ["dev", "int", "staging"]
+          "id": "dxpe1141"
         },
         {
           "label": "ProducerEngage for ClaimCenter",
-          "id": "dxpeclaims1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "ProducerEngage for ClaimCenter",
-          "id": "dxpeclaims1141",
-          "env": ["dev", "int", "staging"]
+          "id": "dxpeclaims1141"
         },
         {
           "label": "ServiceRepEngage",
-          "id": "dxsre1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "ServiceRepEngage",
-          "id": "dxsre1141",
-          "env": ["dev", "int", "staging"]
+          "id": "dxsre1141"
         },
         {
           "label": "VendorEngage",
-          "id": "dxve1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "VendorEngage",
-          "id": "dxve1141",
-          "env": ["dev", "int", "staging"]
+          "id": "dxve1141"
         },
         {
           "label": "Guidewire for Salesforce Data Integrations",
