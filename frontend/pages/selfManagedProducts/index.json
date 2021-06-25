@@ -91,11 +91,6 @@
       "items": [
         {
           "label": "CustomerEngage Account Management",
-          "id": "dxceam1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "CustomerEngage Account Management",
           "id": "dxceam1141"
         },
         {
