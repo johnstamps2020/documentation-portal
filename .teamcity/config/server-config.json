@@ -12207,6 +12207,22 @@
       "public": false
     },
     {
+      "id": "dhqueryguidedraft",
+      "title": "Data Studio Query Guide",
+      "url": "cloud/dh/latest/qg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DataHub for Guidewire Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "iccloudrndraft",
       "title": "Release Notes",
       "url": "cloud/ic/latest/releasenotes",
