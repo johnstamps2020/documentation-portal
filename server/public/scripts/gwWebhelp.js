@@ -75,6 +75,25 @@ async function createVersionSelector() {
     const jsonResponse = await response.json();
     const matchingVersionSelector = jsonResponse.matchingVersionSelector;
     if (matchingVersionSelector?.otherVersions.length > 0) {
+      const sortedOtherVersions = matchingVersionSelector.otherVersions
+        .sort(function(a, b) {
+          const labelA = a.label
+            .split('.')
+            .map(n => +n + 100000)
+            .join('.');
+          const labelB = b.label
+            .split('.')
+            .map(n => +n + 100000)
+            .join('.');
+          let comparison = 0;
+          if (labelA > labelB) {
+            comparison = 1;
+          } else if (labelA < labelB) {
+            comparison = -1;
+          }
+          return comparison;
+        })
+        .reverse();
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
@@ -100,7 +119,7 @@ async function createVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of matchingVersionSelector.otherVersions) {
+      for (const val of sortedOtherVersions) {
         const option = document.createElement('option');
         option.text = val.label;
         let value = val.path;
@@ -115,7 +134,7 @@ async function createVersionSelector() {
       const currentlySelectedOption = document.createElement('option');
       currentlySelectedOption.text = matchingVersionSelector.version;
       currentlySelectedOption.setAttribute('selected', 'selected');
-      select.appendChild(currentlySelectedOption);
+      select.prepend(currentlySelectedOption);
 
       const label = document.createElement('label');
       label.innerHTML = 'Select version:';
