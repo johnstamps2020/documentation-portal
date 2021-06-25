@@ -77,18 +77,17 @@ async function createVersionSelector() {
     if (matchingVersionSelector?.otherVersions.length > 0) {
       const sortedOtherVersions = matchingVersionSelector.otherVersions
         .sort(function(a, b) {
-          const labelA = a.label
-            .split('.')
-            .map(n => +n + 100000)
-            .join('.');
-          const labelB = b.label
-            .split('.')
-            .map(n => +n + 100000)
-            .join('.');
+          const verNum = label =>
+            label
+              .split('.')
+              .map(n => +n + 100000)
+              .join('.');
+          const verNumA = verNum(a.label);
+          const verNumB = verNum(b.label);
           let comparison = 0;
-          if (labelA > labelB) {
+          if (verNumA > verNumB) {
             comparison = 1;
-          } else if (labelA < labelB) {
+          } else if (verNumA < verNumB) {
             comparison = -1;
           }
           return comparison;
