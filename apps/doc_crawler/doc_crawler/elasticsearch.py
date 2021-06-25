@@ -70,7 +70,7 @@ class ElasticClient(Elasticsearch):
                 "internal": {
                     "type": "boolean"
                 },
-                "docTitle": {
+                "doc_title": {
                     "type": "keyword"
                 },
                 "body": {

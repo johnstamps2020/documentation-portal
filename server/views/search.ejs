@@ -7,23 +7,25 @@
     <div class="filterSearchResults">
         <div>
             <% filters.forEach(filter => { %>
-                <div class="filterGroup">
-                    <h2 class="filterHeader">Filter by <%= filter.name %></h2>
-                    <div class="filters">
-                        <% filter.values.forEach(checkboxValue => { %>
-                            <label class="checkboxRowContainer">
-                                <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
-                                       value="<%= checkboxValue.label %>"
-                                <% if (checkboxValue.checked) { %>
-                                       checked="true"
-                                        <% } %>
-                                />
-                                <span><%= checkboxValue.label %></span>
-                                <span class="docCount"><%= checkboxValue.doc_count %></span>
-                            </label>
-                        <% }) %>
+                <% if (filter.values.length > 0) { %>
+                    <div class="filterGroup">
+                        <h2 class="filterHeader">Filter by <%= filter.name.replace('_', ' ') %></h2>
+                        <div class="filters">
+                            <% filter.values.forEach(checkboxValue => { %>
+                                <label class="checkboxRowContainer">
+                                    <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
+                                           value="<%= checkboxValue.label %>"
+                                    <% if (checkboxValue.checked) { %>
+                                           checked="true"
+                                            <% } %>
+                                    />
+                                    <span><%= checkboxValue.label %></span>
+                                    <span class="docCount"><%= checkboxValue.doc_count %></span>
+                                </label>
+                            <% }) %>
+                        </div>
                     </div>
-                </div>
+                <% } %>
             <% }) %>
         </div>
     </div>
