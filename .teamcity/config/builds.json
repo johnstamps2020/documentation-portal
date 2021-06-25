@@ -4936,6 +4936,12 @@
       ]
     },
     {
+      "buildType": "yarn",
+      "docId": "dhqueryguidedraft",
+      "srcId": "datastudiodraftsrc",
+      "workingDir": "query_guide"
+    },
+    {
       "buildType": "dita",
       "filter": "InfoCenter-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
