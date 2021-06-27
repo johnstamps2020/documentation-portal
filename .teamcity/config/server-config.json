@@ -3996,21 +3996,6 @@
       "public": false
     },
     {
-      "id": "restapidraft",
-      "title": "REST API Client",
-      "url": "cloud/restapi/latest",
-      "metadata": {
-        "product": ["REST API Client"],
-        "platform": ["Cloud", "Self-managed"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["dev", "int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "gchhelpdraft",
       "title": "Guidewire Cloud Home Help",
       "url": "help/GCH",
@@ -9505,14 +9490,15 @@
       "public": false
     },
     {
-      "id": "isclouddraftrestapiclient",
+      "id": "isdraftrestapiclientguide",
       "title": "REST API Client",
-      "url": "cloud/is/restapiclient/guide",
+      "url": "is/restapiclient/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["REST API Client"],
         "version": ["draft"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9520,14 +9506,15 @@
       "public": false
     },
     {
-      "id": "isclouddraftrestapiclientrn",
+      "id": "isdraftrestapiclientrn",
       "title": "REST API Client Release Notes",
-      "url": "cloud/is/restapiclient/releasenotes",
+      "url": "is/restapiclient/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["REST API Client"],
         "version": ["draft"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10256,21 +10243,6 @@
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "iscloudearestapiclient",
-      "title": "REST API Client",
-      "url": "cloud/is/ea/restapiclient/guide",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["REST API Client"],
-        "version": ["earlyaccess"],
-        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -13239,11 +13211,11 @@
       "environments": ["dev", "int", "staging", "prod"]
     },
     {
-      "id": "isrestapiclient",
+      "id": "isrestapiclientguide",
       "title": "REST API Client",
-      "url": "cloud/is/restapiclient/guide",
+      "url": "is/restapiclient/guide",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Integration"],
@@ -13257,9 +13229,9 @@
     {
       "id": "isrestapiclientrn",
       "title": "REST API Client Release Notes",
-      "url": "cloud/is/restapiclient/releasenotes",
+      "url": "is/restapiclient/releasenotes",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Release notes"],

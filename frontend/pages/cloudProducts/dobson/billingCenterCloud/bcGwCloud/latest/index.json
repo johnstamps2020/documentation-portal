@@ -25,6 +25,10 @@
         {
           "label": "New and Changed",
           "id": "isbcclouddraftnewandchanged"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isdraftrestapiclientrn"
         }
       ]
     },
@@ -108,7 +112,7 @@
         },
         {
           "label": "REST API Client",
-          "id": "isclouddraftrestapiclient"
+          "id": "isdraftrestapiclientguide"
         }
       ]
     },
