@@ -64,7 +64,7 @@
     {
       "label": "Integration Framework",
       "class": "productFamily cardShadow",
-      "id": "restapidraft"
+      "id": "isdraftrestapiclient"
     }
   ]
 }
