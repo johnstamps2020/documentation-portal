@@ -101,10 +101,6 @@
         {
           "label": "Integration",
           "id": "isbccloudeainteg"
-        },
-        {
-          "label": "REST API Client",
-          "id": "iscloudearestapiclient"
         }
       ]
     },
