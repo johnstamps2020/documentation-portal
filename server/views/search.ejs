@@ -82,8 +82,7 @@
         <div class="searchResults" id="searchResults">
             <% searchResults.forEach(result => { %>
                 <div class="searchResult">
-                    <div class="searchResultUrl"><%= result.href %></div>
-                    <a class="searchResultLink" href="<%= result.href %>">
+                    <a href="<%= result.href %>">
                         <h2 class="searchResultTitle">
                             <%= result.title %>
                         </h2>
@@ -124,7 +123,6 @@
                             <div class="otherHits">
                                 <% for (const hit of hitsToDisplay) { %>
                                     <p class="otherHit">
-                                    <div class="searchResultUrl"><%= hit.href %></div>
                                     <a href="<%= hit.href %>">
                                         <%= hit.tags.join(', ') %>
                                     </a>
