@@ -2304,13 +2304,13 @@
     },
     {
       "id": "in20211uwconfigsrc",
-      "title": "InsuranceNow 2021.1 Underwriting Product Configuration",
+      "title": "InsuranceNow 2021.1 Underwriting Configuration Reference",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "2021.1",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/UnderwritingProductConfigGuide20211x.ditamap"
+        "/Content/doc/insuranceNow/UnderwritingConfigurationReference20211x.ditamap"
       ]
     },
     {
@@ -2744,13 +2744,13 @@
     },
     {
       "id": "in20211xcommonconfigdraftsrc",
-      "title": "InsuranceNow 2021.1 Common Templates Configuration Draft",
+      "title": "InsuranceNow 2021.1 Common Functionality Configuration Reference Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/CommonConfigGuide20211x.ditamap"
+        "/Content/doc/insuranceNow/CommonFunctionalityConfigurationReference20211x.ditamap.ditamap"
       ]
     },
     {
@@ -2799,24 +2799,24 @@
     },
     {
       "id": "in20211xuwconfigdraftsrc",
-      "title": "InsuranceNow 2021.1 Underwriting Product Configuration Draft",
+      "title": "InsuranceNow 2021.1 Underwriting Configuration Reference Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/UnderwritingProductConfigGuide20211x.ditamap"
+        "/Content/doc/insuranceNow/UnderwritingConfigurationReference20211x.ditamap"
       ]
     },
     {
       "id": "in20211xclaimsconfigdraftsrc",
-      "title": "InsuranceNow 2021.1 Claims Product Configuration Draft",
+      "title": "InsuranceNow 2021.1 Claims Configuration Reference Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/ClaimsProductConfigGuide20211x.ditamap"
+        "/Content/doc/insuranceNow/ClaimsConfigurationReference20211x.ditamap"
       ]
     },
     {
