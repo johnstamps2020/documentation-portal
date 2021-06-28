@@ -1102,8 +1102,8 @@
       ]
     },
     {
-      "id": "dxgwsfapp330",
-      "title": "GW for SF 3.3.0 Application Guide",
+      "id": "dxgwsfapp331",
+      "title": "GW for SF 3.3.1 Application Guide",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.3.0",
@@ -1115,11 +1115,11 @@
       ]
     },
     {
-      "id": "dxgwsfinstall330",
-      "title": "GW for SF 3.3.0 Installation Guide",
+      "id": "dxgwsfinstall331",
+      "title": "GW for SF 3.3.1 Installation Guide",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.0",
+      "branch": "3.3.1",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_install-guide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
@@ -1128,11 +1128,11 @@
       ]
     },
     {
-      "id": "dxgwsfadmin330",
-      "title": "GW for SF 3.3.0 Administration Guide",
+      "id": "dxgwsfadmin331",
+      "title": "GW for SF 3.3.1 Administration Guide",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.0",
+      "branch": "3.3.1",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/202104/gw-for-sf-developer-admin-guide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
@@ -1141,11 +1141,11 @@
       ]
     },
     {
-      "id": "dxgwsfrelnotes330",
-      "title": "GW for SF 3.3.0 Release Notes",
+      "id": "dxgwsfrelnotes331",
+      "title": "GW for SF 3.3.1 Release Notes",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.0",
+      "branch": "3.3.1",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/202104/Digital-Salesforce-ReleaseNotes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
