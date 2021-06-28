@@ -1,0 +1,48 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire for Salesforce View on Demand 3.3.0",
+  "class": "twoColumns",
+  "template": "page.j2",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dxvodrelnotes331"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dxvodapp331"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dxvodinstall331"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dxvodadmin331"
+        }
+      ]
+    }
+  ]
+}
