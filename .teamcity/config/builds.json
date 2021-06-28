@@ -3108,7 +3108,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "Guidewire_REST-API-Client112_ReleaseNotes",
+      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrnsrc",
       "docId": "isdraftrestapiclientrn",
       "indexRedirect": true
