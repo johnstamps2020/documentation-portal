@@ -860,12 +860,6 @@ div.pageHero {
   padding: 16px 0;
 }
 
-.searchResultUrl {
-  color: gray;
-  font-size: 0.75rem;
-  text-decoration: none;
-}
-
 .searchResultTitle {
   font-size: 1.375rem;
   font-weight: 600;
@@ -894,11 +888,11 @@ div.pageHero {
 
 .otherHits {
   padding-left: 16px;
-  padding-bottom: 16px;
+  padding-top: 16px;
 }
 
 .otherHit {
-  padding-bottom: 16px;
+  padding-bottom: 8px;
 }
 
 .alsoFoundIn {
