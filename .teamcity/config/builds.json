@@ -3887,7 +3887,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "CommonConfigGuide20211x.ditamap",
+      "root": "CommonFunctionalityConfigurationReference20211x.ditamap",
       "srcId": "in20211xcommonconfigdraftsrc",
       "docId": "in20211xcommonconfigdraft",
       "indexRedirect": true
@@ -3935,7 +3935,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "UnderwritingProductConfigGuide20211x.ditamap",
+      "root": "UnderwritingConfigurationReference20211x.ditamap",
       "srcId": "in20211xuwconfigdraftsrc",
       "docId": "in20211xuwconfigdraft",
       "indexRedirect": true
@@ -3943,7 +3943,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "ClaimsProductConfigGuide20211x.ditamap",
+      "root": "ClaimsConfigurationReference20211x.ditamap",
       "srcId": "in20211xclaimsconfigdraftsrc",
       "docId": "in20211xclaimsconfigdraft",
       "indexRedirect": true
@@ -4388,7 +4388,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderwritingProductConfigGuide20211x.ditamap",
+      "root": "UnderwritingConfigurationReference20211x.ditamap",
       "srcId": "in20211uwconfigsrc",
       "docId": "in20211uwconfig",
       "indexRedirect": true

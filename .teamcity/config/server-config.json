@@ -10726,7 +10726,7 @@
     },
     {
       "id": "in20211xportaldevdraft",
-      "title": "Portal Development",
+      "title": "Portal Development Guide",
       "url": "cloud/in/20211x/portaldev",
       "metadata": {
         "platform": ["Cloud"],
@@ -10764,7 +10764,7 @@
     },
     {
       "id": "in20211xuwconfigdraft",
-      "title": "Underwriting Product Configuration Guide",
+      "title": "Underwriting Configuration Reference",
       "url": "cloud/in/20211x/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -10783,7 +10783,7 @@
     },
     {
       "id": "in20211xclaimsconfigdraft",
-      "title": "Claims Product Configuration Guide",
+      "title": "Claims Configuration Reference",
       "url": "cloud/in/20211x/claimsconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -11722,7 +11722,7 @@
     },
     {
       "id": "in20211portaldev",
-      "title": "Portal Development",
+      "title": "Portal Development Guide",
       "url": "cloud/in/20211/portaldev",
       "metadata": {
         "platform": ["Cloud"],
@@ -11754,7 +11754,7 @@
     },
     {
       "id": "in20211uwconfig",
-      "title": "Underwriting Product Configuration Guide",
+      "title": "Underwriting Configuration Reference",
       "url": "cloud/in/20211/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
