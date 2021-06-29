@@ -1487,14 +1487,14 @@
       "public": false
     },
     {
-      "id": "datastudiodraft",
+      "id": "datastudioappdraft",
       "title": "Data Studio",
-      "url": "cloud/gw-feature-preview/datastudio",
+      "url": "cloud/datastudio/app",
       "metadata": {
-        "product": ["Feature Preview"],
+        "product": ["Data Studio"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging"],
@@ -12363,15 +12363,15 @@
     {
       "id": "dhqueryguidedraft",
       "title": "Data Studio Query Guide",
-      "url": "cloud/dh/latest/qg",
+      "url": "cloud/datastudio/qg",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["DataHub for Guidewire Cloud"],
+        "product": ["Data Studio"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Development"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
