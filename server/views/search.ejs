@@ -7,22 +7,61 @@
     <div class="filterSearchResults">
         <div>
             <% filters.forEach(filter => { %>
-                <% if (filter.values.length > 0) { %>
+                <% const filterValues = filter.values %>
+                <% if (filterValues.length > 0 ) { %>
+                    <h2 class="filterHeader">Filter by <%= filter.name.replace('_', ' ') %></h2>
                     <div class="filterGroup">
-                        <h2 class="filterHeader">Filter by <%= filter.name.replace('_', ' ') %></h2>
                         <div class="filters">
-                            <% filter.values.forEach(checkboxValue => { %>
-                                <label class="checkboxRowContainer">
-                                    <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
-                                           value="<%= checkboxValue.label %>"
-                                    <% if (checkboxValue.checked) { %>
-                                           checked="true"
-                                            <% } %>
-                                    />
-                                    <span><%= checkboxValue.label %></span>
-                                    <span class="docCount"><%= checkboxValue.doc_count %></span>
-                                </label>
-                            <% }) %>
+                            <% if (filterValues.length > 5) { %>
+                                <% const mainFilters = filterValues.slice(0, 5) %>
+                                <% const additionalFilters = filterValues.slice(5) %>
+                                <details class="expandableFilters">
+                                    <summary>
+                                        <% mainFilters.forEach(checkboxValue => { %>
+                                            <label class="checkboxRowContainer">
+                                                <input type="checkbox" class="filterCheckbox"
+                                                       name="<%= filter.name %>"
+                                                       value="<%= checkboxValue.label %>"
+                                                <% if (checkboxValue.checked) { %>
+                                                       checked="true"
+                                                        <% } %>
+                                                />
+                                                <span><%= checkboxValue.label %></span>
+                                                <span class="docCount"><%= checkboxValue.doc_count %></span>
+                                            </label>
+                                        <% }) %>
+                                    </summary>
+                                    <% additionalFilters.forEach(checkboxValue => { %>
+                                        <label class="checkboxRowContainer">
+                                            <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
+                                                   value="<%= checkboxValue.label %>"
+                                            <% if (checkboxValue.checked) { %>
+                                                   checked="true"
+                                                    <% } %>
+                                            />
+                                            <span><%= checkboxValue.label %></span>
+                                            <span class="docCount"><%= checkboxValue.doc_count %></span>
+                                        </label>
+                                    <% }) %>
+                                </details>
+                            <% } else { %>
+                                <div class="filterGroup">
+                                    <div class="filters">
+                                        <% filterValues.forEach(checkboxValue => { %>
+                                            <label class="checkboxRowContainer">
+                                                <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
+                                                       value="<%= checkboxValue.label %>"
+                                                <% if (checkboxValue.checked) { %>
+                                                       checked="true"
+                                                        <% } %>
+                                                />
+                                                <span><%= checkboxValue.label %></span>
+                                                <span class="docCount"><%= checkboxValue.doc_count %></span>
+                                            </label>
+                                        <% }) %>
+                                    </div>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                 <% } %>
@@ -154,7 +193,7 @@
                     <li class="disabled">...</li>
                 <% } %>
                 <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
-                { %> <% if (i == currentPage) { %>
+                { %> <% if (i === currentPage) { %>
                     <li class="disabled"><%= i %></li>
                 <% } else { %>
                     <li>
@@ -209,7 +248,7 @@
     function updateFilters(e) {
 
         const neighbors = document.getElementsByName(e.target.name);
-        let selectedValues = new Array();
+        let selectedValues = [];
         Array.prototype.forEach.call(neighbors, function (cb) {
             if (cb.checked) {
                 selectedValues.push(cb.value);

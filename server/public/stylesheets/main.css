@@ -202,13 +202,13 @@ main.fullWidth > .sidebar {
 main.blue-theme {
   background: url(/images/background-gradient.svg) no-repeat fixed;
   /* background-color: rgba(19, 30, 46, 0.15);
-                                                      background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
-                                                        linear-gradient(
-                                                          -60deg,
-                                                          #131e2e,
-                                                          rgba(40, 64, 99, 0.8),
-                                                          rgba(47, 79, 126, 0)
-                                                        ); */
+                                                              background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
+                                                                linear-gradient(
+                                                                  -60deg,
+                                                                  #131e2e,
+                                                                  rgba(40, 64, 99, 0.8),
+                                                                  rgba(47, 79, 126, 0)
+                                                                ); */
   /* background-position: top left; */
   -webkit-background-size: cover;
   background-size: cover;
@@ -307,7 +307,7 @@ label,
 .banff .cardShadow:focus,
 .aspen .cardShadow:hover,
 .aspen .cardShadow:focus {
-  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 div.items {
@@ -497,7 +497,7 @@ footer.footer-search {
 }
 
 .footerLink a {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 footer a {
@@ -517,7 +517,7 @@ footer .releaseInfo {
 div.pageHero {
   display: block;
   /* flex-wrap: wrap-reverse;
-                                              gap: 16px; */
+                                                      gap: 16px; */
 }
 
 .heroControls {
@@ -768,7 +768,7 @@ div.pageHero {
 .filterSearchResults {
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  padding: 32px 16px 0px 16px;
+  padding: 32px 16px 0 16px;
   height: calc(var(--body-height) - var(--footer-height));
   overflow-y: scroll;
   position: fixed;
@@ -1139,4 +1139,20 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
 
 #loginButton.invisible {
   visibility: hidden;
+}
+
+details.expandableFilters > summary {
+  list-style-type: none;
+}
+
+details.expandableFilters > summary::-webkit-details-marker {
+  display: block;
+}
+
+details.expandableFilters > summary::before {
+  content: url(/images/expand_more_black_24dp.svg);
+}
+
+details.expandableFilters[open] > summary::before {
+  content: url(/images/expand_less_black_24dp.svg);
 }

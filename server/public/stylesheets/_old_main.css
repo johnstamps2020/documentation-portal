@@ -147,7 +147,7 @@ a.returnLink {
 }
 
 .gwAccordion.dropdown-toggle::after {
-  content: url('/images/expand_more-black-18dp.svg') !important;
+  content: url('/images/expand_more_black_18dp.svg') !important;
   border-top: none;
   vertical-align: middle;
 }
