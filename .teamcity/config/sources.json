@@ -1104,7 +1104,7 @@
       "title": "GW for SF 3.3.1 Application Guide",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.0",
+      "branch": "3.3.1",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
