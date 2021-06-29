@@ -911,7 +911,7 @@
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "b_data-studio.ditamap",
       "srcId": "datastudiodraftsrc",
-      "docId": "datastudiodraft",
+      "docId": "datastudioappdraft",
       "indexRedirect": true
     },
     {
