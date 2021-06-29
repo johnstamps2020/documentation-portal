@@ -1488,7 +1488,7 @@
     },
     {
       "id": "datastudioappdraft",
-      "title": "Data Studio",
+      "title": "Data Studio Application Guide",
       "url": "cloud/datastudio/app",
       "metadata": {
         "product": ["Data Studio"],
