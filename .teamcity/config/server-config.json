@@ -4006,7 +4006,7 @@
       },
       "displayOnLandingPages": false,
       "environments": ["int"],
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false
     },
     {
@@ -4020,7 +4020,7 @@
       },
       "displayOnLandingPages": false,
       "environments": ["dev", "staging", "prod"],
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false
     },
     {
