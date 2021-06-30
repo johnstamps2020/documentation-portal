@@ -4258,7 +4258,6 @@
       "indexForSearch": true,
       "public": false
     },
-
     {
       "id": "dxdiapp331",
       "title": "Application Guide",
@@ -4269,7 +4268,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4284,7 +4283,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4299,7 +4298,7 @@
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4314,7 +4313,7 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4329,7 +4328,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4344,7 +4343,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4359,7 +4358,7 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4374,7 +4373,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4389,7 +4388,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4404,7 +4403,7 @@
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4419,12 +4418,11 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
-
     {
       "id": "dxdiapp330",
       "title": "Application Guide",
