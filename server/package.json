@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.10.0",
+    "@okta/jwt-verifier": "^2.2.0",
     "@okta/oidc-middleware": "^4.0.2",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
