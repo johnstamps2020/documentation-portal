@@ -4350,21 +4350,6 @@
       "public": false
     },
     {
-      "id": "dxedadmin331",
-      "title": "Administration Guide",
-      "url": "self-managed/dx/ed/331/admin",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["3.3.1"],
-        "subject": ["Administration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "dxedrelnotes331",
       "title": "Release Notes",
       "url": "self-managed/dx/ed/331/relnotes",
@@ -4524,21 +4509,6 @@
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Installation"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dxedadmin330",
-      "title": "Administration Guide",
-      "url": "self-managed/dx/ed/330/admin",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["3.3.0"],
-        "subject": ["Administration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,

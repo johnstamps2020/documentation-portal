@@ -1845,14 +1845,6 @@
     {
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
-      "root": "gw-for-sf-developer-admin-guide.ditamap",
-      "srcId": "dxgwsfadmin331",
-      "docId": "dxedadmin331",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ed-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsfrelnotes331",
       "docId": "dxedrelnotes331",
