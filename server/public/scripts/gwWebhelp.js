@@ -552,6 +552,11 @@ async function configureSearch() {
         }
       }
     }
+  } else {
+    const productField = document.querySelector('[name="product"]');
+    if (productField) {
+      productField.setAttribute('value', docProduct);
+    }
   }
 }
 
