@@ -6,10 +6,13 @@
 <main class="fullWidth searchPage">
     <div class="filterSearchResults">
         <div>
+            <% let filterNumber = 1 %>
             <% filters.forEach(filter => { %>
                 <% const filterValues = filter.values %>
                 <% if (filterValues.length > 0 ) { %>
-                    <details class="expandableFilters">
+                    <details class="expandableFilters" <% if (filterNumber === 1) { %>open=""
+                            <% } %>
+                    >
                         <summary>
                             <span class="summaryContainer">
                                 <span class="summaryChevron"></span>
@@ -34,6 +37,7 @@
                         </div>
                     </details>
                 <% } %>
+                <% filterNumber += 1 %>
             <% }) %>
         </div>
     </div>
