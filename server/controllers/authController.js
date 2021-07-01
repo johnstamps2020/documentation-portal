@@ -56,7 +56,7 @@ const authGateway = async (req, res, next) => {
     const reqUrl = req.url;
 
     function redirectToLoginPage() {
-      req.session.redirectTo = req.path;
+      req.session.redirectTo = reqUrl;
       if (req.query.authSource === gwCommunityCustomerParam) {
         res.redirect('/customers-login');
       } else if (req.query.authSource === gwCommunityPartnerParam) {
@@ -98,6 +98,7 @@ const authGateway = async (req, res, next) => {
     const requestIsAuthenticated = !!(
       req.isAuthenticated() || (await verifyToken(req))
     );
+    req.session.requestIsAuthenticated = requestIsAuthenticated;
     const authenticationEnabled = process.env.ENABLE_AUTH === 'yes';
     const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
 

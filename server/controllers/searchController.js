@@ -124,8 +124,8 @@ async function searchController(req, res, next) {
     const resultsPerPage = req.query.pagination || 10;
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
-    const userIsLoggedIn =
-      req.isAuthenticated() || process.env.ENABLE_AUTH === 'no';
+    const requestIsAuthenticated =
+      req.session.requestIsAuthenticated || process.env.ENABLE_AUTH === 'no';
 
     const mappings = await getFieldMappings();
     const filtersFromUrl = getFiltersFromUrl(mappings, urlQueryParameters);
@@ -152,7 +152,7 @@ async function searchController(req, res, next) {
           },
         });
       }
-      if (!userIsLoggedIn) {
+      if (!requestIsAuthenticated) {
         queryFilters.push({
           term: {
             public: true,
