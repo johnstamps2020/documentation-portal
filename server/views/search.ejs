@@ -11,23 +11,25 @@
                     Expand all
                 </span>
                 <span onclick="expandCollapseAllFilters(expandElements=false)">
-                Collapse all
-            </span>
+                    Collapse all
+                </span>
             </div>
-            <% filters.forEach(filter => { %>
-                <% const filterValues = filter.values %>
-                <% if (filterValues.length > 0 ) { %>
+            <% const displayOrder = ['platform', 'product', 'version', 'subject', 'doc_title'] %>
+            <% displayOrder.forEach(key => { %>
+                <% const matchingFilter = filters.find(f => f.name === key) %>
+                <% if (matchingFilter && matchingFilter.values.length > 0) { %>
+                    <% const filterValues = matchingFilter.values %>
                     <details class="expandableFilters">
                         <summary>
                             <span class="summaryContainer">
                                 <span class="summaryChevron"></span>
-                                <%= filter.name.replace('_', ' ').toUpperCase() %> (<%= filterValues.length %>)
+                                <%= matchingFilter.name.replace('_', ' ').toUpperCase() %> (<%= filterValues.length %>)
                             </span>
                         </summary>
                         <div class="filters">
                             <% filterValues.forEach(checkboxValue => { %>
                                 <label class="checkboxRowContainer">
-                                    <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
+                                    <input type="checkbox" class="filterCheckbox" name="<%= matchingFilter.name %>"
                                            value="<%= checkboxValue.label %>"
                                     <% if (checkboxValue.checked) { %>
                                            checked="true"
