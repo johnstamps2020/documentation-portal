@@ -998,6 +998,8 @@ main.support h2 {
 
 .pageSelectorDropdown.visible {
   display: block;
+  background-color: white;
+  isolation: isolate;
 }
 
 .dropdownOption:hover {
