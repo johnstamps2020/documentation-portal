@@ -108,12 +108,14 @@
                     </a>
                     <div class="resultBadges">
                         <% result.docTags.forEach(tag => { %>
-                            <% if (Array.isArray(tag)) { %>
-                                <% tag.forEach(value => { %>
-                                    <span class="infoLabel"><%= value %></span>
-                                <% }) %>
-                            <% } else { %>
-                                <span class="infoLabel"><%= tag %></span>
+                            <% if (tag) { %>
+                                <% if (Array.isArray(tag)) { %>
+                                    <% tag.forEach(value => { %>
+                                        <span class="infoLabel"><%= value %></span>
+                                    <% }) %>
+                                <% } else { %>
+                                    <span class="infoLabel"><%= tag %></span>
+                                <% } %>
                             <% } %>
                         <% }) %>
                     </div>
