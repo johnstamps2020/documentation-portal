@@ -373,7 +373,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/AdminGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -387,7 +387,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/AdvancedProductDesigner.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
@@ -399,7 +399,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/BC-AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
@@ -411,7 +411,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/CC-AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval"
@@ -423,7 +423,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/PC-AppGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
@@ -435,7 +435,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/BestPracticesGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -449,7 +449,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/CloudAPIGuide-BusinessFlows.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -463,7 +463,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/CloudAPIGuide-ConfigAuth.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -477,7 +477,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/ConfigGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -491,7 +491,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/ContactMgmtGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval",
@@ -504,7 +504,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/GlobalizationGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -518,7 +518,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/GosuRefGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
@@ -530,7 +530,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/InstallGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -544,7 +544,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/IntegrationGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -558,7 +558,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/NewAndChangedGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -572,7 +572,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/ProductDesignerGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
@@ -584,7 +584,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/ProductModelGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -598,7 +598,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/RESTAPIFramework.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -612,7 +612,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/RulesGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -626,7 +626,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/releases/202104/TestingGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
@@ -640,7 +640,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
-      "exportFrequency": "weekly",
+      "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-Cortina.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
