@@ -8,10 +8,10 @@ const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
 
 const oktaJwtVerifier = new OktaJwtVerifier({
-  issuer: `${process.env.OKTA_DOMAIN}/oauth2/${process.env.OKTA_APP_ID}`,
+  issuer: process.env.OKTA_ACCESS_TOKEN_ISSUER,
   clientId: process.env.OKTA_CLIENT_ID,
   assertClaims: {
-    'scp.includes': [process.env.OKTA_ACCESS_TOKEN_SCOPE],
+    'scp.includes': process.env.OKTA_ACCESS_TOKEN_SCOPES,
   },
 });
 
@@ -23,7 +23,7 @@ async function verifyToken(req) {
       const bearerToken = bearer[1];
       const jwt = await oktaJwtVerifier.verifyAccessToken(
         bearerToken,
-        'Guidewire'
+        process.env.OKTA_ACCESS_TOKEN_AUDIENCE
       );
       return jwt;
     }
