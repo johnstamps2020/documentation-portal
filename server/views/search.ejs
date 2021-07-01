@@ -9,47 +9,15 @@
             <% filters.forEach(filter => { %>
                 <% const filterValues = filter.values %>
                 <% if (filterValues.length > 0 ) { %>
-                    <h2 class="filterHeader">Filter by <%= filter.name.replace('_', ' ') %></h2>
-                    <div class="filterGroup">
-                        <div class="filters">
-                            <% if (filterValues.length > 5) { %>
-                                <% const mainFilters = filterValues.slice(0, 5) %>
-                                <% const additionalFilters = filterValues.slice(5) %>
-                                <details class="expandableFilters">
-                                    <summary>
-                                        <span class="summaryContainer">
-                                            <span class="summaryChevron"></span>
-                                            <span class="summaryHeader"></span>
-                                            <span class="summaryFilterCount">(<%= filterValues.length %>)</span>
-                                        </span>
-                                        <% mainFilters.forEach(checkboxValue => { %>
-                                            <label class="checkboxRowContainer">
-                                                <input type="checkbox" class="filterCheckbox"
-                                                       name="<%= filter.name %>"
-                                                       value="<%= checkboxValue.label %>"
-                                                <% if (checkboxValue.checked) { %>
-                                                       checked="true"
-                                                        <% } %>
-                                                />
-                                                <span><%= checkboxValue.label %></span>
-                                                <span class="docCount"><%= checkboxValue.doc_count %></span>
-                                            </label>
-                                        <% }) %>
-                                    </summary>
-                                    <% additionalFilters.forEach(checkboxValue => { %>
-                                        <label class="checkboxRowContainer">
-                                            <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
-                                                   value="<%= checkboxValue.label %>"
-                                            <% if (checkboxValue.checked) { %>
-                                                   checked="true"
-                                                    <% } %>
-                                            />
-                                            <span><%= checkboxValue.label %></span>
-                                            <span class="docCount"><%= checkboxValue.doc_count %></span>
-                                        </label>
-                                    <% }) %>
-                                </details>
-                            <% } else { %>
+                    <details class="expandableFilters">
+                        <summary>
+                            <span class="summaryContainer">
+                                <span class="summaryChevron"></span>
+                                Filter by <%= filter.name.replace('_', ' ') %> (<%= filterValues.length %>)
+                            </span>
+                        </summary>
+                        <div class="filterGroup">
+                            <div class="filters">
                                 <% filterValues.forEach(checkboxValue => { %>
                                     <label class="checkboxRowContainer">
                                         <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
@@ -62,9 +30,9 @@
                                         <span class="docCount"><%= checkboxValue.doc_count %></span>
                                     </label>
                                 <% }) %>
-                            <% } %>
+                            </div>
                         </div>
-                    </div>
+                    </details>
                 <% } %>
             <% }) %>
         </div>
