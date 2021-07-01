@@ -202,13 +202,13 @@ main.fullWidth > .sidebar {
 main.blue-theme {
   background: url(/images/background-gradient.svg) no-repeat fixed;
   /* background-color: rgba(19, 30, 46, 0.15);
-                                                                                                              background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
-                                                                                                                linear-gradient(
-                                                                                                                  -60deg,
-                                                                                                                  #131e2e,
-                                                                                                                  rgba(40, 64, 99, 0.8),
-                                                                                                                  rgba(47, 79, 126, 0)
-                                                                                                                ); */
+                                                                                                                background-image: linear-gradient(-54deg, #131e2e, #2f4f7e, #131e2e),
+                                                                                                                  linear-gradient(
+                                                                                                                    -60deg,
+                                                                                                                    #131e2e,
+                                                                                                                    rgba(40, 64, 99, 0.8),
+                                                                                                                    rgba(47, 79, 126, 0)
+                                                                                                                  ); */
   /* background-position: top left; */
   -webkit-background-size: cover;
   background-size: cover;
@@ -517,7 +517,7 @@ footer .releaseInfo {
 div.pageHero {
   display: block;
   /* flex-wrap: wrap-reverse;
-                                                                                                      gap: 16px; */
+                                                                                                        gap: 16px; */
 }
 
 .heroControls {
@@ -793,6 +793,7 @@ div.pageHero {
   flex-direction: column;
   font-size: 0.875rem;
   padding: 8px 0;
+  margin-left: 24px;
 }
 
 .checkboxRowContainer {
@@ -1148,6 +1149,7 @@ html:not(.has-tabbed) .externalSitesItemWrapper {
   align-items: center;
   font-size: 0.875rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .expandableFilters > summary .summaryChevron {
