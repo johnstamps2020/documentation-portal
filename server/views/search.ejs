@@ -6,7 +6,14 @@
 <main class="fullWidth searchPage">
     <div class="filterSearchResults">
         <div>
-            <div id="expandCollapseAllToggle" onclick="expandCollapseAllFilters()">Expand/collapse all filters</div>
+            <div id="expandCollapseAllToggle">
+                <span onclick="expandCollapseAllFilters(expandElements=true)">
+                    Expand all
+                </span>
+                <span onclick="expandCollapseAllFilters(expandElements=false)">
+                Collapse all
+            </span>
+            </div>
             <% filters.forEach(filter => { %>
                 <% const filterValues = filter.values %>
                 <% if (filterValues.length > 0 ) { %>
@@ -244,12 +251,28 @@
         });
     }
 
-    function expandCollapseAllFilters() {
+    function expandCollapseAllFilters(expandElements) {
         const expandableFiltersElements = document.getElementsByClassName("expandableFilters");
         for (const expandableFilter of expandableFiltersElements) {
-            expandableFilter.hasAttribute("open") ? expandableFilter.removeAttribute("open") : expandableFilter.setAttribute("open", "")
+            expandElements ? expandableFilter.setAttribute('open', '') : expandableFilter.removeAttribute('open');
         }
     }
+
+    function expandCheckedFilters() {
+        const expandableFiltersElements = document.getElementsByClassName("expandableFilters");
+        for (const expandableFilter of expandableFiltersElements) {
+            const filterValues = expandableFilter.querySelector('div[class="filters"]');
+            for (const filterValue of filterValues.children) {
+                if (filterValue.querySelector('input[checked="true"]')) {
+                    expandableFilter.setAttribute('open', '')
+                    break
+                }
+            }
+        }
+    }
+
+    expandCheckedFilters();
+
 </script>
 </body>
 <%- include('parts/footer', { footerClass: 'footer-search' }) %>
