@@ -95,8 +95,9 @@ const authGateway = async (req, res, next) => {
     }
 
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
-    const requestIsAuthenticated =
-      req.isAuthenticated() || (await verifyToken(req));
+    const requestIsAuthenticated = !!(
+      req.isAuthenticated() || (await verifyToken(req))
+    );
     const authenticationEnabled = process.env.ENABLE_AUTH === 'yes';
     const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
 
