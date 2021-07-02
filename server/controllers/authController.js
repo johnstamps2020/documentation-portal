@@ -33,6 +33,10 @@ async function verifyToken(req) {
   }
 }
 
+async function isRequestAuthenticated(req) {
+  return !!(req.isAuthenticated() || (await verifyToken(req)));
+}
+
 const oktaOIDC = new ExpressOIDC({
   issuer: `${process.env.OKTA_DOMAIN}`,
   client_id: `${process.env.OKTA_CLIENT_ID}`,
@@ -48,6 +52,7 @@ const majorOpenRoutes = [
   '/alive',
   '/userInformation',
   '/safeConfig',
+  '/search',
   '/developerResources',
 ];
 
@@ -95,9 +100,8 @@ const authGateway = async (req, res, next) => {
     }
 
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
-    const requestIsAuthenticated = !!(
-      req.isAuthenticated() || (await verifyToken(req))
-    );
+    const requestIsAuthenticated = await isRequestAuthenticated(req);
+    req.session.requestIsAuthenticated = requestIsAuthenticated;
     const authenticationEnabled = process.env.ENABLE_AUTH === 'yes';
     const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
 
@@ -115,4 +119,9 @@ const authGateway = async (req, res, next) => {
   }
 };
 
-module.exports = { oktaOIDC, authGateway, loginGatewayRoute };
+module.exports = {
+  oktaOIDC,
+  authGateway,
+  loginGatewayRoute,
+  isRequestAuthenticated,
+};
