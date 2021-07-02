@@ -97,10 +97,6 @@
           "id": "isbc202104integ"
         },
         {
-          "label": "REST API Framework",
-          "id": "isbc202104restapifw"
-        },
-        {
           "label": "REST API Client",
           "id": "isrestapiclientguide"
         }
