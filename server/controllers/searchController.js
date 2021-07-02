@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
+const { isRequestAuthenticated } = require('./authController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 
@@ -126,9 +127,9 @@ async function searchController(req, res, next) {
     const resultsPerPage = req.query.pagination || 10;
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
-    const requestIsAuthenticated =
-      req.session.requestIsAuthenticated || process.env.ENABLE_AUTH === 'no';
-
+    const requestIsAuthenticated = !!(
+      process.env.ENABLE_AUTH === 'no' || (await isRequestAuthenticated(req))
+    );
     const mappings = await getFieldMappings();
     const filtersFromUrl = getFiltersFromUrl(mappings, urlQueryParameters);
 
