@@ -8,7 +8,7 @@ metadata:
       http-response add-header Content-Security-Policy \"frame-ancestors\ https://*.guidewire.net\ https://*.guidewire.com\"
       http-response add-header X-Frame-Options SAMEORIGIN
       http-response add-header Access-Control-Allow-Origin *
-      http-response add-header Access-Control-Allow-Methods "GET, OPTIONS"
+      http-response add-header Access-Control-Allow-Methods \"GET, OPTIONS\"
       http-response add-header Access-Control-Allow-Headers *
 spec:
   rules:
