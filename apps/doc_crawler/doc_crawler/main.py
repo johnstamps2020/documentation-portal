@@ -1,9 +1,35 @@
 import os
+from typing import List
 
-from scrapy.crawler import CrawlerProcess
+from scrapy.crawler import CrawlerRunner
 from scrapy.utils.project import get_project_settings
+from multiprocessing import Process, Queue
+from twisted.internet import reactor
 
 from doc_crawler.spiders import doc_portal_spider
+
+
+def create_runners(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str, q):
+    try:
+        runner = CrawlerRunner(get_project_settings())
+        deferred = runner.crawl(spider, docs=docs_to_crawl, app_base_url=root_url,
+                                doc_s3_url=s3_bucket_url)
+        deferred.addBoth(lambda _: reactor.stop())
+        reactor.run()
+        q.put(None)
+    except Exception as e:
+        q.put(e)
+
+
+def run_spider(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str):
+    queue = Queue()
+    process = Process(target=create_runners, args=(spider, docs_to_crawl, root_url, s3_bucket_url, queue,))
+    process.start()
+    result = queue.get()
+    process.join()
+
+    if result is not None:
+        raise result
 
 
 def env_is_set():
@@ -42,10 +68,9 @@ def main():
                          '\n\t- The config file does not contain any docs.'
                          '\n\t- The provided doc ID is invalid.')
 
-    process = CrawlerProcess(get_project_settings())
-    process.crawl(doc_portal_spider.DocPortalSpider, docs=doc_objects_to_crawl, app_base_url=app_base_url,
-                  doc_s3_url=doc_s3_url)
-    process.start()
+    for doc_object_to_crawl in doc_objects_to_crawl:
+        run_spider(spider=doc_portal_spider.DocPortalSpider, docs_to_crawl=[doc_object_to_crawl], root_url=app_base_url,
+                   s3_bucket_url=doc_s3_url)
 
 
 if __name__ == '__main__':
