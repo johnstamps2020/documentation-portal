@@ -1712,7 +1712,7 @@ object HelperObjects {
 
         val builds = mutableListOf<BuildType>()
 
-        val exportServers = arrayOf("fc-xdocs-slave1", "fc-xdocs-slave2")
+        val exportServers = arrayOf("ORP-XDOCS-WDB03", "ORP-XDOCS-WDB04")
         var exportServerIndex = 0
 
         var schHourDaily = 0
@@ -2599,7 +2599,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             workingDir = "LocalClient/sample/local/bin"
             scriptContent = """
                 #!/bin/bash
-                sed -i "s/fc-xdocs-slave1/%env.EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
+                sed -i "s/ORP-XDOCS-WDB03/%env.EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
                 chmod 777 runExport.sh
                 for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
             """.trimIndent()
