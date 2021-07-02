@@ -58,6 +58,12 @@ spec:
               value: ${OKTA_CLIENT_ID_PROD}
             - name: OKTA_CLIENT_SECRET
               value: ${OKTA_CLIENT_SECRET_PROD}
+            - name: OKTA_ACCESS_TOKEN_ISSUER
+              value: ${OKTA_ACCESS_TOKEN_ISSUER_PROD}
+            - name: OKTA_ACCESS_TOKEN_SCOPES
+              value: ${OKTA_ACCESS_TOKEN_SCOPES_PROD}
+            - name: OKTA_ACCESS_TOKEN_AUDIENCE
+              value: ${OKTA_ACCESS_TOKEN_AUDIENCE_PROD}
             - name: APP_BASE_URL
               value: https://docs.guidewire.com
             - name: SESSION_KEY
