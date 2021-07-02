@@ -7,10 +7,10 @@
     <div class="filterSearchResults">
         <div>
             <div id="expandCollapseAllToggle">
-                <span onclick="expandCollapseAllFilters(expandElements=true)">
+                <span onclick="expandCollapseAllFilters(expandElements=true)" role="button" tabindex="0">
                     Expand all
                 </span>
-                <span onclick="expandCollapseAllFilters(expandElements=false)">
+                <span onclick="expandCollapseAllFilters(expandElements=false)" role="button" tabindex="0">
                     Collapse all
                 </span>
             </div>
@@ -22,7 +22,7 @@
                     <details class="expandableFilters">
                         <summary>
                             <span class="summaryContainer">
-                                <span class="summaryChevron"></span>
+                                <span class="summaryChevron" aria-label="expand/collapse icon"></span>
                                 <%= matchingFilter.name.replace('_', ' ').toUpperCase() %> (<%= filterValues.length %>)
                             </span>
                         </summary>
@@ -63,6 +63,7 @@
                             type="search"
                             placeholder="Search Guidewire documentation"
                             aria-label="Search Guidewire documentation"
+                            aria-labelledby="submitSearch"
                             autofocus
                     />
                     <% filters.forEach(searchFilter => { %>
@@ -72,7 +73,7 @@
                                    value="<%= checkedFilters.map(f => f.label).join(',') %>">
                         <% } %>
                     <% }) %>
-                    <button type="submit" class="searchButton" aria-label="Search">
+                    <button id="submitSearch" type="submit" class="searchButton" aria-label="Search">
                         Search
                     </button>
                 </div>
@@ -88,7 +89,7 @@
             </span>
             <span class="paginationWrapper">
                 <% if (totalNumOfResults > 0) { %>
-                    <span>View items:</span>
+                    <label for="pagination">View items:</label>
                     <select id="pagination">
                         <% ['10', '25', '50', '100'].forEach(rpp => { %>
                             <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
@@ -143,9 +144,9 @@
                             <div class="otherHits">
                                 <% for (const hit of hitsToDisplay) { %>
                                     <p class="otherHit">
-                                    <a href="<%= hit.href %>">
-                                        <%= hit.tags.join(', ') %>
-                                    </a>
+                                        <a href="<%= hit.href %>">
+                                            <%= hit.tags.join(', ') %>
+                                        </a>
                                     </p>
                                 <% } %>
                             </div>
