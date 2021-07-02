@@ -17,7 +17,7 @@
             <% const displayOrder = ['platform', 'product', 'version', 'subject', 'doc_title'] %>
             <% displayOrder.forEach(key => { %>
                 <% const matchingFilter = filters.find(f => f.name === key) %>
-                <% if (matchingFilter && matchingFilter.values.length > 0) { %>
+                <% if (matchingFilter) { %>
                     <% const filterValues = matchingFilter.values %>
                     <details class="expandableFilters">
                         <summary>
