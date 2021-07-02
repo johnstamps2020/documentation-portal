@@ -12283,22 +12283,6 @@
     {
       "id": "dhqueryguidedraft",
       "title": "Data Studio Query Guide",
-      "url": "cloud/dh/latest/qg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["DataHub"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhqueryguidedraft",
-      "title": "Data Studio Query Guide",
       "url": "cloud/datastudio/qg",
       "metadata": {
         "platform": ["Cloud"],
