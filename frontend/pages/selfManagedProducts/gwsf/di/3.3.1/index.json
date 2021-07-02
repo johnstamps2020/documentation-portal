@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Guidewire for Salesforce Digital Gateway 3.3.0",
+  "title": "Guidewire for Salesforce Data Integrations 3.3.1",
   "class": "twoColumns",
   "template": "page.j2",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxedrelnotes330"
+          "id": "dxdirelnotes331"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxedapp330"
+          "id": "dxdiapp331"
         }
       ]
     },
@@ -30,7 +30,17 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxedinstall330"
+          "id": "dxdiinstall331"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dxdiadmin331"
         }
       ]
     }

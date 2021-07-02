@@ -1,11 +1,37 @@
 require('dotenv').config();
 const { ExpressOIDC } = require('@okta/oidc-middleware');
+const OktaJwtVerifier = require('@okta/jwt-verifier');
 const { isPublicDoc } = require('../controllers/configController');
 
 const loginGatewayRoute = '/gw-login';
-
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
+
+const oktaJwtVerifier = new OktaJwtVerifier({
+  issuer: process.env.OKTA_ACCESS_TOKEN_ISSUER,
+  clientId: process.env.OKTA_CLIENT_ID,
+  assertClaims: {
+    'scp.includes': process.env.OKTA_ACCESS_TOKEN_SCOPES,
+  },
+});
+
+async function verifyToken(req) {
+  try {
+    const bearerHeader = req.headers?.authorization;
+    if (bearerHeader) {
+      const bearer = bearerHeader.split(' ');
+      const bearerToken = bearer[1];
+      const jwt = await oktaJwtVerifier.verifyAccessToken(
+        bearerToken,
+        process.env.OKTA_ACCESS_TOKEN_AUDIENCE
+      );
+      return jwt;
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
 
 const oktaOIDC = new ExpressOIDC({
   issuer: `${process.env.OKTA_DOMAIN}`,
@@ -30,7 +56,7 @@ const authGateway = async (req, res, next) => {
     const reqUrl = req.url;
 
     function redirectToLoginPage() {
-      req.session.redirectTo = req.path;
+      req.session.redirectTo = reqUrl;
       if (req.query.authSource === gwCommunityCustomerParam) {
         res.redirect('/customers-login');
       } else if (req.query.authSource === gwCommunityPartnerParam) {
@@ -69,13 +95,15 @@ const authGateway = async (req, res, next) => {
     }
 
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
-    const userLoggedIn = req.isAuthenticated();
+    const requestIsAuthenticated = !!(
+      req.isAuthenticated() || (await verifyToken(req))
+    );
     const authenticationEnabled = process.env.ENABLE_AUTH === 'yes';
     const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
 
     if (!authenticationEnabled) {
       openRequestedPage();
-    } else if (authenticationEnabled && userLoggedIn) {
+    } else if (authenticationEnabled && requestIsAuthenticated) {
       openRequestedPage();
     } else if (authenticationEnabled && publicDocsAllowed && isOpenRoute) {
       openPublicPage();

@@ -1487,14 +1487,14 @@
       "public": false
     },
     {
-      "id": "datastudiodraft",
-      "title": "Data Studio",
-      "url": "cloud/gw-feature-preview/datastudio",
+      "id": "datastudioappdraft",
+      "title": "Data Studio Application Guide",
+      "url": "cloud/datastudio/app",
       "metadata": {
-        "product": ["Feature Preview"],
+        "product": ["Data Studio"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Dobson"],
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging"],
@@ -4006,7 +4006,7 @@
       },
       "displayOnLandingPages": false,
       "environments": ["int"],
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false
     },
     {
@@ -4020,7 +4020,7 @@
       },
       "displayOnLandingPages": false,
       "environments": ["dev", "staging", "prod"],
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false
     },
     {
@@ -4258,7 +4258,6 @@
       "indexForSearch": true,
       "public": false
     },
-
     {
       "id": "dxdiapp331",
       "title": "Application Guide",
@@ -4269,7 +4268,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4284,7 +4283,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4299,7 +4298,7 @@
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4314,7 +4313,7 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4329,7 +4328,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4344,22 +4343,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dxedadmin331",
-      "title": "Administration Guide",
-      "url": "self-managed/dx/ed/331/admin",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["3.3.1"],
-        "subject": ["Administration"]
-      },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4374,7 +4358,7 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4389,7 +4373,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4404,7 +4388,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4419,7 +4403,7 @@
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -4434,12 +4418,11 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
-
     {
       "id": "dxdiapp330",
       "title": "Application Guide",
@@ -4524,21 +4507,6 @@
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Installation"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dxedadmin330",
-      "title": "Administration Guide",
-      "url": "self-managed/dx/ed/330/admin",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["3.3.0"],
-        "subject": ["Administration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -10611,7 +10579,7 @@
     },
     {
       "id": "in20211xcommonconfigdraft",
-      "title": "Common Templates Configuration Guide",
+      "title": "Common Functionality Configuration Reference",
       "url": "cloud/in/20211x/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -12324,6 +12292,22 @@
         "subject": ["Development"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhqueryguidedraft",
+      "title": "Data Studio Query Guide",
+      "url": "cloud/datastudio/qg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Studio"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

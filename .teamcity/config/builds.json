@@ -911,7 +911,7 @@
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "b_data-studio.ditamap",
       "srcId": "datastudiodraftsrc",
-      "docId": "datastudiodraft",
+      "docId": "datastudioappdraft",
       "indexRedirect": true
     },
     {
@@ -982,7 +982,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-10x-active.ditamap",
+      "root": "_supermap-1012.ditamap",
       "srcId": "selfmanagedis1012src",
       "docId": "bc1012",
       "resources": [
@@ -1001,7 +1001,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_supermap-10x-active.ditamap",
+      "root": "_supermap-1012.ditamap",
       "srcId": "selfmanagedis1012src",
       "docId": "cc1012",
       "resources": [
@@ -1020,7 +1020,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_supermap-10x-active.ditamap",
+      "root": "_supermap-1012.ditamap",
       "srcId": "selfmanagedis1012src",
       "docId": "pc1012",
       "resources": [
@@ -1524,50 +1524,50 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dx1140",
-      "docId": "dxceam1140"
+      "srcId": "dx1141",
+      "docId": "dxceam1141"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dx1140",
-      "docId": "dxceclaims1140"
+      "srcId": "dx1141",
+      "docId": "dxceclaims1141"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-qb-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dx1140",
-      "docId": "dxceqb1140"
+      "srcId": "dx1141",
+      "docId": "dxceqb1141"
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dx1140",
-      "docId": "dxpe1140"
+      "srcId": "dx1141",
+      "docId": "dxpe1141"
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dx1140",
-      "docId": "dxpeclaims1140"
+      "srcId": "dx1141",
+      "docId": "dxpeclaims1141"
     },
     {
       "buildType": "dita",
       "filter": "Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dx1140",
-      "docId": "dxsre1140"
+      "srcId": "dx1141",
+      "docId": "dxsre1141"
     },
     {
       "buildType": "dita",
       "filter": "Digital-ve-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
-      "srcId": "dx1140",
-      "docId": "dxve1140"
+      "srcId": "dx1141",
+      "docId": "dxve1141"
     },
     {
       "buildType": "dita",
@@ -1798,96 +1798,88 @@
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
-      "srcId": "dxgwsfapp330",
-      "docId": "dxdiapp330",
+      "srcId": "dxgwsfapp331",
+      "docId": "dxdiapp331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
-      "srcId": "dxgwsfinstall330",
-      "docId": "dxdiinstall330",
+      "srcId": "dxgwsfinstall331",
+      "docId": "dxdiinstall331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
-      "srcId": "dxgwsfadmin330",
-      "docId": "dxdiadmin330",
+      "srcId": "dxgwsfadmin331",
+      "docId": "dxdiadmin331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
-      "srcId": "dxgwsfrelnotes330",
-      "docId": "dxdirelnotes330",
+      "srcId": "dxgwsfrelnotes331",
+      "docId": "dxdirelnotes331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
-      "srcId": "dxgwsfapp330",
-      "docId": "dxedapp330",
+      "srcId": "dxgwsfapp331",
+      "docId": "dxedapp331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
-      "srcId": "dxgwsfinstall330",
-      "docId": "dxedinstall330",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ed-OnPrem.ditaval",
-      "root": "gw-for-sf-developer-admin-guide.ditamap",
-      "srcId": "dxgwsfadmin330",
-      "docId": "dxedadmin330",
+      "srcId": "dxgwsfinstall331",
+      "docId": "dxedinstall331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
-      "srcId": "dxgwsfrelnotes330",
-      "docId": "dxedrelnotes330",
+      "srcId": "dxgwsfrelnotes331",
+      "docId": "dxedrelnotes331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
-      "srcId": "dxgwsfapp330",
-      "docId": "dxvodapp330",
+      "srcId": "dxgwsfapp331",
+      "docId": "dxvodapp331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
-      "srcId": "dxgwsfinstall330",
-      "docId": "dxvodinstall330",
+      "srcId": "dxgwsfinstall331",
+      "docId": "dxvodinstall331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
-      "srcId": "dxgwsfadmin330",
-      "docId": "dxvodadmin330",
+      "srcId": "dxgwsfadmin331",
+      "docId": "dxvodadmin331",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
-      "srcId": "dxgwsfrelnotes330",
-      "docId": "dxvodrelnotes330",
+      "srcId": "dxgwsfrelnotes331",
+      "docId": "dxvodrelnotes331",
       "indexRedirect": true
     },
     {
@@ -3099,18 +3091,18 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclientsrc",
-      "docId": "isclouddraftrestapiclient",
+      "srcId": "isrestapiclientguidesrc",
+      "docId": "isdraftrestapiclientguide",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "Guidewire_REST-API-Client112_ReleaseNotes",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrnsrc",
-      "docId": "isclouddraftrestapiclientrn",
+      "docId": "isdraftrestapiclientrn",
       "indexRedirect": true
     },
     {
@@ -3527,14 +3519,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-EA.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclientsrc",
-      "docId": "iscloudearestapiclient",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "cloudisinstalldraftsrc",
@@ -3895,7 +3879,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "CommonConfigGuide20211x.ditamap",
+      "root": "CommonFunctionalityConfigurationReference20211x.ditamap",
       "srcId": "in20211xcommonconfigdraftsrc",
       "docId": "in20211xcommonconfigdraft",
       "indexRedirect": true
@@ -3943,7 +3927,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "UnderwritingProductConfigGuide20211x.ditamap",
+      "root": "UnderwritingConfigurationReference20211x.ditamap",
       "srcId": "in20211xuwconfigdraftsrc",
       "docId": "in20211xuwconfigdraft",
       "indexRedirect": true
@@ -3951,7 +3935,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "ClaimsProductConfigGuide20211x.ditamap",
+      "root": "ClaimsConfigurationReference20211x.ditamap",
       "srcId": "in20211xclaimsconfigdraftsrc",
       "docId": "in20211xclaimsconfigdraft",
       "indexRedirect": true
@@ -4396,7 +4380,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderwritingProductConfigGuide20211x.ditamap",
+      "root": "UnderwritingConfigurationReference20211x.ditamap",
       "srcId": "in20211uwconfigsrc",
       "docId": "in20211uwconfig",
       "indexRedirect": true
@@ -4934,6 +4918,12 @@
           "targetFolder": "extras/autoGenFiles/cloud"
         }
       ]
+    },
+    {
+      "buildType": "yarn",
+      "docId": "dhqueryguidedraft",
+      "srcId": "datastudiodraftsrc",
+      "workingDir": "query_guide"
     },
     {
       "buildType": "dita",
@@ -5543,15 +5533,15 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclientsrc",
-      "docId": "isrestapiclient",
+      "srcId": "isrestapiclientguidesrc",
+      "docId": "isrestapiclientguide",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrnsrc",
       "docId": "isrestapiclientrn",

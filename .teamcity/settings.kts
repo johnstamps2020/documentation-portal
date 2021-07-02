@@ -1712,7 +1712,7 @@ object HelperObjects {
 
         val builds = mutableListOf<BuildType>()
 
-        val exportServers = arrayOf("fc-xdocs-slave1", "fc-xdocs-slave2")
+        val exportServers = arrayOf("ORP-XDOCS-WDB03", "ORP-XDOCS-WDB04")
         var exportServerIndex = 0
 
         var schHourDaily = 0
@@ -1986,7 +1986,7 @@ object HelperObjects {
                     allowEmpty = false
                 )
                 text("SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("env.GW_DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GW_DOC_ID", doc_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PRODUCT", product, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_PLATFORM", platform, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GW_VERSION", version, display = ParameterDisplay.HIDDEN, allowEmpty = false)
@@ -2310,7 +2310,6 @@ object HelperObjects {
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
                 "sphinx" -> templates(BuildSphinx)
-                "storybook" -> templates(BuildStorybook)
                 "dita" -> templates(RunContentValidations)
             }
 
@@ -2318,6 +2317,7 @@ object HelperObjects {
             val docBuildFilter = if (build_info.has("filter")) build_info.getString("filter") else ""
             val docBuildIndexRedirect =
                 if (build_info.has("indexRedirect")) build_info.getBoolean("indexRedirect").toString() else "false"
+            val workingDir = if (build_info.has("workingDir")) build_info.getString("workingDir") else ""
             val docBuildDocId = build_info.getString("docId")
             val doc = getObjectById(docConfigs, "id", docBuildDocId)
             val docId = doc.getString("id")
@@ -2347,6 +2347,9 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN,
                     allowEmpty = false
                 )
+                text("WORKING_DIR", workingDir, allowEmpty = false)
+                text("DEPLOY_ENV", "dev", allowEmpty = false)
+                text("env.PUBLISH_PATH", "root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
             }
 
             if (docBuildType == "dita") {
@@ -2511,7 +2514,10 @@ object HelperObjects {
                             buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
                             for (docBuild in sourceDocBuilds) {
-                                buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
+                                val docBuildType = if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
+                                if (docBuildType != "storybook") {
+                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
+                                }
                             }
 
                         }
@@ -2593,7 +2599,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
             workingDir = "LocalClient/sample/local/bin"
             scriptContent = """
                 #!/bin/bash
-                sed -i "s/fc-xdocs-slave1/%env.EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
+                sed -i "s/ORP-XDOCS-WDB03/%env.EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
                 chmod 777 runExport.sh
                 for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
             """.trimIndent()
@@ -2704,7 +2710,7 @@ object RunContentValidations : Template({
     """.trimIndent()
 
     params {
-        text("env.GW_DOC_ID", "%DOC_ID%", allowEmpty = false)
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
@@ -2895,6 +2901,7 @@ object BuildStorybook : Template({
     name = "Get published Storybook"
 
     params {
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
@@ -2950,6 +2957,7 @@ object BuildSphinx : Template({
     name = "Build a Sphinx project"
 
     params {
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
@@ -3004,6 +3012,7 @@ object BuildYarn : Template({
     name = "Build a yarn project"
 
     params {
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
         text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
         text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)

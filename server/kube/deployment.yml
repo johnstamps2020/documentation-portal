@@ -58,6 +58,12 @@ spec:
               value: ${OKTA_CLIENT_ID}
             - name: OKTA_CLIENT_SECRET
               value: ${OKTA_CLIENT_SECRET}
+            - name: OKTA_ACCESS_TOKEN_ISSUER
+              value: ${OKTA_ACCESS_TOKEN_ISSUER}
+            - name: OKTA_ACCESS_TOKEN_SCOPES
+              value: ${OKTA_ACCESS_TOKEN_SCOPES}
+            - name: OKTA_ACCESS_TOKEN_AUDIENCE
+              value: ${OKTA_ACCESS_TOKEN_AUDIENCE}
             - name: APP_BASE_URL
               value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net
             - name: SESSION_KEY

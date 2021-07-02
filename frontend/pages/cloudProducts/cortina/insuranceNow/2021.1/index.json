@@ -91,7 +91,7 @@
           "id": "in20211studio"
         },
         {
-          "label": "Portal Development",
+          "label": "Portal Development Guide",
           "id": "in20211portaldev"
         },
         {
@@ -99,8 +99,9 @@
           "id": "in20211prodattref"
         },
         {
-          "label": "Underwriting Product Configuration Guide",
-          "id": "in20211uwconfig"
+          "label": "Underwriting Configuration Reference",
+          "id": "in20211uwconfig",
+          "env": ["dev", "staging"]
         }
       ]
     }

@@ -121,10 +121,6 @@
         {
           "label": "REST API Framework",
           "id": "ispccloudearestapifw"
-        },
-        {
-          "label": "REST API Client",
-          "id": "iscloudearestapiclient"
         }
       ]
     },

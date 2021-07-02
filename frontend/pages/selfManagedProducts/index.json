@@ -45,7 +45,7 @@
         },
         {
           "label": "REST API Client",
-          "id": "restapidraft"
+          "id": "isdraftrestapiclientguide"
         },
         {
           "label": "ClaimCenter Adapter for IRSA",
@@ -91,33 +91,15 @@
       "items": [
         {
           "label": "CustomerEngage Account Management",
-          "id": "dxceam1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "CustomerEngage Account Management",
-          "id": "dxceam1140",
-          "env": ["dev", "int", "staging"]
+          "id": "dxceam1141"
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
-          "id": "dxceclaims1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "CustomerEngage Account Management for ClaimCenter",
-          "id": "dxceclaims1140",
-          "env": ["dev", "int", "staging"]
+          "id": "dxceclaims1141"
         },
         {
           "label": "CustomerEngage Quote and Buy",
-          "id": "dxceqb1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "CustomerEngage Quote and Buy",
-          "id": "dxceqb1140",
-          "env": ["dev", "int", "staging"]
+          "id": "dxceqb1141"
         },
         {
           "label": "Jutro Design System",
@@ -126,47 +108,23 @@
         },
         {
           "label": "ProducerEngage",
-          "id": "dxpe1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "ProducerEngage",
-          "id": "dxpe1140",
-          "env": ["dev", "int", "staging"]
+          "id": "dxpe1141"
         },
         {
           "label": "ProducerEngage for ClaimCenter",
-          "id": "dxpeclaims1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "ProducerEngage for ClaimCenter",
-          "id": "dxpeclaims1140",
-          "env": ["dev", "int", "staging"]
+          "id": "dxpeclaims1141"
         },
         {
           "label": "ServiceRepEngage",
-          "id": "dxsre1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "ServiceRepEngage",
-          "id": "dxsre1140",
-          "env": ["dev", "int", "staging"]
+          "id": "dxsre1141"
         },
         {
           "label": "VendorEngage",
-          "id": "dxve1130",
-          "env": ["prod"]
-        },
-        {
-          "label": "VendorEngage",
-          "id": "dxve1140",
-          "env": ["dev", "int", "staging"]
+          "id": "dxve1141"
         },
         {
           "label": "Guidewire for Salesforce Data Integrations",
-          "page": "gwsf/di/3.3.0"
+          "page": "gwsf/di/3.3.1"
         },
         {
           "label": "Guidewire for Salesforce Data Integrations for Claims",
@@ -175,7 +133,7 @@
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway",
-          "page": "gwsf/ed/3.3.0"
+          "page": "gwsf/ed/3.3.1"
         },
         {
           "label": "Guidewire for Salesforce Digital Gateway for Claims",
@@ -184,7 +142,7 @@
         },
         {
           "label": "Guidewire for Salesforce View on Demand",
-          "page": "gwsf/vod/3.3.0"
+          "page": "gwsf/vod/3.3.1"
         },
         {
           "label": "Guidewire for Salesforce View on Demand for Claims",

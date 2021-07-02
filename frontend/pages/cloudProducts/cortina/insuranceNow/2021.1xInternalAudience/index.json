@@ -91,7 +91,7 @@
           "id": "in20211xconfigdraft"
         },
         {
-          "label": "Common Templates Configuration Guide",
+          "label": "Common Functionality Configuration Reference",
           "id": "in20211xcommonconfigdraft"
         },
         {
@@ -107,7 +107,7 @@
           "id": "in20211xprovportaldraft"
         },
         {
-          "label": "Portal Development",
+          "label": "Portal Development Guide",
           "id": "in20211xportaldevdraft"
         },
         {
@@ -119,7 +119,7 @@
           "id": "in20211xuwconfigdraft"
         },
         {
-          "label": "Claims Product Configuration Guide",
+          "label": "Claims Configuration Reference",
           "id": "in20211xclaimsconfigdraft"
         }
       ]
