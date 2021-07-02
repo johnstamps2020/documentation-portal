@@ -8151,22 +8151,6 @@
       "public": false
     },
     {
-      "id": "isbc202104restapifw",
-      "title": "REST API Framework",
-      "url": "cloud/bc/202104/restapiframework",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2021.04"],
-        "release": ["Cortina"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isbc202104install",
       "title": "Installation",
       "url": "cloud/bc/202104/installation",
