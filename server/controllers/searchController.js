@@ -120,7 +120,9 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
 async function searchController(req, res, next) {
   try {
     const urlQueryParameters = req.query;
-    const searchPhrase = decodeURI(urlQueryParameters.q);
+    const searchPhrase = urlQueryParameters.q
+      ? decodeURI(urlQueryParameters.q)
+      : '';
     const resultsPerPage = req.query.pagination || 10;
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
