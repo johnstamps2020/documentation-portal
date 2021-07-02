@@ -3,42 +3,45 @@
   "docs": [
     {
       "id": "isbccloudlatest",
-      "title": "BillingCenter",
+      "title": "BillingCenter for Guidewire Cloud",
       "url": "cloud/bc/latest",
       "metadata": {
-        "category": "InsuranceSuite",
-        "platform": "Cloud",
-        "product": "BillingCenter",
-        "version": "latest"
+        "platform": ["Cloud"],
+        "product": ["BillingCenter for Guidewire Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "environments": ["dev", "staging", "prod"]
     },
     {
       "id": "iscccloudlatest",
-      "title": "ClaimCenter",
+      "title": "ClaimCenter for Guidewire Cloud",
       "url": "cloud/cc/latest",
       "metadata": {
-        "category": "InsuranceSuite",
-        "platform": "Cloud",
-        "product": "ClaimCenter",
-        "version": "latest"
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["ClaimCenter for Guidewire Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff"]
       },
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
       "id": "ispccloudlatest",
-      "title": "PolicyCenter",
+      "title": "PolicyCenter for Guidewire Cloud",
       "url": "cloud/pc/latest",
       "metadata": {
-        "category": "InsuranceSuite",
-        "platform": "Cloud",
-        "product": "PolicyCenter",
-        "version": "latest"
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["PolicyCenter for Guidewire Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff"]
       },
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

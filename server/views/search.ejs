@@ -6,24 +6,42 @@
 <main class="fullWidth searchPage">
     <div class="filterSearchResults">
         <div>
-            <% filters.forEach(filter => { %>
-                <div class="filterGroup">
-                    <h2 class="filterHeader">Filter by <%= filter.name %></h2>
-                    <div class="filters">
-                        <% filter.values.forEach(checkboxValue => { %>
-                            <label class="checkboxRowContainer">
-                                <input type="checkbox" class="filterCheckbox" name="<%= filter.name %>"
-                                       value="<%= checkboxValue.label %>"
-                                <% if (checkboxValue.checked) { %>
-                                       checked="true"
-                                        <% } %>
-                                />
-                                <span><%= checkboxValue.label %></span>
-                                <span class="docCount"><%= checkboxValue.doc_count %></span>
-                            </label>
-                        <% }) %>
-                    </div>
-                </div>
+            <div id="expandCollapseAllToggle">
+                <span onclick="expandCollapseAllFilters(expandElements=true)" role="button" tabindex="0">
+                    Expand all
+                </span>
+                <span onclick="expandCollapseAllFilters(expandElements=false)" role="button" tabindex="0">
+                    Collapse all
+                </span>
+            </div>
+            <% const displayOrder = ['platform', 'product', 'version', 'subject', 'doc_title'] %>
+            <% displayOrder.forEach(key => { %>
+                <% const matchingFilter = filters.find(f => f.name === key) %>
+                <% if (matchingFilter) { %>
+                    <% const filterValues = matchingFilter.values %>
+                    <details class="expandableFilters">
+                        <summary>
+                            <span class="summaryContainer">
+                                <span class="summaryChevron" aria-label="expand/collapse icon"></span>
+                                <%= matchingFilter.name.replace('_', ' ').toUpperCase() %> (<%= filterValues.length %>)
+                            </span>
+                        </summary>
+                        <div class="filters">
+                            <% filterValues.forEach(checkboxValue => { %>
+                                <label class="checkboxRowContainer">
+                                    <input type="checkbox" class="filterCheckbox" name="<%= matchingFilter.name %>"
+                                           value="<%= checkboxValue.label %>"
+                                    <% if (checkboxValue.checked) { %>
+                                           checked="true"
+                                            <% } %>
+                                    />
+                                    <span><%= checkboxValue.label %></span>
+                                    <span class="docCount"><%= checkboxValue.doc_count %></span>
+                                </label>
+                            <% }) %>
+                        </div>
+                    </details>
+                <% } %>
             <% }) %>
         </div>
     </div>
@@ -45,6 +63,7 @@
                             type="search"
                             placeholder="Search Guidewire documentation"
                             aria-label="Search Guidewire documentation"
+                            aria-labelledby="submitSearch"
                             autofocus
                     />
                     <% filters.forEach(searchFilter => { %>
@@ -54,7 +73,7 @@
                                    value="<%= checkedFilters.map(f => f.label).join(',') %>">
                         <% } %>
                     <% }) %>
-                    <button type="submit" class="searchButton" aria-label="Search">
+                    <button id="submitSearch" type="submit" class="searchButton" aria-label="Search">
                         Search
                     </button>
                 </div>
@@ -70,7 +89,7 @@
             </span>
             <span class="paginationWrapper">
                 <% if (totalNumOfResults > 0) { %>
-                    <span>View items:</span>
+                    <label for="pagination">View items:</label>
                     <select id="pagination">
                         <% ['10', '25', '50', '100'].forEach(rpp => { %>
                             <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
@@ -89,12 +108,14 @@
                     </a>
                     <div class="resultBadges">
                         <% result.docTags.forEach(tag => { %>
-                            <% if (Array.isArray(tag)) { %>
-                                <% tag.forEach(value => { %>
-                                    <span class="infoLabel"><%= value %></span>
-                                <% }) %>
-                            <% } else { %>
-                                <span class="infoLabel"><%= tag %></span>
+                            <% if (tag) { %>
+                                <% if (Array.isArray(tag)) { %>
+                                    <% tag.forEach(value => { %>
+                                        <span class="infoLabel"><%= value %></span>
+                                    <% }) %>
+                                <% } else { %>
+                                    <span class="infoLabel"><%= tag %></span>
+                                <% } %>
                             <% } %>
                         <% }) %>
                     </div>
@@ -123,9 +144,9 @@
                             <div class="otherHits">
                                 <% for (const hit of hitsToDisplay) { %>
                                     <p class="otherHit">
-                                    <a href="<%= hit.href %>">
-                                        <%= hit.tags.join(', ') %>
-                                    </a>
+                                        <a href="<%= hit.href %>">
+                                            <%= hit.tags.join(', ') %>
+                                        </a>
                                     </p>
                                 <% } %>
                             </div>
@@ -231,6 +252,29 @@
             box.addEventListener('change', updateFilters, false);
         });
     }
+
+    function expandCollapseAllFilters(expandElements) {
+        const expandableFiltersElements = document.getElementsByClassName("expandableFilters");
+        for (const expandableFilter of expandableFiltersElements) {
+            expandElements ? expandableFilter.setAttribute('open', '') : expandableFilter.removeAttribute('open');
+        }
+    }
+
+    function expandCheckedFilters() {
+        const expandableFiltersElements = document.getElementsByClassName("expandableFilters");
+        for (const expandableFilter of expandableFiltersElements) {
+            const filterValues = expandableFilter.querySelector('div[class="filters"]');
+            for (const filterValue of filterValues.children) {
+                if (filterValue.querySelector('input[checked="true"]')) {
+                    expandableFilter.setAttribute('open', '')
+                    break
+                }
+            }
+        }
+    }
+
+    expandCheckedFilters();
+
 </script>
 </body>
 <%- include('parts/footer', { footerClass: 'footer-search' }) %>

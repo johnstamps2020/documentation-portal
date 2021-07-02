@@ -1,3 +1,4 @@
+//TODO: Add logic to remove "for Guidewire Cloud" from the product name
 window.dataLayer = window.dataLayer || [];
 
 function gtag() {
@@ -7,7 +8,10 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'G-QRTVTBY678');
 
-let docProduct = document.querySelector("meta[name = 'gw-product']")?.content;
+const docProductElement = document.querySelector("meta[name = 'gw-product']");
+let docProduct = docProductElement
+  ? docProductElement.content.replace(/ for Guidewire Cloud/g, '')
+  : docProductElement;
 let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
@@ -565,6 +569,11 @@ async function configureSearch() {
           searchForm.firstChild.appendChild(newInput);
         }
       }
+    }
+  } else {
+    const productField = document.querySelector('[name="product"]');
+    if (productField) {
+      productField.setAttribute('value', docProduct);
     }
   }
 }
