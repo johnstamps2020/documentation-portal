@@ -3311,23 +3311,24 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
                 #!/bin/bash
                 set -xe
                 
-                curl ${'$'}CONFIG_FILE_URL > %teamcity.build.workingDir%/config.json
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
-                
+                                
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export DOC_S3_URL="%env.DOC_S3_URL_PROD%"
                     export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
                     export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
                     export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
-                    cat ${'$'}CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}"CONFIG_FILE                 
+                    curl ${'$'}CONFIG_FILE_URL | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}CONFIG_FILE                 
                 elif [[ "%env.DEPLOY_ENV%" == "portal2" ]]; then
                     export DOC_S3_URL="%env.DOC_S3_URL_PORTAL2%"
                     export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
                     export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
                     export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
-                    cat ${'$'}CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}"CONFIG_FILE                 
+                    curl ${'$'}CONFIG_FILE_URL | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}CONFIG_FILE
+                else
+                    curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
                 fi
-                
+                                
                 cat > scrapy.cfg <<- EOM
                 [settings]
                 default = doc_crawler.settings
