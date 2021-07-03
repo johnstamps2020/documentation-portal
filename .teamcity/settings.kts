@@ -3258,6 +3258,7 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
     name = "Update the search index"
     artifactRules = """
         **/*.log => logs
+        config.json
     """.trimIndent()
 
     params {
