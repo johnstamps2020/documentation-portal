@@ -3259,6 +3259,7 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
     artifactRules = """
         **/*.log => logs
         config.json
+        tmp_config.json
     """.trimIndent()
 
     params {
@@ -3313,14 +3314,16 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
                 #!/bin/bash
                 set -xe
                 
+                export TMP_CONFIG_FILE="%teamcity.build.workingDir%/tmp_config.json"
+                
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
-                    curl ${'$'}CONFIG_FILE_URL > %env.CONFIG_FILE%
-                    cat %env.CONFIG_FILE% | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > %env.CONFIG_FILE%                 
+                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
+                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > %env.CONFIG_FILE%                 
                 elif [[ "%env.DEPLOY_ENV%" == "portal2" ]]; then
                     export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
-                    curl ${'$'}CONFIG_FILE_URL > %env.CONFIG_FILE%
-                    cat %env.CONFIG_FILE% | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > %env.CONFIG_FILE%
+                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
+                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > %env.CONFIG_FILE%
                 else
                     curl ${'$'}CONFIG_FILE_URL > %env.CONFIG_FILE%
                 fi
