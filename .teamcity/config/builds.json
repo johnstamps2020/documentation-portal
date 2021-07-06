@@ -2772,7 +2772,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "cloudiscloudapica202104src",
       "docId": "iscc202104cloudapica",
       "indexRedirect": true
@@ -2928,7 +2928,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "cloudiscloudapica202104src",
       "docId": "ispc202104cloudapica",
       "indexRedirect": true
@@ -3208,7 +3208,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "cloudiscloudapicadraftsrc",
       "docId": "isccclouddraftapica",
       "indexRedirect": true
@@ -3364,7 +3364,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "CloudAPIGuide-ConfigAuth.ditamap",
+      "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "cloudiscloudapicadraftsrc",
       "docId": "ispcclouddraftapica",
       "indexRedirect": true
