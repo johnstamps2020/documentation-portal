@@ -79,11 +79,15 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Billing Configuration Reference",
+          "id": "in20211xbillrefdraft"
+        },
+        {
           "label": "Core Configuration Guide",
           "id": "in20211xconfigdraft"
         },
         {
-          "label": "Common Functionality Configuration Reference Draft",
+          "label": "Common Functionality Configuration Reference",
           "id": "in20211xcommonconfigdraft"
         },
         {
