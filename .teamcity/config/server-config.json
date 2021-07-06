@@ -8344,7 +8344,7 @@
     },
     {
       "id": "iscc202104cloudapica",
-      "title": "Cloud API Configuration and Authentication",
+      "title": "Cloud API Authentication",
       "url": "cloud/cc/202104/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -8680,7 +8680,7 @@
     },
     {
       "id": "ispc202104cloudapica",
-      "title": "Cloud API Configuration and Authentication",
+      "title": "Cloud API Authentication",
       "url": "cloud/pc/202104/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -9237,7 +9237,7 @@
     },
     {
       "id": "isccclouddraftapica",
-      "title": "Cloud API Configuration and Authentication",
+      "title": "Cloud API Authentication",
       "url": "cloud/cc/latest/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -9525,7 +9525,7 @@
     },
     {
       "id": "ispcclouddraftapica",
-      "title": "Cloud API Configuration and Authentication",
+      "title": "Cloud API Authentication",
       "url": "cloud/pc/latest/cloudapica",
       "metadata": {
         "platform": ["Cloud"],

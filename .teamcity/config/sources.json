@@ -459,13 +459,13 @@
     },
     {
       "id": "cloudiscloudapica202104src",
-      "title": "IS 2021.04 Cloud API Configuration and Authentication",
+      "title": "IS 2021.04 Cloud API Authentication",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "branch": "Cortina",
       "exportFrequency": "daily",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202104/CloudAPIGuide-ConfigAuth.ditamap",
+        "/Content/doc/insuranceSuite/core/cloud/releases/202104/CloudAPIGuide-Auth.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
@@ -914,7 +914,7 @@
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/active/CloudAPIGuide-ConfigAuth.ditamap",
+        "/Content/doc/insuranceSuite/core/cloud/active/CloudAPIGuide-Auth.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
