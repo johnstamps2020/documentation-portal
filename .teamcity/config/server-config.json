@@ -10375,6 +10375,22 @@
       "public": false
     },
     {
+      "id": "in20211xbillrefdraft",
+      "title": "Billing Configuration Reference",
+      "url": "cloud/in/20211x/billref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow 2021.1x - Internal Audience"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20211xrndraft",
       "title": "Core Release Notes",
       "url": "cloud/in/20211x/releasenotes",

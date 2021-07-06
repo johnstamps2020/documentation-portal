@@ -3784,6 +3784,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "BillingConfigurationReference2021x.ditamap",
+      "srcId": "in20211xbillrefdraftsrc",
+      "docId": "in20211xbillrefdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20211.ditamap",
       "srcId": "in20211xrndraftsrc",
       "docId": "in20211xrndraft",
