@@ -2138,6 +2138,17 @@
       ]
     },
     {
+      "id": "in20212billrefsrc",
+      "title": "InsuranceNow 2021.2 Billing Configuration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "2021.2",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/Content/doc/insuranceNow/BillingConfigurationReference2021x.ditamap"
+      ]
+    },
+    {
       "id": "in20211rnsrc",
       "title": "InsuranceNow 2021.1 Core Release Notes",
       "sourceType": "xdocs",
@@ -2633,11 +2644,20 @@
       ]
     },
     {
+      "id": "in20211xbillrefdraftsrc",
+      "title": "InsuranceNow 2021.1 Billing Configuration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/BillingConfigurationReference2021x.ditamap"
+      ]
+    },
+    {
       "id": "in20211xrndraftsrc",
       "title": "InsuranceNow 2021.1 Core Release Notes Draft",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2021.1",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20211.ditamap"
