@@ -100,8 +100,7 @@
         },
         {
           "label": "Underwriting Configuration Reference",
-          "id": "in20211uwconfig",
-          "env": ["dev", "staging"]
+          "id": "in20211uwconfig"
         }
       ]
     }
