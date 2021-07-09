@@ -4093,7 +4093,7 @@
         "version": ["2021.06"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
