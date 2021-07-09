@@ -8,6 +8,13 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
     },
     {
+      "id": "isconfigupgradetools320jaJPsrc",
+      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0 ja-JP",
+      "sourceType": "git",
+      "branch": "release/ja-JP/3.2.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
+    },
+    {
       "id": "isconfigupgradetools1xsrc",
       "title": "InsuranceSuite Upgrade Tools 1x",
       "sourceType": "xdocs",
