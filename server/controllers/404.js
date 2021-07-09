@@ -144,6 +144,14 @@ const redirectUrls = [
     to: 'cloudProducts/cortina/icGwCloud/2021.04',
   },
   {
+    from: 'cloudProducts/Aspen/insuranceNow',
+    to: 'cloudProducts/aspen/insuranceNow/2020.1',
+  },
+  {
+    from: 'cloudProducts/Banff/insuranceNow',
+    to: 'cloudProducts/banff/insuranceNow/2020.2',
+  },
+  {
     from: 'cloudProducts/Cortina/insuranceNow/insuranceNow/2021.1',
     to: 'cloudProducts/cortina/insuranceNow/2021.1',
   },
