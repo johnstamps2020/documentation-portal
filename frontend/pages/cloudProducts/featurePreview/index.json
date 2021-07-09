@@ -5,6 +5,24 @@
   "class": "twoColumns",
   "items": [
     {
+      "label": "Release notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Application Events for Claims",
+          "id": "appeventsccrndraft"
+        },
+        {
+          "label": "Cloud Rules",
+          "id": "cloudrulesrndraft"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewayrndraft"
+        }
+      ]
+    },
+    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [
@@ -67,24 +85,6 @@
         {
           "label": "Integration Gateway Installation for Internal Teams",
           "id": "integgatewayinstalldraft"
-        }
-      ]
-    },
-    {
-      "label": "Release notes",
-      "class": "subject releaseNotes",
-      "items": [
-        {
-          "label": "Application Events for Claims",
-          "id": "appeventsccrndraft"
-        },
-        {
-          "label": "Cloud Rules",
-          "id": "cloudrulesrndraft"
-        },
-        {
-          "label": "Integration Gateway",
-          "id": "integgatewayrndraft"
         }
       ]
     }
