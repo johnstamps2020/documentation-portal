@@ -11,6 +11,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "Other/GW-Generic-Draft.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
+      "srcId": "isconfigupgradetools320jaJPsrc",
+      "docId": "isconfigupgradetools320jaJP"
+    },
+    {
+      "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dxdraftceamapp",
