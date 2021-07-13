@@ -79,10 +79,6 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Billing Configuration Reference",
-          "id": "in20212xbillrefdraft"
-        },
-        {
           "label": "Core Configuration Guide",
           "id": "in20212xconfigdraft"
         },
