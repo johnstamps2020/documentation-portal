@@ -43,13 +43,13 @@
     {
       "label": "InsuranceNow Internal Audience",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.1xInternalAudience",
+      "page": "insuranceNow/2021.2xInternalAudience",
       "env": ["int"]
     },
     {
       "label": "InsuranceNow External Audience",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.1xExternalAudience",
+      "page": "insuranceNow/2021.2xExternalAudience",
       "env": ["int"]
     },
     {
