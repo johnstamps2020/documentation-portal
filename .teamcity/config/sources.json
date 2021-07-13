@@ -2651,6 +2651,203 @@
       ]
     },
     {
+      "id": "in20212xrndraftsrc",
+      "title": "InsuranceNow 2021.2 Core Release Notes Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20212.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xstudiorndraftsrc",
+      "title": "InsuranceNow 2021.2 Studio Release Notes Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/INStudioReleaseNotes20212.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xappdraftsrc",
+      "title": "InsuranceNow 2021.2 Application Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ApplicationGuide20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xbidraftsrc",
+      "title": "InsuranceNow 2021.2 BI Getting Started Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/BusinessIntelligenceGettingStartedGuide20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xcsalespdraftsrc",
+      "title": "InsuranceNow 2021.2 Consumer Sales Portal Features Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ConsumerSalesPortalFeatures20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xcservicepdraftsrc",
+      "title": "InsuranceNow 2021.2 Consumer Service Portal Features Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalFeatures20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xpadraftsrc",
+      "title": "InsuranceNow 2021.2 PA Integration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/PredictiveAnalyticsIntegration20212.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xappreaderintegdraftsrc",
+      "title": "InsuranceNow 2021.2 AppReader Integration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/AppReaderIntegrationGuide20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xbiintegdraftsrc",
+      "title": "InsuranceNow 2021.2 BI Integration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/BusinessIntelligenceIntegrationGuide20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xconfigdraftsrc",
+      "title": "InsuranceNow 2021.2 Core Configuration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/Configuration20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xcommonconfigdraftsrc",
+      "title": "InsuranceNow 2021.2 Common Functionality Configuration Reference Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/CommonFunctionalityConfigurationReference20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xcservicepconfigdraftsrc",
+      "title": "InsuranceNow 2021.2 Consumer Service Portal Configuration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalConfigGuide20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xstudiodraftsrc",
+      "title": "InsuranceNow 2021.2 Studio Configuration Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/Studio20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xprovportaldraftsrc",
+      "title": "InsuranceNow 2021.2 Provisioning Portal Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ProvisioningPortal20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xportaldevdraftsrc",
+      "title": "InsuranceNow 2021.2 Portal Development Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/PortalDevelopment20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xuwconfigdraftsrc",
+      "title": "InsuranceNow 2021.2 Underwriting Configuration Reference Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/UnderwritingConfigurationReference20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xclaimsconfigdraftsrc",
+      "title": "InsuranceNow 2021.2 Claims Configuration Reference Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ClaimsConfigurationReference20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212xprodattrefdraftsrc",
+      "title": "InsuranceNow 2021.2 Product Attribute Reference Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ProductAttributeReference20212.ditamap"
+      ]
+    },
+    {
       "id": "in20211xbillrefdraftsrc",
       "title": "InsuranceNow 2021.1 Billing Configuration Draft",
       "sourceType": "xdocs",

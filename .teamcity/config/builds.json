@@ -3808,6 +3808,157 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20212.ditamap",
+      "srcId": "in20212xrndraftsrc",
+      "docId": "in20212xrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "INStudioReleaseNotes20212.ditamap",
+      "srcId": "in20212xstudiorndraftsrc",
+      "docId": "in20212xstudiorndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ApplicationGuide20212x.ditamap",
+      "srcId": "in20212xappdraftsrc",
+      "docId": "in20212xappdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "BusinessIntelligenceGettingStartedGuide20212x.ditamap",
+      "srcId": "in20212xbidraftsrc",
+      "docId": "in20212xbidraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ConsumerSalesPortalFeatures20212x.ditamap",
+      "srcId": "in20212xcsalespdraftsrc",
+      "docId": "in20212xcsalespdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ConsumerServicePortalFeatures20212x.ditamap",
+      "srcId": "in20212xcservicepdraftsrc",
+      "docId": "in20212xcservicepdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "PredictiveAnalyticsIntegration20212.ditamap",
+      "srcId": "in20212xpadraftsrc",
+      "docId": "in20212xpadraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "AppReaderIntegrationGuide20212x.ditamap",
+      "srcId": "in20212xappreaderintegdraftsrc",
+      "docId": "in20212xappreaderintegdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "BusinessIntelligenceIntegrationGuide20212x.ditamap",
+      "srcId": "in20212xbiintegdraftsrc",
+      "docId": "in20212xbiintegdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "Configuration20212x.ditamap",
+      "srcId": "in20212xconfigdraftsrc",
+      "docId": "in20212xconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "CommonFunctionalityConfigurationReference20212x.ditamap",
+      "srcId": "in20212xcommonconfigdraftsrc",
+      "docId": "in20212xcommonconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ConsumerServicePortalConfigGuide20212x.ditamap",
+      "srcId": "in20212xcservicepconfigdraftsrc",
+      "docId": "in20212xcservicepconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "Studio20212x.ditamap",
+      "srcId": "in20212xstudiodraftsrc",
+      "docId": "in20212xstudiodraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ProvisioningPortal20212x.ditamap",
+      "srcId": "in20212xprovportaldraftsrc",
+      "docId": "in20212xprovportaldraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "PortalDevelopment20212x.ditamap",
+      "srcId": "in20212xportaldevdraftsrc",
+      "docId": "in20212xportaldevdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ProductAttributeReference20212.ditamap",
+      "srcId": "in20212xprodattrefdraftsrc",
+      "docId": "in20212xprodattrefdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "UnderwritingConfigurationReference20212x.ditamap",
+      "srcId": "in20212xuwconfigdraftsrc",
+      "docId": "in20212xuwconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ClaimsConfigurationReference20212x.ditamap",
+      "srcId": "in20212xclaimsconfigdraftsrc",
+      "docId": "in20212xclaimsconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20211.ditamap",
       "srcId": "in20211xrndraftsrc",
       "docId": "in20211xrndraft",
