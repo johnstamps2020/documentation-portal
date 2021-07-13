@@ -1,4 +1,3 @@
-//TODO: Add logic to remove "for Guidewire Cloud" from the product name
 window.dataLayer = window.dataLayer || [];
 
 function gtag() {
