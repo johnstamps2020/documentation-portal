@@ -1,4 +1,3 @@
-//TODO: Add logic to remove "for Guidewire Cloud" from the product name
 window.dataLayer = window.dataLayer || [];
 
 function gtag() {
@@ -79,7 +78,15 @@ async function createVersionSelector() {
     const jsonResponse = await response.json();
     const matchingVersionSelector = jsonResponse.matchingVersionSelector;
     if (matchingVersionSelector?.otherVersions.length > 0) {
-      const sortedOtherVersions = matchingVersionSelector.otherVersions
+      const currentlySelectedVersion = {
+        label: matchingVersionSelector.version,
+        currentlySelected: true,
+      };
+      const allVersions = [
+        currentlySelectedVersion,
+        ...matchingVersionSelector.otherVersions,
+      ];
+      const sortedVersions = allVersions
         .sort(function(a, b) {
           const verNum = label =>
             label
@@ -122,22 +129,19 @@ async function createVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of sortedOtherVersions) {
+      for (const val of sortedVersions) {
         const option = document.createElement('option');
         option.text = val.label;
-        let value = val.path;
-        if (val.fallbackPaths) {
-          value = val.fallbackPaths[0];
+        const value = val.fallbackPaths ? val.fallbackPaths[0] : val.path;
+        if (value) {
+          option.value = value;
         }
-        option.value = value;
+        if (val.currentlySelected) {
+          option.setAttribute('selected', 'selected');
+        }
 
         select.appendChild(option);
       }
-
-      const currentlySelectedOption = document.createElement('option');
-      currentlySelectedOption.text = matchingVersionSelector.version;
-      currentlySelectedOption.setAttribute('selected', 'selected');
-      select.prepend(currentlySelectedOption);
 
       const label = document.createElement('label');
       label.innerHTML = 'Select version:';
