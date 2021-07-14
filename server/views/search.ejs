@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('parts/head', { pageTitle: `${query} | Search results`}) %>
+<%- include('parts/head', { pageTitle: `${query} | ${totalNumOfResults} search results`}) %>
 <body>
 <%- include('parts/header', { hideSearchBox: true, hideLoginButton: false, headerClass: 'header-search' }) %>
 <main class="fullWidth searchPage">
@@ -104,120 +104,120 @@
                 </div>
             </form>
         </div>
-        <h1>Search results for "<%= query %>"</h1>
-        <div class="resultsSubheading">
+        <% if (totalNumOfResults > 0) { %>
+            <h1>Search results for "<%= query %>"</h1>
+            <div class="resultsSubheading">
             <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
                 %> results
-                <% if (totalNumOfResults > 0) { %>
                     (page <%= currentPage %> of <%= pages %>)
-                <% } %>
             </span>
-            <span class="paginationWrapper">
-                <% if (totalNumOfResults > 0) { %>
+                <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
                     <select id="pagination">
                         <% ['10', '25', '50', '100'].forEach(rpp => { %>
                             <option value="<%= rpp %>" <%= resultsPerPage === `${rpp}` ? 'selected' : '' %>><%= rpp %></option>
                         <% }) %>
                     </select>
-                <% } %>
-            </span>
-        </div>
-        <div class="searchResults" id="searchResults">
-            <% searchResults.forEach(result => { %>
-                <div class="searchResult">
-                    <a href="<%= result.href %>">
-                        <h2 class="searchResultTitle">
-                            <%= result.title %>
-                        </h2>
-                    </a>
-                    <div class="resultBadges">
-                        <% result.docTags.forEach(tag => { %>
-                            <% if (tag) { %>
-                                <% if (Array.isArray(tag)) { %>
-                                    <% tag.forEach(value => { %>
-                                        <span class="infoLabel"><%= value %></span>
-                                    <% }) %>
-                                <% } else { %>
-                                    <span class="infoLabel"><%= tag %></span>
+                </span>
+            </div>
+            <div class="searchResults" id="searchResults">
+                <% searchResults.forEach(result => { %>
+                    <div class="searchResult">
+                        <a href="<%= result.href %>">
+                            <h2 class="searchResultTitle">
+                                <%= result.title %>
+                            </h2>
+                        </a>
+                        <div class="resultBadges">
+                            <% result.docTags.forEach(tag => { %>
+                                <% if (tag) { %>
+                                    <% if (Array.isArray(tag)) { %>
+                                        <% tag.forEach(value => { %>
+                                            <span class="infoLabel"><%= value %></span>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <span class="infoLabel"><%= tag %></span>
+                                    <% } %>
                                 <% } %>
-                            <% } %>
-                        <% }) %>
-                    </div>
-                    <div class="resultBody"><%= result.body %></div>
-                    <% if (result.inner_hits) {
-                        let hitsToDisplay = [];
-                        for (const innerHit of result.inner_hits) {
-                            const hitLabel = innerHit._source.title;
-                            const hitHref = innerHit._source.href;
-                            const hitPlatform = innerHit._source.platform;
-                            const hitProduct = innerHit._source.product;
-                            const hitVersion = innerHit._source.version;
-                            if (hitHref !== result.href) {
-                                hitsToDisplay.push({
-                                    label: hitLabel,
-                                    href: hitHref,
-                                    tags: [...hitProduct, ...hitPlatform, ...hitVersion]
-                                });
+                            <% }) %>
+                        </div>
+                        <div class="resultBody"><%= result.body %></div>
+                        <% if (result.inner_hits) {
+                            let hitsToDisplay = [];
+                            for (const innerHit of result.inner_hits) {
+                                const hitLabel = innerHit._source.title;
+                                const hitHref = innerHit._source.href;
+                                const hitPlatform = innerHit._source.platform;
+                                const hitProduct = innerHit._source.product;
+                                const hitVersion = innerHit._source.version;
+                                if (hitHref !== result.href) {
+                                    hitsToDisplay.push({
+                                        label: hitLabel,
+                                        href: hitHref,
+                                        tags: [...hitProduct, ...hitPlatform, ...hitVersion]
+                                    });
+                                }
                             }
-                        }
-                    if (hitsToDisplay.length > 0) { %>
-                        <details class="alsoFoundIn">
-                            <summary>
-                                Also found in <%= hitsToDisplay.length -%> pages with the same title
-                            </summary>
-                            <div class="otherHits">
-                                <% for (const hit of hitsToDisplay) { %>
-                                    <p class="otherHit">
-                                        <a href="<%= hit.href %>">
-                                            <%= hit.tags.join(', ') %>
-                                        </a>
-                                    </p>
-                                <% } %>
-                            </div>
-                        </details>
+                        if (hitsToDisplay.length > 0) { %>
+                            <details class="alsoFoundIn">
+                                <summary>
+                                    Also found in <%= hitsToDisplay.length -%> pages with the same title
+                                </summary>
+                                <div class="otherHits">
+                                    <% for (const hit of hitsToDisplay) { %>
+                                        <p class="otherHit">
+                                            <a href="<%= hit.href %>">
+                                                <%= hit.tags.join(', ') %>
+                                            </a>
+                                        </p>
+                                    <% } %>
+                                </div>
+                            </details>
+                        <% } %>
+                        <% } %>
+                    </div>
+                <% }) %>
+            </div>
+            <% if (pages > 1) { %>
+                <ul class="pagination">
+                    <% if (currentPage === 1) { %>
+                        <li class="disabled">First</li>
+                    <% } else { %>
+                        <li>
+                            <button onclick="setUrlParam('page', '1')">First</button>
+                        </li>
+                    <% } %>
+                    <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
+                            4 : 1) %>
+                    <% if (i !== 1) { %>
+                        <li class="disabled">...</li>
+                    <% } %>
+                    <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
+                    { %> <% if (i === currentPage) { %>
+                        <li class="disabled"><%= i %></li>
+                    <% } else { %>
+                        <li>
+                            <button onclick="setUrlParam('page', <%= i %>)">
+                                <%= i %>
+                            </button>
+                        </li>
+                    <% } %> <% if (i === Number(currentPage) + 4 && i < pages) { %>
+                        <li class="disabled">...</li>
                     <% } %>
                     <% } %>
-                </div>
-            <% }) %>
-        </div>
-        <% if (pages > 1) { %>
-            <ul class="pagination">
-                <% if (currentPage === 1) { %>
-                    <li class="disabled">First</li>
-                <% } else { %>
-                    <li>
-                        <button onclick="setUrlParam('page', '1')">First</button>
-                    </li>
-                <% } %>
-                <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
-                        4 : 1) %>
-                <% if (i !== 1) { %>
-                    <li class="disabled">...</li>
-                <% } %>
-                <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
-                { %> <% if (i === currentPage) { %>
-                    <li class="disabled"><%= i %></li>
-                <% } else { %>
-                    <li>
-                        <button onclick="setUrlParam('page', <%= i %>)">
-                            <%= i %>
-                        </button>
-                    </li>
-                <% } %> <% if (i === Number(currentPage) + 4 && i < pages) { %>
-                    <li class="disabled">...</li>
-                <% } %>
-                <% } %>
-                <% if (currentPage === pages) { %>
-                    <li class="disabled">Last</li>
-                <% } else { %>
-                    <li>
-                        <button onclick="setUrlParam('page', <%= pages %>)">
-                            Last
-                        </button>
-                    </li>
-                <% } %>
-            </ul>
+                    <% if (currentPage === pages) { %>
+                        <li class="disabled">Last</li>
+                    <% } else { %>
+                        <li>
+                            <button onclick="setUrlParam('page', <%= pages %>)">
+                                Last
+                            </button>
+                        </li>
+                    <% } %>
+                </ul>
+            <% } %>
+        <% } else { %>
+            <h1>Sorry, your search for "<%= query %>" returned no results.</h1>
         <% } %>
     </div>
 </main>
