@@ -110,6 +110,8 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
       highlight: {
         fragment_size: 0,
         fields: [{ 'title*': {} }, { 'body*': {} }],
+        pre_tags: ['<span class="searchResultHighlight highlighted">'],
+        post_tags: ['</span>'],
       },
     },
   });
@@ -196,16 +198,30 @@ async function searchController(req, res, next) {
       )[0];
       const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
 
+      const titleText = highlightTitleKey
+        ? highlight[highlightTitleKey].join(' [...] ')
+        : doc.title;
+      const bodyText = highlightBodyKey
+        ? highlight[highlightBodyKey].join(' [...] ')
+        : bodyBlurb;
+      const regExp = new RegExp(
+        '<span class="searchResultHighlight.*?">(.*?)</span>',
+        'g'
+      );
+      const allText = titleText + bodyText;
+      const regExpResults = [...allText.matchAll(regExp)];
+      const uniqueHighlightTerms = [
+        ...new Set(regExpResults.map(r => r[1].toLowerCase())),
+      ];
+
       return {
-        href: doc.href,
+        href: uniqueHighlightTerms
+          ? `${doc.href}?hl=${uniqueHighlightTerms.join(',')}`
+          : doc.href,
         score: result._score,
-        title: highlightTitleKey
-          ? highlight[highlightTitleKey].join(' [...] ')
-          : doc.title,
+        title: titleText,
         version: doc.version.join(', '),
-        body: highlightBodyKey
-          ? highlight[highlightBodyKey].join(' [...] ')
-          : bodyBlurb,
+        body: bodyText,
         docTags: docTags,
         inner_hits: result.inner_hits.same_title.hits.hits,
       };

@@ -107,10 +107,18 @@
         <% if (totalNumOfResults > 0) { %>
             <h1>Search results for "<%= query %>"</h1>
             <div class="resultsSubheading">
-            <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
-                %> results
+                <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
+                    %> results
                     (page <%= currentPage %> of <%= pages %>)
-            </span>
+                </span>
+                <div id="enableDisableHighlightToggle">
+                    <span onclick="enableDisableHighlight(highlightElements=true)" role="button" tabindex="0">
+                    Enable highlighting
+                    </span>
+                    <span onclick="enableDisableHighlight(highlightElements=false)" role="button" tabindex="0">
+                    Disable highlighting
+                    </span>
+                </div>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
                     <select id="pagination">
@@ -297,6 +305,14 @@
             }
         }
     }
+
+    function enableDisableHighlight(highlightElements) {
+        const highlightedElements = document.getElementsByClassName("searchResultHighlight");
+        for (const highlightedElement of highlightedElements) {
+            highlightElements ? highlightedElement.classList.add('highlighted') : highlightedElement.classList.remove('highlighted');
+        }
+    }
+
 
     expandCheckedFilters();
 
