@@ -107,6 +107,10 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
         },
         max_concurrent_group_searches: 4,
       },
+      highlight: {
+        fragment_size: 0,
+        fields: [{ 'title*': {} }, { 'body*': {} }],
+      },
     },
   });
 
@@ -175,6 +179,7 @@ async function searchController(req, res, next) {
 
     const resultsToDisplay = results.hits.map(result => {
       const doc = result._source;
+      const highlight = result.highlight;
       let docTags = [];
       for (const key in doc) {
         if (filters.some(filter => filter.name === key)) {
@@ -182,14 +187,25 @@ async function searchController(req, res, next) {
         }
       }
 
+      const highlightTitleKey = Object.getOwnPropertyNames(
+        highlight
+      ).filter(k => k.startsWith('title'))[0];
+
+      const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter(k =>
+        k.startsWith('body')
+      )[0];
       const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
 
       return {
         href: doc.href,
         score: result._score,
-        title: doc.title,
+        title: highlightTitleKey
+          ? highlight[highlightTitleKey].join(' [...] ')
+          : doc.title,
         version: doc.version.join(', '),
-        body: bodyBlurb,
+        body: highlightBodyKey
+          ? highlight[highlightBodyKey].join(' [...] ')
+          : bodyBlurb,
         docTags: docTags,
         inner_hits: result.inner_hits.same_title.hits.hits,
       };

@@ -125,7 +125,7 @@
                     <div class="searchResult">
                         <a href="<%= result.href %>">
                             <h2 class="searchResultTitle">
-                                <%= result.title %>
+                                <%- result.title %>
                             </h2>
                         </a>
                         <div class="resultBadges">
@@ -141,7 +141,7 @@
                                 <% } %>
                             <% }) %>
                         </div>
-                        <div class="resultBody"><%= result.body %></div>
+                        <div class="resultBody"><%- result.body %></div>
                         <% if (result.inner_hits) {
                             let hitsToDisplay = [];
                             for (const innerHit of result.inner_hits) {
