@@ -4972,6 +4972,24 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro630",
+      "srcId": "srcjutro630",
+      "workingDir": "website"
+    },
+    {
+      "buildType": "storybook",
+      "docId": "storybook630",
+      "srcId": "srcjutrostorybook630",
+      "workingDir": "applications/jutro-app-storybook",
+      "customEnv": [
+        {
+          "name": "STORYBOOK_GA_ID",
+          "value": "UA-129148666-1"
+        }
+      ]
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutronext",
       "srcId": "srcjutronext",
       "workingDir": "website"
