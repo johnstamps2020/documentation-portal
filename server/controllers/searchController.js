@@ -107,6 +107,19 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
         },
         max_concurrent_group_searches: 4,
       },
+      highlight: {
+        fragment_size: 0,
+        fields: [
+          {
+            'title*': {
+              number_of_fragments: 0,
+            },
+          },
+          { 'body*': {} },
+        ],
+        pre_tags: ['<span class="searchResultHighlight highlighted">'],
+        post_tags: ['</span>'],
+      },
     },
   });
 
@@ -175,6 +188,7 @@ async function searchController(req, res, next) {
 
     const resultsToDisplay = results.hits.map(result => {
       const doc = result._source;
+      const highlight = result.highlight;
       let docTags = [];
       for (const key in doc) {
         if (filters.some(filter => filter.name === key)) {
@@ -182,16 +196,51 @@ async function searchController(req, res, next) {
         }
       }
 
+      const highlightTitleKey = Object.getOwnPropertyNames(
+        highlight
+      ).filter(k => k.startsWith('title'))[0];
+
+      const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter(k =>
+        k.startsWith('body')
+      )[0];
       const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
 
+      //The "number_of_fragments" parameter is set to "0' for the title field.
+      //So no fragments are produced, instead the whole content of the field is returned
+      // as the first element of the array, and matches are highlighted.
+      const titleText = highlightTitleKey
+        ? highlight[highlightTitleKey][0]
+        : doc.title;
+      const bodyText = highlightBodyKey
+        ? highlight[highlightBodyKey].join(' [...] ')
+        : bodyBlurb;
+      const regExp = new RegExp(
+        '<span class="searchResultHighlight.*?">(.*?)</span>',
+        'g'
+      );
+      const allText = titleText + bodyText;
+      const regExpResults = [...allText.matchAll(regExp)];
+      const uniqueHighlightTerms = [
+        ...new Set(regExpResults.map(r => r[1].toLowerCase())),
+      ]
+        .sort()
+        .join(',');
+
+      const innerHits = result.inner_hits.same_title.hits.hits.map(h => {
+        h._source.href = `${h._source.href}?hl=${uniqueHighlightTerms}`;
+        return h;
+      });
+
       return {
-        href: doc.href,
+        href: uniqueHighlightTerms
+          ? `${doc.href}?hl=${uniqueHighlightTerms}`
+          : doc.href,
         score: result._score,
-        title: doc.title,
+        title: titleText,
         version: doc.version.join(', '),
-        body: bodyBlurb,
+        body: bodyText,
         docTags: docTags,
-        inner_hits: result.inner_hits.same_title.hits.hits,
+        inner_hits: innerHits,
       };
     });
 

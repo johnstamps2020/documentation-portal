@@ -107,10 +107,13 @@
         <% if (totalNumOfResults > 0) { %>
             <h1>Search results for "<%= query %>"</h1>
             <div class="resultsSubheading">
-            <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
-                %> results
+                <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
+                    %> results
                     (page <%= currentPage %> of <%= pages %>)
-            </span>
+                </span>
+                <span id="highlightToggle" role="button"
+                      onclick="enableDisableHighlight()" aria-label="Toggle search highlights"
+                      title="Toggle search highlights"></span>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
                     <select id="pagination">
@@ -125,7 +128,7 @@
                     <div class="searchResult">
                         <a href="<%= result.href %>">
                             <h2 class="searchResultTitle">
-                                <%= result.title %>
+                                <%- result.title %>
                             </h2>
                         </a>
                         <div class="resultBadges">
@@ -141,7 +144,7 @@
                                 <% } %>
                             <% }) %>
                         </div>
-                        <div class="resultBody"><%= result.body %></div>
+                        <div class="resultBody"><%- result.body %></div>
                         <% if (result.inner_hits) {
                             let hitsToDisplay = [];
                             for (const innerHit of result.inner_hits) {
@@ -297,6 +300,23 @@
             }
         }
     }
+
+    function enableDisableHighlight() {
+        const highlightToggleElement = document.getElementById('highlightToggle');
+        const highlightedElements = document.getElementsByClassName('searchResultHighlight');
+        if (highlightToggleElement.classList.contains('highlightDisabled')) {
+            highlightToggleElement.classList.remove('highlightDisabled')
+            for (const highlightedElement of highlightedElements) {
+                highlightedElement.classList.add('highlighted');
+            }
+        } else {
+            highlightToggleElement.classList.add('highlightDisabled')
+            for (const highlightedElement of highlightedElements) {
+                highlightedElement.classList.remove('highlighted');
+            }
+        }
+    }
+
 
     expandCheckedFilters();
 
