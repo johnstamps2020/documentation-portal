@@ -111,14 +111,8 @@
                     %> results
                     (page <%= currentPage %> of <%= pages %>)
                 </span>
-                <div id="enableDisableHighlightToggle">
-                    <span onclick="enableDisableHighlight(highlightElements=true)" role="button" tabindex="0">
-                    Enable highlighting
-                    </span>
-                    <span onclick="enableDisableHighlight(highlightElements=false)" role="button" tabindex="0">
-                    Disable highlighting
-                    </span>
-                </div>
+                <span id="highlightToggle" role="button"
+                      onclick="enableDisableHighlight()"></span>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
                     <select id="pagination">
@@ -306,10 +300,19 @@
         }
     }
 
-    function enableDisableHighlight(highlightElements) {
-        const highlightedElements = document.getElementsByClassName("searchResultHighlight");
-        for (const highlightedElement of highlightedElements) {
-            highlightElements ? highlightedElement.classList.add('highlighted') : highlightedElement.classList.remove('highlighted');
+    function enableDisableHighlight() {
+        const highlightToggleElement = document.getElementById('highlightToggle');
+        const highlightedElements = document.getElementsByClassName('searchResultHighlight');
+        if (highlightToggleElement.classList.contains('highlightDisabled')) {
+            highlightToggleElement.classList.remove('highlightDisabled')
+            for (const highlightedElement of highlightedElements) {
+                highlightedElement.classList.add('highlighted');
+            }
+        } else {
+            highlightToggleElement.classList.add('highlightDisabled')
+            for (const highlightedElement of highlightedElements) {
+                highlightedElement.classList.remove('highlighted');
+            }
         }
     }
 
