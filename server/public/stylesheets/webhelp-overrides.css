@@ -454,3 +454,7 @@ samp,
     opacity: 0;
   }
 }
+
+.title span.highlight {
+  background-color: #ffff88 !important;
+}
