@@ -222,7 +222,9 @@ async function searchController(req, res, next) {
       const regExpResults = [...allText.matchAll(regExp)];
       const uniqueHighlightTerms = [
         ...new Set(regExpResults.map(r => r[1].toLowerCase())),
-      ].join(',');
+      ]
+        .sort()
+        .join(',');
 
       const innerHits = result.inner_hits.same_title.hits.hits.map(h => {
         h._source.href = `${h._source.href}?hl=${uniqueHighlightTerms}`;
