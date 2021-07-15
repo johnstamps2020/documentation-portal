@@ -109,7 +109,14 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
       },
       highlight: {
         fragment_size: 0,
-        fields: [{ 'title*': {} }, { 'body*': {} }],
+        fields: [
+          {
+            'title*': {
+              number_of_fragments: 0,
+            },
+          },
+          { 'body*': {} },
+        ],
         pre_tags: ['<span class="searchResultHighlight highlighted">'],
         post_tags: ['</span>'],
       },
@@ -198,8 +205,11 @@ async function searchController(req, res, next) {
       )[0];
       const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
 
+      //The "number_of_fragments" parameter is set to "0' for the title field.
+      //So no fragments are produced, instead the whole content of the field is returned
+      // as the first element of the array, and matches are highlighted.
       const titleText = highlightTitleKey
-        ? highlight[highlightTitleKey].join(' [...] ')
+        ? highlight[highlightTitleKey][0]
         : doc.title;
       const bodyText = highlightBodyKey
         ? highlight[highlightBodyKey].join(' [...] ')
