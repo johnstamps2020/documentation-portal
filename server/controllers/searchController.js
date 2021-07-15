@@ -223,7 +223,9 @@ async function searchController(req, res, next) {
       const uniqueHighlightTerms = [
         ...new Set(regExpResults.map(r => r[1].toLowerCase())),
       ]
-        .sort()
+        .sort(function(a, b) {
+          return b.length - a.length;
+        })
         .join(',');
 
       const innerHits = result.inner_hits.same_title.hits.hits.map(h => {
