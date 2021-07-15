@@ -1168,8 +1168,7 @@ main.support h2 {
 }
 
 .highlighted {
-  background-color: yellow;
-  font-style: italic;
+  background-color: #ffff88;
 }
 
 #highlightToggle {
