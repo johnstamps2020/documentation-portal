@@ -508,7 +508,7 @@ footer .releaseInfo {
 div.pageHero {
   display: block;
   /* flex-wrap: wrap-reverse;
-                                                                                                                            gap: 16px; */
+                                                                                                                                  gap: 16px; */
 }
 
 .heroControls {
@@ -779,14 +779,6 @@ div.pageHero {
   }
 }
 
-.filters {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.875rem;
-  padding: 8px 0;
-  margin-left: 24px;
-}
-
 .checkboxRowContainer {
   cursor: pointer;
   display: flex;
@@ -868,24 +860,8 @@ div.pageHero {
   padding: 16px 0;
 }
 
-.otherHits {
-  padding-left: 16px;
-  padding-top: 16px;
-}
-
 .otherHit {
   padding-bottom: 8px;
-}
-
-.alsoFoundIn {
-  border-left: 2px solid var(--clr-GW-BLUE);
-  margin-left: 6px;
-  padding: 3px 8px;
-  width: fit-content;
-}
-
-.alsoFoundIn > summary {
-  cursor: pointer;
 }
 
 .pagination {
@@ -1115,15 +1091,15 @@ main.support h2 {
   visibility: hidden;
 }
 
-.expandableFilters {
+.expandableSection {
   padding-bottom: 16px;
 }
 
-.expandableFilters > summary {
+.expandableSection > summary {
   list-style-type: none;
 }
 
-.expandableFilters > summary::-webkit-details-marker {
+.expandableSection > summary::-webkit-details-marker {
   display: block;
 }
 
@@ -1133,14 +1109,23 @@ main.support h2 {
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
-.expandableFilters > summary .summaryChevron {
+.expandableSection > summary .summaryChevron {
   content: url(/images/chevron_right_black_24dp.svg);
 }
 
-.expandableFilters[open] > summary .summaryChevron {
+.expandableSection[open] > summary .summaryChevron {
   content: url(/images/expand_more_black_24dp.svg);
+}
+
+.expandableSectionValues {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem;
+  padding: 8px 0;
+  margin-left: 24px;
 }
 
 #expandCollapseAllToggle {

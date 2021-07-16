@@ -19,14 +19,14 @@
                 <% const matchingFilter = filters.find(f => f.name === key) %>
                 <% if (matchingFilter) { %>
                     <% const filterValues = matchingFilter.values %>
-                    <details class="expandableFilters">
+                    <details class="expandableSection">
                         <summary>
                             <span class="summaryContainer">
                                 <span class="summaryChevron" aria-label="expand/collapse icon"></span>
-                                <%= matchingFilter.name.replace('_', ' ').toUpperCase() %> (<%= filterValues.length %>)
+                                <%= matchingFilter.name.replace('_', ' ') %> (<%= filterValues.length %>)
                             </span>
                         </summary>
-                        <div class="filters">
+                        <div class="expandableSectionValues">
                             <% let sortedFilterValues = filterValues.sort(function (a, b) {
                                 var labelA = a.label.toUpperCase();
                                 var labelB = b.label.toUpperCase();
@@ -164,11 +164,14 @@
                                 }
                             }
                         if (hitsToDisplay.length > 0) { %>
-                            <details class="alsoFoundIn">
+                            <details class="expandableSection">
                                 <summary>
-                                    Also found in <%= hitsToDisplay.length -%> pages with the same title
+                                    <span class="summaryContainer">
+                                        <span class="summaryChevron" aria-label="expand/collapse icon"></span>
+                                        <%= `Also found in ${hitsToDisplay.length} pages with the same title` %>
+                                    </span>
                                 </summary>
-                                <div class="otherHits">
+                                <div class="expandableSectionValues">
                                     <% for (const hit of hitsToDisplay) { %>
                                         <p class="otherHit">
                                             <a href="<%= result.uniqueHighlightTerms ? `${hit.href}?hl=${result.uniqueHighlightTerms}` : hit.href %>">
@@ -284,16 +287,16 @@
     }
 
     function expandCollapseAllFilters(expandElements) {
-        const expandableFiltersElements = document.getElementsByClassName("expandableFilters");
+        const expandableFiltersElements = document.querySelectorAll('div.filterSearchResults .expandableSection');
         for (const expandableFilter of expandableFiltersElements) {
             expandElements ? expandableFilter.setAttribute('open', '') : expandableFilter.removeAttribute('open');
         }
     }
 
     function expandCheckedFilters() {
-        const expandableFiltersElements = document.getElementsByClassName("expandableFilters");
+        const expandableFiltersElements = document.querySelectorAll('div.filterSearchResults .expandableSection');
         for (const expandableFilter of expandableFiltersElements) {
-            const filterValues = expandableFilter.querySelector('div[class="filters"]');
+            const filterValues = expandableFilter.querySelector('div[class="expandableSectionValues"]');
             for (const filterValue of filterValues.children) {
                 if (filterValue.querySelector('input[checked="true"]')) {
                     expandableFilter.setAttribute('open', '')
