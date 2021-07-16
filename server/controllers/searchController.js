@@ -228,21 +228,15 @@ async function searchController(req, res, next) {
         })
         .join(',');
 
-      const innerHits = result.inner_hits.same_title.hits.hits.map(h => {
-        h._source.href = `${h._source.href}?hl=${uniqueHighlightTerms}`;
-        return h;
-      });
-
       return {
-        href: uniqueHighlightTerms
-          ? `${doc.href}?hl=${uniqueHighlightTerms}`
-          : doc.href,
+        href: doc.href,
         score: result._score,
         title: titleText,
         version: doc.version.join(', '),
         body: bodyText,
         docTags: docTags,
-        inner_hits: innerHits,
+        inner_hits: result.inner_hits.same_title.hits.hits,
+        uniqueHighlightTerms: uniqueHighlightTerms,
       };
     });
 

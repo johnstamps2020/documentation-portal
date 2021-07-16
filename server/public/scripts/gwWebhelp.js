@@ -123,7 +123,17 @@ async function createVersionSelector() {
             targetDocVersion
           );
           if (bestMatchingTopic) {
-            linkToOpen = bestMatchingTopic;
+            const bestMatchingTopicUrl = new URL(bestMatchingTopic);
+            const currentPageUrl = new URL(window.location.href);
+            const currentPageHighlightTerms = currentPageUrl.searchParams.get(
+              'hl'
+            );
+            currentPageHighlightTerms &&
+              bestMatchingTopicUrl.searchParams.set(
+                'hl',
+                currentPageHighlightTerms
+              );
+            linkToOpen = bestMatchingTopicUrl.href;
           }
         }
         window.location.assign(linkToOpen);
