@@ -155,6 +155,30 @@ const redirectUrls = [
     from: 'cloudProducts/Cortina/insuranceNow/insuranceNow/2021.1',
     to: 'cloudProducts/cortina/insuranceNow/2021.1',
   },
+  {
+    from: 'cloud/bc/202011/config/cloud/active/config/topics/p-basics.html',
+    to: 'cloud/bc/202104/config'
+  },
+  {
+    from: 'cloud/cc/202011/config/cloud/active/config/topics/p-basics.html',
+    to: 'cloud/cc/202104/config'
+  },
+  {
+    from: 'cloud/pc/202011/config/cloud/active/config/topics/p-basics.html',
+    to: 'cloud/pc/202104/config'
+  },
+  {
+    from: 'cloud/bc/config/latest',
+    to: 'cloud/bc/202104/config'
+  },
+  {
+    from: 'cloud/cc/config/latest',
+    to: 'cloud/cc/202104/config'
+  },
+  {
+    from: 'cloud/pc/config/latest',
+    to: 'cloud/pc/202104/config'
+  },
 ];
 
 function getRedirectUrl(originUrl) {
