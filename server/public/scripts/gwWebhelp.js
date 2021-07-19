@@ -522,9 +522,9 @@ async function toggleFeedbackForm(formId) {
 
 async function addFeedbackElements() {
   const { hostname } = window.location;
-  if (!['docs.int.ccs.guidewire.net', 'localhost'].includes(hostname)) {
-    return;
-  }
+  // if (!['docs.int.ccs.guidewire.net', 'localhost'].includes(hostname)) {
+  //   return;
+  // }
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `
