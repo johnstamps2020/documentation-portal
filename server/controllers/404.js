@@ -156,15 +156,15 @@ const redirectUrls = [
     to: 'cloudProducts/cortina/insuranceNow/2021.1',
   },
   {
-    from: 'cloud/bc/202011/config/cloud/active/config/topics/p-basics.html',
+    from: 'cloud/bc/202011/cloud/active/config/topics/p-basics.html',
     to: 'cloud/bc/202104/config'
   },
   {
-    from: 'cloud/cc/202011/config/cloud/active/config/topics/p-basics.html',
+    from: 'cloud/cc/202011/cloud/active/config/topics/p-basics.html',
     to: 'cloud/cc/202104/config'
   },
   {
-    from: 'cloud/pc/202011/config/cloud/active/config/topics/p-basics.html',
+    from: '/cloud/pc/202011/cloud/active/config/topics/p-basics.html',
     to: 'cloud/pc/202104/config'
   },
   {
