@@ -179,6 +179,54 @@ const redirectUrls = [
     from: 'cloud/pc/config/latest',
     to: 'cloud/pc/202104/config'
   },
+  {
+    from: 'cloud/pc/202011/cloud/active/adv-product-designer/topics/c_intro.html',
+    to: 'cloud/pc/202104/apd'
+  },
+  {
+    from: 'cloud/pc/apd/latest',
+    to: 'cloud/pc/202104/apd'
+  },
+  {
+    from: 'cloud/in/20202/2020.2.x/active/ConfigurationGuide/c_Overview.html',
+    to: 'cloud/in/20211/config'
+  },
+  {
+    from: 'cloud/in/config/latest',
+    to: 'cloud/in/20211/config'
+  },
+  {
+    from: 'cloud/bc/202011/cloud/active/gosu/topics/c_p-basics.html',
+    to: 'cloud/is/202104/gosu'
+  },
+  {
+    from: 'cloud/cc/202011/cloud/active/gosu/topics/c_p-basics.html',
+    to: 'cloud/is/202104/gosu'
+  },
+  {
+    from: 'cloud/pc/202011/cloud/active/gosu/topics/c_p-basics.html',
+    to: 'cloud/is/202104/gosu'
+  },
+  {
+    from: 'cloud/is/gosu/latest',
+    to: 'cloud/is/202104/gosu'
+  },
+  {
+    from: 'cloud/in/20202/config/2020.2.x/active/ConfigurationGuide/CloudCommonPaymentService/c_CloudCommonPaymentServiceconfiguration.html',
+    to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html'
+  },
+  {
+    from: 'cloud/in/payment-config/latest',
+    to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html'
+  },
+  {
+    from: 'cloud/is/202011/restapiclient/REST-API-Client/topics/c_overview-rest-client.html',
+    to: 'is/restapiclient/guide'
+  },
+  {
+    from: 'jutro/documentation/latest',
+    to: 'jutro/documentation/5.4.0'
+  },
 ];
 
 function getRedirectUrl(originUrl) {
