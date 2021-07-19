@@ -212,12 +212,32 @@ const redirectUrls = [
     to: 'cloud/is/202104/gosu'
   },
   {
+    from: 'cloud/bc/integration/latest',
+    to: 'cloud/bc/202104/integration'
+  },
+  {
+    from: 'cloud/cc/integration/latest',
+    to: 'cloud/cc/202104/integration'
+  },
+  {
+    from: 'cloud/pc/integration/latest',
+    to: 'cloud/pc/202104/integration'
+  },
+  {
     from: 'cloud/in/20202/config/2020.2.x/active/ConfigurationGuide/CloudCommonPaymentService/c_CloudCommonPaymentServiceconfiguration.html',
     to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html'
   },
   {
     from: 'cloud/in/payment-config/latest',
     to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html'
+  },
+  {
+    from: 'cloud/in/20202/2020.2.x/active/PortalDevelopment/topics/c_overview_portal_development.html',
+    to: 'cloud/in/20211/portaldev'
+  },
+  {
+    from: 'cloud/in/portaldev/latest',
+    to: 'cloud/in/20211/portaldev'
   },
   {
     from: 'cloud/is/202011/restapiclient/REST-API-Client/topics/c_overview-rest-client.html',
