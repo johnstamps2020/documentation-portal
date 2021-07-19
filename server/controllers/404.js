@@ -164,7 +164,7 @@ const redirectUrls = [
     to: 'cloud/cc/202104/config'
   },
   {
-    from: '/cloud/pc/202011/cloud/active/config/topics/p-basics.html',
+    from: 'cloud/pc/202011/cloud/active/config/topics/p-basics.html',
     to: 'cloud/pc/202104/config'
   },
   {
