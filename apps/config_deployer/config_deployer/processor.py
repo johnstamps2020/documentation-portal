@@ -1,3 +1,4 @@
+import copy
 import json
 from pathlib import Path
 
@@ -50,6 +51,7 @@ def split_objects_by_metadata_property(src_file: Path, root_object_name: str, pr
     split_objects = []
     for unique_property_value in unique_property_values:
         split_objects.append({
+            'property_name': property_name,
             'property_value': unique_property_value,
             root_object_name: [obj for obj in objects_to_split_sorted_by_id if
                                unique_property_value in obj['metadata'][property_name]]
@@ -58,8 +60,20 @@ def split_objects_by_metadata_property(src_file: Path, root_object_name: str, pr
     return split_objects
 
 
-def extract_elements():
-    pass
+def extract_objects_by_metadata_property(src_file: Path, root_object_name: str, property_name: str,
+                                         property_value: str) -> tuple:
+    """Copy objects to a separate list and remove them from the original list"""
+    objects_to_update = load_json_file(src_file)[root_object_name]
+    objects_to_update_sorted_by_id = sort_list_of_objects(objects_to_update, 'id')
+    updated_objects = []
+    extracted_objects = []
+    for obj in objects_to_update_sorted_by_id:
+        if property_value.casefold() in [value.casefold() for value in obj['metadata'].get(property_name)]:
+            extracted_objects.append(obj)
+        else:
+            updated_objects.append(obj)
+
+    return updated_objects, extracted_objects
 
 
 def clone_elements():
@@ -114,7 +128,9 @@ for version_docs_obj in docs_by_product:
             'docs': version_docs_obj['docs']
         }
     )
-    save_json_file(split_output / f'_split-docs-{version_docs_obj["property_value"].casefold()}.json', docs_obj)
+    save_json_file(
+        split_output / f'_split-docs-{version_docs_obj["property_name"].casefold()}-{version_docs_obj["property_value"].casefold()}.json',
+        docs_obj)
 
 # docs_by_version = split_objects_by_metadata_property(split_input, 'docs', 'version')
 # for version_docs_obj in docs_by_version:
@@ -142,3 +158,19 @@ docs_obj = add_schema_reference({
     'docs': docs_without_version_1011
 })
 save_json_file(remove_output / '_remove-docs-version-10.1.1.json', docs_obj)
+
+# extract
+extract_input = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/extract/input/docs.json')
+extract_output = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/extract/output')
+
+updated_docs, extracted_docs = extract_objects_by_metadata_property(extract_input, 'docs', 'product', 'BillingCenter')
+updated_docs_obj = add_schema_reference({
+    'docs': updated_docs
+})
+extracted_docs_obj = add_schema_reference({
+    'docs': extracted_docs
+})
+save_json_file(extract_output / '_extract-docs-removed-product-billingcenter.json', updated_docs_obj)
+save_json_file(extract_output / '_extract-docs-product-billingcenter.json', extracted_docs_obj)
