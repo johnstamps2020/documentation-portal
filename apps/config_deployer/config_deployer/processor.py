@@ -53,11 +53,20 @@ def split_objects_into_chunks(src_file: Path, root_object_name: str, chunk_size:
 
 def split_objects_by_metadata_property(src_file: Path, root_object_name: str, property_name: str) -> list:
     objects_to_split = load_json_file(src_file)[root_object_name]
+    objects_to_split_sorted_by_id = sort_list_of_objects(objects_to_split, 'id')
     unique_property_values = []
-    for obj in objects_to_split:
+    for obj in objects_to_split_sorted_by_id:
         [unique_property_values.append(property_value) for property_value in obj['metadata'][property_name] if
          property_value not in unique_property_values]
-    return objects_to_split
+    split_objects = []
+    for unique_property_value in unique_property_values:
+        split_objects.append({
+            'property_value': unique_property_value,
+            root_object_name: [obj for obj in objects_to_split_sorted_by_id if
+                               unique_property_value in obj['metadata'][property_name]]
+
+        })
+    return split_objects
 
 
 def extract_elements():
@@ -72,13 +81,15 @@ def remove_elements():
     pass
 
 
-# merge
-all_docs = merge_objects(merge_input, 'docs')
-docs_obj = add_schema_reference({
-    'docs': sort_list_of_objects(all_docs, 'id')
-})
-save_json_file(merge_output / '_merge-docs.json', docs_obj)
+# Testing part
 
+# merge
+# all_docs = merge_objects(merge_input, 'docs')
+# docs_obj = add_schema_reference({
+#     'docs': sort_list_of_objects(all_docs, 'id')
+# })
+# save_json_file(merge_output / '_merge-docs.json', docs_obj)
+#
 # split
 chunked_docs = split_objects_into_chunks(split_input, 'docs', 10)
 for chunk_number, chunk in enumerate(chunked_docs):
@@ -89,4 +100,21 @@ for chunk_number, chunk in enumerate(chunked_docs):
     )
     save_json_file(split_output / f'_split-docs-chunk-{chunk_number}.json', docs_obj)
 
-split_docs = split_objects_by_metadata_property(split_input, 'docs', 'product')
+docs_by_product = split_objects_by_metadata_property(split_input, 'docs', 'product')
+for version_docs_obj in docs_by_product:
+    docs_obj = add_schema_reference(
+        {
+            'docs': version_docs_obj['docs']
+        }
+    )
+    save_json_file(split_output / f'_split-docs-{version_docs_obj["property_value"].casefold()}.json', docs_obj)
+
+# docs_by_version = split_objects_by_metadata_property(split_input, 'docs', 'version')
+# for version_docs_obj in docs_by_version:
+#     docs_obj = add_schema_reference(
+#         {
+#             'docs': version_docs_obj['docs']
+#         }
+#     )
+#     save_json_file(split_output / f'_split-docs-{version_docs_obj["property_value"].casefold()}.json', docs_obj)
+
