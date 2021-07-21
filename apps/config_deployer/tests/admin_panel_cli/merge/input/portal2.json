@@ -1,0 +1,2301 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocammzblnv",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocbkjcnzwz",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocccsrmkdc",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccdfgarry",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccjtmugit",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccmauxbba",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocedtrwltv",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoceiifgxcw",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfcmljyqa",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocffmmswgf",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfmnupekf",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgnjtyazg",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgrobvbee",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdochpillvww",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocicbeksro",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjlfsfdfd",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjoxldmbo",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockdppxpda",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockzksesmd",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocncmwqrli",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocnzoixxnr",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoconjiqcsc",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocqfdehuey",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocutiqttau",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.8/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.8"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocwhxoullx",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocxlzchxhu",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyftpvcaw",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_7.0.8/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["7.0.8"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyoyphgem",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoczxmrlibm",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_8.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["8.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterfjbyhawz",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.2/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterkqqanxwh",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.7/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterkxubulyh",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.6/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterlhkdzceb",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_10.0.0/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterlmkrswrz",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_9.0.5/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingentervdugkpgr",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_10.0.1/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocbcillingenterysfwgwsw",
+      "title": "BillingCenter",
+      "url": "portal/secure/doc/bc/BillingCenter_3.0.1/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["3.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterawscafqo",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.2/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimentercxzeemjp",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.5/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaumilntg",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaxxmkayt",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocbapuerjf",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocdojgivnl",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.8/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.8"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoceytmuoui",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgkfnzidi",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgpkucyfr",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdochpprlkbr",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocidesewcj",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdockjixkity",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoclpvcofpk",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocmypqavjm",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnhpuynwc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnlrfsben",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdococjxqzog",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.8/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.8"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocojirlrtn",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpahymdbb",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpeofahzc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpfaqnsti",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqalxtzlg",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqeuxmcrz",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocswjfurfe",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocubdkstsc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoculwlmrqc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_8.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvjecaxdc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.9/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.9"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvqlyczrv",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwgkxuleb",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.8/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.8"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwmlaqcal",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocxjnxnozc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocydpzhmah",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_7.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["7.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimentereejtoxhw",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.2/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterelmxqvai",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.7/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimentergyvfjncd",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.7/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterjzkkauje",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_6.0.1/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["6.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterlomzguhc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.1/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterlsomiapi",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.3/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenternjdtrfxa",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.6/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterphlqkcmc",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.4/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterpkcaesiy",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.5/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterqqxmyzex",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_10.0.0/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenteruhhqohgq",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_10.0.1/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimentervrjxjhjn",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_5.0.0/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["5.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredoccclaimenterwtigvtxy",
+      "title": "ClaimCenter",
+      "url": "portal/secure/doc/cc/ClaimCenter_9.0.6/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubguacpbha",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/811/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.1.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubhsutrtnu",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/910/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataublvbraqby",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/820/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubrzwdsixl",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/920/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubsupynnah",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/830/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubthgnbdfg",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/930/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubuesxagrn",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/1000/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubyluzrolx",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/1010/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubzmzzotex",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/900/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementdatahubvfzvhptq",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/810/datahub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementinfocentergkwxcgth",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/810/infocenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterbzhtclos",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/910/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentereiscelti",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/1010/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterfuqlhtcv",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/811/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.1.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterlgrrnrtz",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/820/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterowudqgnv",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/1000/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterqtbtcudr",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/821/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.2.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterrowgmanb",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/930/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentertuykkfbw",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/920/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterxnghccvc",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/830/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterzjwxvdgn",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/900/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsgehgsaei",
+      "title": "VendorEngage",
+      "url": "portal/secure/doc/digital/7.1.0/VendorEngage710_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["VendorEngage"],
+        "version": ["7.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya",
+      "title": "VendorEngage",
+      "url": "portal/secure/doc/digital/8.1.0/VendorEngage810_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["VendorEngage"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsjkkjagrp",
+      "title": "VendorEngage",
+      "url": "portal/secure/doc/digital/7.0.0/VendorEngage700_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["VendorEngage"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp",
+      "title": "VendorEngage",
+      "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/VendorEngage1000_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["VendorEngage"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsyrmcgnnq",
+      "title": "VendorEngage",
+      "url": "portal/secure/doc/digital/8.0.0/VendorEngage800_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["VendorEngage"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh",
+      "title": "ServiceRepEngage",
+      "url": "portal/secure/doc/digital/8.1.0/ServiceRepEngage810_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ServiceRepEngage"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn",
+      "title": "ServiceRepEngage",
+      "url": "portal/secure/doc/digital/8.0.0/ServiceRepEngage800_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ServiceRepEngage"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc",
+      "title": "ServiceRepEngage",
+      "url": "portal/secure/doc/digital/7.1.0/ServiceRepEngage710_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ServiceRepEngage"],
+        "version": ["7.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
+      "title": "ServiceRepEngage",
+      "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ServiceRepEngage1000_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ServiceRepEngage"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki",
+      "title": "ServiceRepEngage",
+      "url": "portal/secure/doc/digital/7.0.0/ServiceRepEngage700_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ServiceRepEngage"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
+      "title": "ProducerEngage",
+      "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/ProducerEngage1000_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ProducerEngage"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocseucuheur",
+      "title": "ProducerEngage",
+      "url": "portal/secure/doc/digital/7.1.0/ProducerEngage710_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ProducerEngage"],
+        "version": ["7.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb",
+      "title": "ProducerEngage",
+      "url": "portal/secure/doc/digital/7.0.0/ProducerEngage700_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ProducerEngage"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm",
+      "title": "ProducerEngage",
+      "url": "portal/secure/doc/digital/8.1.0/ProducerEngage810_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ProducerEngage"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst",
+      "title": "ProducerEngage",
+      "url": "portal/secure/doc/digital/8.0.0/ProducerEngage800_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ProducerEngage"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsdixvkiug",
+      "title": "CustomerEngage Account Management",
+      "url": "portal/secure/doc/digital/7.0.0/CustomerEngage_AccountManagement700_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Account Management"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
+      "title": "CustomerEngage Account Management",
+      "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_AccountManagement1000_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Account Management"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocskaceffks",
+      "title": "CustomerEngage Account Management",
+      "url": "portal/secure/doc/digital/8.0.0/CustomerEngage_AccountManagement800_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Account Management"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsvvjeexxr",
+      "title": "CustomerEngage Account Management",
+      "url": "portal/secure/doc/digital/7.1.0/CustomerEngage_AccountManagement710_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Account Management"],
+        "version": ["7.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocswtwqtyvt",
+      "title": "CustomerEngage Account Management",
+      "url": "portal/secure/doc/digital/8.1.0/CustomerEngage_AccountManagement810_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Account Management"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsmoleigkn",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "portal/secure/doc/digital/7.0.0/CustomerEngage_QuoteAndBuy700_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Quote and Buy"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocssvsmobif",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "portal/secure/doc/digital/8.0.0/CustomerEngage_QuoteAndBuy800_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Quote and Buy"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "portal/secure/doc/digital/10.0.0/EnterpriseEngage1000_Docs/CustomerEngage_QuoteAndBuy1000_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Quote and Buy"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswnmqkwxj",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "portal/secure/doc/digital/7.1.0/CustomerEngage_QuoteAndBuy710_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Quote and Buy"],
+        "version": ["7.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsxqghmido",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "portal/secure/doc/digital/8.1.0/CustomerEngage_QuoteAndBuy810_Docs/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Quote and Buy"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocaazeaxkq",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocafqpzdwd",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoccmpgocpi",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.8/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.8"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocdgcpumzg",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocemkhxjqy",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_4.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["4.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocewdbghur",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfnbhhrvy",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfwxqxxjo",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocijpuiydy",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclxmhamjs",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclzhtwoyw",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmdiceask",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.9/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.9"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmehjueat",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmeibkklu",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.8/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.8"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocnzfemwar",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocojaabfwj",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.2/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocowemuyjf",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocpaqllgoi",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocrbuikbrg",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.0/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsetccnkr",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsqxndtgn",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_4.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["4.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocucydlhvx",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_8.0.7/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["8.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocuuvupheu",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.4/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.4"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocwarptbie",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_4.0.3/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["4.0.3"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocyqwcdrnp",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczbopvdeg",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_7.0.6/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["7.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczmtfkxvn",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_4.0.1/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["4.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczsrkqubl",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_4.0.5/doc/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["4.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyentergcxbllrp",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_10.0.1/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.0.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterhzpxxvwz",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.6/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.6"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenteromjhnper",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_4.0.0/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["4.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterrtwztpfk",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.7/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.7"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyentertrzuzdki",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_4.0.2/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["4.0.2"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterwlvmqlps",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_9.0.5/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.5"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocpcolicyenterxdtwvycu",
+      "title": "PolicyCenter",
+      "url": "portal/secure/doc/pc/PolicyCenter_10.0.0/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

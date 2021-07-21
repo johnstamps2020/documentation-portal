@@ -1,0 +1,145 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "selfmanagedccupgradeguide1010",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradeguide1011",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.1.1"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradeguide1012",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1012",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.1.2"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradeguide10x",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetools1450",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1450",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.10"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetools1x",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["9.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetoolspiteqdgk",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/230",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.0.3"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetoolsqwertyui",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1440",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.9"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1010",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1011",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.1.1"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

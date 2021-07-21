@@ -1,0 +1,229 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "iscccloudeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/ea/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/cc/ea/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/ea/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeaapp",
+      "title": "Application Guide",
+      "url": "cloud/cc/ea/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeaadmin",
+      "title": "Administration",
+      "url": "cloud/cc/ea/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeabestpractice",
+      "title": "Best Practices",
+      "url": "cloud/cc/ea/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeaconfig",
+      "title": "Configuration",
+      "url": "cloud/cc/ea/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeaglobal",
+      "title": "Globalization",
+      "url": "cloud/cc/ea/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudearules",
+      "title": "Rules",
+      "url": "cloud/cc/ea/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeainteg",
+      "title": "Integration",
+      "url": "cloud/cc/ea/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeacloudapi",
+      "title": "Cloud API Developer Guide",
+      "url": "cloud/cc/ea/cloudapi",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeatesting",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/cc/ea/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudearestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/ea/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeainstall",
+      "title": "Installation",
+      "url": "cloud/cc/ea/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
