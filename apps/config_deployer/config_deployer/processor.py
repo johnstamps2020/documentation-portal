@@ -29,6 +29,10 @@ def sort_list_of_objects(objects_to_sort: list, sort_key: str):
     return sorted(objects_to_sort, key=lambda x: x[sort_key])
 
 
+def check_if_property_is_metadata(property_name: str) -> bool:
+    return property_name.split('.')[0] == 'metadata'
+
+
 def merge_objects(src_dir: Path, root_object_name: str) -> list:
     all_elements = []
     for file_path in src_dir.rglob('*.json'):
@@ -80,14 +84,20 @@ def extract_objects_by_metadata_property(src_file: Path, root_object_name: str, 
 
 
 def update_metadata_property_for_objects(src_file: Path, root_object_name: str, property_name: str,
-                                         current_property_value: str, new_property_value: str) -> list:
+                                         new_property_value: str, current_property_value: str = ''):
     objects_to_update = load_json_file(src_file)[root_object_name]
     objects_to_update_sorted_by_id = sort_list_of_objects(objects_to_update, 'id')
     updated_objects = []
-    for obj in objects_to_update_sorted_by_id:
-        if current_property_value.casefold() in [value.casefold() for value in obj['metadata'].get(property_name)]:
+    if current_property_value:
+        for obj in objects_to_update_sorted_by_id:
+            if current_property_value.casefold() in [value.casefold() for value in
+                                                     obj['metadata'].get(property_name)]:
+                obj['metadata'][property_name] = [new_property_value]
+            updated_objects.append(obj)
+    else:
+        for obj in objects_to_update_sorted_by_id:
             obj['metadata'][property_name] = [new_property_value]
-        updated_objects.append(obj)
+            updated_objects.append(obj)
     return updated_objects
 
 
@@ -204,16 +214,16 @@ update_input = Path(
 update_output = Path(
     '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/update/output')
 
-docs_with_updated_version = update_metadata_property_for_objects(update_input, 'docs', 'version', '10.1.2', '10.1.3')
+docs_with_updated_version = update_metadata_property_for_objects(update_input, 'docs', 'version', '10.1.3', '10.1.2')
 updated_version_docs_obj = add_schema_reference({
-    'docs': docs_with_updated_version
+    'docs': list(docs_with_updated_version)
 })
 save_json_file(update_output / '_update-docs-version-10.1.2-to-10.1.3.json', updated_version_docs_obj)
 
-docs_with_updated_product = update_metadata_property_for_objects(update_input, 'docs', 'product', 'ClaimCenter',
-                                                                 'XCenter')
+docs_with_updated_product = update_metadata_property_for_objects(update_input, 'docs', 'product', 'XCenter',
+                                                                 'ClaimCenter')
 updated_product_docs_obj = add_schema_reference({
-    'docs': docs_with_updated_product
+    'docs': list(docs_with_updated_product)
 })
 save_json_file(update_output / '_update-docs-product-claimcenter-to-xcenter.json', updated_product_docs_obj)
 
