@@ -1,17 +1,6 @@
 import json
 from pathlib import Path
 
-merge_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/merge/input')
-
-merge_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/merge/output')
-
-split_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/split/input/docs.json')
-split_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/split/output')
-
 
 def add_schema_reference(obj: dict):
     if "$schema" not in obj.keys():
@@ -41,7 +30,7 @@ def merge_objects(src_dir: Path, root_object_name: str) -> list:
     for file_path in src_dir.rglob('*.json'):
         json_data = load_json_file(file_path)
         all_elements += json_data[root_object_name]
-    return all_elements
+    return sort_list_of_objects(all_elements, 'id')
 
 
 def split_objects_into_chunks(src_file: Path, root_object_name: str, chunk_size: int) -> list:
@@ -77,20 +66,38 @@ def clone_elements():
     pass
 
 
-def remove_elements():
-    pass
+def remove_objects_by_metadata_property(src_file: Path, root_object_name: str, property_name: str,
+                                        property_value: str) -> list:
+    objects_to_update = load_json_file(src_file)[root_object_name]
+    objects_to_update_sorted_by_id = sort_list_of_objects(objects_to_update, 'id')
+    updated_objects = [obj for obj in objects_to_update_sorted_by_id
+                       if property_value.casefold() not in [
+                           value.casefold() for value in obj['metadata'].get(property_name)]
+                       ]
+    return updated_objects
 
 
 # Testing part
 
 # merge
-# all_docs = merge_objects(merge_input, 'docs')
-# docs_obj = add_schema_reference({
-#     'docs': sort_list_of_objects(all_docs, 'id')
-# })
-# save_json_file(merge_output / '_merge-docs.json', docs_obj)
-#
+merge_input = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/merge/input')
+
+merge_output = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/merge/output')
+
+all_docs = merge_objects(merge_input, 'docs')
+docs_obj = add_schema_reference({
+    'docs': all_docs
+})
+save_json_file(merge_output / '_merge-docs.json', docs_obj)
+
 # split
+split_input = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/split/input/docs.json')
+split_output = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/split/output')
+
 chunked_docs = split_objects_into_chunks(split_input, 'docs', 10)
 for chunk_number, chunk in enumerate(chunked_docs):
     docs_obj = add_schema_reference(
@@ -118,3 +125,20 @@ for version_docs_obj in docs_by_product:
 #     )
 #     save_json_file(split_output / f'_split-docs-{version_docs_obj["property_value"].casefold()}.json', docs_obj)
 
+# remove
+remove_input = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/remove/input/docs.json')
+remove_output = Path(
+    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/remove/output')
+
+docs_without_product_bc = remove_objects_by_metadata_property(remove_input, 'docs', 'product', 'BillingCenter')
+docs_obj = add_schema_reference({
+    'docs': docs_without_product_bc
+})
+save_json_file(remove_output / '_remove-docs-product-billingcenter.json', docs_obj)
+
+docs_without_version_1011 = remove_objects_by_metadata_property(remove_input, 'docs', 'version', '10.1.1')
+docs_obj = add_schema_reference({
+    'docs': docs_without_version_1011
+})
+save_json_file(remove_output / '_remove-docs-version-10.1.1.json', docs_obj)
