@@ -63,3 +63,13 @@ def test_docs_extract():
 
     check_dirs_have_the_same_files(output_docs_configs, expected_docs_configs)
     check_files_have_the_same_content(output_docs_configs, expected_docs_configs, 'docs')
+
+
+def test_docs_update():
+    output_docs_configs = Path(
+        '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/update/output')
+    expected_docs_configs = Path(
+        '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/update/expected')
+
+    check_dirs_have_the_same_files(output_docs_configs, expected_docs_configs)
+    check_files_have_the_same_content(output_docs_configs, expected_docs_configs, 'docs')
