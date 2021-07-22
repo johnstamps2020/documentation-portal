@@ -124,18 +124,16 @@ def split_objects_by_property(src_file: Path, property_name: str) -> list:
 
 
 def remove_objects_by_property(src_file: Path, property_name: str,
-                               property_value: str) -> dict:
-    root_key_name, sorted_objects_to_clean = get_root_object(src_file)
-    cleaned_objects = [obj for obj in sorted_objects_to_clean
-                       if property_value.casefold() not in [
-                           value.casefold() for value in get_object_property(obj, property_name)]
-                       ]
+                               property_value) -> dict:
+    root_key_name, sorted_all_objects = get_root_object(src_file)
+    objects_to_remove = filter_objects_by_property_value(sorted_all_objects, property_name, property_value)
+    updated_objects = [obj for obj in sorted_all_objects if obj not in objects_to_remove]
     return {
-        root_key_name: cleaned_objects
+        root_key_name: updated_objects
     }
 
 
-def update_property_for_objects(src_file: Path, property_name: str, current_property_value: str,
+def update_property_for_objects(src_file: Path, property_name: str, current_property_value,
                                 new_property_value) -> dict:
     root_key_name, sorted_objects_to_update = get_root_object(src_file)
     updated_objects = []
@@ -155,27 +153,19 @@ def update_property_for_objects(src_file: Path, property_name: str, current_prop
 
 
 def extract_objects_by_property(src_file: Path, property_name: str,
-                                property_value: str) -> tuple:
-    root_key_name, sorted_objects_to_update = get_root_object(src_file)
-    updated_objects = []
-    extracted_objects = []
-    for obj in sorted_objects_to_update:
-        if property_value.casefold() in [value.casefold() for value in get_object_property(obj, property_name)]:
-            extracted_objects.append(obj)
-        else:
-            updated_objects.append(obj)
+                                property_value) -> tuple:
+    root_key_name, sorted_all_objects = get_root_object(src_file)
+    extracted_objects = filter_objects_by_property_value(sorted_all_objects, property_name, property_value)
+    updated_objects = [obj for obj in sorted_all_objects if obj not in extracted_objects]
 
     return {root_key_name: updated_objects}, {root_key_name: extracted_objects}
 
 
 def clone_objects_with_updated_property(src_file: Path, property_name: str,
-                                        current_property_value: str, new_property_value) -> dict:
+                                        current_property_value, new_property_value) -> dict:
     root_key_name, sorted_all_objects = get_root_object(src_file)
-    cloned_objects = []
-    for obj in sorted_all_objects:
-        if current_property_value.casefold() in [value.casefold() for value in get_object_property(obj, property_name)]:
-            set_object_property(obj, property_name, new_property_value)
-            cloned_objects.append(obj)
+    cloned_objects = [set_object_property(obj, property_name, new_property_value) for obj in
+                      filter_objects_by_property_value(sorted_all_objects, property_name, current_property_value)]
     return {
         root_key_name: cloned_objects
     }
