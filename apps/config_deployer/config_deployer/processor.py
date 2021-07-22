@@ -1,13 +1,9 @@
-# TODO: Support all the operations for sources and builds:
-# TODO: Add a CLI (argparse)
-# TODO: Add support for props that are not lists (str, bool)
 # TODO: Add an option to create an empty config with several docs or sources or builds
-# TODO: Reduce the number of functions: base funcs - copy, update, remove and then combine them to cover flows.
-# Merge, update, remove, extract (copy and remove), clone (copy), clone with new value (copy and update value)
 import argparse
 import json
 import logging
 import pathlib
+import shutil
 from pathlib import Path
 from string import Template
 
@@ -27,9 +23,11 @@ def load_json_file(json_file: Path):
         return json.load(json_file)
 
 
-def save_json_file(save_path: Path, obj_to_save: dict):
+def save_json_file(save_path: Path, obj_to_save: dict, add_schema_ref: bool = True):
+    if add_schema_ref:
+        obj_to_save = add_schema_reference(obj_to_save)
     with open(save_path, 'w') as result_file:
-        json.dump(add_schema_reference(obj_to_save), result_file, indent=2)
+        json.dump(obj_to_save, result_file, indent=2)
 
 
 def sort_list_of_objects(objects_to_sort: list, sort_key: str):
@@ -97,6 +95,15 @@ def merge_objects(objects_to_merge: list) -> dict:
         }
 
 
+def get_objects_for_deploy_env(objects_to_merge: list, deploy_env: str) -> dict:
+    merged_objects = merge_objects(objects_to_merge)
+    merged_objects_key = next(iter(merged_objects.keys()))
+    return {
+        merged_objects_key: filter_objects_by_property_value(merged_objects[merged_objects_key], 'environments',
+                                                             deploy_env)
+    }
+
+
 def split_objects_into_chunks(key_name: str, objects_to_split: list, chunk_size: int) -> list:
     return [{
         key_name: objects_to_split[i:i + chunk_size]
@@ -160,7 +167,6 @@ def clone_objects_with_updated_property(key_name: str, all_objects: list, proper
 
 
 def main():
-    # TODO: Add required=True where needed
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
     parser_merge = subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
@@ -180,20 +186,20 @@ def main():
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_remove.add_argument('src_file', type=pathlib.Path,
                                help='Source config file from which you want to remove items')
-    parser_remove.add_argument('--prop-name', dest='prop_name', type=str,
+    parser_remove.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Property name used for removing items.')
-    parser_remove.add_argument('--prop-value', dest='prop_value', type=str,
+    parser_remove.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                                help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_update.add_argument('src_file', type=pathlib.Path,
                                help='Source config file in which you want to update items')
-    parser_update.add_argument('--prop-name', dest='prop_name', type=str,
+    parser_update.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Name of the property to update')
     parser_update.add_argument('--prop-value', dest='prop_value', type=str, default='',
                                help='Current value of the property. If provided, the property is updated only in items'
                                     ' with this property value. Otherwise, the property is updated in all items.')
-    parser_update.add_argument('--new-prop-value', dest='new_prop_value', type=str,
+    parser_update.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
                                help='New value of the property.')
 
     parser_extract = subparsers.add_parser('extract',
@@ -201,9 +207,9 @@ def main():
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_extract.add_argument('src_file', type=pathlib.Path,
                                 help='Source config file from which you want to extract items')
-    parser_extract.add_argument('--prop-name', dest='prop_name', type=str,
+    parser_extract.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                 help='Property name used for extracting items.')
-    parser_extract.add_argument('--prop-value', dest='prop_value', type=str,
+    parser_extract.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                                 help='Property value used for extracting items.')
     parser_clone = subparsers.add_parser('clone',
                                          help='Copy objects to a separate file '
@@ -211,13 +217,21 @@ def main():
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_clone.add_argument('src_file', type=pathlib.Path,
                               help='Source config file from which you want to clone items')
-    parser_clone.add_argument('--prop-name', dest='prop_name', type=str,
+    parser_clone.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                               help='Name of the property to update in cloned items.')
-    parser_clone.add_argument('--prop-value', dest='prop_value', type=str, default='',
+    parser_clone.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                               help='Current value of the property. Only items'
                                    ' with this property value are cloned.')
-    parser_clone.add_argument('--new-prop-value', dest='new_prop_value', type=str,
+    parser_clone.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
                               help='New value of the property used in cloned items.')
+    parser_deploy = subparsers.add_parser('deploy',
+                                          help='Filter items in the config file by deployment environment',
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_deploy.add_argument('src_dir', type=pathlib.Path,
+                               help='Source config file from which you want to clone items')
+    parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging' 'prod'],
+                               required=True,
+                               help='Name of the environment where the config file will be deployed.')
 
     args = parser.parse_args()
     current_working_dir = Path.cwd()
@@ -232,9 +246,11 @@ def main():
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
-    output_dir = current_working_dir / 'out'
+    output_dir = current_working_dir / 'out' / args.command
     output_file_name = Template(f'_{args.command}-$info.json')
-    output_dir.mkdir(exist_ok=True)
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    output_dir.mkdir(exist_ok=True, parents=True)
 
     src_path = getattr(args, 'src_dir', None) or getattr(args, 'src_file', None)
 
@@ -245,6 +261,14 @@ def main():
         all_items = merge_objects(root_key_objects_pairs)
         file_name = output_file_name.safe_substitute(info='all')
         save_json_file(output_dir / file_name, all_items)
+    elif args.command == 'deploy':
+        logger.info(
+            f'Filtering items in {src_path} for the "{args.deploy_env}" environment.')
+        root_key_objects_pairs = [get_root_object(obj) for obj in
+                                  src_path.rglob('*.json')]
+        file_name = 'config.json'
+        filtered_items = get_objects_for_deploy_env(root_key_objects_pairs, args.deploy_env)
+        save_json_file(output_dir / file_name, filtered_items, add_schema_ref=False)
     else:
         root_key_name, root_key_objects = get_root_object(src_path)
         if args.command == 'split':
