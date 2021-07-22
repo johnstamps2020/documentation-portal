@@ -4,6 +4,7 @@
 import argparse
 import json
 import logging
+import pathlib
 from pathlib import Path
 from string import Template
 
@@ -107,6 +108,18 @@ def split_objects_by_property(src_file: Path, property_name: str) -> list:
     return split_objects
 
 
+def remove_objects_by_property(src_file: Path, property_name: str,
+                               property_value: str) -> dict:
+    root_key_name, sorted_objects_to_clean = get_root_object(src_file)
+    cleaned_objects = [obj for obj in sorted_objects_to_clean
+                       if property_value.casefold() not in [
+                           value.casefold() for value in get_object_property(obj, property_name)]
+                       ]
+    return {
+        root_key_name: cleaned_objects
+    }
+
+
 def extract_objects_by_property(src_file: Path, root_object_name: str, property_name: str,
                                 property_value: str) -> tuple:
     """Copy objects to a separate list and remove them from the original list"""
@@ -143,17 +156,6 @@ def update_property_for_objects(src_file: Path, root_object_name: str, property_
     return updated_objects
 
 
-def remove_objects_by_property(src_file: Path, root_object_name: str, property_name: str,
-                               property_value: str) -> list:
-    objects_to_update = load_json_file(src_file)[root_object_name]
-    objects_to_update_sorted_by_id = sort_list_of_objects(objects_to_update, 'id')
-    updated_objects = [obj for obj in objects_to_update_sorted_by_id
-                       if property_value.casefold() not in [
-                           value.casefold() for value in get_object_property(obj, property_name)]
-                       ]
-    return updated_objects
-
-
 def clone_objects_with_updated_property(src_file: Path, root_object_name: str, property_name: str,
                                         current_property_value: str, new_property_value) -> list:
     all_objects = load_json_file(src_file)[root_object_name]
@@ -171,25 +173,33 @@ def main():
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
     parser_merge = subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_merge.add_argument('merge_src_dir', help='Source dir with config files to merge')
+    parser_merge.add_argument('merge_src_dir', type=pathlib.Path, help='Source dir with config files to merge')
     parser_split = subparsers.add_parser('split',
-                                         help='Split the config file into smaller files based on a chunk size or a property',
+                                         help='Split the config file into smaller files'
+                                              ' based on a chunk size or a property',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_split.add_argument('split_src_file', help='Source config file to split')
+    parser_split.add_argument('split_src_file', type=pathlib.Path, help='Source config file to split')
     split_options = parser_split.add_mutually_exclusive_group()
     split_options.add_argument('--chunk-size', dest='split_chunk_size', type=int,
                                help='Number of items in a single config file.')
-    split_options.add_argument('--prop-name', dest='split_prop_name',
+    split_options.add_argument('--prop-name', dest='split_prop_name', type=str,
                                help='Property name by which the config file is split.')
     parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_remove.add_argument('remove_src_file', type=pathlib.Path,
+                               help='Source config file from which you want to remove items')
+    parser_remove.add_argument('--prop-name', dest='remove_prop_name', type=str,
+                               help='Property name used for removing items.')
+    parser_remove.add_argument('--prop-value', dest='remove_prop_value', type=str,
+                               help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_extract = subparsers.add_parser('extract',
                                            help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_clone = subparsers.add_parser('clone',
-                                         help='Copy objects to a separate file and update their property with a new value',
+                                         help='Copy objects to a separate file '
+                                              'and update their property with a new value',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     # parser_list_items = subparsers.add_parser('list-items', help="List items from Jira, like projects")
     # list_options = parser_list_items.add_mutually_exclusive_group()
@@ -216,26 +226,30 @@ def main():
     output_dir.mkdir(exist_ok=True)
 
     if args.command == 'merge':
-        logger.info('Merging files.')
-        all_items = merge_objects(Path(args.merge_src_dir))
+        logger.info(f'Merging files in "{str(args.merge_src_dir)}".')
+        all_items = merge_objects(args.merge_src_dir)
         file_name = output_file_name.safe_substitute(info='all')
         save_json_file(output_dir / file_name, all_items)
     elif args.command == 'split':
         if args.split_chunk_size:
-            logger.info('Splitting the file by chunk size.')
-            chunked_items = split_objects_into_chunks(Path(args.split_src_file), args.split_chunk_size)
+            logger.info(f'Splitting "{str(args.split_src_file)}" into chunks of {args.split_chunk_size}.')
+            chunked_items = split_objects_into_chunks(args.split_src_file, args.split_chunk_size)
             for chunk_number, chunk in enumerate(chunked_items):
                 file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
                 save_json_file(output_dir / file_name, chunk)
         elif args.split_prop_name:
-            logger.info('Splitting the file by property name.')
-            split_items = split_objects_by_property(Path(args.split_src_file), args.split_prop_name)
+            logger.info(f'Splitting "{str(args.split_src_file)}" by "{args.split_prop_name}".')
+            split_items = split_objects_by_property(args.split_src_file, args.split_prop_name)
             for item in split_items:
                 file_name = output_file_name.safe_substitute(
-                    info=f'_split-docs-{item["property_name"].casefold()}-{item["property_value"].casefold()}')
+                    info=f'{item["property_name"].casefold()}-{item["property_value"].casefold()}')
                 save_json_file(output_dir / file_name, item)
     elif args.command == 'remove':
-        pass
+        logger.info(
+            f'Removing items with "{args.remove_prop_value}" in "{args.remove_prop_name}" from "{args.remove_src_file}".')
+        cleaned_items = remove_objects_by_property(args.remove_src_file, args.remove_prop_name, args.remove_prop_value)
+        file_name = output_file_name.safe_substitute(info=f'{args.remove_prop_name}-{args.remove_prop_value}')
+        save_json_file(output_dir / file_name, cleaned_items)
     elif args.command == 'update':
         pass
     elif args.command == 'extract':
