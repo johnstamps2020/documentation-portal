@@ -1,6 +1,7 @@
 # TODO: Support all the operations for sources and builds:
 # TODO: Add a CLI (argparse)
 # TODO: Add support for props that are not lists (str, bool)
+# TODO: Add an option to create an empty config with several docs or sources or builds
 import argparse
 import json
 import logging
@@ -10,12 +11,13 @@ from string import Template
 
 
 def add_schema_reference(obj: dict):
-    if "$schema" not in obj.keys():
+    if "$schema" in obj:
+        return obj
+    else:
         return {
             "$schema": "./config-schema.json",
             **obj
         }
-    return obj
 
 
 def load_json_file(json_file: Path):
@@ -143,31 +145,31 @@ def update_property_for_objects(src_file: Path, property_name: str, current_prop
     }
 
 
-def extract_objects_by_property(src_file: Path, root_object_name: str, property_name: str,
+def extract_objects_by_property(src_file: Path, property_name: str,
                                 property_value: str) -> tuple:
-    objects_to_update = load_json_file(src_file)[root_object_name]
-    objects_to_update_sorted_by_id = sort_list_of_objects(objects_to_update, 'id')
+    root_key_name, sorted_objects_to_update = get_root_object(src_file)
     updated_objects = []
     extracted_objects = []
-    for obj in objects_to_update_sorted_by_id:
+    for obj in sorted_objects_to_update:
         if property_value.casefold() in [value.casefold() for value in get_object_property(obj, property_name)]:
             extracted_objects.append(obj)
         else:
             updated_objects.append(obj)
 
-    return updated_objects, extracted_objects
+    return {root_key_name: updated_objects}, {root_key_name: extracted_objects}
 
 
-def clone_objects_with_updated_property(src_file: Path, root_object_name: str, property_name: str,
-                                        current_property_value: str, new_property_value) -> list:
-    all_objects = load_json_file(src_file)[root_object_name]
-    all_objects_sorted_by_id = sort_list_of_objects(all_objects, 'id')
+def clone_objects_with_updated_property(src_file: Path, property_name: str,
+                                        current_property_value: str, new_property_value) -> dict:
+    root_key_name, sorted_all_objects = get_root_object(src_file)
     cloned_objects = []
-    for obj in all_objects_sorted_by_id:
+    for obj in sorted_all_objects:
         if current_property_value.casefold() in [value.casefold() for value in get_object_property(obj, property_name)]:
             set_object_property(obj, property_name, new_property_value)
             cloned_objects.append(obj)
-    return cloned_objects
+    return {
+        root_key_name: cloned_objects
+    }
 
 
 def main():
@@ -210,16 +212,25 @@ def main():
     parser_extract = subparsers.add_parser('extract',
                                            help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_extract.add_argument('extract_src_file', type=pathlib.Path,
+                                help='Source config file from which you want to extract items')
+    parser_extract.add_argument('--prop-name', dest='extract_prop_name', type=str,
+                                help='Property name used for extracting items.')
+    parser_extract.add_argument('--prop-value', dest='extract_prop_value', type=str,
+                                help='Property value used for extracting items.')
     parser_clone = subparsers.add_parser('clone',
                                          help='Copy objects to a separate file '
                                               'and update their property with a new value',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    # parser_list_items = subparsers.add_parser('list-items', help="List items from Jira, like projects")
-    # list_options = parser_list_items.add_mutually_exclusive_group()
-    # list_options.add_argument('-ap', '--available-projects', action='store_true', dest='available_jira_projects',
-    #                           help='Lists all projects available in Jira')
-    # list_options.add_argument('-af', '--available-fields', action='store_true', dest='available_jira_fields',
-    #                           help='Lists all fields available in Jira')
+    parser_clone.add_argument('clone_src_file', type=pathlib.Path,
+                              help='Source config file from which you want to clone items')
+    parser_clone.add_argument('--prop-name', dest='clone_prop_name', type=str,
+                              help='Name of the property to update in cloned items.')
+    parser_clone.add_argument('--prop-value', dest='clone_prop_value', type=str, default='',
+                              help='Current value of the property. Only items'
+                                   ' with this property value are cloned.')
+    parser_clone.add_argument('--new-prop-value', dest='clone_new_prop_value', type=str,
+                              help='New value of the property used in cloned items.')
 
     args = parser.parse_args()
     current_working_dir = Path.cwd()
@@ -279,9 +290,25 @@ def main():
                                                     args.update_new_prop_value)
         save_json_file(output_dir / file_name, updated_items)
     elif args.command == 'extract':
-        pass
+        logger.info(
+            f'Extracting items that have "{args.extract_prop_name}" set to "{args.extract_prop_value}" from "{args.extract_src_file}".')
+        updated_items, extracted_items = extract_objects_by_property(args.extract_src_file, args.extract_prop_name,
+                                                                     args.extract_prop_value)
+        file_name_updated_items = output_file_name.safe_substitute(
+            info=f'removed-{args.extract_prop_name}-{args.extract_prop_value}')
+        save_json_file(output_dir / file_name_updated_items, updated_items)
+        file_name_extracted_items = output_file_name.safe_substitute(
+            info=f'{args.extract_prop_name}-{args.extract_prop_value}')
+        save_json_file(output_dir / file_name_extracted_items, extracted_items)
     elif args.command == 'clone':
-        pass
+        logger.info(
+            f'Cloning items that have "{args.clone_prop_name}" set to "{args.clone_prop_value}" from "{args.clone_src_file}" and updating the property value to "{args.clone_new_prop_value}".')
+        file_name = output_file_name.safe_substitute(
+            info=f'{args.clone_prop_name}-{args.clone_prop_value}-to-{args.clone_new_prop_value}')
+        cloned_items = clone_objects_with_updated_property(args.clone_src_file, args.clone_prop_name,
+                                                           args.clone_prop_value,
+                                                           args.clone_new_prop_value)
+        save_json_file(output_dir / file_name, cloned_items)
 
 
 if __name__ == '__main__':
