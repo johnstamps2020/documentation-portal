@@ -1,6 +1,6 @@
 # TODO: Support all the operations for sources and builds:
 # TODO: Add a CLI (argparse)
-# TODO: Add support for props that are not lists
+# TODO: Add support for props that are not lists (str, bool)
 import argparse
 import json
 import logging
@@ -33,6 +33,8 @@ def sort_list_of_objects(objects_to_sort: list, sort_key: str):
 
 
 def get_object_property(obj: dict, property_name: str) -> str:
+    # KeyError is raised when the prop doesn't exist. It is ok because we can only split the file if all objects
+    # have the property by which splitting is done
     keys = property_name.split('.')
     if len(keys) == 2:
         return obj[keys[0]][keys[1]]
@@ -120,9 +122,29 @@ def remove_objects_by_property(src_file: Path, property_name: str,
     }
 
 
+def update_property_for_objects(src_file: Path, property_name: str, current_property_value: str,
+                                new_property_value) -> dict:
+    root_key_name, sorted_objects_to_update = get_root_object(src_file)
+    updated_objects = []
+    if current_property_value:
+        for obj in sorted_objects_to_update:
+            if get_object_property(obj, property_name) and current_property_value.casefold() in [value.casefold() for
+                                                                                                 value
+                                                                                                 in get_object_property(
+                    obj, property_name)]:
+                set_object_property(obj, property_name, new_property_value)
+            updated_objects.append(obj)
+    else:
+        for obj in sorted_objects_to_update:
+            set_object_property(obj, property_name, new_property_value)
+            updated_objects.append(obj)
+    return {
+        root_key_name: updated_objects
+    }
+
+
 def extract_objects_by_property(src_file: Path, root_object_name: str, property_name: str,
                                 property_value: str) -> tuple:
-    """Copy objects to a separate list and remove them from the original list"""
     objects_to_update = load_json_file(src_file)[root_object_name]
     objects_to_update_sorted_by_id = sort_list_of_objects(objects_to_update, 'id')
     updated_objects = []
@@ -134,26 +156,6 @@ def extract_objects_by_property(src_file: Path, root_object_name: str, property_
             updated_objects.append(obj)
 
     return updated_objects, extracted_objects
-
-
-def update_property_for_objects(src_file: Path, root_object_name: str, property_name: str,
-                                new_property_value, current_property_value: str = '') -> list:
-    objects_to_update = load_json_file(src_file)[root_object_name]
-    objects_to_update_sorted_by_id = sort_list_of_objects(objects_to_update, 'id')
-    updated_objects = []
-    if current_property_value:
-        for obj in objects_to_update_sorted_by_id:
-            if get_object_property(obj, property_name) and current_property_value.casefold() in [value.casefold() for
-                                                                                                 value
-                                                                                                 in get_object_property(
-                    obj, property_name)]:
-                set_object_property(obj, property_name, new_property_value)
-            updated_objects.append(obj)
-    else:
-        for obj in objects_to_update_sorted_by_id:
-            set_object_property(obj, property_name, new_property_value)
-            updated_objects.append(obj)
-    return updated_objects
 
 
 def clone_objects_with_updated_property(src_file: Path, root_object_name: str, property_name: str,
@@ -169,6 +171,7 @@ def clone_objects_with_updated_property(src_file: Path, root_object_name: str, p
 
 
 def main():
+    # TODO: Add required=True where needed
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
     parser_merge = subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
@@ -194,6 +197,16 @@ def main():
                                help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_update.add_argument('update_src_file', type=pathlib.Path,
+                               help='Source config file in which you want to update items')
+    parser_update.add_argument('--prop-name', dest='update_prop_name', type=str,
+                               help='Name of the property to update')
+    parser_update.add_argument('--prop-value', dest='update_prop_value', type=str, default='',
+                               help='Current value of the property. If provided, the property is updated only in items'
+                                    ' with this property value. Otherwise, the property is updated in all items.')
+    parser_update.add_argument('--new-prop-value', dest='update_new_prop_value', type=str,
+                               help='New value of the property.')
+
     parser_extract = subparsers.add_parser('extract',
                                            help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -246,12 +259,25 @@ def main():
                 save_json_file(output_dir / file_name, item)
     elif args.command == 'remove':
         logger.info(
-            f'Removing items with "{args.remove_prop_value}" in "{args.remove_prop_name}" from "{args.remove_src_file}".')
+            f'Removing items that have "{args.remove_prop_name}" set to "{args.remove_prop_value}" from "{args.remove_src_file}".')
         cleaned_items = remove_objects_by_property(args.remove_src_file, args.remove_prop_name, args.remove_prop_value)
         file_name = output_file_name.safe_substitute(info=f'{args.remove_prop_name}-{args.remove_prop_value}')
         save_json_file(output_dir / file_name, cleaned_items)
     elif args.command == 'update':
-        pass
+        if args.update_prop_value:
+            logger.info(
+                f'Updating "{args.update_prop_name}" to "{args.update_new_prop_value}" in items that have "{args.update_prop_name}" set to "{args.update_prop_value}" in "{args.update_src_file}".')
+            file_name = output_file_name.safe_substitute(
+                info=f'{args.update_prop_name}-{args.update_new_prop_value}-from-{args.update_prop_value}')
+        else:
+            logger.info(
+                f'Updating "{args.update_prop_name}" to "{args.update_new_prop_value}" in all items in "{args.update_src_file}".')
+            file_name = output_file_name.safe_substitute(
+                info=f'{args.update_prop_name}-{args.update_new_prop_value}-all')
+
+        updated_items = update_property_for_objects(args.update_src_file, args.update_prop_name, args.update_prop_value,
+                                                    args.update_new_prop_value)
+        save_json_file(output_dir / file_name, updated_items)
     elif args.command == 'extract':
         pass
     elif args.command == 'clone':
