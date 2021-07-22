@@ -2,6 +2,8 @@
 # TODO: Add a CLI (argparse)
 # TODO: Add support for props that are not lists (str, bool)
 # TODO: Add an option to create an empty config with several docs or sources or builds
+# TODO: Reduce the number of functions: base funcs - copy, update, remove and then combine them to cover flows.
+# Merge, update, remove, extract (copy and remove), clone (copy), clone with new value (copy and update value)
 import argparse
 import json
 import logging
@@ -65,6 +67,18 @@ def get_root_object(json_file_path: Path) -> tuple:
     return root_key_name, root_key_items_sorted_by_id
 
 
+def filter_objects_by_property_value(objects_to_filter: list, property_name: str, property_value):
+    property_type = type(get_object_property(objects_to_filter[0], property_name))
+    if property_type is list:
+        return [obj for obj in objects_to_filter
+                if property_value.casefold() in [
+                    value.casefold() for value in get_object_property(obj, property_name)]
+                ]
+    else:
+        return [obj for obj in objects_to_filter
+                if property_value.casefold() == get_object_property(obj, property_name).casefold()]
+
+
 def merge_objects(src_dir: Path) -> dict:
     root_key_names = []
     all_elements = []
@@ -86,26 +100,24 @@ def merge_objects(src_dir: Path) -> dict:
 def split_objects_into_chunks(src_file: Path, chunk_size: int) -> list:
     root_key_name, sorted_objects_to_split = get_root_object(src_file)
     return [{
-                root_key_name: sorted_objects_to_split[i:i + chunk_size]
-            } for i in range(0, len(sorted_objects_to_split), chunk_size)]
+        root_key_name: sorted_objects_to_split[i:i + chunk_size]
+    } for i in range(0, len(sorted_objects_to_split), chunk_size)]
 
 
 def split_objects_by_property(src_file: Path, property_name: str) -> list:
     root_key_name, sorted_objects_to_split = get_root_object(src_file)
-    unique_property_values = []
-    for obj in sorted_objects_to_split:
-        [unique_property_values.append(property_value) for property_value in get_object_property(obj, property_name) if
-         property_value not in unique_property_values]
+    property_values = [get_object_property(obj, property_name) for obj in sorted_objects_to_split]
+    unique_property_values = {
+        ', '.join(value) if type(value) is list else value
+        for value in property_values
+    }
+
     return [
         {
             'property_name': property_name,
             'property_value': unique_property_value,
-            root_key_name: [
-                obj
-                for obj in sorted_objects_to_split
-                if unique_property_value
-                in get_object_property(obj, property_name)
-            ],
+            root_key_name: filter_objects_by_property_value(sorted_objects_to_split, property_name,
+                                                            unique_property_value)
         }
         for unique_property_value in unique_property_values
     ]
