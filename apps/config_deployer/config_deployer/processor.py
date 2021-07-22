@@ -79,11 +79,11 @@ def filter_objects_by_property_value(objects_to_filter: list, property_name: str
                 if property_value.casefold() == get_object_property(obj, property_name).casefold()]
 
 
-def merge_objects(src_dir: Path) -> dict:
+def merge_objects(objects_to_merge: list) -> dict:
     root_key_names = []
     all_elements = []
-    for src_file in src_dir.rglob('*.json'):
-        root_key_name, sorted_objects_to_merge = get_root_object(src_file)
+    for obj_info in objects_to_merge:
+        root_key_name, sorted_objects_to_merge = obj_info
         root_key_names.append(root_key_name)
         all_elements += sorted_objects_to_merge
     unique_root_key_names = set(root_key_names)
@@ -97,16 +97,14 @@ def merge_objects(src_dir: Path) -> dict:
         }
 
 
-def split_objects_into_chunks(src_file: Path, chunk_size: int) -> list:
-    root_key_name, sorted_objects_to_split = get_root_object(src_file)
+def split_objects_into_chunks(key_name: str, objects_to_split: list, chunk_size: int) -> list:
     return [{
-        root_key_name: sorted_objects_to_split[i:i + chunk_size]
-    } for i in range(0, len(sorted_objects_to_split), chunk_size)]
+        key_name: objects_to_split[i:i + chunk_size]
+    } for i in range(0, len(objects_to_split), chunk_size)]
 
 
-def split_objects_by_property(src_file: Path, property_name: str) -> list:
-    root_key_name, sorted_objects_to_split = get_root_object(src_file)
-    property_values = [get_object_property(obj, property_name) for obj in sorted_objects_to_split]
+def split_objects_by_property(key_name: str, objects_to_split: list, property_name: str) -> list:
+    property_values = [get_object_property(obj, property_name) for obj in objects_to_split]
     unique_property_values = {
         ', '.join(value) if type(value) is list else value
         for value in property_values
@@ -116,58 +114,48 @@ def split_objects_by_property(src_file: Path, property_name: str) -> list:
         {
             'property_name': property_name,
             'property_value': unique_property_value,
-            root_key_name: filter_objects_by_property_value(sorted_objects_to_split, property_name,
-                                                            unique_property_value)
+            key_name: filter_objects_by_property_value(objects_to_split, property_name,
+                                                       unique_property_value)
         }
         for unique_property_value in unique_property_values
     ]
 
 
-def remove_objects_by_property(src_file: Path, property_name: str,
+def remove_objects_by_property(key_name: str, all_objects: list, property_name: str,
                                property_value) -> dict:
-    root_key_name, sorted_all_objects = get_root_object(src_file)
-    objects_to_remove = filter_objects_by_property_value(sorted_all_objects, property_name, property_value)
-    updated_objects = [obj for obj in sorted_all_objects if obj not in objects_to_remove]
+    objects_to_remove = filter_objects_by_property_value(all_objects, property_name, property_value)
+    updated_objects = [obj for obj in all_objects if obj not in objects_to_remove]
     return {
-        root_key_name: updated_objects
+        key_name: updated_objects
     }
 
 
-def update_property_for_objects(src_file: Path, property_name: str, current_property_value,
+def update_property_for_objects(key_name: str, all_objects: list, property_name: str, current_property_value,
                                 new_property_value) -> dict:
-    root_key_name, sorted_objects_to_update = get_root_object(src_file)
-    updated_objects = []
-    for obj in sorted_objects_to_update:
-        if current_property_value:
-            if get_object_property(obj, property_name) and current_property_value.casefold() in [value.casefold() for
-                                                                                                 value
-                                                                                                 in get_object_property(
-                    obj, property_name)]:
-                set_object_property(obj, property_name, new_property_value)
-        else:
-            set_object_property(obj, property_name, new_property_value)
-        updated_objects.append(obj)
+    objects_to_update = all_objects
+    if current_property_value:
+        objects_to_update = filter_objects_by_property_value(all_objects, property_name, current_property_value)
+    updated_objects = [set_object_property(obj, property_name, new_property_value) if
+                       obj in objects_to_update else obj for obj in all_objects]
     return {
-        root_key_name: updated_objects
+        key_name: updated_objects
     }
 
 
-def extract_objects_by_property(src_file: Path, property_name: str,
+def extract_objects_by_property(key_name: str, all_objects: list, property_name: str,
                                 property_value) -> tuple:
-    root_key_name, sorted_all_objects = get_root_object(src_file)
-    extracted_objects = filter_objects_by_property_value(sorted_all_objects, property_name, property_value)
-    updated_objects = [obj for obj in sorted_all_objects if obj not in extracted_objects]
+    extracted_objects = filter_objects_by_property_value(all_objects, property_name, property_value)
+    updated_objects = [obj for obj in all_objects if obj not in extracted_objects]
 
-    return {root_key_name: updated_objects}, {root_key_name: extracted_objects}
+    return {key_name: updated_objects}, {key_name: extracted_objects}
 
 
-def clone_objects_with_updated_property(src_file: Path, property_name: str,
+def clone_objects_with_updated_property(key_name: str, all_objects: list, property_name: str,
                                         current_property_value, new_property_value) -> dict:
-    root_key_name, sorted_all_objects = get_root_object(src_file)
     cloned_objects = [set_object_property(obj, property_name, new_property_value) for obj in
-                      filter_objects_by_property_value(sorted_all_objects, property_name, current_property_value)]
+                      filter_objects_by_property_value(all_objects, property_name, current_property_value)]
     return {
-        root_key_name: cloned_objects
+        key_name: cloned_objects
     }
 
 
@@ -177,58 +165,58 @@ def main():
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
     parser_merge = subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_merge.add_argument('merge_src_dir', type=pathlib.Path, help='Source dir with config files to merge')
+    parser_merge.add_argument('src_dir', type=pathlib.Path, help='Source dir with config files to merge')
     parser_split = subparsers.add_parser('split',
                                          help='Split the config file into smaller files'
                                               ' based on a chunk size or a property',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_split.add_argument('split_src_file', type=pathlib.Path, help='Source config file to split')
+    parser_split.add_argument('src_file', type=pathlib.Path, help='Source config file to split')
     split_options = parser_split.add_mutually_exclusive_group()
-    split_options.add_argument('--chunk-size', dest='split_chunk_size', type=int,
+    split_options.add_argument('--chunk-size', dest='chunk_size', type=int,
                                help='Number of items in a single config file.')
-    split_options.add_argument('--prop-name', dest='split_prop_name', type=str,
+    split_options.add_argument('--prop-name', dest='prop_name', type=str,
                                help='Property name by which the config file is split.')
     parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_remove.add_argument('remove_src_file', type=pathlib.Path,
+    parser_remove.add_argument('src_file', type=pathlib.Path,
                                help='Source config file from which you want to remove items')
-    parser_remove.add_argument('--prop-name', dest='remove_prop_name', type=str,
+    parser_remove.add_argument('--prop-name', dest='prop_name', type=str,
                                help='Property name used for removing items.')
-    parser_remove.add_argument('--prop-value', dest='remove_prop_value', type=str,
+    parser_remove.add_argument('--prop-value', dest='prop_value', type=str,
                                help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_update.add_argument('update_src_file', type=pathlib.Path,
+    parser_update.add_argument('src_file', type=pathlib.Path,
                                help='Source config file in which you want to update items')
-    parser_update.add_argument('--prop-name', dest='update_prop_name', type=str,
+    parser_update.add_argument('--prop-name', dest='prop_name', type=str,
                                help='Name of the property to update')
-    parser_update.add_argument('--prop-value', dest='update_prop_value', type=str, default='',
+    parser_update.add_argument('--prop-value', dest='prop_value', type=str, default='',
                                help='Current value of the property. If provided, the property is updated only in items'
                                     ' with this property value. Otherwise, the property is updated in all items.')
-    parser_update.add_argument('--new-prop-value', dest='update_new_prop_value', type=str,
+    parser_update.add_argument('--new-prop-value', dest='new_prop_value', type=str,
                                help='New value of the property.')
 
     parser_extract = subparsers.add_parser('extract',
                                            help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_extract.add_argument('extract_src_file', type=pathlib.Path,
+    parser_extract.add_argument('src_file', type=pathlib.Path,
                                 help='Source config file from which you want to extract items')
-    parser_extract.add_argument('--prop-name', dest='extract_prop_name', type=str,
+    parser_extract.add_argument('--prop-name', dest='prop_name', type=str,
                                 help='Property name used for extracting items.')
-    parser_extract.add_argument('--prop-value', dest='extract_prop_value', type=str,
+    parser_extract.add_argument('--prop-value', dest='prop_value', type=str,
                                 help='Property value used for extracting items.')
     parser_clone = subparsers.add_parser('clone',
                                          help='Copy objects to a separate file '
                                               'and update their property with a new value',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_clone.add_argument('clone_src_file', type=pathlib.Path,
+    parser_clone.add_argument('src_file', type=pathlib.Path,
                               help='Source config file from which you want to clone items')
-    parser_clone.add_argument('--prop-name', dest='clone_prop_name', type=str,
+    parser_clone.add_argument('--prop-name', dest='prop_name', type=str,
                               help='Name of the property to update in cloned items.')
-    parser_clone.add_argument('--prop-value', dest='clone_prop_value', type=str, default='',
+    parser_clone.add_argument('--prop-value', dest='prop_value', type=str, default='',
                               help='Current value of the property. Only items'
                                    ' with this property value are cloned.')
-    parser_clone.add_argument('--new-prop-value', dest='clone_new_prop_value', type=str,
+    parser_clone.add_argument('--new-prop-value', dest='new_prop_value', type=str,
                               help='New value of the property used in cloned items.')
 
     args = parser.parse_args()
@@ -248,66 +236,75 @@ def main():
     output_file_name = Template(f'_{args.command}-$info.json')
     output_dir.mkdir(exist_ok=True)
 
+    src_path = getattr(args, 'src_dir', None) or getattr(args, 'src_file', None)
+
     if args.command == 'merge':
-        logger.info(f'Merging files in "{str(args.merge_src_dir)}".')
-        all_items = merge_objects(args.merge_src_dir)
+        logger.info(f'Merging files in "{str(src_path)}".')
+        root_key_objects_pairs = [get_root_object(obj) for obj in
+                                  src_path.rglob('*.json')]
+        all_items = merge_objects(root_key_objects_pairs)
         file_name = output_file_name.safe_substitute(info='all')
         save_json_file(output_dir / file_name, all_items)
-    elif args.command == 'split':
-        if args.split_chunk_size:
-            logger.info(f'Splitting "{str(args.split_src_file)}" into chunks of {args.split_chunk_size}.')
-            chunked_items = split_objects_into_chunks(args.split_src_file, args.split_chunk_size)
-            for chunk_number, chunk in enumerate(chunked_items):
-                file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
-                save_json_file(output_dir / file_name, chunk)
-        elif args.split_prop_name:
-            logger.info(f'Splitting "{str(args.split_src_file)}" by "{args.split_prop_name}".')
-            split_items = split_objects_by_property(args.split_src_file, args.split_prop_name)
-            for item in split_items:
+    else:
+        root_key_name, root_key_objects = get_root_object(src_path)
+        if args.command == 'split':
+            if args.chunk_size:
+                logger.info(f'Splitting "{str(src_path)}" into chunks of {args.chunk_size}.')
+                chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
+                for chunk_number, chunk in enumerate(chunked_items):
+                    file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
+                    save_json_file(output_dir / file_name, chunk)
+            elif args.prop_name:
+                logger.info(f'Splitting "{str(src_path)}" by "{args.prop_name}".')
+                split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
+                for item in split_items:
+                    file_name = output_file_name.safe_substitute(
+                        info=f'{item["property_name"].casefold()}-{item["property_value"].casefold()}')
+                    save_json_file(output_dir / file_name, item)
+        elif args.command == 'remove':
+            logger.info(
+                f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
+            cleaned_items = remove_objects_by_property(root_key_name, root_key_objects, args.prop_name,
+                                                       args.prop_value)
+            file_name = output_file_name.safe_substitute(info=f'{args.prop_name}-{args.prop_value}')
+            save_json_file(output_dir / file_name, cleaned_items)
+        elif args.command == 'update':
+            if args.prop_value:
+                logger.info(
+                    f'Updating "{args.prop_name}" to "{args.new_prop_value}" in items that have "{args.prop_name}" set to "{args.prop_value}" in "{src_path}".')
                 file_name = output_file_name.safe_substitute(
-                    info=f'{item["property_name"].casefold()}-{item["property_value"].casefold()}')
-                save_json_file(output_dir / file_name, item)
-    elif args.command == 'remove':
-        logger.info(
-            f'Removing items that have "{args.remove_prop_name}" set to "{args.remove_prop_value}" from "{args.remove_src_file}".')
-        cleaned_items = remove_objects_by_property(args.remove_src_file, args.remove_prop_name, args.remove_prop_value)
-        file_name = output_file_name.safe_substitute(info=f'{args.remove_prop_name}-{args.remove_prop_value}')
-        save_json_file(output_dir / file_name, cleaned_items)
-    elif args.command == 'update':
-        if args.update_prop_value:
-            logger.info(
-                f'Updating "{args.update_prop_name}" to "{args.update_new_prop_value}" in items that have "{args.update_prop_name}" set to "{args.update_prop_value}" in "{args.update_src_file}".')
-            file_name = output_file_name.safe_substitute(
-                info=f'{args.update_prop_name}-{args.update_new_prop_value}-from-{args.update_prop_value}')
-        else:
-            logger.info(
-                f'Updating "{args.update_prop_name}" to "{args.update_new_prop_value}" in all items in "{args.update_src_file}".')
-            file_name = output_file_name.safe_substitute(
-                info=f'{args.update_prop_name}-{args.update_new_prop_value}-all')
+                    info=f'{args.prop_name}-{args.new_prop_value}-from-{args.prop_value}')
+            else:
+                logger.info(
+                    f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{src_path}".')
+                file_name = output_file_name.safe_substitute(
+                    info=f'{args.prop_name}-{args.new_prop_value}-all')
 
-        updated_items = update_property_for_objects(args.update_src_file, args.update_prop_name, args.update_prop_value,
-                                                    args.update_new_prop_value)
-        save_json_file(output_dir / file_name, updated_items)
-    elif args.command == 'extract':
-        logger.info(
-            f'Extracting items that have "{args.extract_prop_name}" set to "{args.extract_prop_value}" from "{args.extract_src_file}".')
-        updated_items, extracted_items = extract_objects_by_property(args.extract_src_file, args.extract_prop_name,
-                                                                     args.extract_prop_value)
-        file_name_updated_items = output_file_name.safe_substitute(
-            info=f'removed-{args.extract_prop_name}-{args.extract_prop_value}')
-        save_json_file(output_dir / file_name_updated_items, updated_items)
-        file_name_extracted_items = output_file_name.safe_substitute(
-            info=f'{args.extract_prop_name}-{args.extract_prop_value}')
-        save_json_file(output_dir / file_name_extracted_items, extracted_items)
-    elif args.command == 'clone':
-        logger.info(
-            f'Cloning items that have "{args.clone_prop_name}" set to "{args.clone_prop_value}" from "{args.clone_src_file}" and updating the property value to "{args.clone_new_prop_value}".')
-        file_name = output_file_name.safe_substitute(
-            info=f'{args.clone_prop_name}-{args.clone_prop_value}-to-{args.clone_new_prop_value}')
-        cloned_items = clone_objects_with_updated_property(args.clone_src_file, args.clone_prop_name,
-                                                           args.clone_prop_value,
-                                                           args.clone_new_prop_value)
-        save_json_file(output_dir / file_name, cloned_items)
+            updated_items = update_property_for_objects(root_key_name, root_key_objects, args.prop_name,
+                                                        args.prop_value,
+                                                        args.new_prop_value)
+            save_json_file(output_dir / file_name, updated_items)
+        elif args.command == 'extract':
+            logger.info(
+                f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
+            updated_items, extracted_items = extract_objects_by_property(root_key_name, root_key_objects,
+                                                                         args.prop_name,
+                                                                         args.prop_value)
+            file_name_updated_items = output_file_name.safe_substitute(
+                info=f'removed-{args.prop_name}-{args.prop_value}')
+            save_json_file(output_dir / file_name_updated_items, updated_items)
+            file_name_extracted_items = output_file_name.safe_substitute(
+                info=f'{args.prop_name}-{args.prop_value}')
+            save_json_file(output_dir / file_name_extracted_items, extracted_items)
+        elif args.command == 'clone':
+            logger.info(
+                f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
+            file_name = output_file_name.safe_substitute(
+                info=f'{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
+            cloned_items = clone_objects_with_updated_property(root_key_name, root_key_objects, args.prop_name,
+                                                               args.prop_value,
+                                                               args.new_prop_value)
+            save_json_file(output_dir / file_name, cloned_items)
 
 
 if __name__ == '__main__':
