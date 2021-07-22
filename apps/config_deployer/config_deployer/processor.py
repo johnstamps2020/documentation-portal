@@ -52,26 +52,47 @@ def set_object_property(obj: dict, property_name: str, property_value) -> dict:
     return obj
 
 
-def merge_objects(src_dir: Path, root_object_name: str) -> list:
+def get_root_object(json_file_path: Path) -> tuple:
+    json_data = load_json_file(json_file_path)
+    root_key_name = next((key for key in json_data.keys() if not key.startswith('$')), None)
+    root_key_items = json_data[root_key_name]
+    root_key_items_sorted_by_id = sort_list_of_objects(root_key_items, 'id')
+    return root_key_name, root_key_items_sorted_by_id
+
+
+def merge_objects(src_dir: Path) -> dict:
+    root_key_names = []
     all_elements = []
-    for file_path in src_dir.rglob('*.json'):
-        json_data = load_json_file(file_path)
-        all_elements += json_data[root_object_name]
-    return sort_list_of_objects(all_elements, 'id')
+    for src_file in src_dir.rglob('*.json'):
+        root_key_name, sorted_objects_to_merge = get_root_object(src_file)
+        root_key_names.append(root_key_name)
+        all_elements += sorted_objects_to_merge
+    unique_root_key_names = set(root_key_names)
+    if len(unique_root_key_names) > 1:
+        raise KeyError(f'Unable to merge files. Multiple root keys were found in config files: '
+                       f'{", ".join(unique_root_key_names)} '
+                       f'Make sure all config files have the same root key. For example: "docs"')
+    else:
+        return {
+            root_key_names[0]: sort_list_of_objects(all_elements, 'id')
+        }
 
 
-def split_objects_into_chunks(src_file: Path, root_object_name: str, chunk_size: int) -> list:
-    objects_to_split = load_json_file(src_file)[root_object_name]
-    objects_to_split_sorted_by_id = sort_list_of_objects(objects_to_split, 'id')
-    for i in range(0, len(objects_to_split_sorted_by_id), chunk_size):
-        yield objects_to_split_sorted_by_id[i:i + chunk_size]
+def split_objects_into_chunks(src_file: Path, chunk_size: int) -> list:
+    split_objects = []
+    root_key_name, sorted_objects_to_split = get_root_object(src_file)
+    for i in range(0, len(sorted_objects_to_split), chunk_size):
+        split_objects.append(
+            {
+                root_key_name: sorted_objects_to_split[i:i + chunk_size]
+            })
+    return split_objects
 
 
-def split_objects_by_property(src_file: Path, root_object_name: str, property_name: str) -> list:
-    objects_to_split = load_json_file(src_file)[root_object_name]
-    objects_to_split_sorted_by_id = sort_list_of_objects(objects_to_split, 'id')
+def split_objects_by_property(src_file: Path, property_name: str) -> list:
+    root_key_name, sorted_objects_to_split = get_root_object(src_file)
     unique_property_values = []
-    for obj in objects_to_split_sorted_by_id:
+    for obj in sorted_objects_to_split:
         [unique_property_values.append(property_value) for property_value in get_object_property(obj, property_name) if
          property_value not in unique_property_values]
     split_objects = []
@@ -79,8 +100,8 @@ def split_objects_by_property(src_file: Path, root_object_name: str, property_na
         split_objects.append({
             'property_name': property_name,
             'property_value': unique_property_value,
-            root_object_name: [obj for obj in objects_to_split_sorted_by_id if
-                               unique_property_value in get_object_property(obj, property_name)]
+            root_key_name: [obj for obj in sorted_objects_to_split if
+                            unique_property_value in get_object_property(obj, property_name)]
 
         })
     return split_objects
@@ -148,21 +169,27 @@ def clone_objects_with_updated_property(src_file: Path, root_object_name: str, p
 def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
-    parser_merge = subparsers.add_parser('merge', help="Merge all config files in a dir into one file",
+    parser_merge = subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_merge.add_argument('src_dir', help="Source dir with config files to merge")
+    parser_merge.add_argument('merge_src_dir', help='Source dir with config files to merge')
     parser_split = subparsers.add_parser('split',
-                                         help="Split the config file into smaller files based on a chunk size or a property",
+                                         help='Split the config file into smaller files based on a chunk size or a property',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_remove = subparsers.add_parser('remove', help="Remove items from the config file",
+    parser_split.add_argument('split_src_file', help='Source config file to split')
+    split_options = parser_split.add_mutually_exclusive_group()
+    split_options.add_argument('--chunk-size', dest='split_chunk_size', type=int,
+                               help='Number of items in a single config file.')
+    split_options.add_argument('--prop-name', dest='split_prop_name',
+                               help='Property name by which the config file is split.')
+    parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_update = subparsers.add_parser('update', help="Update the value of a property in items",
+    parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_extract = subparsers.add_parser('extract',
-                                           help="Copy items to a separate file and remove them from the original file",
+                                           help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_clone = subparsers.add_parser('clone',
-                                         help="Copy objects to a separate file and update their property with a new value",
+                                         help='Copy objects to a separate file and update their property with a new value',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     # parser_list_items = subparsers.add_parser('list-items', help="List items from Jira, like projects")
     # list_options = parser_list_items.add_mutually_exclusive_group()
@@ -189,12 +216,24 @@ def main():
     output_dir.mkdir(exist_ok=True)
 
     if args.command == 'merge':
-        logger.info('Merge option selected.')
-        file_name = output_file_name.safe_substitute(info='docs')
-        all_items = merge_objects(Path(args.src_dir), 'docs')
-        save_json_file(output_dir / file_name, {'docs': all_items})
+        logger.info('Merging files.')
+        all_items = merge_objects(Path(args.merge_src_dir))
+        file_name = output_file_name.safe_substitute(info='all')
+        save_json_file(output_dir / file_name, all_items)
     elif args.command == 'split':
-        pass
+        if args.split_chunk_size:
+            logger.info('Splitting the file by chunk size.')
+            chunked_items = split_objects_into_chunks(Path(args.split_src_file), args.split_chunk_size)
+            for chunk_number, chunk in enumerate(chunked_items):
+                file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
+                save_json_file(output_dir / file_name, chunk)
+        elif args.split_prop_name:
+            logger.info('Splitting the file by property name.')
+            split_items = split_objects_by_property(Path(args.split_src_file), args.split_prop_name)
+            for item in split_items:
+                file_name = output_file_name.safe_substitute(
+                    info=f'_split-docs-{item["property_name"].casefold()}-{item["property_value"].casefold()}')
+                save_json_file(output_dir / file_name, item)
     elif args.command == 'remove':
         pass
     elif args.command == 'update':
