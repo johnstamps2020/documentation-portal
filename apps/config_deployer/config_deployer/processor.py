@@ -84,14 +84,10 @@ def merge_objects(src_dir: Path) -> dict:
 
 
 def split_objects_into_chunks(src_file: Path, chunk_size: int) -> list:
-    split_objects = []
     root_key_name, sorted_objects_to_split = get_root_object(src_file)
-    for i in range(0, len(sorted_objects_to_split), chunk_size):
-        split_objects.append(
-            {
+    return [{
                 root_key_name: sorted_objects_to_split[i:i + chunk_size]
-            })
-    return split_objects
+            } for i in range(0, len(sorted_objects_to_split), chunk_size)]
 
 
 def split_objects_by_property(src_file: Path, property_name: str) -> list:
@@ -100,16 +96,19 @@ def split_objects_by_property(src_file: Path, property_name: str) -> list:
     for obj in sorted_objects_to_split:
         [unique_property_values.append(property_value) for property_value in get_object_property(obj, property_name) if
          property_value not in unique_property_values]
-    split_objects = []
-    for unique_property_value in unique_property_values:
-        split_objects.append({
+    return [
+        {
             'property_name': property_name,
             'property_value': unique_property_value,
-            root_key_name: [obj for obj in sorted_objects_to_split if
-                            unique_property_value in get_object_property(obj, property_name)]
-
-        })
-    return split_objects
+            root_key_name: [
+                obj
+                for obj in sorted_objects_to_split
+                if unique_property_value
+                in get_object_property(obj, property_name)
+            ],
+        }
+        for unique_property_value in unique_property_values
+    ]
 
 
 def remove_objects_by_property(src_file: Path, property_name: str,
@@ -128,18 +127,16 @@ def update_property_for_objects(src_file: Path, property_name: str, current_prop
                                 new_property_value) -> dict:
     root_key_name, sorted_objects_to_update = get_root_object(src_file)
     updated_objects = []
-    if current_property_value:
-        for obj in sorted_objects_to_update:
+    for obj in sorted_objects_to_update:
+        if current_property_value:
             if get_object_property(obj, property_name) and current_property_value.casefold() in [value.casefold() for
                                                                                                  value
                                                                                                  in get_object_property(
                     obj, property_name)]:
                 set_object_property(obj, property_name, new_property_value)
-            updated_objects.append(obj)
-    else:
-        for obj in sorted_objects_to_update:
+        else:
             set_object_property(obj, property_name, new_property_value)
-            updated_objects.append(obj)
+        updated_objects.append(obj)
     return {
         root_key_name: updated_objects
     }
