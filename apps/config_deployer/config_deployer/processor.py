@@ -1,8 +1,11 @@
 # TODO: Support all the operations for sources and builds:
 # TODO: Add a CLI (argparse)
 # TODO: Add support for props that are not lists
+import argparse
 import json
+import logging
 from pathlib import Path
+from string import Template
 
 
 def add_schema_reference(obj: dict):
@@ -21,7 +24,7 @@ def load_json_file(json_file: Path):
 
 def save_json_file(save_path: Path, obj_to_save: dict):
     with open(save_path, 'w') as result_file:
-        json.dump(obj_to_save, result_file, indent=2)
+        json.dump(add_schema_reference(obj_to_save), result_file, indent=2)
 
 
 def sort_list_of_objects(objects_to_sort: list, sort_key: str):
@@ -142,118 +145,65 @@ def clone_objects_with_updated_property(src_file: Path, root_object_name: str, p
     return cloned_objects
 
 
-# Testing part
+def main():
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
+    parser_merge = subparsers.add_parser('merge', help="Merge all config files in a dir into one file",
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_merge.add_argument('src_dir', help="Source dir with config files to merge")
+    parser_split = subparsers.add_parser('split',
+                                         help="Split the config file into smaller files based on a chunk size or a property",
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_remove = subparsers.add_parser('remove', help="Remove items from the config file",
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_update = subparsers.add_parser('update', help="Update the value of a property in items",
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_extract = subparsers.add_parser('extract',
+                                           help="Copy items to a separate file and remove them from the original file",
+                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_clone = subparsers.add_parser('clone',
+                                         help="Copy objects to a separate file and update their property with a new value",
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    # parser_list_items = subparsers.add_parser('list-items', help="List items from Jira, like projects")
+    # list_options = parser_list_items.add_mutually_exclusive_group()
+    # list_options.add_argument('-ap', '--available-projects', action='store_true', dest='available_jira_projects',
+    #                           help='Lists all projects available in Jira')
+    # list_options.add_argument('-af', '--available-fields', action='store_true', dest='available_jira_fields',
+    #                           help='Lists all fields available in Jira')
 
-# merge
-merge_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/merge/input')
+    args = parser.parse_args()
+    current_working_dir = Path.cwd()
+    log_file = current_working_dir / 'admin-panel-cli.log'
+    if log_file.exists():
+        log_file.unlink()
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
 
-merge_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/merge/output')
+    output_dir = current_working_dir / 'out'
+    output_file_name = Template(f'_{args.command}-$info.json')
+    output_dir.mkdir(exist_ok=True)
 
-all_docs = merge_objects(merge_input, 'docs')
-docs_obj = add_schema_reference({
-    'docs': all_docs
-})
-save_json_file(merge_output / '_merge-docs.json', docs_obj)
+    if args.command == 'merge':
+        logger.info('Merge option selected.')
+        file_name = output_file_name.safe_substitute(info='docs')
+        all_items = merge_objects(Path(args.src_dir), 'docs')
+        save_json_file(output_dir / file_name, {'docs': all_items})
+    elif args.command == 'split':
+        pass
+    elif args.command == 'remove':
+        pass
+    elif args.command == 'update':
+        pass
+    elif args.command == 'extract':
+        pass
+    elif args.command == 'clone':
+        pass
 
-# split
-split_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/split/input/docs.json')
-split_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/split/output')
 
-chunked_docs = split_objects_into_chunks(split_input, 'docs', 10)
-for chunk_number, chunk in enumerate(chunked_docs):
-    docs_obj = add_schema_reference(
-        {
-            'docs': chunk
-        }
-    )
-    save_json_file(split_output / f'_split-docs-chunk-{chunk_number}.json', docs_obj)
-
-docs_by_product = split_objects_by_property(split_input, 'docs', 'metadata.product')
-for version_docs_obj in docs_by_product:
-    docs_obj = add_schema_reference(
-        {
-            'docs': version_docs_obj['docs']
-        }
-    )
-    save_json_file(
-        split_output / f'_split-docs-{version_docs_obj["property_name"].casefold()}-{version_docs_obj["property_value"].casefold()}.json',
-        docs_obj)
-
-# remove
-remove_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/remove/input/docs.json')
-remove_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/remove/output')
-
-docs_without_product_bc = remove_objects_by_property(remove_input, 'docs', 'metadata.product', 'BillingCenter')
-no_bc_product_docs_obj = add_schema_reference({
-    'docs': docs_without_product_bc
-})
-save_json_file(remove_output / '_remove-docs-metadata.product-billingcenter.json', no_bc_product_docs_obj)
-
-docs_without_version_1011 = remove_objects_by_property(remove_input, 'docs', 'metadata.version', '10.1.1')
-no_version_1011_docs_obj = add_schema_reference({
-    'docs': docs_without_version_1011
-})
-save_json_file(remove_output / '_remove-docs-metadata.version-10.1.1.json', no_version_1011_docs_obj)
-
-# extract
-extract_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/extract/input/docs.json')
-extract_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/extract/output')
-
-updated_docs, extracted_docs = extract_objects_by_property(extract_input, 'docs', 'metadata.product', 'BillingCenter')
-updated_docs_obj = add_schema_reference({
-    'docs': updated_docs
-})
-extracted_docs_obj = add_schema_reference({
-    'docs': extracted_docs
-})
-save_json_file(extract_output / '_extract-docs-removed-metadata.product-billingcenter.json', updated_docs_obj)
-save_json_file(extract_output / '_extract-docs-metadata.product-billingcenter.json', extracted_docs_obj)
-
-# update
-update_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/update/input/docs.json')
-update_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/update/output')
-
-docs_with_updated_version = update_property_for_objects(update_input, 'docs', 'metadata.version', ['10.1.3'], '10.1.2')
-updated_version_docs_obj = add_schema_reference({
-    'docs': docs_with_updated_version
-})
-save_json_file(update_output / '_update-docs-version-10.1.2-to-10.1.3.json', updated_version_docs_obj)
-
-docs_with_updated_product = update_property_for_objects(update_input, 'docs', 'metadata.product', ['XCenter'],
-                                                        'ClaimCenter')
-updated_product_docs_obj = add_schema_reference({
-    'docs': docs_with_updated_product
-})
-save_json_file(update_output / '_update-docs-product-claimcenter-to-xcenter.json', updated_product_docs_obj)
-
-# clone
-clone_input = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/clone/input/docs.json')
-clone_output = Path(
-    '/Users/mskowron/Documents/GIT-REPOS/documentation-portal/apps/config_deployer/tests/admin_panel_cli/clone/output')
-
-cloned_docs_with_updated_version = clone_objects_with_updated_property(clone_input, 'docs', 'metadata.version',
-                                                                       '9.0.10', ['9.0.11'])
-cloned_version_docs_obj = add_schema_reference({
-    'docs': cloned_docs_with_updated_version
-})
-save_json_file(clone_output / '_clone-docs-metadata.version-9.0.10-to-9.0.11.json', cloned_version_docs_obj)
-
-cloned_docs_with_updated_product = clone_objects_with_updated_property(clone_input, 'docs', 'metadata.product',
-                                                                       'ClaimCenter',
-                                                                       ['ClaimCenter for Guidewire Cloud'])
-cloned_product_docs_obj = add_schema_reference({
-    'docs': cloned_docs_with_updated_product
-})
-save_json_file(clone_output / '_clone-docs-metadata.product-claimcenter-to-claimcenter-for-guidewire-cloud.json',
-               cloned_product_docs_obj)
+if __name__ == '__main__':
+    main()
