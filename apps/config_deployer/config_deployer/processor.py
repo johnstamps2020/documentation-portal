@@ -1,5 +1,8 @@
 # TODO: Add an option to create an empty config with several docs or sources or builds
 import argparse
+import copy
+import datetime
+import hashlib
 import json
 import logging
 import pathlib
@@ -166,6 +169,59 @@ def clone_objects_with_updated_property(key_name: str, all_objects: list, proper
     }
 
 
+def create_new_file(type: str, number_of_objects: int, id_prefix: str):
+    docs_template = {
+        "id": "",
+        "title": "",
+        "url": "",
+        "metadata": {
+            "product": [],
+            "platform": [],
+            "version": [],
+            "release": [],
+            "subject": []
+        },
+        "environments": [],
+        "displayOnLandingPages": True,
+        "indexForSearch": True,
+        "public": False
+    }
+    sources_template = {
+        "id": "",
+        "title": "",
+        "sourceType": "",
+        "gitUrl": "",
+        "branch": "main"
+
+    }
+    builds_template = {
+        "buildType": "",
+        "filter": "",
+        "root": "",
+        "srcId": "",
+        "docId": "",
+        "indexRedirect": False
+    }
+    object_template = {
+        'docs': docs_template,
+        'sources': sources_template,
+        'builds': builds_template
+    }.get(type)
+
+    new_items = []
+    for _ in range(1, number_of_objects + 1):
+        object_instance = copy.deepcopy(object_template)
+        id_hash = hashlib.md5()
+        id_hash.update(str(datetime.datetime.utcnow()).encode("utf-8"))
+        if object_instance.get('id') == '':
+            object_instance['id'] = f'{id_prefix}{id_hash.hexdigest()[:6]}'
+        new_items.append(object_instance)
+
+    return {
+        type: new_items
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('src_path', type=pathlib.Path, help='Path to the source directory or source file. '
@@ -179,6 +235,16 @@ def main():
                         default=f'{Path.cwd() / "out"}')
 
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
+    parser_create = subparsers.add_parser('create',
+                                          help='Create a new config file',
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_create.add_argument('type', type=str, choices=['docs', 'sources', 'builds'],
+                               help='Config file type.')
+    parser_create.add_argument('-n', '--number-of-items', dest='number_of_items', type=int, required=True,
+                               help='Number of items in the file')
+    parser_create.add_argument('-p', '--id-prefix', dest='id_prefix', type=str, default='',
+                               help='Prefix that is added to the "id" property of each item. '
+                                    'Used only for the "docs" and "sources" types.')
     subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_split = subparsers.add_parser('split',
@@ -251,7 +317,14 @@ def main():
         shutil.rmtree(out_dir)
     out_dir.mkdir(exist_ok=True, parents=True)
 
-    if args.command == 'merge':
+    if args.command == 'create':
+        logger.info(
+            f'Creating a new config file with {args.number_of_items} {args.type}.')
+        file_name = output_file_name.safe_substitute(
+            info=f'{args.type}-new')
+        new_items = create_new_file(args.type, args.number_of_items, args.id_prefix)
+        save_json_file(out_dir / file_name, new_items)
+    elif args.command == 'merge':
         logger.info(f'Merging files in "{str(src_path)}".')
         root_key_objects_pairs = [get_root_object(obj) for obj in
                                   src_path.rglob('*.json')]
