@@ -350,21 +350,23 @@ def main():
         shutil.rmtree(out_dir)
     out_dir.mkdir(exist_ok=True, parents=True)
 
-    if args.command == 'create':
+    def run_create_command():
         logger.info(
             f'Creating a new config file with {args.number_of_items} {args.type}.')
         file_name = output_file_name.safe_substitute(
             info=f'{args.type}-new')
         new_items = create_new_file(args.type, args.number_of_items, args.id_prefix)
         save_json_file(out_dir / file_name, new_items)
-    elif args.command == 'merge':
+
+    def run_merge_command():
         logger.info(f'Merging files in "{str(src_path)}".')
         root_key_objects_pairs = [get_root_object(obj) for obj in
                                   src_path.rglob('*.json')]
         all_items = merge_objects(root_key_objects_pairs)
         file_name = output_file_name.safe_substitute(info='all')
         save_json_file(out_dir / file_name, all_items)
-    elif args.command == 'deploy':
+
+    def run_deploy_command():
         logger.info(
             f'Filtering items in {src_path} for the "{args.deploy_env}" environment.')
         root_key_objects_pairs = [get_root_object(obj) for obj in
@@ -372,66 +374,86 @@ def main():
         file_name = 'config.json'
         filtered_items = get_objects_for_deploy_env(root_key_objects_pairs, args.deploy_env)
         save_json_file(out_dir / file_name, filtered_items, add_schema_ref=False)
-    else:
-        root_key_name, root_key_objects = get_root_object(src_path)
-        if args.command == 'split':
-            if args.chunk_size:
-                logger.info(f'Splitting "{str(src_path)}" into chunks of {args.chunk_size}.')
-                chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
-                for chunk_number, chunk in enumerate(chunked_items):
-                    file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
-                    save_json_file(out_dir / file_name, chunk)
-            elif args.prop_name:
-                logger.info(f'Splitting "{str(src_path)}" by "{args.prop_name}".')
-                split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
-                for item in split_items:
-                    file_name = output_file_name.safe_substitute(
-                        info=f'{item["property_name"].casefold()}-{item["property_value"].casefold()}')
-                    save_json_file(out_dir / file_name, item)
-        elif args.command == 'remove':
-            logger.info(
-                f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
-            cleaned_items = remove_objects_by_property(root_key_name, root_key_objects, args.prop_name,
-                                                       args.prop_value)
-            file_name = output_file_name.safe_substitute(info=f'{args.prop_name}-{args.prop_value}')
-            save_json_file(out_dir / file_name, cleaned_items)
-        elif args.command == 'update':
-            if args.prop_value:
-                logger.info(
-                    f'Updating "{args.prop_name}" to "{args.new_prop_value}" in items that have "{args.prop_name}" set to "{args.prop_value}" in "{src_path}".')
-                file_name = output_file_name.safe_substitute(
-                    info=f'{args.prop_name}-{args.new_prop_value}-from-{args.prop_value}')
-            else:
-                logger.info(
-                    f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{src_path}".')
-                file_name = output_file_name.safe_substitute(
-                    info=f'{args.prop_name}-{args.new_prop_value}-all')
 
-            updated_items = update_property_for_objects(root_key_name, root_key_objects, args.prop_name,
-                                                        args.prop_value,
-                                                        args.new_prop_value)
-            save_json_file(out_dir / file_name, updated_items)
-        elif args.command == 'extract':
+    def run_split_command():
+        root_key_name, root_key_objects = get_root_object(src_path)
+        if args.chunk_size:
+            logger.info(f'Splitting "{str(src_path)}" into chunks of {args.chunk_size}.')
+            chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
+            for chunk_number, chunk in enumerate(chunked_items):
+                file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
+                save_json_file(out_dir / file_name, chunk)
+        elif args.prop_name:
+            logger.info(f'Splitting "{str(src_path)}" by "{args.prop_name}".')
+            split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
+            for item in split_items:
+                file_name = output_file_name.safe_substitute(
+                    info=f'{item["property_name"].casefold()}-{item["property_value"].casefold()}')
+                save_json_file(out_dir / file_name, item)
+
+    def run_remove_command():
+        root_key_name, root_key_objects = get_root_object(src_path)
+        logger.info(
+            f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
+        cleaned_items = remove_objects_by_property(root_key_name, root_key_objects, args.prop_name,
+                                                   args.prop_value)
+        file_name = output_file_name.safe_substitute(info=f'{args.prop_name}-{args.prop_value}')
+        save_json_file(out_dir / file_name, cleaned_items)
+
+    def run_update_command():
+        root_key_name, root_key_objects = get_root_object(src_path)
+        if args.prop_value:
             logger.info(
-                f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
-            updated_items, extracted_items = extract_objects_by_property(root_key_name, root_key_objects,
-                                                                         args.prop_name,
-                                                                         args.prop_value)
-            file_name_updated_items = output_file_name.safe_substitute(
-                info=f'removed-{args.prop_name}-{args.prop_value}')
-            save_json_file(out_dir / file_name_updated_items, updated_items)
-            file_name_extracted_items = output_file_name.safe_substitute(
-                info=f'{args.prop_name}-{args.prop_value}')
-            save_json_file(out_dir / file_name_extracted_items, extracted_items)
-        elif args.command == 'clone':
-            logger.info(
-                f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
+                f'Updating "{args.prop_name}" to "{args.new_prop_value}" in items that have "{args.prop_name}" set to "{args.prop_value}" in "{src_path}".')
             file_name = output_file_name.safe_substitute(
-                info=f'{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
-            cloned_items = clone_objects_with_updated_property(root_key_name, root_key_objects, args.prop_name,
-                                                               args.prop_value,
-                                                               args.new_prop_value)
-            save_json_file(out_dir / file_name, cloned_items)
+                info=f'{args.prop_name}-{args.new_prop_value}-from-{args.prop_value}')
+        else:
+            logger.info(
+                f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{src_path}".')
+            file_name = output_file_name.safe_substitute(
+                info=f'{args.prop_name}-{args.new_prop_value}-all')
+
+        updated_items = update_property_for_objects(root_key_name, root_key_objects, args.prop_name,
+                                                    args.prop_value,
+                                                    args.new_prop_value)
+        save_json_file(out_dir / file_name, updated_items)
+
+    def run_extract_command():
+        root_key_name, root_key_objects = get_root_object(src_path)
+        logger.info(
+            f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
+        updated_items, extracted_items = extract_objects_by_property(root_key_name, root_key_objects,
+                                                                     args.prop_name,
+                                                                     args.prop_value)
+        file_name_updated_items = output_file_name.safe_substitute(
+            info=f'removed-{args.prop_name}-{args.prop_value}')
+        save_json_file(out_dir / file_name_updated_items, updated_items)
+        file_name_extracted_items = output_file_name.safe_substitute(
+            info=f'{args.prop_name}-{args.prop_value}')
+        save_json_file(out_dir / file_name_extracted_items, extracted_items)
+
+    def run_clone_command():
+        root_key_name, root_key_objects = get_root_object(src_path)
+        logger.info(
+            f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
+        file_name = output_file_name.safe_substitute(
+            info=f'{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
+        cloned_items = clone_objects_with_updated_property(root_key_name, root_key_objects, args.prop_name,
+                                                           args.prop_value,
+                                                           args.new_prop_value)
+        save_json_file(out_dir / file_name, cloned_items)
+
+    command_to_run = {
+        'create': run_create_command,
+        'merge': run_merge_command,
+        'deploy': run_deploy_command,
+        'split': run_split_command,
+        'remove': run_remove_command,
+        'update': run_update_command,
+        'extract': run_extract_command,
+        'clone': run_clone_command
+    }.get(args.command)
+    command_to_run()
 
 
 if __name__ == '__main__':
