@@ -283,17 +283,20 @@ def main():
     split_options.add_argument('--chunk-size', dest='chunk_size', type=int,
                                help='Number of items in a single config file.')
     split_options.add_argument('--prop-name', dest='prop_name', type=str,
-                               help='Property name by which the config file is split.')
+                               help='Property name by which the config file is split. '
+                                    'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_remove.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                               help='Property name used for removing items.')
+                               help='Property name used for removing items. '
+                                    'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_remove.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                                help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_update.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                               help='Name of the property to update')
+                               help='Name of the property to update. '
+                                    'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_update.add_argument('--prop-value', dest='prop_value', type=str, default='',
                                help='Current value of the property. If provided, the property is updated only in items'
                                     ' with this property value. Otherwise, the property is updated in all items.')
@@ -304,7 +307,8 @@ def main():
                                            help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_extract.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                                help='Property name used for extracting items.')
+                                help='Property name used for extracting items. '
+                                     'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_extract.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                                 help='Property value used for extracting items.')
     parser_clone = subparsers.add_parser('clone',
@@ -312,7 +316,8 @@ def main():
                                               'and update their property value with a new value',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_clone.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                              help='Name of the property to update in cloned items.')
+                              help='Name of the property to update in cloned items. '
+                                   'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_clone.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                               help='Current value of the property. Only items'
                                    ' with this property value are cloned.')
