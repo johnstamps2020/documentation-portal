@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "config_deployer"
-version = "1.0.0"
-description = "An application to clean the search index for the doc portal"
+version = "2.0.0"
+description = "A tool for managing and deploying config files"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"
 repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
