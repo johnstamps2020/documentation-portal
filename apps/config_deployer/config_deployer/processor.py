@@ -1,4 +1,3 @@
-# TODO: Add an option to create an empty config with several docs or sources or builds
 import argparse
 import copy
 import datetime
@@ -9,6 +8,8 @@ import pathlib
 import shutil
 from pathlib import Path
 from string import Template
+
+import itertools
 
 
 def add_schema_reference(obj: dict):
@@ -209,13 +210,15 @@ def create_new_file(type: str, number_of_objects: int, id_prefix: str):
     }.get(type)
 
     new_items = []
-    for _ in range(1, number_of_objects + 1):
-        object_instance = copy.deepcopy(object_template)
-        id_hash = hashlib.md5()
-        id_hash.update(str(datetime.datetime.utcnow()).encode("utf-8"))
-        if object_instance.get('id') == '':
+    if object_template.get('id') == '':
+        for tmp_obj in list(itertools.repeat(object_template, number_of_objects)):
+            object_instance = copy.deepcopy(tmp_obj)
+            id_hash = hashlib.md5()
+            id_hash.update(str(datetime.datetime.utcnow()).encode("utf-8"))
             object_instance['id'] = f'{id_prefix}{id_hash.hexdigest()[:6]}'
-        new_items.append(object_instance)
+            new_items.append(object_instance)
+    else:
+        new_items = list(itertools.repeat(object_template, number_of_objects))
 
     return {
         type: new_items
