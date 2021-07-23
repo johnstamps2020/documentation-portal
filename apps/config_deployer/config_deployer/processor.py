@@ -1,4 +1,3 @@
-# FIXME: Builds don't have 'id' so sorting by id causes an error
 import argparse
 import copy
 import datetime
@@ -35,7 +34,12 @@ def save_json_file(save_path: Path, obj_to_save: dict, add_schema_ref: bool = Tr
         json.dump(obj_to_save, result_file, indent=2)
 
 
-def sort_list_of_objects(objects_to_sort: list, sort_key: str):
+def sort_list_of_objects(objects_to_sort: list, key_name: str):
+    sort_key = {
+        'docs': 'id',
+        'sources': 'id',
+        'builds': 'buildType'
+    }.get(key_name)
     return sorted(objects_to_sort, key=lambda x: x[sort_key])
 
 
@@ -66,7 +70,7 @@ def get_root_object(json_file_path: Path) -> tuple:
     json_data = load_json_file(json_file_path)
     root_key_name = next((key for key in json_data.keys() if not key.startswith('$')), None)
     root_key_items = json_data[root_key_name]
-    root_key_items_sorted_by_id = sort_list_of_objects(root_key_items, 'id')
+    root_key_items_sorted_by_id = sort_list_of_objects(root_key_items, root_key_name)
     return root_key_name, root_key_items_sorted_by_id
 
 
@@ -82,16 +86,21 @@ def filter_objects_by_property_value(objects_to_filter: list, property_name: str
                 if property_value.casefold() == get_object_property(obj, property_name).casefold()]
 
 
-def check_prop_is_unique_in_objects(objects_to_check: list, property_name: str):
-    prop_values = [obj.get(property_name) for obj in objects_to_check]
-    unique_values = []
-    duplicates = []
-    for prop_value in prop_values:
-        if prop_value not in unique_values:
-            unique_values.append(prop_value)
-        else:
-            duplicates.append(prop_value)
-    assert not duplicates, f'Found duplicate {property_name}(s): {duplicates}'
+def check_prop_is_unique_in_objects(objects_to_check: list, key_name: str):
+    property_name = {
+        'docs': 'id',
+        'sources': 'id'
+    }.get(key_name)
+    if property_name:
+        prop_values = [obj.get(property_name) for obj in objects_to_check]
+        unique_values = []
+        duplicates = []
+        for prop_value in prop_values:
+            if prop_value not in unique_values:
+                unique_values.append(prop_value)
+            else:
+                duplicates.append(prop_value)
+        assert not duplicates, f'Found duplicate {property_name}(s): {duplicates}'
 
 
 def merge_objects(objects_to_merge: list) -> dict:
@@ -107,10 +116,10 @@ def merge_objects(objects_to_merge: list) -> dict:
                        f'{", ".join(unique_root_key_names)} '
                        f'Make sure all config files have the same root key. For example: "docs"')
 
-    if [obj.get('id') for obj in all_elements]:
-        check_prop_is_unique_in_objects(all_elements, 'id')
+    root_key_name = root_key_names[0]
+    check_prop_is_unique_in_objects(all_elements, root_key_name)
     return {
-        root_key_names[0]: sort_list_of_objects(all_elements, 'id')
+        root_key_name: sort_list_of_objects(all_elements, root_key_name)
     }
 
 
@@ -185,7 +194,7 @@ def clone_objects_with_updated_property(key_name: str, all_objects: list, proper
     }
 
 
-def create_new_file(type: str, number_of_objects: int, id_prefix: str):
+def create_new_file(root_key_name: str, number_of_objects: int, id_prefix: str):
     docs_template = {
         "id": "",
         "title": "",
@@ -222,7 +231,7 @@ def create_new_file(type: str, number_of_objects: int, id_prefix: str):
         'docs': docs_template,
         'sources': sources_template,
         'builds': builds_template
-    }.get(type)
+    }.get(root_key_name)
 
     new_items = []
     if object_template.get('id') == '':
@@ -232,12 +241,12 @@ def create_new_file(type: str, number_of_objects: int, id_prefix: str):
             id_hash.update(str(datetime.datetime.utcnow()).encode("utf-8"))
             object_instance['id'] = f'{id_prefix}{id_hash.hexdigest()[:6]}'
             new_items.append(object_instance)
-        check_prop_is_unique_in_objects(new_items, 'id')
     else:
         new_items = list(itertools.repeat(object_template, number_of_objects))
 
+    check_prop_is_unique_in_objects(new_items, root_key_name)
     return {
-        type: new_items
+        root_key_name: new_items
     }
 
 
