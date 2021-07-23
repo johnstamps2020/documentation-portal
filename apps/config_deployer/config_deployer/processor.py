@@ -168,15 +168,23 @@ def clone_objects_with_updated_property(key_name: str, all_objects: list, proper
 
 def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('src_path', type=pathlib.Path, help='Path to the source directory or source file. '
+                                                            'For actions performed on multiple files, '
+                                                            'such as "merge" or "deploy", it is a path to the directory '
+                                                            'that contains the files. '
+                                                            'For actions performed on a single file, '
+                                                            'such as "update" or "remove", it is a path to the file.')
+    parser.add_argument('-o', '--out-dir', dest='out_dir', type=pathlib.Path,
+                        help='Path to a directory where the output files are saved',
+                        default=f'{Path.cwd() / "out"}')
+
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
-    parser_merge = subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
-                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_merge.add_argument('src_dir', type=pathlib.Path, help='Source dir with config files to merge')
+    subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
+                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser_split = subparsers.add_parser('split',
                                          help='Split the config file into smaller files'
                                               ' based on a chunk size or a property',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_split.add_argument('src_file', type=pathlib.Path, help='Source config file to split')
     split_options = parser_split.add_mutually_exclusive_group()
     split_options.add_argument('--chunk-size', dest='chunk_size', type=int,
                                help='Number of items in a single config file.')
@@ -184,16 +192,12 @@ def main():
                                help='Property name by which the config file is split.')
     parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_remove.add_argument('src_file', type=pathlib.Path,
-                               help='Source config file from which you want to remove items')
     parser_remove.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Property name used for removing items.')
     parser_remove.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                                help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_update.add_argument('src_file', type=pathlib.Path,
-                               help='Source config file in which you want to update items')
     parser_update.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Name of the property to update')
     parser_update.add_argument('--prop-value', dest='prop_value', type=str, default='',
@@ -205,18 +209,14 @@ def main():
     parser_extract = subparsers.add_parser('extract',
                                            help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_extract.add_argument('src_file', type=pathlib.Path,
-                                help='Source config file from which you want to extract items')
     parser_extract.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                 help='Property name used for extracting items.')
     parser_extract.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                                 help='Property value used for extracting items.')
     parser_clone = subparsers.add_parser('clone',
-                                         help='Copy objects to a separate file '
-                                              'and update their property with a new value',
+                                         help='Copy items to a separate file '
+                                              'and update their property value with a new value',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_clone.add_argument('src_file', type=pathlib.Path,
-                              help='Source config file from which you want to clone items')
     parser_clone.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                               help='Name of the property to update in cloned items.')
     parser_clone.add_argument('--prop-value', dest='prop_value', type=str, required=True,
@@ -227,8 +227,6 @@ def main():
     parser_deploy = subparsers.add_parser('deploy',
                                           help='Filter items in the config file by deployment environment',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_deploy.add_argument('src_dir', type=pathlib.Path,
-                               help='Source config file from which you want to clone items')
     parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging' 'prod'],
                                required=True,
                                help='Name of the environment where the config file will be deployed.')
@@ -246,13 +244,12 @@ def main():
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
-    output_dir = current_working_dir / 'out' / args.command
+    src_path = args.src_path.resolve()
+    out_dir = args.out_dir.resolve()
     output_file_name = Template(f'_{args.command}-$info.json')
-    if output_dir.exists():
-        shutil.rmtree(output_dir)
-    output_dir.mkdir(exist_ok=True, parents=True)
-
-    src_path = getattr(args, 'src_dir', None) or getattr(args, 'src_file', None)
+    if out_dir.exists():
+        shutil.rmtree(out_dir)
+    out_dir.mkdir(exist_ok=True, parents=True)
 
     if args.command == 'merge':
         logger.info(f'Merging files in "{str(src_path)}".')
@@ -260,7 +257,7 @@ def main():
                                   src_path.rglob('*.json')]
         all_items = merge_objects(root_key_objects_pairs)
         file_name = output_file_name.safe_substitute(info='all')
-        save_json_file(output_dir / file_name, all_items)
+        save_json_file(out_dir / file_name, all_items)
     elif args.command == 'deploy':
         logger.info(
             f'Filtering items in {src_path} for the "{args.deploy_env}" environment.')
@@ -268,7 +265,7 @@ def main():
                                   src_path.rglob('*.json')]
         file_name = 'config.json'
         filtered_items = get_objects_for_deploy_env(root_key_objects_pairs, args.deploy_env)
-        save_json_file(output_dir / file_name, filtered_items, add_schema_ref=False)
+        save_json_file(out_dir / file_name, filtered_items, add_schema_ref=False)
     else:
         root_key_name, root_key_objects = get_root_object(src_path)
         if args.command == 'split':
@@ -277,21 +274,21 @@ def main():
                 chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
                 for chunk_number, chunk in enumerate(chunked_items):
                     file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
-                    save_json_file(output_dir / file_name, chunk)
+                    save_json_file(out_dir / file_name, chunk)
             elif args.prop_name:
                 logger.info(f'Splitting "{str(src_path)}" by "{args.prop_name}".')
                 split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
                 for item in split_items:
                     file_name = output_file_name.safe_substitute(
                         info=f'{item["property_name"].casefold()}-{item["property_value"].casefold()}')
-                    save_json_file(output_dir / file_name, item)
+                    save_json_file(out_dir / file_name, item)
         elif args.command == 'remove':
             logger.info(
                 f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
             cleaned_items = remove_objects_by_property(root_key_name, root_key_objects, args.prop_name,
                                                        args.prop_value)
             file_name = output_file_name.safe_substitute(info=f'{args.prop_name}-{args.prop_value}')
-            save_json_file(output_dir / file_name, cleaned_items)
+            save_json_file(out_dir / file_name, cleaned_items)
         elif args.command == 'update':
             if args.prop_value:
                 logger.info(
@@ -307,7 +304,7 @@ def main():
             updated_items = update_property_for_objects(root_key_name, root_key_objects, args.prop_name,
                                                         args.prop_value,
                                                         args.new_prop_value)
-            save_json_file(output_dir / file_name, updated_items)
+            save_json_file(out_dir / file_name, updated_items)
         elif args.command == 'extract':
             logger.info(
                 f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
@@ -316,10 +313,10 @@ def main():
                                                                          args.prop_value)
             file_name_updated_items = output_file_name.safe_substitute(
                 info=f'removed-{args.prop_name}-{args.prop_value}')
-            save_json_file(output_dir / file_name_updated_items, updated_items)
+            save_json_file(out_dir / file_name_updated_items, updated_items)
             file_name_extracted_items = output_file_name.safe_substitute(
                 info=f'{args.prop_name}-{args.prop_value}')
-            save_json_file(output_dir / file_name_extracted_items, extracted_items)
+            save_json_file(out_dir / file_name_extracted_items, extracted_items)
         elif args.command == 'clone':
             logger.info(
                 f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
@@ -328,7 +325,7 @@ def main():
             cloned_items = clone_objects_with_updated_property(root_key_name, root_key_objects, args.prop_name,
                                                                args.prop_value,
                                                                args.new_prop_value)
-            save_json_file(output_dir / file_name, cloned_items)
+            save_json_file(out_dir / file_name, cloned_items)
 
 
 if __name__ == '__main__':
