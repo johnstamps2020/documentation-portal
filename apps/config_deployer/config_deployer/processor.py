@@ -1,3 +1,4 @@
+# FIXME: Builds don't have 'id' so sorting by id causes an error
 import argparse
 import copy
 import datetime
@@ -81,6 +82,18 @@ def filter_objects_by_property_value(objects_to_filter: list, property_name: str
                 if property_value.casefold() == get_object_property(obj, property_name).casefold()]
 
 
+def check_prop_is_unique_in_objects(objects_to_check: list, property_name: str):
+    prop_values = [obj.get(property_name) for obj in objects_to_check]
+    unique_values = []
+    duplicates = []
+    for prop_value in prop_values:
+        if prop_value not in unique_values:
+            unique_values.append(prop_value)
+        else:
+            duplicates.append(prop_value)
+    assert not duplicates, f'Found duplicate {property_name}(s): {duplicates}'
+
+
 def merge_objects(objects_to_merge: list) -> dict:
     root_key_names = []
     all_elements = []
@@ -93,10 +106,12 @@ def merge_objects(objects_to_merge: list) -> dict:
         raise KeyError(f'Unable to merge files. Multiple root keys were found in config files: '
                        f'{", ".join(unique_root_key_names)} '
                        f'Make sure all config files have the same root key. For example: "docs"')
-    else:
-        return {
-            root_key_names[0]: sort_list_of_objects(all_elements, 'id')
-        }
+
+    if [obj.get('id') for obj in all_elements]:
+        check_prop_is_unique_in_objects(all_elements, 'id')
+    return {
+        root_key_names[0]: sort_list_of_objects(all_elements, 'id')
+    }
 
 
 def get_objects_for_deploy_env(objects_to_merge: list, deploy_env: str) -> dict:
@@ -217,6 +232,7 @@ def create_new_file(type: str, number_of_objects: int, id_prefix: str):
             id_hash.update(str(datetime.datetime.utcnow()).encode("utf-8"))
             object_instance['id'] = f'{id_prefix}{id_hash.hexdigest()[:6]}'
             new_items.append(object_instance)
+        check_prop_is_unique_in_objects(new_items, 'id')
     else:
         new_items = list(itertools.repeat(object_template, number_of_objects))
 
