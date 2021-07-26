@@ -179,7 +179,7 @@ def update_property_for_objects(key_name: str, all_objects: list, property_name:
     }
 
 
-def create_new_file(root_key_name: str, number_of_objects: int, id_prefix: str):
+def create_new_objects(root_key_name: str, number_of_objects: int, id_prefix: str):
     docs_template = {
         "id": "",
         "title": "",
@@ -235,14 +235,13 @@ def create_new_file(root_key_name: str, number_of_objects: int, id_prefix: str):
     }
 
 
-def run_command(args: argparse.Namespace):
+def run_command(args: argparse.Namespace()):
     try:
         src_path = args.src_path.resolve()
     except AttributeError:
         src_path = None
 
     out_dir = args.out_dir.resolve()
-    output_file_name = Template(f'_{args.command}-$info.json')
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(exist_ok=True, parents=True)
@@ -258,6 +257,9 @@ def run_command(args: argparse.Namespace):
     ch.setFormatter(formatter)
     logger.addHandler(ch)
 
+    def create_file_name(file_name: str):
+        return f'{file_name.lower()}.json'
+
     def prepare_command_input():
         if src_path.is_dir():
             return [get_root_object(obj) for obj in src_path.rglob('*.json')]
@@ -267,16 +269,15 @@ def run_command(args: argparse.Namespace):
     def run_create_command():
         logger.info(
             f'Creating a new config file with {args.number_of_items} {args.type}.')
-        file_name = output_file_name.safe_substitute(
-            info=f'{args.type}-new')
-        new_items = create_new_file(args.type, args.number_of_items, args.id_prefix)
+        file_name = create_file_name(f'{args.command}-{args.type}-new')
+        new_items = create_new_objects(args.type, args.number_of_items, args.id_prefix)
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, new_items)
 
     def run_merge_command():
         logger.info(f'Merging files in "{str(src_path)}".')
         all_items = merge_objects(prepare_command_input())
-        file_name = output_file_name.safe_substitute(info='all')
+        file_name = create_file_name(f'{args.command}-all')
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, all_items)
 
@@ -294,15 +295,15 @@ def run_command(args: argparse.Namespace):
             logger.info(f'Splitting "{str(src_path)}" into chunks of {args.chunk_size}.')
             chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
             for chunk_number, chunk in enumerate(chunked_items):
-                file_name = output_file_name.safe_substitute(info=f'chunk-{chunk_number}')
+                file_name = create_file_name(f'{args.command}-chunk-{chunk_number}')
                 logger.info(f'Saving output to {out_dir / file_name}')
                 save_json_file(out_dir / file_name, chunk)
         elif args.prop_name:
             logger.info(f'Splitting "{str(src_path)}" by "{args.prop_name}".')
             split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
             for item in split_items:
-                file_name = output_file_name.safe_substitute(
-                    info=f'{item["property_name"].casefold()}-{item["property_value"].casefold()}')
+                file_name = create_file_name(
+                    f'{args.command}-{item["property_name"].casefold()}-{item["property_value"].casefold()}')
                 logger.info(f'Saving output to {out_dir / file_name}')
                 save_json_file(out_dir / file_name, item)
 
@@ -311,7 +312,7 @@ def run_command(args: argparse.Namespace):
             f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
         cleaned_items = remove_objects_by_property(*prepare_command_input(), args.prop_name,
                                                    args.prop_value)
-        file_name = output_file_name.safe_substitute(info=f'{args.prop_name}-{args.prop_value}')
+        file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, cleaned_items)
 
@@ -319,13 +320,12 @@ def run_command(args: argparse.Namespace):
         if args.prop_value:
             logger.info(
                 f'Updating "{args.prop_name}" to "{args.new_prop_value}" in items that have "{args.prop_name}" set to "{args.prop_value}" in "{src_path}".')
-            file_name = output_file_name.safe_substitute(
-                info=f'{args.prop_name}-{args.new_prop_value}-from-{args.prop_value}')
+            file_name = create_file_name(
+                f'{args.command}-{args.prop_name}-{args.new_prop_value}-from-{args.prop_value}')
         else:
             logger.info(
                 f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{src_path}".')
-            file_name = output_file_name.safe_substitute(
-                info=f'{args.prop_name}-{args.new_prop_value}-all')
+            file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.new_prop_value}-all')
 
         updated_items = update_property_for_objects(*prepare_command_input(),
                                                     args.prop_name,
@@ -342,20 +342,17 @@ def run_command(args: argparse.Namespace):
         updated_items = remove_objects_by_property(root_key_name, root_key_objects,
                                                    args.prop_name,
                                                    args.prop_value)
-        file_name_updated_items = output_file_name.safe_substitute(
-            info=f'removed-{args.prop_name}-{args.prop_value}')
+        file_name_updated_items = create_file_name(f'{args.command}-removed-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name_updated_items}')
         save_json_file(out_dir / file_name_updated_items, updated_items)
-        file_name_extracted_items = output_file_name.safe_substitute(
-            info=f'{args.prop_name}-{args.prop_value}')
+        file_name_extracted_items = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name_extracted_items}')
         save_json_file(out_dir / file_name_extracted_items, extracted_items)
 
     def run_clone_command():
         logger.info(
             f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
-        file_name = output_file_name.safe_substitute(
-            info=f'{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
+        file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
         root_key_name, root_key_objects = prepare_command_input()
         copied_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name,
                                                 args.prop_value)
