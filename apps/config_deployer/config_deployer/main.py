@@ -336,9 +336,14 @@ def main():
         shutil.rmtree(out_dir)
     out_dir.mkdir(exist_ok=True, parents=True)
 
-    # TODO: Refactor these functions to avoid duplication
-    # TODO: Create two generic functions using singledispatch from functools.
-    # The functions should behave differently when the src_path is a file and a dir (for dir use glob for json files)
+    def prepare_command_input():
+        if src_path.is_dir():
+            return [get_root_object(obj) for obj in src_path.rglob('*.json')]
+        elif src_path.is_file():
+            return get_root_object(src_path)
+        else:
+            return None
+
     def run_create_command():
         logger.info(
             f'Creating a new config file with {args.number_of_items} {args.type}.')
@@ -350,9 +355,7 @@ def main():
 
     def run_merge_command():
         logger.info(f'Merging files in "{str(src_path)}".')
-        root_key_objects_pairs = [get_root_object(obj) for obj in
-                                  src_path.rglob('*.json')]
-        all_items = merge_objects(root_key_objects_pairs)
+        all_items = merge_objects(prepare_command_input())
         file_name = output_file_name.safe_substitute(info='all')
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, all_items)
@@ -360,15 +363,13 @@ def main():
     def run_deploy_command():
         logger.info(
             f'Filtering items in {src_path} for the "{args.deploy_env}" environment.')
-        root_key_objects_pairs = [get_root_object(obj) for obj in
-                                  src_path.rglob('*.json')]
         file_name = 'config.json'
-        filtered_items = get_objects_for_deploy_env(root_key_objects_pairs, args.deploy_env)
+        filtered_items = get_objects_for_deploy_env(prepare_command_input(), args.deploy_env)
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, filtered_items, add_schema_ref=False)
 
     def run_split_command():
-        root_key_name, root_key_objects = get_root_object(src_path)
+        root_key_name, root_key_objects = prepare_command_input()
         if args.chunk_size:
             logger.info(f'Splitting "{str(src_path)}" into chunks of {args.chunk_size}.')
             chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
@@ -386,17 +387,15 @@ def main():
                 save_json_file(out_dir / file_name, item)
 
     def run_remove_command():
-        root_key_name, root_key_objects = get_root_object(src_path)
         logger.info(
             f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
-        cleaned_items = remove_objects_by_property(root_key_name, root_key_objects, args.prop_name,
+        cleaned_items = remove_objects_by_property(*prepare_command_input(), args.prop_name,
                                                    args.prop_value)
         file_name = output_file_name.safe_substitute(info=f'{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, cleaned_items)
 
     def run_update_command():
-        root_key_name, root_key_objects = get_root_object(src_path)
         if args.prop_value:
             logger.info(
                 f'Updating "{args.prop_name}" to "{args.new_prop_value}" in items that have "{args.prop_name}" set to "{args.prop_value}" in "{src_path}".')
@@ -408,16 +407,17 @@ def main():
             file_name = output_file_name.safe_substitute(
                 info=f'{args.prop_name}-{args.new_prop_value}-all')
 
-        updated_items = update_property_for_objects(root_key_name, root_key_objects, args.prop_name,
+        updated_items = update_property_for_objects(*prepare_command_input(),
+                                                    args.prop_name,
                                                     args.prop_value,
                                                     args.new_prop_value)
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, updated_items)
 
     def run_extract_command():
-        root_key_name, root_key_objects = get_root_object(src_path)
         logger.info(
             f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
+        root_key_name, root_key_objects = prepare_command_input()
         extracted_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name, args.prop_value)
         updated_items = remove_objects_by_property(root_key_name, root_key_objects,
                                                    args.prop_name,
@@ -432,11 +432,11 @@ def main():
         save_json_file(out_dir / file_name_extracted_items, extracted_items)
 
     def run_clone_command():
-        root_key_name, root_key_objects = get_root_object(src_path)
         logger.info(
             f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
         file_name = output_file_name.safe_substitute(
             info=f'{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
+        root_key_name, root_key_objects = prepare_command_input()
         copied_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name,
                                                 args.prop_value)
         updated_items = update_property_for_objects(root_key_name, copied_items[root_key_name], args.prop_name,
@@ -455,6 +455,7 @@ def main():
         'extract': run_extract_command,
         'clone': run_clone_command
     }.get(args.command)
+
     command_to_run()
 
 
