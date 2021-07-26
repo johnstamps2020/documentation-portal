@@ -155,9 +155,15 @@ def split_objects_by_property(key_name: str, objects_to_split: list, property_na
 def remove_objects_by_property(key_name: str, all_objects: list, property_name: str,
                                property_value) -> dict:
     objects_to_remove = filter_objects_by_property_value(all_objects, property_name, property_value)
-    updated_objects = [obj for obj in all_objects if obj not in objects_to_remove]
     return {
-        key_name: updated_objects
+        key_name: [obj for obj in all_objects if obj not in objects_to_remove]
+    }
+
+
+def copy_objects_by_property(key_name: str, all_objects: list, property_name: str,
+                             property_value) -> dict:
+    return {
+        key_name: filter_objects_by_property_value(all_objects, property_name, property_value)
     }
 
 
@@ -170,23 +176,6 @@ def update_property_for_objects(key_name: str, all_objects: list, property_name:
                        obj in objects_to_update else obj for obj in all_objects]
     return {
         key_name: updated_objects
-    }
-
-
-def extract_objects_by_property(key_name: str, all_objects: list, property_name: str,
-                                property_value) -> tuple:
-    extracted_objects = filter_objects_by_property_value(all_objects, property_name, property_value)
-    updated_objects = [obj for obj in all_objects if obj not in extracted_objects]
-
-    return {key_name: updated_objects}, {key_name: extracted_objects}
-
-
-def clone_objects_with_updated_property(key_name: str, all_objects: list, property_name: str,
-                                        current_property_value, new_property_value) -> dict:
-    cloned_objects = [set_object_property(obj, property_name, new_property_value) for obj in
-                      filter_objects_by_property_value(all_objects, property_name, current_property_value)]
-    return {
-        key_name: cloned_objects
     }
 
 
@@ -429,9 +418,10 @@ def main():
         root_key_name, root_key_objects = get_root_object(src_path)
         logger.info(
             f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
-        updated_items, extracted_items = extract_objects_by_property(root_key_name, root_key_objects,
-                                                                     args.prop_name,
-                                                                     args.prop_value)
+        extracted_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name, args.prop_value)
+        updated_items = remove_objects_by_property(root_key_name, root_key_objects,
+                                                   args.prop_name,
+                                                   args.prop_value)
         file_name_updated_items = output_file_name.safe_substitute(
             info=f'removed-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name_updated_items}')
@@ -447,11 +437,13 @@ def main():
             f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
         file_name = output_file_name.safe_substitute(
             info=f'{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
-        cloned_items = clone_objects_with_updated_property(root_key_name, root_key_objects, args.prop_name,
-                                                           args.prop_value,
-                                                           args.new_prop_value)
+        copied_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name,
+                                                args.prop_value)
+        updated_items = update_property_for_objects(root_key_name, copied_items[root_key_name], args.prop_name,
+                                                    args.prop_value,
+                                                    args.new_prop_value)
         logger.info(f'Saving output to {out_dir / file_name}')
-        save_json_file(out_dir / file_name, cloned_items)
+        save_json_file(out_dir / file_name, updated_items)
 
     command_to_run = {
         'create': run_create_command,
