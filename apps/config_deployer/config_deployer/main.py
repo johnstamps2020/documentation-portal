@@ -6,6 +6,7 @@ import json
 import logging
 import pathlib
 import shutil
+from collections import Counter
 from pathlib import Path
 from string import Template
 
@@ -92,15 +93,10 @@ def check_prop_is_unique_in_objects(objects_to_check: list, key_name: str):
         'sources': 'id'
     }.get(key_name)
     if property_name:
-        prop_values = [obj.get(property_name) for obj in objects_to_check]
-        unique_values = []
-        duplicates = []
-        for prop_value in prop_values:
-            if prop_value not in unique_values:
-                unique_values.append(prop_value)
-            else:
-                duplicates.append(prop_value)
-        assert not duplicates, f'Found duplicate {property_name}(s): {duplicates}'
+        property_values_counter = Counter([obj.get(property_name) for obj in objects_to_check])
+        duplicates = [property_value for property_value in property_values_counter if
+                      property_values_counter[property_value] > 1]
+        assert not duplicates, f'Found duplicated values for the {property_name} property: {", ".join(duplicates)}'
 
 
 def merge_objects(objects_to_merge: list) -> dict:
@@ -252,6 +248,7 @@ def create_new_file(root_key_name: str, number_of_objects: int, id_prefix: str):
 
 def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    # FIXME: Create command doesn't need this parameter. Handle it somehow. Make it an optional param?
     parser.add_argument('src_path', type=pathlib.Path, help='Path to the source directory or source file. '
                                                             'For actions performed on multiple files, '
                                                             'such as "merge" or "deploy", it is a path to the directory '
@@ -351,6 +348,8 @@ def main():
     out_dir.mkdir(exist_ok=True, parents=True)
 
     # TODO: Refactor these functions to avoid duplication
+    # TODO: Create two generic functions using singledispatch from functools.
+    # The functions should behave differently when the src_path is a file and a dir (for dir use glob for json files)
     def run_create_command():
         logger.info(
             f'Creating a new config file with {args.number_of_items} {args.type}.')
