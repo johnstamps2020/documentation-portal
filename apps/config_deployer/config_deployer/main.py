@@ -235,96 +235,7 @@ def create_new_file(root_key_name: str, number_of_objects: int, id_prefix: str):
     }
 
 
-def main():
-    _parser_main_dir = argparse.ArgumentParser(add_help=False)
-    _parser_main_dir.add_argument('src_path', type=pathlib.Path,
-                                  help='Path to the source directory with config files')
-    _parser_main_file = argparse.ArgumentParser(add_help=False)
-    _parser_main_file.add_argument('src_path', type=pathlib.Path,
-                                   help='Path to the source config file')
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-o', '--out-dir', dest='out_dir', type=pathlib.Path,
-                        help='Path to a directory where the output files are saved',
-                        default=f'{Path.cwd() / "out"}')
-
-    subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
-    parser_create = subparsers.add_parser('create',
-                                          help='Create a new config file',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_create.add_argument('type', type=str, choices=['docs', 'sources', 'builds'],
-                               help='Config file type.')
-    parser_create.add_argument('-n', '--number-of-items', dest='number_of_items', type=int, required=True,
-                               help='Number of items in the file')
-    parser_create.add_argument('-p', '--id-prefix', dest='id_prefix', type=str, default='',
-                               help='Prefix that is added to the "id" property of each item. '
-                                    'Used only for the "docs" and "sources" types.')
-
-    subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
-                          formatter_class=argparse.ArgumentDefaultsHelpFormatter, parents=[_parser_main_dir])
-
-    parser_deploy = subparsers.add_parser('deploy',
-                                          help='Filter items in the config file by deployment environment',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                          parents=[_parser_main_dir])
-    parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging' 'prod'],
-                               required=True,
-                               help='Name of the environment where the config file will be deployed.')
-
-    parser_split = subparsers.add_parser('split',
-                                         help='Split the config file into smaller files'
-                                              ' based on a chunk size or a property',
-                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                         parents=[_parser_main_file])
-    split_options = parser_split.add_mutually_exclusive_group()
-    split_options.add_argument('--chunk-size', dest='chunk_size', type=int,
-                               help='Number of items in a single config file.')
-    split_options.add_argument('--prop-name', dest='prop_name', type=str,
-                               help='Property name by which the config file is split. '
-                                    'For a nested property, use the dot notation. For example, "metadata.product".')
-    parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                          parents=[_parser_main_file])
-    parser_remove.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                               help='Property name used for removing items. '
-                                    'For a nested property, use the dot notation. For example, "metadata.product".')
-    parser_remove.add_argument('--prop-value', dest='prop_value', type=str, required=True,
-                               help='Property value used for removing items.')
-    parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                          parents=[_parser_main_file])
-    parser_update.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                               help='Name of the property to update. '
-                                    'For a nested property, use the dot notation. For example, "metadata.product".')
-    parser_update.add_argument('--prop-value', dest='prop_value', type=str, default='',
-                               help='Current value of the property. If provided, the property is updated only in items'
-                                    ' with this property value. Otherwise, the property is updated in all items.')
-    parser_update.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
-                               help='New value of the property.')
-
-    parser_extract = subparsers.add_parser('extract',
-                                           help='Copy items to a separate file and remove them from the original file',
-                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                           parents=[_parser_main_file])
-    parser_extract.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                                help='Property name used for extracting items. '
-                                     'For a nested property, use the dot notation. For example, "metadata.product".')
-    parser_extract.add_argument('--prop-value', dest='prop_value', type=str, required=True,
-                                help='Property value used for extracting items.')
-    parser_clone = subparsers.add_parser('clone',
-                                         help='Copy items to a separate file '
-                                              'and update their property value with a new value',
-                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                         parents=[_parser_main_file])
-    parser_clone.add_argument('--prop-name', dest='prop_name', type=str, required=True,
-                              help='Name of the property to update in cloned items. '
-                                   'For a nested property, use the dot notation. For example, "metadata.product".')
-    parser_clone.add_argument('--prop-value', dest='prop_value', type=str, required=True,
-                              help='Current value of the property. Only items'
-                                   ' with this property value are cloned.')
-    parser_clone.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
-                              help='New value of the property used in cloned items.')
-
-    args = parser.parse_args()
+def run_command(args: argparse.Namespace):
     try:
         src_path = args.src_path.resolve()
     except AttributeError:
@@ -352,8 +263,6 @@ def main():
             return [get_root_object(obj) for obj in src_path.rglob('*.json')]
         elif src_path.is_file():
             return get_root_object(src_path)
-        else:
-            return None
 
     def run_create_command():
         logger.info(
@@ -456,7 +365,7 @@ def main():
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, updated_items)
 
-    command_to_run = {
+    return {
         'create': run_create_command,
         'merge': run_merge_command,
         'deploy': run_deploy_command,
@@ -465,9 +374,100 @@ def main():
         'update': run_update_command,
         'extract': run_extract_command,
         'clone': run_clone_command
-    }.get(args.command)
+    }[args.command]()
 
-    command_to_run()
+
+def main():
+    _parser_main_dir = argparse.ArgumentParser(add_help=False)
+    _parser_main_dir.add_argument('src_path', type=pathlib.Path,
+                                  help='Path to the source directory with config files')
+    _parser_main_file = argparse.ArgumentParser(add_help=False)
+    _parser_main_file.add_argument('src_path', type=pathlib.Path,
+                                   help='Path to the source config file')
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('-o', '--out-dir', dest='out_dir', type=pathlib.Path,
+                        help='Path to a directory where the output files are saved',
+                        default=f'{Path.cwd() / "out"}')
+
+    subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
+    parser_create = subparsers.add_parser('create',
+                                          help='Create a new config file',
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_create.add_argument('type', type=str, choices=['docs', 'sources', 'builds'],
+                               help='Config file type.')
+    parser_create.add_argument('-n', '--number-of-items', dest='number_of_items', type=int, required=True,
+                               help='Number of items in the file')
+    parser_create.add_argument('-p', '--id-prefix', dest='id_prefix', type=str, default='',
+                               help='Prefix that is added to the "id" property of each item. '
+                                    'Used only for the "docs" and "sources" types.')
+
+    subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
+                          formatter_class=argparse.ArgumentDefaultsHelpFormatter, parents=[_parser_main_dir])
+
+    parser_deploy = subparsers.add_parser('deploy',
+                                          help='Filter items in the config file by deployment environment',
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                          parents=[_parser_main_dir])
+    parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging' 'prod'],
+                               required=True,
+                               help='Name of the environment where the config file will be deployed.')
+
+    parser_split = subparsers.add_parser('split',
+                                         help='Split the config file into smaller files'
+                                              ' based on a chunk size or a property',
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                         parents=[_parser_main_file])
+    split_options = parser_split.add_mutually_exclusive_group()
+    split_options.add_argument('--chunk-size', dest='chunk_size', type=int,
+                               help='Number of items in a single config file.')
+    split_options.add_argument('--prop-name', dest='prop_name', type=str,
+                               help='Property name by which the config file is split. '
+                                    'For a nested property, use the dot notation. For example, "metadata.product".')
+    parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                          parents=[_parser_main_file])
+    parser_remove.add_argument('--prop-name', dest='prop_name', type=str, required=True,
+                               help='Property name used for removing items. '
+                                    'For a nested property, use the dot notation. For example, "metadata.product".')
+    parser_remove.add_argument('--prop-value', dest='prop_value', type=str, required=True,
+                               help='Property value used for removing items.')
+    parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                          parents=[_parser_main_file])
+    parser_update.add_argument('--prop-name', dest='prop_name', type=str, required=True,
+                               help='Name of the property to update. '
+                                    'For a nested property, use the dot notation. For example, "metadata.product".')
+    parser_update.add_argument('--prop-value', dest='prop_value', type=str, default='',
+                               help='Current value of the property. If provided, the property is updated only in items'
+                                    ' with this property value. Otherwise, the property is updated in all items.')
+    parser_update.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
+                               help='New value of the property.')
+
+    parser_extract = subparsers.add_parser('extract',
+                                           help='Copy items to a separate file and remove them from the original file',
+                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                           parents=[_parser_main_file])
+    parser_extract.add_argument('--prop-name', dest='prop_name', type=str, required=True,
+                                help='Property name used for extracting items. '
+                                     'For a nested property, use the dot notation. For example, "metadata.product".')
+    parser_extract.add_argument('--prop-value', dest='prop_value', type=str, required=True,
+                                help='Property value used for extracting items.')
+    parser_clone = subparsers.add_parser('clone',
+                                         help='Copy items to a separate file '
+                                              'and update their property value with a new value',
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                         parents=[_parser_main_file])
+    parser_clone.add_argument('--prop-name', dest='prop_name', type=str, required=True,
+                              help='Name of the property to update in cloned items. '
+                                   'For a nested property, use the dot notation. For example, "metadata.product".')
+    parser_clone.add_argument('--prop-value', dest='prop_value', type=str, required=True,
+                              help='Current value of the property. Only items'
+                                   ' with this property value are cloned.')
+    parser_clone.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
+                              help='New value of the property used in cloned items.')
+
+    cli_args = parser.parse_args()
+    run_command(cli_args)
 
 
 if __name__ == '__main__':
