@@ -236,14 +236,13 @@ def create_new_file(root_key_name: str, number_of_objects: int, id_prefix: str):
 
 
 def main():
+    _parser_main_dir = argparse.ArgumentParser(add_help=False)
+    _parser_main_dir.add_argument('src_path', type=pathlib.Path,
+                                  help='Path to the source directory with config files')
+    _parser_main_file = argparse.ArgumentParser(add_help=False)
+    _parser_main_file.add_argument('src_path', type=pathlib.Path,
+                                   help='Path to the source config file')
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    # FIXME: Create command doesn't need this parameter. Handle it somehow. Make it an optional param?
-    parser.add_argument('src_path', type=pathlib.Path, help='Path to the source directory or source file. '
-                                                            'For actions performed on multiple files, '
-                                                            'such as "merge" or "deploy", it is a path to the directory '
-                                                            'that contains the files. '
-                                                            'For actions performed on a single file, '
-                                                            'such as "update" or "remove", it is a path to the file.')
     parser.add_argument('-o', '--out-dir', dest='out_dir', type=pathlib.Path,
                         help='Path to a directory where the output files are saved',
                         default=f'{Path.cwd() / "out"}')
@@ -259,12 +258,23 @@ def main():
     parser_create.add_argument('-p', '--id-prefix', dest='id_prefix', type=str, default='',
                                help='Prefix that is added to the "id" property of each item. '
                                     'Used only for the "docs" and "sources" types.')
+
     subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
-                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                          formatter_class=argparse.ArgumentDefaultsHelpFormatter, parents=[_parser_main_dir])
+
+    parser_deploy = subparsers.add_parser('deploy',
+                                          help='Filter items in the config file by deployment environment',
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                          parents=[_parser_main_dir])
+    parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging' 'prod'],
+                               required=True,
+                               help='Name of the environment where the config file will be deployed.')
+
     parser_split = subparsers.add_parser('split',
                                          help='Split the config file into smaller files'
                                               ' based on a chunk size or a property',
-                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                         parents=[_parser_main_file])
     split_options = parser_split.add_mutually_exclusive_group()
     split_options.add_argument('--chunk-size', dest='chunk_size', type=int,
                                help='Number of items in a single config file.')
@@ -272,14 +282,16 @@ def main():
                                help='Property name by which the config file is split. '
                                     'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                          parents=[_parser_main_file])
     parser_remove.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Property name used for removing items. '
                                     'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_remove.add_argument('--prop-value', dest='prop_value', type=str, required=True,
                                help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                          parents=[_parser_main_file])
     parser_update.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Name of the property to update. '
                                     'For a nested property, use the dot notation. For example, "metadata.product".')
@@ -291,7 +303,8 @@ def main():
 
     parser_extract = subparsers.add_parser('extract',
                                            help='Copy items to a separate file and remove them from the original file',
-                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                           parents=[_parser_main_file])
     parser_extract.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                 help='Property name used for extracting items. '
                                      'For a nested property, use the dot notation. For example, "metadata.product".')
@@ -300,7 +313,8 @@ def main():
     parser_clone = subparsers.add_parser('clone',
                                          help='Copy items to a separate file '
                                               'and update their property value with a new value',
-                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                         parents=[_parser_main_file])
     parser_clone.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                               help='Name of the property to update in cloned items. '
                                    'For a nested property, use the dot notation. For example, "metadata.product".')
@@ -309,16 +323,20 @@ def main():
                                    ' with this property value are cloned.')
     parser_clone.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
                               help='New value of the property used in cloned items.')
-    parser_deploy = subparsers.add_parser('deploy',
-                                          help='Filter items in the config file by deployment environment',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging' 'prod'],
-                               required=True,
-                               help='Name of the environment where the config file will be deployed.')
 
     args = parser.parse_args()
-    current_working_dir = Path.cwd()
-    log_file = current_working_dir / 'admin-panel-cli.log'
+    try:
+        src_path = args.src_path.resolve()
+    except AttributeError:
+        src_path = None
+
+    out_dir = args.out_dir.resolve()
+    output_file_name = Template(f'_{args.command}-$info.json')
+    if out_dir.exists():
+        shutil.rmtree(out_dir)
+    out_dir.mkdir(exist_ok=True, parents=True)
+
+    log_file = Path.cwd() / 'config-deployer.log'
     if log_file.exists():
         log_file.unlink()
     logger = logging.getLogger(__name__)
@@ -328,13 +346,6 @@ def main():
     formatter = logging.Formatter('%(levelname)s - %(message)s')
     ch.setFormatter(formatter)
     logger.addHandler(ch)
-
-    src_path = args.src_path.resolve()
-    out_dir = args.out_dir.resolve()
-    output_file_name = Template(f'_{args.command}-$info.json')
-    if out_dir.exists():
-        shutil.rmtree(out_dir)
-    out_dir.mkdir(exist_ok=True, parents=True)
 
     def prepare_command_input():
         if src_path.is_dir():
