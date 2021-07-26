@@ -159,6 +159,20 @@
       "public": false
     },
     {
+      "id": "selfmanagedccupgradeguide1011",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.1.1"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "selfmanagedccupgradeguide1012",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1012",
@@ -251,6 +265,20 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.1.0"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1011",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.1.1"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
