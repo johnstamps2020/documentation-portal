@@ -57,11 +57,18 @@ def get_object_property(obj: dict, property_name: str) -> str:
 
 
 def set_object_property(obj: dict, property_name: str, property_value) -> dict:
+    current_value_type = type(get_object_property(obj, property_name))
+    new_property_value = property_value
+    if current_value_type is list:
+        new_property_value = property_value.split(',')
+    elif current_value_type is bool:
+        new_property_value = json.loads(property_value.lower())
+
     keys = property_name.split('.')
     if len(keys) == 2:
-        obj[keys[0]][keys[1]] = property_value
+        obj[keys[0]][keys[1]] = new_property_value
     elif len(keys) == 1:
-        obj[keys[0]] = property_value
+        obj[keys[0]] = new_property_value
     else:
         raise KeyError('Incorrect key. Maximum nesting level is 2.')
     return obj
