@@ -416,7 +416,7 @@ def main():
                                           help='Filter items in the config file by deployment environment',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
                                           parents=[_parser_main_dir])
-    parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging' 'prod'],
+    parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging', 'prod'],
                                required=True,
                                help='Name of the environment where the config file will be deployed.')
 
