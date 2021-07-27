@@ -155,8 +155,9 @@ def split_objects_by_property(key_name: str, objects_to_split: list, property_na
         {
             'property_name': property_name,
             'property_value': unique_property_value,
-            key_name: filter_objects_by_property_value(objects_to_split, property_name,
-                                                       unique_property_value)
+            'objects':
+                {key_name: filter_objects_by_property_value(objects_to_split, property_name,
+                                                            unique_property_value)}
         }
         for unique_property_value in unique_property_values
     ]
@@ -315,7 +316,7 @@ def run_command(args: argparse.Namespace()):
                 file_name = create_file_name(
                     f'{args.command}-{item["property_name"].casefold()}-{item["property_value"].casefold()}')
                 logger.info(f'Saving output to {out_dir / file_name}')
-                save_json_file(out_dir / file_name, item)
+                save_json_file(out_dir / file_name, item['objects'])
 
     def run_remove_command():
         logger.info(

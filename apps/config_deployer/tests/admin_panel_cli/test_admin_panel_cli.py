@@ -9,19 +9,33 @@ import config_deployer.main as config_deployer
 current_dir = Path.absolute(Path(__file__)).parent
 
 
-def check_dirs_have_the_same_files(left_dir: Path, right_dir: Path):
-    dir_comp = filecmp.dircmp(left_dir,
-                              right_dir)
+def check_dirs_have_the_same_files(args):
+    dir_comp = filecmp.dircmp(args.out_dir,
+                              args.expected_path)
 
     assert dir_comp.left_list == dir_comp.right_list
 
 
-def check_files_have_the_same_content(output_dir: Path, expected_dir: Path):
-    for output_file in output_dir.glob('*.json'):
-        for expected_file in expected_dir.glob('*.json'):
+def check_files_have_the_same_content(args):
+    for output_file in args.out_dir.glob('*.json'):
+        for expected_file in args.expected_path.glob('*.json'):
             if output_file.name == expected_file.name:
                 _, output_items = config_deployer.get_root_object(output_file)
                 _, expected_items = config_deployer.get_root_object(expected_file)
+                assert output_items == expected_items
+
+
+def check_created_files(args):
+    for output_file in args.out_dir.glob('*.json'):
+        for expected_file in args.expected_path.glob('*.json'):
+            if output_file.name == expected_file.name:
+                _, output_items = config_deployer.get_root_object(output_file)
+                for item in output_items:
+                    assert item['id'].startswith(args.id_prefix)
+                    item['id'] = args.id_prefix
+                _, expected_items = config_deployer.get_root_object(expected_file)
+                for item in expected_items:
+                    item['id'] = args.id_prefix
                 assert output_items == expected_items
 
 
@@ -115,5 +129,8 @@ def create_test_args():
 @pytest.mark.parametrize('args', create_test_args())
 def test_commands(args):
     config_deployer.run_command(args)
-    check_dirs_have_the_same_files(args.out_dir, args.expected_path)
-    check_files_have_the_same_content(args.out_dir, args.expected_path)
+    check_dirs_have_the_same_files(args)
+    if args.command == 'create':
+        check_created_files(args)
+    else:
+        check_files_have_the_same_content(args)
