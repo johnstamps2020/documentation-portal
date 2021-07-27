@@ -3937,6 +3937,20 @@
       "branch": "6.3.0-for-docs"
     },
     {
+      "id": "srcjutro640",
+      "title": "Jutro Design System 6.4.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/6.4.0"
+    },
+    {
+      "id": "srcjutrostorybook640",
+      "title": "Jutro Storybook 6.4.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-main.git",
+      "branch": "6.4.0-for-docs"
+    },
+    {
       "id": "srcjutronext",
       "title": "Jutro Design System Next",
       "sourceType": "git",
