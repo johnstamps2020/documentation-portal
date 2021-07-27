@@ -89,6 +89,9 @@ def filter_objects_by_property_value(objects_to_filter: list, property_name: str
                 if property_value.casefold() in [
                     value.casefold() for value in get_object_property(obj, property_name)]
                 ]
+    elif property_type is bool:
+        return [obj for obj in objects_to_filter
+                if json.loads(property_value.lower()) == get_object_property(obj, property_name)]
     else:
         return [obj for obj in objects_to_filter
                 if property_value.casefold() == get_object_property(obj, property_name).casefold()]
@@ -265,7 +268,7 @@ def run_command(args: argparse.Namespace()):
     logger.addHandler(ch)
 
     def create_file_name(file_name: str):
-        return f'{file_name.lower()}.json'
+        return f'{file_name.replace(" ", "-").lower()}.json'
 
     def prepare_command_input():
         if src_path.is_dir():
