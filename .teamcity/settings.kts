@@ -312,7 +312,10 @@ object TestDocPortalServer : BuildType({
         text("env.ELASTICSEARCH_URLS", "http://localhost:9200")
         text("env.ELASTIC_SEARCH_URL", "http://localhost:9200")
         text("env.DOC_S3_URL", "http://localhost/")
-        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json")
+        text(
+            "env.CONFIG_FILE",
+            "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json"
+        )
         text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
     }
 
@@ -1188,7 +1191,8 @@ object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
     params {
-        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json")
+        text("env.INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out")
         select(
             "env.DEPLOY_ENV",
             "",
@@ -1210,7 +1214,7 @@ object DeployServerConfig : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                config_deployer
+                config_deployer -o %env.OUTPUT_DIR% deploy %env.INPUT_DIR% --deploy-env %env.DEPLOY_ENV%
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1231,7 +1235,7 @@ object DeployServerConfig : BuildType({
                   export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
                 fi
                 
-                aws s3 sync %teamcity.build.checkoutDir%/.teamcity/config/out s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config --delete
+                aws s3 sync %env.OUTPUT_DIR% s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config --delete
                 """.trimIndent()
         }
     }
@@ -2520,7 +2524,8 @@ object HelperObjects {
                             buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
                             for (docBuild in sourceDocBuilds) {
-                                val docBuildType = if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
+                                val docBuildType =
+                                    if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
                                 if (docBuildType != "storybook") {
                                     buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
                                 }
