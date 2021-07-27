@@ -4,9 +4,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -1620,14 +1620,20 @@ object Server : Project({
 })
 
 object HelperObjects {
-    private fun getObjectsFromConfig(configPath: String, objectName: String): JSONArray {
-        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
-        return config.getJSONArray(objectName)
+    private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): JSONArray {
+        val allConfigObjects = JSONArray()
+        val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }
+        for (file in jsonFiles) {
+            val configFileData = JSONObject(File(file.toString()).readText(Charsets.UTF_8))
+            val configObjects = configFileData.getJSONArray(objectName)
+            configObjects.forEach { allConfigObjects.put(it) }
+        }
+        return allConfigObjects
     }
 
-    val docConfigs = getObjectsFromConfig("config/server-config.json", "docs")
-    val sourceConfigs = getObjectsFromConfig("config/sources.json", "sources")
-    private val buildConfigs = getObjectsFromConfig("config/builds.json", "builds")
+    val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
+    val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
+    private val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
 
     private fun getObjectById(objectList: JSONArray, idName: String, idValue: String): JSONObject {
         for (i in 0 until objectList.length()) {
