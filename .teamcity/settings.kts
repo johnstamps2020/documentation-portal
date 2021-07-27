@@ -1254,9 +1254,11 @@ object DeployFrontend : BuildType({
     name = "Deploy frontend"
 
     params {
+        text("env.INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out")
         text(
             "env.DOCS_CONFIG_FILE",
-            "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json",
+            "%env.OUTPUT_DIR%/config.json",
             display = ParameterDisplay.HIDDEN
         )
         text("env.PAGES_DIR", "%teamcity.build.checkoutDir%/frontend/pages", display = ParameterDisplay.HIDDEN)
@@ -1288,6 +1290,16 @@ object DeployFrontend : BuildType({
 
 
     steps {
+        script {
+            name = "Merge docs config files"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                config_deployer -o %env.OUTPUT_DIR% merge %env.INPUT_DIR%
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
         script {
             name = "Generate localization page configurations"
             scriptContent = """
