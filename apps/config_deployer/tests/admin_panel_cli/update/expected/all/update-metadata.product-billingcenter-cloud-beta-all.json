@@ -8,13 +8,13 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "cloudccupgradeguide202005",
@@ -23,13 +23,13 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "cloudpcupgradeguide202005",
@@ -38,13 +38,13 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradeguide1010",
@@ -53,7 +53,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.1.0"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -67,8 +67,8 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
-        "version": ["10.1.3"]
+        "product": ["BillingCenter Cloud BETA"],
+        "version": ["10.1.2"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -80,7 +80,7 @@
       "url": "self-managed/bc/upgrade/10x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "platform": ["Self-managed"],
         "version": ["10.x"]
       },
@@ -95,7 +95,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["9.0.10"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -108,7 +108,7 @@
       "url": "self-managed/bc/upgrade/1x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "platform": ["Self-managed"],
         "version": ["9.x"]
       },
@@ -123,7 +123,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.0.3"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -137,7 +137,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["9.0.9"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -151,7 +151,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.1.0"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -165,7 +165,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.1.1"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -179,8 +179,8 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
-        "version": ["10.1.3"]
+        "product": ["BillingCenter Cloud BETA"],
+        "version": ["10.1.2"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -192,7 +192,7 @@
       "url": "self-managed/cc/upgrade/10x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "platform": ["Self-managed"],
         "version": ["10.x"]
       },
@@ -207,7 +207,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["9.0.10"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -220,7 +220,7 @@
       "url": "self-managed/cc/upgrade/1x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "platform": ["Self-managed"],
         "version": ["9.x"]
       },
@@ -235,7 +235,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.0.3"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -249,7 +249,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["9.0.9"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -263,7 +263,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.1.0"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -277,7 +277,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.1.1"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -291,8 +291,8 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
-        "version": ["10.1.3"]
+        "product": ["BillingCenter Cloud BETA"],
+        "version": ["10.1.2"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -304,7 +304,7 @@
       "url": "self-managed/pc/upgrade/10x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "platform": ["Self-managed"],
         "version": ["10.x"]
       },
@@ -319,7 +319,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["9.0.10"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -332,7 +332,7 @@
       "url": "self-managed/pc/upgrade/1x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "platform": ["Self-managed"],
         "version": ["9.x"]
       },
@@ -347,7 +347,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["10.0.3"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -361,7 +361,7 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter Cloud BETA"],
         "version": ["9.0.9"]
       },
       "environments": ["dev", "staging", "prod"],

@@ -14,7 +14,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "cloudccupgradeguide202005",
@@ -29,7 +29,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "cloudpcupgradeguide202005",
@@ -44,7 +44,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradeguide1010",

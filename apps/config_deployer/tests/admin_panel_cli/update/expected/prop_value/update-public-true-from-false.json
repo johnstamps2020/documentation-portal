@@ -14,7 +14,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "cloudccupgradeguide202005",
@@ -23,13 +23,13 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "cloudpcupgradeguide202005",
@@ -44,7 +44,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradeguide1010",
@@ -58,7 +58,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradeguide1012",
@@ -72,7 +72,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradeguide10x",
@@ -86,7 +86,7 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradetools1450",
@@ -100,7 +100,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradetools1x",
@@ -114,7 +114,7 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradetoolspiteqdgk",
@@ -128,7 +128,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedbcupgradetoolsqwertyui",
@@ -142,7 +142,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradeguide1010",
@@ -151,12 +151,12 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "version": ["10.1.0"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradeguide1011",
@@ -165,12 +165,12 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "version": ["10.1.1"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradeguide1012",
@@ -179,12 +179,12 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "version": ["10.1.2"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradeguide10x",
@@ -192,13 +192,13 @@
       "url": "self-managed/cc/upgrade/10x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "platform": ["Self-managed"],
         "version": ["10.x"]
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradetools1450",
@@ -207,12 +207,12 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "version": ["9.0.10"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradetools1x",
@@ -220,13 +220,13 @@
       "url": "self-managed/cc/upgrade/1x",
       "displayOnLandingPages": false,
       "metadata": {
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "platform": ["Self-managed"],
         "version": ["9.x"]
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
@@ -235,12 +235,12 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "version": ["10.0.3"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
@@ -249,12 +249,12 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["XCenter"],
+        "product": ["ClaimCenter"],
         "version": ["9.0.9"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradeguide1010",
@@ -268,7 +268,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradeguide1011",
@@ -282,7 +282,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradeguide1012",
@@ -296,7 +296,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
@@ -310,7 +310,7 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradetools1450",
@@ -324,7 +324,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradetools1x",
@@ -338,7 +338,7 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
@@ -352,7 +352,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
@@ -366,7 +366,7 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": true
     }
   ]
 }
