@@ -6,9 +6,9 @@ from jsonschema import validate
 
 root_dir = Path(__file__).parent.parent.parent
 
-server_config_path = root_dir / '.teamcity' / 'config' / 'server-config.json'
-sources_path = root_dir / '.teamcity' / 'config' / 'sources.json'
-builds_path = root_dir / '.teamcity' / 'config' / 'builds.json'
+docs_config_path = root_dir / '.teamcity' / 'config' / 'docs' / 'docs.json'
+sources_path = root_dir / '.teamcity' / 'config' / 'sources' / 'sources.json'
+builds_path = root_dir / '.teamcity' / 'config' / 'builds' / 'builds.json'
 schema_path = root_dir / '.teamcity' / 'config' / 'config-schema.json'
 
 
@@ -69,7 +69,7 @@ def is_valid_with_schema(config_json: Dict):
 
 
 def test_config_files_exist():
-    config_file_paths = [server_config_path, sources_path, builds_path]
+    config_file_paths = [docs_config_path, sources_path, builds_path]
     for config_file_path in config_file_paths:
         try:
             assert config_file_path.exists()
@@ -77,7 +77,7 @@ def test_config_files_exist():
             raise AssertionError(f'Cannot find the config file: {config_file_path}')
 
 
-server_config_object = load_json_file(server_config_path)
+server_config_object = load_json_file(docs_config_path)
 sources_object = load_json_file(sources_path)
 builds_object = load_json_file(builds_path)
 
