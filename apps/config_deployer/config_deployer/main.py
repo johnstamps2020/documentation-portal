@@ -4,13 +4,14 @@ import datetime
 import hashlib
 import json
 import logging
+import os
 import pathlib
 import shutil
 from collections import Counter
 from pathlib import Path
-from string import Template
 
 import itertools
+from jsonschema import validate
 
 
 def add_schema_reference(obj: dict):
@@ -97,18 +98,6 @@ def filter_objects_by_property_value(objects_to_filter: list, property_name: str
                 if property_value.casefold() == get_object_property(obj, property_name).casefold()]
 
 
-def check_prop_is_unique_in_objects(objects_to_check: list, key_name: str):
-    property_name = {
-        'docs': 'id',
-        'sources': 'id'
-    }.get(key_name)
-    if property_name:
-        property_values_counter = Counter([obj.get(property_name) for obj in objects_to_check])
-        duplicates = [property_value for property_value in property_values_counter if
-                      property_values_counter[property_value] > 1]
-        assert not duplicates, f'Found duplicated values for the {property_name} property: {", ".join(duplicates)}'
-
-
 def merge_objects(objects_to_merge: list) -> dict:
     root_key_names = []
     all_elements = []
@@ -123,7 +112,6 @@ def merge_objects(objects_to_merge: list) -> dict:
                        f'Make sure all config files have the same root key. For example: "docs"')
 
     root_key_name = root_key_names[0]
-    check_prop_is_unique_in_objects(all_elements, root_key_name)
     return {
         root_key_name: sort_list_of_objects(all_elements, root_key_name)
     }
@@ -240,10 +228,44 @@ def create_new_objects(root_key_name: str, number_of_objects: int, id_prefix: st
     else:
         new_items = list(itertools.repeat(object_template, number_of_objects))
 
-    check_prop_is_unique_in_objects(new_items, root_key_name)
     return {
         root_key_name: new_items
     }
+
+
+def check_for_duplicated_ids(objects_to_check: list):
+    property_name = 'id'
+    property_values_counter = Counter([obj[property_name] for obj in objects_to_check])
+    duplicates = [property_value for property_value in property_values_counter if
+                  property_values_counter[property_value] > 1]
+    if duplicates:
+        raise ValueError(f'Found duplicated values for the {property_name} property: {", ".join(duplicates)}')
+
+
+def validate_against_schema(config_file_path: Path):
+    schema_path = (Path(__file__).parent / '..' / '..' / '..' / '.teamcity' / 'config' / 'config-schema.json').resolve()
+    config_schema = load_json_file(schema_path)
+    config_json = load_json_file(config_file_path)
+    validate(instance=config_json, schema=config_schema)
+
+
+def check_for_broken_id_references(builds_objects: list, sources_objects: list, docs_objects: list):
+    source_ids = [source['id'] for source in sources_objects]
+    referenced_source_ids = [build['srcId'] for build in builds_objects]
+    refs_to_missing_sources = [id for id in referenced_source_ids if id not in source_ids]
+
+    doc_ids = [doc['id'] for doc in docs_objects]
+    referenced_doc_ids = [build['docId'] for build in builds_objects]
+    refs_to_missing_docs = [id for id in referenced_doc_ids if id not in doc_ids]
+
+    error_messages = []
+    if refs_to_missing_sources:
+        error_messages.append(f'Found builds that reference missing source IDs: {", ".join(refs_to_missing_sources)}')
+    if refs_to_missing_docs:
+        error_messages.append(f'Found builds that reference missing doc IDs: {", ".join(refs_to_missing_docs)}')
+
+    if error_messages:
+        raise ValueError(f'{os.linesep}{os.linesep.join(error_messages)}')
 
 
 def run_command(args: argparse.Namespace()):
@@ -271,11 +293,11 @@ def run_command(args: argparse.Namespace()):
     def create_file_name(file_name: str):
         return f'{file_name.replace(" ", "-").lower()}.json'
 
-    def prepare_command_input():
-        if src_path.is_dir():
-            return [get_root_object(obj) for obj in src_path.rglob('*.json')]
-        elif src_path.is_file():
-            return get_root_object(src_path)
+    def prepare_input(path: Path = src_path):
+        if path.is_dir():
+            return [get_root_object(obj) for obj in path.rglob('*.json')]
+        elif path.is_file():
+            return get_root_object(path)
 
     def run_create_command():
         logger.info(
@@ -287,7 +309,7 @@ def run_command(args: argparse.Namespace()):
 
     def run_merge_command():
         logger.info(f'Merging files in "{str(src_path)}".')
-        all_items = merge_objects(prepare_command_input())
+        all_items = merge_objects(prepare_input())
         file_name = create_file_name(f'{args.command}-all')
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, all_items)
@@ -296,12 +318,12 @@ def run_command(args: argparse.Namespace()):
         logger.info(
             f'Filtering items in {src_path} for the "{args.deploy_env}" environment.')
         file_name = 'config.json'
-        filtered_items = get_objects_for_deploy_env(prepare_command_input(), args.deploy_env)
+        filtered_items = get_objects_for_deploy_env(prepare_input(), args.deploy_env)
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, filtered_items, add_schema_ref=False)
 
     def run_split_command():
-        root_key_name, root_key_objects = prepare_command_input()
+        root_key_name, root_key_objects = prepare_input()
         if args.chunk_size:
             logger.info(f'Splitting "{str(src_path)}" into chunks of {args.chunk_size}.')
             chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
@@ -321,7 +343,7 @@ def run_command(args: argparse.Namespace()):
     def run_remove_command():
         logger.info(
             f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
-        cleaned_items = remove_objects_by_property(*prepare_command_input(), args.prop_name,
+        cleaned_items = remove_objects_by_property(*prepare_input(), args.prop_name,
                                                    args.prop_value)
         file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name}')
@@ -338,7 +360,7 @@ def run_command(args: argparse.Namespace()):
                 f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{src_path}".')
             file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.new_prop_value}-all')
 
-        updated_items = update_property_for_objects(*prepare_command_input(),
+        updated_items = update_property_for_objects(*prepare_input(),
                                                     args.prop_name,
                                                     args.prop_value,
                                                     args.new_prop_value)
@@ -348,7 +370,7 @@ def run_command(args: argparse.Namespace()):
     def run_extract_command():
         logger.info(
             f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
-        root_key_name, root_key_objects = prepare_command_input()
+        root_key_name, root_key_objects = prepare_input()
         extracted_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name, args.prop_value)
         updated_items = remove_objects_by_property(root_key_name, root_key_objects,
                                                    args.prop_name,
@@ -364,7 +386,7 @@ def run_command(args: argparse.Namespace()):
         logger.info(
             f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
         file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
-        root_key_name, root_key_objects = prepare_command_input()
+        root_key_name, root_key_objects = prepare_input()
         copied_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name,
                                                 args.prop_value)
         updated_items = update_property_for_objects(root_key_name, copied_items[root_key_name], args.prop_name,
@@ -372,6 +394,23 @@ def run_command(args: argparse.Namespace()):
                                                     args.new_prop_value)
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, updated_items)
+
+    def run_test_command():
+        root_key_name, root_key_objects = prepare_input()
+        logger.info(f'Testing {src_path}')
+        logger.info(f'Checking against the schema.')
+        validate_against_schema(src_path)
+        logger.info(f'OK')
+        if root_key_name == 'docs' or root_key_name == 'sources':
+            logger.info(f'Checking for duplicated IDs.')
+            check_for_duplicated_ids(root_key_objects)
+            logger.info(f'OK')
+        if root_key_name == 'builds':
+            _, sources_objects = prepare_input(args.sources_path)
+            _, docs_objects = prepare_input(args.docs_path)
+            logger.info(f'Checking for broken ID references.')
+            check_for_broken_id_references(root_key_objects, sources_objects, docs_objects)
+            logger.info(f'OK')
 
     return {
         'create': run_create_command,
@@ -381,7 +420,8 @@ def run_command(args: argparse.Namespace()):
         'remove': run_remove_command,
         'update': run_update_command,
         'extract': run_extract_command,
-        'clone': run_clone_command
+        'clone': run_clone_command,
+        'test': run_test_command,
     }[args.command]()
 
 
@@ -473,6 +513,15 @@ def main():
                                    ' with this property value are cloned.')
     parser_clone.add_argument('--new-prop-value', dest='new_prop_value', type=str, required=True,
                               help='New value of the property used in cloned items.')
+
+    parser_test = subparsers.add_parser('test',
+                                        help='Test a config file',
+                                        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                        parents=[_parser_main_file])
+    parser_test.add_argument('--sources-path', dest="sources_path", type=pathlib.Path,
+                             help='Path to the sources config file. Required only for builds validation.')
+    parser_test.add_argument('--docs-path', dest="docs_path", type=pathlib.Path,
+                             help='Path to the docs config file. Required only for builds validation.')
 
     cli_args = parser.parse_args()
     run_command(cli_args)
