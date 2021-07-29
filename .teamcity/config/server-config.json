@@ -10470,8 +10470,8 @@
       "url": "cloud/in/20211x/billref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
@@ -10813,11 +10813,8 @@
       "url": "cloud/in/20211x/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
@@ -10832,11 +10829,8 @@
       "url": "cloud/in/20211x/studiorn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
@@ -10851,11 +10845,8 @@
       "url": "cloud/in/20211x/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
@@ -10870,11 +10861,8 @@
       "url": "cloud/in/20211x/bi",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
@@ -10889,11 +10877,8 @@
       "url": "cloud/in/20211x/csalesp",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
@@ -10908,11 +10893,8 @@
       "url": "cloud/in/20211x/cservicep",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
@@ -10927,11 +10909,8 @@
       "url": "cloud/in/20211x/appreaderinteg",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
@@ -10946,11 +10925,8 @@
       "url": "cloud/in/20211x/pa",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
@@ -10965,8 +10941,8 @@
       "url": "cloud/in/20211x/biinteg",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
@@ -10981,11 +10957,8 @@
       "url": "cloud/in/20211x/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11000,8 +10973,8 @@
       "url": "cloud/in/20211x/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11016,8 +10989,8 @@
       "url": "cloud/in/20211x/cservicepconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11032,11 +11005,8 @@
       "url": "cloud/in/20211x/studioconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11051,8 +11021,8 @@
       "url": "cloud/in/20211x/provportal",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11067,11 +11037,8 @@
       "url": "cloud/in/20211x/portaldev",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11086,11 +11053,8 @@
       "url": "cloud/in/20211x/prodattref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11105,11 +11069,8 @@
       "url": "cloud/in/20211x/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11124,8 +11085,8 @@
       "url": "cloud/in/20211x/claimsconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
@@ -11662,7 +11623,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow",
           "InsuranceNow 2020.2x - Internal Audience",
           "InsuranceNow 2020.1x - Internal Audience"
         ],
@@ -11696,12 +11657,28 @@
     },
     {
       "id": "indevguidejava11draft",
-      "title": "Developers Setup",
+      "title": "Developers Setup (Internal)",
       "url": "cloud/in/devsetupjava11",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.1x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Installation"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "indevguidejava11draftext",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava11ext",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Installation"],
         "release": ["Cortina"]
       },
@@ -11717,11 +11694,11 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
+          "InsuranceNow",
           "InsuranceNow 2020.2x - Internal Audience",
           "InsuranceNow 2020.1x - Internal Audience"
         ],
-        "version": ["latest"],
+        "version": ["2021.1", "2020.2", "2020.1"],
         "subject": ["Installation"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
@@ -11736,11 +11713,8 @@
       "url": "cloud/in/csp325rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -11755,13 +11729,8 @@
       "url": "cloud/in/csp324rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience",
-          "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2"],
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -11776,17 +11745,10 @@
       "url": "cloud/in/csp323rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience",
-          "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience",
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -11799,13 +11761,10 @@
       "url": "cloud/in/excelrating30",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.1x - Internal Audience",
-          "InsuranceNow 2021.1x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina"]
+        "release": ["Cortina", "Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -11818,13 +11777,8 @@
       "url": "cloud/in/excelrating23",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience",
-          "InsuranceNow 2020.2x - Internal Audience",
-          "InsuranceNow 2020.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2", "2020.1"],
         "subject": ["Features and functionality"],
         "release": ["Aspen", "Banff"]
       },

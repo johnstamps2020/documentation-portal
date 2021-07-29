@@ -4300,10 +4300,18 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "GW-Generic-Draft-Internal.ditaval",
       "root": "DevelopersGuide_Java11.ditamap",
       "srcId": "indevguidejava11draftsrc",
       "docId": "indevguidejava11draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft-External.ditaval",
+      "root": "DevelopersGuide_Java11.ditamap",
+      "srcId": "indevguidejava11draftsrc",
+      "docId": "indevguidejava11draftext",
       "indexRedirect": true
     },
     {

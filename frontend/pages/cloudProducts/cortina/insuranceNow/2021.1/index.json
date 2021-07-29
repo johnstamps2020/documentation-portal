@@ -13,6 +13,10 @@
           "id": "in20211rn"
         },
         {
+          "label": "Core Release Notes",
+          "id": "in20211xrndraft"
+        },
+        {
           "label": "Release Video",
           "link": "https://www.brainshark.com/guidewire/vu?pi=zIYz11mVjxzM6iUz0"
         },
@@ -21,16 +25,32 @@
           "id": "in20211studiorn"
         },
         {
+          "label": "Studio Release Notes",
+          "id": "in20211xstudiorndraft"
+        },
+        {
           "label": "Consumer Service Portal 3.25 Release Notes",
           "id": "in20211csp325rn"
+        },
+        {
+          "label": "Consumer Service Portal 3.25 Release Notes",
+          "id": "incsp325rndraft"
         },
         {
           "label": "Consumer Service Portal 3.24 Release Notes",
           "id": "in20211csp324rn"
         },
         {
+          "label": "Consumer Service Portal 3.24 Release Notes",
+          "id": "incsp324rndraft"
+        },
+        {
           "label": "Consumer Service Portal 3.23 Release Notes",
           "id": "in20211csp323rn"
+        },
+        {
+          "label": "Consumer Service Portal 3.23 Release Notes",
+          "id": "incsp323rndraft"
         }
       ]
     },
@@ -43,20 +63,40 @@
           "id": "in20211app"
         },
         {
+          "label": "Application Guide",
+          "id": "in20211xappdraft"
+        },
+        {
           "label": "Business Intelligence Getting Started Guide",
           "id": "in20211bi"
+        },
+        {
+          "label": "Business Intelligence Getting Started Guide",
+          "id": "in20211xbidraft"
         },
         {
           "label": "Consumer Sales Portal Features",
           "id": "in20211csalesp"
         },
         {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20211xcsalespdraft"
+        },
+        {
           "label": "Consumer Service Portal Features",
           "id": "in20211cservicep"
         },
         {
+          "label": "Consumer Service Portal Features",
+          "id": "in20211xcservicepdraft"
+        },
+        {
           "label": "Excel Designed Rating",
           "id": "in20211excelrating30"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30draft"
         }
       ]
     },
@@ -69,8 +109,20 @@
           "id": "in20211appreaderinteg"
         },
         {
+          "label": "AppReader Integration",
+          "id": "in20211xappreaderintegdraft"
+        },
+        {
+          "label": "Business Intelligence Integration (Internal)",
+          "id": "in20211xbiintegdraft"
+        },
+        {
           "label": "Predictive Analytics Integration",
           "id": "in20211pa"
+        },
+        {
+          "label": "Predictive Analytics Integration",
+          "id": "in20211xpadraft"
         },
         {
           "label": "API Reference",
@@ -83,24 +135,84 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Billing Configuration Reference (Internal)",
+          "id": "in20211xbillrefdraft"
+        },
+        {
+          "label": "Consumer Service Portal Configuration Guide (Internal)",
+          "id": "in20211xcservicepconfigdraft"
+        },
+        {
           "label": "Core Configuration Guide",
           "id": "in20211config"
+        },
+        {
+          "label": "Core Configuration Guide",
+          "id": "in20211xconfigdraft"
+        },
+        {
+          "label": "Common Functionality Configuration Reference (Internal)",
+          "id": "in20211xcommonconfigdraft"
         },
         {
           "label": "Studio Configuration Guide",
           "id": "in20211studio"
         },
         {
+          "label": "Studio Configuration Guide",
+          "id": "in20211xstudiodraft"
+        },
+        {
+          "label": "Provisioning Portal (Internal)",
+          "id": "in20211xprovportaldraft",
+          "env": ["int"]
+        },
+        {
           "label": "Portal Development Guide",
           "id": "in20211portaldev"
+        },
+        {
+          "label": "Portal Development Guide",
+          "id": "in20211xportaldevdraft"
         },
         {
           "label": "Product Attribute Reference",
           "id": "in20211prodattref"
         },
         {
+          "label": "Product Attribute Reference",
+          "id": "in20211xprodattrefdraft"
+        },
+        {
           "label": "Underwriting Configuration Reference",
           "id": "in20211uwconfig"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20211xuwconfigdraft"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "env": ["int"],
+      "items": [
+        {
+          "label": "Install Assist (Internal)",
+          "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Developers Setup (Internal)",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developers Setup",
+          "id": "indevguidejava11draftext"
+        },
+        {
+          "label": "Upgrade Tools (Internal)",
+          "id": "inupgradetoolsdraft"
         }
       ]
     }
