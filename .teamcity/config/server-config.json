@@ -10809,7 +10809,7 @@
     },
     {
       "id": "in20211xrndraft",
-      "title": "Core Release Notes",
+      "title": "Core Release Notes Draft",
       "url": "cloud/in/20211x/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
@@ -10825,7 +10825,7 @@
     },
     {
       "id": "in20211xstudiorndraft",
-      "title": "Studio Release Notes",
+      "title": "Studio Release Notes Draft",
       "url": "cloud/in/20211x/studiorn",
       "metadata": {
         "platform": ["Cloud"],
@@ -10841,7 +10841,7 @@
     },
     {
       "id": "in20211xappdraft",
-      "title": "Application Guide",
+      "title": "Application Guide Draft",
       "url": "cloud/in/20211x/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -10857,7 +10857,7 @@
     },
     {
       "id": "in20211xbidraft",
-      "title": "Business Intelligence Getting Started Guide",
+      "title": "Business Intelligence Getting Started Guide Draft",
       "url": "cloud/in/20211x/bi",
       "metadata": {
         "platform": ["Cloud"],
@@ -10873,7 +10873,7 @@
     },
     {
       "id": "in20211xcsalespdraft",
-      "title": "Consumer Sales Portal Features",
+      "title": "Consumer Sales Portal Features Draft",
       "url": "cloud/in/20211x/csalesp",
       "metadata": {
         "platform": ["Cloud"],
@@ -10889,7 +10889,7 @@
     },
     {
       "id": "in20211xcservicepdraft",
-      "title": "Consumer Service Portal Features",
+      "title": "Consumer Service Portal Features Draft",
       "url": "cloud/in/20211x/cservicep",
       "metadata": {
         "platform": ["Cloud"],
@@ -10905,7 +10905,7 @@
     },
     {
       "id": "in20211xappreaderintegdraft",
-      "title": "AppReader Integration",
+      "title": "AppReader Integration Draft",
       "url": "cloud/in/20211x/appreaderinteg",
       "metadata": {
         "platform": ["Cloud"],
@@ -10921,7 +10921,7 @@
     },
     {
       "id": "in20211xpadraft",
-      "title": "Predictive Analytics Integration",
+      "title": "Predictive Analytics Integration Draft",
       "url": "cloud/in/20211x/pa",
       "metadata": {
         "platform": ["Cloud"],
@@ -10937,7 +10937,7 @@
     },
     {
       "id": "in20211xbiintegdraft",
-      "title": "Business Intelligence Integration",
+      "title": "Business Intelligence Integration Draft",
       "url": "cloud/in/20211x/biinteg",
       "metadata": {
         "platform": ["Cloud"],
@@ -10953,7 +10953,7 @@
     },
     {
       "id": "in20211xconfigdraft",
-      "title": "Core Configuration Guide",
+      "title": "Core Configuration Guide Draft",
       "url": "cloud/in/20211x/config",
       "metadata": {
         "platform": ["Cloud"],
@@ -10969,7 +10969,7 @@
     },
     {
       "id": "in20211xcommonconfigdraft",
-      "title": "Common Functionality Configuration Reference",
+      "title": "Common Functionality Configuration Reference Draft",
       "url": "cloud/in/20211x/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -10985,7 +10985,7 @@
     },
     {
       "id": "in20211xcservicepconfigdraft",
-      "title": "Consumer Service Portal Configuration Guide",
+      "title": "Consumer Service Portal Configuration Guide Draft",
       "url": "cloud/in/20211x/cservicepconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -11001,7 +11001,7 @@
     },
     {
       "id": "in20211xstudiodraft",
-      "title": "Studio Configuration Guide",
+      "title": "Studio Configuration Guide Draft",
       "url": "cloud/in/20211x/studioconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -11017,7 +11017,7 @@
     },
     {
       "id": "in20211xprovportaldraft",
-      "title": "Provisioning Portal",
+      "title": "Provisioning Portal Draft",
       "url": "cloud/in/20211x/provportal",
       "metadata": {
         "platform": ["Cloud"],
@@ -11033,7 +11033,7 @@
     },
     {
       "id": "in20211xportaldevdraft",
-      "title": "Portal Development Guide",
+      "title": "Portal Development Guide Draft",
       "url": "cloud/in/20211x/portaldev",
       "metadata": {
         "platform": ["Cloud"],
@@ -11049,7 +11049,7 @@
     },
     {
       "id": "in20211xprodattrefdraft",
-      "title": "Product Attribute Reference",
+      "title": "Product Attribute Reference Draft",
       "url": "cloud/in/20211x/prodattref",
       "metadata": {
         "platform": ["Cloud"],
@@ -11065,7 +11065,7 @@
     },
     {
       "id": "in20211xuwconfigdraft",
-      "title": "Underwriting Configuration Reference",
+      "title": "Underwriting Configuration Reference Draft",
       "url": "cloud/in/20211x/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -11081,7 +11081,7 @@
     },
     {
       "id": "in20211xclaimsconfigdraft",
-      "title": "Claims Configuration Reference",
+      "title": "Claims Configuration Reference Draft",
       "url": "cloud/in/20211x/claimsconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -11657,7 +11657,7 @@
     },
     {
       "id": "indevguidejava11draft",
-      "title": "Developers Setup (Internal)",
+      "title": "Developers Setup (Internal) Draft",
       "url": "cloud/in/devsetupjava11",
       "metadata": {
         "platform": ["Cloud"],
@@ -11673,7 +11673,7 @@
     },
     {
       "id": "indevguidejava11draftext",
-      "title": "Developers Setup",
+      "title": "Developers Setup Draft",
       "url": "cloud/in/devsetupjava11ext",
       "metadata": {
         "platform": ["Cloud"],
@@ -11689,7 +11689,7 @@
     },
     {
       "id": "inupgradetoolsdraft",
-      "title": "Upgrade Tools",
+      "title": "Upgrade Tools Draft",
       "url": "cloud/in/upgrade",
       "metadata": {
         "platform": ["Cloud"],
@@ -11709,12 +11709,12 @@
     },
     {
       "id": "incsp325rndraft",
-      "title": "Consumer Service Portal 3.25 Release Notes",
+      "title": "Consumer Service Portal 3.25 Release Notes Draft",
       "url": "cloud/in/csp325rn",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.1"],
+        "version": ["2021.2", "2021.1", "2020.2"],
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -11725,7 +11725,7 @@
     },
     {
       "id": "incsp324rndraft",
-      "title": "Consumer Service Portal 3.24 Release Notes",
+      "title": "Consumer Service Portal 3.24 Release Notes Draft",
       "url": "cloud/in/csp324rn",
       "metadata": {
         "platform": ["Cloud"],
@@ -11741,7 +11741,7 @@
     },
     {
       "id": "incsp323rndraft",
-      "title": "Consumer Service Portal 3.23 Release Notes",
+      "title": "Consumer Service Portal 3.23 Release Notes Draft",
       "url": "cloud/in/csp323rn",
       "metadata": {
         "platform": ["Cloud"],
@@ -11757,7 +11757,7 @@
     },
     {
       "id": "inexcelrating30draft",
-      "title": "Excel Designed Rating",
+      "title": "Excel Designed Rating Draft",
       "url": "cloud/in/excelrating30",
       "metadata": {
         "platform": ["Cloud"],
@@ -11773,7 +11773,7 @@
     },
     {
       "id": "inexcelrating23draft",
-      "title": "Excel Designed Rating 2.3",
+      "title": "Excel Designed Rating 2.3 Draft",
       "url": "cloud/in/excelrating23",
       "metadata": {
         "platform": ["Cloud"],
