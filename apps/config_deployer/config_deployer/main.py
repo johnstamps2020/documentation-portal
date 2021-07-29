@@ -45,20 +45,18 @@ def sort_list_of_objects(objects_to_sort: list, key_name: str):
     return sorted(objects_to_sort, key=lambda x: x[sort_key])
 
 
-def get_object_property(obj: dict, property_name: str) -> str:
-    # KeyError is raised when the prop doesn't exist. It is ok because we can only split the file if all objects
-    # have the property by which splitting is done
+def get_object_property_value(obj: dict, property_name: str) -> str or bool or list or None:
     keys = property_name.split('.')
     if len(keys) == 2:
-        return obj[keys[0]][keys[1]]
+        return obj.get(keys[0]).get(keys[1])
     elif len(keys) == 1:
-        return obj[keys[0]]
+        return obj.get(keys[0])
     else:
         raise KeyError('Incorrect key. Maximum nesting level is 2.')
 
 
 def set_object_property(obj: dict, property_name: str, property_value) -> dict:
-    current_value_type = type(get_object_property(obj, property_name))
+    current_value_type = type(get_object_property_value(obj, property_name))
     new_property_value = property_value
     if current_value_type is list:
         new_property_value = property_value.split(',')
@@ -83,19 +81,20 @@ def get_root_object(json_file_path: Path) -> tuple:
     return root_key_name, root_key_items_sorted_by_id
 
 
-def filter_objects_by_property_value(objects_to_filter: list, property_name: str, property_value):
-    property_type = type(get_object_property(objects_to_filter[0], property_name))
+def filter_objects_by_property_value(objects_to_filter: list, property_name: str, property_value: str):
+    property_type = type(next(get_object_property_value(obj, property_name) for obj in objects_to_filter if
+                              get_object_property_value(obj, property_name) is not None))
     if property_type is list:
         return [obj for obj in objects_to_filter
                 if property_value.casefold() in [
-                    value.casefold() for value in get_object_property(obj, property_name)]
+                    value.casefold() for value in get_object_property_value(obj, property_name)]
                 ]
     elif property_type is bool:
         return [obj for obj in objects_to_filter
-                if json.loads(property_value.lower()) == get_object_property(obj, property_name)]
-    else:
+                if json.loads(property_value.lower()) == get_object_property_value(obj, property_name)]
+    elif property_type is str:
         return [obj for obj in objects_to_filter
-                if property_value.casefold() == get_object_property(obj, property_name).casefold()]
+                if property_value.casefold() == get_object_property_value(obj, property_name).casefold()]
 
 
 def merge_objects(objects_to_merge: list) -> dict:
@@ -133,7 +132,8 @@ def split_objects_into_chunks(key_name: str, objects_to_split: list, chunk_size:
 
 
 def split_objects_by_property(key_name: str, objects_to_split: list, property_name: str) -> list:
-    property_values = [get_object_property(obj, property_name) for obj in objects_to_split]
+    property_values = [get_object_property_value(obj, property_name) for obj in objects_to_split if
+                       get_object_property_value(obj, property_name) is not None]
     unique_property_values = {
         ', '.join(value) if type(value) is list else value
         for value in property_values
@@ -152,7 +152,7 @@ def split_objects_by_property(key_name: str, objects_to_split: list, property_na
 
 
 def remove_objects_by_property(key_name: str, all_objects: list, property_name: str,
-                               property_value) -> dict:
+                               property_value: str) -> dict:
     objects_to_remove = filter_objects_by_property_value(all_objects, property_name, property_value)
     return {
         key_name: [obj for obj in all_objects if obj not in objects_to_remove]
@@ -160,14 +160,14 @@ def remove_objects_by_property(key_name: str, all_objects: list, property_name: 
 
 
 def copy_objects_by_property(key_name: str, all_objects: list, property_name: str,
-                             property_value) -> dict:
+                             property_value: str) -> dict:
     return {
         key_name: filter_objects_by_property_value(all_objects, property_name, property_value)
     }
 
 
-def update_property_for_objects(key_name: str, all_objects: list, property_name: str, current_property_value,
-                                new_property_value) -> dict:
+def update_property_for_objects(key_name: str, all_objects: list, property_name: str, current_property_value: str,
+                                new_property_value: str) -> dict:
     objects_to_update = all_objects
     if current_property_value:
         objects_to_update = filter_objects_by_property_value(all_objects, property_name, current_property_value)
