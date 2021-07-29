@@ -82,8 +82,12 @@ def get_root_object(json_file_path: Path) -> tuple:
 
 
 def filter_objects_by_property_value(objects_to_filter: list, property_name: str, property_value: str):
-    property_type = type(next(get_object_property_value(obj, property_name) for obj in objects_to_filter if
-                              get_object_property_value(obj, property_name) is not None))
+    try:
+        property_type = type(next(get_object_property_value(obj, property_name) for obj in objects_to_filter if
+                                  get_object_property_value(obj, property_name) is not None))
+    except StopIteration:
+        raise ValueError(f'Unable to determine type for the "{property_name}" property.'
+                         f'{os.linesep}Make sure the property name you provided is correct.')
     if property_type is list:
         return [obj for obj in objects_to_filter
                 if property_value.casefold() in [
@@ -132,12 +136,15 @@ def split_objects_into_chunks(key_name: str, objects_to_split: list, chunk_size:
 
 
 def split_objects_by_property(key_name: str, objects_to_split: list, property_name: str) -> list:
-    property_values = [get_object_property_value(obj, property_name) for obj in objects_to_split if
-                       get_object_property_value(obj, property_name) is not None]
-    unique_property_values = {
-        ', '.join(value) if type(value) is list else value
-        for value in property_values
-    }
+    property_values = []
+    for obj in objects_to_split:
+        prop_value = get_object_property_value(obj, property_name)
+        if prop_value is not None:
+            if type(prop_value) is list:
+                property_values += prop_value
+            else:
+                property_values.append(str(prop_value))
+    unique_property_values = set(property_values)
 
     return [
         {
