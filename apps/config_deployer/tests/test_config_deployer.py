@@ -50,21 +50,21 @@ def create_test_args():
 
     args_merge = argparse.Namespace()
     args_merge.command = 'merge'
-    args_merge.src_path = resources_dir / args_merge.command / 'input'
+    args_merge.input_path = resources_dir / args_merge.command / 'input'
     args_merge.out_dir = resources_dir / args_merge.command / 'out'
     args_merge.expected_path = resources_dir / args_merge.command / 'expected'
 
     args_deploy = argparse.Namespace()
     args_deploy.command = 'deploy'
     args_deploy.deploy_env = 'int'
-    args_deploy.src_path = resources_dir / args_deploy.command / 'input'
+    args_deploy.input_path = resources_dir / args_deploy.command / 'input'
     args_deploy.out_dir = resources_dir / args_deploy.command / 'out'
     args_deploy.expected_path = resources_dir / args_deploy.command / 'expected'
 
     args_split_by_chunk = argparse.Namespace()
     args_split_by_chunk.command = 'split'
     args_split_by_chunk.chunk_size = 10
-    args_split_by_chunk.src_path = resources_dir / args_split_by_chunk.command / 'input' / 'docs.json'
+    args_split_by_chunk.input_path = resources_dir / args_split_by_chunk.command / 'input' / 'docs.json'
     args_split_by_chunk.out_dir = resources_dir / args_split_by_chunk.command / 'out' / 'chunk'
     args_split_by_chunk.expected_path = resources_dir / args_split_by_chunk.command / 'expected' / 'chunk'
 
@@ -72,7 +72,7 @@ def create_test_args():
     args_split_by_prop_name.command = 'split'
     args_split_by_prop_name.chunk_size = None
     args_split_by_prop_name.prop_name = 'metadata.product'
-    args_split_by_prop_name.src_path = resources_dir / args_split_by_prop_name.command / 'input' / 'docs.json'
+    args_split_by_prop_name.input_path = resources_dir / args_split_by_prop_name.command / 'input' / 'docs.json'
     args_split_by_prop_name.out_dir = resources_dir / args_split_by_prop_name.command / 'out' / 'prop_name'
     args_split_by_prop_name.expected_path = resources_dir / args_split_by_prop_name.command / 'expected' / 'prop_name'
 
@@ -80,7 +80,7 @@ def create_test_args():
     args_remove.command = 'remove'
     args_remove.prop_name = 'metadata.product'
     args_remove.prop_value = 'BillingCenter'
-    args_remove.src_path = resources_dir / args_remove.command / 'input' / 'docs.json'
+    args_remove.input_path = resources_dir / args_remove.command / 'input' / 'docs.json'
     args_remove.out_dir = resources_dir / args_remove.command / 'out'
     args_remove.expected_path = resources_dir / args_remove.command / 'expected'
 
@@ -89,7 +89,7 @@ def create_test_args():
     args_update_by_prop_value.prop_name = 'public'
     args_update_by_prop_value.prop_value = 'false'
     args_update_by_prop_value.new_prop_value = 'true'
-    args_update_by_prop_value.src_path = resources_dir / args_update_by_prop_value.command / 'input' / 'docs.json'
+    args_update_by_prop_value.input_path = resources_dir / args_update_by_prop_value.command / 'input' / 'docs.json'
     args_update_by_prop_value.out_dir = resources_dir / args_update_by_prop_value.command / 'out' / 'prop_value'
     args_update_by_prop_value.expected_path = resources_dir / args_update_by_prop_value.command / 'expected' / 'prop_value'
 
@@ -98,7 +98,7 @@ def create_test_args():
     args_update_all.prop_name = 'metadata.product'
     args_update_all.prop_value = ''
     args_update_all.new_prop_value = 'BillingCenter Cloud BETA'
-    args_update_all.src_path = resources_dir / args_update_all.command / 'input' / 'docs.json'
+    args_update_all.input_path = resources_dir / args_update_all.command / 'input' / 'docs.json'
     args_update_all.out_dir = resources_dir / args_update_all.command / 'out' / 'all'
     args_update_all.expected_path = resources_dir / args_update_all.command / 'expected' / 'all'
 
@@ -106,7 +106,7 @@ def create_test_args():
     args_extract.command = 'extract'
     args_extract.prop_name = 'metadata.product'
     args_extract.prop_value = 'BillingCenter'
-    args_extract.src_path = resources_dir / args_extract.command / 'input' / 'docs.json'
+    args_extract.input_path = resources_dir / args_extract.command / 'input' / 'docs.json'
     args_extract.out_dir = resources_dir / args_extract.command / 'out'
     args_extract.expected_path = resources_dir / args_extract.command / 'expected'
 
@@ -115,7 +115,7 @@ def create_test_args():
     args_clone.prop_name = 'metadata.version'
     args_clone.prop_value = '9.0.10'
     args_clone.new_prop_value = '9.0.11'
-    args_clone.src_path = resources_dir / args_clone.command / 'input' / 'docs.json'
+    args_clone.input_path = resources_dir / args_clone.command / 'input' / 'docs.json'
     args_clone.out_dir = resources_dir / args_clone.command / 'out'
     args_clone.expected_path = resources_dir / args_clone.command / 'expected'
 
