@@ -308,7 +308,7 @@ def run_command(args: argparse.Namespace()):
         save_json_file(out_dir / file_name, new_items)
 
     def run_merge_command():
-        logger.info(f'Merging files in "{str(src_path)}".')
+        logger.info(f'Merging files in "{src_path}".')
         all_items = merge_objects(prepare_input())
         file_name = create_file_name(f'{args.command}-all')
         logger.info(f'Saving output to {out_dir / file_name}')
@@ -325,14 +325,14 @@ def run_command(args: argparse.Namespace()):
     def run_split_command():
         root_key_name, root_key_objects = prepare_input()
         if args.chunk_size:
-            logger.info(f'Splitting "{str(src_path)}" into chunks of {args.chunk_size}.')
+            logger.info(f'Splitting "{src_path}" into chunks of {args.chunk_size}.')
             chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
             for chunk_number, chunk in enumerate(chunked_items):
                 file_name = create_file_name(f'{args.command}-chunk-{chunk_number}')
                 logger.info(f'Saving output to {out_dir / file_name}')
                 save_json_file(out_dir / file_name, chunk)
         elif args.prop_name:
-            logger.info(f'Splitting "{str(src_path)}" by "{args.prop_name}".')
+            logger.info(f'Splitting "{src_path}" by "{args.prop_name}".')
             split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
             for item in split_items:
                 file_name = create_file_name(
