@@ -5,7 +5,7 @@ description = "A tool for managing and deploying config files"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"
 repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
-include = ["../../.teamcity/config/config-schema.json"]
+include = ["config_deployer/config-schema.json"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: Proprietary",

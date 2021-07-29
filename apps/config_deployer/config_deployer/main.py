@@ -243,7 +243,7 @@ def check_for_duplicated_ids(objects_to_check: list):
 
 
 def validate_against_schema(config_file_path: Path):
-    schema_path = (Path(__file__).parent / '..' / '..' / '..' / '.teamcity' / 'config' / 'config-schema.json').resolve()
+    schema_path = Path(__file__).parent / 'config-schema.json'
     config_schema = load_json_file(schema_path)
     config_json = load_json_file(config_file_path)
     validate(instance=config_json, schema=config_schema)
