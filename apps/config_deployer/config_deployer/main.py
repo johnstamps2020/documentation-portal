@@ -55,7 +55,7 @@ def get_object_property_value(obj: dict, property_name: str) -> str or bool or l
         raise KeyError('Incorrect key. Maximum nesting level is 2.')
 
 
-def set_object_property(obj: dict, property_name: str, property_value) -> dict:
+def set_object_property(obj: dict, property_name: str, property_value: str) -> dict:
     current_value_type = type(get_object_property_value(obj, property_name))
     new_property_value = property_value
     if current_value_type is list:
@@ -99,6 +99,33 @@ def filter_objects_by_property_value(objects_to_filter: list, property_name: str
     elif property_type is str:
         return [obj for obj in objects_to_filter
                 if property_value.casefold() == get_object_property_value(obj, property_name).casefold()]
+
+
+def add_missing_property_to_objects(objects_to_update: list, property_name: str) -> list:
+    try:
+        property_type = type(next(get_object_property_value(obj, property_name) for obj in objects_to_update if
+                                  get_object_property_value(obj, property_name) is not None))
+    except StopIteration:
+        raise ValueError(f'Unable to determine type for the "{property_name}" property.'
+                         f'{os.linesep}Make sure the property name you provided is correct.')
+    default_value = None
+    if property_type is list:
+        default_value = []
+    elif property_type is bool:
+        default_value = False
+    elif property_type is str:
+        default_value = ''
+
+    updated_objects = []
+    for obj in objects_to_update:
+        if get_object_property_value(obj, property_name) is None:
+            new_object = copy.deepcopy(obj)
+            new_object[property_name] = default_value
+            updated_objects.append(new_object)
+        else:
+            updated_objects.append(obj)
+
+    return updated_objects
 
 
 def merge_objects(objects_to_merge: list) -> dict:
@@ -175,9 +202,10 @@ def copy_objects_by_property(key_name: str, all_objects: list, property_name: st
 
 def update_property_for_objects(key_name: str, all_objects: list, property_name: str, current_property_value: str,
                                 new_property_value: str) -> dict:
-    objects_to_update = all_objects
+    objects_to_update = add_missing_property_to_objects(all_objects, property_name)
     if current_property_value:
         objects_to_update = filter_objects_by_property_value(all_objects, property_name, current_property_value)
+
     updated_objects = [set_object_property(obj, property_name, new_property_value) if
                        obj in objects_to_update else obj for obj in all_objects]
     return {
