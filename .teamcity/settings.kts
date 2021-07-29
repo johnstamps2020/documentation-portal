@@ -1214,7 +1214,7 @@ object DeployServerConfig : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                config_deployer -o %env.OUTPUT_DIR% deploy %env.INPUT_DIR% --deploy-env %env.DEPLOY_ENV%
+                config_deployer deploy %env.INPUT_DIR% --deploy-env %env.DEPLOY_ENV% -o %env.OUTPUT_DIR%
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1295,7 +1295,7 @@ object DeployFrontend : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                config_deployer -o %env.OUTPUT_DIR% merge %env.INPUT_DIR%
+                config_deployer merge %env.INPUT_DIR% -o %env.OUTPUT_DIR%
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1392,7 +1392,31 @@ object DeployFrontend : BuildType({
 })
 
 object TestConfig : BuildType({
-    name = "Test config"
+    name = "Test config files"
+
+    params {
+        text("env.DOCS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.SOURCES_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/sources")
+        text("env.BUILDS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/builds")
+        text("env.DOCS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/docs")
+        text("env.SOURCES_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/sources")
+        text("env.BUILDS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/builds")
+        text(
+            "env.DOCS_CONFIG_FILE",
+            "%env.DOCS_OUTPUT_DIR%/config.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.SOURCES_CONFIG_FILE",
+            "%env.SOURCES_OUTPUT_DIR%/config.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.BUILDS_CONFIG_FILE",
+            "%env.BUILDS_OUTPUT_DIR%/config.json",
+            display = ParameterDisplay.HIDDEN
+        )
+    }
 
     vcs {
         root(vcsroot)
@@ -1402,12 +1426,29 @@ object TestConfig : BuildType({
 
     steps {
         script {
-            name = "Run tests for server config"
+            name = "Merge config files"
             scriptContent = """
-                cd apps/config_tester
-                ./test_config.sh
+                #!/bin/bash
+                set -xe
+                
+                config_deployer merge %env.DOCS_INPUT_DIR% -o %env.DOCS_OUTPUT_DIR%
+                config_deployer merge %env.SOURCES_INPUT_DIR% -o %env.SOURCES_OUTPUT_DIR%
+                config_deployer merge %env.BUILDS_INPUT_DIR% -o %env.BUILDS_OUTPUT_DIR%
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Run tests for config files"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                config_deployer test %env.DOCS_CONFIG_FILE%
+                config_deployer test %env.SOURCES_CONFIG_FILE%
+                config_deployer test %env.BUILDS_CONFIG_FILE% --sources-path %env.SOURCES_CONFIG_FILE% --docs-path %env.DOCS_CONFIG_FILE%  
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }

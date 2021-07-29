@@ -270,14 +270,17 @@ def check_for_broken_id_references(builds_objects: list, sources_objects: list, 
 
 def run_command(args: argparse.Namespace()):
     try:
-        src_path = args.src_path.resolve()
+        input_path = args.input_path.resolve()
     except AttributeError:
-        src_path = None
+        input_path = None
 
-    out_dir = args.out_dir.resolve()
-    if out_dir.exists():
-        shutil.rmtree(out_dir)
-    out_dir.mkdir(exist_ok=True, parents=True)
+    try:
+        out_dir = args.out_dir.resolve()
+        if out_dir.exists():
+            shutil.rmtree(out_dir)
+        out_dir.mkdir(exist_ok=True, parents=True)
+    except AttributeError:
+        out_dir = None
 
     log_file = Path.cwd() / 'config-deployer.log'
     if log_file.exists():
@@ -293,7 +296,7 @@ def run_command(args: argparse.Namespace()):
     def create_file_name(file_name: str):
         return f'{file_name.replace(" ", "-").lower()}.json'
 
-    def prepare_input(path: Path = src_path):
+    def prepare_input(path: Path = input_path):
         if path.is_dir():
             return [get_root_object(obj) for obj in path.rglob('*.json')]
         elif path.is_file():
@@ -308,7 +311,7 @@ def run_command(args: argparse.Namespace()):
         save_json_file(out_dir / file_name, new_items)
 
     def run_merge_command():
-        logger.info(f'Merging files in "{src_path}".')
+        logger.info(f'Merging files in "{input_path}".')
         all_items = merge_objects(prepare_input())
         file_name = create_file_name(f'{args.command}-all')
         logger.info(f'Saving output to {out_dir / file_name}')
@@ -316,7 +319,7 @@ def run_command(args: argparse.Namespace()):
 
     def run_deploy_command():
         logger.info(
-            f'Filtering items in {src_path} for the "{args.deploy_env}" environment.')
+            f'Filtering items in {input_path} for the "{args.deploy_env}" environment.')
         file_name = 'config.json'
         filtered_items = get_objects_for_deploy_env(prepare_input(), args.deploy_env)
         logger.info(f'Saving output to {out_dir / file_name}')
@@ -325,14 +328,14 @@ def run_command(args: argparse.Namespace()):
     def run_split_command():
         root_key_name, root_key_objects = prepare_input()
         if args.chunk_size:
-            logger.info(f'Splitting "{src_path}" into chunks of {args.chunk_size}.')
+            logger.info(f'Splitting "{input_path}" into chunks of {args.chunk_size}.')
             chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
             for chunk_number, chunk in enumerate(chunked_items):
                 file_name = create_file_name(f'{args.command}-chunk-{chunk_number}')
                 logger.info(f'Saving output to {out_dir / file_name}')
                 save_json_file(out_dir / file_name, chunk)
         elif args.prop_name:
-            logger.info(f'Splitting "{src_path}" by "{args.prop_name}".')
+            logger.info(f'Splitting "{input_path}" by "{args.prop_name}".')
             split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
             for item in split_items:
                 file_name = create_file_name(
@@ -342,7 +345,7 @@ def run_command(args: argparse.Namespace()):
 
     def run_remove_command():
         logger.info(
-            f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
+            f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{input_path}".')
         cleaned_items = remove_objects_by_property(*prepare_input(), args.prop_name,
                                                    args.prop_value)
         file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}')
@@ -352,12 +355,12 @@ def run_command(args: argparse.Namespace()):
     def run_update_command():
         if args.prop_value:
             logger.info(
-                f'Updating "{args.prop_name}" to "{args.new_prop_value}" in items that have "{args.prop_name}" set to "{args.prop_value}" in "{src_path}".')
+                f'Updating "{args.prop_name}" to "{args.new_prop_value}" in items that have "{args.prop_name}" set to "{args.prop_value}" in "{input_path}".')
             file_name = create_file_name(
                 f'{args.command}-{args.prop_name}-{args.new_prop_value}-from-{args.prop_value}')
         else:
             logger.info(
-                f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{src_path}".')
+                f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{input_path}".')
             file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.new_prop_value}-all')
 
         updated_items = update_property_for_objects(*prepare_input(),
@@ -369,7 +372,7 @@ def run_command(args: argparse.Namespace()):
 
     def run_extract_command():
         logger.info(
-            f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}".')
+            f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{input_path}".')
         root_key_name, root_key_objects = prepare_input()
         extracted_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name, args.prop_value)
         updated_items = remove_objects_by_property(root_key_name, root_key_objects,
@@ -384,7 +387,7 @@ def run_command(args: argparse.Namespace()):
 
     def run_clone_command():
         logger.info(
-            f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{src_path}" and updating the property value to "{args.new_prop_value}".')
+            f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{input_path}" and updating the property value to "{args.new_prop_value}".')
         file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
         root_key_name, root_key_objects = prepare_input()
         copied_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name,
@@ -397,9 +400,9 @@ def run_command(args: argparse.Namespace()):
 
     def run_test_command():
         root_key_name, root_key_objects = prepare_input()
-        logger.info(f'Testing {src_path}')
+        logger.info(f'Testing {input_path}')
         logger.info(f'Checking against the schema.')
-        validate_against_schema(src_path)
+        validate_against_schema(input_path)
         logger.info(f'OK')
         if root_key_name == 'docs' or root_key_name == 'sources':
             logger.info(f'Checking for duplicated IDs.')
@@ -427,20 +430,22 @@ def run_command(args: argparse.Namespace()):
 
 def main():
     _parser_main_dir = argparse.ArgumentParser(add_help=False)
-    _parser_main_dir.add_argument('src_path', type=pathlib.Path,
-                                  help='Path to the source directory with config files')
+    _parser_main_dir.add_argument('input_path', type=pathlib.Path,
+                                  help='Path to the input directory with config files')
     _parser_main_file = argparse.ArgumentParser(add_help=False)
-    _parser_main_file.add_argument('src_path', type=pathlib.Path,
-                                   help='Path to the source config file')
+    _parser_main_file.add_argument('input_path', type=pathlib.Path,
+                                   help='Path to the input config file')
+    _parser_main_out_dir = argparse.ArgumentParser(add_help=False)
+    _parser_main_out_dir.add_argument('-o', '--out-dir', dest='out_dir', type=pathlib.Path,
+                                      help='Path to a directory where the output files are saved.',
+                                      default=f'{Path.cwd() / "out"}')
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-o', '--out-dir', dest='out_dir', type=pathlib.Path,
-                        help='Path to a directory where the output files are saved',
-                        default=f'{Path.cwd() / "out"}')
 
     subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
     parser_create = subparsers.add_parser('create',
                                           help='Create a new config file',
-                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                                          parents=[_parser_main_out_dir])
     parser_create.add_argument('type', type=str, choices=['docs', 'sources', 'builds'],
                                help='Config file type.')
     parser_create.add_argument('-n', '--number-of-items', dest='number_of_items', type=int, required=True,
@@ -450,12 +455,13 @@ def main():
                                     'Used only for the "docs" and "sources" types.')
 
     subparsers.add_parser('merge', help='Merge all config files in a dir into one file',
-                          formatter_class=argparse.ArgumentDefaultsHelpFormatter, parents=[_parser_main_dir])
+                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+                          parents=[_parser_main_dir, _parser_main_out_dir])
 
     parser_deploy = subparsers.add_parser('deploy',
                                           help='Filter items in the config file by deployment environment',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                          parents=[_parser_main_dir])
+                                          parents=[_parser_main_dir, _parser_main_out_dir])
     parser_deploy.add_argument('--deploy-env', dest='deploy_env', type=str, choices=['dev', 'int', 'staging', 'prod'],
                                required=True,
                                help='Name of the environment where the config file will be deployed.')
@@ -464,7 +470,7 @@ def main():
                                          help='Split the config file into smaller files'
                                               ' based on a chunk size or a property',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                         parents=[_parser_main_file])
+                                         parents=[_parser_main_file, _parser_main_out_dir])
     split_options = parser_split.add_mutually_exclusive_group()
     split_options.add_argument('--chunk-size', dest='chunk_size', type=int,
                                help='Number of items in a single config file.')
@@ -473,7 +479,7 @@ def main():
                                     'For a nested property, use the dot notation. For example, "metadata.product".')
     parser_remove = subparsers.add_parser('remove', help='Remove items from the config file',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                          parents=[_parser_main_file])
+                                          parents=[_parser_main_file, _parser_main_out_dir])
     parser_remove.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Property name used for removing items. '
                                     'For a nested property, use the dot notation. For example, "metadata.product".')
@@ -481,7 +487,7 @@ def main():
                                help='Property value used for removing items.')
     parser_update = subparsers.add_parser('update', help='Update the value of a property in items',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                          parents=[_parser_main_file])
+                                          parents=[_parser_main_file, _parser_main_out_dir])
     parser_update.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                help='Name of the property to update. '
                                     'For a nested property, use the dot notation. For example, "metadata.product".')
@@ -494,7 +500,7 @@ def main():
     parser_extract = subparsers.add_parser('extract',
                                            help='Copy items to a separate file and remove them from the original file',
                                            formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                           parents=[_parser_main_file])
+                                           parents=[_parser_main_file, _parser_main_out_dir])
     parser_extract.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                                 help='Property name used for extracting items. '
                                      'For a nested property, use the dot notation. For example, "metadata.product".')
@@ -504,7 +510,7 @@ def main():
                                          help='Copy items to a separate file '
                                               'and update their property value with a new value',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                         parents=[_parser_main_file])
+                                         parents=[_parser_main_file, _parser_main_out_dir])
     parser_clone.add_argument('--prop-name', dest='prop_name', type=str, required=True,
                               help='Name of the property to update in cloned items. '
                                    'For a nested property, use the dot notation. For example, "metadata.product".')
