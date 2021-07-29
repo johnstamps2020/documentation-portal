@@ -1039,12 +1039,33 @@ object PublishFlailSsgDockerImage : BuildType({
 object TestFlailSsg : BuildType({
     name = "Test Flail SSG"
 
+    params {
+        text("env.DOCS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.DOCS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/docs")
+        text(
+            "env.DOCS_CONFIG_FILE",
+            "%env.DOCS_OUTPUT_DIR%/config.json",
+            display = ParameterDisplay.HIDDEN
+        )
+    }
+
     vcs {
         root(vcsroot)
         cleanCheckout = true
     }
 
     steps {
+        script {
+            name = "Prepare the docs config file"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                config_deployer merge %env.DOCS_INPUT_DIR% -o %env.DOCS_OUTPUT_DIR%
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
         script {
             name = "Run tests for Flail SSG"
             scriptContent = """

@@ -1,3 +1,4 @@
+import os
 import shutil
 
 import json
@@ -14,8 +15,8 @@ class TestConfig:
     _current_dir = Path(__file__).parent
     _frontend_dir = _current_dir.parent.parent
     send_bouncer_home = False
+    docs_config_file = Path(os.environ['DOCS_CONFIG_FILE'])
     pages_dir = _frontend_dir / 'pages'
-    docs_config_file = _frontend_dir.parent / '.teamcity' / 'config' / 'docs' / 'docs.json'
     page_schema_file = _frontend_dir / 'page-schema.json'
     resources_input_dir = _current_dir / 'resources' / 'input'
     resources_expected_dir = _current_dir / 'resources' / 'expected'
