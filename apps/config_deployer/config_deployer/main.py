@@ -271,6 +271,8 @@ def check_for_broken_id_references(builds_objects: list, sources_objects: list, 
 def run_command(args: argparse.Namespace()):
     try:
         input_path = args.input_path.resolve()
+        if not input_path.exists():
+            raise FileNotFoundError(f'The path does not exist: {input_path}')
     except AttributeError:
         input_path = None
 
