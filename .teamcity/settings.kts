@@ -1044,7 +1044,7 @@ object TestFlailSsg : BuildType({
         text("env.DOCS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/docs")
         text(
             "env.DOCS_CONFIG_FILE",
-            "%env.DOCS_OUTPUT_DIR%/config.json",
+            "%env.DOCS_OUTPUT_DIR%/merge-all.json",
             display = ParameterDisplay.HIDDEN
         )
     }
@@ -1279,7 +1279,7 @@ object DeployFrontend : BuildType({
         text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out")
         text(
             "env.DOCS_CONFIG_FILE",
-            "%env.OUTPUT_DIR%/config.json",
+            "%env.OUTPUT_DIR%/merge-all.json",
             display = ParameterDisplay.HIDDEN
         )
         text("env.PAGES_DIR", "%teamcity.build.checkoutDir%/frontend/pages", display = ParameterDisplay.HIDDEN)
@@ -1424,17 +1424,17 @@ object TestConfig : BuildType({
         text("env.BUILDS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/builds")
         text(
             "env.DOCS_CONFIG_FILE",
-            "%env.DOCS_OUTPUT_DIR%/config.json",
+            "%env.DOCS_OUTPUT_DIR%/merge-all.json",
             display = ParameterDisplay.HIDDEN
         )
         text(
             "env.SOURCES_CONFIG_FILE",
-            "%env.SOURCES_OUTPUT_DIR%/config.json",
+            "%env.SOURCES_OUTPUT_DIR%/merge-all.json",
             display = ParameterDisplay.HIDDEN
         )
         text(
             "env.BUILDS_CONFIG_FILE",
-            "%env.BUILDS_OUTPUT_DIR%/config.json",
+            "%env.BUILDS_OUTPUT_DIR%/merge-all.json",
             display = ParameterDisplay.HIDDEN
         )
     }
