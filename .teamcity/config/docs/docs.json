@@ -10465,22 +10465,6 @@
       "public": false
     },
     {
-      "id": "in20211xbillrefdraft",
-      "title": "Billing Configuration Reference",
-      "url": "cloud/in/20211x/billref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20212xrndraft",
       "title": "Core Release Notes Draft",
       "url": "cloud/in/20212x/releasenotes",
@@ -11033,6 +11017,22 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Configuration"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20211xbillrefdraft",
+      "title": "Billing Configuration Reference Draft",
+      "url": "cloud/in/20211x/billref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["int"],
