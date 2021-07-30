@@ -189,7 +189,7 @@
             </div>
             <% if (pages > 1) { %>
                 <ul class="pagination">
-                    <% if (currentPage === 1) { %>
+                    <% if (Number(currentPage) === 1) { %>
                         <li class="disabled">First</li>
                     <% } else { %>
                         <li>
