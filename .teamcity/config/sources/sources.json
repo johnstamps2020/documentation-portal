@@ -2684,17 +2684,6 @@
       ]
     },
     {
-      "id": "in20212xbidraftsrc",
-      "title": "InsuranceNow 2021.2 BI Getting Started Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/BusinessIntelligenceGettingStartedGuide20212x.ditamap"
-      ]
-    },
-    {
       "id": "in20212xcsalespdraftsrc",
       "title": "InsuranceNow 2021.2 Consumer Sales Portal Features Draft",
       "sourceType": "xdocs",

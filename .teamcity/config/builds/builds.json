@@ -3839,14 +3839,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "BusinessIntelligenceGettingStartedGuide20212x.ditamap",
-      "srcId": "in20212xbidraftsrc",
-      "docId": "in20212xbidraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerSalesPortalFeatures20212x.ditamap",
       "srcId": "in20212xcsalespdraftsrc",
       "docId": "in20212xcsalespdraft",
