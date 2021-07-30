@@ -1,0 +1,143 @@
+<div class="advancedSearchHelpWrapper">
+  <details class="expandableSection">
+    <summary>
+      <span class="summaryContainer">
+        <span class="summaryChevron" aria-label="expand/collapse icon"></span>
+        Need help with advanced search?
+      </span>
+    </summary>
+    <section class="searchHelpSection">
+      <ul class="advancedSearchCheatSheet">
+        <li>
+          <code>|</code>
+          signifies an OR operation
+        </li>
+        <li>
+          <ul>
+            <li>
+              <code>-</code>
+              negates a single word
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code>&quot;</code>
+          wraps a word or phrase you want to match exactly
+        </li>
+        <li>
+          <ul>
+            <li>
+              <code>*</code>
+              at the end of a term signifies a prefix query
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code>( )</code>
+          allow you to group terms
+        </li>
+        <li>
+          <code>~N</code>
+          after a <strong>word</strong> relaxes spelling rules (fuzziness)
+        </li>
+        phrase
+        <li>
+          <code>~N</code>
+          after a <strong>phrase</strong> signifies slop amount (<a
+            href="#Slop_84"
+            >see below for more details</a
+          >)
+        </li>
+      </ul>
+      <h2><a id="AND_OR_8"></a>AND, OR</h2>
+      <p>
+        By default, the search returns pages which contain all words in your
+        query. If you want to search for pages which contain the words
+        “configure”, or “install”, or “manage”, enter:
+      </p>
+      <pre><code>configure | install | manage</code></pre>
+      <h2><a id="Excluding_NOT_18"></a>Excluding (NOT)</h2>
+      <p>
+        If you want pages which contain the word “configure” and “manage” but
+        not “install”, enter:
+      </p>
+      <pre><code>configure -install manage</code></pre>
+      <p>
+        The order of these words in your search query does not matter.
+      </p>
+      <h2><a id="Exact_match_29"></a>Exact match</h2>
+      <p>
+        If you want an exact phrase to match, surround it with double quotes:
+      </p>
+      <pre><code>&quot;manage user accounts&quot;</code></pre>
+      <h2><a id="Grouping_37"></a>Grouping</h2>
+      <p>
+        If you want to exclude multiple terms, you can group them with
+        parentheses. For example:
+      </p>
+      <pre><code>configure -(install manage)</code></pre>
+      <p>
+        You can also combine double quotes with other methods. For example to
+        find the phrase “manage user accounts” and the words “policy” or “group”
+        but not “PolicyCenter”, enter:
+      </p>
+      <pre><code>&quot;manage users&quot; (policy | group) -PolicyCenter</code></pre>
+      <p>
+        A phrase in double quotes takes precedence in highlighting.
+      </p>
+      <p>
+        Note that our search uses stemming which means that if you search for
+        “configure” you will also see results for “configuring” and
+        “configuration”. If you want to match a word exactly, use double quotes.
+      </p>
+      <h2><a id="Prefix_60"></a>Prefix</h2>
+      <p>
+        If you want to find words that have a common beginning, like BigDecimal
+        and BigInt, you can use a prefix query with an asterisk:
+      </p>
+      <pre><code>big*</code></pre>
+      <p>
+        If you are having trouble finding pages using a prefix query, try lower
+        case in your query.
+      </p>
+      <p>
+        We do not support suffix search for now (<code>*decimal</code>), but you
+        can get more results using fuzziness.
+      </p>
+      <h2><a id="Fuzziness_75"></a>Fuzziness</h2>
+      <p>
+        You can relax the spelling rules a little if you add a ~ and a number
+        after a word. For example, if you’re not sure if you want “center” or
+        “centre”, try:
+      </p>
+      <pre><code>centre~1</code></pre>
+      <h2><a id="Slop_84"></a>Slop</h2>
+      <p>
+        If you want to match phrases like “Model Info screen”, “Model Details
+        screen”, and the like, you can surround a simple phrase with quotes and
+        follow it by a ~ and a number.
+      </p>
+      <pre><code>&quot;model screen&quot;~1</code></pre>
+      <p>
+        This number specifies the amount of “slop” in the phrase. The query
+        above means you’re looking for a phrase that contains the words “model”
+        and “screen”, but one word can be inserted into the phrase between the
+        first and the last word.
+      </p>
+      <p>
+        If you specify something like:
+      </p>
+      <pre><code>&quot;gosu zones types&quot;~5</code></pre>
+      <p>
+        That means you want the words “gosu”, “zones”, and “types”, but you
+        allow up to 5 words to be inserted anywhere in the phrase, but between
+        the first and the last word. With the phrase above, you can match
+        &quot;<strong>Gosu</strong> holiday methods that use
+        <strong>zones</strong> and <strong>types</strong>&quot;.
+      </p>
+      <p>
+        Have fun searching! 🙂
+      </p>
+    </section>
+  </details>
+</div>
