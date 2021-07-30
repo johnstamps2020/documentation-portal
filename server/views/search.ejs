@@ -202,7 +202,7 @@
                         <li class="disabled">...</li>
                     <% } %>
                     <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
-                    { %> <% if (i === currentPage) { %>
+                    { %> <% if (i === Number(currentPage)) { %>
                         <li class="disabled selected"><%= i %></li>
                     <% } else { %>
                         <li>
