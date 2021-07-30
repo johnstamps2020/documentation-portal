@@ -3305,7 +3305,7 @@
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft-External.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft-Internal.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft-Guidewire.ditaval",
         "/Content/doc/insuranceNow/DevelopersGuide_Java11.ditamap"
       ]
     },

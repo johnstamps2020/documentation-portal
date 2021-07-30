@@ -41,15 +41,9 @@
       "env": ["int"]
     },
     {
-      "label": "InsuranceNow Internal Audience",
+      "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.2xInternalAudience",
-      "env": ["int"]
-    },
-    {
-      "label": "InsuranceNow External Audience",
-      "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.2xExternalAudience",
+      "page": "insuranceNow/2021.2",
       "env": ["int"]
     },
     {
