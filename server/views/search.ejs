@@ -203,7 +203,7 @@
                     <% } %>
                     <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
                     { %> <% if (i === currentPage) { %>
-                        <li class="disabled"><%= i %></li>
+                        <li class="disabled selected"><%= i %></li>
                     <% } else { %>
                         <li>
                             <button onclick="setUrlParam('page', <%= i %>)">
