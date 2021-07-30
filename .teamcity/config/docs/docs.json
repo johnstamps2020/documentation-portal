@@ -9055,7 +9055,7 @@
     },
     {
       "id": "isbcclouddraftrules",
-      "title": "Rules",
+      "title": "Gosu Rules",
       "url": "cloud/bc/latest/rules",
       "metadata": {
         "platform": ["Cloud"],
@@ -9279,7 +9279,7 @@
     },
     {
       "id": "isccclouddraftrules",
-      "title": "Rules",
+      "title": "Gosu Rules",
       "url": "cloud/cc/latest/rules",
       "metadata": {
         "platform": ["Cloud"],
@@ -9535,7 +9535,7 @@
     },
     {
       "id": "ispcclouddraftrules",
-      "title": "Rules",
+      "title": "Gosu Rules",
       "url": "cloud/pc/latest/rules",
       "metadata": {
         "platform": ["Cloud"],
@@ -9855,7 +9855,7 @@
     },
     {
       "id": "isbccloudearules",
-      "title": "Rules",
+      "title": "Gosu Rules",
       "url": "cloud/bc/ea/rules",
       "metadata": {
         "platform": ["Cloud"],
@@ -10063,7 +10063,7 @@
     },
     {
       "id": "iscccloudearules",
-      "title": "Rules",
+      "title": "Gosu Rules",
       "url": "cloud/cc/ea/rules",
       "metadata": {
         "platform": ["Cloud"],
@@ -10303,7 +10303,7 @@
     },
     {
       "id": "ispccloudearules",
-      "title": "Rules",
+      "title": "Gosu Rules",
       "url": "cloud/pc/ea/rules",
       "metadata": {
         "platform": ["Cloud"],

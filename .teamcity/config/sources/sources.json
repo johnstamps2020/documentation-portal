@@ -986,11 +986,11 @@
     },
     {
       "id": "cloudisrulesdraftsrc",
-      "title": "IS Cloud Draft Rules",
+      "title": "IS Cloud Draft Gosu Rules",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/active/RulesGuide.ditamap",
+        "/Content/doc/insuranceSuite/core/cloud/active/GosuRules.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-EA.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval",
