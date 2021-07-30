@@ -33,7 +33,7 @@ async function getAllowedFilterValues(fieldName, query) {
             keywordFilter: {
               terms: {
                 field: fieldName,
-                size: 50,
+                size: 100,
               },
             },
           },
@@ -159,6 +159,12 @@ async function searchController(req, res, next) {
       },
     };
 
+    const filters = await getFiltersWithValues(
+      mappings,
+      filtersFromUrl,
+      queryBody
+    );
+
     if (filtersFromUrl) {
       let queryFilters = [];
       for (const [key, value] of Object.entries(filtersFromUrl)) {
@@ -177,12 +183,6 @@ async function searchController(req, res, next) {
       }
       queryBody.bool.filter = queryFilters;
     }
-
-    const filters = await getFiltersWithValues(
-      mappings,
-      filtersFromUrl,
-      queryBody
-    );
 
     const results = await runSearch(queryBody, startIndex, resultsPerPage);
 
@@ -232,8 +232,10 @@ async function searchController(req, res, next) {
         href: doc.href,
         score: result._score,
         title: titleText,
+        titlePlain: doc.title,
         version: doc.version.join(', '),
         body: bodyText,
+        bodyPlain: bodyBlurb,
         docTags: docTags,
         inner_hits: result.inner_hits.same_title.hits.hits,
         uniqueHighlightTerms: uniqueHighlightTerms,

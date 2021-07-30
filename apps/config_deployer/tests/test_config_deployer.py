@@ -1,71 +1,136 @@
+import argparse
 import filecmp
-import json
-import shutil
 from pathlib import Path
 
 import pytest
 
-from config_deployer import main as config_deployer
+import config_deployer.main as config_deployer
 
-current_dir = Path.absolute(Path(__file__)).parent
-input_resources_path = current_dir / 'resources' / 'input'
-expected_resources_path = current_dir / 'resources' / 'expected'
-out_resources_path = current_dir / 'resources' / 'out'
-server_config_path = Path('config', 'server-config.json')
-cloud_taxonomies_path = Path('config', 'taxonomy', 'cloud')
-cloud_taxonomies_index_path = Path('config', 'taxonomy', 'cloud', 'index.json')
-server_configs_out_path = Path('config', 'server_config_files')
+resources_dir = Path.absolute(Path(__file__)).parent / 'resources'
 
 
-@pytest.fixture(scope='session', autouse=True)
-def generate_server_configs():
-    full_server_configs_out_path = out_resources_path / server_configs_out_path
-    if full_server_configs_out_path.exists():
-        shutil.rmtree(full_server_configs_out_path)
-    full_server_configs_out_path.mkdir(exist_ok=True, parents=True)
-    deploy_envs = ['dev', 'int', 'staging', 'prod']
-    for deploy_env in deploy_envs:
-        config_deployer.save_json_file(
-            full_server_configs_out_path / f'config_{deploy_env}.json',
-            config_deployer.get_docs_for_env(input_resources_path / server_config_path, deploy_env)
-        )
+def check_dirs_have_the_same_files(args):
+    dir_comp = filecmp.dircmp(args.out_dir,
+                              args.expected_path)
 
-
-@pytest.fixture(scope='session')
-def match_out_and_expected_files(request):
-    matching_files_json_data = []
-    for out_file in (out_resources_path / request.param).iterdir():
-        matching_expected_file = next(
-            expected_file for expected_file in (expected_resources_path / request.param).iterdir() if
-            expected_file.name == out_file.name)
-        with open(out_file) as of:
-            out_file_json_data = json.load(of)
-        with open(matching_expected_file) as mef:
-            expected_file_json_data = json.load(mef)
-
-        matching_files_json_data.append(
-            (out_file_json_data, expected_file_json_data)
-        )
-
-    return matching_files_json_data
-
-
-def test_out_dir_has_expected_server_configs():
-    dir_comp = filecmp.dircmp(out_resources_path / server_configs_out_path,
-                              expected_resources_path / server_configs_out_path)
     assert dir_comp.left_list == dir_comp.right_list
 
 
-@pytest.mark.parametrize("match_out_and_expected_files", [server_configs_out_path], indirect=True)
-def test_docs_element(match_out_and_expected_files):
-    def test_number_of_docs_in_files():
-        for json_data_pair in match_out_and_expected_files:
-            assert len(json_data_pair[0]['docs']) == len(json_data_pair[1]['docs'])
+def check_files_have_the_same_content(args):
+    for output_file in args.out_dir.glob('*.json'):
+        for expected_file in args.expected_path.glob('*.json'):
+            if output_file.name == expected_file.name:
+                _, output_items = config_deployer.get_root_object(output_file)
+                _, expected_items = config_deployer.get_root_object(expected_file)
+                assert output_items == expected_items
 
-    def test_all_docs_are_included_in_files():
-        for json_data_pair in match_out_and_expected_files:
-            for out_doc in json_data_pair[0]['docs']:
-                assert any(out_doc == exp_doc for exp_doc in json_data_pair[1]['docs'])
 
-    test_number_of_docs_in_files()
-    test_all_docs_are_included_in_files()
+def check_created_files(args):
+    for output_file in args.out_dir.glob('*.json'):
+        for expected_file in args.expected_path.glob('*.json'):
+            if output_file.name == expected_file.name:
+                _, output_items = config_deployer.get_root_object(output_file)
+                for item in output_items:
+                    assert item['id'].startswith(args.id_prefix)
+                    item['id'] = args.id_prefix
+                _, expected_items = config_deployer.get_root_object(expected_file)
+                for item in expected_items:
+                    item['id'] = args.id_prefix
+                assert output_items == expected_items
+
+
+def create_test_args():
+    args_create = argparse.Namespace()
+    args_create.command = 'create'
+    args_create.type = 'docs'
+    args_create.number_of_items = 5
+    args_create.id_prefix = 'doc'
+    args_create.out_dir = resources_dir / args_create.command / 'out'
+    args_create.expected_path = resources_dir / args_create.command / 'expected'
+
+    args_merge = argparse.Namespace()
+    args_merge.command = 'merge'
+    args_merge.input_path = resources_dir / args_merge.command / 'input'
+    args_merge.out_dir = resources_dir / args_merge.command / 'out'
+    args_merge.expected_path = resources_dir / args_merge.command / 'expected'
+
+    args_deploy = argparse.Namespace()
+    args_deploy.command = 'deploy'
+    args_deploy.deploy_env = 'int'
+    args_deploy.input_path = resources_dir / args_deploy.command / 'input'
+    args_deploy.out_dir = resources_dir / args_deploy.command / 'out'
+    args_deploy.expected_path = resources_dir / args_deploy.command / 'expected'
+
+    args_split_by_chunk = argparse.Namespace()
+    args_split_by_chunk.command = 'split'
+    args_split_by_chunk.chunk_size = 10
+    args_split_by_chunk.input_path = resources_dir / args_split_by_chunk.command / 'input' / 'docs.json'
+    args_split_by_chunk.out_dir = resources_dir / args_split_by_chunk.command / 'out' / 'chunk'
+    args_split_by_chunk.expected_path = resources_dir / args_split_by_chunk.command / 'expected' / 'chunk'
+
+    args_split_by_prop_name = argparse.Namespace()
+    args_split_by_prop_name.command = 'split'
+    args_split_by_prop_name.chunk_size = None
+    args_split_by_prop_name.prop_name = 'metadata.product'
+    args_split_by_prop_name.input_path = resources_dir / args_split_by_prop_name.command / 'input' / 'docs.json'
+    args_split_by_prop_name.out_dir = resources_dir / args_split_by_prop_name.command / 'out' / 'prop_name'
+    args_split_by_prop_name.expected_path = resources_dir / args_split_by_prop_name.command / 'expected' / 'prop_name'
+
+    args_remove = argparse.Namespace()
+    args_remove.command = 'remove'
+    args_remove.prop_name = 'metadata.product'
+    args_remove.prop_value = 'BillingCenter'
+    args_remove.input_path = resources_dir / args_remove.command / 'input' / 'docs.json'
+    args_remove.out_dir = resources_dir / args_remove.command / 'out'
+    args_remove.expected_path = resources_dir / args_remove.command / 'expected'
+
+    args_update_by_prop_value = argparse.Namespace()
+    args_update_by_prop_value.command = 'update'
+    args_update_by_prop_value.prop_name = 'public'
+    args_update_by_prop_value.prop_value = 'false'
+    args_update_by_prop_value.new_prop_value = 'true'
+    args_update_by_prop_value.input_path = resources_dir / args_update_by_prop_value.command / 'input' / 'docs.json'
+    args_update_by_prop_value.out_dir = resources_dir / args_update_by_prop_value.command / 'out' / 'prop_value'
+    args_update_by_prop_value.expected_path = resources_dir / args_update_by_prop_value.command / 'expected' / 'prop_value'
+
+    args_update_all = argparse.Namespace()
+    args_update_all.command = 'update'
+    args_update_all.prop_name = 'metadata.product'
+    args_update_all.prop_value = ''
+    args_update_all.new_prop_value = 'BillingCenter Cloud BETA'
+    args_update_all.input_path = resources_dir / args_update_all.command / 'input' / 'docs.json'
+    args_update_all.out_dir = resources_dir / args_update_all.command / 'out' / 'all'
+    args_update_all.expected_path = resources_dir / args_update_all.command / 'expected' / 'all'
+
+    args_extract = argparse.Namespace()
+    args_extract.command = 'extract'
+    args_extract.prop_name = 'metadata.product'
+    args_extract.prop_value = 'BillingCenter'
+    args_extract.input_path = resources_dir / args_extract.command / 'input' / 'docs.json'
+    args_extract.out_dir = resources_dir / args_extract.command / 'out'
+    args_extract.expected_path = resources_dir / args_extract.command / 'expected'
+
+    args_clone = argparse.Namespace()
+    args_clone.command = 'clone'
+    args_clone.prop_name = 'metadata.version'
+    args_clone.prop_value = '9.0.10'
+    args_clone.new_prop_value = '9.0.11'
+    args_clone.input_path = resources_dir / args_clone.command / 'input' / 'docs.json'
+    args_clone.out_dir = resources_dir / args_clone.command / 'out'
+    args_clone.expected_path = resources_dir / args_clone.command / 'expected'
+
+    return [args_create, args_merge, args_deploy, args_split_by_chunk,
+            args_split_by_prop_name, args_remove,
+            args_extract, args_clone,
+            args_update_by_prop_value,
+            args_update_all]
+
+
+@pytest.mark.parametrize('args', create_test_args())
+def test_commands(args):
+    config_deployer.run_command(args)
+    check_dirs_have_the_same_files(args)
+    if args.command == 'create':
+        check_created_files(args)
+    else:
+        check_files_have_the_same_content(args)

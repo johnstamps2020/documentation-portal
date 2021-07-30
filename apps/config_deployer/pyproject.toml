@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "config_deployer"
-version = "1.0.0"
-description = "An application to clean the search index for the doc portal"
+version = "2.0.0"
+description = "A tool for managing and deploying config files"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"
 repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+include = ["config_deployer/config-schema.json"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: Proprietary",
@@ -15,6 +16,7 @@ config_deployer = "config_deployer.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+jsonschema = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.0"

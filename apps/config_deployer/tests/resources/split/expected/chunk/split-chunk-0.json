@@ -1,0 +1,148 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "cloudbcupgradeguide202005",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "cloud/bc/upgrade/202005",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudccupgradeguide202005",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "cloud/cc/upgrade/202005",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudpcupgradeguide202005",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "cloud/pc/upgrade/202005",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradeguide1010",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradeguide1012",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1012",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.1.2"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradeguide10x",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["BillingCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetools1450",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1450",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.10"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetools1x",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["BillingCenter"],
+        "platform": ["Self-managed"],
+        "version": ["9.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetoolspiteqdgk",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/230",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.0.3"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetoolsqwertyui",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1440",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.9"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "isbccloudeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/ea/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/bc/ea/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/ea/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeaapp",
+      "title": "Application Guide",
+      "url": "cloud/bc/ea/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeaadmin",
+      "title": "Administration",
+      "url": "cloud/bc/ea/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeabestpractice",
+      "title": "Best Practices",
+      "url": "cloud/bc/ea/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeaconfig",
+      "title": "Configuration",
+      "url": "cloud/bc/ea/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeaglobal",
+      "title": "Globalization",
+      "url": "cloud/bc/ea/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudearules",
+      "title": "Rules",
+      "url": "cloud/bc/ea/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeainteg",
+      "title": "Integration",
+      "url": "cloud/bc/ea/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeatesting",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/bc/ea/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudeainstall",
+      "title": "Installation",
+      "url": "cloud/bc/ea/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

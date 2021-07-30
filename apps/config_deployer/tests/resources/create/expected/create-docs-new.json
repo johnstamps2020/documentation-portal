@@ -1,0 +1,85 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "doc2cc7ef",
+      "title": "",
+      "url": "",
+      "metadata": {
+        "product": [],
+        "platform": [],
+        "version": [],
+        "release": [],
+        "subject": []
+      },
+      "environments": [],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "doc12f475",
+      "title": "",
+      "url": "",
+      "metadata": {
+        "product": [],
+        "platform": [],
+        "version": [],
+        "release": [],
+        "subject": []
+      },
+      "environments": [],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "doccb14bc",
+      "title": "",
+      "url": "",
+      "metadata": {
+        "product": [],
+        "platform": [],
+        "version": [],
+        "release": [],
+        "subject": []
+      },
+      "environments": [],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "docff367f",
+      "title": "",
+      "url": "",
+      "metadata": {
+        "product": [],
+        "platform": [],
+        "version": [],
+        "release": [],
+        "subject": []
+      },
+      "environments": [],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "docb7b8c1",
+      "title": "",
+      "url": "",
+      "metadata": {
+        "product": [],
+        "platform": [],
+        "version": [],
+        "release": [],
+        "subject": []
+      },
+      "environments": [],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
