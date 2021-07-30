@@ -1153,3 +1153,50 @@ main.support h2 {
 #highlightToggle.highlightDisabled {
   opacity: 0.4;
 }
+
+.advancedSearchHelpWrapper {
+  width: 760px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 32px;
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+.searchHelpSection {
+  width: 700px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.advancedSearchCheatSheet {
+  padding: 32px;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.advancedSearchCheatSheet li {
+  margin-top: 6px;
+}
+
+.searchHelpSection > * {
+  margin: 12px 0;
+}
+
+.searchHelpSection code {
+  background-color: #eee;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+.searchHelpSection pre {
+  width: 100%;
+  background-color: #eee;
+  padding: 32px 24px;
+  border-radius: 8px;
+}
+
+.searchHelpSection h2 {
+  font-weight: 500;
+  margin-top: 24px;
+}
