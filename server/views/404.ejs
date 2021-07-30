@@ -2,7 +2,8 @@
 <html lang="en">
   <%- include('parts/head', { pageTitle: `404 (not found)`}) %>
   <body>
-    <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
+    <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false
+    }) %>
     <main class="pageNotFound">
       <h1>
         Sorry, we couldn't find <%= pageInfo.cameFrom %>
@@ -10,7 +11,7 @@
       <p>
         We weren't able to find what you are looking for. You may have an old
         link. We'll make a note of it and try to fix it soon. Meanwhile, try
-        using the search bar above, or go to the
+        using the search box above, or go to the
         <a href="<%= pageInfo.appBaseUrl %>">home page</a>.
       </p>
     </main>
