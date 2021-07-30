@@ -3060,7 +3060,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "RulesGuide.ditamap",
+      "root": "GosuRules.ditamap",
       "srcId": "cloudisrulesdraftsrc",
       "docId": "isbcclouddraftrules",
       "indexRedirect": true
@@ -3200,7 +3200,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "RulesGuide.ditamap",
+      "root": "GosuRules.ditamap",
       "srcId": "cloudisrulesdraftsrc",
       "docId": "isccclouddraftrules",
       "indexRedirect": true
@@ -3340,7 +3340,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "RulesGuide.ditamap",
+      "root": "GosuRules.ditamap",
       "srcId": "cloudisrulesdraftsrc",
       "docId": "ispcclouddraftrules",
       "indexRedirect": true
@@ -3496,7 +3496,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-EA.ditaval",
-      "root": "RulesGuide.ditamap",
+      "root": "GosuRules.ditamap",
       "srcId": "cloudisrulesdraftsrc",
       "docId": "isbccloudearules",
       "indexRedirect": true
@@ -3612,7 +3612,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-EA.ditaval",
-      "root": "RulesGuide.ditamap",
+      "root": "GosuRules.ditamap",
       "srcId": "cloudisrulesdraftsrc",
       "docId": "iscccloudearules",
       "indexRedirect": true
@@ -3736,7 +3736,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "RulesGuide.ditamap",
+      "root": "GosuRules.ditamap",
       "srcId": "cloudisrulesdraftsrc",
       "docId": "ispccloudearules",
       "indexRedirect": true
