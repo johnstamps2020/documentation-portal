@@ -875,6 +875,10 @@ div.pageHero {
   padding: 6px;
 }
 
+.pagination .disabled.selected {
+  background: var(--clr-GW-BLUE-LIGHTER);
+}
+
 .pagination button {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
   border: none;
