@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceNow 2021.2x - Internal Audience",
+  "title": "InsuranceNow 2021.2",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -43,16 +43,16 @@
           "id": "in20212xappdraft"
         },
         {
-          "label": "Business Intelligence Getting Started Guide",
-          "id": "in20212xbidraft"
-        },
-        {
           "label": "Consumer Sales Portal Features",
           "id": "in20212xcsalespdraft"
         },
         {
           "label": "Consumer Service Portal Features",
           "id": "in20212xcservicepdraft"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30draft"
         }
       ]
     },
@@ -65,7 +65,7 @@
           "id": "in20212xappreaderintegdraft"
         },
         {
-          "label": "Business Intelligence Integration",
+          "label": "Business Intelligence Integration (Internal)",
           "id": "in20212xbiintegdraft"
         },
         {
@@ -87,7 +87,7 @@
           "id": "in20212xcommonconfigdraft"
         },
         {
-          "label": "Consumer Service Portal Configuration Guide",
+          "label": "Consumer Service Portal Configuration Guide (Internal)",
           "id": "in20212xcservicepconfigdraft"
         },
         {
@@ -95,7 +95,7 @@
           "id": "in20212xstudiodraft"
         },
         {
-          "label": "Provisioning Portal",
+          "label": "Provisioning Portal (Internal)",
           "id": "in20212xprovportaldraft"
         },
         {
@@ -121,15 +121,19 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Install Assist",
+          "label": "Install Assist (Internal)",
           "id": "ininstallassistdraft"
         },
         {
-          "label": "Developers Setup",
+          "label": "Developers Setup (Internal)",
           "id": "indevguidejava11draft"
         },
         {
-          "label": "Upgrade Tools",
+          "label": "Developers Setup",
+          "id": "indevguidejava11draftext"
+        },
+        {
+          "label": "Upgrade Tools (Internal)",
           "id": "inupgradetoolsdraft"
         }
       ]

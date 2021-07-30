@@ -10482,17 +10482,14 @@
     },
     {
       "id": "in20212xrndraft",
-      "title": "Core Release Notes",
+      "title": "Core Release Notes Draft",
       "url": "cloud/in/20212x/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Release notes"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10501,17 +10498,14 @@
     },
     {
       "id": "in20212xstudiorndraft",
-      "title": "Studio Release Notes",
+      "title": "Studio Release Notes Draft",
       "url": "cloud/in/20212x/studiorn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Release notes"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10520,36 +10514,14 @@
     },
     {
       "id": "in20212xappdraft",
-      "title": "Application Guide",
+      "title": "Application Guide Draft",
       "url": "cloud/in/20212x/app",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xbidraft",
-      "title": "Business Intelligence Getting Started Guide",
-      "url": "cloud/in/20212x/bi",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10558,17 +10530,14 @@
     },
     {
       "id": "in20212xcsalespdraft",
-      "title": "Consumer Sales Portal Features",
+      "title": "Consumer Sales Portal Features Draft",
       "url": "cloud/in/20212x/csalesp",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10577,17 +10546,14 @@
     },
     {
       "id": "in20212xcservicepdraft",
-      "title": "Consumer Service Portal Features",
+      "title": "Consumer Service Portal Features Draft",
       "url": "cloud/in/20212x/cservicep",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10596,17 +10562,14 @@
     },
     {
       "id": "in20212xappreaderintegdraft",
-      "title": "AppReader Integration",
+      "title": "AppReader Integration Draft",
       "url": "cloud/in/20212x/appreaderinteg",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Integration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10615,17 +10578,14 @@
     },
     {
       "id": "in20212xpadraft",
-      "title": "Predictive Analytics Integration",
+      "title": "Predictive Analytics Integration Draft",
       "url": "cloud/in/20212x/pa",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Integration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10634,14 +10594,14 @@
     },
     {
       "id": "in20212xbiintegdraft",
-      "title": "Business Intelligence Integration",
+      "title": "Business Intelligence Integration Draft",
       "url": "cloud/in/20212x/biinteg",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.2x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Integration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10650,17 +10610,14 @@
     },
     {
       "id": "in20212xconfigdraft",
-      "title": "Core Configuration Guide",
+      "title": "Core Configuration Guide Draft",
       "url": "cloud/in/20212x/config",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10669,14 +10626,14 @@
     },
     {
       "id": "in20212xcommonconfigdraft",
-      "title": "Common Functionality Configuration Reference",
+      "title": "Common Functionality Configuration Reference Draft",
       "url": "cloud/in/20212x/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.2x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10685,14 +10642,14 @@
     },
     {
       "id": "in20212xcservicepconfigdraft",
-      "title": "Consumer Service Portal Configuration Guide",
+      "title": "Consumer Service Portal Configuration Guide Draft",
       "url": "cloud/in/20212x/cservicepconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.2x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10701,17 +10658,14 @@
     },
     {
       "id": "in20212xstudiodraft",
-      "title": "Studio Configuration Guide",
+      "title": "Studio Configuration Guide Draft",
       "url": "cloud/in/20212x/studioconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10720,14 +10674,14 @@
     },
     {
       "id": "in20212xprovportaldraft",
-      "title": "Provisioning Portal",
+      "title": "Provisioning Portal Draft",
       "url": "cloud/in/20212x/provportal",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.2x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10736,17 +10690,14 @@
     },
     {
       "id": "in20212xportaldevdraft",
-      "title": "Portal Development Guide",
+      "title": "Portal Development Guide Draft",
       "url": "cloud/in/20212x/portaldev",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10755,17 +10706,14 @@
     },
     {
       "id": "in20212xprodattrefdraft",
-      "title": "Product Attribute Reference",
+      "title": "Product Attribute Reference Draft",
       "url": "cloud/in/20212x/prodattref",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10774,17 +10722,14 @@
     },
     {
       "id": "in20212xuwconfigdraft",
-      "title": "Underwriting Configuration Reference",
+      "title": "Underwriting Configuration Reference Draft",
       "url": "cloud/in/20212x/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2021.2x - Internal Audience",
-          "InsuranceNow 2021.2x - External Audience"
-        ],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10793,14 +10738,14 @@
     },
     {
       "id": "in20212xclaimsconfigdraft",
-      "title": "Claims Configuration Reference",
+      "title": "Claims Configuration Reference Draft",
       "url": "cloud/in/20212x/claimsconfig",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow 2021.2x - Internal Audience"],
-        "version": ["latest"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
+        "release": ["Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
