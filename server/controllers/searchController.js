@@ -28,9 +28,7 @@ async function getAllowedFilterValues(fieldName, query) {
     body: {
       aggs: {
         allowedForField: {
-          filter: {
-            match_all: {},
-          },
+          filter: query,
           aggs: {
             keywordFilter: {
               terms: {
@@ -161,6 +159,12 @@ async function searchController(req, res, next) {
       },
     };
 
+    const filters = await getFiltersWithValues(
+      mappings,
+      filtersFromUrl,
+      queryBody
+    );
+
     if (filtersFromUrl) {
       let queryFilters = [];
       for (const [key, value] of Object.entries(filtersFromUrl)) {
@@ -179,12 +183,6 @@ async function searchController(req, res, next) {
       }
       queryBody.bool.filter = queryFilters;
     }
-
-    const filters = await getFiltersWithValues(
-      mappings,
-      filtersFromUrl,
-      queryBody
-    );
 
     const results = await runSearch(queryBody, startIndex, resultsPerPage);
 
