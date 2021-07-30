@@ -10,8 +10,8 @@ RUN poetry build -f wheel
 
 FROM artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster
 
-COPY --from=app-builder /opt/app/dist/config_deployer-1.0.0-py3-none-any.whl /opt/app/
+COPY --from=app-builder /opt/app/dist/config_deployer-2.0.0-py3-none-any.whl /opt/app/
 WORKDIR /opt/app
-RUN pip install config_deployer-1.0.0-py3-none-any.whl --no-binary :all:
+RUN pip install config_deployer-2.0.0-py3-none-any.whl --no-binary :all:
 
-RUN rm -rf config_deployer-1.0.0-py3-none-any.whl
+RUN rm -rf config_deployer-2.0.0-py3-none-any.whl

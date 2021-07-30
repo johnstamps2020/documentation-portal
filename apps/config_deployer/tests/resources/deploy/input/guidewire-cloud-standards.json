@@ -1,0 +1,155 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "standardslatest",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/latest",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["dev", "staging", "prod"],
+      "public": false
+    },
+    {
+      "id": "standards202106",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202106",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2021.06"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standards202105",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202105",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2021.05"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standards202104",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202104",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standards202103",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202103",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2021.03"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standards202102",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202102",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2021.02"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standards202101",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202101",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2021.01"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standards202011",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202011",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standards202010",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202010",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2020.10"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "standardsdraft",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/latest",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["draft"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

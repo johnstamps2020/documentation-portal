@@ -1,0 +1,372 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "cloudbcupgradeguide202005",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "cloud/bc/upgrade/202005",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudccupgradeguide202005",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "cloud/cc/upgrade/202005",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudpcupgradeguide202005",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "cloud/pc/upgrade/202005",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradeguide1010",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradeguide1012",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1012",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.1.2"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradeguide10x",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["BillingCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetools1450",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1450",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.10"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetools1x",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["BillingCenter"],
+        "platform": ["Self-managed"],
+        "version": ["9.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetoolspiteqdgk",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/230",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.0.3"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedbcupgradetoolsqwertyui",
+      "title": "BillingCenter Upgrade Guide",
+      "url": "self-managed/bc/upgrade/1440",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["9.0.9"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradeguide1010",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradeguide1011",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.1.1"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradeguide1012",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1012",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.1.2"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradeguide10x",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetools1450",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1450",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.10"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetools1x",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["9.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetoolspiteqdgk",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/230",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.0.3"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedccupgradetoolsqwertyui",
+      "title": "ClaimCenter Upgrade Guide",
+      "url": "self-managed/cc/upgrade/1440",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["9.0.9"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1010",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1010",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1011",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1011",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.1.1"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradeguide1012",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1012",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.1.2"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradeguide10x",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/10x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["PolicyCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradetools1450",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1450",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.10"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradetools1x",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1x",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "product": ["PolicyCenter"],
+        "platform": ["Self-managed"],
+        "version": ["9.x"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradetoolspiteqdgk",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/230",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.0.3"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "selfmanagedpcupgradetoolsqwertyui",
+      "title": "PolicyCenter Upgrade Guide",
+      "url": "self-managed/pc/upgrade/1440",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["9.0.9"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

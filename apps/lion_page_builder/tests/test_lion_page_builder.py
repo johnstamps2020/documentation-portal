@@ -11,7 +11,7 @@ current_dir = Path.absolute(Path(__file__)).parent
 input_resources_path = current_dir / 'resources' / 'input'
 expected_resources_path = current_dir / 'resources' / 'expected'
 out_resources_path = current_dir / 'resources' / 'out'
-server_config_path = Path('config', 'server-config.json')
+docs_config_path = Path('config', 'docs', 'docs.json')
 cloud_taxonomies_path = Path('config', 'taxonomy', 'cloud')
 cloud_taxonomies_index_path = Path('config', 'taxonomy', 'cloud', 'index.json')
 server_configs_out_path = Path('config', 'server_config_files')
@@ -28,7 +28,7 @@ def generate_server_configs():
         config_deployer.save_json_file(
             full_server_configs_out_path / f'config_{deploy_env}.json',
             config_deployer.get_docs_for_env(
-                input_resources_path / server_config_path, deploy_env)
+                input_resources_path / docs_config_path, deploy_env)
         )
 
 
@@ -41,7 +41,7 @@ def create_cloud_taxonomies_index():
     deploy_envs = ['dev', 'int', 'staging', 'prod']
     for deploy_env in deploy_envs:
         docs_for_env = config_deployer.get_docs_for_env(
-            input_resources_path / server_config_path, deploy_env)
+            input_resources_path / docs_config_path, deploy_env)
         releases = config_deployer.get_releases_from_docs(docs_for_env)
         cloud_taxonomy_files_paths = config_deployer.get_paths_index(
             input_resources_path / cloud_taxonomies_path,

@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.teamcity/DocumentationTools_Documentationportal_dsl.iml" filepath="$PROJECT_DIR$/.teamcity/DocumentationTools_Documentationportal_dsl.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/config_deployer/config_deployer.iml" filepath="$PROJECT_DIR$/apps/config_deployer/config_deployer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/apps/config_tester/config_tester.iml" filepath="$PROJECT_DIR$/apps/config_tester/config_tester.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/dita_processor/dita_processor.iml" filepath="$PROJECT_DIR$/apps/dita_processor/dita_processor.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/doc_crawler/doc_crawler.iml" filepath="$PROJECT_DIR$/apps/doc_crawler/doc_crawler.iml" />
       <module fileurl="file://$PROJECT_DIR$/documentation-portal.iml" filepath="$PROJECT_DIR$/documentation-portal.iml" />

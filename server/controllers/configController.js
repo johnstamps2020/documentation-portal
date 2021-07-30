@@ -1,8 +1,8 @@
 const fetch = require('node-fetch');
-const fs = require('fs').promises;
+const fs = require('fs');
 const path = require('path');
 
-const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config`);
+const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config/docs`);
 const breadcrumbsConfigPath = path.resolve(
   `${__dirname}/../static/pages/breadcrumbs.json`
 );
@@ -16,17 +16,28 @@ async function getConfig() {
       console.log(
         `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
       );
-      const configPath = path.join(localConfigDir, 'server-config.json');
-      const config = await fs.readFile(configPath, 'utf-8');
-      const json = JSON.parse(config);
 
-      const docs = json.docs.filter(d =>
-        d.environments.includes(process.env.DEPLOY_ENV)
-      );
+      function readFilesInDir(dirPath) {
+        const localConfig = { docs: [] };
+        const itemsInDir = fs.readdirSync(dirPath);
+        for (const item of itemsInDir) {
+          const itemPath = path.join(dirPath, item);
+          if (fs.lstatSync(itemPath).isDirectory()) {
+            localConfig['docs'].push(...readFilesInDir(itemPath));
+          } else {
+            const config = fs.readFileSync(itemPath, 'utf-8');
+            const json = JSON.parse(config);
 
-      const productFamilies = json.productFamilies;
-      const localConfig = { docs: docs, productFamilies: productFamilies };
-      return localConfig;
+            const docs = json.docs.filter(d =>
+              d.environments.includes(process.env.DEPLOY_ENV)
+            );
+            localConfig['docs'].push(...docs);
+          }
+        }
+        return localConfig;
+      }
+
+      return readFilesInDir(localConfigDir);
     } else {
       const result = await fetch(
         `${process.env.DOC_S3_URL}/portal-config/config.json`

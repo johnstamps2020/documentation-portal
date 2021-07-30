@@ -4,9 +4,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -312,7 +312,10 @@ object TestDocPortalServer : BuildType({
         text("env.ELASTICSEARCH_URLS", "http://localhost:9200")
         text("env.ELASTIC_SEARCH_URL", "http://localhost:9200")
         text("env.DOC_S3_URL", "http://localhost/")
-        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json")
+        text(
+            "env.CONFIG_FILE",
+            "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json"
+        )
         text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
     }
 
@@ -1036,12 +1039,33 @@ object PublishFlailSsgDockerImage : BuildType({
 object TestFlailSsg : BuildType({
     name = "Test Flail SSG"
 
+    params {
+        text("env.DOCS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.DOCS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/docs")
+        text(
+            "env.DOCS_CONFIG_FILE",
+            "%env.DOCS_OUTPUT_DIR%/merge-all.json",
+            display = ParameterDisplay.HIDDEN
+        )
+    }
+
     vcs {
         root(vcsroot)
         cleanCheckout = true
     }
 
     steps {
+        script {
+            name = "Prepare the docs config file"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                config_deployer merge %env.DOCS_INPUT_DIR% -o %env.DOCS_OUTPUT_DIR%
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
         script {
             name = "Run tests for Flail SSG"
             scriptContent = """
@@ -1188,7 +1212,8 @@ object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
     params {
-        text("env.CONFIG_FILE", "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json")
+        text("env.INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out")
         select(
             "env.DEPLOY_ENV",
             "",
@@ -1210,7 +1235,7 @@ object DeployServerConfig : BuildType({
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                config_deployer
+                config_deployer deploy %env.INPUT_DIR% --deploy-env %env.DEPLOY_ENV% -o %env.OUTPUT_DIR%
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1231,7 +1256,7 @@ object DeployServerConfig : BuildType({
                   export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
                 fi
                 
-                aws s3 sync %teamcity.build.checkoutDir%/.teamcity/config/out s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config --delete
+                aws s3 sync %env.OUTPUT_DIR% s3://tenant-doctools-%env.DEPLOY_ENV%-builds/portal-config --delete
                 """.trimIndent()
         }
     }
@@ -1250,9 +1275,11 @@ object DeployFrontend : BuildType({
     name = "Deploy frontend"
 
     params {
+        text("env.INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out")
         text(
             "env.DOCS_CONFIG_FILE",
-            "%teamcity.build.checkoutDir%/.teamcity/config/server-config.json",
+            "%env.OUTPUT_DIR%/merge-all.json",
             display = ParameterDisplay.HIDDEN
         )
         text("env.PAGES_DIR", "%teamcity.build.checkoutDir%/frontend/pages", display = ParameterDisplay.HIDDEN)
@@ -1284,6 +1311,16 @@ object DeployFrontend : BuildType({
 
 
     steps {
+        script {
+            name = "Merge docs config files"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                config_deployer merge %env.INPUT_DIR% -o %env.OUTPUT_DIR%
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
         script {
             name = "Generate localization page configurations"
             scriptContent = """
@@ -1376,7 +1413,31 @@ object DeployFrontend : BuildType({
 })
 
 object TestConfig : BuildType({
-    name = "Test config"
+    name = "Test config files"
+
+    params {
+        text("env.DOCS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.SOURCES_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/sources")
+        text("env.BUILDS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/builds")
+        text("env.DOCS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/docs")
+        text("env.SOURCES_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/sources")
+        text("env.BUILDS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/builds")
+        text(
+            "env.DOCS_CONFIG_FILE",
+            "%env.DOCS_OUTPUT_DIR%/merge-all.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.SOURCES_CONFIG_FILE",
+            "%env.SOURCES_OUTPUT_DIR%/merge-all.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.BUILDS_CONFIG_FILE",
+            "%env.BUILDS_OUTPUT_DIR%/merge-all.json",
+            display = ParameterDisplay.HIDDEN
+        )
+    }
 
     vcs {
         root(vcsroot)
@@ -1386,12 +1447,29 @@ object TestConfig : BuildType({
 
     steps {
         script {
-            name = "Run tests for server config"
+            name = "Merge config files"
             scriptContent = """
-                cd apps/config_tester
-                ./test_config.sh
+                #!/bin/bash
+                set -xe
+                
+                config_deployer merge %env.DOCS_INPUT_DIR% -o %env.DOCS_OUTPUT_DIR%
+                config_deployer merge %env.SOURCES_INPUT_DIR% -o %env.SOURCES_OUTPUT_DIR%
+                config_deployer merge %env.BUILDS_INPUT_DIR% -o %env.BUILDS_OUTPUT_DIR%
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Run tests for config files"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                config_deployer test %env.DOCS_CONFIG_FILE%
+                config_deployer test %env.SOURCES_CONFIG_FILE%
+                config_deployer test %env.BUILDS_CONFIG_FILE% --sources-path %env.SOURCES_CONFIG_FILE% --docs-path %env.DOCS_CONFIG_FILE%  
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -1604,14 +1682,20 @@ object Server : Project({
 })
 
 object HelperObjects {
-    private fun getObjectsFromConfig(configPath: String, objectName: String): JSONArray {
-        val config = JSONObject(File(configPath).readText(Charsets.UTF_8))
-        return config.getJSONArray(objectName)
+    private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): JSONArray {
+        val allConfigObjects = JSONArray()
+        val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }
+        for (file in jsonFiles) {
+            val configFileData = JSONObject(File(file.toString()).readText(Charsets.UTF_8))
+            val configObjects = configFileData.getJSONArray(objectName)
+            configObjects.forEach { allConfigObjects.put(it) }
+        }
+        return allConfigObjects
     }
 
-    val docConfigs = getObjectsFromConfig("config/server-config.json", "docs")
-    val sourceConfigs = getObjectsFromConfig("config/sources.json", "sources")
-    private val buildConfigs = getObjectsFromConfig("config/builds.json", "builds")
+    val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
+    val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
+    private val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
 
     private fun getObjectById(objectList: JSONArray, idName: String, idValue: String): JSONObject {
         for (i in 0 until objectList.length()) {
@@ -2520,7 +2604,8 @@ object HelperObjects {
                             buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
 
                             for (docBuild in sourceDocBuilds) {
-                                val docBuildType = if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
+                                val docBuildType =
+                                    if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
                                 if (docBuildType != "storybook") {
                                     buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
                                 }
