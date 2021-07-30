@@ -28,12 +28,14 @@ async function getAllowedFilterValues(fieldName, query) {
     body: {
       aggs: {
         allowedForField: {
-          filter: query,
+          filter: {
+            match_all: {},
+          },
           aggs: {
             keywordFilter: {
               terms: {
                 field: fieldName,
-                size: 50,
+                size: 100,
               },
             },
           },
