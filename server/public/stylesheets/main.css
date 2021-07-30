@@ -1159,14 +1159,14 @@ main.support h2 {
   max-width: 100%;
   margin: auto;
   margin-top: 32px;
-  max-height: 600px;
-  overflow-y: scroll;
 }
 
 .searchHelpSection {
   width: 700px;
   max-width: 100%;
   margin: auto;
+  max-height: 600px;
+  overflow-y: scroll;
 }
 
 .advancedSearchCheatSheet {
