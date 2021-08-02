@@ -13,6 +13,9 @@
                 <span onclick="expandCollapseAllFilters(expandElements=false)" role="button" tabindex="0">
                     Collapse all
                 </span>
+                <span onclick="clearFilters()" role="button" tabindex="0">
+                    Clear filters
+                </span>
             </div>
             <% const displayOrder = ['platform', 'product', 'version', 'subject', 'doc_title'] %>
             <% displayOrder.forEach(key => { %>
@@ -292,6 +295,21 @@
         for (const expandableFilter of expandableFiltersElements) {
             expandElements ? expandableFilter.setAttribute('open', '') : expandableFilter.removeAttribute('open');
         }
+    }
+
+    function clearFilters() {
+        const url = new URL(window.location.href);
+        const queryString = url.search;
+        const searchParams = new URLSearchParams(queryString);
+        const filters = ['platform', 'product', 'version', 'subject', 'doc_title'];
+        for (const filter of filters) {
+            if (searchParams.has(filter)) {
+                searchParams.delete(filter);
+            }
+        }
+
+        url.search = searchParams.toString();
+        window.location.href = url.toString();
     }
 
     function enableDisableHighlight() {
