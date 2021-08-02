@@ -17,59 +17,55 @@
                     Clear filters
                 </span>
             </div>
-            <% const displayOrder = ['platform', 'product', 'version', 'subject', 'doc_title'] %>
-            <% displayOrder.forEach(key => { %>
-                <% const matchingFilter = filters.find(f => f.name === key) %>
-                <% if (matchingFilter) { %>
-                    <% const filterValues = matchingFilter.values %>
-                    <details class="expandableSection" open>
-                        <summary>
-                            <span class="summaryContainer">
-                                <span class="summaryChevron" aria-label="expand/collapse icon"></span>
-                                <%= matchingFilter.name.replace('_', ' ') %> (<%= filterValues.length %>)
-                            </span>
-                        </summary>
-                        <div class="expandableSectionValues">
-                            <% let sortedFilterValues = filterValues.sort(function (a, b) {
-                                var labelA = a.label.toUpperCase();
-                                var labelB = b.label.toUpperCase();
-                                return (labelA < labelB) ? -1 : (labelA > labelB) ? 1 : 0;
-                            })
-                                if (matchingFilter.name === 'version') {
-                                    sortedFilterValues = filterValues
-                                            .sort(function (a, b) {
-                                                const verNum = label =>
-                                                        label
-                                                                .split('.')
-                                                                .map(n => +n + 100000)
-                                                                .join('.');
-                                                const verNumA = verNum(a.label);
-                                                const verNumB = verNum(b.label);
-                                                let comparison = 0;
-                                                if (verNumA > verNumB) {
-                                                    comparison = 1;
-                                                } else if (verNumA < verNumB) {
-                                                    comparison = -1;
-                                                }
-                                                return comparison;
-                                            })
-                                            .reverse()
-                                } %>
-                            <% sortedFilterValues.forEach(checkboxValue => { %>
-                                <label class="checkboxRowContainer">
-                                    <input type="checkbox" class="filterCheckbox" name="<%= matchingFilter.name %>"
-                                           value="<%= checkboxValue.label %>"
-                                    <% if (checkboxValue.checked) { %>
-                                           checked="true"
-                                            <% } %>
-                                    />
-                                    <span><%= checkboxValue.label %></span>
-                                    <span class="docCount"><%= checkboxValue.doc_count %></span>
-                                </label>
-                            <% }) %>
-                        </div>
-                    </details>
-                <% } %>
+            <% filters.forEach(matchingFilter => { %>
+                <% const filterValues = matchingFilter.values %>
+                <details class="expandableSection" open>
+                    <summary>
+                        <span class="summaryContainer">
+                            <span class="summaryChevron" aria-label="expand/collapse icon"></span>
+                            <%= matchingFilter.name.replace('_', ' ') %> (<%= filterValues.length %>)
+                        </span>
+                    </summary>
+                    <div class="expandableSectionValues">
+                        <% let sortedFilterValues = filterValues.sort(function (a, b) {
+                            var labelA = a.label.toUpperCase();
+                            var labelB = b.label.toUpperCase();
+                            return (labelA < labelB) ? -1 : (labelA > labelB) ? 1 : 0;
+                        })
+                            if (matchingFilter.name === 'version') {
+                                sortedFilterValues = filterValues
+                                        .sort(function (a, b) {
+                                            const verNum = label =>
+                                                    label
+                                                            .split('.')
+                                                            .map(n => +n + 100000)
+                                                            .join('.');
+                                            const verNumA = verNum(a.label);
+                                            const verNumB = verNum(b.label);
+                                            let comparison = 0;
+                                            if (verNumA > verNumB) {
+                                                comparison = 1;
+                                            } else if (verNumA < verNumB) {
+                                                comparison = -1;
+                                            }
+                                            return comparison;
+                                        })
+                                        .reverse()
+                            } %>
+                        <% sortedFilterValues.forEach(checkboxValue => { %>
+                            <label class="checkboxRowContainer">
+                                <input type="checkbox" class="filterCheckbox" name="<%= matchingFilter.name %>"
+                                        value="<%= checkboxValue.label %>"
+                                <% if (checkboxValue.checked) { %>
+                                        checked="true"
+                                        <% } %>
+                                />
+                                <span><%= checkboxValue.label %></span>
+                                <span class="docCount"><%= checkboxValue.doc_count %></span>
+                            </label>
+                        <% }) %>
+                    </div>
+                </details>
             <% }) %>
         </div>
     </div>
@@ -138,10 +134,10 @@
                             </h2>
                         </a>
                         <div class="resultBadges">
-                            <% result.docTags.forEach(tag => { %>
-                                <% if (tag) { %>
-                                    <% if (Array.isArray(tag)) { %>
-                                        <% tag.forEach(value => { %>
+                            <% result.docTags.forEach(tag => {
+                                if (tag) {
+                                    if (Array.isArray(tag)) {
+                                        tag.forEach(value => { %>
                                             <span class="infoLabel"><%= value %></span>
                                         <% }) %>
                                     <% } else { %>
