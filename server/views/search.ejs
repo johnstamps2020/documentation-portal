@@ -203,15 +203,18 @@
                         </li>
                     <% } %>
                     <% if (Number(currentPage) % 10 === 0) { 
-                        var i = Number(currentPage) - 9
+                        var pageRangeMinInit = Number(currentPage) - 9
                     }
                     else {
-                        var i = Math.floor(Number(currentPage) / 10) * 10 + 1
-                    }  %>
-                    <% if (i !== 1) { %>
+                        var pageRangeMinInit = Math.floor(Number(currentPage) / 10) * 10 + 1
+                    }  
+                    const pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
+                    const pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
+                    %>
+                    <% if (pageRangeMin !== 1) { %>
                         <li class="disabled">...</li>
                     <% } %>
-                    <% for (; i <= (Math.ceil(Number(currentPage) / 10) * 10) && i <= pages; i++)
+                    <% for (i = pageRangeMin; i <= pageRangeMax; i++)
                     { %> <% if (i === Number(currentPage)) { %>
                         <li class="disabled selected"><%= i %></li>
                     <% } else { %>
@@ -220,7 +223,7 @@
                                 <%= i %>
                             </button>
                         </li>
-                    <% } %> <% if (i === Number(currentPage) + 9 && i < pages) { %>
+                    <% } %> <% if (i === pageRangeMax && i < pages) { %>
                         <li class="disabled">...</li>
                     <% } %>
                     <% } %>
