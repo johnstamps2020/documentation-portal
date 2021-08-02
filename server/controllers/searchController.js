@@ -165,6 +165,21 @@ async function searchController(req, res, next) {
       queryBody
     );
 
+    const displayOrder = [
+      'platform',
+      'product',
+      'version',
+      'subject',
+      'doc_title',
+    ];
+
+    const arrangedFilters = [];
+    for (const key of displayOrder) {
+      if (filters.some(f => f.name === key)) {
+        arrangedFilters.push(filters.find(f => f.name === key));
+      }
+    }
+
     if (filtersFromUrl) {
       let queryFilters = [];
       for (const [key, value] of Object.entries(filtersFromUrl)) {
@@ -190,8 +205,8 @@ async function searchController(req, res, next) {
       const doc = result._source;
       const highlight = result.highlight;
       let docTags = [];
-      for (const key in doc) {
-        if (filters.some(filter => filter.name === key)) {
+      for (const key of displayOrder) {
+        if (doc[key]) {
           docTags.push(doc[key]);
         }
       }
@@ -262,7 +277,7 @@ async function searchController(req, res, next) {
         currentPage: currentPage,
         pages: Math.ceil(results.numberOfCollapsedHits / resultsPerPage),
         resultsPerPage: resultsPerPage,
-        filters: filters,
+        filters: arrangedFilters,
         userContext: req.userContext,
       };
       res.render('search', searchData);

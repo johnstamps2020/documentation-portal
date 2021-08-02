@@ -13,60 +13,59 @@
                 <span onclick="expandCollapseAllFilters(expandElements=false)" role="button" tabindex="0">
                     Collapse all
                 </span>
+                <span onclick="clearFilters()" role="button" tabindex="0">
+                    Clear filters
+                </span>
             </div>
-            <% const displayOrder = ['platform', 'product', 'version', 'subject', 'doc_title'] %>
-            <% displayOrder.forEach(key => { %>
-                <% const matchingFilter = filters.find(f => f.name === key) %>
-                <% if (matchingFilter) { %>
-                    <% const filterValues = matchingFilter.values %>
-                    <details class="expandableSection">
-                        <summary>
-                            <span class="summaryContainer">
-                                <span class="summaryChevron" aria-label="expand/collapse icon"></span>
-                                <%= matchingFilter.name.replace('_', ' ') %> (<%= filterValues.length %>)
-                            </span>
-                        </summary>
-                        <div class="expandableSectionValues">
-                            <% let sortedFilterValues = filterValues.sort(function (a, b) {
-                                var labelA = a.label.toUpperCase();
-                                var labelB = b.label.toUpperCase();
-                                return (labelA < labelB) ? -1 : (labelA > labelB) ? 1 : 0;
-                            })
-                                if (matchingFilter.name === 'version') {
-                                    sortedFilterValues = filterValues
-                                            .sort(function (a, b) {
-                                                const verNum = label =>
-                                                        label
-                                                                .split('.')
-                                                                .map(n => +n + 100000)
-                                                                .join('.');
-                                                const verNumA = verNum(a.label);
-                                                const verNumB = verNum(b.label);
-                                                let comparison = 0;
-                                                if (verNumA > verNumB) {
-                                                    comparison = 1;
-                                                } else if (verNumA < verNumB) {
-                                                    comparison = -1;
-                                                }
-                                                return comparison;
-                                            })
-                                            .reverse()
-                                } %>
-                            <% sortedFilterValues.forEach(checkboxValue => { %>
-                                <label class="checkboxRowContainer">
-                                    <input type="checkbox" class="filterCheckbox" name="<%= matchingFilter.name %>"
-                                           value="<%= checkboxValue.label %>"
-                                    <% if (checkboxValue.checked) { %>
-                                           checked="true"
-                                            <% } %>
-                                    />
-                                    <span><%= checkboxValue.label %></span>
-                                    <span class="docCount"><%= checkboxValue.doc_count %></span>
-                                </label>
-                            <% }) %>
-                        </div>
-                    </details>
-                <% } %>
+            <% filters.forEach(matchingFilter => { %>
+                <% const filterValues = matchingFilter.values %>
+                <details class="expandableSection" open>
+                    <summary>
+                        <span class="summaryContainer">
+                            <span class="summaryChevron" aria-label="expand/collapse icon"></span>
+                            <%= matchingFilter.name.replace('_', ' ') %> (<%= filterValues.length %>)
+                        </span>
+                    </summary>
+                    <div class="expandableSectionValues">
+                        <% let sortedFilterValues = filterValues.sort(function (a, b) {
+                            var labelA = a.label.toUpperCase();
+                            var labelB = b.label.toUpperCase();
+                            return (labelA < labelB) ? -1 : (labelA > labelB) ? 1 : 0;
+                        })
+                            if (matchingFilter.name === 'version') {
+                                sortedFilterValues = filterValues
+                                        .sort(function (a, b) {
+                                            const verNum = label =>
+                                                    label
+                                                            .split('.')
+                                                            .map(n => +n + 100000)
+                                                            .join('.');
+                                            const verNumA = verNum(a.label);
+                                            const verNumB = verNum(b.label);
+                                            let comparison = 0;
+                                            if (verNumA > verNumB) {
+                                                comparison = 1;
+                                            } else if (verNumA < verNumB) {
+                                                comparison = -1;
+                                            }
+                                            return comparison;
+                                        })
+                                        .reverse()
+                            } %>
+                        <% sortedFilterValues.forEach(checkboxValue => { %>
+                            <label class="checkboxRowContainer">
+                                <input type="checkbox" class="filterCheckbox" name="<%= matchingFilter.name %>"
+                                        value="<%= checkboxValue.label %>"
+                                <% if (checkboxValue.checked) { %>
+                                        checked="true"
+                                        <% } %>
+                                />
+                                <span><%= checkboxValue.label %></span>
+                                <span class="docCount"><%= checkboxValue.doc_count %></span>
+                            </label>
+                        <% }) %>
+                    </div>
+                </details>
             <% }) %>
         </div>
     </div>
@@ -135,10 +134,10 @@
                             </h2>
                         </a>
                         <div class="resultBadges">
-                            <% result.docTags.forEach(tag => { %>
-                                <% if (tag) { %>
-                                    <% if (Array.isArray(tag)) { %>
-                                        <% tag.forEach(value => { %>
+                            <% result.docTags.forEach(tag => {
+                                if (tag) {
+                                    if (Array.isArray(tag)) {
+                                        tag.forEach(value => { %>
                                             <span class="infoLabel"><%= value %></span>
                                         <% }) %>
                                     <% } else { %>
@@ -190,10 +189,17 @@
             <% if (pages > 1) { %>
                 <ul class="pagination">
                     <% if (Number(currentPage) === 1) { %>
-                        <li class="disabled">First</li>
+                        <li class="disabled">&lt;&lt; First</li>
                     <% } else { %>
                         <li>
-                            <button onclick="setUrlParam('page', '1')">First</button>
+                            <button onclick="setUrlParam('page', '1')">&lt;&lt; First</button>
+                        </li>
+                    <% } %>
+                    <% if (Number(currentPage) === 1) { %>
+                        <li class="disabled">&lt; Previous</li>
+                    <% } else { %>
+                        <li>
+                            <button onclick="changePage(false)">&lt; Previous</button>
                         </li>
                     <% } %>
                     <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
@@ -215,11 +221,20 @@
                     <% } %>
                     <% } %>
                     <% if (Number(currentPage) === pages) { %>
-                        <li class="disabled">Last</li>
+                        <li class="disabled">Next &gt;</li>
+                    <% } else { %>
+                        <li>
+                            <button onclick="changePage(true)">
+                                Next &gt;
+                            </button>
+                        </li>
+                    <% } %>
+                    <% if (Number(currentPage) === pages) { %>
+                        <li class="disabled">Last &gt;&gt;</li>
                     <% } else { %>
                         <li>
                             <button onclick="setUrlParam('page', <%= pages %>)">
-                                Last
+                                Last &gt;&gt;
                             </button>
                         </li>
                     <% } %>
@@ -231,11 +246,11 @@
     </div>
 </main>
 <script>
+    const url = new URL(window.location.href);
+    const queryString = url.search;
+    const searchParams = new URLSearchParams(queryString);
+    
     function setUrlParam(paramName, paramValue) {
-        const url = new URL(window.location.href);
-        const queryString = url.search;
-        const searchParams = new URLSearchParams(queryString);
-
         if (('' + paramValue).length === 0) {
             if (searchParams.has(paramName)) {
                 searchParams.delete(paramName);
@@ -257,7 +272,6 @@
     }
 
     function updateFilters(e) {
-
         const neighbors = document.getElementsByName(e.target.name);
         let selectedValues = [];
         Array.prototype.forEach.call(neighbors, function (cb) {
@@ -280,6 +294,21 @@
         });
     }
 
+    function changePage(forward) {
+        if (forward) {
+            if (searchParams.has('page')) {
+                searchParams.set('page', parseInt(searchParams.get('page')) + 1);
+            } else {
+                searchParams.set('page', 2);
+            }
+        } else {
+            searchParams.set('page', parseInt(searchParams.get('page')) - 1);
+        }
+
+        url.search = searchParams.toString();
+        window.location.href = url.toString();
+    }
+
     const allBoxes = document.getElementsByClassName('filterCheckbox');
     if (allBoxes) {
         Array.prototype.forEach.call(allBoxes, function (box) {
@@ -294,17 +323,16 @@
         }
     }
 
-    function expandCheckedFilters() {
-        const expandableFiltersElements = document.querySelectorAll('div.filterSearchResults .expandableSection');
-        for (const expandableFilter of expandableFiltersElements) {
-            const filterValues = expandableFilter.querySelector('div[class="expandableSectionValues"]');
-            for (const filterValue of filterValues.children) {
-                if (filterValue.querySelector('input[checked="true"]')) {
-                    expandableFilter.setAttribute('open', '')
-                    break
-                }
+    function clearFilters() {
+        const filters = [<%-filters.map(f => `'${f.name}'`)%>];
+        for (const filter of filters) {
+            if (searchParams.has(filter)) {
+                searchParams.delete(filter);
             }
         }
+
+        url.search = searchParams.toString();
+        window.location.href = url.toString();
     }
 
     function enableDisableHighlight() {
@@ -322,9 +350,6 @@
             }
         }
     }
-
-
-    expandCheckedFilters();
 
 </script>
 </body>
