@@ -19,7 +19,7 @@
                 <% const matchingFilter = filters.find(f => f.name === key) %>
                 <% if (matchingFilter) { %>
                     <% const filterValues = matchingFilter.values %>
-                    <details class="expandableSection">
+                    <details class="expandableSection" open>
                         <summary>
                             <span class="summaryContainer">
                                 <span class="summaryChevron" aria-label="expand/collapse icon"></span>
@@ -294,19 +294,6 @@
         }
     }
 
-    function expandCheckedFilters() {
-        const expandableFiltersElements = document.querySelectorAll('div.filterSearchResults .expandableSection');
-        for (const expandableFilter of expandableFiltersElements) {
-            const filterValues = expandableFilter.querySelector('div[class="expandableSectionValues"]');
-            for (const filterValue of filterValues.children) {
-                if (filterValue.querySelector('input[checked="true"]')) {
-                    expandableFilter.setAttribute('open', '')
-                    break
-                }
-            }
-        }
-    }
-
     function enableDisableHighlight() {
         const highlightToggleElement = document.getElementById('highlightToggle');
         const highlightedElements = document.getElementsByClassName('searchResultHighlight');
@@ -322,9 +309,6 @@
             }
         }
     }
-
-
-    expandCheckedFilters();
 
 </script>
 </body>
