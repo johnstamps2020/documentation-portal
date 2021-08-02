@@ -189,10 +189,17 @@
             <% if (pages > 1) { %>
                 <ul class="pagination">
                     <% if (Number(currentPage) === 1) { %>
-                        <li class="disabled">First</li>
+                        <li class="disabled">&lt;&lt; First</li>
                     <% } else { %>
                         <li>
-                            <button onclick="setUrlParam('page', '1')">First</button>
+                            <button onclick="setUrlParam('page', '1')">&lt;&lt; First</button>
+                        </li>
+                    <% } %>
+                    <% if (Number(currentPage) === 1) { %>
+                        <li class="disabled">&lt; Previous</li>
+                    <% } else { %>
+                        <li>
+                            <button onclick="changePage(false)">&lt; Previous</button>
                         </li>
                     <% } %>
                     <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
@@ -214,11 +221,20 @@
                     <% } %>
                     <% } %>
                     <% if (Number(currentPage) === pages) { %>
-                        <li class="disabled">Last</li>
+                        <li class="disabled">Next &gt;</li>
+                    <% } else { %>
+                        <li>
+                            <button onclick="changePage(true)">
+                                Next &gt;
+                            </button>
+                        </li>
+                    <% } %>
+                    <% if (Number(currentPage) === pages) { %>
+                        <li class="disabled">Last &gt;&gt;</li>
                     <% } else { %>
                         <li>
                             <button onclick="setUrlParam('page', <%= pages %>)">
-                                Last
+                                Last &gt;&gt;
                             </button>
                         </li>
                     <% } %>
@@ -277,6 +293,25 @@
                 setUrlParam('pagination', selectedValue);
             }
         });
+    }
+
+    function changePage(forward) {
+        const url = new URL(window.location.href);
+        const queryString = url.search;
+        const searchParams = new URLSearchParams(queryString);
+
+        if (forward) {
+            if (searchParams.has('page')) {
+                searchParams.set('page', parseInt(searchParams.get('page')) + 1);
+            } else {
+                searchParams.set('page', 2);
+            }
+        } else {
+            searchParams.set('page', parseInt(searchParams.get('page')) - 1);
+        }
+
+        url.search = searchParams.toString();
+        window.location.href = url.toString();
     }
 
     const allBoxes = document.getElementsByClassName('filterCheckbox');
