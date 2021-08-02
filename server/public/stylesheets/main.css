@@ -876,7 +876,8 @@ div.pageHero {
 }
 
 .pagination .disabled.selected {
-  background: var(--clr-GW-BLUE-LIGHTER);
+  background: var(--clr-GW-BLUE);
+  color: white;
 }
 
 .pagination button {
