@@ -223,7 +223,7 @@
                                 <%= i %>
                             </button>
                         </li>
-                    <% } %> <% if (pageRangeMax < pages) { %>
+                    <% } %> <% if (i === pageRangeMax && i < pages) { %>
                         <li class="disabled">...</li>
                     <% } %>
                     <% } %>
