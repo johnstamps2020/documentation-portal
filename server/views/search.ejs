@@ -324,7 +324,7 @@
     }
 
     function clearFilters() {
-        const filters = ['platform', 'product', 'version', 'subject', 'doc_title'];
+        const filters = [<%-filters.map(f => `'${f.name}'`)%>];
         for (const filter of filters) {
             if (searchParams.has(filter)) {
                 searchParams.delete(filter);
