@@ -202,12 +202,16 @@
                             <button onclick="changePage(false)">&lt; Previous</button>
                         </li>
                     <% } %>
-                    <% var i = (Number(currentPage) > 5 ? Number(currentPage) -
-                            4 : 1) %>
+                    <% if (Number(currentPage) % 10 === 0) { 
+                        var i = Number(currentPage) - 9
+                    }
+                    else {
+                        var i = Math.floor(Number(currentPage) / 10) * 10 + 1
+                    }  %>
                     <% if (i !== 1) { %>
                         <li class="disabled">...</li>
                     <% } %>
-                    <% for (; i <= (Number(currentPage) + 4) && i <= pages; i++)
+                    <% for (; i <= (Math.ceil(Number(currentPage) / 10) * 10) && i <= pages; i++)
                     { %> <% if (i === Number(currentPage)) { %>
                         <li class="disabled selected"><%= i %></li>
                     <% } else { %>
@@ -216,7 +220,7 @@
                                 <%= i %>
                             </button>
                         </li>
-                    <% } %> <% if (i === Number(currentPage) + 4 && i < pages) { %>
+                    <% } %> <% if (i === Number(currentPage) + 9 && i < pages) { %>
                         <li class="disabled">...</li>
                     <% } %>
                     <% } %>
