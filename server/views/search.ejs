@@ -202,7 +202,8 @@
                             <button onclick="changePage(false)">&lt; Previous</button>
                         </li>
                     <% } %>
-                    <% var i = (Number(currentPage) > 10 ? Number(currentPage) -
+                    <% var i = Math.floor(Number(currentPage) /10) * 10 + 1 %>
+                    <% var j = (Number(currentPage) > 10 ? Number(currentPage) -
                             9 : 1) %>
                     <% if (i !== 1) { %>
                         <li class="disabled">...</li>
