@@ -208,8 +208,8 @@
                     else {
                         var pageRangeMinInit = Math.floor(Number(currentPage) / 10) * 10 + 1
                     }  
-                    const pageRangeMin = (pageRangeMinInit - 5 > 0) ? (pageRangeMinInit - 5) : pageRangeMinInit;
-                    const pageRangeMax = (pageRangeMin + 10 <= pages) ? (pageRangeMin + 10) : pages;
+                    const pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
+                    const pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
                     %>
                     <% if (pageRangeMin !== 1) { %>
                         <li class="disabled">...</li>
@@ -223,7 +223,7 @@
                                 <%= i %>
                             </button>
                         </li>
-                    <% } %> <% if (pageRangeMax < pages) { %>
+                    <% } %> <% if (i < pages) { %>
                         <li class="disabled">...</li>
                     <% } %>
                     <% } %>
