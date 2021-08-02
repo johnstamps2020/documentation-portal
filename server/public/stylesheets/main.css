@@ -292,12 +292,7 @@ label,
   color: var(--clr-GW-BLUE-HOVER);
 }
 
-.cortina .cardShadow:hover,
-.cortina .cardShadow:focus,
-.banff .cardShadow:hover,
-.banff .cardShadow:focus,
-.aspen .cardShadow:hover,
-.aspen .cardShadow:focus {
+.blue-theme .cardShadow:hover {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -931,9 +926,7 @@ main.support h2 {
   height: 120px;
 }
 
-.cortina #pageSelectorContainer .selectorLabel,
-.banff #pageSelectorContainer .selectorLabel,
-.aspen #pageSelectorContainer .selectorLabel {
+.blue-theme #pageSelectorContainer .selectorLabel {
   color: white;
 }
 
