@@ -246,11 +246,11 @@
     </div>
 </main>
 <script>
+    const url = new URL(window.location.href);
+    const queryString = url.search;
+    const searchParams = new URLSearchParams(queryString);
+    
     function setUrlParam(paramName, paramValue) {
-        const url = new URL(window.location.href);
-        const queryString = url.search;
-        const searchParams = new URLSearchParams(queryString);
-
         if (('' + paramValue).length === 0) {
             if (searchParams.has(paramName)) {
                 searchParams.delete(paramName);
@@ -272,7 +272,6 @@
     }
 
     function updateFilters(e) {
-
         const neighbors = document.getElementsByName(e.target.name);
         let selectedValues = [];
         Array.prototype.forEach.call(neighbors, function (cb) {
@@ -296,10 +295,6 @@
     }
 
     function changePage(forward) {
-        const url = new URL(window.location.href);
-        const queryString = url.search;
-        const searchParams = new URLSearchParams(queryString);
-
         if (forward) {
             if (searchParams.has('page')) {
                 searchParams.set('page', parseInt(searchParams.get('page')) + 1);
@@ -329,9 +324,6 @@
     }
 
     function clearFilters() {
-        const url = new URL(window.location.href);
-        const queryString = url.search;
-        const searchParams = new URLSearchParams(queryString);
         const filters = ['platform', 'product', 'version', 'subject', 'doc_title'];
         for (const filter of filters) {
             if (searchParams.has(filter)) {
