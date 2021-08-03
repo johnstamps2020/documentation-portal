@@ -229,7 +229,7 @@
                             </button>
                         </li>
                     <% } %>
-                    <% if (pageRangeMax !== pages) { %>
+                    <% if (Number(currentPage) !== pages) { %>
                         <li class="pagination-nav">
                             <button onclick="setUrlParam('page', <%= pages %>)">
                                 Last &gt;&gt;
