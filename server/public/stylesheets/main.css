@@ -863,6 +863,7 @@ div.pageHero {
   list-style: none;
   display: flex;
   gap: 16px;
+  justify-content: center;
 }
 
 .pagination .disabled {
@@ -873,6 +874,10 @@ div.pageHero {
 .pagination .disabled.selected {
   background: var(--clr-GW-BLUE);
   color: white;
+}
+
+.pagination-nav {
+  width: 82px;
 }
 
 .pagination button {
