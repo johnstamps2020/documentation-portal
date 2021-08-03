@@ -56,7 +56,6 @@ def main():
     app_base_url = os.environ.get('APP_BASE_URL', None)
     doc_s3_url = os.environ.get('DOC_S3_URL', None)
     docs_in_config = doc_portal_spider.get_portal_config(config_file)
-    doc_objects_to_crawl = []
     if doc_id:
         doc_objects_to_crawl = [
             doc_object for doc_object in docs_in_config if doc_object.get('id') == doc_id]
@@ -66,6 +65,7 @@ def main():
     if not doc_objects_to_crawl:
         raise ValueError('The list of docs to crawl is empty. Possible reasons:'
                          '\n\t- The config file does not contain any docs.'
+                         '\n\t- The config file does not contain the provided doc ID.'
                          '\n\t- The provided doc ID is invalid.')
 
     for doc_object_to_crawl in doc_objects_to_crawl:
