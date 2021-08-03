@@ -204,8 +204,13 @@
                     else {
                         var pageRangeMinInit = Math.floor(Number(currentPage) / 10) * 10 + 1
                     }  
-                    const pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
-                    const pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
+                    var pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
+                    var pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
+                    if (pageRangeMax === pages) {
+                        for (i = pageRangeMin; i >= 1 && i >= pageRangeMax - 9; i--) {
+                            pageRangeMin = i;
+                        }
+                    }
                     for (i = pageRangeMin; i <= pageRangeMax; i++)
                     {
                          if (i === Number(currentPage)) { %>
