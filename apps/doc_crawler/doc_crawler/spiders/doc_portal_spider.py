@@ -74,25 +74,21 @@ class DocPortalSpider(scrapy.Spider):
 
             is_index_entry_internal = response.xpath(
                 '/html/head/meta[@name="internal" and @content="true"]').get()
-            index_entry_internal = True if is_index_entry_internal else False
+            index_entry_internal = bool(is_index_entry_internal)
 
-            dita_default_selector = response.xpath(
-                '//main[@role = "main"]')
-            framemaker_default_selector = response.xpath('//body/blockquote')
-            docusaurus_selector = response.xpath(
-                '//div[@class = "markdown"]')
-            sphinx_selector = response.xpath(
-                '//div[@itemprop = "articleBody"]')
+            selectors = {
+                'webhelp_selector': response.xpath(
+                    '//main[@role = "main"]'),
+                'legacy_webhelp_selector': response.xpath(
+                    '//body[h1[contains(@class, "title")] and div[contains(@class, "body")]]'),
+                'webworks_selector': response.xpath('//body/*[div[@class="B_-_Body"]]'),
+                'docusaurus_selector': response.xpath(
+                    '//div[@class = "markdown"]'),
+                'sphinx_selector': response.xpath(
+                    '//div[@itemprop = "articleBody"]')
+            }
 
-            body_elements = []
-            if dita_default_selector:
-                body_elements = dita_default_selector
-            elif framemaker_default_selector:
-                body_elements = framemaker_default_selector
-            elif docusaurus_selector:
-                body_elements = docusaurus_selector
-            elif sphinx_selector:
-                body_elements = sphinx_selector
+            body_elements = next((exp for exp in selectors.values() if exp), '')
 
             index_entry_body = ''
             for body_element in body_elements:
