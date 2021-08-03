@@ -188,17 +188,13 @@
             </div>
             <% if (pages > 1) { %>
                 <ul class="pagination">
-                    <% if (Number(currentPage) === 1) { %>
-                        <li class="pagination-nav"></li>
-                    <% } else { %>
-                        <li class="pagination-nav">
+                    <% if (Number(currentPage) !== 1) { %>
+                        <li>
                             <button onclick="setUrlParam('page', '1')">&lt;&lt; First</button>
                         </li>
                     <% } %>
-                    <% if (Number(currentPage) === 1) { %>
-                        <li class="pagination-nav"></li>
-                    <% } else { %>
-                        <li class="pagination-nav">
+                    <% if (Number(currentPage) !== 1) { %>
+                        <li>
                             <button onclick="changePage(false)">&lt; Previous</button>
                         </li>
                     <% } %>
@@ -223,14 +219,14 @@
                     <% } %> 
                     <% } %>
                     <% if (Number(currentPage) !== pages) { %>
-                        <li class="pagination-nav">
+                        <li>
                             <button onclick="changePage(true)">
                                 Next &gt;
                             </button>
                         </li>
                     <% } %>
                     <% if (Number(currentPage) !== pages) { %>
-                        <li class="pagination-nav">
+                        <li>
                             <button onclick="setUrlParam('page', <%= pages %>)">
                                 Last &gt;&gt;
                             </button>
