@@ -209,7 +209,7 @@
                     for (i = pageRangeMin; i <= pageRangeMax; i++)
                     {
                          if (i === Number(currentPage)) { %>
-                        <li class="disabled selected"><%= i %></li>
+                        <li class="selected"><%= i %></li>
                     <% } else { %>
                         <li>
                             <button onclick="setUrlParam('page', <%= i %>)">
