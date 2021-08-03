@@ -84,6 +84,7 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
             totalCollapsedHits: {
               cardinality: {
                 field: 'title.raw',
+                precision_threshold: 40000,
               },
             },
           },
@@ -123,10 +124,12 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
     },
   });
 
+  const numberOfCollapsedHits =
+    searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value;
+
   return {
-    numberOfHits: searchResultsCount.body.aggregations.totalHits.doc_count,
     numberOfCollapsedHits:
-      searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value,
+      numberOfCollapsedHits <= 10000 ? numberOfCollapsedHits : 10000,
     hits: searchResults.body.hits.hits,
   };
 }
