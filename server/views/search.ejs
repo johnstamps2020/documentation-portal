@@ -188,16 +188,12 @@
             </div>
             <% if (pages > 1) { %>
                 <ul class="pagination">
-                    <% if (Number(currentPage) === 1) { %>
-                        <li class="disabled">&lt;&lt; First</li>
-                    <% } else { %>
+                    <% if (Number(currentPage) !== 1) { %>
                         <li>
                             <button onclick="setUrlParam('page', '1')">&lt;&lt; First</button>
                         </li>
                     <% } %>
-                    <% if (Number(currentPage) === 1) { %>
-                        <li class="disabled">&lt; Previous</li>
-                    <% } else { %>
+                    <% if (Number(currentPage) !== 1) { %>
                         <li>
                             <button onclick="changePage(false)">&lt; Previous</button>
                         </li>
@@ -208,37 +204,33 @@
                     else {
                         var pageRangeMinInit = Math.floor(Number(currentPage) / 10) * 10 + 1
                     }  
-                    const pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
-                    const pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
-                    %>
-                    <% if (pageRangeMin !== 1) { %>
-                        <li class="disabled">...</li>
-                    <% } %>
-                    <% for (i = pageRangeMin; i <= pageRangeMax; i++)
-                    { %> <% if (i === Number(currentPage)) { %>
-                        <li class="disabled selected"><%= i %></li>
+                    var pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
+                    var pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
+                    if (pageRangeMax === pages) {
+                        for (i = pageRangeMin; i >= 1 && i >= pageRangeMax - 9; i--) {
+                            pageRangeMin = i;
+                        }
+                    }
+                    for (i = pageRangeMin; i <= pageRangeMax; i++)
+                    {
+                         if (i === Number(currentPage)) { %>
+                        <li class="selected"><%= i %></li>
                     <% } else { %>
                         <li>
                             <button onclick="setUrlParam('page', <%= i %>)">
                                 <%= i %>
                             </button>
                         </li>
-                    <% } %> <% if (i === pageRangeMax && i < pages) { %>
-                        <li class="disabled">...</li>
+                    <% } %> 
                     <% } %>
-                    <% } %>
-                    <% if (Number(currentPage) === pages) { %>
-                        <li class="disabled">Next &gt;</li>
-                    <% } else { %>
+                    <% if (Number(currentPage) !== pages) { %>
                         <li>
                             <button onclick="changePage(true)">
                                 Next &gt;
                             </button>
                         </li>
                     <% } %>
-                    <% if (Number(currentPage) === pages) { %>
-                        <li class="disabled">Last &gt;&gt;</li>
-                    <% } else { %>
+                    <% if (Number(currentPage) !== pages) { %>
                         <li>
                             <button onclick="setUrlParam('page', <%= pages %>)">
                                 Last &gt;&gt;
