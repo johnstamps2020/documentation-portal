@@ -873,6 +873,7 @@ div.pageHero {
 .pagination .selected {
   background: var(--clr-GW-BLUE);
   color: white;
+  padding: 0.375rem;
 }
 
 .pagination button {
