@@ -120,6 +120,10 @@ class DocPortalSpider(scrapy.Spider):
                 if any(excl_type in urlparse(next_page_href).path for excl_type in self.excluded_types):
                     continue
                 next_page_abs_url = response.urljoin(next_page_href)
-                if doc_object['start_url'] in next_page_abs_url:
+                start_url = urlparse(doc_object['start_url'])
+                last_path_element = start_url.path.split('/')[-1]
+                if '.' in last_path_element:
+                    start_url = f'{start_url[0]}://{start_url[1]}{start_url[2].replace(last_path_element, "")}'
+                if start_url in next_page_abs_url:
                     yield response.follow(next_page, callback=self.parse,
                                           cb_kwargs={'origin_url': response.url, 'doc_object': doc_object})
