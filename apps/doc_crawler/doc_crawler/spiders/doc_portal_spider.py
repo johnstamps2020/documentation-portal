@@ -1,10 +1,10 @@
 import io
 import json
 import re
+from datetime import date
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 from urllib.parse import urlparse
-from datetime import date
 
 import scrapy
 from scrapy import Request
@@ -74,26 +74,26 @@ class DocPortalSpider(scrapy.Spider):
 
             is_index_entry_internal = response.xpath(
                 '/html/head/meta[@name="internal" and @content="true"]').get()
-            index_entry_internal = True if is_index_entry_internal else False
+            index_entry_internal = bool(is_index_entry_internal)
 
-            dita_default_selector = response.xpath(
-                '//main[@role = "main"]')
-            framemaker_default_selector = response.xpath('//body/blockquote')
-            docusaurus_selector = response.xpath(
-                '//div[@class = "markdown"]')
-            sphinx_selector = response.xpath(
-                '//div[@itemprop = "articleBody"]')
+            selectors = {
+                'webhelp_selector': response.xpath(
+                    '//main[@role = "main"]'),
+                'legacy_webhelp_selector': response.xpath(
+                    '//body[h1[contains(@class, "title")] and div[contains(@class, "body")]]'),
+                'webworks_selector': response.xpath('//body/*[div[@class="B_-_Body"]]'),
+                'docusaurus_selector': response.xpath(
+                    '//div[@class = "markdown"]'),
+                'sphinx_selector': response.xpath(
+                    '//div[@itemprop = "articleBody"]')
+            }
 
-            body_elements = []
-            if dita_default_selector:
-                body_elements = dita_default_selector
-            elif framemaker_default_selector:
-                body_elements = framemaker_default_selector
-            elif docusaurus_selector:
-                body_elements = docusaurus_selector
-            elif sphinx_selector:
-                body_elements = sphinx_selector
+            body_elements = next((exp for exp in selectors.values() if exp), '')
 
+            web_works_output = response.xpath('//body[@onload="WWHHelpFrame_LaunchHelp();"]')
+            if not body_elements and web_works_output and 'portal/secure/doc' in response.url:
+                yield response.follow(urljoin(response.url, 'all_files.html'), callback=self.parse,
+                                      cb_kwargs={'origin_url': response.url, 'doc_object': doc_object})
             index_entry_body = ''
             for body_element in body_elements:
                 body_text = ' '.join(
@@ -124,6 +124,10 @@ class DocPortalSpider(scrapy.Spider):
                 if any(excl_type in urlparse(next_page_href).path for excl_type in self.excluded_types):
                     continue
                 next_page_abs_url = response.urljoin(next_page_href)
-                if doc_object['start_url'] in next_page_abs_url:
+                start_url = doc_object['start_url']
+                last_path_element = str(urlparse(start_url).path.split('/')[-1])
+                if Path(last_path_element).suffix:
+                    start_url = f'{start_url.replace(last_path_element, "")}'
+                if start_url in next_page_abs_url:
                     yield response.follow(next_page, callback=self.parse,
                                           cb_kwargs={'origin_url': response.url, 'doc_object': doc_object})
