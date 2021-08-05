@@ -232,6 +232,12 @@ main.blue-theme {
     bottom: 0;
     left: 0;
   }
+
+  main.blue-theme {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: bottom right;
+  }
 }
 
 main.blue-theme h1,
