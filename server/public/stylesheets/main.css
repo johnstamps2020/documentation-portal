@@ -227,6 +227,7 @@ main.blue-theme {
   }
 
   main.banff {
+    background-color: transparent;
     background-image: url(/images/background-banff.svg);
     background-position: top left;
   }
