@@ -1,10 +1,10 @@
 import io
 import json
 import re
+from datetime import date
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 from urllib.parse import urlparse
-from datetime import date
 
 import scrapy
 from scrapy import Request
@@ -90,6 +90,10 @@ class DocPortalSpider(scrapy.Spider):
 
             body_elements = next((exp for exp in selectors.values() if exp), '')
 
+            web_works_output = response.xpath('//body[@onload="WWHHelpFrame_LaunchHelp();"]')
+            if not body_elements and web_works_output and 'portal/secure/doc' in response.url:
+                yield response.follow(urljoin(response.url, 'all_files.html'), callback=self.parse,
+                                      cb_kwargs={'origin_url': response.url, 'doc_object': doc_object})
             index_entry_body = ''
             for body_element in body_elements:
                 body_text = ' '.join(
@@ -120,10 +124,10 @@ class DocPortalSpider(scrapy.Spider):
                 if any(excl_type in urlparse(next_page_href).path for excl_type in self.excluded_types):
                     continue
                 next_page_abs_url = response.urljoin(next_page_href)
-                start_url = urlparse(doc_object['start_url'])
-                last_path_element = start_url.path.split('/')[-1]
-                if '.' in last_path_element:
-                    start_url = f'{start_url[0]}://{start_url[1]}{start_url[2].replace(last_path_element, "")}'
+                start_url = doc_object['start_url']
+                last_path_element = str(urlparse(start_url).path.split('/')[-1])
+                if Path(last_path_element).suffix:
+                    start_url = f'{start_url.replace(last_path_element, "")}'
                 if start_url in next_page_abs_url:
                     yield response.follow(next_page, callback=self.parse,
                                           cb_kwargs={'origin_url': response.url, 'doc_object': doc_object})
