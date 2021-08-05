@@ -21,8 +21,6 @@ python = "^3.8"
 jinja2 = "^2.10"
 scrapy = "^2.1.0"
 elasticsearch = "^7.1"
-selenium = "^3.141.0"
-scrapy-selenium = "^0.0.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3"
