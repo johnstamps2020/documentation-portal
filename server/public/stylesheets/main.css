@@ -207,18 +207,16 @@ main.blue-theme {
 }
 
 @media screen and (min-width: 750px) {
+  main.dobson {
+    background: url(/images/background-dobson.svg) no-repeat fixed;
+  }
+
   main.cortina {
     background: url(/images/background-cortina.svg) no-repeat fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: bottom right;
   }
 
   main.banff {
     background: url(/images/background-banff.svg) no-repeat fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: top left;
   }
 
   main.banff::after {
