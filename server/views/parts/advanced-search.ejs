@@ -10,47 +10,45 @@
       <ul class="advancedSearchCheatSheet">
         <li>
           <code>|</code>
-          signifies an OR operation
+          performs an OR search
         </li>
         <li>
           <ul>
             <li>
               <code>-</code>
-              negates a single word
+              excludes a single word
             </li>
           </ul>
         </li>
         <li>
           <code>&quot;</code>
-          wraps a word or phrase you want to match exactly
+          surrounds a word or phrase to match exactly
         </li>
         <li>
           <ul>
             <li>
               <code>*</code>
-              at the end of a term signifies a prefix query
+              at the end of a term performs a prefix search
             </li>
           </ul>
         </li>
         <li>
           <code>( )</code>
-          groups terms
+          groups terms for a single operator
         </li>
         <li>
           <code>~N</code>
-          after a <strong>word</strong> relaxes spelling rules (fuzziness)
+          after a <strong>word</strong> relaxes spelling rules (<a href="Fuzziness_75">fuzziness</a>)
         </li>
         <li>
           <code>~N</code>
-          after a <strong>phrase</strong> signifies slop amount (<a
-            href="#Slop_84"
-            >see below for more details</a
-          >)
+          after a <strong>phrase</strong> signifies <a href="#Slop_84">slop</a> amount
         </li>
       </ul>
+      <p>See below for more details.</p>
       <h2><a id="AND_OR_8"></a>AND, OR</h2>
       <p>
-        By default, the search returns pages that contain all words in your
+        By default, the search returns pages that contain all of the words in your
         query. If you want to search for pages that contain the words
         “configure”, or “install”, or “manage”, enter:
       </p>
@@ -60,7 +58,7 @@
         If you want pages that contain the word “configure” and “manage” but not
         “install”, enter:
       </p>
-      <pre><code>configure -install manage</code></pre>
+      <pre><code>configure manage -install</code></pre>
       <p>
         The order of these words in your search query does not matter.
       </p>
@@ -71,13 +69,13 @@
       <pre><code>&quot;manage user accounts&quot;</code></pre>
       <h2><a id="Grouping_37"></a>Grouping</h2>
       <p>
-        You can group multiple terms by enclosing them in parentheses. For
-        example, the following excludes multiple terms:
+        Group multiple terms by enclosing them in parentheses. For
+        example, the following excludes both the terms "install" and "manage":
       </p>
       <pre><code>configure -(install manage)</code></pre>
       <p>
-        You can also combine double quotes with other methods. For example to
-        find the phrase “manage user accounts” and the words “policy” or “group”
+        You can also combine double quotes with other operators. For example, to
+        find the phrase “manage users” and the words “policy” or “group”
         but not “PolicyCenter”, enter:
       </p>
       <pre><code>&quot;manage users&quot; (policy | group) -PolicyCenter</code></pre>
@@ -85,52 +83,47 @@
         A phrase in double quotes takes precedence in highlighting.
       </p>
       <p>
-        Note that our search uses stemming, which means that if you search for
-        “configure” you will also see results for “configuring” and
+        Note that the search uses stemming, which means that if you search for
+        “configure” then you will also see results for “configuring” and
         “configuration”. If you want to match a word exactly, use double quotes.
       </p>
       <h2><a id="Prefix_60"></a>Prefix</h2>
       <p>
-        If you want to find words that have a common beginning, like BigDecimal
-        and BigInt, you can use a prefix query with an asterisk:
+        If you want to find words that have a common beginning, such as BigDecimal
+        and BigInt, enter the prefix with an asterisk:
       </p>
       <pre><code>big*</code></pre>
       <p>
-        If you are having trouble finding pages using a prefix query, try lower
-        case in your query.
+        If you have trouble finding pages with a prefix search, try using all lowercase letters.
       </p>
       <p>
-        We do not support suffix search for now (<code>*decimal</code>), but you
+        You cannot perform a suffix search (<code>*decimal</code>), but you
         can get more results using fuzziness.
       </p>
       <h2><a id="Fuzziness_75"></a>Fuzziness</h2>
       <p>
         You can relax the spelling rules a little if you add a ~ and a number
-        after a word. For example, if you’re not sure if you want “center” or
-        “centre”, try:
+        after a word. For example, to find both “center” and “centre”, enter:
       </p>
       <pre><code>centre~1</code></pre>
       <h2><a id="Slop_84"></a>Slop</h2>
       <p>
-        If you want to match phrases like “Model Info screen”, “Model Details
-        screen”, and the like, you can surround a simple phrase with quotes and
+        If you want to match phrases such as “Model Info screen”, “Model Details
+        screen”, and other similar ones, you can surround a simple phrase with quotes and
         follow it by a ~ and a number.
       </p>
       <pre><code>&quot;model screen&quot;~1</code></pre>
       <p>
-        This number specifies the amount of “slop” in the phrase. The query
-        above means you’re looking for a phrase that contains the words “model”
+        The number specifies the amount of “slop” in the phrase. The previous query means that you’re looking for a phrase that contains the words “model”
         and “screen”, but one word can be inserted into the phrase between the
         first and the last word.
       </p>
       <p>
-        If you specify something like:
+        If you specify something such as:
       </p>
       <pre><code>&quot;gosu zones types&quot;~5</code></pre>
       <p>
-        That means you want the words “gosu”, “zones”, and “types”, but you
-        allow up to 5 words to be inserted anywhere in the phrase, but between
-        the first and the last word. With the phrase above, you can match
+        This means to find a phrase containing the words “gosu”, “zones”, and “types”, and up to five other words can appear anywhere in the phrase between the first and the last word. For example, this query would match
         &quot;<strong>Gosu</strong> holiday methods that use
         <strong>zones</strong> and <strong>types</strong>&quot;.
       </p>
