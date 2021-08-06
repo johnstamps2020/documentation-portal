@@ -3808,6 +3808,13 @@
       ]
     },
     {
+      "id": "srcjutrorewards",
+      "title": "Jutro Rewards",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-rewards.git",
+      "branch": "main"
+    },
+    {
       "id": "srcjutro411",
       "title": "Jutro Design System 4.1.1",
       "sourceType": "git",

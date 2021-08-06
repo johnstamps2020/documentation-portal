@@ -4824,6 +4824,11 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutrorewards",
+      "srcId": "srcjutrorewards"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutro411",
       "srcId": "srcjutro411",
       "workingDir": "website"
