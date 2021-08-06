@@ -2553,6 +2553,20 @@
       "public": false
     },
     {
+      "id": "jutrorewards",
+      "title": "Jutro Rewards",
+      "url": "jutro/rewards",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud", "Self-managed"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "staging", "prod", "int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": true
+    },
+    {
       "id": "jutro411",
       "title": "Jutro Design System",
       "url": "jutro/documentation/4.1.1",
