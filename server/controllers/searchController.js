@@ -51,25 +51,47 @@ async function getAllowedFilterValues(fieldName, query) {
   );
 }
 
-async function getFiltersWithValues(fieldMappings, urlFilters, query) {
-  let filtersWithValues = [];
+async function getFilters(fieldMappings, urlFilters, query) {
+  let filterNamesAndValues = [];
   for (const key in fieldMappings) {
     if (fieldMappings[key].type === 'keyword') {
       const allowedFilterValues = await getAllowedFilterValues(key, query);
-      const filterValuesWithStates = allowedFilterValues.map(value => {
+      const filterValues = allowedFilterValues.map(value => {
         return {
           label: value.label,
           doc_count: value.doc_count,
           checked: urlFilters[key]?.includes(value.label),
         };
       });
-      filtersWithValues.push({
+      filterNamesAndValues.push({
         name: key,
-        values: filterValuesWithStates,
+        values: filterValues,
       });
     }
   }
-  return filtersWithValues;
+  return filterNamesAndValues;
+}
+
+async function updateFiltersStatusAndCount(allFilters, query) {
+  let filtersWithStatusAndCount = [];
+  for (const f of allFilters) {
+    const allowedFilterValues = await getAllowedFilterValues(f.name, query);
+    const updatedFilterValues = f.values.map(value => {
+      const updatedDataForValue = allowedFilterValues.find(
+        v => v.label === value.label
+      );
+      return {
+        label: value.label,
+        doc_count: updatedDataForValue ? updatedDataForValue.doc_count : 0,
+        checked: value.checked,
+      };
+    });
+    filtersWithStatusAndCount.push({
+      name: f.name,
+      values: updatedFilterValues,
+    });
+  }
+  return filtersWithStatusAndCount;
 }
 
 async function runSearch(queryBody, startIndex, resultsPerPage) {
@@ -162,26 +184,7 @@ async function searchController(req, res, next) {
       },
     };
 
-    const filters = await getFiltersWithValues(
-      mappings,
-      filtersFromUrl,
-      queryBody
-    );
-
-    const displayOrder = [
-      'platform',
-      'product',
-      'version',
-      'subject',
-      'doc_title',
-    ];
-
-    const arrangedFilters = [];
-    for (const key of displayOrder) {
-      if (filters.some(f => f.name === key)) {
-        arrangedFilters.push(filters.find(f => f.name === key));
-      }
-    }
+    const filters = await getFilters(mappings, filtersFromUrl, queryBody);
 
     if (filtersFromUrl) {
       let queryFilters = [];
@@ -200,6 +203,26 @@ async function searchController(req, res, next) {
         });
       }
       queryBody.bool.filter = queryFilters;
+    }
+
+    const filtersWithFullData = await updateFiltersStatusAndCount(
+      filters,
+      queryBody
+    );
+
+    const displayOrder = [
+      'platform',
+      'product',
+      'version',
+      'subject',
+      'doc_title',
+    ];
+
+    const arrangedFilters = [];
+    for (const key of displayOrder) {
+      if (filtersWithFullData.some(f => f.name === key)) {
+        arrangedFilters.push(filtersWithFullData.find(f => f.name === key));
+      }
     }
 
     const results = await runSearch(queryBody, startIndex, resultsPerPage);
