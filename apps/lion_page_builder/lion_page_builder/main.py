@@ -157,6 +157,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
             )
 
     product_paths = get_paths(locale_path)
+    product_paths.sort()
     for product_path in product_paths:
         index_json["items"].append(
             {
