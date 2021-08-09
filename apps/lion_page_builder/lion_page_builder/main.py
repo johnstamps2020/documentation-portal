@@ -138,6 +138,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
     }
     sibling_paths = get_sibling_paths(locale_path)
     if sibling_paths:
+        sibling_paths.sort()
         index_json.update(
             {"selector":
                 {
@@ -145,7 +146,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
                     "selectedItem": get_locale_name_from_code(locale_path.name),
                     "items": []
                 }
-            }
+             }
         )
         for path in sibling_paths:
             index_json["selector"]["items"].append(
@@ -181,6 +182,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
 
     sibling_paths = get_sibling_paths(product_path)
     if sibling_paths:
+        sibling_paths.sort()
         index_json.update(
             {
                 "selector": {
@@ -190,7 +192,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
                 }
             }
         )
-        for path in get_sibling_paths(product_path):
+        for path in sibling_paths:
             index_json["selector"]["items"].append(
                 {
                     "label": get_product_name_from_code(path.name),
@@ -199,7 +201,8 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
             )
 
     version_paths = get_paths(product_path)
-    for version_path in reversed(version_paths):
+    version_paths.sort(reverse=True)
+    for version_path in version_paths:
         version_json = {
             "label": version_path.name,
             "class": "categoryCard cardShadow",
@@ -270,11 +273,13 @@ def main():
     clear_output(loc_docs_output_path)
 
     locale_dirs = get_paths(loc_docs_root_path)
+    locale_dirs.sort()
     write_top_index(locale_dirs, loc_docs_output_path)
 
     for locale_dir in locale_dirs:
         write_locale_index(locale_dir, loc_docs_output_path)
         product_dirs = get_paths(locale_dir)
+        product_dirs.sort()
         for product_dir in product_dirs:
             write_product_index(
                 product_dir, loc_docs_output_path, loc_docs_root_path)
