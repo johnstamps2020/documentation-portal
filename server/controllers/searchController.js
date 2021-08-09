@@ -86,7 +86,10 @@ async function getFilters(query, fieldMappings, urlFilters) {
       }
     }
     queryWithFiltersFromUrl.bool.filter = queryFilters;
-    const allowedFilterValues = await getAllowedFilterValues(f.name, query);
+    const allowedFilterValues = await getAllowedFilterValues(
+      f.name,
+      queryWithFiltersFromUrl
+    );
     const updatedFilterValues = f.values.map(value => {
       const updatedDataForValue = allowedFilterValues.find(
         v => v.label === value.label
