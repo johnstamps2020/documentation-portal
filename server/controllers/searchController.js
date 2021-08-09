@@ -73,6 +73,7 @@ async function getFilters(query, fieldMappings, urlFilters) {
   let filtersWithUpdatedStatusAndCount = [];
   for (const f of filterNamesAndValues) {
     let queryWithFiltersFromUrl = query;
+    //FIXME: Authentication query filter is lost!!! Filters are not limited to public entries.
     let queryFilters = [];
     for (const [key, value] of Object.entries(urlFilters)) {
       if (key !== f.name) {
@@ -109,6 +110,7 @@ async function getFilters(query, fieldMappings, urlFilters) {
 
 async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
   if (urlFilters) {
+    //FIXME: Authentication query filter is lost!!! Results are not limited to public entries.
     let queryFilters = [];
     for (const [key, value] of Object.entries(urlFilters)) {
       queryFilters.push({
