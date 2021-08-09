@@ -10542,6 +10542,22 @@
       "public": false
     },
     {
+      "id": "in20212xcsalespconfigdraft",
+      "title": "Consumer Sales Portal Configuration Draft",
+      "url": "cloud/in/20212x/csalespconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20212xcsalespdraft",
       "title": "Consumer Sales Portal Features Draft",
       "url": "cloud/in/20212x/csalesp",
