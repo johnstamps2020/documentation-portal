@@ -51,7 +51,7 @@ async function getAllowedFilterValues(fieldName, query) {
   );
 }
 
-async function getFilters(fieldMappings, urlFilters, query) {
+async function getFilters(query, fieldMappings, urlFilters) {
   let filterNamesAndValues = [];
   for (const key in fieldMappings) {
     if (fieldMappings[key].type === 'keyword') {
@@ -69,13 +69,25 @@ async function getFilters(fieldMappings, urlFilters, query) {
       });
     }
   }
-  return filterNamesAndValues;
-}
 
-async function updateFiltersStatusAndCount(allFilters, query) {
-  let filtersWithStatusAndCount = [];
-  for (const f of allFilters) {
-    const allowedFilterValues = await getAllowedFilterValues(f.name, query);
+  let filtersWithUpdatedStatusAndCount = [];
+  for (const f of filterNamesAndValues) {
+    let queryWithFiltersFromUrl = query;
+    let queryFilters = [];
+    for (const [key, value] of Object.entries(urlFilters)) {
+      if (key !== f.name) {
+        queryFilters.push({
+          terms: {
+            [key]: value,
+          },
+        });
+      }
+    }
+    queryWithFiltersFromUrl.bool.filter = queryFilters;
+    const allowedFilterValues = await getAllowedFilterValues(
+      f.name,
+      queryWithFiltersFromUrl
+    );
     const updatedFilterValues = f.values.map(value => {
       const updatedDataForValue = allowedFilterValues.find(
         v => v.label === value.label
@@ -86,22 +98,35 @@ async function updateFiltersStatusAndCount(allFilters, query) {
         checked: value.checked,
       };
     });
-    filtersWithStatusAndCount.push({
+    filtersWithUpdatedStatusAndCount.push({
       name: f.name,
       values: updatedFilterValues,
     });
   }
-  return filtersWithStatusAndCount;
+
+  return filtersWithUpdatedStatusAndCount;
 }
 
-async function runSearch(queryBody, startIndex, resultsPerPage) {
+async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
+  if (urlFilters) {
+    let queryFilters = [];
+    for (const [key, value] of Object.entries(urlFilters)) {
+      queryFilters.push({
+        terms: {
+          [key]: value,
+        },
+      });
+    }
+    query.bool.filter = queryFilters;
+  }
+
   const searchResultsCount = await elasticClient.search({
     index: searchIndexName,
     size: 0,
     body: {
       aggs: {
         totalHits: {
-          filter: queryBody,
+          filter: query,
           aggs: {
             totalCollapsedHits: {
               cardinality: {
@@ -120,7 +145,7 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
     from: startIndex,
     size: resultsPerPage,
     body: {
-      query: queryBody,
+      query: query,
       collapse: {
         field: 'title.raw',
         inner_hits: {
@@ -184,31 +209,15 @@ async function searchController(req, res, next) {
       },
     };
 
-    const filters = await getFilters(mappings, filtersFromUrl, queryBody);
-
-    if (filtersFromUrl) {
-      let queryFilters = [];
-      for (const [key, value] of Object.entries(filtersFromUrl)) {
-        queryFilters.push({
-          terms: {
-            [key]: value,
-          },
-        });
-      }
-      if (!requestIsAuthenticated) {
-        queryFilters.push({
+    if (!requestIsAuthenticated) {
+      queryBody.bool.filter = [
+        {
           term: {
             public: true,
           },
-        });
-      }
-      queryBody.bool.filter = queryFilters;
+        },
+      ];
     }
-
-    const filtersWithFullData = await updateFiltersStatusAndCount(
-      filters,
-      queryBody
-    );
 
     const displayOrder = [
       'platform',
@@ -218,14 +227,21 @@ async function searchController(req, res, next) {
       'doc_title',
     ];
 
+    const filters = await getFilters(queryBody, mappings, filtersFromUrl);
+
     const arrangedFilters = [];
     for (const key of displayOrder) {
-      if (filtersWithFullData.some(f => f.name === key)) {
-        arrangedFilters.push(filtersWithFullData.find(f => f.name === key));
+      if (filters.some(f => f.name === key)) {
+        arrangedFilters.push(filters.find(f => f.name === key));
       }
     }
 
-    const results = await runSearch(queryBody, startIndex, resultsPerPage);
+    const results = await runSearch(
+      queryBody,
+      startIndex,
+      resultsPerPage,
+      filtersFromUrl
+    );
 
     const resultsToDisplay = results.hits.map(result => {
       const doc = result._source;
