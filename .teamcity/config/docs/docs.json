@@ -11653,6 +11653,38 @@
       "public": false
     },
     {
+      "id": "incsp326rndraft",
+      "title": "Consumer Service Portal 3.26 Release Notes Draft",
+      "url": "cloud/in/csp326rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "subject": ["Release notes"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "incsp326rn",
+      "title": "Consumer Service Portal 3.26 Release Notes",
+      "url": "cloud/in/csp326rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "subject": ["Release notes"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "incsp325rndraft",
       "title": "Consumer Service Portal 3.25 Release Notes Draft",
       "url": "cloud/in/csp325rn",
@@ -11664,6 +11696,22 @@
         "release": ["Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "incsp325rn",
+      "title": "Consumer Service Portal 3.25 Release Notes",
+      "url": "cloud/in/csp325rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2"],
+        "subject": ["Release notes"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11685,6 +11733,22 @@
       "public": false
     },
     {
+      "id": "incsp324rn",
+      "title": "Consumer Service Portal 3.24 Release Notes",
+      "url": "cloud/in/csp324rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2"],
+        "subject": ["Release notes"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "incsp323rndraft",
       "title": "Consumer Service Portal 3.23 Release Notes Draft",
       "url": "cloud/in/csp323rn",
@@ -11696,6 +11760,22 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "incsp323rn",
+      "title": "Consumer Service Portal 3.23 Release Notes",
+      "url": "cloud/in/csp323rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "subject": ["Release notes"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -11773,54 +11853,6 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20211csp325rn",
-      "title": "Consumer Service Portal 3.25 Release Notes",
-      "url": "cloud/in/20211/csp325rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20211csp324rn",
-      "title": "Consumer Service Portal 3.24 Release Notes",
-      "url": "cloud/in/20211/csp324rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20211csp323rn",
-      "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/20211/csp323rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -12053,54 +12085,6 @@
       "public": false
     },
     {
-      "id": "in20202csp325rn",
-      "title": "Consumer Service Portal 3.25 Release Notes",
-      "url": "cloud/in/20202/csp325rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20202csp324rn",
-      "title": "Consumer Service Portal 3.24 Release Notes",
-      "url": "cloud/in/20202/csp324rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20202csp323rn",
-      "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/20202/csp323rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20202bi",
       "title": "Business Intelligence Getting Started Guide",
       "url": "cloud/in/20202/bi",
@@ -12280,54 +12264,6 @@
       "id": "in20201studiorn",
       "title": "Studio Release Notes",
       "url": "cloud/in/20201/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.1"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20201csp325rn",
-      "title": "Consumer Service Portal 3.25 Release Notes",
-      "url": "cloud/in/20201/csp325rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.1"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20201csp324rn",
-      "title": "Consumer Service Portal 3.24 Release Notes",
-      "url": "cloud/in/20201/csp324rn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.1"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20201csp323rn",
-      "title": "Consumer Service Portal 3.23 Release Notes",
-      "url": "cloud/in/20201/csp323rn",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
