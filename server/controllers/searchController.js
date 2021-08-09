@@ -72,9 +72,10 @@ async function getFilters(query, fieldMappings, urlFilters) {
 
   let filtersWithUpdatedStatusAndCount = [];
   for (const f of filterNamesAndValues) {
-    let queryWithFiltersFromUrl = query;
-    //FIXME: Authentication query filter is lost!!! Filters are not limited to public entries.
-    let queryFilters = [];
+    const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+    let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
+      ? [...queryWithFiltersFromUrl.bool.filter]
+      : [];
     for (const [key, value] of Object.entries(urlFilters)) {
       if (key !== f.name) {
         queryFilters.push({
@@ -85,10 +86,7 @@ async function getFilters(query, fieldMappings, urlFilters) {
       }
     }
     queryWithFiltersFromUrl.bool.filter = queryFilters;
-    const allowedFilterValues = await getAllowedFilterValues(
-      f.name,
-      queryWithFiltersFromUrl
-    );
+    const allowedFilterValues = await getAllowedFilterValues(f.name, query);
     const updatedFilterValues = f.values.map(value => {
       const updatedDataForValue = allowedFilterValues.find(
         v => v.label === value.label
@@ -109,9 +107,11 @@ async function getFilters(query, fieldMappings, urlFilters) {
 }
 
 async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
+  const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
   if (urlFilters) {
-    //FIXME: Authentication query filter is lost!!! Results are not limited to public entries.
-    let queryFilters = [];
+    let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
+      ? [...queryWithFiltersFromUrl.bool.filter]
+      : [];
     for (const [key, value] of Object.entries(urlFilters)) {
       queryFilters.push({
         terms: {
@@ -119,7 +119,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
         },
       });
     }
-    query.bool.filter = queryFilters;
+    queryWithFiltersFromUrl.bool.filter = queryFilters;
   }
 
   const searchResultsCount = await elasticClient.search({
