@@ -3903,6 +3903,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "ConsumersSalesPortalConfig20212x.ditamap",
+      "srcId": "in20212xcsalespconfigdraftsrc",
+      "docId": "in20212xcsalespconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerSalesPortalFeatures20212x.ditamap",
       "srcId": "in20212xcsalespdraftsrc",
       "docId": "in20212xcsalespdraft",
