@@ -11658,8 +11658,8 @@
       "url": "cloud/in/csp326rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.26"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
@@ -11674,8 +11674,8 @@
       "url": "cloud/in/csp326rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.26"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
@@ -11690,8 +11690,8 @@
       "url": "cloud/in/csp325rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.25"],
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -11706,8 +11706,8 @@
       "url": "cloud/in/csp325rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.25"],
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -11722,8 +11722,8 @@
       "url": "cloud/in/csp324rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.24"],
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -11738,8 +11738,8 @@
       "url": "cloud/in/csp324rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.24"],
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -11754,8 +11754,8 @@
       "url": "cloud/in/csp323rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.23"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
@@ -11770,8 +11770,8 @@
       "url": "cloud/in/csp323rn",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.23"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
