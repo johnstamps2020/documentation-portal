@@ -3635,7 +3635,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
