@@ -113,6 +113,10 @@
           "id": "ispc202104cloudapibf"
         },
         {
+          "label": "Cloud API ContactManager",
+          "id": "ispc202104cloudapicm"
+        },
+        {
           "label": "Cloud API Authentication",
           "id": "ispc202104cloudapica"
         },

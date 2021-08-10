@@ -111,7 +111,11 @@
           "id": "isccclouddraftapibf"
         },
         {
-          "label": "Cloud API Configuration and Authentication",
+          "label": "Cloud API ContactManager",
+          "id": "isccclouddraftapicm"
+        },
+        {
+          "label": "Cloud API Authentication",
           "id": "isccclouddraftapica"
         },
         {
