@@ -483,10 +483,10 @@ pre.compliant::after {
   background-image: url(/images/check_circle_outline_black_24dp.svg);
   background-repeat: no-repeat;
   background-attachment: inherit;
-  -webkit-background-size: 60%;
-  background-size: 60%;
+  -webkit-background-size: 60% 60%;
+  background-size: 60% 60%;
   background-position: center center;
-  opacity: 0.25;
+  opacity: 0.05;
 }
 
 pre.noncompliant::after {
@@ -499,8 +499,8 @@ pre.noncompliant::after {
   background-image: url(/images/cancel_black_24dp.svg);
   background-repeat: no-repeat;
   background-attachment: inherit;
-  -webkit-background-size: 60%;
-  background-size: 60%;
+  -webkit-background-size: 60% 60%;
+  background-size: 60% 60%;
   background-position: center center;
-  opacity: 0.25;
+  opacity: 0.05;
 }
