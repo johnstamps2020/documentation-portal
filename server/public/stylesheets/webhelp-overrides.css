@@ -467,3 +467,40 @@ samp,
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+pre.noncompliant,
+pre.compliant {
+  position: relative;
+}
+
+pre.compliant::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(/images/check_circle_outline_black_24dp.svg);
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  -webkit-background-size: 60%;
+  background-size: 60%;
+  background-position: center center;
+  opacity: 0.25;
+}
+
+pre.noncompliant::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(/images/cancel_black_24dp.svg);
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  -webkit-background-size: 60%;
+  background-size: 60%;
+  background-position: center center;
+  opacity: 0.25;
+}
