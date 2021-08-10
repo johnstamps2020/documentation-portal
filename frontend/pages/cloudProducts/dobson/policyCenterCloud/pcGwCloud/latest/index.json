@@ -123,7 +123,11 @@
           "id": "ispcclouddraftapibf"
         },
         {
-          "label": "Cloud API Configuration and Authentication",
+          "label": "Cloud API ContactManager",
+          "id": "ispcclouddraftapicm"
+        },
+        {
+          "label": "Cloud API Authentication",
           "id": "ispcclouddraftapica"
         },
         {

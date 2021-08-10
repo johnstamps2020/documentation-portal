@@ -8478,6 +8478,22 @@
       "public": false
     },
     {
+      "id": "iscc202104cloudapicm",
+      "title": "Cloud API ContactManager",
+      "url": "cloud/cc/202104/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "cc202104apiref",
       "title": "Cloud API Reference",
       "url": "cloud/cc/202104/apiref",
@@ -8801,6 +8817,22 @@
       "id": "ispc202104cloudapica",
       "title": "Cloud API Authentication",
       "url": "cloud/pc/202104/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104cloudapicm",
+      "title": "Cloud API ContactManager",
+      "url": "cloud/pc/202104/cloudapicm",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
@@ -9371,6 +9403,22 @@
       "public": false
     },
     {
+      "id": "isccclouddraftapicm",
+      "title": "Cloud API ContactManager",
+      "url": "cloud/cc/latest/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isccclouddrafttesting",
       "title": "Test Automation Guide",
       "url": "cloud/cc/latest/testing",
@@ -9646,6 +9694,22 @@
       "id": "ispcclouddraftapica",
       "title": "Cloud API Authentication",
       "url": "cloud/pc/latest/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispcclouddraftapicm",
+      "title": "Cloud API ContactManager",
+      "url": "cloud/pc/latest/cloudapicm",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
