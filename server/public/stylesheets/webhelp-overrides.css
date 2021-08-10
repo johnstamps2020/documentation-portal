@@ -504,3 +504,7 @@ pre.noncompliant::after {
   background-position: center center;
   opacity: 0.05;
 }
+
+span.openNav {
+  visibility: hidden;
+}
