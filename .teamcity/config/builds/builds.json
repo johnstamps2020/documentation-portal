@@ -985,7 +985,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "midipgsrc",
-      "docId": "midipg2x"
+      "docId": "midipg"
     },
     {
       "buildType": "dita",
