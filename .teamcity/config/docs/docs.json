@@ -1798,13 +1798,13 @@
       "public": false
     },
     {
-      "id": "midipg2x",
-      "title": "Guidewire InsuranceSuite Package for Germany",
+      "id": "midipg",
+      "title": "InsuranceSuite Package for Germany",
       "url": "cloud/mid/ipg/latest",
       "metadata": {
         "product": ["Guidewire InsuranceSuite Package for Germany"],
         "platform": ["Cloud"],
-        "version": ["2.x"],
+        "version": ["3.x"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "int"],

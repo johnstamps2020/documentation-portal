@@ -3631,7 +3631,7 @@
     },
     {
       "id": "midipgsrc",
-      "title": "MID IPG",
+      "title": "InsuranceSuite Package for Germany",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
       "xdocsPathIds": [
