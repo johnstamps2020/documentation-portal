@@ -5756,6 +5756,11 @@
       "docId": "easyguide"
     },
     {
+      "buildType": "yarn",
+      "srcId": "dx-jsdocs-202104src",
+      "docId": "dx-jsdocs-202104"
+    },
+    {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
