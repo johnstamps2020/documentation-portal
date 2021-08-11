@@ -466,6 +466,20 @@
       ]
     },
     {
+      "id": "cloudiscloudapicm202104src",
+      "title": "IS 2021.04 Cloud API ContactManager",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Cortina",
+      "exportFrequency": "daily",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202104/CloudAPIGuide-ContactManager.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
       "id": "cloudiscloudapica202104src",
       "title": "IS 2021.04 Cloud API Authentication",
       "sourceType": "xdocs",
@@ -911,6 +925,18 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/cloud/active/CloudAPIGuide-BusinessFlows.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+      ]
+    },
+    {
+      "id": "cloudiscloudapicmdraftsrc",
+      "title": "IS Cloud Draft API Contact Manager",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/active/CloudAPIGuide-ContactManager.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
@@ -3631,11 +3657,11 @@
     },
     {
       "id": "midipgsrc",
-      "title": "MID IPG",
+      "title": "InsuranceSuite Package for Germany",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/mid/ipg/2.x/active/_superbook.ditamap",
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },

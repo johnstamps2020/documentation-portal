@@ -51,35 +51,87 @@ async function getAllowedFilterValues(fieldName, query) {
   );
 }
 
-async function getFiltersWithValues(fieldMappings, urlFilters, query) {
-  let filtersWithValues = [];
+async function getFilters(query, fieldMappings, urlFilters) {
+  let filterNamesAndValues = [];
   for (const key in fieldMappings) {
     if (fieldMappings[key].type === 'keyword') {
       const allowedFilterValues = await getAllowedFilterValues(key, query);
-      const filterValuesWithStates = allowedFilterValues.map(value => {
+      const filterValues = allowedFilterValues.map(value => {
         return {
           label: value.label,
           doc_count: value.doc_count,
           checked: urlFilters[key]?.includes(value.label),
         };
       });
-      filtersWithValues.push({
+      filterNamesAndValues.push({
         name: key,
-        values: filterValuesWithStates,
+        values: filterValues,
       });
     }
   }
-  return filtersWithValues;
+
+  let filtersWithUpdatedStatusAndCount = [];
+  for (const f of filterNamesAndValues) {
+    const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+    let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
+      ? [...queryWithFiltersFromUrl.bool.filter]
+      : [];
+    for (const [key, value] of Object.entries(urlFilters)) {
+      if (key !== f.name) {
+        queryFilters.push({
+          terms: {
+            [key]: value,
+          },
+        });
+      }
+    }
+    queryWithFiltersFromUrl.bool.filter = queryFilters;
+    const allowedFilterValues = await getAllowedFilterValues(
+      f.name,
+      queryWithFiltersFromUrl
+    );
+    const updatedFilterValues = f.values.map(value => {
+      const updatedDataForValue = allowedFilterValues.find(
+        v => v.label === value.label
+      );
+      return {
+        label: value.label,
+        doc_count: updatedDataForValue ? updatedDataForValue.doc_count : 0,
+        checked: value.checked,
+      };
+    });
+    filtersWithUpdatedStatusAndCount.push({
+      name: f.name,
+      values: updatedFilterValues,
+    });
+  }
+
+  return filtersWithUpdatedStatusAndCount;
 }
 
-async function runSearch(queryBody, startIndex, resultsPerPage) {
+async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
+  const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+  if (urlFilters) {
+    let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
+      ? [...queryWithFiltersFromUrl.bool.filter]
+      : [];
+    for (const [key, value] of Object.entries(urlFilters)) {
+      queryFilters.push({
+        terms: {
+          [key]: value,
+        },
+      });
+    }
+    queryWithFiltersFromUrl.bool.filter = queryFilters;
+  }
+
   const searchResultsCount = await elasticClient.search({
     index: searchIndexName,
     size: 0,
     body: {
       aggs: {
         totalHits: {
-          filter: queryBody,
+          filter: queryWithFiltersFromUrl,
           aggs: {
             totalCollapsedHits: {
               cardinality: {
@@ -98,7 +150,7 @@ async function runSearch(queryBody, startIndex, resultsPerPage) {
     from: startIndex,
     size: resultsPerPage,
     body: {
-      query: queryBody,
+      query: queryWithFiltersFromUrl,
       collapse: {
         field: 'title.raw',
         inner_hits: {
@@ -162,11 +214,15 @@ async function searchController(req, res, next) {
       },
     };
 
-    const filters = await getFiltersWithValues(
-      mappings,
-      filtersFromUrl,
-      queryBody
-    );
+    if (!requestIsAuthenticated) {
+      queryBody.bool.filter = [
+        {
+          term: {
+            public: true,
+          },
+        },
+      ];
+    }
 
     const displayOrder = [
       'platform',
@@ -176,6 +232,8 @@ async function searchController(req, res, next) {
       'doc_title',
     ];
 
+    const filters = await getFilters(queryBody, mappings, filtersFromUrl);
+
     const arrangedFilters = [];
     for (const key of displayOrder) {
       if (filters.some(f => f.name === key)) {
@@ -183,26 +241,12 @@ async function searchController(req, res, next) {
       }
     }
 
-    if (filtersFromUrl) {
-      let queryFilters = [];
-      for (const [key, value] of Object.entries(filtersFromUrl)) {
-        queryFilters.push({
-          terms: {
-            [key]: value,
-          },
-        });
-      }
-      if (!requestIsAuthenticated) {
-        queryFilters.push({
-          term: {
-            public: true,
-          },
-        });
-      }
-      queryBody.bool.filter = queryFilters;
-    }
-
-    const results = await runSearch(queryBody, startIndex, resultsPerPage);
+    const results = await runSearch(
+      queryBody,
+      startIndex,
+      resultsPerPage,
+      filtersFromUrl
+    );
 
     const resultsToDisplay = results.hits.map(result => {
       const doc = result._source;
