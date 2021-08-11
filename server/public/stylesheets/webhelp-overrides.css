@@ -467,3 +467,6 @@ samp,
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+th.choption {
+  vertical-align: top;
+}
