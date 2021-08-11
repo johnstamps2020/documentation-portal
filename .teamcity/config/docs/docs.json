@@ -13610,6 +13610,28 @@
       "environments": ["dev", "int", "staging", "prod"]
     },
     {
+      "id": "dx-jsdocs-202104",
+      "title": "Digital Frontend API Documentation",
+      "url": "dx/js-docs/202104",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "CustomerEngage Account Management",
+          "CustomerEngage Account Management for ClaimCenter",
+          "CustomerEngage Quote and Buy",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
+          "ServiceRepEngage",
+          "VendorEngage"
+        ],
+        "version": ["2021.04"]
+      },
+      "displayOnLandingPages": false,
+      "public": false,
+      "indexForSearch": false,
+      "environments": ["dev", "int", "staging", "prod"]
+    },
+    {
       "id": "isrestapiclientguide",
       "title": "REST API Client",
       "url": "is/restapiclient/guide",

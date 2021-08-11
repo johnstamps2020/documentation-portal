@@ -4301,6 +4301,13 @@
       "sourceType": "git"
     },
     {
+      "id": "dx-jsdocs-202104src",
+      "title": "Digital Frontend API 2021.04",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
+      "sourceType": "git",
+      "branch": "release/2021.04"
+    },
+    {
       "id": "gwglossarysrc",
       "title": "Guidewire Glossary",
       "sourceType": "xdocs",

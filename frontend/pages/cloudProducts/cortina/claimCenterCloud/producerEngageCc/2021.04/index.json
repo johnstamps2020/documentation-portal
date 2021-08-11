@@ -45,6 +45,10 @@
         {
           "label": "Digital Services Reference Guides",
           "id": "dx202104peclaimsrefguides"
+        },
+        {
+          "label": "Digital Frontend API Documentation",
+          "id": "dx-jsdocs-202104"
         }
       ]
     }
