@@ -131,7 +131,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
     body: {
       aggs: {
         totalHits: {
-          filter: query,
+          filter: queryWithFiltersFromUrl,
           aggs: {
             totalCollapsedHits: {
               cardinality: {
@@ -150,7 +150,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
     from: startIndex,
     size: resultsPerPage,
     body: {
-      query: query,
+      query: queryWithFiltersFromUrl,
       collapse: {
         field: 'title.raw',
         inner_hits: {
