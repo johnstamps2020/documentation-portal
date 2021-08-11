@@ -277,8 +277,7 @@ def check_for_duplicated_ids(objects_to_check: list):
         raise ValueError(f'Found duplicated values for the {property_name} property: {", ".join(duplicates)}')
 
 
-def validate_against_schema(config_file_path: Path):
-    schema_path = Path(__file__).parent / 'config-schema.json'
+def validate_against_schema(config_file_path: Path, schema_path: Path):
     config_schema = load_json_file(schema_path)
     config_json = load_json_file(config_file_path)
     validate(instance=config_json, schema=config_schema)
@@ -439,7 +438,7 @@ def run_command(args: argparse.Namespace()):
         root_key_name, root_key_objects = prepare_input()
         logger.info(f'Testing {input_path}')
         logger.info(f'Checking against the schema.')
-        validate_against_schema(input_path)
+        validate_against_schema(input_path, args.schema_path)
         logger.info(f'OK')
         if root_key_name == 'docs' or root_key_name == 'sources':
             logger.info(f'Checking for duplicated IDs.')
@@ -565,6 +564,9 @@ def main():
                              help='Path to the sources config file. Required only for builds validation.')
     parser_test.add_argument('--docs-path', dest="docs_path", type=pathlib.Path,
                              help='Path to the docs config file. Required only for builds validation.')
+    parser_test.add_argument('--schema-path', dest="schema_path", type=pathlib.Path,
+                             default=Path(__file__).parent / 'config-schema.json',
+                             help='Path to the JSON schema file against which config files are validated.')
 
     cli_args = parser.parse_args()
     run_command(cli_args)

@@ -913,6 +913,7 @@ object PublishConfigDeployerDockerImage : BuildType({
         vcs {
             branchFilter = "+:<default>"
             triggerRules = """
+                +:.teamcity/**/*.*
                 +:apps/config_deployer/**
                 -:user=doctools:**
             """.trimIndent()
@@ -1437,6 +1438,7 @@ object TestConfig : BuildType({
             "%env.BUILDS_OUTPUT_DIR%/merge-all.json",
             display = ParameterDisplay.HIDDEN
         )
+        text("env.SCHEMA_PATH", "%teamcity.build.checkoutDir%/.teamcity/config/config-schema.json")
     }
 
     vcs {
@@ -1465,9 +1467,9 @@ object TestConfig : BuildType({
                 #!/bin/bash
                 set -xe
                 
-                config_deployer test %env.DOCS_CONFIG_FILE%
-                config_deployer test %env.SOURCES_CONFIG_FILE%
-                config_deployer test %env.BUILDS_CONFIG_FILE% --sources-path %env.SOURCES_CONFIG_FILE% --docs-path %env.DOCS_CONFIG_FILE%  
+                config_deployer test %env.DOCS_CONFIG_FILE% --schema-path %env.SCHEMA_PATH%
+                config_deployer test %env.SOURCES_CONFIG_FILE% --schema-path %env.SCHEMA_PATH%
+                config_deployer test %env.BUILDS_CONFIG_FILE% --sources-path %env.SOURCES_CONFIG_FILE% --docs-path %env.DOCS_CONFIG_FILE% --schema-path %env.SCHEMA_PATH%  
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
