@@ -455,6 +455,9 @@ samp,
   }
 }
 
+.collapse-toc-button {
+  z-index: -1;
+}
 .title span.highlight {
   background-color: #ffff88 !important;
 }
@@ -465,8 +468,13 @@ tr p:last-child {
 
 .tasklabel,
 .sectiontitle {
+  font-weight: 400 !important;
+  margin-bottom: 1rem !important;
+  font-size: 1.25rem;
+}
+
+p.seealso {
   font-weight: 400;
-  margin-bottom: 1rem;
 }
 
 div.p > dl,
