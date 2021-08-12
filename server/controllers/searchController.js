@@ -337,7 +337,7 @@ async function searchController(req, res, next) {
       res.send(resultsToDisplay);
     } else {
       const searchData = {
-        query: searchPhrase,
+        searchPhrase: searchPhrase,
         searchResults: resultsToDisplay,
         totalNumOfResults: results.numberOfHits,
         totalNumOfCollapsedResults: results.numberOfCollapsedHits,

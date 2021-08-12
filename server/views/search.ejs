@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('parts/head', { pageTitle: `${query} | ${totalNumOfResults} search results`}) %>
+<%- include('parts/head', { pageTitle: `${searchPhrase} | ${totalNumOfResults} search results`}) %>
 <body>
 <%- include('parts/header', { hideSearchBox: true, hideLoginButton: false, headerClass: 'header-search' }) %>
 <main class="fullWidth searchPage">
@@ -81,7 +81,7 @@
                 <div class="searchWrapperLarge">
                     <input
                             name="q"
-                            value="<%= query %>"
+                            value="<%= searchPhrase %>"
                             id="searchField"
                             class="searchField"
                             type="search"
@@ -105,7 +105,7 @@
             <%- include('parts/advanced-search') %>
         </div>
         <% if (totalNumOfResults > 0) { %>
-            <h1>Search results for "<%= query %>"</h1>
+            <h1>Search results for "<%= searchPhrase %>"</h1>
             <div class="resultsSubheading">
                 <span class="resultCount">
                     Page <%= currentPage %> of <%= pages %>
@@ -224,7 +224,7 @@
                 </ul>
             <% } %>
         <% } else { %>
-            <h1>Sorry, your search for "<%= query %>" returned no results.</h1>
+            <h1>Sorry, your search for "<%= searchPhrase %>" returned no results.</h1>
         <% } %>
     </div>
 </main>
