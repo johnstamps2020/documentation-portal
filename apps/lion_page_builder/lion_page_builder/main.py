@@ -51,6 +51,7 @@ product_codes_labels = {
     'pe-claims': {'label': 'ProducerEngage for ClaimCenter'},
     'sre': {'label': 'ServiceRepEngage'},
     've': {'label': 'VendorEngage'},
+    'is-configupgradetools': {'label': 'InsuranceSuite Configuration Upgrade Tools'}
 }
 
 
