@@ -463,15 +463,16 @@ tr p:last-child {
   margin-bottom: 0;
 }
 
-.p > ul:first-child {
-  margin-top: 1rem;
+.tasklabel,
+.sectiontitle {
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
-div.p > table {
-  margin-top: 1rem;
-}
-
-div.p > dl {
+div.p > dl,
+div.p > table,
+div.p > ol,
+div.p > ul {
   margin-top: 1rem;
 }
 
