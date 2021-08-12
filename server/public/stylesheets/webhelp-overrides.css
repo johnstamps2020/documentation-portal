@@ -484,6 +484,10 @@ th.choption {
   vertical-align: top;
 }
 
+div.glossdef > p:first-of-type,
+div.glossdef > div.p:first-of-type {
+  margin-top: 1rem;
+}
 pre.noncompliant,
 pre.compliant {
   position: relative;
