@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('parts/head', { pageTitle: `${query} | ${totalNumOfResults} search results`}) %>
+<%- include('parts/head', { pageTitle: `${searchPhrase} | ${totalNumOfResults} search results`}) %>
 <body>
 <%- include('parts/header', { hideSearchBox: true, hideLoginButton: false, headerClass: 'header-search' }) %>
 <main class="fullWidth searchPage">
@@ -55,9 +55,9 @@
                         <% sortedFilterValues.forEach(checkboxValue => { %>
                             <label class="checkboxRowContainer">
                                 <input type="checkbox" class="filterCheckbox" name="<%= matchingFilter.name %>"
-                                        value="<%= checkboxValue.label %>"
+                                       value="<%= checkboxValue.label %>"
                                 <% if (checkboxValue.checked) { %>
-                                        checked="true"
+                                       checked="true"
                                         <% } %>
                                 />
                                 <span><%= checkboxValue.label %></span>
@@ -81,7 +81,7 @@
                 <div class="searchWrapperLarge">
                     <input
                             name="q"
-                            value="<%= query %>"
+                            value="<%= searchPhrase %>"
                             id="searchField"
                             class="searchField"
                             type="search"
@@ -105,15 +105,31 @@
             <%- include('parts/advanced-search') %>
         </div>
         <% if (totalNumOfResults > 0) { %>
-            <h1>Search results for "<%= query %>"</h1>
-            <div class="resultsSubheading">
-                <span class="resultCount">Displaying <%= searchResults.length %> out of <%= totalNumOfResults
-                    %> results
-                    (page <%= currentPage %> of <%= pages %>)
-                </span>
+            <h1>Search results for "<%= searchPhrase %>"
                 <span id="highlightToggle" role="button"
                       onclick="enableDisableHighlight()" aria-label="Toggle search highlights"
                       title="Toggle search highlights"></span>
+            </h1>
+            <div class="resultsSubheading">
+                <span class="resultCount">
+                    <%= totalNumOfResults %> <%= totalNumOfResults === 1 ? 'result' : 'results' %>
+                    <% var totalNumOfCheckedFilters = 0 %>
+                    <div class="resultBadges">
+                    Applied filters:
+                        <% filters.forEach(searchFilter => { %>
+                            <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
+                            <% if (checkedFilters.length > 0) { %>
+                                <% totalNumOfCheckedFilters += checkedFilters.length %>
+                                <% checkedFilters.forEach(f => { %>
+                                    <span class="infoLabel"><%= f.label %></span>
+                                <% }) %>
+                            <% } %>
+                        <% }) %>
+                        <% if (totalNumOfCheckedFilters === 0) { %>
+                            <span class="infoLabel">None</span>
+                        <% } %>
+                    </div>
+                </span>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
                     <select id="pagination">
@@ -135,44 +151,29 @@
                         </a>
                         <div class="resultBadges">
                             <% result.docTags.forEach(tag => {
-                                if (tag) {
-                                    if (Array.isArray(tag)) {
-                                        tag.forEach(value => { %>
-                                            <span class="infoLabel"><%= value %></span>
-                                        <% }) %>
-                                    <% } else { %>
-                                        <span class="infoLabel"><%= tag %></span>
-                                    <% } %>
-                                <% } %>
+                            if (tag) {
+                            if (Array.isArray(tag)) {
+                            tag.forEach(value => { %>
+                                <span class="infoLabel"><%= value %></span>
+                            <% }) %>
+                            <% } else { %>
+                                <span class="infoLabel"><%= tag %></span>
+                            <% } %>
+                            <% } %>
                             <% }) %>
                         </div>
                         <div class="resultBody"><%- result.body %></div>
-                        <% if (result.inner_hits) {
-                            let hitsToDisplay = [];
-                            for (const innerHit of result.inner_hits) {
-                                const hitLabel = innerHit._source.title;
-                                const hitHref = innerHit._source.href;
-                                const hitPlatform = innerHit._source.platform;
-                                const hitProduct = innerHit._source.product;
-                                const hitVersion = innerHit._source.version;
-                                if (hitHref !== result.href) {
-                                    hitsToDisplay.push({
-                                        label: hitLabel,
-                                        href: hitHref,
-                                        tags: [...hitProduct, ...hitPlatform, ...hitVersion]
-                                    });
-                                }
-                            }
-                        if (hitsToDisplay.length > 0) { %>
+                        <% const innerHits = result.innerHits
+                        if (innerHits.length > 0) { %>
                             <details class="expandableSection">
                                 <summary>
                                     <span class="summaryContainer">
                                         <span class="summaryChevron" aria-label="expand/collapse icon"></span>
-                                        <%= `Also found in ${hitsToDisplay.length} pages with the same title` %>
+                                        <%= `Also found in ${innerHits.length} pages with the same title` %>
                                     </span>
                                 </summary>
                                 <div class="expandableSectionValues">
-                                    <% for (const hit of hitsToDisplay) { %>
+                                    <% for (const hit of innerHits) { %>
                                         <p class="otherHit">
                                             <a href="<%= result.uniqueHighlightTerms ? `${hit.href}?hl=${result.uniqueHighlightTerms}` : hit.href %>">
                                                 <%= hit.tags.join(', ') %>
@@ -181,7 +182,6 @@
                                     <% } %>
                                 </div>
                             </details>
-                        <% } %>
                         <% } %>
                     </div>
                 <% }) %>
@@ -198,22 +198,21 @@
                             <button onclick="changePage(false)">&lt; Previous</button>
                         </li>
                     <% } %>
-                    <% if (Number(currentPage) % 10 === 0) { 
+                    <% if (Number(currentPage) % 10 === 0) {
                         var pageRangeMinInit = Number(currentPage) - 9
-                    }
-                    else {
+                    } else {
                         var pageRangeMinInit = Math.floor(Number(currentPage) / 10) * 10 + 1
-                    }  
-                    var pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
-                    var pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
-                    if (pageRangeMax === pages) {
-                        for (i = pageRangeMin; i >= 1 && i >= pageRangeMax - 9; i--) {
-                            pageRangeMin = i;
-                        }
                     }
+                        var pageRangeMin = (Number(currentPage) - 5 > 0) ? (Number(currentPage) - 5) : pageRangeMinInit;
+                        var pageRangeMax = (pageRangeMin + 9 <= pages) ? (pageRangeMin + 9) : pages;
+                        if (pageRangeMax === pages) {
+                            for (i = pageRangeMin; i >= 1 && i >= pageRangeMax - 9; i--) {
+                                pageRangeMin = i;
+                            }
+                        }
                     for (i = pageRangeMin; i <= pageRangeMax; i++)
                     {
-                         if (i === Number(currentPage)) { %>
+                    if (i === Number(currentPage)) { %>
                         <li class="selected"><%= i %></li>
                     <% } else { %>
                         <li>
@@ -221,7 +220,7 @@
                                 <%= i %>
                             </button>
                         </li>
-                    <% } %> 
+                    <% } %>
                     <% } %>
                     <% if (Number(currentPage) !== pages) { %>
                         <li>
@@ -240,7 +239,7 @@
                 </ul>
             <% } %>
         <% } else { %>
-            <h1>Sorry, your search for "<%= query %>" returned no results.</h1>
+            <h1>Sorry, your search for "<%= searchPhrase %>" returned no results.</h1>
         <% } %>
     </div>
 </main>
@@ -248,7 +247,7 @@
     const url = new URL(window.location.href);
     const queryString = url.search;
     const searchParams = new URLSearchParams(queryString);
-    
+
     function setUrlParam(paramName, paramValue) {
         if (('' + paramValue).length === 0) {
             if (searchParams.has(paramName)) {
@@ -323,7 +322,7 @@
     }
 
     function clearFilters() {
-        const filters = [<%-filters.map(f => `'${f.name}'`)%>];
+        const filters = [<%- filters.map(f => `'${f.name}'`) %>];
         for (const filter of filters) {
             if (searchParams.has(filter)) {
                 searchParams.delete(filter);

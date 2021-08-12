@@ -90,16 +90,20 @@ async function getFilters(query, fieldMappings, urlFilters) {
       f.name,
       queryWithFiltersFromUrl
     );
-    const updatedFilterValues = f.values.map(value => {
+    let updatedFilterValues = [];
+    for (const value of f.values) {
       const updatedDataForValue = allowedFilterValues.find(
         v => v.label === value.label
       );
-      return {
-        label: value.label,
-        doc_count: updatedDataForValue ? updatedDataForValue.doc_count : 0,
-        checked: value.checked,
-      };
-    });
+      if (updatedDataForValue) {
+        updatedFilterValues.push({
+          label: value.label,
+          doc_count: updatedDataForValue.doc_count,
+          checked: value.checked,
+        });
+      }
+    }
+
     filtersWithUpdatedStatusAndCount.push({
       name: f.name,
       values: updatedFilterValues,
@@ -176,12 +180,10 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
     },
   });
 
-  const numberOfCollapsedHits =
-    searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value;
-
   return {
+    numberOfHits: searchResultsCount.body.aggregations.totalHits.doc_count,
     numberOfCollapsedHits:
-      numberOfCollapsedHits <= 10000 ? numberOfCollapsedHits : 10000,
+      searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value,
     hits: searchResults.body.hits.hits,
   };
 }
@@ -290,6 +292,22 @@ async function searchController(req, res, next) {
         })
         .join(',');
 
+      let innerHitsToDisplay = [];
+      for (const innerHit of result.inner_hits.same_title.hits.hits) {
+        const hitLabel = innerHit._source.title;
+        const hitHref = innerHit._source.href;
+        const hitPlatform = innerHit._source.platform;
+        const hitProduct = innerHit._source.product;
+        const hitVersion = innerHit._source.version;
+        if (hitHref !== doc.href) {
+          innerHitsToDisplay.push({
+            label: hitLabel,
+            href: hitHref,
+            tags: [...hitProduct, ...hitPlatform, ...hitVersion],
+          });
+        }
+      }
+
       return {
         href: doc.href,
         score: result._score,
@@ -299,7 +317,7 @@ async function searchController(req, res, next) {
         body: bodyText,
         bodyPlain: bodyBlurb,
         docTags: docTags,
-        inner_hits: result.inner_hits.same_title.hits.hits,
+        innerHits: innerHitsToDisplay,
         uniqueHighlightTerms: uniqueHighlightTerms,
       };
     });
@@ -318,11 +336,18 @@ async function searchController(req, res, next) {
       res.send(resultsToDisplay);
     } else {
       const searchData = {
-        query: searchPhrase,
+        searchPhrase: searchPhrase,
         searchResults: resultsToDisplay,
-        totalNumOfResults: results.numberOfCollapsedHits,
+        totalNumOfResults: results.numberOfHits,
+        totalNumOfCollapsedResults: results.numberOfCollapsedHits,
         currentPage: currentPage,
-        pages: Math.ceil(results.numberOfCollapsedHits / resultsPerPage),
+        // We limited the number of pages because the search results page crashes when there are over 10000 hits
+        // and you try to display a page for results from 10000 upward
+        pages: Math.ceil(
+          (results.numberOfCollapsedHits <= 10000
+            ? results.numberOfCollapsedHits
+            : 10000) / resultsPerPage
+        ),
         resultsPerPage: resultsPerPage,
         filters: arrangedFilters,
         userContext: req.userContext,
