@@ -90,16 +90,20 @@ async function getFilters(query, fieldMappings, urlFilters) {
       f.name,
       queryWithFiltersFromUrl
     );
-    const updatedFilterValues = f.values.map(value => {
+    let updatedFilterValues = [];
+    for (const value of f.values) {
       const updatedDataForValue = allowedFilterValues.find(
         v => v.label === value.label
       );
-      return {
-        label: value.label,
-        doc_count: updatedDataForValue ? updatedDataForValue.doc_count : 0,
-        checked: value.checked,
-      };
-    });
+      if (updatedDataForValue) {
+        updatedFilterValues.push({
+          label: value.label,
+          doc_count: updatedDataForValue.doc_count,
+          checked: value.checked,
+        });
+      }
+    }
+
     filtersWithUpdatedStatusAndCount.push({
       name: f.name,
       values: updatedFilterValues,
