@@ -456,7 +456,7 @@ samp,
 }
 
 .collapse-toc-button {
-  z-index: -1;
+  z-index: 1;
 }
 .title span.highlight {
   background-color: #ffff88 !important;
