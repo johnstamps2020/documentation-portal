@@ -292,7 +292,7 @@ async function searchController(req, res, next) {
         })
         .join(',');
 
-      let hitsToDisplay = [];
+      let innerHitsToDisplay = [];
       for (const innerHit of result.inner_hits.same_title.hits.hits) {
         const hitLabel = innerHit._source.title;
         const hitHref = innerHit._source.href;
@@ -300,7 +300,7 @@ async function searchController(req, res, next) {
         const hitProduct = innerHit._source.product;
         const hitVersion = innerHit._source.version;
         if (hitHref !== doc.href) {
-          hitsToDisplay.push({
+          innerHitsToDisplay.push({
             label: hitLabel,
             href: hitHref,
             tags: [...hitProduct, ...hitPlatform, ...hitVersion],
@@ -317,8 +317,7 @@ async function searchController(req, res, next) {
         body: bodyText,
         bodyPlain: bodyBlurb,
         docTags: docTags,
-        innerHits: hitsToDisplay,
-        numberOfInnerHits: hitsToDisplay.length,
+        innerHits: innerHitsToDisplay,
         uniqueHighlightTerms: uniqueHighlightTerms,
       };
     });
@@ -343,7 +342,7 @@ async function searchController(req, res, next) {
         totalNumOfCollapsedResults: results.numberOfCollapsedHits,
         numberOfMainHitsOnThePage: resultsToDisplay.length,
         numberOfInnerHitsOnThePage: resultsToDisplay.reduce(
-          (r1, r2) => r1 + r2.numberOfInnerHits,
+          (r1, r2) => r1 + r2.innerHits.length,
           0
         ),
         currentPage: currentPage,
