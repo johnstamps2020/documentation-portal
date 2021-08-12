@@ -340,11 +340,6 @@ async function searchController(req, res, next) {
         searchResults: resultsToDisplay,
         totalNumOfResults: results.numberOfHits,
         totalNumOfCollapsedResults: results.numberOfCollapsedHits,
-        numberOfMainHitsOnThePage: resultsToDisplay.length,
-        numberOfInnerHitsOnThePage: resultsToDisplay.reduce(
-          (r1, r2) => r1 + r2.innerHits.length,
-          0
-        ),
         currentPage: currentPage,
         // We limited the number of pages because the search results page crashes when there are over 10000 hits
         // and you try to display a page for results from 10000 upward

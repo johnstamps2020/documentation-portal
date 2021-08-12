@@ -105,17 +105,31 @@
             <%- include('parts/advanced-search') %>
         </div>
         <% if (totalNumOfResults > 0) { %>
-            <h1>Search results for "<%= searchPhrase %>"</h1>
-            <div class="resultsSubheading">
-                <span class="resultCount">
-                    Page <%= currentPage %> of <%= pages %> | Displaying <%= numberOfMainHitsOnThePage + numberOfInnerHitsOnThePage %> out of
-                    <%= totalNumOfResults %>
-                    <%= totalNumOfResults === 1 ? 'result' : 'results' %> (<%= numberOfMainHitsOnThePage %> main <%= numberOfMainHitsOnThePage === 1 ? 'result' : 'results' %>
-                    and <%= numberOfInnerHitsOnThePage %> collapsed <%= numberOfInnerHitsOnThePage === 1 ? 'result' : 'results' %>)
-                </span>
+            <h1>Search results for "<%= searchPhrase %>"
                 <span id="highlightToggle" role="button"
                       onclick="enableDisableHighlight()" aria-label="Toggle search highlights"
                       title="Toggle search highlights"></span>
+            </h1>
+            <div class="resultsSubheading">
+                <span class="resultCount">
+                    <%= totalNumOfResults %> <%= totalNumOfResults === 1 ? 'result' : 'results' %>
+                    <% var totalNumOfCheckedFilters = 0 %>
+                    <div class="resultBadges">
+                    Applied filters:
+                        <% filters.forEach(searchFilter => { %>
+                            <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
+                            <% if (checkedFilters.length > 0) { %>
+                                <% totalNumOfCheckedFilters += checkedFilters.length %>
+                                <% checkedFilters.forEach(f => { %>
+                                    <span class="infoLabel"><%= f.label %></span>
+                                <% }) %>
+                            <% } %>
+                        <% }) %>
+                        <% if (totalNumOfCheckedFilters === 0) { %>
+                            <span class="infoLabel">None</span>
+                        <% } %>
+                    </div>
+                </span>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
                     <select id="pagination">

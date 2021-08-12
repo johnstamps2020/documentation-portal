@@ -7,7 +7,7 @@
   --clr-GW-BLUE: hsl(196, 100%, 31%);
   --clr-GW-BLUE-HOVER: hsl(196, 100%, 26%);
   /* --clr-GW-BLUE-LIGHTER and --clr-GW-BLUE-LIGHTER-HOVER are not approved colors,
-    but are derived from GW Blue. */
+      but are derived from GW Blue. */
   --clr-GW-BLUE-LIGHTER: hsl(196, 100%, 60%);
   --clr-GW-BLUE-LIGHTER-HOVER: hsl(196, 100%, 45%);
   --clr-GW-BLUE-LIGHTEST: hsl(196, 100%, 90%);
@@ -516,7 +516,7 @@ footer .releaseInfo {
 div.pageHero {
   display: block;
   /* flex-wrap: wrap-reverse;
-                                                                                                                                  gap: 16px; */
+                                                                                                                                    gap: 16px; */
 }
 
 .heroControls {
@@ -831,7 +831,7 @@ div.pageHero {
 }
 
 .resultsSubheading {
-  padding: 1rem 0;
+  padding: 0.5rem 0 2rem 0.5rem;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
@@ -1161,6 +1161,9 @@ main.support h2 {
   cursor: pointer;
   background: url(/images/highlighter-solid.svg) no-repeat;
   width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 1rem;
 }
 
 #highlightToggle.highlightDisabled {
