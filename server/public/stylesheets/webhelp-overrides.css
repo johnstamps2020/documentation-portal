@@ -467,6 +467,10 @@ tr p:last-child {
   margin-top: 1rem;
 }
 
+div.p > table {
+  margin-top: 1rem;
+}
+
 .p > br + img {
   margin-top: 1rem;
   margin-bottom: 1rem;
