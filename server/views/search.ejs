@@ -108,8 +108,10 @@
             <h1>Search results for "<%= searchPhrase %>"</h1>
             <div class="resultsSubheading">
                 <span class="resultCount">
-                    Page <%= currentPage %> of <%= pages %> | Displaying <%= numberOfMainHitsOnThePage + numberOfInnerHitsOnThePage %> out of <%= totalNumOfResults %> results
-                        (<%= numberOfMainHitsOnThePage %> main results and <%= numberOfInnerHitsOnThePage %> collapsed results)
+                    Page <%= currentPage %> of <%= pages %> | Displaying <%= numberOfMainHitsOnThePage + numberOfInnerHitsOnThePage %> out of
+                    <%= totalNumOfResults %>
+                    <%= totalNumOfResults === 1 ? 'result' : 'results' %> (<%= numberOfMainHitsOnThePage %> main <%= numberOfMainHitsOnThePage === 1 ? 'result' : 'results' %>
+                    and <%= numberOfInnerHitsOnThePage %> collapsed <%= numberOfInnerHitsOnThePage === 1 ? 'result' : 'results' %>)
                 </span>
                 <span id="highlightToggle" role="button"
                       onclick="enableDisableHighlight()" aria-label="Toggle search highlights"
