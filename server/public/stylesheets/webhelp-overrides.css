@@ -459,6 +459,10 @@ samp,
   background-color: #ffff88 !important;
 }
 
+tr p:last-child {
+  margin-bottom: 0;
+}
+
 .p > ul:first-child {
   margin-top: 1rem;
 }
