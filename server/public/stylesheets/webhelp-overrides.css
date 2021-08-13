@@ -492,6 +492,7 @@ div.p > ul {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
 th.choption {
   vertical-align: top;
 }
@@ -500,6 +501,22 @@ div.glossdef > p:first-of-type,
 div.glossdef > div.p:first-of-type {
   margin-top: 1rem;
 }
+
+ul,
+ol {
+  padding-inline-start: 1.5rem;
+}
+
+.li.stepsection:first-of-type {
+  margin-top: -1rem;
+}
+
+.li.stepsection {
+  padding-top: 1rem;
+  padding-left: 2.125rem;
+  margin-bottom: 0.5rem;
+}
+
 pre.noncompliant,
 pre.compliant {
   position: relative;
