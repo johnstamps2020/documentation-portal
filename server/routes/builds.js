@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const { getBuilds } = require('../controllers/buildsController');
 
 router.get('/', async function(req, res) {
-  res.send('I will get info about all the builds');
+  const allBuilds = await getBuilds();
+  res.send(allBuilds);
 });
 
 router.get('/:buildId', async function(req, res) {
