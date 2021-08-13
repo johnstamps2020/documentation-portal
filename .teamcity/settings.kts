@@ -2457,19 +2457,21 @@ object HelperObjects {
             }
         }
 
-        builds.add(
-            BuildDownloadableOutputFromDita(
-                product_name,
-                version,
-                docId,
-                vcsRootId,
-                filter,
-                root,
-                indexRedirect,
-                sourceGitUrl,
-                sourceGitBranch
+        if (buildType == "dita") {
+            builds.add(
+                BuildDownloadableOutputFromDita(
+                    product_name,
+                    version,
+                    docId,
+                    vcsRootId,
+                    filter,
+                    root,
+                    indexRedirect,
+                    sourceGitUrl,
+                    sourceGitBranch
+                )
             )
-        )
+        }
 
         return Project {
             id = RelativeId(removeSpecialCharacters(docTitle + product_name + version + docId))
