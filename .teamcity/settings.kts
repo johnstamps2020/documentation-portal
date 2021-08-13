@@ -2225,9 +2225,9 @@ object HelperObjects {
             }
         })
 
-        class PublishToS3IndexProd(publish_path: String, doc_id: String, prod_name: String) : BuildType({
+        class PublishToS3IndexProd(publish_path: String, doc_id: String, product: String, version: String) : BuildType({
             templates(CrawlDocumentAndUpdateSearchIndex)
-            id = RelativeId(removeSpecialCharacters("prod$doc_id$prod_name"))
+            id = RelativeId(removeSpecialCharacters("prod$product$version$doc_id"))
             name = "Copy from staging to prod"
 
             params {
@@ -2269,6 +2269,8 @@ object HelperObjects {
         })
 
         class BuildDownloadableOutputFromDita(
+            product: String,
+            version: String,
             doc_id: String,
             vcs_root_id: RelativeId,
             ditaval_file: String,
@@ -2277,7 +2279,7 @@ object HelperObjects {
             git_source_url: String,
             git_source_branch: String
         ) : BuildType({
-            id = RelativeId(removeSpecialCharacters("local$doc_id${nextInt()}"))
+            id = RelativeId(removeSpecialCharacters("local$product$version$doc_id"))
             name = "Build downloadable output"
             maxRunningBuilds = 1
 
@@ -2426,7 +2428,7 @@ object HelperObjects {
 
         for (env in environments) {
             if (env == "prod") {
-                builds.add(PublishToS3IndexProd(publishPath, docId, product_name))
+                builds.add(PublishToS3IndexProd(publishPath, docId, product_name, version))
             } else {
                 builds.add(
                     BuildPublishToS3Index(
@@ -2457,6 +2459,8 @@ object HelperObjects {
 
         builds.add(
             BuildDownloadableOutputFromDita(
+                product_name,
+                version,
                 docId,
                 vcsRootId,
                 filter,
