@@ -3598,7 +3598,7 @@
     },
     {
       "id": "cloudrulessrc",
-      "title": "Cloud Rules Guide Draft",
+      "title": "Cloud Rules",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
