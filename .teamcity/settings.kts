@@ -2358,7 +2358,7 @@ object HelperObjects {
                     scriptContent = """
                 #!/bin/bash
                 set -xe
-                             
+                
                 echo "Creating a ZIP package"
                 mkdir -p %env.WORKING_DIR%/%env.OUTPUT_PATH%
                 cd "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%" || exit
