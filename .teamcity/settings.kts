@@ -12,6 +12,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import kotlin.random.Random.Default.nextInt
 
 version = "2020.1"
 
@@ -2267,6 +2268,116 @@ object HelperObjects {
 
         })
 
+        class BuildDownloadableOutputFromDita(
+            doc_id: String,
+            vcs_root_id: RelativeId,
+            ditaval_file: String,
+            input_path: String,
+            create_index_redirect: String,
+            git_source_url: String,
+            git_source_branch: String
+        ) : BuildType({
+            id = RelativeId(removeSpecialCharacters("local$doc_id${nextInt()}"))
+            name = "Build downloadable output"
+            maxRunningBuilds = 1
+
+            artifactRules = """
+                %env.WORKING_DIR%/%env.OUTPUT_PATH% => /
+            """.trimIndent()
+
+            vcs {
+                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
+                cleanCheckout = true
+            }
+
+            params {
+                text("env.FILTER_PATH", ditaval_file, allowEmpty = false)
+                text("env.ROOT_MAP", input_path, allowEmpty = false)
+                text("env.GIT_URL", git_source_url, allowEmpty = false)
+                text("env.GIT_BRANCH", git_source_branch, allowEmpty = false)
+                text("env.CREATE_INDEX_REDIRECT", create_index_redirect, allowEmpty = false)
+                text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("env.WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
+                text("env.OUTPUT_PATH", "out", allowEmpty = false)
+                text("env.ZIP_SRC_DIR", "zip")
+                select(
+                    "env.OUTPUT_FORMAT",
+                    "webhelp",
+                    label = "Output format",
+                    description = "Select an output format",
+                    display = ParameterDisplay.PROMPT,
+                    options = listOf(
+                        "Webhelp" to "webhelp",
+                        "PDF" to "pdf",
+                        "Webhelp with bundled PDF" to "webhelp_pdf"
+                    )
+                )
+
+            }
+
+            steps {
+                script {
+                    name = "Build local output from DITA"
+                    id = "BUILD_LOCAL_OUTPUT"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params no"
+                        
+                        if [[ ! -z "%env.FILTER_PATH%" ]]; then
+                            export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
+                        fi
+                        
+                        if [[ "%env.OUTPUT_FORMAT%" == "webhelp_pdf" ]]; then
+                            export DITA_BASE_COMMAND+=" -f wh-pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
+                        elif [[ "%env.OUTPUT_FORMAT%" == "webhelp" ]]; then
+                            export DITA_BASE_COMMAND+=" -f webhelp_Guidewire"
+                        elif [[ "%env.OUTPUT_FORMAT%" == "pdf" ]]; then
+                            export DITA_BASE_COMMAND+=" -f pdf_Guidewire_remote"
+                        fi
+                        
+                        if [[ "%env.OUTPUT_FORMAT%" == "webhelp"* && "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
+                            export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
+                        fi
+                        
+                        SECONDS=0
+        
+                        echo "Building local output"
+                        ${'$'}DITA_BASE_COMMAND
+                                                            
+                        duration=${'$'}SECONDS
+                        echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+                    """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+                script {
+                    name = "Create a ZIP package"
+                    id = "CREATE_ZIP_PACKAGE"
+                    scriptContent = """
+                #!/bin/bash
+                set -xe
+                             
+                echo "Creating a ZIP package"
+                cd "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%" || exit
+                zip -r "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/docs.zip" * &&
+                    mv "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/docs.zip" "%env.WORKING_DIR%/%env.OUTPUT_PATH%/" &&
+                    rm -rf "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%"
+            """.trimIndent()
+                }
+            }
+
+            features {
+                dockerSupport {
+                    id = "TEMPLATE_BUILD_EXT_1"
+                    loginToRegistry = on {
+                        dockerRegistryId = "PROJECT_EXT_155"
+                    }
+                }
+            }
+        })
+
         val builds = mutableListOf<BuildType>()
 
         val docId = doc.getString("id")
@@ -2342,6 +2453,18 @@ object HelperObjects {
                 )
             }
         }
+
+        builds.add(
+            BuildDownloadableOutputFromDita(
+                docId,
+                vcsRootId,
+                filter,
+                root,
+                indexRedirect,
+                sourceGitUrl,
+                sourceGitBranch
+            )
+        )
 
         return Project {
             id = RelativeId(removeSpecialCharacters(docTitle + product_name + version + docId))
