@@ -1518,14 +1518,30 @@
       "public": false
     },
     {
-      "id": "cloudrulesdraft",
+      "id": "cloudrules",
       "title": "Cloud Rules",
+      "url": "cloud/rules",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudrulesea",
+      "title": "Cloud Rules Early Access",
       "url": "cloud/gw-feature-preview/cloudrules",
       "metadata": {
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging"],
@@ -1541,7 +1557,7 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
       "environments": ["dev", "int", "staging"],

@@ -3597,13 +3597,14 @@
       ]
     },
     {
-      "id": "cloudrulesdraftsrc",
+      "id": "cloudrulessrc",
       "title": "Cloud Rules Guide Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
       "xdocsPathIds": [
         "/Content/doc/cloud-services/RulesCloud.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-EA-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     },
     {

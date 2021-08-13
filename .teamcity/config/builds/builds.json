@@ -876,10 +876,18 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "RulesCloud.ditamap",
-      "srcId": "cloudrulesdraftsrc",
-      "docId": "cloudrulesdraft",
+      "srcId": "cloudrulessrc",
+      "docId": "cloudrulesea",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "RulesCloud.ditamap",
+      "srcId": "cloudrulessrc",
+      "docId": "cloudrules",
       "indexRedirect": true
     },
     {
