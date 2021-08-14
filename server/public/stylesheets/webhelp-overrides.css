@@ -508,12 +508,12 @@ ol {
 }
 
 .li.stepsection:first-of-type {
-  margin-top: -1rem;
+  margin-top: -1rem !important;
 }
 
 .li.stepsection {
   padding-top: 1rem;
-  padding-left: 2.125rem;
+  padding-left: 2.125rem !important;
   margin-bottom: 0.5rem;
 }
 
