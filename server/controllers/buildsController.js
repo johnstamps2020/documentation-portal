@@ -1,5 +1,5 @@
 const { Client } = require('@elastic/elasticsearch');
-const elasticClient = new Client({ node: 'http://localhost:9200' });
+const elasticClient = new Client({ node: process.env.CONFIG_DB_URL });
 const buildsIndexName = 'builds';
 
 async function getBuilds(buildId) {
@@ -33,8 +33,8 @@ async function getBuilds(buildId) {
       resources: h._source.resources,
     }));
   } catch (err) {
-    console.log(err);
-    return { builds: [] };
+    console.error(err);
+    return err.message;
   }
 }
 
@@ -55,14 +55,31 @@ async function addOrUpdateBuild(reqBody) {
       status: response.statusCode,
     };
   } catch (err) {
-    console.log(err);
-    return err;
+    console.error(err);
+    return err.message;
   }
 }
 
-async function deleteBuild(buildId) {}
+async function deleteBuild(buildId) {
+  try {
+    const buildsInfo = await getBuilds(buildId);
+    const response = await elasticClient.delete({
+      index: buildsIndexName,
+      id: buildsInfo[0]._id,
+    });
+    return {
+      _id: response.body._id,
+      result: response.body.result,
+      status: response.statusCode,
+    };
+  } catch (err) {
+    console.error(err);
+    return err.message;
+  }
+}
 
 module.exports = {
   getBuilds,
   addOrUpdateBuild,
+  deleteBuild,
 };

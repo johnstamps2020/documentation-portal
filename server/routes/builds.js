@@ -3,28 +3,30 @@ const router = express.Router();
 const {
   getBuilds,
   addOrUpdateBuild,
+  deleteBuild,
 } = require('../controllers/buildsController');
 
 router.get('/', async function(req, res) {
-  const allBuilds = await getBuilds();
-  res.send(allBuilds);
+  const result = await getBuilds();
+  res.send(result);
 });
 
 router.get('/:buildId', async function(req, res) {
   const { buildId } = req.params;
-  const buildInfo = await getBuilds(buildId);
-  res.send(buildInfo);
+  const result = await getBuilds(buildId);
+  res.send(result);
 });
 
 router.put('/', async function(req, res) {
   const requestBody = req.body;
-  const newBuild = await addOrUpdateBuild(requestBody);
-  res.send(newBuild);
+  const result = await addOrUpdateBuild(requestBody);
+  res.send(result);
 });
 
 router.delete('/:buildId', async function(req, res) {
   const { buildId } = req.params;
-  res.send(`I will delete ${buildId}`);
+  const result = await deleteBuild(buildId);
+  res.send(result);
 });
 
 module.exports = router;
