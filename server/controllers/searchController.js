@@ -188,6 +188,26 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
   };
 }
 
+function sanitizeTagNames(textToSanitize) {
+  const sanitizedText1 = textToSanitize.replace(
+    new RegExp('<((?:(?!span).)*?)>', 'g'),
+    '&lt;$1&gt;'
+  );
+  const sanitizedText2 = sanitizedText1.replace(
+    new RegExp('<(<.*?>)>', 'g'),
+    '&lt;$1&gt;'
+  );
+  const sanitizedText3 = sanitizedText2.replace(
+    new RegExp('<((?:(?!span).)*?)(-|\\s)', 'g'),
+    '&lt;$1$2'
+  );
+  const sanitizedText4 = sanitizedText3.replace(
+    new RegExp('(<.*?>\\S)>', 'g'),
+    '$1&gt;'
+  );
+  return sanitizedText4;
+}
+
 async function searchController(req, res, next) {
   try {
     const urlQueryParameters = req.query;
@@ -311,11 +331,11 @@ async function searchController(req, res, next) {
       return {
         href: doc.href,
         score: result._score,
-        title: titleText,
-        titlePlain: doc.title,
+        title: sanitizeTagNames(titleText),
+        titlePlain: sanitizeTagNames(doc.title),
         version: doc.version.join(', '),
-        body: bodyText,
-        bodyPlain: bodyBlurb,
+        body: sanitizeTagNames(bodyText),
+        bodyPlain: sanitizeTagNames(bodyBlurb),
         docTags: docTags,
         innerHits: innerHitsToDisplay,
         uniqueHighlightTerms: uniqueHighlightTerms,
