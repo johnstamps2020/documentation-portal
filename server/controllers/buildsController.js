@@ -27,23 +27,36 @@ async function getBuilds(buildId) {
       body: queryBody,
     });
     const hits = response.body.hits.hits;
-    return hits.map(h => h._source);
+    return hits.map(h => ({
+      _id: h._id,
+      build_id: h._source.build_id,
+      resources: h._source.resources,
+    }));
   } catch (err) {
     console.log(err);
     return { builds: [] };
   }
 }
 
-async function addBuild(reqBody) {
+async function addOrUpdateBuild(reqBody) {
   try {
-    const response = elasticClient.index({
+    const requestParams = {
       index: buildsIndexName,
       body: reqBody,
-    });
-    return response;
+    };
+    const buildsInfo = await getBuilds(reqBody.build_id);
+    if (buildsInfo.length > 0) {
+      requestParams.id = buildsInfo[0]._id;
+    }
+    const response = await elasticClient.index(requestParams);
+    return {
+      _id: response.body._id,
+      result: response.body.result,
+      status: response.statusCode,
+    };
   } catch (err) {
     console.log(err);
-    return `Build not added. Error: ${err}`;
+    return err;
   }
 }
 
@@ -51,5 +64,5 @@ async function deleteBuild(buildId) {}
 
 module.exports = {
   getBuilds,
-  addBuild,
+  addOrUpdateBuild,
 };

@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getBuilds, addBuild } = require('../controllers/buildsController');
+const {
+  getBuilds,
+  addOrUpdateBuild,
+} = require('../controllers/buildsController');
 
 router.get('/', async function(req, res) {
   const allBuilds = await getBuilds();
@@ -13,9 +16,9 @@ router.get('/:buildId', async function(req, res) {
   res.send(buildInfo);
 });
 
-router.post('/', async function(req, res) {
+router.put('/', async function(req, res) {
   const requestBody = req.body;
-  const newBuild = await addBuild(requestBody);
+  const newBuild = await addOrUpdateBuild(requestBody);
   res.send(newBuild);
 });
 
