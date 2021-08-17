@@ -65,6 +65,33 @@ async function getBuildById(buildId) {
   }
 }
 
+async function getBuildsByResources(gitRepoUrl, resources) {
+  try {
+    const response = await elasticClient.search({
+      index: buildsIndexName,
+      size: 10000,
+      body: {
+        query: {
+          terms: {
+            resources: resources,
+          },
+        },
+      },
+    });
+    const hits = response.body.hits.hits.map(h => ({
+      _id: h._id,
+      build_id: h._source.build_id,
+    }));
+    return {
+      body: hits,
+      status: response.statusCode,
+    };
+  } catch (err) {
+    console.error(err);
+    return err.message;
+  }
+}
+
 async function addOrUpdateBuild(reqBody) {
   try {
     const requestParams = {
@@ -118,6 +145,7 @@ async function deleteBuild(buildId) {
 module.exports = {
   getAllBuilds,
   getBuildById,
+  getBuildsByResources,
   addOrUpdateBuild,
   deleteBuild,
 };
