@@ -63,7 +63,7 @@ async function getBuildById(buildId) {
   }
 }
 
-async function getBuildsByResources(gitRepoUrl, resources) {
+async function getBuildsByResources(gitRepoUrl, gitRepoBranch, resources) {
   try {
     const response = await elasticClient.search({
       index: buildsIndexName,
@@ -75,6 +75,11 @@ async function getBuildsByResources(gitRepoUrl, resources) {
               {
                 term: {
                   git_url: gitRepoUrl,
+                },
+              },
+              {
+                term: {
+                  git_branch: gitRepoBranch,
                 },
               },
               {

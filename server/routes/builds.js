@@ -32,8 +32,8 @@ router.delete('/ids/:buildId', async function(req, res) {
 });
 
 router.get('/resources', async function(req, res) {
-  const { gitUrl, resources } = req.body;
-  const result = await getBuildsByResources(gitUrl, resources);
+  const { gitUrl, gitBranch, resources } = req.body;
+  const result = await getBuildsByResources(gitUrl, gitBranch, resources);
   res.status(result.status).send(result.body);
 });
 
