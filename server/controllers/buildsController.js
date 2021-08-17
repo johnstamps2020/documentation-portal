@@ -15,8 +15,7 @@ async function getAllBuilds() {
     });
     const hits = response.body.hits.hits.map(h => ({
       _id: h._id,
-      build_id: h._source.build_id,
-      resources: h._source.resources,
+      ...h._source,
     }));
     return {
       body: hits,
@@ -43,8 +42,7 @@ async function getBuildById(buildId) {
     });
     const hit = response.body.hits.hits.map(h => ({
       _id: h._id,
-      build_id: h._source.build_id,
-      resources: h._source.resources,
+      ...h._source,
     }))[0];
     if (hit) {
       return {
@@ -80,7 +78,7 @@ async function getBuildsByResources(gitRepoUrl, resources) {
     });
     const hits = response.body.hits.hits.map(h => ({
       _id: h._id,
-      build_id: h._source.build_id,
+      ...h._source,
     }));
     return {
       body: hits,
