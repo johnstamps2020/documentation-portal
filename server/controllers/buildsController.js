@@ -70,8 +70,19 @@ async function getBuildsByResources(gitRepoUrl, resources) {
       size: 10000,
       body: {
         query: {
-          terms: {
-            resources: resources,
+          bool: {
+            must: [
+              {
+                term: {
+                  git_url: gitRepoUrl,
+                },
+              },
+              {
+                terms: {
+                  resources: resources,
+                },
+              },
+            ],
           },
         },
       },
