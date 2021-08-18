@@ -10,8 +10,9 @@ const versionSelectorsConfigPath = path.resolve(
   `${__dirname}/../static/pages/versionSelectors.json`
 );
 
-async function getConfig() {
+async function getConfig(reqObj) {
   try {
+    let config;
     if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
         `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
@@ -37,27 +38,32 @@ async function getConfig() {
         return localConfig;
       }
 
-      return readFilesInDir(localConfigDir);
+      config = readFilesInDir(localConfigDir);
     } else {
       const result = await fetch(
         `${process.env.DOC_S3_URL}/portal-config/config.json`
       );
       const json = await result.json();
-      return json;
+      config = json;
     }
+    if (!reqObj.session.requestIsAuthenticated) {
+      const publicDocs = config.docs.filter(d => d.public === true);
+      config['docs'] = publicDocs;
+    }
+    return config;
   } catch (err) {
     console.log(err);
     return { docs: [] };
   }
 }
 
-async function isPublicDoc(url) {
+async function isPublicDoc(url, reqObj) {
   let relativeUrl = url + '/';
   if (relativeUrl.startsWith('/')) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  const config = await getConfig();
+  const config = await getConfig(reqObj);
   const matchingDoc = config.docs.find(d =>
     relativeUrl.startsWith(d.url + '/')
   );
@@ -113,8 +119,8 @@ async function getVersionSelector(platform, product, version) {
   }
 }
 
-async function getDocumentMetadata(docId) {
-  const config = await getConfig();
+async function getDocumentMetadata(docId, reqObj) {
+  const config = await getConfig(reqObj);
   const doc = config.docs.find(d => d.id === docId);
   if (doc) {
     return {

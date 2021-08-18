@@ -8,7 +8,7 @@ const {
 } = require('../controllers/configController');
 
 router.get('/', async function(req, res) {
-  const config = await getConfig();
+  const config = await getConfig(req);
   res.send(config);
 });
 

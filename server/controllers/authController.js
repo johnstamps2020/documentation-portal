@@ -95,7 +95,7 @@ const authGateway = async (req, res, next) => {
         return true;
       }
 
-      const isPublicInConfig = await isPublicDoc(reqUrl);
+      const isPublicInConfig = await isPublicDoc(reqUrl, req);
       return isPublicInConfig === true;
     }
 
