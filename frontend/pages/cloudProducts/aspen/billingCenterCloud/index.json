@@ -68,6 +68,16 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Digital Framework",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Jutro Design System",
+          "page": "../../../jutroDesignSystem/4.1.1"
+        }
+      ]
     }
   ]
 }
