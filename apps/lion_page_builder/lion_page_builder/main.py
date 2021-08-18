@@ -108,7 +108,7 @@ def get_sibling_paths(path: Path) -> []:
 def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
-        "title": "Localized Documentation",
+        "title": "Translated Documentation",
         "template": "page.j2",
         "class": "threeCards l10n",
         "items": []

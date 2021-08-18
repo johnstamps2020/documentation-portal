@@ -118,6 +118,16 @@
               "id": "dxsre202010"
             }
           ]
+        },
+        {
+          "label": "Digital Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Jutro Design System",
+              "page": "../../../jutroDesignSystem/4.1.1"
+            }
+          ]
         }
       ]
     }
