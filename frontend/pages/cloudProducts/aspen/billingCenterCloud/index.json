@@ -68,31 +68,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "Digital",
-      "class": "categoryCard cardShadow",
-      "env": ["dev", "staging", "prod"],
-      "items": [
-        {
-          "label": "Digital Applications",
-          "class": "group",
-          "items": [
-            {
-              "label": "CustomerEngage Account Management",
-              "id": "dxceam202010"
-            },
-            {
-              "label": "ProducerEngage",
-              "id": "dxpe202010"
-            },
-            {
-              "label": "ServiceRepEngage",
-              "id": "dxsre202010"
-            }
-          ]
-        }
-      ]
     }
   ]
 }
