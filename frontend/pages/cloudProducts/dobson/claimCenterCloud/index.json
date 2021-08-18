@@ -103,10 +103,6 @@
               "page": "producerEngageCc/latest"
             },
             {
-              "label": "ServiceRepEngage",
-              "page": "../serviceRepEngage/latest"
-            },
-            {
               "label": "VendorEngage",
               "page": "vendorEngage/latest"
             }
