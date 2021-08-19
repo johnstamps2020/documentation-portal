@@ -8,7 +8,7 @@ const {
 } = require('../controllers/configController');
 
 router.get('/', async function(req, res) {
-  const config = await getConfig();
+  const config = await getConfig(req);
   res.send(config);
 });
 
@@ -20,7 +20,12 @@ router.get('/breadcrumbs', async function(req, res) {
 
 router.get('/versionSelectors', async function(req, res) {
   const { platform, product, version } = req.query;
-  const otherVersions = await getVersionSelector(platform, product, version);
+  const otherVersions = await getVersionSelector(
+    platform,
+    product,
+    version,
+    req
+  );
   res.send(otherVersions);
 });
 

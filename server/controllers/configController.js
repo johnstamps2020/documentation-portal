@@ -10,8 +10,9 @@ const versionSelectorsConfigPath = path.resolve(
   `${__dirname}/../static/pages/versionSelectors.json`
 );
 
-async function getConfig() {
+async function getConfig(reqObj) {
   try {
+    let config;
     if (process.env.LOCAL_CONFIG === 'yes') {
       console.log(
         `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
@@ -27,7 +28,6 @@ async function getConfig() {
           } else {
             const config = fs.readFileSync(itemPath, 'utf-8');
             const json = JSON.parse(config);
-
             const docs = json.docs.filter(d =>
               d.environments.includes(process.env.DEPLOY_ENV)
             );
@@ -37,27 +37,30 @@ async function getConfig() {
         return localConfig;
       }
 
-      return readFilesInDir(localConfigDir);
+      config = readFilesInDir(localConfigDir);
     } else {
       const result = await fetch(
         `${process.env.DOC_S3_URL}/portal-config/config.json`
       );
-      const json = await result.json();
-      return json;
+      config = await result.json();
     }
+    if (!reqObj.session.requestIsAuthenticated) {
+      config['docs'] = config.docs.filter(d => d.public === true);
+    }
+    return config;
   } catch (err) {
     console.log(err);
     return { docs: [] };
   }
 }
 
-async function isPublicDoc(url) {
+async function isPublicDoc(url, reqObj) {
   let relativeUrl = url + '/';
   if (relativeUrl.startsWith('/')) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  const config = await getConfig();
+  const config = await getConfig(reqObj);
   const matchingDoc = config.docs.find(d =>
     relativeUrl.startsWith(d.url + '/')
   );
@@ -89,7 +92,7 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
-async function getVersionSelector(platform, product, version) {
+async function getVersionSelector(platform, product, version, reqObj) {
   try {
     const versionSelectorsFile = fs.readFileSync(
       versionSelectorsConfigPath,
@@ -102,6 +105,15 @@ async function getVersionSelector(platform, product, version) {
         platform.split(',').some(pl => pl === s.platform) &&
         version.split(',').some(v => v === s.version)
     );
+    //The getConfig function checks if request is authenticated and filters the returned docs accordingly.
+    //Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
+    const config = await getConfig(reqObj);
+    const docs = config.docs;
+    matchingVersionSelector[
+      'otherVersions'
+    ] = matchingVersionSelector.otherVersions.filter(v =>
+      docs.find(d => `/${d.url}` === v.path)
+    );
     return { matchingVersionSelector: matchingVersionSelector };
   } catch (err) {
     console.log(err);
@@ -109,8 +121,8 @@ async function getVersionSelector(platform, product, version) {
   }
 }
 
-async function getDocumentMetadata(docId) {
-  const config = await getConfig();
+async function getDocumentMetadata(docId, reqObj) {
+  const config = await getConfig(reqObj);
   const doc = config.docs.find(d => d.id === docId);
   if (doc) {
     return {
