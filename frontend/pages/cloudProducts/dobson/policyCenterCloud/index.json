@@ -96,7 +96,7 @@
             },
             {
               "label": "ServiceRepEngage",
-              "page": "../serviceRepEngage/latest"
+              "page": "serviceRepEngage/latest"
             }
           ]
         },

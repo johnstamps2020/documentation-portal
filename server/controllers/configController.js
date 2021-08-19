@@ -68,16 +68,12 @@ async function isPublicDoc(url, reqObj) {
     relativeUrl.startsWith(d.url + '/')
   );
 
-  if (matchingDoc && matchingDoc.public) {
-    return true;
-  }
-
-  return false;
+  return !!(matchingDoc && matchingDoc.public);
 }
 
 async function getRootBreadcrumb(pagePathname) {
   try {
-    const breadcrumbsFile = await fs.readFile(breadcrumbsConfigPath, 'utf-8');
+    const breadcrumbsFile = fs.readFileSync(breadcrumbsConfigPath, 'utf-8');
     const breadcrumbsMapping = JSON.parse(breadcrumbsFile);
     for (breadcrumb of breadcrumbsMapping) {
       if (
@@ -101,7 +97,7 @@ async function getRootBreadcrumb(pagePathname) {
 
 async function getVersionSelector(platform, product, version) {
   try {
-    const versionSelectorsFile = await fs.readFile(
+    const versionSelectorsFile = fs.readFileSync(
       versionSelectorsConfigPath,
       'utf-8'
     );
