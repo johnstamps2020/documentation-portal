@@ -28,7 +28,6 @@ async function getConfig(reqObj) {
           } else {
             const config = fs.readFileSync(itemPath, 'utf-8');
             const json = JSON.parse(config);
-
             const docs = json.docs.filter(d =>
               d.environments.includes(process.env.DEPLOY_ENV)
             );
@@ -43,12 +42,10 @@ async function getConfig(reqObj) {
       const result = await fetch(
         `${process.env.DOC_S3_URL}/portal-config/config.json`
       );
-      const json = await result.json();
-      config = json;
+      config = await result.json();
     }
     if (!reqObj.session.requestIsAuthenticated) {
-      const publicDocs = config.docs.filter(d => d.public === true);
-      config['docs'] = publicDocs;
+      config['docs'] = config.docs.filter(d => d.public === true);
     }
     return config;
   } catch (err) {
@@ -95,7 +92,7 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
-async function getVersionSelector(platform, product, version) {
+async function getVersionSelector(platform, product, version, reqObj) {
   try {
     const versionSelectorsFile = fs.readFileSync(
       versionSelectorsConfigPath,
@@ -107,6 +104,15 @@ async function getVersionSelector(platform, product, version) {
         product.split(',').some(p => p === s.product) &&
         platform.split(',').some(pl => pl === s.platform) &&
         version.split(',').some(v => v === s.version)
+    );
+    //The getConfig function checks if request is authenticated and filters the returned docs accordingly.
+    //Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
+    const config = await getConfig(reqObj);
+    const docs = config.docs;
+    matchingVersionSelector[
+      'otherVersions'
+    ] = matchingVersionSelector.otherVersions.filter(v =>
+      docs.find(d => `/${d.url}` === v.path)
     );
     return { matchingVersionSelector: matchingVersionSelector };
   } catch (err) {
