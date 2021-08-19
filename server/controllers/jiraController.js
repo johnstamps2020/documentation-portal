@@ -15,13 +15,13 @@ function getParas(items) {
                 type: 'text',
                 marks: [
                   {
-                    type: 'strong'
-                  }
-                ]
+                    type: 'strong',
+                  },
+                ],
               },
               {
                 text: ': ',
-                type: 'text'
+                type: 'text',
               },
               {
                 text: block,
@@ -30,15 +30,14 @@ function getParas(items) {
                   {
                     type: 'link',
                     attrs: {
-                      href: block
-                    }
-                  }
-                ]
+                      href: block,
+                    },
+                  },
+                ],
               },
             ],
           });
-        }
-        else if (block.startsWith('Reported issues')) {
+        } else if (block.startsWith('Reported issues')) {
           textBlocks.push({
             type: 'paragraph',
             content: [
@@ -47,21 +46,21 @@ function getParas(items) {
                 type: 'text',
                 marks: [
                   {
-                    type: 'strong'
-                  }
-                ]
+                    type: 'strong',
+                  },
+                ],
               },
               {
                 text: ':',
-                type: 'text'
+                type: 'text',
               },
             ],
           });
-          
+
           block = block.substring(block.indexOf(': ') + 2);
           const issues = block.split(',');
           const listItems = [];
-          for(const issue of issues) {
+          for (const issue of issues) {
             listItems.push({
               type: 'listItem',
               content: [
@@ -70,19 +69,18 @@ function getParas(items) {
                   content: [
                     {
                       type: 'text',
-                      text: issue
-                    }
-                  ]
-                }
-              ]
+                      text: issue,
+                    },
+                  ],
+                },
+              ],
             });
           }
           textBlocks.push({
             type: 'bulletList',
-            content: listItems
-          });    
-        }
-        else if (block.startsWith('Possible contacts')) {
+            content: listItems,
+          });
+        } else if (block.startsWith('Possible contacts')) {
           textBlocks.push({
             type: 'paragraph',
             content: [
@@ -91,21 +89,21 @@ function getParas(items) {
                 type: 'text',
                 marks: [
                   {
-                    type: 'strong'
-                  }
-                ]
+                    type: 'strong',
+                  },
+                ],
               },
               {
                 text: ':',
-                type: 'text'
+                type: 'text',
               },
             ],
           });
-          
+
           block = block.substring(block.indexOf(': ') + 2);
           const contacts = block.split(',');
           const listItems = [];
-          for(const contact of contacts) {
+          for (const contact of contacts) {
             listItems.push({
               type: 'listItem',
               content: [
@@ -120,22 +118,21 @@ function getParas(items) {
                           type: 'link',
                           attrs: {
                             href: 'mailto:' + contact,
-                            title: contact
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+                            title: contact,
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
             });
           }
           textBlocks.push({
             type: 'bulletList',
-            content: listItems
-          });    
-        }
-        else if (block.startsWith('Reported by')) {
+            content: listItems,
+          });
+        } else if (block.startsWith('Reported by')) {
           const email = block.substring(block.indexOf(': ') + 2);
           textBlocks.push({
             type: 'paragraph',
@@ -145,13 +142,13 @@ function getParas(items) {
                 type: 'text',
                 marks: [
                   {
-                    type: 'strong'
-                  }
-                ]
+                    type: 'strong',
+                  },
+                ],
               },
               {
                 text: ': ',
-                type: 'text'
+                type: 'text',
               },
               {
                 text: email,
@@ -160,15 +157,14 @@ function getParas(items) {
                   {
                     type: 'link',
                     attrs: {
-                      href: 'mailto:' + email
-                    }
-                  }
-                ]
+                      href: 'mailto:' + email,
+                    },
+                  },
+                ],
               },
             ],
-          }); 
-        }
-        else if (block.startsWith('Comment')) {
+          });
+        } else if (block.startsWith('Comment')) {
           let comment = block.substring(block.indexOf(': ') + 2);
           comment = comment.replace(/0x0A/g, '\n');
           textBlocks.push({
@@ -179,16 +175,16 @@ function getParas(items) {
                 type: 'text',
                 marks: [
                   {
-                    type: 'strong'
-                  }
-                ]
+                    type: 'strong',
+                  },
+                ],
               },
               {
                 text: ': ',
-                type: 'text'
-              }
+                type: 'text',
+              },
             ],
-          }); 
+          });
           textBlocks.push({
             type: 'blockquote',
             content: [
@@ -197,15 +193,14 @@ function getParas(items) {
                 content: [
                   {
                     text: comment,
-                    type: 'text'
-                  }
-                ]
-              }
-            ]
-          }); 
-        }
-        else {
-          const identifier = block.substring(0, block.indexOf(': '));  
+                    type: 'text',
+                  },
+                ],
+              },
+            ],
+          });
+        } else {
+          const identifier = block.substring(0, block.indexOf(': '));
           const data = block.substring(block.indexOf(': '));
           textBlocks.push({
             type: 'paragraph',
@@ -215,13 +210,13 @@ function getParas(items) {
                 type: 'text',
                 marks: [
                   {
-                    type: 'strong'
-                  }
-                ]
+                    type: 'strong',
+                  },
+                ],
               },
               {
                 text: data,
-                type: 'text'
+                type: 'text',
               },
             ],
           });
@@ -261,7 +256,7 @@ async function sendJiraRequest(requestBody) {
         content: description,
       },
       issuetype: {
-        name: 'User Story',
+        name: 'Action Item',
       },
       components: [
         {
