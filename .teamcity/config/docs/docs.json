@@ -13238,6 +13238,20 @@
       "environments": ["dev", "int", "staging", "prod"]
     },
     {
+      "id": "upgradediffs",
+      "title": "UpgradeDiffs",
+      "url": "upgradediffs",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["UpgradeDiffs"],
+        "version": ["latest"]
+      },
+      "displayOnLandingPages": false,
+      "public": false,
+      "indexForSearch": false,
+      "environments": ["dev", "int", "staging", "prod"]
+    },
+    {
       "id": "dx-jsdocs-202104",
       "title": "Digital Frontend API Documentation",
       "url": "dx/js-docs/202104",
