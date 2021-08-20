@@ -239,6 +239,12 @@
       "docId": "jutrohackathon",
       "srcId": "srcjutrohackathon",
       "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutrolearningmissions",
+      "srcId": "srcjutrolearningmissions",
+      "workingDir": "website"
     }
   ]
 }
