@@ -2105,7 +2105,7 @@ object HelperObjects {
                 if (customEnvironmentVars != null) {
                     for (i in 0 until customEnvironmentVars.length()) {
                         val item = customEnvironmentVars.getJSONObject(i)
-                        text(item.getString("name"), item.getString("value"))
+                        text("env." + item.getString("name"), item.getString("value"))
                     }
                 }
             }
