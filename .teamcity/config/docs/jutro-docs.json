@@ -199,6 +199,21 @@
       "public": false
     },
     {
+      "id": "jutro650",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/6.5.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "jutrohackathon",
       "title": "Jutro Hackathon Microsite",
       "url": "jutro/hackathon/latest",
@@ -431,6 +446,21 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.4.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook650",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/6.5.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.0"],
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
