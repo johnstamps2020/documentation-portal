@@ -15,7 +15,7 @@ data:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: docsearch-app-pv-claim-${DEPLOY_ENV}
+  name: docsearch-pv-claim-${DEPLOY_ENV}
   namespace: doctools
 spec:
   accessModes:
@@ -73,7 +73,7 @@ spec:
       volumes:
         - name: elasticsearch-storage
           persistentVolumeClaim:
-            claimName: docsearch-app-pv-claim-${DEPLOY_ENV}
+            claimName: docsearch-pv-claim-${DEPLOY_ENV}
         - name: docsearch-app-config-${DEPLOY_ENV}
           configMap:
             name: docsearch-app-config-${DEPLOY_ENV}
