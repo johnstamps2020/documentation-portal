@@ -13243,7 +13243,7 @@
       "url": "upgradediffs",
       "metadata": {
         "platform": ["Self-managed"],
-        "product": ["upgradediffs"],
+        "product": ["UpgradeDiffs"],
         "version": ["latest"]
       },
       "displayOnLandingPages": false,
