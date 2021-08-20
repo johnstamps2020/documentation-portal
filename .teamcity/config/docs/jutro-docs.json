@@ -229,6 +229,21 @@
       "public": false
     },
     {
+      "id": "jutrolearningmissions",
+      "title": "Jutro Learning Missions Preview",
+      "url": "jutro/learning-missions/preview",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["preview"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
+    },
+    {
       "id": "jutronext",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/next",
