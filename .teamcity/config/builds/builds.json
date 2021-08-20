@@ -5550,6 +5550,11 @@
     },
     {
       "buildType": "yarn",
+      "srcId": "upgradediffssrc",
+      "docId": "upgradediffs"
+    },
+    {
+      "buildType": "yarn",
       "srcId": "dx-jsdocs-202104src",
       "docId": "dx-jsdocs-202104"
     },
