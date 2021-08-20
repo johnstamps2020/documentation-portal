@@ -205,10 +205,16 @@
       "workingDir": "website"
     },
     {
-      "buildType": "storybook",
+      "buildType": "yarn",
       "docId": "storybooknext",
       "srcId": "srcjutrostorybooknext",
-      "workingDir": "applications/jutro-app-storybook"
+      "workingDir": "storybook",
+      "customEnv": [
+        {
+          "name": "STORYBOOK_GA_ID",
+          "value": "UA-129148666-1"
+        }
+      ]
     },
     {
       "buildType": "yarn",
