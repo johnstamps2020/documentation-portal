@@ -92,7 +92,8 @@ class ElasticClient(Elasticsearch):
                             "analyzer": "exact_match_analyzer"
                         },
                         "raw": {
-                            "type": "keyword"
+                            "type": "keyword",
+                            "normalizer": "lowercase"
                         }
                     }
                 }
