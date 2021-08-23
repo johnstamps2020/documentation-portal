@@ -333,6 +333,9 @@
             "$ref": "#/definitions/resource"
           }
         },
+        "nodeImageVersion": {
+          "description": "The version of Node.js to use. Works only in yarn builds"
+        },
         "customEnv": {
           "type": "array",
           "items": {
