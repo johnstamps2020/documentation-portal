@@ -497,6 +497,21 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "storyboobizpatterns650",
+      "title": "Jutro Storybook Business Patterns",
+      "url": "jutro/storybook-business-patterns/6.5.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
