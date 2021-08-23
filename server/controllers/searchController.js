@@ -160,7 +160,6 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
         inner_hits: {
           name: 'same_title',
           size: 20,
-          sort: [{ version: 'desc' }],
         },
         max_concurrent_group_searches: 4,
       },
@@ -312,8 +311,27 @@ async function searchController(req, res, next) {
         })
         .join(',');
 
+      const sortedInnerHits = result.inner_hits.same_title.hits.hits
+        .sort(function(a, b) {
+          const verNum = versions =>
+            versions[0]
+              .split('.')
+              .map(n => +n + 100000)
+              .join('.');
+          const verNumA = verNum(a._source.version);
+          const verNumB = verNum(b._source.version);
+          let comparison = 0;
+          if (verNumA > verNumB) {
+            comparison = 1;
+          } else if (verNumA < verNumB) {
+            comparison = -1;
+          }
+          return comparison;
+        })
+        .reverse();
+
       let innerHitsToDisplay = [];
-      for (const innerHit of result.inner_hits.same_title.hits.hits) {
+      for (const innerHit of sortedInnerHits) {
         const hitLabel = innerHit._source.title;
         const hitHref = innerHit._source.href;
         const hitPlatform = innerHit._source.platform;
