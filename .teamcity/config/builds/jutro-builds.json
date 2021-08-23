@@ -218,6 +218,17 @@
     },
     {
       "buildType": "yarn",
+      "docId": "storyboobizpatterns650",
+      "srcId": "srcjutrosbbizpatterns650",
+      "customEnv": [
+        {
+          "name": "STORYBOOK_GA_ID",
+          "value": "UA-129148666-1"
+        }
+      ]
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutronext",
       "srcId": "srcjutronext",
       "workingDir": "website"

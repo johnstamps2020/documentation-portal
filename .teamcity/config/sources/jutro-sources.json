@@ -189,6 +189,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "master"
+    },
+    {
+      "id": "srcjutrosbbizpatterns650",
+      "title": "Jutro Storybook Business Patterns 6.50",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
+      "branch": "master"
     }
   ]
 }
