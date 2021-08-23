@@ -2010,6 +2010,7 @@ object HelperObjects {
 
         class BuildPublishToS3Index(
             buildType: String,
+            nodeImageVersion: String?,
             product: String,
             platform: String,
             version: String,
@@ -2107,6 +2108,12 @@ object HelperObjects {
                         val item = customEnvironmentVars.getJSONObject(i)
                         text("env." + item.getString("name"), item.getString("value"))
                     }
+                }
+
+                if (nodeImageVersion != null) {
+                    text("NODE_IMAGE_VERSION", nodeImageVersion)
+                } else {
+                    text("NODE_IMAGE_VERSION", "12.14.1")
                 }
             }
 
@@ -2395,6 +2402,7 @@ object HelperObjects {
         val build = getObjectById(buildConfigs, "docId", docId)
 
         val buildType = if (build.has("buildType")) build.getString("buildType") else ""
+        val nodeImageVersion = if (build.has("nodeImageVersion")) build.getString("nodeImageVersion") else null
         val filter = if (build.has("filter")) build.getString("filter") else ""
         val workingDir = if (build.has("workingDir")) build.getString("workingDir") else ""
         val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
@@ -2433,6 +2441,7 @@ object HelperObjects {
                 builds.add(
                     BuildPublishToS3Index(
                         buildType,
+                        nodeImageVersion,
                         product_name,
                         platform,
                         version,
@@ -3273,7 +3282,7 @@ object BuildYarn : Template({
                 yarn
                 yarn build
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:12.14.1"
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:%NODE_IMAGE_VERSION%"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "--user 1000:1000"
