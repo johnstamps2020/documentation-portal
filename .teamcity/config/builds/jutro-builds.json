@@ -231,6 +231,18 @@
       ]
     },
     {
+      "buildType": "source-zip",
+      "docId": "storyboobizpatterns650zip",
+      "srcId": "srcjutrosbbizpatterns650",
+      "zipFilename": "storybook-business-patterns"
+    },
+    {
+      "buildType": "source-zip",
+      "docId": "jutroapptemplatesampleapp650zip",
+      "srcId": "srcjutroapptemplatesampleapp650",
+      "zipFilename": "jutro-app-template-sampleapp"
+    },
+    {
       "buildType": "yarn",
       "docId": "jutronext",
       "srcId": "srcjutronext",

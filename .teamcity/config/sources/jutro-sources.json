@@ -192,9 +192,16 @@
     },
     {
       "id": "srcjutrosbbizpatterns650",
-      "title": "Jutro Storybook Business Patterns 6.50",
+      "title": "Jutro Storybook Business Patterns 6.5.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
+      "branch": "master"
+    },
+    {
+      "id": "srcjutroapptemplatesampleapp650",
+      "title": "Jutro App Template Sample App 6.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-app-template-sampleapp.git",
       "branch": "master"
     }
   ]
