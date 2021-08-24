@@ -220,6 +220,7 @@
       "buildType": "yarn",
       "docId": "storyboobizpatterns650",
       "srcId": "srcjutrosbbizpatterns650",
+      "nodeImageVersion": "14.14.0",
       "customEnv": [
         {
           "name": "STORYBOOK_GA_ID",
