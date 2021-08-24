@@ -2537,6 +2537,8 @@ object HelperObjects {
         class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String) : BuildType({
 
             val docBuildType = if (build_info.has("buildType")) build_info.getString("buildType") else ""
+            val nodeImageVersion =
+                if (build_info.has("nodeImageVersion")) build_info.getString("nodeImageVersion") else null
 
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
@@ -2581,6 +2583,12 @@ object HelperObjects {
                 text("WORKING_DIR", workingDir, allowEmpty = false)
                 text("DEPLOY_ENV", "dev", allowEmpty = false)
                 text("env.PUBLISH_PATH", "root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+
+                if (nodeImageVersion != null) {
+                    text("NODE_IMAGE_VERSION", nodeImageVersion)
+                } else {
+                    text("NODE_IMAGE_VERSION", "12.14.1")
+                }
             }
 
             if (docBuildType == "dita") {
