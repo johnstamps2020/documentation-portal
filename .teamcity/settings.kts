@@ -2012,6 +2012,7 @@ object HelperObjects {
             buildType: String,
             nodeImageVersion: String?,
             yarnBuildCustomCommand: String?,
+            outputPath: String?,
             product: String,
             platform: String,
             version: String,
@@ -2141,7 +2142,9 @@ object HelperObjects {
                         echo "Working dir set to ${'$'}ROOT_DIR"
                     fi
                     
-                    if [[ -d "${'$'}ROOT_DIR/out" ]]; then
+                    if [[ "$outputPath" ]]; then
+                        export OUTPUT_PATH="$outputPath"
+                    elif [[ -d "${'$'}ROOT_DIR/out" ]]; then
                         export OUTPUT_PATH="out"
                     elif [[ -d "${'$'}ROOT_DIR/dist" ]]; then
                         export OUTPUT_PATH="dist"
@@ -2411,6 +2414,7 @@ object HelperObjects {
         val buildType = if (build.has("buildType")) build.getString("buildType") else ""
         val nodeImageVersion = if (build.has("nodeImageVersion")) build.getString("nodeImageVersion") else null
         val yarnBuildCustomCommand = if (build.has("yarnBuildCustomCommand")) build.getString("yarnBuildCustomCommand") else null
+        val outputPath = if (build.has("outputPath")) build.getString("outputPath") else ""
         val filter = if (build.has("filter")) build.getString("filter") else ""
         val workingDir = if (build.has("workingDir")) build.getString("workingDir") else ""
         val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
@@ -2451,6 +2455,7 @@ object HelperObjects {
                         buildType,
                         nodeImageVersion,
                         yarnBuildCustomCommand,
+                        outputPath,
                         product_name,
                         platform,
                         version,
