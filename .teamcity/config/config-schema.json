@@ -336,6 +336,9 @@
         "nodeImageVersion": {
           "description": "The version of Node.js to use. Works only in yarn builds"
         },
+        "yarnBuildCustomCommand": {
+          "description": "The default build command for yarn is 'yarn build'. The value of this attribute replaces the word build with whatever you set here."
+        },
         "customEnv": {
           "type": "array",
           "items": {

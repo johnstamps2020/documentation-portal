@@ -2011,6 +2011,7 @@ object HelperObjects {
         class BuildPublishToS3Index(
             buildType: String,
             nodeImageVersion: String?,
+            yarnBuildCustomCommand: String?,
             product: String,
             platform: String,
             version: String,
@@ -2114,6 +2115,12 @@ object HelperObjects {
                     text("NODE_IMAGE_VERSION", nodeImageVersion)
                 } else {
                     text("NODE_IMAGE_VERSION", "12.14.1")
+                }
+
+                if (yarnBuildCustomCommand != null) {
+                    text("env.YARN_BUILD_COMMAND", yarnBuildCustomCommand)
+                } else {
+                    text("env.YARN_BUILD_COMMAND", "build")
                 }
             }
 
@@ -2403,6 +2410,7 @@ object HelperObjects {
 
         val buildType = if (build.has("buildType")) build.getString("buildType") else ""
         val nodeImageVersion = if (build.has("nodeImageVersion")) build.getString("nodeImageVersion") else null
+        val yarnBuildCustomCommand = if (build.has("yarnBuildCustomCommand")) build.getString("yarnBuildCustomCommand") else null
         val filter = if (build.has("filter")) build.getString("filter") else ""
         val workingDir = if (build.has("workingDir")) build.getString("workingDir") else ""
         val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
@@ -2442,6 +2450,7 @@ object HelperObjects {
                     BuildPublishToS3Index(
                         buildType,
                         nodeImageVersion,
+                        yarnBuildCustomCommand,
                         product_name,
                         platform,
                         version,
@@ -2539,6 +2548,8 @@ object HelperObjects {
             val docBuildType = if (build_info.has("buildType")) build_info.getString("buildType") else ""
             val nodeImageVersion =
                 if (build_info.has("nodeImageVersion")) build_info.getString("nodeImageVersion") else null
+            val yarnBuildCustomCommand =
+                if (build_info.has("yarnBuildCustomCommand")) build_info.getString("yarnBuildCustomCommand") else null
 
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
@@ -2588,6 +2599,12 @@ object HelperObjects {
                     text("NODE_IMAGE_VERSION", nodeImageVersion)
                 } else {
                     text("NODE_IMAGE_VERSION", "12.14.1")
+                }
+
+                if (yarnBuildCustomCommand != null) {
+                    text("env.YARN_BUILD_COMMAND", yarnBuildCustomCommand)
+                } else {
+                    text("env.YARN_BUILD_COMMAND", "build")
                 }
             }
 
@@ -3288,7 +3305,7 @@ object BuildYarn : Template({
                 export BASE_URL=/%env.PUBLISH_PATH%/
                 cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
                 yarn
-                yarn build
+                yarn ${'$'}{YARN_BUILD_COMMAND}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:%NODE_IMAGE_VERSION%"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
