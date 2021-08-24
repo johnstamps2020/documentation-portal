@@ -221,6 +221,7 @@
       "docId": "storyboobizpatterns650",
       "srcId": "srcjutrosbbizpatterns650",
       "nodeImageVersion": "14.14.0",
+      "outputPath": "storybook-static",
       "yarnBuildCustomCommand": "build-storybook",
       "customEnv": [
         {
