@@ -3387,8 +3387,9 @@ object ZipUpSources : Template({
                 
                 export BASE_URL=/%env.PUBLISH_PATH%/
                 cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
+                zip -r %env.ZIP_FILENAME%.zip . -x '*.git*'
                 mkdir out
-                zip -r out/%env.ZIP_FILENAME%.zip . -x '*.git*'
+                mv %env.ZIP_FILENAME%.zip out/%env.ZIP_FILENAME%.zip
             """.trimIndent()
         }
     }
