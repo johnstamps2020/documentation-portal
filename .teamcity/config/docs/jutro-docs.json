@@ -512,6 +512,36 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "storyboobizpatterns650zip",
+      "title": "Jutro Storybook Business Patterns Zip",
+      "url": "jutro/storybook-business-patterns-download/6.5.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "jutroapptemplatesampleapp650zip",
+      "title": "Jutro App Template Sample App Zip",
+      "url": "jutro/app-template-sampleapp-download/6.5.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
     }
   ]
 }

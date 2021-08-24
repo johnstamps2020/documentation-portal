@@ -27,6 +27,7 @@ project {
     template(BuildDocSiteAndLocalOutputFromDita)
     template(BuildDockerImage)
     template(BuildYarn)
+    template(ZipUpSources)
     template(BuildSphinx)
     template(BuildStorybook)
     template(CrawlDocumentAndUpdateSearchIndex)
@@ -2013,6 +2014,7 @@ object HelperObjects {
             nodeImageVersion: String?,
             yarnBuildCustomCommand: String?,
             outputPath: String?,
+            zipFilename: String?,
             product: String,
             platform: String,
             version: String,
@@ -2044,6 +2046,7 @@ object HelperObjects {
                 "yarn" -> buildTemplate = BuildYarn
                 "sphinx" -> buildTemplate = BuildSphinx
                 "storybook" -> buildTemplate = BuildStorybook
+                "source-zip" -> buildTemplate = ZipUpSources
             }
 
             if (index_for_search) {
@@ -2122,6 +2125,12 @@ object HelperObjects {
                     text("env.YARN_BUILD_COMMAND", yarnBuildCustomCommand)
                 } else {
                     text("env.YARN_BUILD_COMMAND", "build")
+                }
+
+                if (zipFilename != null) {
+                    text("ZIP_FILENAME", zipFilename)
+                } else {
+                    text("ZIP_FILENAME", "result")
                 }
             }
 
@@ -2415,6 +2424,7 @@ object HelperObjects {
         val nodeImageVersion = if (build.has("nodeImageVersion")) build.getString("nodeImageVersion") else null
         val yarnBuildCustomCommand = if (build.has("yarnBuildCustomCommand")) build.getString("yarnBuildCustomCommand") else null
         val outputPath = if (build.has("outputPath")) build.getString("outputPath") else ""
+        val zipFilename = if (build.has("zipFilename")) build.getString("zipFilename") else null
         val filter = if (build.has("filter")) build.getString("filter") else ""
         val workingDir = if (build.has("workingDir")) build.getString("workingDir") else ""
         val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
@@ -2456,6 +2466,7 @@ object HelperObjects {
                         nodeImageVersion,
                         yarnBuildCustomCommand,
                         outputPath,
+                        zipFilename,
                         product_name,
                         platform,
                         version,
@@ -2555,11 +2566,13 @@ object HelperObjects {
                 if (build_info.has("nodeImageVersion")) build_info.getString("nodeImageVersion") else null
             val yarnBuildCustomCommand =
                 if (build_info.has("yarnBuildCustomCommand")) build_info.getString("yarnBuildCustomCommand") else null
+            val zipFilename = if (build_info.has("zipFilename")) build_info.getString("zipFilename") else null
 
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
                 "sphinx" -> templates(BuildSphinx)
                 "dita" -> templates(RunContentValidations)
+                "source-zip" -> templates(ZipUpSources)
             }
 
             val docBuildRootMap = if (build_info.has("root")) build_info.getString("root") else ""
@@ -2610,6 +2623,12 @@ object HelperObjects {
                     text("env.YARN_BUILD_COMMAND", yarnBuildCustomCommand)
                 } else {
                     text("env.YARN_BUILD_COMMAND", "build")
+                }
+
+                if (zipFilename != null) {
+                    text("ZIP_FILENAME", zipFilename)
+                } else {
+                    text("ZIP_FILENAME", "result")
                 }
             }
 
@@ -3325,6 +3344,51 @@ object BuildYarn : Template({
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
             }
+        }
+    }
+
+    vcs {
+        cleanCheckout = true
+    }
+})
+
+object ZipUpSources : Template({
+    name = "Zip up the source files"
+
+    params {
+        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
+        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
+        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
+        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
+        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
+        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
+        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+        text("env.WORKING_DIR", "%WORKING_DIR%")
+        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
+        text("env.ZIP_FILENAME", "%ZIP_FILENAME%", allowEmpty = false)
+    }
+
+    vcs {
+        root(vcsrootmasteronly)
+    }
+
+    steps {
+        script {
+            name = "Create a zip file of all the sources"
+            id = "BUILD_OUTPUT"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                    export TARGET_URL="%env.TARGET_URL_PROD%"
+                fi
+                
+                export BASE_URL=/%env.PUBLISH_PATH%/
+                cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
+                zip -r out/%env.ZIP_FILENAME%.zip . -x '*.git*'
+            """.trimIndent()
         }
     }
 
