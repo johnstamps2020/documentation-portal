@@ -23,6 +23,11 @@
       "label": "ClaimCenter API reference",
       "class": "productFamily cardShadow",
       "id": "cc202104apiref"
+    },
+    {
+      "label": "PolicyCenter API reference",
+      "class": "productFamily cardShadow",
+      "id": "pc202104apiref"
     }
   ]
 }
