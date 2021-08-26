@@ -49,8 +49,8 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Cloud Rules",
-          "id": "cloudrulesdraft"
+          "label": "Cloud Rules (Early Access)",
+          "id": "cloudrulesea"
         },
         {
           "label": "Workset Manager",

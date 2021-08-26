@@ -66,37 +66,12 @@
       ]
     },
     {
-      "label": "Digital",
+      "label": "Digital Framework",
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Digital Applications",
-          "class": "group",
-          "env": ["dev", "staging", "int", "prod"],
-          "items": [
-            {
-              "label": "CustomerEngage Account Management",
-              "id": "dxceam202011"
-            },
-            {
-              "label": "ProducerEngage",
-              "id": "dxpe202011"
-            },
-            {
-              "label": "ServiceRepEngage",
-              "id": "dxsre202011"
-            }
-          ]
-        },
-        {
-          "label": "Digital Framework",
-          "class": "group",
-          "items": [
-            {
-              "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/4.1.1"
-            }
-          ]
+          "label": "Jutro Design System",
+          "page": "../../../jutroDesignSystem/4.1.1"
         }
       ]
     }

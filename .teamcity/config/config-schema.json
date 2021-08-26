@@ -226,6 +226,7 @@
           "ProducerEngage",
           "ProducerEngage for ClaimCenter",
           "ServiceRepEngage",
+          "Rules",
           "Guidewire Cloud Home",
           "Guidewire Cloud Standards",
           "VendorEngage",
@@ -248,6 +249,7 @@
           "String Manager",
           "Checksums",
           "EasyGuide",
+          "UpgradeDiffs",
           "Glossary",
           "Writing with Git"
         ]
@@ -296,7 +298,14 @@
         "buildType": {
           "description": "The build type to apply",
           "type": "string",
-          "enum": ["dita", "dita-dev", "sphinx", "storybook", "yarn"]
+          "enum": [
+            "dita",
+            "dita-dev",
+            "sphinx",
+            "storybook",
+            "yarn",
+            "source-zip"
+          ]
         },
         "filter": {
           "description": "The name of the ditaval file to use in the build, including the extension",
@@ -330,6 +339,18 @@
           "items": {
             "$ref": "#/definitions/resource"
           }
+        },
+        "nodeImageVersion": {
+          "description": "The version of Node.js to use. Works only in yarn builds"
+        },
+        "yarnBuildCustomCommand": {
+          "description": "The default build command for yarn is 'yarn build'. The value of this attribute replaces the word build with whatever you set here."
+        },
+        "outputPath": {
+          "description": "The path where the output is stored, relative to workingDir. By default, the build looks for 'out', 'dist', or 'build'. If your output folder is different, specify it using this prop."
+        },
+        "zipFilename": {
+          "description": "The name of the output .zip file (do not include .zip, that's added automatically). Only makes sense for the source-zip build. Default is 'result'."
         },
         "customEnv": {
           "type": "array",

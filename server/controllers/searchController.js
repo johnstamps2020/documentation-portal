@@ -160,7 +160,6 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
         inner_hits: {
           name: 'same_title',
           size: 20,
-          sort: [{ version: 'desc' }],
         },
         max_concurrent_group_searches: 4,
       },
@@ -186,6 +185,26 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
       searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value,
     hits: searchResults.body.hits.hits,
   };
+}
+
+function sanitizeTagNames(textToSanitize) {
+  const sanitizedText1 = textToSanitize.replace(
+    new RegExp('<((?:(?!span).)*?)>', 'g'),
+    '&lt;$1&gt;'
+  );
+  const sanitizedText2 = sanitizedText1.replace(
+    new RegExp('<(<.*?>)>', 'g'),
+    '&lt;$1&gt;'
+  );
+  const sanitizedText3 = sanitizedText2.replace(
+    new RegExp('<((?:(?!span).)*?)(-|\\s)', 'g'),
+    '&lt;$1$2'
+  );
+  const sanitizedText4 = sanitizedText3.replace(
+    new RegExp('(<.*?>\\S)>', 'g'),
+    '$1&gt;'
+  );
+  return sanitizedText4;
 }
 
 async function searchController(req, res, next) {
@@ -292,8 +311,27 @@ async function searchController(req, res, next) {
         })
         .join(',');
 
+      const sortedInnerHits = result.inner_hits.same_title.hits.hits
+        .sort(function(a, b) {
+          const verNum = versions =>
+            versions[0]
+              .split('.')
+              .map(n => +n + 100000)
+              .join('.');
+          const verNumA = verNum(a._source.version);
+          const verNumB = verNum(b._source.version);
+          let comparison = 0;
+          if (verNumA > verNumB) {
+            comparison = 1;
+          } else if (verNumA < verNumB) {
+            comparison = -1;
+          }
+          return comparison;
+        })
+        .reverse();
+
       let innerHitsToDisplay = [];
-      for (const innerHit of result.inner_hits.same_title.hits.hits) {
+      for (const innerHit of sortedInnerHits) {
         const hitLabel = innerHit._source.title;
         const hitHref = innerHit._source.href;
         const hitPlatform = innerHit._source.platform;
@@ -311,11 +349,11 @@ async function searchController(req, res, next) {
       return {
         href: doc.href,
         score: result._score,
-        title: titleText,
-        titlePlain: doc.title,
+        title: sanitizeTagNames(titleText),
+        titlePlain: sanitizeTagNames(doc.title),
         version: doc.version.join(', '),
-        body: bodyText,
-        bodyPlain: bodyBlurb,
+        body: sanitizeTagNames(bodyText),
+        bodyPlain: sanitizeTagNames(bodyBlurb),
         docTags: docTags,
         innerHits: innerHitsToDisplay,
         uniqueHighlightTerms: uniqueHighlightTerms,

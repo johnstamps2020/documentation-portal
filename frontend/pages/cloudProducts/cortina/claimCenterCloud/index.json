@@ -105,11 +105,6 @@
               "env": ["dev", "int", "staging", "prod"]
             },
             {
-              "label": "ServiceRepEngage",
-              "page": "../serviceRepEngage/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
-            },
-            {
               "label": "VendorEngage",
               "page": "vendorEngage/2021.04",
               "env": ["dev", "int", "staging", "prod"]
