@@ -3008,7 +3008,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
+      "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
       "docId": "isbcclouddraftreleasenotes",
       "indexRedirect": true,
@@ -3148,7 +3148,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
+      "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
       "docId": "isccclouddraftreleasenotes",
       "indexRedirect": true,
@@ -3288,7 +3288,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
+      "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
       "docId": "ispcclouddraftreleasenotes",
       "indexRedirect": true,
@@ -3460,7 +3460,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
+      "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
       "docId": "isbccloudeareleasenotes",
       "indexRedirect": true,
@@ -3576,7 +3576,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
+      "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
       "docId": "iscccloudeareleasenotes",
       "indexRedirect": true,
@@ -3692,7 +3692,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
+      "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
       "docId": "ispccloudeareleasenotes",
       "indexRedirect": true,
