@@ -204,7 +204,11 @@ function sanitizeTagNames(textToSanitize) {
     new RegExp('(<.*?>\\S)>', 'g'),
     '$1&gt;'
   );
-  return sanitizedText4;
+  const sanitizedText5 = sanitizedText4.replace(
+    new RegExp('<([^>]+$)', 'g'),
+    '&lt;$1'
+  );
+  return sanitizedText5;
 }
 
 async function searchController(req, res, next) {
