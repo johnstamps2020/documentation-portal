@@ -159,7 +159,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
         field: 'title.raw',
         inner_hits: {
           name: 'same_title',
-          size: 20,
+          size: 1000,
         },
         max_concurrent_group_searches: 4,
       },
