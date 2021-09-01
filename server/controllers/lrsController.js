@@ -71,8 +71,12 @@ async function deleteTestRecords() {
       index: indexName,
       body: {
         query: {
-          match: {
-            'authority.name': 'Test',
+          bool: {
+            must: {
+              match: {
+                'authority.name': 'Test',
+              },
+            },
           },
         },
       },
@@ -100,10 +104,79 @@ async function getAllRecords() {
   }
 }
 
+async function getRecordsByObjectId(objectId) {
+  try {
+    const result = await elasticClient.search({
+      index: indexName,
+      body: {
+        query: {
+          match: {
+            'object.id.keyword': objectId,
+          },
+        },
+      },
+    });
+
+    return result;
+  } catch (err) {
+    return formalizeError(err);
+  }
+}
+
+async function getRecordsByActorMbox(actorMbox) {
+  try {
+    const result = await elasticClient.search({
+      index: indexName,
+      body: {
+        query: {
+          match: {
+            'actor.mbox.keyword': actorMbox,
+          },
+        },
+      },
+    });
+
+    return result;
+  } catch (err) {
+    return formalizeError(err);
+  }
+}
+
+async function getRecordByObjectIdAndActorMbox(objectId, actorMbox) {
+  try {
+    const result = await elasticClient.search({
+      index: indexName,
+      body: {
+        query: {
+          bool: {
+            must: [
+              {
+                match: {
+                  'object.id.keyword': objectId,
+                },
+                match: {
+                  'actor.mbox.keyword': actorMbox,
+                },
+              },
+            ],
+          },
+        },
+      },
+    });
+
+    return result;
+  } catch (err) {
+    return formalizeError(err);
+  }
+}
+
 module.exports = {
   createIndex,
   addRecord,
   getAllRecords,
+  getRecordsByObjectId,
+  getRecordsByActorMbox,
+  getRecordByObjectIdAndActorMbox,
   createTestRecords,
   deleteTestRecords,
 };
