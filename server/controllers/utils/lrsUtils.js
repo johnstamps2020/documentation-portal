@@ -11,7 +11,7 @@ const recordTemplate = {
     id: 'https://docs.guidewire.com/jutro/learning-prerequisites',
     definition: {
       type: 'https://docs.guidewire.com/expapi/activities/learning-mission',
-      name: { 'en-US': 'Learning Mission' },
+      name: { 'en-US': 'Prerequisites' },
     },
   },
   result: {
@@ -41,6 +41,19 @@ const recordVariables = [
     actor: {
       name: 'Piotrek Jakiś',
       mbox: 'mailto:pjakis@guidewire.com',
+    },
+  },
+  {
+    actor: {
+      name: 'Piotrek Jakiś',
+      mbox: 'mailto:pjakis@guidewire.com',
+    },
+    object: {
+      id: 'https://docs.guidewire.com/jutro/learning-api',
+      definition: {
+        type: 'https://docs.guidewire.com/expapi/activities/learning-mission',
+        name: { 'en-US': 'Use the Jutro API' },
+      },
     },
   },
   {

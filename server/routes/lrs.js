@@ -1,5 +1,11 @@
 const express = require('express');
-const { getAllRecords, addRecord } = require('../controllers/lrsController');
+const {
+  getAllRecords,
+  getRecordsByObjectId,
+  getRecordsByActorMbox,
+  getRecordByObjectIdAndActorMbox,
+  addRecord,
+} = require('../controllers/lrsController');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -19,10 +25,15 @@ router.get('/records', async function(req, res, next) {
   try {
     const { objectId, actorMbox } = req.query;
 
-    if (objectId) {
-      // implement soon
+    if (objectId && actorMbox) {
+      const record = await getRecordByObjectIdAndActorMbox(objectId, actorMbox);
+      res.send(record.body.hits?.hits[0]?._source || {});
+    } else if (objectId) {
+      const records = await getRecordsByObjectId(objectId);
+      res.send(records.body.hits?.hits?.map(h => h._source) || []);
     } else if (actorMbox) {
-      // implement soon
+      const records = await getRecordsByActorMbox(actorMbox);
+      res.send(records.body.hits?.hits?.map(h => h._source) || []);
     } else {
       const allRecords = await getAllRecords();
       res.send(allRecords.body.hits.hits.map(h => h._source));
