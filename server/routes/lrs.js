@@ -43,7 +43,7 @@ router.get('/records', async function(req, res, next) {
   }
 });
 
-router.put('/records/add', async function(req, res, next) {
+router.post('/records/add', async function(req, res, next) {
   try {
     const record = req.body;
     const result = await addRecord(record);
