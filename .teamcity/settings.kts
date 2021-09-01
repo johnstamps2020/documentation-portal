@@ -1110,6 +1110,141 @@ object TestFlailSsg : BuildType({
 
 })
 
+object QueryBuildAPIListeners : Project ({
+    name = "Doc Build API Listeners"
+
+    // need to add projects for each repo/branch so they can each have a VCS root
+    
+    
+    // val builds = HelperObjects.createBuildApiListeners()
+    // builds.forEach(this::buildType)
+
+})
+
+private fun CreateBuildApiListeners() : MutableList<BuildType> {
+    class createBuildApiListenerBuildAbstract(
+        vcs_root_id: RelativeId,
+
+    ) : BuildType ({
+            id = RelativeId(build_id)
+            name = "Build API listener " + vcs_root_id.toString()
+            type = Type.COMPOSITE
+            vcs {
+                root(vcs_root_id)
+                cleanCheckout = true
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                    +:root = ${vcs_root_id}:**
+                    """.trimIndent
+                }
+            }
+
+    })
+
+    val builds = mutableListOf<BuildType>()
+
+    val matchingSources = mutableListOf<JSONObject>()
+    for (i in 0 until sourceConfigs.length()) {
+        
+        val source = sourceConfigs.getJSONObject(i)
+        val sourceId = source.getString("id")
+        val sourceTitle = source.getString("title")
+        val gitUrl = source.getString("gitUrl")
+        val branchName = if (source.has("branch")) source.getString("branch") else "master"
+        
+        val matchFound = false
+        
+        // check if we already added a src with same url and branch
+        // actually we probably don't need to do this since only XDocs sources
+        // have multiple versions for different books
+        if(matchingSources.length() > 0) {
+            for (j in 0 until matchingSources.length()) {
+                if (gitUrl == matchingSources.getJSONObject(j).getString(gitUrl) &&
+                    branchName == matchingSources.getJSONObject(j).getString(branch)){
+                        matchFound = true;
+                        break
+                }
+            }
+        }
+
+        if (!source.has("xdocsPathIds") && matchFound == false) {
+            val matchBuilds = getObjectsById(buildConfigs, "srcId", sourceId)
+
+            val hasDitaBuild = false
+            val hasIntBuild = false
+
+            if (matchBuilds.length() > 0) {
+                for (j in 0 until matchBuilds.length()) {
+                    val build = matchBuilds.getJSONObject(j)
+
+                    if (build.buildType == "dita") {
+                        hasDitaBuild = true
+
+                        buildDocId = build.getString("docId")
+                        val doc = getObjectById(docConfigs, "id", buildDocId)
+                        if (doc.getJSONArray("environments").contains("int")) {
+                            hasIntBuild = true
+                        }
+                    }
+
+                    if (hasDitaBuild == true && hasIntBuild == true) {
+                        if (!source.has("branch")) {
+                            source.put("branch", branchName)
+                        }
+                        val matchAdded = false
+                        for(k in 0 until matchingSources.length()) {
+                            if(matchingSources[k].gitUrl == gitUrl) {
+                                matchingSources[k].branches.add(branchName)
+                                matchAdded = true
+                                break
+                            }
+                        }
+                        if(matchAdded == false) {
+                            matchingSources.add({"gitUrl": gitUrl,
+                                                 "branches": branchName})
+                        }
+                        
+                        break   
+                    }    
+                }
+            }
+        }
+    }
+
+    for (i in 0 until matchingSources.length()) {
+        val source = matchingSources.getJSONObject(i)
+        val sourceId = removeSpecialCharacters(source.getString("gitUrl").substringAfterLast('/'))
+        val vcsRootId = RelativeId(sourceId)
+        val gitUrl = source.getString("gitUrl")
+        val branchNames = source.getJSONArray("branches")
+        val mainBranch = branchNames[0]
+        val additionalBranches = if (branchNames.length() > 1) branchNames.slice(1..branchNames.lastIndex()) else []
+        vcsRoot(DocVcsRoot(vcsRootId, gitUrl, mainBranch, additionalBranches))
+        buildType(createBuildApiListenerBuildAbstract(vcsRootId))
+    }
+
+}
+
+object QueryBuildAPI : BuildType ({
+    name = "Query Build API"
+
+    /* build a list of sources that meet the following conditions:
+    ** - does not have xdocsPathIds
+    ** - has an associated dita build with a doc on int
+    */
+    
+
+
+    // add matching sources as triggers
+    triggers {
+        
+    }
+
+})
+
 object PublishLionPageBuilderDockerImage : BuildType({
     name = "Publish Lion Page Builder image"
 
@@ -1992,7 +2127,7 @@ object HelperObjects {
         }
     }
 
-    class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
+    class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String, git_additional_branches: List = []) : GitVcsRoot({
         id = vcs_root_id
         name = vcs_root_id.toString()
         url = git_source_url
@@ -2002,6 +2137,13 @@ object HelperObjects {
 
         if (git_source_branch != "") {
             branch = "refs/heads/$git_source_branch"
+        }
+
+        if (!git_additional_branches.isNullOrEmpty) {
+            val branchSpecification = ""
+            for (i in 0 until git_additional_branches.length()) {
+                branchSpecification += "+:$git_additional_branches[i]" + "\n"
+            }
         }
 
     })
@@ -3591,6 +3733,7 @@ object ServiceBuilds : Project({
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(CreateReleaseTag)
+    buildType(QueryBuildAPIListeners)
 })
 
 object XdocsExportBuilds : Project({
