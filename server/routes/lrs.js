@@ -5,6 +5,7 @@ const {
   getRecordsByActorMbox,
   getRecordByObjectIdAndActorMbox,
   addRecord,
+  deleteRecordByElasticId,
 } = require('../controllers/lrsController');
 const router = express.Router();
 
@@ -27,13 +28,13 @@ router.get('/records', async function(req, res, next) {
 
     if (objectId && actorMbox) {
       const record = await getRecordByObjectIdAndActorMbox(objectId, actorMbox);
-      res.send(record.body.hits?.hits[0]?._source || {});
+      res.send(record);
     } else if (objectId) {
       const records = await getRecordsByObjectId(objectId);
-      res.send(records.body.hits?.hits?.map(h => h._source) || []);
+      res.send(records);
     } else if (actorMbox) {
       const records = await getRecordsByActorMbox(actorMbox);
-      res.send(records.body.hits?.hits?.map(h => h._source) || []);
+      res.send(records);
     } else {
       const allRecords = await getAllRecords();
       res.send(allRecords.body.hits.hits.map(h => h._source));
@@ -48,6 +49,18 @@ router.post('/records/add', async function(req, res, next) {
     const record = req.body;
     const result = await addRecord(record);
     res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/records/delete', async function(req, res, next) {
+  try {
+    const elasticId = req.query.elasticId;
+    if (elasticId) {
+      const result = await deleteRecordByElasticId(elasticId);
+      res.send(result);
+    }
   } catch (err) {
     next(err);
   }
