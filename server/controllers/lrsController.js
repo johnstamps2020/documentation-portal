@@ -117,7 +117,7 @@ async function getRecordsByObjectId(objectId) {
       },
     });
 
-    return result;
+    return result.body.hits?.hits?.map(h => h._source) || [];
   } catch (err) {
     return formalizeError(err);
   }
@@ -136,7 +136,7 @@ async function getRecordsByActorMbox(actorMbox) {
       },
     });
 
-    return result;
+    return result.body.hits?.hits?.map(h => h._source) || [];
   } catch (err) {
     return formalizeError(err);
   }
@@ -164,7 +164,16 @@ async function getRecordByObjectIdAndActorMbox(objectId, actorMbox) {
       },
     });
 
-    return result;
+    const records = result.body.hits?.hits?.map(h => h._source);
+    const matchingRecord = records.find(
+      r => r.object.id === objectId && r.actor.mbox === actorMbox
+    );
+
+    if (matchingRecord) {
+      return matchingRecord;
+    } else {
+      return {};
+    }
   } catch (err) {
     return formalizeError(err);
   }

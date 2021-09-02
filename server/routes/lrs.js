@@ -28,13 +28,13 @@ router.get('/records', async function(req, res, next) {
 
     if (objectId && actorMbox) {
       const record = await getRecordByObjectIdAndActorMbox(objectId, actorMbox);
-      res.send(record.body.hits?.hits[0]?._source || {});
+      res.send(record);
     } else if (objectId) {
       const records = await getRecordsByObjectId(objectId);
-      res.send(records.body.hits?.hits?.map(h => h._source) || []);
+      res.send(records);
     } else if (actorMbox) {
       const records = await getRecordsByActorMbox(actorMbox);
-      res.send(records.body.hits?.hits?.map(h => h._source) || []);
+      res.send(records);
     } else {
       const allRecords = await getAllRecords();
       res.send(allRecords.body.hits.hits.map(h => h._source));
