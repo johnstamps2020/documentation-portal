@@ -1898,11 +1898,31 @@ object HelperObjects {
                 cleanCheckout = true
             }
 
+            params {
+                text(
+                    "reverse.dep.${BuildApiBuildRunner.id}.env.GIT_URL",
+                    "%vcsroot.$vcs_root_id%.url",
+                    allowEmpty = false
+                )
+                text(
+                    "reverse.dep.${BuildApiBuildRunner.id}.env.GIT_BUILD_BRANCH",
+                    "%teamcity.build.vcs.branch.$vcs_root_id%",
+                    allowEmpty = false
+                )
+            }
+
             triggers {
                 vcs {
                     triggerRules = """
                     +:root = ${vcs_root_id}:**
                     """.trimIndent()
+                }
+            }
+
+            dependencies {
+                snapshot(BuildApiBuildRunner) {
+                    reuseBuilds = ReuseBuilds.NO
+                    onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
 
@@ -3028,6 +3048,45 @@ object CreateReleaseTag : BuildType({
     }
 })
 
+object BuildApiBuildRunner : BuildType({
+    name = "Build API Build Runner"
+
+    params {
+        text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_BUILD_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.BUILD_API_URL", "https://adminserver.dev.ccs.guidewire.net/builds")
+        password(
+            "env.ADMIN_SERVER_API_KEY",
+            "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
+            display = ParameterDisplay.HIDDEN
+        )
+    }
+
+    steps {
+        script {
+            name = "Get relevant builds"
+            id = "GET_RELEVANT_BUILDS"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                curl -X GET --location "%env.BUILD_API_URL%/resources" \
+                    -H "Content-Type: application/json" \
+                    -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%"
+                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ \"topics/1.dita\", \"topics/41.dita\" ] }"
+                """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            id = "ssh-agent-build-feature"
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+
+})
+
 //TODO: This template may not be needed. We could merge it with the ValidateDoc class
 //TODO: Convert DITA OT scripts to use the dockerSupport feature instead of pulling and logging in the script
 object RunContentValidations : Template({
@@ -3697,6 +3756,7 @@ object ServiceBuilds : Project({
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(CreateReleaseTag)
+    buildType(BuildApiBuildRunner)
 })
 
 object XdocsExportBuilds : Project({
