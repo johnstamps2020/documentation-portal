@@ -5,6 +5,7 @@ const {
   getRecordsByActorMbox,
   getRecordByObjectIdAndActorMbox,
   addRecord,
+  deleteRecordByElasticId,
 } = require('../controllers/lrsController');
 const router = express.Router();
 
@@ -48,6 +49,18 @@ router.post('/records/add', async function(req, res, next) {
     const record = req.body;
     const result = await addRecord(record);
     res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/records/delete', async function(req, res, next) {
+  try {
+    const elasticId = req.query.elasticId;
+    if (elasticId) {
+      const result = await deleteRecordByElasticId(elasticId);
+      res.send(result);
+    }
   } catch (err) {
     next(err);
   }

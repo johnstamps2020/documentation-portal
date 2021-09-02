@@ -170,6 +170,19 @@ async function getRecordByObjectIdAndActorMbox(objectId, actorMbox) {
   }
 }
 
+async function deleteRecordByElasticId(elasticId) {
+  try {
+    const result = await elasticClient.delete({
+      index: indexName,
+      id: elasticId,
+    });
+
+    return result;
+  } catch (err) {
+    return formalizeError(err);
+  }
+}
+
 module.exports = {
   createIndex,
   addRecord,
@@ -179,4 +192,5 @@ module.exports = {
   getRecordByObjectIdAndActorMbox,
   createTestRecords,
   deleteTestRecords,
+  deleteRecordByElasticId,
 };
