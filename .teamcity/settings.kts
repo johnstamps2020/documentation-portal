@@ -3070,10 +3070,14 @@ object BuildApiBuildRunner : BuildType({
                 #!/bin/bash
                 set -xe
                 
+                export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
+                
                 curl -X GET --location "%env.BUILD_API_URL%/resources" \
                     -H "Content-Type: application/json" \
                     -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%"
-                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ \"topics/1.dita\", \"topics/41.dita\" ] }"
+                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ \"topics/1.dita\", \"topics/41.dita\" ] }" > ${'$'}RESPONSE_FILE
+                    
+                BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
                 """.trimIndent()
         }
     }
