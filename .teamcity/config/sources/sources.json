@@ -373,7 +373,7 @@
       "title": "InsuranceSuite Upgrade Guide 2021.04",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "release/2021.04.0"
+      "branch": "release/2021.04"
     },
     {
       "id": "cloudisadmin202104src",
