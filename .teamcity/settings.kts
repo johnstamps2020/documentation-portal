@@ -1906,7 +1906,7 @@ object HelperObjects {
                 )
                 text(
                     "env.GIT_URL",
-                    "%vcsroot.$vcs_root_id%.url",
+                    "%vcsroot.$vcs_root_id.url%",
                     allowEmpty = false
                 )
                 text(
