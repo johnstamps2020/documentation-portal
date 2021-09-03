@@ -1904,6 +1904,8 @@ object HelperObjects {
                     "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
                     display = ParameterDisplay.HIDDEN
                 )
+                text("env.TEAMCITY_BUILD_QUEUE_URL", "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue", allowEmpty = false)
+                password("env.TEAMCITY_API_AUTH_TOKEN", "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530", display = ParameterDisplay.HIDDEN)
                 text(
                     "env.GIT_URL",
                     "%vcsroot.$vcs_root_id.url%",
@@ -1921,25 +1923,39 @@ object HelperObjects {
                     name = "Get relevant builds"
                     id = "GET_RELEVANT_BUILDS"
                     scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export RESOURCES=""
-                while IFS=":" read -r relative_file_path change_type revision; do
-                  export RESOURCES+="\"${'$'}{relative_file_path}\", "
-                done <"%system.teamcity.build.changedFiles.file%"
-                
-                export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
-
-                export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
-                
-                curl -X GET --location "%env.BUILD_API_URL%/resources" \
-                    -H "Content-Type: application/json" \
-                    -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%" \
-                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
-                    
-                BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
-                """.trimIndent()
+                            #!/bin/bash
+                            set -xe
+                            
+                            export RESOURCES=""
+                            while IFS=":" read -r relative_file_path change_type revision; do
+                              export RESOURCES+="\"${'$'}{relative_file_path}\", "
+                            done <"%system.teamcity.build.changedFiles.file%"
+                            
+                            export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
+            
+                            export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
+                            
+                            curl -X GET --location "%env.BUILD_API_URL%/resources" \
+                                -H "Content-Type: application/json" \
+                                -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%" \
+                                -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
+                                
+                            BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
+                            
+                            if [[ "${'$'}BUILD_IDS" == "" ]]; then
+                                echo "No build IDs were found. Nothing to do here."
+                                exit
+                            else
+                                while IFS= read -r buildId
+                                do
+                                curl -X POST \
+                                    -H "Authorization: Bearer %env.TEAMCITY_API_AUTH_TOKEN%" \
+                                    -H "Content-Type: application/json" \
+                                    -d  "{\"buildType\": { \"id\": \"${'$'}buildId\" }}" \
+                                    %env.TEAMCITY_BUILD_QUEUE_URL%
+                                done < <(printf '%s\n' "${'$'}BUILD_IDS")                    
+                            fi                           
+                    """.trimIndent()
                 }
             }
 
