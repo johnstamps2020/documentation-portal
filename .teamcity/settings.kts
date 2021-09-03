@@ -1935,7 +1935,7 @@ object HelperObjects {
                 
                 curl -X GET --location "%env.BUILD_API_URL%/resources" \
                     -H "Content-Type: application/json" \
-                    -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%"
+                    -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%" \
                     -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
                     
                 BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
