@@ -3074,7 +3074,7 @@ object BuildApiBuildRunner : BuildType({
                 export RESOURCES=""
                 while IFS=":" read -r relative_file_path change_type revision; do
                   export RESOURCES+="\"${'$'}{relative_file_path}\", "
-                done <"%system.TeamCity.build.changedFiles.file%"
+                done <"%system.teamcity.build.changedFiles.file%"
                 
                 export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
 
