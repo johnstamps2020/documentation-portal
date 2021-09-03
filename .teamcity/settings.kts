@@ -1920,8 +1920,8 @@ object HelperObjects {
 
             steps {
                 script {
-                    name = "Get relevant builds"
-                    id = "GET_RELEVANT_BUILDS"
+                    name = "Trigger builds with modified resources"
+                    id = "TRIGGER_BUILDS_WITH_MODIFIED_RESOURCES"
                     scriptContent = """
                             #!/bin/bash
                             set -xe
