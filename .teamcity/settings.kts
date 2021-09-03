@@ -3,7 +3,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.sshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
@@ -12,7 +14,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
-import kotlin.random.Random.Default.nextInt
 
 version = "2020.1"
 
@@ -1742,7 +1743,6 @@ object HelperObjects {
         return Pair("", "")
     }
 
-
     fun createExportBuildsFromConfig(): MutableList<BuildType> {
         class ExportFilesFromXDocsToBitbucketAbstract(
             build_id: String,
@@ -1889,6 +1889,118 @@ object HelperObjects {
         return builds
     }
 
+    fun createBuildApiListeners(): Pair<MutableList<DocVcsRoot>, MutableList<BuildType>> {
+        class BuildApiListenerBuild(vcs_root_id: RelativeId) : BuildType({
+            id = RelativeId(vcs_root_id.toString() + "_query")
+            name = "Build API listener $vcs_root_id"
+            type = Type.COMPOSITE
+            vcs {
+                root(vcs_root_id)
+                cleanCheckout = true
+            }
+
+            params {
+                text(
+                    "reverse.dep.${BuildApiBuildRunner.id}.env.GIT_URL",
+                    "%vcsroot.$vcs_root_id%.url",
+                    allowEmpty = false
+                )
+                text(
+                    "reverse.dep.${BuildApiBuildRunner.id}.env.GIT_BUILD_BRANCH",
+                    "%teamcity.build.vcs.branch.$vcs_root_id%",
+                    allowEmpty = false
+                )
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                    +:root = ${vcs_root_id}:**
+                    """.trimIndent()
+                }
+            }
+
+            dependencies {
+                snapshot(BuildApiBuildRunner) {
+                    reuseBuilds = ReuseBuilds.NO
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+        })
+
+        val builds = mutableListOf<BuildType>()
+        val vcsRoots = mutableListOf<DocVcsRoot>()
+        val matchingSources = mutableListOf<JSONObject>()
+        for (i in 0 until sourceConfigs.length()) {
+
+            val source = sourceConfigs.getJSONObject(i)
+            val sourceId = source.getString("id")
+            val gitUrl = source.getString("gitUrl")
+            val branchName = if (source.has("branch")) source.getString("branch") else "master"
+
+            if (!source.has("xdocsPathIds")) {
+                val matchBuilds = getObjectsById(buildConfigs, "srcId", sourceId)
+
+                if (matchBuilds.length() > 0) {
+                    for (j in 0 until matchBuilds.length()) {
+                        val build = matchBuilds.getJSONObject(j)
+
+                        if (build.getString("buildType") == "dita") {
+                            val buildDocId = build.getString("docId")
+                            val doc = getObjectById(docConfigs, "id", buildDocId)
+                            if (doc.getJSONArray("environments").contains("int")) {
+                                if (!source.has("branch")) {
+                                    source.put("branch", branchName)
+                                }
+                                var matchAdded = false
+                                for (src in matchingSources) {
+                                    val sourceBranches = src.getJSONArray("branches")
+                                    if (src.getString("gitUrl") == gitUrl) {
+                                        if (!sourceBranches.contains(branchName)) {
+                                            sourceBranches.put(branchName)
+                                        }
+                                        matchAdded = true
+                                    }
+                                }
+                                if (!matchAdded) {
+                                    matchingSources.add(
+                                        JSONObject(
+                                            """
+                                                {
+                                                "gitUrl": "$gitUrl",
+                                                "branches": ["$branchName"]
+                                                }
+                                            """.trimIndent()
+                                        )
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        for (src in matchingSources) {
+            val sourceId = removeSpecialCharacters(src.getString("gitUrl").substringAfterLast('/'))
+            val vcsRootId = RelativeId(sourceId)
+            val gitUrl = src.getString("gitUrl")
+            val branchNames = src.getJSONArray("branches").toList() as List<*>
+            val mainBranch = branchNames[0].toString()
+            val additionalBranches =
+                if (branchNames.size > 1) branchNames.slice(1..branchNames.lastIndex) else emptyList()
+            vcsRoots.add(
+                DocVcsRoot(
+                    vcsRootId, gitUrl, mainBranch,
+                    additionalBranches as List<String>
+                )
+            )
+            builds.add(BuildApiListenerBuild(vcsRootId))
+        }
+        return Pair(vcsRoots, builds)
+    }
+
     private fun createProductProject(product_name: String, docs: MutableList<JSONObject>): Project {
 
         val versions = mutableListOf<String>()
@@ -1920,7 +2032,7 @@ object HelperObjects {
                     }
                 }
             }
-            if (!docsInVersion.isNullOrEmpty()) {
+            if (docsInVersion.isNotEmpty()) {
                 subProjects.add(createVersionProject(product_name, version, docsInVersion))
             }
         }
@@ -1993,7 +2105,12 @@ object HelperObjects {
         }
     }
 
-    class DocVcsRoot(vcs_root_id: RelativeId, git_source_url: String, git_source_branch: String) : GitVcsRoot({
+    class DocVcsRoot(
+        vcs_root_id: RelativeId,
+        git_source_url: String,
+        git_source_branch: String,
+        git_additional_branches: List<String> = emptyList()
+    ) : GitVcsRoot({
         id = vcs_root_id
         name = vcs_root_id.toString()
         url = git_source_url
@@ -2003,6 +2120,14 @@ object HelperObjects {
 
         if (git_source_branch != "") {
             branch = "refs/heads/$git_source_branch"
+        }
+
+        if (git_additional_branches.isNotEmpty()) {
+            var branchSpecification = ""
+            for (element in git_additional_branches) {
+                branchSpecification += "+:refs/heads/${element}\n"
+            }
+            branchSpec = branchSpecification
         }
 
     })
@@ -2177,7 +2302,7 @@ object HelperObjects {
                 }
             }
 
-            if (!resources_to_copy.isNullOrEmpty()) {
+            if (resources_to_copy.isNotEmpty()) {
                 val extraSteps = mutableListOf<ScriptBuildStep>()
                 val stepIds = mutableListOf<String>()
                 var stepIdSuffix = 0
@@ -2550,7 +2675,7 @@ object HelperObjects {
                     }
                 }
             }
-            if (!docsInProduct.isNullOrEmpty()) {
+            if (docsInProduct.isNotEmpty()) {
                 subProjects.add(createProductProject(product, docsInProduct))
             }
         }
@@ -2784,7 +2909,7 @@ object HelperObjects {
                     }
                 }
 
-                if (!sourceDocBuilds.isNullOrEmpty()) {
+                if (sourceDocBuilds.isNotEmpty()) {
                     sourcesToValidate.add(
                         Project {
                             id = RelativeId(removeSpecialCharacters(sourceId + sourceGitBranch))
@@ -2809,6 +2934,7 @@ object HelperObjects {
         }
         return sourcesToValidate
     }
+
 }
 
 object ExportFilesFromXDocsToBitbucket : BuildType({
@@ -2978,6 +3104,57 @@ object CreateReleaseTag : BuildType({
             teamcitySshKey = "sys-doc.rsa"
         }
     }
+})
+
+object BuildApiBuildRunner : BuildType({
+    name = "Build API Build Runner"
+    maxRunningBuilds = 1
+
+    params {
+        text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.GIT_BUILD_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("env.BUILD_API_URL", "https://adminserver.dev.ccs.guidewire.net/builds")
+        password(
+            "env.ADMIN_SERVER_API_KEY",
+            "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
+            display = ParameterDisplay.HIDDEN
+        )
+    }
+
+    steps {
+        script {
+            name = "Get relevant builds"
+            id = "GET_RELEVANT_BUILDS"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export RESOURCES=""
+                while IFS=":" read -r relative_file_path change_type revision; do
+                  export RESOURCES+="\"${'$'}{relative_file_path}\", "
+                done <"%system.TeamCity.build.changedFiles.file%"
+                
+                export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
+
+                export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
+                
+                curl -X GET --location "%env.BUILD_API_URL%/resources" \
+                    -H "Content-Type: application/json" \
+                    -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%"
+                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
+                    
+                BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
+                """.trimIndent()
+        }
+    }
+
+    features {
+        sshAgent {
+            id = "ssh-agent-build-feature"
+            teamcitySshKey = "sys-doc.rsa"
+        }
+    }
+
 })
 
 //TODO: This template may not be needed. We could merge it with the ValidateDoc class
@@ -3697,6 +3874,7 @@ object ServiceBuilds : Project({
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(CreateReleaseTag)
+    buildType(BuildApiBuildRunner)
 })
 
 object XdocsExportBuilds : Project({
@@ -3706,11 +3884,20 @@ object XdocsExportBuilds : Project({
     builds.forEach(this::buildType)
 })
 
+object BuildApiListenerBuilds : Project({
+    name = "Build API listener builds"
+
+    val (vcsRoots, builds) = HelperObjects.createBuildApiListeners()
+    vcsRoots.forEach(this::vcsRoot)
+    builds.forEach(this::buildType)
+})
+
 object Content : Project({
     name = "Content"
 
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
+    subProject(BuildApiListenerBuilds)
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
     buildType(GenerateSitemap)
