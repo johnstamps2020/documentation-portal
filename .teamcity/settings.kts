@@ -1893,7 +1893,6 @@ object HelperObjects {
         class BuildApiListenerBuild(vcs_root_id: RelativeId, source_id: String) : BuildType({
             name = "$source_id listener"
             id = RelativeId(vcs_root_id.toString() + "_query")
-            type = Type.COMPOSITE
             vcs {
                 root(vcs_root_id)
                 cleanCheckout = true
@@ -3107,7 +3106,7 @@ object CreateReleaseTag : BuildType({
 })
 
 object BuildApiBuildRunner : BuildType({
-    name = "Build API Build Runner"
+    name = "Build API ruild runner"
     maxRunningBuilds = 1
 
     params {
