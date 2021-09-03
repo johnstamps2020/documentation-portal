@@ -41,8 +41,16 @@
           "id": "ispcclouddraftinstall"
         },
         {
+          "label": "Installation (Internal only)",
+          "id": "ispccloudgwinstall"
+        },
+        {
           "label": "Upgrade",
           "id": "ispcclouddraftupgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "ispccloudgwupgrade"
         }
       ]
     },
@@ -67,6 +75,10 @@
         {
           "label": "Administration",
           "id": "ispcclouddraftadmin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "ispccloudgwadmin"
         }
       ]
     },

@@ -8599,6 +8599,22 @@
       "public": false
     },
     {
+      "id": "isbccloudgwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isbcclouddraftapp",
       "title": "Application Guide",
       "url": "cloud/bc/latest/app",
@@ -8622,6 +8638,22 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudgwadmin",
+      "title": "Administration",
+      "url": "cloud/bc/gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal"],
         "release": ["Dobson"],
         "subject": ["Administration"]
       },
@@ -8775,6 +8807,22 @@
       "public": false
     },
     {
+      "id": "isbccloudgwinstall",
+      "title": "Installation",
+      "url": "cloud/bc/gw/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isccclouddraftreleasenotes",
       "title": "Release Notes",
       "url": "cloud/cc/latest/releasenotes",
@@ -8823,6 +8871,22 @@
       "public": false
     },
     {
+      "id": "iscccloudgwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isccclouddraftapp",
       "title": "Application Guide",
       "url": "cloud/cc/latest/app",
@@ -8846,6 +8910,22 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudgwadmin",
+      "title": "Administration",
+      "url": "cloud/cc/gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal"],
         "release": ["Dobson"],
         "subject": ["Administration"]
       },
@@ -9031,6 +9111,22 @@
       "public": false
     },
     {
+      "id": "iscccloudgwinstall",
+      "title": "Installation",
+      "url": "cloud/cc/gw/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "ispcclouddraftreleasenotes",
       "title": "Release Notes",
       "url": "cloud/pc/latest/releasenotes",
@@ -9079,6 +9175,22 @@
       "public": false
     },
     {
+      "id": "ispccloudgwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "ispcclouddraftapp",
       "title": "Application Guide",
       "url": "cloud/pc/latest/app",
@@ -9102,6 +9214,22 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispccloudgwadmin",
+      "title": "Administration",
+      "url": "cloud/pc/gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal"],
         "release": ["Dobson"],
         "subject": ["Administration"]
       },
@@ -9326,6 +9454,22 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispccloudgwinstall",
+      "title": "Installation",
+      "url": "cloud/pc/gw/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal"],
         "release": ["Dobson"],
         "subject": ["Installation"]
       },

@@ -41,8 +41,16 @@
           "id": "isccclouddraftinstall"
         },
         {
+          "label": "Installation (Internal only)",
+          "id": "iscccloudgwinstall"
+        },
+        {
           "label": "Upgrade",
           "id": "isccclouddraftupgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "iscccloudgwupgrade"
         }
       ]
     },
@@ -67,6 +75,10 @@
         {
           "label": "Administration",
           "id": "isccclouddraftadmin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "iscccloudgwadmin"
         }
       ]
     },

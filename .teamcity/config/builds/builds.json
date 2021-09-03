@@ -3051,6 +3051,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "Other/IS-BC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "isbccloudgwupgrade"
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "BC-AppGuide.ditamap",
       "srcId": "cloudisbcappdraftsrc",
@@ -3063,6 +3071,14 @@
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisadmindraftsrc",
       "docId": "isbcclouddraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "isbccloudgwadmin",
       "indexRedirect": true
     },
     {
@@ -3155,6 +3171,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "IS-BC-Cloud-GW.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "isbccloudgwinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
       "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
@@ -3191,6 +3215,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "Other/IS-CC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "iscccloudgwupgrade"
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-CC-Cloud-Draft.ditaval",
       "root": "CC-AppGuide.ditamap",
       "srcId": "cloudisccappdraftsrc",
@@ -3203,6 +3235,14 @@
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisadmindraftsrc",
       "docId": "isccclouddraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "iscccloudgwadmin",
       "indexRedirect": true
     },
     {
@@ -3295,6 +3335,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "IS-CC-Cloud-GW.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "iscccloudgwinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrndraftsrc",
@@ -3331,6 +3379,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "Other/IS-PC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "ispccloudgwupgrade"
+    },
+    {
+      "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "PC-AppGuide.ditamap",
       "srcId": "cloudispcappdraftsrc",
@@ -3343,6 +3399,14 @@
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisadmindraftsrc",
       "docId": "ispcclouddraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "ispccloudgwadmin",
       "indexRedirect": true
     },
     {
@@ -3455,6 +3519,14 @@
       "root": "InstallGuide.ditamap",
       "srcId": "cloudisinstalldraftsrc",
       "docId": "ispcclouddraftinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-GW.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "ispccloudgwinstall",
       "indexRedirect": true
     },
     {
