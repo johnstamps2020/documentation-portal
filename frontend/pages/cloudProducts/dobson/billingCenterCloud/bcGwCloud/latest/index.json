@@ -41,8 +41,16 @@
           "id": "isbcclouddraftinstall"
         },
         {
+          "label": "Installation (Internal only)",
+          "id": "isbccloudgwinstall"
+        },
+        {
           "label": "Upgrade",
           "id": "isbcclouddraftupgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "isbccloudgwupgrade"
         }
       ]
     },
@@ -67,6 +75,10 @@
         {
           "label": "Administration",
           "id": "isbcclouddraftadmin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "isbccloudgwadmin"
         }
       ]
     },
