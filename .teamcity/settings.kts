@@ -3050,6 +3050,7 @@ object CreateReleaseTag : BuildType({
 
 object BuildApiBuildRunner : BuildType({
     name = "Build API Build Runner"
+    maxRunningBuilds = 1
 
     params {
         text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
@@ -3070,12 +3071,19 @@ object BuildApiBuildRunner : BuildType({
                 #!/bin/bash
                 set -xe
                 
+                export RESOURCES=""
+                while IFS=":" read -r relative_file_path change_type revision; do
+                  export RESOURCES+="\"${'$'}{relative_file_path}\", "
+                done <"%system.TeamCity.build.changedFiles.file%"
+                
+                export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
+
                 export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
                 
                 curl -X GET --location "%env.BUILD_API_URL%/resources" \
                     -H "Content-Type: application/json" \
                     -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%"
-                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ \"topics/1.dita\", \"topics/41.dita\" ] }" > ${'$'}RESPONSE_FILE
+                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
                     
                 BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
                 """.trimIndent()
