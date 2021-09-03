@@ -1890,9 +1890,9 @@ object HelperObjects {
     }
 
     fun createBuildApiListeners(): Pair<MutableList<DocVcsRoot>, MutableList<BuildType>> {
-        class BuildApiListenerBuild(vcs_root_id: RelativeId) : BuildType({
+        class BuildApiListenerBuild(vcs_root_id: RelativeId, source_id: String) : BuildType({
+            name = "$source_id listener"
             id = RelativeId(vcs_root_id.toString() + "_query")
-            name = "Build API listener $vcs_root_id"
             type = Type.COMPOSITE
             vcs {
                 root(vcs_root_id)
@@ -1996,7 +1996,7 @@ object HelperObjects {
                     additionalBranches as List<String>
                 )
             )
-            builds.add(BuildApiListenerBuild(vcsRootId))
+            builds.add(BuildApiListenerBuild(vcsRootId, sourceId))
         }
         return Pair(vcsRoots, builds)
     }
@@ -3132,7 +3132,7 @@ object BuildApiBuildRunner : BuildType({
                 export RESOURCES=""
                 while IFS=":" read -r relative_file_path change_type revision; do
                   export RESOURCES+="\"${'$'}{relative_file_path}\", "
-                done <"%system.TeamCity.build.changedFiles.file%"
+                done <"%system.teamcity.build.changedFiles.file%"
                 
                 export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
 
