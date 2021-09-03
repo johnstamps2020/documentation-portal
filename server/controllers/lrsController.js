@@ -151,11 +151,13 @@ async function getRecordByObjectIdAndActorMbox(objectId, actorMbox) {
           bool: {
             must: [
               {
-                match: {
-                  'object.id.keyword': objectId,
+                term: {
+                  'object.id.keyword': { value: objectId, boost: 3.0 },
                 },
-                match: {
-                  'actor.mbox.keyword': actorMbox,
+              },
+              {
+                term: {
+                  'actor.mbox.keyword': { value: actorMbox },
                 },
               },
             ],
