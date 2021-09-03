@@ -1899,16 +1899,49 @@ object HelperObjects {
             }
 
             params {
+                text("env.BUILD_API_URL", "https://adminserver.dev.ccs.guidewire.net/builds")
+                password(
+                    "env.ADMIN_SERVER_API_KEY",
+                    "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
+                    display = ParameterDisplay.HIDDEN
+                )
                 text(
-                    "reverse.dep.${BuildApiBuildRunner.id}.env.GIT_URL",
+                    "env.GIT_URL",
                     "%vcsroot.$vcs_root_id%.url",
                     allowEmpty = false
                 )
                 text(
-                    "reverse.dep.${BuildApiBuildRunner.id}.env.GIT_BUILD_BRANCH",
+                    "env.GIT_BUILD_BRANCH",
                     "%teamcity.build.vcs.branch.$vcs_root_id%",
                     allowEmpty = false
                 )
+            }
+
+            steps {
+                script {
+                    name = "Get relevant builds"
+                    id = "GET_RELEVANT_BUILDS"
+                    scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export RESOURCES=""
+                while IFS=":" read -r relative_file_path change_type revision; do
+                  export RESOURCES+="\"${'$'}{relative_file_path}\", "
+                done <"%system.teamcity.build.changedFiles.file%"
+                
+                export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
+
+                export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
+                
+                curl -X GET --location "%env.BUILD_API_URL%/resources" \
+                    -H "Content-Type: application/json" \
+                    -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%"
+                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
+                    
+                BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
+                """.trimIndent()
+                }
             }
 
             triggers {
@@ -1918,14 +1951,6 @@ object HelperObjects {
                     """.trimIndent()
                 }
             }
-
-            dependencies {
-                snapshot(BuildApiBuildRunner) {
-                    reuseBuilds = ReuseBuilds.NO
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
         })
 
         val builds = mutableListOf<BuildType>()
@@ -3105,57 +3130,6 @@ object CreateReleaseTag : BuildType({
     }
 })
 
-object BuildApiBuildRunner : BuildType({
-    name = "Build API ruild runner"
-    maxRunningBuilds = 1
-
-    params {
-        text("env.GIT_URL", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.GIT_BUILD_BRANCH", "", display = ParameterDisplay.PROMPT, allowEmpty = true)
-        text("env.BUILD_API_URL", "https://adminserver.dev.ccs.guidewire.net/builds")
-        password(
-            "env.ADMIN_SERVER_API_KEY",
-            "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
-            display = ParameterDisplay.HIDDEN
-        )
-    }
-
-    steps {
-        script {
-            name = "Get relevant builds"
-            id = "GET_RELEVANT_BUILDS"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export RESOURCES=""
-                while IFS=":" read -r relative_file_path change_type revision; do
-                  export RESOURCES+="\"${'$'}{relative_file_path}\", "
-                done <"%system.teamcity.build.changedFiles.file%"
-                
-                export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
-
-                export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
-                
-                curl -X GET --location "%env.BUILD_API_URL%/resources" \
-                    -H "Content-Type: application/json" \
-                    -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%"
-                    -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
-                    
-                BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
-                """.trimIndent()
-        }
-    }
-
-    features {
-        sshAgent {
-            id = "ssh-agent-build-feature"
-            teamcitySshKey = "sys-doc.rsa"
-        }
-    }
-
-})
-
 //TODO: This template may not be needed. We could merge it with the ValidateDoc class
 //TODO: Convert DITA OT scripts to use the dockerSupport feature instead of pulling and logging in the script
 object RunContentValidations : Template({
@@ -3873,7 +3847,6 @@ object ServiceBuilds : Project({
 
     buildType(ExportFilesFromXDocsToBitbucket)
     buildType(CreateReleaseTag)
-    buildType(BuildApiBuildRunner)
 })
 
 object XdocsExportBuilds : Project({
