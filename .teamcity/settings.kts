@@ -1262,14 +1262,14 @@ object PublishUpgradeDiffsPageBuilderDockerImage : BuildType({
             }
         }
     }
-/*
+
     dependencies {
         snapshot(TestUpgradeDiffsPageBuilder) {
             reuseBuilds = ReuseBuilds.SUCCESSFUL
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
-*/
+
 })
 
 object TestUpgradeDiffsPageBuilder : BuildType({
@@ -1287,6 +1287,7 @@ object TestUpgradeDiffsPageBuilder : BuildType({
                 #!/bin/bash
                 set -xe
                 cd apps/upgradediffs_page_builder
+                chmod 777 ./test_upgradediffs_page_builder.sh
                 ./test_upgradediffs_page_builder.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
