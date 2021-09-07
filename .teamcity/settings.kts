@@ -1262,13 +1262,14 @@ object PublishUpgradeDiffsPageBuilderDockerImage : BuildType({
             }
         }
     }
-
+/*
     dependencies {
         snapshot(TestUpgradeDiffsPageBuilder) {
             reuseBuilds = ReuseBuilds.SUCCESSFUL
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
+*/
 })
 
 object TestUpgradeDiffsPageBuilder : BuildType({
