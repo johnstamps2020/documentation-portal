@@ -127,6 +127,7 @@ async function getRecordsByActorMbox(actorMbox) {
   try {
     const result = await elasticClient.search({
       index: indexName,
+      size: 100,
       body: {
         query: {
           match: {
