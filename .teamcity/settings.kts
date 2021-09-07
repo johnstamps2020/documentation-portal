@@ -1239,7 +1239,8 @@ object PublishUpgradeDiffsPageBuilderDockerImage : BuildType({
             scriptContent = """
                 set -xe
                 cd apps/upgradediffs_page_builder
-                chmod 777 ./publish_docker.sh
+                chmod +x ./publish_docker.sh
+                chmod +x ./build_docker.sh
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
@@ -1288,7 +1289,7 @@ object TestUpgradeDiffsPageBuilder : BuildType({
                 #!/bin/bash
                 set -xe
                 cd apps/upgradediffs_page_builder
-                chmod 777 ./test_upgradediffs_page_builder.sh
+                chmod +x ./test_upgradediffs_page_builder.sh
                 ./test_upgradediffs_page_builder.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
