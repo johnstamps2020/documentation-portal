@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "upgradediffs_page_builder"
+version = "1.0.0"
+description = "An application to build static page configurations for Flail for localized docs"
+authors = ["Guidewire <doctools@guidewire.com>"]
+readme = "README.md"
+repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Proprietary",
+    "Operating System :: OS Independent",
+]
+[tool.poetry.scripts]
+upgradediffs_page_builder = "upgradediffs_page_builder.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+PyPDF2 = "^1.26"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"

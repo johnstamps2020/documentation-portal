@@ -22,6 +22,7 @@ project {
     vcsRoot(vcsrootmasteronly)
     vcsRoot(vcsroot)
     vcsRoot(LocalizedPDFs)
+    vcsRoot(UpgradeDiffs)
 
     template(Deploy)
     template(BuildDocSiteOutputFromDita)
@@ -66,6 +67,15 @@ object vcsroot : GitVcsRoot({
 object LocalizedPDFs : GitVcsRoot({
     name = "Localization PDFs"
     url = "ssh://git@stash.guidewire.com/docsources/localization-pdfs.git"
+    branch = "refs/heads/main"
+    authMethod = uploadedKey {
+        uploadedKey = "sys-doc.rsa"
+    }
+})
+
+object UpgradeDiffs : GitVcsRoot({
+    name = "Upgrade Diffs"
+    url = "ssh://git@stash.guidewire.com/docsources/upgradediffs.git"
     branch = "refs/heads/main"
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
@@ -1212,6 +1222,106 @@ object TestLionPageBuilder : BuildType({
 
 })
 
+object PublishUpgradeDiffsPageBuilderDockerImage : BuildType({
+    name = "Publish UpgradeDiffs Page Builder image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish UpgradeDiffs Page Builder image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/upgradediffs_page_builder
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:apps/upgradediffs_page_builder/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestUpgradeDiffsPageBuilder) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestUpgradeDiffsPageBuilder : BuildType({
+    name = "Test UpgradeDiffs Page Builder"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for UpgradeDiffs Page Builder"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/upgradediffs_page_builder
+                ./test_upgradediffs_page_builder.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/upgradediffs_page_builder/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object DeployServerConfig : BuildType({
     name = "Deploy server config"
 
@@ -1293,6 +1403,9 @@ object DeployFrontend : BuildType({
         text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
         text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
         text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
+        text("UPGRADEDIFFS_SOURCES_ROOT", "upgradediffs-src", display = ParameterDisplay.HIDDEN)
+        text("env.UPGRADEDIFFS_DOCS_SRC", "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
+        text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
             "dev",
@@ -1310,6 +1423,11 @@ object DeployFrontend : BuildType({
 
     vcs {
         root(LocalizedPDFs, "+:. => %LION_SOURCES_ROOT%")
+        cleanCheckout = true
+    }
+
+    vcs {
+        root(UpgradeDiffs, "+:. => %UPGRADEDIFFS_SOURCES_ROOT%")
         cleanCheckout = true
     }
 
@@ -1356,6 +1474,36 @@ object DeployFrontend : BuildType({
             """.trimIndent()
         }
         script {
+            name = "Generate upgrade diffs page configurations"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                upgradediffs_page_builder
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+        script {
+            name = "Copy upgrade diffs to the S3 bucket"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
+                  export DEPLOY_ENV=prod
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                fi
+                
+                aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs --exclude ".git/*" --delete
+            """.trimIndent()
+        }
+        script {
             name = "Build pages"
             scriptContent = """
                 #!/bin/bash
@@ -1399,6 +1547,15 @@ object DeployFrontend : BuildType({
             triggerRules = """
                 +:root=${LocalizedPDFs.id}:**
                 +:root=${vcsroot.id}:apps/lion_page_builder/**
+                +:root=${vcsroot.id}:frontend/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:root=${UpgradeDiffs.id}:**
+                +:root=${vcsroot.id}:apps/upgradediffs_page_builder/**
                 +:root=${vcsroot.id}:frontend/**
                 -:user=doctools:**
             """.trimIndent()
@@ -1657,6 +1814,7 @@ object Testing : Project({
     buildType(TestDocCrawler)
     buildType(TestFlailSsg)
     buildType(TestLionPageBuilder)
+    buildType(TestUpgradeDiffsPageBuilder)
 })
 
 object Deployment : Project({
@@ -1667,6 +1825,7 @@ object Deployment : Project({
     buildType(PublishIndexCleanerDockerImage)
     buildType(PublishFlailSsgDockerImage)
     buildType(PublishLionPageBuilderDockerImage)
+    buildType(PublishUpgradeDiffsPageBuilderDockerImage)
     buildType(PublishSitemapGeneratorDockerImage)
     buildType(DeployS3Ingress)
     buildType(DeploySearchService)
