@@ -1239,6 +1239,7 @@ object PublishUpgradeDiffsPageBuilderDockerImage : BuildType({
             scriptContent = """
                 set -xe
                 cd apps/upgradediffs_page_builder
+                chmod 777 ./publish_docker.sh
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
