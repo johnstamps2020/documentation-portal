@@ -244,6 +244,21 @@
       "public": false
     },
     {
+      "id": "storybooklearningmissions",
+      "title": "Jutro Storybook Preview for Learning Missions",
+      "url": "jutro/storybook/preview",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["preview"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
+    },
+    {
       "id": "jutronext",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/next",

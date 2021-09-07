@@ -91,6 +91,7 @@ async function getAllRecords() {
   try {
     const result = await elasticClient.search({
       index: indexName,
+      size: 1000,
       body: {
         query: {
           match_all: {},
@@ -108,6 +109,7 @@ async function getRecordsByObjectId(objectId) {
   try {
     const result = await elasticClient.search({
       index: indexName,
+      size: 1000,
       body: {
         query: {
           match: {
@@ -127,7 +129,7 @@ async function getRecordsByActorMbox(actorMbox) {
   try {
     const result = await elasticClient.search({
       index: indexName,
-      size: 100,
+      size: 1000,
       body: {
         query: {
           match: {
