@@ -1405,7 +1405,7 @@ object DeployFrontend : BuildType({
         text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
         text("UPGRADEDIFFS_SOURCES_ROOT", "upgradediffs-src", display = ParameterDisplay.HIDDEN)
         text("env.UPGRADEDIFFS_DOCS_SRC", "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
-        text("env.UPGRADE_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
+        text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
             "dev",
