@@ -349,6 +349,10 @@ div.items {
   background-color: hsl(0, 0%, 100%);
 }
 
+.upgradediffs .productFamily {
+  height: 2.5em;
+}
+
 .productFamily > a {
   display: flex;
   justify-content: center;
@@ -572,6 +576,10 @@ div.pageHero {
 }
 
 .l10n #platformToggle {
+  display: none;
+}
+
+.upgradediffs #platformToggle {
   display: none;
 }
 
