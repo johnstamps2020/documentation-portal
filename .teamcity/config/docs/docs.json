@@ -8695,6 +8695,22 @@
       "public": false
     },
     {
+      "id": "isbcclouddraftdataarchiving",
+      "title": "Globalization",
+      "url": "cloud/bc/latest/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isbcclouddraftglobal",
       "title": "Globalization",
       "url": "cloud/bc/latest/global",
@@ -8954,6 +8970,22 @@
       "id": "isccclouddraftconfig",
       "title": "Configuration",
       "url": "cloud/cc/latest/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isccclouddraftdataarchiving",
+      "title": "Globalization",
+      "url": "cloud/cc/latest/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
@@ -9274,6 +9306,22 @@
       "id": "ispcclouddraftconfig",
       "title": "Configuration",
       "url": "cloud/pc/latest/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispcclouddraftdataarchiving",
+      "title": "Globalization",
+      "url": "cloud/pc/latest/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],

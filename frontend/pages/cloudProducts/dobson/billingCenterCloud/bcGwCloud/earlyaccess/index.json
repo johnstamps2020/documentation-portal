@@ -101,6 +101,10 @@
         {
           "label": "Integration",
           "id": "isbccloudeainteg"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isbccloudeadataarchiving"
         }
       ]
     },

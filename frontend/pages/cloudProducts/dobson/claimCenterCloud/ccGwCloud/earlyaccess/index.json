@@ -109,6 +109,10 @@
         {
           "label": "REST API Framework",
           "id": "iscccloudearestapifw"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "iscccloudeadataarchiving"
         }
       ]
     },

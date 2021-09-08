@@ -121,6 +121,10 @@
         {
           "label": "REST API Framework",
           "id": "ispccloudearestapifw"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispccloudeadataarchiving"
         }
       ]
     },
