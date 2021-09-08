@@ -125,6 +125,10 @@
         {
           "label": "REST API Client",
           "id": "isdraftrestapiclientguide"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isbcclouddraftdataarchiving"
         }
       ]
     },

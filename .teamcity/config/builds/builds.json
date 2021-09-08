@@ -3100,6 +3100,14 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "isbcclouddraftdataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "cloudisglobaldraftsrc",
       "docId": "isbcclouddraftglobal",
@@ -3259,6 +3267,14 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "cloudisconfigdraftsrc",
       "docId": "isccclouddraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "isccclouddraftdataarchiving",
       "indexRedirect": true
     },
     {
@@ -3436,6 +3452,14 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "ispcclouddraftdataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "cloudisglobaldraftsrc",
       "docId": "ispcclouddraftglobal",
@@ -3608,6 +3632,14 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "isbccloudeadataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "cloudisglobaldraftsrc",
       "docId": "isbccloudeaglobal",
@@ -3719,6 +3751,14 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "cloudisconfigdraftsrc",
       "docId": "iscccloudeaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "iscccloudeadataarchiving",
       "indexRedirect": true
     },
     {
@@ -3843,6 +3883,14 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "cloudisconfigdraftsrc",
       "docId": "ispccloudeaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "ispccloudeadataarchiving",
       "indexRedirect": true
     },
     {
@@ -5619,11 +5667,6 @@
       "buildType": "yarn",
       "srcId": "easyguidesrc",
       "docId": "easyguide"
-    },
-    {
-      "buildType": "yarn",
-      "srcId": "upgradediffssrc",
-      "docId": "upgradediffs"
     },
     {
       "buildType": "yarn",

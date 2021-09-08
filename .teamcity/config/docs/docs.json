@@ -8695,6 +8695,22 @@
       "public": false
     },
     {
+      "id": "isbcclouddraftdataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/bc/latest/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isbcclouddraftglobal",
       "title": "Globalization",
       "url": "cloud/bc/latest/global",
@@ -8960,6 +8976,22 @@
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isccclouddraftdataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/cc/latest/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9280,6 +9312,22 @@
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispcclouddraftdataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/pc/latest/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9639,6 +9687,22 @@
       "public": false
     },
     {
+      "id": "isbccloudeadataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/bc/ea/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "isbccloudeaglobal",
       "title": "Globalization",
       "url": "cloud/bc/ea/global",
@@ -9840,6 +9904,22 @@
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudeadataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/cc/ea/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10080,6 +10160,22 @@
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispccloudeadataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/pc/ea/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -13374,20 +13470,6 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["EasyGuide"],
-        "version": ["latest"]
-      },
-      "displayOnLandingPages": false,
-      "public": false,
-      "indexForSearch": false,
-      "environments": ["dev", "int", "staging", "prod"]
-    },
-    {
-      "id": "upgradediffs",
-      "title": "UpgradeDiffs",
-      "url": "upgradediffs",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["UpgradeDiffs"],
         "version": ["latest"]
       },
       "displayOnLandingPages": false,
