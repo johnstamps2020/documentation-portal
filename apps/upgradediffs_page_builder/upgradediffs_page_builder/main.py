@@ -23,9 +23,9 @@ def get_sibling_paths(path: Path) -> []:
 def write_top_index(dirs: [], docs_output_path: Path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
-        "title": "Upgrade Diffs",
+        "title": "Upgrade Diff Reports",
         "template": "page.j2",
-        "class": "threeCards upgradediffs",
+        "class": "twoCards upgradediffs upgradediffs-products",
         "items": []
     }
 
