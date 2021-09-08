@@ -13476,6 +13476,20 @@
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "learninganalytics",
+      "title": "Learning Analytics",
+      "url": "learning-analytics",
+      "metadata": {
+        "product": ["LRS"],
+        "platform": ["Cloud"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
     }
   ]
 }
