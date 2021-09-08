@@ -353,6 +353,10 @@ div.items {
   height: 2.5em;
 }
 
+.upgradediffs-products .productFamily {
+  min-width: 400px;
+}
+
 .productFamily > a {
   display: flex;
   justify-content: center;

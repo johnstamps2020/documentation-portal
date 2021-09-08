@@ -25,7 +25,7 @@ def write_top_index(dirs: [], docs_output_path: Path):
         "$schema": "/frontend/page-schema.json",
         "title": "Upgrade Diff Reports",
         "template": "page.j2",
-        "class": "threeCards upgradediffs",
+        "class": "twoCards upgradediffs upgradediffs-products",
         "items": []
     }
 
