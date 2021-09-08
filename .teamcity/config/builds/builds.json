@@ -5661,6 +5661,11 @@
       "srcId": "writingwithgitsrc",
       "docId": "writingwithgit",
       "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "learninganalyticssrc",
+      "docId": "learninganalytics"
     }
   ]
 }
