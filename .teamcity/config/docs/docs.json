@@ -8696,14 +8696,14 @@
     },
     {
       "id": "isbcclouddraftdataarchiving",
-      "title": "Globalization",
+      "title": "Data Archiving",
       "url": "cloud/bc/latest/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Configuration"]
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -8984,14 +8984,14 @@
     },
     {
       "id": "isccclouddraftdataarchiving",
-      "title": "Globalization",
+      "title": "Data Archiving",
       "url": "cloud/cc/latest/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Configuration"]
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9320,14 +9320,14 @@
     },
     {
       "id": "ispcclouddraftdataarchiving",
-      "title": "Globalization",
+      "title": "Data Archiving",
       "url": "cloud/pc/latest/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Configuration"]
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9688,14 +9688,14 @@
     },
     {
       "id": "isbccloudeadataarchiving",
-      "title": "Globalization",
+      "title": "Data Archiving",
       "url": "cloud/bc/ea/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
-        "subject": ["Configuration"]
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -9912,14 +9912,14 @@
     },
     {
       "id": "iscccloudeadataarchiving",
-      "title": "Globalization",
+      "title": "Data Archiving",
       "url": "cloud/cc/ea/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
-        "subject": ["Configuration"]
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -10168,14 +10168,14 @@
     },
     {
       "id": "ispccloudeadataarchiving",
-      "title": "Globalization",
+      "title": "Data Archiving",
       "url": "cloud/pc/ea/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["earlyaccess"],
         "release": ["Dobson"],
-        "subject": ["Configuration"]
+        "subject": ["Integration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
