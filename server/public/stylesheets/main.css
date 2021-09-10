@@ -806,7 +806,7 @@ div.pageHero {
 .checkboxRowContainer {
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   color: var(--clr-GW-BLACK);
   margin: 8px 0;
@@ -814,6 +814,10 @@ div.pageHero {
 
 .filterCheckbox {
   cursor: pointer;
+}
+
+.filterLabel {
+  line-height: 14px;
 }
 
 .docCount {
