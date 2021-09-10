@@ -350,6 +350,13 @@ async function searchController(req, res, next) {
         }
       }
 
+      let hitsWithUniqueUrls = [];
+      for (const hit of innerHitsToDisplay) {
+        if (!hitsWithUniqueUrls.find(h => h.href === hit.href)) {
+          hitsWithUniqueUrls.push(hit);
+        }
+      }
+
       return {
         href: doc.href,
         score: result._score,
@@ -359,7 +366,7 @@ async function searchController(req, res, next) {
         body: sanitizeTagNames(bodyText),
         bodyPlain: sanitizeTagNames(bodyBlurb),
         docTags: docTags,
-        innerHits: innerHitsToDisplay,
+        innerHits: hitsWithUniqueUrls,
         uniqueHighlightTerms: uniqueHighlightTerms,
       };
     });
