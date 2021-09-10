@@ -1951,6 +1951,7 @@ object HelperObjects {
                                 curl -X POST \
                                     -H "Authorization: Bearer %env.TEAMCITY_API_AUTH_TOKEN%" \
                                     -H "Content-Type: application/json" \
+                                    -H "Accept: application/json" \
                                     -d  "{\"buildType\": { \"id\": \"${'$'}buildId\" }}" \
                                     %env.TEAMCITY_BUILD_QUEUE_URL%
                                 done < <(printf '%s\n' "${'$'}BUILD_IDS")                    
