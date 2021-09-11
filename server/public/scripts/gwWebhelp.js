@@ -531,7 +531,7 @@ async function addFeedbackElements() {
     <span>Was
     this
     page
-    helpful ?
+    helpful? Send us your comments!
 </span>
 <div class="feedbackThumbs">
 <div role="button" aria-label="This topic was helpful" title="This topic was helpful" class="feedbackButtonContainer" onclick="toggleFeedbackForm('positiveFeedback')">

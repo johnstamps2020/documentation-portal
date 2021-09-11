@@ -211,8 +211,17 @@ code,
 kbd,
 pre,
 samp,
-.apiname {
+.apiname,
+.option {
   font-size: 95% !important;
+}
+
+.option {
+  font-family: monospace;
+}
+
+.dt .option {
+  font-family: inherit;
 }
 
 .feedbackFormWrapper.hidden {
