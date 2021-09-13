@@ -2,6 +2,7 @@ import json
 import os
 import re
 from pathlib import Path
+from natsort import natsorted, ns
 
 
 def get_paths(path: Path) -> []:
@@ -53,7 +54,8 @@ def write_index(src_path, output_path, selector_label, generate_links=False):
     }
     sibling_paths = get_sibling_paths(src_path)
     if sibling_paths:
-        sibling_paths.sort()
+        sibling_paths = natsorted(
+            sibling_paths, alg=ns.PATH, reverse=True)
         index_json.update(
             {"selector":
                 {
@@ -72,7 +74,8 @@ def write_index(src_path, output_path, selector_label, generate_links=False):
             )
 
     child_paths = get_paths(src_path)
-    child_paths.sort()
+    child_paths = natsorted(
+        child_paths, alg=ns.PATH, reverse=True)
     for child_path in child_paths:
         if not generate_links:
             index_json["items"].append(
@@ -120,14 +123,9 @@ def empty_tree(path: Path):
             child.rmdir()
 
 
-# TODO: by default check for PDFs in the folders to avoid creating
-#       configs that go nowhere. Give an option to ignore that as
-#       it is useful for testing to build more.
 # TODO: add readme.md
-# TODO: add logging, including errors for undefined locales or product codes
+# TODO: add logging
 # TODO: add strict mode
-# TODO: catch empty PDF title and use file name instead or throw error
-# TODO: default output path if not specified
 
 
 def main():
