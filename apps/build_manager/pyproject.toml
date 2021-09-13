@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "build_manager"
+version = "0.1.0"
+description = "A tool for managing builds through the build API"
+authors = ["Guidewire <doctools@guidewire.com>"]
+repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Proprietary",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.scripts]
+build_manager = "build_manager.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.26.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
