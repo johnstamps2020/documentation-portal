@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 
 from PyPDF2 import PdfFileReader
+from natsort import natsorted, ns
 
 locale_codes_labels = {
     'de-DE': {'label': 'Deutsch',
@@ -203,7 +204,8 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
             )
 
     version_paths = get_paths(product_path)
-    version_paths.sort(reverse=True)
+    version_paths = natsorted(
+        version_paths, alg=ns.PATH, reverse=True)
     for version_path in version_paths:
         version_json = {
             "label": version_path.name,

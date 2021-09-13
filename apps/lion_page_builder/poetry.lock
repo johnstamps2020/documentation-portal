@@ -1,4 +1,16 @@
 [[package]]
+name = "natsort"
+version = "7.1.1"
+description = "Simple yet flexible natural sorting in Python."
+category = "main"
+optional = false
+python-versions = ">=3.4"
+
+[package.extras]
+fast = ["fastnumbers (>=2.0.0)"]
+icu = ["PyICU (>=1.0.0)"]
+
+[[package]]
 name = "pypdf2"
 version = "1.26.0"
 description = "PDF toolkit"
@@ -9,9 +21,13 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "15018f8589d2bd0ae476b2942b3e197998b22950ee1d47596d34644eccd9b8bd"
+content-hash = "6398f4522813e97080b70de78443c308131ffee14af5065cdc4d0d3c990b071c"
 
 [metadata.files]
+natsort = [
+    {file = "natsort-7.1.1-py3-none-any.whl", hash = "sha256:d0f4fc06ca163fa4a5ef638d9bf111c67f65eedcc7920f98dec08e489045b67e"},
+    {file = "natsort-7.1.1.tar.gz", hash = "sha256:00c603a42365830c4722a2eb7663a25919551217ec09a243d3399fa8dd4ac403"},
+]
 pypdf2 = [
     {file = "PyPDF2-1.26.0.tar.gz", hash = "sha256:e28f902f2f0a1603ea95ebe21dff311ef09be3d0f0ef29a3e44a932729564385"},
 ]
