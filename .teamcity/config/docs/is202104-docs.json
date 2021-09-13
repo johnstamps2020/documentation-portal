@@ -1,0 +1,852 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+{
+      "id": "isbc202104releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/202104/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/bc/202104/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104upgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/202104/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104app",
+      "title": "Application Guide",
+      "url": "cloud/bc/202104/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104admin",
+      "title": "Administration",
+      "url": "cloud/bc/202104/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/bc/202104/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104config",
+      "title": "Configuration",
+      "url": "cloud/bc/202104/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104global",
+      "title": "Globalization",
+      "url": "cloud/bc/202104/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104rules",
+      "title": "Rules",
+      "url": "cloud/bc/202104/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104integ",
+      "title": "Integration",
+      "url": "cloud/bc/202104/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "is202104gosu",
+      "title": "Gosu Reference",
+      "url": "cloud/is/202104/gosu",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/bc/202104/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbc202104install",
+      "title": "Installation",
+      "url": "cloud/bc/202104/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/202104/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/cc/202104/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104upgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/202104/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104app",
+      "title": "Application Guide",
+      "url": "cloud/cc/202104/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104admin",
+      "title": "Administration",
+      "url": "cloud/cc/202104/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/cc/202104/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104config",
+      "title": "Configuration",
+      "url": "cloud/cc/202104/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104global",
+      "title": "Globalization",
+      "url": "cloud/cc/202104/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104rules",
+      "title": "Rules",
+      "url": "cloud/cc/202104/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104integ",
+      "title": "Integration",
+      "url": "cloud/cc/202104/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/cc/202104/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "iscc202104cloudapica",
+      "title": "Cloud API Authentication",
+      "url": "cloud/cc/202104/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104cloudapicm",
+      "title": "Cloud API ContactManager",
+      "url": "cloud/cc/202104/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202104/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "pc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202104/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "iscc202104testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/cc/202104/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/202104/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscc202104install",
+      "title": "Installation",
+      "url": "cloud/cc/202104/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/pc/202104/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/pc/202104/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104upgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/202104/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104app",
+      "title": "Application Guide",
+      "url": "cloud/pc/202104/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104admin",
+      "title": "Administration",
+      "url": "cloud/pc/202104/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/pc/202104/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104apd",
+      "title": "Advanced Product Designer",
+      "url": "cloud/pc/202104/apd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104config",
+      "title": "Configuration",
+      "url": "cloud/pc/202104/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104global",
+      "title": "Globalization",
+      "url": "cloud/pc/202104/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104rules",
+      "title": "Rules",
+      "url": "cloud/pc/202104/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104pd",
+      "title": "Product Designer",
+      "url": "cloud/pc/202104/pd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104pm",
+      "title": "Product Model",
+      "url": "cloud/pc/202104/productmodel",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104integ",
+      "title": "Integration",
+      "url": "cloud/pc/202104/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/pc/202104/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104cloudapica",
+      "title": "Cloud API Authentication",
+      "url": "cloud/pc/202104/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104cloudapicm",
+      "title": "Cloud API ContactManager",
+      "url": "cloud/pc/202104/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/pc/202104/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/pc/202104/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispc202104install",
+      "title": "Installation",
+      "url": "cloud/pc/202104/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "is202104contact",
+      "title": "Contact Management",
+      "url": "cloud/is/202104/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksapicortina",
+      "title": "API Testing",
+      "url": "cloud/testingframeworks/202104/api",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "testingframeworksuicortina",
+      "title": "User Interface Testing",
+      "url": "cloud/testingframeworks/202104/ui",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
