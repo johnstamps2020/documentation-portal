@@ -76,7 +76,7 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
     time.sleep(wait_seconds)
     logging.info('Checking the status of started builds...')
     unsuccessful_builds = []
-    wait_times = [wait_seconds]
+    wait_times = [0]
     for build in updated_builds_info:
         build_id = build['id']
         full_build_href = urllib.parse.urljoin(teamcity_build_queue_url, build['href'])
@@ -91,8 +91,9 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
             build_running_info = build_info['running-info']
             estimated_time_left_seconds = int(build_running_info['estimatedTotalSeconds']) - int(
                 build_running_info['elapsedSeconds'])
-            wait_times.append(estimated_time_left_seconds)
-            logging.info(f'Estimated time left for build {build_id}: {estimated_time_left_seconds} s')
+            if estimated_time_left_seconds > 0:
+                wait_times.append(estimated_time_left_seconds)
+                logging.info(f'Estimated time left for build {build_id}: {estimated_time_left_seconds} s')
         elif build_info['state'] == 'queued':
             wait_times.append(10)
             logging.info(f'Build {build_id} is waiting in the queue.')
