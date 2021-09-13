@@ -1,7 +1,7 @@
 {
   "$schema": "../config-schema.json",
   "sources": [
-      {
+    {
       "id": "isupgradeguide202104src",
       "title": "InsuranceSuite Upgrade Guide 2021.04",
       "sourceType": "git",
@@ -325,4 +325,5 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
     }
-]
+  ]
+}

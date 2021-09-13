@@ -1,7 +1,7 @@
 {
   "$schema": "../config-schema.json",
   "builds": [
-      {
+    {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-cortina.ditamap",
@@ -445,4 +445,5 @@
       "docId": "testingframeworksuicortina",
       "indexRedirect": true
     }
-]
+  ]
+}
