@@ -1,7 +1,7 @@
 {
   "$schema": "../config-schema.json",
-  "builds": [
-{
+  "docs": [
+    {
       "id": "isbc202104releasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/202104/releasenotes",
