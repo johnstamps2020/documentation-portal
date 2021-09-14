@@ -1,0 +1,293 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dhcloudrncortina",
+      "title": "Release Notes",
+      "url": "cloud/dh/202104/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudproductcortina",
+      "title": "Product Guide",
+      "url": "cloud/dh/202104/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudinstallcortina",
+      "title": "Installation Guide",
+      "url": "cloud/dh/202104/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudupgradecortina",
+      "title": "Upgrade Guide",
+      "url": "cloud/dh/202104/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudconfigcortina",
+      "title": "Configuration Guide",
+      "url": "cloud/dh/202104/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhclouddataspeccortina",
+      "title": "Data Specifications Guide",
+      "url": "cloud/dh/202104/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhcloudadmincortina",
+      "title": "Administration Guide",
+      "url": "cloud/dh/202104/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhclouddevrefcortina",
+      "title": "Developer Reference",
+      "url": "cloud/dh/202104/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudrncortina",
+      "title": "Release Notes",
+      "url": "cloud/ic/202104/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudproductcortina",
+      "title": "Product Guide",
+      "url": "cloud/ic/202104/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudinstallcortina",
+      "title": "Installation Guide",
+      "url": "cloud/ic/202104/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudupgradecortina",
+      "title": "Upgrade Guide",
+      "url": "cloud/ic/202104/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudconfigcortina",
+      "title": "Configuration Guide",
+      "url": "cloud/ic/202104/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icclouddataspeccortina",
+      "title": "Data Specifications Guide",
+      "url": "cloud/ic/202104/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudadmincortina",
+      "title": "Administration Guide",
+      "url": "cloud/ic/202104/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudbiappcortina",
+      "title": "BI Applications Guide",
+      "url": "cloud/ic/202104/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iccloudreportscortina",
+      "title": "Reports Guide",
+      "url": "cloud/ic/202104/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icclouddevrefcortina",
+      "title": "Developer Reference",
+      "url": "cloud/ic/202104/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
