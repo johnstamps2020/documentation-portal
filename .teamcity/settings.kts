@@ -638,7 +638,7 @@ object PublishIndexCleanerDockerImage : BuildType({
 })
 
 object PublishSitemapGeneratorDockerImage : BuildType({
-    name = "Publish the image for Sitemap Generator"
+    name = "Publish Sitemap Generator image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
@@ -3949,7 +3949,7 @@ object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false
 object BuildDocSiteAndLocalOutputFromDita : BuildOutputFromDita(createZipPackage = true)
 
 object PublishDocCrawlerDockerImage : BuildType({
-    name = "Publish Doc Crawler docker image"
+    name = "Publish Doc Crawler image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
