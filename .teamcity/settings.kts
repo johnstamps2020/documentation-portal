@@ -2169,7 +2169,12 @@ object HelperObjects {
             }
 
             params {
-                text("env.BUILD_API_URL", "https://adminserver.dev.ccs.guidewire.net/builds")
+                text("env.CHANGED_FILES_FILE", "%system.teamcity.build.changedFiles.file%", allowEmpty = false)
+                text(
+                    "env.BUILD_API_URL",
+                    "https://adminserver.dev.ccs.guidewire.net/builds/resources",
+                    allowEmpty = false
+                )
                 password(
                     "env.ADMIN_SERVER_API_KEY",
                     "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
@@ -2199,43 +2204,15 @@ object HelperObjects {
 
             steps {
                 script {
-                    name = "Trigger builds with modified resources"
-                    id = "TRIGGER_BUILDS_WITH_MODIFIED_RESOURCES"
+                    name = "Run the build manager"
                     scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            export RESOURCES=""
-                            while IFS=":" read -r relative_file_path change_type revision; do
-                              export RESOURCES+="\"${'$'}{relative_file_path}\", "
-                            done <"%system.teamcity.build.changedFiles.file%"
-                            
-                            export RESOURCES=$(sed 's/,$//g' <<< ${'$'}RESOURCES)
-            
-                            export RESPONSE_FILE="%teamcity.build.workingDir%/response.json"
-                            
-                            curl -X GET --location "%env.BUILD_API_URL%/resources" \
-                                -H "Content-Type: application/json" \
-                                -H "X-API-Key: %env.ADMIN_SERVER_API_KEY%" \
-                                -d "{ \"gitUrl\": \"%env.GIT_URL%\", \"gitBranch\": \"%env.GIT_BUILD_BRANCH%\", \"resources\": [ ${'$'}RESOURCES ] }" > ${'$'}RESPONSE_FILE
+                #!/bin/bash
+                set -xe
                                 
-                            BUILD_IDS=$(jq -r '.[] | .build_id' ${'$'}RESPONSE_FILE)
-                            
-                            if [[ "${'$'}BUILD_IDS" == "" ]]; then
-                                echo "No build IDs were found. Nothing to do here."
-                                exit
-                            else
-                                while IFS= read -r buildId
-                                do
-                                curl -X POST \
-                                    -H "Authorization: Bearer %env.TEAMCITY_API_AUTH_TOKEN%" \
-                                    -H "Content-Type: application/json" \
-                                    -H "Accept: application/json" \
-                                    -d  "{\"buildType\": { \"id\": \"${'$'}buildId\" }}" \
-                                    %env.TEAMCITY_BUILD_QUEUE_URL%
-                                done < <(printf '%s\n' "${'$'}BUILD_IDS")                    
-                            fi                           
-                    """.trimIndent()
+                build_manager
+            """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
             }
 
