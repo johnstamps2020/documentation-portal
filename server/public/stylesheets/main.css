@@ -813,6 +813,7 @@ div.pageHero {
 }
 
 .filterCheckbox {
+  height: 14px;
   cursor: pointer;
 }
 
@@ -824,6 +825,7 @@ div.pageHero {
   width: fit-content;
   margin-left: auto;
   color: var(--clr-GW-BLACKISH);
+  line-height: 14px;
 }
 
 .resultWrapper {
