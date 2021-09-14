@@ -638,7 +638,7 @@ object PublishIndexCleanerDockerImage : BuildType({
 })
 
 object PublishSitemapGeneratorDockerImage : BuildType({
-    name = "Publish the image for Sitemap Generator"
+    name = "Publish Sitemap Generator image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
@@ -1068,7 +1068,7 @@ object TestBuildManager : BuildType({
                 cd apps/build_manager
                 ./test_build_manager.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
@@ -3949,7 +3949,7 @@ object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false
 object BuildDocSiteAndLocalOutputFromDita : BuildOutputFromDita(createZipPackage = true)
 
 object PublishDocCrawlerDockerImage : BuildType({
-    name = "Publish Doc Crawler docker image"
+    name = "Publish Doc Crawler image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
