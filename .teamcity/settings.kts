@@ -1001,6 +1001,107 @@ object TestConfigDeployer : BuildType({
 
 })
 
+object PublishBuildManagerDockerImage : BuildType({
+    name = "Publish Build Manager image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Build Manager image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/build_manager
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:.teamcity/**/*.*
+                +:apps/build_manager/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestBuildManager) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestBuildManager : BuildType({
+    name = "Test Build Manager"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for build manager"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/build_manager
+                ./test_build_manager.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/build_manager/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object PublishFlailSsgDockerImage : BuildType({
     name = "Publish Flail SSG image"
 
@@ -1408,7 +1509,11 @@ object DeployFrontend : BuildType({
         text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
         text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
         text("UPGRADEDIFFS_SOURCES_ROOT", "upgradediffs-src", display = ParameterDisplay.HIDDEN)
-        text("env.UPGRADEDIFFS_DOCS_SRC", "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%/src", display = ParameterDisplay.HIDDEN)
+        text(
+            "env.UPGRADEDIFFS_DOCS_SRC",
+            "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%/src",
+            display = ParameterDisplay.HIDDEN
+        )
         text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
@@ -1816,6 +1921,7 @@ object Testing : Project({
     buildType(TestSettingsKts)
     buildType(TestConfig)
     buildType(TestDocCrawler)
+    buildType(TestBuildManager)
     buildType(TestFlailSsg)
     buildType(TestLionPageBuilder)
     buildType(TestUpgradeDiffsPageBuilder)
@@ -1827,6 +1933,7 @@ object Deployment : Project({
     buildType(PublishConfigDeployerDockerImage)
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
+    buildType(PublishBuildManagerDockerImage)
     buildType(PublishFlailSsgDockerImage)
     buildType(PublishLionPageBuilderDockerImage)
     buildType(PublishUpgradeDiffsPageBuilderDockerImage)
@@ -2068,8 +2175,16 @@ object HelperObjects {
                     "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
                     display = ParameterDisplay.HIDDEN
                 )
-                text("env.TEAMCITY_BUILD_QUEUE_URL", "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue", allowEmpty = false)
-                password("env.TEAMCITY_API_AUTH_TOKEN", "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530", display = ParameterDisplay.HIDDEN)
+                text(
+                    "env.TEAMCITY_BUILD_QUEUE_URL",
+                    "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue",
+                    allowEmpty = false
+                )
+                password(
+                    "env.TEAMCITY_API_AUTH_TOKEN",
+                    "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530",
+                    display = ParameterDisplay.HIDDEN
+                )
                 text(
                     "env.GIT_URL",
                     "%vcsroot.$vcs_root_id.url%",
@@ -2748,7 +2863,8 @@ object HelperObjects {
 
         val buildType = if (build.has("buildType")) build.getString("buildType") else ""
         val nodeImageVersion = if (build.has("nodeImageVersion")) build.getString("nodeImageVersion") else null
-        val yarnBuildCustomCommand = if (build.has("yarnBuildCustomCommand")) build.getString("yarnBuildCustomCommand") else null
+        val yarnBuildCustomCommand =
+            if (build.has("yarnBuildCustomCommand")) build.getString("yarnBuildCustomCommand") else null
         val outputPath = if (build.has("outputPath")) build.getString("outputPath") else ""
         val zipFilename = if (build.has("zipFilename")) build.getString("zipFilename") else null
         val filter = if (build.has("filter")) build.getString("filter") else ""

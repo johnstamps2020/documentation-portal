@@ -2,12 +2,11 @@ import copy
 import json
 import logging
 import os
+import time
 import urllib.parse
-
-import requests
 from pathlib import Path
 
-import time
+import requests
 
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 

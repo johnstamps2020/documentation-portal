@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "build_manager"
-version = "0.1.0"
+version = "1.0.0"
 description = "A tool for managing builds through the build API"
 authors = ["Guidewire <doctools@guidewire.com>"]
+readme = "README.md"
 repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
 classifiers = [
     "Programming Language :: Python :: 3",
