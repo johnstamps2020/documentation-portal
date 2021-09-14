@@ -2216,10 +2216,20 @@ object HelperObjects {
                 }
             }
 
+            features {
+                dockerSupport {
+                    id = "TEMPLATE_BUILD_EXT_1"
+                    loginToRegistry = on {
+                        dockerRegistryId = "PROJECT_EXT_155"
+                    }
+                }
+            }
+
             triggers {
                 vcs {
                 }
             }
+
         })
 
         val builds = mutableListOf<BuildType>()
