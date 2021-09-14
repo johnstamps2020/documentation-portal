@@ -1,0 +1,163 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmrndraftsrc",
+      "docId": "dhonpremdraftrn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmproductdraftsrc",
+      "docId": "dhonpremdraftproduct",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dminstalldraftsrc",
+      "docId": "dhonpremdraftinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmupgradedraftsrc",
+      "docId": "dhonpremdraftupgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmconfigdraftsrc",
+      "docId": "dhonpremdraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmdataspecdraftsrc",
+      "docId": "dhonpremdraftdataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmadmindraftsrc",
+      "docId": "dhonpremdraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-DRAFT.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dmdevrefdraftsrc",
+      "docId": "dhonpremdraftdevref",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dmrndraftsrc",
+      "docId": "iconpremdraftrn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Banff-10.4/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dmproductdraftsrc",
+      "docId": "iconpremdraftproduct",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dminstalldraftsrc",
+      "docId": "iconpremdraftinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dmupgradedraftsrc",
+      "docId": "iconpremdraftupgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dmconfigdraftsrc",
+      "docId": "iconpremdraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dmdataspecdraftsrc",
+      "docId": "iconpremdraftdataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dmadmindraftsrc",
+      "docId": "iconpremdraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "icbiappdraftsrc",
+      "docId": "iconpremdraftbiapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "icreportsdraftsrc",
+      "docId": "iconpremdraftreports",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-DRAFT.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dmdevrefdraftsrc",
+      "docId": "iconpremdraftdevref",
+      "indexRedirect": true
+    }
+  ]
+}
