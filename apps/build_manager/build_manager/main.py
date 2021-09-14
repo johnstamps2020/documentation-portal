@@ -9,7 +9,7 @@ from pathlib import Path
 
 import requests
 
-logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
+logging.basicConfig(format='%(message)s', level=logging.INFO)
 
 
 def get_changed_files():
@@ -55,8 +55,8 @@ def start_builds(build_ids: list):
         started_builds_ids.append(
             {
                 'id': response_json['id'],
-                'href': response_json['href']
-
+                'href': response_json['href'],
+                'buildType': response_json['buildType']
             }
         )
     return started_builds_ids
@@ -74,29 +74,35 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
     updated_builds_info = copy.deepcopy(builds_info)
     logging.info(f'Wait time before next check: {wait_seconds} s')
     time.sleep(wait_seconds)
-    logging.info('Checking the status of started builds...')
+    logging.info('Checking the status of started builds...\n')
     unsuccessful_builds = []
     wait_times = [0]
     for build in updated_builds_info:
         build_id = build['id']
+        build_type = build['buildType']
         full_build_href = urllib.parse.urljoin(teamcity_build_queue_url, build['href'])
+        logging.info(f'Build ID: {build_id}'
+                     f'\nProject name: {build_type["projectName"]}'
+                     f'\nProject url: {build_type["webUrl"]}')
         response = requests.get(full_build_href, headers=headers)
         build_info = response.json()
         if build_info['state'] == 'finished':
             updated_builds_info.remove(build)
             if build_info['status'].casefold() != 'success':
                 unsuccessful_builds.append(full_build_href)
-            logging.info(f'Build {build_id} finished.')
+            logging.info(f'Status: FINISHED.')
         elif build_info['state'] == 'running':
             build_running_info = build_info['running-info']
             estimated_time_left_seconds = int(build_running_info['estimatedTotalSeconds']) - int(
                 build_running_info['elapsedSeconds'])
             if estimated_time_left_seconds > 0:
                 wait_times.append(estimated_time_left_seconds)
-                logging.info(f'Estimated time left for build {build_id}: {estimated_time_left_seconds} s')
+                logging.info(f'Status: RUNNING (estimated time to finish: {estimated_time_left_seconds} s)')
         elif build_info['state'] == 'queued':
             wait_times.append(10)
-            logging.info(f'Build {build_id} is waiting in the queue.')
+            logging.info(f'Status: WAITING IN THE QUEUE.')
+        logging.info('\n')
+
     if updated_builds_info:
         coordinate_builds(updated_builds_info, max(wait_times))
     else:
