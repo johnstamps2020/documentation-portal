@@ -75,51 +75,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Draft.ditaval",
-      "root": "_supermap-10x-active.ditamap",
-      "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedbcxufesxuwl"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-OnPrem-Draft.ditaval",
-      "root": "_supermap-10x-active.ditamap",
-      "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedccxbvqtoakg"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-OnPrem-Draft.ditaval",
-      "root": "_supermap-10x-active.ditamap",
-      "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedpcxrwjcdamu"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Self-managed-Draft.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
-      "docId": "selfmanagedbcupgradeguide10x"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Self-managed-Draft.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
-      "docId": "selfmanagedccupgradeguide10x"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Self-managed-Draft.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
-      "docId": "selfmanagedpcupgradeguide10x"
-    },
-    {
-      "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Self-managed-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
@@ -171,30 +126,6 @@
       "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_superbook.ditamap",
       "indexRedirect": true,
-      "srcId": "isconfigupgradetools1xsrc",
-      "docId": "selfmanagedbcupgradetools1x"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-OnPrem-Draft.ditaval",
-      "root": "_superbook.ditamap",
-      "indexRedirect": true,
-      "srcId": "isconfigupgradetools1xsrc",
-      "docId": "selfmanagedccupgradetools1x"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-OnPrem-Draft.ditaval",
-      "root": "_superbook.ditamap",
-      "indexRedirect": true,
-      "srcId": "isconfigupgradetools1xsrc",
-      "docId": "selfmanagedpcupgradetools1x"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Draft.ditaval",
-      "root": "_superbook.ditamap",
-      "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
       "docId": "selfmanagedbcupgradetools1450"
     },
@@ -213,27 +144,6 @@
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
       "docId": "selfmanagedpcupgradetools1450"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Draft.ditaval",
-      "root": "_supermap-9x-active.ditamap",
-      "srcId": "exportisonprem9",
-      "docId": "selfmanagedbcxcoxibeoa"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-OnPrem-Draft.ditaval",
-      "root": "_supermap-9x-active.ditamap",
-      "srcId": "exportisonprem9",
-      "docId": "selfmanagedccxgfurvaqu"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-OnPrem-Draft.ditaval",
-      "root": "_supermap-9x-active.ditamap",
-      "srcId": "exportisonprem9",
-      "docId": "selfmanagedpcxxbkttzbb"
     },
     {
       "buildType": "dita",
