@@ -1068,7 +1068,7 @@ object TestBuildManager : BuildType({
                 cd apps/build_manager
                 ./test_build_manager.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
