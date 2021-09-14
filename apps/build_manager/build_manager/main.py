@@ -2,6 +2,7 @@ import copy
 import json
 import logging
 import os
+import sys
 import time
 import urllib.parse
 from pathlib import Path
@@ -107,12 +108,17 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
 
 def main():
     changed_files = get_changed_files()
-    builds_to_start = get_build_ids(changed_files)
-    if builds_to_start:
-        started_builds = start_builds(builds_to_start)
-        coordinate_builds(started_builds)
+    if changed_files:
+        builds_to_start = get_build_ids(changed_files)
+        if builds_to_start:
+            started_builds = start_builds(builds_to_start)
+            coordinate_builds(started_builds)
+        else:
+            logging.info('No build IDs found for the detected changes. Nothing more to do here.')
+            sys.exit(0)
     else:
-        return True
+        logging.info('No changes detected. Nothing more to do here.')
+        sys.exit(0)
 
 
 if __name__ == '__main__':
