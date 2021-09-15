@@ -126,7 +126,7 @@ def coordinate_builds(triggered_builds: list[BuildInfo], failed_builds: list[Bui
         wait_time = max((build_info.estimated_time_to_finish
                          for build_info in running_builds), default=0)
     elif queued_builds:
-        wait_time = 10
+        wait_time = 30
     else:
         wait_time = 0
 
