@@ -81,9 +81,11 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
         build_id = build['id']
         build_type = build['buildType']
         full_build_href = urllib.parse.urljoin(teamcity_build_queue_url, build['href'])
-        logging.info(f'Build ID: {build_id}'
-                     f'\nProject name: {build_type["projectName"]}'
-                     f'\nProject url: {build_type["webUrl"]}')
+        logging.info(f'Triggered build ID: {build_id}'
+                     f'\nBuild configuration info:'
+                     f'\n\tID: {build_type["id"]}'
+                     f'\n\tName: {build_type["projectName"]}'
+                     f'\n\tURL: {build_type["webUrl"]}')
         response = requests.get(full_build_href, headers=headers)
         build_info = response.json()
         build_state = build_info['state']
