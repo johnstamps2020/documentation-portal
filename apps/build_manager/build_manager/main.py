@@ -1,15 +1,25 @@
-import copy
 import json
 import logging
 import os
 import sys
 import time
 import urllib.parse
+from dataclasses import dataclass
 from pathlib import Path
 
 import requests
 
 logging.basicConfig(format='%(message)s', level=logging.INFO)
+
+
+@dataclass
+class BuildInfo:
+    id: str
+    href: str
+    build_type: dict
+    state: str
+    status: str
+    estimated_time_to_finish: int
 
 
 def get_changed_files() -> list:
@@ -35,7 +45,7 @@ def get_build_ids(resources: list) -> list:
     return sorted([build['build_id'] for build in response.json()])
 
 
-def start_builds(build_ids: list):
+def start_builds(build_ids: list[BuildInfo]) -> list[BuildInfo]:
     teamcity_build_queue_url = os.environ['TEAMCITY_BUILD_QUEUE_URL']
     teamcity_api_auth_token = os.environ['TEAMCITY_API_AUTH_TOKEN']
     headers = {
@@ -43,7 +53,7 @@ def start_builds(build_ids: list):
         'Accept': 'application/json',
         'Authorization': f'Bearer {teamcity_api_auth_token}'
     }
-    started_builds_ids = []
+    started_builds = []
     for build_id in build_ids:
         data = {
             'buildType': {
@@ -52,17 +62,19 @@ def start_builds(build_ids: list):
         }
         response = requests.post(teamcity_build_queue_url, headers=headers, data=json.dumps(data))
         response_json = response.json()
-        started_builds_ids.append(
-            {
-                'id': response_json['id'],
-                'href': response_json['href'],
-                'buildType': response_json['buildType']
-            }
+        started_builds.append(BuildInfo(
+            id=response_json['id'],
+            href=response_json['href'],
+            build_type=response_json['buildType'],
+            state='',
+            status='',
+            estimated_time_to_finish=0
         )
-    return started_builds_ids
+        )
+    return started_builds
 
 
-def coordinate_builds(builds_info: list[dict], unsuccessful_builds: list):
+def update_builds_info(builds_to_check: list[BuildInfo]) -> list[BuildInfo]:
     teamcity_build_queue_url = os.environ['TEAMCITY_BUILD_QUEUE_URL']
     teamcity_api_auth_token = os.environ['TEAMCITY_API_AUTH_TOKEN']
     headers = {
@@ -70,49 +82,69 @@ def coordinate_builds(builds_info: list[dict], unsuccessful_builds: list):
         'Accept': 'application/json',
         'Authorization': f'Bearer {teamcity_api_auth_token}'
     }
+    checked_builds = []
+    for build in builds_to_check:
+        full_build_href = urllib.parse.urljoin(teamcity_build_queue_url, build.href)
+        response = requests.get(full_build_href, headers=headers)
+        build_info = response.json()
+        build.state = build_info['state']
+        build.status = build_info.get('status', '')
+        if build.state.casefold() == 'running':
+            build_running_info = build_info.get('running-info', None)
+            build.estimated_time_to_finish = abs(int(build_running_info['estimatedTotalSeconds']) - int(
+                build_running_info['elapsedSeconds']))
+        elif build.state.casefold() == 'finished':
+            build.estimated_time_to_finish = 0
+        checked_builds.append(build)
 
-    logging.info('Checking the status of started builds...\n')
-    updated_builds_info = copy.deepcopy(builds_info)
-    wait_times = [0]
-    for build in updated_builds_info:
-        build_id = build['id']
-        build_type = build['buildType']
-        full_build_href = urllib.parse.urljoin(teamcity_build_queue_url, build['href'])
-        logging.info(f'Triggered build ID: {build_id}'
+    return checked_builds
+
+
+def coordinate_builds(triggered_builds: list[BuildInfo], failed_builds: list[BuildInfo]):
+    logging.info('Checking the status of started builds...')
+    triggered_builds_info = update_builds_info(triggered_builds)
+    for triggered_build in triggered_builds_info:
+        build_type = triggered_build.build_type
+        logging.info(f'\nTriggered build ID: {triggered_build.id}'
+                     f'\nStatus: {triggered_build.state.upper()}'
+                     f'\nEstimated time to finish: {triggered_build.estimated_time_to_finish}'
                      f'\nBuild configuration info:'
                      f'\n\tID: {build_type["id"]}'
                      f'\n\tName: {build_type["projectName"]}'
                      f'\n\tURL: {build_type["webUrl"]}')
-        response = requests.get(full_build_href, headers=headers)
-        build_info = response.json()
-        build_state = build_info['state']
-        logging.info(f'Status: {build_state.upper()}.')
-        if build_state == 'finished':
-            updated_builds_info.remove(build)
-            if build_info['status'].casefold() != 'success':
-                unsuccessful_builds.append(full_build_href)
-        elif build_state == 'running':
-            build_running_info = build_info['running-info']
-            estimated_time_left_seconds = int(build_running_info['estimatedTotalSeconds']) - int(
-                build_running_info['elapsedSeconds'])
-            if estimated_time_left_seconds > 0:
-                wait_times.append(estimated_time_left_seconds)
-                logging.info(f'Estimated time to finish: {estimated_time_left_seconds} s)')
-        else:
-            wait_times.append(10)
-        logging.info('\n')
 
-    max_wait_time = max(wait_times)
-    logging.info(f'Wait time before next check: {max_wait_time} s')
-    time.sleep(max_wait_time)
-    if updated_builds_info:
-        coordinate_builds(updated_builds_info, unsuccessful_builds)
+    queued_builds = [build for build in triggered_builds_info if build.state.casefold() == 'queued']
+    running_builds = [build for build in triggered_builds_info if build.state.casefold() == 'running']
+    finished_builds = [build for build in triggered_builds_info if build.state.casefold() == 'finished']
+    unsuccessful_builds = failed_builds + [build for build in triggered_builds_info if
+                                           build.status.casefold() != 'success']
+
+    logging.info(f'\nQueued builds: {len(queued_builds)}'
+                 f'\nRunning builds: {len(running_builds)}'
+                 f'\nFinished builds: {len(finished_builds)}')
+    if running_builds:
+        wait_time = max((build_info.estimated_time_to_finish
+                         for build_info in running_builds), default=0)
+    elif queued_builds:
+        wait_time = 10
+    else:
+        wait_time = 0
+
+    logging.info(f'\nWait time before next check: {wait_time} s')
+    time.sleep(wait_time)
+    if running_builds or queued_builds:
+        coordinate_builds(triggered_builds_info, unsuccessful_builds)
     else:
         logging.info('All builds finished')
         if unsuccessful_builds:
             logging.info(
-                'The following builds did not finish building successfully:\n' + "\n\t".join(unsuccessful_builds))
-        return True
+                '\nThe following builds did not finish building successfully:\n'
+                + "\n\t".join(
+                    b.build_type['webUrl'] for b in unsuccessful_builds
+                )
+            )
+
+        sys.exit(0)
 
 
 def main():
