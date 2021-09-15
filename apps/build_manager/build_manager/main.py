@@ -62,7 +62,7 @@ def start_builds(build_ids: list):
     return started_builds_ids
 
 
-def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
+def coordinate_builds(builds_info: list[dict], unsuccessful_builds: list):
     teamcity_build_queue_url = os.environ['TEAMCITY_BUILD_QUEUE_URL']
     teamcity_api_auth_token = os.environ['TEAMCITY_API_AUTH_TOKEN']
     headers = {
@@ -71,11 +71,8 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
         'Authorization': f'Bearer {teamcity_api_auth_token}'
     }
 
-    updated_builds_info = copy.deepcopy(builds_info)
-    logging.info(f'Wait time before next check: {wait_seconds} s')
-    time.sleep(wait_seconds)
     logging.info('Checking the status of started builds...\n')
-    unsuccessful_builds = []
+    updated_builds_info = copy.deepcopy(builds_info)
     wait_times = [0]
     for build in updated_builds_info:
         build_id = build['id']
@@ -105,12 +102,16 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
             wait_times.append(10)
         logging.info('\n')
 
+    max_wait_time = max(wait_times)
+    logging.info(f'Wait time before next check: {max_wait_time} s')
+    time.sleep(max_wait_time)
     if updated_builds_info:
-        coordinate_builds(updated_builds_info, max(wait_times))
+        coordinate_builds(updated_builds_info, unsuccessful_builds)
     else:
         logging.info('All builds finished')
         if unsuccessful_builds:
-            logging.info('The following builds did not finish building successfully' + "\n".join(unsuccessful_builds))
+            logging.info(
+                'The following builds did not finish building successfully:\n' + "\n\t".join(unsuccessful_builds))
         return True
 
 
@@ -120,7 +121,7 @@ def main():
         builds_to_start = get_build_ids(changed_files)
         if builds_to_start:
             started_builds = start_builds(builds_to_start)
-            coordinate_builds(started_builds)
+            coordinate_builds(started_builds, [])
         else:
             logging.info('No build IDs found for the detected changes. Nothing more to do here.')
             sys.exit(0)
