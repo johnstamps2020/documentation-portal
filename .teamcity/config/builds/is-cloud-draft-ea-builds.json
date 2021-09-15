@@ -1,0 +1,409 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "ReleaseNotesBook-dobson.ditamap",
+      "srcId": "cloudisrndraftsrc",
+      "docId": "isbccloudeareleasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "cloudisnewdraftsrc",
+      "docId": "isbccloudeanewandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-BC-Cloud-EA.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "isbccloudeaupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "BC-AppGuide.ditamap",
+      "srcId": "cloudisbcappdraftsrc",
+      "docId": "isbccloudeaapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "isbccloudeaadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "BestPracticesGuide.ditamap",
+      "srcId": "cloudisbpdraftsrc",
+      "docId": "isbccloudeabestpractice",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "cloudisconfigdraftsrc",
+      "docId": "isbccloudeaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "isbccloudeadataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "cloudisglobaldraftsrc",
+      "docId": "isbccloudeaglobal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "GosuRules.ditamap",
+      "srcId": "cloudisrulesdraftsrc",
+      "docId": "isbccloudearules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "cloudisintegdraftsrc",
+      "docId": "isbccloudeainteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "TestingGuide.ditamap",
+      "srcId": "cloudistestdraftsrc",
+      "docId": "isbccloudeatesting",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-EA.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "isbccloudeainstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "ReleaseNotesBook-dobson.ditamap",
+      "srcId": "cloudisrndraftsrc",
+      "docId": "iscccloudeareleasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "cloudisnewdraftsrc",
+      "docId": "iscccloudeanewandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-CC-Cloud-EA.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "iscccloudeaupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "cloudisccappdraftsrc",
+      "docId": "iscccloudeaapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "iscccloudeaadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "BestPracticesGuide.ditamap",
+      "srcId": "cloudisbpdraftsrc",
+      "docId": "iscccloudeabestpractice",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "cloudisconfigdraftsrc",
+      "docId": "iscccloudeaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "iscccloudeadataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "cloudisglobaldraftsrc",
+      "docId": "iscccloudeaglobal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "GosuRules.ditamap",
+      "srcId": "cloudisrulesdraftsrc",
+      "docId": "iscccloudearules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "cloudisintegdraftsrc",
+      "docId": "iscccloudeainteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "TestingGuide.ditamap",
+      "srcId": "cloudistestdraftsrc",
+      "docId": "iscccloudeatesting",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "cloudisrestapifwdraftsrc",
+      "docId": "iscccloudearestapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-EA.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "iscccloudeainstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "ReleaseNotesBook-dobson.ditamap",
+      "srcId": "cloudisrndraftsrc",
+      "docId": "ispccloudeareleasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2020.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "cloudisnewdraftsrc",
+      "docId": "ispccloudeanewandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-PC-Cloud-EA.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "ispccloudeaupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "PC-AppGuide.ditamap",
+      "srcId": "cloudispcappdraftsrc",
+      "docId": "ispccloudeaapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "ispccloudeaadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "BestPracticesGuide.ditamap",
+      "srcId": "cloudisbpdraftsrc",
+      "docId": "ispccloudeabestpractice",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "cloudisapddraftsrc",
+      "docId": "ispccloudeaapd",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "cloudisconfigdraftsrc",
+      "docId": "ispccloudeaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "cloudisdataarchivingdraftsrc",
+      "docId": "ispccloudeadataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "cloudisglobaldraftsrc",
+      "docId": "ispccloudeaglobal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "GosuRules.ditamap",
+      "srcId": "cloudisrulesdraftsrc",
+      "docId": "ispccloudearules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "ProductDesignerGuide.ditamap",
+      "srcId": "cloudispddraftsrc",
+      "docId": "ispccloudeapd",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "ProductModelGuide.ditamap",
+      "srcId": "cloudispmdraftsrc",
+      "docId": "ispccloudeapm",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "cloudisintegdraftsrc",
+      "docId": "ispccloudeainteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "TestingGuide.ditamap",
+      "srcId": "cloudistestdraftsrc",
+      "docId": "ispccloudeatesting",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "cloudisrestapifwdraftsrc",
+      "docId": "ispccloudearestapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-EA.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "ispccloudeainstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CM-Cloud-EA.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "cloudiscontactdraftsrc",
+      "docId": "iscloudeacontact",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-EA.ditaval",
+      "root": "GosuRefGuide.ditamap",
+      "srcId": "cloudisgosudraftsrc",
+      "docId": "iscloudeagosu",
+      "indexRedirect": true
+    }
+  ]
+}

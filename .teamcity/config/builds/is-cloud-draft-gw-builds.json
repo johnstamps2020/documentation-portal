@@ -1,0 +1,77 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "isbccloudgwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-GW.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "isbccloudgwinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-BC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "isbccloudgwupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "iscccloudgwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-GW.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "iscccloudgwinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-CC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "iscccloudgwupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "cloudisadmindraftsrc",
+      "docId": "ispccloudgwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-GW.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "cloudisinstalldraftsrc",
+      "docId": "ispccloudgwinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/IS-PC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguidesrc",
+      "docId": "ispccloudgwupgrade"
+    }
+  ]
+}

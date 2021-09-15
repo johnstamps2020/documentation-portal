@@ -1,0 +1,149 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbccloudgwadmin",
+      "title": "Administration",
+      "url": "cloud/bc/gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudgwinstall",
+      "title": "Installation",
+      "url": "cloud/bc/gw/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isbccloudgwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudgwadmin",
+      "title": "Administration",
+      "url": "cloud/cc/gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudgwinstall",
+      "title": "Installation",
+      "url": "cloud/cc/gw/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "iscccloudgwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispccloudgwadmin",
+      "title": "Administration",
+      "url": "cloud/pc/gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispccloudgwinstall",
+      "title": "Installation",
+      "url": "cloud/pc/gw/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ispccloudgwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
