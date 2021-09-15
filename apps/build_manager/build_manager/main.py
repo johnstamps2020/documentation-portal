@@ -23,7 +23,7 @@ class BuildInfo:
     estimated_time_to_finish: int
 
 
-def get_changed_files() -> list:
+def get_changed_files() -> list[str]:
     changed_files_file = Path(os.environ['CHANGED_FILES_FILE'])
     return [line.split(':')[0] for line in changed_files_file.open().readlines()]
 
