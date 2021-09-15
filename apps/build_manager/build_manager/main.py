@@ -32,7 +32,7 @@ def get_build_ids(resources: list) -> list:
         'X-API-Key': admin_server_api_key
     }
     response = requests.get(build_api_url, headers=headers, json=data)
-    return [build['build_id'] for build in response.json()]
+    return sorted([build['build_id'] for build in response.json()])
 
 
 def start_builds(build_ids: list):
