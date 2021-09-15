@@ -27,7 +27,7 @@ def get_changed_files() -> list:
     return [line.split(':')[0] for line in changed_files_file.open().readlines()]
 
 
-def get_build_ids(resources: list) -> list:
+def get_build_ids(resources: list[str]) -> list[str]:
     build_api_url = os.environ['BUILD_API_URL']
     admin_server_api_key = os.environ['ADMIN_SERVER_API_KEY']
     git_url = os.environ['GIT_URL']
@@ -45,7 +45,7 @@ def get_build_ids(resources: list) -> list:
     return sorted([build['build_id'] for build in response.json()])
 
 
-def start_builds(build_ids: list[BuildInfo]) -> list[BuildInfo]:
+def start_builds(build_ids: list[str]) -> list[BuildInfo]:
     teamcity_build_queue_url = os.environ['TEAMCITY_BUILD_QUEUE_URL']
     teamcity_api_auth_token = os.environ['TEAMCITY_API_AUTH_TOKEN']
     headers = {
@@ -100,7 +100,7 @@ def update_builds_info(builds_to_check: list[BuildInfo]) -> list[BuildInfo]:
     return checked_builds
 
 
-def coordinate_builds(triggered_builds: list[BuildInfo], failed_builds: list[BuildInfo]):
+def coordinate_builds(triggered_builds: list[BuildInfo]):
     logging.info('Checking the status of started builds...')
     triggered_builds_info = update_builds_info(triggered_builds)
     for triggered_build in triggered_builds_info:
@@ -116,8 +116,6 @@ def coordinate_builds(triggered_builds: list[BuildInfo], failed_builds: list[Bui
     queued_builds = [build for build in triggered_builds_info if build.state.casefold() == 'queued']
     running_builds = [build for build in triggered_builds_info if build.state.casefold() == 'running']
     finished_builds = [build for build in triggered_builds_info if build.state.casefold() == 'finished']
-    unsuccessful_builds = failed_builds + [build for build in triggered_builds_info if
-                                           build.status.casefold() != 'success']
 
     logging.info(f'\nQueued builds: {len(queued_builds)}'
                  f'\nRunning builds: {len(running_builds)}'
@@ -133,12 +131,15 @@ def coordinate_builds(triggered_builds: list[BuildInfo], failed_builds: list[Bui
     logging.info(f'\nWait time before next check: {wait_time} s')
     time.sleep(wait_time)
     if running_builds or queued_builds:
-        coordinate_builds(triggered_builds_info, unsuccessful_builds)
+        coordinate_builds(triggered_builds_info)
     else:
         logging.info('All builds finished')
+        unsuccessful_builds = [build for build in triggered_builds_info if
+                               build.status.casefold() != 'success']
         if unsuccessful_builds:
             logging.info(
-                '\nThe following builds did not finish building successfully:\n'
+                '\nThe following builds did not finish building successfully:'
+                + '\n\t'
                 + "\n\t".join(
                     b.build_type['webUrl'] for b in unsuccessful_builds
                 )
@@ -153,7 +154,7 @@ def main():
         builds_to_start = get_build_ids(changed_files)
         if builds_to_start:
             started_builds = start_builds(builds_to_start)
-            coordinate_builds(started_builds, [])
+            coordinate_builds(started_builds)
         else:
             logging.info('No build IDs found for the detected changes. Nothing more to do here.')
             sys.exit(0)
