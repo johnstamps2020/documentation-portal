@@ -1,3 +1,4 @@
+import copy
 import json
 import logging
 import os
@@ -100,10 +101,17 @@ def update_builds_info(builds_to_check: list[BuildInfo]) -> list[BuildInfo]:
     return checked_builds
 
 
-def coordinate_builds(triggered_builds: list[BuildInfo]):
-    logging.info('Checking the status of started builds...')
-    triggered_builds_info = update_builds_info(triggered_builds)
-    for triggered_build in triggered_builds_info:
+def coordinate_builds(waiting_builds: list[str], triggered_builds: list[BuildInfo]):
+    queued_builds = [build for build in triggered_builds if build.state.casefold() == 'queued']
+    running_builds = [build for build in triggered_builds if build.state.casefold() == 'running']
+    finished_builds = [build for build in triggered_builds if build.state.casefold() == 'finished']
+
+    logging.info(f'\nWaiting builds: {len(waiting_builds)}'
+                 f'\nQueued builds: {len(queued_builds)}'
+                 f'\nRunning builds: {len(running_builds)}'
+                 f'\nFinished builds: {len(finished_builds)}')
+
+    for triggered_build in triggered_builds:
         build_type = triggered_build.build_type
         logging.info(f'\nTriggered build ID: {triggered_build.id}'
                      f'\nStatus: {triggered_build.state.upper()}'
@@ -113,13 +121,27 @@ def coordinate_builds(triggered_builds: list[BuildInfo]):
                      f'\n\tName: {build_type["projectName"]}'
                      f'\n\tURL: {build_type["webUrl"]}')
 
-    queued_builds = [build for build in triggered_builds_info if build.state.casefold() == 'queued']
-    running_builds = [build for build in triggered_builds_info if build.state.casefold() == 'running']
-    finished_builds = [build for build in triggered_builds_info if build.state.casefold() == 'finished']
+    maximum_number_of_active_builds = 3
+    active_builds = [
+        build
+        for build in triggered_builds
+        if build.state.casefold() in ['queued', 'running']
+    ]
 
-    logging.info(f'\nQueued builds: {len(queued_builds)}'
-                 f'\nRunning builds: {len(running_builds)}'
-                 f'\nFinished builds: {len(finished_builds)}')
+    number_of_empty_slots = maximum_number_of_active_builds - len(active_builds)
+    logging.info(f'\nNumber of empty slots for triggering builds: {number_of_empty_slots}')
+    planned_builds = []
+    updated_waiting_builds = copy.deepcopy(waiting_builds)
+    for build in waiting_builds:
+        if number_of_empty_slots > 0:
+            planned_builds.append(build)
+            updated_waiting_builds.remove(build)
+            number_of_empty_slots -= 1
+    if planned_builds:
+        started_builds = start_builds(planned_builds)
+        logging.info(f'Number of newly started builds: {len(started_builds)}')
+        triggered_builds += started_builds
+
     if running_builds:
         wait_time = max((build_info.estimated_time_to_finish
                          for build_info in running_builds), default=0)
@@ -130,14 +152,22 @@ def coordinate_builds(triggered_builds: list[BuildInfo]):
 
     logging.info(f'\nWait time before next check: {wait_time} s')
     time.sleep(wait_time)
-    if running_builds or queued_builds:
-        coordinate_builds(triggered_builds_info)
+
+    logging.info('Checking the status of all triggered builds...')
+    updated_triggered_builds = update_builds_info(triggered_builds)
+    updated_active_builds = [
+        build
+        for build in updated_triggered_builds
+        if build.state.casefold() in ['queued', 'running']
+    ]
+    if updated_waiting_builds or updated_active_builds:
+        coordinate_builds(updated_waiting_builds, updated_triggered_builds)
     else:
         logging.info('All builds finished')
-        unsuccessful_builds = [build for build in triggered_builds_info if
+        unsuccessful_builds = [build for build in updated_triggered_builds if
                                build.status.casefold() != 'success']
         if unsuccessful_builds:
-            logging.info(
+            logging.warning(
                 '\nThe following builds did not finish building successfully:'
                 + '\n\t'
                 + "\n\t".join(
@@ -153,8 +183,7 @@ def main():
     if changed_files:
         builds_to_start = get_build_ids(changed_files)
         if builds_to_start:
-            started_builds = start_builds(builds_to_start)
-            coordinate_builds(started_builds)
+            coordinate_builds(builds_to_start, [])
         else:
             logging.info('No build IDs found for the detected changes. Nothing more to do here.')
             sys.exit(0)
