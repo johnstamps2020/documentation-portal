@@ -12,12 +12,12 @@ import requests
 logging.basicConfig(format='%(message)s', level=logging.INFO)
 
 
-def get_changed_files():
+def get_changed_files() -> list:
     changed_files_file = Path(os.environ['CHANGED_FILES_FILE'])
     return [line.split(':')[0] for line in changed_files_file.open().readlines()]
 
 
-def get_build_ids(resources: list):
+def get_build_ids(resources: list) -> list:
     build_api_url = os.environ['BUILD_API_URL']
     admin_server_api_key = os.environ['ADMIN_SERVER_API_KEY']
     git_url = os.environ['GIT_URL']
@@ -86,21 +86,21 @@ def coordinate_builds(builds_info: list[dict], wait_seconds: int = 0):
                      f'\nProject url: {build_type["webUrl"]}')
         response = requests.get(full_build_href, headers=headers)
         build_info = response.json()
-        if build_info['state'] == 'finished':
+        build_state = build_info['state']
+        logging.info(f'Status: {build_state.upper()}.')
+        if build_state == 'finished':
             updated_builds_info.remove(build)
             if build_info['status'].casefold() != 'success':
                 unsuccessful_builds.append(full_build_href)
-            logging.info(f'Status: FINISHED.')
-        elif build_info['state'] == 'running':
+        elif build_state == 'running':
             build_running_info = build_info['running-info']
             estimated_time_left_seconds = int(build_running_info['estimatedTotalSeconds']) - int(
                 build_running_info['elapsedSeconds'])
             if estimated_time_left_seconds > 0:
                 wait_times.append(estimated_time_left_seconds)
-                logging.info(f'Status: RUNNING (estimated time to finish: {estimated_time_left_seconds} s)')
-        elif build_info['state'] == 'queued':
+                logging.info(f'Estimated time to finish: {estimated_time_left_seconds} s)')
+        else:
             wait_times.append(10)
-            logging.info(f'Status: WAITING IN THE QUEUE.')
         logging.info('\n')
 
     if updated_builds_info:
