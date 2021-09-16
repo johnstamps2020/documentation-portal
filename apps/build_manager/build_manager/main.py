@@ -208,12 +208,12 @@ def coordinate_builds(app_config: AppConfig, all_builds: BuildPipeline):
     planned_builds = []
     updated_waiting_builds = copy.deepcopy(all_builds.waiting_builds)
     available_slots = all_builds.number_of_empty_slots
-    all_started_builds = all_builds.triggered_builds
-    for build in updated_waiting_builds:
+    for build in all_builds.waiting_builds:
         if available_slots > 0:
             planned_builds.append(build)
             updated_waiting_builds.remove(build)
             available_slots -= 1
+    all_started_builds = all_builds.triggered_builds
     if planned_builds:
         started_builds = start_builds(app_config, planned_builds)
         logging.info(f'Number of newly started builds: {len(started_builds)}')
