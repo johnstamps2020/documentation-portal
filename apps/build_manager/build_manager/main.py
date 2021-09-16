@@ -11,7 +11,12 @@ from pathlib import Path
 
 import requests
 
-logging.basicConfig(format='%(message)s', level=logging.INFO)
+_logger = logging.getLogger('build_manager_logger')
+_logger.setLevel(logging.INFO)
+_console_handler = logging.StreamHandler()
+_log_formatter = logging.Formatter('%(message)s')
+_console_handler.setFormatter(_log_formatter)
+_logger.addHandler(_console_handler)
 
 
 @dataclass
@@ -189,14 +194,14 @@ def update_builds_info(app_config: AppConfig, builds_to_check: list[BuildInfo]) 
 
 
 def coordinate_builds(app_config: AppConfig, all_builds: BuildPipeline):
-    logging.info(f'\nWaiting builds: {all_builds.number_of_waiting_builds}'
+    _logger.info(f'\nWaiting builds: {all_builds.number_of_waiting_builds}'
                  f'\nQueued builds: {all_builds.number_of_queued_builds}'
                  f'\nRunning builds: {all_builds.number_of_running_builds}'
                  f'\nFinished builds: {all_builds.number_of_finished_builds}')
 
     for triggered_build in all_builds.triggered_builds:
         build_type = triggered_build.build_type
-        logging.info(f'\nTriggered build ID: {triggered_build.id}'
+        _logger.info(f'\nTriggered build ID: {triggered_build.id}'
                      f'\nStatus: {triggered_build.state.upper()}'
                      f'\nEstimated time to finish: {triggered_build.estimated_time_to_finish}'
                      f'\nBuild configuration info:'
@@ -204,7 +209,7 @@ def coordinate_builds(app_config: AppConfig, all_builds: BuildPipeline):
                      f'\n\tName: {build_type["projectName"]}'
                      f'\n\tURL: {build_type["webUrl"]}')
 
-    logging.info(f'\nNumber of empty slots for triggering builds: {all_builds.number_of_empty_slots}')
+    _logger.info(f'\nNumber of empty slots for triggering builds: {all_builds.number_of_empty_slots}')
     planned_builds = []
     updated_waiting_builds = copy.deepcopy(all_builds.waiting_builds)
     available_slots = all_builds.number_of_empty_slots
@@ -216,20 +221,21 @@ def coordinate_builds(app_config: AppConfig, all_builds: BuildPipeline):
     all_started_builds = all_builds.triggered_builds
     if planned_builds:
         started_builds = start_builds(app_config, planned_builds)
-        logging.info(f'Number of newly started builds: {len(started_builds)}')
+        _logger.info(f'Number of newly started builds: {len(started_builds)}')
         all_started_builds += started_builds
 
-    logging.info(f'\nWait time before next check: {all_builds.wait_time} s')
+    _logger.info(f'\nWait time before next check: {all_builds.wait_time} s')
     time.sleep(all_builds.wait_time)
 
-    logging.info('Checking the status of all triggered builds...')
+    _logger.info('>>>>>>>>>>')
+    _logger.info('Checking the status of all triggered builds...')
     updated_triggered_builds = update_builds_info(app_config, all_started_builds)
     updated_build_pipeline = BuildPipeline(updated_waiting_builds, updated_triggered_builds)
 
     if updated_build_pipeline.all_builds_finished:
-        logging.info('All builds finished')
+        _logger.info('All builds finished')
         if updated_build_pipeline.unsuccessful_builds:
-            logging.warning(
+            _logger.warning(
                 '\nThe following builds did not finish building successfully:'
                 + '\n\t'
                 + "\n\t".join(
@@ -251,10 +257,10 @@ def main():
             initial_build_pipeline = BuildPipeline(builds_to_start, [])
             coordinate_builds(build_manager_config, initial_build_pipeline)
         else:
-            logging.info('No build IDs found for the detected changes. Nothing more to do here.')
+            _logger.info('No build IDs found for the detected changes. Nothing more to do here.')
             sys.exit(0)
     else:
-        logging.info('No changes detected. Nothing more to do here.')
+        _logger.info('No changes detected. Nothing more to do here.')
         sys.exit(0)
 
 
