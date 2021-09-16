@@ -203,6 +203,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-app-template-sampleapp.git",
       "branch": "master"
+    },
+    {
+      "id": "srcjutroredirectservice",
+      "title": "Jutro Redirect Service",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-redirect-service.git",
+      "branch": "main"
     }
   ]
 }

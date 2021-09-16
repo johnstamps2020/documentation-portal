@@ -557,6 +557,20 @@
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false
+    },
+    {
+      "id": "jutroredirectservice",
+      "title": "Jutro Redirect Service",
+      "url": "jutro/documentation/latest",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
     }
   ]
 }
