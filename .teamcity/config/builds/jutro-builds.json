@@ -283,6 +283,11 @@
       "docId": "jutrolearningmissions",
       "srcId": "srcjutrolearningmissions",
       "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutroredirectservice",
+      "srcId": "srcjutroredirectservice"
     }
   ]
 }
