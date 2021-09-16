@@ -3899,9 +3899,9 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 
                 if [[ "%env.NOTIFY_BUILD_API%" == "true" ]]; then
                     if [[ "%env.BUILD_PDF%" == "false" ]]; then
-                        export DITA_BASE_COMMAND+=" --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --notify.build.api yes"
+                        export DITA_BASE_COMMAND+=" --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --notify.build.api yes --tc.build.id %teamcity.project.id%"
                     elif [[ "%env.BUILD_PDF%" == "true" ]]; then
-                        export DITA_BASE_COMMAND+=" --notify.build.api yes"
+                        export DITA_BASE_COMMAND+=" --notify.build.api yes --tc.build.id %teamcity.project.id%"
                     fi     
                 fi
                 
