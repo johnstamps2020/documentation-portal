@@ -67,8 +67,6 @@ class BuildInfo:
 
 @dataclass
 class BuildPipeline:
-    waiting_builds: list[str]
-    triggered_builds: list[BuildInfo]
     _maximum_number_of_active_builds: int = 3
 
     def __init__(self, not_started_builds: list[str], started_builds: list[BuildInfo]):
