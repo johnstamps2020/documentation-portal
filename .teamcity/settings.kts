@@ -2197,7 +2197,7 @@ object HelperObjects {
                 )
                 text(
                     "env.GIT_BUILD_BRANCH",
-                    "%teamcity.build.vcs.branch.$vcs_root_id%",
+                    "%teamcity.build.vcs.branch.$vcs_root_id%".removePrefix("refs/heads/"),
                     allowEmpty = false
                 )
             }
