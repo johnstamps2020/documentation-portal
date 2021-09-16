@@ -2679,10 +2679,13 @@ object HelperObjects {
             }
         })
 
-        class PublishToS3IndexProd(publish_path: String, doc_id: String, product: String, version: String) : BuildType({
-            templates(CrawlDocumentAndUpdateSearchIndex)
+        class PublishToS3IndexProd(publish_path: String, doc_id: String, product: String, version: String, index_for_search: Boolean) : BuildType({
             id = RelativeId(removeSpecialCharacters("prod$product$version$doc_id"))
             name = "Copy from staging to prod"
+
+            if (index_for_search) {
+                templates(CrawlDocumentAndUpdateSearchIndex)
+            }
 
             params {
                 password(
@@ -2716,7 +2719,9 @@ object HelperObjects {
                 """.trimIndent()
                 }
 
-                stepsOrder = arrayListOf("COPY_FROM_STAGING_TO_PROD", "CRAWL_DOC")
+                if (index_for_search) {
+                    stepsOrder = arrayListOf("COPY_FROM_STAGING_TO_PROD", "CRAWL_DOC")
+                }
 
             }
 
@@ -2887,7 +2892,7 @@ object HelperObjects {
 
         for (env in environments) {
             if (env == "prod") {
-                builds.add(PublishToS3IndexProd(publishPath, docId, product_name, version))
+                builds.add(PublishToS3IndexProd(publishPath, docId, product_name, version, indexForSearch))
             } else {
                 builds.add(
                     BuildPublishToS3Index(
