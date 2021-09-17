@@ -44,6 +44,16 @@ project {
     subProject(Content)
     subProject(Docs)
     subProject(Sources)
+
+    features {
+        feature {
+            type = "JetBrains.SharedResources"
+            id = "OXYGEN_WEBHELP_LICENSE"
+            param("quota", "3")
+            param("name", "OxygenWebhelpLicense")
+            param("type", "quoted")
+        }
+    }
 }
 
 object vcsrootmasteronly : GitVcsRoot({
@@ -3979,6 +3989,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 dockerRegistryId = "PROJECT_EXT_155"
             }
         }
+
     }
 })
 
@@ -4023,6 +4034,12 @@ object PublishDocCrawlerDockerImage : BuildType({
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
             }
+        }
+
+        feature {
+            id = "OXYGEN_WEBHELP_LICENSE"
+            type = "JetBrains.SharedResources"
+            param("locks-param", "OxygenWebhelpLicense readLock")
         }
     }
 
@@ -4186,6 +4203,7 @@ object Docs : Project({
     name = "Docs"
 
     HelperObjects.createProjects().forEach(this::subProject)
+
 })
 
 object Sources : Project({
