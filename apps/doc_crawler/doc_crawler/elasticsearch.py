@@ -37,7 +37,8 @@ class ElasticClient(Elasticsearch):
                         "tokenizer": "lowercase",
                         "filter": [
                             "english_stemmer",
-                            "english_possessive_stemmer"
+                            "english_possessive_stemmer",
+                            "stop"
                         ]
                     }
                 }
