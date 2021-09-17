@@ -4037,7 +4037,7 @@ object PublishDocCrawlerDockerImage : BuildType({
         }
 
         feature {
-            id = "OXYGEN_WEBHELP_LICENSE"
+            id = ""
             type = "JetBrains.SharedResources"
             param("locks-param", "OxygenWebhelpLicense readLock")
         }
