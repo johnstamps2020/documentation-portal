@@ -1,4 +1,3 @@
-import copy
 import dataclasses
 import json
 import logging
@@ -72,11 +71,9 @@ class BuildInfo:
 
 @dataclass
 class BuildPipeline:
-    _maximum_number_of_active_builds: int = 3
 
-    def __init__(self, not_started_builds: list[str], started_builds: list[BuildInfo]):
-        self.waiting_builds = not_started_builds
-        self.triggered_builds = started_builds
+    def __init__(self, triggered_builds: list[BuildInfo]):
+        self.triggered_builds = triggered_builds
 
     @property
     def queued_builds(self):
@@ -99,10 +96,6 @@ class BuildPipeline:
         return [build for build in self.triggered_builds if build.status.casefold() != 'success']
 
     @property
-    def number_of_waiting_builds(self):
-        return len(self.waiting_builds)
-
-    @property
     def number_of_queued_builds(self):
         return len(self.queued_builds)
 
@@ -119,10 +112,6 @@ class BuildPipeline:
         return len(self.active_builds)
 
     @property
-    def number_of_empty_slots(self):
-        return self._maximum_number_of_active_builds - self.number_of_active_builds
-
-    @property
     def wait_time(self):
         if self.running_builds:
             return max((build_info.estimated_time_to_finish
@@ -134,7 +123,7 @@ class BuildPipeline:
 
     @property
     def all_builds_finished(self):
-        return self.number_of_queued_builds + self.number_of_running_builds + self.number_of_waiting_builds == 0
+        return self.number_of_active_builds == 0
 
 
 def get_changed_files(app_config: AppConfig) -> list[str]:
@@ -171,6 +160,12 @@ def start_builds(app_config: AppConfig, build_ids: list[str]) -> list[BuildInfo]
             estimated_time_to_finish=0
         )
         )
+    _logger.info(
+        f'Triggered builds: {len(started_builds)}'
+        + '\n\t'
+        + '\n\t'.join(build.build_type['id'] for build in started_builds)
+    )
+
     return started_builds
 
 
@@ -193,13 +188,17 @@ def update_builds_info(app_config: AppConfig, builds_to_check: list[BuildInfo]) 
     return checked_builds
 
 
-def coordinate_builds(app_config: AppConfig, all_builds: BuildPipeline):
-    _logger.info(f'\nWaiting builds: {all_builds.number_of_waiting_builds}'
-                 f'\nQueued builds: {all_builds.number_of_queued_builds}'
-                 f'\nRunning builds: {all_builds.number_of_running_builds}'
-                 f'\nFinished builds: {all_builds.number_of_finished_builds}')
+def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
+    _logger.info('>>>>>>>>>>')
+    _logger.info('Checking the status of triggered builds...')
+    updated_triggered_builds = update_builds_info(app_config, build_pipeline.triggered_builds)
+    updated_build_pipeline = BuildPipeline(updated_triggered_builds)
 
-    for triggered_build in all_builds.triggered_builds:
+    _logger.info(f'\nQueued builds: {updated_build_pipeline.number_of_queued_builds}'
+                 f'\nRunning builds: {updated_build_pipeline.number_of_running_builds}'
+                 f'\nFinished builds: {updated_build_pipeline.number_of_finished_builds}')
+
+    for triggered_build in updated_build_pipeline.triggered_builds:
         build_type = triggered_build.build_type
         _logger.info(f'\nTriggered build ID: {triggered_build.id}'
                      f'\nStatus: {triggered_build.state.upper()}'
@@ -209,28 +208,8 @@ def coordinate_builds(app_config: AppConfig, all_builds: BuildPipeline):
                      f'\n\tName: {build_type["projectName"]}'
                      f'\n\tURL: {build_type["webUrl"]}')
 
-    _logger.info(f'\nNumber of empty slots for triggering builds: {all_builds.number_of_empty_slots}')
-    planned_builds = []
-    updated_waiting_builds = copy.deepcopy(all_builds.waiting_builds)
-    available_slots = all_builds.number_of_empty_slots
-    for build in all_builds.waiting_builds:
-        if available_slots > 0:
-            planned_builds.append(build)
-            updated_waiting_builds.remove(build)
-            available_slots -= 1
-    all_started_builds = all_builds.triggered_builds
-    if planned_builds:
-        started_builds = start_builds(app_config, planned_builds)
-        _logger.info(f'Number of newly started builds: {len(started_builds)}')
-        all_started_builds += started_builds
-
-    _logger.info(f'\nWait time before next check: {all_builds.wait_time} s')
-    time.sleep(all_builds.wait_time)
-
-    _logger.info('>>>>>>>>>>')
-    _logger.info('Checking the status of all triggered builds...')
-    updated_triggered_builds = update_builds_info(app_config, all_started_builds)
-    updated_build_pipeline = BuildPipeline(updated_waiting_builds, updated_triggered_builds)
+    _logger.info(f'\nWait time before next check: {updated_build_pipeline.wait_time} s')
+    time.sleep(updated_build_pipeline.wait_time)
 
     if updated_build_pipeline.all_builds_finished:
         _logger.info('All builds finished')
@@ -238,14 +217,14 @@ def coordinate_builds(app_config: AppConfig, all_builds: BuildPipeline):
             _logger.warning(
                 '\nThe following builds did not finish building successfully:'
                 + '\n\t'
-                + "\n\t".join(
+                + '\n\t'.join(
                     b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds
                 )
             )
 
         sys.exit(0)
     else:
-        coordinate_builds(app_config, updated_build_pipeline)
+        watch_builds(app_config, updated_build_pipeline)
 
 
 def main():
@@ -254,8 +233,8 @@ def main():
     if changed_files:
         builds_to_start = get_build_ids(build_manager_config, changed_files)
         if builds_to_start:
-            initial_build_pipeline = BuildPipeline(builds_to_start, [])
-            coordinate_builds(build_manager_config, initial_build_pipeline)
+            started_builds = start_builds(build_manager_config, builds_to_start)
+            watch_builds(build_manager_config, BuildPipeline(started_builds))
         else:
             _logger.info('No build IDs found for the detected changes. Nothing more to do here.')
             sys.exit(0)
