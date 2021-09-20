@@ -141,14 +141,14 @@ def get_changed_files(app_config: AppConfig) -> list[str]:
 
 def get_build_ids(app_config: AppConfig, resources: list) -> list[str]:
     payload = {
-        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch}))',
+        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:DocumentationTools_DocumentationPortal_Docs)',
     }
     build_types = requests.get(
         app_config.teamcity_build_types_url,
         headers=app_config.teamcity_api_headers,
         params=payload
     )
-    build_types_ids = sorted([build_type['id'] for build_type in build_types.json()['buildType']])
+    build_types_ids = sorted(build_type['id'] for build_type in build_types.json()['buildType'])
     all_builds = []
     for build_type_id in build_types_ids:
         builds = requests.get(
