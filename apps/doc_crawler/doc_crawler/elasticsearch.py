@@ -27,6 +27,11 @@ class ElasticClient(Elasticsearch):
                     "english_possessive_stemmer": {
                         "type": "stemmer",
                         "language": "possessive_english"
+                    },
+                    "english_stop_words": {
+                        "type": "stop",
+                        "ignore_case": True,
+                        "stopwords": "_english_"
                     }
                 },
                 "analyzer": {
@@ -38,7 +43,7 @@ class ElasticClient(Elasticsearch):
                         "filter": [
                             "english_stemmer",
                             "english_possessive_stemmer",
-                            "stop"
+                            "english_stop_words"
                         ]
                     }
                 }
