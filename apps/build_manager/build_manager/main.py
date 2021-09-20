@@ -152,9 +152,13 @@ def get_build_ids(app_config: AppConfig, resources: list) -> list[str]:
     all_builds = []
     for build_type_id in build_types_ids:
         builds = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:int)',
+            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:int),defaultFilter:true,status:success',
             headers=app_config.teamcity_api_headers)
-        all_builds += [build for build in builds.json()['build']]
+        latest_build = sorted(builds, key=lambda x: x['id'])[-1]
+        # What if the latest build doesn't exist? Add it to the list so it's triggered for the first time?
+        # Check if the resources.txt artifact contains any of the modified resources
+        # If yes, append the ID to the list
+        all_builds.append(latest_build)
     return all_builds
 
 
