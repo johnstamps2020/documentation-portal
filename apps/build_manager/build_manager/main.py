@@ -24,7 +24,9 @@ class AppConfig:
     admin_server_api_key: str = os.environ.get('ADMIN_SERVER_API_KEY')
     git_url: str = os.environ.get('GIT_URL')
     git_build_branch: str = os.environ.get('GIT_BUILD_BRANCH')
-    teamcity_build_queue_url = os.environ.get('TEAMCITY_BUILD_QUEUE_URL')
+    teamcity_api_root_url = os.environ.get('TEAMCITY_API_ROOT_URL')
+    teamcity_build_queue_url = urllib.parse.urljoin(teamcity_api_root_url, 'buildQueue')
+    teamcity_build_types_url = urllib.parse.urljoin(teamcity_api_root_url, 'buildTypes')
     _teamcity_api_auth_token = os.environ.get('TEAMCITY_API_AUTH_TOKEN')
     _changed_files_file = os.environ.get('CHANGED_FILES_FILE')
     build_api_headers = {
@@ -130,12 +132,30 @@ def get_changed_files(app_config: AppConfig) -> list[str]:
     return [line.split(':')[0] for line in app_config.changed_files_file.open().readlines()]
 
 
-def get_build_ids(app_config: AppConfig, resources: list[str]) -> list[str]:
-    response = requests.get(
-        app_config.build_api_url,
-        headers=app_config.build_api_headers,
-        json=app_config.get_build_api_data(resources))
-    return sorted([build['build_id'] for build in response.json()])
+# def get_build_ids(app_config: AppConfig, resources: list[str]) -> list[str]:
+#     response = requests.get(
+#         app_config.build_api_url,
+#         headers=app_config.build_api_headers,
+#         json=app_config.get_build_api_data(resources))
+#     return sorted([build['build_id'] for build in response.json()])
+
+def get_build_ids(app_config: AppConfig, resources: list) -> list[str]:
+    payload = {
+        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch}))',
+    }
+    build_types = requests.get(
+        app_config.teamcity_build_types_url,
+        headers=app_config.teamcity_api_headers,
+        params=payload
+    )
+    build_types_ids = sorted([build_type['id'] for build_type in build_types.json()['buildType']])
+    all_builds = []
+    for build_type_id in build_types_ids:
+        builds = requests.get(
+            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:int)',
+            headers=app_config.teamcity_api_headers)
+        all_builds += [build for build in builds.json()['build']]
+    return all_builds
 
 
 def start_builds(app_config: AppConfig, build_ids: list[str]) -> list[BuildInfo]:
