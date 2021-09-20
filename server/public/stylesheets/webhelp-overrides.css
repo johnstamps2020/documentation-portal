@@ -127,6 +127,8 @@ div.wh_publication_title {
   padding: 32px !important;
   padding-top: 16px !important;
   padding-bottom: 16px !important;
+  display: flex;
+  justify-content: center;
 }
 
 .footercopyright,
