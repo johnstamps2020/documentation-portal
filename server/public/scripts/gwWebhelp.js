@@ -608,7 +608,6 @@ function setFooter() {
       else {
         footer.style.width = entry.contentRect.width + 'px';
       }
-      console.log('calc(' + footerPaddingLeft + ' + ' + whTopicBodyLeft + 'px)');
       footer.style.left = 'calc(' + footerPaddingLeft + ' + ' + whTopicBodyLeft + 'px)';
     }
   })
