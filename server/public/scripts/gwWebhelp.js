@@ -592,6 +592,29 @@ async function configureSearch() {
   }
 }
 
+function setFooter() {
+  const whTopicBody = document.getElementById('wh_topic_body');
+  const footer = document.querySelector('.wh_footer');
+  const resizeObserver = new ResizeObserver(entries => {
+    for(let entry of entries) {
+      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      const rect = entry.target.getBoundingClientRect();
+      const whTopicBodyLeft = rect.left + scrollLeft;
+      const footerPaddingLeft = window.getComputedStyle(footer).getPropertyValue('padding-left');
+
+      if(entry.contentBoxSize) {
+        footer.style.width = entry.contentBoxSize[0].inlineSize + 'px';
+      }
+      else {
+        footer.style.width = entry.contentRect.width + 'px';
+      }
+      console.log('calc(' + footerPaddingLeft + ' + ' + whTopicBodyLeft + 'px)');
+      footer.style.left = 'calc(' + footerPaddingLeft + ' + ' + whTopicBodyLeft + 'px)';
+    }
+  })
+  resizeObserver.observe(whTopicBody);
+}
+
 docReady(async function() {
   metadata = await fetchMetadata();
   await createContainerForCustomHeaderElements();
@@ -604,4 +627,5 @@ docReady(async function() {
   }
   configureSearch();
   addFeedbackElements();
+  setFooter();
 });
