@@ -124,11 +124,15 @@ div.wh_publication_title {
 .wh_footer {
   min-height: var(--footer-height) !important;
   background-color: var(--clr-GW-HEADER-FOOTER-BKG) !important;
-  padding: 32px !important;
-  padding-top: 16px !important;
-  padding-bottom: 16px !important;
+  padding: 1rem !important;
   display: flex !important;
   justify-content: center !important;
+}
+
+.footercopyright,
+.footerDate,
+.footerLink {
+  flex-grow: 1;
 }
 
 .footercopyright,
@@ -138,13 +142,18 @@ div.wh_publication_title {
   font-size: 14px !important;
   font-weight: 600;
   display: inline-block;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  margin-right: 32px;
+  margin-right: 0;
 }
 
 .footer-container .text-center {
-  text-align: left !important;
+  text-align: center !important;
+}
+
+.footer-container p {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 0.25rem;
 }
 
 .navbar-fixed-top nav.wh_tools.hidden-print {
