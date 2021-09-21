@@ -159,6 +159,11 @@ def get_build_ids(app_config: AppConfig, resources: list) -> list[str]:
         # Check if the resources.txt artifact contains any of the modified resources
         # If yes, append the ID to the list
         all_builds.append(latest_build)
+    # all_builds = requests.get(
+    #     'https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/builds/id:7739794/artifacts/content/out/PL-2021.04.2-release-notes.dita',
+    #     headers=app_config.teamcity_api_headers,
+    #     allow_redirects=True
+    # )
     return all_builds
 
 
