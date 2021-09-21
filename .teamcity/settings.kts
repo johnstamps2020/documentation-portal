@@ -865,8 +865,8 @@ object UploadPdfsForEscrow : BuildType({
         text(
             "env.RELEASE_NUMBER",
             "",
-            label = "Numeric representation of the release without dots or hyphens",
-            description = "For example, 202011 or 202104",
+            label = "Release number",
+            description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
             display = ParameterDisplay.PROMPT
         )
         text("env.ZIP_ARCHIVE_NAME", "%env.RELEASE_NAME%_pdfs.zip", display = ParameterDisplay.HIDDEN)
