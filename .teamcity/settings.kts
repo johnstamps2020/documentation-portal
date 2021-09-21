@@ -865,8 +865,8 @@ object UploadPdfsForEscrow : BuildType({
         text(
             "env.RELEASE_NUMBER",
             "",
-            label = "Numeric representation of the release without dots or hyphens",
-            description = "For example, 202011 or 202104",
+            label = "Release number",
+            description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
             display = ParameterDisplay.PROMPT
         )
         text("env.ZIP_ARCHIVE_NAME", "%env.RELEASE_NAME%_pdfs.zip", display = ParameterDisplay.HIDDEN)
@@ -890,7 +890,8 @@ object UploadPdfsForEscrow : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                     
-                    ./%teamcity.build.workingDir%/ci/downloadPdfsForEscrow.sh
+                    cd %teamcity.build.checkoutDir%/ci
+                    ./downloadPdfsForEscrow.sh
                 """.trimIndent()
         }
         script {
