@@ -869,6 +869,7 @@ object UploadPdfsForEscrow : BuildType({
             description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
             display = ParameterDisplay.PROMPT
         )
+        text("env.TMP_DIR", "%teamcity.build.checkoutDir%/ci/pdfs")
         text("env.ZIP_ARCHIVE_NAME", "%env.RELEASE_NAME%_pdfs.zip", display = ParameterDisplay.HIDDEN)
     }
 
@@ -907,7 +908,7 @@ object UploadPdfsForEscrow : BuildType({
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
                     
                     echo "Uploading the ZIP archive to the S3 bucket"
-                    aws s3 cp %env.ZIP_ARCHIVE_NAME% s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
+                    aws s3 cp "%env.TMP_DIR%/%env.ZIP_ARCHIVE_NAME%" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
             """.trimIndent()
         }
     }

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-TMP_DIR="$(pwd)/pdfs"
-
 echo "Release name: $RELEASE_NAME"
 echo "Release number: $RELEASE_NUMBER"
 
