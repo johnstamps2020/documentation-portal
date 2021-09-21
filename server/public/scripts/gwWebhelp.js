@@ -600,15 +600,16 @@ function setFooter() {
       const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
       const rect = entry.target.getBoundingClientRect();
       const whTopicBodyLeft = rect.left + scrollLeft;
-      const footerPaddingLeft = window.getComputedStyle(footer).getPropertyValue('padding-left');
+      const whTopicBodyPaddingLeft = window.getComputedStyle(wh_topic_body).getPropertyValue('padding-left');
+      const whTopicBodyPaddingRight = window.getComputedStyle(wh_topic_body).getPropertyValue('padding-right');
 
       if(entry.contentBoxSize) {
-        footer.style.width = entry.contentBoxSize[0].inlineSize + 'px';
+        footer.style.width = 'calc(' + entry.contentBoxSize[0].inlineSize + 'px + ' + whTopicBodyPaddingRight + ')';
       }
       else {
-        footer.style.width = entry.contentRect.width + 'px';
+        footer.style.width = 'calc(' + entry.contentRect.width + 'px + ' + whTopicBodyPaddingRight + ')';
       }
-      footer.style.left = 'calc(' + footerPaddingLeft + ' + ' + whTopicBodyLeft + 'px)';
+      footer.style.left = 'calc(' + whTopicBodyPaddingLeft + ' + ' + whTopicBodyLeft + 'px)';
     }
   })
   resizeObserver.observe(whTopicBody);
