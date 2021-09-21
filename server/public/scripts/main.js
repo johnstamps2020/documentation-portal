@@ -123,9 +123,33 @@ function markDocsAsNotPrivate() {
   }
 }
 
+function setSearchFilterCSS() {
+  if(window.location.pathname.startsWith('/search')) {
+    const header = document.querySelector('.header-search');
+    const filter = document.querySelector('.filterSearchResults')
+    const resizeObserver = new ResizeObserver(entries => {
+    for(let entry of entries) {
+      const headerPaddingTop = window.getComputedStyle(header).getPropertyValue('padding-top');
+      const headerPaddingBottom = window.getComputedStyle(header).getPropertyValue('padding-bottom');
+      let headerContentSize;
+      if(entry.contentBoxSize) {
+        headerContentSize = entry.contentBoxSize[0].blockSize + 'px';
+      }
+      else {
+        headerContentSize = entry.contentRect[0].height + 'px';
+      }
+      filter.style.top = 'calc(' + headerContentSize + ' + ' + headerPaddingTop + ' + ' + headerPaddingBottom + ')';
+      filter.style.height = 'calc(100% - ' + headerContentSize + ' - ' + headerPaddingTop + ' - ' + headerPaddingBottom + ')';
+    }
+  })
+  resizeObserver.observe(header);
+  }
+}
+
 window.onload = function() {
   // markDocsAsNotPrivate();
   setLogInButton();
   selectToggleButton();
   addReleaseBadge();
+  setSearchFilterCSS();
 };
