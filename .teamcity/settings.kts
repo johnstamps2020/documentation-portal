@@ -851,6 +851,67 @@ object GenerateSitemap : BuildType({
     }
 })
 
+object UploadPdfsForEscrow : BuildType({
+    name = "Upload PDFs for Escrow"
+
+    params {
+        text(
+            "env.RELEASE_NAME",
+            "",
+            label = "Release name",
+            description = "For example, Banff or Cortina",
+            display = ParameterDisplay.PROMPT
+        )
+        text(
+            "env.RELEASE_NUMBER",
+            "",
+            label = "Numeric representation of the release without dots or hyphens",
+            description = "For example, 202011 or 202104",
+            display = ParameterDisplay.PROMPT
+        )
+        text("env.ZIP_ARCHIVE_NAME", "%env.RELEASE_NAME%_pdfs.zip", display = ParameterDisplay.HIDDEN)
+    }
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            id = "DOWNLOAD_AND_ZIP_PDFS"
+            name = "Download and zip PDF files"
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    
+                    ./%teamcity.build.workingDir%/ci/downloadPdfsForEscrow.sh
+                """.trimIndent()
+        }
+        script {
+            id = "UPLOAD_ZIP_TO_S3"
+            name = "Upload the ZIP archive to S3"
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Setting credentials to access int"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                    
+                    echo "Uploading the ZIP archive to the S3 bucket"
+                    aws s3 cp %env.ZIP_ARCHIVE_NAME% s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
+            """.trimIndent()
+        }
+    }
+})
+
 object TestDocCrawler : BuildType({
     name = "Test Doc Crawler"
 
@@ -4198,6 +4259,7 @@ object Content : Project({
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
     buildType(GenerateSitemap)
+    buildType(UploadPdfsForEscrow)
 })
 
 object Docs : Project({
