@@ -890,7 +890,8 @@ object UploadPdfsForEscrow : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
                     
-                    ./%teamcity.build.workingDir%/ci/downloadPdfsForEscrow.sh
+                    cd %teamcity.build.checkoutDir%/ci
+                    ./downloadPdfsForEscrow.sh
                 """.trimIndent()
         }
         script {
