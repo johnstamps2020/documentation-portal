@@ -29,6 +29,7 @@ class AppConfig:
     teamcity_build_types_url = urllib.parse.urljoin(teamcity_api_root_url, 'buildTypes')
     teamcity_builds_url = urllib.parse.urljoin(teamcity_api_root_url, 'builds')
     teamcity_resources_artifact_path = os.environ.get('TEAMCITY_RESOURCES_ARTIFACT_PATH')
+    teamcity_affected_project = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
     _teamcity_api_auth_token = os.environ.get('TEAMCITY_API_AUTH_TOKEN')
     _changed_files_file = os.environ.get('CHANGED_FILES_FILE')
     build_api_headers = {
@@ -143,7 +144,7 @@ def get_changed_files(app_config: AppConfig) -> list[str]:
 
 def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str]:
     payload = {
-        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:DocumentationTools_Development_ListenerBuildsNewIdea)',
+        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:{app_config.teamcity_affected_project})',
     }
     build_types = requests.get(
         app_config.teamcity_build_types_url,
