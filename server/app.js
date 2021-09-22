@@ -16,6 +16,16 @@ const httpContext = require('express-http-context');
 const port = process.env.PORT || 8081;
 const app = express();
 
+app.use(function(req, res, next) {
+  const hostnamesToReplace = ['portal2.guidewire.com'];
+  if (hostnamesToReplace.includes(req.hostname)) {
+    const fullRequestUrl = new URL(req.url, process.env.APP_BASE_URL);
+    res.redirect(fullRequestUrl.href);
+  } else {
+    next();
+  }
+});
+
 const options = {
   etag: true,
   maxAge: 3600000,
