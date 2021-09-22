@@ -27,6 +27,8 @@ class AppConfig:
     teamcity_api_root_url = os.environ.get('TEAMCITY_API_ROOT_URL')
     teamcity_build_queue_url = urllib.parse.urljoin(teamcity_api_root_url, 'buildQueue')
     teamcity_build_types_url = urllib.parse.urljoin(teamcity_api_root_url, 'buildTypes')
+    teamcity_builds_url = urllib.parse.urljoin(teamcity_api_root_url, 'builds')
+    teamcity_resources_artifact_path = os.environ.get('TEAMCITY_RESOURCES_ARTIFACT_PATH')
     _teamcity_api_auth_token = os.environ.get('TEAMCITY_API_AUTH_TOKEN')
     _changed_files_file = os.environ.get('CHANGED_FILES_FILE')
     build_api_headers = {
@@ -139,9 +141,9 @@ def get_changed_files(app_config: AppConfig) -> list[str]:
 #         json=app_config.get_build_api_data(resources))
 #     return sorted([build['build_id'] for build in response.json()])
 
-def get_build_ids(app_config: AppConfig, resources: list) -> list[str]:
+def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str]:
     payload = {
-        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:DocumentationTools_DocumentationPortal_Docs)',
+        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:DocumentationTools_Development_ListenerBuildsNewIdea)',
     }
     build_types = requests.get(
         app_config.teamcity_build_types_url,
@@ -154,16 +156,26 @@ def get_build_ids(app_config: AppConfig, resources: list) -> list[str]:
         builds = requests.get(
             f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:int),defaultFilter:true,status:success',
             headers=app_config.teamcity_api_headers)
-        latest_build = sorted(builds, key=lambda x: x['id'])[-1]
-        # What if the latest build doesn't exist? Add it to the list so it's triggered for the first time?
-        # Check if the resources.txt artifact contains any of the modified resources
-        # If yes, append the ID to the list
-        all_builds.append(latest_build)
-    # all_builds = requests.get(
-    #     'https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/builds/id:7739794/artifacts/content/out/PL-2021.04.2-release-notes.dita',
-    #     headers=app_config.teamcity_api_headers,
-    #     allow_redirects=True
-    # )
+        sorted_builds = sorted(builds.json()['build'], key=lambda x: x['id'])
+        if sorted_builds:
+            # What if the latest build doesn't exist? Add it to the list so it's triggered for the first time?
+            # Check if the resources.txt artifact contains any of the modified resources
+            # If yes, append the ID to the list
+            latest_build_id = sorted_builds[-1]['id']
+            latest_build_resources = requests.get(
+                f'{app_config.teamcity_builds_url}/id:{latest_build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
+                headers=app_config.teamcity_api_headers,
+                allow_redirects=True
+            )
+            if latest_build_resources.status_code == 404:
+                _logger.info(
+                    f'Build {latest_build_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
+            else:
+                build_resources = latest_build_resources.text.split()
+                matching_resources = next((build_resource for build_resource in build_resources if
+                                           build_resource in changed_resources), None)
+                if matching_resources:
+                    all_builds.append(build_type_id)
     return all_builds
 
 
