@@ -2559,11 +2559,9 @@ object HelperObjects {
                 templates(buildTemplate)
             }
 
-            var notifyBuildAPI = "false"
             var buildPdf = "true"
             if (build_env == "int") {
                 buildPdf = "false"
-                notifyBuildAPI = "true"
             }
 
 
@@ -2601,7 +2599,6 @@ object HelperObjects {
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("NOTIFY_BUILD_API", notifyBuildAPI, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text(
                     "CREATE_INDEX_REDIRECT",
                     create_index_redirect,
@@ -3943,7 +3940,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         text("env.WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
         text("env.OUTPUT_PATH", "out", allowEmpty = false)
         text("env.ZIP_SRC_DIR", "zip")
-        text("env.NOTIFY_BUILD_API", "%NOTIFY_BUILD_API%", allowEmpty = false)
     }
 
     vcs {
@@ -3958,7 +3954,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 #!/bin/bash
                 set -xe
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
@@ -3968,14 +3964,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                     export DITA_BASE_COMMAND+=" -f wh-pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
                 elif [[ "%env.BUILD_PDF%" == "false" ]]; then
                     export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
-                fi
-                
-                if [[ "%env.NOTIFY_BUILD_API%" == "true" ]]; then
-                    if [[ "%env.BUILD_PDF%" == "false" ]]; then
-                        export DITA_BASE_COMMAND+=" --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --notify.build.api yes --tc.build.id %system.teamcity.buildType.id%"
-                    elif [[ "%env.BUILD_PDF%" == "true" ]]; then
-                        export DITA_BASE_COMMAND+=" --notify.build.api yes --tc.build.id %system.teamcity.buildType.id%"
-                    fi     
                 fi
                 
                 if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
@@ -4058,8 +4046,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
             type = "JetBrains.SharedResources"
             param("locks-param", "OxygenWebhelpLicense readLock")
         }
-
-
     }
 })
 
