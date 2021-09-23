@@ -3924,7 +3924,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     } else {
         name = "Build the doc site output from DITA"
         artifactRules = """
-            build-data.json    
+            %env.SOURCES_ROOT%/%env.OUTPUT_PATH%/build-data.json => json
         """.trimIndent()
     }
 
@@ -3977,9 +3977,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
 
                 echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 ${'$'}DITA_BASE_COMMAND
-                
-                cp "%env.WORKING_DIR%/%env.OUTPUT_PATH%/build-data.json" "%teamcity.build.workingDir%/"
-                                    
+                                                    
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
