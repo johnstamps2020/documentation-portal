@@ -131,27 +131,38 @@ class BuildPipeline:
         return self.number_of_active_builds == 0
 
 
-def run_procedure_step(func):
+@dataclass
+class ProcessingRecord:
+    type: logging.INFO or logging.WARNING or logging.ERROR
+    message: str
+    exit_code: int = None
+
+
+def check_processing_result(func):
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
-        if type(result) is Exception:
-            raise result
-        elif type(result) is Warning:
-            _logger.warning(str(result))
-            sys.exit(0)
+        if type(result) is ProcessingRecord:
+            _logger.log(result.type, result.message)
+            if result.exit_code is not None:
+                sys.exit(result.exit_code)
         return result
 
     return wrapper
 
 
-@run_procedure_step
-def get_changed_files(app_config: AppConfig) -> list[str] or Warning:
-    return [line.split(':')[0] for line in app_config.changed_files_file.open().readlines()] or Warning(
-        'No changes found in the VCS history. Nothing more to do here.')
+@check_processing_result
+def get_changed_files(app_config: AppConfig) -> list[str] or ProcessingRecord:
+    changed_files = [line.split(':')[0] for line in app_config.changed_files_file.open().readlines()]
+    _logger.info(f'Number of VCS changes: {len(changed_files)}')
+    return changed_files or ProcessingRecord(
+        type=logging.INFO,
+        message='No changes found in the VCS history. Nothing more to do here.',
+        exit_code=0
+    )
 
 
-@run_procedure_step
-def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str] or Warning:
+@check_processing_result
+def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str] or ProcessingRecord:
     payload = {
         'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:{app_config.teamcity_affected_project})',
     }
@@ -186,11 +197,17 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str] o
                                            build_resource in changed_resources), None)
                 if matching_resources:
                     all_builds.append(build_type_id)
-    return all_builds or Warning('No build IDs found for the VCS changes. Nothing more to do here.')
+
+    _logger.info(f'Number of builds to start: {len(all_builds)}')
+    return all_builds or ProcessingRecord(
+        type=logging.INFO,
+        message='No build IDs found for the VCS changes. Nothing more to do here.',
+        exit_code=0
+    )
 
 
-@run_procedure_step
-def start_build(app_config: AppConfig, build_id: str) -> BuildInfo or Exception:
+@check_processing_result
+def start_build(app_config: AppConfig, build_id: str) -> BuildInfo or ProcessingRecord:
     data = {
         'buildType': {
             'id': build_id
@@ -210,11 +227,31 @@ def start_build(app_config: AppConfig, build_id: str) -> BuildInfo or Exception:
             status='',
             estimated_time_to_finish=0
         )
-    return Exception(f'Unable to start build {build_id}: {response.reason}')
+    return ProcessingRecord(
+        type=logging.ERROR,
+        message=f'Unable to start build {build_id}: {response.reason}')
 
 
-@run_procedure_step
-def update_build_info(app_config: AppConfig, build: BuildInfo):
+@check_processing_result
+def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> list[BuildInfo] or ProcessingRecord:
+    started_builds = []
+    for build_type_id in build_type_ids:
+        build_start_result = start_build(app_config, build_type_id)
+        if type(build_start_result) is BuildInfo:
+            started_builds.append(build_start_result)
+            _logger.info(
+                f'Started build: {build_start_result.id} (build type: {build_start_result.build_type["id"]})'
+            )
+    _logger.info(f'Number of started builds: {len(started_builds)}')
+    return started_builds or ProcessingRecord(
+        type=logging.ERROR,
+        message='All builds failed to start. Nothing more to do here.',
+        exit_code=1
+    )
+
+
+@check_processing_result
+def update_build(app_config: AppConfig, build: BuildInfo):
     full_build_href = urllib.parse.urljoin(app_config.teamcity_build_queue_url, build.href)
     response = requests.get(full_build_href, headers=app_config.teamcity_api_headers)
     if response.ok:
@@ -228,20 +265,35 @@ def update_build_info(app_config: AppConfig, build: BuildInfo):
         elif build.state.casefold() == 'finished':
             build.estimated_time_to_finish = 0
         return build
-    return Exception(f'Unable to update info for build {build.id}: {response.reason}')
+    return ProcessingRecord(
+        type=logging.ERROR,
+        message=f'Unable to update info for build {build.id}: {response.reason}')
 
 
-@run_procedure_step
+@check_processing_result
+def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> list[BuildInfo] or ProcessingRecord:
+    updated_builds = []
+    for build in builds:
+        build_update_result = update_build(app_config, build)
+        if type(build_update_result) is BuildInfo:
+            updated_builds.append(build_update_result)
+            _logger.info(
+                f'Updated build: {build.id}'
+            )
+
+    return updated_builds or ProcessingRecord(
+        type=logging.ERROR,
+        message='All builds failed to update. Nothing more to do here.',
+        exit_code=1
+    )
+
+
+@check_processing_result
 def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
     _logger.info('>>>>>>>>>>')
-    _logger.info('Checking the status of triggered builds...')
-    updated_triggered_builds = [
-        update_build_info(app_config, build_item)
-        for build_item in build_pipeline.triggered_builds
-    ]
-
+    _logger.info('Checking the status of started builds...')
+    updated_triggered_builds = update_all_builds(app_config, build_pipeline.triggered_builds)
     updated_build_pipeline = BuildPipeline(updated_triggered_builds)
-
     _logger.info(f'\nQueued builds: {updated_build_pipeline.number_of_queued_builds}'
                  f'\nRunning builds: {updated_build_pipeline.number_of_running_builds}'
                  f'\nFinished builds: {updated_build_pipeline.number_of_finished_builds}')
@@ -260,17 +312,21 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
     time.sleep(updated_build_pipeline.wait_time)
 
     if updated_build_pipeline.all_builds_finished:
-        _logger.info('All builds finished')
         if updated_build_pipeline.unsuccessful_builds:
-            _logger.warning(
-                '\nThe following builds did not finish building successfully:'
-                + '\n\t'
-                + '\n\t'.join(
-                    b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds
-                )
+            return ProcessingRecord(
+                type=logging.ERROR,
+                message='All builds finished.'
+                        + '\nThe following builds did not finish building successfully:'
+                        + '\n\t'
+                        + '\n\t'.join(b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds),
+                exit_code=1
             )
 
-        sys.exit(0)
+        return ProcessingRecord(
+            type=logging.INFO,
+            message='All builds finished successfully',
+            exit_code=0
+        )
     else:
         watch_builds(app_config, updated_build_pipeline)
 
@@ -278,18 +334,8 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
 def main():
     build_manager_config = AppConfig().get_app_config()
     changed_files = get_changed_files(build_manager_config)
-    _logger.info(f'Number of VCS changes: {len(changed_files)}')
-    builds_to_start = get_build_ids(build_manager_config, changed_files)
-    _logger.info(f'Number of builds to start: {len(builds_to_start)}')
-    number_of_started_builds = 0
-    started_builds = []
-    for build_id in builds_to_start:
-        started_builds.append(start_build(build_manager_config, build_id))
-        number_of_started_builds += 1
-        _logger.info(
-            f'Started: {build_id}'
-        )
-    _logger.info(f'Number of started builds: {number_of_started_builds}')
+    build_ids_to_start = get_build_ids(build_manager_config, changed_files)
+    started_builds = start_all_builds(build_manager_config, build_ids_to_start)
     watch_builds(build_manager_config, BuildPipeline(started_builds))
 
 
