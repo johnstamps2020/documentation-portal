@@ -175,13 +175,11 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
     build_types_ids = sorted(build_type['id'] for build_type in build_types.json()['buildType'])
     all_builds = []
     for build_type_id in build_types_ids:
-        builds = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:int),(name:env.DEPLOY_ENV,value:staging),defaultFilter:true,status:success',
+        latest_build = requests.get(
+            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds/property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal),defaultFilter:true,status:success,count:1',
             headers=app_config.teamcity_api_headers)
-        sorted_builds = sorted(builds.json()['build'], key=lambda x: x['id'])
-        if sorted_builds:
-            # What if the latest build doesn't exist? Add it to the list so it's triggered for the first time?
-            latest_build_id = sorted_builds[-1]['id']
+        latest_build_id = latest_build.json().get('id')
+        if latest_build_id:
             latest_build_resources = requests.get(
                 f'{app_config.teamcity_builds_url}/id:{latest_build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
                 headers=app_config.teamcity_api_headers,
