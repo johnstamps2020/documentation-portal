@@ -33,7 +33,7 @@
   --footer-height: 74px;
   --content-width: 950px;
   --sidebar-width: 300px;
-  --search-filter-width: 275px;
+  --search-filter-width: 300px;
 }
 
 input.searchField:-webkit-autofill {
@@ -478,8 +478,13 @@ footer {
 footer.footer-search {
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  left: var(--search-filter-width);
+  width: calc(100% - var(--search-filter-width));
+}
+
+footer.footer-search #footerLeft,
+footer.footer-search #footerCenter {
+  display: none;
 }
 
 #footerLeft {
@@ -784,23 +789,11 @@ div.pageHero {
   background-color: hsl(0, 0%, 100%);
   box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.2);
   padding: 32px 16px 0 16px;
-  height: calc(var(--body-height) - var(--footer-height));
+  height: var(--body-height);
+  top: var(--estimated-header-height);
   overflow-y: scroll;
   position: fixed;
-  top: var(--estimated-header-height);
   width: var(--search-filter-width);
-}
-
-@media screen and (max-width: 952px) {
-  .filterSearchResults {
-    top: 114px;
-  }
-}
-
-@media screen and (max-width: 765px) {
-  .filterSearchResults {
-    top: 116px;
-  }
 }
 
 .checkboxRowContainer {

@@ -851,6 +851,69 @@ object GenerateSitemap : BuildType({
     }
 })
 
+object UploadPdfsForEscrow : BuildType({
+    name = "Upload PDFs for Escrow"
+
+    params {
+        text(
+            "env.RELEASE_NAME",
+            "",
+            label = "Release name",
+            description = "For example, Banff or Cortina",
+            display = ParameterDisplay.PROMPT
+        )
+        text(
+            "env.RELEASE_NUMBER",
+            "",
+            label = "Release number",
+            description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
+            display = ParameterDisplay.PROMPT
+        )
+        text("env.TMP_DIR", "%teamcity.build.checkoutDir%/ci/pdfs")
+        text("env.ZIP_ARCHIVE_NAME", "%env.RELEASE_NAME%_pdfs.zip", display = ParameterDisplay.HIDDEN)
+    }
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            id = "DOWNLOAD_AND_ZIP_PDFS"
+            name = "Download and zip PDF files"
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    
+                    cd %teamcity.build.checkoutDir%/ci
+                    ./downloadPdfsForEscrow.sh
+                """.trimIndent()
+        }
+        script {
+            id = "UPLOAD_ZIP_TO_S3"
+            name = "Upload the ZIP archive to S3"
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Setting credentials to access int"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                    
+                    echo "Uploading the ZIP archive to the S3 bucket"
+                    aws s3 cp "%env.TMP_DIR%/%env.ZIP_ARCHIVE_NAME%" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
+            """.trimIndent()
+        }
+    }
+})
+
 object TestDocCrawler : BuildType({
     name = "Test Doc Crawler"
 
@@ -2496,11 +2559,9 @@ object HelperObjects {
                 templates(buildTemplate)
             }
 
-            var notifyBuildAPI = "false"
             var buildPdf = "true"
             if (build_env == "int") {
                 buildPdf = "false"
-                notifyBuildAPI = "true"
             }
 
 
@@ -2538,7 +2599,6 @@ object HelperObjects {
                 text("GIT_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("GIT_BRANCH", git_source_branch, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text("BUILD_PDF", buildPdf, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                text("NOTIFY_BUILD_API", notifyBuildAPI, display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 text(
                     "CREATE_INDEX_REDIRECT",
                     create_index_redirect,
@@ -3884,7 +3944,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         text("env.WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
         text("env.OUTPUT_PATH", "out", allowEmpty = false)
         text("env.ZIP_SRC_DIR", "zip")
-        text("env.NOTIFY_BUILD_API", "%NOTIFY_BUILD_API%", allowEmpty = false)
     }
 
     vcs {
@@ -3899,24 +3958,16 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 #!/bin/bash
                 set -xe
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\""
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
                 fi
                 
                 if [[ "%env.BUILD_PDF%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" -f wh-pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
+                    export DITA_BASE_COMMAND+=" -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
                 elif [[ "%env.BUILD_PDF%" == "false" ]]; then
                     export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
-                fi
-                
-                if [[ "%env.NOTIFY_BUILD_API%" == "true" ]]; then
-                    if [[ "%env.BUILD_PDF%" == "false" ]]; then
-                        export DITA_BASE_COMMAND+=" --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --notify.build.api yes --tc.build.id %system.teamcity.buildType.id%"
-                    elif [[ "%env.BUILD_PDF%" == "true" ]]; then
-                        export DITA_BASE_COMMAND+=" --notify.build.api yes --tc.build.id %system.teamcity.buildType.id%"
-                    fi     
                 fi
                 
                 if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
@@ -3999,8 +4050,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
             type = "JetBrains.SharedResources"
             param("locks-param", "OxygenWebhelpLicense readLock")
         }
-
-
     }
 })
 
@@ -4202,6 +4251,7 @@ object Content : Project({
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
     buildType(GenerateSitemap)
+    buildType(UploadPdfsForEscrow)
 })
 
 object Docs : Project({

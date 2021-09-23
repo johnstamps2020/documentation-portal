@@ -592,6 +592,29 @@ async function configureSearch() {
   }
 }
 
+function setFooter() {
+  const whTopicBody = document.getElementById('wh_topic_body');
+  const footer = document.querySelector('.wh_footer');
+  const resizeObserver = new ResizeObserver(entries => {
+    for(let entry of entries) {
+      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      const rect = entry.target.getBoundingClientRect();
+      const whTopicBodyLeft = rect.left + scrollLeft;
+      const whTopicBodyPaddingLeft = window.getComputedStyle(wh_topic_body).getPropertyValue('padding-left');
+      const whTopicBodyPaddingRight = window.getComputedStyle(wh_topic_body).getPropertyValue('padding-right');
+
+      if(entry.contentBoxSize) {
+        footer.style.width = 'calc(' + entry.contentBoxSize[0].inlineSize + 'px + ' + whTopicBodyPaddingRight + ')';
+      }
+      else {
+        footer.style.width = 'calc(' + entry.contentRect.width + 'px + ' + whTopicBodyPaddingRight + ')';
+      }
+      footer.style.left = 'calc(' + whTopicBodyPaddingLeft + ' + ' + whTopicBodyLeft + 'px)';
+    }
+  })
+  resizeObserver.observe(whTopicBody);
+}
+
 docReady(async function() {
   metadata = await fetchMetadata();
   await createContainerForCustomHeaderElements();
@@ -604,4 +627,5 @@ docReady(async function() {
   }
   configureSearch();
   addFeedbackElements();
+  setFooter();
 });
