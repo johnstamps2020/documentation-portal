@@ -3865,6 +3865,10 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         "Build the doc site output from DITA"
     }
 
+    artifactRules = """
+        %env.WORKING_DIR%/%env.OUTPUT_PATH%/build-data.json => build-data.json    
+    """.trimIndent()
+
     params {
         text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)

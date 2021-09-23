@@ -5,6 +5,7 @@ import os
 import urllib.parse
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Optional, Union
 
 import requests
 import sys
@@ -135,7 +136,7 @@ class BuildPipeline:
 class ProcessingRecord:
     type: logging.INFO or logging.WARNING or logging.ERROR
     message: str
-    exit_code: int = None
+    exit_code: Optional[int] = None
 
 
 def check_processing_result(func):
@@ -151,7 +152,7 @@ def check_processing_result(func):
 
 
 @check_processing_result
-def get_changed_files(app_config: AppConfig) -> list[str] or ProcessingRecord:
+def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
     changed_files = [line.split(':')[0] for line in app_config.changed_files_file.open().readlines()]
     _logger.info(f'Number of VCS changes: {len(changed_files)}')
     return changed_files or ProcessingRecord(
@@ -162,7 +163,7 @@ def get_changed_files(app_config: AppConfig) -> list[str] or ProcessingRecord:
 
 
 @check_processing_result
-def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str] or ProcessingRecord:
+def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[str] or ProcessingRecord]:
     payload = {
         'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:{app_config.teamcity_affected_project})',
     }
@@ -205,7 +206,7 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str] o
 
 
 @check_processing_result
-def start_build(app_config: AppConfig, build_id: str) -> BuildInfo or ProcessingRecord:
+def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or ProcessingRecord]:
     data = {
         'buildType': {
             'id': build_id
@@ -231,7 +232,7 @@ def start_build(app_config: AppConfig, build_id: str) -> BuildInfo or Processing
 
 
 @check_processing_result
-def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> list[BuildInfo] or ProcessingRecord:
+def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[list[BuildInfo] or ProcessingRecord]:
     started_builds = []
     for build_type_id in build_type_ids:
         build_start_result = start_build(app_config, build_type_id)
@@ -249,7 +250,7 @@ def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> list[B
 
 
 @check_processing_result
-def update_build(app_config: AppConfig, build: BuildInfo):
+def update_build(app_config: AppConfig, build: BuildInfo) -> Union[BuildInfo, ProcessingRecord]:
     try:
         full_build_href = urllib.parse.urljoin(app_config.teamcity_build_queue_url, build.href)
         response = requests.get(full_build_href, headers=app_config.teamcity_api_headers)
@@ -270,7 +271,7 @@ def update_build(app_config: AppConfig, build: BuildInfo):
 
 
 @check_processing_result
-def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> list[BuildInfo] or ProcessingRecord:
+def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[list[BuildInfo], ProcessingRecord]:
     updated_builds = []
     for build in builds:
         build_update_result = update_build(app_config, build)
@@ -288,7 +289,7 @@ def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> list[Bu
 
 
 @check_processing_result
-def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
+def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline) -> ProcessingRecord:
     _logger.info('>>>>>>>>>>')
     _logger.info('Checking the status of started builds...')
     updated_triggered_builds = update_all_builds(app_config, build_pipeline.triggered_builds)
