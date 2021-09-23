@@ -3891,14 +3891,14 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 #!/bin/bash
                 set -xe
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes"
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
                 fi
                 
                 if [[ "%env.BUILD_PDF%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" -f wh-pdf --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\" --dita.ot.pdf.format pdf5_Guidewire"
+                    export DITA_BASE_COMMAND+=" -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
                 elif [[ "%env.BUILD_PDF%" == "false" ]]; then
                     export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
                 fi
