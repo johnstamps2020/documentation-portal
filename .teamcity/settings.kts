@@ -2240,7 +2240,6 @@ object HelperObjects {
                 root(vcs_root_id)
                 cleanCheckout = true
             }
-
             params {
                 text("env.CHANGED_FILES_FILE", "%system.teamcity.build.changedFiles.file%", allowEmpty = false)
                 text(
@@ -2254,13 +2253,28 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN
                 )
                 text(
-                    "env.TEAMCITY_BUILD_QUEUE_URL",
-                    "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/buildQueue",
+                    "env.TEAMCITY_API_ROOT_URL",
+                    "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/",
                     allowEmpty = false
                 )
                 password(
                     "env.TEAMCITY_API_AUTH_TOKEN",
                     "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530",
+                    display = ParameterDisplay.HIDDEN
+                )
+                text(
+                    "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
+                    "json/build-data.json",
+                    display = ParameterDisplay.HIDDEN
+                )
+                text(
+                    "env.TEAMCITY_AFFECTED_PROJECT",
+                    "DocumentationTools_DocumentationPortal_Docs",
+                    display = ParameterDisplay.HIDDEN
+                )
+                text(
+                    "env.TEAMCITY_TEMPLATE",
+                    "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita",
                     display = ParameterDisplay.HIDDEN
                 )
                 text(
@@ -2279,14 +2293,14 @@ object HelperObjects {
                 script {
                     name = "Run the build manager"
                     scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export FULL_GIT_BUILD_BRANCH=%env.GIT_BUILD_BRANCH%
-                export GIT_BUILD_BRANCH=${'$'}{FULL_GIT_BUILD_BRANCH#"refs/heads/"}
-                                
-                build_manager
-            """.trimIndent()
+                        #!/bin/bash
+                        set -xe
+                        
+                        export FULL_GIT_BUILD_BRANCH=%env.GIT_BUILD_BRANCH%
+                        export GIT_BUILD_BRANCH=${'$'}{FULL_GIT_BUILD_BRANCH#"refs/heads/"}
+                                        
+                        build_manager
+                    """.trimIndent()
                     dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
@@ -3927,6 +3941,10 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
             %env.SOURCES_ROOT%/%env.OUTPUT_PATH%/build-data.json => json
         """.trimIndent()
     }
+
+    artifactRules = """
+        %env.WORKING_DIR%/%env.OUTPUT_PATH%/build-data.json => build-data.json    
+    """.trimIndent()
 
     params {
         text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
