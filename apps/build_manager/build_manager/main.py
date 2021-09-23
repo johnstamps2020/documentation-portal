@@ -13,7 +13,7 @@ import time
 _logger = logging.getLogger('build_manager_logger')
 _logger.setLevel(logging.INFO)
 _console_handler = logging.StreamHandler()
-_log_formatter = logging.Formatter('%(message)s')
+_log_formatter = logging.Formatter('%(levelname)s -- %(message)s')
 _console_handler.setFormatter(_log_formatter)
 _logger.addHandler(_console_handler)
 
@@ -278,7 +278,7 @@ def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> list[Bu
         if type(build_update_result) is BuildInfo:
             updated_builds.append(build_update_result)
             _logger.info(
-                f'Updated build: {build.id}'
+                f'Updated info for build {build.id}'
             )
 
     return updated_builds or ProcessingRecord(
@@ -294,28 +294,27 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
     _logger.info('Checking the status of started builds...')
     updated_triggered_builds = update_all_builds(app_config, build_pipeline.triggered_builds)
     updated_build_pipeline = BuildPipeline(updated_triggered_builds)
-    _logger.info(f'\nQueued builds: {updated_build_pipeline.number_of_queued_builds}'
-                 f'\nRunning builds: {updated_build_pipeline.number_of_running_builds}'
-                 f'\nFinished builds: {updated_build_pipeline.number_of_finished_builds}')
+    _logger.info(f'Queued builds: {updated_build_pipeline.number_of_queued_builds}'
+                 f' | Running builds: {updated_build_pipeline.number_of_running_builds}'
+                 f' | Finished builds: {updated_build_pipeline.number_of_finished_builds}')
 
     for triggered_build in updated_build_pipeline.triggered_builds:
         build_type = triggered_build.build_type
-        _logger.info(f'\nTriggered build ID: {triggered_build.id}'
-                     f'\nStatus: {triggered_build.state.upper()}'
-                     f'\nEstimated time to finish: {triggered_build.estimated_time_to_finish}'
-                     f'\nBuild configuration info:'
-                     f'\n\tID: {build_type["id"]}'
-                     f'\n\tName: {build_type["projectName"]}'
-                     f'\n\tURL: {build_type["webUrl"]}')
+        triggered_build_details = [f'Triggered build ID: {triggered_build.id}',
+                                   f'Status: {triggered_build.state.upper()}',
+                                   f'Estimated time to finish: {triggered_build.estimated_time_to_finish}',
+                                   f'Build type ID: {build_type["id"]}',
+                                   f'Build type URL: {build_type["webUrl"]}']
+        _logger.info('\n\t\t'.join(triggered_build_details))
 
-    _logger.info(f'\nWait time before next check: {updated_build_pipeline.wait_time} s')
+    _logger.info(f'Wait time before next check: {updated_build_pipeline.wait_time} s')
     time.sleep(updated_build_pipeline.wait_time)
 
     if updated_build_pipeline.all_builds_finished:
         if updated_build_pipeline.unsuccessful_builds:
             return ProcessingRecord(
                 type=logging.ERROR,
-                message='All builds finished.'
+                message='All started builds finished.'
                         + '\nThe following builds did not finish building successfully:'
                         + '\n\t'
                         + '\n\t'.join(b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds),
@@ -324,7 +323,7 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
 
         return ProcessingRecord(
             type=logging.INFO,
-            message='All builds finished successfully',
+            message='All started builds finished successfully',
             exit_code=0
         )
     else:
@@ -334,7 +333,7 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
 def main():
     build_manager_config = AppConfig().get_app_config()
     changed_files = get_changed_files(build_manager_config)
-    build_ids_to_start = get_build_ids(build_manager_config, changed_files)
+    build_ids_to_start = get_build_ids(build_manager_config, changed_files) + ['FakeID', 'FakeID222']
     started_builds = start_all_builds(build_manager_config, build_ids_to_start)
     watch_builds(build_manager_config, BuildPipeline(started_builds))
 
