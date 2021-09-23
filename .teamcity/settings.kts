@@ -3924,7 +3924,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     } else {
         name = "Build the doc site output from DITA"
         artifactRules = """
-            build-data.json    
+            build-data.json
         """.trimIndent()
     }
 
