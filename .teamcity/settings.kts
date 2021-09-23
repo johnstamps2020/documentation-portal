@@ -2243,16 +2243,6 @@ object HelperObjects {
             params {
                 text("env.CHANGED_FILES_FILE", "%system.teamcity.build.changedFiles.file%", allowEmpty = false)
                 text(
-                    "env.BUILD_API_URL",
-                    "https://adminserver.dev.ccs.guidewire.net/builds/resources",
-                    allowEmpty = false
-                )
-                password(
-                    "env.ADMIN_SERVER_API_KEY",
-                    "credentialsJSON:ff0fb383-0265-4925-8116-56a9d0144b12",
-                    display = ParameterDisplay.HIDDEN
-                )
-                text(
                     "env.TEAMCITY_API_ROOT_URL",
                     "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/",
                     allowEmpty = false
@@ -2295,10 +2285,7 @@ object HelperObjects {
                     scriptContent = """
                         #!/bin/bash
                         set -xe
-                        
-                        export FULL_GIT_BUILD_BRANCH=%env.GIT_BUILD_BRANCH%
-                        export GIT_BUILD_BRANCH=${'$'}{FULL_GIT_BUILD_BRANCH#"refs/heads/"}
-                                        
+                                                                
                         build_manager
                     """.trimIndent()
                     dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
