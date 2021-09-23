@@ -191,11 +191,13 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
                 _logger.info(
                     f'Build {latest_build_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
             else:
-                build_resources = latest_build_resources.text.split()
+                build_resources = json.loads(latest_build_resources.text)['resources']
                 matching_resources = next((build_resource for build_resource in build_resources if
                                            build_resource in changed_resources), None)
                 if matching_resources:
                     all_builds.append(build_type_id)
+        else:
+            all_builds.append(build_type_id)
 
     _logger.info(f'Number of builds to start: {len(all_builds)}')
     return all_builds or ProcessingRecord(
