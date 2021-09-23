@@ -190,6 +190,7 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
             if latest_build_resources.status_code == 404:
                 _logger.info(
                     f'Build {latest_build_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
+                all_builds.append(build_type_id)
             else:
                 build_resources = json.loads(latest_build_resources.text)['resources']
                 matching_resources = next((build_resource for build_resource in build_resources if
