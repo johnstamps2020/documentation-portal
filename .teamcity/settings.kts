@@ -2264,7 +2264,7 @@ object HelperObjects {
                 )
                 text(
                     "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
-                    "build-data.json",
+                    "json/build-data.json",
                     display = ParameterDisplay.HIDDEN
                 )
                 text(
