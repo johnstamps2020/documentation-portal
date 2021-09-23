@@ -31,6 +31,7 @@ class AppConfig:
     teamcity_builds_url = urllib.parse.urljoin(teamcity_api_root_url, 'builds')
     teamcity_resources_artifact_path = os.environ.get('TEAMCITY_RESOURCES_ARTIFACT_PATH')
     teamcity_affected_project = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
+    teamcity_template = os.environ.get('TEAMCITY_TEMPLATE')
     _teamcity_api_auth_token = os.environ.get('TEAMCITY_API_AUTH_TOKEN')
     _changed_files_file = os.environ.get('CHANGED_FILES_FILE')
     build_api_headers = {
@@ -165,7 +166,7 @@ def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecor
 @check_processing_result
 def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[str] or ProcessingRecord]:
     payload = {
-        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),affectedProject:(id:{app_config.teamcity_affected_project})',
+        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),template:(id:{app_config.teamcity_template}),affectedProject:(id:{app_config.teamcity_affected_project})',
     }
     build_types = requests.get(
         app_config.teamcity_build_types_url,
@@ -175,11 +176,12 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
     build_types_ids = sorted(build_type['id'] for build_type in build_types.json()['buildType'])
     all_builds = []
     for build_type_id in build_types_ids:
-        latest_build = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds/property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal),defaultFilter:true,status:success,count:1',
+        builds_response = requests.get(
+            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal),defaultFilter:true,status:success,lookupLimit:1',
             headers=app_config.teamcity_api_headers)
-        latest_build_id = latest_build.json().get('id')
-        if latest_build_id:
+        builds = builds_response.json()['build']
+        if builds:
+            latest_build_id = builds[0]['id']
             latest_build_resources = requests.get(
                 f'{app_config.teamcity_builds_url}/id:{latest_build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
                 headers=app_config.teamcity_api_headers,

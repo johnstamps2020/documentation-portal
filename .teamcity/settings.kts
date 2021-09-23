@@ -2273,6 +2273,11 @@ object HelperObjects {
                     display = ParameterDisplay.HIDDEN
                 )
                 text(
+                    "env.TEAMCITY_TEMPLATE",
+                    "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita",
+                    display = ParameterDisplay.HIDDEN
+                )
+                text(
                     "env.GIT_URL",
                     "%vcsroot.$vcs_root_id.url%",
                     allowEmpty = false
