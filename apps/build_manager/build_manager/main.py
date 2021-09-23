@@ -180,8 +180,6 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> list[str] o
         sorted_builds = sorted(builds.json()['build'], key=lambda x: x['id'])
         if sorted_builds:
             # What if the latest build doesn't exist? Add it to the list so it's triggered for the first time?
-            # Check if the resources.txt artifact contains any of the modified resources
-            # If yes, append the ID to the list
             latest_build_id = sorted_builds[-1]['id']
             latest_build_resources = requests.get(
                 f'{app_config.teamcity_builds_url}/id:{latest_build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
@@ -252,9 +250,9 @@ def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> list[B
 
 @check_processing_result
 def update_build(app_config: AppConfig, build: BuildInfo):
-    full_build_href = urllib.parse.urljoin(app_config.teamcity_build_queue_url, build.href)
-    response = requests.get(full_build_href, headers=app_config.teamcity_api_headers)
-    if response.ok:
+    try:
+        full_build_href = urllib.parse.urljoin(app_config.teamcity_build_queue_url, build.href)
+        response = requests.get(full_build_href, headers=app_config.teamcity_api_headers)
         build_info = response.json()
         build.state = build_info['state']
         build.status = build_info.get('status', '')
@@ -265,9 +263,10 @@ def update_build(app_config: AppConfig, build: BuildInfo):
         elif build.state.casefold() == 'finished':
             build.estimated_time_to_finish = 0
         return build
-    return ProcessingRecord(
-        type=logging.ERROR,
-        message=f'Unable to update info for build {build.id}: {response.text}')
+    except Exception as e:
+        return ProcessingRecord(
+            type=logging.ERROR,
+            message=f'Unable to update info for build {build.id}: {e}')
 
 
 @check_processing_result
@@ -333,7 +332,7 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline):
 def main():
     build_manager_config = AppConfig().get_app_config()
     changed_files = get_changed_files(build_manager_config)
-    build_ids_to_start = get_build_ids(build_manager_config, changed_files) + ['FakeID', 'FakeID222']
+    build_ids_to_start = get_build_ids(build_manager_config, changed_files)
     started_builds = start_all_builds(build_manager_config, build_ids_to_start)
     watch_builds(build_manager_config, BuildPipeline(started_builds))
 
