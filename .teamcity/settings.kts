@@ -3924,7 +3924,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     } else {
         name = "Build the doc site output from DITA"
         artifactRules = """
-            %env.WORKING_DIR%/%env.OUTPUT_PATH%/build-data.json =>  %teamcity.build.checkoutDir%    
+            build-data.json    
         """.trimIndent()
     }
 
