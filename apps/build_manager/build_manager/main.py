@@ -176,7 +176,7 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
     all_builds = []
     for build_type_id in build_types_ids:
         builds = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:NOTIFY_BUILD_API,value:true),defaultFilter:true,status:success',
+            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:int),(name:env.DEPLOY_ENV,value:staging),defaultFilter:true,status:success',
             headers=app_config.teamcity_api_headers)
         sorted_builds = sorted(builds.json()['build'], key=lambda x: x['id'])
         if sorted_builds:
