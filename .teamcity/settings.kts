@@ -2285,10 +2285,7 @@ object HelperObjects {
                     scriptContent = """
                         #!/bin/bash
                         set -xe
-                        
-                        export FULL_GIT_BUILD_BRANCH=%env.GIT_BUILD_BRANCH%
-                        export GIT_BUILD_BRANCH=${'$'}{FULL_GIT_BUILD_BRANCH#"refs/heads/"}
-                                        
+                                                                
                         build_manager
                     """.trimIndent()
                     dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
