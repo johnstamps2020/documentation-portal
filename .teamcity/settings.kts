@@ -3919,10 +3919,13 @@ object ZipUpSources : Template({
 })
 
 open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
-    name = if (createZipPackage) {
-        "Build the doc site and local output from DITA"
+    if (createZipPackage) {
+        name = "Build the doc site and local output from DITA"
     } else {
-        "Build the doc site output from DITA"
+        name = "Build the doc site output from DITA"
+        artifactRules = """
+            %env.WORKING_DIR%/%env.OUTPUT_PATH%/build-data.json => build-data.json    
+        """.trimIndent()
     }
 
     params {
