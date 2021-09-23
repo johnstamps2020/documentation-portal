@@ -229,7 +229,7 @@ def start_build(app_config: AppConfig, build_id: str) -> BuildInfo or Processing
         )
     return ProcessingRecord(
         type=logging.ERROR,
-        message=f'Unable to start build {build_id}: {response.reason}')
+        message=f'Unable to start build {build_id}: {response.text}')
 
 
 @check_processing_result
@@ -267,7 +267,7 @@ def update_build(app_config: AppConfig, build: BuildInfo):
         return build
     return ProcessingRecord(
         type=logging.ERROR,
-        message=f'Unable to update info for build {build.id}: {response.reason}')
+        message=f'Unable to update info for build {build.id}: {response.text}')
 
 
 @check_processing_result
