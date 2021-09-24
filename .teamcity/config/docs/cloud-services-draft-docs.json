@@ -4,7 +4,7 @@
     {
       "id": "cloudrules",
       "title": "Cloud Rules",
-      "url": "cloud/rules",
+      "url": "cloud/rules/guide",
       "metadata": {
         "product": ["Rules"],
         "platform": ["Cloud"],
@@ -20,7 +20,7 @@
     {
       "id": "cloudrulesrndraft",
       "title": "Cloud Rules Release Notes",
-      "url": "cloud/gw-feature-preview/cloudrulesrn",
+      "url": "cloud/rules/relnotes",
       "metadata": {
         "product": ["Rules"],
         "platform": ["Cloud"],
