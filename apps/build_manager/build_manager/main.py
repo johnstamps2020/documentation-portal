@@ -168,6 +168,12 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
         params=payload
     )
     build_types_ids = sorted(build_type['id'] for build_type in build_types.json()['buildType'])
+    if not build_types_ids:
+        return ProcessingRecord(
+            type=logging.INFO,
+            message='No build type IDs found for the VCS root. Nothing more to do here.',
+            exit_code=0
+        )
     all_builds = []
     for build_type_id in build_types_ids:
         builds_response = requests.get(
@@ -184,22 +190,19 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
             if latest_build_resources.status_code == 404:
                 _logger.info(
                     f'Build {latest_build_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
-                all_builds.append(build_type_id)
+                build_must_be_started = True
             else:
                 build_resources = json.loads(latest_build_resources.text)['resources']
-                matching_resources = next((build_resource for build_resource in build_resources if
-                                           build_resource in changed_resources), None)
-                if matching_resources:
-                    all_builds.append(build_type_id)
+                build_must_be_started = next((build_resource for build_resource in build_resources if
+                                              build_resource in changed_resources), False)
         else:
+            build_must_be_started = True
+
+        if build_must_be_started:
             all_builds.append(build_type_id)
 
     _logger.info(f'Number of builds to start: {len(all_builds)}')
-    return all_builds or ProcessingRecord(
-        type=logging.INFO,
-        message='No build IDs found for the VCS changes. Nothing more to do here.',
-        exit_code=0
-    )
+    return all_builds
 
 
 @check_processing_result
