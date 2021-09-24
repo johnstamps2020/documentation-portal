@@ -2254,7 +2254,7 @@ object HelperObjects {
                 )
                 text(
                     "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
-                    "json/build-data.json",
+                    "build-data.json",
                     display = ParameterDisplay.HIDDEN
                 )
                 text(
@@ -3930,7 +3930,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     }
 
     artifactRules = """
-        %env.WORKING_DIR%/%env.OUTPUT_PATH%/build-data.json => build-data.json    
+        %env.WORKING_DIR%/%env.OUTPUT_PATH%/build-data.json => /    
     """.trimIndent()
 
     params {
