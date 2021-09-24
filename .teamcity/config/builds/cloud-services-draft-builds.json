@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "RulesCloud.ditamap",
+      "srcId": "cloudrulessrc",
+      "docId": "cloudrules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "root": "cloud-rules-release-notes.ditamap",
+      "srcId": "cloudrulesrndraftsrc",
+      "docId": "cloudrulesrndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "WorksetManager.ditamap",
+      "srcId": "worksetmgrdraftsrc",
+      "docId": "worksetmgrdraft",
+      "indexRedirect": true
+    }
+  ]
+}

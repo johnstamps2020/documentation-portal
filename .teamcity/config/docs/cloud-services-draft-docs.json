@@ -1,0 +1,53 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "cloudrules",
+      "title": "Cloud Rules",
+      "url": "cloud/rules/guide",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudrulesrndraft",
+      "title": "Cloud Rules Release Notes",
+      "url": "cloud/rules/relnotes",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "worksetmgrdraft",
+      "title": "Workset Manager",
+      "url": "cloud/worksetmgr",
+      "metadata": {
+        "product": ["Workset Manager"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
