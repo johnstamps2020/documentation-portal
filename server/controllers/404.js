@@ -251,6 +251,10 @@ const redirectUrls = [
     from: 'portal/secure/upgradediff',
     to: 'upgradediffs'
   },
+  {
+    from: 'portal/secure/upgradediff/index.html',
+    to: 'upgradediffs'
+  },
 ];
 
 function getRedirectUrl(originUrl) {
