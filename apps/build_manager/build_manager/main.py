@@ -189,7 +189,7 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
             )
             if latest_build_resources.status_code == 404:
                 _logger.info(
-                    f'Build {latest_build_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
+                    f'Build {latest_build_id} (build type: {build_type_id}) does not have the {app_config.teamcity_resources_artifact_path} artifact')
                 build_must_be_started = True
             else:
                 build_resources = json.loads(latest_build_resources.text)['resources']
@@ -219,7 +219,7 @@ def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or Proc
     if response.ok:
         response_json = response.json()
         return BuildInfo(
-            id=response_json['id'],
+            id=str(response_json['id']),
             href=response_json['href'],
             build_type=response_json['buildType'],
             state='',
@@ -239,7 +239,8 @@ def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[
     if started_builds:
         _logger.info(
             f'Started {len(started_builds)} builds: '
-            + ','.join(f"{build.id} (build type: {build.build_type['id']}" for build in started_builds)
+            + '\n\t'
+            + '\n\t'.join(f"{build.id} (build type: {build.build_type['id']}" for build in started_builds)
         )
         return started_builds
 
@@ -279,7 +280,8 @@ def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[l
     if updated_builds:
         _logger.info(
             f'Updated info for {len(updated_builds)} builds: '
-            + ','.join(build.id for build in updated_builds)
+            + '\n\t'
+            + '\n\t'.join(build.id for build in updated_builds)
         )
         return updated_builds
 
