@@ -3929,10 +3929,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         """.trimIndent()
     }
 
-    artifactRules = """
-        %env.SOURCES_ROOT%/%env.OUTPUT_PATH%/build-data.json => json    
-    """.trimIndent()
-
     params {
         text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
         text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
