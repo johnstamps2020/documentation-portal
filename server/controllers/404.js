@@ -247,6 +247,10 @@ const redirectUrls = [
     from: 'jutro/documentation/latest',
     to: 'jutro/documentation/5.4.0'
   },
+  {
+    from: 'portal/secure/upgradediff',
+    to: 'upgradediffs'
+  },
 ];
 
 function getRedirectUrl(originUrl) {
