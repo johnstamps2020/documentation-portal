@@ -230,16 +230,17 @@ def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or Proc
 
 @check_processing_result
 def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[list[BuildInfo] or ProcessingRecord]:
-    started_builds = []
-    for build_type_id in build_type_ids:
-        build_start_result = start_build(app_config, build_type_id)
-        if type(build_start_result) is BuildInfo:
-            started_builds.append(build_start_result)
-            _logger.info(
-                f'Started build: {build_start_result.id} (build type: {build_start_result.build_type["id"]})'
-            )
-    _logger.info(f'Number of started builds: {len(started_builds)}')
-    return started_builds or ProcessingRecord(
+    started_builds_results = (start_build(app_config, build_type_id) for build_type_id in build_type_ids)
+    started_builds = [result for result in started_builds_results if type(result) is BuildInfo]
+
+    if started_builds:
+        _logger.info(
+            f'Started {len(started_builds)} builds: '
+            + ','.join(f"{build.id} (build type: {build.build_type['id']}" for build in started_builds)
+        )
+        return started_builds
+
+    return ProcessingRecord(
         type=logging.ERROR,
         message='All builds failed to start. Nothing more to do here.',
         exit_code=1
@@ -269,16 +270,17 @@ def update_build(app_config: AppConfig, build: BuildInfo) -> Union[BuildInfo, Pr
 
 @check_processing_result
 def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[list[BuildInfo], ProcessingRecord]:
-    updated_builds = []
-    for build in builds:
-        build_update_result = update_build(app_config, build)
-        if type(build_update_result) is BuildInfo:
-            updated_builds.append(build_update_result)
-            _logger.info(
-                f'Updated info for build {build.id}'
-            )
+    updated_builds_results = (update_build(app_config, build) for build in builds)
+    updated_builds = [result for result in updated_builds_results if type(result) is BuildInfo]
 
-    return updated_builds or ProcessingRecord(
+    if updated_builds:
+        _logger.info(
+            f'Updated info for {len(updated_builds)} builds: '
+            + ','.join(build.id for build in updated_builds)
+        )
+        return updated_builds
+
+    return ProcessingRecord(
         type=logging.ERROR,
         message='All builds failed to update. Nothing more to do here.',
         exit_code=1
