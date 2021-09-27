@@ -42,13 +42,6 @@ class AppConfig:
     def changed_files_file(self):
         return Path(self._changed_files_file)
 
-    def get_build_api_data(self, resources):
-        return {
-            'gitUrl': self.git_url,
-            'gitBranch': self.git_build_branch,
-            'resources': resources
-        }
-
     def get_app_config(self):
         missing_parameters = [
             field.name.upper().lstrip('_') for field in dataclasses.fields(self)
@@ -148,9 +141,12 @@ def check_processing_result(func):
 
 @check_processing_result
 def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    changed_files = [line.split(':')[0] for line in app_config.changed_files_file.open().readlines()]
+    changed_files_file_content = app_config.changed_files_file.open().readlines()
+    changed_files = [line.split(':')[0] for line in changed_files_file_content]
     _logger.info(f'Number of VCS changes: {len(changed_files)}')
-    return changed_files or ProcessingRecord(
+    if changed_files:
+        return changed_files
+    return ProcessingRecord(
         type=logging.INFO,
         message='No changes found in the VCS history. Nothing more to do here.',
         exit_code=0
@@ -158,47 +154,91 @@ def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecor
 
 
 @check_processing_result
-def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[str] or ProcessingRecord]:
+def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
+    vcs_root_locator = f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch}))'
+    template_locator = f'template:(id:{app_config.teamcity_template})'
+    affected_project_locator = f'affectedProject:(id:{app_config.teamcity_affected_project})'
     payload = {
-        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),template:(id:{app_config.teamcity_template}),affectedProject:(id:{app_config.teamcity_affected_project})',
+        'locator': f'{vcs_root_locator},{template_locator},{affected_project_locator}',
     }
-    build_types = requests.get(
+    build_types_response = requests.get(
         app_config.teamcity_build_types_url,
         headers=app_config.teamcity_api_headers,
         params=payload
     )
-    build_types_ids = sorted(build_type['id'] for build_type in build_types.json()['buildType'])
+    build_types_ids = sorted(build_type['id'] for build_type in build_types_response.json()['buildType'])
+    if build_types_ids:
+        return build_types_ids
+    return ProcessingRecord(
+        type=logging.INFO,
+        message='No build type IDs found for the VCS root. Nothing more to do here.',
+        exit_code=0
+    )
+
+
+@check_processing_result
+def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[list[str], ProcessingRecord]:
+    property_locator = 'property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal)'
+    default_filter_locator = 'defaultFilter:true'
+    status_locator = 'status:success'
+    lookup_limit_locator = 'lookupLimit:1'
+    builds_response = requests.get(
+        f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={property_locator},{default_filter_locator},{status_locator},{lookup_limit_locator}',
+        headers=app_config.teamcity_api_headers)
+    builds = builds_response.json()['build']
+    if builds:
+        return builds
+    return ProcessingRecord(
+        type=logging.INFO,
+        message=f'No successful builds found for {build_type_id}'
+    )
+
+
+@check_processing_result
+def get_matching_build_resources(app_config: AppConfig, build_type_id: str, build_id: str, changed_resources: str) -> \
+        Union[bool, ProcessingRecord]:
+    latest_build_resources = requests.get(
+        f'{app_config.teamcity_builds_url}/id:{build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
+        headers=app_config.teamcity_api_headers,
+        allow_redirects=True
+    )
+    if latest_build_resources.status_code == 404:
+        return ProcessingRecord(
+            type=logging.INFO,
+            message=f'Latest build ({build_id}) for {build_type_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
+
+    build_resources = json.loads(latest_build_resources.text)['resources']
+    return bool(next((build_resource for build_resource in build_resources if
+                      build_resource in changed_resources), False))
+
+
+@check_processing_result
+def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[str] or ProcessingRecord]:
+    build_types_ids = get_build_types(app_config)
     all_builds = []
     for build_type_id in build_types_ids:
-        builds_response = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal),defaultFilter:true,status:success,lookupLimit:1',
-            headers=app_config.teamcity_api_headers)
-        builds = builds_response.json()['build']
-        if builds:
+        builds = get_build_type_builds(app_config, build_type_id)
+        builds_found = builds and type(builds) is not ProcessingRecord
+        if builds_found:
             latest_build_id = builds[0]['id']
-            latest_build_resources = requests.get(
-                f'{app_config.teamcity_builds_url}/id:{latest_build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
-                headers=app_config.teamcity_api_headers,
-                allow_redirects=True
-            )
-            if latest_build_resources.status_code == 404:
-                _logger.info(
-                    f'Build {latest_build_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
+            matching_resources = get_matching_build_resources(app_config, build_type_id, latest_build_id,
+                                                              changed_resources)
+            artifact_path_exists = type(matching_resources) is not ProcessingRecord
+            if (
+                    artifact_path_exists
+                    and matching_resources
+                    or not artifact_path_exists
+            ):
                 all_builds.append(build_type_id)
-            else:
-                build_resources = json.loads(latest_build_resources.text)['resources']
-                matching_resources = next((build_resource for build_resource in build_resources if
-                                           build_resource in changed_resources), None)
-                if matching_resources:
-                    all_builds.append(build_type_id)
         else:
             all_builds.append(build_type_id)
-
-    _logger.info(f'Number of builds to start: {len(all_builds)}')
-    return all_builds or ProcessingRecord(
+    if all_builds:
+        _logger.info(f'Number of builds to start: {len(all_builds)}')
+        return all_builds
+    return ProcessingRecord(
         type=logging.INFO,
-        message='No build IDs found for the VCS changes. Nothing more to do here.',
-        exit_code=0
+        message='No builds to start. Nothing more to do here.',
+        exit_code=0,
     )
 
 
@@ -216,7 +256,7 @@ def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or Proc
     if response.ok:
         response_json = response.json()
         return BuildInfo(
-            id=response_json['id'],
+            id=str(response_json['id']),
             href=response_json['href'],
             build_type=response_json['buildType'],
             state='',
@@ -230,16 +270,20 @@ def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or Proc
 
 @check_processing_result
 def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[list[BuildInfo] or ProcessingRecord]:
-    started_builds = []
-    for build_type_id in build_type_ids:
-        build_start_result = start_build(app_config, build_type_id)
-        if type(build_start_result) is BuildInfo:
-            started_builds.append(build_start_result)
-            _logger.info(
-                f'Started build: {build_start_result.id} (build type: {build_start_result.build_type["id"]})'
-            )
-    _logger.info(f'Number of started builds: {len(started_builds)}')
-    return started_builds or ProcessingRecord(
+    started_builds_results = (start_build(app_config, build_type_id) for build_type_id in build_type_ids)
+    started_builds = [result for result in started_builds_results if type(result) is BuildInfo]
+
+    if started_builds:
+        started_builds_ids = '\n\t'.join(
+            f"{build.id} (build type: {build.build_type['id']})" for build in started_builds)
+        _logger.info(
+            f'Started builds: {len(started_builds)} '
+            + '\n\t'
+            + started_builds_ids
+        )
+        return started_builds
+
+    return ProcessingRecord(
         type=logging.ERROR,
         message='All builds failed to start. Nothing more to do here.',
         exit_code=1
@@ -269,16 +313,19 @@ def update_build(app_config: AppConfig, build: BuildInfo) -> Union[BuildInfo, Pr
 
 @check_processing_result
 def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[list[BuildInfo], ProcessingRecord]:
-    updated_builds = []
-    for build in builds:
-        build_update_result = update_build(app_config, build)
-        if type(build_update_result) is BuildInfo:
-            updated_builds.append(build_update_result)
-            _logger.info(
-                f'Updated info for build {build.id}'
-            )
+    updated_builds_results = (update_build(app_config, build) for build in builds)
+    updated_builds = [result for result in updated_builds_results if type(result) is BuildInfo]
 
-    return updated_builds or ProcessingRecord(
+    if updated_builds:
+        updated_builds_ids = '\n\t'.join(build.id for build in updated_builds)
+        _logger.info(
+            f'Updated info for builds: {len(updated_builds)} '
+            + '\n\t'
+            + updated_builds_ids
+        )
+        return updated_builds
+
+    return ProcessingRecord(
         type=logging.ERROR,
         message='All builds failed to update. Nothing more to do here.',
         exit_code=1
@@ -309,12 +356,14 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline) -> Proces
 
     if updated_build_pipeline.all_builds_finished:
         if updated_build_pipeline.unsuccessful_builds:
+            build_types_web_urls = '\n\t'.join(
+                b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds)
             return ProcessingRecord(
                 type=logging.ERROR,
                 message='All started builds finished.'
                         + '\nThe following builds did not finish building successfully:'
                         + '\n\t'
-                        + '\n\t'.join(b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds),
+                        + build_types_web_urls,
                 exit_code=1
             )
 
