@@ -238,7 +238,7 @@ def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[
 
     if started_builds:
         _logger.info(
-            f'Started {len(started_builds)} builds: '
+            f'Started builds: {len(started_builds)} '
             + '\n\t'
             + '\n\t'.join(f"{build.id} (build type: {build.build_type['id']}" for build in started_builds)
         )
@@ -279,7 +279,7 @@ def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[l
 
     if updated_builds:
         _logger.info(
-            f'Updated info for {len(updated_builds)} builds: '
+            f'Updated info for builds: {len(updated_builds)} '
             + '\n\t'
             + '\n\t'.join(build.id for build in updated_builds)
         )
