@@ -161,51 +161,92 @@ def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecor
 
 
 @check_processing_result
-def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[str] or ProcessingRecord]:
+def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
+    vcs_root_locator = f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch}))'
+    template_locator = f'template:(id:{app_config.teamcity_template})'
+    affected_project_locator = f'affectedProject:(id:{app_config.teamcity_affected_project})'
     payload = {
-        'locator': f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch})),template:(id:{app_config.teamcity_template}),affectedProject:(id:{app_config.teamcity_affected_project})',
+        'locator': f'{vcs_root_locator},{template_locator},{affected_project_locator}',
     }
-    build_types = requests.get(
+    build_types_response = requests.get(
         app_config.teamcity_build_types_url,
         headers=app_config.teamcity_api_headers,
         params=payload
     )
-    build_types_ids = sorted(build_type['id'] for build_type in build_types.json()['buildType'])
-    if not build_types_ids:
+    build_types_ids = sorted(build_type['id'] for build_type in build_types_response.json()['buildType'])
+    if build_types_ids:
+        return build_types_ids
+    return ProcessingRecord(
+        type=logging.INFO,
+        message='No build type IDs found for the VCS root. Nothing more to do here.',
+        exit_code=0
+    )
+
+
+@check_processing_result
+def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[list[str], ProcessingRecord]:
+    property_locator = 'property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal)'
+    default_filter_locator = 'defaultFilter:true'
+    status_locator = 'status:success'
+    lookup_limit_locator = 'lookupLimit:1'
+    builds_response = requests.get(
+        f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={property_locator},{default_filter_locator},{status_locator},{lookup_limit_locator}',
+        headers=app_config.teamcity_api_headers)
+    builds = builds_response.json()['build']
+    if builds:
+        return builds
+    return ProcessingRecord(
+        type=logging.INFO,
+        message=f'No successful builds found for {build_type_id}'
+    )
+
+
+@check_processing_result
+def get_matching_build_resources(app_config: AppConfig, build_type_id: str, build_id: str, changed_resources: str) -> \
+        Union[bool, ProcessingRecord]:
+    latest_build_resources = requests.get(
+        f'{app_config.teamcity_builds_url}/id:{build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
+        headers=app_config.teamcity_api_headers,
+        allow_redirects=True
+    )
+    if latest_build_resources.status_code == 404:
         return ProcessingRecord(
             type=logging.INFO,
-            message='No build type IDs found for the VCS root. Nothing more to do here.',
-            exit_code=0
-        )
+            message=f'Latest build ({build_id}) for {build_type_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
+
+    build_resources = json.loads(latest_build_resources.text)['resources']
+    if build_resources:
+        return bool(next((build_resource for build_resource in build_resources if
+                          build_resource in changed_resources), False))
+    return ProcessingRecord(
+        type=logging.INFO,
+        message=f'No resources found in {app_config.teamcity_resources_artifact_path} for build {build_id}'
+    )
+
+
+@check_processing_result
+def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[str] or ProcessingRecord]:
+    build_types_ids = get_build_types(app_config)
     all_builds = []
     for build_type_id in build_types_ids:
-        builds_response = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator=property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal),defaultFilter:true,status:success,lookupLimit:1',
-            headers=app_config.teamcity_api_headers)
-        builds = builds_response.json()['build']
-        if builds:
+        build_must_be_started = True
+        builds = get_build_type_builds(app_config, build_type_id)
+        if builds and type(builds) is not ProcessingRecord:
             latest_build_id = builds[0]['id']
-            latest_build_resources = requests.get(
-                f'{app_config.teamcity_builds_url}/id:{latest_build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
-                headers=app_config.teamcity_api_headers,
-                allow_redirects=True
-            )
-            if latest_build_resources.status_code == 404:
-                _logger.info(
-                    f'Latest build ({latest_build_id}) for {build_type_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
-                build_must_be_started = True
-            else:
-                build_resources = json.loads(latest_build_resources.text)['resources']
-                build_must_be_started = next((build_resource for build_resource in build_resources if
-                                              build_resource in changed_resources), False)
-        else:
-            build_must_be_started = True
-
+            matching_resources = get_matching_build_resources(app_config, build_type_id, latest_build_id,
+                                                              changed_resources)
+            if type(matching_resources) is not ProcessingRecord:
+                build_must_be_started = matching_resources
         if build_must_be_started:
             all_builds.append(build_type_id)
-
-    _logger.info(f'Number of builds to start: {len(all_builds)}')
-    return all_builds
+    if all_builds:
+        _logger.info(f'Number of builds to start: {len(all_builds)}')
+        return all_builds
+    return ProcessingRecord(
+        type=logging.INFO,
+        message='No builds to start. Nothing more to do here.',
+        exit_code=0,
+    )
 
 
 @check_processing_result
