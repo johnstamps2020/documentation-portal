@@ -208,13 +208,8 @@ def get_matching_build_resources(app_config: AppConfig, build_type_id: str, buil
             message=f'Latest build ({build_id}) for {build_type_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
 
     build_resources = json.loads(latest_build_resources.text)['resources']
-    if build_resources:
-        return bool(next((build_resource for build_resource in build_resources if
-                          build_resource in changed_resources), False))
-    return ProcessingRecord(
-        type=logging.INFO,
-        message=f'No resources found in {app_config.teamcity_resources_artifact_path} for build {build_id}'
-    )
+    return bool(next((build_resource for build_resource in build_resources if
+                      build_resource in changed_resources), False))
 
 
 @check_processing_result
@@ -222,15 +217,20 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
     build_types_ids = get_build_types(app_config)
     all_builds = []
     for build_type_id in build_types_ids:
-        build_must_be_started = True
         builds = get_build_type_builds(app_config, build_type_id)
-        if builds and type(builds) is not ProcessingRecord:
+        builds_found = builds and type(builds) is not ProcessingRecord
+        if builds_found:
             latest_build_id = builds[0]['id']
             matching_resources = get_matching_build_resources(app_config, build_type_id, latest_build_id,
                                                               changed_resources)
-            if type(matching_resources) is not ProcessingRecord:
-                build_must_be_started = matching_resources
-        if build_must_be_started:
+            artifact_path_exists = type(matching_resources) is not ProcessingRecord
+            if (
+                    artifact_path_exists
+                    and matching_resources
+                    or not artifact_path_exists
+            ):
+                all_builds.append(build_type_id)
+        else:
             all_builds.append(build_type_id)
     if all_builds:
         _logger.info(f'Number of builds to start: {len(all_builds)}')
