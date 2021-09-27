@@ -148,9 +148,12 @@ def check_processing_result(func):
 
 @check_processing_result
 def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    changed_files = [line.split(':')[0] for line in app_config.changed_files_file.open().readlines()]
+    changed_files_file_content = app_config.changed_files_file.open().readlines()
+    changed_files = [line.split(':')[0] for line in changed_files_file_content]
     _logger.info(f'Number of VCS changes: {len(changed_files)}')
-    return changed_files or ProcessingRecord(
+    if changed_files:
+        return changed_files
+    return ProcessingRecord(
         type=logging.INFO,
         message='No changes found in the VCS history. Nothing more to do here.',
         exit_code=0
@@ -237,10 +240,12 @@ def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[
     started_builds = [result for result in started_builds_results if type(result) is BuildInfo]
 
     if started_builds:
+        started_builds_ids = '\n\t'.join(
+            f"{build.id} (build type: {build.build_type['id']}" for build in started_builds)
         _logger.info(
             f'Started builds: {len(started_builds)} '
             + '\n\t'
-            + '\n\t'.join(f"{build.id} (build type: {build.build_type['id']}" for build in started_builds)
+            + started_builds_ids
         )
         return started_builds
 
@@ -278,10 +283,11 @@ def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[l
     updated_builds = [result for result in updated_builds_results if type(result) is BuildInfo]
 
     if updated_builds:
+        updated_builds_ids = '\n\t'.join(build.id for build in updated_builds)
         _logger.info(
             f'Updated info for builds: {len(updated_builds)} '
             + '\n\t'
-            + '\n\t'.join(build.id for build in updated_builds)
+            + updated_builds_ids
         )
         return updated_builds
 
@@ -316,12 +322,14 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline) -> Proces
 
     if updated_build_pipeline.all_builds_finished:
         if updated_build_pipeline.unsuccessful_builds:
+            build_types_web_urls = '\n\t'.join(
+                b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds)
             return ProcessingRecord(
                 type=logging.ERROR,
                 message='All started builds finished.'
                         + '\nThe following builds did not finish building successfully:'
                         + '\n\t'
-                        + '\n\t'.join(b.build_type['webUrl'] for b in updated_build_pipeline.unsuccessful_builds),
+                        + build_types_web_urls,
                 exit_code=1
             )
 
