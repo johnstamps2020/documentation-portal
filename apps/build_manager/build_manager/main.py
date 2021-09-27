@@ -275,7 +275,7 @@ def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[
 
     if started_builds:
         started_builds_ids = '\n\t'.join(
-            f"{build.id} (build type: {build.build_type['id']}" for build in started_builds)
+            f"{build.id} (build type: {build.build_type['id']})" for build in started_builds)
         _logger.info(
             f'Started builds: {len(started_builds)} '
             + '\n\t'
