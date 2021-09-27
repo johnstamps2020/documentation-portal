@@ -42,13 +42,6 @@ class AppConfig:
     def changed_files_file(self):
         return Path(self._changed_files_file)
 
-    def get_build_api_data(self, resources):
-        return {
-            'gitUrl': self.git_url,
-            'gitBranch': self.git_build_branch,
-            'resources': resources
-        }
-
     def get_app_config(self):
         missing_parameters = [
             field.name.upper().lstrip('_') for field in dataclasses.fields(self)
