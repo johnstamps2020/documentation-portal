@@ -2199,7 +2199,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "Studio20201x.ditamap",
+      "root": "StudioConfigurationGuide20201x.ditamap",
       "srcId": "in20201xstudiodraftsrc",
       "docId": "in20201xstudiodraft",
       "indexRedirect": true
