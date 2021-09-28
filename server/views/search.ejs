@@ -113,19 +113,15 @@
             <div class="resultsSubheading">
                 <span class="resultCount">
                     <%= totalNumOfResults %> <%= totalNumOfResults === 1 ? 'result' : 'results' %>
-                    <% var totalNumOfCheckedFilters = 0 %>
                     <div class="resultBadges">
-                    Applied filters:
-                        <% filters.forEach(searchFilter => { %>
-                            <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
-                            <% if (checkedFilters.length > 0) { %>
-                                <% totalNumOfCheckedFilters += checkedFilters.length %>
-                                <% checkedFilters.forEach(f => { %>
-                                    <span class="infoLabel"><%= f.label %></span>
+                        Applied filters:
+                        <% if (Object.keys(filtersFromUrl).length > 0) { %>
+                            <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
+                                <% searchFilterValues.forEach(v => { %>
+                                    <span class="infoLabel"><%= v %></span>
                                 <% }) %>
                             <% } %>
-                        <% }) %>
-                        <% if (totalNumOfCheckedFilters === 0) { %>
+                        <% } else { %>
                             <span class="infoLabel">None</span>
                         <% } %>
                     </div>
