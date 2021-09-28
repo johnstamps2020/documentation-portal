@@ -2508,7 +2508,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "Studio20201x.ditamap",
+      "root": "StudioConfigurationGuide20201x.ditamap",
       "srcId": "in20201studiosrc",
       "docId": "in20201studio",
       "indexRedirect": true
