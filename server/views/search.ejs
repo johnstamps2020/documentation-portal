@@ -113,7 +113,22 @@
             <div class="resultsSubheading">
                 <span class="resultCount">
                     <%= totalNumOfResults %> <%= totalNumOfResults === 1 ? 'result' : 'results' %>
-                    <%- include('parts/applied-filters') %>
+                    <% var totalNumOfCheckedFilters = 0 %>
+                    <div class="resultBadges">
+                    Applied filters:
+                        <% filters.forEach(searchFilter => { %>
+                            <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
+                            <% if (checkedFilters.length > 0) { %>
+                                <% totalNumOfCheckedFilters += checkedFilters.length %>
+                                <% checkedFilters.forEach(f => { %>
+                                    <span class="infoLabel"><%= f.label %></span>
+                                <% }) %>
+                            <% } %>
+                        <% }) %>
+                        <% if (totalNumOfCheckedFilters === 0) { %>
+                            <span class="infoLabel">None</span>
+                        <% } %>
+                    </div>
                 </span>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
@@ -225,10 +240,32 @@
             <% } %>
         <% } else { %>
             <h1>Sorry, your search for "<%= searchPhrase %>" returned no results.</h1>
-            <span class="resultCount">
-                <%- include('parts/applied-filters') %>
-            </span>
-        <% } %>
+            <% if (Object.keys(filtersFromUrl).length > 0) { %>
+                <div class="resultsSubheading">
+                    <div class="resultBadges">
+                        Search filters:
+                        <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
+                            <% searchFilterValues.forEach(v => { %>
+                                <span class="infoLabel"><%= v %></span>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="clearFiltersButtonWrapper">
+                        <span class="clearFiltersButton" onclick="clearFilters()" role="button" tabindex="0">
+                            Clear filters and search again
+                        </span>
+                </div>
+            <% } else { %>
+                <div class="resultsSubheading">
+                    <div class="resultBadges">
+                        Search filters:
+                        <span class="infoLabel">None</span>
+                    </div>
+                </div>
+            <% } %>
+    </div>
+    <% } %>
     </div>
 </main>
 <script>
