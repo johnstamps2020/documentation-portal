@@ -1,0 +1,12 @@
+<div class="resultBadges">
+    Applied filters:
+    <% if (Object.keys(filtersFromUrl).length > 0) { %>
+        <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
+            <% searchFilterValues.forEach(v => { %>
+                <span class="infoLabel"><%= v %></span>
+            <% }) %>
+        <% } %>
+    <% } else { %>
+        <span class="infoLabel">None</span>
+    <% } %>
+</div>

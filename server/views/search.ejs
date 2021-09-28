@@ -113,18 +113,7 @@
             <div class="resultsSubheading">
                 <span class="resultCount">
                     <%= totalNumOfResults %> <%= totalNumOfResults === 1 ? 'result' : 'results' %>
-                    <div class="resultBadges">
-                        Applied filters:
-                        <% if (Object.keys(filtersFromUrl).length > 0) { %>
-                            <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
-                                <% searchFilterValues.forEach(v => { %>
-                                    <span class="infoLabel"><%= v %></span>
-                                <% }) %>
-                            <% } %>
-                        <% } else { %>
-                            <span class="infoLabel">None</span>
-                        <% } %>
-                    </div>
+                    <%- include('parts/applied-filters') %>
                 </span>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
@@ -236,6 +225,9 @@
             <% } %>
         <% } else { %>
             <h1>Sorry, your search for "<%= searchPhrase %>" returned no results.</h1>
+            <span class="resultCount">
+                <%- include('parts/applied-filters') %>
+            </span>
         <% } %>
     </div>
 </main>
