@@ -399,6 +399,7 @@ async function searchController(req, res, next) {
         ),
         resultsPerPage: resultsPerPage,
         filters: arrangedFilters,
+        filtersFromUrl: filtersFromUrl,
         userContext: req.userContext,
       };
       res.render('search', searchData);

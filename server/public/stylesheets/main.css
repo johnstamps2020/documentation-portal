@@ -1227,3 +1227,15 @@ main.support h2 {
   font-weight: 500;
   margin-top: 24px;
 }
+
+.buttonWrapper {
+  display: block;
+}
+
+.mediumButton {
+  cursor: pointer;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--clr-GW-BLUE);
+}
