@@ -90,13 +90,13 @@
                             aria-labelledby="submitSearch"
                             autofocus
                     />
-                    <% filters.forEach(searchFilter => { %>
-                        <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
-                        <% if (checkedFilters.length > 0) { %>
-                            <input type="hidden" name="<%= searchFilter.name %>"
-                                   value="<%= checkedFilters.map(f => f.label).join(',') %>">
+
+                    <% if (Object.keys(filtersFromUrl).length > 0) { %>
+                        <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
+                            <input type="hidden" name="<%= searchFilterName %>"
+                                   value="<%= searchFilterValues.join(',') %>"/>
                         <% } %>
-                    <% }) %>
+                    <% } %>
                     <button id="submitSearch" type="submit" class="searchButton" aria-label="Search">
                         Search
                     </button>
