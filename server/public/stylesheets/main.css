@@ -1228,11 +1228,11 @@ main.support h2 {
   margin-top: 24px;
 }
 
-.clearFiltersButtonWrapper {
+.buttonWrapper {
   display: block;
 }
 
-.clearFiltersButton {
+.mediumButton {
   cursor: pointer;
   padding-bottom: 1rem;
   font-size: 1rem;
