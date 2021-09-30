@@ -322,6 +322,7 @@ def create_zip_package(app_config: AppConfig, build_resources: Dict) -> Processi
                              app_config.zip_dir / Path(build_resource))
             Path.mkdir(dest_file.parent, parents=True, exist_ok=True)
             copyfile(src_file, dest_file)
+        Path.mkdir(app_config.src_root / app_config.out_path)
         make_archive(app_config.src_root / app_config.out_path / 'l10n_package', 'zip', app_config.src_root /
                      app_config.zip_dir)
         return ProcessingRecord(
