@@ -1175,7 +1175,7 @@ object TestBuildManager : BuildType({
 
 })
 
-object PublishLIONPackageBuilderDockerImage : BuildType({
+object PublishLionPackageBuilderDockerImage : BuildType({
     name = "Publish LION Package Builder image"
 
     params {
@@ -1218,14 +1218,14 @@ object PublishLIONPackageBuilderDockerImage : BuildType({
     }
 
     dependencies {
-        snapshot(TestLIONPackageBuilder) {
+        snapshot(TestLionPackageBuilder) {
             reuseBuilds = ReuseBuilds.SUCCESSFUL
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
 })
 
-object TestLIONPackageBuilder : BuildType({
+object TestLionPackageBuilder : BuildType({
     name = "Test LION Package Builder"
 
     vcs {
@@ -2096,6 +2096,7 @@ object Testing : Project({
     buildType(TestDocCrawler)
     buildType(TestBuildManager)
     buildType(TestFlailSsg)
+    buildType(TestLionPackageBuilder)
     buildType(TestLionPageBuilder)
     buildType(TestUpgradeDiffsPageBuilder)
 })
@@ -2108,6 +2109,7 @@ object Deployment : Project({
     buildType(PublishIndexCleanerDockerImage)
     buildType(PublishBuildManagerDockerImage)
     buildType(PublishFlailSsgDockerImage)
+    buildType(PublishLionPackageBuilderDockerImage)
     buildType(PublishLionPageBuilderDockerImage)
     buildType(PublishUpgradeDiffsPageBuilderDockerImage)
     buildType(PublishSitemapGeneratorDockerImage)
