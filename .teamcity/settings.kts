@@ -3085,7 +3085,7 @@ object HelperObjects {
                                                                 
                         lion_pkg_builder
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion_pkg_builder:latest"
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:latest"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
             }
