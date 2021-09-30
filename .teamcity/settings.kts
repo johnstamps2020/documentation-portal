@@ -1192,6 +1192,7 @@ object PublishLionPackageBuilderDockerImage : BuildType({
             scriptContent = """
                 set -xe
                 cd apps/lion_pkg_builder
+                chmod +x ./publish_docker.sh
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
@@ -1240,6 +1241,7 @@ object TestLionPackageBuilder : BuildType({
                 #!/bin/bash
                 set -xe
                 cd apps/lion_pkg_builder
+                chmod +x ./test_lion_pkg_builder.sh
                 ./test_lion_pkg_builder.sh
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"
