@@ -1,9 +1,3 @@
-# Build manager
+# Localization Package Builder
 
-The build manager app works with the build API of the admin server to trigger and monitor relevant builds.
-
-The app:
-
-1. Checks which files changed.
-2. Checks which docs were affected by the changes and triggers builds for them.
-3. Monitors the status of the triggered builds to make sure all of them finished.
+The localization package builder collects a list of resources used in a dita build from the json/build-data.json artifact in the latest staging build corresponding to the document. It copies these resources from the repository and creates a zip package which can be sent to translation vendors.
