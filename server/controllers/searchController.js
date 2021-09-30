@@ -456,13 +456,8 @@ async function searchController(req, res, next) {
             : 10000) / resultsPerPage
         ),
         resultsPerPage: resultsPerPage,
-        filters: {
-          filterPaneFilters: extendedArrangedFilters,
-          checkedFilterValues: checkedFilterValues,
-          filtersFromUrl: filtersFromUrl,
-          allFilterValuesFromUrl: allFilterValuesFromUrl,
-          inactiveFilterValuesFromUrl: inactiveFilterValuesFromUrl,
-        },
+        filters: extendedArrangedFilters,
+        filtersFromUrl: filtersFromUrl,
         userContext: req.userContext,
       };
       res.render('search', searchData);

@@ -17,7 +17,7 @@
                     Clear filters
                 </span>
             </div>
-            <% filters.filterPaneFilters.forEach(matchingFilter => { %>
+            <% filters.forEach(matchingFilter => { %>
                 <% const filterValues = matchingFilter.values %>
                 <details class="expandableSection" open>
                     <summary>
@@ -91,8 +91,8 @@
                             autofocus
                     />
 
-                    <% if (Object.keys(filters.filtersFromUrl).length > 0) { %>
-                        <% for (const [searchFilterName, searchFilterValues] of Object.entries(filters.filtersFromUrl)) { %>
+                    <% if (Object.keys(filtersFromUrl).length > 0) { %>
+                        <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
                             <input type="hidden" name="<%= searchFilterName %>"
                                    value="<%= searchFilterValues.join(',') %>"/>
                         <% } %>
@@ -113,24 +113,22 @@
             <div class="resultsSubheading">
                 <span class="resultCount">
                     <%= totalNumOfResults %> <%= totalNumOfResults === 1 ? 'result' : 'results' %>
-                <div class="resultBadges">
+                    <% var totalNumOfCheckedFilters = 0 %>
+                    <div class="resultBadges">
                     Applied filters:
-                    <% if (filters.checkedFilterValues.length > 0) { %>
-                        <% filters.checkedFilterValues.forEach(f => { %>
-                            <span class="infoLabel"><%= f %></span>
+                        <% filters.forEach(searchFilter => { %>
+                            <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
+                            <% if (checkedFilters.length > 0) { %>
+                                <% totalNumOfCheckedFilters += checkedFilters.length %>
+                                <% checkedFilters.forEach(f => { %>
+                                    <span class="infoLabel"><%= f.label %></span>
+                                <% }) %>
+                            <% } %>
                         <% }) %>
-                    <% } else { %>
-                        <span class="infoLabel">None</span>
-                    <% } %>
-                </div>
-                    <% if (filters.inactiveFilterValuesFromUrl.length > 0) { %>
-                        <div class="resultBadges">
-                        Filters with no results:
-                            <% filters.inactiveFilterValuesFromUrl.forEach(f => { %>
-                                <span class="infoLabel"><%= f %></span>
-                            <% }) %>
-                        </div>
-                    <% } %>
+                        <% if (totalNumOfCheckedFilters === 0) { %>
+                            <span class="infoLabel">None</span>
+                        <% } %>
+                    </div>
                 </span>
                 <span class="paginationWrapper">
                     <label for="pagination">View items:</label>
@@ -242,13 +240,15 @@
             <% } %>
         <% } else { %>
             <h1>Sorry, your search for "<%= searchPhrase %>" returned no results.</h1>
-            <% if (filters.allFilterValuesFromUrl.length > 0) { %>
+            <% if (Object.keys(filtersFromUrl).length > 0) { %>
                 <div class="resultsSubheading">
                     <div class="resultBadges">
                         Search filters:
-                        <% filters.allFilterValuesFromUrl.forEach(v => { %>
-                            <span class="infoLabel"><%= v %></span>
-                        <% }) %>
+                        <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
+                            <% searchFilterValues.forEach(v => { %>
+                                <span class="infoLabel"><%= v %></span>
+                            <% }) %>
+                        <% } %>
                     </div>
                 </div>
                 <div class="buttonWrapper">
@@ -347,7 +347,7 @@
     }
 
     function clearFilters() {
-        const filters = [<%- filters.filterPaneFilters.map(f => `'${f.name}'`) %>];
+        const filters = [<%- filters.map(f => `'${f.name}'`) %>];
         for (const filter of filters) {
             if (searchParams.has(filter)) {
                 searchParams.delete(filter);
