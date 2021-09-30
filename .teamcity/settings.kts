@@ -1192,6 +1192,7 @@ object PublishLionPackageBuilderDockerImage : BuildType({
             scriptContent = """
                 set -xe
                 cd apps/lion_pkg_builder
+                chmod +x ./publish_docker.sh
                 ./publish_docker.sh %env.IMAGE_VERSION%       
             """.trimIndent()
         }
