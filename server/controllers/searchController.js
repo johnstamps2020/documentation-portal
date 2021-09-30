@@ -384,6 +384,51 @@ async function searchController(req, res, next) {
     if (req.query.rawJSON) {
       res.send(resultsToDisplay);
     } else {
+      const missingFilters = [];
+      for (const [urlFilterName, urlFilterValues] of Object.entries(
+        filtersFromUrl
+      )) {
+        for (const f of arrangedFilters) {
+          if (urlFilterName === f.name) {
+            const filterValues = f.values.map(v => v.label);
+            const missingFilterValues = [];
+            for (const value of urlFilterValues) {
+              if (!filterValues.includes(value)) {
+                missingFilterValues.push({
+                  label: value,
+                  doc_count: 0,
+                  checked: true,
+                });
+              }
+            }
+            if (missingFilterValues.length > 0) {
+              missingFilters.push({
+                name: f.name,
+                values: missingFilterValues,
+              });
+            }
+          }
+        }
+      }
+
+      let extendedArrangedFilters = [];
+      if (missingFilters.length > 0) {
+        for (const f of arrangedFilters) {
+          for (const mf of missingFilters) {
+            if (f.name === mf.name) {
+              extendedArrangedFilters.push({
+                name: f.name,
+                values: [...f.values, ...mf.values],
+              });
+            } else {
+              extendedArrangedFilters.push(f);
+            }
+          }
+        }
+      } else {
+        extendedArrangedFilters = arrangedFilters;
+      }
+
       const checkedFilterValues = [];
       for (const f of filters) {
         const checkedValues = f.values
@@ -412,7 +457,7 @@ async function searchController(req, res, next) {
         ),
         resultsPerPage: resultsPerPage,
         filters: {
-          filterPaneFilters: arrangedFilters,
+          filterPaneFilters: extendedArrangedFilters,
           checkedFilterValues: checkedFilterValues,
           filtersFromUrl: filtersFromUrl,
           allFilterValuesFromUrl: allFilterValuesFromUrl,
