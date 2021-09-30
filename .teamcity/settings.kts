@@ -1176,7 +1176,7 @@ object TestBuildManager : BuildType({
 })
 
 object PublishLionPackageBuilderDockerImage : BuildType({
-    name = "Publish LION Package Builder image"
+    name = "Publish Lion Package Builder image"
 
     params {
         text("env.IMAGE_VERSION", "latest")
@@ -1226,7 +1226,7 @@ object PublishLionPackageBuilderDockerImage : BuildType({
 })
 
 object TestLionPackageBuilder : BuildType({
-    name = "Test LION Package Builder"
+    name = "Test Lion Package Builder"
 
     vcs {
         root(vcsroot)
