@@ -1175,6 +1175,106 @@ object TestBuildManager : BuildType({
 
 })
 
+object PublishLIONPackageBuilderDockerImage : BuildType({
+    name = "Publish LION Package Builder image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish LION Package Builder image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/lion_pkg_builder
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:.teamcity/**/*.*
+                +:apps/lion_pkg_builder/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestLIONPackageBuilder) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestLIONPackageBuilder : BuildType({
+    name = "Test LION Package Builder"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for lion package builder"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/lion_pkg_builder
+                ./test_lion_pkg_builder.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/lion_pkg_builder/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
 object PublishFlailSsgDockerImage : BuildType({
     name = "Publish Flail SSG image"
 
@@ -2924,6 +3024,69 @@ object HelperObjects {
             }
         })
 
+        class BuildLocalizationPackage(
+            product: String,
+            version: String,
+            doc_id: String,
+            vcs_root_id: RelativeId
+        ) : BuildType ({
+            val relatedBuildTypeId = RelativeId(removeSpecialCharacters("staging" + product + version + doc_id)).toString()
+            id = RelativeId(removeSpecialCharacters("lionpkg$product$version$doc_id"))
+            name = "Build localization package"
+            maxRunningBuilds = 1
+
+            artifactRules = """
+                %env.WORKING_DIR%/%env.OUTPUT_PATH% => /
+            """.trimIndent()
+
+            vcs {
+                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
+                cleanCheckout = true
+            }
+
+            params {
+                text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
+                text("env.WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
+                text("env.OUTPUT_PATH", "out", allowEmpty = false)
+                text("env.ZIP_SRC_DIR", "zip")
+                text(
+                    "env.TEAMCITY_API_ROOT_URL",
+                    "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/",
+                    allowEmpty = false
+                )
+                password(
+                    "env.TEAMCITY_API_AUTH_TOKEN",
+                    "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530",
+                    display = ParameterDisplay.HIDDEN
+                )
+                text(
+                    "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
+                    "json/build-data.json",
+                    display = ParameterDisplay.HIDDEN
+                )
+                text(
+                    "env.TC_BUILD_TYPE_ID",
+                    relatedBuildTypeId,
+                    allowEmpty = false
+                )
+            }
+
+            steps {
+                script {
+                    name = "Run the localization package builder"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                                                                
+                        lion_pkg_builder
+                    """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion_pkg_builder:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+        })
+
         val builds = mutableListOf<BuildType>()
 
         val docId = doc.getString("id")
@@ -3021,6 +3184,15 @@ object HelperObjects {
                     indexRedirect,
                     sourceGitUrl,
                     sourceGitBranch
+                )
+            )
+
+            builds.add(
+                BuildLocalizationPackage (
+                    product_name,
+                    version,
+                    docId,
+                    vcsRootId
                 )
             )
         }
