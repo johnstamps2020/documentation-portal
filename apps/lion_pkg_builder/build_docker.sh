@@ -1,1 +1,1 @@
-docker image build --no-cache -t build-manager .
+docker image build --no-cache -t lion-pkg-builder .
