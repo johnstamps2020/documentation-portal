@@ -18,7 +18,7 @@ fi
 
 docker login -u $ARTIFACTORY_USERNAME --password $ARTIFACTORY_PASSWORD artifactory.guidewire.com
 
-docker tag build-manager artifactory.guidewire.com/doctools-docker-dev/build-manager:$IMAGE_VERSION
-docker push artifactory.guidewire.com/doctools-docker-dev/build-manager:$IMAGE_VERSION
+docker tag lion-pkg-builder artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:$IMAGE_VERSION
+docker push artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:$IMAGE_VERSION
 
 echo "END TRANSMISSION"
