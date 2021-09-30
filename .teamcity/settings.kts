@@ -1188,7 +1188,7 @@ object PublishLionPackageBuilderDockerImage : BuildType({
 
     steps {
         script {
-            name = "Publish LION Package Builder image to Artifactory"
+            name = "Publish Lion Package Builder image to Artifactory"
             scriptContent = """
                 set -xe
                 cd apps/lion_pkg_builder
