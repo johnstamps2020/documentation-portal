@@ -384,6 +384,19 @@ async function searchController(req, res, next) {
     if (req.query.rawJSON) {
       res.send(resultsToDisplay);
     } else {
+      const checkedFilterValues = [];
+      for (const f of filters) {
+        const checkedValues = f.values
+          .filter(filterValue => filterValue.checked)
+          .map(v => v.label);
+        if (checkedValues.length > 0) {
+          checkedFilterValues.push(...checkedValues);
+        }
+      }
+      const allFilterValuesFromUrl = Object.values(filtersFromUrl).flat();
+      const inactiveFilterValuesFromUrl = allFilterValuesFromUrl.filter(
+        v => !checkedFilterValues.includes(v)
+      );
       const searchData = {
         searchPhrase: searchPhrase,
         searchResults: resultsToDisplay,
@@ -398,8 +411,13 @@ async function searchController(req, res, next) {
             : 10000) / resultsPerPage
         ),
         resultsPerPage: resultsPerPage,
-        filters: arrangedFilters,
-        filtersFromUrl: filtersFromUrl,
+        filters: {
+          filterPaneFilters: arrangedFilters,
+          checkedFilterValues: checkedFilterValues,
+          filtersFromUrl: filtersFromUrl,
+          allFilterValuesFromUrl: allFilterValuesFromUrl,
+          inactiveFilterValuesFromUrl: inactiveFilterValuesFromUrl,
+        },
         userContext: req.userContext,
       };
       res.render('search', searchData);
