@@ -104,19 +104,38 @@ async function getFilters(query, fieldMappings, urlFilters) {
       }
     }
 
-    let filterValuesWithFiltersFromUrl = [];
-    if (Object.keys(urlFilters).includes(f.name)) {
-      for (const urlValue of urlFilters[f.name]) {
-        filterValuesWithFiltersFromUrl.push({
-          label: urlValue,
-          doc_count: 0,
-          checked: true,
-        });
+    let updatedFilterValuesAndUrlValues = [];
+    if (Object.keys(urlFilters).length > 0) {
+      const filterIsInUrl = urlFilters.hasOwnProperty(f.name);
+      if (filterIsInUrl) {
+        const urlFilterValues = urlFilters[f.name];
+        const filterValuesLabels = updatedFilterValues.map(v => v.label);
+        const valuesInUrlButNotInUpdatedValues = urlFilterValues.filter(
+          v => !filterValuesLabels.includes(v)
+        );
+        let urlValuesFromUrl = [];
+        if (valuesInUrlButNotInUpdatedValues.length > 0) {
+          urlValuesFromUrl = valuesInUrlButNotInUpdatedValues.map(v => {
+            return {
+              label: v,
+              doc_count: 0,
+              checked: true,
+            };
+          });
+        }
+        updatedFilterValuesAndUrlValues.push(
+          ...updatedFilterValues,
+          ...urlValuesFromUrl
+        );
+      } else {
+        updatedFilterValuesAndUrlValues.push(...updatedFilterValues);
       }
+    } else {
+      updatedFilterValuesAndUrlValues.push(...updatedFilterValues);
     }
     filtersWithUpdatedStatusAndCount.push({
       name: f.name,
-      values: filterValuesWithFiltersFromUrl,
+      values: updatedFilterValuesAndUrlValues,
     });
   }
 
