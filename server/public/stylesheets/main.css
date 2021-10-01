@@ -1229,7 +1229,7 @@ main.support h2 {
 }
 
 .buttonWrapper {
-  display: block;
+  width: 100%;
 }
 
 .mediumButton {

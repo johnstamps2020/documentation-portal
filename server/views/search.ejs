@@ -113,7 +113,7 @@
             <div class="resultsSubheading">
                 <span class="resultCount">
                     <%= totalNumOfResults %> <%= totalNumOfResults === 1 ? 'result' : 'results' %>
-                    <% var totalNumOfCheckedFilters = 0 %>
+                    <% let totalNumOfCheckedFilters = 0 %>
                     <div class="resultBadges">
                     Applied filters:
                         <% filters.forEach(searchFilter => { %>
@@ -240,32 +240,32 @@
             <% } %>
         <% } else { %>
             <h1>Sorry, your search for "<%= searchPhrase %>" returned no results.</h1>
-            <% if (Object.keys(filtersFromUrl).length > 0) { %>
-                <div class="resultsSubheading">
-                    <div class="resultBadges">
-                        Search filters:
-                        <% for (const [searchFilterName, searchFilterValues] of Object.entries(filtersFromUrl)) { %>
-                            <% searchFilterValues.forEach(v => { %>
-                                <span class="infoLabel"><%= v %></span>
+            <div class="resultsSubheading">
+                <% let totalNumOfCheckedFilters = 0 %>
+                <div class="resultBadges">
+                    Applied filters:
+                    <% filters.forEach(searchFilter => { %>
+                        <% const checkedFilters = searchFilter.values.filter(filterValue => filterValue.checked) %>
+                        <% if (checkedFilters.length > 0) { %>
+                            <% totalNumOfCheckedFilters += checkedFilters.length %>
+                            <% checkedFilters.forEach(f => { %>
+                                <span class="infoLabel"><%= f.label %></span>
                             <% }) %>
                         <% } %>
-                    </div>
+                    <% }) %>
+                    <% if (totalNumOfCheckedFilters === 0) { %>
+                        <span class="infoLabel">None</span>
+                    <% } %>
                 </div>
-                <div class="buttonWrapper">
+                <% if (totalNumOfCheckedFilters > 0) { %>
+                    <div class="buttonWrapper">
                         <span class="mediumButton" onclick="clearFilters()" role="button" tabindex="0">
                             Clear filters and search again
                         </span>
-                </div>
-            <% } else { %>
-                <div class="resultsSubheading">
-                    <div class="resultBadges">
-                        Search filters:
-                        <span class="infoLabel">None</span>
                     </div>
-                </div>
-            <% } %>
-    </div>
-    <% } %>
+                <% } %>
+            </div>
+        <% } %>
     </div>
 </main>
 <script>

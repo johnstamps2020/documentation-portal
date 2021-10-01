@@ -53,64 +53,52 @@ async function getAllowedFilterValues(fieldName, query) {
 
 async function getFilters(query, fieldMappings, urlFilters) {
   let filterNamesAndValues = [];
-  for (const key in fieldMappings) {
-    if (fieldMappings[key].type === 'keyword') {
-      const allowedFilterValues = await getAllowedFilterValues(key, query);
-      const filterValues = allowedFilterValues.map(value => {
+  for (const field in fieldMappings) {
+    if (fieldMappings[field].type === 'keyword') {
+      const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+      let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
+        ? [...queryWithFiltersFromUrl.bool.filter]
+        : [];
+      for (const [key, value] of Object.entries(urlFilters)) {
+        if (key !== field) {
+          queryFilters.push({
+            terms: {
+              [key]: value,
+            },
+          });
+        }
+      }
+      queryWithFiltersFromUrl.bool.filter = queryFilters;
+      const allowedFilterValues = await getAllowedFilterValues(
+        field,
+        queryWithFiltersFromUrl
+      );
+
+      const urlFilterValues = urlFilters.hasOwnProperty(field)
+        ? urlFilters[field]
+        : [];
+      const allFilterValues = [
+        ...new Set([
+          ...allowedFilterValues.map(v => v.label),
+          ...urlFilterValues,
+        ]),
+      ];
+      const filterValuesObjects = allFilterValues.map(value => {
         return {
-          label: value.label,
-          doc_count: value.doc_count,
-          checked: urlFilters[key]?.includes(value.label),
+          label: value,
+          doc_count:
+            allowedFilterValues.find(v => v.label === value)?.doc_count || 0,
+          checked: !!urlFilterValues.find(v => v === value),
         };
       });
       filterNamesAndValues.push({
-        name: key,
-        values: filterValues,
+        name: field,
+        values: filterValuesObjects,
       });
     }
   }
 
-  let filtersWithUpdatedStatusAndCount = [];
-  for (const f of filterNamesAndValues) {
-    const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
-    let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
-      ? [...queryWithFiltersFromUrl.bool.filter]
-      : [];
-    for (const [key, value] of Object.entries(urlFilters)) {
-      if (key !== f.name) {
-        queryFilters.push({
-          terms: {
-            [key]: value,
-          },
-        });
-      }
-    }
-    queryWithFiltersFromUrl.bool.filter = queryFilters;
-    const allowedFilterValues = await getAllowedFilterValues(
-      f.name,
-      queryWithFiltersFromUrl
-    );
-    let updatedFilterValues = [];
-    for (const value of f.values) {
-      const updatedDataForValue = allowedFilterValues.find(
-        v => v.label === value.label
-      );
-      if (updatedDataForValue) {
-        updatedFilterValues.push({
-          label: value.label,
-          doc_count: updatedDataForValue.doc_count,
-          checked: value.checked,
-        });
-      }
-    }
-
-    filtersWithUpdatedStatusAndCount.push({
-      name: f.name,
-      values: updatedFilterValues,
-    });
-  }
-
-  return filtersWithUpdatedStatusAndCount;
+  return filterNamesAndValues;
 }
 
 async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
