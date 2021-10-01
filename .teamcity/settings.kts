@@ -3034,8 +3034,9 @@ object HelperObjects {
             version: String,
             doc_id: String,
             vcs_root_id: RelativeId
-        ) : BuildType ({
-            val relatedBuildTypeId = RelativeId(removeSpecialCharacters("staging" + product + version + doc_id)).toString()
+        ) : BuildType({
+            val relatedBuildTypeId =
+                RelativeId(removeSpecialCharacters("staging" + product + version + doc_id)).toString()
             id = RelativeId(removeSpecialCharacters("lionpkg$product$version$doc_id"))
             name = "Build localization package"
             maxRunningBuilds = 1
@@ -3090,6 +3091,13 @@ object HelperObjects {
                 }
             }
 
+            features {
+                dockerSupport {
+                    loginToRegistry = on {
+                        dockerRegistryId = "PROJECT_EXT_155"
+                    }
+                }
+            }
         })
 
         val builds = mutableListOf<BuildType>()
@@ -3193,7 +3201,7 @@ object HelperObjects {
             )
 
             builds.add(
-                BuildLocalizationPackage (
+                BuildLocalizationPackage(
                     product_name,
                     version,
                     docId,
