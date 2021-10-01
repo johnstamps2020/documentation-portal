@@ -2,10 +2,11 @@ import dataclasses
 import json
 import logging
 import os
+
 import urllib.parse
 from dataclasses import dataclass
 from pathlib import Path
-from shutil import copyfile, make_archive
+from shutil import copyfile, make_archive, rmtree
 from typing import Dict, Optional, Union
 
 import requests
@@ -318,6 +319,10 @@ def create_zip_package(app_config: AppConfig, build_resources: Dict) -> Processi
     try:
         print(
             f'Copying source files from {app_config.src_root} to {app_config.src_root}/{app_config.zip_dir}')
+        if(Path(app_config.src_root /
+                app_config.zip_dir).exists()):
+            rmtree(app_config.src_root /
+                   app_config.zip_dir)
         for build_resource in build_resources:
             src_file = Path(app_config.src_root / Path(build_resource))
             dest_file = Path(app_config.src_root /
@@ -325,6 +330,8 @@ def create_zip_package(app_config: AppConfig, build_resources: Dict) -> Processi
             Path.mkdir(dest_file.parent, parents=True, exist_ok=True)
             copyfile(src_file, dest_file)
             print(f'{src_file} to {dest_file}')
+        if(Path(app_config.src_root / app_config.out_path).exists()):
+            rmtree(app_config.src_root / app_config.out_path)
         Path.mkdir(app_config.src_root / app_config.out_path)
         make_archive(app_config.src_root / app_config.out_path / 'l10n_package', 'zip', app_config.src_root /
                      app_config.zip_dir)
