@@ -3200,14 +3200,16 @@ object HelperObjects {
                 )
             )
 
-            builds.add(
-                BuildLocalizationPackage(
-                    product_name,
-                    version,
-                    docId,
-                    vcsRootId
+            if (environments.toString().contains("staging")) {
+                builds.add(
+                    BuildLocalizationPackage(
+                        product_name,
+                        version,
+                        docId,
+                        vcsRootId
+                    )
                 )
-            )
+            }
         }
 
         return Project {
