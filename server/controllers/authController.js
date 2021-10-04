@@ -1,19 +1,53 @@
 require('dotenv').config();
 const { ExpressOIDC } = require('@okta/oidc-middleware');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
+const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc } = require('../controllers/configController');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
 
-const oktaJwtVerifier = new OktaJwtVerifier({
-  issuer: process.env.OKTA_ACCESS_TOKEN_ISSUER,
-  clientId: process.env.OKTA_CLIENT_ID,
-  assertClaims: {
-    'scp.includes': process.env.OKTA_ACCESS_TOKEN_SCOPES,
-  },
-});
+function getAvailableIssuers() {
+  const issuers = {
+    [process.env.OKTA_ACCESS_TOKEN_ISSUER]: process.env.OKTA_CLIENT_ID,
+  };
+  if (
+    process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC &&
+    process.env.OKTA_CLIENT_ID_APAC
+  ) {
+    issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC] =
+      process.env.OKTA_CLIENT_ID_APAC;
+  }
+  if (
+    process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA &&
+    process.env.OKTA_CLIENT_ID_EMEA
+  ) {
+    issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA] =
+      process.env.OKTA_CLIENT_ID_EMEA;
+  }
+
+  return issuers;
+}
+
+function createOktaJwtVerifier(token, availableIssuers) {
+  const decodedJwt = jsonwebtoken.decode(token);
+  const jwtIssuer = decodedJwt.iss;
+  const issuer = Object.entries(availableIssuers).find(
+    iss => iss[0] === jwtIssuer
+  );
+  if (issuer) {
+    return new OktaJwtVerifier({
+      issuer: issuer[0],
+      clientId: issuer[1],
+      assertClaims: {
+        'scp.includes': process.env.OKTA_ACCESS_TOKEN_SCOPES,
+      },
+    });
+  } else {
+    throw new Error(`Unable to verify the token with issuer ${jwtIssuer}`);
+  }
+}
 
 async function verifyToken(req) {
   try {
@@ -21,6 +55,8 @@ async function verifyToken(req) {
     if (bearerHeader) {
       const bearer = bearerHeader.split(' ');
       const bearerToken = bearer[1];
+      const oktaIssuers = getAvailableIssuers();
+      const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
       const jwt = await oktaJwtVerifier.verifyAccessToken(
         bearerToken,
         process.env.OKTA_ACCESS_TOKEN_AUDIENCE
@@ -28,13 +64,17 @@ async function verifyToken(req) {
       return jwt;
     }
   } catch (err) {
-    console.log(err);
-    return null;
+    throw new Error(`${err.name}: ${err.userMessage}`);
   }
 }
 
 async function isRequestAuthenticated(req) {
-  return !!(req.isAuthenticated() || (await verifyToken(req)));
+  try {
+    return !!(req.isAuthenticated() || (await verifyToken(req)));
+  } catch (err) {
+    console.log(err.message);
+    return false;
+  }
 }
 
 const oktaOIDC = new ExpressOIDC({
