@@ -56,10 +56,22 @@ spec:
               value: ${OKTA_DOMAIN_PROD}
             - name: OKTA_CLIENT_ID
               value: ${OKTA_CLIENT_ID_PROD}
+            - name: OKTA_CLIENT_ID_APAC
+              value: ${OKTA_CLIENT_ID_PROD_APAC}
+            - name: OKTA_CLIENT_ID_EMEA
+              value: ${OKTA_CLIENT_ID_PROD_EMEA}
             - name: OKTA_CLIENT_SECRET
               value: ${OKTA_CLIENT_SECRET_PROD}
+            - name: OKTA_CLIENT_SECRET_APAC
+              value: ${OKTA_CLIENT_SECRET_PROD_APAC}
+            - name: OKTA_CLIENT_SECRET_EMEA
+              value: ${OKTA_CLIENT_SECRET_PROD_EMEA}
             - name: OKTA_ACCESS_TOKEN_ISSUER
               value: ${OKTA_ACCESS_TOKEN_ISSUER_PROD}
+            - name: OKTA_ACCESS_TOKEN_ISSUER_APAC
+              value: ${OKTA_ACCESS_TOKEN_ISSUER_PROD_APAC}
+            - name: OKTA_ACCESS_TOKEN_ISSUER_EMEA
+              value: ${OKTA_ACCESS_TOKEN_ISSUER_PROD_EMEA}
             - name: OKTA_ACCESS_TOKEN_SCOPES
               value: ${OKTA_ACCESS_TOKEN_SCOPES_PROD}
             - name: OKTA_ACCESS_TOKEN_AUDIENCE
