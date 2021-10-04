@@ -8,14 +8,29 @@ const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
 
-function createOktaJwtVerifier(token) {
-  const availableIssuers = {
+function getAvailableIssuers() {
+  const issuers = {
     [process.env.OKTA_ACCESS_TOKEN_ISSUER]: process.env.OKTA_CLIENT_ID,
-    [process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC]:
-      process.env.OKTA_CLIENT_ID_APAC,
-    [process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA]:
-      process.env.OKTA_CLIENT_ID_EMEA,
   };
+  if (
+    process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC &&
+    process.env.OKTA_CLIENT_ID_APAC
+  ) {
+    issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC] =
+      process.env.OKTA_CLIENT_ID_APAC;
+  }
+  if (
+    process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA &&
+    process.env.OKTA_CLIENT_ID_EMEA
+  ) {
+    issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA] =
+      process.env.OKTA_CLIENT_ID_EMEA;
+  }
+
+  return issuers;
+}
+
+function createOktaJwtVerifier(token, availableIssuers) {
   const decodedJwt = jsonwebtoken.decode(token);
   const jwtIssuer = decodedJwt.iss;
   const issuer = Object.entries(availableIssuers).find(
@@ -40,7 +55,8 @@ async function verifyToken(req) {
     if (bearerHeader) {
       const bearer = bearerHeader.split(' ');
       const bearerToken = bearer[1];
-      const oktaJwtVerifier = createOktaJwtVerifier(bearerToken);
+      const oktaIssuers = getAvailableIssuers();
+      const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
       const jwt = await oktaJwtVerifier.verifyAccessToken(
         bearerToken,
         process.env.OKTA_ACCESS_TOKEN_AUDIENCE
