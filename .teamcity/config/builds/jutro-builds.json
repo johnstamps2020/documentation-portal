@@ -231,10 +231,9 @@
       ]
     },
     {
-      "buildType": "source-zip",
+      "buildType": "yarn",
       "docId": "storyboobizpatterns650zip",
-      "srcId": "srcjutrosbbizpatterns650",
-      "zipFilename": "storybook-business-patterns"
+      "srcId": "srcjutrosbbizpatterns650downloadable"
     },
     {
       "buildType": "source-zip",
