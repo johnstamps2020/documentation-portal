@@ -30,7 +30,7 @@ function createOktaJwtVerifier(token) {
       },
     });
   } else {
-    return new Error(`Unable to verify the token with issuer ${jwtIssuer}`);
+    throw new Error(`Unable to verify the token with issuer ${jwtIssuer}`);
   }
 }
 
@@ -48,13 +48,17 @@ async function verifyToken(req) {
       return jwt;
     }
   } catch (err) {
-    console.log(err);
-    return null;
+    throw new Error(`${err.name}: ${err.userMessage}`);
   }
 }
 
 async function isRequestAuthenticated(req) {
-  return !!(req.isAuthenticated() || (await verifyToken(req)));
+  try {
+    return !!(req.isAuthenticated() || (await verifyToken(req)));
+  } catch (err) {
+    console.log(err.message);
+    return false;
+  }
 }
 
 const oktaOIDC = new ExpressOIDC({
