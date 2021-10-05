@@ -71,20 +71,16 @@
       "class": "subject integration",
       "items": [
         {
-          "label": "ClaimCenter Application Events for Developers",
+          "label": "ClaimCenter App Events for Developers",
           "id": "ccappeventsdevdraft"
         },
         {
-          "label": "PolicyCenter Application Events for Developers",
+          "label": "PolicyCenter App Events for Developers",
           "id": "pcappeventsdevdraft"
         },
         {
           "label": "Integration Gateway for Developers",
           "id": "integgatewaydevdraft"
-        },
-        {
-          "label": "Integration Gateway Installation for Internal Teams",
-          "id": "integgatewayinstalldraft"
         }
       ]
     }
