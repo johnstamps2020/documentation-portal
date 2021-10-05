@@ -239,8 +239,11 @@ def update_build(app_config: AppConfig, build: BuildInfo) -> Union[BuildInfo, Pr
         build.status = build_info.get('status', '')
         if build.state.casefold() == 'running':
             build_running_info = build_info.get('running-info', None)
-            build.estimated_time_to_finish = abs(int(build_running_info['estimatedTotalSeconds']) - int(
-                build_running_info['elapsedSeconds']))
+            if 'estimatedTotalSeconds' in build_running_info:
+                build.estimated_time_to_finish = abs(int(build_running_info['estimatedTotalSeconds']) - int(
+                    build_running_info['elapsedSeconds']))
+            else:
+                build.estimated_time_to_finish = 30
         elif build.state.casefold() == 'finished':
             build.estimated_time_to_finish = 0
         return build
@@ -340,10 +343,10 @@ def create_zip_package(app_config: AppConfig, build_resources: Dict) -> Processi
             message='ZIP archive created.',
             exit_code=0
         )
-    except:
+    except Exception as e:
         return ProcessingRecord(
             type=logging.ERROR,
-            message='Error during ZIP archive creation.',
+            message=f'Error during ZIP archive creation. {e}',
             exit_code=1
         )
 
