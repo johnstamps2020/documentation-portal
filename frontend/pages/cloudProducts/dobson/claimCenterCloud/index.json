@@ -118,6 +118,17 @@
               "page": "../../../jutroDesignSystem/5.3.1"
             }
           ]
+        },
+        {
+          "label": "Best Practices",
+          "class": "group",
+          "env": ["int"],
+          "items": [
+            {
+              "label": "Digital Best Practices",
+              "id": "dx-practices"
+            }
+          ]
         }
       ]
     }

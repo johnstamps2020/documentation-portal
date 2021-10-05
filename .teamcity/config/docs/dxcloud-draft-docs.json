@@ -576,6 +576,30 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "dx-practices",
+      "title": "Digital Best Practices",
+      "url": "cloud/dx/services/latest",
+      "metadata": {
+        "release": ["Dobson"],
+        "platform": ["Cloud", "Self-managed"],
+        "product": [
+          "CustomerEngage Account Management",
+          "CustomerEngage Account Management for ClaimCenter",
+          "CustomerEngage Quote and Buy",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
+          "ServiceRepEngage",
+          "VendorEngage"
+        ],
+        "subject": ["Best Practices"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
