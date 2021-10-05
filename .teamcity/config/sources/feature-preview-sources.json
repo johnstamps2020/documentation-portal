@@ -70,16 +70,6 @@
       ]
     },
     {
-      "id": "integgatewayinstalldraftsrc",
-      "title": "Integration Gateway Installation Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/DevConnect/cloud/active/InstallationGuideForInternalTeams.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
       "id": "integgatewayrndraftsrc",
       "title": "Integration Gateway Release Notes Draft",
       "sourceType": "git",
