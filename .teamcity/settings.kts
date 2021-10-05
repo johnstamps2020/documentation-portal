@@ -2175,11 +2175,7 @@ object HelperObjects {
         val re = Regex("[^A-Za-z0-9]")
         val cleanString = re.replace(stringToClean, "")
 
-        return if (cleanString.length > 69) {
-            cleanString.substring(69)
-        } else {
-            cleanString
-        }
+        return cleanString.hashCode().toString()
     }
 
     private fun getSourceById(sourceId: String, sourceList: JSONArray): Pair<String, String> {
