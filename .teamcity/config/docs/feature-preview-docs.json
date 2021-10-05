@@ -99,7 +99,7 @@
     },
     {
       "id": "ccappeventsdevdraft",
-      "title": "ClaimCenter Application Events for Developers",
+      "title": "ClaimCenter App Events for Developers",
       "url": "cloud/gw-feature-preview/ccappevents",
       "metadata": {
         "product": ["Feature Preview"],
@@ -115,7 +115,7 @@
     },
     {
       "id": "pcappeventsdevdraft",
-      "title": "PolicyCenter Application Events for Developers",
+      "title": "PolicyCenter App Events for Developers",
       "url": "cloud/gw-feature-preview/pcappevents",
       "metadata": {
         "product": ["Feature Preview"],
@@ -139,22 +139,6 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "integgatewayinstalldraft",
-      "title": "Integration Gateway Installation for Internal Teams",
-      "url": "cloud/gw-feature-preview/iginstall",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,

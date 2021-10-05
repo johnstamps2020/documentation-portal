@@ -68,14 +68,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "InstallationGuideForInternalTeams.ditamap",
-      "indexRedirect": true,
-      "srcId": "integgatewayinstalldraftsrc",
-      "docId": "integgatewayinstalldraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
       "root": "IntegrationGatewayForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "integgatewaydevdraftsrc",
