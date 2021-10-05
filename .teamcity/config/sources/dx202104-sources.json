@@ -191,14 +191,14 @@
       ]
     },
     {
-      "id": "dx-jsdocs-202104src",
+      "id": "dxjsdocs202104src",
       "title": "Digital Frontend API 2021.04",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
       "sourceType": "git",
       "branch": "release/2021.04"
     },
     {
-      "id": "dx-practices-src",
+      "id": "dxpracticessrc",
       "title": "Digital Services Docs",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-services-docs.git",
