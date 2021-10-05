@@ -8,7 +8,20 @@ const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
 
-function getAvailableIssuers() {
+function getTokenFromRequestHeader(req) {
+  const authorizationHeader = req.headers?.authorization;
+  if (authorizationHeader) {
+    const splitAuthorizationHeader = authorizationHeader.split(' ');
+    const token = splitAuthorizationHeader[1];
+    return token;
+  } else {
+    throw new Error(
+      'The request does not contain the "Authorization: Bearer" header.'
+    );
+  }
+}
+
+function getAvailableOktaIssuers() {
   const issuers = {
     [process.env.OKTA_ACCESS_TOKEN_ISSUER]: process.env.OKTA_CLIENT_ID,
   };
@@ -45,26 +58,33 @@ function createOktaJwtVerifier(token, availableIssuers) {
       },
     });
   } else {
-    throw new Error(`Unable to verify the token with issuer ${jwtIssuer}`);
+    throw new Error(
+      `Unable to verify the token against issuer ${jwtIssuer}. Generate a new token with a correct issuer.`
+    );
+  }
+}
+
+async function checkTokenInOkta(token, jwtVerifierInstance) {
+  try {
+    const jwt = await jwtVerifierInstance.verifyAccessToken(
+      token,
+      process.env.OKTA_ACCESS_TOKEN_AUDIENCE
+    );
+    return jwt;
+  } catch (err) {
+    throw new Error(`${err.name}: ${err.userMessage}`);
   }
 }
 
 async function verifyToken(req) {
   try {
-    const bearerHeader = req.headers?.authorization;
-    if (bearerHeader) {
-      const bearer = bearerHeader.split(' ');
-      const bearerToken = bearer[1];
-      const oktaIssuers = getAvailableIssuers();
-      const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
-      const jwt = await oktaJwtVerifier.verifyAccessToken(
-        bearerToken,
-        process.env.OKTA_ACCESS_TOKEN_AUDIENCE
-      );
-      return jwt;
-    }
+    const bearerToken = getTokenFromRequestHeader(req);
+    const oktaIssuers = getAvailableOktaIssuers();
+    const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
+    const verifiedToken = await checkTokenInOkta(bearerToken, oktaJwtVerifier);
+    return verifiedToken;
   } catch (err) {
-    throw new Error(`${err.name}: ${err.userMessage}`);
+    throw new Error(err.message);
   }
 }
 
