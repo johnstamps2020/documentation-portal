@@ -2175,8 +2175,8 @@ object HelperObjects {
         val re = Regex("[^A-Za-z0-9]")
         val cleanString = re.replace(stringToClean, "")
 
-        return if (cleanString.length > 224) {
-            cleanString.substring(224)
+        return if (cleanString.length > 69) {
+            cleanString.substring(69)
         } else {
             cleanString
         }
@@ -2214,7 +2214,7 @@ object HelperObjects {
             sch_minute_weekly: Int
         ) : BuildType({
 
-            id = RelativeId(build_id)
+            id = RelativeId(getCleanId(build_id))
             name = "Export $source_title from XDocs and add to git ($build_id)"
 
             enablePersonalBuilds = false
@@ -2346,7 +2346,7 @@ object HelperObjects {
     fun createBuildApiListeners(): Pair<MutableList<DocVcsRoot>, MutableList<BuildType>> {
         class BuildApiListenerBuild(vcs_root_id: RelativeId, source_id: String) : BuildType({
             name = "$source_id listener"
-            id = RelativeId(vcs_root_id.toString() + "_query")
+            id = RelativeId(getCleanId(vcs_root_id.toString() + "_query"))
             vcs {
                 root(vcs_root_id)
                 cleanCheckout = true
@@ -2475,7 +2475,7 @@ object HelperObjects {
 
         for (src in matchingSources) {
             val sourceId = getCleanId(src.getString("gitUrl").substringAfterLast('/'))
-            val vcsRootId = RelativeId(sourceId)
+            val vcsRootId = RelativeId(getCleanId(sourceId))
             val gitUrl = src.getString("gitUrl")
             val branchNames = src.getJSONArray("branches").toList() as List<*>
             val mainBranch = branchNames[0].toString()
