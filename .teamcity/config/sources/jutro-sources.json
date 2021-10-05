@@ -217,6 +217,20 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-redirect-service.git",
       "branch": "main"
+    },
+    {
+      "id": "srcjutro660",
+      "title": "Jutro Design System 6.6.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/6.6.0"
+    },
+    {
+      "id": "srcjutrostorybook660",
+      "title": "Jutro Storybook 6.6.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/6.6.0"
     }
   ]
 }
