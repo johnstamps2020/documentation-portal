@@ -303,13 +303,13 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutrolatest",
+      "docId": "jutro-latest",
       "srcId": "srcjutro660",
       "workingDir": "website"
     },
     {
       "buildType": "yarn",
-      "docId": "storybooklatest",
+      "docId": "storybook-latest",
       "srcId": "srcjutrostorybook660",
       "workingDir": "storybook",
       "customEnv": [

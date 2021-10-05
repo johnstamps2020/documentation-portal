@@ -291,8 +291,8 @@
     },
     {
       "buildType": "yarn",
-      "srcId": "dxjsdocs202104src",
-      "docId": "dxjsdocs202104"
+      "srcId": "dx-jsdocs-202104src",
+      "docId": "dx-jsdocs-202104"
     }
   ]
 }

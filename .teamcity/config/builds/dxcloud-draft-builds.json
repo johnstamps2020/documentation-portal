@@ -291,8 +291,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "dxpractices",
-      "srcId": "dxpracticessrc"
+      "docId": "dx-practices",
+      "srcId": "dx-practices-src"
     }
   ]
 }

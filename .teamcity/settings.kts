@@ -2171,9 +2171,15 @@ object HelperObjects {
         return matches
     }
 
-    private fun removeSpecialCharacters(stringToClean: String): String {
-        val re = Regex("[^A-Za-z0-9]")
-        return re.replace(stringToClean, "")
+    private fun getCleanId(stringToClean: String): String {
+        val re = Regex("[^A-Za-z0-9-]")
+        val cleanString = re.replace(stringToClean, "")
+
+        return if (cleanString.length > 224) {
+            cleanString.substring(224)
+        } else {
+            cleanString
+        }
     }
 
     private fun getSourceById(sourceId: String, sourceList: JSONArray): Pair<String, String> {
@@ -2468,7 +2474,7 @@ object HelperObjects {
         }
 
         for (src in matchingSources) {
-            val sourceId = removeSpecialCharacters(src.getString("gitUrl").substringAfterLast('/'))
+            val sourceId = getCleanId(src.getString("gitUrl").substringAfterLast('/'))
             val vcsRootId = RelativeId(sourceId)
             val gitUrl = src.getString("gitUrl")
             val branchNames = src.getJSONArray("branches").toList() as List<*>
@@ -2523,7 +2529,7 @@ object HelperObjects {
         }
 
         return Project {
-            id = RelativeId(removeSpecialCharacters(product_name))
+            id = RelativeId(getCleanId(product_name))
             name = product_name
 
             subProjects.forEach(this::subProject)
@@ -2535,7 +2541,7 @@ object HelperObjects {
         class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId, ga4Id: String) : BuildType(
             {
                 name = "Build and publish Docker image with build content"
-                id = RelativeId(removeSpecialCharacters(this.name).replace(" ", ""))
+                id = RelativeId(getCleanId(this.name).replace(" ", ""))
                 params {
                     text(
                         "doc-version",
@@ -2571,7 +2577,7 @@ object HelperObjects {
         }
 
         return Project {
-            id = RelativeId(removeSpecialCharacters(product_name + version))
+            id = RelativeId(getCleanId(product_name + version))
             name = version
 
             subProjects.forEach(this::subProject)
@@ -2582,7 +2588,7 @@ object HelperObjects {
                 val build = getObjectById(buildConfigs, "docId", docId)
                 val sourceId = build.getString("srcId")
                 val vcsRootId =
-                    RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId + "docker"))
+                    RelativeId(getCleanId(product_name + version + docId + sourceId + "docker"))
                 val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
                 buildType(BuildAndPublishDockerImageWithContent(vcsRootId, "G-6XJD083TC6"))
                 vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
@@ -2671,7 +2677,7 @@ object HelperObjects {
             }
 
 
-            id = RelativeId(removeSpecialCharacters(build_env + product + version + doc_id))
+            id = RelativeId(getCleanId(build_env + product + version + doc_id))
             name = "Publish to $build_env"
             maxRunningBuilds = 1
 
@@ -2869,7 +2875,7 @@ object HelperObjects {
             version: String,
             index_for_search: Boolean
         ) : BuildType({
-            id = RelativeId(removeSpecialCharacters("prod$product$version$doc_id"))
+            id = RelativeId(getCleanId("prod$product$version$doc_id"))
             name = "Copy from staging to prod"
 
             if (index_for_search) {
@@ -2927,7 +2933,7 @@ object HelperObjects {
             git_source_url: String,
             git_source_branch: String
         ) : BuildType({
-            id = RelativeId(removeSpecialCharacters("local$product$version$doc_id"))
+            id = RelativeId(getCleanId("local$product$version$doc_id"))
             name = "Build downloadable output"
             maxRunningBuilds = 1
 
@@ -3036,8 +3042,8 @@ object HelperObjects {
             vcs_root_id: RelativeId
         ) : BuildType({
             val relatedBuildTypeId =
-                RelativeId(removeSpecialCharacters("staging" + product + version + doc_id)).toString()
-            id = RelativeId(removeSpecialCharacters("lionpkg$product$version$doc_id"))
+                RelativeId(getCleanId("staging" + product + version + doc_id)).toString()
+            id = RelativeId(getCleanId("lionpkg$product$version$doc_id"))
             name = "Build localization package"
             maxRunningBuilds = 1
 
@@ -3127,7 +3133,7 @@ object HelperObjects {
         val customEnvironment: JSONArray? = if (build.has("customEnv")) build.getJSONArray("customEnv") else null
 
         val sourceId = build.getString("srcId")
-        val vcsRootId = RelativeId(removeSpecialCharacters(product_name + version + docId + sourceId))
+        val vcsRootId = RelativeId(getCleanId(product_name + version + docId + sourceId))
         val source = getObjectById(sourceConfigs, "id", sourceId)
         val sourceIsExportedFromXdocs = source.has("xdocsPathIds")
         val (sourceGitUrl, sourceGitBranch) = getSourceById(sourceId, sourceConfigs)
@@ -3213,7 +3219,7 @@ object HelperObjects {
         }
 
         return Project {
-            id = RelativeId(removeSpecialCharacters(docTitle + product_name + version + docId))
+            id = RelativeId(getCleanId(docTitle + product_name + version + docId))
             name = "$docTitle $product_name $version $platform"
 
             vcsRoot(DocVcsRoot(vcsRootId, sourceGitUrl, sourceGitBranch))
@@ -3294,7 +3300,7 @@ object HelperObjects {
             val docPlatform = docMetadata.getJSONArray("platform").joinToString(separator = ",")
             val docVersion = docMetadata.getJSONArray("version").joinToString(separator = ",")
 
-            id = RelativeId(removeSpecialCharacters(docProduct + docVersion + docId + "validatedoc"))
+            id = RelativeId(getCleanId(docProduct + docVersion + docId + "validatedoc"))
             name = "Validate $docTitle $docProduct $docVersion"
 
             params {
@@ -3407,7 +3413,7 @@ object HelperObjects {
 
         class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) :
             BuildType({
-                id = RelativeId(removeSpecialCharacters(git_source_id + "cleanresults"))
+                id = RelativeId(getCleanId(git_source_id + "cleanresults"))
                 name = "Clean validation results for $git_source_id"
 
                 params {
@@ -3492,7 +3498,7 @@ object HelperObjects {
                 if (sourceDocBuilds.isNotEmpty()) {
                     sourcesToValidate.add(
                         Project {
-                            id = RelativeId(removeSpecialCharacters(sourceId + sourceGitBranch))
+                            id = RelativeId(getCleanId(sourceId + sourceGitBranch))
                             name = "$sourceTitle ($sourceId)"
 
                             vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
