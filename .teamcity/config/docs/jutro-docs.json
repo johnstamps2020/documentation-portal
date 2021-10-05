@@ -589,7 +589,7 @@
       "public": false
     },
     {
-      "id": "jutrolatest",
+      "id": "jutro-latest",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/latest",
       "metadata": {
@@ -604,7 +604,7 @@
       "public": false
     },
     {
-      "id": "storybooklatest",
+      "id": "storybook-latest",
       "title": "Jutro Storybook",
       "url": "jutro/storybook/latest",
       "metadata": {
