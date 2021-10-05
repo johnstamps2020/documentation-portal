@@ -288,6 +288,11 @@
       "srcId": "dxdraftdcg",
       "docId": "dxclouddraftdcg",
       "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "docId": "dx-practices",
+      "srcId": "dx-practices-src"
     }
   ]
 }
