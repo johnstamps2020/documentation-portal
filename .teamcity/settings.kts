@@ -2172,7 +2172,7 @@ object HelperObjects {
     }
 
     private fun getCleanId(stringToClean: String): String {
-        val re = Regex("[^A-Za-z0-9-]")
+        val re = Regex("[^A-Za-z0-9]")
         val cleanString = re.replace(stringToClean, "")
 
         return if (cleanString.length > 224) {
