@@ -369,7 +369,7 @@ async function searchController(req, res, next) {
       });
     });
 
-    if (req.query.rawJSON) {
+    if (req.query.rawJSON === 'true') {
       res.send(resultsToDisplay);
     } else {
       const searchData = {

@@ -90,7 +90,11 @@ async function verifyToken(req) {
 
 async function isRequestAuthenticated(req) {
   try {
-    return !!(req.isAuthenticated() || (await verifyToken(req)));
+    const rawJsonRequest = req.query.rawJSON === 'true';
+    const requestAuthenticated = rawJsonRequest
+      ? !!(await verifyToken(req))
+      : !!req.isAuthenticated();
+    return requestAuthenticated;
   } catch (err) {
     console.log(err.message);
     return false;
