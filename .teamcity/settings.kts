@@ -2172,10 +2172,11 @@ object HelperObjects {
     }
 
     private fun getCleanId(stringToClean: String): String {
+        val hashString = stringToClean.hashCode().toString()
         val re = Regex("[^A-Za-z0-9]")
-        val cleanString = re.replace(stringToClean, "")
+        val cleanString = re.replace(hashString, "")
 
-        return cleanString.hashCode().toString()
+        return cleanString
     }
 
     private fun getSourceById(sourceId: String, sourceList: JSONArray): Pair<String, String> {
