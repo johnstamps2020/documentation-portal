@@ -31,7 +31,7 @@ router.get('/versionSelectors', async function(req, res) {
 
 router.get('/docMetadata/:docId', async function(req, res) {
   const { docId } = req.params;
-  const docMetadata = await getDocumentMetadata(docId);
+  const docMetadata = await getDocumentMetadata(docId, req);
   res.send(docMetadata);
 });
 
