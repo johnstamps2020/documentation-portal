@@ -1791,7 +1791,7 @@ object DeployFrontend : BuildType({
                   if [[ %env.DEPLOY_ENV% == "staging" ]]; then
                     export AWS_SYNC_EXCLUDE="--exclude \".git/*\" --exclude \"**/*-rc\""
                   else
-                    export AWS_SYNC_EXCLUDE="--exclude \".git/*\"	
+                    export AWS_SYNC_EXCLUDE="--exclude \".git/*\""	
                   fi		
                 fi
                 
