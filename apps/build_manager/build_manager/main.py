@@ -24,10 +24,13 @@ class AppConfig:
     git_url: str = os.environ.get('GIT_URL')
     git_build_branch: str = os.environ.get('GIT_BUILD_BRANCH')
     teamcity_api_root_url = os.environ.get('TEAMCITY_API_ROOT_URL')
-    teamcity_build_queue_url = urllib.parse.urljoin(teamcity_api_root_url, 'buildQueue')
-    teamcity_build_types_url = urllib.parse.urljoin(teamcity_api_root_url, 'buildTypes')
+    teamcity_build_queue_url = urllib.parse.urljoin(
+        teamcity_api_root_url, 'buildQueue')
+    teamcity_build_types_url = urllib.parse.urljoin(
+        teamcity_api_root_url, 'buildTypes')
     teamcity_builds_url = urllib.parse.urljoin(teamcity_api_root_url, 'builds')
-    teamcity_resources_artifact_path = os.environ.get('TEAMCITY_RESOURCES_ARTIFACT_PATH')
+    teamcity_resources_artifact_path = os.environ.get(
+        'TEAMCITY_RESOURCES_ARTIFACT_PATH')
     teamcity_affected_project = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
     teamcity_template = os.environ.get('TEAMCITY_TEMPLATE')
     _teamcity_api_auth_token = os.environ.get('TEAMCITY_API_AUTH_TOKEN')
@@ -166,7 +169,8 @@ def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]
         headers=app_config.teamcity_api_headers,
         params=payload
     )
-    build_types_ids = sorted(build_type['id'] for build_type in build_types_response.json()['buildType'])
+    build_types_ids = sorted(
+        build_type['id'] for build_type in build_types_response.json()['buildType'])
     if build_types_ids:
         return build_types_ids
     return ProcessingRecord(
@@ -223,7 +227,8 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
             latest_build_id = builds[0]['id']
             matching_resources = get_matching_build_resources(app_config, build_type_id, latest_build_id,
                                                               changed_resources)
-            artifact_path_exists = type(matching_resources) is not ProcessingRecord
+            artifact_path_exists = type(
+                matching_resources) is not ProcessingRecord
             if (
                     artifact_path_exists
                     and matching_resources
@@ -270,8 +275,10 @@ def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or Proc
 
 @check_processing_result
 def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[list[BuildInfo] or ProcessingRecord]:
-    started_builds_results = (start_build(app_config, build_type_id) for build_type_id in build_type_ids)
-    started_builds = [result for result in started_builds_results if type(result) is BuildInfo]
+    started_builds_results = (start_build(app_config, build_type_id)
+                              for build_type_id in build_type_ids)
+    started_builds = [
+        result for result in started_builds_results if type(result) is BuildInfo]
 
     if started_builds:
         started_builds_ids = '\n\t'.join(
@@ -293,8 +300,10 @@ def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[
 @check_processing_result
 def update_build(app_config: AppConfig, build: BuildInfo) -> Union[BuildInfo, ProcessingRecord]:
     try:
-        full_build_href = urllib.parse.urljoin(app_config.teamcity_build_queue_url, build.href)
-        response = requests.get(full_build_href, headers=app_config.teamcity_api_headers)
+        full_build_href = urllib.parse.urljoin(
+            app_config.teamcity_build_queue_url, build.href)
+        response = requests.get(
+            full_build_href, headers=app_config.teamcity_api_headers)
         build_info = response.json()
         build.state = build_info['state']
         build.status = build_info.get('status', '')
@@ -316,8 +325,10 @@ def update_build(app_config: AppConfig, build: BuildInfo) -> Union[BuildInfo, Pr
 
 @check_processing_result
 def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[list[BuildInfo], ProcessingRecord]:
-    updated_builds_results = (update_build(app_config, build) for build in builds)
-    updated_builds = [result for result in updated_builds_results if type(result) is BuildInfo]
+    updated_builds_results = (update_build(app_config, build)
+                              for build in builds)
+    updated_builds = [
+        result for result in updated_builds_results if type(result) is BuildInfo]
 
     if updated_builds:
         updated_builds_ids = '\n\t'.join(build.id for build in updated_builds)
@@ -339,7 +350,8 @@ def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[l
 def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline) -> ProcessingRecord:
     _logger.info('>>>>>>>>>>')
     _logger.info('Checking the status of started builds...')
-    updated_triggered_builds = update_all_builds(app_config, build_pipeline.triggered_builds)
+    updated_triggered_builds = update_all_builds(
+        app_config, build_pipeline.triggered_builds)
     updated_build_pipeline = BuildPipeline(updated_triggered_builds)
     _logger.info(f'Queued builds: {updated_build_pipeline.number_of_queued_builds}'
                  f' | Running builds: {updated_build_pipeline.number_of_running_builds}'
@@ -354,7 +366,8 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline) -> Proces
                                    f'Build type URL: {build_type["webUrl"]}']
         _logger.info('\n\t\t'.join(triggered_build_details))
 
-    _logger.info(f'Wait time before next check: {updated_build_pipeline.wait_time} s')
+    _logger.info(
+        f'Wait time before next check: {updated_build_pipeline.wait_time} s')
     time.sleep(updated_build_pipeline.wait_time)
 
     if updated_build_pipeline.all_builds_finished:
