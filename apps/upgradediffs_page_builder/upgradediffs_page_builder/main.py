@@ -44,7 +44,7 @@ def write_top_index(dirs: [], docs_output_path: Path):
         json.dump(index_json, outfile, indent=2, ensure_ascii=False)
 
 
-def write_index(src_path, output_path, selector_label, generate_links=False):
+def write_index(src_path, output_path, selector_label, generate_links=False, env='prod'):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": src_path.name,
@@ -77,6 +77,8 @@ def write_index(src_path, output_path, selector_label, generate_links=False):
     child_paths = natsorted(
         child_paths, alg=ns.PATH, reverse=True)
     for child_path in child_paths:
+        if ((env == 'prod' or env == 'staging') and '-rc' in child_path.name):
+            continue
         if not generate_links:
             index_json["items"].append(
                 {
@@ -129,8 +131,9 @@ def empty_tree(path: Path):
 
 
 def main():
-    docs_root_path = Path(os.environ['UPGRADEDIFFS_DOCS_SRC'])
-    docs_output_path = Path(os.environ['UPGRADEDIFFS_DOCS_OUT'])
+    docs_root_path = Path(os.environ.get('UPGRADEDIFFS_DOCS_SRC'))
+    docs_output_path = Path(os.environ.get('UPGRADEDIFFS_DOCS_OUT'))
+    deploy_env = os.environ.get('DEPLOY_ENV')
     clear_output(docs_output_path)
 
     product_dirs = get_paths(docs_root_path)
@@ -139,12 +142,12 @@ def main():
 
     for product_dir in product_dirs:
         write_index(product_dir, docs_output_path /
-                    product_dir.name, "Select product")
+                    product_dir.name, "Select product", False, deploy_env)
         version_from_dirs = get_paths(product_dir)
         version_from_dirs.sort()
         for version_from_dir in version_from_dirs:
             write_index(
-                version_from_dir, docs_output_path / product_dir.name / version_from_dir.name, "Select version to upgrade from", True)
+                version_from_dir, docs_output_path / product_dir.name / version_from_dir.name, "Select version to upgrade from", True, deploy_env)
 
 
 if __name__ == '__main__':
