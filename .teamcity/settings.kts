@@ -1795,7 +1795,7 @@ object DeployFrontend : BuildType({
                   fi		
                 fi
                 
-                aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs ${'$'}AWS_SYNC_EXCLUDE --delete
+                aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs "$AWS_SYNC_EXCLUDE" --delete
             """.trimIndent()
         }
         script {
