@@ -600,7 +600,7 @@
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": false,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false
     },
     {
@@ -615,7 +615,7 @@
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": false,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false
     }
   ]
