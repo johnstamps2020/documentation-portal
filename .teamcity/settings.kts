@@ -1766,6 +1766,7 @@ object DeployFrontend : BuildType({
 
                 if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
                   export DEPLOY_ENV=prod
+                fi
                 upgradediffs_page_builder
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"
