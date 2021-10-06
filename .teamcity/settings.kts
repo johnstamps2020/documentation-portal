@@ -1783,15 +1783,15 @@ object DeployFrontend : BuildType({
                   export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
                   export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
                   export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                  export AWS_SYNC_EXCLUDE="--exclude \".git/*\" --exclude \"*/*-rc/*\""
+                  export AWS_SYNC_EXCLUDE=--exclude \".git/*\" --exclude \"*/*-rc/*\"
                 else
                   export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
                   export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                   export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"	
                   if [[ %env.DEPLOY_ENV% == "staging" ]]; then
-                    export AWS_SYNC_EXCLUDE="--exclude \".git/*\" --exclude \"*/*-rc/*\""
+                    export AWS_SYNC_EXCLUDE=--exclude \".git/*\" --exclude \"*/*-rc/*\"
                   else
-                    export AWS_SYNC_EXCLUDE="--exclude \".git/*\""	
+                    export AWS_SYNC_EXCLUDE=--exclude \".git/*\"	
                   fi		
                 fi
                 
