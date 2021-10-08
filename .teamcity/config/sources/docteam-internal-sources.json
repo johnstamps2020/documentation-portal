@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "docguidesrc",
+      "title": "Documentation Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/doc-guide.git",
+      "branch": "main"
+    },
+    {
       "id": "doctoolsadminsrc",
       "title": "DocTools Administration Guide",
       "sourceType": "git",

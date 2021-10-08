@@ -4,6 +4,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "DitaDocGuide.ditamap",
+      "srcId": "docguidesrc",
+      "docId": "docguide",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "DocToolsAdminGuide.ditamap",
       "srcId": "doctoolsadminsrc",
       "docId": "doctoolsadmin",
