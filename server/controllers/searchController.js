@@ -117,6 +117,20 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
     queryWithFiltersFromUrl.bool.filter = queryFilters;
   }
 
+  const highlightParameters = {
+    fragment_size: 0,
+    fields: [
+      {
+        'title*': {
+          number_of_fragments: 0,
+        },
+      },
+      { 'body*': {} },
+    ],
+    pre_tags: ['<span class="searchResultHighlight highlighted">'],
+    post_tags: ['</span>'],
+  };
+
   const searchResultsCount = await elasticClient.search({
     index: searchIndexName,
     size: 0,
@@ -148,22 +162,11 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
         inner_hits: {
           name: 'same_title',
           size: 1000,
+          highlight: highlightParameters,
         },
         max_concurrent_group_searches: 4,
       },
-      highlight: {
-        fragment_size: 0,
-        fields: [
-          {
-            'title*': {
-              number_of_fragments: 0,
-            },
-          },
-          { 'body*': {} },
-        ],
-        pre_tags: ['<span class="searchResultHighlight highlighted">'],
-        post_tags: ['</span>'],
-      },
+      highlight: highlightParameters,
     },
   });
 
