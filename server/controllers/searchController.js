@@ -117,6 +117,20 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
     queryWithFiltersFromUrl.bool.filter = queryFilters;
   }
 
+  const highlightParameters = {
+    fragment_size: 0,
+    fields: [
+      {
+        'title*': {
+          number_of_fragments: 0,
+        },
+      },
+      { 'body*': {} },
+    ],
+    pre_tags: ['<span class="searchResultHighlight highlighted">'],
+    post_tags: ['</span>'],
+  };
+
   const searchResultsCount = await elasticClient.search({
     index: searchIndexName,
     size: 0,
@@ -148,22 +162,11 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
         inner_hits: {
           name: 'same_title',
           size: 1000,
+          highlight: highlightParameters,
         },
         max_concurrent_group_searches: 4,
       },
-      highlight: {
-        fragment_size: 0,
-        fields: [
-          {
-            'title*': {
-              number_of_fragments: 0,
-            },
-          },
-          { 'body*': {} },
-        ],
-        pre_tags: ['<span class="searchResultHighlight highlighted">'],
-        post_tags: ['</span>'],
-      },
+      highlight: highlightParameters,
     },
   });
 
@@ -197,6 +200,27 @@ function sanitizeTagNames(textToSanitize) {
     '&lt;$1'
   );
   return sanitizedText5;
+}
+
+function sortObjectsFromNewestToOldest(objectsList) {
+  return objectsList
+    .sort(function(a, b) {
+      const verNum = versions =>
+        versions[0]
+          .split('.')
+          .map(n => +n + 100000)
+          .join('.');
+      const verNumA = verNum(a._source.version);
+      const verNumB = verNum(b._source.version);
+      let comparison = 0;
+      if (verNumA > verNumB) {
+        comparison = 1;
+      } else if (verNumA < verNumB) {
+        comparison = -1;
+      }
+      return comparison;
+    })
+    .reverse();
 }
 
 async function searchController(req, res, next) {
@@ -262,8 +286,23 @@ async function searchController(req, res, next) {
     );
 
     const resultsToDisplay = results.hits.map(result => {
-      const doc = result._source;
-      const highlight = result.highlight;
+      const docScore = result._score;
+      const innerHits = result.inner_hits.same_title.hits.hits;
+      const innerHitsMatchingDocScore = innerHits.filter(
+        h => h._score === docScore
+      );
+
+      let mainResult =
+        innerHitsMatchingDocScore.length > 0
+          ? sortObjectsFromNewestToOldest(innerHitsMatchingDocScore)[0]
+          : result;
+
+      const innerHitsWithoutMainResult = innerHits.filter(
+        h => h._id !== mainResult._id
+      );
+
+      const doc = mainResult._source;
+      const highlight = mainResult.highlight;
       let docTags = [];
       for (const key of displayOrder) {
         if (doc[key]) {
@@ -303,24 +342,9 @@ async function searchController(req, res, next) {
         })
         .join(',');
 
-      const sortedInnerHits = result.inner_hits.same_title.hits.hits
-        .sort(function(a, b) {
-          const verNum = versions =>
-            versions[0]
-              .split('.')
-              .map(n => +n + 100000)
-              .join('.');
-          const verNumA = verNum(a._source.version);
-          const verNumB = verNum(b._source.version);
-          let comparison = 0;
-          if (verNumA > verNumB) {
-            comparison = 1;
-          } else if (verNumA < verNumB) {
-            comparison = -1;
-          }
-          return comparison;
-        })
-        .reverse();
+      const sortedInnerHits = sortObjectsFromNewestToOldest(
+        innerHitsWithoutMainResult
+      );
 
       let innerHitsToDisplay = [];
       for (const innerHit of sortedInnerHits) {
@@ -329,13 +353,11 @@ async function searchController(req, res, next) {
         const hitPlatform = innerHit._source.platform;
         const hitProduct = innerHit._source.product;
         const hitVersion = innerHit._source.version;
-        if (hitHref !== doc.href) {
-          innerHitsToDisplay.push({
-            label: hitLabel,
-            href: hitHref,
-            tags: [...hitProduct, ...hitPlatform, ...hitVersion],
-          });
-        }
+        innerHitsToDisplay.push({
+          label: hitLabel,
+          href: hitHref,
+          tags: [...hitProduct, ...hitPlatform, ...hitVersion],
+        });
       }
 
       let hitsWithUniqueUrls = [];
@@ -347,7 +369,7 @@ async function searchController(req, res, next) {
 
       return {
         href: doc.href,
-        score: result._score,
+        score: docScore,
         title: sanitizeTagNames(titleText),
         titlePlain: sanitizeTagNames(doc.title),
         version: doc.version.join(', '),
