@@ -310,9 +310,9 @@ async function searchController(req, res, next) {
         }
       }
 
-      const highlightTitleKey = Object.getOwnPropertyNames(
-        highlight
-      ).filter(k => k.startsWith('title'))[0];
+      const highlightTitleKey = Object.getOwnPropertyNames(highlight).filter(
+        k => k.startsWith('title') && !k.startsWith('title.raw')
+      )[0];
 
       const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter(k =>
         k.startsWith('body')
