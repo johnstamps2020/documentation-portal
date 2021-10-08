@@ -1,0 +1,32 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "doctoolsadmin",
+      "title": "DocTools Administration Guide",
+      "url": "doctools/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DocTools"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "writingwithgit",
+      "title": "Writing with Git",
+      "url": "writing-with-git",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Writing with Git"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

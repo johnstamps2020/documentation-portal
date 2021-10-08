@@ -1,0 +1,21 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "DocToolsAdminGuide.ditamap",
+      "srcId": "doctoolsadminsrc",
+      "docId": "doctoolsadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "WritingWithGit.ditamap",
+      "srcId": "writingwithgitsrc",
+      "docId": "writingwithgit",
+      "indexRedirect": true
+    }
+  ]
+}

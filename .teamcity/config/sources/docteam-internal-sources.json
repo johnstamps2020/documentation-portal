@@ -1,0 +1,19 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "doctoolsadminsrc",
+      "title": "DocTools Administration Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/doctools-admin-guide.git",
+      "branch": "main"
+    },
+    {
+      "id": "writingwithgitsrc",
+      "title": "Writing with Git",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
+      "branch": "main"
+    }
+  ]
+}
