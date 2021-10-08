@@ -2421,13 +2421,6 @@
       ]
     },
     {
-      "id": "writingwithgitsrc",
-      "title": "Writing with Git",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
-      "branch": "main"
-    },
-    {
       "id": "learninganalyticssrc",
       "title": "Learning Analytics",
       "sourceType": "git",
