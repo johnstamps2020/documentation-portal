@@ -2,6 +2,19 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "docguide",
+      "title": "Documentation Guide",
+      "url": "docguide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DocTools"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "indexForSearch": false,
+      "public": false
+    },
+    {
       "id": "doctoolsadmin",
       "title": "DocTools Administration Guide",
       "url": "doctools/admin",
