@@ -286,11 +286,6 @@ async function searchController(req, res, next) {
     );
 
     const resultsToDisplay = results.hits.map(result => {
-      //Look at the main result and inner hits
-      //Sort the results by score
-      //Get the result with the highest score that also has the newest version. This will be the main result.
-      //Sort the rest of the results by version from newest to oldes. These are inner hits.
-
       const docScore = result._score;
       const innerHits = result.inner_hits.same_title.hits.hits;
       const innerHitsMatchingDocScore = innerHits.filter(
