@@ -6893,22 +6893,6 @@
       "public": false
     },
     {
-      "id": "indevguidejava11draftext",
-      "title": "Developers Setup Draft",
-      "url": "cloud/in/devsetupjava11ext",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Installation"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "inupgradetoolsdraft",
       "title": "Upgrade Tools Draft",
       "url": "cloud/in/upgrade",
