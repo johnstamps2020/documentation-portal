@@ -1,4 +1,5 @@
 import os
+import sys
 from typing import List
 
 from scrapy.crawler import CrawlerRunner
@@ -47,12 +48,9 @@ def env_is_set():
 
 def main():
     if not env_is_set():
-        return
+        sys.exit(1)
     config_file = os.environ.get('CONFIG_FILE', None)
-    # TODO: Convert the DOC_ID to a more flexible mechanism that allows us to filter the list of doc objects in different ways.
-    # TODO: For example if we want to run a crawler for portal2 docs, we could provide a query with a regular expression.
     doc_id = os.environ.get('DOC_ID', None)
-    # TODO: Move the s3 url and app base url to the config file
     app_base_url = os.environ.get('APP_BASE_URL', None)
     doc_s3_url = os.environ.get('DOC_S3_URL', None)
     docs_in_config = doc_portal_spider.get_portal_config(config_file)
