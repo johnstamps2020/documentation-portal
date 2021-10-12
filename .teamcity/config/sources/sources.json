@@ -2105,8 +2105,14 @@
     {
       "id": "cloudplatformsrc",
       "title": "Cloud Platform",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-platform.git"
+    },
+    {
+      "id": "gwcpreleasenotessrc",
+      "title": "Cloud Platform Release Notes",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git"
     },
     {
       "id": "guidewirecloudconsolelatestsrc",
