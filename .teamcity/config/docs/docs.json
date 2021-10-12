@@ -92,6 +92,21 @@
       "public": false
     },
     {
+      "id": "gwcpreleasenotes",
+      "title": "Cloud Platform Release Notes",
+      "url": "cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "selfmanageddxdixowqwwrfu",
       "title": "Guidewire for Salesforce Data Integrations",
       "url": "self-managed/dx/di/3x",
