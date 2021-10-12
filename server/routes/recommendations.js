@@ -6,8 +6,8 @@ const {
 
 router.get('/', async function(req, res) {
   const topicId = req.query.topicId;
-  const topicRecommendations = await getTopicRecommendations(topicId);
-  res.send(topicRecommendations);
+  const result = await getTopicRecommendations(topicId);
+  res.status(result.status).send(result.body);
 });
 
 module.exports = router;

@@ -14,20 +14,37 @@ async function getTopicRecommendations(topicId) {
       },
     };
 
-    const recommendationsResults = await elasticClient.search({
+    const response = await elasticClient.search({
       index: recommendationsIndexName,
       body: {
         query: queryBody,
       },
     });
-
-    return {
-      topicId: topicId,
-      recommendations: recommendationsResults.body.hits.hits[0].recommendations,
-    };
+    const hit = response.body.hits.hits.map(h => ({
+      ...h._source,
+    }))[0];
+    if (hit) {
+      return {
+        body: {
+          topicId: topicId,
+          recommendations: hit.recommendations,
+        },
+        status: response.statusCode,
+      };
+    } else {
+      return {
+        body: {
+          message: `Topic with ID "${topicId}" not found`,
+        },
+        status: 404,
+      };
+    }
   } catch (err) {
-    console.log(err);
-    return null;
+    console.error(err);
+    return {
+      body: err.message,
+      status: 500,
+    };
   }
 }
 
