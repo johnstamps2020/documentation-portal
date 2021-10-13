@@ -2432,6 +2432,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/learning-analytics.git",
       "branch": "main"
+    },
+    {
+      "id": "cyencesrc",
+      "title": "Cyence",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cyence.git",
+      "branch": "main"
     }
   ]
 }

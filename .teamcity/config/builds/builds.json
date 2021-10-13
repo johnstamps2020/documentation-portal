@@ -2961,6 +2961,11 @@
       "buildType": "yarn",
       "srcId": "learninganalyticssrc",
       "docId": "learninganalytics"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "cyencesrc",
+      "docId": "cyence"
     }
   ]
 }

@@ -8340,6 +8340,20 @@
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false
+    },
+    {
+      "id": "cyence",
+      "title": "Cyence",
+      "url": "cyene",
+      "metadata": {
+        "product": ["Cyence"],
+        "platform": ["Cloud"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
     }
   ]
 }
