@@ -58,30 +58,24 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Add-ons",
-          "class": "group",
-          "items": [
-            {
-              "label": "DataHub",
-              "page": "dh/10.5.0",
-              "env": ["dev", "staging", "prod"]
-            },
-            {
-              "label": "DataHub",
-              "page": "dh/10.x",
-              "env": ["int"]
-            },
-            {
-              "label": "InfoCenter",
-              "page": "ic/10.5.0",
-              "env": ["dev", "staging", "prod"]
-            },
-            {
-              "label": "InfoCenter",
-              "page": "ic/10.x",
-              "env": ["int"]
-            }
-          ]
+          "label": "DataHub",
+          "page": "dh/10.5.0",
+          "env": ["dev", "staging", "prod"]
+        },
+        {
+          "label": "DataHub",
+          "page": "dh/10.x",
+          "env": ["int"]
+        },
+        {
+          "label": "InfoCenter",
+          "page": "ic/10.5.0",
+          "env": ["dev", "staging", "prod"]
+        },
+        {
+          "label": "InfoCenter",
+          "page": "ic/10.x",
+          "env": ["int"]
         }
       ]
     },
