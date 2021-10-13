@@ -229,9 +229,25 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "IPFHelp.ditamap",
+      "root": "IRSAOverview.ditamap",
       "srcId": "midipfsrc",
-      "docId": "midipf",
+      "docId": "midipfoverview",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAAdjusterGuide.ditamap",
+      "srcId": "midipfsrc",
+      "docId": "midipfadjuster",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAAdministratorGuide.ditamap",
+      "srcId": "midipfsrc",
+      "docId": "midipfadmin",
       "indexRedirect": true
     },
     {

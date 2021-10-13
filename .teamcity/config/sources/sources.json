@@ -971,11 +971,7 @@
       "title": "ClaimCenter Adapter for IRSA",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
-      "branch": "main",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/mid/ipf/1.x/active/IPFHelp.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "branch": "main"
     },
     {
       "id": "clouddataaccessguidesrc",
