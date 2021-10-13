@@ -2435,6 +2435,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cyence.git",
       "branch": "main"
+    },
+    {
+      "id": "assesssrc",
+      "title": "Assess",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/assess.git",
+      "branch": "main"
     }
   ]
 }
