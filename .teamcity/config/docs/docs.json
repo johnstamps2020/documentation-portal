@@ -8375,10 +8375,26 @@
     {
       "id": "cyence",
       "title": "Cyence",
-      "url": "cyene",
+      "url": "cyence",
       "metadata": {
         "product": ["Cyence"],
         "platform": ["Cloud"],
+        "release": ["Dobson"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "assess",
+      "title": "Assess",
+      "url": "assess",
+      "metadata": {
+        "product": ["Assess"],
+        "platform": ["Cloud"],
+        "release": ["Dobson"],
         "version": ["latest"]
       },
       "environments": ["dev", "int", "staging"],
