@@ -54,13 +54,22 @@ async function getTopicRecommendations(topicId, reqObj) {
           topicRecommendations
         );
       }
-      return {
-        body: {
-          topicId: topicId,
-          recommendations: topicRecommendations,
-        },
-        status: response.statusCode,
-      };
+      if (topicRecommendations.length > 0) {
+        return {
+          body: {
+            topicId: topicId,
+            recommendations: topicRecommendations,
+          },
+          status: response.statusCode,
+        };
+      } else {
+        return {
+          body: {
+            message: `No recommendations found for topic with ID "${topicId}"`,
+          },
+          status: 404,
+        };
+      }
     } else {
       return {
         body: {
