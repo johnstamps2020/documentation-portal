@@ -152,6 +152,10 @@
           "description": "How often (daily or weekly) the export for this source runs if there is an associated int build. Defaults to daily if not set.",
           "type": "string",
           "enum": ["daily", "weekly"]
+        },
+        "pollInterval": {
+          "description": "For Git-only sources, the frequency in seconds for how often to poll the repo for changes.",
+          "type": "integer"
         }
       }
     },
@@ -254,7 +258,8 @@
           "Writing with Git",
           "DocTools",
           "LRS",
-          "Workset Manager"
+          "Workset Manager",
+          "Cyence"
         ]
       }
     },
