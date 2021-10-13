@@ -1,10 +1,32 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const { isRequestAuthenticated } = require('./authController');
+const { getConfig } = require('./configController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const recommendationsIndexName = 'gw-recommendations';
 
-async function getTopicRecommendations(topicId) {
+async function requestIsAuthenticated(reqObj) {
+  return !!(
+    process.env.ENABLE_AUTH === 'no' || (await isRequestAuthenticated(reqObj))
+  );
+}
+
+async function showOnlyPublicRecommendations(reqObj, recommendations) {
+  const publicRecommendations = [];
+  const config = await getConfig(reqObj);
+  for (const recommendation of recommendations) {
+    const matchingDoc = config.docs.find(
+      d => d.doc_id === recommendation.doc_id
+    );
+    const recommendationIsPublic = matchingDoc ? matchingDoc.public : false;
+    if (recommendationIsPublic) {
+      publicRecommendations.push(recommendation);
+    }
+  }
+  return publicRecommendations;
+}
+
+async function getTopicRecommendations(topicId, reqObj) {
   try {
     const queryBody = {
       match: {
@@ -24,10 +46,18 @@ async function getTopicRecommendations(topicId) {
       ...h._source,
     }))[0];
     if (hit) {
+      let topicRecommendations = hit.recommendations;
+      const reqIsAuthenticated = await requestIsAuthenticated(reqObj);
+      if (!reqIsAuthenticated) {
+        topicRecommendations = await showOnlyPublicRecommendations(
+          reqObj,
+          topicRecommendations
+        );
+      }
       return {
         body: {
           topicId: topicId,
-          recommendations: hit.recommendations,
+          recommendations: topicRecommendations,
         },
         status: response.statusCode,
       };
