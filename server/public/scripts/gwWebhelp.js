@@ -36,7 +36,7 @@ async function showTopicRecommendations() {
     for (const topic of recommendedTopics) {
       const recommendedTopicListItem = document.createElement('li');
       const recommendedTopicLink = document.createElement('a');
-      recommendedTopicLink.setAttribute('href', topic.relative_url);
+      recommendedTopicLink.setAttribute('href', topic.id);
       recommendedTopicLink.innerText = topic.title;
       recommendedTopicListItem.appendChild(recommendedTopicLink);
       recommendedTopicsList.appendChild(recommendedTopicListItem);
