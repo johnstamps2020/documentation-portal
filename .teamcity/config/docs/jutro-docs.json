@@ -206,7 +206,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.5.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "release": ["Dobson"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": false,
