@@ -49,7 +49,7 @@
         },
         {
           "label": "ClaimCenter Adapter for IRSA",
-          "id": "midipf"
+          "page": "midipf/1.1"
         }
       ]
     },

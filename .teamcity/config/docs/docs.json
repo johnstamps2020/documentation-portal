@@ -240,7 +240,7 @@
     },
     {
       "id": "midipfoverview",
-      "title": "ClaimCenter Adapter for IRSA",
+      "title": "ClaimCenter Adapter for IRSA Overview",
       "url": "self-managed/mid/ipf/1.1/overview",
       "metadata": {
         "product": ["ClaimCenter Adapter for IRSA"],
@@ -255,7 +255,7 @@
     },
     {
       "id": "midipfadjuster",
-      "title": "ClaimCenter Adapter for IRSA",
+      "title": "ClaimCenter Adapter for IRSA Adjuster Guide",
       "url": "self-managed/mid/ipf/1.1/adjuster",
       "metadata": {
         "product": ["ClaimCenter Adapter for IRSA"],
@@ -270,7 +270,7 @@
     },
     {
       "id": "midipfadmin",
-      "title": "ClaimCenter Adapter for IRSA",
+      "title": "ClaimCenter Adapter for IRSA Administrator Guide",
       "url": "self-managed/mid/ipf/1.1/admin",
       "metadata": {
         "product": ["ClaimCenter Adapter for IRSA"],
