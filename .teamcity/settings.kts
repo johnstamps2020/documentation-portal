@@ -1278,6 +1278,107 @@ object TestLionPackageBuilder : BuildType({
     }
 })
 
+object PublishRecommendationEngineDockerImage : BuildType({
+    name = "Publish Recommendation Engine image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Recommendation Engine image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/recommendation_engine
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:.teamcity/**/*.*
+                +:apps/recommendation_engine/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestRecommendationEngine) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestRecommendationEngine : BuildType({
+    name = "Test Recommendation Engine"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for recommendation engine"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/recommendation_engine
+                ./test_recommendation_engine.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/recommendation_engine/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object PublishFlailSsgDockerImage : BuildType({
     name = "Publish Flail SSG image"
 
@@ -2107,6 +2208,7 @@ object Testing : Project({
     buildType(TestConfig)
     buildType(TestDocCrawler)
     buildType(TestBuildManager)
+    buildType(TestRecommendationEngine)
     buildType(TestFlailSsg)
     buildType(TestLionPackageBuilder)
     buildType(TestLionPageBuilder)
@@ -2120,6 +2222,7 @@ object Deployment : Project({
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
     buildType(PublishBuildManagerDockerImage)
+    buildType(PublishRecommendationEngineDockerImage)
     buildType(PublishFlailSsgDockerImage)
     buildType(PublishLionPackageBuilderDockerImage)
     buildType(PublishLionPageBuilderDockerImage)
