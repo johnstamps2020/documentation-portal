@@ -11,7 +11,10 @@ RUN poetry build -f wheel
 FROM artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster
 
 COPY --from=app-builder /opt/app/dist/recommendation_engine-0.1.0-py3-none-any.whl /opt/app/
+RUN apt-get update \
+  && apt-get install gcc -y \
+  && apt-get clean
 WORKDIR /opt/app
-RUN pip install recommendation_engine-0.1.0-py3-none-any.whl --no-binary :all:
+RUN pip install recommendation_engine-0.1.0-py3-none-any.whl
 
 RUN rm -rf recommendation_engine-0.1.0-py3-none-any.whl
