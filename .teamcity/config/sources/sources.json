@@ -2108,7 +2108,8 @@
       "id": "gwcpreleasenotessrc",
       "title": "Cloud Platform Release Notes",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
+      "branch": "main"
     },
     {
       "id": "guidewirecloudconsolelatestsrc",
