@@ -36,7 +36,7 @@ class AppConfig:
     product: str = os.environ.get('PRODUCT')
     platform: str = os.environ.get('PLATFORM')
     version: str = os.environ.get('VERSION')
-    _pretrained_model_file: str = os.environ.get('PRETRAINED_MODEL_PATH')
+    _pretrained_model_file: str = os.environ.get('PRETRAINED_MODEL_FILE')
 
     @property
     def pretrained_model_file(self):
