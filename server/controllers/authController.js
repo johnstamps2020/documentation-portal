@@ -118,6 +118,7 @@ const majorOpenRoutes = [
   '/safeConfig',
   '/search',
   '/developerResources',
+  '/recommendations',
 ];
 
 const authGateway = async (req, res, next) => {
