@@ -356,7 +356,7 @@ samp,
   align-content: center;
   justify-content: flex-end;
   gap: 1rem;
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
 
 .feedback span {
@@ -580,4 +580,14 @@ pre.noncompliant::after {
 
 span.openNav {
   visibility: hidden;
+}
+
+.recommendations {
+  margin-top: 3rem;
+}
+
+.recommendations span:first-of-type {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
