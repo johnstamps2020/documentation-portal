@@ -14,6 +14,35 @@ let docProduct = docProductElement
 let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
+const topicId = window.location.pathname;
+
+async function showTopicRecommendations() {
+  const response = await fetch(`/recommendations?topicId=${topicId}`);
+  if (response.status === 200) {
+    const json = await response.json();
+    const recommendedTopics = json.recommendations;
+    const recommendationsContainer = document.createElement('div');
+    recommendationsContainer.setAttribute('class', 'recommendations');
+    recommendationsContainer.innerHTML = `
+    <span>Recommended topics</span>
+    <ul id="recommendedTopics"></ul>
+    `;
+
+    const topicBody = document.getElementById('wh_topic_body');
+    if (topicBody) {
+      topicBody.appendChild(recommendationsContainer);
+    }
+    const recommendedTopicsList = document.getElementById('recommendedTopics');
+    for (const topic of recommendedTopics) {
+      const recommendedTopicListItem = document.createElement('li');
+      const recommendedTopicLink = document.createElement('a');
+      recommendedTopicLink.setAttribute('href', topic.id);
+      recommendedTopicLink.innerText = topic.title;
+      recommendedTopicListItem.appendChild(recommendedTopicLink);
+      recommendedTopicsList.appendChild(recommendedTopicListItem);
+    }
+  }
+}
 
 async function fetchMetadata() {
   const docId = document
@@ -596,22 +625,37 @@ function setFooter() {
   const whTopicBody = document.getElementById('wh_topic_body');
   const footer = document.querySelector('.wh_footer');
   const resizeObserver = new ResizeObserver(entries => {
-    for(let entry of entries) {
-      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    for (let entry of entries) {
+      const scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
       const rect = entry.target.getBoundingClientRect();
       const whTopicBodyLeft = rect.left + scrollLeft;
-      const whTopicBodyPaddingLeft = window.getComputedStyle(wh_topic_body).getPropertyValue('padding-left');
-      const whTopicBodyPaddingRight = window.getComputedStyle(wh_topic_body).getPropertyValue('padding-right');
+      const whTopicBodyPaddingLeft = window
+        .getComputedStyle(wh_topic_body)
+        .getPropertyValue('padding-left');
+      const whTopicBodyPaddingRight = window
+        .getComputedStyle(wh_topic_body)
+        .getPropertyValue('padding-right');
 
-      if(entry.contentBoxSize) {
-        footer.style.width = 'calc(' + entry.contentBoxSize[0].inlineSize + 'px + ' + whTopicBodyPaddingRight + ')';
+      if (entry.contentBoxSize) {
+        footer.style.width =
+          'calc(' +
+          entry.contentBoxSize[0].inlineSize +
+          'px + ' +
+          whTopicBodyPaddingRight +
+          ')';
+      } else {
+        footer.style.width =
+          'calc(' +
+          entry.contentRect.width +
+          'px + ' +
+          whTopicBodyPaddingRight +
+          ')';
       }
-      else {
-        footer.style.width = 'calc(' + entry.contentRect.width + 'px + ' + whTopicBodyPaddingRight + ')';
-      }
-      footer.style.left = 'calc(' + whTopicBodyPaddingLeft + ' + ' + whTopicBodyLeft + 'px)';
+      footer.style.left =
+        'calc(' + whTopicBodyPaddingLeft + ' + ' + whTopicBodyLeft + 'px)';
     }
-  })
+  });
   resizeObserver.observe(whTopicBody);
 }
 
@@ -628,4 +672,5 @@ docReady(async function() {
   configureSearch();
   addFeedbackElements();
   setFooter();
+  showTopicRecommendations();
 });

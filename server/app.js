@@ -84,6 +84,7 @@ const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
+const recommendationsRouter = require('./routes/recommendations');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -135,6 +136,7 @@ app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
 app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
+app.use('/recommendations', recommendationsRouter);
 
 const portal2ProxyOptions = {
   target: `${process.env.PORTAL2_S3_URL}`,

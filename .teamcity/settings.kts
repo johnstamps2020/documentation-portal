@@ -1278,6 +1278,107 @@ object TestLionPackageBuilder : BuildType({
     }
 })
 
+object PublishRecommendationEngineDockerImage : BuildType({
+    name = "Publish Recommendation Engine image"
+
+    params {
+        text("env.IMAGE_VERSION", "latest")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "Publish Recommendation Engine image to Artifactory"
+            scriptContent = """
+                set -xe
+                cd apps/recommendation_engine
+                ./publish_docker.sh %env.IMAGE_VERSION%       
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:.teamcity/**/*.*
+                +:apps/recommendation_engine/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+    dependencies {
+        snapshot(TestRecommendationEngine) {
+            reuseBuilds = ReuseBuilds.SUCCESSFUL
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+    }
+})
+
+object TestRecommendationEngine : BuildType({
+    name = "Test Recommendation Engine"
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Run tests for recommendation engine"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                cd apps/recommendation_engine
+                ./test_recommendation_engine.sh
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+    }
+
+    triggers {
+        vcs {
+            triggerRules = """
+                +:apps/recommendation_engine/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+
+})
+
 object PublishFlailSsgDockerImage : BuildType({
     name = "Publish Flail SSG image"
 
@@ -2107,6 +2208,7 @@ object Testing : Project({
     buildType(TestConfig)
     buildType(TestDocCrawler)
     buildType(TestBuildManager)
+    buildType(TestRecommendationEngine)
     buildType(TestFlailSsg)
     buildType(TestLionPackageBuilder)
     buildType(TestLionPageBuilder)
@@ -2120,6 +2222,7 @@ object Deployment : Project({
     buildType(PublishDocCrawlerDockerImage)
     buildType(PublishIndexCleanerDockerImage)
     buildType(PublishBuildManagerDockerImage)
+    buildType(PublishRecommendationEngineDockerImage)
     buildType(PublishFlailSsgDockerImage)
     buildType(PublishLionPackageBuilderDockerImage)
     buildType(PublishLionPageBuilderDockerImage)
@@ -2544,6 +2647,76 @@ object HelperObjects {
 
     private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
 
+        class GenerateRecommendationsForTopics(product_name: String, platform_name: String, version: String) :
+            BuildType(
+                {
+                    name = "Generate recommendations for $product_name, $platform_name, $version"
+                    id = RelativeId(getCleanId(this.name).replace(" ", ""))
+                    params {
+                        text("env.PRODUCT", product_name, allowEmpty = false, display = ParameterDisplay.HIDDEN)
+                        text("env.PLATFORM", platform_name, allowEmpty = false, display = ParameterDisplay.HIDDEN)
+                        text("env.VERSION", version, allowEmpty = false, display = ParameterDisplay.HIDDEN)
+                        text(
+                            "env.ELASTICSEARCH_URL",
+                            "https://docsearch-doctools.int.ccs.guidewire.net",
+                            allowEmpty = false, display = ParameterDisplay.HIDDEN
+                        )
+                        text("env.DOCS_INDEX_NAME", "gw-docs", allowEmpty = false, display = ParameterDisplay.HIDDEN)
+                        text(
+                            "env.RECOMMENDATIONS_INDEX_NAME",
+                            "gw-recommendations",
+                            allowEmpty = false,
+                            display = ParameterDisplay.HIDDEN
+                        )
+                        text(
+                            "env.PRETRAINED_MODEL_FILE",
+                            "GoogleNews-vectors-negative300.bin",
+                            allowEmpty = false,
+                            display = ParameterDisplay.HIDDEN
+                        )
+                    }
+
+
+                    steps {
+                        script {
+                            name = "Download the pretrained model"
+                            scriptContent = """
+                                #!/bin/bash
+                                set -xe
+                                
+                                echo "Setting credentials to access int"
+                                export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                                export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                                export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                                
+                                echo "Downloading the pretrained model from the S3 bucket"
+                                aws s3 cp s3://tenant-doctools-int-builds/recommendation-engine/%env.PRETRAINED_MODEL_FILE% %teamcity.build.workingDir%/
+                            """.trimIndent()
+                        }
+                        script {
+                            name = "Run the recommendation engine"
+                            scriptContent = """
+                                #!/bin/bash
+                                set -xe
+                                                                        
+                                recommendation_engine
+                            """.trimIndent()
+                            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"
+                            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        }
+                    }
+
+                    features {
+                        dockerSupport {
+                            id = "TEMPLATE_BUILD_EXT_1"
+                            loginToRegistry = on {
+                                dockerRegistryId = "PROJECT_EXT_155"
+                            }
+                        }
+                    }
+                }
+            )
+
         class BuildAndPublishDockerImageWithContent(vcs_root_id: RelativeId, ga4Id: String) : BuildType(
             {
                 name = "Build and publish Docker image with build content"
@@ -2587,6 +2760,20 @@ object HelperObjects {
             name = version
 
             subProjects.forEach(this::subProject)
+            val intDoc = docs.find { it.getJSONArray("environments").contains("int") }
+            val cloudDoc = docs.find { it.getJSONObject("metadata").getJSONArray("platform").contains("Cloud") }
+            val selfManagedDoc =
+                docs.find { it.getJSONObject("metadata").getJSONArray("platform").contains("Self-managed") }
+
+            if (intDoc != null) {
+                if (cloudDoc != null) {
+                    buildType(GenerateRecommendationsForTopics(product_name, "Cloud", version))
+                }
+                if (selfManagedDoc != null) {
+                    buildType(GenerateRecommendationsForTopics(product_name, "Self-managed", version))
+                }
+            }
+
             // Currently, GCC is the only project using the BuildAndPublishDockerImageWithContent class.
             // When we have more projects, we will create a more sustainable solution than this simple condition.
             if (product_name == "Guidewire Cloud Console" && version == "latest") {

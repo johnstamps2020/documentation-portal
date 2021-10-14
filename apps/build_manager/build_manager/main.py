@@ -23,18 +23,18 @@ _logger.addHandler(_console_handler)
 class AppConfig:
     git_url: str = os.environ.get('GIT_URL')
     git_build_branch: str = os.environ.get('GIT_BUILD_BRANCH')
-    teamcity_api_root_url = os.environ.get('TEAMCITY_API_ROOT_URL')
-    teamcity_build_queue_url = urllib.parse.urljoin(
+    teamcity_api_root_url: str = os.environ.get('TEAMCITY_API_ROOT_URL')
+    teamcity_build_queue_url: str = urllib.parse.urljoin(
         teamcity_api_root_url, 'buildQueue')
-    teamcity_build_types_url = urllib.parse.urljoin(
+    teamcity_build_types_url: str = urllib.parse.urljoin(
         teamcity_api_root_url, 'buildTypes')
-    teamcity_builds_url = urllib.parse.urljoin(teamcity_api_root_url, 'builds')
+    teamcity_builds_url: str = urllib.parse.urljoin(teamcity_api_root_url, 'builds')
     teamcity_resources_artifact_path = os.environ.get(
         'TEAMCITY_RESOURCES_ARTIFACT_PATH')
-    teamcity_affected_project = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
-    teamcity_template = os.environ.get('TEAMCITY_TEMPLATE')
-    _teamcity_api_auth_token = os.environ.get('TEAMCITY_API_AUTH_TOKEN')
-    _changed_files_file = os.environ.get('CHANGED_FILES_FILE')
+    teamcity_affected_project: str = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
+    teamcity_template: str = os.environ.get('TEAMCITY_TEMPLATE')
+    _teamcity_api_auth_token: str = os.environ.get('TEAMCITY_API_AUTH_TOKEN')
+    _changed_files_file: str = os.environ.get('CHANGED_FILES_FILE')
     teamcity_api_headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

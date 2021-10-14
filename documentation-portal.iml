@@ -17,6 +17,8 @@
       <excludeFolder url="file://$MODULE_DIR$/.vscode" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/apps/doc-crawler/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/recommendation_engine/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/lion_pkg_builder/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
