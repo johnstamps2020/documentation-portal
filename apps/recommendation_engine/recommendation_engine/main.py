@@ -1,4 +1,3 @@
-# TODO: How to store GoogleNews vectors?
 import dataclasses
 import logging
 import os
@@ -77,6 +76,7 @@ def make_lower_case(text: str) -> str:
 
 
 def remove_stop_words(text: str) -> str:
+    nltk.download('stopwords')
     text = text.split()
     stops = set(stopwords.words("english"))
     text = [w for w in text if w not in stops]
@@ -190,7 +190,6 @@ def main():
     pandas_dataframe = convert_elasticsearch_df_to_pandas_df(elasticsearch_dataframe)
 
     def train_model_and_create_vectors():
-        nltk.download('stopwords')
         clean_corpus = create_corpus(pandas_dataframe)
         trained_corpus = train_model(clean_corpus, recommendation_engine_config.pretrained_model_file)
         tfidf_words, tfidf_words_col_names = build_tfidf_model_and_calc_score(pandas_dataframe)
