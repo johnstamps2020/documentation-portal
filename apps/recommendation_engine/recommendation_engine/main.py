@@ -30,14 +30,17 @@ _logger.addHandler(_console_handler)
 
 @dataclass
 class AppConfig:
-    _current_working_dir: Path = Path.cwd()
-    pretrained_model: Path = _current_working_dir / 'GoogleNews-vectors-negative300.bin'
     elasticsearch_url: str = os.environ.get('ELASTICSEARCH_URL')
     docs_index_name: str = os.environ.get('DOCS_INDEX_NAME')
     recommendations_index_name: str = os.environ.get('RECOMMENDATIONS_INDEX_NAME')
     product: str = os.environ.get('PRODUCT')
     platform: str = os.environ.get('PLATFORM')
     version: str = os.environ.get('VERSION')
+    _pretrained_model_file: str = os.environ.get('PRETRAINED_MODEL_PATH')
+
+    @property
+    def pretrained_model_file(self):
+        return Path(self._pretrained_model_file)
 
     def get_app_config(self):
         missing_parameters = [
@@ -107,7 +110,8 @@ def convert_elasticsearch_df_to_pandas_df(elasticsearch_df: eland.DataFrame) -> 
 
     pandas_df_subset = pandas_df_fresh_index[['doc_id', 'title', 'id', 'cleaned_body']]
     pandas_df_no_duplicates = pandas_df_subset.drop_duplicates(subset='title', keep='first', inplace=False)
-    pandas_df_no_missing_values = pandas_df_no_duplicates.dropna(axis='index', how='any', subset=['title'], inplace=False)
+    pandas_df_no_missing_values = pandas_df_no_duplicates.dropna(axis='index', how='any', subset=['title'],
+                                                                 inplace=False)
     pandas_df_no_empty_rows = pandas_df_no_missing_values.drop(
         pandas_df_no_missing_values[pandas_df_no_missing_values['title'].str.isspace()].index)
     # Reset the index after dropping invalid rows
@@ -188,7 +192,7 @@ def main():
     def train_model_and_create_vectors():
         nltk.download('stopwords')
         clean_corpus = create_corpus(pandas_dataframe)
-        trained_corpus = train_model(clean_corpus, recommendation_engine_config.pretrained_model)
+        trained_corpus = train_model(clean_corpus, recommendation_engine_config.pretrained_model_file)
         tfidf_words, tfidf_words_col_names = build_tfidf_model_and_calc_score(pandas_dataframe)
         tfidf_vectors = build_tfidf_vectors(clean_corpus, trained_corpus, tfidf_words, tfidf_words_col_names)
 
