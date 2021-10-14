@@ -15,6 +15,6 @@ RUN apt-get update \
   && apt-get install gcc -y \
   && apt-get clean
 WORKDIR /opt/app
-RUN pip install recommendation_engine-0.1.0-py3-none-any.whl --no-binary :all:
+RUN pip install recommendation_engine-0.1.0-py3-none-any.whl
 
 RUN rm -rf recommendation_engine-0.1.0-py3-none-any.whl
