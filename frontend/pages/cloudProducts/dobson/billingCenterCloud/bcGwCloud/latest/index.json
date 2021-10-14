@@ -119,6 +119,10 @@
           "id": "isbcclouddraftinteg"
         },
         {
+          "label": "Cloud API Business Flows",
+          "id": "isbcclouddraftapibf"
+        },
+        {
           "label": "REST API Framework",
           "id": "isbcclouddraftrestapifw"
         },

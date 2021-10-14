@@ -178,6 +178,22 @@
       "public": false
     },
     {
+      "id": "isbcclouddraftapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/bc/latest/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
       "id": "isclouddraftgosu",
       "title": "Gosu Reference",
       "url": "cloud/is/latest/gosu",
