@@ -9,6 +9,10 @@
       "class": "subject releaseNotes",
       "items": [
         {
+          "label": "Cloud Platform Release Notes",
+          "id": "gwcpreleasenotes"
+        },
+        {
           "label": "Cloud Console Release Notes",
           "id": "guidewirecloudconsolerninsurerdevdraft"
         },
