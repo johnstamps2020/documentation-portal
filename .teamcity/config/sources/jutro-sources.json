@@ -167,7 +167,7 @@
       "title": "Jutro Design System Next",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "master"
+      "branch": "main"
     },
     {
       "id": "srcjutrohackathon",
@@ -188,7 +188,7 @@
       "title": "Jutro Storybook Next",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "master"
+      "branch": "main"
     },
     {
       "id": "srcjutrosbbizpatterns650",
