@@ -2,8 +2,8 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "cloudrules",
-      "title": "Cloud Rules",
+      "id": "rules",
+      "title": "Rules",
       "url": "cloud/rules/guide",
       "metadata": {
         "product": ["Rules"],

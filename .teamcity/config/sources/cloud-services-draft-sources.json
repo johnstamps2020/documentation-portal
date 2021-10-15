@@ -2,15 +2,10 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "cloudrulessrc",
-      "title": "Cloud Rules",
+      "id": "rulessrc",
+      "title": "Rules",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
-      "xdocsPathIds": [
-        "/Content/doc/cloud-services/RulesCloud.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-EA-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git"
     },
     {
       "id": "cloudrulesrndraftsrc",

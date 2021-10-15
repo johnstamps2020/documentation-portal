@@ -20,9 +20,9 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-EA-Release.ditaval",
-      "root": "RulesCloud.ditamap",
-      "srcId": "cloudrulessrc",
-      "docId": "cloudrulesea",
+      "root": "Rules.ditamap",
+      "srcId": "rulessrc",
+      "docId": "rulesea",
       "indexRedirect": true
     },
     {
