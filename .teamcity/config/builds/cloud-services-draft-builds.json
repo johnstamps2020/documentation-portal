@@ -12,8 +12,8 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "cloud-rules-release-notes.ditamap",
-      "srcId": "rulesrnsrc",
+      "root": "RulesReleaseNotes.ditamap",
+      "srcId": "rulessrc",
       "docId": "rulesrndraft",
       "indexRedirect": true
     },
