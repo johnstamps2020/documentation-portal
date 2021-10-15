@@ -11,10 +11,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "cloud-rules-release-notes.ditamap",
-      "srcId": "cloudrulesrndraftsrc",
-      "docId": "cloudrulesrndraft",
+      "srcId": "rulesrnsrc",
+      "docId": "rulesrndraft",
       "indexRedirect": true
     },
     {
