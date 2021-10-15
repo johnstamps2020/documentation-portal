@@ -63,6 +63,10 @@
         {
           "label": "Administration",
           "id": "isbccloudeaadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isbccloudeadataarchiving"
         }
       ]
     },
@@ -101,10 +105,6 @@
         {
           "label": "Integration",
           "id": "isbccloudeainteg"
-        },
-        {
-          "label": "Data Archiving",
-          "id": "isbccloudeadataarchiving"
         }
       ]
     },

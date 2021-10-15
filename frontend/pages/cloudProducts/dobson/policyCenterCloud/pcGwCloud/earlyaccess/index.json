@@ -63,6 +63,10 @@
         {
           "label": "Administration",
           "id": "ispccloudeaadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispccloudeadataarchiving"
         }
       ]
     },
@@ -121,10 +125,6 @@
         {
           "label": "REST API Framework",
           "id": "ispccloudearestapifw"
-        },
-        {
-          "label": "Data Archiving",
-          "id": "ispccloudeadataarchiving"
         }
       ]
     },
