@@ -91,9 +91,9 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "SubmissionIntake.ditamap",
-      "srcId": "submissionintakedraftsrc",
+      "srcId": "submissionintakesrc",
       "docId": "submissionintakedraft",
       "indexRedirect": true
     }
