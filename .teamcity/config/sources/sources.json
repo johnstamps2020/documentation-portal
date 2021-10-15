@@ -2102,7 +2102,8 @@
       "id": "cloudplatformsrc",
       "title": "Cloud Platform",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-platform.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-platform.git",
+      "branch": "main"
     },
     {
       "id": "gwcpreleasenotessrc",
