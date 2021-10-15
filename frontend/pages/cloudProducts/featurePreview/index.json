@@ -13,8 +13,8 @@
           "id": "appeventsccrndraft"
         },
         {
-          "label": "Cloud Rules",
-          "id": "cloudrulesrndraft"
+          "label": "Rules",
+          "id": "rulesrndraft"
         },
         {
           "label": "Integration Gateway",
@@ -49,8 +49,8 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Cloud Rules (Early Access)",
-          "id": "cloudrulesea"
+          "label": "Rules (Early Access)",
+          "id": "rulesea"
         },
         {
           "label": "Workset Manager",
