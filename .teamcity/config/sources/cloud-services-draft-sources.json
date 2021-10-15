@@ -9,13 +9,6 @@
       "branch": "main"
     },
     {
-      "id": "rulesrnsrc",
-      "title": "Rules Release Notes Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/rules.git",
-      "branch": "main"
-    },
-    {
       "id": "worksetmgrdraftsrc",
       "title": "Workset Manager Draft",
       "sourceType": "git",

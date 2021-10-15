@@ -35,7 +35,7 @@
     },
     {
       "id": "rulesea",
-      "title": "Cloud Rules Early Access",
+      "title": "Rules Early Access",
       "url": "cloud/gw-feature-preview/rules",
       "metadata": {
         "product": ["Rules"],
