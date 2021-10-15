@@ -5,7 +5,8 @@
       "id": "rulessrc",
       "title": "Rules",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
+      "branch": "main"
     },
     {
       "id": "cloudrulesrndraftsrc",
