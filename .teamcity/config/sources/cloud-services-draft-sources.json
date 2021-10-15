@@ -5,14 +5,14 @@
       "id": "rulessrc",
       "title": "Rules",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/rules.git",
       "branch": "main"
     },
     {
       "id": "cloudrulesrndraftsrc",
       "title": "Cloud Rules Release Notes Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rules.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/rules.git",
       "xdocsPathIds": [
         "/Content/doc/cloud-services/cloud-rules-release-notes.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
