@@ -4,9 +4,9 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "RulesCloud.ditamap",
-      "srcId": "cloudrulessrc",
-      "docId": "cloudrules",
+      "root": "Rules.ditamap",
+      "srcId": "rulessrc",
+      "docId": "rules",
       "indexRedirect": true
     },
     {
