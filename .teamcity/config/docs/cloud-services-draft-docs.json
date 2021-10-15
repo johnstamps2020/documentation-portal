@@ -18,8 +18,8 @@
       "public": false
     },
     {
-      "id": "cloudrulesrndraft",
-      "title": "Cloud Rules Release Notes",
+      "id": "rulesrndraft",
+      "title": "Rules Release Notes",
       "url": "cloud/rules/relnotes",
       "metadata": {
         "product": ["Rules"],
