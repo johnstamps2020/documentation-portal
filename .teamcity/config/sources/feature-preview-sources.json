@@ -86,14 +86,11 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git"
     },
     {
-      "id": "submissionintakedraftsrc",
+      "id": "submissionintakesrc",
       "title": "Submission Intake Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
-      "xdocsPathIds": [
-        "/Content/doc/cloud-services/SubmissionIntake.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
-      ]
+      "branch": "main"
     }
   ]
 }
