@@ -79,6 +79,10 @@
         {
           "label": "Administration (Internal only)",
           "id": "iscccloudgwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isccclouddraftdataarchiving"
         }
       ]
     },
@@ -137,10 +141,6 @@
         {
           "label": "REST API Client",
           "id": "isdraftrestapiclientguide"
-        },
-        {
-          "label": "Data Archiving",
-          "id": "isccclouddraftdataarchiving"
         }
       ]
     },

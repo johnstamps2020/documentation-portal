@@ -122,7 +122,7 @@
         "product": ["BillingCenter"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Administration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -378,7 +378,7 @@
         "product": ["ClaimCenter"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Administration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -666,7 +666,7 @@
         "product": ["PolicyCenter"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Administration"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
