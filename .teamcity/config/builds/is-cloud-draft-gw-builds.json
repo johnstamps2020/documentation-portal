@@ -12,9 +12,9 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-GW.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisinstalldraftsrc",
-      "docId": "isbccloudgwinstall",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "cloudisdevsetupdraftsrc",
+      "docId": "isbccloudgwdevsetup",
       "indexRedirect": true
     },
     {
@@ -36,9 +36,9 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-GW.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisinstalldraftsrc",
-      "docId": "iscccloudgwinstall",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "cloudisdevsetupdraftsrc",
+      "docId": "iscccloudgwdevsetup",
       "indexRedirect": true
     },
     {
@@ -60,9 +60,9 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-GW.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisinstalldraftsrc",
-      "docId": "ispccloudgwinstall",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "cloudisdevsetupdraftsrc",
+      "docId": "ispccloudgwdevsetup",
       "indexRedirect": true
     },
     {

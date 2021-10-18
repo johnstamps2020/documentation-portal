@@ -146,12 +146,12 @@
       ]
     },
     {
-      "id": "cloudisinstalldraftsrc",
-      "title": "IS Cloud Draft Installation",
+      "id": "cloudisdevsetupdraftsrc",
+      "title": "IS Cloud Draft Developer Setup",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/active/InstallGuide.ditamap",
+        "/Content/doc/insuranceSuite/core/cloud/active/DeveloperSetupGuide.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-EA.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-GW.ditaval",

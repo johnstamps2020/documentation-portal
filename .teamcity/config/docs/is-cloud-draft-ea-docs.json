@@ -210,9 +210,9 @@
       "public": false
     },
     {
-      "id": "isbccloudeainstall",
-      "title": "Installation",
-      "url": "cloud/bc/ea/installation",
+      "id": "isbccloudeadevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/bc/ea/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
@@ -450,9 +450,9 @@
       "public": false
     },
     {
-      "id": "iscccloudeainstall",
-      "title": "Installation",
-      "url": "cloud/cc/ea/installation",
+      "id": "iscccloudeadevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/cc/ea/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
@@ -738,9 +738,9 @@
       "public": false
     },
     {
-      "id": "ispccloudeainstall",
-      "title": "Installation",
-      "url": "cloud/pc/ea/installation",
+      "id": "ispccloudeadevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/pc/ea/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],

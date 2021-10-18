@@ -18,9 +18,9 @@
       "public": false
     },
     {
-      "id": "isbccloudgwinstall",
-      "title": "Installation",
-      "url": "cloud/bc/gw/installation",
+      "id": "isbccloudgwdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/bc/gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
@@ -66,9 +66,9 @@
       "public": false
     },
     {
-      "id": "iscccloudgwinstall",
-      "title": "Installation",
-      "url": "cloud/cc/gw/installation",
+      "id": "iscccloudgwdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/cc/gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
@@ -114,9 +114,9 @@
       "public": false
     },
     {
-      "id": "ispccloudgwinstall",
-      "title": "Installation",
-      "url": "cloud/pc/gw/installation",
+      "id": "ispccloudgwdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/pc/gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
