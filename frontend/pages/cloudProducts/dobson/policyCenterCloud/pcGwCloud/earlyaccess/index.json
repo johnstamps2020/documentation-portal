@@ -33,8 +33,8 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Installation",
-          "id": "ispccloudeainstall"
+          "label": "Developer Setup",
+          "id": "ispccloudeadevsetup"
         },
         {
           "label": "Upgrade",

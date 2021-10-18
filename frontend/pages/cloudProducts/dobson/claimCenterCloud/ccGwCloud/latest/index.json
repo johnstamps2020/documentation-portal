@@ -37,12 +37,12 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Installation",
-          "id": "isccclouddraftinstall"
+          "label": "Developer Setup",
+          "id": "isccclouddraftdevsetup"
         },
         {
-          "label": "Installation (Internal only)",
-          "id": "iscccloudgwinstall"
+          "label": "Developer Setup (Internal only)",
+          "id": "iscccloudgwdevsetup"
         },
         {
           "label": "Upgrade",

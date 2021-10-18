@@ -286,7 +286,7 @@
       "filter": "IS-CC-Cloud-Draft.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "cloudisdevsetupdraftsrc",
-      "docId": "isccclouddraftdvsetup",
+      "docId": "isccclouddraftdevsetup",
       "indexRedirect": true
     },
     {
