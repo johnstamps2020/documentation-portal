@@ -112,9 +112,9 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-EA.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisinstalldraftsrc",
-      "docId": "isbccloudeainstall",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "cloudisdevsetupdraftsrc",
+      "docId": "isbccloudeadevsetup",
       "indexRedirect": true
     },
     {
@@ -236,9 +236,9 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-EA.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisinstalldraftsrc",
-      "docId": "iscccloudeainstall",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "cloudisdevsetupdraftsrc",
+      "docId": "iscccloudeadevsetup",
       "indexRedirect": true
     },
     {
@@ -384,9 +384,9 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "cloudisinstalldraftsrc",
-      "docId": "ispccloudeainstall",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "cloudisdevsetupdraftsrc",
+      "docId": "ispccloudeadevsetup",
       "indexRedirect": true
     },
     {

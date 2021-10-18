@@ -242,9 +242,9 @@
       "public": false
     },
     {
-      "id": "isbcclouddraftinstall",
-      "title": "Installation",
-      "url": "cloud/bc/latest/installation",
+      "id": "isbcclouddraftdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/bc/latest/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
@@ -514,9 +514,9 @@
       "public": false
     },
     {
-      "id": "isccclouddraftinstall",
-      "title": "Installation",
-      "url": "cloud/cc/latest/installation",
+      "id": "isccclouddraftdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/cc/latest/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
@@ -834,9 +834,9 @@
       "public": false
     },
     {
-      "id": "ispcclouddraftinstall",
-      "title": "Installation",
-      "url": "cloud/pc/latest/installation",
+      "id": "ispcclouddraftdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/pc/latest/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
