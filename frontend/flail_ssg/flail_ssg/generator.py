@@ -46,18 +46,17 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
             item_envs = matching_doc_object['environments']
-        if not include_item(deploy_env, item_envs):
-            if item.get('page'):
-                page_path = current_page_dir / item['page']
-                if page_path.exists():
-                    shutil.rmtree(page_path)
-        else:
+        if include_item(deploy_env, item_envs):
             item_to_include = copy.deepcopy(item)
             if item_to_include.get('items'):
                 inner_items = filter_by_env(
                     deploy_env, current_page_dir, item['items'], docs)
                 item_to_include['items'] = inner_items
             filtered_items.append(item_to_include)
+        elif item.get('page'):
+            page_path = current_page_dir / item['page']
+            if page_path.exists():
+                shutil.rmtree(page_path)
     return filtered_items
 
 

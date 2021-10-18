@@ -33,7 +33,7 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
                 for doc_url in page_doc_urls:
                     matching_breadcrumb = next(
                         (item for item in breadcrumbs if item.get('docUrl') == doc_url), None)
-                    breadcrumb_path = f'/{str(PurePosixPath(index_json_file.relative_to(pages_build_dir).parent))}'
+                    breadcrumb_path = f'/{PurePosixPath(index_json_file.relative_to(pages_build_dir).parent)}'
 
                     if matching_breadcrumb:
                         matching_breadcrumb['rootPages'].append(
