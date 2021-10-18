@@ -138,7 +138,7 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
         for other_ver in selector['otherVersions']:
             if other_ver.get('fallbackPaths'):
                 unique_fallback_paths = set(other_ver['fallbackPaths'])
-                other_ver['fallbackPaths'] = list(unique_fallback_paths)
+                other_ver['fallbackPaths'] = sorted(list(unique_fallback_paths))
 
     write_json_object_to_file(
         version_selectors, config_build_dir / 'versionSelectors.json')

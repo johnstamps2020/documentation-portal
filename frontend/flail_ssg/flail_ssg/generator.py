@@ -97,7 +97,7 @@ def create_search_filters(items: List, docs: List, filters=None) -> dict:
             create_search_filters(item['items'], docs, filters)
 
     for key, value in filters.items():
-        filters[key] = list(set(value))
+        filters[key] = sorted(list(set(value)))
 
     return filters
 
