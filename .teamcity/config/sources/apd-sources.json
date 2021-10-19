@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "apdapiintsrc",
+      "title": "APD API Docs main branch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/apd-api-docs.git",
+      "branch": "main"
+    }
+  ]
+}
