@@ -1,0 +1,139 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter Cloud",
+  "template": "page.j2",
+  "class": "threeCards",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "PolicyCenter Cloud",
+    "items": [
+      {
+        "label": "BillingCenter Cloud",
+        "page": "../billingCenterCloud"
+      },
+      {
+        "label": "ClaimCenter Cloud",
+        "page": "../claimCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Core",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "PolicyCenter for Guidewire Cloud",
+          "page": "pcGwCloud/2021.04",
+          "env": ["dev", "int", "staging", "prod"],
+          "public": true
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools310",
+          "doc_url": "/isconfigupgradetools/310",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Data Access",
+          "page": "../../cloudDataAccess/latest",
+          "public": false
+        },
+        {
+          "label": "Explore",
+          "page": "../../explore/latest",
+          "public": false
+        },
+        {
+          "label": "Predictive Analytics",
+          "id": "palatest",
+          "doc_url": "/cloud/pa/latest",
+          "public": false
+        },
+        {
+          "label": "Add-ons",
+          "class": "group",
+          "items": [
+            {
+              "label": "DataHub for Guidewire Cloud",
+              "page": "../dhGwCloud/2021.04",
+              "env": ["dev", "int", "staging", "prod"],
+              "public": false
+            },
+            {
+              "label": "InfoCenter for Guidewire Cloud",
+              "page": "../icGwCloud/2021.04",
+              "env": ["dev", "int", "staging", "prod"],
+              "public": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "env": ["dev", "int", "staging", "prod"],
+          "items": [
+            {
+              "label": "CustomerEngage Account Management",
+              "page": "../ceAccountMgmt/2021.04",
+              "env": ["dev", "int", "staging", "prod"],
+              "public": false
+            },
+            {
+              "label": "CustomerEngage Quote and Buy",
+              "page": "ceQuoteAndBuy/2021.04",
+              "env": ["dev", "int", "staging", "prod"],
+              "public": false
+            },
+            {
+              "label": "ProducerEngage",
+              "page": "../producerEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"],
+              "public": false
+            },
+            {
+              "label": "ServiceRepEngage",
+              "page": "serviceRepEngage/2021.04",
+              "env": ["dev", "int", "staging", "prod"],
+              "public": false
+            }
+          ]
+        },
+        {
+          "label": "Digital Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Jutro Design System",
+              "page": "../../../jutroDesignSystem/5.3.1",
+              "env": ["dev", "int", "staging", "prod"],
+              "public": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "current_page": {
+    "label": "PolicyCenter Cloud",
+    "path": "policyCenterCloud"
+  },
+  "breadcrumbs": [
+    {
+      "label": "Cortina",
+      "path": "/cloudProducts/cortina"
+    }
+  ]
+}

@@ -37,10 +37,7 @@
             {
               "label": "DataHub",
               "page": "dataHub/10.5.0",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "DataHub",
@@ -49,10 +46,7 @@
             {
               "label": "InfoCenter",
               "page": "infoCenter/10.5.0",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "InfoCenter",
@@ -81,12 +75,7 @@
         {
           "label": "Jutro Design System",
           "page": "../jutro/4.1.1",
-          "env": [
-            "dev",
-            "staging",
-            "prod",
-            "int"
-          ]
+          "env": ["dev", "staging", "prod", "int"]
         },
         {
           "label": "ProducerEngage",

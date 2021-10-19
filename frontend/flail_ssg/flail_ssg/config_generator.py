@@ -33,7 +33,7 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
                 for doc_url in page_doc_urls:
                     matching_breadcrumb = next(
                         (item for item in breadcrumbs if item.get('docUrl') == doc_url), None)
-                    breadcrumb_path = f'/{str(PurePosixPath(index_json_file.relative_to(pages_build_dir).parent))}'
+                    breadcrumb_path = f'/{PurePosixPath(index_json_file.relative_to(pages_build_dir).parent)}'
 
                     if matching_breadcrumb:
                         matching_breadcrumb['rootPages'].append(
@@ -138,7 +138,7 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
         for other_ver in selector['otherVersions']:
             if other_ver.get('fallbackPaths'):
                 unique_fallback_paths = set(other_ver['fallbackPaths'])
-                other_ver['fallbackPaths'] = list(unique_fallback_paths)
+                other_ver['fallbackPaths'] = sorted(list(unique_fallback_paths))
 
     write_json_object_to_file(
         version_selectors, config_build_dir / 'versionSelectors.json')

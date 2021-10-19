@@ -1,0 +1,249 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud 2021.04",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispc202104releasenotes",
+          "doc_url": "/cloud/pc/202104/releasenotes",
+          "public": false
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispc202104newandchanged",
+          "doc_url": "/cloud/pc/202104/newandchanged",
+          "public": false
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn",
+          "doc_url": "/is/restapiclient/releasenotes",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "ispc202104install",
+          "doc_url": "/cloud/pc/202104/installation",
+          "public": false
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispc202104upgrade",
+          "doc_url": "/cloud/pc/202104/upgrade",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispc202104app",
+          "doc_url": "/cloud/pc/202104/app",
+          "public": false
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202104contact",
+          "doc_url": "/cloud/is/202104/contact",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispc202104admin",
+          "doc_url": "/cloud/pc/202104/admin",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best practices",
+          "id": "ispc202104bestpractice",
+          "doc_url": "/cloud/pc/202104/bestpractice",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer",
+          "id": "ispc202104apd",
+          "doc_url": "/cloud/pc/202104/apd",
+          "public": false
+        },
+        {
+          "label": "Configuration",
+          "id": "ispc202104config",
+          "doc_url": "/cloud/pc/202104/config",
+          "public": false
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc202104global",
+          "doc_url": "/cloud/pc/202104/global",
+          "public": false
+        },
+        {
+          "label": "Rules",
+          "id": "ispc202104rules",
+          "doc_url": "/cloud/pc/202104/rules",
+          "public": false
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc202104pd",
+          "doc_url": "/cloud/pc/202104/pd",
+          "public": false
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc202104pm",
+          "doc_url": "/cloud/pc/202104/productmodel",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "ispc202104integ",
+          "doc_url": "/cloud/pc/202104/integration",
+          "public": false
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "ispc202104cloudapibf",
+          "doc_url": "/cloud/pc/202104/cloudapibf",
+          "public": false
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "ispc202104cloudapicm",
+          "doc_url": "/cloud/pc/202104/cloudapicm",
+          "public": false
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "ispc202104cloudapica",
+          "doc_url": "/cloud/pc/202104/cloudapica",
+          "public": false
+        },
+        {
+          "label": "Cloud API Reference",
+          "id": "pc202104apiref",
+          "doc_url": "/cloud/pc/202104/apiref",
+          "public": true
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc202104restapifw",
+          "doc_url": "/cloud/pc/202104/restapiframework",
+          "public": false
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide",
+          "doc_url": "/is/restapiclient/guide",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "is202104gosu",
+          "doc_url": "/cloud/is/202104/gosu",
+          "public": false
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "ispc202104testing",
+          "doc_url": "/cloud/pc/202104/testing",
+          "public": false
+        },
+        {
+          "label": "API Testing (GT: API)",
+          "id": "testingframeworksapicortina",
+          "doc_url": "/cloud/testingframeworks/202104/api",
+          "public": false
+        },
+        {
+          "label": "User Interface Testing (GT: UI)",
+          "id": "testingframeworksuicortina",
+          "doc_url": "/cloud/testingframeworks/202104/ui",
+          "public": false
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary",
+          "doc_url": "/glossary",
+          "public": false
+        }
+      ]
+    }
+  ],
+  "search_filters": {
+    "product": [
+      "BillingCenter",
+      "ClaimCenter",
+      "Glossary",
+      "PolicyCenter",
+      "REST API Client"
+    ],
+    "platform": ["Cloud", "Self-managed"],
+    "version": ["2021.04", "latest"]
+  },
+  "current_page": {
+    "label": "PolicyCenter for Guidewire Cloud 2021.04",
+    "path": "2021.04"
+  },
+  "breadcrumbs": [
+    {
+      "label": "Cortina",
+      "path": "/cloudProducts/cortina"
+    },
+    {
+      "label": "PolicyCenter Cloud",
+      "path": "/cloudProducts/cortina/policyCenterCloud"
+    }
+  ]
+}

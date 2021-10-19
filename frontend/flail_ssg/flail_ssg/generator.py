@@ -46,18 +46,17 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
             matching_doc_object = next(
                 (doc for doc in docs if doc['id'] == item['id']), None)
             item_envs = matching_doc_object['environments']
-        if not include_item(deploy_env, item_envs):
-            if item.get('page'):
-                page_path = current_page_dir / item['page']
-                if page_path.exists():
-                    shutil.rmtree(page_path)
-        else:
+        if include_item(deploy_env, item_envs):
             item_to_include = copy.deepcopy(item)
             if item_to_include.get('items'):
                 inner_items = filter_by_env(
                     deploy_env, current_page_dir, item['items'], docs)
                 item_to_include['items'] = inner_items
             filtered_items.append(item_to_include)
+        elif item.get('page'):
+            page_path = current_page_dir / item['page']
+            if page_path.exists():
+                shutil.rmtree(page_path)
     return filtered_items
 
 
@@ -72,6 +71,34 @@ def resolve_links(items: List, docs: List):
         if item.get('items'):
             resolve_links(item['items'], docs)
     return items
+
+
+def page_has_links_to_subpages(items: List) -> bool:
+    for item in items:
+        if item.get('page'):
+            return True
+        elif item.get('items'):
+            return page_has_links_to_subpages(item['items'])
+    return False
+
+
+def create_search_filters(items: List, docs: List, filters=None) -> dict:
+    if filters is None:
+        filters = {}
+    for item in items:
+        if item.get('id'):
+            matching_doc_object = next((doc for doc in docs if doc['id'] == item['id']), None)
+            matching_doc_object_metadata = matching_doc_object['metadata']
+            filters['product'] = filters.get('product', []) + matching_doc_object_metadata['product']
+            filters['platform'] = filters.get('platform', []) + matching_doc_object_metadata['platform']
+            filters['version'] = filters.get('version', []) + matching_doc_object_metadata['version']
+        if item.get('items'):
+            create_search_filters(item['items'], docs, filters)
+
+    for key, value in filters.items():
+        filters[key] = sorted(list(set(value)))
+
+    return filters
 
 
 def remove_empty_dirs(root_path: Path):
@@ -115,6 +142,8 @@ def process_page(index_file: Path,
                 deploy_env, page_config.dir, page_items, docs)
             items_with_resolved_links = resolve_links(filtered_items, docs)
             page_config.json_object['items'] = items_with_resolved_links
+            if not page_has_links_to_subpages(page_items):
+                page_config.json_object['search_filters'] = create_search_filters(page_items, docs)
 
         selector = page_config.json_object.get('selector')
         if selector:
