@@ -57,17 +57,12 @@
             {
               "label": "DataHub",
               "page": "dataHub/10.5.0",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "DataHub",
               "page": "dataHub/10.x",
-              "env": [
-                "int"
-              ]
+              "env": ["int"]
             },
             {
               "label": "DataHub",
@@ -76,17 +71,12 @@
             {
               "label": "InfoCenter",
               "page": "infoCenter/10.5.0",
-              "env": [
-                "dev",
-                "staging"
-              ]
+              "env": ["dev", "staging"]
             },
             {
               "label": "InfoCenter",
               "page": "infoCenter/10.x",
-              "env": [
-                "int"
-              ]
+              "env": ["int"]
             },
             {
               "label": "InfoCenter",
@@ -107,9 +97,7 @@
         {
           "label": "CustomerEngage Account Management",
           "page": "customerEngageAccountManagement/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
@@ -118,9 +106,7 @@
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
           "page": "customerEngageAccountManagementCc/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "CustomerEngage Quote and Buy",
@@ -129,19 +115,12 @@
         {
           "label": "CustomerEngage Quote and Buy",
           "page": "customerEngageQuoteAndBuy/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "Jutro Design System",
           "page": "../jutro/4.1.1",
-          "env": [
-            "dev",
-            "staging",
-            "prod",
-            "int"
-          ]
+          "env": ["dev", "staging", "prod", "int"]
         },
         {
           "label": "ProducerEngage",
@@ -150,9 +129,7 @@
         {
           "label": "ProducerEngage",
           "page": "producerEngage/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "ProducerEngage for ClaimCenter",
@@ -161,9 +138,7 @@
         {
           "label": "ProducerEngage for ClaimCenter",
           "page": "producerEngageCc/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "ServiceRepEngage",
@@ -172,9 +147,7 @@
         {
           "label": "ServiceRepEngage",
           "page": "serviceRepEngage/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "VendorEngage",
@@ -183,9 +156,7 @@
         {
           "label": "VendorEngage",
           "page": "vendorEngage/latest",
-          "env": [
-            "int"
-          ]
+          "env": ["int"]
         },
         {
           "label": "Guidewire for Salesforce Data Integrations",

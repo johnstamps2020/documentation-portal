@@ -8,6 +8,8 @@ from pathlib import Path
 import flail_ssg.validator
 from flail_ssg.validator import run_validator
 from flail_ssg.generator import filter_by_env
+from flail_ssg.generator import page_has_links_to_subpages
+from flail_ssg.generator import create_search_filters
 from jsonschema import validate as jsonschema_validate
 
 
@@ -44,6 +46,28 @@ def test_filtering_by_env():
     assert filtered_items == expected_items
 
 
+def test_creating_search_filters():
+    docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
+    input_dir = TestConfig.resources_input_dir / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
+    expected_dir = TestConfig.resources_expected_dir / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
+    for index_json_file in input_dir.rglob('*.json'):
+        input_items = load_json_file(index_json_file)['items']
+        tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
+        shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
+
+        created_search_filters = None
+        if not page_has_links_to_subpages(input_items):
+            created_search_filters = create_search_filters(
+                items=input_items,
+                docs=docs
+            )
+
+        expected_index_json_file = Path(str(index_json_file).replace(str(input_dir), str(expected_dir)))
+        expected_search_filters = load_json_file(expected_index_json_file).get('search_filters')
+        assert created_search_filters == expected_search_filters
+        shutil.rmtree(tmp_test_dir)
+
+
 def test_all_pages_are_valid():
     run_validator(TestConfig.send_bouncer_home,
                   TestConfig.pages_dir,
@@ -52,7 +76,7 @@ def test_all_pages_are_valid():
 
 def test_all_pages_are_valid_with_schema():
     page_schema_json = load_json_file(TestConfig.page_schema_file)
-    for index_json_file in TestConfig.pages_dir.rglob('**/*.json'):
+    for index_json_file in TestConfig.pages_dir.rglob('*.json'):
         index_json = load_json_file(index_json_file)
         jsonschema_validate(instance=index_json, schema=page_schema_json)
 
