@@ -1,16 +1,14 @@
+import json
 import os
 import shutil
-
-import json
 from collections import namedtuple
 from pathlib import Path
 
-import flail_ssg.validator
-from flail_ssg.validator import run_validator
-from flail_ssg.generator import filter_by_env
-from flail_ssg.generator import page_has_links_to_subpages
-from flail_ssg.generator import create_search_filters
 from jsonschema import validate as jsonschema_validate
+
+import flail_ssg.validator
+from flail_ssg.generator import filter_by_env, generate_search_filters
+from flail_ssg.validator import run_validator
 
 
 class TestConfig:
@@ -51,20 +49,17 @@ def test_creating_search_filters():
     input_dir = TestConfig.resources_input_dir / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
     expected_dir = TestConfig.resources_expected_dir / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
     for index_json_file in input_dir.rglob('*.json'):
-        input_items = load_json_file(index_json_file)['items']
+        index_file_json = load_json_file(index_json_file)
         tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
         shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
 
-        created_search_filters = None
-        if not page_has_links_to_subpages(input_items):
-            created_search_filters = create_search_filters(
-                items=input_items,
-                docs=docs
-            )
+        search_filters = generate_search_filters(
+            page_config_json=index_file_json,
+            docs=docs)
 
         expected_index_json_file = Path(str(index_json_file).replace(str(input_dir), str(expected_dir)))
-        expected_search_filters = load_json_file(expected_index_json_file).get('search_filters')
-        assert created_search_filters == expected_search_filters
+        expected_search_filters = load_json_file(expected_index_json_file).get('search_filters', {})
+        assert search_filters == expected_search_filters
         shutil.rmtree(tmp_test_dir)
 
 
