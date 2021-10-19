@@ -6,12 +6,12 @@ from typing import Dict, List, Union
 
 
 def load_json_file(json_file: Path):
-    FileConfig = namedtuple(
+    PageConfig = namedtuple(
         'PageConfig',
         ['absolute_path', 'dir', 'json_object']
     )
     json_file_abs_path = json_file.resolve()
-    return FileConfig(
+    return PageConfig(
         json_file_abs_path,
         json_file_abs_path.parent,
         json.load(json_file_abs_path.open(encoding='utf-8'))

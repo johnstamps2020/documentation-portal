@@ -166,6 +166,86 @@
       "environments": ["dev", "int", "staging", "prod"]
     },
     {
+      "id": "dx202104srerelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/sre/202104/relnotes",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dx202104sreinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/sre/202104/install",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dx202104sreapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/sre/202104/app",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dx202104sredev",
+      "title": "Developer's Guide",
+      "url": "cloud/dx/sre/202104/dev",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dx202104srerefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/sre/202104/ref",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "ispc202104releasenotes",
       "title": "Release Notes",
       "url": "cloud/pc/202104/releasenotes",
