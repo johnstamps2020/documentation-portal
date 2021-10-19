@@ -1,0 +1,10 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "docId": "apdmaindoc",
+      "srcId": "apdapiintsrc",
+      "buildType": "yarn"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "apdmaindoc",
+      "title": "APD API docs",
+      "url": "apd/api/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["latest"]
+      },
+      "environments": ["int"]
+    }
+  ]
+}
