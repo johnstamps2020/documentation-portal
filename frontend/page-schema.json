@@ -68,6 +68,36 @@
         }
       }
     },
+    "search_filters": {
+      "description": "A set of filters for narrowing down search results",
+      "type": "object",
+      "examples": [
+        {
+          "product": [
+            "CustomerEngage Account Management",
+            "CustomerEngage Account Management for ClaimCenter",
+            "CustomerEngage Quote and Buy",
+            "ProducerEngage",
+            "ProducerEngage for ClaimCenter",
+            "ServiceRepEngage",
+            "VendorEngage"
+          ],
+          "platform": ["Cloud"],
+          "version": ["2021.04"]
+        },
+        {
+          "product": [
+            "BillingCenter",
+            "ClaimCenter",
+            "Glossary",
+            "PolicyCenter",
+            "REST API Client"
+          ],
+          "platform": ["Cloud", "Self-managed"],
+          "version": ["2021.04", "latest"]
+        }
+      ]
+    },
     "items": {
       "$ref": "#/definitions/items"
     }
