@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://docs.guidewire.com/page.schema.json",
+  "$id": "https://docs.guidewire.com/page.schema.json",
   "title": "Page config",
   "description": "A config for pages",
   "type": "object",
