@@ -222,6 +222,7 @@
     }
   ],
   "search_filters": {
+    "platform": ["Cloud", "Self-managed"],
     "product": [
       "BillingCenter",
       "ClaimCenter",
@@ -229,7 +230,6 @@
       "PolicyCenter",
       "REST API Client"
     ],
-    "platform": ["Cloud", "Self-managed"],
     "version": ["2021.04", "latest"]
   },
   "current_page": {

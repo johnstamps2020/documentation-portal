@@ -83,23 +83,27 @@ def generate_search_filters(page_config_json: dict, docs: list) -> dict:
             if item.get('items'):
                 create_search_filters(item['items'], filters)
 
-        for key, value in filters.items():
-            filters[key] = sorted(list(set(value)))
-
         return filters
 
     def merge_search_filters(existing_filters: dict, new_filters: dict) -> dict:
         if new_filters:
             if existing_filters:
+                all_keys = set(list(existing_filters.keys()) + list(new_filters.keys()))
                 return {
-                    key: sorted(list(set(value + new_filters.get(key, []))))
-                    for key, value in existing_filters.items()
+                    key: list(set(existing_filters.get(key, []) + new_filters.get(key, [])))
+                    for key in all_keys
                 }
             return new_filters
         elif existing_filters:
             return existing_filters
 
         return {}
+
+    def sort_filters(unsorted_filters: dict):
+        return {
+            key: sorted(list(set(value)))
+            for key, value in sorted(unsorted_filters.items())
+        }
 
     page_items = page_config_json['items']
     page_search_filters = {}
@@ -110,7 +114,7 @@ def generate_search_filters(page_config_json: dict, docs: list) -> dict:
                                                      created_search_filters)
         page_search_filters = merged_search_filters
 
-    return page_search_filters
+    return sort_filters(page_search_filters)
 
 
 def resolve_links(items: List, docs: List):
