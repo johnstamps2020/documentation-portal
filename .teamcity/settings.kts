@@ -3961,7 +3961,7 @@ object RunContentValidations : Template({
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/webhelp_build.log"
                 export TEMP_DIR="tmp/validate"
 
-                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire_validate --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"/src/${'$'}LOG_FILE\" -clean.temp no --temp \"/src/${'$'}TEMP_DIR\""
+                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire_validate --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"/src/${'$'}LOG_FILE\" --clean.temp no --temp \"/src/${'$'}TEMP_DIR\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
