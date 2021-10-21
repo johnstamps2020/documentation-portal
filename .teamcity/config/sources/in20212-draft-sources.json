@@ -197,6 +197,17 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/ProductAttributeReference20212.ditamap"
       ]
+    },
+    {
+      "id": "in20212xcsprndraftsrc",
+      "title": "InsuranceNow 2021.2 Consumer Service Portal Release Notes Draft",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV4.ditamap"
+      ]
     }
   ]
 }

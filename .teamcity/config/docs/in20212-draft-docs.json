@@ -98,6 +98,22 @@
       "public": false
     },
     {
+      "id": "in20212xcsprndraft",
+      "title": "Consumer Service Portal Release Notes Draft",
+      "url": "cloud/in/20212x/csprn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release Notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20212xappreaderintegdraft",
       "title": "AppReader Integration Draft",
       "url": "cloud/in/20212x/appreaderinteg",
