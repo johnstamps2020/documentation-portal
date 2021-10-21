@@ -3556,6 +3556,7 @@ object HelperObjects {
                         "GET_DOCUMENT_DETAILS",
                         "BUILD_GUIDEWIRE_WEBHELP",
                         "BUILD_NORMALIZED_DITA",
+                        "RUN_SCHEMATRON_VALIDATIONS",
                         "RUN_DOC_VALIDATOR"
                     )
 
@@ -3959,9 +3960,8 @@ object RunContentValidations : Template({
 
                 export OUTPUT_PATH="out/webhelp"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/webhelp_build.log"
-                export TEMP_DIR="tmp/validate"
 
-                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire_validate --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"/src/${'$'}LOG_FILE\" --clean.temp no --temp \"/src/${'$'}TEMP_DIR\""
+                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"/src/${'$'}LOG_FILE\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
@@ -3980,8 +3980,7 @@ object RunContentValidations : Template({
                 ${'$'}DITA_BASE_COMMAND
                 
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
-                cp %env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/
-
+                
                 export GIT_SOURCE_ID=$(jq -r .gitSourceId "%env.DOC_INFO%")
                 export GIT_BUILD_BRANCH=$(jq -r .gitBuildBranch "%env.DOC_INFO%")
                 aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" --delete
@@ -4020,6 +4019,34 @@ object RunContentValidations : Template({
                 cp -R %env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH/* %env.NORMALIZED_DITA_DIR%/
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
 
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+        }
+
+        script {
+            name = "Run Schematron validations"
+            id = "RUN_SCHEMATRON_VALIDATIONS"
+            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export OUTPUT_PATH="out/validate"
+                export TEMP_DIR="tmp/validate"
+                export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
+                
+                SECONDS=0
+                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
+                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
+ 
+                echo "Running the validate plugin"
+                mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
+                docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f validate --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
+                
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
+                
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
