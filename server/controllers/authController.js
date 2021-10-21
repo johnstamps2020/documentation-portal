@@ -109,6 +109,26 @@ const oktaOIDC = new ExpressOIDC({
   scope: 'openid profile',
 });
 
+const grantConfig = {
+  defaults: {
+    origin: process.env.APP_BASE_URL,
+    transport: 'session',
+    state: true,
+    response: 'code',
+    redirect_uri: `${process.env.APP_BASE_URL}/authorization-code/callback`,
+  },
+  okta: {
+    authorize_url: `${process.env.OKTA_DOMAIN}/oauth2/v1/authorize`,
+    access_url: `${process.env.OKTA_DOMAIN}/oauth2/v1/token`,
+    key: process.env.OKTA_CLIENT_ID,
+    secret: process.env.OKTA_CLIENT_SECRET,
+    scope: ['openid', 'profile'],
+    custom_params: {
+      idp: '0oamwriqo1E1dOdd70h7',
+    },
+  },
+};
+
 const majorOpenRoutes = [
   '/404',
   '/unauthorized',
@@ -185,6 +205,7 @@ const authGateway = async (req, res, next) => {
 };
 
 module.exports = {
+  grantConfig,
   oktaOIDC,
   authGateway,
   loginGatewayRoute,

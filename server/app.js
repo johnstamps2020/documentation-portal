@@ -85,6 +85,7 @@ const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
 const recommendationsRouter = require('./routes/recommendations');
+const grant = require('grant').express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -107,10 +108,12 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const oktaOIDC = require('./controllers/authController').oktaOIDC;
 const authGateway = require('./controllers/authController').authGateway;
+const grantConfig = require('./controllers/authController').grantConfig;
 
 // ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
-app.use(oktaOIDC.router);
-app.use(authGateway);
+app.use(grant(grantConfig));
+// app.use(oktaOIDC.router);
+// app.use(authGateway);
 
 // server static pages from the pages folder
 app.use(express.static(path.join(__dirname, 'static', 'pages')));
