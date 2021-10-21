@@ -59,6 +59,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV4.ditamap",
+      "srcId": "in20212xcsprndraftsrc",
+      "docId": "in20212xcsprndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "PredictiveAnalyticsIntegration20212.ditamap",
       "srcId": "in20212xpadraftsrc",
       "docId": "in20212xpadraft",
