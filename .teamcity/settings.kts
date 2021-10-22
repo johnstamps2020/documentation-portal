@@ -4079,6 +4079,12 @@ object RunContentValidations : Template({
                 dockerRegistryId = "PROJECT_EXT_155"
             }
         }
+
+        feature {
+            id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
+            type = "JetBrains.SharedResources"
+            param("locks-param", "OxygenWebhelpLicense readLock")
+        }
     }
 
 })
