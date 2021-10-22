@@ -3463,7 +3463,12 @@ object HelperObjects {
 
     fun createSourceValidationsFromConfig(): List<Project> {
 
-        class ValidateDoc(build_info: JSONObject, vcs_root_id: RelativeId, git_source_id: String) : BuildType({
+        class ValidateDoc(
+            build_info: JSONObject,
+            vcs_root_id: RelativeId,
+            git_source_id: String,
+            git_source_branch: String
+        ) : BuildType({
 
             val docBuildType = if (build_info.has("buildType")) build_info.getString("buildType") else ""
             val nodeImageVersion =
@@ -3595,6 +3600,7 @@ object HelperObjects {
                             username = "%serviceAccountUsername%"
                             password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                         }
+                        filterTargetBranch = "refs/heads/${git_source_branch}"
                     }
                 }
             }
@@ -3670,7 +3676,7 @@ object HelperObjects {
         for (i in 0 until sourceConfigs.length()) {
             val source = sourceConfigs.getJSONObject(i)
             val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
-            if (!source.has("xdocsPathIds") && (sourceGitBranch == "master" || sourceGitBranch == "main")) {
+            if (!source.has("xdocsPathIds")) {
                 val sourceDocBuilds = mutableListOf<JSONObject>()
                 val sourceId = source.getString("id")
                 val sourceTitle = source.getString("title")
@@ -3697,7 +3703,7 @@ object HelperObjects {
                                 val docBuildType =
                                     if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
                                 if (docBuildType != "storybook") {
-                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId))
+                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId, sourceGitBranch))
                                 }
                             }
 
@@ -3881,7 +3887,6 @@ object CreateReleaseTag : BuildType({
     }
 })
 
-//TODO: This template may not be needed. We could merge it with the ValidateDoc class
 //TODO: Convert DITA OT scripts to use the dockerSupport feature instead of pulling and logging in the script
 object RunContentValidations : Template({
     name = "Run content validations"
