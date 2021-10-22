@@ -9,7 +9,7 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2021.11"],
-        "release": ["Cortina"],
+        "release": ["Dobson"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging"],
