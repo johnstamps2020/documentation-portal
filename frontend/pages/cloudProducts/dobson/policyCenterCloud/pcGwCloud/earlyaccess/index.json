@@ -85,10 +85,6 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
-          "id": "ispccloudeaapd"
-        },
-        {
           "label": "Configuration",
           "id": "ispccloudeaconfig"
         },

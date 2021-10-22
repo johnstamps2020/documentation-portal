@@ -20,17 +20,6 @@
       ]
     },
     {
-      "id": "cloudisapddraftsrc",
-      "title": "IS Cloud Draft Advanced Product Designer",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/active/AdvancedProductDesigner.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval"
-      ]
-    },
-    {
       "id": "cloudisbcappdraftsrc",
       "title": "IS Cloud Draft BC Application",
       "sourceType": "xdocs",

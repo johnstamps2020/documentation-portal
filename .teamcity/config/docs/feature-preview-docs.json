@@ -2,6 +2,22 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "apddraft",
+      "title": "Advanced Product Designer",
+      "url": "cloud/apd/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "claimsautopilotdraft",
       "title": "Claims Autopilot",
       "url": "cloud/gw-feature-preview/autopilot",

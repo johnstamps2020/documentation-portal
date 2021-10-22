@@ -626,22 +626,6 @@
       "public": false
     },
     {
-      "id": "ispcclouddraftapd",
-      "title": "Advanced Product Designer",
-      "url": "cloud/pc/latest/apd",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "ispcclouddraftconfig",
       "title": "Configuration",
       "url": "cloud/pc/latest/config",

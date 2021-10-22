@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "apddraftsrc",
+      "title": "Advanced Product Designer - Feature Preview",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "main"
+    },
+    {
       "id": "claimsautopilotdraftsrc",
       "title": "Claims Autopilot Draft",
       "sourceType": "git",

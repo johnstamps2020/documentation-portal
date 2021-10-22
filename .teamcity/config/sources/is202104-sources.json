@@ -24,15 +24,10 @@
     },
     {
       "id": "cloudisapd202104src",
-      "title": "IS 2021.04 Advanced Product Designer",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Cortina",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202104/AdvancedProductDesigner.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
+      "title": "IS 2021.04 Advanced Product Designer for PolicyCenter",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/2021.04"
     },
     {
       "id": "cloudisbcapp202104src",
