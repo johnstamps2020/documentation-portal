@@ -48,7 +48,7 @@
           "id": "isdraftrestapiclientguide"
         },
         {
-          "label": "ClaimCenter Adapter for IRSA",
+          "label": "IRSA Integration for ClaimCenter",
           "page": "midipf/1.1"
         }
       ]

@@ -245,7 +245,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAAdministratorGuide.ditamap",
+      "root": "IRSAAdministrationGuide.ditamap",
       "srcId": "midipfsrc",
       "docId": "midipfadmin",
       "indexRedirect": true

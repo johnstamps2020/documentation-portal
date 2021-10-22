@@ -968,7 +968,7 @@
     },
     {
       "id": "midipfsrc",
-      "title": "ClaimCenter Adapter for IRSA",
+      "title": "IRSA Integration for ClaimCenter",
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
       "branch": "main"
