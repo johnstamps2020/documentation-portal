@@ -192,6 +192,7 @@
       "items": {
         "type": "string",
         "enum": [
+          "Advanced Product Designer",
           "PolicyCenter",
           "BillingCenter",
           "ClaimCenter",

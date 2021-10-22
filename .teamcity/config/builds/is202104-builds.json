@@ -319,7 +319,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "cloudisapd202104src",
       "docId": "ispc202104apd",

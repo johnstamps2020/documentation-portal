@@ -304,14 +304,6 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-EA.ditaval",
-      "root": "AdvancedProductDesigner.ditamap",
-      "srcId": "cloudisapddraftsrc",
-      "docId": "ispccloudeaapd",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "ConfigGuide.ditamap",
       "srcId": "cloudisconfigdraftsrc",
       "docId": "ispccloudeaconfig",

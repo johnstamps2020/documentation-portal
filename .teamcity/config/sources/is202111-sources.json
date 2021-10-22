@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "cloudisapd202111src",
+      "title": "IS 2021.11 Advanced Product Designer for PolicyCenter",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/2021.11"
+    }
+  ]
+}

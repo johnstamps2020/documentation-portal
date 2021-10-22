@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "cloudisapd202111src",
+      "docId": "ispc202111apd",
+      "indexRedirect": true
+    }
+  ]
+}

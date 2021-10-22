@@ -1,0 +1,21 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ispc202111apd",
+      "title": "Advanced Product Designer for PolicyCenter",
+      "url": "cloud/pc/202111/apd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Cortina"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
