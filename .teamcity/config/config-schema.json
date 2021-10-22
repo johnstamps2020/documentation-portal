@@ -195,7 +195,7 @@
           "PolicyCenter",
           "BillingCenter",
           "ClaimCenter",
-          "ClaimCenter Adapter for IRSA",
+          "IRSA Integration for ClaimCenter",
           "BillingCenter for Guidewire Cloud",
           "ClaimCenter for Guidewire Cloud",
           "PolicyCenter for Guidewire Cloud",

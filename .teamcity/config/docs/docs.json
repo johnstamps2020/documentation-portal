@@ -240,10 +240,10 @@
     },
     {
       "id": "midipfoverview",
-      "title": "ClaimCenter Adapter for IRSA Overview",
+      "title": "Overview",
       "url": "self-managed/mid/ipf/1.1/overview",
       "metadata": {
-        "product": ["ClaimCenter Adapter for IRSA"],
+        "product": ["IRSA Integration for ClaimCenter"],
         "platform": ["Self-managed"],
         "version": ["1.1"],
         "subject": ["Features and functionality"]
@@ -255,10 +255,10 @@
     },
     {
       "id": "midipfadjuster",
-      "title": "ClaimCenter Adapter for IRSA Adjuster Guide",
+      "title": "Adjuster Guide",
       "url": "self-managed/mid/ipf/1.1/adjuster",
       "metadata": {
-        "product": ["ClaimCenter Adapter for IRSA"],
+        "product": ["IRSA Integration for ClaimCenter"],
         "platform": ["Self-managed"],
         "version": ["1.1"],
         "subject": ["Features and functionality"]
@@ -270,10 +270,10 @@
     },
     {
       "id": "midipfadmin",
-      "title": "ClaimCenter Adapter for IRSA Administrator Guide",
+      "title": "Administration Guide",
       "url": "self-managed/mid/ipf/1.1/admin",
       "metadata": {
-        "product": ["ClaimCenter Adapter for IRSA"],
+        "product": ["IRSA Integration for ClaimCenter"],
         "platform": ["Self-managed"],
         "version": ["1.1"],
         "subject": ["Administration"]
