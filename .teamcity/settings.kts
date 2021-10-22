@@ -3570,10 +3570,6 @@ object HelperObjects {
 
             triggers {
                 vcs {
-                    triggerRules = """
-                        +:root=${vcs_root_id}:**
-                    """.trimIndent()
-
                     branchFilter = """
                         +:*
                         -:<default>
