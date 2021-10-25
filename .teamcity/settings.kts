@@ -3532,6 +3532,11 @@ object HelperObjects {
 
                 }
             }
+
+            vcs {
+                root(vcs_root_id)
+                cleanCheckout = true
+            }
         })
 
         class CleanValidationResults(vcs_root_id: RelativeId, git_source_id: String, git_source_url: String) :
