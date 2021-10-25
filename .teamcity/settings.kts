@@ -3657,7 +3657,7 @@ object HelperObjects {
                                         )
                                         text(
                                             "GIT_BUILD_BRANCH",
-                                            "%teamcity.build.vcs.branch.$sourceVcsRootId%"
+                                            "refs/heads/${sourceGitBranch}"
                                         )
 
                                     }
