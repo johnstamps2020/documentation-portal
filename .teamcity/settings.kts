@@ -3485,6 +3485,9 @@ object HelperObjects {
                 text("WORKING_DIR", workingDir, allowEmpty = false)
                 text("DEPLOY_ENV", "dev", allowEmpty = false)
                 text("env.PUBLISH_PATH", "root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                text("GIT_URL", "%vcsroot.$vcs_root_id.url%", allowEmpty = false)
+                text("GIT_BRANCH", "%teamcity.build.vcs.branch.$vcs_root_id%", allowEmpty = false)
+
 
                 if (nodeImageVersion != null) {
                     text("NODE_IMAGE_VERSION", nodeImageVersion)
@@ -3941,6 +3944,9 @@ object RunContentValidations : Template({
             display = ParameterDisplay.HIDDEN,
             allowEmpty = false
         )
+        text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
+        text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
+
     }
 
     steps {
@@ -3967,7 +3973,7 @@ object RunContentValidations : Template({
                 export OUTPUT_PATH="out/webhelp"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/webhelp_build.log"
 
-                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
+                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\"" -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.DITA_OT_WORKING_DIR%/%env.FILTER_PATH%\""
