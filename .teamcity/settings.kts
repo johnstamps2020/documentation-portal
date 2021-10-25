@@ -3898,6 +3898,7 @@ object RunContentValidations : Template({
     artifactRules = """
         %env.DITA_OT_LOGS_DIR% => logs
         preview_url.txt
+        %env.DITA_OT_WORKING_DIR%/out/webhelp/build-data.json => json
     """.trimIndent()
 
     params {
@@ -3966,7 +3967,7 @@ object RunContentValidations : Template({
                 export OUTPUT_PATH="out/webhelp"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/webhelp_build.log"
 
-                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
+                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.DITA_OT_WORKING_DIR%/%env.FILTER_PATH%\""
