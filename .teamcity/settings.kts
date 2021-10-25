@@ -3887,7 +3887,6 @@ object CreateReleaseTag : BuildType({
     }
 })
 
-//TODO: Convert DITA OT scripts to use the dockerSupport feature instead of pulling and logging in the script
 object RunContentValidations : Template({
     name = "Run content validations"
 
@@ -3962,10 +3961,10 @@ object RunContentValidations : Template({
                 export OUTPUT_PATH="out/webhelp"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/webhelp_build.log"
 
-                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"/src/${'$'}LOG_FILE\""
+                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f webhelp_Guidewire --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
+                    export DITA_BASE_COMMAND+=" --filter \"%env.DITA_OT_WORKING_DIR%/%env.FILTER_PATH%\""
                 fi
 
                 if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
@@ -3973,9 +3972,6 @@ object RunContentValidations : Template({
                 fi
                 
                 SECONDS=0
-                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
-                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
-
                 echo "Building Guidewire webhelp for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
                 ${'$'}DITA_BASE_COMMAND
@@ -3990,6 +3986,8 @@ object RunContentValidations : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
         script {
@@ -4003,16 +4001,13 @@ object RunContentValidations : Template({
                 export OUTPUT_PATH="out/dita"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
                 
-                export DITA_BASE_COMMAND="docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f dita -l \"/src/${'$'}LOG_FILE\""
+                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f dita -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"/src/%env.FILTER_PATH%\""
+                    export DITA_BASE_COMMAND+=" --filter \"%env.DITA_OT_WORKING_DIR%/%env.FILTER_PATH%\""
                 fi
 
                 SECONDS=0
-                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
-                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
-
                 echo "Building normalized DITA"
                 mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
                 ${'$'}DITA_BASE_COMMAND
@@ -4023,6 +4018,8 @@ object RunContentValidations : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
         script {
@@ -4038,12 +4035,9 @@ object RunContentValidations : Template({
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
                 
                 SECONDS=0
-                docker login -u '%env.ARTIFACTORY_USERNAME%' --password '%env.ARTIFACTORY_PASSWORD%' artifactory.guidewire.com
-                docker pull artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest
- 
                 echo "Running the validate plugin"
                 mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
-                docker run -i -v %env.DITA_OT_WORKING_DIR%:/src artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest -i \"/src/%env.ROOT_MAP%\" -o \"/src/${'$'}OUTPUT_PATH\" -f validate --clean.temp no --temp \"/src/${'$'}TEMP_DIR\" -l \"/src/${'$'}LOG_FILE\"
+                dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f validate --clean.temp no --temp \"%env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR\" -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\"
                 
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
@@ -4051,6 +4045,8 @@ object RunContentValidations : Template({
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
         script {
