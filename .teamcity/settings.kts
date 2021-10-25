@@ -2458,8 +2458,8 @@ object HelperObjects {
         affected_project: String,
         build_template: String
     ) : Template({
-        name = "$source_id listener"
-        id = RelativeId(getCleanId(vcs_root_id.toString() + "_query"))
+        name = "Listener Build Template"
+        id = RelativeId("ListenerBuildTemplate")
         vcs {
             root(vcs_root_id)
             cleanCheckout = true
