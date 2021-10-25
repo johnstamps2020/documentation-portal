@@ -3892,7 +3892,7 @@ object RunContentValidations : Template({
     name = "Run content validations"
 
     artifactRules = """
-        **/*.log => logs
+        %env.SOURCES_ROOT%/%env.DITA_OT_LOGS_DIR% => logs
         preview_url.txt
     """.trimIndent()
 
