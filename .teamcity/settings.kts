@@ -3476,8 +3476,7 @@ object HelperObjects {
                 text("CREATE_INDEX_REDIRECT", docBuildIndexRedirect, allowEmpty = false)
                 text("ROOT_MAP", docBuildRootMap, allowEmpty = false)
                 text("DOC_ID", docId, allowEmpty = false)
-                text("env.SOURCES_ROOT", "src_root", allowEmpty = false)
-                text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
+                text("DITA_OT_WORKING_DIR", "%teamcity.build.checkoutDir%", allowEmpty = false)
                 text(
                     "env.DOC_INFO",
                     "%teamcity.build.workingDir%/doc_info.json",
@@ -3555,7 +3554,6 @@ object HelperObjects {
                         display = ParameterDisplay.HIDDEN,
                         allowEmpty = false
                     )
-                    text("env.SOURCES_ROOT", "src_root", display = ParameterDisplay.HIDDEN, allowEmpty = false)
                 }
 
                 steps {
@@ -3576,7 +3574,7 @@ object HelperObjects {
                 }
 
                 vcs {
-                    root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
+                    root(vcs_root_id)
                     cleanCheckout = true
                 }
 
@@ -3635,7 +3633,7 @@ object HelperObjects {
                                     templates(ListenerBuild)
 
                                     vcs {
-                                        root(sourceVcsRootId, "+:. => %env.SOURCES_ROOT%")
+                                        root(sourceVcsRootId)
                                         cleanCheckout = true
                                     }
 
@@ -3895,7 +3893,7 @@ object RunContentValidations : Template({
     name = "Run content validations"
 
     artifactRules = """
-        %env.SOURCES_ROOT%/%env.DITA_OT_LOGS_DIR% => logs
+        %env.DITA_OT_LOGS_DIR% => logs
         preview_url.txt
     """.trimIndent()
 
@@ -4111,7 +4109,6 @@ object BuildStorybook : Template({
         text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
         text("env.WORKING_DIR", "%WORKING_DIR%")
-        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
     }
 
     vcs {
