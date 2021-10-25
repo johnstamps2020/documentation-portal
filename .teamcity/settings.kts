@@ -3432,8 +3432,7 @@ object HelperObjects {
         class ValidateDoc(
             build_info: JSONObject,
             vcs_root_id: RelativeId,
-            git_source_id: String,
-            git_source_branch: String
+            git_source_id: String
         ) : BuildType({
 
             val docBuildType = if (build_info.has("buildType")) build_info.getString("buildType") else ""
@@ -3531,6 +3530,11 @@ object HelperObjects {
                     )
 
                 }
+            }
+
+            vcs {
+                root(vcs_root_id)
+                cleanCheckout = true
             }
         })
 
@@ -3700,8 +3704,7 @@ object HelperObjects {
                                             ValidateDoc(
                                                 docBuild,
                                                 RelativeId(sourceId),
-                                                sourceId,
-                                                sourceGitBranch
+                                                sourceId
                                             )
                                         )
                                     }
