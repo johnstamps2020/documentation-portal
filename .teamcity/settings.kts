@@ -34,6 +34,7 @@ project {
     template(BuildStorybook)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
+    template(ListenerBuild)
 
     params {
         param("env.NAMESPACE", "doctools")
@@ -2283,13 +2284,16 @@ object HelperObjects {
         return matches
     }
 
+    private fun removeSpecialCharacters(stringToClean: String): String {
+        val re = Regex("[^A-Za-z0-9]")
+        return re.replace(stringToClean, "")
+    }
+
     private fun getCleanId(stringToClean: String): String {
         val hashString = stringToClean.hashCode().toString()
-        val re = Regex("[^A-Za-z0-9]")
-        val cleanString = re.replace(hashString, "")
-
-        return cleanString
+        return removeSpecialCharacters(hashString)
     }
+
 
     private fun getSourceById(sourceId: String, sourceList: JSONArray): Pair<String, String> {
         for (i in 0 until sourceList.length()) {
@@ -2452,81 +2456,6 @@ object HelperObjects {
         return builds
     }
 
-    open class ListenerBuild(
-        vcs_root_id: RelativeId,
-        source_id: String,
-        affected_project: String,
-        build_template: String
-    ) : Template({
-        name = "Listener Build Template"
-        id = RelativeId("ListenerBuildTemplate")
-        vcs {
-            root(vcs_root_id)
-            cleanCheckout = true
-        }
-        params {
-            text("env.CHANGED_FILES_FILE", "%system.teamcity.build.changedFiles.file%", allowEmpty = false)
-            text(
-                "env.TEAMCITY_API_ROOT_URL",
-                "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/",
-                allowEmpty = false
-            )
-            password(
-                "env.TEAMCITY_API_AUTH_TOKEN",
-                "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530",
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
-                "json/build-data.json",
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "env.TEAMCITY_AFFECTED_PROJECT",
-                affected_project,
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "env.TEAMCITY_TEMPLATE",
-                build_template,
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "env.GIT_URL",
-                "%vcsroot.$vcs_root_id.url%",
-                allowEmpty = false
-            )
-            text(
-                "env.GIT_BUILD_BRANCH",
-                "%teamcity.build.vcs.branch.$vcs_root_id%",
-                allowEmpty = false
-            )
-        }
-
-        steps {
-            script {
-                name = "Run the build manager"
-                scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                                                                
-                        build_manager
-                    """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-        }
-
-        features {
-            dockerSupport {
-                id = "TEMPLATE_BUILD_EXT_1"
-                loginToRegistry = on {
-                    dockerRegistryId = "PROJECT_EXT_155"
-                }
-            }
-        }
-    })
-
     fun createBuildListeners(): Pair<MutableList<DocVcsRoot>, MutableList<BuildType>> {
 
         val builds = mutableListOf<BuildType>()
@@ -2583,7 +2512,7 @@ object HelperObjects {
         }
 
         for (src in matchingSources) {
-            val sourceId = getCleanId(src.getString("gitUrl").substringAfterLast('/'))
+            val sourceId = removeSpecialCharacters(src.getString("gitUrl").substringAfterLast('/'))
             val vcsRootId = RelativeId(getCleanId(sourceId))
             val gitUrl = src.getString("gitUrl")
             val branchNames = src.getJSONArray("branches").toList() as List<*>
@@ -2598,16 +2527,34 @@ object HelperObjects {
             )
             builds.add(
                 BuildType {
-                    name = "$vcsRootId listener"
-                    id = RelativeId(getCleanId(vcsRootId.toString() + "_regularListener"))
-                    templates(
-                        ListenerBuild(
-                            vcsRootId,
-                            sourceId,
-                            "DocumentationTools_DocumentationPortal_Docs",
+                    name = "$sourceId listener"
+                    id = RelativeId(getCleanId(vcsRootId.toString() + "_buildListener"))
+                    templates(ListenerBuild)
+
+                    vcs {
+                        root(vcsRootId)
+                        cleanCheckout = true
+                    }
+
+                    params {
+                        text(
+                            "TEAMCITY_AFFECTED_PROJECT",
+                            "DocumentationTools_DocumentationPortal_Docs"
+                        )
+                        text(
+                            "TEAMCITY_TEMPLATE",
                             "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita"
                         )
-                    )
+                        text(
+                            "GIT_URL",
+                            "%vcsroot.$vcsRootId.url%"
+                        )
+                        text(
+                            "GIT_BUILD_BRANCH",
+                            "%teamcity.build.vcs.branch.$vcsRootId%"
+                        )
+
+                    }
 
                     triggers {
                         vcs {
@@ -3682,23 +3629,37 @@ object HelperObjects {
                                 id = RelativeId(getCleanId(sourceId + sourceGitBranch) + "validationBuilds")
                                 name = "Validation builds"
 
-
                                 buildType(BuildType {
-                                    name = "$sourceVcsRootId listener"
+                                    name = "$sourceId listener"
                                     id = RelativeId(getCleanId(sourceVcsRootId.toString() + "_validationListener"))
-                                    templates(
-                                        ListenerBuild(
-                                            sourceVcsRootId,
-                                            sourceId,
-                                            "DocumentationTools_DocumentationPortal_Sources",
-                                            "DocumentationTools_DocumentationPortal_RunContentValidations"
-                                        )
-                                    )
+                                    templates(ListenerBuild)
 
                                     vcs {
                                         root(sourceVcsRootId, "+:. => %env.SOURCES_ROOT%")
                                         cleanCheckout = true
                                     }
+
+                                    params {
+                                        text(
+                                            "TEAMCITY_AFFECTED_PROJECT",
+                                            "DocumentationTools_DocumentationPortal_Sources"
+
+                                        )
+                                        text(
+                                            "TEAMCITY_TEMPLATE",
+                                            "DocumentationTools_DocumentationPortal_RunContentValidations"
+                                        )
+                                        text(
+                                            "GIT_URL",
+                                            "%vcsroot.$sourceVcsRootId.url%"
+                                        )
+                                        text(
+                                            "GIT_BUILD_BRANCH",
+                                            "%teamcity.build.vcs.branch.$sourceVcsRootId%"
+                                        )
+
+                                    }
+
 
                                     triggers {
                                         vcs {
@@ -4495,6 +4456,72 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
 
 object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false)
 object BuildDocSiteAndLocalOutputFromDita : BuildOutputFromDita(createZipPackage = true)
+
+object ListenerBuild : Template({
+    name = "Listener Build Template"
+
+    params {
+        text("env.CHANGED_FILES_FILE", "%system.teamcity.build.changedFiles.file%", allowEmpty = false)
+        text(
+            "env.TEAMCITY_API_ROOT_URL",
+            "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/",
+            allowEmpty = false
+        )
+        password(
+            "env.TEAMCITY_API_AUTH_TOKEN",
+            "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
+            "json/build-data.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.TEAMCITY_AFFECTED_PROJECT",
+            "%TEAMCITY_AFFECTED_PROJECT%",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.TEAMCITY_TEMPLATE",
+            "%TEAMCITY_TEMPLATE%",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "env.GIT_URL",
+            "%GIT_URL%",
+            allowEmpty = false
+        )
+        text(
+            "env.GIT_BUILD_BRANCH",
+            "%GIT_BUILD_BRANCH%",
+            allowEmpty = false
+        )
+    }
+
+    steps {
+        script {
+            name = "Run the build manager"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                                        
+                build_manager
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
 
 object PublishDocCrawlerDockerImage : BuildType({
     name = "Publish Doc Crawler image"
