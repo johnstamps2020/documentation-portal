@@ -3995,7 +3995,7 @@ object RunContentValidations : Template({
                 
                 export GIT_SOURCE_ID=${'$'}(jq -r .gitSourceId "%env.DOC_INFO%")
                 export GIT_BUILD_BRANCH=${'$'}(jq -r .gitBuildBranch "%env.DOC_INFO%")
-                aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" --delete
+                aws s3 sync "%env.DITA_OT_WORKING_DIR%/out/webhelp" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" --delete
                 echo "Output preview available at https://docs.int.ccs.guidewire.net/preview/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" > preview_url.txt
             """.trimIndent()
         }
