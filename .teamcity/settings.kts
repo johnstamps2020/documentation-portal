@@ -2452,82 +2452,82 @@ object HelperObjects {
         return builds
     }
 
-    fun createBuildApiListeners(): Pair<MutableList<DocVcsRoot>, MutableList<BuildType>> {
-        class BuildApiListenerBuild(vcs_root_id: RelativeId, source_id: String) : BuildType({
-            name = "$source_id listener"
-            id = RelativeId(getCleanId(vcs_root_id.toString() + "_query"))
-            vcs {
-                root(vcs_root_id)
-                cleanCheckout = true
-            }
-            params {
-                text("env.CHANGED_FILES_FILE", "%system.teamcity.build.changedFiles.file%", allowEmpty = false)
-                text(
-                    "env.TEAMCITY_API_ROOT_URL",
-                    "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/",
-                    allowEmpty = false
-                )
-                password(
-                    "env.TEAMCITY_API_AUTH_TOKEN",
-                    "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530",
-                    display = ParameterDisplay.HIDDEN
-                )
-                text(
-                    "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
-                    "json/build-data.json",
-                    display = ParameterDisplay.HIDDEN
-                )
-                text(
-                    "env.TEAMCITY_AFFECTED_PROJECT",
-                    "DocumentationTools_DocumentationPortal_Docs",
-                    display = ParameterDisplay.HIDDEN
-                )
-                text(
-                    "env.TEAMCITY_TEMPLATE",
-                    "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita",
-                    display = ParameterDisplay.HIDDEN
-                )
-                text(
-                    "env.GIT_URL",
-                    "%vcsroot.$vcs_root_id.url%",
-                    allowEmpty = false
-                )
-                text(
-                    "env.GIT_BUILD_BRANCH",
-                    "%teamcity.build.vcs.branch.$vcs_root_id%",
-                    allowEmpty = false
-                )
-            }
+    open class ListenerBuild(
+        vcs_root_id: RelativeId,
+        source_id: String,
+        affected_project: String,
+        build_template: String
+    ) : Template({
+        name = "$source_id listener"
+        id = RelativeId(getCleanId(vcs_root_id.toString() + "_query"))
+        vcs {
+            root(vcs_root_id)
+            cleanCheckout = true
+        }
+        params {
+            text("env.CHANGED_FILES_FILE", "%system.teamcity.build.changedFiles.file%", allowEmpty = false)
+            text(
+                "env.TEAMCITY_API_ROOT_URL",
+                "https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/",
+                allowEmpty = false
+            )
+            password(
+                "env.TEAMCITY_API_AUTH_TOKEN",
+                "credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530",
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "env.TEAMCITY_RESOURCES_ARTIFACT_PATH",
+                "json/build-data.json",
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "env.TEAMCITY_AFFECTED_PROJECT",
+                affected_project,
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "env.TEAMCITY_TEMPLATE",
+                build_template,
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "env.GIT_URL",
+                "%vcsroot.$vcs_root_id.url%",
+                allowEmpty = false
+            )
+            text(
+                "env.GIT_BUILD_BRANCH",
+                "%teamcity.build.vcs.branch.$vcs_root_id%",
+                allowEmpty = false
+            )
+        }
 
-            steps {
-                script {
-                    name = "Run the build manager"
-                    scriptContent = """
+        steps {
+            script {
+                name = "Run the build manager"
+                scriptContent = """
                         #!/bin/bash
                         set -xe
                                                                 
                         build_manager
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+        }
+
+        features {
+            dockerSupport {
+                id = "TEMPLATE_BUILD_EXT_1"
+                loginToRegistry = on {
+                    dockerRegistryId = "PROJECT_EXT_155"
                 }
             }
+        }
+    })
 
-            features {
-                dockerSupport {
-                    id = "TEMPLATE_BUILD_EXT_1"
-                    loginToRegistry = on {
-                        dockerRegistryId = "PROJECT_EXT_155"
-                    }
-                }
-            }
-
-            triggers {
-                vcs {
-                }
-            }
-
-        })
+    fun createBuildListeners(): Pair<MutableList<DocVcsRoot>, MutableList<BuildType>> {
 
         val builds = mutableListOf<BuildType>()
         val vcsRoots = mutableListOf<DocVcsRoot>()
@@ -2596,7 +2596,26 @@ object HelperObjects {
                     additionalBranches as List<String>
                 )
             )
-            builds.add(BuildApiListenerBuild(vcsRootId, sourceId))
+            builds.add(
+                BuildType {
+                    name = "$vcsRootId listener"
+                    id = RelativeId(getCleanId(vcsRootId.toString() + "_regularListener"))
+                    templates(
+                        ListenerBuild(
+                            vcsRootId,
+                            sourceId,
+                            "DocumentationTools_DocumentationPortal_Docs",
+                            "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita"
+                        )
+                    )
+
+                    triggers {
+                        vcs {
+
+                        }
+                    }
+                }
+            )
         }
         return Pair(vcsRoots, builds)
     }
@@ -3553,7 +3572,6 @@ object HelperObjects {
                         
                         jq -n '$doc' | jq '. += {"gitBuildBranch": "%teamcity.build.vcs.branch.$vcs_root_id%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
                         cat %env.DOC_INFO%
-                        
                     """.trimIndent()
                     }
 
@@ -3566,43 +3584,6 @@ object HelperObjects {
                         "RUN_DOC_VALIDATOR"
                     )
 
-                }
-            }
-
-            vcs {
-                root(vcs_root_id, "+:. => %env.SOURCES_ROOT%")
-                cleanCheckout = true
-            }
-
-            triggers {
-                vcs {
-                    branchFilter = """
-                        +:*
-                        -:<default>
-                    """.trimIndent()
-                }
-            }
-
-            features {
-                commitStatusPublisher {
-                    vcsRootExtId = vcs_root_id.toString()
-                    publisher = bitbucketServer {
-                        url = "https://stash.guidewire.com"
-                        userName = "%serviceAccountUsername%"
-                        password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
-                    }
-                }
-
-                pullRequests {
-                    vcsRootExtId = vcs_root_id.toString()
-                    provider = bitbucketServer {
-                        serverUrl = "https://stash.guidewire.com"
-                        authType = password {
-                            username = "%serviceAccountUsername%"
-                            password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
-                        }
-                        filterTargetBranch = "refs/heads/${git_source_branch}"
-                    }
                 }
             }
         })
@@ -3654,10 +3635,6 @@ object HelperObjects {
 
                 triggers {
                     vcs {
-                        triggerRules = """
-                        +:root=${vcs_root_id}:**
-                    """.trimIndent()
-
                         branchFilter = """
                         +:<default>
                     """.trimIndent()
@@ -3692,21 +3669,86 @@ object HelperObjects {
                 }
 
                 if (sourceDocBuilds.isNotEmpty()) {
+                    val sourceVcsRootId = RelativeId(sourceId)
                     sourcesToValidate.add(
                         Project {
                             id = RelativeId(getCleanId(sourceId + sourceGitBranch))
                             name = "$sourceTitle ($sourceId)"
 
-                            vcsRoot(DocVcsRoot(RelativeId(sourceId), sourceGitUrl, sourceGitBranch))
-                            buildType(CleanValidationResults(RelativeId(sourceId), sourceId, sourceGitUrl))
+                            vcsRoot(DocVcsRoot(sourceVcsRootId, sourceGitUrl, sourceGitBranch))
+                            buildType(CleanValidationResults(sourceVcsRootId, sourceId, sourceGitUrl))
 
-                            for (docBuild in sourceDocBuilds) {
-                                val docBuildType =
-                                    if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
-                                if (docBuildType != "storybook") {
-                                    buildType(ValidateDoc(docBuild, RelativeId(sourceId), sourceId, sourceGitBranch))
+                            subProject(Project {
+                                id = RelativeId(getCleanId(sourceId + sourceGitBranch) + "validationBuilds")
+                                name = "Validation builds"
+
+
+                                buildType(BuildType {
+                                    name = "$sourceVcsRootId listener"
+                                    id = RelativeId(getCleanId(sourceVcsRootId.toString() + "_validationListener"))
+                                    templates(
+                                        ListenerBuild(
+                                            sourceVcsRootId,
+                                            sourceId,
+                                            "DocumentationTools_DocumentationPortal_Sources",
+                                            "DocumentationTools_DocumentationPortal_RunContentValidations"
+                                        )
+                                    )
+
+                                    vcs {
+                                        root(sourceVcsRootId, "+:. => %env.SOURCES_ROOT%")
+                                        cleanCheckout = true
+                                    }
+
+                                    triggers {
+                                        vcs {
+                                            branchFilter = """
+                                            +:*
+                                            -:<default>
+                                        """.trimIndent()
+                                        }
+                                    }
+
+                                    features {
+                                        commitStatusPublisher {
+                                            vcsRootExtId = sourceVcsRootId.toString()
+                                            publisher = bitbucketServer {
+                                                url = "https://stash.guidewire.com"
+                                                userName = "%serviceAccountUsername%"
+                                                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                                            }
+                                        }
+
+                                        pullRequests {
+                                            vcsRootExtId = sourceVcsRootId.toString()
+                                            provider = bitbucketServer {
+                                                serverUrl = "https://stash.guidewire.com"
+                                                authType = password {
+                                                    username = "%serviceAccountUsername%"
+                                                    password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                                                }
+                                                filterTargetBranch = "refs/heads/${sourceGitBranch}"
+                                            }
+                                        }
+                                    }
+                                })
+
+                                for (docBuild in sourceDocBuilds) {
+                                    val docBuildType =
+                                        if (docBuild.has("buildType")) docBuild.getString("buildType") else ""
+                                    if (docBuildType != "storybook") {
+                                        buildType(
+                                            ValidateDoc(
+                                                docBuild,
+                                                RelativeId(sourceId),
+                                                sourceId,
+                                                sourceGitBranch
+                                            )
+                                        )
+                                    }
                                 }
-                            }
+                            })
+
 
                         }
 
@@ -4632,10 +4674,10 @@ object XdocsExportBuilds : Project({
     builds.forEach(this::buildType)
 })
 
-object BuildApiListenerBuilds : Project({
-    name = "Build API listener builds"
+object BuildListenerBuilds : Project({
+    name = "Build listener builds"
 
-    val (vcsRoots, builds) = HelperObjects.createBuildApiListeners()
+    val (vcsRoots, builds) = HelperObjects.createBuildListeners()
     vcsRoots.forEach(this::vcsRoot)
     builds.forEach(this::buildType)
 })
@@ -4645,7 +4687,7 @@ object Content : Project({
 
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
-    subProject(BuildApiListenerBuilds)
+    subProject(BuildListenerBuilds)
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
     buildType(GenerateSitemap)
