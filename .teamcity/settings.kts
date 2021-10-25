@@ -3560,6 +3560,7 @@ object HelperObjects {
                     stepsOrder = arrayListOf(
                         "GET_DOCUMENT_DETAILS",
                         "BUILD_GUIDEWIRE_WEBHELP",
+                        "UPLOAD_WEBHELP_PREVIEW_TO_S3",
                         "BUILD_NORMALIZED_DITA",
                         "RUN_SCHEMATRON_VALIDATIONS",
                         "RUN_DOC_VALIDATOR"
@@ -3977,17 +3978,26 @@ object RunContentValidations : Template({
                 ${'$'}DITA_BASE_COMMAND
                 
                 cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
-                
-                export GIT_SOURCE_ID=$(jq -r .gitSourceId "%env.DOC_INFO%")
-                export GIT_BUILD_BRANCH=$(jq -r .gitBuildBranch "%env.DOC_INFO%")
-                aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" --delete
-                echo "Output preview available at https://docs.int.ccs.guidewire.net/preview/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" > preview_url.txt
-                
+                                
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+
+        script {
+            name = "Upload the webhelp preview output to S3"
+            id = "UPLOAD_WEBHELP_PREVIEW_TO_S3"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export GIT_SOURCE_ID=${'$'}(jq -r .gitSourceId "%env.DOC_INFO%")
+                export GIT_BUILD_BRANCH=${'$'}(jq -r .gitBuildBranch "%env.DOC_INFO%")
+                aws s3 sync "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}" "%env.S3_BUCKET_PREVIEW_PATH%/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" --delete
+                echo "Output preview available at https://docs.int.ccs.guidewire.net/preview/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/%env.DOC_ID%" > preview_url.txt
+            """.trimIndent()
         }
 
         script {
