@@ -32,7 +32,7 @@
     },
     {
       "id": "testingframeworksrndobsonsrc",
-      "title": "The Guidewire Testing Framwork Release Notes Dobson",
+      "title": "The Guidewire Testing Framework Release Notes Dobson",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "branch": "release/2021.11",
