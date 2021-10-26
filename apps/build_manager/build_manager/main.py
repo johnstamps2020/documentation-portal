@@ -22,7 +22,8 @@ _logger.addHandler(_console_handler)
 @dataclass
 class AppConfig:
     git_url: str = os.environ.get('GIT_URL')
-    git_build_branch: str = os.environ.get('GIT_BUILD_BRANCH')
+    git_branch: str = os.environ.get('GIT_BRANCH')
+    teamcity_build_branch: str = os.environ.get('TEAMCITY_BUILD_BRANCH')
     teamcity_api_root_url: str = os.environ.get('TEAMCITY_API_ROOT_URL')
     teamcity_build_queue_url: str = urllib.parse.urljoin(
         teamcity_api_root_url, 'buildQueue')
@@ -158,7 +159,7 @@ def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecor
 
 @check_processing_result
 def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    vcs_root_locator = f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_build_branch}))'
+    vcs_root_locator = f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_branch}))'
     template_locator = f'template:(id:{app_config.teamcity_template})'
     affected_project_locator = f'affectedProject:(id:{app_config.teamcity_affected_project})'
     payload = {
@@ -248,8 +249,10 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
 
 
 @check_processing_result
-def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or ProcessingRecord]:
+def start_build(app_config: AppConfig, build_id: str) -> Union[
+    BuildInfo or ProcessingRecord]:
     data = {
+        'branchName': app_config.teamcity_build_branch,
         'buildType': {
             'id': build_id
         }

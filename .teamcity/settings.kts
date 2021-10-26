@@ -2550,10 +2550,14 @@ object HelperObjects {
                             "%vcsroot.$vcsRootId.url%"
                         )
                         text(
-                            "GIT_BUILD_BRANCH",
+                            "GIT_BRANCH",
                             "%teamcity.build.vcs.branch.$vcsRootId%"
                         )
-
+                        text(
+                            "TEAMCITY_BUILD_BRANCH",
+                            "%GIT_BRANCH%",
+                            allowEmpty = false
+                        )
                     }
 
                     triggers {
@@ -3659,9 +3663,15 @@ object HelperObjects {
                                             "%vcsroot.$sourceVcsRootId.url%"
                                         )
                                         text(
-                                            "GIT_BUILD_BRANCH",
+                                            "GIT_BRANCH",
                                             "refs/heads/${sourceGitBranch}"
                                         )
+                                        text(
+                                            "TEAMCITY_BUILD_BRANCH",
+                                            "%teamcity.build.vcs.branch.$sourceVcsRootId%",
+                                            allowEmpty = false
+                                        )
+
 
                                     }
 
@@ -4500,8 +4510,13 @@ object ListenerBuild : Template({
             allowEmpty = false
         )
         text(
-            "env.GIT_BUILD_BRANCH",
-            "%GIT_BUILD_BRANCH%",
+            "env.GIT_BRANCH",
+            "%GIT_BRANCH%",
+            allowEmpty = false
+        )
+        text(
+            "env.TEAMCITY_BUILD_BRANCH",
+            "%TEAMCITY_BUILD_BRANCH%",
             allowEmpty = false
         )
     }
