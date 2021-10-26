@@ -3645,7 +3645,7 @@ object HelperObjects {
                                         uploadedKey = "sys-doc.rsa"
                                     }
                                     branch = "refs/heads/$sourceGitBranch"
-                                    branchSpec = "+:refs/pull-requests/*/from"
+                                    branchSpec = "+:(refs/pull-requests/*/from)"
                                 }
                             )
 
