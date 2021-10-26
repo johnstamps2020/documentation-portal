@@ -3630,7 +3630,20 @@ object HelperObjects {
                             id = RelativeId(getCleanId(sourceId + sourceGitBranch))
                             name = "$sourceTitle ($sourceId)"
 
-                            vcsRoot(DocVcsRoot(sourceVcsRootId, sourceGitUrl, sourceGitBranch))
+                            vcsRoot(
+                                GitVcsRoot
+                                {
+                                    id = sourceVcsRootId
+                                    name = sourceVcsRootId.toString()
+                                    url = sourceGitUrl
+                                    authMethod = uploadedKey {
+                                        uploadedKey = "sys-doc.rsa"
+                                    }
+                                    branch = "refs/heads/$sourceGitBranch"
+                                    branchSpec = "+:refs/pull-requests/*/from"
+                                }
+                            )
+
                             buildType(CleanValidationResults(sourceVcsRootId, sourceId, sourceGitUrl))
 
                             subProject(Project {
