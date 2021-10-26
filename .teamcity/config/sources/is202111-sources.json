@@ -7,6 +7,39 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
       "branch": "release/2021.11"
+    },
+    {
+      "id": "testingframeworksapidobsonsrc",
+      "title": "API Testing Dobson",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/2021.11/GT-API.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "testingframeworksuidobsonsrc",
+      "title": "User Interface Testing Dobson",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/2021.11/GT-UI.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
+    },
+    {
+      "id": "testingframeworksrndobsonsrc",
+      "title": "The Guidewire Testing Framwork Release Notes Dobson",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation2021.11_ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
     }
   ]
 }

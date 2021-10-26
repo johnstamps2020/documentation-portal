@@ -29,6 +29,10 @@
         {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
+        },
+        {
+          "label": "The Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrndobson"
         }
       ]
     },
@@ -150,11 +154,11 @@
         },
         {
           "label": "API Testing (GT: API)",
-          "id": "testingframeworksapicortina"
+          "id": "testingframeworksapidobson"
         },
         {
           "label": "User Interface Testing (GT: UI)",
-          "id": "testingframeworksuicortina"
+          "id": "testingframeworksuidobson"
         }
       ]
     },
