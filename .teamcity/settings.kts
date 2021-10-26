@@ -2550,10 +2550,13 @@ object HelperObjects {
                             "%vcsroot.$vcsRootId.url%"
                         )
                         text(
-                            "GIT_BUILD_BRANCH",
+                            "GIT_BRANCH",
                             "%teamcity.build.vcs.branch.$vcsRootId%"
                         )
-
+                        text(
+                            "TEAMCITY_BUILD_BRANCH",
+                            "%GIT_BRANCH%"
+                        )
                     }
 
                     triggers {
@@ -3464,7 +3467,7 @@ object HelperObjects {
             val docVersion = docMetadata.getJSONArray("version").joinToString(separator = ",")
 
             id = RelativeId(getCleanId(docProduct + docVersion + docId + "validatedoc"))
-            name = "Validate $docTitle $docProduct $docVersion"
+            name = "Validate $docTitle ${docProduct.split(",")[0]} $docVersion"
 
             params {
                 text("GW_DOC_ID", docId, allowEmpty = false)
@@ -3659,9 +3662,14 @@ object HelperObjects {
                                             "%vcsroot.$sourceVcsRootId.url%"
                                         )
                                         text(
-                                            "GIT_BUILD_BRANCH",
+                                            "GIT_BRANCH",
                                             "refs/heads/${sourceGitBranch}"
                                         )
+                                        text(
+                                            "TEAMCITY_BUILD_BRANCH",
+                                            "%teamcity.build.vcs.branch.$sourceVcsRootId%"
+                                        )
+
 
                                     }
 
@@ -4500,8 +4508,13 @@ object ListenerBuild : Template({
             allowEmpty = false
         )
         text(
-            "env.GIT_BUILD_BRANCH",
-            "%GIT_BUILD_BRANCH%",
+            "env.GIT_BRANCH",
+            "%GIT_BRANCH%",
+            allowEmpty = false
+        )
+        text(
+            "env.TEAMCITY_BUILD_BRANCH",
+            "%TEAMCITY_BUILD_BRANCH%",
             allowEmpty = false
         )
     }
