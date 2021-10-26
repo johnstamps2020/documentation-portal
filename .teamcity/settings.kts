@@ -2555,8 +2555,7 @@ object HelperObjects {
                         )
                         text(
                             "TEAMCITY_BUILD_BRANCH",
-                            "%GIT_BRANCH%",
-                            allowEmpty = false
+                            "%GIT_BRANCH%"
                         )
                     }
 
@@ -3668,8 +3667,7 @@ object HelperObjects {
                                         )
                                         text(
                                             "TEAMCITY_BUILD_BRANCH",
-                                            "%teamcity.build.vcs.branch.$sourceVcsRootId%",
-                                            allowEmpty = false
+                                            "%teamcity.build.vcs.branch.$sourceVcsRootId%"
                                         )
 
 
