@@ -8,6 +8,30 @@
       "srcId": "cloudisapd202111src",
       "docId": "ispc202111apd",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-API.ditamap",
+      "srcId": "testingframeworksapidobsonsrc",
+      "docId": "testingframeworksapidobson",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-UI.ditamap",
+      "srcId": "testingframeworksuidobsonsrc",
+      "docId": "testingframeworksuidobson",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Guidewire_Test_Automation2021.11_ReleaseNotes.ditamap",
+      "srcId": "testingframeworksrndobsonsrc",
+      "docId": "testingframeworksrndobson",
+      "indexRedirect": true
     }
   ]
 }
