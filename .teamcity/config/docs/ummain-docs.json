@@ -1,0 +1,101 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ummainappreaderrn",
+      "title": "Underwriting Management latest AppReader Release Notes",
+      "url": "um/latest/appreaderrn",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Release Notes"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "ummainrn",
+      "title": "Underwriting Management latest Release Notes",
+      "url": "um/latest/releasenotes",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Release Notes"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "ummainagentuser",
+      "title": "Underwriting Management latest Agent User Guide",
+      "url": "um/latest/agentuser",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "ummainoutlook",
+      "title": "Underwriting Management latest Email Upload Add-In to Microsoft Outlook User Guide",
+      "url": "um/latest/outlook",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "ummainstudio",
+      "title": "Underwriting Management latest Studio User Guide",
+      "url": "um/latest/studio",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "ummainuser",
+      "title": "Underwriting Management latest User Guide",
+      "url": "um/latest/user",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    }
+  ]
+}
