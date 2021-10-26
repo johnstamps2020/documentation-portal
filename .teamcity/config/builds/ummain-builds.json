@@ -1,0 +1,53 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "AppReaderReleaseNotes.ditamap",
+      "srcId": "ummainsrc",
+      "docId": "ummainappreaderrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "ummainsrc",
+      "docId": "ummainrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "UM-Agent-Release.ditaval",
+      "root": "UMAgentUserGuide.ditamap",
+      "srcId": "ummainsrc",
+      "docId": "ummainagentuser",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "UMOutlookAddinGuide.ditamap",
+      "srcId": "ummainsrc",
+      "docId": "ummainoutlook",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "UM-Not-Agent-Release.ditaval",
+      "root": "UMStudioHelp.ditamap",
+      "srcId": "ummainsrc",
+      "docId": "ummainstudio",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "UM-Not-Agent-Release.ditaval",
+      "root": "UserGuide.ditamap",
+      "srcId": "ummainsrc",
+      "docId": "ummainuser",
+      "indexRedirect": true
+    }
+  ]
+}
