@@ -1,0 +1,101 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "um1447appreaderrn",
+      "title": "Underwriting Management 144.7 AppReader Release Notes",
+      "url": "um/1447/appreaderrn",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["144.7"],
+        "release": ["Dobson"],
+        "subject": ["Release Notes"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "um1447rn",
+      "title": "Underwriting Management 144.7 Release Notes",
+      "url": "um/1447/releasenotes",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["144.7"],
+        "release": ["Dobson"],
+        "subject": ["Release Notes"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "um1447agentuser",
+      "title": "Underwriting Management 144.7 Agent User Guide",
+      "url": "um/1447/agentuser",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["144.7"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "um1447outlook",
+      "title": "Underwriting Management 144.7 Email Upload Add-In to Microsoft Outlook User Guide",
+      "url": "um/1447/outlook",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["144.7"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "um1447studio",
+      "title": "Underwriting Management 144.7 Studio User Guide",
+      "url": "um/1447/studio",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["144.7"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    },
+    {
+      "id": "um1447studio",
+      "title": "Underwriting Management 144.7 User Guide",
+      "url": "um/1447/user",
+      "metadata": {
+        "product": ["Underwriting Management"],
+        "platform": ["Cloud"],
+        "version": ["144.7"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "ummainsrc",
+      "title": "Underwriting Management Main",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/underwriting-management.git",
+      "branch": "main"
+    },
+    {
+      "id": "um1447src",
+      "title": "Underwriting Management 144.7",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/underwriting-management.git",
+      "branch": "release/144.7"
+    }
+  ]
+}
