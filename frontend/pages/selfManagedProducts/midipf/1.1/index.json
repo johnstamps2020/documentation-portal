@@ -5,6 +5,16 @@
   "class": "twoColumns",
   "items": [
     {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "midipfrn"
+        }
+      ]
+    },
+    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [

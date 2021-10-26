@@ -284,6 +284,21 @@
       "public": false
     },
     {
+      "id": "midipfrn",
+      "title": "Release Notes",
+      "url": "self-managed/mid/ipf/1.1/releasenotes",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["1.1"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "midipg",
       "title": "InsuranceSuite Package for Germany",
       "url": "cloud/mid/ipg/latest",
