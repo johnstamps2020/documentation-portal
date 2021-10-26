@@ -249,8 +249,7 @@ def get_build_ids(app_config: AppConfig, changed_resources: list) -> Union[list[
 
 
 @check_processing_result
-def start_build(app_config: AppConfig, build_id: str) -> Union[
-    BuildInfo or ProcessingRecord]:
+def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or ProcessingRecord]:
     data = {
         'branchName': app_config.teamcity_build_branch,
         'buildType': {
