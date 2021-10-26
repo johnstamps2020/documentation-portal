@@ -3625,16 +3625,21 @@ object HelperObjects {
 
                 if (sourceDocBuilds.isNotEmpty()) {
                     val sourceVcsRootId = RelativeId(sourceId)
+                    val sourceVcsRootIdWithPullRequests = RelativeId("${sourceId}_pullrequests")
                     sourcesToValidate.add(
                         Project {
                             id = RelativeId(getCleanId(sourceId + sourceGitBranch))
                             name = "$sourceTitle ($sourceId)"
 
+                            // Two VCS Roots are created because the listener build and cleaning build need a VCS Root
+                            // without the branch filter for pull requests and builds that run validations
+                            // need a VCS Root with the branch filter for pull requests
+                            vcsRoot(DocVcsRoot(sourceVcsRootId, sourceGitUrl, sourceGitBranch))
                             vcsRoot(
                                 GitVcsRoot
                                 {
-                                    id = sourceVcsRootId
-                                    name = sourceVcsRootId.toString()
+                                    id = sourceVcsRootIdWithPullRequests
+                                    name = sourceVcsRootIdWithPullRequests.toString()
                                     url = sourceGitUrl
                                     authMethod = uploadedKey {
                                         uploadedKey = "sys-doc.rsa"
@@ -3727,7 +3732,7 @@ object HelperObjects {
                                         buildType(
                                             ValidateDoc(
                                                 docBuild,
-                                                RelativeId(sourceId),
+                                                sourceVcsRootIdWithPullRequests,
                                                 sourceId
                                             )
                                         )
