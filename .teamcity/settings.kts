@@ -3468,7 +3468,7 @@ object HelperObjects {
             val docVersion = docMetadata.getJSONArray("version").joinToString(separator = ",")
 
             id = RelativeId(getCleanId(docProduct + docVersion + docId + "validatedoc"))
-            name = "Validate $docTitle $docProduct $docVersion"
+            name = "Validate $docTitle ${docProduct.split(",")[0]} $docVersion"
 
             params {
                 text("GW_DOC_ID", docId, allowEmpty = false)
