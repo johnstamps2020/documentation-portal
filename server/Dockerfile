@@ -20,6 +20,4 @@ LABEL "org.opencontainers.image.title"="docportal" \
       "org.opencontainers.image.vendor"="guidewire" \
       "com.guidewire.dept"="100653"
 
-
-
 CMD [ "npm", "start" ]
