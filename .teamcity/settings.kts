@@ -303,9 +303,10 @@ object Release : BuildType({
                 git push
                 git push --tags
                 
-                docker build -t docportal .
-                docker tag docportal:latest artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
-                docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
+                export PACKAGE_NAME=artifactory.guidewire.com/doctools-docker-dev/docportal
+                
+                docker build -t ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION} . --build-arg tag_version=${'$'}{TAG_VERSION}
+                docker push ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2082,9 +2083,11 @@ object BuildDockerImage : Template({
                 else 
                     export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${'$'}{DEPLOY_ENV}
                 fi
-                docker build -t docportal ./server
-                docker tag docportal artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
-                docker push artifactory.guidewire.com/doctools-docker-dev/docportal:${'$'}{TAG_VERSION}
+                
+                export PACKAGE_NAME=artifactory.guidewire.com/doctools-docker-dev/docportal
+                
+                docker build -t ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION} ./server --build-arg tag_version=${'$'}{TAG_VERSION}
+                docker push ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
