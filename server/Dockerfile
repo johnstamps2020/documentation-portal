@@ -12,7 +12,7 @@ COPY . .
 EXPOSE 8081
 ARG tag_version
 LABEL "org.opencontainers.image.title"="docportal" \
-      "org.opencontainers.image.authors"="doctools" \
+      "org.opencontainers.image.authors"="doctools@guidewire.com" \
       "org.opencontainers.image.url"="https://stash.guidewire.com/projects/DOCTOOLS/repos/documentation-portal" \
       "org.opencontainers.image.documentation"="https://stash.guidewire.com/projects/DOCTOOLS/repos/documentation-portal" \
       "org.opencontainers.image.version"=$tag_version \
