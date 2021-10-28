@@ -791,7 +791,7 @@
       "url": "cloud/pc/latest/integoverview",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Integration"]
