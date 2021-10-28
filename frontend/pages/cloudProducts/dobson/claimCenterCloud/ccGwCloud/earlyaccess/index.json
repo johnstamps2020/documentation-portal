@@ -71,16 +71,6 @@
       ]
     },
     {
-      "label": "Best Practices",
-      "class": "subject bestPractices",
-      "items": [
-        {
-          "label": "Best practices",
-          "id": "iscccloudeabestpractice"
-        }
-      ]
-    },
-    {
       "label": "Configuration",
       "class": "subject configuration",
       "items": [
@@ -103,7 +93,7 @@
       "class": "subject integration",
       "items": [
         {
-          "label": "Integration",
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
           "id": "iscccloudeainteg"
         },
         {

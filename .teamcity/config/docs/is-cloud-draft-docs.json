@@ -82,22 +82,6 @@
       "public": false
     },
     {
-      "id": "isbcclouddraftbestpractice",
-      "title": "Best Practices",
-      "url": "cloud/bc/latest/bestpractice",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Best practices"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isbcclouddraftconfig",
       "title": "Configuration",
       "url": "cloud/bc/latest/config",
@@ -331,22 +315,6 @@
         "version": ["latest"],
         "release": ["Dobson"],
         "subject": ["Administration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "isccclouddraftbestpractice",
-      "title": "Best Practices",
-      "url": "cloud/cc/latest/bestpractice",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Best practices"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -610,22 +578,6 @@
       "public": false
     },
     {
-      "id": "ispcclouddraftbestpractice",
-      "title": "Best Practices",
-      "url": "cloud/pc/latest/bestpractice",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Best practices"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "ispcclouddraftconfig",
       "title": "Configuration",
       "url": "cloud/pc/latest/config",
@@ -723,7 +675,7 @@
     },
     {
       "id": "ispcclouddraftinteg",
-      "title": "Integration",
+      "title": "Plugins, Pre-built Integrations, and SOAP APIs",
       "url": "cloud/pc/latest/integration",
       "metadata": {
         "platform": ["Cloud"],
