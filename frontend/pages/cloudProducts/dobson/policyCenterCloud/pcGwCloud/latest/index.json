@@ -125,6 +125,10 @@
       "class": "subject integration",
       "items": [
         {
+          "label": "Overview of Cloud Integration",
+          "id": "isclouddraftintegoverview"
+        },
+        {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
           "id": "ispcclouddraftinteg"
         },

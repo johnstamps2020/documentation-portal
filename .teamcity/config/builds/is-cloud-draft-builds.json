@@ -103,14 +103,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosudraftsrc",
-      "docId": "isclouddraftgosu",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistestdraftsrc",
@@ -435,6 +427,22 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "cloudiscontactdraftsrc",
       "docId": "isclouddraftcontact",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "GosuRefGuide.ditamap",
+      "srcId": "cloudisgosudraftsrc",
+      "docId": "isclouddraftgosu",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "root": "OverviewCloudIntegration.ditamap",
+      "srcId": "cloudisintegoverviewdraftsrc",
+      "docId": "isclouddraftintegoverview",
       "indexRedirect": true
     }
   ]
