@@ -5498,22 +5498,6 @@
       "public": false
     },
     {
-      "id": "cc202011apiref",
-      "title": "Cloud API Reference",
-      "url": "cloud/cc/202011/apiref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true
-    },
-    {
       "id": "iscc202011gosu",
       "title": "Gosu Reference",
       "url": "cloud/cc/202011/gosu",
@@ -7260,22 +7244,6 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
-    },
-    {
-      "id": "in20211apiref",
-      "title": "API Reference",
-      "url": "cloud/in/20211/apiref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Integration"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true
     },
     {
       "id": "in20211config",

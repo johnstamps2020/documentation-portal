@@ -1,0 +1,84 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "cc202011apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202011/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "in20211apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20211/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Integration"],
+        "release": ["Cortina"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "cc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202104/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "pc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202104/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "ccapirefpreview",
+      "title": "CC API Reference Preview",
+      "url": "cloud/cc/latest/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["latest"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    }
+  ]
+}

@@ -2578,26 +2578,6 @@
       "indexRedirect": true
     },
     {
-      "buildType": "yarn",
-      "docId": "cc202011apiref",
-      "srcId": "srcapiref202011"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "pc202104apiref",
-      "srcId": "srcpcapiref202011"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "cc202104apiref",
-      "srcId": "srcapiref202104"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "in20211apiref",
-      "srcId": "srcin20211apiref"
-    },
-    {
       "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
