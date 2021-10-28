@@ -788,7 +788,7 @@
     {
       "id": "isclouddraftintegoverview",
       "title": "Overview of Cloud Integration",
-      "url": "cloud/pc/latest/integoverview",
+      "url": "cloud/latest/integoverview",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
