@@ -14,7 +14,6 @@ Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
     {
       client: oktaClient,
       params: {
-        idp: '0oamwriqo1E1dOdd70h7',
         scope: 'openid profile',
       },
     },
@@ -46,6 +45,10 @@ Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
   router.get(
     '/',
     function(req, res, next) {
+      delete oidcStrategy._params.idp;
+      if (req.query.idp === 'okta') {
+        oidcStrategy._params.idp = process.env.OKTA_IDP;
+      }
       next();
     },
     passport.authenticate('oidcStrategy')
