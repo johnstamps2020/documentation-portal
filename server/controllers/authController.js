@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { ExpressOIDC } = require('@okta/oidc-middleware');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc } = require('../controllers/configController');
@@ -91,45 +90,16 @@ async function verifyToken(req) {
 
 async function isRequestAuthenticated(req) {
   try {
-    // const rawJsonRequest = req.query.rawJSON === 'true';
-    // const requestAuthenticated = rawJsonRequest
-    //     ? !!(await verifyToken(req))
-    //     : !!req.isAuthenticated();
-    // return requestAuthenticated;
-    return true;
+    const rawJsonRequest = req.query.rawJSON === 'true';
+    const requestAuthenticated = rawJsonRequest
+      ? !!(await verifyToken(req))
+      : !!req.isAuthenticated();
+    return requestAuthenticated;
   } catch (err) {
     console.log(err.message);
     return false;
   }
 }
-
-// const oktaOIDC = new ExpressOIDC({
-//     issuer: `${process.env.OKTA_DOMAIN}`,
-//     client_id: `${process.env.OKTA_CLIENT_ID}`,
-//     client_secret: `${process.env.OKTA_CLIENT_SECRET}`,
-//     appBaseUrl: `${process.env.APP_BASE_URL}`,
-//     scope: 'openid profile',
-// });
-
-// const grantConfig = {
-//     defaults: {
-//         origin: process.env.APP_BASE_URL,
-//         transport: 'session',
-//         state: true,
-//         response: 'code',
-//         redirect_uri: `${process.env.APP_BASE_URL}/authorization-code/callback`,
-//     },
-//     okta: {
-//         authorize_url: `${process.env.OKTA_DOMAIN}/oauth2/v1/authorize`,
-//         access_url: `${process.env.OKTA_DOMAIN}/oauth2/v1/token`,
-//         key: process.env.OKTA_CLIENT_ID,
-//         secret: process.env.OKTA_CLIENT_SECRET,
-//         scope: ['openid', 'profile'],
-//         custom_params: {
-//             idp: '0oamwriqo1E1dOdd70h7',
-//         },
-//     },
-// };
 
 const majorOpenRoutes = [
   '/404',

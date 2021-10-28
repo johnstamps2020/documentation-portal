@@ -18,19 +18,30 @@ Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
         scope: 'openid profile',
       },
     },
-    function(profile, done) {
-      return done(null, profile);
+    function(tokenSet, profile, done) {
+      if (tokenSet) {
+        return profile
+          ? done(null, {
+              profile,
+              tokens: tokenSet,
+            })
+          : done(null, {
+              tokens: tokenSet,
+            });
+      } else {
+        return done(null);
+      }
     }
   );
-  passport.use('oidcStrategy', oidcStrategy);
   passport.serializeUser(function(user, done) {
     done(null, user);
   });
   passport.deserializeUser(function(user, done) {
     done(null, user);
   });
-  router.use(passport.initialize({}));
-  router.use(passport.session({}));
+  passport.use('oidcStrategy', oidcStrategy);
+  router.use(passport.initialize());
+  router.use(passport.session());
 
   router.get(
     '/',
@@ -40,7 +51,7 @@ Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
     passport.authenticate('oidcStrategy')
   );
 
-  router.post(
+  router.use(
     '/callback',
     function(req, res, next) {
       next();
