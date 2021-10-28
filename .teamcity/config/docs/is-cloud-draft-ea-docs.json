@@ -82,22 +82,6 @@
       "public": false
     },
     {
-      "id": "isbccloudeabestpractice",
-      "title": "Best Practices",
-      "url": "cloud/bc/ea/bestpractice",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["earlyaccess"],
-        "release": ["Dobson"],
-        "subject": ["Best practices"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "isbccloudeaconfig",
       "title": "Configuration",
       "url": "cloud/bc/ea/config",
@@ -299,22 +283,6 @@
         "version": ["earlyaccess"],
         "release": ["Dobson"],
         "subject": ["Administration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "iscccloudeabestpractice",
-      "title": "Best Practices",
-      "url": "cloud/cc/ea/bestpractice",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["earlyaccess"],
-        "release": ["Dobson"],
-        "subject": ["Best practices"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -546,22 +514,6 @@
       "public": false
     },
     {
-      "id": "ispccloudeabestpractice",
-      "title": "Best Practices",
-      "url": "cloud/pc/ea/bestpractice",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["earlyaccess"],
-        "release": ["Dobson"],
-        "subject": ["Best practices"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "ispccloudeaapd",
       "title": "Advanced Product Designer",
       "url": "cloud/pc/ea/apd",
@@ -675,7 +627,7 @@
     },
     {
       "id": "ispccloudeainteg",
-      "title": "Integration",
+      "title": "Plugins, Pre-built Integrations, and SOAP APIs",
       "url": "cloud/pc/ea/integration",
       "metadata": {
         "platform": ["Cloud"],

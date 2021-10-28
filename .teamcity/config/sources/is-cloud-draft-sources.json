@@ -53,21 +53,6 @@
       ]
     },
     {
-      "id": "cloudisbpdraftsrc",
-      "title": "IS Cloud Draft Best Practices",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/active/BestPracticesGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-EA.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-EA.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval"
-      ]
-    },
-    {
       "id": "cloudisconfigdraftsrc",
       "title": "IS Cloud Draft Configuration",
       "sourceType": "xdocs",
@@ -154,7 +139,7 @@
     },
     {
       "id": "cloudisintegdraftsrc",
-      "title": "IS Cloud Draft Integration",
+      "title": "IS Cloud Draft Plugins, Pre-built Integrations, and SOAP APIs",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [

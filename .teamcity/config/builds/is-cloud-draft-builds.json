@@ -56,14 +56,6 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Draft.ditaval",
-      "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudisbpdraftsrc",
-      "docId": "isbcclouddraftbestpractice",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Draft.ditaval",
       "root": "ConfigGuide.ditamap",
       "srcId": "cloudisconfigdraftsrc",
       "docId": "isbcclouddraftconfig",
@@ -191,14 +183,6 @@
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisadmindraftsrc",
       "docId": "isccclouddraftadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
-      "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudisbpdraftsrc",
-      "docId": "isccclouddraftbestpractice",
       "indexRedirect": true
     },
     {
@@ -339,14 +323,6 @@
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisadmindraftsrc",
       "docId": "ispcclouddraftadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "BestPracticesGuide.ditamap",
-      "srcId": "cloudisbpdraftsrc",
-      "docId": "ispcclouddraftbestpractice",
       "indexRedirect": true
     },
     {
