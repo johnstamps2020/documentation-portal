@@ -12,9 +12,9 @@ function getUserInfo(req) {
   const userInfo = {
     isLoggedIn: isLoggedIn,
   };
-  const user = req.userContext;
-  if (user && user.hasOwnProperty('userinfo')) {
-    const { name, preferred_username, locale } = user.userinfo;
+  const user = req.user;
+  if (user) {
+    const { name, preferred_username, locale } = user;
     userInfo.hasGuidewireEmail = belongsToGuidewire(preferred_username);
     userInfo.name = name;
     userInfo.preferred_username = preferred_username;

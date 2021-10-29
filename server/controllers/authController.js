@@ -1,8 +1,8 @@
 require('dotenv').config();
-const { ExpressOIDC } = require('@okta/oidc-middleware');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc } = require('../controllers/configController');
+const passport = require('passport');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
@@ -101,14 +101,6 @@ async function isRequestAuthenticated(req) {
   }
 }
 
-const oktaOIDC = new ExpressOIDC({
-  issuer: `${process.env.OKTA_DOMAIN}`,
-  client_id: `${process.env.OKTA_CLIENT_ID}`,
-  client_secret: `${process.env.OKTA_CLIENT_SECRET}`,
-  appBaseUrl: `${process.env.APP_BASE_URL}`,
-  scope: 'openid profile',
-});
-
 const majorOpenRoutes = [
   '/404',
   '/unauthorized',
@@ -185,7 +177,6 @@ const authGateway = async (req, res, next) => {
 };
 
 module.exports = {
-  oktaOIDC,
   authGateway,
   loginGatewayRoute,
   isRequestAuthenticated,

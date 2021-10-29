@@ -76,6 +76,7 @@ const gwLoginRouter = require('./routes/gw-login');
 const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
+const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
@@ -85,6 +86,7 @@ const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
 const recommendationsRouter = require('./routes/recommendations');
+const passport = require('passport');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -99,17 +101,23 @@ app.use('/gw-login', gwLoginRouter);
 app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
+app.use('/authorization-code', oidcLoginRouter);
 
 // serve static assets from the public folder
 app.use(express.static(path.join(__dirname, 'public'), options));
 app.use(express.static(path.join(__dirname, 'static', 'sitemap')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-const oktaOIDC = require('./controllers/authController').oktaOIDC;
 const authGateway = require('./controllers/authController').authGateway;
 
-// ExpressOIDC will attach handlers for the /login and /authorization-code/callback routes
-app.use(oktaOIDC.router);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 app.use(authGateway);
 
 // server static pages from the pages folder
