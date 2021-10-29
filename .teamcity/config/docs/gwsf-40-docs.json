@@ -1,0 +1,185 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dxdiapp40",
+      "title": "Application Guide",
+      "url": "cloud/dx/di/40/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxdiinstall40",
+      "title": "Installation Guide",
+      "url": "cloud/dx/di/40/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxdiadmin40",
+      "title": "Administration Guide",
+      "url": "cloud/dx/di/40/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxdirelnotes40",
+      "title": "Release Notes",
+      "url": "cloud/dx/di/40/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedapp40",
+      "title": "Application Guide",
+      "url": "cloud/dx/ed/40/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedinstall40",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ed/40/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedadmin40",
+      "title": "Administration Guide",
+      "url": "cloud/dx/ed/40/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxedrelnotes40",
+      "title": "Release Notes",
+      "url": "cloud/dx/ed/40/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodapp40",
+      "title": "Application Guide",
+      "url": "cloud/dx/vod/40/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodinstall40",
+      "title": "Installation Guide",
+      "url": "cloud/dx/vod/40/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodadmin40",
+      "title": "Administration Guide",
+      "url": "cloud/dx/vod/40/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxvodrelnotes40",
+      "title": "Release Notes",
+      "url": "cloud/dx/vod/40/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce View on Demand"],
+        "platform": ["Cloud"],
+        "version": ["4.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

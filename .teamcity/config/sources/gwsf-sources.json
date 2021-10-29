@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "dxgwsf40",
+      "title": "Guidwire for SalesForce 4.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital.git",
+      "branch": "release/40"
+    }
+  ]
+}
