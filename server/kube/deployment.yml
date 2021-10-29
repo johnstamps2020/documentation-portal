@@ -54,6 +54,8 @@ spec:
               value: 'BUILD_TIME'
             - name: OKTA_DOMAIN
               value: ${OKTA_DOMAIN}
+            - name: OKTA_IDP
+              value: ${OKTA_IDP}
             - name: OKTA_CLIENT_ID
               value: ${OKTA_CLIENT_ID}
             - name: OKTA_CLIENT_SECRET
