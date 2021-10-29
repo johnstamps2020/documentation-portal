@@ -2,8 +2,14 @@ const { Issuer, Strategy } = require('openid-client');
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
+  router.use(cookieParser());
+  router.use(bodyParser.urlencoded({ extended: false }));
+  router.use(bodyParser.json());
+
   const oktaClient = new oktaIssuer.Client({
     client_id: process.env.OKTA_CLIENT_ID,
     client_secret: process.env.OKTA_CLIENT_SECRET,
@@ -18,18 +24,7 @@ Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
       },
     },
     function(tokenSet, profile, done) {
-      if (tokenSet) {
-        return profile
-          ? done(null, {
-              profile,
-              tokens: tokenSet,
-            })
-          : done(null, {
-              tokens: tokenSet,
-            });
-      } else {
-        return done(null);
-      }
+      return done(null, profile);
     }
   );
   passport.serializeUser(function(user, done) {

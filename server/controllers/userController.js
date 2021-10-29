@@ -12,9 +12,9 @@ function getUserInfo(req) {
   const userInfo = {
     isLoggedIn: isLoggedIn,
   };
-  const user = req._passport.session.user;
-  if (user && user.hasOwnProperty('profile')) {
-    const { name, preferred_username, locale } = user.profile;
+  const user = req.user;
+  if (user) {
+    const { name, preferred_username, locale } = user;
     userInfo.hasGuidewireEmail = belongsToGuidewire(preferred_username);
     userInfo.name = name;
     userInfo.preferred_username = preferred_username;
