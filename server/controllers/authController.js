@@ -177,8 +177,6 @@ const authGateway = async (req, res, next) => {
 };
 
 module.exports = {
-  // grantConfig,
-  // oktaOIDC,
   authGateway,
   loginGatewayRoute,
   isRequestAuthenticated,
