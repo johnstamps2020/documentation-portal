@@ -134,13 +134,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/cc/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2021.04",
+          "sourceFolder": "ReleaseNotes-files/cc/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2021.11",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
+          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -274,13 +274,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/pc/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/pc/2021.04",
+          "sourceFolder": "ReleaseNotes-files/pc/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2021.11",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
+          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
