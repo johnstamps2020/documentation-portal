@@ -155,13 +155,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dxstaging",
-      "docId": "selfmanageddxdixowqwwrfu"
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GT-API.ditamap",
       "srcId": "testingframeworksapibanffsrc",
