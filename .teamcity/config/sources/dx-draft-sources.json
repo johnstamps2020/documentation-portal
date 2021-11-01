@@ -103,23 +103,6 @@
       ]
     },
     {
-      "id": "dxdraftadminsecurity",
-      "title": "Digital Administration and Security Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/active/admin-and-security-guide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-OnPrem.ditaval"
-      ]
-    },
-    {
       "id": "dxdraftdcg",
       "title": "Digital Code Generation Guide Draft",
       "sourceType": "git",
