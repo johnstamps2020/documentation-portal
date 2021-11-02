@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "ServiceRepEngage latest",
+  "title": "CustomerEngage Quote and Buy 2021.11",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftsrerelnotes"
+          "id": "dx202111ceqbrelnotes"
         }
       ]
     },
@@ -20,7 +20,17 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftsreinstall"
+          "id": "dx202111ceqbinstall"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Digital Code Generation Guide",
+          "id": "dx202111dcg"
         }
       ]
     },
@@ -30,7 +40,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftsreapp"
+          "id": "dx202111ceqbapp"
         }
       ]
     },
@@ -40,11 +50,15 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftsredev"
+          "id": "dx202111ceqbdev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftsrerefguides"
+          "id": "dx202111ceqbrefguides"
+        },
+        {
+          "label": "Digital Frontend API Documentation",
+          "id": "dxjsdocs202111"
         }
       ]
     }

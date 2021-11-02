@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "CustomerEngage Quote and Buy latest",
+  "title": "CustomerEngage Account Management 2021.11",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftceqbrelnotes"
+          "id": "dx202111ceamrelnotes"
         }
       ]
     },
@@ -20,17 +20,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftceqbinstall"
-        }
-      ]
-    },
-    {
-      "label": "Configuration",
-      "class": "subject configuration",
-      "items": [
-        {
-          "label": "Digital Code Generation Guide",
-          "id": "dxclouddraftdcg"
+          "id": "dx202111ceaminstall"
         }
       ]
     },
@@ -40,7 +30,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftceqbapp"
+          "id": "dx202111ceamapp"
         }
       ]
     },
@@ -50,11 +40,15 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftceqbdev"
+          "id": "dx202111ceamdev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftceqbrefguides"
+          "id": "dx202111ceamrefguides"
+        },
+        {
+          "label": "Digital Frontend API Documentation",
+          "id": "dxjsdocs202111"
         }
       ]
     }

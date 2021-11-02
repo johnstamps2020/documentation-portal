@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "CustomerEngage Account Management latest",
+  "title": "VendorEngage 2021.11",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftceamrelnotes"
+          "id": "dx202111verelnotes"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftceaminstall"
+          "id": "dx202111veinstall"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftceamapp"
+          "id": "dx202111veapp"
         }
       ]
     },
@@ -40,11 +40,15 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftceamdev"
+          "id": "dx202111vedev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftceamrefguides"
+          "id": "dx202111verefguides"
+        },
+        {
+          "label": "Digital Frontend API Documentation",
+          "id": "dxjsdocs202111"
         }
       ]
     }

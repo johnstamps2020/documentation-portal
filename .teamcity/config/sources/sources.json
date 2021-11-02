@@ -657,6 +657,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "11.4.1",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/1141/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
