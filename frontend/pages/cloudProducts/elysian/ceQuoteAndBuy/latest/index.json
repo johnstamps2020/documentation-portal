@@ -1,0 +1,62 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "CustomerEngage Quote and Buy latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dxclouddraftceqbrelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dxclouddraftceqbinstall"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Digital Code Generation Guide",
+          "id": "dxclouddraftdcg"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dxclouddraftceqbapp"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dxclouddraftceqbdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dxclouddraftceqbrefguides"
+        }
+      ]
+    }
+  ]
+}

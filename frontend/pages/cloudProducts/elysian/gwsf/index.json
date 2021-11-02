@@ -1,0 +1,26 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire for Salesforce 4.0",
+  "template": "page.j2",
+  "class": "blue-theme elysian threeCards",
+  "items": [
+    {
+      "label": "Data Integrations",
+      "class": "productFamily cardShadow",
+      "page": "di/4.0",
+      "env": ["int"]
+    },
+    {
+      "label": "Digital Gateway",
+      "class": "productFamily cardShadow",
+      "page": "ed/4.0",
+      "env": ["int"]
+    },
+    {
+      "label": "View on Demand",
+      "class": "productFamily cardShadow",
+      "page": "vod/4.0",
+      "env": ["int"]
+    }
+  ]
+}

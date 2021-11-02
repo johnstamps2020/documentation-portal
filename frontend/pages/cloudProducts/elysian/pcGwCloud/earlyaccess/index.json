@@ -1,0 +1,142 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud earlyaccess",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "earlyaccess",
+    "items": [
+      {
+        "label": "latest",
+        "page": "../latest"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispccloudeareleasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispccloudeanewandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "ispccloudeadevsetup"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispccloudeaupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispccloudeaapp"
+        },
+        {
+          "label": "Contact Management",
+          "id": "iscloudeacontact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispccloudeaadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispccloudeadataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "ispccloudeaconfig"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispccloudeaglobal"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispccloudearules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispccloudeapd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispccloudeapm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "ispccloudeainteg"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "ispccloudeacloudapi"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispccloudearestapifw"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "iscloudeagosu"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "ispccloudeatesting"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}
