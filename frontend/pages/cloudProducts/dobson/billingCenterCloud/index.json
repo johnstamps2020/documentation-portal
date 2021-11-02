@@ -21,34 +21,28 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "BillingCenter for Guidewire Cloud",
-          "page": "bcGwCloud/latest",
-          "env": ["int"]
+          "page": "bcGwCloud/latest"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools3x",
-          "env": ["int"]
+          "id": "isconfigupgradetools3x"
         }
       ]
     },
     {
       "label": "Analytics",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "Cloud Data Access",
-          "page": "../../cloudDataAccess/latest",
-          "env": ["int"]
+          "page": "../../cloudDataAccess/latest"
         },
         {
           "label": "Explore",
-          "page": "../../explore/latest",
-          "env": ["int"]
+          "page": "../../explore/latest"
         },
         {
           "label": "Add-ons",
@@ -56,13 +50,11 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/latest",
-              "env": ["int"]
+              "page": "../dhGwCloud/latest"
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/latest",
-              "env": ["int"]
+              "page": "../icGwCloud/latest"
             }
           ]
         }
@@ -71,7 +63,6 @@
     {
       "label": "Digital Framework",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "Jutro Design System",
