@@ -25,32 +25,27 @@
     {
       "label": "PolicyCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "policyCenterCloud",
-      "env": ["dev", "int", "staging"]
+      "page": "policyCenterCloud"
     },
     {
       "label": "ClaimCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "claimCenterCloud",
-      "env": ["dev", "int", "staging"]
+      "page": "claimCenterCloud"
     },
     {
       "label": "BillingCenter Cloud",
       "class": "productFamily cardShadow",
-      "page": "billingCenterCloud",
-      "env": ["dev", "int", "staging"]
+      "page": "billingCenterCloud"
     },
     {
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.2",
-      "env": ["dev", "int", "staging"]
+      "page": "insuranceNow/2021.2"
     },
     {
       "label": "Guidewire Cloud Platform",
       "class": "productFamily cardShadow",
-      "page": "../guidewireCloudPlatform",
-      "env": ["dev", "int", "staging"]
+      "page": "../guidewireCloudPlatform"
     },
     {
       "label": "Feature Preview",
