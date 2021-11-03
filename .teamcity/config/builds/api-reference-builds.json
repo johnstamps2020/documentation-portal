@@ -24,7 +24,8 @@
     {
       "buildType": "yarn",
       "docId": "ccapirefpreview",
-      "srcId": "srcccapirefpreview"
+      "srcId": "srcccapirefpreview",
+      "nodeImageVersion": "14.14.0"
     }
   ]
 }
