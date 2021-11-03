@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "IRSA Integration for ClaimCenter 1.1",
+  "title": "IRSA Integration Package 1.1 for ClaimCenter",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
