@@ -128,7 +128,7 @@
         {
           "label": "Best Practices",
           "class": "group",
-          "env": "int",
+          "env": ["int"],
           "items": [
             {
               "label": "Digital Best Practices",
