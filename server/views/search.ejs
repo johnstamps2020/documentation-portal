@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="resultWrapper">
-        <% if (!userContext) { %>
+        <% if (!requestIsAuthenticated) { %>
             <div class="notLoggedInWarning">
                 You are not logged in. Search results are limited to public
                 documents only.

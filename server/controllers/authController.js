@@ -2,7 +2,6 @@ require('dotenv').config();
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc } = require('../controllers/configController');
-const passport = require('passport');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
@@ -179,5 +178,4 @@ const authGateway = async (req, res, next) => {
 module.exports = {
   authGateway,
   loginGatewayRoute,
-  isRequestAuthenticated,
 };
