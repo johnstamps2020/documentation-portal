@@ -8,13 +8,12 @@ function belongsToGuidewire(email) {
 }
 
 function getUserInfo(req) {
-  const isLoggedIn = req.isAuthenticated() || process.env.ENABLE_AUTH === 'no';
+  const isLoggedIn = req.session.requestIsAuthenticated;
   const userInfo = {
     isLoggedIn: isLoggedIn,
   };
-  const user = req.user;
-  if (user) {
-    const { name, preferred_username, locale } = user;
+  if (isLoggedIn) {
+    const { name, preferred_username, locale } = req.user;
     userInfo.hasGuidewireEmail = belongsToGuidewire(preferred_username);
     userInfo.name = name;
     userInfo.preferred_username = preferred_username;
