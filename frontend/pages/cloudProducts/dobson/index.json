@@ -51,7 +51,7 @@
       "label": "Feature Preview",
       "class": "productFamily cardShadow",
       "page": "../featurePreview",
-      "env": ["dev", "int"]
+      "env": ["int"]
     }
   ]
 }

@@ -8304,7 +8304,7 @@
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Integration"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -8320,7 +8320,7 @@
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Release notes"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,

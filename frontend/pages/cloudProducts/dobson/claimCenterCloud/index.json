@@ -24,11 +24,18 @@
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ccGwCloud/latest"
+          "page": "ccGwCloud/2021.11",
+          "env": ["dev", "int", "staging"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools3x"
+          "id": "isconfigupgradetools310",
+          "env": ["dev", "staging"]
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools3x",
+          "env": ["int"]
         }
       ]
     },
@@ -104,7 +111,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/5.3.1"
+              "page": "../../../jutroDesignSystem/6.5.0"
             }
           ]
         },
