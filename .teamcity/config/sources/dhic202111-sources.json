@@ -1,0 +1,105 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "dmrn202111src",
+      "title": "DataManagement 2021.11 Release Notes",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/releasenotes.ditamap"
+      ]
+    },
+    {
+      "id": "dmdevref202111src",
+      "title": "DataManagement 2021.11 Developer Reference",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/developer-ref.ditamap"
+      ]
+    },
+    {
+      "id": "dmproduct202111src",
+      "title": "DataManagement 2021.11 Product Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/product.ditamap"
+      ]
+    },
+    {
+      "id": "dminstall202111src",
+      "title": "DataManagement 2021.11 Installation Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/install.ditamap"
+      ]
+    },
+    {
+      "id": "dmupgrade202111src",
+      "title": "DataManagement 2021.11 Upgrade Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/upgrade.ditamap"
+      ]
+    },
+    {
+      "id": "dmconfig202111src",
+      "title": "DataManagement 2021.11 Configuration Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/config.ditamap"
+      ]
+    },
+    {
+      "id": "dmdataspec202111src",
+      "title": "DataManagement 2021.11 Data Specifications Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/dataspec.ditamap"
+      ]
+    },
+    {
+      "id": "dmadmin202111src",
+      "title": "DataManagement 2021.11 Administration Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/admin.ditamap"
+      ]
+    },
+    {
+      "id": "icbiapp202111src",
+      "title": "InfoCenter BI App Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/bi-applications.ditamap"
+      ]
+    },
+    {
+      "id": "icreports202111src",
+      "title": "InfoCenter Reports Guide",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2021.11",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/active/reports.ditamap"
+      ]
+    }
+  ]
+}

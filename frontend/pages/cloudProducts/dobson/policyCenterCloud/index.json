@@ -79,11 +79,11 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/latest"
+              "page": "../dhGwCloud/2021.11"
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/latest"
+              "page": "../icGwCloud/2021.11"
             }
           ]
         }
