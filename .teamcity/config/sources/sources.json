@@ -1030,13 +1030,13 @@
       ]
     },
     {
-      "id": "in20212billrefsrc",
-      "title": "InsuranceNow 2021.2 Billing Configuration",
+      "id": "inbillrefsrc",
+      "title": "InsuranceNow Billing Configuration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2021.2",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/BillingConfigurationReference2021x.ditamap"
       ]
     },
@@ -1434,16 +1434,6 @@
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
-      ]
-    },
-    {
-      "id": "in20211xbillrefdraftsrc",
-      "title": "InsuranceNow 2021.1 Billing Configuration Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/BillingConfigurationReference2021x.ditamap"
       ]
     },
     {
@@ -1898,7 +1888,7 @@
     },
     {
       "id": "indevguidejava11draftsrc",
-      "title": "InsuranceNow Developers Java 11 Draft",
+      "title": "InsuranceNow Developers Java 11",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
