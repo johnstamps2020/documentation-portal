@@ -1,0 +1,293 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dhrn202111",
+      "title": "Release Notes",
+      "url": "cloud/dh/202111/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhproduct202111",
+      "title": "Product Guide",
+      "url": "cloud/dh/202111/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhinstall202111",
+      "title": "Installation Guide",
+      "url": "cloud/dh/202111/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhupgrade202111",
+      "title": "Upgrade Guide",
+      "url": "cloud/dh/202111/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhconfig202111",
+      "title": "Configuration Guide",
+      "url": "cloud/dh/202111/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhdataspec202111",
+      "title": "Data Specifications Guide",
+      "url": "cloud/dh/202111/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhadmin202111",
+      "title": "Administration Guide",
+      "url": "cloud/dh/202111/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhdevref202111",
+      "title": "Developer Reference",
+      "url": "cloud/dh/202111/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icrn202111",
+      "title": "Release Notes",
+      "url": "cloud/ic/202111/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icproduct202111",
+      "title": "Product Guide",
+      "url": "cloud/ic/202111/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icinstall202111",
+      "title": "Installation Guide",
+      "url": "cloud/ic/202111/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icupgrade202111",
+      "title": "Upgrade Guide",
+      "url": "cloud/ic/202111/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icconfig202111",
+      "title": "Configuration Guide",
+      "url": "cloud/ic/202111/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icdataspec202111",
+      "title": "Data Specifications Guide",
+      "url": "cloud/ic/202111/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icadmin202111",
+      "title": "Administration Guide",
+      "url": "cloud/ic/202111/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icbiapp202111",
+      "title": "BI Applications Guide",
+      "url": "cloud/ic/202111/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icreports202111",
+      "title": "Reports Guide",
+      "url": "cloud/ic/202111/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icdevref202111",
+      "title": "Developer Reference",
+      "url": "cloud/ic/202111/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
