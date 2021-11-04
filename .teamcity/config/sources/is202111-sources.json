@@ -134,7 +134,7 @@
     },
     {
       "id": "cloudisinteg202111src",
-      "title": "IS 2021.11 Plugins, Pre-built Integrations, and SOAP APIs",
+      "title": "IS 2021.11 Plugins, Prebuilt Integrations, and SOAP APIs",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/2021.11",
