@@ -2,9 +2,9 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20212xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20212x/releasenotes",
+      "id": "in20212rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20212/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -12,31 +12,15 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "inbillrefdraft",
-      "title": "Billing Configuration Reference Draft",
-      "url": "cloud/in/billref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xstudiorndraft",
-      "title": "Studio Release Notes Draft",
-      "url": "cloud/in/20212x/studiorn",
+      "id": "in20212studiorn",
+      "title": "Studio Release Notes",
+      "url": "cloud/in/20212/studiorn",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -44,15 +28,15 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xappdraft",
-      "title": "Application Guide Draft",
-      "url": "cloud/in/20212x/app",
+      "id": "in20212app",
+      "title": "Application Guide",
+      "url": "cloud/in/20212/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -60,31 +44,15 @@
         "subject": ["Features and functionality"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xcsalespconfigdraft",
-      "title": "Consumer Sales Portal Configuration Draft",
-      "url": "cloud/in/20212x/csalespconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xcsalespdraft",
-      "title": "Consumer Sales Portal Features Draft",
-      "url": "cloud/in/20212x/csalesp",
+      "id": "in20212csalesp",
+      "title": "Consumer Sales Portal Features",
+      "url": "cloud/in/20212/csalesp",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -92,15 +60,15 @@
         "subject": ["Features and functionality"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xcservicepdraft",
-      "title": "Consumer Service Portal Features Draft",
-      "url": "cloud/in/20212x/cservicep",
+      "id": "in20212cservicep",
+      "title": "Consumer Service Portal Features",
+      "url": "cloud/in/20212/cservicep",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -108,15 +76,15 @@
         "subject": ["Features and functionality"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xcsprndraft",
-      "title": "Consumer Service Portal Release Notes Draft",
-      "url": "cloud/in/20212x/csprn",
+      "id": "in20212csprn",
+      "title": "Consumer Service Portal Release Notes",
+      "url": "cloud/in/20212/csprn",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -124,15 +92,15 @@
         "subject": ["Release Notes"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xappreaderintegdraft",
-      "title": "AppReader Integration Draft",
-      "url": "cloud/in/20212x/appreaderinteg",
+      "id": "in20212appreaderinteg",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20212/appreaderinteg",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -140,15 +108,15 @@
         "subject": ["Integration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xpadraft",
-      "title": "Predictive Analytics Integration Draft",
-      "url": "cloud/in/20212x/pa",
+      "id": "in20212pa",
+      "title": "Predictive Analytics Integration",
+      "url": "cloud/in/20212/pa",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -156,31 +124,15 @@
         "subject": ["Integration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xbiintegdraft",
-      "title": "Business Intelligence Integration Draft",
-      "url": "cloud/in/20212x/biinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Integration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xconfigdraft",
-      "title": "Core Configuration Guide Draft",
-      "url": "cloud/in/20212x/config",
+      "id": "in20212config",
+      "title": "Core Configuration Guide",
+      "url": "cloud/in/20212/config",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -188,15 +140,15 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xcommonconfigdraft",
-      "title": "Common Functionality Configuration Reference Draft",
-      "url": "cloud/in/20212x/commonconfig",
+      "id": "in20212commonconfig",
+      "title": "Common Functionality Configuration Reference",
+      "url": "cloud/in/20212/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -204,30 +156,14 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xcservicepconfigdraft",
-      "title": "Consumer Service Portal Configuration Guide Draft",
-      "url": "cloud/in/20212x/cservicepconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "indevguidejava11draftext",
-      "title": "Developers Setup (External) Draft",
+      "id": "indevguidejava11ext",
+      "title": "Developers Setup",
       "url": "cloud/in/devsetupjava11ext",
       "metadata": {
         "platform": ["Cloud"],
@@ -236,15 +172,15 @@
         "subject": ["Installation"],
         "release": ["Cortina", "Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xstudiodraft",
-      "title": "Studio Configuration Guide Draft",
-      "url": "cloud/in/20212x/studioconfig",
+      "id": "in20212studio",
+      "title": "Studio Configuration Guide",
+      "url": "cloud/in/20212/studioconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -252,15 +188,15 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xprovportaldraft",
-      "title": "Provisioning Portal Draft",
-      "url": "cloud/in/20212x/provportal",
+      "id": "in20212portaldev",
+      "title": "Portal Development Guide",
+      "url": "cloud/in/20212/portaldev",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -268,15 +204,15 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xportaldevdraft",
-      "title": "Portal Development Guide Draft",
-      "url": "cloud/in/20212x/portaldev",
+      "id": "in20212prodattref",
+      "title": "Product Attribute Reference",
+      "url": "cloud/in/20212/prodattref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -284,15 +220,15 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xprodattrefdraft",
-      "title": "Product Attribute Reference Draft",
-      "url": "cloud/in/20212x/prodattref",
+      "id": "in20212uwconfig",
+      "title": "Underwriting Configuration Reference",
+      "url": "cloud/in/20212/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -300,15 +236,15 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212xuwconfigdraft",
-      "title": "Underwriting Configuration Reference Draft",
-      "url": "cloud/in/20212x/uwconfig",
+      "id": "in20212claimsconfig",
+      "title": "Claims Configuration Reference",
+      "url": "cloud/in/20212/claimsconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -316,23 +252,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xclaimsconfigdraft",
-      "title": "Claims Configuration Reference Draft",
-      "url": "cloud/in/20212x/claimsconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

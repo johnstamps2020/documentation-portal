@@ -40,7 +40,14 @@
     {
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2021.2"
+      "page": "insuranceNow/2021.2",
+      "env": ["dev", "staging"]
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "productFamily cardShadow",
+      "page": "insuranceNow/latest",
+      "env": ["int"]
     },
     {
       "label": "Guidewire Cloud Platform",
