@@ -2359,14 +2359,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ExcelDesignedRating30.ditamap",
-      "srcId": "in20211excelrating30src",
-      "docId": "in20211excelrating30",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "InsuranceNowReleaseNotes20202.ditamap",
       "srcId": "in20202rnsrc",
       "docId": "in20202rn",

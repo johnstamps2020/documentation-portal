@@ -1184,17 +1184,6 @@
       ]
     },
     {
-      "id": "in20211excelrating30src",
-      "title": "InsuranceNow 2021.1 Excel Designed Rating",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2021.1",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/ExcelDesignedRating30.ditamap"
-      ]
-    },
-    {
       "id": "in20202rnsrc",
       "title": "InsuranceNow 2020.2 Core Release Notes",
       "sourceType": "xdocs",
