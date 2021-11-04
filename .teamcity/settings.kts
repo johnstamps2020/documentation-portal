@@ -4114,6 +4114,7 @@ object RunContentValidations : Template({
                   && doc_validator --elasticsearch-urls "%env.ELASTICSEARCH_URLS%" --doc-info "%env.DOC_INFO%" extractors "%env.SCHEMATRON_REPORTS_DIR%" schematron-reports
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+            dockerPull = true
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 
