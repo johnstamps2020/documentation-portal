@@ -154,7 +154,7 @@
     },
     {
       "id": "cloudisintegdraftsrc",
-      "title": "IS Cloud Draft Plugins, Pre-built Integrations, and SOAP APIs",
+      "title": "IS Cloud Draft Plugins, Prebuilt Integrations, and SOAP APIs",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
