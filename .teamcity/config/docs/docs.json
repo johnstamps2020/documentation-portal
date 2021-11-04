@@ -7086,6 +7086,22 @@
       "public": false
     },
     {
+      "id": "inexcelrating30",
+      "title": "Excel Designed Rating Draft",
+      "url": "cloud/in/excelrating30",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "inexcelrating23draft",
       "title": "Excel Designed Rating 2.3 Draft",
       "url": "cloud/in/excelrating23",

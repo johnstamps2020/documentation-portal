@@ -2572,6 +2572,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ExcelDesignedRating30.ditamap",
+      "srcId": "inexcelrating30src",
+      "docId": "inexcelrating30",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dmrndraftsrc",
