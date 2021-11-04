@@ -1942,7 +1942,7 @@
     },
     {
       "id": "inexcelrating30src",
-      "title": "InsuranceNow Excel Designed Rating 3.0 Draft",
+      "title": "InsuranceNow Excel Designed Rating 3.0",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
