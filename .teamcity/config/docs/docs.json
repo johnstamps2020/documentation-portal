@@ -7326,22 +7326,6 @@
       "public": false
     },
     {
-      "id": "in20211excelrating30",
-      "title": "Excel Designed Rating",
-      "url": "cloud/in/20211/excelrating",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20202rn",
       "title": "Core Release Notes",
       "url": "cloud/in/20202/releasenotes",
