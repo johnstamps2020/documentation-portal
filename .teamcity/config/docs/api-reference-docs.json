@@ -34,6 +34,22 @@
       "public": true
     },
     {
+      "id": "in20212apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20212/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
       "id": "cc202104apiref",
       "title": "Cloud API Reference",
       "url": "cloud/cc/202104/apiref",
