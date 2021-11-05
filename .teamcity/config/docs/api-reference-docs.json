@@ -82,16 +82,33 @@
       "public": true
     },
     {
-      "id": "ccapirefpreview",
-      "title": "CC API Reference Preview",
-      "url": "cloud/cc/latest/apiref",
+      "id": "ccapirefdobson",
+      "title": "CC API Reference Dobson",
+      "url": "cloud/cc/202111/apiref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["latest"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "pcapirefdobson",
+      "title": "Cloud API Reference Dobson",
+      "url": "cloud/pc/202111/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true

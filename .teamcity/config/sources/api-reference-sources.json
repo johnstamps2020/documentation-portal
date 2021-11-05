@@ -37,11 +37,18 @@
       "branch": "release/dobson"
     },
     {
-      "id": "srcccapirefpreview",
+      "id": "srcccapirefdobson",
       "title": "CC API ref preview",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
-      "branch": "main"
+      "branch": "release/dobson"
+    },
+    {
+      "id": "srcpcapirefdobson",
+      "title": "PC API ref preview",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "release/dobson"
     }
   ]
 }
