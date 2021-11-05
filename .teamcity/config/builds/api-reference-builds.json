@@ -24,7 +24,8 @@
     {
       "buildType": "yarn",
       "docId": "in20212apiref",
-      "srcId": "srcin20212apiref"
+      "srcId": "srcin20212apiref",
+      "nodeImageVersion": "14.14.0"
     },
     {
       "buildType": "yarn",
