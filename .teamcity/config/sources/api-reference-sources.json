@@ -41,7 +41,7 @@
       "title": "CC API ref preview",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
-      "branch": "master"
+      "branch": "main"
     }
   ]
 }
