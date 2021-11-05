@@ -30,6 +30,13 @@
       "branch": "releases/cortina"
     },
     {
+      "id": "srcin20212apiref",
+      "title": "InsuranceNow API Reference Dobson",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "releases/dobson"
+    },
+    {
       "id": "srcccapirefpreview",
       "title": "CC API ref preview",
       "sourceType": "git",
