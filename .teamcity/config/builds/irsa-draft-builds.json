@@ -6,7 +6,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAOverview.ditamap",
       "srcId": "irsadraftsrc",
-      "docId": "midipfoverview",
+      "docId": "midipfoverviewdraft",
       "indexRedirect": true
     },
     {
@@ -14,7 +14,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAAdjusterGuide.ditamap",
       "srcId": "irsadraftsrc",
-      "docId": "midipfadjuster",
+      "docId": "midipfadjusterdraft",
       "indexRedirect": true
     },
     {
@@ -22,7 +22,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAAdministrationGuide.ditamap",
       "srcId": "irsadraftsrc",
-      "docId": "midipfadmin",
+      "docId": "midipfadmindraft",
       "indexRedirect": true
     },
     {
@@ -30,7 +30,7 @@
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAReleaseNotes.ditamap",
       "srcId": "irsadraftsrc",
-      "docId": "midipfrn",
+      "docId": "midipfrndraft",
       "indexRedirect": true
     }
   ]
