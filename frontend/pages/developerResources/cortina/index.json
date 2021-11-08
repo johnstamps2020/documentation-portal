@@ -8,6 +8,10 @@
     "selectedItem": "Cortina",
     "items": [
       {
+        "label": "Dobson",
+        "page": "../dobson"
+      },
+      {
         "label": "Banff",
         "page": "../banff"
       }
