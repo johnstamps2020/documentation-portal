@@ -96,7 +96,8 @@
         },
         {
           "label": "Claims Configuration Reference",
-          "id": "in20212claimsconfig"
+          "id": "in20212claimsconfig",
+          "env": ["int"]
         }
       ]
     },
