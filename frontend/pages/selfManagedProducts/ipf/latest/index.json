@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "midipfrn11"
+          "id": "midipfrndraft"
         }
       ]
     },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Overview",
-          "id": "midipfoverview11"
+          "id": "midipfoverviewdraft"
         },
         {
           "label": "Adjuster Guide",
-          "id": "midipfadjuster11"
+          "id": "midipfadjusterdraft"
         }
       ]
     },
@@ -34,7 +34,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "midipfadmin11"
+          "id": "midipfadmindraft"
         }
       ]
     }

@@ -239,66 +239,6 @@
       "public": false
     },
     {
-      "id": "midipfoverview",
-      "title": "Overview",
-      "url": "self-managed/ipf/1.1/overview",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "midipfadjuster",
-      "title": "Adjuster Guide",
-      "url": "self-managed/ipf/1.1/adjuster",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "midipfadmin",
-      "title": "Administration Guide",
-      "url": "self-managed/ipf/1.1/admin",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Administration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "midipfrn",
-      "title": "Release Notes",
-      "url": "self-managed/ipf/1.1/releasenotes",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "midipg",
       "title": "InsuranceSuite Package for Germany",
       "url": "cloud/ipg/latest",

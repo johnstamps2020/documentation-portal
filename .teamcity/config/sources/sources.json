@@ -968,13 +968,6 @@
       ]
     },
     {
-      "id": "midipfsrc",
-      "title": "IRSA Integration for ClaimCenter",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
-      "branch": "main"
-    },
-    {
       "id": "clouddataaccessguidesrc",
       "title": "Cloud Data Access Guide",
       "sourceType": "git",

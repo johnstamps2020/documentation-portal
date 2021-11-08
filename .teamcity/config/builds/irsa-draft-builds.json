@@ -1,0 +1,37 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAOverview.ditamap",
+      "srcId": "irsadraftsrc",
+      "docId": "midipfoverviewdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAAdjusterGuide.ditamap",
+      "srcId": "irsadraftsrc",
+      "docId": "midipfadjusterdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAAdministrationGuide.ditamap",
+      "srcId": "irsadraftsrc",
+      "docId": "midipfadmindraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAReleaseNotes.ditamap",
+      "srcId": "irsadraftsrc",
+      "docId": "midipfrndraft",
+      "indexRedirect": true
+    }
+  ]
+}
