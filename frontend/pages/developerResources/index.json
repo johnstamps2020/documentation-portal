@@ -6,6 +6,10 @@
   "template": "redirect.j2",
   "items": [
     {
+      "label": "Dobson",
+      "page": "dobson"
+    },
+    {
       "label": "Cortina",
       "page": "cortina"
     },
@@ -15,7 +19,7 @@
     },
     {
       "label": "_redirect",
-      "link": "/developerResources/cortina"
+      "link": "/developerResources/dobson"
     }
   ]
 }

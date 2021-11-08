@@ -83,7 +83,7 @@
     },
     {
       "id": "ccapirefdobson",
-      "title": "CC API Reference Dobson",
+      "title": "Cloud API Reference",
       "url": "cloud/cc/202111/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -99,7 +99,7 @@
     },
     {
       "id": "pcapirefdobson",
-      "title": "Cloud API Reference Dobson",
+      "title": "Cloud API Reference",
       "url": "cloud/pc/202111/apiref",
       "metadata": {
         "platform": ["Cloud"],

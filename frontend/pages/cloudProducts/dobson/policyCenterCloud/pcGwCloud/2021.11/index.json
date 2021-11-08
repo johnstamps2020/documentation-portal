@@ -138,6 +138,10 @@
           "id": "ispc202111apica"
         },
         {
+          "label": "Cloud API Reference",
+          "id": "pcapirefdobson"
+        },
+        {
           "label": "REST API Framework",
           "id": "ispc202111restapifw"
         },
