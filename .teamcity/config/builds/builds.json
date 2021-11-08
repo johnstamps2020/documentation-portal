@@ -222,38 +222,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAOverview.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfoverview",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAAdjusterGuide.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfadjuster",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAAdministrationGuide.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAReleaseNotes.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfrn",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "midipgsrc",
       "docId": "midipg"
