@@ -48,8 +48,8 @@
           "id": "isdraftrestapiclientguide"
         },
         {
-          "label": "IRSA Integration Package for ClaimCenter",
-          "page": "midipf/1.1"
+          "label": "IRSA Integration for ClaimCenter (version 1.1)",
+          "page": "ipf/1.1"
         }
       ]
     },

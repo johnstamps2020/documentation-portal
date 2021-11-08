@@ -241,7 +241,7 @@
     {
       "id": "midipfoverview",
       "title": "Overview",
-      "url": "self-managed/mid/ipf/1.1/overview",
+      "url": "self-managed/ipf/1.1/overview",
       "metadata": {
         "product": ["IRSA Integration for ClaimCenter"],
         "platform": ["Self-managed"],
@@ -256,7 +256,7 @@
     {
       "id": "midipfadjuster",
       "title": "Adjuster Guide",
-      "url": "self-managed/mid/ipf/1.1/adjuster",
+      "url": "self-managed/ipf/1.1/adjuster",
       "metadata": {
         "product": ["IRSA Integration for ClaimCenter"],
         "platform": ["Self-managed"],
@@ -271,7 +271,7 @@
     {
       "id": "midipfadmin",
       "title": "Administration Guide",
-      "url": "self-managed/mid/ipf/1.1/admin",
+      "url": "self-managed/ipf/1.1/admin",
       "metadata": {
         "product": ["IRSA Integration for ClaimCenter"],
         "platform": ["Self-managed"],
@@ -286,7 +286,7 @@
     {
       "id": "midipfrn",
       "title": "Release Notes",
-      "url": "self-managed/mid/ipf/1.1/releasenotes",
+      "url": "self-managed/ipf/1.1/releasenotes",
       "metadata": {
         "product": ["IRSA Integration for ClaimCenter"],
         "platform": ["Self-managed"],
@@ -301,7 +301,7 @@
     {
       "id": "midipg",
       "title": "InsuranceSuite Package for Germany",
-      "url": "cloud/mid/ipg/latest",
+      "url": "cloud/ipg/latest",
       "metadata": {
         "product": ["Guidewire InsuranceSuite Package for Germany"],
         "platform": ["Cloud"],
