@@ -1,18 +1,22 @@
+from multiprocessing import Process, Queue
+
 import os
 import sys
-from typing import List
-
 from scrapy.crawler import CrawlerRunner
+from scrapy.utils.log import configure_logging
 from scrapy.utils.project import get_project_settings
-from multiprocessing import Process, Queue
 from twisted.internet import reactor
+from typing import List
 
 from doc_crawler.spiders import doc_portal_spider
 
 
 def create_runners(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str, q):
     try:
-        runner = CrawlerRunner(get_project_settings())
+        configure_logging()
+        crawler_settings = get_project_settings()
+        crawler_settings.set('LOG_FILE', f'doc_crawler_{docs_to_crawl[0]["id"]}.log')
+        runner = CrawlerRunner(crawler_settings)
         deferred = runner.crawl(spider, docs=docs_to_crawl, app_base_url=root_url,
                                 doc_s3_url=s3_bucket_url)
         deferred.addBoth(lambda _: reactor.stop())
