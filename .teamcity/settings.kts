@@ -10,6 +10,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.ui.add
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -3012,6 +3013,16 @@ object HelperObjects {
                 }
             }
 
+            if (build_env != "int") {
+                features.add {
+                    feature {
+                        id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
+                        type = "JetBrains.SharedResources"
+                        param("locks-param", "OxygenWebhelpLicense readLock")
+                    }
+                }
+            }
+
             if (build_env == "int") {
                 if (vcsRootIsExported) {
                     triggers {
@@ -4475,12 +4486,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
             loginToRegistry = on {
                 dockerRegistryId = "PROJECT_EXT_155"
             }
-        }
-
-        feature {
-            id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
-            type = "JetBrains.SharedResources"
-            param("locks-param", "OxygenWebhelpLicense readLock")
         }
     }
 })
