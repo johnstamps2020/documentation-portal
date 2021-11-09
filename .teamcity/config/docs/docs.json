@@ -810,11 +810,11 @@
     },
     {
       "id": "palatest",
-      "title": "Predictive Analytics",
+      "title": "Live Predict",
       "url": "cloud/pa/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Predictive Analytics"],
+        "product": ["Live Predict"],
         "version": ["latest"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
