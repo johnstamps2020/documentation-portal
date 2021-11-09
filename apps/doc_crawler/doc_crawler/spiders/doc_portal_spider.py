@@ -13,11 +13,10 @@ from ..items import BrokenLink
 from ..items import IndexEntry
 
 
-def get_portal_config(config_file_path: Path, doc_filter_query: str = None):
+def get_portal_config(config_file_path: str):
     with open(config_file_path) as cf:
         file_content = json.load(cf)
-    docs_in_config = file_content.get('docs')
-    return docs_in_config
+    return file_content.get('docs')
 
 
 def normalize_text(input_text: str):
@@ -26,8 +25,7 @@ def normalize_text(input_text: str):
     removed_multiple_spaces = re.sub('[ ]{2,}', ' ', removed_whitespace)
     removed_empty_lines = filter(lambda x: not x.isspace(),
                                  io.StringIO(removed_multiple_spaces).readlines())
-    normalized_text = ' '.join(removed_empty_lines)
-    return normalized_text
+    return ' '.join(removed_empty_lines)
 
 
 class DocPortalSpider(scrapy.Spider):
