@@ -10,7 +10,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Cortina-10.5/DataHub/releaseDiffFiles/cloud",
+          "sourceFolder": "Dobson-10.6/DataHub/releaseDiffFiles/cloud",
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
@@ -74,7 +74,7 @@
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Cortina-10.5/DataHub/autoGenFiles/cloud",
+          "sourceFolder": "Dobson-10.6/DataHub/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
       ]
@@ -88,7 +88,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Cortina-10.5/InfoCenter/releaseDiffFiles/cloud",
+          "sourceFolder": "Dobson-10.6/InfoCenter/releaseDiffFiles/cloud",
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
@@ -168,7 +168,7 @@
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Cortina-10.5/InfoCenter/autoGenFiles/cloud",
+          "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
       ]
