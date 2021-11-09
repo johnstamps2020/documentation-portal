@@ -53,12 +53,12 @@
     },
     {
       "id": "in20212pasrc",
-      "title": "InsuranceNow 2021.2 PA Integration",
+      "title": "InsuranceNow 2021.2 Live Predict Integration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "release/2021.2",
       "xdocsPathIds": [
-        "/Content/doc/insuranceNow/PredictiveAnalyticsIntegration20212.ditamap"
+        "/Content/doc/insuranceNow/LivePredictIntegration20212.ditamap"
       ]
     },
     {
