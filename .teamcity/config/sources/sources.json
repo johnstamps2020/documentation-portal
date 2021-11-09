@@ -2216,14 +2216,13 @@
       ]
     },
     {
-      "id": "predictiveanalyticssrc",
-      "title": "Predictive Analytics",
+      "id": "livepredictsrc",
+      "title": "Live Predict",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/predictive-analytics.git",
-      "branch": "Banff",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/live-predict.git",
+      "branch": "main",
       "xdocsPathIds": [
-        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap"
       ]
     },
     {

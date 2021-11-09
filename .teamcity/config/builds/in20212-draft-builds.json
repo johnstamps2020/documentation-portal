@@ -75,7 +75,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "PredictiveAnalyticsIntegration20212.ditamap",
+      "root": "LivePredictIntegration20212.ditamap",
       "srcId": "in20212xpadraftsrc",
       "docId": "in20212xpadraft",
       "indexRedirect": true

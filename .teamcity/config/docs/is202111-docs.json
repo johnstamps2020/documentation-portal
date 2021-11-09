@@ -211,7 +211,7 @@
     },
     {
       "id": "isbc202111integ",
-      "title": "Integration",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/bc/202111/integration",
       "metadata": {
         "platform": ["Cloud"],
