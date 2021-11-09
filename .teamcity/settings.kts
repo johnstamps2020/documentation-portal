@@ -3013,7 +3013,7 @@ object HelperObjects {
                 }
             }
 
-            if (build_env != "int") {
+            if (build_env == "staging") {
                 features.add {
                     feature {
                         id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
@@ -3023,22 +3023,20 @@ object HelperObjects {
                 }
             }
 
-            if (build_env == "int") {
-                if (vcsRootIsExported) {
-                    triggers {
-                        vcs {
-                            triggerRules = """
+            if (build_env == "int" && vcsRootIsExported) {
+                triggers {
+                    vcs {
+                        triggerRules = """
                         +:root=${vcs_root_id.id};comment=\[%env.SRC_ID%\]:**
                     """.trimIndent()
-                        }
                     }
-                } else {
-                    triggers {
-                        vcs {
-                            triggerRules = """
+                }
+            } else if (build_env == "int" || build_env == "staging") {
+                triggers {
+                    vcs {
+                        triggerRules = """
                         +:root=${vcs_root_id.id}:**
                             """.trimIndent()
-                        }
                     }
                 }
             }
