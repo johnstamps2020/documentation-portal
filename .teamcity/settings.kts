@@ -3032,14 +3032,6 @@ object HelperObjects {
                     """.trimIndent()
                         }
                     }
-                } else {
-                    triggers {
-                        vcs {
-                            triggerRules = """
-                        +:root=${vcs_root_id.id}:**
-                            """.trimIndent()
-                        }
-                    }
                 }
             }
         })
