@@ -2,25 +2,21 @@ from multiprocessing import Process, Queue
 
 import os
 import sys
-from scrapy.crawler import CrawlerRunner
-from scrapy.utils.log import configure_logging
+from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
-from twisted.internet import reactor
 from typing import List
 
 from doc_crawler.spiders import doc_portal_spider
 
 
-def create_runners(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str, q):
+def create_crawler_process(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str, q):
     try:
-        configure_logging()
         crawler_settings = get_project_settings()
         crawler_settings.set('LOG_FILE', f'doc_crawler_{docs_to_crawl[0]["id"]}.log')
-        runner = CrawlerRunner(crawler_settings)
-        deferred = runner.crawl(spider, docs=docs_to_crawl, app_base_url=root_url,
-                                doc_s3_url=s3_bucket_url)
-        deferred.addBoth(lambda _: reactor.stop())
-        reactor.run()
+        process = CrawlerProcess(crawler_settings)
+        process.crawl(spider, docs=docs_to_crawl, app_base_url=root_url,
+                      doc_s3_url=s3_bucket_url)
+        process.start()
         q.put(None)
     except Exception as e:
         q.put(e)
@@ -28,7 +24,7 @@ def create_runners(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: st
 
 def run_spider(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str):
     queue = Queue()
-    process = Process(target=create_runners, args=(spider, docs_to_crawl, root_url, s3_bucket_url, queue,))
+    process = Process(target=create_crawler_process, args=(spider, docs_to_crawl, root_url, s3_bucket_url, queue,))
     process.start()
     result = queue.get()
     process.join()
@@ -70,8 +66,73 @@ def main():
                          '\n\t- The config file does not contain the provided doc ID.'
                          '\n\t- The provided doc ID is invalid.')
 
+    # Testing
+    doc_objects_to_crawl = [
+        {
+            "id": "isbc202111dataarchiving",
+            "title": "Data Archiving",
+            "url": "cloud/bc/202111/dataarchiving",
+            "metadata": {
+                "platform": [
+                    "Cloud"
+                ],
+                "product": [
+                    "BillingCenter"
+                ],
+                "version": [
+                    "2021.11"
+                ],
+                "release": [
+                    "Dobson"
+                ],
+                "subject": [
+                    "Administration"
+                ]
+            },
+            "environments": [
+                "dev",
+                "int",
+                "staging"
+            ],
+            "displayOnLandingPages": True,
+            "indexForSearch": True,
+            "public": False
+        },
+        {
+            "id": "isbc202111devsetup",
+            "title": "Developer Setup",
+            "url": "cloud/bc/202111/devsetup",
+            "metadata": {
+                "platform": [
+                    "Cloud"
+                ],
+                "product": [
+                    "BillingCenter"
+                ],
+                "version": [
+                    "2021.11"
+                ],
+                "release": [
+                    "Dobson"
+                ],
+                "subject": [
+                    "Installation"
+                ]
+            },
+            "environments": [
+                "dev",
+                "int",
+                "staging"
+            ],
+            "displayOnLandingPages": True,
+            "indexForSearch": True,
+            "public": False
+        },
+    ]
+    # Testing
     for doc_object_to_crawl in doc_objects_to_crawl:
-        run_spider(spider=doc_portal_spider.DocPortalSpider, docs_to_crawl=[doc_object_to_crawl], root_url=app_base_url,
+        run_spider(spider=doc_portal_spider.DocPortalSpider, docs_to_crawl=[doc_object_to_crawl],
+                   root_url=app_base_url,
                    s3_bucket_url=doc_s3_url)
 
 
