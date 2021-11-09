@@ -488,11 +488,11 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "A_Map01_7x.ditamap",
       "indexRedirect": true,
-      "srcId": "predictiveanalyticssrc",
-      "docId": "palatest"
+      "srcId": "livepredictsrc",
+      "docId": "livepredictlatest"
     },
     {
       "buildType": "dita",

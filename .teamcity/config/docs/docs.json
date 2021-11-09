@@ -809,9 +809,9 @@
       "public": false
     },
     {
-      "id": "palatest",
+      "id": "livepredictlatest",
       "title": "Live Predict",
-      "url": "cloud/pa/latest",
+      "url": "cloud/predict/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Live Predict"],
