@@ -21,12 +21,16 @@
     {
       "label": "Core",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ccGwCloud/latest",
-          "env": ["int"]
+          "page": "ccGwCloud/2021.11",
+          "env": ["dev", "int", "staging"]
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools310",
+          "env": ["dev", "staging"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -41,23 +45,19 @@
       "items": [
         {
           "label": "Cloud Data Access",
-          "page": "../../cloudDataAccess/latest",
-          "env": ["int"]
+          "page": "../../cloudDataAccess/latest"
         },
         {
           "label": "Compare+",
-          "id": "comparelatest",
-          "env": ["int"]
+          "id": "comparelatest"
         },
         {
           "label": "Explore",
-          "page": "../../explore/latest",
-          "env": ["int"]
+          "page": "../../explore/latest"
         },
         {
-          "label": "Predictive Analytics",
-          "id": "palatest",
-          "env": ["int"]
+          "label": "Live Predict",
+          "id": "livepredictlatest"
         },
         {
           "label": "Add-ons",
@@ -65,13 +65,11 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/latest",
-              "env": ["int"]
+              "page": "../dhGwCloud/2021.11"
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/latest",
-              "env": ["int"]
+              "page": "../icGwCloud/2021.11"
             }
           ]
         }
@@ -84,38 +82,36 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": ["int"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../ceAccountMgmt/latest"
+              "page": "../ceAccountMgmt/2021.11"
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/latest"
+              "page": "ceAccountMgmtCc/2021.11"
             },
             {
               "label": "ProducerEngage",
-              "page": "../producerEngage/latest"
+              "page": "../producerEngage/2021.11"
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/latest"
+              "page": "producerEngageCc/2021.11"
             },
             {
               "label": "VendorEngage",
-              "page": "vendorEngage/latest"
+              "page": "vendorEngage/2021.11"
             }
           ]
         },
         {
           "label": "Digital Framework",
           "class": "group",
-          "env": ["int"],
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/5.3.1"
+              "page": "../../../jutroDesignSystem/6.5.0"
             }
           ]
         },

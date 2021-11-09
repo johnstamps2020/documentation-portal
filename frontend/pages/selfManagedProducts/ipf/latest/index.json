@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "IRSA Integration for ClaimCenter 1.1",
+  "title": "IRSA Integration for ClaimCenter (version 1.1)",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "midipfrn"
+          "id": "midipfrndraft"
         }
       ]
     },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Overview",
-          "id": "midipfoverview"
+          "id": "midipfoverviewdraft"
         },
         {
           "label": "Adjuster Guide",
-          "id": "midipfadjuster"
+          "id": "midipfadjusterdraft"
         }
       ]
     },
@@ -34,7 +34,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "midipfadmin"
+          "id": "midipfadmindraft"
         }
       ]
     }

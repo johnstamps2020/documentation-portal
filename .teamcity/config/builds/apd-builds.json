@@ -4,7 +4,8 @@
     {
       "docId": "apdmaindoc",
       "srcId": "apdapiintsrc",
-      "buildType": "yarn"
+      "buildType": "yarn",
+      "nodeImageVersion": "14.14.0"
     }
   ]
 }

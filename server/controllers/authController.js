@@ -2,7 +2,6 @@ require('dotenv').config();
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc } = require('../controllers/configController');
-const passport = require('passport');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
@@ -88,13 +87,12 @@ async function verifyToken(req) {
   }
 }
 
-async function isRequestAuthenticated(req) {
+async function isLoggedInOrHasValidToken(req) {
   try {
     const rawJsonRequest = req.query.rawJSON === 'true';
-    const requestAuthenticated = rawJsonRequest
+    return rawJsonRequest
       ? !!(await verifyToken(req))
       : !!req.isAuthenticated();
-    return requestAuthenticated;
   } catch (err) {
     console.log(err.message);
     return false;
@@ -157,16 +155,16 @@ const authGateway = async (req, res, next) => {
     }
 
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
-    const requestIsAuthenticated = await isRequestAuthenticated(req);
+    const authenticationIsDisabled = process.env.ENABLE_AUTH === 'no';
+    const loggedInOrHasValidToken = await isLoggedInOrHasValidToken(req);
+    const requestIsAuthenticated =
+      authenticationIsDisabled || loggedInOrHasValidToken;
     req.session.requestIsAuthenticated = requestIsAuthenticated;
-    const authenticationEnabled = process.env.ENABLE_AUTH === 'yes';
     const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
 
-    if (!authenticationEnabled) {
+    if (requestIsAuthenticated) {
       openRequestedPage();
-    } else if (authenticationEnabled && requestIsAuthenticated) {
-      openRequestedPage();
-    } else if (authenticationEnabled && publicDocsAllowed && isOpenRoute) {
+    } else if (!requestIsAuthenticated && publicDocsAllowed && isOpenRoute) {
       openPublicPage();
     } else {
       redirectToLoginPage();
@@ -179,5 +177,4 @@ const authGateway = async (req, res, next) => {
 module.exports = {
   authGateway,
   loginGatewayRoute,
-  isRequestAuthenticated,
 };

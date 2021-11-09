@@ -27,14 +27,28 @@
       "title": "InsuranceNow API Reference in Redoc",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
-      "branch": "releases/cortina"
+      "branch": "release/cortina"
     },
     {
-      "id": "srcccapirefpreview",
+      "id": "srcin20212apiref",
+      "title": "InsuranceNow API Reference Dobson",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/dobson"
+    },
+    {
+      "id": "srcccapirefdobson",
       "title": "CC API ref preview",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
-      "branch": "master"
+      "branch": "release/dobson"
+    },
+    {
+      "id": "srcpcapirefdobson",
+      "title": "PC API ref preview",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "release/dobson"
     }
   ]
 }

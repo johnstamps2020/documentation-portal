@@ -657,6 +657,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "11.4.1",
+      "exportFrequency": "weekly",
       "xdocsPathIds": [
         "/Content/doc/digital/11.x/releases/1141/DX_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
@@ -967,13 +968,6 @@
       ]
     },
     {
-      "id": "midipfsrc",
-      "title": "IRSA Integration for ClaimCenter",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
-      "branch": "main"
-    },
-    {
       "id": "clouddataaccessguidesrc",
       "title": "Cloud Data Access Guide",
       "sourceType": "git",
@@ -1029,13 +1023,13 @@
       ]
     },
     {
-      "id": "in20212billrefsrc",
-      "title": "InsuranceNow 2021.2 Billing Configuration",
+      "id": "inbillrefsrc",
+      "title": "InsuranceNow Billing Configuration",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2021.2",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/BillingConfigurationReference2021x.ditamap"
       ]
     },
@@ -1180,17 +1174,6 @@
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/UnderwritingConfigurationReference20211x.ditamap"
-      ]
-    },
-    {
-      "id": "in20211excelrating30src",
-      "title": "InsuranceNow 2021.1 Excel Designed Rating",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2021.1",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/ExcelDesignedRating30.ditamap"
       ]
     },
     {
@@ -1433,16 +1416,6 @@
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
-      ]
-    },
-    {
-      "id": "in20211xbillrefdraftsrc",
-      "title": "InsuranceNow 2021.1 Billing Configuration Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/BillingConfigurationReference2021x.ditamap"
       ]
     },
     {
@@ -1897,7 +1870,7 @@
     },
     {
       "id": "indevguidejava11draftsrc",
-      "title": "InsuranceNow Developers Java 11 Draft",
+      "title": "InsuranceNow Developers Java 11",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
@@ -1946,6 +1919,16 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/ExcelDesignedRating30.ditamap"
+      ]
+    },
+    {
+      "id": "inexcelrating30src",
+      "title": "InsuranceNow Excel Designed Rating 3.0",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/ExcelDesignedRating30.ditamap"
       ]
     },
@@ -2233,14 +2216,13 @@
       ]
     },
     {
-      "id": "predictiveanalyticssrc",
-      "title": "Predictive Analytics",
+      "id": "livepredictsrc",
+      "title": "Live Predict",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/predictive-analytics.git",
-      "branch": "Banff",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/live-predict.git",
+      "branch": "main",
       "xdocsPathIds": [
-        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap"
       ]
     },
     {

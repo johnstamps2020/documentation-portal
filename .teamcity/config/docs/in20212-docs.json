@@ -1,0 +1,261 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "in20212rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20212/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212studiorn",
+      "title": "Studio Release Notes",
+      "url": "cloud/in/20212/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212app",
+      "title": "Application Guide",
+      "url": "cloud/in/20212/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212csalesp",
+      "title": "Consumer Sales Portal Features",
+      "url": "cloud/in/20212/csalesp",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212cservicep",
+      "title": "Consumer Service Portal Features",
+      "url": "cloud/in/20212/cservicep",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212csprn",
+      "title": "Consumer Service Portal Release Notes",
+      "url": "cloud/in/20212/csprn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release Notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212appreaderinteg",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20212/appreaderinteg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212pa",
+      "title": "Live Predict Integration",
+      "url": "cloud/in/20212/pa",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212config",
+      "title": "Core Configuration Guide",
+      "url": "cloud/in/20212/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212commonconfig",
+      "title": "Common Functionality Configuration Reference",
+      "url": "cloud/in/20212/commonconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "indevguidejava11ext",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava11ext",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1", "2021.2"],
+        "subject": ["Installation"],
+        "release": ["Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212studio",
+      "title": "Studio Configuration Guide",
+      "url": "cloud/in/20212/studioconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212portaldev",
+      "title": "Portal Development Guide",
+      "url": "cloud/in/20212/portaldev",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212prodattref",
+      "title": "Product Attribute Reference",
+      "url": "cloud/in/20212/prodattref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212uwconfig",
+      "title": "Underwriting Configuration Reference",
+      "url": "cloud/in/20212/uwconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212claimsconfig",
+      "title": "Claims Configuration Reference",
+      "url": "cloud/in/20212/claimsconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

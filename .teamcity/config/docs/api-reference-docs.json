@@ -34,6 +34,22 @@
       "public": true
     },
     {
+      "id": "in20212apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20212/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
       "id": "cc202104apiref",
       "title": "Cloud API Reference",
       "url": "cloud/cc/202104/apiref",
@@ -66,16 +82,33 @@
       "public": true
     },
     {
-      "id": "ccapirefpreview",
-      "title": "CC API Reference Preview",
-      "url": "cloud/cc/latest/apiref",
+      "id": "ccapirefdobson",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202111/apiref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["latest"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "pcapirefdobson",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202111/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true

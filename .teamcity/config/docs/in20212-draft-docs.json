@@ -18,6 +18,22 @@
       "public": false
     },
     {
+      "id": "inbillrefdraft",
+      "title": "Billing Configuration Reference Draft",
+      "url": "cloud/in/billref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20212xstudiorndraft",
       "title": "Studio Release Notes Draft",
       "url": "cloud/in/20212x/studiorn",
@@ -131,7 +147,7 @@
     },
     {
       "id": "in20212xpadraft",
-      "title": "Predictive Analytics Integration Draft",
+      "title": "Live Predict Integration Draft",
       "url": "cloud/in/20212x/pa",
       "metadata": {
         "platform": ["Cloud"],

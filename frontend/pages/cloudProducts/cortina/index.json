@@ -10,7 +10,7 @@
       {
         "label": "Dobson",
         "page": "../dobson",
-        "env": ["int"]
+        "env": ["dev", "int", "staging"]
       },
       {
         "label": "Banff",

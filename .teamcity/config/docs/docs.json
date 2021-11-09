@@ -239,69 +239,9 @@
       "public": false
     },
     {
-      "id": "midipfoverview",
-      "title": "Overview",
-      "url": "self-managed/mid/ipf/1.1/overview",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "midipfadjuster",
-      "title": "Adjuster Guide",
-      "url": "self-managed/mid/ipf/1.1/adjuster",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "midipfadmin",
-      "title": "Administration Guide",
-      "url": "self-managed/mid/ipf/1.1/admin",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Administration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "midipfrn",
-      "title": "Release Notes",
-      "url": "self-managed/mid/ipf/1.1/releasenotes",
-      "metadata": {
-        "product": ["IRSA Integration for ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["1.1"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "midipg",
       "title": "InsuranceSuite Package for Germany",
-      "url": "cloud/mid/ipg/latest",
+      "url": "cloud/ipg/latest",
       "metadata": {
         "product": ["Guidewire InsuranceSuite Package for Germany"],
         "platform": ["Cloud"],
@@ -869,12 +809,12 @@
       "public": false
     },
     {
-      "id": "palatest",
-      "title": "Predictive Analytics",
-      "url": "cloud/pa/latest",
+      "id": "livepredictlatest",
+      "title": "Live Predict",
+      "url": "cloud/predict/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Predictive Analytics"],
+        "product": ["Live Predict"],
         "version": ["latest"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
@@ -6346,22 +6286,6 @@
       "public": false
     },
     {
-      "id": "in20211xbillrefdraft",
-      "title": "Billing Configuration Reference Draft",
-      "url": "cloud/in/20211x/billref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20202xstudiorndraft",
       "title": "Studio Release Notes",
       "url": "cloud/in/20202x/studiorn",
@@ -7102,6 +7026,22 @@
       "public": false
     },
     {
+      "id": "inexcelrating30",
+      "title": "Excel Designed Rating",
+      "url": "cloud/in/excelrating30",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "inexcelrating23draft",
       "title": "Excel Designed Rating 2.3 Draft",
       "url": "cloud/in/excelrating23",
@@ -7318,22 +7258,6 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Configuration"],
-        "release": ["Cortina"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20211excelrating30",
-      "title": "Excel Designed Rating",
-      "url": "cloud/in/20211/excelrating",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Features and functionality"],
         "release": ["Cortina"]
       },
       "environments": ["dev", "staging", "prod"],
@@ -8304,9 +8228,9 @@
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Integration"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -8320,9 +8244,9 @@
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Release notes"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

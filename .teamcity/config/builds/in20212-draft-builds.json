@@ -19,6 +19,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "BillingConfigurationReference2021x.ditamap",
+      "srcId": "inbillrefsrc",
+      "docId": "inbillrefdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20212.ditamap",
       "srcId": "in20212xstudiorndraftsrc",
       "docId": "in20212xstudiorndraft",
@@ -67,7 +75,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "PredictiveAnalyticsIntegration20212.ditamap",
+      "root": "LivePredictIntegration20212.ditamap",
       "srcId": "in20212xpadraftsrc",
       "docId": "in20212xpadraft",
       "indexRedirect": true

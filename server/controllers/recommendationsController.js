@@ -1,15 +1,8 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
-const { isRequestAuthenticated } = require('./authController');
 const { getConfig } = require('./configController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const recommendationsIndexName = 'gw-recommendations';
-
-async function requestIsAuthenticated(reqObj) {
-  return !!(
-    process.env.ENABLE_AUTH === 'no' || (await isRequestAuthenticated(reqObj))
-  );
-}
 
 async function showOnlyPublicRecommendations(reqObj, recommendations) {
   const publicRecommendations = [];
@@ -47,7 +40,7 @@ async function getTopicRecommendations(topicId, reqObj) {
     }))[0];
     if (hit) {
       let topicRecommendations = hit.recommendations;
-      const reqIsAuthenticated = await requestIsAuthenticated(reqObj);
+      const reqIsAuthenticated = reqObj.session.requestIsAuthenticated;
       if (!reqIsAuthenticated) {
         topicRecommendations = await showOnlyPublicRecommendations(
           reqObj,

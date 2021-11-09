@@ -222,38 +222,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAOverview.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfoverview",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAAdjusterGuide.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfadjuster",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAAdministrationGuide.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfadmin",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IRSAReleaseNotes.ditamap",
-      "srcId": "midipfsrc",
-      "docId": "midipfrn",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "midipgsrc",
       "docId": "midipg"
@@ -520,11 +488,11 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "A_Map01_7x.ditamap",
       "indexRedirect": true,
-      "srcId": "predictiveanalyticssrc",
-      "docId": "palatest"
+      "srcId": "livepredictsrc",
+      "docId": "livepredictlatest"
     },
     {
       "buildType": "dita",
@@ -1795,14 +1763,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
-      "root": "BillingConfigurationReference2021x.ditamap",
-      "srcId": "in20211xbillrefdraftsrc",
-      "docId": "in20211xbillrefdraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20211.ditamap",
       "srcId": "in20211xrndraftsrc",
       "docId": "in20211xrndraft",
@@ -2136,6 +2096,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "DevelopersGuide_Java11.ditamap",
+      "srcId": "indevguidejava11draftsrc",
+      "docId": "indevguidejava11ext",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20201.ditamap",
       "srcId": "in20201xrndraftsrc",
@@ -2359,14 +2327,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ExcelDesignedRating30.ditamap",
-      "srcId": "in20211excelrating30src",
-      "docId": "in20211excelrating30",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "InsuranceNowReleaseNotes20202.ditamap",
       "srcId": "in20202rnsrc",
       "docId": "in20202rn",
@@ -2568,6 +2528,14 @@
       "root": "ExcelDesignedRating30.ditamap",
       "srcId": "inexcelrating30draftsrc",
       "docId": "inexcelrating30draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ExcelDesignedRating30.ditamap",
+      "srcId": "inexcelrating30src",
+      "docId": "inexcelrating30",
       "indexRedirect": true
     },
     {

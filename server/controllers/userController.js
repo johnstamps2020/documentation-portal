@@ -8,7 +8,7 @@ function belongsToGuidewire(email) {
 }
 
 function getUserInfo(req) {
-  const isLoggedIn = req.isAuthenticated() || process.env.ENABLE_AUTH === 'no';
+  const isLoggedIn = req.session.requestIsAuthenticated;
   const userInfo = {
     isLoggedIn: isLoggedIn,
   };

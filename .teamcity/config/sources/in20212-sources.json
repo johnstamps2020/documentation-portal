@@ -1,0 +1,151 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "in20212rnsrc",
+      "title": "InsuranceNow 2021.2 Core Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20212.ditamap"
+      ]
+    },
+    {
+      "id": "in20212studiornsrc",
+      "title": "InsuranceNow 2021.2 Studio Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/INStudioReleaseNotes20212.ditamap"
+      ]
+    },
+    {
+      "id": "in20212appsrc",
+      "title": "InsuranceNow 2021.2 Application",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/ApplicationGuide20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212csalespsrc",
+      "title": "InsuranceNow 2021.2 Consumer Sales Portal Features",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/ConsumerSalesPortalFeatures20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212cservicepsrc",
+      "title": "InsuranceNow 2021.2 Consumer Service Portal Features",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/ConsumerServicePortalFeatures20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212pasrc",
+      "title": "InsuranceNow 2021.2 Live Predict Integration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/LivePredictIntegration20212.ditamap"
+      ]
+    },
+    {
+      "id": "in20212appreaderintegsrc",
+      "title": "InsuranceNow 2021.2 AppReader Integration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/AppReaderIntegrationGuide20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212configsrc",
+      "title": "InsuranceNow 2021.2 Core Configuration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": ["/Content/doc/insuranceNow/Configuration20212x.ditamap"]
+    },
+    {
+      "id": "in20212commonconfigsrc",
+      "title": "InsuranceNow 2021.2 Common Functionality Configuration Reference",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/CommonFunctionalityConfigurationReference20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212studiosrc",
+      "title": "InsuranceNow 2021.2 Studio Configuration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": ["/Content/doc/insuranceNow/Studio20212x.ditamap"]
+    },
+    {
+      "id": "in20212portaldevsrc",
+      "title": "InsuranceNow 2021.2 Portal Development",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/PortalDevelopment20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212uwconfigsrc",
+      "title": "InsuranceNow 2021.2 Underwriting Configuration Reference",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/UnderwritingConfigurationReference20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212claimsconfigsrc",
+      "title": "InsuranceNow 2021.2 Claims Configuration Reference",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/ClaimsConfigurationReference20212x.ditamap"
+      ]
+    },
+    {
+      "id": "in20212prodattrefsrc",
+      "title": "InsuranceNow 2021.2 Product Attribute Reference",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/ProductAttributeReference20212.ditamap"
+      ]
+    },
+    {
+      "id": "in20212csprnsrc",
+      "title": "InsuranceNow 2021.2 Consumer Service Portal Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV4.ditamap"
+      ]
+    }
+  ]
+}

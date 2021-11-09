@@ -100,7 +100,7 @@
         },
         {
           "label": "Excel Designed Rating",
-          "id": "in20211excelrating30"
+          "id": "inexcelrating30"
         },
         {
           "label": "Excel Designed Rating",
@@ -142,10 +142,6 @@
       "label": "Configuration",
       "class": "subject configuration",
       "items": [
-        {
-          "label": "Billing Configuration Reference (Internal)",
-          "id": "in20211xbillrefdraft"
-        },
         {
           "label": "Consumer Service Portal Configuration Guide (Internal)",
           "id": "in20211xcservicepconfigdraft"

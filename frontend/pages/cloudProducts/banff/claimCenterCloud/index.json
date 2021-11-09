@@ -53,8 +53,8 @@
           "page": "../../explore/latest"
         },
         {
-          "label": "Predictive Analytics",
-          "id": "palatest"
+          "label": "Live Predict",
+          "id": "livepredictlatest"
         },
         {
           "label": "Add-ons",
