@@ -140,35 +140,6 @@
       ]
     },
     {
-      "label": "Solutions",
-      "class": "categoryCard cardShadow",
-      "env": ["int"],
-      "items": [
-        {
-          "label": "Lines of business",
-          "class": "group",
-          "items": [
-            {
-              "label": "Businessowners Standards Based Template",
-              "page": "boStandardsBasedTemplate/2020.05"
-            },
-            {
-              "label": "Commercial Auto Standards Based Template",
-              "page": "caStandardsBasedTemplate/2020.05"
-            },
-            {
-              "label": "Crime Standards Based Template",
-              "page": "crimeStandardsBasedTemplate/2020.05"
-            },
-            {
-              "label": "General Liability Standards Based Template",
-              "page": "glStandardsBasedTemplate/2020.05"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "label": "Cyence",
       "class": "categoryCard cardShadow",
       "items": [
