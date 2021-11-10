@@ -148,19 +148,19 @@
           "items": [
             {
               "label": "Help Center",
-              "link": "/cyence/cyber/HelpCenter"
+              "link": "/cyence/cyence/cyber/HelpCenter"
             },
             {
               "label": "Help Center - Accumulation Only",
-              "link": "/cyence/cyber/HelpCenterAccum"
+              "link": "/cyence/cyence/cyber/HelpCenterAccum"
             },
             {
               "label": "Model 5 Documentation",
-              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
+              "link": "/cyence/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
             },
             {
               "label": "Python SDK and REST API Reference",
-              "link": "/cyence/cyber/SdkApiRef"
+              "link": "/cyence/cyence/cyber/SdkApiRef"
             }
           ]
         },
@@ -170,7 +170,7 @@
           "items": [
             {
               "label": "C#/Python SDKs and REST API Reference",
-              "link": "/cyence/smb/SdkApiRef"
+              "link": "/cyence/cyence/smb/SdkApiRef"
             }
           ]
         }

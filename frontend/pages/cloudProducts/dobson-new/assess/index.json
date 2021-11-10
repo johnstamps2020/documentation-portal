@@ -6,10 +6,12 @@
   "items": [
     {
       "label": "Assess Technical Overview",
+      "class": "categoryCard cardShadow",
       "link": "/assess/assess/TechOverview/TechnicalOverview.pdf"
     },
     {
       "label": "Assess API Reference",
+      "class": "categoryCard cardShadow",
       "link": "/assess/assess/SdkApiRef"
     }
   ]
