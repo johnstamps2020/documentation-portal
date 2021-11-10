@@ -1,0 +1,134 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter for Guidewire Cloud earlyaccess",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "earlyaccess",
+    "items": [
+      {
+        "label": "latest",
+        "page": "../latest"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "iscccloudeareleasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "iscccloudeanewandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "iscccloudeadevsetup"
+        },
+        {
+          "label": "Upgrade",
+          "id": "iscccloudeaupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "iscccloudeaapp"
+        },
+        {
+          "label": "Contact Management",
+          "id": "iscloudeacontact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "iscccloudeaadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "iscccloudeadataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "iscccloudeaconfig"
+        },
+        {
+          "label": "Globalization",
+          "id": "iscccloudeaglobal"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "iscccloudearules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "iscccloudeainteg"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "iscccloudeacloudapi"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscccloudearestapifw"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "iscloudeagosu"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "iscccloudeatesting"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}

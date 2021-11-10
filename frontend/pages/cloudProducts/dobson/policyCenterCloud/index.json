@@ -42,16 +42,8 @@
           "class": "group",
           "items": [
             {
-              "label": "Guidewire for Salesforce Data Integrations",
-              "page": "gwsf/di/4.0"
-            },
-            {
-              "label": "Guidewire for Salesforce Digital Gateway",
-              "page": "gwsf/ed/4.0"
-            },
-            {
-              "label": "Guidewire for Salesforce View on Demand",
-              "page": "gwsf/vod/4.0"
+              "label": "Guidewire for Salesforce",
+              "page": "gwsf"
             }
           ]
         }

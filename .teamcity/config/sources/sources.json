@@ -988,39 +988,11 @@
       ]
     },
     {
-      "id": "explorernsrc",
-      "title": "Explore Release Notes",
+      "id": "exploresrc",
+      "title": "Explore",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/explore/active/m_relNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "exploreusingsrc",
-      "title": "Explore Application Guide",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/explore/active/m_cloud-usingExplore.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "exploredatadictsrc",
-      "title": "Explore Data Dictionaries",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/explore/active/m_dataDictionaries.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
+      "branch": "main"
     },
     {
       "id": "inbillrefsrc",
