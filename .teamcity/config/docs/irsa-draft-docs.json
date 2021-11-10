@@ -60,6 +60,20 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "midipfsupermapdraft",
+      "title": "Supermap for downloadable output",
+      "url": "self-managed/ipf/latest/all",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false
     }
   ]
 }
