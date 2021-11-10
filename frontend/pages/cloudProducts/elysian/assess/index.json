@@ -1,0 +1,16 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Assess",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "Assess Technical Overview",
+      "link": "/assess/assess/TechOverview/TechnicalOverview.pdf"
+    },
+    {
+      "label": "Assess API Reference",
+      "link": "/assess/assess/SdkApiRef"
+    }
+  ]
+}

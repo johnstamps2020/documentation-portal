@@ -40,8 +40,7 @@
         },
         {
           "label": "Developer Setup (Internal only)",
-          "id": "ispccloudgwdevsetup",
-          "env": ["int"]
+          "id": "ispccloudgwdevsetup"
         },
         {
           "label": "Upgrade",
@@ -49,8 +48,7 @@
         },
         {
           "label": "Upgrade (Internal only)",
-          "id": "ispccloudgwupgrade",
-          "env": ["int"]
+          "id": "ispccloudgwupgrade"
         }
       ]
     },
@@ -78,8 +76,7 @@
         },
         {
           "label": "Administration (Internal only)",
-          "id": "ispccloudgwadmin",
-          "env": ["int"]
+          "id": "ispccloudgwadmin"
         },
         {
           "label": "Data Archiving",

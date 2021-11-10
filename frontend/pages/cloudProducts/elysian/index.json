@@ -32,28 +32,23 @@
       "items": [
         {
           "label": "PolicyCenter",
-          "page": "pcGwCloud/latest",
-          "env": ["dev", "int"]
+          "page": "pcGwCloud/latest"
         },
         {
           "label": "ClaimCenter",
-          "page": "ccGwCloud/latest",
-          "env": ["dev", "int"]
+          "page": "ccGwCloud/latest"
         },
         {
           "label": "BillingCenter",
-          "page": "bcGwCloud/latest",
-          "env": ["dev", "int"]
+          "page": "bcGwCloud/latest"
         },
         {
           "label": "InsuranceNow",
-          "page": "insuranceNow/2021.2",
-          "env": ["dev", "int"]
+          "page": "insuranceNow/2021.2"
         },
         {
           "label": "Guidewire for Salesforce",
-          "page": "gwsf",
-          "env": ["dev", "int"]
+          "page": "gwsf"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -71,25 +66,19 @@
         },
         {
           "label": "DataHub",
-          "page": "dhGwCloud/latest",
-          "env": ["dev", "int"]
+          "page": "dhGwCloud/latest"
         },
         {
           "label": "InfoCenter",
-          "page": "icGwCloud/latest",
-          "env": ["dev", "int"]
+          "page": "icGwCloud/latest"
         },
         {
           "label": "Live",
           "class": "group",
           "items": [
             {
-              "label": "Assess Technical Overview",
-              "link": "./assess/assess/TechOverview/TechnicalOverview.pdf"
-            },
-            {
-              "label": "Assess API Reference",
-              "link": "./assess/assess/SdkApiRef"
+              "label": "Assess",
+              "page": "assess"
             },
             {
               "label": "Compare+",
@@ -144,7 +133,6 @@
         {
           "label": "Digital Framework",
           "class": "group",
-          "env": ["dev", "int"],
           "items": [
             {
               "label": "Jutro Design System",
@@ -155,40 +143,10 @@
         {
           "label": "Best Practices",
           "class": "group",
-          "env": ["dev", "int"],
           "items": [
             {
               "label": "Digital Best Practices",
               "id": "dxpractices"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Solutions",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Lines of business",
-          "class": "group",
-          "env": ["dev", "staging", "int"],
-          "items": [
-            {
-              "label": "Businessowners Standards Based Template",
-              "page": "boStandardsBasedTemplate/2020.05"
-            },
-            {
-              "label": "Commercial Auto Standards Based Template",
-              "page": "caStandardsBasedTemplate/2020.05"
-            },
-            {
-              "label": "Crime Standards Based Template",
-              "page": "crimeStandardsBasedTemplate/2020.05"
-            },
-            {
-              "label": "General Liability Standards Based Template",
-              "page": "glStandardsBasedTemplate/2020.05"
             }
           ]
         }
@@ -204,19 +162,19 @@
           "items": [
             {
               "label": "Help Center",
-              "link": "./cyence/cyber/HelpCenter"
+              "link": "/cyence/cyber/HelpCenter"
             },
             {
               "label": "Help Center - Accumulation Only",
-              "link": "./cyence/cyber/HelpCenterAccum"
+              "link": "/cyence/cyber/HelpCenterAccum"
             },
             {
               "label": "Model 5 Documentation",
-              "link": "./cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
+              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
             },
             {
               "label": "Python SDK and REST API Reference",
-              "link": "./cyence/cyber/SdkApiRef"
+              "link": "/cyence/cyber/SdkApiRef"
             }
           ]
         },
@@ -226,7 +184,7 @@
           "items": [
             {
               "label": "C#/Python SDKs and REST API Reference",
-              "link": "./cyence/smb/SdkApiRef"
+              "link": "/cyence/smb/SdkApiRef"
             }
           ]
         }
