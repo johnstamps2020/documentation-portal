@@ -31,6 +31,7 @@ def normalize_text(input_text: str):
 class DocPortalSpider(scrapy.Spider):
     name = 'Doc portal spider'
     id = 'doc_portal_spider'
+    docs = []
     app_base_url = ''
     doc_s3_url = ''
     excluded_types = ['.pdf', '.txt', '.xmind', '.xrb']
