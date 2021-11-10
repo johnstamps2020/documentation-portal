@@ -77,13 +77,14 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
         doc_products = doc.get('metadata').get('product')
         doc_platforms = doc.get('metadata').get('platform')
         doc_versions = doc.get('metadata').get('version')
+        doc_title = doc.get('title')
         for product in doc_products:
             for platform in doc_platforms:
                 for version in doc_versions:
                     matching_version_selector_object = next((
                         item for item in version_selectors if
                         item.get('product') == product and item.get('platform') == platform and item.get(
-                            'version') == version), None
+                            'version') == version and item.get('title') == doc_title), None
                     )
                     if not matching_version_selector_object:
                         version_selectors.append(
@@ -91,6 +92,7 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
                                 'product': product,
                                 'platform': platform,
                                 'version': version,
+                                'title': doc_title,
                                 'otherVersions': []
                             }
                         )
@@ -100,13 +102,14 @@ def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Pat
         doc_products = doc.get('metadata').get('product')
         doc_platforms = doc.get('metadata').get('platform')
         doc_versions = doc.get('metadata').get('version')
+        doc_title = doc.get('title')
         for product in doc_products:
             for platform in doc_platforms:
                 for version in doc_versions:
                     selector_objects_to_update = [
                         item for item in version_selectors if
                         item.get('product') == product and item.get('platform') == platform and item.get(
-                            'version') != version]
+                            'version') != version and item.get('title') == doc_title]
                     for obj in selector_objects_to_update:
                         matching_other_version = next((
                             item for item in obj.get('otherVersions') if item.get('label') == version

@@ -42,10 +42,12 @@ class ElasticsearchPipeline:
 
     def close_spider(self, spider):
         self.elastic_client.logger_instance.info(
-            f'\nCreated entries/Failures: {self.number_of_created_entries}/{len(self.failed_entries)}')
+            f'\nCreated entries/Failures: {self.number_of_created_entries}/{len(self.failed_entries)}\n')
         if self.failed_entries:
             self.elastic_client.logger_instance.info(
-                f'Failed to load the following entries:')
+                'Failed to load the following entries:'
+            )
+
             for failed_entry in self.failed_entries:
                 self.elastic_client.logger_instance.info(f'\t{failed_entry}')
 

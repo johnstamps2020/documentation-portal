@@ -3013,7 +3013,7 @@ object HelperObjects {
                 }
             }
 
-            if (build_env != "int") {
+            if (build_env == "staging" && buildType == "dita") {
                 features.add {
                     feature {
                         id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
@@ -3023,7 +3023,7 @@ object HelperObjects {
                 }
             }
 
-            if (build_env == "int") {
+            if (build_env == "int" || build_env == "staging") {
                 if (vcsRootIsExported) {
                     triggers {
                         vcs {
@@ -3032,7 +3032,8 @@ object HelperObjects {
                     """.trimIndent()
                         }
                     }
-                } else {
+                }
+                if (buildType != "dita") {
                     triggers {
                         vcs {
                             triggerRules = """
