@@ -129,7 +129,6 @@
         {
           "label": "Digital Framework",
           "class": "group",
-          "env": ["dev", "int"],
           "items": [
             {
               "label": "Jutro Design System",
