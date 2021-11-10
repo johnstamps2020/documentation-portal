@@ -92,7 +92,7 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
-async function getVersionSelector(platform, product, version, reqObj) {
+async function getVersionSelector(platform, product, version, title, reqObj) {
   try {
     const versionSelectorsFile = fs.readFileSync(
       versionSelectorsConfigPath,
@@ -103,7 +103,8 @@ async function getVersionSelector(platform, product, version, reqObj) {
       s =>
         product.split(',').some(p => p === s.product) &&
         platform.split(',').some(pl => pl === s.platform) &&
-        version.split(',').some(v => v === s.version)
+        version.split(',').some(v => v === s.version) &&
+        (title === s.title || !title)
     );
     //The getConfig function checks if request is authenticated and filters the returned docs accordingly.
     //Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
