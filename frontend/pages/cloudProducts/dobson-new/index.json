@@ -86,7 +86,7 @@
             },
             {
               "label": "Predict",
-              "id": "palatest"
+              "id": "livepredictlatest"
             }
           ]
         }
