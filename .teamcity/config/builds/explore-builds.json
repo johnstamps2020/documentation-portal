@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "m_relNotes.ditamap",
+      "srcId": "exploresrc",
+      "docId": "explorernrelease",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "m_cloud-usingExplore.ditamap",
+      "srcId": "exploresrc",
+      "docId": "exploreusingrelease",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "m_dataDictionaries.ditamap",
+      "srcId": "exploresrc",
+      "docId": "exploredatadictrelease",
+      "indexRedirect": true
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "explorernrelease",
+      "title": "Release Notes",
+      "url": "cloud/explore/relnotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "exploreusingrelease",
+      "title": "Application Guide",
+      "url": "cloud/explore/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "exploredatadictrelease",
+      "title": "Data Dictionaries",
+      "url": "cloud/explore/datadict",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
