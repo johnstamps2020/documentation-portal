@@ -3013,7 +3013,7 @@ object HelperObjects {
                 }
             }
 
-            if (build_env == "staging") {
+            if (build_env == "staging" && buildType == "dita") {
                 features.add {
                     feature {
                         id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
