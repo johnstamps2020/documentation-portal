@@ -102,27 +102,27 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "ceAccountMgmt/latest"
+              "page": "ceAccountMgmt/2021.11"
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/latest"
+              "page": "ceAccountMgmtCc/2021.11"
             },
             {
               "label": "ProducerEngage",
-              "page": "producerEngage/latest"
+              "page": "producerEngage/2021.11"
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/latest"
+              "page": "producerEngageCc/2021.11"
             },
             {
               "label": "ServiceRepEngage",
-              "page": "serviceRepEngage/latest"
+              "page": "serviceRepEngage/2021.11"
             },
             {
               "label": "VendorEngage",
-              "page": "vendorEngage/latest"
+              "page": "vendorEngage/2021.11"
             }
           ]
         },
@@ -134,17 +134,6 @@
             {
               "label": "Jutro Design System",
               "page": "../../../jutroDesignSystem/5.3.1"
-            }
-          ]
-        },
-        {
-          "label": "Best Practices",
-          "class": "group",
-          "env": ["dev", "int"],
-          "items": [
-            {
-              "label": "Digital Best Practices",
-              "id": "dxpractices"
             }
           ]
         }
@@ -189,19 +178,19 @@
           "items": [
             {
               "label": "Help Center",
-              "link": "./cyence/cyber/HelpCenter"
+              "link": "/cyence/cyber/HelpCenter"
             },
             {
               "label": "Help Center - Accumulation Only",
-              "link": "./cyence/cyber/HelpCenterAccum"
+              "link": "/cyence/cyber/HelpCenterAccum"
             },
             {
               "label": "Model 5 Documentation",
-              "link": "./cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
+              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
             },
             {
               "label": "Python SDK and REST API Reference",
-              "link": "./cyence/cyber/SdkApiRef"
+              "link": "/cyence/cyber/SdkApiRef"
             }
           ]
         },
@@ -211,7 +200,7 @@
           "items": [
             {
               "label": "C#/Python SDKs and REST API Reference",
-              "link": "./cyence/smb/SdkApiRef"
+              "link": "/cyence/smb/SdkApiRef"
             }
           ]
         }

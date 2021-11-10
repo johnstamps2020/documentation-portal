@@ -76,7 +76,8 @@
         },
         {
           "label": "Common Functionality Configuration Reference",
-          "id": "in20212commonconfig"
+          "id": "in20212commonconfig",
+          "env": ["int"]
         },
         {
           "label": "Studio Configuration Guide",
