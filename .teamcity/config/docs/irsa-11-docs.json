@@ -70,7 +70,7 @@
         "platform": ["Self-managed"],
         "version": ["1.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false
