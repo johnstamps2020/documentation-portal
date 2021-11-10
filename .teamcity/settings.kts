@@ -3033,6 +3033,15 @@ object HelperObjects {
                         }
                     }
                 }
+                if (buildType != "dita") {
+                    triggers {
+                        vcs {
+                            triggerRules = """
+                        +:root=${vcs_root_id.id}:**
+                            """.trimIndent()
+                        }
+                    }
+                }
             }
         })
 
