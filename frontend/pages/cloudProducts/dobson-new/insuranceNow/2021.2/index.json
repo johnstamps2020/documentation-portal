@@ -89,11 +89,6 @@
         {
           "label": "Underwriting Configuration Reference",
           "id": "in20212uwconfig"
-        },
-        {
-          "label": "Claims Configuration Reference",
-          "id": "in20212claimsconfig",
-          "env": ["int"]
         }
       ]
     },
