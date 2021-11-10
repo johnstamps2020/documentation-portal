@@ -1,26 +1,48 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Guidewire for Salesforce 4.0",
+  "title": "Guidewire for Salesforce for Guidewire Cloud 2021.11",
+  "class": "twoColumns",
   "template": "page.j2",
-  "class": "blue-theme elysian threeCards",
   "items": [
     {
-      "label": "Data Integrations",
-      "class": "productFamily cardShadow",
-      "page": "di/4.0",
-      "env": ["int"]
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dxdirelnotes40"
+        }
+      ]
     },
     {
-      "label": "Digital Gateway",
-      "class": "productFamily cardShadow",
-      "page": "ed/4.0",
-      "env": ["int"]
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dxdiapp40"
+        }
+      ]
     },
     {
-      "label": "View on Demand",
-      "class": "productFamily cardShadow",
-      "page": "vod/4.0",
-      "env": ["int"]
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dxdiinstall40"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dxdiadmin40"
+        }
+      ]
     }
   ]
 }

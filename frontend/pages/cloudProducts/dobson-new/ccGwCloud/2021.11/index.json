@@ -36,8 +36,7 @@
         },
         {
           "label": "Developer Setup (Internal only)",
-          "id": "iscccloudgwdevsetup",
-          "env": ["int"]
+          "id": "iscccloudgwdevsetup"
         },
         {
           "label": "Upgrade",
@@ -45,8 +44,7 @@
         },
         {
           "label": "Upgrade (Internal only)",
-          "id": "iscccloudgwupgrade",
-          "env": ["int"]
+          "id": "iscccloudgwupgrade"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -78,8 +76,7 @@
         },
         {
           "label": "Administration (Internal only)",
-          "id": "iscccloudgwadmin",
-          "env": ["int"]
+          "id": "iscccloudgwadmin"
         },
         {
           "label": "Data Archiving",
