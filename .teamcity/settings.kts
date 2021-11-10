@@ -3013,7 +3013,7 @@ object HelperObjects {
                 }
             }
 
-            if (build_env == "staging") {
+            if (build_env == "staging" && buildType == "dita") {
                 features.add {
                     feature {
                         id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
@@ -3030,6 +3030,15 @@ object HelperObjects {
                             triggerRules = """
                         +:root=${vcs_root_id.id};comment=\[%env.SRC_ID%\]:**
                     """.trimIndent()
+                        }
+                    }
+                }
+                if (buildType != "dita") {
+                    triggers {
+                        vcs {
+                            triggerRules = """
+                        +:root=${vcs_root_id.id}:**
+                            """.trimIndent()
                         }
                     }
                 }
