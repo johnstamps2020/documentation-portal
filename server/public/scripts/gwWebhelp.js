@@ -14,6 +14,7 @@ let docProduct = docProductElement
 let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
+let docTitle = undefined;
 const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
@@ -52,13 +53,14 @@ async function fetchMetadata() {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
       try {
-        const metadata = await response.json();
-        if (!metadata.error) {
-          docProduct = metadata.product?.join(',') || docProduct;
-          docPlatform = metadata.platform?.join(',') || docPlatform;
-          docVersion = metadata.version?.join(',') || docVersion;
-          docCategory = metadata.category?.join(',') || docCategory;
-          return metadata;
+        const docInfo = await response.json();
+        if (!docInfo.error) {
+          docProduct = docInfo.product?.join(',') || docProduct;
+          docPlatform = docInfo.platform?.join(',') || docPlatform;
+          docVersion = docInfo.version?.join(',') || docVersion;
+          docCategory = docInfo.category?.join(',') || docCategory;
+          docTitle = docInfo.docTitle;
+          return docInfo;
         }
       } catch (err) {
         console.error(err);
@@ -69,14 +71,17 @@ async function fetchMetadata() {
 
 let metadata = undefined;
 
-async function findBestMatchingTopic(searchQuery, docProduct, docVersion) {
+async function findBestMatchingTopic(searchQuery, targetDocVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;
     const searchUrl = new URL('/search', baseUrl);
     searchUrl.searchParams.append('rawJSON', 'true');
     searchUrl.searchParams.append('q', `${searchQuery}`);
     searchUrl.searchParams.append('product', `${docProduct}`);
-    searchUrl.searchParams.append('version', `${docVersion}`);
+    searchUrl.searchParams.append('version', `${targetDocVersion}`);
+    if (docTitle) {
+      searchUrl.searchParams.append('title', `${docTitle}`);
+    }
     const response = await fetch(searchUrl.href);
     const responseBody = await response.json();
     return responseBody[0]?.href;
@@ -102,7 +107,9 @@ async function createVersionSelector() {
     }
 
     const response = await fetch(
-      `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}`
+      `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}${
+        docTitle ? `&title=${docTitle}` : ''
+      }`
     );
     const jsonResponse = await response.json();
     const matchingVersionSelector = jsonResponse.matchingVersionSelector;
@@ -148,7 +155,6 @@ async function createVersionSelector() {
           const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
           const bestMatchingTopic = await findBestMatchingTopic(
             searchQuery,
-            docProduct,
             targetDocVersion
           );
           if (bestMatchingTopic) {
