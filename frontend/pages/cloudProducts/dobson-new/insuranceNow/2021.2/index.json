@@ -1,0 +1,115 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceNow 2021.2",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Core Release Notes",
+          "id": "in20212rn"
+        },
+        {
+          "label": "Release Video",
+          "link": "https://www.brainshark.com/guidewire/vu?pi=zIYz11mVjxzM6iUz0"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20212studiorn"
+        },
+        {
+          "label": "Consumer Service Portal Release Notes",
+          "id": "in20212csprn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "in20212app"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20212csalesp"
+        },
+        {
+          "label": "Consumer Service Portal Features",
+          "id": "in20212cservicep"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "AppReader Integration",
+          "id": "in20212appreaderinteg"
+        },
+        {
+          "label": "Live Predict Integration",
+          "id": "in20212pa"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20212apiref"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Core Configuration Guide",
+          "id": "in20212config"
+        },
+        {
+          "label": "Common Functionality Configuration Reference",
+          "id": "in20212commonconfig"
+        },
+        {
+          "label": "Studio Configuration Guide",
+          "id": "in20212studio"
+        },
+        {
+          "label": "Portal Development Guide",
+          "id": "in20212portaldev"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20212prodattref"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20212uwconfig"
+        },
+        {
+          "label": "Claims Configuration Reference",
+          "id": "in20212claimsconfig",
+          "env": ["int"]
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developers Setup",
+          "id": "indevguidejava11ext"
+        }
+      ]
+    }
+  ]
+}

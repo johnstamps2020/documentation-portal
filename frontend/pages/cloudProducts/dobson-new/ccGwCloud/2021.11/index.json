@@ -1,0 +1,179 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter for Guidewire Cloud 2021.11",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "iscc202111releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "iscc202111newandchanged"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn"
+        },
+        {
+          "label": "The Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrndobson"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "iscc202111devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "iscccloudgwdevsetup",
+          "env": ["int"]
+        },
+        {
+          "label": "Upgrade",
+          "id": "iscc202111upgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "iscccloudgwupgrade",
+          "env": ["int"]
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools310"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "iscc202111app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202111contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "iscc202111admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "iscccloudgwadmin",
+          "env": ["int"]
+        },
+        {
+          "label": "Data Archiving",
+          "id": "iscc202111dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "iscc202111config"
+        },
+        {
+          "label": "Globalization",
+          "id": "iscc202111global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "iscc202111rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202111integoverview"
+        },
+        {
+          "label": "Plugins, Prebuilt Integrations, and SOAP APIs",
+          "id": "iscc202111integ"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "iscc202111apibf"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "iscc202111apicm"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "iscc202111apica"
+        },
+        {
+          "label": "Cloud API Reference",
+          "id": "ccapirefdobson"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc202111restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "is202111gosu"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "iscc202111testing"
+        },
+        {
+          "label": "API Testing (GT: API)",
+          "id": "testingframeworksapidobson"
+        },
+        {
+          "label": "User Interface Testing (GT: UI)",
+          "id": "testingframeworksuidobson"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}
