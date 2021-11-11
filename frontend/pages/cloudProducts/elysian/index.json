@@ -81,7 +81,7 @@
               "page": "assess"
             },
             {
-              "label": "Compare+",
+              "label": "Compare",
               "id": "comparelatest"
             },
             {
@@ -113,6 +113,10 @@
               "page": "ceAccountMgmtCc/latest"
             },
             {
+              "label": "CustomerEngage Quote and Buy",
+              "page": "ceQuoteAndBuy/latest"
+            },
+            {
               "label": "ProducerEngage",
               "page": "producerEngage/latest"
             },
@@ -136,7 +140,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/5.3.1"
+              "page": "../../../jutroDesignSystem/6.5.0"
             }
           ]
         },
