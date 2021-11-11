@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "dmdraftsrc",
+      "title": "DataManagement Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "main"
+    },
+    {
       "id": "dm202111src",
       "title": "DataManagement 2021.11",
       "sourceType": "git",

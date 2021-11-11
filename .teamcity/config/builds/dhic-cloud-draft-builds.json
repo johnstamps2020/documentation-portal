@@ -3,10 +3,10 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhrn202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhcloudrndraft",
       "indexRedirect": true,
       "resources": [
         {
@@ -18,58 +18,58 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "product.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhproduct202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhcloudproductdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "install.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhinstall202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhcloudinstalldraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhupgrade202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhcloudupgradedraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "config.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhconfig202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhcloudconfigdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhdataspec202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhclouddataspecdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhadmin202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhcloudadmindraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-DRAFT.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dm202111src",
-      "docId": "dhdevref202111",
+      "srcId": "dmdraftsrc",
+      "docId": "dhclouddevrefdraft",
       "indexRedirect": true,
       "resources": [
         {
@@ -81,10 +81,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icrn202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudrndraft",
       "indexRedirect": true,
       "resources": [
         {
@@ -96,74 +96,74 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "product.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icproduct202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudproductdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "install.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icinstall202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudinstalldraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icupgrade202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudupgradedraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "config.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icconfig202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudconfigdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icdataspec202111",
+      "srcId": "dmdraftsrc",
+      "docId": "icclouddataspecdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icadmin202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudadmindraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "bi-applications.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icbiapp202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudbiappdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "reports.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icreports202111",
+      "srcId": "dmdraftsrc",
+      "docId": "iccloudreportsdraft",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-DRAFT.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dm202111src",
-      "docId": "icdevref202111",
+      "srcId": "dmdraftsrc",
+      "docId": "icclouddevrefdraft",
       "indexRedirect": true,
       "resources": [
         {
