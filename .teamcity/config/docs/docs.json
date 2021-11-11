@@ -54,7 +54,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Identity Federation Hub"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -84,7 +84,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -261,7 +261,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -276,7 +276,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -292,7 +292,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -887,13 +887,13 @@
     },
     {
       "id": "comparelatest",
-      "title": "Compare+",
+      "title": "Compare",
       "url": "cloud/compare/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Compare+"],
+        "product": ["Compare"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina"]
+        "release": ["Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -8241,7 +8241,7 @@
         "release": ["Dobson"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false
@@ -8256,7 +8256,7 @@
         "release": ["Dobson"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false
