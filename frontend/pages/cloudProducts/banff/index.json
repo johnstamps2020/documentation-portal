@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Dobson",
-        "page": "../dobson",
-        "env": ["dev", "int", "staging"]
+        "page": "../dobson"
       },
       {
         "label": "Cortina",
