@@ -968,24 +968,11 @@
       ]
     },
     {
-      "id": "clouddataaccessguidesrc",
+      "id": "clouddataaccesssrc",
       "title": "Cloud Data Access Guide",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/cloud-data-access/active/UnderstandingCloudDataAccess.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
-      "id": "clouddataaccessrnsrc",
-      "title": "Cloud Data Access Release Notes",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-platform.git",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/cloud/cloud-data-access/active/b_relNotesCda.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
+      "branch": "main"
     },
     {
       "id": "exploresrc",
