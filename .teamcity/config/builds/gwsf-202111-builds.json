@@ -5,32 +5,32 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
-      "srcId": "dxgwsf40",
-      "docId": "dxdiapp40",
+      "srcId": "dxgwsf202111",
+      "docId": "dxgwsfapp202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
-      "srcId": "dxgwsf40",
-      "docId": "dxdiinstall40",
+      "srcId": "dxgwsf202111",
+      "docId": "dxgwsfinstall202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
-      "srcId": "dxgwsf40",
-      "docId": "dxdiadmin40",
+      "srcId": "dxgwsf202111",
+      "docId": "dxgwsfadmin202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
-      "srcId": "dxgwsf40",
-      "docId": "dxdirelnotes40",
+      "srcId": "dxgwsf202111",
+      "docId": "dxgwsfrelnotes202111",
       "indexRedirect": true
     }
   ]
