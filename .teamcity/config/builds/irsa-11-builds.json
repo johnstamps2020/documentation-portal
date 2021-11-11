@@ -39,7 +39,7 @@
       "root": "_supermap.ditamap",
       "srcId": "irsa11src",
       "docId": "midipfsupermap11",
-      "indexRedirect": true
+      "indexRedirect": false
     }
   ]
 }

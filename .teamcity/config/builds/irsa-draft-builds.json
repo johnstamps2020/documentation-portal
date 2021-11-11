@@ -39,7 +39,7 @@
       "root": "_supermap.ditamap",
       "srcId": "irsadraftsrc",
       "docId": "midipfsupermapdraft",
-      "indexRedirect": true
+      "indexRedirect": false
     }
   ]
 }
