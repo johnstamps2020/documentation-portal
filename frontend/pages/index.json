@@ -14,12 +14,12 @@
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/cortina",
+      "link": "/cloudProducts/dobson",
       "env": ["prod"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/dobson",
+      "link": "/cloudProducts/elysian",
       "env": ["dev", "staging", "int"]
     }
   ]

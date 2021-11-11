@@ -19,17 +19,16 @@
     },
     {
       "label": "Dobson",
-      "page": "dobson",
-      "env": ["dev", "int", "staging"]
-    },
-    {
-      "label": "_redirect",
-      "link": "/cloudProducts/cortina",
-      "env": ["prod"]
+      "page": "dobson"
     },
     {
       "label": "_redirect",
       "link": "/cloudProducts/dobson",
+      "env": ["prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/elysian",
       "env": ["dev", "staging", "int"]
     }
   ]
