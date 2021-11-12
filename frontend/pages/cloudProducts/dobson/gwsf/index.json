@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxdirelnotes40"
+          "id": "dxgwsfrelnotes202111"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxdiapp40"
+          "id": "dxgwsfapp202111"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxdiinstall40"
+          "id": "dxgwsfinstall202111"
         }
       ]
     },
@@ -40,7 +40,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "dxdiadmin40"
+          "id": "dxgwsfadmin202111"
         }
       ]
     }
