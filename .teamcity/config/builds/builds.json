@@ -1660,7 +1660,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "isrestapiclientguidesrc",
+      "srcId": "restapisrc",
       "docId": "isdraftrestapiclientguide",
       "indexRedirect": true
     },
@@ -1668,7 +1668,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-      "srcId": "isrestapiclientrnsrc",
+      "srcId": "restapisrc",
       "docId": "isdraftrestapiclientrn",
       "indexRedirect": true
     },
