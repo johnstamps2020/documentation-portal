@@ -19,7 +19,7 @@ const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
   const response = await fetch(`/recommendations?topicId=${topicId}`);
-  if (response.status === 200) {
+  if (response.ok) {
     const json = await response.json();
     const recommendedTopics = json.recommendations;
     const recommendationsContainer = document.createElement('div');
@@ -301,15 +301,19 @@ async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
   // in 10ms.
   try {
     const buttonWrapper = document.createElement('div');
-    buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
     let userButton;
     const response = await fetch('/userInformation');
     const { isLoggedIn, name, preferred_username } = await response.json();
 
     if (isLoggedIn) {
+      buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
       userButton = createAvatarButton(name, preferred_username);
     } else {
+      buttonWrapper.setAttribute('id', 'loginContainer');
       userButton = document.createElement('a');
+      userButton.setAttribute('id', 'loginButton');
+      userButton.setAttribute('href', '/gw-login');
+      userButton.innerText = 'Log in';
     }
     buttonWrapper.appendChild(userButton);
     document.getElementById('customHeaderElements').appendChild(buttonWrapper);

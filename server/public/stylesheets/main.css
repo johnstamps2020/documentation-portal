@@ -7,7 +7,7 @@
   --clr-GW-BLUE: hsl(196, 100%, 31%);
   --clr-GW-BLUE-HOVER: hsl(196, 100%, 26%);
   /* --clr-GW-BLUE-LIGHTER and --clr-GW-BLUE-LIGHTER-HOVER are not approved colors,
-      but are derived from GW Blue. */
+        but are derived from GW Blue. */
   --clr-GW-BLUE-LIGHTER: hsl(196, 100%, 60%);
   --clr-GW-BLUE-LIGHTER-HOVER: hsl(196, 100%, 45%);
   --clr-GW-BLUE-LIGHTEST: hsl(196, 100%, 90%);
@@ -529,7 +529,7 @@ footer .releaseInfo {
 div.pageHero {
   display: block;
   /* flex-wrap: wrap-reverse;
-                                                                                                                                    gap: 16px; */
+                                                                                                                                      gap: 16px; */
 }
 
 .heroControls {
@@ -1104,15 +1104,6 @@ main.support h2 {
   letter-spacing: -0.43px;
   line-height: 1.6875;
   white-space: nowrap;
-}
-
-#loginContainer {
-  display: flex;
-  width: 70px;
-}
-
-#loginButton.invisible {
-  visibility: hidden;
 }
 
 .expandableSection {

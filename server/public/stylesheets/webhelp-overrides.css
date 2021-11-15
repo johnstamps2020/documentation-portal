@@ -212,6 +212,7 @@ html {
 #customHeaderElements {
   display: flex;
   float: right;
+  align-items: center;
 }
 
 #customHeaderElements label {
@@ -590,4 +591,21 @@ span.openNav {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
+}
+
+#loginButton {
+  background: linear-gradient(
+    194.81deg,
+    hsl(196, 100%, 36%) 0%,
+    hsl(196, 100%, 31%) 100%
+  );
+  color: hsl(0, 0%, 100%) !important;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+#loginButton:hover {
+  background: hsl(196, 100%, 26%);
 }
