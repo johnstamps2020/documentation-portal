@@ -1,10 +1,10 @@
 [[package]]
 name = "natsort"
-version = "7.1.1"
+version = "7.2.0"
 description = "Simple yet flexible natural sorting in Python."
 category = "main"
 optional = false
-python-versions = ">=3.4"
+python-versions = ">=3.6"
 
 [package.extras]
 fast = ["fastnumbers (>=2.0.0)"]
@@ -17,6 +17,6 @@ content-hash = "bc8190791f47d339c0fba5fe670e23844f9857f0a5d13193eb8382084709f0f0
 
 [metadata.files]
 natsort = [
-    {file = "natsort-7.1.1-py3-none-any.whl", hash = "sha256:d0f4fc06ca163fa4a5ef638d9bf111c67f65eedcc7920f98dec08e489045b67e"},
-    {file = "natsort-7.1.1.tar.gz", hash = "sha256:00c603a42365830c4722a2eb7663a25919551217ec09a243d3399fa8dd4ac403"},
+    {file = "natsort-7.2.0-py3-none-any.whl", hash = "sha256:24f245daf9622683d4d2dfbd6076ba4aa0054074e73bbeea4253b4bfec0ea2bc"},
+    {file = "natsort-7.2.0.tar.gz", hash = "sha256:e7054b4e1f47365f141602a742685165a552291b643a214652d0dd9d6cea58d1"},
 ]
