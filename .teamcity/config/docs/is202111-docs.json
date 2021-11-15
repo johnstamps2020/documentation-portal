@@ -51,7 +51,7 @@
     },
     {
       "id": "testingframeworksrndobson",
-      "title": "The Guidewire Testing Framework Release Notes",
+      "title": "Guidewire Testing Framework Release Notes",
       "url": "cloud/testingframeworks/202111/releasenotes",
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
