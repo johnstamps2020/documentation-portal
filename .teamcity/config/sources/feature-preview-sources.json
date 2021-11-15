@@ -46,34 +46,6 @@
       ]
     },
     {
-      "id": "appeventsdevdraftsrc",
-      "title": "Application Events for Developers",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "branch": "main"
-    },
-    {
-      "id": "appeventsccrndraftsrc",
-      "title": "Application Events for Claims Release Notes",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "branch": "main"
-    },
-    {
-      "id": "integgatewaydevdraftsrc",
-      "title": "Integration Gateway for Developers",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "branch": "main"
-    },
-    {
-      "id": "integgatewayrndraftsrc",
-      "title": "Integration Gateway Release Notes",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "branch": "main"
-    },
-    {
       "id": "stringmanagerlatestsrc",
       "title": "String Manager",
       "sourceType": "git",

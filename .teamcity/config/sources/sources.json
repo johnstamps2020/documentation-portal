@@ -429,16 +429,9 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git"
     },
     {
-      "id": "isrestapiclientguidesrc",
-      "title": "IS REST API Client",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
-      "branch": "main"
-    },
-    {
-      "id": "isrestapiclientrnsrc",
-      "title": "IS REST API Client Release Notes",
-      "sourceType": "xdocs",
+      "id": "restapisrc",
+      "title": "IS REST API",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
       "branch": "main"
     },
