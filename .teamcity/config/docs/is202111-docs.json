@@ -767,7 +767,7 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "ispc202111apica",

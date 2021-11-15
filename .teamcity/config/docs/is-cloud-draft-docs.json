@@ -703,7 +703,7 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": true
     },
     {
       "id": "ispcclouddraftapica",
