@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "BillingCenter for Guidewire Cloud 2021.11",
+  "title": "PolicyCenter for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "twoColumns",
   "items": [
@@ -10,15 +10,15 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbc202111releasenotes"
+          "id": "ispcclouddraftreleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "isbc202111newandchanged"
+          "id": "ispcclouddraftnewandchanged"
         },
         {
           "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
+          "id": "isdraftrestapiclientrn"
         },
         {
           "label": "Guidewire Testing Framework Release Notes",
@@ -32,23 +32,19 @@
       "items": [
         {
           "label": "Developer Setup",
-          "id": "isbc202111devsetup"
+          "id": "ispcclouddraftdevsetup"
         },
         {
           "label": "Developer Setup (Internal only)",
-          "id": "isbccloudgwdevsetup"
+          "id": "ispccloudgwdevsetup"
         },
         {
           "label": "Upgrade",
-          "id": "isbc202111upgrade"
+          "id": "ispcclouddraftupgrade"
         },
         {
           "label": "Upgrade (Internal only)",
-          "id": "isbccloudgwupgrade"
-        },
-        {
-          "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools310"
+          "id": "ispccloudgwupgrade"
         }
       ]
     },
@@ -58,11 +54,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbc202111app"
+          "id": "ispcclouddraftapp"
         },
         {
           "label": "Contact Management",
-          "id": "is202111contact"
+          "id": "isclouddraftcontact"
         }
       ]
     },
@@ -72,15 +68,15 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbc202111admin"
+          "id": "ispcclouddraftadmin"
         },
         {
           "label": "Administration (Internal only)",
-          "id": "isbccloudgwadmin"
+          "id": "ispccloudgwadmin"
         },
         {
           "label": "Data Archiving",
-          "id": "isbc202111dataarchiving"
+          "id": "ispcclouddraftdataarchiving"
         }
       ]
     },
@@ -89,16 +85,28 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Advanced Product Designer",
+          "id": "ispc202111apd"
+        },
+        {
           "label": "Configuration",
-          "id": "isbc202111config"
+          "id": "ispcclouddraftconfig"
         },
         {
           "label": "Globalization",
-          "id": "isbc202111global"
+          "id": "ispcclouddraftglobal"
         },
         {
           "label": "Gosu Rules",
-          "id": "isbc202111rules"
+          "id": "ispcclouddraftrules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispcclouddraftpd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispcclouddraftpm"
         }
       ]
     },
@@ -108,23 +116,31 @@
       "items": [
         {
           "label": "Overview of Cloud Integration",
-          "id": "is202111integoverview"
+          "id": "isclouddraftintegoverview"
         },
         {
-          "label": "Plugins, Prebuilt Integrations, and SOAP APIs",
-          "id": "isbc202111integ"
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "ispcclouddraftinteg"
         },
         {
           "label": "Cloud API Business Flows",
-          "id": "isbc202111apibf"
+          "id": "ispcclouddraftapibf"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "ispcclouddraftapicm"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "ispcclouddraftapica"
         },
         {
           "label": "REST API Framework",
-          "id": "isbc202111restapifw"
+          "id": "ispcclouddraftrestapifw"
         },
         {
           "label": "REST API Client",
-          "id": "isrestapiclientguide"
+          "id": "isdraftrestapiclientguide"
         }
       ]
     },
@@ -134,11 +150,11 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "is202111gosu"
+          "id": "isclouddraftgosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "isbc202111testing"
+          "id": "ispcclouddrafttesting"
         },
         {
           "label": "API Testing (GT: API)",
