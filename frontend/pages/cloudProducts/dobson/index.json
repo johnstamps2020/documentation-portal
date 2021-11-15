@@ -39,6 +39,18 @@
           "page": "bcGwCloud/2021.11"
         },
         {
+          "label": "PolicyCenter",
+          "page": "pcGwCloud/latest"
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "ccGwCloud/latest"
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bcGwCloud/latest"
+        },
+        {
           "label": "InsuranceNow",
           "page": "insuranceNow/2021.2"
         },
