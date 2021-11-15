@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="Python" name="Python">
-      <configuration sdkName="Python 3.9" />
-    </facet>
-  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/httpRequests" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/libraries" />
-      <excludeFolder url="file://$MODULE_DIR$/apps/sitemap_generator/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/remark42-deployment/var" />
       <excludeFolder url="file://$MODULE_DIR$/.vscode" />
-      <excludeFolder url="file://$MODULE_DIR$/build" />
-      <excludeFolder url="file://$MODULE_DIR$/apps/doc-crawler/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/apps/recommendation_engine/venv" />
-      <excludeFolder url="file://$MODULE_DIR$/apps/lion_pkg_builder/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Python 3.9 interpreter library" level="application" />
   </component>
 </module>
