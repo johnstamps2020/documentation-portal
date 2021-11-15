@@ -1658,7 +1658,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "isrestapiclientguidesrc",
       "docId": "isdraftrestapiclientguide",
@@ -1666,7 +1666,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrnsrc",
       "docId": "isdraftrestapiclientrn",
@@ -2704,7 +2704,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "isrestapiclientguidesrc",
       "docId": "isrestapiclientguide",
@@ -2712,7 +2712,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "isrestapiclientrnsrc",
       "docId": "isrestapiclientrn",

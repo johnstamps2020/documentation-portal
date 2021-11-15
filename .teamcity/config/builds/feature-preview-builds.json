@@ -51,7 +51,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "appevents-releasenotes-cc.ditamap",
       "indexRedirect": true,
       "srcId": "appeventsccrndraftsrc",
@@ -59,7 +59,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "appeventsdevdraftsrc",
@@ -67,7 +67,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "appeventsdevdraftsrc",
@@ -75,7 +75,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "IntegrationGatewayForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "integgatewaydevdraftsrc",
@@ -83,7 +83,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "IntegrationGatewayReleaseNotes.ditamap",
       "indexRedirect": true,
       "srcId": "integgatewayrndraftsrc",

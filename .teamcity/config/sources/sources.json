@@ -433,22 +433,14 @@
       "title": "IS REST API Client",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/RESTAPIClientGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "branch": "main"
     },
     {
       "id": "isrestapiclientrnsrc",
       "title": "IS REST API Client Release Notes",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/REST-API-Client/releasenotes/Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "branch": "main"
     },
     {
       "id": "is9010",
