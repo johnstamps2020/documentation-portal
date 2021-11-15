@@ -40,15 +40,18 @@
         },
         {
           "label": "PolicyCenter",
-          "page": "pcGwCloud/latest"
+          "page": "pcGwCloud/latest",
+          "env": ["int"]
         },
         {
           "label": "ClaimCenter",
-          "page": "ccGwCloud/latest"
+          "page": "ccGwCloud/latest",
+          "env": ["int"]
         },
         {
           "label": "BillingCenter",
-          "page": "bcGwCloud/latest"
+          "page": "bcGwCloud/latest",
+          "env": ["int"]
         },
         {
           "label": "InsuranceNow",
