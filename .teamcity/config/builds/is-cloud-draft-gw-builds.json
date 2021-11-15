@@ -3,23 +3,23 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "cloudisadmindraftsrc",
+      "srcId": "is202111src",
       "docId": "isbccloudgwadmin",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "cloudisdevsetupdraftsrc",
+      "srcId": "is202111src",
       "docId": "isbccloudgwdevsetup",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-BC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
@@ -27,23 +27,23 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "cloudisadmindraftsrc",
+      "srcId": "is202111src",
       "docId": "iscccloudgwadmin",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "cloudisdevsetupdraftsrc",
+      "srcId": "is202111src",
       "docId": "iscccloudgwdevsetup",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-CC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
@@ -51,23 +51,23 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "cloudisadmindraftsrc",
+      "srcId": "is202111src",
       "docId": "ispccloudgwadmin",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "cloudisdevsetupdraftsrc",
+      "srcId": "is202111src",
       "docId": "ispccloudgwdevsetup",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-PC-Cloud-GW.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguidesrc",
