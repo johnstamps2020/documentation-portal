@@ -46,47 +46,6 @@
       ]
     },
     {
-      "id": "appeventsdevdraftsrc",
-      "title": "Application Events for Developers Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/DevConnect/cloud/active/ApplicationEventsForDevelopers.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
-      ]
-    },
-    {
-      "id": "appeventsccrndraftsrc",
-      "title": "Application Events for Claims Release Notes Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/DevConnect/cloud/active/release-notes/app-events-cc/appevents-releasenotes-cc.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval"
-      ]
-    },
-    {
-      "id": "integgatewaydevdraftsrc",
-      "title": "Integration Gateway for Developers Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/DevConnect/cloud/active/IntegrationGatewayForDevelopers.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
-      "id": "integgatewayrndraftsrc",
-      "title": "Integration Gateway Release Notes Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/rest-api.git",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/DevConnect/cloud/active/IntegrationGatewayReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval"
-      ]
-    },
-    {
       "id": "stringmanagerlatestsrc",
       "title": "String Manager",
       "sourceType": "git",

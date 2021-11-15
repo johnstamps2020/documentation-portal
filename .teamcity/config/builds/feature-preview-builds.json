@@ -51,42 +51,42 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "appevents-releasenotes-cc.ditamap",
       "indexRedirect": true,
-      "srcId": "appeventsccrndraftsrc",
+      "srcId": "restapisrc",
       "docId": "appeventsccrndraft"
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
-      "srcId": "appeventsdevdraftsrc",
+      "srcId": "restapisrc",
       "docId": "ccappeventsdevdraft"
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
-      "srcId": "appeventsdevdraftsrc",
+      "srcId": "restapisrc",
       "docId": "pcappeventsdevdraft"
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "IntegrationGatewayForDevelopers.ditamap",
       "indexRedirect": true,
-      "srcId": "integgatewaydevdraftsrc",
+      "srcId": "restapisrc",
       "docId": "integgatewaydevdraft"
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "IntegrationGatewayReleaseNotes.ditamap",
       "indexRedirect": true,
-      "srcId": "integgatewayrndraftsrc",
+      "srcId": "restapisrc",
       "docId": "integgatewayrndraft"
     },
     {
