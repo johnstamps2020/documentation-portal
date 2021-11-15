@@ -3,16 +3,6 @@
   "title": "BillingCenter for Guidewire Cloud latest",
   "template": "page.j2",
   "class": "twoColumns",
-  "selector": {
-    "label": "Select version",
-    "selectedItem": "latest",
-    "items": [
-      {
-        "label": "earlyaccess",
-        "page": "../earlyaccess"
-      }
-    ]
-  },
   "items": [
     {
       "label": "Release Notes",
