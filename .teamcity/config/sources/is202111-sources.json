@@ -18,14 +18,14 @@
     {
       "id": "testingframeworks202111src",
       "title": "Testing Framework 2021.11",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
       "branch": "release/2021.11"
     },
     {
       "id": "is202111src",
       "title": "IS 2021.11",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/2021.11"
     }
