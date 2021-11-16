@@ -608,4 +608,5 @@ span.openNav {
 
 #loginButton:hover {
   background: hsl(196, 100%, 26%);
+  text-decoration: none;
 }
