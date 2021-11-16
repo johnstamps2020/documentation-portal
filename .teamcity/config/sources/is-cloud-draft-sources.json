@@ -4,7 +4,7 @@
     {
       "id": "cloudisrnsrc",
       "title": "IS Cloud Release Notes",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-dobson.ditamap",
