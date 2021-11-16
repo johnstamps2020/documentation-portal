@@ -61,8 +61,8 @@ class EmptyItemWarning:
 
 def process_validation_results(results: List, send_bouncer_home: bool):
     """
-    bouncer_mode:
-        If I notice any errors, I'll raise hell right away!
+    send_bouncer_home:
+        When set to True, the bouncer raises hell right away if it notices any errors.
     """
 
     def group_and_sort_results(raw_results: List, group_key: str, sort_key: str = None):

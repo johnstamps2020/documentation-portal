@@ -1,0 +1,268 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "comparelatest",
+      "title": "Compare",
+      "url": "cloud/compare/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Compare"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "livepredictlatest",
+      "title": "Live Predict",
+      "url": "cloud/predict/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Live Predict"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "guidewireidentityfederationhub",
+      "title": "Authentication with Guidewire Identity Federation Hub",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "guidewirecloudconsoleguideinsurerdev",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "gwcpreleasenotes",
+      "title": "Cloud Platform Release Notes",
+      "url": "cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhrn202111",
+      "title": "Release Notes",
+      "url": "cloud/dh/202111/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhproduct202111",
+      "title": "Product Guide",
+      "url": "cloud/dh/202111/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhinstall202111",
+      "title": "Installation Guide",
+      "url": "cloud/dh/202111/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhupgrade202111",
+      "title": "Upgrade Guide",
+      "url": "cloud/dh/202111/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhdevref202111",
+      "title": "Developer Reference",
+      "url": "cloud/dh/202111/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhdataspec202111",
+      "title": "Data Specifications Guide",
+      "url": "cloud/dh/202111/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhadmin202111",
+      "title": "Administration Guide",
+      "url": "cloud/dh/202111/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhconfig202111",
+      "title": "Configuration Guide",
+      "url": "cloud/dh/202111/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxgwsfadmin202111",
+      "title": "Administration Guide",
+      "url": "cloud/dx/gwsf/202111/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxgwsfapp202111",
+      "title": "Application Guide",
+      "url": "cloud/dx/gwsf/202111/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxgwsfinstall202111",
+      "title": "Installation Guide",
+      "url": "cloud/dx/gwsf/202111/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxgwsfrelnotes202111",
+      "title": "Release Notes",
+      "url": "cloud/dx/gwsf/202111/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import shutil
 from collections import namedtuple
 from pathlib import Path
 
+import pytest
 from jsonschema import validate as jsonschema_validate
 
 import flail_ssg.validator
@@ -20,6 +21,9 @@ class TestConfig:
     page_schema_file = _frontend_dir / 'page-schema.json'
     resources_input_dir = _current_dir / 'resources' / 'input'
     resources_expected_dir = _current_dir / 'resources' / 'expected'
+    incorrect_pages_dir = resources_input_dir / 'incorrect-pages'
+    incorrect_pages_doc_ids_dir = incorrect_pages_dir / 'incorrect-doc-ids'
+    incorrect_pages_docs_config_file = incorrect_pages_dir / 'config.json'
 
 
 def load_json_file(file_path: Path):
@@ -29,11 +33,13 @@ def load_json_file(file_path: Path):
 
 def test_filtering_by_env():
     docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
-    input_items = load_json_file(TestConfig.resources_input_dir / 'selfManagedProducts' / 'index.json')['items']
-    expected_items = load_json_file(TestConfig.resources_expected_dir / 'selfManagedProducts' / 'index.json')['items']
+    input_items = load_json_file(TestConfig.resources_input_dir / 'pages' / 'selfManagedProducts' / 'index.json')[
+        'items']
+    expected_items = load_json_file(TestConfig.resources_expected_dir / 'pages' / 'selfManagedProducts' / 'index.json')[
+        'items']
 
     tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
-    shutil.copytree(TestConfig.resources_input_dir / 'selfManagedProducts',
+    shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'selfManagedProducts',
                     tmp_test_dir, dirs_exist_ok=True)
 
     filtered_items = filter_by_env(deploy_env='staging',
@@ -46,8 +52,8 @@ def test_filtering_by_env():
 
 def test_creating_search_filters():
     docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
-    input_dir = TestConfig.resources_input_dir / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
-    expected_dir = TestConfig.resources_expected_dir / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
+    input_dir = TestConfig.resources_input_dir / 'pages' / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
+    expected_dir = TestConfig.resources_expected_dir / 'pages' / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
     for index_json_file in input_dir.rglob('*.json'):
         index_file_json = load_json_file(index_json_file)
         tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
@@ -67,6 +73,13 @@ def test_all_pages_are_valid():
     run_validator(TestConfig.send_bouncer_home,
                   TestConfig.pages_dir,
                   TestConfig.docs_config_file)
+
+
+def test_validation_for_incorrect_doc_ids():
+    with pytest.raises(SyntaxError, match=r'.*errors.*3'):
+        run_validator(TestConfig.send_bouncer_home,
+                      TestConfig.incorrect_pages_doc_ids_dir,
+                      TestConfig.incorrect_pages_docs_config_file)
 
 
 def test_all_pages_are_valid_with_schema():
