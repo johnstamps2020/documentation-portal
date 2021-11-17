@@ -1,21 +1,27 @@
 import json
 import logging
-from collections import namedtuple
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Union
 
-PageConfig = namedtuple(
-    'PageConfig',
-    ['absolute_path', 'dir', 'json_object']
-)
+
+@dataclass
+class PageConfig:
+    absolute_path: Path
+
+    @property
+    def dir(self):
+        return self.absolute_path.parent
+
+    @property
+    def json_object(self):
+        return json.load(self.absolute_path.open(encoding='utf-8'))
 
 
 def load_json_file(json_file: Path):
     json_file_abs_path = json_file.resolve()
     return PageConfig(
-        json_file_abs_path,
-        json_file_abs_path.parent,
-        json.load(json_file_abs_path.open(encoding='utf-8'))
+        json_file_abs_path
     )
 
 
