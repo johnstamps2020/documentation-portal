@@ -8,20 +8,16 @@ from typing import Dict, List, Union
 @dataclass
 class PageConfig:
     absolute_path: Path
-
-    @property
-    def dir(self):
-        return self.absolute_path.parent
-
-    @property
-    def json_object(self):
-        return json.load(self.absolute_path.open(encoding='utf-8'))
+    dir: Path
+    json_object: dict
 
 
 def load_json_file(json_file: Path):
     json_file_abs_path = json_file.resolve()
     return PageConfig(
-        json_file_abs_path
+        absolute_path=json_file_abs_path,
+        dir=json_file_abs_path.parent,
+        json_object=json.load(json_file_abs_path.open(encoding='utf-8'))
     )
 
 
