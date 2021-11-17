@@ -36,7 +36,7 @@
     {
       "buildType": "dita",
       "root": "CloudPlatform.ditamap",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
       "srcId": "cloudplatformsrc",
       "docId": "cloudplatformdraft"
@@ -44,7 +44,7 @@
     {
       "buildType": "dita",
       "root": "CloudPlatform.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "cloudplatformsrc",
       "docId": "cloudplatformrelease"
