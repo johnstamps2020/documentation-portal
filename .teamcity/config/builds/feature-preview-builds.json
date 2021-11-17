@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "b_data-studio.ditamap",
       "srcId": "datastudiodraftsrc",
       "docId": "datastudioappdraft",
