@@ -4,12 +4,13 @@ from collections import namedtuple
 from pathlib import Path
 from typing import Dict, List, Union
 
+PageConfig = namedtuple(
+    'PageConfig',
+    ['absolute_path', 'dir', 'json_object']
+)
+
 
 def load_json_file(json_file: Path):
-    PageConfig = namedtuple(
-        'PageConfig',
-        ['absolute_path', 'dir', 'json_object']
-    )
     json_file_abs_path = json_file.resolve()
     return PageConfig(
         json_file_abs_path,
