@@ -2482,7 +2482,7 @@ object HelperObjects {
                         if (build.getString("buildType") == "dita") {
                             val buildDocId = build.getString("docId")
                             val doc = getObjectById(docConfigs, "id", buildDocId)
-                            if (doc.getJSONArray("environments").contains("int")) {
+                            if (doc.getJSONArray("environments").contains("int") || doc.getJSONArray("environments").contains("staging")) {
                                 if (!source.has("branch")) {
                                     source.put("branch", branchName)
                                 }
