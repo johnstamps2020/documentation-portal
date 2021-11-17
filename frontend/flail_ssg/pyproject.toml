@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flail_ssg"
-version = "0.1.0"
+version = "1.0.0"
 description = "A super simple generator for building doc portal pages"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"
@@ -14,7 +14,7 @@ classifiers = [
 flail_ssg = "flail_ssg.main:main"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 jinja2 = "^2.11.3"
 
 [tool.poetry.dev-dependencies]
