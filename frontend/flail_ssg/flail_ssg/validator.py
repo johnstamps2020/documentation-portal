@@ -125,87 +125,7 @@ def validate_item_is_complete(item: dict, page_config: PageConfig):
     )
 
 
-# def validate_env_settings(page_config: PageConfig, validated_pages: list):
-#     if page_config.absolute_path not in validated_pages:
-#         validated_pages.append(page_config.absolute_path)
-#     page_template = page_config.json_object.get('template')
-#     items = page_config.json_object.get('items')
-#     if items:
-#         validate_items(items, envs, validation_results)
-#
-#         item_envs = item.get('env', [])
-#         item_label = item["label"]
-#         if item.get('id'):
-#             item_id = item['id']
-#             matching_doc_object = get_doc_object(item_id, docs)
-#             doc_config_envs = matching_doc_object.get('environments')
-#             if item_envs:
-#                 env_settings_correct = env_settings_are_correct(envs=item_envs,
-#                                                                 higher_order_envs=parent_envs) and \
-#                                        env_settings_are_correct(envs=item_envs,
-#                                                                 higher_order_envs=doc_config_envs)
-#                 if not env_settings_correct:
-#                     issues.append(
-#                         IncorrectEnvSettingsWarning(
-#                             config_file=page_config.absolute_path,
-#                             details=f'All item envs must be included in the parent envs '
-#                                     f'AND in the doc config envs.'
-#                                     f'\nItem label: {item_label} | '
-#                                     f'Item ID: {item_id} | '
-#                                     f'Item envs: {item_envs} | '
-#                                     f'Parent envs: {parent_envs} | '
-#                                     f'Doc config envs: {doc_config_envs}'
-#
-#                         )
-#                     )
-#             else:
-#                 env_settings_correct = env_settings_are_correct(envs=doc_config_envs,
-#                                                                 higher_order_envs=parent_envs,
-#                                                                 partial_match=True)
-#                 if not env_settings_correct:
-#                     issues.append(
-#                         IncorrectEnvSettingsWarning(
-#                             config_file=page_config.absolute_path,
-#                             details=f'At least one doc config env must be included in the parent envs.'
-#                                     f'\nItem label: {item_label} | '
-#                                     f'Item ID: {item_id} | '
-#                                     f'Parent envs: {parent_envs} | '
-#                                     f'Doc config envs: {doc_config_envs}'
-#
-#                         )
-#                     )
-#         elif item.get('page'):
-#             item_page = item['page']
-#             page_path = Path(page_config.dir / item_page)
-#             if not env_settings_are_correct(envs=item_envs, higher_order_envs=parent_envs):
-#                 issues.append(
-#                     IncorrectEnvSettingsWarning(
-#                         config_file=page_config.absolute_path,
-#                         details=f'All item envs must be included in the parent envs. '
-#                                 f'\nItem label: {item_label} | '
-#                                 f'Item page: {item_page} | '
-#                                 f'Item envs: {item_envs} | '
-#                                 f'Envs of the parent element: {parent_envs}'
-#                     )
-#                 )
-#             new_parent_envs = item_envs or parent_envs
-#             validate_page(page_path / 'index.json', docs,
-#                           new_parent_envs, validated_pages, issues)
-#         else:
-#             if not env_settings_are_correct(envs=item_envs, higher_order_envs=parent_envs):
-#                 issues.append(
-#                     IncorrectEnvSettingsWarning(
-#                         config_file=page_config.absolute_path,
-#                         details=f'All item envs must be included in the parent envs. '
-#                                 f'\nItem label: {item_label} | '
-#                                 f'Item envs: {item_envs} | '
-#                                 f'Env settings of the parent element: {parent_envs}'
-#                     )
-#                 )
-
-
-def validate_page(index_file: Path,
-                  docs: list):
+def validate_page(index_file: Path, docs: list):
     page_config = load_json_file(index_file)
 
     def validate_items(page_items: list, issues: list):
@@ -249,24 +169,122 @@ def validate_page(index_file: Path,
     return validation_results
 
 
+def validate_env_settings(index_file: Path,
+                          docs: List,
+                          envs: List,
+                          validated_pages: List,
+                          validation_results: List):
+    page_config = load_json_file(index_file)
+
+    def validate_item_envs(page_items: List, parent_envs: List, issues: List):
+        for item in page_items:
+            item_envs = item.get('env', [])
+            item_label = item["label"]
+            if item.get('id'):
+                item_id = item['id']
+                matching_doc_object = get_doc_object(item_id, docs)
+                doc_config_envs = matching_doc_object.get('environments')
+                if item_envs:
+                    env_settings_correct = env_settings_are_correct(envs=item_envs,
+                                                                    higher_order_envs=parent_envs) and \
+                                           env_settings_are_correct(envs=item_envs,
+                                                                    higher_order_envs=doc_config_envs)
+                    if not env_settings_correct:
+                        issues.append(
+                            IncorrectEnvSettingsWarning(
+                                config_file=page_config.absolute_path,
+                                details=f'All item envs must be included in the parent envs AND in the doc config envs.'
+                                        f'\nItem label: {item_label} | '
+                                        f'Item ID: {item_id} | '
+                                        f'Item envs: {item_envs} | '
+                                        f'Parent envs: {parent_envs} | '
+                                        f'Doc config envs: {doc_config_envs}'
+
+                            )
+                        )
+                elif not item_envs:
+                    env_settings_correct = env_settings_are_correct(envs=doc_config_envs,
+                                                                    higher_order_envs=parent_envs,
+                                                                    partial_match=True)
+                    if not env_settings_correct:
+                        issues.append(
+                            IncorrectEnvSettingsWarning(
+                                config_file=page_config.absolute_path,
+                                details=f'At least one doc config env must be included in the parent envs.'
+                                        f'\nItem label: {item_label} | '
+                                        f'Item ID: {item_id} | '
+                                        f'Parent envs: {parent_envs} | '
+                                        f'Doc config envs: {doc_config_envs}'
+
+                            )
+                        )
+            elif item.get('page'):
+                item_page = item['page']
+                page_path = Path(page_config.dir / item_page)
+                if not env_settings_are_correct(envs=item_envs, higher_order_envs=parent_envs):
+                    issues.append(
+                        IncorrectEnvSettingsWarning(
+                            config_file=page_config.absolute_path,
+                            details=f'All item envs must be included in the parent envs. '
+                                    f'\nItem label: {item_label} | '
+                                    f'Item page: {item_page} | '
+                                    f'Item envs: {item_envs} | '
+                                    f'Envs of the parent element: {parent_envs}'
+                        )
+                    )
+                new_parent_envs = item_envs or parent_envs
+                validate_env_settings(page_path / 'index.json', docs,
+                                      new_parent_envs, validated_pages, issues)
+            else:
+                if not env_settings_are_correct(envs=item_envs, higher_order_envs=parent_envs):
+                    issues.append(
+                        IncorrectEnvSettingsWarning(
+                            config_file=page_config.absolute_path,
+                            details=f'All item envs must be included in the parent envs. '
+                                    f'\nItem label: {item_label} | '
+                                    f'Item envs: {item_envs} | '
+                                    f'Env settings of the parent element: {parent_envs}'
+                        )
+                    )
+
+            if item.get('items'):
+                new_parent_envs = item_envs or parent_envs
+                validate_item_envs(item['items'], new_parent_envs, issues)
+
+        return issues
+
+    if page_config.absolute_path not in validated_pages:
+        validated_pages.append(page_config.absolute_path)
+        items = page_config.json_object.get('items')
+        if items:
+            validate_item_envs(items, envs, validation_results)
+
+    return validation_results
+
+
 def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Path):
     docs = load_json_file(docs_config_file).json_object['docs']
 
     _validator_logger.info('PROCESS STARTED: Validate pages')
-
-    # validation_results = validate_page(
-    #     pages_dir / 'index.json',
-    #     docs,
-    #     envs=[],
-    #     validated_pages=[],
-    #     validation_results=[]
-    # )
-
     validation_results = []
     for index_json_file in pages_dir.rglob('**/*.json'):
         _validator_logger.info(f'Validating {index_json_file}')
         validation_results += validate_page(index_json_file, docs)
 
+    _validator_logger.info('PROCESS ENDED: Validate pages')
     process_validation_results(validation_results, send_bouncer_home)
 
-    _validator_logger.info('PROCESS ENDED: Validate pages')
+    # If errors are found after items are validated, the validator raises an exception and exits.
+    # In this case, env settings are not be validated.
+
+    _validator_logger.info('PROCESS STARTED: Validate env settings')
+    envs_validation_results = validate_env_settings(
+        pages_dir / 'index.json',
+        docs,
+        envs=[],
+        validated_pages=[],
+        validation_results=[]
+    )
+
+    _validator_logger.info('PROCESS ENDED: Validate env settings')
+    process_validation_results(envs_validation_results, send_bouncer_home)
