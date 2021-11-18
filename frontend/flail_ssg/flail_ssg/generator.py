@@ -209,7 +209,7 @@ def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, bui
 
     shutil.copytree(pages_dir, build_dir)
 
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         _generator_logger.info(f'Generating page from {index_json_file}')
         process_page(index_json_file, deploy_env, docs,
                      build_dir, send_bouncer_home)

@@ -20,7 +20,7 @@ def find_public_pages(build_dir: Path):
         return any_item_is_public
 
     public_paths = []
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
         items = page_config.json_object.get('items')
         if items:
@@ -44,7 +44,7 @@ def find_all_public_paths(build_dir: Path, all_public_paths: List):
                 find_public_path_in_items(root_dir, item['items'])
         return page_items
 
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
         items = page_config.json_object.get('items')
         if items:
@@ -66,7 +66,7 @@ def write_marked_pages(build_dir: Path, public_paths: List):
                 mark_page_refs_with_public_prop(root_dir, item['items'])
         return page_items
 
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
         items = page_config.json_object.get('items')
         if items:
@@ -87,7 +87,7 @@ def set_public_prop_on_docs(build_dir: Path,
                 mark_docs_with_public_prop(item['items'])
         return page_items
 
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
         items = page_config.json_object.get('items')
         if items:

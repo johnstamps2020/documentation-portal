@@ -267,7 +267,7 @@ def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Pa
 
     _validator_logger.info('PROCESS STARTED: Validate pages')
     validation_results = []
-    for index_json_file in pages_dir.rglob('**/*.json'):
+    for index_json_file in pages_dir.rglob('*.json'):
         _validator_logger.info(f'Validating {index_json_file}')
         validation_results += validate_page(index_json_file, docs)
 
@@ -278,6 +278,7 @@ def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Pa
     # In this case, env settings are not be validated.
 
     _validator_logger.info('PROCESS STARTED: Validate env settings')
+
     envs_validation_results = validate_env_settings(
         pages_dir / 'index.json',
         docs,

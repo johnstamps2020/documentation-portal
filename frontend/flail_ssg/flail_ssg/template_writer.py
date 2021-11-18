@@ -34,7 +34,7 @@ def write_to_file(out_file_path: Path, data: Dict, template_file: Path):
 def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir: Path):
     _template_writer_logger.info('PROCESS STARTED: Build pages from templates')
 
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
         try:
             _template_writer_logger.info(
@@ -54,7 +54,7 @@ def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir:
                 raise e
 
     _template_writer_logger.info('Removing JSON files')
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         index_json_file.unlink()
 
     _template_writer_logger.info('PROCESS ENDED: Build pages from templates')

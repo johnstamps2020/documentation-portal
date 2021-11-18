@@ -24,7 +24,7 @@ def get_doc_urls(page_items: List, doc_urls: List):
 
 def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
     breadcrumbs = []
-    for index_json_file in pages_build_dir.rglob('**/*.json'):
+    for index_json_file in pages_build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
         items = page_config.json_object.get('items')
         if items:
