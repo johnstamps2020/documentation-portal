@@ -9,7 +9,8 @@ from jsonschema import validate as jsonschema_validate
 
 import flail_ssg.validator
 from flail_ssg.generator import filter_by_env, generate_search_filters
-from flail_ssg.validator import run_validator, validate_page, DocIdNotFoundError, PageNotFoundError
+from flail_ssg.validator import run_validator, validate_page, validate_env_settings, DocIdNotFoundError, \
+    PageNotFoundError
 
 
 class TestConfig:
@@ -23,6 +24,7 @@ class TestConfig:
     resources_expected_dir = _current_dir / 'resources' / 'expected'
     incorrect_pages_dir = resources_input_dir / 'incorrect-pages'
     incorrect_pages_items_dir = incorrect_pages_dir / 'incorrect-items'
+    incorrect_pages_env_settings_dir = incorrect_pages_dir / 'incorrect-env-settings'
     incorrect_pages_docs_config_file = incorrect_pages_dir / 'config.json'
 
 
@@ -75,8 +77,13 @@ def test_all_pages_are_valid():
                   TestConfig.docs_config_file)
 
 
-def test_validation_for_incorrect_items():
-    docs = load_json_file(TestConfig.incorrect_pages_docs_config_file)['docs']
+@pytest.fixture(scope='module')
+def load_docs_from_json():
+    return load_json_file(TestConfig.incorrect_pages_docs_config_file)['docs']
+
+
+def test_validation_for_incorrect_items(load_docs_from_json):
+    docs = load_docs_from_json
     results = []
     for index_json_file in TestConfig.incorrect_pages_items_dir.rglob('*.json'):
         results += validate_page(index_json_file, docs)
@@ -86,11 +93,35 @@ def test_validation_for_incorrect_items():
     assert len(incorrect_pages) == 4
 
 
-# def test_test():
-#     with pytest.raises(SyntaxError, match=r'.*errors.*3'):
-#         run_validator(TestConfig.send_bouncer_home,
-#                       TestConfig.incorrect_pages_items_dir,
-#                       TestConfig.incorrect_pages_docs_config_file)
+def test_validation_for_incorrect_env_settings(load_docs_from_json):
+    docs = load_docs_from_json
+    all_validated_pages = []
+    all_envs_validation_results = []
+    for index_json_file in TestConfig.incorrect_pages_env_settings_dir.rglob('*.json'):
+        envs_validation_results, validated_pages = validate_env_settings(
+            index_json_file,
+            docs,
+            envs=[],
+            validated_pages=all_validated_pages,
+            validation_results=all_envs_validation_results,
+        )
+        all_envs_validation_results = envs_validation_results
+        all_validated_pages = validated_pages
+    assert len(all_envs_validation_results) == 5
+
+
+def test_running_validator_for_incorrect_items():
+    with pytest.raises(SyntaxError, match=r'.*errors.*9'):
+        run_validator(TestConfig.send_bouncer_home,
+                      TestConfig.incorrect_pages_items_dir,
+                      TestConfig.incorrect_pages_docs_config_file)
+
+
+def test_running_validator_for_incorrect_env_settings():
+    with pytest.warns(SyntaxWarning, match=r'.*warnings.*5'):
+        run_validator(TestConfig.send_bouncer_home,
+                      TestConfig.incorrect_pages_env_settings_dir,
+                      TestConfig.incorrect_pages_docs_config_file)
 
 
 def test_all_pages_are_valid_with_schema():

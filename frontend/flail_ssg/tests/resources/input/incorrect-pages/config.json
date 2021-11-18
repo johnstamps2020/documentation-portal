@@ -229,7 +229,7 @@
         "version": ["2021.11"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -321,6 +321,22 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212csprn",
+      "title": "Consumer Service Portal Release Notes",
+      "url": "cloud/in/20212/csprn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release Notes"],
         "release": ["Dobson"]
       },
       "environments": ["dev", "staging", "prod"],

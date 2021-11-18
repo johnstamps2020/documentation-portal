@@ -1,4 +1,5 @@
 import logging
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Union
@@ -81,10 +82,17 @@ def process_validation_results(results: List, send_bouncer_home: bool):
             _validator_logger.info(f'\t{issue_type}: '
                                    f'{formatted_details}')
     if not send_bouncer_home:
-        errors = [issue for issue in results if issue.level == logging.ERROR]
-        if errors:
-            raise SyntaxError('Validation failed with errors!'
-                              f'\nTotal number of errors: {len(errors)}')
+        found_errors = [issue for issue in results if issue.level == logging.ERROR]
+        found_warnings = [issue for issue in results if issue.level == logging.WARNING]
+        message = 'Validation failed with issues!'
+        if found_errors:
+            message += f'\nTotal number of errors: {len(found_errors)}'
+            if found_warnings:
+                message += f'\nTotal number of warnings: {len(found_warnings)}'
+            raise SyntaxError(message)
+        elif found_warnings:
+            message += f'\nTotal number of warnings: {len(found_warnings)}'
+            warnings.warn(message, SyntaxWarning)
 
 
 def env_settings_are_correct(envs: List, higher_order_envs: List, partial_match: bool = False):
@@ -275,7 +283,7 @@ def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Pa
     process_validation_results(validation_results, send_bouncer_home)
 
     # If errors are found after items are validated, the validator raises an exception and exits.
-    # In this case, env settings are not be validated.
+    # In this case, env settings are not validated.
 
     _validator_logger.info('PROCESS STARTED: Validate env settings')
 
