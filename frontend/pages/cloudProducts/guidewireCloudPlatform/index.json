@@ -27,11 +27,11 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
-          "label": "Getting Started with Guidewire Cloud Platform",
+          "label": "Working with Guidewire Cloud Platform",
           "id": "cloudplatformdraft"
         },
         {
-          "label": "Getting Started with Guidewire Cloud Platform",
+          "label": "Working with Guidewire Cloud Platform",
           "id": "cloudplatformrelease"
         }
       ]
