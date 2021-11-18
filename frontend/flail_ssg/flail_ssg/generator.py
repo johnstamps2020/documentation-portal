@@ -197,7 +197,10 @@ def process_page(index_file: Path,
         page_config.json_object[
             'title'] = f'{page_config.json_object["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
     finally:
-        write_json_object_to_file(page_config.json_object, page_config.absolute_path)
+        if page_config.json_object.get('items'):
+            write_json_object_to_file(page_config.json_object, page_config.absolute_path)
+        else:
+            page_config.absolute_path.unlink()
 
 
 def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
