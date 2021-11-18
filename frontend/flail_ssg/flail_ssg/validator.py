@@ -259,7 +259,7 @@ def validate_env_settings(index_file: Path,
         if items:
             validate_item_envs(items, envs, validation_results)
 
-    return validation_results
+    return validation_results, validated_pages
 
 
 def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Path):
@@ -279,13 +279,19 @@ def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Pa
 
     _validator_logger.info('PROCESS STARTED: Validate env settings')
 
-    envs_validation_results = validate_env_settings(
-        pages_dir / 'index.json',
-        docs,
-        envs=[],
-        validated_pages=[],
-        validation_results=[]
-    )
+    all_validated_pages = []
+    all_envs_validation_results = []
+    for index_json_file in pages_dir.rglob('*.json'):
+        _validator_logger.info(f'Validating env settings in {index_json_file}')
+        envs_validation_results, validated_pages = validate_env_settings(
+            index_json_file,
+            docs,
+            envs=[],
+            validated_pages=all_validated_pages,
+            validation_results=all_envs_validation_results,
+        )
+        all_envs_validation_results = envs_validation_results
+        all_validated_pages = validated_pages
 
     _validator_logger.info('PROCESS ENDED: Validate env settings')
-    process_validation_results(envs_validation_results, send_bouncer_home)
+    process_validation_results(all_envs_validation_results, send_bouncer_home)
