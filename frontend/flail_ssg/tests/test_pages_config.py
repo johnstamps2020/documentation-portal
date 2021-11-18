@@ -83,7 +83,7 @@ def test_validation_for_incorrect_items():
     incorrect_ids = [r for r in results if type(r) is DocIdNotFoundError]
     incorrect_pages = [r for r in results if type(r) is PageNotFoundError]
     assert len(incorrect_ids) == 5
-    assert len(incorrect_pages) == 0
+    assert len(incorrect_pages) == 4
 
 
 # def test_test():

@@ -110,11 +110,11 @@ def main():
     run_validator(app_config.send_bouncer_home,
                   app_config.pages_build_dir,
                   app_config.docs_config_file)
-    run_template_writer(app_config.send_bouncer_home,
-                        app_config.templates_dir,
-                        app_config.pages_build_dir)
-    run_publisher([app_config.pages_build_dir, app_config.config_build_dir],
-                  app_config.output_dir)
+    # run_template_writer(app_config.send_bouncer_home,
+    #                     app_config.templates_dir,
+    #                     app_config.pages_build_dir)
+    # run_publisher([app_config.pages_build_dir, app_config.config_build_dir],
+    #               app_config.output_dir)
 
 
 if __name__ == '__main__':
