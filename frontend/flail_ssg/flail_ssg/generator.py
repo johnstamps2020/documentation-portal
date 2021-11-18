@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import List
 from urllib.parse import urlparse
 
-from flail_ssg.helpers import configure_logger
+from flail_ssg.helpers import configure_logger, get_doc_object
 from flail_ssg.helpers import load_json_file
 from flail_ssg.helpers import write_json_object_to_file
 
@@ -43,8 +43,7 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
     for item in items:
         item_envs = item.get('env', [])
         if not item_envs and item.get('id'):
-            matching_doc_object = next(
-                (doc for doc in docs if doc['id'] == item['id']), None)
+            matching_doc_object = get_doc_object(item['id'], docs)
             item_envs = matching_doc_object['environments']
         if include_item(deploy_env, item_envs):
             item_to_include = copy.deepcopy(item)
@@ -75,7 +74,7 @@ def generate_search_filters(page_config_json: dict, docs: list) -> dict:
             filters = {}
         for item in items_to_process:
             if item.get('id'):
-                matching_doc_object = next((doc for doc in docs if doc['id'] == item['id']), None)
+                matching_doc_object = get_doc_object(item['id'], docs)
                 matching_doc_object_metadata = matching_doc_object['metadata']
                 filters['product'] = filters.get('product', []) + matching_doc_object_metadata['product']
                 filters['platform'] = filters.get('platform', []) + matching_doc_object_metadata['platform']
@@ -120,8 +119,7 @@ def generate_search_filters(page_config_json: dict, docs: list) -> dict:
 def resolve_links(items: List, docs: List):
     for item in items:
         if item.get('id'):
-            matching_doc_object = next(
-                (doc for doc in docs if doc['id'] == item['id']), None)
+            matching_doc_object = get_doc_object(item['id'], docs)
             matching_doc_object_url = matching_doc_object["url"]
             item['doc_url'] = matching_doc_object_url if bool(
                 urlparse(matching_doc_object_url).netloc) else f'/{matching_doc_object_url}'

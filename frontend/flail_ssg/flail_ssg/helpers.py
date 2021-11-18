@@ -44,3 +44,8 @@ def configure_logger(name: str, logging_level: str, log_path: Path):
     except KeyError as e:
         raise KeyError(f'Logging level not found: "{e.args[0]}". '
                        f'Try one of these levels: critical, error, warning, info, debug')
+
+
+def get_doc_object(id_element_value: str, docs_from_config: list) -> Union[dict, None]:
+    return next(
+        (doc for doc in docs_from_config if doc['id'] == id_element_value), None)

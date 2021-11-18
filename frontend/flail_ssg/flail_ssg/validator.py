@@ -2,11 +2,11 @@ import logging
 import warnings
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Union
+from typing import List
 
 from itertools import groupby
 
-from flail_ssg.helpers import configure_logger, load_json_file, PageConfig
+from flail_ssg.helpers import configure_logger, get_doc_object, load_json_file, PageConfig
 
 _log_file = Path.cwd() / 'validator.log'
 _validator_logger = configure_logger('validator_logger', 'info', _log_file)
@@ -101,11 +101,6 @@ def env_settings_are_correct(envs: List, higher_order_envs: List, partial_match:
     if partial_match:
         return any(env in higher_order_envs for env in envs)
     return all(env in higher_order_envs for env in envs)
-
-
-def get_doc_object(id_element_value: str, docs_from_config: list) -> Union[dict, None]:
-    return next(
-        (doc for doc in docs_from_config if doc['id'] == id_element_value), None)
 
 
 def validate_item_exists(item: dict, docs_from_config: list, page_config: PageConfig):
