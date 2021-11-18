@@ -50,12 +50,16 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: Li
             if item_to_include.get('items'):
                 inner_items = filter_by_env(
                     deploy_env, current_page_dir, item['items'], docs)
-                item_to_include['items'] = inner_items
-            filtered_items.append(item_to_include)
+                if inner_items:
+                    item_to_include['items'] = inner_items
+                    filtered_items.append(item_to_include)
+            else:
+                filtered_items.append(item_to_include)
         elif item.get('page'):
             page_path = current_page_dir / item['page']
             if page_path.exists():
                 shutil.rmtree(page_path)
+
     return filtered_items
 
 
