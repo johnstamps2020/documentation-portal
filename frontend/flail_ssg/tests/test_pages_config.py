@@ -9,7 +9,7 @@ from jsonschema import validate as jsonschema_validate
 
 import flail_ssg.validator
 from flail_ssg.generator import filter_by_env, generate_search_filters
-from flail_ssg.validator import run_validator
+from flail_ssg.validator import run_validator, validate_page, DocIdNotFoundError, PageNotFoundError
 
 
 class TestConfig:
@@ -22,7 +22,7 @@ class TestConfig:
     resources_input_dir = _current_dir / 'resources' / 'input'
     resources_expected_dir = _current_dir / 'resources' / 'expected'
     incorrect_pages_dir = resources_input_dir / 'incorrect-pages'
-    incorrect_pages_doc_ids_dir = incorrect_pages_dir / 'incorrect-doc-ids'
+    incorrect_pages_items_dir = incorrect_pages_dir / 'incorrect-items'
     incorrect_pages_docs_config_file = incorrect_pages_dir / 'config.json'
 
 
@@ -75,11 +75,22 @@ def test_all_pages_are_valid():
                   TestConfig.docs_config_file)
 
 
-def test_validation_for_incorrect_doc_ids():
-    with pytest.raises(SyntaxError, match=r'.*errors.*3'):
-        run_validator(TestConfig.send_bouncer_home,
-                      TestConfig.incorrect_pages_doc_ids_dir,
-                      TestConfig.incorrect_pages_docs_config_file)
+def test_validation_for_incorrect_items():
+    docs = load_json_file(TestConfig.incorrect_pages_docs_config_file)['docs']
+    results = []
+    for index_json_file in TestConfig.incorrect_pages_items_dir.rglob('*.json'):
+        results += validate_page(index_json_file, docs)
+    incorrect_ids = [r for r in results if type(r) is DocIdNotFoundError]
+    incorrect_pages = [r for r in results if type(r) is PageNotFoundError]
+    assert len(incorrect_ids) == 5
+    assert len(incorrect_pages) == 0
+
+
+# def test_test():
+#     with pytest.raises(SyntaxError, match=r'.*errors.*3'):
+#         run_validator(TestConfig.send_bouncer_home,
+#                       TestConfig.incorrect_pages_items_dir,
+#                       TestConfig.incorrect_pages_docs_config_file)
 
 
 def test_all_pages_are_valid_with_schema():

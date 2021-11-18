@@ -263,6 +263,70 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "in20212apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20212/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
+    },
+    {
+      "id": "in20212app",
+      "title": "Application Guide",
+      "url": "cloud/in/20212/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212appreaderinteg",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20212/appreaderinteg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20212config",
+      "title": "Core Configuration Guide",
+      "url": "cloud/in/20212/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
