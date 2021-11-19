@@ -1,0 +1,90 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub for Guidewire Cloud latest",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select product",
+    "selectedItem": "DataHub for Guidewire Cloud latest",
+    "items": [
+      {
+        "label": "InfoCenter for Guidewire Cloud latest",
+        "page": "../../icGwCloud/latest"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dhcloudrndraft"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dhcloudproductdraft"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dhcloudinstalldraft"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dhcloudupgradedraft"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dhcloudconfigdraft"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dhclouddataspecdraft"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dhcloudadmindraft"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dhclouddevrefdraft"
+        },
+        {
+          "label": "Data Studio Query Guide",
+          "id": "dhqueryguidedraft"
+        }
+      ]
+    }
+  ]
+}
