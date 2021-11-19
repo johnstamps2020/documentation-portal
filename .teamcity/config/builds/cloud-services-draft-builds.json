@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "Rules.ditamap",
       "srcId": "rulessrc",
       "docId": "rules",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "RulesReleaseNotes.ditamap",
       "srcId": "rulessrc",
       "docId": "rulesrndraft",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "WorksetManager.ditamap",
       "srcId": "worksetmgrdraftsrc",
       "docId": "worksetmgrdraft",
