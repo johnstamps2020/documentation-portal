@@ -28,15 +28,18 @@
       "items": [
         {
           "label": "PolicyCenter",
-          "page": "pcGwCloud/2021.11"
+          "page": "pcGwCloud/2021.11",
+          "env": ["staging", "prod"]
         },
         {
           "label": "ClaimCenter",
-          "page": "ccGwCloud/2021.11"
+          "page": "ccGwCloud/2021.11",
+          "env": ["staging", "prod"]
         },
         {
           "label": "BillingCenter",
-          "page": "bcGwCloud/2021.11"
+          "page": "bcGwCloud/2021.11",
+          "env": ["staging", "prod"]
         },
         {
           "label": "PolicyCenter",
@@ -73,19 +76,23 @@
         },
         {
           "label": "DataHub",
-          "page": "dhGwCloud/2021.11"
+          "page": "dhGwCloud/2021.11",
+          "env": ["staging", "prod"]
         },
         {
           "label": "InfoCenter",
-          "page": "icGwCloud/2021.11"
+          "page": "icGwCloud/2021.11",
+          "env": ["staging", "prod"]
         },
         {
           "label": "DataHub",
-          "page": "dhGwCloud/latest"
+          "page": "dhGwCloud/latest",
+          "env": ["int"]
         },
         {
           "label": "InfoCenter",
-          "page": "icGwCloud/latest"
+          "page": "icGwCloud/latest",
+          "env": ["int"]
         },
         {
           "label": "Live",
@@ -118,6 +125,7 @@
         {
           "label": "Digital Applications",
           "class": "group",
+          "env": ["staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
@@ -146,7 +154,14 @@
             {
               "label": "VendorEngage",
               "page": "vendorEngage/2021.11"
-            },
+            }
+          ]
+        },
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "env": ["int"],
+          "items": [
             {
               "label": "CustomerEngage Account Management",
               "page": "ceAccountMgmt/latest"
