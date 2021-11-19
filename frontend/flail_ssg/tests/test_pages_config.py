@@ -8,9 +8,10 @@ import pytest
 from jsonschema import validate as jsonschema_validate
 
 import flail_ssg.validator
-from flail_ssg.generator import filter_by_env, generate_search_filters
-from flail_ssg.validator import run_validator, validate_page, validate_env_settings, DocIdNotFoundError, \
-    PageNotFoundError
+from flail_ssg.generator import generate_search_filters
+from flail_ssg.preprocessor import filter_by_env
+from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
+    validate_page
 
 
 class TestConfig:
@@ -44,10 +45,10 @@ def test_filtering_by_env():
     shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'selfManagedProducts',
                     tmp_test_dir, dirs_exist_ok=True)
 
-    filtered_items = filter_by_env(deploy_env='staging',
-                                   current_page_dir=tmp_test_dir,
-                                   items=input_items,
-                                   docs=docs)
+    filtered_items, _ = filter_by_env(deploy_env='staging',
+                                      current_page_dir=tmp_test_dir,
+                                      items=input_items,
+                                      docs=docs)
     shutil.rmtree(tmp_test_dir)
     assert filtered_items == expected_items
 

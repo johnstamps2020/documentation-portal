@@ -94,9 +94,12 @@ def main():
     run_validator(app_config.send_bouncer_home,
                   app_config.pages_dir,
                   app_config.docs_config_file)
+    run_preprocessor(app_config.send_bouncer_home,
+                     app_config.deploy_env,
+                     app_config.pages_dir,
+                     app_config.pages_build_dir,
+                     app_config.docs_config_file)
     run_generator(app_config.send_bouncer_home,
-                  app_config.deploy_env,
-                  app_config.pages_dir,
                   app_config.pages_build_dir,
                   app_config.docs_config_file)
     run_access_controller(app_config.send_bouncer_home,
