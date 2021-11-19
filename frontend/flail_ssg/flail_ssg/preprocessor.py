@@ -54,8 +54,6 @@ def remove_filtered_page_dirs(pages_to_remove: list[Path]):
     for page_path in pages_to_remove:
         if page_path.exists():
             shutil.rmtree(page_path)
-            return True
-        return False
 
 
 def remove_empty_dirs(root_path: Path):

@@ -1,4 +1,5 @@
 import json
+import json
 import os
 import shutil
 from collections import namedtuple
@@ -9,7 +10,7 @@ from jsonschema import validate as jsonschema_validate
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
-from flail_ssg.preprocessor import filter_by_env
+from flail_ssg.preprocessor import filter_by_env, remove_filtered_page_dirs
 from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
     validate_page
 
@@ -35,22 +36,48 @@ def load_json_file(file_path: Path):
 
 
 def test_filtering_by_env():
+    def test_filtering_items(filtered_items: list, filtered_pages_to_remove: list, expected_file: Path):
+        expected_items = \
+            load_json_file(expected_file)[
+                'items']
+        expected_filtered_pages_to_remove = [
+            'dataHub/10.x',
+            'infoCenter/10.x',
+            'customerEngageAccountManagement/latest',
+            'customerEngageAccountManagementCc/latest',
+            'customerEngageQuoteAndBuy/latest',
+            'producerEngage/latest',
+            'producerEngageCc/latest',
+            'serviceRepEngage/latest',
+            'vendorEngage/latest'
+        ]
+
+        assert filtered_items == expected_items
+        filtered_pages_to_remove_str = [str(p).replace(f'{tmp_test_dir}/', '') for p in filtered_pages_to_remove]
+        assert len(filtered_pages_to_remove_str) == len(expected_filtered_pages_to_remove)
+        assert sorted(filtered_pages_to_remove_str) == sorted(expected_filtered_pages_to_remove)
+
+    def test_removing_filtered_out_pages(filtered_pages_to_remove: list, test_dir: Path):
+        page_dirs_in_test_dir = [i for i in test_dir.rglob('*') if i.is_dir()]
+        assert all(page_to_remove not in page_dirs_in_test_dir for page_to_remove in filtered_pages_to_remove)
+
     docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
     input_items = load_json_file(TestConfig.resources_input_dir / 'pages' / 'selfManagedProducts' / 'index.json')[
         'items']
-    expected_items = load_json_file(TestConfig.resources_expected_dir / 'pages' / 'selfManagedProducts' / 'index.json')[
-        'items']
-
     tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
     shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'selfManagedProducts',
                     tmp_test_dir, dirs_exist_ok=True)
 
-    filtered_items, _ = filter_by_env(deploy_env='staging',
-                                      current_page_dir=tmp_test_dir,
-                                      items=input_items,
-                                      docs=docs)
+    items_after_filtering, pages_to_remove_after_filtering = filter_by_env(deploy_env='staging',
+                                                                           current_page_dir=tmp_test_dir,
+                                                                           items=input_items,
+                                                                           docs=docs)
+    remove_filtered_page_dirs(pages_to_remove_after_filtering)
+    expected_output_dir = (TestConfig.resources_expected_dir / 'pages' / 'selfManagedProducts')
+    test_filtering_items(items_after_filtering, pages_to_remove_after_filtering, expected_output_dir / 'index.json')
+    test_removing_filtered_out_pages(pages_to_remove_after_filtering, tmp_test_dir)
+
     shutil.rmtree(tmp_test_dir)
-    assert filtered_items == expected_items
 
 
 def test_creating_search_filters():

@@ -7,6 +7,7 @@ from pathlib import Path
 from flail_ssg.access_controller import run_access_controller
 from flail_ssg.config_generator import run_config_generator
 from flail_ssg.generator import run_generator
+from flail_ssg.preprocessor import run_preprocessor
 from flail_ssg.publisher import run_publisher
 from flail_ssg.template_writer import run_template_writer
 from flail_ssg.validator import run_validator
@@ -113,11 +114,11 @@ def main():
     run_validator(app_config.send_bouncer_home,
                   app_config.pages_build_dir,
                   app_config.docs_config_file)
-    # run_template_writer(app_config.send_bouncer_home,
-    #                     app_config.templates_dir,
-    #                     app_config.pages_build_dir)
-    # run_publisher([app_config.pages_build_dir, app_config.config_build_dir],
-    #               app_config.output_dir)
+    run_template_writer(app_config.send_bouncer_home,
+                        app_config.templates_dir,
+                        app_config.pages_build_dir)
+    run_publisher([app_config.pages_build_dir, app_config.config_build_dir],
+                  app_config.output_dir)
 
 
 if __name__ == '__main__':
