@@ -12,7 +12,8 @@
       "id": "worksetmgrdraftsrc",
       "title": "Workset Manager Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workset-manager.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workset-manager.git",
+      "branch": "main"
     }
   ]
 }

@@ -12,7 +12,7 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -28,7 +28,7 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -44,7 +44,7 @@
         "subject": ["Features and functionality"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -60,7 +60,7 @@
         "subject": ["Features and functionality"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -76,7 +76,7 @@
         "subject": ["Features and functionality"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -92,7 +92,7 @@
         "subject": ["Release Notes"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -108,7 +108,7 @@
         "subject": ["Integration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -124,7 +124,7 @@
         "subject": ["Integration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -140,7 +140,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -156,7 +156,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -172,7 +172,7 @@
         "subject": ["Installation"],
         "release": ["Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -188,7 +188,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -204,7 +204,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
@@ -220,7 +220,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -236,7 +236,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -252,7 +252,7 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
