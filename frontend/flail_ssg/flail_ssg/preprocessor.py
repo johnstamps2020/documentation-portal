@@ -13,6 +13,12 @@ def include_item(env: str, item_envs: list):
     return not item_envs or env in item_envs
 
 
+def page_has_items(index_file: Path) -> bool:
+    page_config = load_json_file(index_file)
+    page_items = page_config.json_object.get('items')
+    return bool(page_items)
+
+
 def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: list):
     filtered_items = []
     filtered_pages_to_remove = []
@@ -40,17 +46,47 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: li
     return filtered_items, filtered_pages_to_remove
 
 
-def find_pages_without_items(root_path: Path):
-    pages_without_items = []
+def find_refs_to_empty_pages(current_page_dir: Path, items: list):
+    updated_items = []
+    empty_pages_to_remove = []
+    for item in items:
+        if item.get('page'):
+            page_config_path = current_page_dir / item['page'] / 'index.json'
+            page_has_content = page_has_items(page_config_path)
+            if page_has_content:
+                updated_items.append(item)
+            else:
+                empty_pages_to_remove.append(page_config_path)
+        else:
+            updated_items.append(item)
+        inner_items = item.get('items')
+        if inner_items:
+            updated_inner_items, inner_empty_pages_to_remove = find_refs_to_empty_pages(current_page_dir,
+                                                                                        item['items'])
+            item['items'] = updated_inner_items
+            empty_pages_to_remove += inner_empty_pages_to_remove
+    return updated_items, empty_pages_to_remove
+
+
+def find_empty_pages_without_links(root_path: Path) -> list[Path]:
+    empty_pages_to_remove = []
     for index_json_file in root_path.rglob('*.json'):
-        page_config = load_json_file(index_json_file)
-        page_items = page_config.json_object.get('items')
-        if not page_items:
-            pages_without_items.append(index_json_file)
-    return pages_without_items
+        page_has_content = page_has_items(index_json_file)
+        if not page_has_content:
+            empty_pages_to_remove.append(index_json_file)
+    return empty_pages_to_remove
 
 
-def remove_filtered_page_dirs(pages_to_remove: list[Path]):
+def remove_duplicated_paths(paths: list[Path]) -> list:
+    return list({path.resolve() for path in paths})
+
+
+def remove_page_configs(page_configs_to_remove: list[Path]):
+    for page_config in page_configs_to_remove:
+        page_config.unlink()
+
+
+def remove_page_dirs(pages_to_remove: list[Path]):
     for page_path in pages_to_remove:
         if page_path.exists():
             shutil.rmtree(page_path)
@@ -84,10 +120,56 @@ def remove_empty_dirs(root_path: Path):
                 f'\t{i} {failed_removal["path"]} | Error: {failed_removal["error"]}')
 
 
-def preprocess_page(index_file: Path,
-                    deploy_env: str,
-                    docs: list,
-                    send_bouncer_home: bool):
+def clean_page(index_file: Path,
+               send_bouncer_home: bool):
+    page_config = load_json_file(index_file)
+    cleaned_page_config = copy.deepcopy(page_config)
+    all_empty_pages_to_remove = []
+    try:
+        page_items = page_config.json_object.get('items', [])
+        items_with_no_refs_to_empty_pages, empty_pages_to_remove = find_refs_to_empty_pages(
+            page_config.dir, page_items)
+        cleaned_page_config.json_object['items'] = items_with_no_refs_to_empty_pages
+        all_empty_pages_to_remove += empty_pages_to_remove
+
+        selector = page_config.json_object.get('selector')
+        if selector:
+            selector_items = selector.get('items', [])
+            cleaned_selector_items, empty_selector_pages_to_remove = find_refs_to_empty_pages(
+                page_config.dir, selector_items)
+            cleaned_page_config.json_object['selector']['items'] = cleaned_selector_items
+            all_empty_pages_to_remove += empty_selector_pages_to_remove
+    except Exception as e:
+        if not send_bouncer_home:
+            raise e
+        _preprocessor_logger.warning(
+            '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+        page_config.json_object[
+            'title'] = f'{page_config.json_object["title"]} - PREPROCESSED WITH ERRORS! CHECK THE VALIDATOR LOG!'
+    finally:
+        write_json_object_to_file(cleaned_page_config.json_object, cleaned_page_config.absolute_path)
+        return all_empty_pages_to_remove
+
+
+def clean_pages(root_path: Path, send_bouncer_home: bool):
+    # This function removes only page configs, not entire page dirs, because they may contain
+    # other pages that are valid
+
+    # Step 1
+    empty_pages_to_remove = []
+    for index_json_file in root_path.rglob('*.json'):
+        _preprocessor_logger.info(f'Cleaning page {index_json_file}')
+        empty_pages_to_remove += clean_page(index_json_file, send_bouncer_home)
+
+    unique_empty_pages_to_remove = remove_duplicated_paths(empty_pages_to_remove)
+    remove_page_configs(unique_empty_pages_to_remove)
+    # Step 2
+    pages_with_empty_items = find_empty_pages_without_links(root_path)
+    unique_pages_with_empty_items = remove_duplicated_paths(pages_with_empty_items)
+    remove_page_configs(remove_duplicated_paths(unique_pages_with_empty_items))
+
+
+def process_page(index_file: Path, deploy_env: str, docs: list, send_bouncer_home: bool):
     page_config = load_json_file(index_file)
     preprocessed_page_config = copy.deepcopy(page_config)
     all_filtered_pages_to_remove = []
@@ -117,6 +199,18 @@ def preprocess_page(index_file: Path,
         return all_filtered_pages_to_remove
 
 
+def process_pages(root_path: Path, deploy_env: str, docs: list, send_bouncer_home: bool):
+    # This function removes page dirs
+    # because the env property applies to the entire page dir, not only the page config file
+    filtered_out_pages_to_remove = []
+    for index_json_file in root_path.rglob('*.json'):
+        _preprocessor_logger.info(f'Processing page {index_json_file}')
+        filtered_out_pages_to_remove += process_page(index_json_file, deploy_env, docs, send_bouncer_home)
+
+    unique_filtered_out_pages_to_remove = remove_duplicated_paths(filtered_out_pages_to_remove)
+    remove_page_dirs(unique_filtered_out_pages_to_remove)
+
+
 def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
                      docs_config_file: Path):
     docs = load_json_file(docs_config_file).json_object['docs']
@@ -128,14 +222,8 @@ def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, 
 
     shutil.copytree(pages_dir, build_dir)
 
-    all_pages_to_remove = []
-    for index_json_file in build_dir.rglob('*.json'):
-        _preprocessor_logger.info(f'Preprocessing page {index_json_file}')
-        all_pages_to_remove += preprocess_page(index_json_file, deploy_env, docs, send_bouncer_home)
-
-    remove_filtered_page_dirs(all_pages_to_remove)
-    pages_with_empty_items = find_pages_without_items(build_dir)
-    for page in pages_with_empty_items:
-        page.unlink()
+    process_pages(build_dir, deploy_env, docs, send_bouncer_home)
+    clean_pages(build_dir, send_bouncer_home)
     remove_empty_dirs(build_dir)
+
     _preprocessor_logger.info('PROCESS ENDED: Preprocess pages')
