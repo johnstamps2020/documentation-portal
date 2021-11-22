@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "A_Map01.ditamap",
+      "srcId": "respondsrc",
+      "docId": "respond",
+      "indexRedirect": true
+    }
+  ]
+}
