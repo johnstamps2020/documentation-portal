@@ -92,11 +92,10 @@ def remove_page_dirs(pages_to_remove: list[Path]):
             shutil.rmtree(page_path)
 
 
-def remove_empty_dirs(root_path: Path):
-    removed_dirs = []
-    failed_removals = []
-    empty_dirs = [p for p in root_path.rglob(
-        '*') if p.is_dir() and not list(p.iterdir())]
+def remove_empty_dirs(root_path: Path, removed_dirs: list, failed_removals: list):
+    empty_dirs = [p for p in root_path.rglob('*') if p.is_dir() and not list(p.iterdir())]
+    if not empty_dirs:
+        return removed_dirs, failed_removals
     for empty_dir in empty_dirs:
         try:
             empty_dir.rmdir()
@@ -106,18 +105,7 @@ def remove_empty_dirs(root_path: Path):
                 {'path': empty_dir,
                  'error': e}
             )
-
-    if removed_dirs:
-        _preprocessor_logger.info(
-            f'Removed empty directories: {len(removed_dirs)}/{len(empty_dirs)}')
-        for i, removed_dir in enumerate(removed_dirs, start=1):
-            _preprocessor_logger.info(f'\t{i} {removed_dir}')
-    if failed_removals:
-        _preprocessor_logger.info(
-            f'Failed to remove empty directories: {len(failed_removals)}/{len(empty_dirs)}')
-        for i, failed_removal in enumerate(failed_removals, start=1):
-            _preprocessor_logger.info(
-                f'\t{i} {failed_removal["path"]} | Error: {failed_removal["error"]}')
+    return remove_empty_dirs(root_path, removed_dirs, failed_removals)
 
 
 def clean_page(index_file: Path,
@@ -224,6 +212,19 @@ def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, 
 
     process_pages(build_dir, deploy_env, docs, send_bouncer_home)
     clean_pages(build_dir, send_bouncer_home)
-    remove_empty_dirs(build_dir)
 
-    _preprocessor_logger.info('PROCESS ENDED: Preprocess pages')
+    removed_dirs, failed_removals = remove_empty_dirs(build_dir, removed_dirs=[], failed_removals=[])
+    if removed_dirs:
+        _preprocessor_logger.info(
+            f'Removed empty directories: {len(removed_dirs)}')
+        for i, removed_dir in enumerate(removed_dirs, start=1):
+            _preprocessor_logger.info(f'\t{i} {removed_dir}')
+    if failed_removals:
+        _preprocessor_logger.warn(
+            f'Failed to remove empty directories: {len(failed_removals)}')
+        for i, failed_removal in enumerate(failed_removals, start=1):
+            _preprocessor_logger.info(
+                f'\t{i} {failed_removal["path"]} | Error: {failed_removal["error"]}')
+
+
+_preprocessor_logger.info('PROCESS ENDED: Preprocess pages')
