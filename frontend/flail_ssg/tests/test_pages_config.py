@@ -10,7 +10,7 @@ from jsonschema import validate as jsonschema_validate
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
-from flail_ssg.preprocessor import filter_by_env, remove_filtered_page_dirs
+from flail_ssg.preprocessor import clean_pages, filter_by_env, remove_page_dirs
 from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
     validate_page
 
@@ -24,9 +24,12 @@ class TestConfig:
     page_schema_file = _frontend_dir / 'page-schema.json'
     resources_input_dir = _current_dir / 'resources' / 'input'
     resources_expected_dir = _current_dir / 'resources' / 'expected'
+    expected_incorrect_pages_dir = resources_expected_dir / 'incorrect-pages'
     incorrect_pages_dir = resources_input_dir / 'incorrect-pages'
     incorrect_pages_items_dir = incorrect_pages_dir / 'incorrect-items'
     incorrect_pages_env_settings_dir = incorrect_pages_dir / 'incorrect-env-settings'
+    incorrect_pages_empty_items = incorrect_pages_dir / 'empty-items'
+    expected_incorrect_pages_empty_items = expected_incorrect_pages_dir / 'empty-items'
     incorrect_pages_docs_config_file = incorrect_pages_dir / 'config.json'
 
 
@@ -72,7 +75,7 @@ def test_filtering_by_env():
                                                                            current_page_dir=tmp_test_dir,
                                                                            items=input_items,
                                                                            docs=docs)
-    remove_filtered_page_dirs(pages_to_remove_after_filtering)
+    remove_page_dirs(pages_to_remove_after_filtering)
     expected_output_dir = (TestConfig.resources_expected_dir / 'pages' / 'selfManagedProducts')
     test_filtering_items(items_after_filtering, pages_to_remove_after_filtering, expected_output_dir / 'index.json')
     test_removing_filtered_out_pages(pages_to_remove_after_filtering, tmp_test_dir)
@@ -236,3 +239,29 @@ def test_env_settings():
     test_id_item_with_item_envs()
     test_id_item_without_item_envs()
     test_other_item()
+
+
+def test_cleaning_pages():
+    input_dir = TestConfig.incorrect_pages_empty_items
+    expected_dir = TestConfig.expected_incorrect_pages_empty_items
+    tmp_test_dir = TestConfig.incorrect_pages_dir / 'tmpTestDirEmptyItems'
+
+    def check_dirs_have_the_same_files():
+        tmp_test_dir_files = sorted(f.relative_to(tmp_test_dir) for f in tmp_test_dir.rglob('*.json'))
+        expected_files = sorted(f.relative_to(expected_dir) for f in expected_dir.rglob('*.json'))
+        assert tmp_test_dir_files == expected_files
+
+    def check_files_have_the_same_content():
+        for tmp_test_file in tmp_test_dir.rglob('*.json'):
+            for expected_file in expected_dir.rglob('*.json'):
+                if tmp_test_file.relative_to(tmp_test_dir) == expected_file.relative_to(expected_dir):
+                    tmp_test_file_json = load_json_file(tmp_test_file)
+                    expected_file_json = load_json_file(expected_file)
+                    assert tmp_test_file_json == expected_file_json
+
+    shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
+    clean_pages(tmp_test_dir, send_bouncer_home=False)
+
+    check_dirs_have_the_same_files()
+    check_files_have_the_same_content()
+    shutil.rmtree(tmp_test_dir)
