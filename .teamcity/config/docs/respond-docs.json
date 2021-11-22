@@ -6,9 +6,10 @@
       "title": "Respond",
       "url": "cloud/respond/latest",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["Respond"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int", "staging", "prod"],
       "indexForSearch": true,
