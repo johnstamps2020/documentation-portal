@@ -90,19 +90,21 @@ def preprocess_page(index_file: Path,
                     send_bouncer_home: bool):
     page_config = load_json_file(index_file)
     preprocessed_page_config = copy.deepcopy(page_config)
-    filtered_pages_to_remove = []
+    all_filtered_pages_to_remove = []
     try:
         page_items = page_config.json_object.get('items', [])
         filtered_items, filtered_pages_to_remove = filter_by_env(
             deploy_env, page_config.dir, page_items, docs)
         preprocessed_page_config.json_object['items'] = filtered_items
+        all_filtered_pages_to_remove += filtered_pages_to_remove
 
         selector = page_config.json_object.get('selector')
         if selector:
             selector_items = selector.get('items', [])
-            filtered_selector_items, _ = filter_by_env(
+            filtered_selector_items, filtered_selector_pages_to_remove = filter_by_env(
                 deploy_env, page_config.dir, selector_items, docs)
             preprocessed_page_config.json_object['selector']['items'] = filtered_selector_items
+            all_filtered_pages_to_remove += filtered_selector_pages_to_remove
     except Exception as e:
         if not send_bouncer_home:
             raise e
@@ -112,7 +114,7 @@ def preprocess_page(index_file: Path,
             'title'] = f'{page_config.json_object["title"]} - PREPROCESSED WITH ERRORS! CHECK THE VALIDATOR LOG!'
     finally:
         write_json_object_to_file(preprocessed_page_config.json_object, preprocessed_page_config.absolute_path)
-        return filtered_pages_to_remove
+        return all_filtered_pages_to_remove
 
 
 def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,

@@ -99,6 +99,7 @@
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Digital Applications",
