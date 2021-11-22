@@ -1,0 +1,18 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "respond",
+      "title": "Respond",
+      "url": "cloud/respond/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Respond"],
+        "version": ["latest"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
