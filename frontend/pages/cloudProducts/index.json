@@ -22,11 +22,6 @@
       "page": "dobson"
     },
     {
-      "label": "Elysian",
-      "page": "elysian",
-      "env": ["dev", "int", "staging"]
-    },
-    {
       "label": "_redirect",
       "link": "/cloudProducts/dobson"
     }

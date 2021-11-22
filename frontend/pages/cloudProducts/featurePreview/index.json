@@ -36,8 +36,7 @@
         },
         {
           "label": "Data Studio",
-          "page": "../datastudio",
-          "env": ["dev", "int", "staging"]
+          "page": "../datastudio"
         },
         {
           "label": "Submission Intake",
