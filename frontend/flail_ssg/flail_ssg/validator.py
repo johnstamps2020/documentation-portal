@@ -47,15 +47,6 @@ class IncorrectEnvSettingsWarning:
 
 
 @dataclass
-class IncompleteItemError:
-    config_file: Path
-    details: str
-    level: int = logging.ERROR
-    message: str = 'Item does not link to anything and does not contain any child items. ' \
-                   'The item must have one of the following properties: "id", "page", "link", "items".'
-
-
-@dataclass
 class JsonSchemaValidationError:
     config_file: Path
     details: str
@@ -129,16 +120,6 @@ def validate_item_exists(item: dict, docs_from_config: list, page_config: PageCo
         )
 
 
-def validate_item_is_complete(item: dict, page_config: PageConfig) -> Union[bool, dataclasses.dataclass]:
-    item_has_ref = item.get('id') or item.get('page') or item.get('link')
-    item_has_child_items = item.get('items')
-    item_is_complete = bool(item_has_ref or item_has_child_items)
-    return item_is_complete or IncompleteItemError(
-        config_file=page_config.absolute_path,
-        details=f'Item label: {item["label"]}'
-    )
-
-
 def validate_against_schema(index_file: Path, schema_json: dict) -> Union[bool, dataclasses.dataclass]:
     page_config = load_json_file(index_file)
     try:
@@ -147,7 +128,7 @@ def validate_against_schema(index_file: Path, schema_json: dict) -> Union[bool, 
     except Exception as e:
         return JsonSchemaValidationError(
             config_file=page_config.absolute_path,
-            details=e.args[0]
+            details=str(e)
         )
 
 
@@ -156,13 +137,9 @@ def validate_page(index_file: Path, docs: list) -> list:
 
     def validate_items(page_items: list, issues: list):
         for item in page_items:
-            item_is_complete_result = validate_item_is_complete(item, page_config)
-            if type(item_is_complete_result) is IncompleteItemError:
-                issues.append(item_is_complete_result)
-            else:
-                item_exists_result = validate_item_exists(item, docs, page_config)
-                if type(item_exists_result) in [DocIdNotFoundError, PageNotFoundError]:
-                    issues.append(item_exists_result)
+            item_exists_result = validate_item_exists(item, docs, page_config)
+            if type(item_exists_result) in [DocIdNotFoundError, PageNotFoundError]:
+                issues.append(item_exists_result)
             if item.get('items'):
                 validate_items(item['items'], issues)
 

@@ -125,6 +125,20 @@
       "description": "An object that points to a page, a document or an external link",
       "type": "object",
       "required": ["label"],
+      "oneOf": [
+        {
+          "required": ["id"]
+        },
+        {
+          "required": ["page"]
+        },
+        {
+          "required": ["link"]
+        },
+        {
+          "required": ["items"]
+        }
+      ],
       "properties": {
         "label": {
           "$ref": "#/definitions/label"
