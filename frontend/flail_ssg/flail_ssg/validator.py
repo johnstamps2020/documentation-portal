@@ -1,12 +1,13 @@
+import dataclasses
 import logging
 import warnings
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List
+from typing import Tuple, Union
 
 from itertools import groupby
 
-from flail_ssg.helpers import configure_logger, get_doc_object, load_json_file, PageConfig
+from flail_ssg.helpers import PageConfig, configure_logger, get_doc_object, load_json_file
 
 _log_file = Path.cwd() / 'validator.log'
 _validator_logger = configure_logger('validator_logger', 'info', _log_file)
@@ -53,13 +54,13 @@ class IncompleteItemError:
                    'The item must have one of the following properties: "id", "page", "link", "items".'
 
 
-def process_validation_results(results: List, send_bouncer_home: bool):
+def process_validation_results(results: list, send_bouncer_home: bool):
     """
     send_bouncer_home:
         When set to True, the bouncer raises hell right away if it notices any errors.
     """
 
-    def group_and_sort_results(raw_results: List, group_key: str, sort_key: str = None):
+    def group_and_sort_results(raw_results: list, group_key: str, sort_key: str = None):
         grouped_results = groupby(raw_results, key=lambda r: getattr(r, group_key))
         if sort_key:
             sorted_results = [
@@ -95,7 +96,7 @@ def process_validation_results(results: List, send_bouncer_home: bool):
             warnings.warn(message, SyntaxWarning)
 
 
-def env_settings_are_correct(envs: List, higher_order_envs: List, partial_match: bool = False):
+def env_settings_are_correct(envs: list, higher_order_envs: list, partial_match: bool = False) -> bool:
     if not envs or not higher_order_envs:
         return True
     if partial_match:
@@ -103,7 +104,8 @@ def env_settings_are_correct(envs: List, higher_order_envs: List, partial_match:
     return all(env in higher_order_envs for env in envs)
 
 
-def validate_item_exists(item: dict, docs_from_config: list, page_config: PageConfig):
+def validate_item_exists(item: dict, docs_from_config: list, page_config: PageConfig) -> \
+        Union[bool, dataclasses.dataclass]:
     if item.get('id'):
         item_id = item['id']
         doc_object_exists = bool(get_doc_object(item_id, docs_from_config))
@@ -118,7 +120,7 @@ def validate_item_exists(item: dict, docs_from_config: list, page_config: PageCo
         )
 
 
-def validate_item_is_complete(item: dict, page_config: PageConfig):
+def validate_item_is_complete(item: dict, page_config: PageConfig) -> Union[bool, dataclasses.dataclass]:
     item_has_ref = item.get('id') or item.get('page') or item.get('link')
     item_has_child_items = item.get('items')
     item_is_complete = bool(item_has_ref or item_has_child_items)
@@ -128,7 +130,7 @@ def validate_item_is_complete(item: dict, page_config: PageConfig):
     )
 
 
-def validate_page(index_file: Path, docs: list):
+def validate_page(index_file: Path, docs: list) -> list:
     page_config = load_json_file(index_file)
 
     def validate_items(page_items: list, issues: list):
@@ -173,13 +175,13 @@ def validate_page(index_file: Path, docs: list):
 
 
 def validate_env_settings(index_file: Path,
-                          docs: List,
-                          envs: List,
-                          validated_pages: List,
-                          validation_results: List):
+                          docs: list,
+                          envs: list,
+                          validated_pages: list,
+                          validation_results: list) -> Tuple[list, list]:
     page_config = load_json_file(index_file)
 
-    def validate_item_envs(page_items: List, parent_envs: List, issues: List):
+    def validate_item_envs(page_items: list, parent_envs: list, issues: list):
         for item in page_items:
             item_envs = item.get('env', [])
             item_label = item["label"]

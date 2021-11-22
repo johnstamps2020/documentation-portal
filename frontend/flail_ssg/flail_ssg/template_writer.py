@@ -1,7 +1,7 @@
+from pathlib import Path
+
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
-from pathlib import Path
-from typing import Dict
 
 from flail_ssg.helpers import configure_logger, load_json_file
 
@@ -10,7 +10,7 @@ _template_writer_logger = configure_logger(
     'template_writer_logger', 'info', _log_file)
 
 
-def write_to_file(out_file_path: Path, data: Dict, template_file: Path):
+def write_to_file(out_file_path: Path, data: dict, template_file: Path):
     jinja2_environment = Environment(
         loader=FileSystemLoader(template_file.parent),
         trim_blocks=True,

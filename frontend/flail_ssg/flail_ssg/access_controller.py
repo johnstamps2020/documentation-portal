@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Callable, List
+from typing import Callable
 
 from flail_ssg.helpers import configure_logger
 from flail_ssg.helpers import load_json_file
@@ -10,8 +10,8 @@ _access_controller_logger = configure_logger(
     'access_controller_logger', 'info', _log_file)
 
 
-def find_public_pages(build_dir: Path):
-    def check_any_item_is_public(page_items: List, any_item_is_public: bool):
+def find_public_pages(build_dir: Path) -> list[Path]:
+    def check_any_item_is_public(page_items: list, any_item_is_public: bool):
         for item in page_items:
             if item.get('public'):
                 any_item_is_public = True
@@ -31,8 +31,8 @@ def find_public_pages(build_dir: Path):
     return public_paths
 
 
-def find_all_public_paths(build_dir: Path, all_public_paths: List):
-    def find_public_path_in_items(root_dir: Path, page_items: List):
+def find_all_public_paths(build_dir: Path, all_public_paths: list[Path]) -> list[Path]:
+    def find_public_path_in_items(root_dir: Path, page_items: list):
         for item in page_items:
             nonlocal all_public_paths
             if item.get('page'):
@@ -53,8 +53,8 @@ def find_all_public_paths(build_dir: Path, all_public_paths: List):
     return unique_public_paths
 
 
-def write_marked_pages(build_dir: Path, public_paths: List):
-    def mark_page_refs_with_public_prop(root_dir: Path, page_items: List):
+def write_marked_pages(build_dir: Path, public_paths: list):
+    def mark_page_refs_with_public_prop(root_dir: Path, page_items: list):
         for item in page_items:
             nonlocal public_paths
             if item.get('page'):
@@ -75,8 +75,8 @@ def write_marked_pages(build_dir: Path, public_paths: List):
 
 
 def set_public_prop_on_docs(build_dir: Path,
-                            docs: List):
-    def mark_docs_with_public_prop(page_items: List):
+                            docs: list):
+    def mark_docs_with_public_prop(page_items: list):
         for item in page_items:
             item_id = item.get('id')
             if item_id:

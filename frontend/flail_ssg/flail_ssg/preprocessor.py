@@ -1,6 +1,7 @@
 import copy
 import shutil
 from pathlib import Path
+from typing import Tuple
 
 from flail_ssg.helpers import configure_logger, get_doc_object, load_json_file, write_json_object_to_file
 
@@ -9,7 +10,7 @@ _preprocessor_logger = configure_logger(
     'preprocessor_logger', 'info', _log_file)
 
 
-def include_item(env: str, item_envs: list):
+def include_item(env: str, item_envs: list) -> bool:
     return not item_envs or env in item_envs
 
 
@@ -19,7 +20,7 @@ def page_has_items(index_file: Path) -> bool:
     return bool(page_items)
 
 
-def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: list):
+def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: list) -> Tuple[list, list]:
     filtered_items = []
     filtered_pages_to_remove = []
     for item in items:
@@ -46,7 +47,7 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: li
     return filtered_items, filtered_pages_to_remove
 
 
-def find_refs_to_empty_pages(current_page_dir: Path, items: list):
+def find_refs_to_empty_pages(current_page_dir: Path, items: list) -> Tuple[list, list]:
     updated_items = []
     empty_pages_to_remove = []
     for item in items:
@@ -92,7 +93,7 @@ def remove_page_dirs(pages_to_remove: list[Path]):
             shutil.rmtree(page_path)
 
 
-def remove_empty_dirs(root_path: Path, removed_dirs: list, failed_removals: list):
+def remove_empty_dirs(root_path: Path, removed_dirs: list, failed_removals: list) -> Tuple[list, list]:
     empty_dirs = [p for p in root_path.rglob('*') if p.is_dir() and not list(p.iterdir())]
     if not empty_dirs:
         return removed_dirs, failed_removals
@@ -108,8 +109,7 @@ def remove_empty_dirs(root_path: Path, removed_dirs: list, failed_removals: list
     return remove_empty_dirs(root_path, removed_dirs, failed_removals)
 
 
-def clean_page(index_file: Path,
-               send_bouncer_home: bool):
+def clean_page(index_file: Path, send_bouncer_home: bool) -> list[Path]:
     page_config = load_json_file(index_file)
     cleaned_page_config = copy.deepcopy(page_config)
     all_empty_pages_to_remove = []
@@ -157,7 +157,7 @@ def clean_pages(root_path: Path, send_bouncer_home: bool):
     remove_page_configs(remove_duplicated_paths(unique_pages_with_empty_items))
 
 
-def process_page(index_file: Path, deploy_env: str, docs: list, send_bouncer_home: bool):
+def process_page(index_file: Path, deploy_env: str, docs: list, send_bouncer_home: bool) -> list[Path]:
     page_config = load_json_file(index_file)
     preprocessed_page_config = copy.deepcopy(page_config)
     all_filtered_pages_to_remove = []

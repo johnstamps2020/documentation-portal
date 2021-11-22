@@ -2,7 +2,7 @@ import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Union
+from typing import Union
 
 
 @dataclass
@@ -12,7 +12,7 @@ class PageConfig:
     json_object: dict
 
 
-def load_json_file(json_file: Path):
+def load_json_file(json_file: Path) -> PageConfig:
     json_file_abs_path = json_file.resolve()
     return PageConfig(
         absolute_path=json_file_abs_path,
@@ -21,11 +21,11 @@ def load_json_file(json_file: Path):
     )
 
 
-def write_json_object_to_file(json_data: Union[Dict, List], output_file: Path):
+def write_json_object_to_file(json_data: Union[dict, list], output_file: Path):
     output_file.resolve().open('w', encoding='utf-8').write(json.dumps(json_data, indent=2))
 
 
-def configure_logger(name: str, logging_level: str, log_path: Path):
+def configure_logger(name: str, logging_level: str, log_path: Path) -> logging.Logger:
     logger_instance = logging.getLogger(name)
     weights = {'critical': 50, 'error': 40,
                'warning': 30, 'info': 20, 'debug': 10}

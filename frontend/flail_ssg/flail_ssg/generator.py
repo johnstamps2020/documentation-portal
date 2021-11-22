@@ -1,6 +1,6 @@
 import copy
 from pathlib import Path
-from typing import List
+from typing import Union
 from urllib.parse import urlparse
 
 from flail_ssg.helpers import configure_logger, get_doc_object
@@ -12,7 +12,7 @@ _generator_logger = configure_logger(
     'generator_logger', 'info', _log_file)
 
 
-def create_breadcrumbs(page_dir: Path, build_dir: Path):
+def create_breadcrumbs(page_dir: Path, build_dir: Path) -> Union[list, None]:
     if page_dir == build_dir:
         return None
     breadcrumbs = []
@@ -90,7 +90,7 @@ def generate_search_filters(page_config_json: dict, docs: list) -> dict:
     return sort_filters(page_search_filters)
 
 
-def resolve_links(items: List, docs: List):
+def resolve_links(items: list, docs: list) -> list:
     for item in items:
         if item.get('id'):
             matching_doc_object = get_doc_object(item['id'], docs)
@@ -103,7 +103,7 @@ def resolve_links(items: List, docs: List):
 
 
 def generate_page(index_file: Path,
-                  docs: List,
+                  docs: list,
                   build_dir: Path,
                   send_bouncer_home: bool):
     page_config = load_json_file(index_file)

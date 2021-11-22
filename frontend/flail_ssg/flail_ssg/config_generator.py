@@ -1,6 +1,6 @@
 import shutil
 from pathlib import Path, PurePosixPath
-from typing import Callable, List
+from typing import Callable
 from urllib.parse import urlparse
 
 from flail_ssg.helpers import configure_logger
@@ -12,7 +12,7 @@ _config_generator_logger = configure_logger(
     'config_generator_logger', 'info', _log_file)
 
 
-def get_doc_urls(page_items: List, doc_urls: List):
+def get_doc_urls(page_items: list, doc_urls: list) -> list:
     for item in page_items:
         item_doc_url = item.get('doc_url')
         if item_doc_url:
@@ -22,7 +22,7 @@ def get_doc_urls(page_items: List, doc_urls: List):
     return doc_urls
 
 
-def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
+def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path) -> list:
     breadcrumbs = []
     for index_json_file in pages_build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
@@ -61,7 +61,7 @@ def create_breadcrumbs_mapping(pages_build_dir: Path, config_build_dir: Path):
     return breadcrumbs
 
 
-def get_visible_docs_for_env(docs: List, env: str):
+def get_visible_docs_for_env(docs: list, env: str):
     return [
         doc
         for doc in docs
@@ -70,7 +70,7 @@ def get_visible_docs_for_env(docs: List, env: str):
     ]
 
 
-def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Path, docs: List, deploy_env: str):
+def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Path, docs: list, deploy_env: str):
     version_selectors = []
     visible_docs_for_env = get_visible_docs_for_env(docs, deploy_env)
     for doc in visible_docs_for_env:
