@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Tuple, Union
 
 from itertools import groupby
+from jsonschema import validate as jsonschema_validate
 
 from flail_ssg.helpers import PageConfig, configure_logger, get_doc_object, load_json_file
 
@@ -52,6 +53,14 @@ class IncompleteItemError:
     level: int = logging.ERROR
     message: str = 'Item does not link to anything and does not contain any child items. ' \
                    'The item must have one of the following properties: "id", "page", "link", "items".'
+
+
+@dataclass
+class JsonSchemaValidationError:
+    config_file: Path
+    details: str
+    level: int = logging.ERROR
+    message: str = 'JSON schema validation error'
 
 
 def process_validation_results(results: list, send_bouncer_home: bool):
@@ -130,6 +139,18 @@ def validate_item_is_complete(item: dict, page_config: PageConfig) -> Union[bool
     )
 
 
+def validate_against_schema(index_file: Path, schema_json: dict) -> Union[bool, dataclasses.dataclass]:
+    page_config = load_json_file(index_file)
+    try:
+        jsonschema_validate(instance=page_config.json_object, schema=schema_json)
+        return True
+    except Exception as e:
+        return JsonSchemaValidationError(
+            config_file=page_config.absolute_path,
+            details=e.args[0]
+        )
+
+
 def validate_page(index_file: Path, docs: list) -> list:
     page_config = load_json_file(index_file)
 
@@ -148,8 +169,9 @@ def validate_page(index_file: Path, docs: list) -> list:
         return issues
 
     def validate_page_has_redirect_link(page_items: list, issues: list):
-        redirect_link = next((item for item in page_items if item.get('label', 'not found').casefold() == '_redirect'),
-                             None)
+        redirect_link = next(
+            (item for item in page_items if item.get('label', 'not found').casefold() == '_redirect'),
+            None)
         if not redirect_link:
             issues.append(MissingItemError(
                 config_file=page_config.absolute_path,
@@ -269,6 +291,18 @@ def validate_env_settings(index_file: Path,
 
 def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Path):
     docs = load_json_file(docs_config_file).json_object['docs']
+
+    _validator_logger.info('PROCESS STARTED: Validate pages against schema')
+    schema_validation_results = []
+    page_schema = load_json_file(Path(__file__).parent / 'page-schema.json')
+    for index_json_file in pages_dir.rglob('*.json'):
+        _validator_logger.info(f'Validating {index_json_file}')
+        validation_result = validate_against_schema(index_json_file, page_schema.json_object)
+        if type(validation_result) is JsonSchemaValidationError:
+            schema_validation_results.append(validation_result)
+
+    _validator_logger.info('PROCESS ENDED: Validate pages against schema')
+    process_validation_results(schema_validation_results, send_bouncer_home)
 
     _validator_logger.info('PROCESS STARTED: Validate pages')
     validation_results = []

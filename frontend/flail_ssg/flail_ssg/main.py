@@ -100,6 +100,9 @@ def main():
                      app_config.pages_dir,
                      app_config.pages_build_dir,
                      app_config.docs_config_file)
+    run_validator(app_config.send_bouncer_home,
+                  app_config.pages_build_dir,
+                  app_config.docs_config_file)
     run_generator(app_config.send_bouncer_home,
                   app_config.pages_build_dir,
                   app_config.docs_config_file)
@@ -111,9 +114,6 @@ def main():
                          app_config.pages_build_dir,
                          app_config.config_build_dir,
                          app_config.docs_config_file)
-    run_validator(app_config.send_bouncer_home,
-                  app_config.pages_build_dir,
-                  app_config.docs_config_file)
     run_template_writer(app_config.send_bouncer_home,
                         app_config.templates_dir,
                         app_config.pages_build_dir)

@@ -5,6 +5,7 @@ description = "A super simple generator for building doc portal pages"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"
 repository = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
+include = ["flail_ssg/page-schema.json"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: Proprietary",
@@ -16,10 +17,10 @@ flail_ssg = "flail_ssg.main:main"
 [tool.poetry.dependencies]
 python = "^3.9"
 jinja2 = "^2.11.3"
+jsonschema = "^3.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
-jsonschema = "^3.2.0"
 
 [build-system]
 requires = ["poetry>=1.0"]

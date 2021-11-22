@@ -1,12 +1,10 @@
 import json
-import json
 import os
 import shutil
 from collections import namedtuple
 from pathlib import Path
 
 import pytest
-from jsonschema import validate as jsonschema_validate
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
@@ -21,7 +19,6 @@ class TestConfig:
     send_bouncer_home = False
     docs_config_file = Path(os.environ['DOCS_CONFIG_FILE'])
     pages_dir = _frontend_dir / 'pages'
-    page_schema_file = _frontend_dir / 'page-schema.json'
     resources_input_dir = _current_dir / 'resources' / 'input'
     resources_expected_dir = _current_dir / 'resources' / 'expected'
     expected_incorrect_pages_dir = resources_expected_dir / 'incorrect-pages'
@@ -153,13 +150,6 @@ def test_running_validator_for_incorrect_env_settings():
         run_validator(TestConfig.send_bouncer_home,
                       TestConfig.incorrect_pages_env_settings_dir,
                       TestConfig.incorrect_pages_docs_config_file)
-
-
-def test_all_pages_are_valid_with_schema():
-    page_schema_json = load_json_file(TestConfig.page_schema_file)
-    for index_json_file in TestConfig.pages_dir.rglob('*.json'):
-        index_json = load_json_file(index_json_file)
-        jsonschema_validate(instance=index_json, schema=page_schema_json)
 
 
 def test_env_settings():
