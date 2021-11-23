@@ -15,6 +15,8 @@ def include_item(env: str, item_envs: list) -> bool:
 
 
 def page_has_items(index_file: Path) -> bool:
+    if not index_file.exists():
+        return False
     page_config = load_json_file(index_file)
     page_items = page_config.json_object.get('items')
     return bool(page_items)
@@ -84,7 +86,7 @@ def remove_duplicated_paths(paths: list[Path]) -> list:
 
 def remove_page_configs(page_configs_to_remove: list[Path]):
     for page_config in page_configs_to_remove:
-        page_config.unlink()
+        page_config.unlink(missing_ok=True)
 
 
 def remove_page_dirs(pages_to_remove: list[Path]):
@@ -213,6 +215,7 @@ def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, 
     process_pages(build_dir, deploy_env, docs, send_bouncer_home)
     clean_pages(build_dir, send_bouncer_home)
 
+    # TODO: Add logging for removed page configs and page dirs
     removed_dirs, failed_removals = remove_empty_dirs(build_dir, removed_dirs=[], failed_removals=[])
     if removed_dirs:
         _preprocessor_logger.info(
