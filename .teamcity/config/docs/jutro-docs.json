@@ -205,7 +205,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.0"],
+        "version": ["6.5.0 LTS"],
         "subject": ["Best practices"],
         "release": ["Dobson"]
       },
@@ -491,7 +491,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.0"],
+        "version": ["6.5.0 LTS"],
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
@@ -521,7 +521,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.0"],
+        "version": ["6.5.0 LTS"],
         "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -536,7 +536,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.0"],
+        "version": ["6.5.0 LTS"],
         "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -551,7 +551,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.0"],
+        "version": ["6.5.0 LTS"],
         "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging", "prod"],
