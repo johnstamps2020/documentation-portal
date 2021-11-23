@@ -266,12 +266,12 @@ def validate_env_settings(index_file: Path,
     return validation_results, validated_pages
 
 
-def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Path):
+def run_validator(send_bouncer_home: bool, pages_dir: Path, docs_config_file: Path, page_schema_file: Path):
     docs = load_json_file(docs_config_file).json_object['docs']
 
     _validator_logger.info('PROCESS STARTED: Validate pages against schema')
     schema_validation_results = []
-    page_schema = load_json_file(Path(__file__).parent / 'page-schema.json')
+    page_schema = load_json_file(page_schema_file)
     for index_json_file in pages_dir.rglob('*.json'):
         _validator_logger.info(f'Validating {index_json_file}')
         validation_result = validate_against_schema(index_json_file, page_schema.json_object)

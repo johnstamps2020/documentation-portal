@@ -44,6 +44,7 @@ class AppConfig:
     _templates_dir: str = os.environ.get('TEMPLATES_DIR')
     _output_dir: str = os.environ.get('OUTPUT_DIR')
     _docs_config_file: str = os.environ.get('DOCS_CONFIG_FILE')
+    _page_schema_file: str = os.environ.get('PAGE_SCHEMA_FILE', 'page-schema.json')
     _send_bouncer_home: str = os.environ.get('SEND_BOUNCER_HOME')
 
     @property
@@ -73,6 +74,12 @@ class AppConfig:
         )
 
     @property
+    def page_schema_file(self):
+        return validate_path(
+            resolve_path(self._page_schema_file)
+        )
+
+    @property
     def send_bouncer_home(self) -> bool:
         env_value = self._send_bouncer_home
         if env_value:
@@ -94,7 +101,8 @@ def main():
     app_config = AppConfig().get_app_config()
     run_validator(app_config.send_bouncer_home,
                   app_config.pages_dir,
-                  app_config.docs_config_file)
+                  app_config.docs_config_file,
+                  app_config.page_schema_file)
     run_preprocessor(app_config.send_bouncer_home,
                      app_config.deploy_env,
                      app_config.pages_dir,
@@ -102,7 +110,8 @@ def main():
                      app_config.docs_config_file)
     run_validator(app_config.send_bouncer_home,
                   app_config.pages_build_dir,
-                  app_config.docs_config_file)
+                  app_config.docs_config_file,
+                  app_config.page_schema_file)
     run_generator(app_config.send_bouncer_home,
                   app_config.pages_build_dir,
                   app_config.docs_config_file)

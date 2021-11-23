@@ -220,7 +220,7 @@ def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, 
         for i, removed_dir in enumerate(removed_dirs, start=1):
             _preprocessor_logger.info(f'\t{i} {removed_dir}')
     if failed_removals:
-        _preprocessor_logger.warn(
+        _preprocessor_logger.warning(
             f'Failed to remove empty directories: {len(failed_removals)}')
         for i, failed_removal in enumerate(failed_removals, start=1):
             _preprocessor_logger.info(

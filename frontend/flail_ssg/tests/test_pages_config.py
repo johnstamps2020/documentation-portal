@@ -18,6 +18,7 @@ class TestConfig:
     _frontend_dir = _current_dir.parent.parent
     send_bouncer_home = False
     docs_config_file = Path(os.environ['DOCS_CONFIG_FILE'])
+    page_schema_file = _frontend_dir / 'page-schema.json'
     pages_dir = _frontend_dir / 'pages'
     resources_input_dir = _current_dir / 'resources' / 'input'
     resources_expected_dir = _current_dir / 'resources' / 'expected'
@@ -102,7 +103,8 @@ def test_creating_search_filters():
 def test_all_pages_are_valid():
     run_validator(TestConfig.send_bouncer_home,
                   TestConfig.pages_dir,
-                  TestConfig.docs_config_file)
+                  TestConfig.docs_config_file,
+                  TestConfig.page_schema_file)
 
 
 @pytest.fixture(scope='module')
@@ -142,14 +144,16 @@ def test_running_validator_for_incorrect_items():
     with pytest.raises(SyntaxError, match=r'.*errors.*9'):
         run_validator(TestConfig.send_bouncer_home,
                       TestConfig.incorrect_pages_items_dir,
-                      TestConfig.incorrect_pages_docs_config_file)
+                      TestConfig.incorrect_pages_docs_config_file,
+                      TestConfig.page_schema_file)
 
 
 def test_running_validator_for_incorrect_env_settings():
     with pytest.warns(SyntaxWarning, match=r'.*warnings.*5'):
         run_validator(TestConfig.send_bouncer_home,
                       TestConfig.incorrect_pages_env_settings_dir,
-                      TestConfig.incorrect_pages_docs_config_file)
+                      TestConfig.incorrect_pages_docs_config_file,
+                      TestConfig.page_schema_file)
 
 
 def test_env_settings():
