@@ -80,6 +80,21 @@ def find_empty_pages_without_links(root_path: Path) -> list[Path]:
     return empty_pages_to_remove
 
 
+def remove_items_with_empty_child_items(items: list) -> list:
+    updated_items = []
+    for item in items:
+        inner_items = item.get('items', None)
+        if inner_items is None:
+            updated_items.append(item)
+        elif len(inner_items) > 0:
+            updated_item = copy.deepcopy(item)
+            updated_inner_items = remove_items_with_empty_child_items(inner_items)
+            updated_item['items'] = updated_inner_items
+            updated_items.append(updated_item)
+
+    return updated_items
+
+
 def remove_duplicated_paths(paths: list[Path]) -> list:
     return list({path.resolve() for path in paths})
 
@@ -119,15 +134,18 @@ def clean_page(index_file: Path, send_bouncer_home: bool) -> list[Path]:
         page_items = page_config.json_object.get('items', [])
         items_with_no_refs_to_empty_pages, empty_pages_to_remove = find_refs_to_empty_pages(
             page_config.dir, page_items)
-        cleaned_page_config.json_object['items'] = items_with_no_refs_to_empty_pages
+        items_with_no_empty_child_items = remove_items_with_empty_child_items(items_with_no_refs_to_empty_pages)
+        cleaned_page_config.json_object['items'] = items_with_no_empty_child_items
         all_empty_pages_to_remove += empty_pages_to_remove
 
         selector = page_config.json_object.get('selector')
         if selector:
             selector_items = selector.get('items', [])
-            cleaned_selector_items, empty_selector_pages_to_remove = find_refs_to_empty_pages(
+            selector_items_with_no_refs_to_empty_pages, empty_selector_pages_to_remove = find_refs_to_empty_pages(
                 page_config.dir, selector_items)
-            cleaned_page_config.json_object['selector']['items'] = cleaned_selector_items
+            selector_items_with_no_empty_child_items = remove_items_with_empty_child_items(
+                selector_items_with_no_refs_to_empty_pages)
+            cleaned_page_config.json_object['selector']['items'] = selector_items_with_no_empty_child_items
             all_empty_pages_to_remove += empty_selector_pages_to_remove
     except Exception as e:
         if not send_bouncer_home:
