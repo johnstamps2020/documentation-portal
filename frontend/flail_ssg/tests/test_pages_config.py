@@ -8,7 +8,8 @@ import pytest
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
-from flail_ssg.preprocessor import clean_pages, filter_by_env, remove_page_dirs
+from flail_ssg.preprocessor import filter_by_env, find_refs_to_empty_pages, remove_items_with_empty_child_items, \
+    remove_page_dirs
 from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
     validate_page
 
@@ -28,6 +29,8 @@ class TestConfig:
     incorrect_pages_env_settings_dir = incorrect_pages_dir / 'incorrect-env-settings'
     incorrect_pages_empty_items = incorrect_pages_dir / 'empty-items'
     expected_incorrect_pages_empty_items = expected_incorrect_pages_dir / 'empty-items'
+    incorrect_pages_empty_child_items = incorrect_pages_dir / 'empty-child-items'
+    expected_incorrect_pages_empty_child_items = expected_incorrect_pages_dir / 'empty-child-items'
     incorrect_pages_docs_config_file = incorrect_pages_dir / 'config.json'
 
 
@@ -235,27 +238,58 @@ def test_env_settings():
     test_other_item()
 
 
-def test_cleaning_pages():
+def test_removing_refs_to_empty_pages():
     input_dir = TestConfig.incorrect_pages_empty_items
     expected_dir = TestConfig.expected_incorrect_pages_empty_items
-    tmp_test_dir = TestConfig.incorrect_pages_dir / 'tmpTestDirEmptyItems'
+    expected_pages_to_remove = ['gwsf/nonExistentGuide/index.json', 'assess/index.json']
 
-    def check_dirs_have_the_same_files():
-        tmp_test_dir_files = sorted(f.relative_to(tmp_test_dir) for f in tmp_test_dir.rglob('*.json'))
-        expected_files = sorted(f.relative_to(expected_dir) for f in expected_dir.rglob('*.json'))
-        assert tmp_test_dir_files == expected_files
+    all_pages_to_remove = []
+    for input_file in input_dir.rglob('*.json'):
+        for expected_file in expected_dir.rglob('*.json'):
+            if input_file.relative_to(input_dir) == expected_file.relative_to(expected_dir):
+                input_file_items = load_json_file(input_file)['items']
+                expected_file_items = load_json_file(expected_file)['items']
+                items_with_no_refs_to_empty_pages, empty_pages_to_remove = find_refs_to_empty_pages(
+                    input_file.parent, input_file_items)
+                all_pages_to_remove += empty_pages_to_remove
+                assert items_with_no_refs_to_empty_pages == expected_file_items
+    assert len(all_pages_to_remove) == 2
+    assert sorted([Path(input_dir / p) for p in expected_pages_to_remove]) == sorted(all_pages_to_remove)
 
-    def check_files_have_the_same_content():
-        for tmp_test_file in tmp_test_dir.rglob('*.json'):
-            for expected_file in expected_dir.rglob('*.json'):
-                if tmp_test_file.relative_to(tmp_test_dir) == expected_file.relative_to(expected_dir):
-                    tmp_test_file_json = load_json_file(tmp_test_file)
-                    expected_file_json = load_json_file(expected_file)
-                    assert tmp_test_file_json == expected_file_json
 
-    shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
-    clean_pages(tmp_test_dir, send_bouncer_home=False)
+def test_removing_items_with_empty_child_items():
+    input_dir = TestConfig.incorrect_pages_empty_child_items
+    expected_dir = TestConfig.expected_incorrect_pages_empty_child_items
 
-    check_dirs_have_the_same_files()
-    check_files_have_the_same_content()
-    shutil.rmtree(tmp_test_dir)
+    for input_file in input_dir.rglob('*.json'):
+        for expected_file in expected_dir.rglob('*.json'):
+            if input_file.relative_to(input_dir) == expected_file.relative_to(expected_dir):
+                input_file_items = load_json_file(input_file)['items']
+                expected_file_items = load_json_file(expected_file)['items']
+                items_with_no_empty_child_items = remove_items_with_empty_child_items(input_file_items)
+                assert items_with_no_empty_child_items == expected_file_items
+
+# def test_cleaning_pages():
+#     input_dir = TestConfig.incorrect_pages_empty_items
+#     expected_dir = TestConfig.expected_incorrect_pages_empty_items
+#     tmp_test_dir = TestConfig.incorrect_pages_dir / 'tmpTestDirEmptyItems'
+#
+#     def check_dirs_have_the_same_files():
+#         tmp_test_dir_files = sorted(f.relative_to(tmp_test_dir) for f in tmp_test_dir.rglob('*.json'))
+#         expected_files = sorted(f.relative_to(expected_dir) for f in expected_dir.rglob('*.json'))
+#         assert tmp_test_dir_files == expected_files
+#
+#     def check_files_have_the_same_content():
+#         for tmp_test_file in tmp_test_dir.rglob('*.json'):
+#             for expected_file in expected_dir.rglob('*.json'):
+#                 if tmp_test_file.relative_to(tmp_test_dir) == expected_file.relative_to(expected_dir):
+#                     tmp_test_file_json = load_json_file(tmp_test_file)
+#                     expected_file_json = load_json_file(expected_file)
+#                     assert tmp_test_file_json == expected_file_json
+#
+#     shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
+#     clean_pages(tmp_test_dir, send_bouncer_home=False)
+#
+#     check_dirs_have_the_same_files()
+#     check_files_have_the_same_content()
+#     shutil.rmtree(tmp_test_dir)
