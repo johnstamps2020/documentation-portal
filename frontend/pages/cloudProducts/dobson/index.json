@@ -58,7 +58,13 @@
         },
         {
           "label": "InsuranceNow",
-          "page": "insuranceNow/2021.2"
+          "page": "insuranceNow/2021.2",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "InsuranceNow",
+          "page": "insuranceNow/latest",
+          "env": ["int"]
         },
         {
           "label": "Guidewire for Salesforce",
