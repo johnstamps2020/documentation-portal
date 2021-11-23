@@ -99,15 +99,34 @@ def remove_duplicated_paths(paths: list[Path]) -> list:
     return list({path.resolve() for path in paths})
 
 
-def remove_page_configs(page_configs_to_remove: list[Path]):
+def remove_page_configs(page_configs_to_remove: list[Path]) -> Tuple[list, list]:
+    removed_page_configs = []
+    failed_removals = []
     for page_config in page_configs_to_remove:
-        page_config.unlink(missing_ok=True)
+        try:
+            page_config.unlink(missing_ok=True)
+            removed_page_configs.append(page_config)
+        except Exception as e:
+            failed_removals.append(
+                {'path': page_config,
+                 'error': e}
+            )
+    return removed_page_configs, failed_removals
 
 
-def remove_page_dirs(pages_to_remove: list[Path]):
+def remove_page_dirs(pages_to_remove: list[Path]) -> Tuple[list, list]:
+    removed_page_dirs = []
+    failed_removals = []
     for page_path in pages_to_remove:
-        if page_path.exists():
+        try:
             shutil.rmtree(page_path)
+            removed_page_dirs.append(page_path)
+        except Exception as e:
+            failed_removals.append(
+                {'path': page_path,
+                 'error': e}
+            )
+    return removed_page_dirs, failed_removals
 
 
 def remove_empty_dirs(root_path: Path, removed_dirs: list, failed_removals: list) -> Tuple[list, list]:
@@ -124,6 +143,64 @@ def remove_empty_dirs(root_path: Path, removed_dirs: list, failed_removals: list
                  'error': e}
             )
     return remove_empty_dirs(root_path, removed_dirs, failed_removals)
+
+
+def log_remove_operation_result(removed_items: list[Path], items_not_removed: list[Path], start_log_message: str):
+    _preprocessor_logger.info(start_log_message)
+    if removed_items:
+        _preprocessor_logger.info(
+            f'Removed items: {len(removed_items)}')
+        for i, removed_dir in enumerate(removed_items, start=1):
+            _preprocessor_logger.info(f'\t{i} {removed_dir}')
+    if items_not_removed:
+        _preprocessor_logger.warning(
+            f'Failed to remove items: {len(items_not_removed)}')
+        for i, failed_removal in enumerate(items_not_removed, start=1):
+            _preprocessor_logger.info(
+                f'\t{i} {failed_removal["path"]} | Error: {failed_removal["error"]}')
+
+
+def process_page(index_file: Path, deploy_env: str, docs: list, send_bouncer_home: bool) -> list[Path]:
+    page_config = load_json_file(index_file)
+    preprocessed_page_config = copy.deepcopy(page_config)
+    all_filtered_pages_to_remove = []
+    try:
+        page_items = page_config.json_object.get('items', [])
+        filtered_items, filtered_pages_to_remove = filter_by_env(
+            deploy_env, page_config.dir, page_items, docs)
+        preprocessed_page_config.json_object['items'] = filtered_items
+        all_filtered_pages_to_remove += filtered_pages_to_remove
+
+        selector = page_config.json_object.get('selector')
+        if selector:
+            selector_items = selector.get('items', [])
+            filtered_selector_items, filtered_selector_pages_to_remove = filter_by_env(
+                deploy_env, page_config.dir, selector_items, docs)
+            preprocessed_page_config.json_object['selector']['items'] = filtered_selector_items
+            all_filtered_pages_to_remove += filtered_selector_pages_to_remove
+    except Exception as e:
+        if not send_bouncer_home:
+            raise e
+        _preprocessor_logger.warning(
+            '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
+        page_config.json_object[
+            'title'] = f'{page_config.json_object["title"]} - PREPROCESSED WITH ERRORS! CHECK THE VALIDATOR LOG!'
+    finally:
+        write_json_object_to_file(preprocessed_page_config.json_object, preprocessed_page_config.absolute_path)
+        return all_filtered_pages_to_remove
+
+
+def process_pages(root_path: Path, deploy_env: str, docs: list, send_bouncer_home: bool):
+    # This function removes page dirs
+    # because the env property applies to the entire page dir, not only the page config file
+    filtered_out_pages_to_remove = []
+    for index_json_file in root_path.rglob('*.json'):
+        _preprocessor_logger.info(f'Processing page {index_json_file}')
+        filtered_out_pages_to_remove += process_page(index_json_file, deploy_env, docs, send_bouncer_home)
+
+    unique_filtered_out_pages_to_remove = remove_duplicated_paths(filtered_out_pages_to_remove)
+    removed_dirs, failed_removals = remove_page_dirs(unique_filtered_out_pages_to_remove)
+    log_remove_operation_result(removed_dirs, failed_removals, 'Finished removing filtered out directories')
 
 
 def clean_page(index_file: Path, send_bouncer_home: bool) -> list[Path]:
@@ -173,53 +250,16 @@ def clean_pages(root_path: Path, send_bouncer_home: bool):
         empty_pages_to_remove += clean_page(index_json_file, send_bouncer_home)
 
     unique_empty_pages_to_remove = remove_duplicated_paths(empty_pages_to_remove)
-    remove_page_configs(unique_empty_pages_to_remove)
+    removed_configs_with_links, failed_removals_configs_with_links = remove_page_configs(unique_empty_pages_to_remove)
+    log_remove_operation_result(removed_configs_with_links, failed_removals_configs_with_links,
+                                'Finished removing linked empty pages')
     # Step 2
     pages_with_empty_items = find_empty_pages_without_links(root_path)
     unique_pages_with_empty_items = remove_duplicated_paths(pages_with_empty_items)
-    remove_page_configs(remove_duplicated_paths(unique_pages_with_empty_items))
-
-
-def process_page(index_file: Path, deploy_env: str, docs: list, send_bouncer_home: bool) -> list[Path]:
-    page_config = load_json_file(index_file)
-    preprocessed_page_config = copy.deepcopy(page_config)
-    all_filtered_pages_to_remove = []
-    try:
-        page_items = page_config.json_object.get('items', [])
-        filtered_items, filtered_pages_to_remove = filter_by_env(
-            deploy_env, page_config.dir, page_items, docs)
-        preprocessed_page_config.json_object['items'] = filtered_items
-        all_filtered_pages_to_remove += filtered_pages_to_remove
-
-        selector = page_config.json_object.get('selector')
-        if selector:
-            selector_items = selector.get('items', [])
-            filtered_selector_items, filtered_selector_pages_to_remove = filter_by_env(
-                deploy_env, page_config.dir, selector_items, docs)
-            preprocessed_page_config.json_object['selector']['items'] = filtered_selector_items
-            all_filtered_pages_to_remove += filtered_selector_pages_to_remove
-    except Exception as e:
-        if not send_bouncer_home:
-            raise e
-        _preprocessor_logger.warning(
-            '**WATCH YOUR BACK: Bouncer is home, errors got inside.**')
-        page_config.json_object[
-            'title'] = f'{page_config.json_object["title"]} - PREPROCESSED WITH ERRORS! CHECK THE VALIDATOR LOG!'
-    finally:
-        write_json_object_to_file(preprocessed_page_config.json_object, preprocessed_page_config.absolute_path)
-        return all_filtered_pages_to_remove
-
-
-def process_pages(root_path: Path, deploy_env: str, docs: list, send_bouncer_home: bool):
-    # This function removes page dirs
-    # because the env property applies to the entire page dir, not only the page config file
-    filtered_out_pages_to_remove = []
-    for index_json_file in root_path.rglob('*.json'):
-        _preprocessor_logger.info(f'Processing page {index_json_file}')
-        filtered_out_pages_to_remove += process_page(index_json_file, deploy_env, docs, send_bouncer_home)
-
-    unique_filtered_out_pages_to_remove = remove_duplicated_paths(filtered_out_pages_to_remove)
-    remove_page_dirs(unique_filtered_out_pages_to_remove)
+    removed_configs_with_no_links, failed_removals_configs_with_no_links = remove_page_configs(
+        remove_duplicated_paths(unique_pages_with_empty_items))
+    log_remove_operation_result(removed_configs_with_no_links, failed_removals_configs_with_no_links,
+                                'Finished removing empty pages not linked from anywhere')
 
 
 def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
@@ -236,19 +276,8 @@ def run_preprocessor(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, 
     process_pages(build_dir, deploy_env, docs, send_bouncer_home)
     clean_pages(build_dir, send_bouncer_home)
 
-    # TODO: Add logging for removed page configs and page dirs
     removed_dirs, failed_removals = remove_empty_dirs(build_dir, removed_dirs=[], failed_removals=[])
-    if removed_dirs:
-        _preprocessor_logger.info(
-            f'Removed empty directories: {len(removed_dirs)}')
-        for i, removed_dir in enumerate(removed_dirs, start=1):
-            _preprocessor_logger.info(f'\t{i} {removed_dir}')
-    if failed_removals:
-        _preprocessor_logger.warning(
-            f'Failed to remove empty directories: {len(failed_removals)}')
-        for i, failed_removal in enumerate(failed_removals, start=1):
-            _preprocessor_logger.info(
-                f'\t{i} {failed_removal["path"]} | Error: {failed_removal["error"]}')
+    log_remove_operation_result(removed_dirs, failed_removals, 'Finished removing empty directories')
 
 
 _preprocessor_logger.info('PROCESS ENDED: Preprocess pages')
