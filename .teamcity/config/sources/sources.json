@@ -2164,10 +2164,7 @@
       "title": "Live Predict",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/live-predict.git",
-      "branch": "main",
-      "xdocsPathIds": [
-        "/Content/doc/predictiveAnalytics/7.x/A_Map01_7x.ditamap"
-      ]
+      "branch": "main"
     },
     {
       "id": "comparelatestsrc",

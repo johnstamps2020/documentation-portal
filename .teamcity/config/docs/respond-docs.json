@@ -1,0 +1,19 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "respond",
+      "title": "Respond",
+      "url": "cloud/respond/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Respond"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

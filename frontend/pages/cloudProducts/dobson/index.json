@@ -113,6 +113,10 @@
             {
               "label": "Predict",
               "id": "livepredictlatest"
+            },
+            {
+              "label": "Respond",
+              "id": "respond"
             }
           ]
         }
