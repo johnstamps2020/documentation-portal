@@ -2018,12 +2018,7 @@
       "id": "guidewireidentityfederationhubsrc",
       "title": "Guidewire Identity Federation Hub Release",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
-      "xdocsPathIds": [
-        "/Content/doc/cloud-services/GuidewireHub.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
-      ]
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git"
     },
     {
       "id": "cloudplatformsrc",
