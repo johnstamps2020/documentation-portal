@@ -2,6 +2,11 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Guidewire for Salesforce for Guidewire Cloud 2021.11",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "2021.11",
+    "items": []
+  },
   "template": "page.j2",
   "items": [
     {

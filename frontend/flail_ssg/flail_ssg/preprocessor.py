@@ -145,7 +145,10 @@ def clean_page(index_file: Path, send_bouncer_home: bool) -> list[Path]:
                 page_config.dir, selector_items)
             selector_items_with_no_empty_child_items = remove_items_with_empty_child_items(
                 selector_items_with_no_refs_to_empty_pages)
-            cleaned_page_config.json_object['selector']['items'] = selector_items_with_no_empty_child_items
+            if selector_items_with_no_empty_child_items:
+                cleaned_page_config.json_object['selector']['items'] = selector_items_with_no_empty_child_items
+            else:
+                del cleaned_page_config.json_object['selector']
             all_empty_pages_to_remove += empty_selector_pages_to_remove
     except Exception as e:
         if not send_bouncer_home:

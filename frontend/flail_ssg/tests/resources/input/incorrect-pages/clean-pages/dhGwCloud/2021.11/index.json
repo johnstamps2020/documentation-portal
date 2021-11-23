@@ -3,6 +3,16 @@
   "title": "DataHub for Guidewire Cloud 2021.11",
   "template": "page.j2",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "2021.11",
+    "items": [
+      {
+        "label": "2020.11",
+        "id": "dh202011"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
