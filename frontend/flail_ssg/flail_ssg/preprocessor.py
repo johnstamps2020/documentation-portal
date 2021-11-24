@@ -45,6 +45,10 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: li
         elif item.get('page'):
             page_path = current_page_dir / item['page']
             filtered_pages_to_remove.append(page_path)
+        elif item.get('items'):
+            inner_pages_for_removal = [current_page_dir / inner_item['page'] for inner_item in item['items'] if
+                                       inner_item.get('page')]
+            filtered_pages_to_remove += inner_pages_for_removal
 
     return filtered_items, filtered_pages_to_remove
 
