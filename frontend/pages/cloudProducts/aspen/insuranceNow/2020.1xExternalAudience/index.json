@@ -1,7 +1,7 @@
 {
   "$schema": "/frontend/page-schema.json",
   "title": "InsuranceNow 2020.1x - External Audience",
-  "template": "page.j2",
+  "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select version",

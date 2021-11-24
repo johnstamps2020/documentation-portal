@@ -22,7 +22,7 @@
     },
     "template": {
       "description": "Filename of the template in the templates directory that is used to build the page",
-      "pattern": ".+\\..+",
+      "pattern": "^[^.]+$",
       "examples": ["page.j2", "index.html"]
     },
     "includeInBreadcrumbs": {

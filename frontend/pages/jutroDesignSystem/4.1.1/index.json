@@ -1,6 +1,6 @@
 {
   "title": "Jutro Design System 4.1.1",
-  "template": "page.j2",
+  "template": "page",
   "class": "twoColumns",
   "items": [
     {
@@ -25,4 +25,3 @@
     }
   ]
 }
-  

@@ -1,7 +1,7 @@
 {
   "$schema": "/frontend/page-schema.json",
   "title": "PolicyCenter for Guidewire Cloud latest",
-  "template": "page.j2",
+  "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select version",
