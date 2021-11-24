@@ -4330,6 +4330,7 @@ object BuildYarn : Template({
     }
 
     vcs {
+        root(vcsrootmasteronly)
         cleanCheckout = true
     }
 })
