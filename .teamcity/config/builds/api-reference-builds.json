@@ -20,24 +20,6 @@
       "buildType": "yarn",
       "docId": "in20211apiref",
       "srcId": "srcin20211apiref"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "in20212apiref",
-      "srcId": "srcin20212apiref",
-      "nodeImageVersion": "14.14.0"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "ccapirefdobson",
-      "srcId": "srcccapirefdobson",
-      "nodeImageVersion": "14.14.0"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "pcapirefdobson",
-      "srcId": "srcpcapirefdobson",
-      "nodeImageVersion": "14.14.0"
     }
   ]
 }

@@ -127,6 +127,12 @@
       "srcId": "in20212claimsconfigsrc",
       "docId": "in20212claimsconfig",
       "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "docId": "in20212apiref",
+      "srcId": "srcin20212apiref",
+      "nodeImageVersion": "14.14.0"
     }
   ]
 }

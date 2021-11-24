@@ -146,6 +146,13 @@
       "xdocsPathIds": [
         "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV4.ditamap"
       ]
+    },
+    {
+      "id": "srcin20212apiref",
+      "title": "InsuranceNow API Reference Dobson",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/dobson"
     }
   ]
 }
