@@ -3,6 +3,7 @@ import os
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
+from typing import Union
 
 from flail_ssg.access_controller import run_access_controller
 from flail_ssg.config_generator import run_config_generator
@@ -18,9 +19,9 @@ class Bouncer(Enum):
     no = False
 
 
-def resolve_path(path: str):
+def resolve_path(path: Union[str, Path]):
     if path:
-        return Path.resolve(Path(path))
+        return Path(path).resolve()
     return None
 
 
@@ -44,7 +45,7 @@ class AppConfig:
     _templates_dir: str = os.environ.get('TEMPLATES_DIR')
     _output_dir: str = os.environ.get('OUTPUT_DIR')
     _docs_config_file: str = os.environ.get('DOCS_CONFIG_FILE')
-    _page_schema_file: str = os.environ.get('PAGE_SCHEMA_FILE', 'page-schema.json')
+    _page_schema_file: str = os.environ.get('PAGE_SCHEMA_FILE', Path(__file__).parent / 'page-schema.json')
     _send_bouncer_home: str = os.environ.get('SEND_BOUNCER_HOME')
 
     @property
