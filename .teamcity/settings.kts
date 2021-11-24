@@ -2482,7 +2482,9 @@ object HelperObjects {
                         if (build.getString("buildType") == "dita") {
                             val buildDocId = build.getString("docId")
                             val doc = getObjectById(docConfigs, "id", buildDocId)
-                            if (doc.getJSONArray("environments").contains("int") || doc.getJSONArray("environments").contains("staging")) {
+                            if (doc.getJSONArray("environments").contains("int") || doc.getJSONArray("environments")
+                                    .contains("staging")
+                            ) {
                                 if (!source.has("branch")) {
                                     source.put("branch", branchName)
                                 }
@@ -3485,6 +3487,7 @@ object HelperObjects {
             name = "Validate $docTitle ${docProduct.split(",")[0]} $docVersion"
 
             params {
+                text("SOURCES_ROOT", "src_root", allowEmpty = false)
                 text("GW_DOC_ID", docId, allowEmpty = false)
                 text("GW_PRODUCT", docProduct, allowEmpty = false)
                 text("GW_PLATFORM", docPlatform, allowEmpty = false)
@@ -3626,15 +3629,20 @@ object HelperObjects {
             val sourceGitBranch = if (source.has("branch")) source.getString("branch") else "master"
             if (!source.has("xdocsPathIds")) {
                 val sourceDocBuilds = mutableListOf<JSONObject>()
+                val sourceDocBuildsTypes = mutableListOf<String>()
                 val sourceId = source.getString("id")
                 val sourceTitle = source.getString("title")
                 val sourceGitUrl = source.getString("gitUrl")
 
                 for (j in 0 until buildConfigs.length()) {
                     val build = buildConfigs.getJSONObject(j)
+                    val gwBuildType = build.getString("buildType")
                     val buildSrcId = build.getString("srcId")
                     if (buildSrcId == sourceId) {
                         sourceDocBuilds.add(build)
+                        if (!sourceDocBuildsTypes.contains(gwBuildType)) {
+                            sourceDocBuildsTypes.add(gwBuildType)
+                        }
                     }
                 }
 
@@ -3670,75 +3678,83 @@ object HelperObjects {
                                 id = RelativeId(getCleanId(sourceId + sourceGitBranch) + "validationBuilds")
                                 name = "Validation builds"
 
-                                buildType(BuildType {
-                                    name = "$sourceId listener"
-                                    id = RelativeId(getCleanId(sourceVcsRootId.toString() + "_validationListener"))
-                                    templates(ListenerBuild)
+                                for (docBuildType in sourceDocBuildsTypes) {
+                                    val teamcityTemplateParam =
+                                        if (docBuildType == "yarn") "DocumentationTools_DocumentationPortal_BuildYarn" else "DocumentationTools_DocumentationPortal_RunContentValidations"
 
-                                    vcs {
-                                        root(sourceVcsRootId)
-                                        cleanCheckout = true
-                                    }
+                                    buildType(BuildType {
+                                        name = "$sourceId $docBuildType listener"
+                                        id =
+                                            RelativeId(getCleanId(sourceVcsRootId.toString() + docBuildType + "_validationListener"))
+                                        templates(ListenerBuild)
 
-                                    params {
-                                        text(
-                                            "TEAMCITY_AFFECTED_PROJECT",
-                                            "DocumentationTools_DocumentationPortal_Sources"
-
-                                        )
-                                        text(
-                                            "TEAMCITY_TEMPLATE",
-                                            "DocumentationTools_DocumentationPortal_RunContentValidations"
-                                        )
-                                        text(
-                                            "GIT_URL",
-                                            "%vcsroot.$sourceVcsRootId.url%"
-                                        )
-                                        text(
-                                            "GIT_BRANCH",
-                                            "refs/heads/${sourceGitBranch}"
-                                        )
-                                        text(
-                                            "TEAMCITY_BUILD_BRANCH",
-                                            "%teamcity.build.vcs.branch.$sourceVcsRootId%"
-                                        )
-
-
-                                    }
-
-
-                                    triggers {
                                         vcs {
-                                            branchFilter = """
+                                            root(sourceVcsRootId)
+                                            cleanCheckout = true
+                                        }
+
+                                        params {
+                                            text(
+                                                "TEAMCITY_AFFECTED_PROJECT",
+                                                "DocumentationTools_DocumentationPortal_Sources"
+
+                                            )
+                                            text(
+                                                "TEAMCITY_TEMPLATE",
+                                                teamcityTemplateParam
+                                            )
+                                            text(
+                                                "GIT_URL",
+                                                "%vcsroot.$sourceVcsRootId.url%"
+                                            )
+                                            text(
+                                                "GIT_BRANCH",
+                                                "refs/heads/${sourceGitBranch}"
+                                            )
+                                            text(
+                                                "TEAMCITY_BUILD_BRANCH",
+                                                "%teamcity.build.vcs.branch.$sourceVcsRootId%"
+                                            )
+
+
+                                        }
+
+
+                                        triggers {
+                                            vcs {
+                                                branchFilter = """
                                             +:*
                                             -:<default>
                                         """.trimIndent()
-                                        }
-                                    }
-
-                                    features {
-                                        commitStatusPublisher {
-                                            vcsRootExtId = sourceVcsRootId.toString()
-                                            publisher = bitbucketServer {
-                                                url = "https://stash.guidewire.com"
-                                                userName = "%serviceAccountUsername%"
-                                                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                                             }
                                         }
 
-                                        pullRequests {
-                                            vcsRootExtId = sourceVcsRootId.toString()
-                                            provider = bitbucketServer {
-                                                serverUrl = "https://stash.guidewire.com"
-                                                authType = password {
-                                                    username = "%serviceAccountUsername%"
+                                        features {
+                                            commitStatusPublisher {
+                                                vcsRootExtId = sourceVcsRootId.toString()
+                                                publisher = bitbucketServer {
+                                                    url = "https://stash.guidewire.com"
+                                                    userName = "%serviceAccountUsername%"
                                                     password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                                                 }
-                                                filterTargetBranch = "refs/heads/${sourceGitBranch}"
+                                            }
+
+                                            pullRequests {
+                                                vcsRootExtId = sourceVcsRootId.toString()
+                                                provider = bitbucketServer {
+                                                    serverUrl = "https://stash.guidewire.com"
+                                                    authType = password {
+                                                        username = "%serviceAccountUsername%"
+                                                        password =
+                                                            "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                                                    }
+                                                    filterTargetBranch = "refs/heads/${sourceGitBranch}"
+                                                }
                                             }
                                         }
-                                    }
-                                })
+                                    })
+                                }
+
 
                                 for (docBuild in sourceDocBuilds) {
                                     val docBuildType =
@@ -4266,10 +4282,6 @@ object BuildYarn : Template({
         text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
         text("env.WORKING_DIR", "%WORKING_DIR%")
         text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-    }
-
-    vcs {
-        root(vcsrootmasteronly)
     }
 
     steps {
