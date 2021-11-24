@@ -4299,10 +4299,13 @@ object BuildYarn : Template({
                 #!/bin/bash
                 set -xe
                 
-                if [[ -f "ci/npmLogin.sh" ]]; then
-                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
-                    sh ci/npmLogin.sh
-                fi
+                # new Jutro proxy repo
+                npm-cli-login -u %env.ARTIFACTORY_USERNAME% -p %env.ARTIFACTORY_PASSWORD% -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
+                npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
+                
+                # Doctools repo
+                npm-cli-login -u %env.ARTIFACTORY_USERNAME% -p %env.ARTIFACTORY_PASSWORD% -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
+                npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                 
                 if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                     export TARGET_URL="%env.TARGET_URL_PROD%"
@@ -4330,7 +4333,6 @@ object BuildYarn : Template({
     }
 
     vcs {
-        root(vcsrootmasteronly)
         cleanCheckout = true
     }
 })
