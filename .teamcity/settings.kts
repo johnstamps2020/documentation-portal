@@ -1469,7 +1469,7 @@ object TestFlailSsg : BuildType({
                 cd frontend/flail_ssg
                 ./test_flail_ssg.sh
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
 

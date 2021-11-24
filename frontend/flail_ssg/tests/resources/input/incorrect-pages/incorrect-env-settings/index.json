@@ -1,0 +1,121 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Dobson",
+  "template": "page.j2",
+  "class": "blue-theme dobson threeCards",
+  "items": [
+    {
+      "label": "Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire for Salesforce",
+          "page": "gwsf",
+          "env": ["prod"]
+        }
+      ]
+    },
+    {
+      "label": "Data and Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "DataHub",
+          "page": "dhGwCloud/2021.11",
+          "env": ["prod"]
+        },
+        {
+          "label": "Live",
+          "class": "group",
+          "items": [
+            {
+              "label": "Assess",
+              "page": "assess"
+            },
+            {
+              "label": "Compare",
+              "id": "comparelatest"
+            },
+            {
+              "label": "Predict",
+              "id": "livepredictlatest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Cyence",
+      "class": "categoryCard cardShadow",
+      "env": ["dev", "int", "staging"],
+      "items": [
+        {
+          "label": "Cyence Cyber",
+          "class": "group",
+          "items": [
+            {
+              "label": "Help Center",
+              "link": "/cyence/cyber/HelpCenter"
+            },
+            {
+              "label": "Help Center - Accumulation Only - Expected Fail: not all item envs in parent envs",
+              "link": "/cyence/cyber/HelpCenterAccum",
+              "env": ["dev", "int", "staging", "prod"]
+            },
+            {
+              "label": "Model 5 Documentation",
+              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
+            },
+            {
+              "label": "Python SDK and REST API Reference",
+              "link": "/cyence/cyber/SdkApiRef"
+            }
+          ]
+        },
+        {
+          "label": "Cyence Cyber for Small/Medium Business",
+          "class": "group",
+          "items": [
+            {
+              "label": "C#/Python SDKs and REST API Reference",
+              "link": "/cyence/smb/SdkApiRef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Guidewire Cloud Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Platform Release Notes",
+          "id": "gwcpreleasenotes",
+          "env": ["int"]
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub - Expected Fail: int env not in doc envs",
+          "id": "guidewireidentityfederationhub",
+          "env": ["dev", "int", "staging", "prod"]
+        },
+        {
+          "label": "Cloud Console",
+          "id": "guidewirecloudconsoleguideinsurerdev",
+          "env": ["staging", "prod"]
+        }
+      ]
+    },
+    {
+      "label": "Test items",
+      "class": "categoryCard cardShadow",
+      "env": ["dev", "int"],
+      "items": [
+        {
+          "label": "Assess - Expected Fail: item envs not in parent envs",
+          "page": "assess",
+          "env": ["staging", "prod"]
+        }
+      ]
+    }
+  ]
+}

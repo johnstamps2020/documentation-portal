@@ -1,10 +1,9 @@
 import copy
-import shutil
 from pathlib import Path
-from typing import List
+from typing import Union
 from urllib.parse import urlparse
 
-from flail_ssg.helpers import configure_logger
+from flail_ssg.helpers import configure_logger, get_doc_object
 from flail_ssg.helpers import load_json_file
 from flail_ssg.helpers import write_json_object_to_file
 
@@ -13,7 +12,7 @@ _generator_logger = configure_logger(
     'generator_logger', 'info', _log_file)
 
 
-def create_breadcrumbs(page_dir: Path, build_dir: Path):
+def create_breadcrumbs(page_dir: Path, build_dir: Path) -> Union[list, None]:
     if page_dir == build_dir:
         return None
     breadcrumbs = []
@@ -34,32 +33,6 @@ def create_breadcrumbs(page_dir: Path, build_dir: Path):
     return breadcrumbs
 
 
-def include_item(env: str, item_envs: List):
-    return not item_envs or env in item_envs
-
-
-def filter_by_env(deploy_env: str, current_page_dir: Path, items: List, docs: List):
-    filtered_items = []
-    for item in items:
-        item_envs = item.get('env', [])
-        if not item_envs and item.get('id'):
-            matching_doc_object = next(
-                (doc for doc in docs if doc['id'] == item['id']), None)
-            item_envs = matching_doc_object['environments']
-        if include_item(deploy_env, item_envs):
-            item_to_include = copy.deepcopy(item)
-            if item_to_include.get('items'):
-                inner_items = filter_by_env(
-                    deploy_env, current_page_dir, item['items'], docs)
-                item_to_include['items'] = inner_items
-            filtered_items.append(item_to_include)
-        elif item.get('page'):
-            page_path = current_page_dir / item['page']
-            if page_path.exists():
-                shutil.rmtree(page_path)
-    return filtered_items
-
-
 def generate_search_filters(page_config_json: dict, docs: list) -> dict:
     def page_has_links_to_subpages(items_to_check: list) -> bool:
         for item in items_to_check:
@@ -75,7 +48,7 @@ def generate_search_filters(page_config_json: dict, docs: list) -> dict:
             filters = {}
         for item in items_to_process:
             if item.get('id'):
-                matching_doc_object = next((doc for doc in docs if doc['id'] == item['id']), None)
+                matching_doc_object = get_doc_object(item['id'], docs)
                 matching_doc_object_metadata = matching_doc_object['metadata']
                 filters['product'] = filters.get('product', []) + matching_doc_object_metadata['product']
                 filters['platform'] = filters.get('platform', []) + matching_doc_object_metadata['platform']
@@ -117,11 +90,10 @@ def generate_search_filters(page_config_json: dict, docs: list) -> dict:
     return sort_filters(page_search_filters)
 
 
-def resolve_links(items: List, docs: List):
+def resolve_links(items: list, docs: list) -> list:
     for item in items:
         if item.get('id'):
-            matching_doc_object = next(
-                (doc for doc in docs if doc['id'] == item['id']), None)
+            matching_doc_object = get_doc_object(item['id'], docs)
             matching_doc_object_url = matching_doc_object["url"]
             item['doc_url'] = matching_doc_object_url if bool(
                 urlparse(matching_doc_object_url).netloc) else f'/{matching_doc_object_url}'
@@ -130,63 +102,32 @@ def resolve_links(items: List, docs: List):
     return items
 
 
-def remove_empty_dirs(root_path: Path):
-    removed_dirs = []
-    failed_removals = []
-    empty_dirs = [p for p in root_path.rglob(
-        '*') if p.is_dir() and not list(p.iterdir())]
-    for empty_dir in empty_dirs:
-        try:
-            empty_dir.rmdir()
-            removed_dirs.append(empty_dir)
-        except Exception as e:
-            failed_removals.append(
-                {'path': empty_dir,
-                 'error': e}
-            )
-
-    if removed_dirs:
-        _generator_logger.info(
-            f'Removed empty directories: {len(removed_dirs)}/{len(empty_dirs)}')
-        for i, removed_dir in enumerate(removed_dirs):
-            _generator_logger.info(f'\t{i + 1} {removed_dir}')
-    if failed_removals:
-        _generator_logger.info(
-            f'Failed to remove empty directories: {len(failed_removals)}/{len(empty_dirs)}')
-        for i, failed_removal in enumerate(failed_removals):
-            _generator_logger.info(
-                f'\t{i + 1} {failed_removal["path"]} | Error: {failed_removal["error"]}')
-
-
-def process_page(index_file: Path,
-                 deploy_env: str,
-                 docs: List,
-                 build_dir: Path,
-                 send_bouncer_home: bool):
+def generate_page(index_file: Path,
+                  docs: list,
+                  build_dir: Path,
+                  send_bouncer_home: bool):
     page_config = load_json_file(index_file)
+    processed_page_config = copy.deepcopy(page_config)
     try:
         page_items = page_config.json_object.get('items')
         if page_items:
-            filtered_items = filter_by_env(
-                deploy_env, page_config.dir, page_items, docs)
-            items_with_resolved_links = resolve_links(filtered_items, docs)
-            page_config.json_object['items'] = items_with_resolved_links
+            items_with_resolved_links = resolve_links(page_items, docs)
+            processed_page_config.json_object['items'] = items_with_resolved_links
             search_filters = generate_search_filters(page_config.json_object, docs)
             if search_filters:
-                page_config.json_object['search_filters'] = search_filters
+                processed_page_config.json_object['search_filters'] = search_filters
 
         selector = page_config.json_object.get('selector')
         if selector:
-            filtered_selector_items = filter_by_env(
-                deploy_env, page_config.dir, selector.get('items'), docs)
-            selector_items_with_resolved_links = resolve_links(filtered_selector_items, docs)
-            page_config.json_object['selector']['items'] = selector_items_with_resolved_links
+            selector_items = selector.get('items')
+            selector_items_with_resolved_links = resolve_links(selector_items, docs)
+            processed_page_config.json_object['selector']['items'] = selector_items_with_resolved_links
 
-        page_config.json_object['current_page'] = {
+        processed_page_config.json_object['current_page'] = {
             'label': page_config.json_object['title'],
             'path': page_config.dir.name
         }
-        page_config.json_object['breadcrumbs'] = create_breadcrumbs(page_config.dir, build_dir)
+        processed_page_config.json_object['breadcrumbs'] = create_breadcrumbs(page_config.dir, build_dir)
     except Exception as e:
         if not send_bouncer_home:
             raise e
@@ -195,25 +136,18 @@ def process_page(index_file: Path,
         page_config.json_object[
             'title'] = f'{page_config.json_object["title"]} - GENERATED WITH ERRORS! CHECK THE VALIDATOR LOG!'
     finally:
-        write_json_object_to_file(page_config.json_object, page_config.absolute_path)
+        write_json_object_to_file(processed_page_config.json_object, processed_page_config.absolute_path)
 
 
-def run_generator(send_bouncer_home: bool, deploy_env: str, pages_dir: Path, build_dir: Path,
+def run_generator(send_bouncer_home: bool, build_dir: Path,
                   docs_config_file: Path):
     docs = load_json_file(docs_config_file).json_object['docs']
 
     _generator_logger.info('PROCESS STARTED: Generate pages')
 
-    if build_dir.exists():
-        shutil.rmtree(build_dir)
-
-    shutil.copytree(pages_dir, build_dir)
-
-    for index_json_file in build_dir.rglob('**/*.json'):
+    for index_json_file in build_dir.rglob('*.json'):
         _generator_logger.info(f'Generating page from {index_json_file}')
-        process_page(index_json_file, deploy_env, docs,
-                     build_dir, send_bouncer_home)
-
-    remove_empty_dirs(build_dir)
+        generate_page(index_json_file, docs,
+                      build_dir, send_bouncer_home)
 
     _generator_logger.info('PROCESS ENDED: Generate pages')

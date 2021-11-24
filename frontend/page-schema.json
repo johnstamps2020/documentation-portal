@@ -5,7 +5,7 @@
   "description": "A config for pages",
   "type": "object",
   "additionalProperties": false,
-  "required": ["title", "template", "class"],
+  "required": ["title", "template", "class", "items"],
   "properties": {
     "$schema": {
       "description": "A link to the JSON schema",
@@ -116,6 +116,7 @@
     "items": {
       "description": "List of child objects. An object can point to a page, a document or an external link",
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/definitions/item"
       }
@@ -124,6 +125,20 @@
       "description": "An object that points to a page, a document or an external link",
       "type": "object",
       "required": ["label"],
+      "oneOf": [
+        {
+          "required": ["id"]
+        },
+        {
+          "required": ["page"]
+        },
+        {
+          "required": ["link"]
+        },
+        {
+          "required": ["items"]
+        }
+      ],
       "properties": {
         "label": {
           "$ref": "#/definitions/label"

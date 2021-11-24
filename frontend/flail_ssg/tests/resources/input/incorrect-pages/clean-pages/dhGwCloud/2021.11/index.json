@@ -1,0 +1,81 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub for Guidewire Cloud 2021.11",
+  "template": "page.j2",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "2021.11",
+    "items": [
+      {
+        "label": "2020.11",
+        "id": "dh202011"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dhrn202111"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dhproduct202111"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dhinstall202111"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dhupgrade202111"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dhconfig202111"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dhdataspec202111"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": []
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dhdevref202111"
+        }
+      ]
+    }
+  ]
+}

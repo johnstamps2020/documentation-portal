@@ -1,0 +1,89 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Dobson",
+  "template": "page.j2",
+  "class": "blue-theme dobson threeCards",
+  "items": [
+    {
+      "label": "Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire for Salesforce",
+          "page": "gwsf"
+        }
+      ]
+    },
+    {
+      "label": "Data and Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "DataHub",
+          "page": "dhGwCloud/2021.11"
+        },
+        {
+          "label": "Live",
+          "class": "group",
+          "items": [
+            {
+              "label": "Compare",
+              "id": "comparelatest"
+            },
+            {
+              "label": "Predict",
+              "id": "livepredictlatest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Cyence",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cyence Cyber",
+          "class": "group",
+          "items": [
+            {
+              "label": "Help Center",
+              "link": "/cyence/cyber/HelpCenter"
+            },
+            {
+              "label": "Help Center - Accumulation Only",
+              "link": "/cyence/cyber/HelpCenterAccum"
+            },
+            {
+              "label": "Model 5 Documentation",
+              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
+            },
+            {
+              "label": "Python SDK and REST API Reference",
+              "link": "/cyence/cyber/SdkApiRef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Guidewire Cloud Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Platform Release Notes",
+          "id": "gwcpreleasenotes",
+          "env": ["int"]
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhub"
+        },
+        {
+          "label": "Cloud Console",
+          "id": "guidewirecloudconsoleguideinsurerdev"
+        }
+      ]
+    }
+  ]
+}

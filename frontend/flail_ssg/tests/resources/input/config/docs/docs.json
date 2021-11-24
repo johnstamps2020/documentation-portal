@@ -2,6 +2,66 @@
   "$schema": "./config-schema.json",
   "docs": [
     {
+      "id": "respond",
+      "title": "Respond",
+      "url": "cloud/respond/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Respond"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "comparelatest",
+      "title": "Compare",
+      "url": "cloud/compare/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Compare"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "livepredictlatest",
+      "title": "Live Predict",
+      "url": "cloud/predict/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Live Predict"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "gwcpreleasenotes",
+      "title": "Cloud Platform Release Notes",
+      "url": "cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+
+    {
       "id": "isconfigupgradetools310",
       "title": "InsuranceSuite Configuration Upgrade Tools 3.1.0",
       "url": "isconfigupgradetools/310",
@@ -1306,6 +1366,21 @@
       "public": true
     },
     {
+      "id": "guidewireidentityfederationhub",
+      "title": "Authentication with Guidewire Identity Federation Hub",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "guidewireidentityfederationhubdraft",
       "title": "Authentication with Guidewire Identity Federation Hub Draft",
       "url": "cloud/auth/latest",
@@ -1313,24 +1388,9 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Identity Federation Hub"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "guidewireidentityfederationhubbanff",
-      "title": "Authentication with Guidewire Identity Federation Hub",
-      "url": "cloud/auth/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Identity Federation Hub"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -1746,6 +1806,51 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
         "release": ["Aspen", "Banff"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "gwcpreleasenotes",
+      "title": "Cloud Platform Release Notes",
+      "url": "cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudplatformdraft",
+      "title": "Cloud Platform Draft",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cloudplatformrelease",
+      "title": "Cloud Platform Release",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
