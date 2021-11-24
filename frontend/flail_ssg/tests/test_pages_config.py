@@ -89,11 +89,11 @@ def test_filtering_by_env():
 
 def test_creating_search_filters():
     docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
-    input_dir = TestConfig.resources_input_dir / 'pages' / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
-    expected_dir = TestConfig.resources_expected_dir / 'pages' / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
+    input_dir = TestConfig.resources_input_dir / 'pages' / 'create-search-filters' / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
+    expected_dir = TestConfig.resources_expected_dir / 'pages' / 'create-search-filters' / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
     for index_json_file in input_dir.rglob('*.json'):
         index_file_json = load_json_file(index_json_file)
-        tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
+        tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDirCreateSearchFilters'
         shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
 
         search_filters = generate_search_filters(
