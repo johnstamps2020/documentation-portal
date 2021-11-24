@@ -43,22 +43,8 @@ def load_json_file(file_path: Path):
 
 
 def test_filtering_by_env():
-    def test_filtering_items(filtered_items: list, filtered_pages_to_remove: list, expected_file: Path):
-        expected_items = \
-            load_json_file(expected_file)[
-                'items']
-        expected_filtered_pages_to_remove = [
-            'dataHub/10.x',
-            'infoCenter/10.x',
-            'customerEngageAccountManagement/latest',
-            'customerEngageAccountManagementCc/latest',
-            'customerEngageQuoteAndBuy/latest',
-            'producerEngage/latest',
-            'producerEngageCc/latest',
-            'serviceRepEngage/latest',
-            'vendorEngage/latest'
-        ]
-
+    def test_filtering_items(filtered_items: list, filtered_pages_to_remove: list, expected_items: list,
+                             expected_filtered_pages_to_remove: list, tmp_test_dir: Path):
         assert filtered_items == expected_items
         filtered_pages_to_remove_str = [str(p).replace(f'{tmp_test_dir}/', '') for p in filtered_pages_to_remove]
         assert len(filtered_pages_to_remove_str) == len(expected_filtered_pages_to_remove)
@@ -69,22 +55,74 @@ def test_filtering_by_env():
         assert all(page_to_remove not in page_dirs_in_test_dir for page_to_remove in filtered_pages_to_remove)
 
     docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
-    input_items = load_json_file(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')[
-        'items']
-    tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
+
+    input_items_1 = \
+        load_json_file(
+            TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')[
+            'items']
+    tmp_test_dir_1 = TestConfig.resources_input_dir / 'tmpTestDir1'
     shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts',
-                    tmp_test_dir, dirs_exist_ok=True)
+                    tmp_test_dir_1, dirs_exist_ok=True)
 
-    items_after_filtering, pages_to_remove_after_filtering = filter_by_env(deploy_env='staging',
-                                                                           current_page_dir=tmp_test_dir,
-                                                                           items=input_items,
-                                                                           docs=docs)
-    remove_page_dirs(pages_to_remove_after_filtering)
-    expected_output_dir = (TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts')
-    test_filtering_items(items_after_filtering, pages_to_remove_after_filtering, expected_output_dir / 'index.json')
-    test_removing_filtered_out_pages(pages_to_remove_after_filtering, tmp_test_dir)
+    items_after_filtering_1, pages_to_remove_after_filtering_1 = filter_by_env(deploy_env='staging',
+                                                                               current_page_dir=tmp_test_dir_1,
+                                                                               items=input_items_1,
+                                                                               docs=docs)
+    remove_page_dirs(pages_to_remove_after_filtering_1)
+    expected_file_1 = (
+            TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')
+    expected_items_1 = load_json_file(expected_file_1)['items']
+    expected_filtered_pages_to_remove_1 = [
+        'dataHub/10.x',
+        'infoCenter/10.x',
+        'customerEngageAccountManagement/latest',
+        'customerEngageAccountManagementCc/latest',
+        'customerEngageQuoteAndBuy/latest',
+        'producerEngage/latest',
+        'producerEngageCc/latest',
+        'serviceRepEngage/latest',
+        'vendorEngage/latest'
+    ]
+    test_filtering_items(items_after_filtering_1, pages_to_remove_after_filtering_1,
+                         expected_items_1, expected_filtered_pages_to_remove_1, tmp_test_dir_1)
+    test_removing_filtered_out_pages(pages_to_remove_after_filtering_1, tmp_test_dir_1)
+    shutil.rmtree(tmp_test_dir_1)
 
-    shutil.rmtree(tmp_test_dir)
+    input_items_2 = \
+        load_json_file(
+            TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson' / 'index.json')[
+            'items']
+    tmp_test_dir_2 = TestConfig.resources_input_dir / 'tmpTestDir2'
+    shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson',
+                    tmp_test_dir_2, dirs_exist_ok=True)
+
+    items_after_filtering_2, pages_to_remove_after_filtering_2 = filter_by_env(deploy_env='int',
+                                                                               current_page_dir=tmp_test_dir_2,
+                                                                               items=input_items_2,
+                                                                               docs=docs)
+    remove_page_dirs(pages_to_remove_after_filtering_2)
+    expected_file_2 = (
+            TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson' / 'index.json')
+    expected_items_2 = load_json_file(expected_file_2)['items']
+    expected_filtered_pages_to_remove_2 = [
+        'pcGwCloud/2021.11',
+        'ccGwCloud/2021.11',
+        'bcGwCloud/2021.11',
+        'dhGwCloud/2021.11',
+        'icGwCloud/2021.11',
+        'ceAccountMgmt/2021.11',
+        'ceAccountMgmtCc/2021.11',
+        'ceQuoteAndBuy/2021.11',
+        'producerEngage/2021.11',
+        'producerEngageCc/2021.11',
+        'serviceRepEngage/2021.11',
+        'vendorEngage/2021.11'
+    ]
+
+    test_filtering_items(items_after_filtering_2, pages_to_remove_after_filtering_2,
+                         expected_items_2, expected_filtered_pages_to_remove_2, tmp_test_dir_2)
+    test_removing_filtered_out_pages(pages_to_remove_after_filtering_2, tmp_test_dir_2)
+    shutil.rmtree(tmp_test_dir_2)
 
 
 def test_creating_search_filters():

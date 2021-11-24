@@ -1,0 +1,293 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Dobson",
+  "template": "page.j2",
+  "class": "blue-theme dobson threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Dobson",
+    "items": [
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      },
+      {
+        "label": "Aspen",
+        "page": "../aspen"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "PolicyCenter",
+          "page": "pcGwCloud/2021.11",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "ccGwCloud/2021.11",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bcGwCloud/2021.11",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "PolicyCenter",
+          "page": "pcGwCloud/latest",
+          "env": ["int"]
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "ccGwCloud/latest",
+          "env": ["int"]
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bcGwCloud/latest",
+          "env": ["int"]
+        },
+        {
+          "label": "InsuranceNow",
+          "page": "insuranceNow/2021.2"
+        },
+        {
+          "label": "Guidewire for Salesforce",
+          "page": "gwsf"
+        }
+      ]
+    },
+    {
+      "label": "Data and Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Data Access",
+          "page": "../cloudDataAccess/latest"
+        },
+        {
+          "label": "DataHub",
+          "page": "dhGwCloud/2021.11",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "InfoCenter",
+          "page": "icGwCloud/2021.11",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "DataHub",
+          "page": "dhGwCloud/latest",
+          "env": ["int"]
+        },
+        {
+          "label": "InfoCenter",
+          "page": "icGwCloud/latest",
+          "env": ["int"]
+        },
+        {
+          "label": "Live",
+          "class": "group",
+          "items": [
+            {
+              "label": "Assess",
+              "page": "assess"
+            },
+            {
+              "label": "Compare",
+              "id": "comparelatest"
+            },
+            {
+              "label": "Explore",
+              "page": "../explore/latest"
+            },
+            {
+              "label": "Predict",
+              "id": "livepredictlatest"
+            },
+            {
+              "label": "Respond",
+              "id": "respond"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "env": ["staging", "prod"],
+          "items": [
+            {
+              "label": "CustomerEngage Account Management",
+              "page": "ceAccountMgmt/2021.11"
+            },
+            {
+              "label": "CustomerEngage Account Management for ClaimCenter",
+              "page": "ceAccountMgmtCc/2021.11"
+            },
+            {
+              "label": "CustomerEngage Quote and Buy",
+              "page": "ceQuoteAndBuy/2021.11"
+            },
+            {
+              "label": "ProducerEngage",
+              "page": "producerEngage/2021.11"
+            },
+            {
+              "label": "ProducerEngage for ClaimCenter",
+              "page": "producerEngageCc/2021.11"
+            },
+            {
+              "label": "ServiceRepEngage",
+              "page": "serviceRepEngage/2021.11"
+            },
+            {
+              "label": "VendorEngage",
+              "page": "vendorEngage/2021.11"
+            }
+          ]
+        },
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "env": ["int"],
+          "items": [
+            {
+              "label": "CustomerEngage Account Management",
+              "page": "ceAccountMgmt/latest"
+            },
+            {
+              "label": "CustomerEngage Account Management for ClaimCenter",
+              "page": "ceAccountMgmtCc/latest"
+            },
+            {
+              "label": "CustomerEngage Quote and Buy",
+              "page": "ceQuoteAndBuy/latest"
+            },
+            {
+              "label": "ProducerEngage",
+              "page": "producerEngage/latest"
+            },
+            {
+              "label": "ProducerEngage for ClaimCenter",
+              "page": "producerEngageCc/latest"
+            },
+            {
+              "label": "ServiceRepEngage",
+              "page": "serviceRepEngage/latest"
+            },
+            {
+              "label": "VendorEngage",
+              "page": "vendorEngage/latest"
+            }
+          ]
+        },
+        {
+          "label": "Digital Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Jutro Design System",
+              "page": "../../jutroDesignSystem/6.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Cyence",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cyence Cyber",
+          "class": "group",
+          "items": [
+            {
+              "label": "Help Center",
+              "link": "/cyence/cyber/HelpCenter"
+            },
+            {
+              "label": "Help Center - Accumulation Only",
+              "link": "/cyence/cyber/HelpCenterAccum"
+            },
+            {
+              "label": "Model 5 Documentation",
+              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
+            },
+            {
+              "label": "Python SDK and REST API Reference",
+              "link": "/cyence/cyber/SdkApiRef"
+            }
+          ]
+        },
+        {
+          "label": "Cyence Cyber for Small/Medium Business",
+          "class": "group",
+          "items": [
+            {
+              "label": "C#/Python SDKs and REST API Reference",
+              "link": "/cyence/smb/SdkApiRef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Guidewire Cloud Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Platform Release Notes",
+          "id": "gwcpreleasenotes",
+          "env": ["int"]
+        },
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdev"
+        },
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdevdraft"
+        },
+        {
+          "label": "Working with Guidewire Cloud Platform",
+          "id": "cloudplatformrelease"
+        },
+        {
+          "label": "Working with Guidewire Cloud Platform",
+          "id": "cloudplatformdraft"
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhub"
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhubdraft"
+        },
+        {
+          "label": "Cloud Console",
+          "id": "guidewirecloudconsoleguideinsurerdev"
+        },
+        {
+          "label": "Cloud Console",
+          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+        }
+      ]
+    }
+  ]
+}
