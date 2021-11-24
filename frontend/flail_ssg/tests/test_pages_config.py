@@ -69,10 +69,10 @@ def test_filtering_by_env():
         assert all(page_to_remove not in page_dirs_in_test_dir for page_to_remove in filtered_pages_to_remove)
 
     docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
-    input_items = load_json_file(TestConfig.resources_input_dir / 'pages' / 'selfManagedProducts' / 'index.json')[
+    input_items = load_json_file(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')[
         'items']
     tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDir'
-    shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'selfManagedProducts',
+    shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts',
                     tmp_test_dir, dirs_exist_ok=True)
 
     items_after_filtering, pages_to_remove_after_filtering = filter_by_env(deploy_env='staging',
@@ -80,7 +80,7 @@ def test_filtering_by_env():
                                                                            items=input_items,
                                                                            docs=docs)
     remove_page_dirs(pages_to_remove_after_filtering)
-    expected_output_dir = (TestConfig.resources_expected_dir / 'pages' / 'selfManagedProducts')
+    expected_output_dir = (TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts')
     test_filtering_items(items_after_filtering, pages_to_remove_after_filtering, expected_output_dir / 'index.json')
     test_removing_filtered_out_pages(pages_to_remove_after_filtering, tmp_test_dir)
 
