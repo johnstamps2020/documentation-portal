@@ -3556,9 +3556,16 @@ object HelperObjects {
                 }
             }
 
-            vcs {
-                root(vcs_root_id)
-                cleanCheckout = true
+            if (docBuildType == "yarn") {
+                vcs {
+                    root(vcs_root_id, "+:. => %SOURCES_ROOT%")
+                    cleanCheckout = true
+                }
+            } else {
+                vcs {
+                    root(vcs_root_id)
+                    cleanCheckout = true
+                }
             }
         })
 
