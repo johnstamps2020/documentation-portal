@@ -2330,6 +2330,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/assess.git",
       "branch": "main"
+    },
+    {
+      "id": "portasrc",
+      "title": "Portfolio Assembly (Porta)",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/porta/porta-docs.git",
+      "branch": "master"
     }
   ]
 }

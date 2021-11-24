@@ -7956,6 +7956,20 @@
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false
+    },
+    {
+      "id": "portalatest",
+      "title": "Portfolio Assembly (Porta)",
+      "url": "porta/latest",
+      "metadata": {
+        "product": ["Portfolio Assembly"],
+        "platform": ["Cloud"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false
     }
   ]
 }

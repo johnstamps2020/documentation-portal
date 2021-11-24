@@ -2740,6 +2740,12 @@
       "buildType": "yarn",
       "srcId": "assesssrc",
       "docId": "assess"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "portasrc",
+      "docId": "portalatest",
+      "workingDir": "website"
     }
   ]
 }
