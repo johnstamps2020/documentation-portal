@@ -23,11 +23,11 @@ changeBuildType(RelativeId("1673180283")) {
                     set -xe
                     
                     # new Jutro proxy repo
-                    npm-cli-login -u %env.ARTIFACTORY_USERNAME% -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
+                    npm-cli-login -u %env.ARTIFACTORY_USERNAME% -p ${'$'}{ARTIFACTORY_PASSWORD} -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
                     npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
                     
                     # Doctools repo
-                    npm-cli-login -u %env.ARTIFACTORY_USERNAME% -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
+                    npm-cli-login -u %env.ARTIFACTORY_USERNAME% -p ${'$'}{ARTIFACTORY_PASSWORD} -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                     
                     if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
