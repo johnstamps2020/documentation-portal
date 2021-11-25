@@ -4296,26 +4296,26 @@ object BuildYarn : Template({
             name = "Build the yarn project"
             id = "BUILD_OUTPUT"
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                # new Jutro proxy repo
-                npm-cli-login -u ${'$'}{ARTIFACTORY_USERNAME} -p ${'$'}{ARTIFACTORY_PASSWORD} -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
-                npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
-                
-                # Doctools repo
-                npm-cli-login -u ${'$'}{ARTIFACTORY_USERNAME} -p ${'$'}{ARTIFACTORY_PASSWORD} -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
-                npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
-                
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export TARGET_URL="%env.TARGET_URL_PROD%"
-                fi
-                
-                export BASE_URL=/%env.PUBLISH_PATH%/
-                cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
-                yarn
-                yarn ${'$'}{YARN_BUILD_COMMAND}
-            """.trimIndent()
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Jutro repo
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev
+                    npm config set registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
+                    
+                    # Doctools repo
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
+                    npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
+                    
+                    if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                        export TARGET_URL="%env.TARGET_URL_PROD%"
+                    fi
+                    
+                    export BASE_URL=/%env.PUBLISH_PATH%/
+                    cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
+                    yarn
+                    yarn ${'$'}{YARN_BUILD_COMMAND}
+                """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:%NODE_IMAGE_VERSION%"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
