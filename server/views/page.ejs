@@ -61,7 +61,7 @@
                         <% } %>
                 >
                     <% if (doc_url || page || link) { -%>
-                        <a href="<%= doc_url || page || link %>"
+                        <a href="<%= doc_url || pagePath + "/" + page || link %>"
                            <% if (!publiclyAvailable) { -%>class="private"
                                 <% } %>
                         ><%= label %></a>
