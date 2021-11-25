@@ -22,11 +22,6 @@ changeBuildType(RelativeId("1673180283")) {
                     #!/bin/bash
                     set -xe
                     
-                    echo "${'$'}{ARTIFACTORY_PASSWORD}"
-                    # new Jutro proxy repo
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
-                    npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
-                    
                     # Jutro npm dev
                     npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev
                     npm config set registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
@@ -34,9 +29,6 @@ changeBuildType(RelativeId("1673180283")) {
                     # Doctools repo
                     npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
-                    
-                    npm config set always-auth false
-                    npm config list
                     
                     if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                         export TARGET_URL="%env.TARGET_URL_PROD%"
