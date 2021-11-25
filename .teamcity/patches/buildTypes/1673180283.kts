@@ -31,6 +31,9 @@ changeBuildType(RelativeId("1673180283")) {
                     npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                     
+                    npm config set always-auth false
+                    npm config list
+                    
                     if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
                         export TARGET_URL="%env.TARGET_URL_PROD%"
                     fi
