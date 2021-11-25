@@ -159,11 +159,11 @@ def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecor
 
 @check_processing_result
 def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    vcs_root_locator = f'vcsRoot:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_branch}))'
+    vcs_root_instance_locator = f'vcsRootInstance:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_branch}))'
     template_locator = f'template:(id:{app_config.teamcity_template})'
     affected_project_locator = f'affectedProject:(id:{app_config.teamcity_affected_project})'
     payload = {
-        'locator': f'{vcs_root_locator},{template_locator},{affected_project_locator}',
+        'locator': f'{vcs_root_instance_locator},{template_locator},{affected_project_locator}',
     }
     build_types_response = requests.get(
         app_config.teamcity_build_types_url,
