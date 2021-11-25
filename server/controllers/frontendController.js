@@ -9,7 +9,7 @@ async function getPage(req, res, next) {
     const fileContents = fs.readFileSync(configFilePath, 'utf-8');
     const fileContentsJson = JSON.parse(fileContents);
     const templateName = fileContentsJson.template;
-    res.render(templateName, fileContentsJson);
+    res.render(templateName, { pageConfig: fileContentsJson });
   } else {
     next();
   }

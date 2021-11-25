@@ -1,0 +1,110 @@
+<% let ns = {} %>
+<%- include('parts/custom-variables', {ns}) %>
+<!DOCTYPE html>
+<html lang="<%= ns.lang %>">
+<%- include('parts/head', { pageTitle: `Guidewire Documentation`}) %>
+<body>
+<%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
+<% if (pageConfig.class) { -%>
+<main class="<%= pageConfig.class %>">
+    <% } else { %>
+    <main>
+        <% } %>
+        <div class="content">
+            <div class="pageHero">
+                <div class="docBreadcrumb">
+                    <% let pageBreadcrumbs = pageConfig.breadcrumbs;
+                    if (pageBreadcrumbs && pageBreadcrumbs.length > 0) { %>
+                        <% pageConfig.breadcrumbs.forEach(breadcrumb => { %>
+                            <a href="<%= breadcrumb.path %>"><%= breadcrumb.label %></a>
+                        <% }) %>
+                    <% } %>
+                </div>
+                <h1><%= pageConfig.title %></h1>
+            </div>
+            <div id="pageSelectorContainer">
+                <% if (pageConfig.selector) { %>
+                    <script>
+                        function selectPage(selectedPage) {
+                            if (selectedPage) {
+                                window.location = selectedPage;
+                            }
+                        }
+
+                        function toggleDropdown() {
+                            const dropdown = document.querySelector('.pageSelectorDropdown');
+                            if (dropdown) {
+                                dropdown.classList.toggle('visible');
+                            }
+                        }
+                    </script>
+
+                    <% if (pageConfig.selector.label) { %>
+                        <span class="selectorLabel"><%= pageConfig.selector.label %></span>
+                    <% } %>
+                    <div onchange="selectPage(this.value)" id="pageSelector">
+                        <div selected="selectedOption" onclick="toggleDropdown()"
+                             aria-haspopup="listbox"><%= pageConfig.selector.selectedItem %></div>
+                        <div class="pageSelectorDropdown" role="listbox">
+                            <% pageConfig.selector.items.forEach(item => { %>
+                                <div onclick="selectPage('<%= item.doc_url || item.page || item.link %>')"
+                                     class="dropdownOption" role="option">
+                                    <%= item.label %>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <% function create_block(label, className, items, doc_url, page, link, publiclyAvailable) { -%>
+                <div <% if (className) { -%>class="<%= className %>"
+                        <% } %>
+                >
+                    <% if (doc_url || page || link) { -%>
+                        <a href="<%= doc_url || page || link %>"
+                           <% if (!publiclyAvailable) { -%>class="private"
+                                <% } %>
+                        ><%= label %></a>
+                    <% } else { %>
+                        <div class="label" <% if (!publiclyAvailable) { -%>class="private"
+                                <% } -%>
+                        ><%= label %></div>
+                    <% } %>
+                    <% if (items && items.length > 0) { -%>
+                        <% items.forEach(item => { -%>
+                            <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
+                        <% }) %>
+                    <% } %>
+                </div>
+            <% } %>
+
+            <div class="items">
+                <% pageConfig.items.forEach(item => { %>
+                    <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
+                <% }) %>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="heroControls">
+                <div id="platformToggle">
+                    <a id="cloudButton" class="toggleButton" href="/" data-root="/cloudProducts">Guidewire Cloud</a>
+                    <a id="selfManagedButton" class="toggleButton" href="/selfManagedProducts"
+                       data-root="/selfManagedProducts">Self-managed</a>
+                </div>
+            </div>
+            <div class="usefulLinks">
+                <% if (pageConfig.title.toLowerCase() !== 'developer resources') { %>
+                    <a href="/developerResources">Developer Resources</a>
+                <% } %>
+                <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
+                <a href="/l10n">Translated Documentation</a>
+                <a href="/upgradediffs">Upgrade Diff Reports</a>
+                <a href="/glossary">Guidewire Glossary</a>
+            </div>
+        </div>
+    </main>
+    <%- include('parts/footer') %>
+    <script src="/scripts/main.js"></script>
+</main>
+</body>
+</html>

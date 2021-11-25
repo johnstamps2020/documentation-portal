@@ -1,0 +1,50 @@
+<% ns.placeholder = 'Search'
+ns.lang = 'en'
+if (pageConfig.className) {
+    if (pageConfig.className.includes('l10n')) {
+        {
+            if (pageConfig.className.includes(' de-DE ')) {
+                {
+                    ns.placeholder = 'Suche'
+                    ns.lang = 'de'
+                }
+                if (pageConfig.className.includes(' fr-FR ')) {
+                    {
+                        ns.placeholder = 'Chercher'
+                        ns.lang = 'fr'
+                    }
+                    if (pageConfig.className.includes(' es-ES ')) {
+                        {
+                            ns.placeholder = 'Buscar'
+                            ns.lang = 'es'
+                        }
+                        if (pageConfig.className.includes(' es-LA ')) {
+                            ns.placeholder = 'Buscar'
+                            ns.lang = 'es'
+                        }
+                        if (pageConfig.className.includes(' it-IT ')) {
+                            ns.placeholder = 'Ricerca'
+                            ns.lang = 'it'
+                        }
+                        if (pageConfig.className.includes(' ja-JP ')) {
+                            ns.placeholder = '探す'
+                            ns.lang = 'ja'
+                        }
+                        if (pageConfig.className.includes(' nl-NL ')) {
+                            ns.placeholder = 'Zoeken'
+                            ns.lang = 'nl'
+                        }
+                        if (pageConfig.className.includes(' pt-BR ')) {
+                            ns.placeholder = 'Procurar'
+                            ns.lang = 'pt'
+                        }
+                        if (pageConfig.className.includes(' ru ')) {
+                            ns.placeholder = 'Поиск'
+                            ns.lang = 'ru'
+                        }
+                    }
+                }
+            }
+        }
+    }
+} %>
