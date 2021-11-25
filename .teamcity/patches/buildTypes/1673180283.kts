@@ -22,6 +22,8 @@ changeBuildType(RelativeId("1673180283")) {
                     #!/bin/bash
                     set -xe
                     
+                    npm config set always-auth false
+                    
                     # new Jutro proxy repo
                     npm-cli-login -u %env.ARTIFACTORY_USERNAME% -p %env.ARTIFACTORY_PASSWORD% -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
                     npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
