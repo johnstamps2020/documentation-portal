@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('parts/head', { pageTitle: `Unauthorized`}) %>
-  <body>
-    <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
-    <div class="docPanelContainer">
-      <div class="container">
+<%- include('parts/head', { pageTitle: `Unauthorized`}) %>
+<body>
+<%- include('parts/header') %>
+<div class="docPanelContainer">
+    <div class="container">
         <div class="row">
-          <div class="docPageTitle docPageHeaderItems">
-            <h1>You are not authorized to view this page</h1>
-            <p>Contact your administrator if you think you should be.</p>
-          </div>
+            <div class="docPageTitle docPageHeaderItems">
+                <h1>You are not authorized to view this page</h1>
+                <p>Contact your administrator if you think you should be.</p>
+            </div>
         </div>
-      </div>
     </div>
-  </body>
-  <% include parts/footer %>
+</div>
+</body>
+<% include parts/footer %>
 </html>

@@ -8,6 +8,10 @@
     ></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
+<% const searchBox = typeof showSearchBox !== 'undefined' ? showSearchBox : true
+const loginButton = typeof showLoginButton !== 'undefined' ? showLoginButton : true
+const placeholderText = typeof localizationInfo !== 'undefined' ? localizationInfo.placeholder : 'Search'
+%>
 <% if (typeof headerClass !== 'undefined') { %>
 <header class="<%= headerClass %>">
     <% } else { %>
@@ -24,7 +28,7 @@
                 />
             </a>
         </div>
-        <% if (!hideSearchBox) { %>
+        <% if (searchBox) { %>
             <div id="headerCenter">
                 <form action="/search">
                     <div class="searchWrapper">
@@ -33,11 +37,11 @@
                                 id="searchField"
                                 class="searchField"
                                 type="search"
-                                placeholder="<%= localizationInfo.placeholder %>"
-                                aria-label="<%= localizationInfo.placeholder %>"
+                                placeholder="<%= placeholderText %>"
+                                aria-label="<%= placeholderText %>"
                         />
-                        <button type="submit" class="searchButton" aria-label="<%= localizationInfo.placeholder %>">
-                            <%= localizationInfo.placeholder %>
+                        <button type="submit" class="searchButton" aria-label="<%= placeholderText %>">
+                            <%= placeholderText %>
                         </button>
                     </div>
                 </form>
@@ -45,7 +49,7 @@
         <% } %>
         <div id="headerRight">
             <% include links-menu %>
-            <% if (!hideLoginButton) { %>
+            <% if (loginButton) { %>
                 <div id="loginContainer">
                     <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
                 </div>

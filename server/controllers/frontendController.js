@@ -66,7 +66,7 @@ async function getPage(req, res, next) {
     const templateName = fileContentsJson.template;
     res.render(templateName, {
       pageContent: fileContentsJson,
-      pagePath: req.path,
+      pagePath: req.path.endsWith('/') ? req.path : `${req.path}/`,
       localizationInfo: setL10nParams(fileContentsJson.class),
     });
   } else {

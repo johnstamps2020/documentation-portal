@@ -2,7 +2,7 @@
 <html lang="<%= localizationInfo.lang %>">
 <%- include('parts/head', { pageTitle: `Guidewire Documentation`}) %>
 <body>
-<%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
+<%- include('parts/header') %>
 <main class="<%= pageContent.class || '' %>">
     <%- include('parts/platform-toggle') %>
     <div class="content">
@@ -16,7 +16,7 @@
                 <% if (doc_url || page || link) {
                     let itemHref = doc_url || link;
                     if (page) {
-                        itemHref = pagePath + "/" + page
+                        itemHref = pagePath + page
                     } %>
                 <a href="<%= itemHref %>"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></a>
                 <% } else { %>

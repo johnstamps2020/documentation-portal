@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('parts/head', { pageTitle: `Error!`}) %>
-  <body>
-    <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
-    <main>
-      <h1><%= message %></h1>
-      <h2><%= error.status %></h2>
-      <pre><%= error.stack %></pre>
-    </main>
-    <% include parts/footer %>
-  </body>
+<%- include('parts/head', { pageTitle: `Error!`}) %>
+<body>
+<%- include('parts/header') %>
+<main>
+    <h1><%= message %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
+</main>
+<% include parts/footer %>
+</body>
 </html>
