@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="<%= ns.lang %>">
+<html lang="<%= localizationInfo.lang %>">
 <%- include('parts/head', { pageTitle: `Guidewire Documentation`}) %>
 <body>
 <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
-<% if (pageConfig.class) { -%>
-<main class="<%= pageConfig.class %>">
+<% if (pageContent.class) { -%>
+<main class="<%= pageContent.class %>">
     <% } else { %>
     <main>
         <% } %>
         <div class="content">
             <div class="pageHero">
                 <div class="docBreadcrumb">
-                    <% let pageBreadcrumbs = pageConfig.breadcrumbs;
+                    <% let pageBreadcrumbs = pageContent.breadcrumbs;
                     if (pageBreadcrumbs && pageBreadcrumbs.length > 0) { %>
-                        <% pageConfig.breadcrumbs.forEach(breadcrumb => { %>
+                        <% pageContent.breadcrumbs.forEach(breadcrumb => { %>
                             <a href="<%= breadcrumb.path %>"><%= breadcrumb.label %></a>
                         <% }) %>
                     <% } %>
                 </div>
-                <h1><%= pageConfig.title %></h1>
+                <h1><%= pageContent.title %></h1>
             </div>
             <div id="pageSelectorContainer">
-                <% if (pageConfig.selector) { %>
+                <% if (pageContent.selector) { %>
                     <script>
                         function selectPage(selectedPage) {
                             if (selectedPage) {
@@ -37,14 +37,14 @@
                         }
                     </script>
 
-                    <% if (pageConfig.selector.label) { %>
-                        <span class="selectorLabel"><%= pageConfig.selector.label %></span>
+                    <% if (pageContent.selector.label) { %>
+                        <span class="selectorLabel"><%= pageContent.selector.label %></span>
                     <% } %>
                     <div onchange="selectPage(this.value)" id="pageSelector">
                         <div selected="selectedOption" onclick="toggleDropdown()"
-                             aria-haspopup="listbox"><%= pageConfig.selector.selectedItem %></div>
+                             aria-haspopup="listbox"><%= pageContent.selector.selectedItem %></div>
                         <div class="pageSelectorDropdown" role="listbox">
-                            <% pageConfig.selector.items.forEach(item => {
+                            <% pageContent.selector.items.forEach(item => {
                                 let itemHref = item.doc_url || item.link;
                                 if (item.page) {
                                     itemHref = pagePath + '/' + item.page
@@ -86,7 +86,7 @@
             <% } %>
 
             <div class="items">
-                <% pageConfig.items.forEach(item => { %>
+                <% pageContent.items.forEach(item => { %>
                     <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
                 <% }) %>
             </div>
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="usefulLinks">
-                <% if (pageConfig.title.toLowerCase() !== 'developer resources') { %>
+                <% if (pageContent.title.toLowerCase() !== 'developer resources') { %>
                     <a href="/developerResources">Developer Resources</a>
                 <% } %>
                 <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
