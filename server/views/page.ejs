@@ -46,11 +46,16 @@
                         <div selected="selectedOption" onclick="toggleDropdown()"
                              aria-haspopup="listbox"><%= pageConfig.selector.selectedItem %></div>
                         <div class="pageSelectorDropdown" role="listbox">
-                            <% pageConfig.selector.items.forEach(item => { %>
-                                <div onclick="selectPage('<%= item.doc_url || item.page || item.link %>')"
-                                     class="dropdownOption" role="option">
-                                    <%= item.label %>
-                                </div>
+                            <% pageConfig.selector.items.forEach(item => {
+                                let itemHref = item.doc_url || item.link;
+                                if (item.page) {
+                                    itemHref = pagePath + '/' + item.page
+                                }
+                            %>
+                            <div onclick="selectPage('<%= itemHref %>')"
+                                 class="dropdownOption" role="option">
+                                <%= item.label %>
+                            </div>
                             <% }) %>
                         </div>
                     </div>
