@@ -31,7 +31,7 @@ def write_to_file(out_file_path: Path, data: dict, template_file: Path):
     new_file.write(content)
 
 
-def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir: Path):
+def run_template_writer(send_bouncer_home: bool, templates_dir: Path, templates_extension: str, build_dir: Path):
     _template_writer_logger.info('PROCESS STARTED: Build pages from templates')
 
     for index_json_file in build_dir.rglob('*.json'):
@@ -44,7 +44,7 @@ def run_template_writer(send_bouncer_home: bool, templates_dir: Path, build_dir:
             write_to_file(
                 page_config.dir / 'index.html',
                 page_config.json_object,
-                templates_dir / page_config.json_object['template']
+                templates_dir / f'{page_config.json_object["template"]}{templates_extension}'
             )
         except Exception as e:
             if send_bouncer_home:

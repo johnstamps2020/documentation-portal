@@ -10,6 +10,7 @@ from flail_ssg.config_generator import run_config_generator
 from flail_ssg.generator import run_generator
 from flail_ssg.preprocessor import run_preprocessor
 from flail_ssg.publisher import run_publisher
+from flail_ssg.template_writer import run_template_writer
 from flail_ssg.validator import run_validator
 
 
@@ -41,7 +42,10 @@ class AppConfig:
     config_build_dir: Path = _root_build_dir / 'config'
     _deploy_env: str = os.environ.get('DEPLOY_ENV')
     _pages_dir: str = os.environ.get('PAGES_DIR')
-    _templates_dir: str = os.environ.get('TEMPLATES_DIR')
+    # The templates_dir and templates_extension parameters are needed only if you want to generate HTML pages
+    # using local templates.
+    _templates_dir: str = os.environ.get('TEMPLATES_DIR', False)
+    templates_extension: str = '.j2'
     _output_dir: str = os.environ.get('OUTPUT_DIR')
     _docs_config_file: str = os.environ.get('DOCS_CONFIG_FILE')
     _page_schema_file: str = os.environ.get('PAGE_SCHEMA_FILE', Path(__file__).parent / 'page-schema.json')
@@ -87,10 +91,13 @@ class AppConfig:
         return False
 
     def get_app_config(self):
+        incorrect_parameter_values = ('', None)
         missing_parameters = [
-            field.name.upper().lstrip('_') for field in dataclasses.fields(self)
-            if not getattr(self, field.name)
+            field.name.upper().lstrip('_')
+            for field in dataclasses.fields(self)
+            if getattr(self, field.name) in incorrect_parameter_values
         ]
+
         if missing_parameters:
             raise SystemError(f'Missing environment variables:'
                               f'\n{", ".join(missing_parameters)}')
@@ -123,6 +130,11 @@ def main():
                          app_config.pages_build_dir,
                          app_config.config_build_dir,
                          app_config.docs_config_file)
+    if app_config.templates_dir:
+        run_template_writer(app_config.send_bouncer_home,
+                            app_config.templates_dir,
+                            app_config.templates_extension,
+                            app_config.pages_build_dir)
     run_publisher([app_config.pages_build_dir, app_config.config_build_dir],
                   app_config.output_dir)
 
