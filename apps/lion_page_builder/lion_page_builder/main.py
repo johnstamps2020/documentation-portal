@@ -110,7 +110,7 @@ def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": "Translated Documentation",
-        "template": "page.j2",
+        "template": "page",
         "class": "threeCards l10n",
         "items": []
     }
@@ -134,7 +134,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": get_locale_name_from_code(locale_path.name),
-        "template": "page.j2",
+        "template": "page",
         "class": f"threeCards product {locale_path.name} l10n",
         "items": []
     }
@@ -148,7 +148,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
                     "selectedItem": get_locale_name_from_code(locale_path.name),
                     "items": []
                 }
-             }
+            }
         )
         for path in sibling_paths:
             index_json["selector"]["items"].append(
@@ -178,7 +178,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": get_product_name_from_code(product_path.name),
-        "template": "page.j2",
+        "template": "page",
         "class": f"threeCards version {product_path.parent.name} l10n",
         "items": []
     }

@@ -60,11 +60,15 @@
                 <div <% if (className) { -%>class="<%= className %>"
                         <% } %>
                 >
-                    <% if (doc_url || page || link) { -%>
-                        <a href="<%= doc_url || pagePath + "/" + page || link %>"
-                           <% if (!publiclyAvailable) { -%>class="private"
-                                <% } %>
-                        ><%= label %></a>
+                    <% if (doc_url || page || link) {
+                        let itemHref = doc_url || link;
+                        if (page) {
+                            itemHref = pagePath + "/" + page
+                        } %>
+                    <a href="<%= itemHref %>"
+                       <% if (!publiclyAvailable) { -%>class="private"
+                            <% } %>
+                    ><%= label %></a>
                     <% } else { %>
                         <div class="label" <% if (!publiclyAvailable) { -%>class="private"
                                 <% } -%>
