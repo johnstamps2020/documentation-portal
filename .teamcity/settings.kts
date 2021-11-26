@@ -1782,7 +1782,6 @@ object DeployFrontend : BuildType({
             display = ParameterDisplay.HIDDEN
         )
         text("env.PAGES_DIR", "%teamcity.build.checkoutDir%/frontend/pages", display = ParameterDisplay.HIDDEN)
-        text("env.TEMPLATES_DIR", "%teamcity.build.checkoutDir%/frontend/templates", display = ParameterDisplay.HIDDEN)
         text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/output", display = ParameterDisplay.HIDDEN)
         text("env.SEND_BOUNCER_HOME", "no", display = ParameterDisplay.HIDDEN)
         text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
