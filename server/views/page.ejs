@@ -3,115 +3,43 @@
 <%- include('parts/head', { pageTitle: `Guidewire Documentation`}) %>
 <body>
 <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false }) %>
-<% if (pageContent.class) { -%>
-<main class="<%= pageContent.class %>">
-    <% } else { %>
-    <main>
+<main class="<%= pageContent.class || '' %>">
+    <%- include('parts/platform-toggle') %>
+    <div class="content">
+        <div class="pageHero">
+            <%- include('parts/breadcrumbs') %>
+            <h1><%= pageContent.title %></h1>
+        </div>
+        <%- include('parts/page-selector') %>
+        <% function create_block(label, className, items, doc_url, page, link, publiclyAvailable) { %>
+            <div class="<%= className || '' %>">
+                <% if (doc_url || page || link) {
+                    let itemHref = doc_url || link;
+                    if (page) {
+                        itemHref = pagePath + "/" + page
+                    } %>
+                <a href="<%= itemHref %>"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></a>
+                <% } else { %>
+                    <div class="label"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></div>
+                <% } %>
+                <% if (items && items.length > 0) { -%>
+                    <% items.forEach(item => { -%>
+                        <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
+                    <% }) %>
+                <% } %>
+            </div>
         <% } %>
-        <div class="content">
-            <div class="pageHero">
-                <div class="docBreadcrumb">
-                    <% let pageBreadcrumbs = pageContent.breadcrumbs;
-                    if (pageBreadcrumbs && pageBreadcrumbs.length > 0) { %>
-                        <% pageContent.breadcrumbs.forEach(breadcrumb => { %>
-                            <a href="<%= breadcrumb.path %>"><%= breadcrumb.label %></a>
-                        <% }) %>
-                    <% } %>
-                </div>
-                <h1><%= pageContent.title %></h1>
-            </div>
-            <div id="pageSelectorContainer">
-                <% if (pageContent.selector) { %>
-                    <script>
-                        function selectPage(selectedPage) {
-                            if (selectedPage) {
-                                window.location = selectedPage;
-                            }
-                        }
 
-                        function toggleDropdown() {
-                            const dropdown = document.querySelector('.pageSelectorDropdown');
-                            if (dropdown) {
-                                dropdown.classList.toggle('visible');
-                            }
-                        }
-                    </script>
-
-                    <% if (pageContent.selector.label) { %>
-                        <span class="selectorLabel"><%= pageContent.selector.label %></span>
-                    <% } %>
-                    <div onchange="selectPage(this.value)" id="pageSelector">
-                        <div selected="selectedOption" onclick="toggleDropdown()"
-                             aria-haspopup="listbox"><%= pageContent.selector.selectedItem %></div>
-                        <div class="pageSelectorDropdown" role="listbox">
-                            <% pageContent.selector.items.forEach(item => {
-                                let itemHref = item.doc_url || item.link;
-                                if (item.page) {
-                                    itemHref = pagePath + '/' + item.page
-                                }
-                            %>
-                            <div onclick="selectPage('<%= itemHref %>')"
-                                 class="dropdownOption" role="option">
-                                <%= item.label %>
-                            </div>
-                            <% }) %>
-                        </div>
-                    </div>
-                <% } %>
-            </div>
-            <% function create_block(label, className, items, doc_url, page, link, publiclyAvailable) { -%>
-                <div <% if (className) { -%>class="<%= className %>"
-                        <% } %>
-                >
-                    <% if (doc_url || page || link) {
-                        let itemHref = doc_url || link;
-                        if (page) {
-                            itemHref = pagePath + "/" + page
-                        } %>
-                    <a href="<%= itemHref %>"
-                       <% if (!publiclyAvailable) { -%>class="private"
-                            <% } %>
-                    ><%= label %></a>
-                    <% } else { %>
-                        <div class="label" <% if (!publiclyAvailable) { -%>class="private"
-                                <% } -%>
-                        ><%= label %></div>
-                    <% } %>
-                    <% if (items && items.length > 0) { -%>
-                        <% items.forEach(item => { -%>
-                            <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
-                        <% }) %>
-                    <% } %>
-                </div>
-            <% } %>
-
-            <div class="items">
-                <% pageContent.items.forEach(item => { %>
-                    <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
-                <% }) %>
-            </div>
+        <div class="items">
+            <% pageContent.items.forEach(item => { %>
+                <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
+            <% }) %>
         </div>
-        <div class="sidebar">
-            <div class="heroControls">
-                <div id="platformToggle">
-                    <a id="cloudButton" class="toggleButton" href="/" data-root="/cloudProducts">Guidewire Cloud</a>
-                    <a id="selfManagedButton" class="toggleButton" href="/selfManagedProducts"
-                       data-root="/selfManagedProducts">Self-managed</a>
-                </div>
-            </div>
-            <div class="usefulLinks">
-                <% if (pageContent.title.toLowerCase() !== 'developer resources') { %>
-                    <a href="/developerResources">Developer Resources</a>
-                <% } %>
-                <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
-                <a href="/l10n">Translated Documentation</a>
-                <a href="/upgradediffs">Upgrade Diff Reports</a>
-                <a href="/glossary">Guidewire Glossary</a>
-            </div>
-        </div>
-    </main>
-    <%- include('parts/footer') %>
-    <script src="/scripts/main.js"></script>
+    </div>
+    <%- include('parts/sidebar') %>
+</main>
+<%- include('parts/footer') %>
+<script src="/scripts/main.js"></script>
 </main>
 </body>
 </html>
