@@ -6,7 +6,11 @@ DEPLOYMENT_MODE=$1
 aws eks update-kubeconfig --name atmos-${DEPLOY_ENV}
 
 if [[ "$DEPLOYMENT_MODE" == "frontend" ]]; then
-  export DEPLOYMENT_COMMAND="rm -rf /usr/src/app/static/pages && mkdir /usr/src/app/static/pages && cp -R /tmp/out/* /usr/src/app/static/pages/ && rm -rf /tmp/out"
+  export DEPLOYMENT_COMMAND="find /usr/src/app/static/pages -mindepth 1 -maxdepth 1 -not -path '*l10n*' -not -path '*upgradediffs*' -exec rm -rf {} + && cp -R /tmp/out/* /usr/src/app/static/pages/ && rm -rf /tmp/out"
+elif [[ "$DEPLOYMENT_MODE" == "localizedPages" ]]; then
+  export DEPLOYMENT_COMMAND="rm -rf /usr/src/app/static/pages/l10n && cp -R /tmp/out/* /usr/src/app/static/pages/ && rm -rf /tmp/out"
+elif [[ "$DEPLOYMENT_MODE" == "upgradeDiffs" ]]; then
+  export DEPLOYMENT_COMMAND="rm -rf /usr/src/app/static/pages/upgradediffs && cp -R /tmp/out/* /usr/src/app/static/pages/ && rm -rf /tmp/out"
 elif [[ "$DEPLOYMENT_MODE" == "sitemap" ]]; then
   export DEPLOYMENT_COMMAND="rm -rf /usr/src/app/static/sitemap && mkdir /usr/src/app/static/sitemap && cp -R /tmp/out/* /usr/src/app/static/sitemap/ && rm -rf /tmp/out"
 else
