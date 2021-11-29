@@ -16,7 +16,7 @@
                 <% if (doc_url || page || link) {
                     let itemHref = doc_url || link;
                     if (page) {
-                        itemHref = pagePath + page
+                        itemHref = encodeURI(pagePath + page)
                     } %>
                 <a href="<%= itemHref %>"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></a>
                 <% } else { %>

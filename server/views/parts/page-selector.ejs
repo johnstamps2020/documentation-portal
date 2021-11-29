@@ -26,7 +26,7 @@
                 <% pageSelector.items.forEach(item => {
                     let itemHref = item.doc_url || item.link;
                     if (item.page) {
-                        itemHref = pagePath + item.page
+                        itemHref = encodeURI(pagePath + item.page)
                     }
                 %>
                 <div onclick="selectPage('<%= itemHref %>')"
