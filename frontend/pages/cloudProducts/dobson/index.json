@@ -294,6 +294,18 @@
           "id": "guidewirecloudconsoleguideinsurerdevdraft"
         }
       ]
+    },
+    {
+      "label": "Feature Preview",
+      "class": "categoryCard cardShadow",
+      "env": ["int"],
+      "items": [
+        {
+          "label": "Feature Preview",
+          "page": "../featurePreview",
+          "env": ["int"]
+        }
+      ]
     }
   ]
 }
