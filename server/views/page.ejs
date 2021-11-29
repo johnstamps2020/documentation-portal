@@ -4,8 +4,8 @@
 <body>
 <%- include('parts/header') %>
 <main class="<%= pageContent.class || '' %>">
-    <%- include('parts/platform-toggle') %>
     <div class="content">
+        <%- include('parts/platform-toggle') %>
         <div class="pageHero">
             <%- include('parts/breadcrumbs') %>
             <h1><%= pageContent.title %></h1>
