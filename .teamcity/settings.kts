@@ -1943,7 +1943,7 @@ object DeployLocalizedPages : BuildType({
         )
         text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
         select(
-            "env.DEPLOY_ENV",
+            "DEPLOY_ENV",
             "dev",
             label = "Deployment environment",
             description = "Select an environment on which you want deploy the config",
@@ -2064,7 +2064,7 @@ object DeployUpgradeDiffs : BuildType({
         )
         text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
         select(
-            "env.DEPLOY_ENV",
+            "DEPLOY_ENV",
             "dev",
             label = "Deployment environment",
             description = "Select an environment on which you want deploy the config",
