@@ -1,7 +1,7 @@
 {
   "$schema": "/frontend/page-schema.json",
   "title": "ClaimCenter for Guidewire Cloud earlyaccess",
-  "template": "page.j2",
+  "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select version",

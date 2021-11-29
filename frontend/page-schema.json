@@ -22,8 +22,8 @@
     },
     "template": {
       "description": "Filename of the template in the templates directory that is used to build the page",
-      "pattern": ".+\\..+",
-      "examples": ["page.j2", "index.html"]
+      "pattern": "^[^.]+$",
+      "examples": ["page", "redirect"]
     },
     "includeInBreadcrumbs": {
       "description": "If set to false, the page is not included in the list of breadcrumbs for descendant pages",

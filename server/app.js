@@ -119,9 +119,8 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 app.use(authGateway);
-
-// server static pages from the pages folder
-app.use(express.static(path.join(__dirname, 'static', 'pages')));
+const getPage = require('./controllers/frontendController').getPage;
+app.use(getPage);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

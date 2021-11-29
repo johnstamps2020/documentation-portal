@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('parts/head', { pageTitle: `404 (not found)`}) %>
-  <body>
-    <%- include('parts/header', { hideSearchBox: false, hideLoginButton: false
-    }) %>
-    <main class="pageNotFound">
-      <h1>
+<%- include('parts/head', { pageTitle: `404 (not found)`}) %>
+<body>
+<%- include('parts/header') %>
+<main class="pageNotFound">
+    <h1>
         Sorry, we couldn't find <%= pageInfo.cameFrom %>
-      </h1>
-      <p>
+    </h1>
+    <p>
         We weren't able to find what you are looking for. You may have an old
         link. We'll make a note of it and try to fix it soon. Meanwhile, try
         using the search box above, or go to the
         <a href="<%= pageInfo.appBaseUrl %>">home page</a>.
-      </p>
-    </main>
-    <% include parts/footer %>
-  </body>
+    </p>
+</main>
+<% include parts/footer %>
+</body>
 </html>

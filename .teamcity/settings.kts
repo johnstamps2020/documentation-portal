@@ -36,6 +36,8 @@ project {
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
     template(ListenerBuild)
+    template(MergeDocsConfigFiles)
+    template(BuildPages)
 
     params {
         param("env.NAMESPACE", "doctools")
@@ -1770,31 +1772,176 @@ object DeployServerConfig : BuildType({
     }
 })
 
-object DeployFrontend : BuildType({
-    name = "Deploy frontend"
-
+object MergeDocsConfigFiles : Template({
+    name = "Merge docs config files"
     params {
-        text("env.INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
-        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out")
+        text("env.CONFIG_FILES_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
+        text("env.CONFIG_FILES_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out")
+    }
+
+    steps {
+        script {
+            name = "Merge config files"
+            id = "MERGE_DOCS_CONFIG_FILES"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                config_deployer merge %env.CONFIG_FILES_INPUT_DIR% -o %env.CONFIG_FILES_OUTPUT_DIR%
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    vcs {
+        root(vcsroot)
+        cleanCheckout = true
+    }
+
+})
+
+object BuildPages : Template({
+    name = "Build pages"
+    params {
+        text("env.PAGES_DIR", "%PAGES_DIR%", display = ParameterDisplay.HIDDEN)
+        text("env.OUTPUT_DIR", "%OUTPUT_DIR%", display = ParameterDisplay.HIDDEN)
         text(
             "env.DOCS_CONFIG_FILE",
-            "%env.OUTPUT_DIR%/merge-all.json",
+            "%DOCS_CONFIG_FILE%",
             display = ParameterDisplay.HIDDEN
         )
-        text("env.PAGES_DIR", "%teamcity.build.checkoutDir%/frontend/pages", display = ParameterDisplay.HIDDEN)
-        text("env.TEMPLATES_DIR", "%teamcity.build.checkoutDir%/frontend/templates", display = ParameterDisplay.HIDDEN)
-        text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/output", display = ParameterDisplay.HIDDEN)
+        text("env.DEPLOY_ENV", "%DEPLOY_ENV%")
         text("env.SEND_BOUNCER_HOME", "no", display = ParameterDisplay.HIDDEN)
-        text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
-        text("env.LOC_DOCS_SRC", "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%", display = ParameterDisplay.HIDDEN)
-        text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
-        text("UPGRADEDIFFS_SOURCES_ROOT", "upgradediffs-src", display = ParameterDisplay.HIDDEN)
+    }
+
+    steps {
+        script {
+            name = "Build pages"
+            id = "BUILD_PAGES"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export DEPLOY_ENV=prod
+                fi
+                
+                flail_ssg
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    features {
+        dockerSupport {
+            id = "TEMPLATE_BUILD_EXT_1"
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_155"
+            }
+        }
+    }
+})
+
+object DeployFrontend : BuildType({
+    name = "Deploy frontend"
+    templates(MergeDocsConfigFiles, BuildPages)
+
+    params {
         text(
-            "env.UPGRADEDIFFS_DOCS_SRC",
-            "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%/src",
+            "PAGES_DIR",
+            "%teamcity.build.checkoutDir%/frontend/pages",
+            description = "Flail SSG input dir",
             display = ParameterDisplay.HIDDEN
         )
-        text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
+        text(
+            "OUTPUT_DIR",
+            "%teamcity.build.checkoutDir%/output",
+            description = "Flail SSG output dir",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "DOCS_CONFIG_FILE",
+            "%env.CONFIG_FILES_OUTPUT_DIR%/merge-all.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        select(
+            "DEPLOY_ENV",
+            "dev",
+            label = "Deployment environment",
+            description = "Select an environment on which you want deploy the config",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod" to "us-east-2")
+        )
+    }
+
+    steps {
+        script {
+            name = "Deploy to Kubernetes"
+            id = "DEPLOY_TO_KUBERNETES"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                fi
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh frontend
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+
+        stepsOrder = arrayListOf("MERGE_DOCS_CONFIG_FILES", "BUILD_PAGES", "DEPLOY_TO_KUBERNETES")
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:root=${vcsroot.id}:frontend/pages/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+})
+
+object DeployLocalizedPages : BuildType({
+    name = "Deploy localized pages"
+    templates(MergeDocsConfigFiles, BuildPages)
+
+    params {
+        text(
+            "PAGES_DIR",
+            "%teamcity.build.checkoutDir%/build",
+            description = "Flail SSG input dir",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "OUTPUT_DIR",
+            "%teamcity.build.checkoutDir%/output",
+            description = "Flail SSG output dir",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "DOCS_CONFIG_FILE",
+            "%env.CONFIG_FILES_OUTPUT_DIR%/merge-all.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
+        text(
+            "env.LOC_DOCS_SRC",
+            "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%",
+            display = ParameterDisplay.HIDDEN
+        )
+        text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
         select(
             "env.DEPLOY_ENV",
             "dev",
@@ -1806,34 +1953,15 @@ object DeployFrontend : BuildType({
     }
 
     vcs {
-        root(vcsroot)
-        cleanCheckout = true
-    }
-
-    vcs {
         root(LocalizedPDFs, "+:. => %LION_SOURCES_ROOT%")
-        cleanCheckout = true
-    }
-
-    vcs {
-        root(UpgradeDiffs, "+:. => %UPGRADEDIFFS_SOURCES_ROOT%")
         cleanCheckout = true
     }
 
 
     steps {
         script {
-            name = "Merge docs config files"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                config_deployer merge %env.INPUT_DIR% -o %env.OUTPUT_DIR%
-            """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-        script {
             name = "Generate localization page configurations"
+            id = "GENERATE_LOCALIZATION_PAGE_CONFIGURATIONS"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1844,6 +1972,7 @@ object DeployFrontend : BuildType({
         }
         script {
             name = "Copy localized PDFs to the S3 bucket"
+            id = "COPY_LOCALIZED_PDFS_TO_S3_BUCKET"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1863,7 +1992,97 @@ object DeployFrontend : BuildType({
             """.trimIndent()
         }
         script {
+            name = "Deploy to Kubernetes"
+            id = "DEPLOY_TO_KUBERNETES"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                fi
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh localizedPages
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+
+        stepsOrder = arrayListOf(
+            "GENERATE_LOCALIZATION_PAGE_CONFIGURATIONS",
+            "COPY_LOCALIZED_PDFS_TO_S3_BUCKET",
+            "MERGE_DOCS_CONFIG_FILES",
+            "BUILD_PAGES",
+            "DEPLOY_TO_KUBERNETES"
+        )
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+            triggerRules = """
+                +:root=${LocalizedPDFs.id}:**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+    }
+})
+
+object DeployUpgradeDiffs : BuildType({
+    name = "Deploy upgrade diffs"
+    templates(MergeDocsConfigFiles, BuildPages)
+
+    params {
+        text(
+            "PAGES_DIR",
+            "%teamcity.build.checkoutDir%/build",
+            description = "Flail SSG input dir",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "OUTPUT_DIR",
+            "%teamcity.build.checkoutDir%/output",
+            description = "Flail SSG output dir",
+            display = ParameterDisplay.HIDDEN
+        )
+        text(
+            "DOCS_CONFIG_FILE",
+            "%env.CONFIG_FILES_OUTPUT_DIR%/merge-all.json",
+            display = ParameterDisplay.HIDDEN
+        )
+        text("UPGRADEDIFFS_SOURCES_ROOT", "upgradediffs-src", display = ParameterDisplay.HIDDEN)
+        text(
+            "env.UPGRADEDIFFS_DOCS_SRC",
+            "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%/src",
+            display = ParameterDisplay.HIDDEN
+        )
+        text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
+        select(
+            "env.DEPLOY_ENV",
+            "dev",
+            label = "Deployment environment",
+            description = "Select an environment on which you want deploy the config",
+            display = ParameterDisplay.PROMPT,
+            options = listOf("dev", "int", "staging", "prod" to "us-east-2")
+        )
+    }
+
+    vcs {
+        root(UpgradeDiffs, "+:. => %UPGRADEDIFFS_SOURCES_ROOT%")
+        cleanCheckout = true
+    }
+
+
+    steps {
+        script {
             name = "Generate upgrade diffs page configurations"
+            id = "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1878,6 +2097,7 @@ object DeployFrontend : BuildType({
         }
         script {
             name = "Copy upgrade diffs to the S3 bucket"
+            id = "COPY_UPGRADE_DIFFS_TO_S3_BUCKET"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1902,22 +2122,8 @@ object DeployFrontend : BuildType({
             """.trimIndent()
         }
         script {
-            name = "Build pages"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
-                    export DEPLOY_ENV=prod
-                fi
-                
-                flail_ssg
-            """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-        script {
             name = "Deploy to Kubernetes"
+            id = "DEPLOY_TO_KUBERNETES"
             scriptContent = """
                 #!/bin/bash 
                 set -xe
@@ -1930,44 +2136,32 @@ object DeployFrontend : BuildType({
                     export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
                 fi
-                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh frontend
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh upgradeDiffs
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
+
+        stepsOrder = arrayListOf(
+            "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS",
+            "COPY_UPGRADE_DIFFS_TO_S3_BUCKET",
+            "MERGE_DOCS_CONFIG_FILES",
+            "BUILD_PAGES",
+            "DEPLOY_TO_KUBERNETES"
+        )
     }
 
     triggers {
         vcs {
             branchFilter = "+:<default>"
             triggerRules = """
-                +:root=${LocalizedPDFs.id}:**
-                +:root=${vcsroot.id}:apps/lion_page_builder/**
-                +:root=${vcsroot.id}:frontend/**
-                -:user=doctools:**
-            """.trimIndent()
-        }
-        vcs {
-            branchFilter = "+:<default>"
-            triggerRules = """
                 +:root=${UpgradeDiffs.id}:**
-                +:root=${vcsroot.id}:apps/upgradediffs_page_builder/**
-                +:root=${vcsroot.id}:frontend/**
                 -:user=doctools:**
             """.trimIndent()
         }
 
-    }
-
-    features {
-        dockerSupport {
-            id = "TEMPLATE_BUILD_EXT_1"
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_155"
-            }
-        }
     }
 })
 
@@ -2248,6 +2442,8 @@ object Server : Project({
     buildType(DeployProd)
     buildType(DeployServerConfig)
     buildType(DeployFrontend)
+    buildType(DeployLocalizedPages)
+    buildType(DeployUpgradeDiffs)
 
 })
 
@@ -2620,7 +2816,11 @@ object HelperObjects {
         }
     }
 
-    private fun createVersionProject(product_name: String, version: String, docs: MutableList<JSONObject>): Project {
+    private fun createVersionProject(
+        product_name: String,
+        version: String,
+        docs: MutableList<JSONObject>
+    ): Project {
 
         class GenerateRecommendationsForTopics(product_name: String, platform_name: String, version: String) :
             BuildType(
@@ -2636,7 +2836,12 @@ object HelperObjects {
                             "https://docsearch-doctools.int.ccs.guidewire.net",
                             allowEmpty = false, display = ParameterDisplay.HIDDEN
                         )
-                        text("env.DOCS_INDEX_NAME", "gw-docs", allowEmpty = false, display = ParameterDisplay.HIDDEN)
+                        text(
+                            "env.DOCS_INDEX_NAME",
+                            "gw-docs",
+                            allowEmpty = false,
+                            display = ParameterDisplay.HIDDEN
+                        )
                         text(
                             "env.RECOMMENDATIONS_INDEX_NAME",
                             "gw-recommendations",
@@ -2676,7 +2881,8 @@ object HelperObjects {
                                                                         
                                 recommendation_engine
                             """.trimIndent()
-                            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"
+                            dockerImage =
+                                "artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"
                             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                         }
                     }
@@ -3306,7 +3512,8 @@ object HelperObjects {
         val zipFilename = if (build.has("zipFilename")) build.getString("zipFilename") else null
         val filter = if (build.has("filter")) build.getString("filter") else ""
         val workingDir = if (build.has("workingDir")) build.getString("workingDir") else ""
-        val indexRedirect = if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
+        val indexRedirect =
+            if (build.has("indexRedirect")) build.getBoolean("indexRedirect").toString() else "false"
         val root = if (build.has("root")) build.getString("root") else ""
         val customOutputFolder = if (build.has("customOutputFolder")) build.getString("customOutputFolder") else ""
         val customEnvironment: JSONArray? = if (build.has("customEnv")) build.getJSONArray("customEnv") else null
@@ -3582,7 +3789,12 @@ object HelperObjects {
                         allowEmpty = false
                     )
                     text("env.GIT_SOURCE_ID", git_source_id, display = ParameterDisplay.HIDDEN, allowEmpty = false)
-                    text("env.GIT_SOURCE_URL", git_source_url, display = ParameterDisplay.HIDDEN, allowEmpty = false)
+                    text(
+                        "env.GIT_SOURCE_URL",
+                        git_source_url,
+                        display = ParameterDisplay.HIDDEN,
+                        allowEmpty = false
+                    )
                     text(
                         "env.S3_BUCKET_NAME",
                         "tenant-doctools-int-builds",
@@ -3742,7 +3954,8 @@ object HelperObjects {
                                                 publisher = bitbucketServer {
                                                     url = "https://stash.guidewire.com"
                                                     userName = "%serviceAccountUsername%"
-                                                    password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                                                    password =
+                                                        "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                                                 }
                                             }
 
@@ -4681,7 +4894,11 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
         )
         text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
         text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text("env.DOC_S3_URL_PORTAL2", "https://portal2.internal.us-east-2.service.guidewire.net", allowEmpty = false)
+        text(
+            "env.DOC_S3_URL_PORTAL2",
+            "https://portal2.internal.us-east-2.service.guidewire.net",
+            allowEmpty = false
+        )
         text(
             "env.ELASTICSEARCH_URLS",
             "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",

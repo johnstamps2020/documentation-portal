@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('parts/head', { pageTitle: `${searchPhrase} | ${totalNumOfResults} search results`}) %>
 <body>
-<%- include('parts/header', { hideSearchBox: true, hideLoginButton: false, headerClass: 'header-search' }) %>
+<%- include('parts/header', { showSearchBox: false, headerClass: 'header-search' }) %>
 <main class="fullWidth searchPage">
     <div class="filterSearchResults">
         <div>

@@ -1,54 +1,59 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript>
-  <iframe
-    src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5"
-    height="0"
-    width="0"
-    style="display:none;visibility:hidden"
-  ></iframe>
+    <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5"
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden"
+    ></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
+<% const searchBox = typeof showSearchBox !== 'undefined' ? showSearchBox : true
+const loginButton = typeof showLoginButton !== 'undefined' ? showLoginButton : true
+const placeholderText = typeof localizationInfo !== 'undefined' ? localizationInfo.placeholder : 'Search'
+%>
 <% if (typeof headerClass !== 'undefined') { %>
 <header class="<%= headerClass %>">
-  <% } else { %>
-  <header>
-    <% } %>
-    <div id="headerLeft">
-      <a href="/">
-        <img
-          class="pageLogo"
-          src="/images/logo-gw-doc.svg"
-          alt="Guidewire Documentation"
-          role="img"
-          aria-label="Guidewire Documentation"
-        />
-      </a>
-    </div>
-    <% if (!hideSearchBox) { %>
-    <div id="headerCenter">
-      <form action="/search">
-        <div class="searchWrapper">
-          <input
-            name="q"
-            id="searchField"
-            class="searchField"
-            type="search"
-            placeholder="Search Guidewire documentation"
-            aria-label="Search Guidewire documentation"
-          />
-          <button type="submit" class="searchButton" aria-label="Search">
-            Search
-          </button>
+    <% } else { %>
+    <header>
+        <% } %>
+        <div id="headerLeft">
+            <a href="/">
+                <img
+                        class="pageLogo"
+                        src="/images/logo-gw-doc.svg"
+                        alt="Guidewire Documentation"
+                        role="img"
+                        aria-label="Guidewire Documentation"
+                />
+            </a>
         </div>
-      </form>
-    </div>
-    <% } %>
-    <div id="headerRight">
-      <% include links-menu %> <% if (!hideLoginButton) { %>
-      <div id="loginContainer">
-        <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
-      </div>
-      <% } %>
-    </div>
-  </header>
+        <% if (searchBox) { %>
+            <div id="headerCenter">
+                <form action="/search">
+                    <div class="searchWrapper">
+                        <input
+                                name="q"
+                                id="searchField"
+                                class="searchField"
+                                type="search"
+                                placeholder="<%= placeholderText %>"
+                                aria-label="<%= placeholderText %>"
+                        />
+                        <button type="submit" class="searchButton" aria-label="<%= placeholderText %>">
+                            <%= placeholderText %>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <% } %>
+        <div id="headerRight">
+            <% include links-menu %>
+            <% if (loginButton) { %>
+                <div id="loginContainer">
+                    <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
+                </div>
+            <% } %>
+        </div>
+    </header>
 </header>

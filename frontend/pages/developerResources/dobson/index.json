@@ -1,7 +1,7 @@
 {
   "$schema": "../../../page-schema.json",
   "title": "Developer Resources",
-  "template": "page.j2",
+  "template": "page",
   "class": "blue-theme dobson threeCards",
   "selector": {
     "label": "Select release",

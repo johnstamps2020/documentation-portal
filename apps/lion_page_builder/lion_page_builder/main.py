@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import shutil
 from pathlib import Path
 
 from PyPDF2 import PdfFileReader
@@ -71,46 +72,40 @@ def get_product_name_from_code(code: str) -> str:
 
 
 def get_locale_selector_label_from_code(code: str) -> str:
-    if locale_codes_labels.get(code):
-        if locale_codes_labels.get(code).get('localeSelect'):
-            return locale_codes_labels.get(code).get('localeSelect')
-        else:
-            return 'Select locale'
+    if locale_codes_labels.get(code) and locale_codes_labels.get(code).get(
+            'localeSelect'
+    ):
+        return locale_codes_labels.get(code).get('localeSelect')
     else:
         return 'Select locale'
 
 
 def get_product_selector_label_from_code(code: str) -> str:
-    if locale_codes_labels.get(code):
-        if locale_codes_labels.get(code).get('productSelect'):
-            return locale_codes_labels.get(code).get('productSelect')
-        else:
-            return 'Select product'
+    if locale_codes_labels.get(code) and locale_codes_labels.get(code).get(
+            'productSelect'
+    ):
+        return locale_codes_labels.get(code).get('productSelect')
     else:
         return 'Select product'
 
 
 def get_paths(path: Path) -> []:
-    paths = []
-    for f in path.iterdir():
-        if f.is_dir() and not f.name.startswith('.'):
-            paths.append(f)
-    return paths
+    return [f for f in path.iterdir() if f.is_dir() and not f.name.startswith('.')]
 
 
 def get_sibling_paths(path: Path) -> []:
-    paths = []
-    for f in path.parent.iterdir():
-        if f.is_dir() and f != path and not f.name.startswith('.'):
-            paths.append(f)
-    return paths
+    return [
+        f
+        for f in path.parent.iterdir()
+        if f.is_dir() and f != path and not f.name.startswith('.')
+    ]
 
 
 def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": "Translated Documentation",
-        "template": "page.j2",
+        "template": "page",
         "class": "threeCards l10n",
         "items": []
     }
@@ -134,7 +129,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": get_locale_name_from_code(locale_path.name),
-        "template": "page.j2",
+        "template": "page",
         "class": f"threeCards product {locale_path.name} l10n",
         "items": []
     }
@@ -148,7 +143,7 @@ def write_locale_index(locale_path, loc_docs_output_path):
                     "selectedItem": get_locale_name_from_code(locale_path.name),
                     "items": []
                 }
-             }
+            }
         )
         for path in sibling_paths:
             index_json["selector"]["items"].append(
@@ -178,7 +173,7 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": get_product_name_from_code(product_path.name),
-        "template": "page.j2",
+        "template": "page",
         "class": f"threeCards version {product_path.parent.name} l10n",
         "items": []
     }
@@ -239,26 +234,9 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
         json.dump(index_json, outfile, indent=2, ensure_ascii=False)
 
 
-def clear_output(loc_docs_output_path: Path):
-    if loc_docs_output_path.exists():
-        try:
-            empty_tree(loc_docs_output_path)
-        except OSError as e:
-            print("Error: %s : %s" % (loc_docs_output_path, e.strerror))
-    else:
-        try:
-            loc_docs_output_path.mkdir()
-        except OSError as e:
-            print("Error: %s : %s" % (loc_docs_output_path, e.strerror))
-
-
-def empty_tree(path: Path):
-    assert path.is_dir()
-    for child in reversed(list(path.glob('**/*'))):
-        if child.is_file():
-            child.unlink()
-        elif child.is_dir():
-            child.rmdir()
+def prepare_output_dir(output_dir: Path):
+    shutil.rmtree(output_dir, ignore_errors=True)
+    output_dir.mkdir(parents=True)
 
 
 # TODO: by default check for PDFs in the folders to avoid creating
@@ -274,7 +252,7 @@ def empty_tree(path: Path):
 def main():
     loc_docs_root_path = Path(os.environ['LOC_DOCS_SRC'])
     loc_docs_output_path = Path(os.environ['LOC_DOCS_OUT'])
-    clear_output(loc_docs_output_path)
+    prepare_output_dir(loc_docs_output_path)
 
     locale_dirs = get_paths(loc_docs_root_path)
     locale_dirs.sort()
