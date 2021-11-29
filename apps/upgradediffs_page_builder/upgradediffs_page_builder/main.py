@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 from pathlib import Path
 
 from natsort import natsorted, ns
@@ -27,7 +28,6 @@ def write_top_index(dirs: [], docs_output_path: Path):
     }
 
     for d in dirs:
-
         index_json["items"].append(
             {
                 "label": d.name,
@@ -54,13 +54,14 @@ def write_index(src_path, output_path, selector_label, generate_links=False, env
         sibling_paths = natsorted(
             sibling_paths, alg=ns.PATH, reverse=True)
         index_json.update(
-            {"selector":
-                {
-                    "label": selector_label,
-                    "selectedItem": src_path.name,
-                    "items": []
-                }
-             }
+            {
+                "selector":
+                    {
+                        "label": selector_label,
+                        "selectedItem": src_path.name,
+                        "items": []
+                    }
+            }
         )
         for path in sibling_paths:
             index_json["selector"]["items"].append(
@@ -100,26 +101,9 @@ def write_index(src_path, output_path, selector_label, generate_links=False, env
         json.dump(index_json, outfile, indent=2, ensure_ascii=False)
 
 
-def clear_output(loc_docs_output_path: Path):
-    if loc_docs_output_path.exists():
-        try:
-            empty_tree(loc_docs_output_path)
-        except OSError as e:
-            print("Error: %s : %s" % (loc_docs_output_path, e.strerror))
-    else:
-        try:
-            loc_docs_output_path.mkdir()
-        except OSError as e:
-            print("Error: %s : %s" % (loc_docs_output_path, e.strerror))
-
-
-def empty_tree(path: Path):
-    assert path.is_dir()
-    for child in reversed(list(path.glob('**/*'))):
-        if child.is_file():
-            child.unlink()
-        elif child.is_dir():
-            child.rmdir()
+def prepare_output_dir(output_dir: Path):
+    shutil.rmtree(output_dir, ignore_errors=True)
+    output_dir.mkdir(parents=True)
 
 
 # TODO: add readme.md
@@ -131,7 +115,7 @@ def main():
     docs_root_path = Path(os.environ.get('UPGRADEDIFFS_DOCS_SRC'))
     docs_output_path = Path(os.environ.get('UPGRADEDIFFS_DOCS_OUT'))
     deploy_env = os.environ.get('DEPLOY_ENV')
-    clear_output(docs_output_path)
+    prepare_output_dir(docs_output_path)
 
     product_dirs = get_paths(docs_root_path)
     product_dirs.sort()
@@ -144,7 +128,8 @@ def main():
         version_from_dirs.sort()
         for version_from_dir in version_from_dirs:
             write_index(
-                version_from_dir, docs_output_path / product_dir.name / version_from_dir.name, "Select version to upgrade from", True, deploy_env)
+                version_from_dir, docs_output_path / product_dir.name / version_from_dir.name,
+                "Select version to upgrade from", True, deploy_env)
 
 
 if __name__ == '__main__':
