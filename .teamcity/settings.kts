@@ -2028,7 +2028,6 @@ object DeployLocalizedPages : BuildType({
             branchFilter = "+:<default>"
             triggerRules = """
                 +:root=${LocalizedPDFs.id}:**
-                +:root=${vcsroot.id}:apps/lion_page_builder/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -2159,7 +2158,6 @@ object DeployUpgradeDiffs : BuildType({
             branchFilter = "+:<default>"
             triggerRules = """
                 +:root=${UpgradeDiffs.id}:**
-                +:root=${vcsroot.id}:apps/upgradediffs_page_builder/**
                 -:user=doctools:**
             """.trimIndent()
         }
