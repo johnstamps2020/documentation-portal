@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import shutil
 from pathlib import Path
 
 from PyPDF2 import PdfFileReader
@@ -72,7 +73,7 @@ def get_product_name_from_code(code: str) -> str:
 
 def get_locale_selector_label_from_code(code: str) -> str:
     if locale_codes_labels.get(code) and locale_codes_labels.get(code).get(
-        'localeSelect'
+            'localeSelect'
     ):
         return locale_codes_labels.get(code).get('localeSelect')
     else:
@@ -81,7 +82,7 @@ def get_locale_selector_label_from_code(code: str) -> str:
 
 def get_product_selector_label_from_code(code: str) -> str:
     if locale_codes_labels.get(code) and locale_codes_labels.get(code).get(
-        'productSelect'
+            'productSelect'
     ):
         return locale_codes_labels.get(code).get('productSelect')
     else:
@@ -233,26 +234,9 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
         json.dump(index_json, outfile, indent=2, ensure_ascii=False)
 
 
-def clear_output(loc_docs_output_path: Path):
-    if loc_docs_output_path.exists():
-        try:
-            empty_tree(loc_docs_output_path)
-        except OSError as e:
-            print("Error: %s : %s" % (loc_docs_output_path, e.strerror))
-    else:
-        try:
-            loc_docs_output_path.mkdir()
-        except OSError as e:
-            print("Error: %s : %s" % (loc_docs_output_path, e.strerror))
-
-
-def empty_tree(path: Path):
-    assert path.is_dir()
-    for child in reversed(list(path.glob('**/*'))):
-        if child.is_file():
-            child.unlink()
-        elif child.is_dir():
-            child.rmdir()
+def prepare_output_dir(output_dir: Path):
+    shutil.rmtree(output_dir, ignore_errors=True)
+    output_dir.mkdir(parents=True)
 
 
 # TODO: by default check for PDFs in the folders to avoid creating
@@ -268,7 +252,7 @@ def empty_tree(path: Path):
 def main():
     loc_docs_root_path = Path(os.environ['LOC_DOCS_SRC'])
     loc_docs_output_path = Path(os.environ['LOC_DOCS_OUT'])
-    clear_output(loc_docs_output_path)
+    prepare_output_dir(loc_docs_output_path)
 
     locale_dirs = get_paths(loc_docs_root_path)
     locale_dirs.sort()
