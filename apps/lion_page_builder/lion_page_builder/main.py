@@ -71,39 +71,33 @@ def get_product_name_from_code(code: str) -> str:
 
 
 def get_locale_selector_label_from_code(code: str) -> str:
-    if locale_codes_labels.get(code):
-        if locale_codes_labels.get(code).get('localeSelect'):
-            return locale_codes_labels.get(code).get('localeSelect')
-        else:
-            return 'Select locale'
+    if locale_codes_labels.get(code) and locale_codes_labels.get(code).get(
+        'localeSelect'
+    ):
+        return locale_codes_labels.get(code).get('localeSelect')
     else:
         return 'Select locale'
 
 
 def get_product_selector_label_from_code(code: str) -> str:
-    if locale_codes_labels.get(code):
-        if locale_codes_labels.get(code).get('productSelect'):
-            return locale_codes_labels.get(code).get('productSelect')
-        else:
-            return 'Select product'
+    if locale_codes_labels.get(code) and locale_codes_labels.get(code).get(
+        'productSelect'
+    ):
+        return locale_codes_labels.get(code).get('productSelect')
     else:
         return 'Select product'
 
 
 def get_paths(path: Path) -> []:
-    paths = []
-    for f in path.iterdir():
-        if f.is_dir() and not f.name.startswith('.'):
-            paths.append(f)
-    return paths
+    return [f for f in path.iterdir() if f.is_dir() and not f.name.startswith('.')]
 
 
 def get_sibling_paths(path: Path) -> []:
-    paths = []
-    for f in path.parent.iterdir():
-        if f.is_dir() and f != path and not f.name.startswith('.'):
-            paths.append(f)
-    return paths
+    return [
+        f
+        for f in path.parent.iterdir()
+        if f.is_dir() and f != path and not f.name.startswith('.')
+    ]
 
 
 def write_top_index(locale_dirs: [], loc_docs_output_path: Path):
