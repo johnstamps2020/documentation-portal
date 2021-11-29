@@ -7,7 +7,7 @@
     "selectedItem": "2021.11",
     "items": []
   },
-  "template": "page.j2",
+  "template": "page",
   "items": [
     {
       "label": "Release Notes",
