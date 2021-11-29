@@ -1,31 +1,27 @@
 import json
 import os
-import re
 from pathlib import Path
+
 from natsort import natsorted, ns
 
 
 def get_paths(path: Path) -> []:
-    paths = []
-    for f in path.iterdir():
-        if f.is_dir() and not f.name.startswith('.'):
-            paths.append(f)
-    return paths
+    return [f for f in path.iterdir() if f.is_dir() and not f.name.startswith('.')]
 
 
 def get_sibling_paths(path: Path) -> []:
-    paths = []
-    for f in path.parent.iterdir():
-        if f.is_dir() and f != path and not f.name.startswith('.'):
-            paths.append(f)
-    return paths
+    return [
+        f
+        for f in path.parent.iterdir()
+        if f.is_dir() and f != path and not f.name.startswith('.')
+    ]
 
 
 def write_top_index(dirs: [], docs_output_path: Path):
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": "Upgrade Diff Reports",
-        "template": "page.j2",
+        "template": "page",
         "class": "twoCards upgradediffs upgradediffs-products",
         "items": []
     }
@@ -48,10 +44,11 @@ def write_index(src_path, output_path, selector_label, generate_links=False, env
     index_json = {
         "$schema": "/frontend/page-schema.json",
         "title": src_path.name,
-        "template": "page.j2",
-        "class": f"threeCards upgradediffs",
-        "items": []
+        "template": "page",
+        "class": 'threeCards upgradediffs',
+        "items": [],
     }
+
     sibling_paths = get_sibling_paths(src_path)
     if sibling_paths:
         sibling_paths = natsorted(
@@ -77,7 +74,7 @@ def write_index(src_path, output_path, selector_label, generate_links=False, env
     child_paths = natsorted(
         child_paths, alg=ns.PATH, reverse=True)
     for child_path in child_paths:
-        if ((env == 'prod' or env == 'staging') and '-rc' in child_path.name):
+        if env in ['prod', 'staging'] and '-rc' in child_path.name:
             continue
         if not generate_links:
             index_json["items"].append(
