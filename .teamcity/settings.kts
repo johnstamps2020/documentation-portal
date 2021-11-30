@@ -1,7 +1,11 @@
+import jetbrains.buildServer.configs.kotlin.v10.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -17,9 +21,7 @@ project {
 
 
     subProject(HelperObjects.createRootProjectForDocs())
-    template(BuildYarn)
     template(BuildDocSiteOutputFromDita)
-    template(CrawlDocumentAndUpdateSearchIndex)
 
     features {
         feature {
@@ -143,6 +145,60 @@ object HelperObjects {
         return RelativeId(removeSpecialCharacters(id))
     }
 
+    fun createYarnBuildType(
+        build_type_name: String,
+        build_type_id: RelativeId,
+        deploy_env: String,
+        publish_path: String,
+        working_dir: String,
+        build_command: String?,
+        node_image_version: String?,
+        doc_id: String,
+        gw_products: String,
+        gw_platforms: String,
+        gw_versions: String,
+        vcs_root_id: String
+    ): BuildType {
+        return BuildType {
+            name = build_type_name
+            id = build_type_id
+
+            vcs {
+                root(HelperObjects.resolveRelativeIdFromIdString(vcs_root_id))
+                cleanCheckout = true
+            }
+
+            steps {
+                step(
+                    BuildSteps.createBuildYarnProjectStep(
+                        deploy_env,
+                        publish_path,
+                        working_dir,
+                        build_command,
+                        node_image_version,
+                        doc_id,
+                        gw_products,
+                        gw_platforms,
+                        gw_versions
+                    )
+                )
+                step(BuildSteps.createGetConfigFileStep(deploy_env))
+                step(BuildSteps.createCrawlDocStep(deploy_env, doc_id))
+            }
+
+            features {
+                feature(BuildFeatures.GwDockerSupportFeature)
+            }
+
+            triggers {
+                vcs {
+                    BuildTriggers.createVcsTriggerForNonDitaBuilds(vcs_root_id)
+                }
+            }
+        }
+    }
+
+
     fun createDocVcsRoot(src_id: String): GitVcsRoot {
         val srcConfig = getObjectById(sourceConfigs, "id", src_id)
         return GitVcsRoot {
@@ -156,39 +212,55 @@ object HelperObjects {
         }
     }
 
-    fun createDocProject(doc_id: String): Project {
-        val docConfig = getObjectById(docConfigs, "id", doc_id)
-        val docTitle = docConfig.getString("title")
-        return Project {
-            name = "$docTitle ($doc_id)"
-            id = resolveRelativeIdFromIdString(doc_id)
-        }
-    }
-
-    fun createDocBuildTypes(doc_id: String, src_id: String, gw_build_type: String): List<BuildType> {
+    fun createDocProject(build_config: JSONObject, src_id: String): Project {
         val docBuildSubProjects = mutableListOf<BuildType>()
-        val docConfig = getObjectById(docConfigs, "id", doc_id)
+        val docId = build_config.getString("docId")
+        val gwBuildType = build_config.getString("buildType")
+        val workingDir = if (build_config.has("workingDir")) build_config.getString("workingDir") else ""
+        val docConfig = getObjectById(docConfigs, "id", docId)
+        val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
-        val buildTemplates = mutableListOf<Template>(CrawlDocumentAndUpdateSearchIndex)
-        when (gw_build_type) {
-            "dita" -> buildTemplates.add(0, BuildDocSiteOutputFromDita)
-            "yarn" -> buildTemplates.add(0, BuildYarn)
-        }
+        val metadata = docConfig.getJSONObject("metadata")
+        val gwProducts = metadata.getJSONArray("product").joinToString(separator = ",")
+        val gwPlatforms = metadata.getJSONArray("platform").joinToString(separator = ",")
+        val gwVersions = metadata.getJSONArray("version").joinToString(separator = ",")
+        val publishPath = docConfig.getString("url")
         for (i in 0 until docEnvironments.length()) {
             val envName = docEnvironments.getString(i)
-            val docBuildType = BuildType {
-                name = "Publish to $envName"
-                id = resolveRelativeIdFromIdString("$doc_id$envName")
-
-                vcs {
-                    root(resolveRelativeIdFromIdString(src_id))
-                    cleanCheckout = true
-                }
-                templates = buildTemplates
+            val buildTypeName = "Publish to $envName"
+            val buildTypeId = resolveRelativeIdFromIdString("$docId$envName")
+            if (gwBuildType == "yarn") {
+                val nodeImageVersion =
+                    if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
+                val buildCommand =
+                    if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
+                docBuildSubProjects.add(
+                    createYarnBuildType(
+                        buildTypeName,
+                        buildTypeId,
+                        envName,
+                        publishPath,
+                        workingDir,
+                        buildCommand,
+                        nodeImageVersion,
+                        docId,
+                        gwProducts,
+                        gwPlatforms,
+                        gwVersions,
+                        src_id
+                    )
+                )
             }
-            docBuildSubProjects.add(docBuildType)
+
         }
-        return docBuildSubProjects
+        return Project {
+            name = "$docTitle ($docId)"
+            id = resolveRelativeIdFromIdString(docId)
+
+            docBuildSubProjects.forEach {
+                buildType(it)
+            }
+        }
     }
 
     fun createRootProjectForDocs(): Project {
@@ -199,14 +271,8 @@ object HelperObjects {
         val srcIds = mutableListOf<String>()
         for (i in 0 until buildConfigs.length()) {
             val buildConfig = buildConfigs.getJSONObject(i)
-            val docId = buildConfig.getString("docId")
             val srcId = buildConfig.getString("srcId")
-            val gwBuildType = buildConfig.getString("buildType")
-            val docProject = createDocProject(docId)
-            val docBuildTypes = createDocBuildTypes(docId, srcId, gwBuildType)
-            docBuildTypes.forEach {
-                docProject.buildType(it)
-            }
+            val docProject = createDocProject(buildConfig, srcId)
             mainProject.subProject(docProject)
 
             srcIds.add(srcId)
@@ -273,77 +339,6 @@ object BuildStorybook : Template({
     }
 })
 
-object BuildYarn : Template({
-    name = "Build a yarn project"
-
-    params {
-        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
-        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
-        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
-        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
-        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
-        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
-        text("env.WORKING_DIR", "%WORKING_DIR%")
-        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-    }
-
-    steps {
-        script {
-            name = "Build the yarn project"
-            id = "BUILD_OUTPUT"
-            scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    # legacy Jutro repos
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
-                    npm config set @jutro:registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/globalization-npm-release -s @gwre-g11n
-                    npm config set @gwre-g11n:registry https://artifactory.guidewire.com/api/npm/globalization-npm-release/
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/elixir -s @elixir
-                    npm config set @elixir:registry https://artifactory.guidewire.com/api/npm/elixir/
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev -s @gtui
-                    npm config set @gtui:registry https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev/
-                                        
-                    # new Jutro proxy repo
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
-                    npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
-
-                    # Doctools repo
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
-                    npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
-                    
-                    if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                        export TARGET_URL="%env.TARGET_URL_PROD%"
-                    fi
-                    
-                    export BASE_URL=/%env.PUBLISH_PATH%/
-                    cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
-                    yarn
-                    yarn ${'$'}{YARN_BUILD_COMMAND}
-                """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:%NODE_IMAGE_VERSION%"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
-            dockerRunParameters = "--user 1000:1000"
-        }
-    }
-
-    features {
-        dockerSupport {
-            id = "TEMPLATE_BUILD_EXT_1"
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_155"
-            }
-        }
-    }
-
-    vcs {
-        cleanCheckout = true
-    }
-})
 
 object ZipUpSources : Template({
     name = "Zip up the source files"
@@ -524,100 +519,29 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     }
 })
 
-object CrawlDocumentAndUpdateSearchIndex : Template({
-    name = "Update the search index"
-    artifactRules = """
-        **/*.log => logs
-        config.json
-        tmp_config.json
-    """.trimIndent()
 
-    params {
-        text(
-            "env.DEPLOY_ENV",
-            "%DEPLOY_ENV%",
-            label = "Deployment environment",
-            description = "The environment on which you want reindex documents",
-            allowEmpty = false
-        )
-        text(
-            "env.DOC_ID",
-            "%DOC_ID%",
-            label = "Doc ID",
-            description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
-            allowEmpty = true
-        )
-        text(
-            "env.CONFIG_FILE_URL",
-            "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
-            allowEmpty = false
-        )
-        text(
-            "env.CONFIG_FILE_URL_PROD",
-            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
-            allowEmpty = false
-        )
-        text("env.DOC_S3_URL", "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.DOC_S3_URL_PROD", "https://ditaot.internal.us-east-2.service.guidewire.net", allowEmpty = false)
-        text(
-            "env.DOC_S3_URL_PORTAL2",
-            "https://portal2.internal.us-east-2.service.guidewire.net",
-            allowEmpty = false
-        )
-        text(
-            "env.ELASTICSEARCH_URLS",
-            "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
-            allowEmpty = false
-        )
-        text(
-            "env.ELASTICSEARCH_URLS_PROD",
-            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
-            allowEmpty = false
-        )
-        text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
-        text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
-        text("env.CONFIG_FILE", "%teamcity.build.workingDir%/config.json", allowEmpty = false)
-    }
-
-    steps {
-        script {
-            name = "Get config file"
-            id = "GET_CONFIG_FILE"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export TMP_CONFIG_FILE="%teamcity.build.workingDir%/tmp_config.json"
-                
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
-                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
-                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > %env.CONFIG_FILE%                 
-                elif [[ "%env.DEPLOY_ENV%" == "portal2" ]]; then
-                    export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
-                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
-                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > %env.CONFIG_FILE%
-                else
-                    curl ${'$'}CONFIG_FILE_URL > %env.CONFIG_FILE%
-                fi
-            """.trimIndent()
-        }
-        script {
+object BuildSteps {
+    fun createCrawlDocStep(deploy_env: String, doc_id: String): ScriptBuildStep {
+        return ScriptBuildStep {
             name = "Crawl the document and update the index"
-            id = "CRAWL_DOC"
             scriptContent = """
                 #!/bin/bash
                 set -xe
                 
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export DOC_S3_URL="%env.DOC_S3_URL_PROD%"
-                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
-                    export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
-                elif [[ "%env.DEPLOY_ENV%" == "portal2" ]]; then
-                    export DOC_S3_URL="%env.DOC_S3_URL_PORTAL2%"
-                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
-                    export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
+                export DOC_ID="$doc_id"
+                
+                if [[ "$deploy_env" == "prod" ]]; then
+                    export DOC_S3_URL="https://ditaot.internal.us-east-2.service.guidewire.net"
+                    export ELASTICSEARCH_URLS="https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+                    export APP_BASE_URL="https://docs.guidewire.com"
+                elif [[ "$deploy_env" == "portal2" ]]; then
+                    export DOC_S3_URL="https://portal2.internal.us-east-2.service.guidewire.net"
+                    export ELASTICSEARCH_URLS="https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+                    export APP_BASE_URL="https://docs.guidewire.com"
+                else
+                    export DOC_S3_URL="https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
+                    export ELASTICSEARCH_URLS="https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
+                    export APP_BASE_URL="https://docs.${deploy_env}.ccs.guidewire.net"
                 fi
                                 
                 cat > scrapy.cfg <<- EOM
@@ -632,15 +556,129 @@ object CrawlDocumentAndUpdateSearchIndex : Template({
         }
     }
 
-    features {
-        dockerSupport {
-            id = "DockerSupport"
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_155"
-            }
+    fun createGetConfigFileStep(deploy_env: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Get config file"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
+                export TMP_CONFIG_FILE="%teamcity.build.workingDir%/tmp_config.json"
+                
+                if [[ "$deploy_env" == "prod" ]]; then
+                    export CONFIG_FILE_URL="https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
+                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}CONFIG_FILE                 
+                elif [[ "$deploy_env" == "portal2" ]]; then
+                    export CONFIG_FILE_URL="https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
+                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}CONFIG_FILE
+                else
+                    export CONFIG_FILE_URL="https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+                    curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
+                fi
+            """.trimIndent()
         }
     }
-})
 
+    fun createBuildYarnProjectStep(
+        deploy_env: String,
+        publish_path: String,
+        working_dir: String,
+        build_command: String?,
+        node_image_version: String?,
+        doc_id: String,
+        gw_products: String,
+        gw_platforms: String,
+        gw_versions: String
+    ): ScriptBuildStep {
+        val nodeImageVersion = node_image_version ?: "12.14.1"
+        val buildCommand = build_command ?: "build"
+        return ScriptBuildStep {
+            name = "Build the yarn project"
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    export GW_DOC_ID="$doc_id"
+                    export GW_PRODUCT="$gw_products"
+                    export GW_PLATFORM="$gw_platforms"
+                    export GW_VERSION="$gw_versions"
+                    
+                    # legacy Jutro repos
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
+                    npm config set @jutro:registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/globalization-npm-release -s @gwre-g11n
+                    npm config set @gwre-g11n:registry https://artifactory.guidewire.com/api/npm/globalization-npm-release/
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/elixir -s @elixir
+                    npm config set @elixir:registry https://artifactory.guidewire.com/api/npm/elixir/
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev -s @gtui
+                    npm config set @gtui:registry https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev/
+                                        
+                    # new Jutro proxy repo
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
+                    npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
+
+                    # Doctools repo
+                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
+                    npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
+                    
+                    if [[ "$deploy_env" == "prod" ]]; then
+                        export TARGET_URL="https://docs.guidewire.com"
+                    else
+                        export TARGET_URL="https://docs.${deploy_env}.ccs.guidewire.net"
+                    fi
+                    
+                    export BASE_URL=/${publish_path}/
+                    cd src_root/${working_dir}
+                    yarn
+                    yarn $buildCommand
+                """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:${nodeImageVersion}"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "--user 1000:1000"
+        }
+    }
+}
+
+object BuildFeatures {
+    object GwDockerSupportFeature : DockerSupportFeature({
+        id = "DockerSupport"
+        loginToRegistry = on {
+            dockerRegistryId = "PROJECT_EXT_155"
+        }
+    })
+
+    object GwSshAgentFeature : SshAgent({
+        teamcitySshKey = "sys-doc.rsa"
+    })
+
+    object GwOxygenWebhelpLicenseFeature : BuildFeature({
+        id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
+        type = "JetBrains.SharedResources"
+        param("locks-param", "OxygenWebhelpLicense readLock")
+    })
+}
+
+object BuildTriggers {
+
+    fun createVcsTriggerForExportedVcsRoot(vcs_root_id: String, src_id: String): VcsTrigger {
+        return VcsTrigger({
+            triggerRules = """
+                +:root=${vcs_root_id};comment=\[$src_id\]:**
+                """.trimIndent()
+        })
+    }
+
+    fun createVcsTriggerForNonDitaBuilds(vcs_root_id: String): VcsTrigger {
+        return VcsTrigger({
+            triggerRules = """
+                +:root=${vcs_root_id}:**
+                """.trimIndent()
+        })
+    }
+}
 
 
