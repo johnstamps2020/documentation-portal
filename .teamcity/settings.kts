@@ -46,7 +46,7 @@ project {
     subProject(Server)
     subProject(Content)
     subProject(HelperObjects.createDocBuilds())
-    subProject(Sources)
+//    subProject(Sources)
 
     features {
         feature {
@@ -4997,7 +4997,7 @@ object Content : Project({
 
     subProject(ServiceBuilds)
     subProject(XdocsExportBuilds)
-    subProject(BuildListenerBuilds)
+//    subProject(BuildListenerBuilds)
     buildType(UpdateSearchIndex)
     buildType(CleanUpIndex)
     buildType(GenerateSitemap)
