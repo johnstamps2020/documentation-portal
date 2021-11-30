@@ -136,12 +136,15 @@ object HelperObjects {
 
     })
 
+    fun resolveRelativeIdFromIdString(id: String): RelativeId {
+        return RelativeId(removeSpecialCharacters(id))
+    }
 
     fun createDocBuildVcsRoot(src_id: String): GitVcsRoot {
         val srcConfig = getObjectById(sourceConfigs, "id", src_id)
         return GitVcsRoot {
             name = src_id
-            id = RelativeId(removeSpecialCharacters(src_id))
+            id = resolveRelativeIdFromIdString(src_id)
             url = srcConfig.getString("gitUrl")
             branch = srcConfig.getString("branch")
             authMethod = uploadedKey {
@@ -150,20 +153,24 @@ object HelperObjects {
         }
     }
 
-    fun createDocBuildProject(build_config: JSONObject): Project {
-        val docId = build_config.getString("docId")
-        val docConfig = getObjectById(docConfigs, "id", docId)
+    fun createDocBuildProject(doc_id: String, src_id: String): Project {
+        val docConfig = getObjectById(docConfigs, "id", doc_id)
         val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
         val mainProject = Project {
-            name = "$docTitle ($docId)"
-            id = RelativeId(removeSpecialCharacters(docId))
+            name = "$docTitle ($doc_id)"
+            id = resolveRelativeIdFromIdString(doc_id)
         }
         for (i in 0 until docEnvironments.length()) {
             val envName = docEnvironments.getString(i)
-            mainProject.subProject {
+            mainProject.buildType {
                 name = "Publish to $envName"
-                id = RelativeId(removeSpecialCharacters("$docId$envName"))
+                id = resolveRelativeIdFromIdString("$doc_id$envName")
+
+                vcs {
+                    root(resolveRelativeIdFromIdString(src_id))
+                    cleanCheckout = true
+                }
             }
         }
         return mainProject
@@ -172,14 +179,16 @@ object HelperObjects {
     fun createDocBuilds(): Project {
         val mainProject = Project {
             name = "Docs"
-            id = RelativeId(removeSpecialCharacters("Docs"))
+            id = resolveRelativeIdFromIdString("Docs")
         }
         val srcIds = mutableListOf<String>()
         for (i in 0 until buildConfigs.length()) {
             val buildConfig = buildConfigs.getJSONObject(i)
-            val docProject = createDocBuildProject(buildConfig)
+            val docId = buildConfig.getString("docId")
+            val srcId = buildConfig.getString("srcId")
+            val docProject = createDocBuildProject(docId, srcId)
             mainProject.subProject(docProject)
-            srcIds.add(buildConfig.getString("srcId"))
+            srcIds.add(srcId)
         }
         for (srcId in srcIds.distinct()) {
             mainProject.vcsRoot(createDocBuildVcsRoot(srcId))
