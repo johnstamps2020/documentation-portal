@@ -31,7 +31,6 @@ project {
     template(BuildDockerImage)
     template(BuildYarn)
     template(ZipUpSources)
-    template(BuildSphinx)
     template(BuildStorybook)
     template(CrawlDocumentAndUpdateSearchIndex)
     template(RunContentValidations)
@@ -46,7 +45,7 @@ project {
     subProject(Infrastructure)
     subProject(Server)
     subProject(Content)
-    subProject(Docs)
+    subProject(HelperObjects.createDocBuilds())
     subProject(Sources)
 
     features {
@@ -2560,6 +2559,7 @@ object HelperObjects {
                             schedulingPolicy = weekly {
                                 dayOfWeek = ScheduleTrigger.DAY.Saturday
                                 hour = sch_hour_weekly
+                                minute = sch_minute_weekly
                             }
                         }
 
@@ -3034,7 +3034,6 @@ object HelperObjects {
 
             when (buildType) {
                 "yarn" -> buildTemplate = BuildYarn
-                "sphinx" -> buildTemplate = BuildSphinx
                 "storybook" -> buildTemplate = BuildStorybook
                 "source-zip" -> buildTemplate = ZipUpSources
             }
@@ -3671,7 +3670,6 @@ object HelperObjects {
 
             when (docBuildType) {
                 "yarn" -> templates(BuildYarn)
-                "sphinx" -> templates(BuildSphinx)
                 "dita" -> templates(RunContentValidations)
                 "source-zip" -> templates(ZipUpSources)
             }
@@ -4001,6 +3999,55 @@ object HelperObjects {
         return sourcesToValidate
     }
 
+    fun createDocBuildVcsRoot(src_id: String): GitVcsRoot {
+        val srcConfig = getObjectById(sourceConfigs, "id", src_id)
+        return GitVcsRoot {
+            name = src_id
+            id = RelativeId(getCleanId("${src_id}_docBuilds"))
+            url = srcConfig.getString("gitUrl")
+            branch = srcConfig.getString("branch")
+            authMethod = uploadedKey {
+                uploadedKey = "sys-doc.rsa"
+            }
+        }
+    }
+
+    fun createDocBuildProject(build_config: JSONObject): Project {
+        val docId = build_config.getString("docId")
+        val docConfig = getObjectById(docConfigs, "id", docId)
+        val docTitle = docConfig.getString("title")
+        val docEnvironments = docConfig.getJSONArray("environments")
+        val mainProject = Project {
+            name = "${docTitle} (${docId})"
+            id = RelativeId(getCleanId("${docId}_docBuilds"))
+        }
+        for (i in 0 until docEnvironments.length()) {
+            val envName = docEnvironments.getString(i)
+            mainProject.subProject {
+                name = "Publish to ${envName}"
+                id = RelativeId(getCleanId("${docId}_${envName}_docBuilds"))
+            }
+        }
+        return mainProject
+    }
+
+    fun createDocBuilds(): Project {
+        val mainProject = Project {
+            name = "Docs"
+            id = RelativeId("Docs")
+        }
+        val srcIds = mutableListOf<String>()
+        for (i in 0 until buildConfigs.length()) {
+            val buildConfig = buildConfigs.getJSONObject(i)
+            val docProject = createDocBuildProject(buildConfig)
+            mainProject.subProject(docProject)
+            srcIds.add(buildConfig.getString("srcId"))
+        }
+        for (srcId in srcIds.distinct()) {
+            mainProject.vcsRoot(createDocBuildVcsRoot(srcId))
+        }
+        return mainProject
+    }
 }
 
 object ExportFilesFromXDocsToBitbucket : BuildType({
@@ -4423,61 +4470,6 @@ object BuildStorybook : Template({
                 NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
-        }
-    }
-
-    vcs {
-        cleanCheckout = true
-    }
-})
-
-object BuildSphinx : Template({
-    name = "Build a Sphinx project"
-
-    params {
-        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
-        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
-        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
-        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
-        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
-        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
-        text("env.WORKING_DIR", "%WORKING_DIR%")
-        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-    }
-
-    vcs {
-        root(vcsrootmasteronly)
-    }
-
-    steps {
-        script {
-            name = "Build the Sphinx project"
-            id = "BUILD_OUTPUT"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export TARGET_URL="%env.TARGET_URL_PROD%"
-                fi
-                
-                export BASE_URL=/%env.PUBLISH_PATH%/
-                
-                pip install poetry
-                apt-get update && apt-get install -y build-essential
-                apt-get install -y python3-sphinx
-                cd %env.SOURCES_ROOT%
-                poetry config virtualenvs.create false
-                poetry install
-                poetry run python get_specs.py
-                make html
-                cp -r ./_build/html ./build
-            """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
@@ -5010,13 +5002,6 @@ object Content : Project({
     buildType(CleanUpIndex)
     buildType(GenerateSitemap)
     buildType(UploadPdfsForEscrow)
-})
-
-object Docs : Project({
-    name = "Docs"
-
-    HelperObjects.createProjects().forEach(this::subProject)
-
 })
 
 object Sources : Project({
