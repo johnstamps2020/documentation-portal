@@ -16,7 +16,10 @@ project {
     }
 
 
-    subProject(HelperObjects.createDocBuilds())
+    subProject(HelperObjects.createRootProjectForDocs())
+    template(BuildYarn)
+    template(BuildDocSiteOutputFromDita)
+    template(CrawlDocumentAndUpdateSearchIndex)
 
     features {
         feature {
@@ -140,7 +143,7 @@ object HelperObjects {
         return RelativeId(removeSpecialCharacters(id))
     }
 
-    fun createDocBuildVcsRoot(src_id: String): GitVcsRoot {
+    fun createDocVcsRoot(src_id: String): GitVcsRoot {
         val srcConfig = getObjectById(sourceConfigs, "id", src_id)
         return GitVcsRoot {
             name = src_id
@@ -153,17 +156,27 @@ object HelperObjects {
         }
     }
 
-    fun createDocBuildProject(doc_id: String, src_id: String): Project {
+    fun createDocProject(doc_id: String): Project {
         val docConfig = getObjectById(docConfigs, "id", doc_id)
         val docTitle = docConfig.getString("title")
-        val docEnvironments = docConfig.getJSONArray("environments")
-        val mainProject = Project {
+        return Project {
             name = "$docTitle ($doc_id)"
             id = resolveRelativeIdFromIdString(doc_id)
         }
+    }
+
+    fun createDocBuildTypes(doc_id: String, src_id: String, gw_build_type: String): List<BuildType> {
+        val docBuildSubProjects = mutableListOf<BuildType>()
+        val docConfig = getObjectById(docConfigs, "id", doc_id)
+        val docEnvironments = docConfig.getJSONArray("environments")
+        val buildTemplates = mutableListOf<Template>(CrawlDocumentAndUpdateSearchIndex)
+        when (gw_build_type) {
+            "dita" -> buildTemplates.add(0, BuildDocSiteOutputFromDita)
+            "yarn" -> buildTemplates.add(0, BuildYarn)
+        }
         for (i in 0 until docEnvironments.length()) {
             val envName = docEnvironments.getString(i)
-            mainProject.buildType {
+            val docBuildType = BuildType {
                 name = "Publish to $envName"
                 id = resolveRelativeIdFromIdString("$doc_id$envName")
 
@@ -171,12 +184,14 @@ object HelperObjects {
                     root(resolveRelativeIdFromIdString(src_id))
                     cleanCheckout = true
                 }
+                templates = buildTemplates
             }
+            docBuildSubProjects.add(docBuildType)
         }
-        return mainProject
+        return docBuildSubProjects
     }
 
-    fun createDocBuilds(): Project {
+    fun createRootProjectForDocs(): Project {
         val mainProject = Project {
             name = "Docs"
             id = resolveRelativeIdFromIdString("Docs")
@@ -186,12 +201,18 @@ object HelperObjects {
             val buildConfig = buildConfigs.getJSONObject(i)
             val docId = buildConfig.getString("docId")
             val srcId = buildConfig.getString("srcId")
-            val docProject = createDocBuildProject(docId, srcId)
+            val gwBuildType = buildConfig.getString("buildType")
+            val docProject = createDocProject(docId)
+            val docBuildTypes = createDocBuildTypes(docId, srcId, gwBuildType)
+            docBuildTypes.forEach {
+                docProject.buildType(it)
+            }
             mainProject.subProject(docProject)
+
             srcIds.add(srcId)
         }
         for (srcId in srcIds.distinct()) {
-            mainProject.vcsRoot(createDocBuildVcsRoot(srcId))
+            mainProject.vcsRoot(createDocVcsRoot(srcId))
         }
         return mainProject
     }
@@ -372,6 +393,9 @@ object ZipUpSources : Template({
     }
 })
 
+object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false)
+object BuildDocSiteAndLocalOutputFromDita : BuildOutputFromDita(createZipPackage = true)
+
 open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     if (createZipPackage) {
         name = "Build the doc site and local output from DITA"
@@ -499,10 +523,6 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         }
     }
 })
-
-object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false)
-object BuildDocSiteAndLocalOutputFromDita : BuildOutputFromDita(createZipPackage = true)
-
 
 object CrawlDocumentAndUpdateSearchIndex : Template({
     name = "Update the search index"
