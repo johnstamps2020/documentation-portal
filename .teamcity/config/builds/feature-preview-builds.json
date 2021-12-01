@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-EA-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
       "root": "Rules.ditamap",
       "srcId": "rulessrc",
       "docId": "rulesea",
