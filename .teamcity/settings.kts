@@ -2,9 +2,7 @@ import jetbrains.buildServer.configs.kotlin.v10.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -21,7 +19,6 @@ project {
 
 
     subProject(Docs.createRootProjectForDocs())
-    template(BuildDocSiteOutputFromDita)
 
     features {
         feature {
@@ -33,24 +30,6 @@ project {
         }
     }
 }
-
-object vcsrootmasteronly : GitVcsRoot({
-    name = "vcsrootmasteronly"
-    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
-    branchSpec = "+:refs/heads/master"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
-
-object vcsroot : GitVcsRoot({
-    name = "vcsroot"
-    url = "ssh://git@stash.guidewire.com/doctools/documentation-portal.git"
-    branchSpec = "+:refs/heads/*"
-    authMethod = uploadedKey {
-        uploadedKey = "sys-doc.rsa"
-    }
-})
 
 object Helpers {
     private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): JSONArray {
@@ -286,137 +265,6 @@ object Docs {
 object Sources {}
 
 object Server {}
-
-object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false)
-
-open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
-    if (createZipPackage) {
-        name = "Build the doc site and local output from DITA"
-    } else {
-        name = "Build the doc site output from DITA"
-        artifactRules = """
-            %env.SOURCES_ROOT%/%env.OUTPUT_PATH%/build-data.json => json
-        """.trimIndent()
-    }
-
-    params {
-        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
-        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
-        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
-        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.FILTER_PATH", "%FILTER_PATH%", allowEmpty = false)
-        text("env.ROOT_MAP", "%ROOT_MAP%", allowEmpty = false)
-        text("env.GIT_URL", "%GIT_URL%", allowEmpty = false)
-        text("env.GIT_BRANCH", "%GIT_BRANCH%", allowEmpty = false)
-        text("env.BUILD_PDF", "%BUILD_PDF%", allowEmpty = false)
-        text("env.CREATE_INDEX_REDIRECT", "%CREATE_INDEX_REDIRECT%", allowEmpty = false)
-        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-        text("env.WORKING_DIR", "%teamcity.build.checkoutDir%/%env.SOURCES_ROOT%", allowEmpty = false)
-        text("env.OUTPUT_PATH", "out", allowEmpty = false)
-        text("env.ZIP_SRC_DIR", "zip")
-    }
-
-    vcs {
-        cleanCheckout = true
-    }
-
-    steps {
-        script {
-            name = "Build doc site output from DITA"
-            id = "BUILD_DOC_SITE_OUTPUT"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\""
-                
-                if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
-                fi
-                
-                if [[ "%env.BUILD_PDF%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
-                elif [[ "%env.BUILD_PDF%" == "false" ]]; then
-                    export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
-                fi
-                
-                if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
-                fi
-                
-                SECONDS=0
-
-                echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
-                ${'$'}DITA_BASE_COMMAND
-                                                    
-                duration=${'$'}SECONDS
-                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-            """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-
-        }
-        if (createZipPackage) {
-            script {
-                name = "Build local output from DITA"
-                id = "BUILD_LOCAL_OUTPUT"
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params no -f webhelp_Guidewire_validate"
-                
-                if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
-                fi
-                
-                if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
-                fi
-                
-                SECONDS=0
-
-                echo "Building local output"
-                ${'$'}DITA_BASE_COMMAND
-                
-                if [[ "%env.BUILD_PDF%" == "true" ]]; then
-                    echo "Copying PDF from the doc site output to the local output"
-                    cp -avR "%env.WORKING_DIR%/%env.OUTPUT_PATH%/pdf" "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%"
-                fi
-                                    
-                duration=${'$'}SECONDS
-                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-            """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            script {
-                name = "Create a ZIP package"
-                id = "CREATE_ZIP_PACKAGE"
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-                             
-                echo "Creating a ZIP package"
-                cd "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%" || exit
-                zip -r "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/docs.zip" * &&
-                    mv "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/docs.zip" "%env.WORKING_DIR%/%env.OUTPUT_PATH%/" &&
-                    rm -rf "%env.WORKING_DIR%/%env.ZIP_SRC_DIR%"
-            """.trimIndent()
-            }
-        }
-    }
-
-    features {
-        dockerSupport {
-            id = "TEMPLATE_BUILD_EXT_1"
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_155"
-            }
-        }
-    }
-})
-
 
 object BuildSteps {
     fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
