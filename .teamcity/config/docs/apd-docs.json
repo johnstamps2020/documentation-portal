@@ -10,7 +10,10 @@
         "product": ["PolicyCenter"],
         "version": ["latest"]
       },
-      "environments": ["int"]
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true
     }
   ]
 }
