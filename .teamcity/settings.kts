@@ -20,7 +20,7 @@ project {
     }
 
 
-    subProject(HelperObjects.createRootProjectForDocs())
+    subProject(Docs.createRootProjectForDocs())
     template(BuildDocSiteOutputFromDita)
 
     features {
@@ -52,7 +52,7 @@ object vcsroot : GitVcsRoot({
     }
 })
 
-object HelperObjects {
+object Helpers {
     private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): JSONArray {
         val allConfigObjects = JSONArray()
         val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }
@@ -66,9 +66,9 @@ object HelperObjects {
 
     val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
     val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
-    private val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
+    val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
 
-    private fun getObjectById(objectList: JSONArray, idName: String, idValue: String): JSONObject {
+    fun getObjectById(objectList: JSONArray, idName: String, idValue: String): JSONObject {
         for (i in 0 until objectList.length()) {
             val obj = objectList.getJSONObject(i)
             if (obj.getString(idName) == idValue) {
@@ -87,13 +87,20 @@ object HelperObjects {
         return RelativeId(removeSpecialCharacters(id))
     }
 
+
+}
+
+object Docs {
     fun createDocBuildType(
         build_type_name: String,
         build_type_id: RelativeId,
         vcs_root_id: String,
         deploy_env: String,
         doc_id: String,
-        index_for_search: Boolean
+        index_for_search: Boolean,
+        working_dir: String,
+        publish_path: String,
+        output_path: String? = null
     ): BuildType {
 
         return BuildType {
@@ -101,9 +108,14 @@ object HelperObjects {
             id = build_type_id
 
             vcs {
-                root(resolveRelativeIdFromIdString(vcs_root_id))
+                root(Helpers.resolveRelativeIdFromIdString(vcs_root_id))
                 cleanCheckout = true
             }
+
+            val uploadContentToS3BucketStep =
+                BuildSteps.createUploadContentToS3BucketStep(deploy_env, working_dir, output_path, publish_path)
+            steps.step(uploadContentToS3BucketStep)
+            steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
 
             if (index_for_search) {
                 val configFileStep = BuildSteps.createGetConfigFileStep(deploy_env)
@@ -121,10 +133,10 @@ object HelperObjects {
     }
 
     fun createDocVcsRoot(src_id: String): GitVcsRoot {
-        val srcConfig = getObjectById(sourceConfigs, "id", src_id)
+        val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
         return GitVcsRoot {
             name = src_id
-            id = resolveRelativeIdFromIdString(src_id)
+            id = Helpers.resolveRelativeIdFromIdString(src_id)
             url = srcConfig.getString("gitUrl")
             branch = srcConfig.getString("branch")
             authMethod = uploadedKey {
@@ -138,7 +150,7 @@ object HelperObjects {
         val docId = build_config.getString("docId")
         val gwBuildType = build_config.getString("buildType")
         val workingDir = if (build_config.has("workingDir")) build_config.getString("workingDir") else ""
-        val docConfig = getObjectById(docConfigs, "id", docId)
+        val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
         val metadata = docConfig.getJSONObject("metadata")
@@ -150,15 +162,24 @@ object HelperObjects {
         for (i in 0 until docEnvironments.length()) {
             val envName = docEnvironments.getString(i)
             val docBuildTypeName = "Publish to $envName"
-            val docBuildTypeId = resolveRelativeIdFromIdString("$docId$envName")
+            val docBuildTypeId = Helpers.resolveRelativeIdFromIdString("$docId$envName")
             val docBuildType =
-                createDocBuildType(docBuildTypeName, docBuildTypeId, src_id, envName, docId, indexForSearch)
+                createDocBuildType(
+                    docBuildTypeName,
+                    docBuildTypeId,
+                    src_id,
+                    envName,
+                    docId,
+                    indexForSearch,
+                    workingDir,
+                    publishPath
+                )
             if (gwBuildType == "yarn") {
                 val nodeImageVersion =
                     if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
                 val buildCommand =
                     if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
-                val YarnBuildStep = BuildSteps.createBuildYarnProjectStep(
+                val yarnBuildStep = BuildSteps.createBuildYarnProjectStep(
                     envName,
                     publishPath,
                     workingDir,
@@ -169,8 +190,8 @@ object HelperObjects {
                     gwPlatforms,
                     gwVersions
                 )
-                docBuildType.steps.step(YarnBuildStep)
-                docBuildType.steps.stepsOrder.add(0, YarnBuildStep.id.toString())
+                docBuildType.steps.step(yarnBuildStep)
+                docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
                 docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
             } else if (gwBuildType == "dita") {
                 if (envName == "prod") {
@@ -186,7 +207,7 @@ object HelperObjects {
 
         return Project {
             name = "$docTitle ($docId)"
-            id = resolveRelativeIdFromIdString(docId)
+            id = Helpers.resolveRelativeIdFromIdString(docId)
 
             docBuildSubProjects.forEach {
                 buildType(it)
@@ -197,11 +218,11 @@ object HelperObjects {
     fun createRootProjectForDocs(): Project {
         val mainProject = Project {
             name = "Docs"
-            id = resolveRelativeIdFromIdString("Docs")
+            id = Helpers.resolveRelativeIdFromIdString("Docs")
         }
         val srcIds = mutableListOf<String>()
-        for (i in 0 until buildConfigs.length()) {
-            val buildConfig = buildConfigs.getJSONObject(i)
+        for (i in 0 until Helpers.buildConfigs.length()) {
+            val buildConfig = Helpers.buildConfigs.getJSONObject(i)
             val srcId = buildConfig.getString("srcId")
             val docProject = createDocProject(buildConfig, srcId)
             mainProject.subProject(docProject)
@@ -214,6 +235,10 @@ object HelperObjects {
         return mainProject
     }
 }
+
+object Sources {}
+
+object Server {}
 
 object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false)
 
@@ -362,8 +387,8 @@ object BuildSteps {
         val elasticsearchUrls: String
         val appBaseUrl: String
         if (arrayListOf("prod", "portal2").contains(deploy_env)) {
-                elasticsearchUrls = "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
-                appBaseUrl = "https://docs.guidewire.com"
+            elasticsearchUrls = "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+            appBaseUrl = "https://docs.guidewire.com"
         } else {
             elasticsearchUrls = "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
             appBaseUrl = "https://docs.${deploy_env}.ccs.guidewire.net"
@@ -443,6 +468,102 @@ object BuildSteps {
                     echo "Uploading from Teamcity to prod"
                     aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
                 """.trimIndent()
+        }
+    }
+
+    fun createBuildZipPackageStep(working_dir: String, output_path: String): ScriptBuildStep {
+
+        val zipSrcDir = "zip"
+        val zipPackageName = "docs.zip"
+
+        return ScriptBuildStep {
+            name = "Build a ZIP package"
+            id = "BUILD_ZIP_PACKAGE"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                echo "Creating a ZIP package"
+                cd "${working_dir}/${zipSrcDir}/${output_path}" || exit
+                zip -r "${working_dir}/${zipSrcDir}/${zipPackageName}" * &&
+                    mv "${working_dir}/${zipSrcDir}/${zipPackageName}" "/${output_path}/" &&
+                    rm -rf "${working_dir}/${zipSrcDir}"
+            """.trimIndent()
+        }
+    }
+
+    fun createUploadContentToS3BucketStep(
+        deploy_env: String,
+        working_dir: String,
+        output_path: String?,
+        publish_path: String
+    ): ScriptBuildStep {
+
+        val rootDir =
+            if (working_dir.isNotEmpty()) "%teamcity.build.checkoutDir%/src_root/${working_dir}" else "%teamcity.build.checkoutDir%/src_root"
+        val s3BucketName = "tenant-doctools-${deploy_env}-builds"
+
+        return ScriptBuildStep {
+            name = "Upload content to the S3 bucket"
+            id = "UPLOAD_CONTENT_TO_S3_BUCKET"
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    export ROOT_DIR="$rootDir"
+                    
+                    if [[ "$output_path" != "null" ]]; then
+                        export OUTPUT_PATH="$output_path"
+                    elif [[ -d "${rootDir}/out" ]]; then
+                        export OUTPUT_PATH="out"
+                    elif [[ -d "${rootDir}/dist" ]]; then
+                        export OUTPUT_PATH="dist"
+                    elif [[ -d "${rootDir}/build" ]]; then
+                        export OUTPUT_PATH="build"
+                    fi
+                    
+                    echo "Output path set to ${'$'}OUTPUT_PATH"
+
+                    aws s3 sync ${rootDir}/${'$'}OUTPUT_PATH s3://${s3BucketName}/${publish_path} --delete
+                """.trimIndent()
+        }
+    }
+
+    fun createBuildDitaProjectStep(): ScriptBuildStep {
+
+        return ScriptBuildStep {
+            name = "Build the DITA project"
+            id = "BUILD_DITA_PROJECT"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\""
+                
+                if [[ ! -z "%env.FILTER_PATH%" ]]; then
+                    export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
+                fi
+                
+                if [[ "%env.BUILD_PDF%" == "true" ]]; then
+                    export DITA_BASE_COMMAND+=" -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
+                elif [[ "%env.BUILD_PDF%" == "false" ]]; then
+                    export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
+                fi
+                
+                if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
+                    export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
+                fi
+                
+                SECONDS=0
+
+                echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
+                ${'$'}DITA_BASE_COMMAND
+                                                    
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
 
