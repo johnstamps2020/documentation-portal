@@ -237,7 +237,13 @@ object HelperObjects {
                 docBuildType.steps.stepsOrder.add(0, YarnBuildStep.id.toString())
                 docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
             } else if (gwBuildType == "dita") {
-                println("To be implemented")
+                if (envName == "prod") {
+                    val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publishPath)
+                    docBuildType.steps.step(copyFromStagingToProdStep)
+                    docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+                } else {
+                    println("To be implemented")
+                }
             }
             docBuildSubProjects.add(docBuildType)
         }
@@ -570,6 +576,28 @@ object BuildSteps {
                     curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
                 fi
             """.trimIndent()
+        }
+    }
+
+    fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Copy from S3 on staging to S3 on Prod"
+            id = "COPY_FROM_STAGING_TO_PROD"
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Copying from staging to Teamcity"
+                    aws s3 sync s3://tenant-doctools-staging-builds/${publish_path} ${publish_path}/ --delete
+                    
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    
+                    echo "Uploading from Teamcity to prod"
+                    aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
+                """.trimIndent()
         }
     }
 
