@@ -4299,7 +4299,7 @@ object RunContentValidations : Template({
                 export OUTPUT_PATH="out/dita"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f dita -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
+                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f gw_dita -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.DITA_OT_WORKING_DIR%/%env.FILTER_PATH%\""
