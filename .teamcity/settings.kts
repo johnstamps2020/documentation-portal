@@ -493,6 +493,8 @@ object BuildSteps {
                     cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}CONFIG_FILE                 
                 elif [[ "$deploy_env" == "portal2" ]]; then
                     cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}CONFIG_FILE
+                else
+                    cat ${'$'}TMP_CONFIG_FILE > ${'$'}CONFIG_FILE
                 fi
             """.trimIndent()
         }
