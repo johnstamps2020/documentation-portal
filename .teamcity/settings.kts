@@ -175,12 +175,6 @@ object HelperObjects {
             features {
                 feature(BuildFeatures.GwDockerSupportFeature)
             }
-
-            triggers {
-                vcs {
-                    BuildTriggers.createVcsTriggerForNonDitaBuilds(vcs_root_id)
-                }
-            }
         }
     }
 
