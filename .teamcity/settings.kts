@@ -99,9 +99,8 @@ object Docs {
         doc_id: String,
         index_for_search: Boolean,
         publish_path: String,
-        build_config_working_dir: String?
+        working_dir: String
     ): BuildType {
-
         return BuildType {
             name = build_type_name
             id = build_type_id
@@ -111,14 +110,16 @@ object Docs {
                 cleanCheckout = true
             }
 
-            val uploadContentToS3BucketStep =
-                BuildSteps.createUploadContentToS3BucketStep(
-                    deploy_env,
-                    publish_path,
-                    build_config_working_dir
-                )
-            steps.step(uploadContentToS3BucketStep)
-            steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
+            if (deploy_env != "prod") {
+                val uploadContentToS3BucketStep =
+                    BuildSteps.createUploadContentToS3BucketStep(
+                        deploy_env,
+                        publish_path,
+                        working_dir
+                    )
+                steps.step(uploadContentToS3BucketStep)
+                steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
+            }
 
             if (index_for_search) {
                 val configFileStep = BuildSteps.createGetConfigFileStep(deploy_env)
@@ -152,7 +153,14 @@ object Docs {
         val docBuildSubProjects = mutableListOf<BuildType>()
         val docId = build_config.getString("docId")
         val gwBuildType = build_config.getString("buildType")
-        val buildConfigWorkingDir = if (build_config.has("workingDir")) build_config.getString("workingDir") else null
+        val workingDir = when (build_config.has("workingDir")) {
+            false -> {
+                "%teamcity.build.checkoutDir%"
+            }
+            true -> {
+                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
+            }
+        }
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
@@ -167,15 +175,15 @@ object Docs {
             val docBuildTypeName = "Publish to $envName"
             val docBuildTypeId = Helpers.resolveRelativeIdFromIdString("$docId$envName")
             val docBuildType = createDocBuildType(
-                    docBuildTypeName,
-                    docBuildTypeId,
-                    src_id,
-                    envName,
-                    docId,
-                    indexForSearch,
-                    publishPath,
-                    buildConfigWorkingDir
-                )
+                docBuildTypeName,
+                docBuildTypeId,
+                src_id,
+                envName,
+                docId,
+                indexForSearch,
+                publishPath,
+                workingDir
+            )
             if (gwBuildType == "yarn") {
                 val nodeImageVersion =
                     if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
@@ -190,7 +198,7 @@ object Docs {
                     gwProducts,
                     gwPlatforms,
                     gwVersions,
-                    buildConfigWorkingDir
+                    workingDir
                 )
                 docBuildType.steps.step(yarnBuildStep)
                 docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
@@ -201,7 +209,43 @@ object Docs {
                     docBuildType.steps.step(copyFromStagingToProdStep)
                     docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
                 } else {
-                    println("To be implemented")
+                    val rootMap = build_config.getString("root")
+                    val indexRedirect = when (build_config.has("indexRedirect")) {
+                        true -> {
+                            build_config.getBoolean("indexRedirect")
+                        }
+                        else -> {
+                            false
+                        }
+
+                    }
+                    val buildFilter = when (build_config.has("filter")) {
+                        true -> {
+                            build_config.getString("filter")
+                        }
+                        else -> {
+                            null
+                        }
+                    }
+                    val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
+                    val srcUrl = srcConfig.getString("gitUrl")
+                    val srcBranch = srcConfig.getString("branch")
+                    val buildPdf = envName == "int"
+                    val buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                        rootMap,
+                        docId,
+                        gwProducts,
+                        gwPlatforms,
+                        gwVersions,
+                        buildFilter,
+                        indexRedirect,
+                        srcUrl,
+                        srcBranch,
+                        buildPdf,
+                        workingDir
+                    )
+                    docBuildType.steps.step(buildDitaProjectStep)
+                    docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
                 }
             }
             docBuildSubProjects.add(docBuildType)
@@ -497,11 +541,8 @@ object BuildSteps {
     fun createUploadContentToS3BucketStep(
         deploy_env: String,
         publish_path: String,
-        build_config_working_dir: String?
+        working_dir: String
     ): ScriptBuildStep {
-
-        val workingDir =
-            if (!build_config_working_dir.isNullOrEmpty()) "%teamcity.build.checkoutDir%/src_root/${build_config_working_dir}" else "%teamcity.build.checkoutDir%/src_root"
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
 
         return ScriptBuildStep {
@@ -511,22 +552,61 @@ object BuildSteps {
                     #!/bin/bash
                     set -xe
                     
-                    if [[ -d "${workingDir}/out" ]]; then
+                    if [[ -d "${working_dir}/out" ]]; then
                         export OUTPUT_PATH="out"
-                    elif [[ -d "${workingDir}/dist" ]]; then
+                    elif [[ -d "${working_dir}/dist" ]]; then
                         export OUTPUT_PATH="dist"
-                    elif [[ -d "${workingDir}/build" ]]; then
+                    elif [[ -d "${working_dir}/build" ]]; then
                         export OUTPUT_PATH="build"
                     fi
                     
                     echo "Output path set to ${'$'}OUTPUT_PATH"
 
-                    aws s3 sync ${workingDir}/${'$'}OUTPUT_PATH s3://${s3BucketName}/${publish_path} --delete
+                    aws s3 sync ${working_dir}/${'$'}OUTPUT_PATH s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
         }
     }
 
-    fun createBuildDitaProjectStep(): ScriptBuildStep {
+    fun createBuildDitaProjectStep(
+        root_map: String,
+        doc_id: String,
+        gw_products: String,
+        gw_platforms: String,
+        gw_versions: String,
+        build_filter: String?,
+        index_redirect: Boolean,
+        git_url: String,
+        git_branch: String,
+        build_pdf: Boolean,
+        working_dir: String
+    ): ScriptBuildStep {
+
+        var ditaBuildCommand = """
+            dita -i \"${working_dir}/${root_map}\" \
+            -o \"${working_dir}/out\" \ 
+            --use-doc-portal-params yes \
+            --gw-doc-id \"${doc_id}\" \ 
+            --gw-product \"$gw_products\" \ 
+            --gw-platform \"$gw_platforms\" \
+            --gw-version \"$gw_versions\" \ 
+            --generate.build.data yes \
+            --git.url \"$git_url" \
+            --git.branch \"$git_branch\""
+        """.trimIndent()
+
+        if (!build_filter.isNullOrEmpty()) {
+            ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
+        }
+
+        ditaBuildCommand += if (build_pdf) {
+            " -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
+        } else {
+            " -f webhelp_Guidewire_validate"
+        }
+
+        if (index_redirect) {
+            ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
+        }
 
         return ScriptBuildStep {
             name = "Build the DITA project"
@@ -534,27 +614,11 @@ object BuildSteps {
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params yes --gw-doc-id \"%env.GW_DOC_ID%\" --gw-product \"%env.GW_PRODUCT%\" --gw-platform \"%env.GW_PLATFORM%\" --gw-version \"%env.GW_VERSION%\" --generate.build.data yes --git.url \"%env.GIT_URL%\" --git.branch \"%env.GIT_BRANCH%\""
-                
-                if [[ ! -z "%env.FILTER_PATH%" ]]; then
-                    export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
-                fi
-                
-                if [[ "%env.BUILD_PDF%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
-                elif [[ "%env.BUILD_PDF%" == "false" ]]; then
-                    export DITA_BASE_COMMAND+=" -f webhelp_Guidewire_validate"
-                fi
-                
-                if [[ "%env.CREATE_INDEX_REDIRECT%" == "true" ]]; then
-                    export DITA_BASE_COMMAND+=" --create-index-redirect yes --webhelp.publication.toc.links all"
-                fi
-                
+                                
                 SECONDS=0
 
-                echo "Building output for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
-                ${'$'}DITA_BASE_COMMAND
+                echo "Building output"
+                $ditaBuildCommand
                                                     
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
@@ -573,11 +637,10 @@ object BuildSteps {
         gw_products: String,
         gw_platforms: String,
         gw_versions: String,
-        build_config_working_dir: String?
+        working_dir: String
     ): ScriptBuildStep {
         val nodeImageVersion = node_image_version ?: "12.14.1"
         val buildCommand = build_command ?: "build"
-        val workingSubDir = build_config_working_dir ?: ""
         val targetUrl =
             if (deploy_env == "prod") "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
 
@@ -613,7 +676,7 @@ object BuildSteps {
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                                         
                     export BASE_URL=/${publish_path}/
-                    cd src_root/${workingSubDir}
+                    cd "$working_dir"
                     yarn
                     yarn $buildCommand
                 """.trimIndent()
