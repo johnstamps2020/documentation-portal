@@ -122,10 +122,11 @@ object Docs {
             }
 
             if (index_for_search) {
-                val configFileStep = BuildSteps.createGetConfigFileStep(deploy_env)
+                val configFile = "%teamcity.build.workingDir%/config.json"
+                val configFileStep = BuildSteps.createGetConfigFileStep(deploy_env, configFile)
                 steps.step(configFileStep)
                 steps.stepsOrder.add(configFileStep.id.toString())
-                val crawlDocStep = BuildSteps.createCrawlDocStep(deploy_env, doc_id)
+                val crawlDocStep = BuildSteps.createCrawlDocStep(deploy_env, doc_id, configFile)
                 steps.step(crawlDocStep)
                 steps.stepsOrder.add(crawlDocStep.id.toString())
             }
@@ -418,7 +419,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
 
 
 object BuildSteps {
-    fun createCrawlDocStep(deploy_env: String, doc_id: String): ScriptBuildStep {
+    fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
             "prod" -> {
                 "https://ditaot.internal.us-east-2.service.guidewire.net"
@@ -448,6 +449,8 @@ object BuildSteps {
                 #!/bin/bash
                 set -xe
                 
+                export INDEX_NAME="gw-docs"
+                export CONFIG_FILE="$config_file"
                 export DOC_ID="$doc_id"
                 export DOC_S3_URL="$docS3Url"
                 export ELASTICSEARCH_URLS="$elasticsearchUrls"
@@ -465,7 +468,7 @@ object BuildSteps {
         }
     }
 
-    fun createGetConfigFileStep(deploy_env: String): ScriptBuildStep {
+    fun createGetConfigFileStep(deploy_env: String, config_file: String): ScriptBuildStep {
 
         val configFileUrl = if (arrayListOf("prod", "portal2").contains(deploy_env)) {
             "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
@@ -480,7 +483,7 @@ object BuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
+                export CONFIG_FILE="$config_file"
                 export TMP_CONFIG_FILE="%teamcity.build.workingDir%/tmp_config.json"
                 export CONFIG_FILE_URL="$configFileUrl"
                 
