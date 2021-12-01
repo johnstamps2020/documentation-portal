@@ -581,18 +581,8 @@ object BuildSteps {
         working_dir: String
     ): ScriptBuildStep {
 
-        var ditaBuildCommand = """
-            dita -i \"${working_dir}/${root_map}\" \
-            -o \"${working_dir}/out\" \ 
-            --use-doc-portal-params yes \
-            --gw-doc-id \"${doc_id}\" \ 
-            --gw-product \"$gw_products\" \ 
-            --gw-platform \"$gw_platforms\" \
-            --gw-version \"$gw_versions\" \ 
-            --generate.build.data yes \
-            --git.url \"$git_url" \
-            --git.branch \"$git_branch\""
-        """.trimIndent()
+        var ditaBuildCommand =
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/out\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes --git.url \"$git_url\" --git.branch \"$git_branch\""
 
         if (!build_filter.isNullOrEmpty()) {
             ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
