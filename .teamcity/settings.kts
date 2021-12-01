@@ -78,68 +78,10 @@ object HelperObjects {
         return JSONObject()
     }
 
-    private fun getObjectsById(objectList: JSONArray, idName: String, idValue: String): JSONArray {
-        val matches = JSONArray()
-        for (i in 0 until objectList.length()) {
-            val obj = objectList.getJSONObject(i)
-            if (obj.getString(idName) == idValue) {
-                matches.put(obj)
-            }
-        }
-        return matches
-    }
-
     private fun removeSpecialCharacters(stringToClean: String): String {
         val re = Regex("[^A-Za-z0-9]")
         return re.replace(stringToClean, "")
     }
-
-    private fun getCleanId(stringToClean: String): String {
-        val hashString = stringToClean.hashCode().toString()
-        return removeSpecialCharacters(hashString)
-    }
-
-    private fun getSourceById(sourceId: String, sourceList: JSONArray): Pair<String, String> {
-        for (i in 0 until sourceList.length()) {
-            val source = sourceList.getJSONObject(i)
-            if (source.getString("id") == sourceId) {
-                var sourceGitBranch = "master"
-                val sourceGitUrl = source.getString("gitUrl")
-                if (source.has("branch")) {
-                    sourceGitBranch = source.getString("branch")
-                }
-                return Pair(sourceGitUrl, sourceGitBranch)
-            }
-        }
-        return Pair("", "")
-    }
-
-    class DocVcsRoot(
-        vcs_root_id: RelativeId,
-        git_source_url: String,
-        git_source_branch: String,
-        git_additional_branches: List<String> = emptyList()
-    ) : GitVcsRoot({
-        id = vcs_root_id
-        name = vcs_root_id.toString()
-        url = git_source_url
-        authMethod = uploadedKey {
-            uploadedKey = "sys-doc.rsa"
-        }
-
-        if (git_source_branch != "") {
-            branch = "refs/heads/$git_source_branch"
-        }
-
-        if (git_additional_branches.isNotEmpty()) {
-            var branchSpecification = ""
-            for (element in git_additional_branches) {
-                branchSpecification += "+:refs/heads/${element}\n"
-            }
-            branchSpec = branchSpecification
-        }
-
-    })
 
     fun resolveRelativeIdFromIdString(id: String): RelativeId {
         return RelativeId(removeSpecialCharacters(id))
@@ -159,7 +101,7 @@ object HelperObjects {
             id = build_type_id
 
             vcs {
-                root(HelperObjects.resolveRelativeIdFromIdString(vcs_root_id))
+                root(resolveRelativeIdFromIdString(vcs_root_id))
                 cleanCheckout = true
             }
 
@@ -273,112 +215,7 @@ object HelperObjects {
     }
 }
 
-object BuildStorybook : Template({
-    name = "Get published Storybook"
-
-    params {
-        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
-        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
-        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
-        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
-        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
-        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
-        text("env.WORKING_DIR", "%WORKING_DIR%")
-    }
-
-    vcs {
-        root(vcsrootmasteronly)
-    }
-
-    steps {
-        script {
-            name = "Build Storybook"
-            id = "BUILD_OUTPUT"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                if [[ -f "ci/npmLogin.sh" ]]; then
-                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
-                    sh ci/npmLogin.sh
-                fi
-                
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export TARGET_URL="%env.TARGET_URL_PROD%"
-                fi
-                
-                export JUTRO_VERSION=%env.GW_VERSION%
-                
-                export BASE_URL=/%env.PUBLISH_PATH%/
-                cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
-                
-                yarn
-                NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
-            """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
-        }
-    }
-
-    vcs {
-        cleanCheckout = true
-    }
-})
-
-
-object ZipUpSources : Template({
-    name = "Zip up the source files"
-
-    params {
-        text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
-        text("env.GW_PRODUCT", "%GW_PRODUCT%", allowEmpty = false)
-        text("env.GW_PLATFORM", "%GW_PLATFORM%", allowEmpty = false)
-        text("env.GW_VERSION", "%GW_VERSION%", allowEmpty = false)
-        text("env.DEPLOY_ENV", "%DEPLOY_ENV%", allowEmpty = false)
-        text("env.NAMESPACE", "%NAMESPACE%", allowEmpty = false)
-        text("env.TARGET_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-        text("env.TARGET_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
-        text("env.WORKING_DIR", "%WORKING_DIR%")
-        text("env.SOURCES_ROOT", "%SOURCES_ROOT%", allowEmpty = false)
-        text("env.ZIP_FILENAME", "%ZIP_FILENAME%", allowEmpty = false)
-    }
-
-    vcs {
-        root(vcsrootmasteronly)
-    }
-
-    steps {
-        script {
-            name = "Create a zip file of all the sources"
-            id = "BUILD_OUTPUT"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                    export TARGET_URL="%env.TARGET_URL_PROD%"
-                fi
-                
-                export BASE_URL=/%env.PUBLISH_PATH%/
-                cd %env.SOURCES_ROOT%/%env.WORKING_DIR%
-                zip -r %env.ZIP_FILENAME%.zip . -x '*.git*'
-                zip -r %env.ZIP_FILENAME%.zip .gitignore
-                mkdir out
-                mv %env.ZIP_FILENAME%.zip out/%env.ZIP_FILENAME%.zip
-            """.trimIndent()
-        }
-    }
-
-    vcs {
-        cleanCheckout = true
-    }
-})
-
 object BuildDocSiteOutputFromDita : BuildOutputFromDita(createZipPackage = false)
-object BuildDocSiteAndLocalOutputFromDita : BuildOutputFromDita(createZipPackage = true)
 
 open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
     if (createZipPackage) {
@@ -511,6 +348,28 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
 
 object BuildSteps {
     fun createCrawlDocStep(deploy_env: String, doc_id: String): ScriptBuildStep {
+        val docS3Url: String = when (deploy_env) {
+            "prod" -> {
+                "https://ditaot.internal.us-east-2.service.guidewire.net"
+            }
+            "portal2" -> {
+                "https://portal2.internal.us-east-2.service.guidewire.net"
+            }
+            else -> {
+                "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
+            }
+        }
+        val elasticsearchUrls: String
+        val appBaseUrl: String
+        if (arrayListOf("prod", "portal2").contains(deploy_env)) {
+                elasticsearchUrls = "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+                appBaseUrl = "https://docs.guidewire.com"
+        } else {
+            elasticsearchUrls = "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
+            appBaseUrl = "https://docs.${deploy_env}.ccs.guidewire.net"
+        }
+
+
         return ScriptBuildStep {
             name = "Crawl the document and update the index"
             id = "CRAWL_DOCUMENT_UPDATE_INDEX"
@@ -519,21 +378,10 @@ object BuildSteps {
                 set -xe
                 
                 export DOC_ID="$doc_id"
+                export DOC_S3_URL="$docS3Url"
+                export ELASTICSEARCH_URLS="$elasticsearchUrls"
+                export APP_BASE_URL="$appBaseUrl"
                 
-                if [[ "$deploy_env" == "prod" ]]; then
-                    export DOC_S3_URL="https://ditaot.internal.us-east-2.service.guidewire.net"
-                    export ELASTICSEARCH_URLS="https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
-                    export APP_BASE_URL="https://docs.guidewire.com"
-                elif [[ "$deploy_env" == "portal2" ]]; then
-                    export DOC_S3_URL="https://portal2.internal.us-east-2.service.guidewire.net"
-                    export ELASTICSEARCH_URLS="https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
-                    export APP_BASE_URL="https://docs.guidewire.com"
-                else
-                    export DOC_S3_URL="https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
-                    export ELASTICSEARCH_URLS="https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
-                    export APP_BASE_URL="https://docs.${deploy_env}.ccs.guidewire.net"
-                fi
-                                
                 cat > scrapy.cfg <<- EOM
                 [settings]
                 default = doc_crawler.settings
@@ -547,6 +395,13 @@ object BuildSteps {
     }
 
     fun createGetConfigFileStep(deploy_env: String): ScriptBuildStep {
+
+        val configFileUrl = if (arrayListOf("prod", "portal2").contains(deploy_env)) {
+            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+        } else {
+            "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+        }
+
         return ScriptBuildStep {
             name = "Get config file"
             id = "GET_CONFIG_FILE"
@@ -556,18 +411,14 @@ object BuildSteps {
                 
                 export CONFIG_FILE="%teamcity.build.workingDir%/config.json"
                 export TMP_CONFIG_FILE="%teamcity.build.workingDir%/tmp_config.json"
+                export CONFIG_FILE_URL="$configFileUrl"
+                
+                curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
                 
                 if [[ "$deploy_env" == "prod" ]]; then
-                    export CONFIG_FILE_URL="https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
-                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
                     cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}CONFIG_FILE                 
                 elif [[ "$deploy_env" == "portal2" ]]; then
-                    export CONFIG_FILE_URL="https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
-                    curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
                     cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}CONFIG_FILE
-                else
-                    export CONFIG_FILE_URL="https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
-                    curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
                 fi
             """.trimIndent()
         }
@@ -608,6 +459,9 @@ object BuildSteps {
     ): ScriptBuildStep {
         val nodeImageVersion = node_image_version ?: "12.14.1"
         val buildCommand = build_command ?: "build"
+        val targetUrl =
+            if (deploy_env == "prod") "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
+
         return ScriptBuildStep {
             name = "Build the yarn project"
             id = "BUILD_YARN_PROJECT"
@@ -619,6 +473,7 @@ object BuildSteps {
                     export GW_PRODUCT="$gw_products"
                     export GW_PLATFORM="$gw_platforms"
                     export GW_VERSION="$gw_versions"
+                    export TARGET_URL="$targetUrl"
                     
                     # legacy Jutro repos
                     npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
@@ -637,13 +492,7 @@ object BuildSteps {
                     # Doctools repo
                     npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
-                    
-                    if [[ "$deploy_env" == "prod" ]]; then
-                        export TARGET_URL="https://docs.guidewire.com"
-                    else
-                        export TARGET_URL="https://docs.${deploy_env}.ccs.guidewire.net"
-                    fi
-                    
+                                        
                     export BASE_URL=/${publish_path}/
                     cd src_root/${working_dir}
                     yarn
