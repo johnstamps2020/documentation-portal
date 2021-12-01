@@ -231,7 +231,7 @@ object Docs {
                     val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
                     val srcUrl = srcConfig.getString("gitUrl")
                     val srcBranch = srcConfig.getString("branch")
-                    val buildPdf = envName == "int"
+                    val buildPdf = envName == "staging"
                     val buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
                         rootMap,
                         docId,
