@@ -182,7 +182,8 @@ object Docs {
                 )
                 docBuildType.steps.step(yarnBuildStep)
                 docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
-                docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+            // FIXME: Reenable this line when the refactoring is done
+            // docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
             } else if (gwBuildType == "dita") {
                 if (envName == "prod") {
                     val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publishPath)
