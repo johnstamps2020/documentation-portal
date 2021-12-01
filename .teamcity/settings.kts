@@ -98,9 +98,8 @@ object Docs {
         deploy_env: String,
         doc_id: String,
         index_for_search: Boolean,
-        working_dir: String,
         publish_path: String,
-        output_path: String? = null
+        build_config_working_dir: String?
     ): BuildType {
 
         return BuildType {
@@ -113,7 +112,11 @@ object Docs {
             }
 
             val uploadContentToS3BucketStep =
-                BuildSteps.createUploadContentToS3BucketStep(deploy_env, working_dir, output_path, publish_path)
+                BuildSteps.createUploadContentToS3BucketStep(
+                    deploy_env,
+                    publish_path,
+                    build_config_working_dir
+                )
             steps.step(uploadContentToS3BucketStep)
             steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
 
@@ -149,7 +152,7 @@ object Docs {
         val docBuildSubProjects = mutableListOf<BuildType>()
         val docId = build_config.getString("docId")
         val gwBuildType = build_config.getString("buildType")
-        val workingDir = if (build_config.has("workingDir")) build_config.getString("workingDir") else ""
+        val buildConfigWorkingDir = if (build_config.has("workingDir")) build_config.getString("workingDir") else null
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
@@ -163,16 +166,15 @@ object Docs {
             val envName = docEnvironments.getString(i)
             val docBuildTypeName = "Publish to $envName"
             val docBuildTypeId = Helpers.resolveRelativeIdFromIdString("$docId$envName")
-            val docBuildType =
-                createDocBuildType(
+            val docBuildType = createDocBuildType(
                     docBuildTypeName,
                     docBuildTypeId,
                     src_id,
                     envName,
                     docId,
                     indexForSearch,
-                    workingDir,
-                    publishPath
+                    publishPath,
+                    buildConfigWorkingDir
                 )
             if (gwBuildType == "yarn") {
                 val nodeImageVersion =
@@ -182,13 +184,13 @@ object Docs {
                 val yarnBuildStep = BuildSteps.createBuildYarnProjectStep(
                     envName,
                     publishPath,
-                    workingDir,
                     buildCommand,
                     nodeImageVersion,
                     docId,
                     gwProducts,
                     gwPlatforms,
-                    gwVersions
+                    gwVersions,
+                    buildConfigWorkingDir
                 )
                 docBuildType.steps.step(yarnBuildStep)
                 docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
@@ -494,13 +496,12 @@ object BuildSteps {
 
     fun createUploadContentToS3BucketStep(
         deploy_env: String,
-        working_dir: String,
-        output_path: String?,
-        publish_path: String
+        publish_path: String,
+        build_config_working_dir: String?
     ): ScriptBuildStep {
 
-        val rootDir =
-            if (working_dir.isNotEmpty()) "%teamcity.build.checkoutDir%/src_root/${working_dir}" else "%teamcity.build.checkoutDir%/src_root"
+        val workingDir =
+            if (!build_config_working_dir.isNullOrEmpty()) "%teamcity.build.checkoutDir%/src_root/${build_config_working_dir}" else "%teamcity.build.checkoutDir%/src_root"
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
 
         return ScriptBuildStep {
@@ -510,21 +511,17 @@ object BuildSteps {
                     #!/bin/bash
                     set -xe
                     
-                    export ROOT_DIR="$rootDir"
-                    
-                    if [[ "$output_path" != "null" ]]; then
-                        export OUTPUT_PATH="$output_path"
-                    elif [[ -d "${rootDir}/out" ]]; then
+                    if [[ -d "${workingDir}/out" ]]; then
                         export OUTPUT_PATH="out"
-                    elif [[ -d "${rootDir}/dist" ]]; then
+                    elif [[ -d "${workingDir}/dist" ]]; then
                         export OUTPUT_PATH="dist"
-                    elif [[ -d "${rootDir}/build" ]]; then
+                    elif [[ -d "${workingDir}/build" ]]; then
                         export OUTPUT_PATH="build"
                     fi
                     
                     echo "Output path set to ${'$'}OUTPUT_PATH"
 
-                    aws s3 sync ${rootDir}/${'$'}OUTPUT_PATH s3://${s3BucketName}/${publish_path} --delete
+                    aws s3 sync ${workingDir}/${'$'}OUTPUT_PATH s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
         }
     }
@@ -570,16 +567,17 @@ object BuildSteps {
     fun createBuildYarnProjectStep(
         deploy_env: String,
         publish_path: String,
-        working_dir: String,
         build_command: String?,
         node_image_version: String?,
         doc_id: String,
         gw_products: String,
         gw_platforms: String,
-        gw_versions: String
+        gw_versions: String,
+        build_config_working_dir: String?
     ): ScriptBuildStep {
         val nodeImageVersion = node_image_version ?: "12.14.1"
         val buildCommand = build_command ?: "build"
+        val workingSubDir = build_config_working_dir ?: ""
         val targetUrl =
             if (deploy_env == "prod") "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
 
@@ -615,7 +613,7 @@ object BuildSteps {
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                                         
                     export BASE_URL=/${publish_path}/
-                    cd src_root/${working_dir}
+                    cd src_root/${workingSubDir}
                     yarn
                     yarn $buildCommand
                 """.trimIndent()
