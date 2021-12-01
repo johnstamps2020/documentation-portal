@@ -145,20 +145,15 @@ object HelperObjects {
         return RelativeId(removeSpecialCharacters(id))
     }
 
-    fun createYarnBuildType(
+    fun createDocBuildType(
         build_type_name: String,
         build_type_id: RelativeId,
+        vcs_root_id: String,
         deploy_env: String,
-        publish_path: String,
-        working_dir: String,
-        build_command: String?,
-        node_image_version: String?,
         doc_id: String,
-        gw_products: String,
-        gw_platforms: String,
-        gw_versions: String,
-        vcs_root_id: String
+        index_for_search: Boolean
     ): BuildType {
+
         return BuildType {
             name = build_type_name
             id = build_type_id
@@ -168,22 +163,13 @@ object HelperObjects {
                 cleanCheckout = true
             }
 
-            steps {
-                step(
-                    BuildSteps.createBuildYarnProjectStep(
-                        deploy_env,
-                        publish_path,
-                        working_dir,
-                        build_command,
-                        node_image_version,
-                        doc_id,
-                        gw_products,
-                        gw_platforms,
-                        gw_versions
-                    )
-                )
-                step(BuildSteps.createGetConfigFileStep(deploy_env))
-                step(BuildSteps.createCrawlDocStep(deploy_env, doc_id))
+            if (index_for_search) {
+                val configFileStep = BuildSteps.createGetConfigFileStep(deploy_env)
+                steps.step(configFileStep)
+                steps.stepsOrder.add(configFileStep.id.toString())
+                val crawlDocStep = BuildSteps.createCrawlDocStep(deploy_env, doc_id)
+                steps.step(crawlDocStep)
+                steps.stepsOrder.add(crawlDocStep.id.toString())
             }
 
             features {
@@ -197,7 +183,6 @@ object HelperObjects {
             }
         }
     }
-
 
     fun createDocVcsRoot(src_id: String): GitVcsRoot {
         val srcConfig = getObjectById(sourceConfigs, "id", src_id)
@@ -225,34 +210,38 @@ object HelperObjects {
         val gwPlatforms = metadata.getJSONArray("platform").joinToString(separator = ",")
         val gwVersions = metadata.getJSONArray("version").joinToString(separator = ",")
         val publishPath = docConfig.getString("url")
+        val indexForSearch = if (docConfig.has("indexForSearch")) docConfig.getBoolean("indexForSearch") else true
         for (i in 0 until docEnvironments.length()) {
             val envName = docEnvironments.getString(i)
-            val buildTypeName = "Publish to $envName"
-            val buildTypeId = resolveRelativeIdFromIdString("$docId$envName")
+            val docBuildTypeName = "Publish to $envName"
+            val docBuildTypeId = resolveRelativeIdFromIdString("$docId$envName")
+            val docBuildType =
+                createDocBuildType(docBuildTypeName, docBuildTypeId, src_id, envName, docId, indexForSearch)
             if (gwBuildType == "yarn") {
                 val nodeImageVersion =
                     if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
                 val buildCommand =
                     if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
-                docBuildSubProjects.add(
-                    createYarnBuildType(
-                        buildTypeName,
-                        buildTypeId,
-                        envName,
-                        publishPath,
-                        workingDir,
-                        buildCommand,
-                        nodeImageVersion,
-                        docId,
-                        gwProducts,
-                        gwPlatforms,
-                        gwVersions,
-                        src_id
-                    )
+                val YarnBuildStep = BuildSteps.createBuildYarnProjectStep(
+                    envName,
+                    publishPath,
+                    workingDir,
+                    buildCommand,
+                    nodeImageVersion,
+                    docId,
+                    gwProducts,
+                    gwPlatforms,
+                    gwVersions
                 )
+                docBuildType.steps.step(YarnBuildStep)
+                docBuildType.steps.stepsOrder.add(0, YarnBuildStep.id.toString())
+                docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+            } else if (gwBuildType == "dita") {
+                println("To be implemented")
             }
-
+            docBuildSubProjects.add(docBuildType)
         }
+
         return Project {
             name = "$docTitle ($docId)"
             id = resolveRelativeIdFromIdString(docId)
@@ -524,6 +513,7 @@ object BuildSteps {
     fun createCrawlDocStep(deploy_env: String, doc_id: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Crawl the document and update the index"
+            id = "CRAWL_DOCUMENT_UPDATE_INDEX"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -559,6 +549,7 @@ object BuildSteps {
     fun createGetConfigFileStep(deploy_env: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Get config file"
+            id = "GET_CONFIG_FILE"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -597,6 +588,7 @@ object BuildSteps {
         val buildCommand = build_command ?: "build"
         return ScriptBuildStep {
             name = "Build the yarn project"
+            id = "BUILD_YARN_PROJECT"
             scriptContent = """
                     #!/bin/bash
                     set -xe
