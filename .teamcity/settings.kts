@@ -4263,12 +4263,14 @@ object RunContentValidations : Template({
                 SECONDS=0
                 echo "Building Guidewire webhelp for %env.GW_PRODUCT% %env.GW_PLATFORM% %env.GW_VERSION%"
                 mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
-                ${'$'}DITA_BASE_COMMAND
                 
-                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
-                                
+                export EXIT_CODE=0
+                ${'$'}DITA_BASE_COMMAND || EXIT_CODE=${'$'}?
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/ || EXIT_CODE=${'$'}?
+                
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4299,8 +4301,7 @@ object RunContentValidations : Template({
                 export OUTPUT_PATH="out/dita"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/dita_build.log"
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f gw_dita -d"
-
+                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f gw_dita -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.DITA_OT_WORKING_DIR%/%env.FILTER_PATH%\""
                 fi
@@ -4308,13 +4309,14 @@ object RunContentValidations : Template({
                 SECONDS=0
                 echo "Building normalized DITA"
                 mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
-                ${'$'}DITA_BASE_COMMAND
                 
-                cp -R %env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH/* %env.NORMALIZED_DITA_DIR%/
-                # cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
-
+                export EXIT_CODE=0
+                ${'$'}DITA_BASE_COMMAND && cp -R %env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH/* %env.NORMALIZED_DITA_DIR%/ || EXIT_CODE=${'$'}?
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/ || EXIT_CODE=${'$'}?
+                
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4332,16 +4334,19 @@ object RunContentValidations : Template({
                 export TEMP_DIR="tmp/validate"
                 export LOG_FILE="${'$'}{OUTPUT_PATH}/validate_build.log"
                 
+                export DITA_BASE_COMMAND="dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f validate --clean.temp no --temp \"%env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR\" -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\""
+                
                 SECONDS=0
                 echo "Running the validate plugin"
                 mkdir -p "%env.DITA_OT_WORKING_DIR%/${'$'}{OUTPUT_PATH}"
-                dita -i \"%env.DITA_OT_WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.DITA_OT_WORKING_DIR%/${'$'}OUTPUT_PATH\" -f validate --clean.temp no --temp \"%env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR\" -l \"%env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE\"
                 
-                cp %env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/
-                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/
+                export EXIT_CODE=0
+                ${'$'}DITA_BASE_COMMAND && cp %env.DITA_OT_WORKING_DIR%/${'$'}TEMP_DIR/validation-report.xml %env.SCHEMATRON_REPORTS_DIR%/ || EXIT_CODE=${'$'}?
+                cp %env.DITA_OT_WORKING_DIR%/${'$'}LOG_FILE %env.DITA_OT_LOGS_DIR%/ || EXIT_CODE=${'$'}?
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
