@@ -12,8 +12,7 @@
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true
+      "indexForSearch": true
     }
   ]
 }
