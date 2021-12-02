@@ -3,7 +3,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -182,8 +181,8 @@ object Docs {
                 )
                 docBuildType.steps.step(yarnBuildStep)
                 docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
-            // FIXME: Reenable this line when the refactoring is done
-            // docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+                // FIXME: Reenable this line when the refactoring is done
+                // docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
             } else if (gwBuildType == "dita") {
                 if (envName == "prod") {
                     val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publishPath)
@@ -211,8 +210,8 @@ object Docs {
                     val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
                     val srcUrl = srcConfig.getString("gitUrl")
                     val srcBranch = srcConfig.getString("branch")
-                    val buildPdf = envName == "staging"
                     val buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                        "webhelp_with_pdf",
                         rootMap,
                         docId,
                         gwProducts,
@@ -222,11 +221,13 @@ object Docs {
                         indexRedirect,
                         srcUrl,
                         srcBranch,
-                        buildPdf,
                         workingDir
                     )
                     docBuildType.steps.step(buildDitaProjectStep)
                     docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
+//                    TODO: Create webhelp with pdf for staging and webhelp for dev and int
+//                    TODO: Create doc site output and zipped local output for staging && self-managed
+//                    Run the doc site output
                 }
             }
             docBuildSubProjects.add(docBuildType)
@@ -422,6 +423,7 @@ object BuildSteps {
     }
 
     fun createBuildDitaProjectStep(
+        output_format: String,
         root_map: String,
         doc_id: String,
         gw_products: String,
@@ -431,24 +433,32 @@ object BuildSteps {
         index_redirect: Boolean,
         git_url: String,
         git_branch: String,
-        build_pdf: Boolean,
-        working_dir: String
+        working_dir: String,
+        for_offline_use: Boolean = false
     ): ScriptBuildStep {
-
-        var ditaBuildCommand =
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/out\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes --git.url \"$git_url\" --git.branch \"$git_branch\""
+        var ditaBuildCommand: String = if (for_offline_use) {
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/out\" --use-doc-portal-params no"
+        } else {
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/out\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes"
+        }
 
         if (!build_filter.isNullOrEmpty()) {
             ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
         }
 
-        ditaBuildCommand += if (build_pdf) {
-            " -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
-        } else {
-            " -f webhelp_Guidewire_validate"
+        when (output_format) {
+            "webhelp" -> {
+                ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate"
+            }
+            "webhelp_with_pdf" -> {
+                ditaBuildCommand += " -f wh-pdf --git.url \"$git_url\" --git.branch \"$git_branch\" --dita.ot.pdf.format pdf5_Guidewire\""
+            }
+            "pdf" -> {
+                ditaBuildCommand += " -f pdf_Guidewire_remote"
+            }
         }
 
-        if (index_redirect) {
+        if (output_format.contains("webhelp") && index_redirect) {
             ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
         }
 
@@ -463,7 +473,7 @@ object BuildSteps {
 
                 echo "Building output"
                 $ditaBuildCommand
-                                                    
+                
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
