@@ -82,7 +82,7 @@ def set_public_prop_on_docs(build_dir: Path,
             if item_id:
                 matching_doc_object = next(
                     (doc for doc in docs if doc['id'] == item_id), None)
-                item['public'] = matching_doc_object['public']
+                item['public'] = matching_doc_object.get('public', False)
             if item.get('items'):
                 mark_docs_with_public_prop(item['items'])
         return page_items
