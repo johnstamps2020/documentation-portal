@@ -4622,10 +4622,10 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
         name = "Build the doc site and local output from DITA"
     } else {
         name = "Build the doc site output from DITA"
-        artifactRules = """
+    }
+    artifactRules = """
             %env.SOURCES_ROOT%/%env.OUTPUT_PATH%/build-data.json => json
         """.trimIndent()
-    }
 
     params {
         text("env.GW_DOC_ID", "%GW_DOC_ID%", allowEmpty = false)
@@ -4692,7 +4692,7 @@ open class BuildOutputFromDita(createZipPackage: Boolean) : Template({
                 #!/bin/bash
                 set -xe
                 
-                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params no -f webhelp_Guidewire_validate"
+                export DITA_BASE_COMMAND="dita -i \"%env.WORKING_DIR%/%env.ROOT_MAP%\" -o \"%env.WORKING_DIR%/%env.ZIP_SRC_DIR%/%env.OUTPUT_PATH%\" --use-doc-portal-params no -f webhelp_Guidewire"
                 
                 if [[ ! -z "%env.FILTER_PATH%" ]]; then
                     export DITA_BASE_COMMAND+=" --filter \"%env.WORKING_DIR%/%env.FILTER_PATH%\""
