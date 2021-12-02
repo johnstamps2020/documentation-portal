@@ -3746,7 +3746,11 @@ object HelperObjects {
                         #!/bin/bash
                         set -xe
                         
-                        jq -n '$doc' | jq '. += {"gitBuildBranch": "%teamcity.build.vcs.branch.$vcs_root_id%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO%
+                        
+                        cat << EOF | jq '. += {"gitBuildBranch": "%teamcity.build.vcs.branch.$vcs_root_id%", "gitSourceId": "$git_source_id"}' > %env.DOC_INFO% | jq .
+                        $doc
+                        EOF
+                     
                         cat %env.DOC_INFO%
                     """.trimIndent()
                     }
