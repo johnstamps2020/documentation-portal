@@ -3,6 +3,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -163,6 +164,7 @@ object Docs {
                 publishPath,
                 workingDir
             )
+//            TODO: Extract creation of the yarn and dita builds to separate functions to reduce nesting
             if (gwBuildType == "yarn") {
                 val nodeImageVersion =
                     if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
@@ -181,8 +183,7 @@ object Docs {
                 )
                 docBuildType.steps.step(yarnBuildStep)
                 docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
-                // FIXME: Reenable this line when the refactoring is done
-                // docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+                docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
             } else if (gwBuildType == "dita") {
                 if (envName == "prod") {
                     val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publishPath)
@@ -210,22 +211,43 @@ object Docs {
                     val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
                     val srcUrl = srcConfig.getString("gitUrl")
                     val srcBranch = srcConfig.getString("branch")
-                    val buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
-                        "webhelp_with_pdf",
-                        rootMap,
-                        docId,
-                        gwProducts,
-                        gwPlatforms,
-                        gwVersions,
-                        buildFilter,
-                        indexRedirect,
-                        srcUrl,
-                        srcBranch,
-                        workingDir
-                    )
+                    val outputDir = "out"
+                    var buildDitaProjectStep = ScriptBuildStep()
+                    if (envName == "staging") {
+                        buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                            "webhelp_with_pdf",
+                            rootMap,
+                            docId,
+                            gwProducts,
+                            gwPlatforms,
+                            gwVersions,
+                            buildFilter,
+                            indexRedirect,
+                            srcUrl,
+                            srcBranch,
+                            workingDir,
+                            outputDir
+                        )
+                    } else {
+                        buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                            "webhelp",
+                            rootMap,
+                            docId,
+                            gwProducts,
+                            gwPlatforms,
+                            gwVersions,
+                            buildFilter,
+                            indexRedirect,
+                            srcUrl,
+                            srcBranch,
+                            workingDir,
+                            outputDir
+                        )
+                    }
+
                     docBuildType.steps.step(buildDitaProjectStep)
                     docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
-//                    TODO: Create webhelp with pdf for staging and webhelp for dev and int
+                    docBuildType.artifactRules = "${outputDir}/build-data.json => json"
 //                    TODO: Create doc site output and zipped local output for staging && self-managed
 //                    Run the doc site output
                 }
@@ -434,12 +456,13 @@ object BuildSteps {
         git_url: String,
         git_branch: String,
         working_dir: String,
+        output_dir: String,
         for_offline_use: Boolean = false
     ): ScriptBuildStep {
         var ditaBuildCommand: String = if (for_offline_use) {
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/out\" --use-doc-portal-params no"
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params no"
         } else {
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/out\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes"
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes"
         }
 
         if (!build_filter.isNullOrEmpty()) {
@@ -573,6 +596,8 @@ object BuildTriggers {
 
     fun createVcsTriggerForNonDitaBuilds(vcs_root_id: String): VcsTrigger {
         return VcsTrigger({
+            // FIXME: Reenable this line when the refactoring is done
+            enabled = false
             triggerRules = """
                 +:root=${vcs_root_id}:**
                 """.trimIndent()
