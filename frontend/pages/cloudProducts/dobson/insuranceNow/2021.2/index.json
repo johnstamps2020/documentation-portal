@@ -71,15 +71,19 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Core Configuration Guide",
+          "label": "Core Configuration",
           "id": "in20212config"
         },
         {
-          "label": "Studio Configuration Guide",
+          "label": "Claims Configuration Reference",
+          "id": "in20212config"
+        },
+        {
+          "label": "Studio Configuration",
           "id": "in20212studio"
         },
         {
-          "label": "Portal Development Guide",
+          "label": "Portal Development",
           "id": "in20212portaldev"
         },
         {
@@ -97,7 +101,7 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Developers Setup",
+          "label": "Developer Setup",
           "id": "indevguidejava11ext"
         }
       ]
