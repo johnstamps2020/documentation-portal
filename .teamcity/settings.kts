@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import java.util.*
 
 version = "2020.1"
 
@@ -170,7 +171,7 @@ object Docs {
                         build_config.getString("filter")
                     }
                     else -> {
-                        null
+                        ""
                     }
                 }
                 val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
@@ -182,38 +183,56 @@ object Docs {
                     buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
                         "webhelp_with_pdf",
                         rootMap,
+                        indexRedirect,
+                        workingDir,
+                        outputDir,
+                        buildFilter,
                         doc_id,
                         gwProducts,
                         gwPlatforms,
                         gwVersions,
-                        buildFilter,
-                        indexRedirect,
                         srcUrl,
-                        srcBranch,
-                        workingDir,
-                        outputDir
+                        srcBranch
                     )
+                    if (gwPlatforms.lowercase(Locale.getDefault()).contains("self-managed")) {
+                        val localOutputDir = "${outputDir}/zip"
+                        val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
+                            "webhelp",
+                            rootMap,
+                            indexRedirect,
+                            workingDir,
+                            localOutputDir,
+                            for_offline_use = true
+                        )
+                        docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
+                        docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
+                        val zipPackageStep = BuildSteps.createZipPackageStep(
+                            "${workingDir}/${localOutputDir}",
+                            "${workingDir}/${outputDir}"
+                        )
+                        docBuildType.steps.step(zipPackageStep)
+                        docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
+                    }
                 } else {
                     buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
                         "webhelp",
                         rootMap,
+                        indexRedirect,
+                        workingDir,
+                        outputDir,
+                        buildFilter,
                         doc_id,
                         gwProducts,
                         gwPlatforms,
                         gwVersions,
-                        buildFilter,
-                        indexRedirect,
                         srcUrl,
-                        srcBranch,
-                        workingDir,
-                        outputDir
+                        srcBranch
                     )
                 }
 
                 docBuildType.steps.step(buildDitaProjectStep)
                 docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
                 docBuildType.artifactRules = "${outputDir}/build-data.json => json"
-                // TODO: Create doc site output and zipped local output for staging && self-managed
             }
         }
 
@@ -391,9 +410,11 @@ object BuildSteps {
         }
     }
 
-    fun createBuildZipPackageStep(working_dir: String, output_path: String): ScriptBuildStep {
+    fun createZipPackageStep(
+        input_path: String,
+        target_path: String
+    ): ScriptBuildStep {
 
-        val zipSrcDir = "zip"
         val zipPackageName = "docs.zip"
 
         return ScriptBuildStep {
@@ -404,10 +425,9 @@ object BuildSteps {
                 set -xe
                 
                 echo "Creating a ZIP package"
-                cd "${working_dir}/${zipSrcDir}/${output_path}" || exit
-                zip -r "${working_dir}/${zipSrcDir}/${zipPackageName}" * &&
-                    mv "${working_dir}/${zipSrcDir}/${zipPackageName}" "/${output_path}/" &&
-                    rm -rf "${working_dir}/${zipSrcDir}"
+                cd "$input_path" || exit
+                zip -r "${target_path}/${zipPackageName}" * &&
+                rm -rf "$input_path"
             """.trimIndent()
         }
     }
@@ -444,16 +464,16 @@ object BuildSteps {
     fun createBuildDitaProjectStep(
         output_format: String,
         root_map: String,
-        doc_id: String,
-        gw_products: String,
-        gw_platforms: String,
-        gw_versions: String,
-        build_filter: String?,
         index_redirect: Boolean,
-        git_url: String,
-        git_branch: String,
         working_dir: String,
         output_dir: String,
+        build_filter: String = "",
+        doc_id: String = "",
+        gw_products: String = "",
+        gw_platforms: String = "",
+        gw_versions: String = "",
+        git_url: String = "",
+        git_branch: String = "",
         for_offline_use: Boolean = false
     ): ScriptBuildStep {
         var ditaBuildCommand: String = if (for_offline_use) {
@@ -462,7 +482,7 @@ object BuildSteps {
             "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes"
         }
 
-        if (!build_filter.isNullOrEmpty()) {
+        if (build_filter.isNotEmpty()) {
             ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
         }
 
@@ -484,7 +504,7 @@ object BuildSteps {
 
         return ScriptBuildStep {
             name = "Build the DITA project"
-            id = "BUILD_DITA_PROJECT"
+            id = if (for_offline_use) "BUILD_DITA_PROJECT_FOR_OFFLINE_USE" else "BUILD_DITA_PROJECT"
             scriptContent = """
                 #!/bin/bash
                 set -xe
