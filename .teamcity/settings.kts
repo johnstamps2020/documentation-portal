@@ -149,6 +149,7 @@ object Docs {
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
                 docBuildType.artifactRules = "${working_dir}/${output_dir}/build-data.json => json"
+                docBuildType.features.feature(BuildFeatures.GwOxygenWebhelpLicenseFeature)
                 val buildDitaProjectStep: ScriptBuildStep
                 if (envName == "staging") {
                     buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
@@ -230,6 +231,7 @@ object Docs {
                             stepsOrder.indexOf("UPLOAD_CONTENT_TO_S3_BUCKET"),
                             copyResourcesSteps.map { it.id.toString() })
                     }
+                    docBuildType.features.feature(BuildFeatures.GwSshAgentFeature)
                 }
             }
 
@@ -285,12 +287,12 @@ object Docs {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("$doc_id$deploy_env")
 
-            vcs {
-                root(Helpers.resolveRelativeIdFromIdString(src_id))
-                cleanCheckout = true
-            }
 
             if (deploy_env != "prod") {
+                vcs {
+                    root(Helpers.resolveRelativeIdFromIdString(src_id))
+                    cleanCheckout = true
+                }
                 val uploadContentToS3BucketStep =
                     BuildSteps.createUploadContentToS3BucketStep(
                         deploy_env,
