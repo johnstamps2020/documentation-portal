@@ -239,6 +239,10 @@ object Docs {
         return docBuildType
     }
 
+    fun createDownloadableOutputBuildType(): BuildType {
+        return BuildType()
+    }
+
     fun createDocVcsRoot(src_id: String): GitVcsRoot {
         val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
         return GitVcsRoot {
@@ -503,7 +507,7 @@ object BuildSteps {
         }
 
         return ScriptBuildStep {
-            name = "Build the DITA project"
+            name = if (for_offline_use) "Build the DITA project for offline use" else "Build the DITA project"
             id = if (for_offline_use) "BUILD_DITA_PROJECT_FOR_OFFLINE_USE" else "BUILD_DITA_PROJECT"
             scriptContent = """
                 #!/bin/bash
