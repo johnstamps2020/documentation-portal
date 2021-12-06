@@ -129,7 +129,8 @@ object Docs {
         gw_platforms: String,
         gw_versions: String,
         src_url: String,
-        src_branch: String
+        src_branch: String,
+        resources_to_copy: JSONArray
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
@@ -147,6 +148,7 @@ object Docs {
                 docBuildType.steps.step(copyFromStagingToProdStep)
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
+                docBuildType.artifactRules = "${working_dir}/${output_dir}/build-data.json => json"
                 val buildDitaProjectStep: ScriptBuildStep
                 if (envName == "staging") {
                     buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
@@ -198,10 +200,37 @@ object Docs {
                         src_branch
                     )
                 }
-
                 docBuildType.steps.step(buildDitaProjectStep)
                 docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
-                docBuildType.artifactRules = "${working_dir}/${output_dir}/build-data.json => json"
+                if (!resources_to_copy.isEmpty) {
+                    val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
+                    for (stepId in 0 until resources_to_copy.length()) {
+                        val resourceObject = resources_to_copy.getJSONObject(stepId)
+                        val resourceSrcDir = resourceObject.getString("sourceFolder")
+                        val resourceSrcId = resourceObject.getString("srcId")
+                        val resourceSrcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", resourceSrcId)
+                        val resourceSrcUrl = resourceSrcConfig.getString("gitUrl")
+                        val resourceSrcBranch = resourceSrcConfig.getString("branch")
+
+                        val resourceTargetDir = resourceObject.getString("targetFolder")
+                        val copyResourcesStep = BuildSteps.createCopyResourcesStep(
+                            stepId,
+                            working_dir,
+                            output_dir,
+                            resourceSrcDir,
+                            resourceTargetDir,
+                            resourceSrcUrl,
+                            resourceSrcBranch
+                        )
+                        copyResourcesSteps.add(copyResourcesStep)
+                    }
+                    docBuildType.steps {
+                        copyResourcesSteps.forEach { step(it) }
+                        stepsOrder.addAll(
+                            stepsOrder.indexOf("UPLOAD_CONTENT_TO_S3_BUCKET"),
+                            copyResourcesSteps.map { it.id.toString() })
+                    }
+                }
             }
 
             ditaBuildTypes.add(docBuildType)
@@ -367,6 +396,8 @@ object Docs {
             val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
             val srcUrl = srcConfig.getString("gitUrl")
             val srcBranch = srcConfig.getString("branch")
+            val resourcesToCopy =
+                if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
 
             docProjectBuildTypes += createDitaBuildTypes(
                 docEnvironments,
@@ -383,7 +414,8 @@ object Docs {
                 gwPlatforms,
                 gwVersions,
                 srcUrl,
-                srcBranch
+                srcBranch,
+                resourcesToCopy
             )
         }
 
@@ -573,6 +605,33 @@ object BuildSteps {
 
                     aws s3 sync ${working_dir}/${'$'}OUTPUT_PATH s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
+        }
+    }
+
+    fun createCopyResourcesStep(
+        step_id: Int,
+        working_dir: String,
+        output_dir: String,
+        resource_src_dir: String,
+        resource_target_dir: String,
+        resource_src_url: String,
+        resource_src_branch: String
+    ): ScriptBuildStep {
+        val resourcesRootDir = "resource$step_id"
+        val fullTargetPath = "${working_dir}/${output_dir}/${resource_target_dir}"
+        return ScriptBuildStep {
+            name = "Copy resources from git to the doc output dir ($step_id)"
+            id = "COPY_RESOURCES_FROM_GIT_TO_DOC_OUTPUT_DIR_${step_id}"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                        
+                git clone --single-branch --branch $resource_src_branch $resource_src_url $resourcesRootDir
+                        
+                echo "Copying files to the doc output dir"
+                mkdir -p $fullTargetPath
+                cp -R ./${resourcesRootDir}/${resource_src_dir}/* $fullTargetPath
+            """.trimIndent()
         }
     }
 
