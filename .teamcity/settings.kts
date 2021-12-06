@@ -71,32 +71,186 @@ object Helpers {
 }
 
 object Docs {
-    fun createDocBuildType(
+    fun createYarnBuildTypes(
+        env_names: List<Any>,
+        doc_id: String,
+        src_id: String,
+        publish_path: String,
+        working_dir: String,
+        index_for_search: Boolean,
+        build_command: String?,
+        node_image_version: String?,
+        gw_products: String,
+        gw_platforms: String,
+        gw_versions: String
+    ): List<BuildType> {
+        val yarnBuildTypes = mutableListOf<BuildType>()
+        for (env in env_names) {
+            val envName = env.toString()
+            val docBuildType = createInitialDocBuildType(
+                envName,
+                doc_id,
+                src_id,
+                publish_path,
+                working_dir,
+                index_for_search
+            )
+            val yarnBuildStep = BuildSteps.createBuildYarnProjectStep(
+                envName,
+                publish_path,
+                build_command,
+                node_image_version,
+                doc_id,
+                gw_products,
+                gw_platforms,
+                gw_versions,
+                working_dir
+            )
+            docBuildType.steps.step(yarnBuildStep)
+            docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
+            docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+            yarnBuildTypes.add(docBuildType)
+        }
+        return yarnBuildTypes
+    }
+
+    fun createDitaBuildTypes(
+        env_names: List<Any>,
+        doc_id: String,
+        src_id: String,
+        publish_path: String,
+        working_dir: String,
+        output_dir: String,
+        index_for_search: Boolean,
+        root_map: String,
+        index_redirect: Boolean,
+        build_filter: String,
+        gw_products: String,
+        gw_platforms: String,
+        gw_versions: String,
+        src_url: String,
+        src_branch: String
+    ): List<BuildType> {
+        val ditaBuildTypes = mutableListOf<BuildType>()
+        for (env in env_names) {
+            val envName = env.toString()
+            val docBuildType = createInitialDocBuildType(
+                envName,
+                doc_id,
+                src_id,
+                publish_path,
+                working_dir,
+                index_for_search
+            )
+            if (envName == "prod") {
+                val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publish_path)
+                docBuildType.steps.step(copyFromStagingToProdStep)
+                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+            } else {
+                val buildDitaProjectStep: ScriptBuildStep
+                if (envName == "staging") {
+                    buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                        "webhelp_with_pdf",
+                        root_map,
+                        index_redirect,
+                        working_dir,
+                        output_dir,
+                        build_filter,
+                        doc_id,
+                        gw_products,
+                        gw_platforms,
+                        gw_versions,
+                        src_url,
+                        src_branch
+                    )
+                    if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
+                        val localOutputDir = "${output_dir}/zip"
+                        val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
+                            "webhelp",
+                            root_map,
+                            index_redirect,
+                            working_dir,
+                            localOutputDir,
+                            for_offline_use = true
+                        )
+                        docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
+                        docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
+                        val zipPackageStep = BuildSteps.createZipPackageStep(
+                            "${working_dir}/${localOutputDir}",
+                            "${working_dir}/${output_dir}"
+                        )
+                        docBuildType.steps.step(zipPackageStep)
+                        docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
+                    }
+                } else {
+                    buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                        "webhelp",
+                        root_map,
+                        index_redirect,
+                        working_dir,
+                        output_dir,
+                        build_filter,
+                        doc_id,
+                        gw_products,
+                        gw_platforms,
+                        gw_versions,
+                        src_url,
+                        src_branch
+                    )
+                }
+
+                docBuildType.steps.step(buildDitaProjectStep)
+                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
+                docBuildType.artifactRules = "${working_dir}/${output_dir}/build-data.json => json"
+            }
+
+            ditaBuildTypes.add(docBuildType)
+        }
+        for (format in arrayListOf("webhelp", "pdf", "webhelp_with_pdf")) {
+            val downloadableOutputBuildType = BuildType {
+                name = "Build downloadable ${format.replace("_", " ")}"
+                id = Helpers.resolveRelativeIdFromIdString("$doc_id$format")
+
+                vcs {
+                    root(Helpers.resolveRelativeIdFromIdString(src_id))
+                    cleanCheckout = true
+                }
+
+                features {
+                    feature(BuildFeatures.GwDockerSupportFeature)
+                }
+            }
+            val localOutputDir = "${output_dir}/zip"
+            val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
+                format,
+                root_map,
+                index_redirect,
+                working_dir,
+                localOutputDir,
+                for_offline_use = true
+            )
+            downloadableOutputBuildType.steps.step(buildDitaProjectForOfflineUseStep)
+            downloadableOutputBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
+            val zipPackageStep = BuildSteps.createZipPackageStep(
+                "${working_dir}/${localOutputDir}",
+                "${working_dir}/${output_dir}"
+            )
+            downloadableOutputBuildType.steps.step(zipPackageStep)
+            downloadableOutputBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
+            ditaBuildTypes.add(downloadableOutputBuildType)
+        }
+        return ditaBuildTypes
+    }
+
+    fun createInitialDocBuildType(
         deploy_env: String,
         doc_id: String,
         src_id: String,
-        doc_config: JSONObject,
-        build_config: JSONObject
+        publish_path: String,
+        working_dir: String,
+        index_for_search: Boolean
     ): BuildType {
-        val gwBuildType = build_config.getString("buildType")
-        val workingDir = when (build_config.has("workingDir")) {
-            false -> {
-                "%teamcity.build.checkoutDir%"
-            }
-            true -> {
-                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
-            }
-        }
-        val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", doc_id)
-        val indexForSearch = if (docConfig.has("indexForSearch")) docConfig.getBoolean("indexForSearch") else true
-
-        val metadata = docConfig.getJSONObject("metadata")
-        val gwProducts = metadata.getJSONArray("product").joinToString(separator = ",")
-        val gwPlatforms = metadata.getJSONArray("platform").joinToString(separator = ",")
-        val gwVersions = metadata.getJSONArray("version").joinToString(separator = ",")
-
-        val publishPath = doc_config.getString("url")
-        val docBuildType = BuildType {
+        return BuildType {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("$doc_id$deploy_env")
 
@@ -109,14 +263,14 @@ object Docs {
                 val uploadContentToS3BucketStep =
                     BuildSteps.createUploadContentToS3BucketStep(
                         deploy_env,
-                        publishPath,
-                        workingDir
+                        publish_path,
+                        working_dir
                     )
                 steps.step(uploadContentToS3BucketStep)
                 steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
             }
 
-            if (indexForSearch) {
+            if (index_for_search) {
                 val configFile = "%teamcity.build.workingDir%/config.json"
                 val configFileStep = BuildSteps.createGetConfigFileStep(deploy_env, configFile)
                 steps.step(configFileStep)
@@ -131,116 +285,6 @@ object Docs {
             }
         }
 
-        if (gwBuildType == "yarn") {
-            val nodeImageVersion =
-                if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
-            val buildCommand =
-                if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
-            val yarnBuildStep = BuildSteps.createBuildYarnProjectStep(
-                deploy_env,
-                publishPath,
-                buildCommand,
-                nodeImageVersion,
-                doc_id,
-                gwProducts,
-                gwPlatforms,
-                gwVersions,
-                workingDir
-            )
-            docBuildType.steps.step(yarnBuildStep)
-            docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
-            docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
-        } else if (gwBuildType == "dita") {
-            if (deploy_env == "prod") {
-                val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publishPath)
-                docBuildType.steps.step(copyFromStagingToProdStep)
-                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
-            } else {
-                val rootMap = build_config.getString("root")
-                val indexRedirect = when (build_config.has("indexRedirect")) {
-                    true -> {
-                        build_config.getBoolean("indexRedirect")
-                    }
-                    else -> {
-                        false
-                    }
-
-                }
-                val buildFilter = when (build_config.has("filter")) {
-                    true -> {
-                        build_config.getString("filter")
-                    }
-                    else -> {
-                        ""
-                    }
-                }
-                val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
-                val srcUrl = srcConfig.getString("gitUrl")
-                val srcBranch = srcConfig.getString("branch")
-                val outputDir = "out"
-                val buildDitaProjectStep: ScriptBuildStep
-                if (deploy_env == "staging") {
-                    buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
-                        "webhelp_with_pdf",
-                        rootMap,
-                        indexRedirect,
-                        workingDir,
-                        outputDir,
-                        buildFilter,
-                        doc_id,
-                        gwProducts,
-                        gwPlatforms,
-                        gwVersions,
-                        srcUrl,
-                        srcBranch
-                    )
-                    if (gwPlatforms.lowercase(Locale.getDefault()).contains("self-managed")) {
-                        val localOutputDir = "${outputDir}/zip"
-                        val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
-                            "webhelp",
-                            rootMap,
-                            indexRedirect,
-                            workingDir,
-                            localOutputDir,
-                            for_offline_use = true
-                        )
-                        docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
-                        docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-                        val zipPackageStep = BuildSteps.createZipPackageStep(
-                            "${workingDir}/${localOutputDir}",
-                            "${workingDir}/${outputDir}"
-                        )
-                        docBuildType.steps.step(zipPackageStep)
-                        docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
-                    }
-                } else {
-                    buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
-                        "webhelp",
-                        rootMap,
-                        indexRedirect,
-                        workingDir,
-                        outputDir,
-                        buildFilter,
-                        doc_id,
-                        gwProducts,
-                        gwPlatforms,
-                        gwVersions,
-                        srcUrl,
-                        srcBranch
-                    )
-                }
-
-                docBuildType.steps.step(buildDitaProjectStep)
-                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
-                docBuildType.artifactRules = "${outputDir}/build-data.json => json"
-            }
-        }
-
-        return docBuildType
-    }
-
-    fun createDownloadableOutputBuildType(): BuildType {
-        return BuildType()
     }
 
     fun createDocVcsRoot(src_id: String): GitVcsRoot {
@@ -257,29 +301,95 @@ object Docs {
     }
 
     fun createDocProject(build_config: JSONObject, src_id: String): Project {
+        val gwBuildType = build_config.getString("buildType")
         val docId = build_config.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
-        val docEnvironments = docConfig.getJSONArray("environments")
+        val docEnvironments = docConfig.getJSONArray("environments").toList()
+        val workingDir = when (build_config.has("workingDir")) {
+            false -> {
+                "%teamcity.build.checkoutDir%"
+            }
+            true -> {
+                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
+            }
+        }
+        val indexForSearch = if (docConfig.has("indexForSearch")) docConfig.getBoolean("indexForSearch") else true
 
-        val docBuildSubProjects = mutableListOf<BuildType>()
-        for (i in 0 until docEnvironments.length()) {
-            val envName = docEnvironments.getString(i)
-            val docBuildType = createDocBuildType(
-                envName,
+        val metadata = docConfig.getJSONObject("metadata")
+        val gwProducts = metadata.getJSONArray("product").joinToString(separator = ",")
+        val gwPlatforms = metadata.getJSONArray("platform").joinToString(separator = ",")
+        val gwVersions = metadata.getJSONArray("version").joinToString(separator = ",")
+
+        val publishPath = docConfig.getString("url")
+
+        val docProjectBuildTypes = mutableListOf<BuildType>()
+        if (gwBuildType == "yarn") {
+            val nodeImageVersion =
+                if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
+            val buildCommand =
+                if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
+            docProjectBuildTypes += createYarnBuildTypes(
+                docEnvironments,
                 docId,
                 src_id,
-                docConfig,
-                build_config
+                publishPath,
+                workingDir,
+                indexForSearch,
+                buildCommand,
+                nodeImageVersion,
+                gwProducts,
+                gwPlatforms,
+                gwVersions
             )
-            docBuildSubProjects.add(docBuildType)
+        } else if (gwBuildType == "dita") {
+            val rootMap = build_config.getString("root")
+            val indexRedirect = when (build_config.has("indexRedirect")) {
+                true -> {
+                    build_config.getBoolean("indexRedirect")
+                }
+                else -> {
+                    false
+                }
+
+            }
+            val buildFilter = when (build_config.has("filter")) {
+                true -> {
+                    build_config.getString("filter")
+                }
+                else -> {
+                    ""
+                }
+            }
+            val outputDir = "out"
+            val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
+            val srcUrl = srcConfig.getString("gitUrl")
+            val srcBranch = srcConfig.getString("branch")
+
+            docProjectBuildTypes += createDitaBuildTypes(
+                docEnvironments,
+                docId,
+                src_id,
+                publishPath,
+                workingDir,
+                outputDir,
+                indexForSearch,
+                rootMap,
+                indexRedirect,
+                buildFilter,
+                gwProducts,
+                gwPlatforms,
+                gwVersions,
+                srcUrl,
+                srcBranch
+            )
         }
 
         return Project {
             name = "$docTitle ($docId)"
             id = Helpers.resolveRelativeIdFromIdString(docId)
 
-            docBuildSubProjects.forEach {
+            docProjectBuildTypes.forEach {
                 buildType(it)
             }
         }
