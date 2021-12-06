@@ -423,6 +423,7 @@ object Docs {
 
         return Project {
             name = "$docTitle ($docId)"
+            description = "$gwPlatforms; $gwProducts; $gwVersions"
             id = Helpers.resolveRelativeIdFromIdString(docId)
 
             docProjectBuildTypes.forEach {
