@@ -211,6 +211,8 @@ object Docs {
                 name = "Build downloadable ${format.replace("_", " ")}"
                 id = Helpers.resolveRelativeIdFromIdString("$doc_id$format")
 
+                artifactRules = "${working_dir}/${output_dir} => /"
+
                 vcs {
                     root(Helpers.resolveRelativeIdFromIdString(src_id))
                     cleanCheckout = true
@@ -552,7 +554,6 @@ object BuildSteps {
         working_dir: String
     ): ScriptBuildStep {
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
-
         return ScriptBuildStep {
             name = "Upload content to the S3 bucket"
             id = "UPLOAD_CONTENT_TO_S3_BUCKET"
