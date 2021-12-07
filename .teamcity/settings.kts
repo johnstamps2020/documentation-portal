@@ -4,7 +4,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportF
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -465,6 +464,7 @@ object Content {
         }
         mainProject.buildType(BuildTypes.createCleanUpIndexBuildType())
         mainProject.buildType(BuildTypes.createUpdateSearchIndexBuildType())
+        mainProject.buildType(BuildTypes.createUploadPdfsForEscrowBuildType())
 
         return mainProject
     }
@@ -1014,6 +1014,73 @@ object BuildTypes {
             steps.stepsOrder.add(crawlDocStep.id.toString())
 
             features.feature(BuildFeatures.GwDockerSupportFeature)
+        }
+    }
+
+    fun createUploadPdfsForEscrowBuildType(): BuildType {
+        return BuildType {
+            name = "Upload PDFs for Escrow"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            params {
+                text(
+                    "env.RELEASE_NAME",
+                    "",
+                    label = "Release name",
+                    description = "For example, Banff or Cortina",
+                    display = ParameterDisplay.PROMPT
+                )
+                text(
+                    "env.RELEASE_NUMBER",
+                    "",
+                    label = "Release number",
+                    description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
+                    display = ParameterDisplay.PROMPT
+                )
+            }
+
+            vcs {
+                root(DslContext.settingsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    id = "DOWNLOAD_AND_ZIP_PDFS"
+                    name = "Download and zip PDF files"
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    export TMP_DIR="%teamcity.build.checkoutDir%/ci/pdfs"
+                    export ZIP_ARCHIVE_NAME="%env.RELEASE_NAME%_pdfs.zip"
+                    
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    
+                    cd %teamcity.build.checkoutDir%/ci
+                    ./downloadPdfsForEscrow.sh
+                """.trimIndent()
+                }
+                script {
+                    id = "UPLOAD_ZIP_TO_S3"
+                    name = "Upload the ZIP archive to S3"
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Setting credentials to access int"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                    
+                    echo "Uploading the ZIP archive to the S3 bucket"
+                    aws s3 cp "%env.TMP_DIR%/%env.ZIP_ARCHIVE_NAME%" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
+            """.trimIndent()
+                }
+            }
         }
     }
 }
