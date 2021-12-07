@@ -65,8 +65,8 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.5.0",
-          "env": ["dev", "staging", "prod"]
+          "page": "dh/10.6.0",
+          "env": ["staging", "prod"]
         },
         {
           "label": "DataHub",
@@ -75,8 +75,8 @@
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.5.0",
-          "env": ["dev", "staging", "prod"]
+          "page": "ic/10.6.0",
+          "env": ["staging", "prod"]
         },
         {
           "label": "InfoCenter",
