@@ -732,7 +732,7 @@ object BuildSteps {
 
         when (output_format) {
             "webhelp" -> {
-                ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate"
+                ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate --git.url \"$git_url\" --git.branch \"$git_branch\""
             }
             "webhelp_with_pdf" -> {
                 ditaBuildCommand += " -f wh-pdf --git.url \"$git_url\" --git.branch \"$git_branch\" --dita.ot.pdf.format pdf5_Guidewire\""
