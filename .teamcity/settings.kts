@@ -263,7 +263,7 @@ object Docs {
             }
             val localOutputDir = "${output_dir}/zip"
             val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
-                format, root_map, index_redirect, working_dir, localOutputDir, for_offline_use = true
+                format, root_map, index_redirect, working_dir, localOutputDir, build_filter, for_offline_use = true
             )
             downloadableOutputBuildType.steps.step(buildDitaProjectForOfflineUseStep)
             downloadableOutputBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
