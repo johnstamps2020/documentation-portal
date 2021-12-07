@@ -727,21 +727,24 @@ object BuildSteps {
             "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes"
         }
 
+        ditaBuildCommand += " --git.url \"$git_url\" --git.branch \"$git_branch\""
+
         if (build_filter.isNotEmpty()) {
             ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
         }
 
         when (output_format) {
             "webhelp" -> {
-                ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate --git.url \"$git_url\" --git.branch \"$git_branch\""
+                ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate"
             }
             "webhelp_with_pdf" -> {
-                ditaBuildCommand += " -f wh-pdf --git.url \"$git_url\" --git.branch \"$git_branch\" --dita.ot.pdf.format pdf5_Guidewire\""
+                ditaBuildCommand += " -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire\""
             }
             "pdf" -> {
                 ditaBuildCommand += " -f pdf_Guidewire_remote"
             }
         }
+
 
         if (output_format.contains("webhelp") && index_redirect) {
             ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
