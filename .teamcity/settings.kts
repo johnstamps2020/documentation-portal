@@ -33,67 +33,6 @@ project {
         }
     }
 }
-
-object Helpers {
-    fun convertListToLowercase(list_to_convert: List<String>): List<String> {
-        return list_to_convert.map { it.lowercase(Locale.getDefault()) }
-    }
-
-    fun convertJsonArrayToArrayList(json_array: JSONArray): List<String> {
-        return json_array.joinToString(",").split(",")
-    }
-
-    fun generatePlatformProductVersionCombinations(
-        gw_platforms: List<String>, gw_products: List<String>, gw_versions: List<String>
-    ): List<Triple<String, String, String>> {
-        val result = mutableListOf<Triple<String, String, String>>()
-        gw_platforms.forEach { a ->
-            gw_products.forEach { b ->
-                gw_versions.forEach { c ->
-                    result.add(Triple(a, b, c))
-                }
-            }
-        }
-        return result
-    }
-
-    private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): JSONArray {
-        val allConfigObjects = JSONArray()
-        val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }
-        for (file in jsonFiles) {
-            val configFileData = JSONObject(File(file.toString()).readText(Charsets.UTF_8))
-            val configObjects = configFileData.getJSONArray(objectName)
-            configObjects.forEach { allConfigObjects.put(it) }
-        }
-        return allConfigObjects
-    }
-
-    val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
-    val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
-    val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
-
-    fun getObjectById(objectList: JSONArray, idName: String, idValue: String): JSONObject {
-        for (i in 0 until objectList.length()) {
-            val obj = objectList.getJSONObject(i)
-            if (obj.getString(idName) == idValue) {
-                return obj
-            }
-        }
-        return JSONObject()
-    }
-
-    private fun removeSpecialCharacters(stringToClean: String): String {
-        val re = Regex("[^A-Za-z0-9]")
-        return re.replace(stringToClean, "")
-    }
-
-    fun resolveRelativeIdFromIdString(id: String): RelativeId {
-        return RelativeId(removeSpecialCharacters(id))
-    }
-
-
-}
-
 object Docs {
     private fun createYarnBuildTypes(
         env_names: List<Any>,
@@ -114,7 +53,7 @@ object Docs {
             val docBuildType = createInitialDocBuildType(
                 envName, doc_id, src_id, publish_path, working_dir, index_for_search
             )
-            val yarnBuildStep = BuildSteps.createBuildYarnProjectStep(
+            val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(
                 envName,
                 publish_path,
                 build_command,
@@ -159,15 +98,15 @@ object Docs {
                 envName, doc_id, src_id, publish_path, working_dir, index_for_search
             )
             if (envName == "prod") {
-                val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publish_path)
+                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
                 docBuildType.steps.step(copyFromStagingToProdStep)
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
                 docBuildType.artifactRules = "${working_dir}/${output_dir}/build-data.json => json"
-                docBuildType.features.feature(BuildFeatures.GwOxygenWebhelpLicenseFeature)
+                docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseFeature)
                 val buildDitaProjectStep: ScriptBuildStep
                 if (envName == "staging") {
-                    buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep(
                         "webhelp_with_pdf",
                         root_map,
                         index_redirect,
@@ -183,19 +122,19 @@ object Docs {
                     )
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${output_dir}/zip"
-                        val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
+                        val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep(
                             "webhelp", root_map, index_redirect, working_dir, localOutputDir, for_offline_use = true
                         )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                         docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-                        val zipPackageStep = BuildSteps.createZipPackageStep(
+                        val zipPackageStep = GwBuildSteps.createZipPackageStep(
                             "${working_dir}/${localOutputDir}", "${working_dir}/${output_dir}"
                         )
                         docBuildType.steps.step(zipPackageStep)
                         docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
                     }
                 } else {
-                    buildDitaProjectStep = BuildSteps.createBuildDitaProjectStep(
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep(
                         "webhelp",
                         root_map,
                         index_redirect,
@@ -223,7 +162,7 @@ object Docs {
                         val resourceSrcBranch = resourceSrcConfig.getString("branch")
 
                         val resourceTargetDir = resourceObject.getString("targetFolder")
-                        val copyResourcesStep = BuildSteps.createCopyResourcesStep(
+                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
                             stepId,
                             working_dir,
                             output_dir,
@@ -239,7 +178,7 @@ object Docs {
                         stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_S3_BUCKET"),
                             copyResourcesSteps.map { it.id.toString() })
                     }
-                    docBuildType.features.feature(BuildFeatures.GwSshAgentFeature)
+                    docBuildType.features.feature(GwBuildFeatures.GwSshAgentFeature)
                 }
             }
 
@@ -258,16 +197,16 @@ object Docs {
                 }
 
                 features {
-                    feature(BuildFeatures.GwDockerSupportFeature)
+                    feature(GwBuildFeatures.GwDockerSupportFeature)
                 }
             }
             val localOutputDir = "${output_dir}/zip"
-            val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
+            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep(
                 format, root_map, index_redirect, working_dir, localOutputDir, build_filter, for_offline_use = true
             )
             downloadableOutputBuildType.steps.step(buildDitaProjectForOfflineUseStep)
             downloadableOutputBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-            val zipPackageStep = BuildSteps.createZipPackageStep(
+            val zipPackageStep = GwBuildSteps.createZipPackageStep(
                 "${working_dir}/${localOutputDir}", "${working_dir}/${output_dir}"
             )
             downloadableOutputBuildType.steps.step(zipPackageStep)
@@ -295,7 +234,7 @@ object Docs {
                     root(Helpers.resolveRelativeIdFromIdString(src_id))
                     cleanCheckout = true
                 }
-                val uploadContentToS3BucketStep = BuildSteps.createUploadContentToS3BucketStep(
+                val uploadContentToS3BucketStep = GwBuildSteps.createUploadContentToS3BucketStep(
                     deploy_env, publish_path, working_dir
                 )
                 steps.step(uploadContentToS3BucketStep)
@@ -304,16 +243,16 @@ object Docs {
 
             if (index_for_search) {
                 val configFile = "%teamcity.build.workingDir%/config.json"
-                val configFileStep = BuildSteps.createGetConfigFileStep(deploy_env, configFile)
+                val configFileStep = GwBuildSteps.createGetConfigFileStep(deploy_env, configFile)
                 steps.step(configFileStep)
                 steps.stepsOrder.add(configFileStep.id.toString())
-                val crawlDocStep = BuildSteps.createCrawlDocStep(deploy_env, doc_id, configFile)
+                val crawlDocStep = GwBuildSteps.createCrawlDocStep(deploy_env, doc_id, configFile)
                 steps.step(crawlDocStep)
                 steps.stepsOrder.add(crawlDocStep.id.toString())
             }
 
             features {
-                feature(BuildFeatures.GwDockerSupportFeature)
+                feature(GwBuildFeatures.GwDockerSupportFeature)
             }
         }
 
@@ -325,7 +264,7 @@ object Docs {
             name = src_id
             id = Helpers.resolveRelativeIdFromIdString(src_id)
             url = srcConfig.getString("gitUrl")
-            branch = srcConfig.getString("branch")
+            branch = "refs/heads/${srcConfig.getString("branch")}"
             authMethod = uploadedKey {
                 uploadedKey = "sys-doc.rsa"
             }
@@ -462,17 +401,29 @@ object Content {
             name = "Content"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
         }
-        mainProject.buildType(BuildTypes.createCleanUpIndexBuildType())
-        mainProject.buildType(BuildTypes.createUpdateSearchIndexBuildType())
-        mainProject.buildType(BuildTypes.createUploadPdfsForEscrowBuildType())
+        mainProject.buildType(GwBuildTypes.createCleanUpIndexBuildType())
+        mainProject.buildType(GwBuildTypes.createUpdateSearchIndexBuildType())
+        mainProject.buildType(GwBuildTypes.createUploadPdfsForEscrowBuildType())
 
         return mainProject
     }
 }
 
-object Sources {}
+object Validations {}
 
 object Server {}
+
+object Exports {}
+
+object BuildListeners {
+    fun createRootProjectForExports(): Project {
+        val mainProject = Project {
+            name = "Exports"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        }
+        return mainProject
+    }
+}
 
 object Recommendations {
     fun createRootProjectForRecommendations(): Project {
@@ -495,7 +446,7 @@ object Recommendations {
         val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deploy_env)
         for (combination in allPlatformProductVersionCombinations) {
             val (platform, product, version) = combination
-            val recommendationsForTopicsBuildTypeInt = BuildTypes.createRecommendationsForTopicsBuildType(
+            val recommendationsForTopicsBuildTypeInt = GwBuildTypes.createRecommendationsForTopicsBuildType(
                 "int", platform, product, version, "GoogleNews-vectors-negative300.bin"
             )
             recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
@@ -528,7 +479,67 @@ object Recommendations {
     }
 }
 
-object BuildSteps {
+object Helpers {
+    fun convertListToLowercase(list_to_convert: List<String>): List<String> {
+        return list_to_convert.map { it.lowercase(Locale.getDefault()) }
+    }
+
+    fun convertJsonArrayToArrayList(json_array: JSONArray): List<String> {
+        return json_array.joinToString(",").split(",")
+    }
+
+    fun generatePlatformProductVersionCombinations(
+        gw_platforms: List<String>, gw_products: List<String>, gw_versions: List<String>
+    ): List<Triple<String, String, String>> {
+        val result = mutableListOf<Triple<String, String, String>>()
+        gw_platforms.forEach { a ->
+            gw_products.forEach { b ->
+                gw_versions.forEach { c ->
+                    result.add(Triple(a, b, c))
+                }
+            }
+        }
+        return result
+    }
+
+    private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): JSONArray {
+        val allConfigObjects = JSONArray()
+        val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }
+        for (file in jsonFiles) {
+            val configFileData = JSONObject(File(file.toString()).readText(Charsets.UTF_8))
+            val configObjects = configFileData.getJSONArray(objectName)
+            configObjects.forEach { allConfigObjects.put(it) }
+        }
+        return allConfigObjects
+    }
+
+    val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
+    val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
+    val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
+
+    fun getObjectById(objectList: JSONArray, idName: String, idValue: String): JSONObject {
+        for (i in 0 until objectList.length()) {
+            val obj = objectList.getJSONObject(i)
+            if (obj.getString(idName) == idValue) {
+                return obj
+            }
+        }
+        return JSONObject()
+    }
+
+    private fun removeSpecialCharacters(stringToClean: String): String {
+        val re = Regex("[^A-Za-z0-9]")
+        return re.replace(stringToClean, "")
+    }
+
+    fun resolveRelativeIdFromIdString(id: String): RelativeId {
+        return RelativeId(removeSpecialCharacters(id))
+    }
+
+
+}
+
+object GwBuildSteps {
     fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
             "prod" -> {
@@ -831,7 +842,7 @@ object BuildSteps {
     }
 }
 
-object BuildFeatures {
+object GwBuildFeatures {
     object GwDockerSupportFeature : DockerSupportFeature({
         id = "DockerSupport"
         loginToRegistry = on {
@@ -850,7 +861,7 @@ object BuildFeatures {
     })
 }
 
-object BuildTriggers {
+object GwBuildTriggers {
 
     fun createVcsTriggerForExportedVcsRoot(vcs_root_id: String, src_id: String): VcsTrigger {
         return VcsTrigger({
@@ -869,7 +880,7 @@ object BuildTriggers {
     }
 }
 
-object BuildTypes {
+object GwBuildTypes {
 
     fun createRecommendationsForTopicsBuildType(
         deploy_env: String, gw_platform: String, gw_product: String, gw_version: String, pretrained_model_file: String
@@ -915,7 +926,7 @@ object BuildTypes {
                 }
             }
 
-            features.feature(BuildFeatures.GwDockerSupportFeature)
+            features.feature(GwBuildFeatures.GwDockerSupportFeature)
         }
     }
 
@@ -977,7 +988,7 @@ object BuildTypes {
                 }
             }
 
-            features.feature(BuildFeatures.GwDockerSupportFeature)
+            features.feature(GwBuildFeatures.GwDockerSupportFeature)
         }
     }
 
@@ -1006,14 +1017,14 @@ object BuildTypes {
             }
 
             val configFile = "%teamcity.build.workingDir%/config.json"
-            val configFileStep = BuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile)
+            val configFileStep = GwBuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile)
             steps.step(configFileStep)
             steps.stepsOrder.add(configFileStep.id.toString())
-            val crawlDocStep = BuildSteps.createCrawlDocStep("%DEPLOY_ENV%", "%DOC_ID%", configFile)
+            val crawlDocStep = GwBuildSteps.createCrawlDocStep("%DEPLOY_ENV%", "%DOC_ID%", configFile)
             steps.step(crawlDocStep)
             steps.stepsOrder.add(crawlDocStep.id.toString())
 
-            features.feature(BuildFeatures.GwDockerSupportFeature)
+            features.feature(GwBuildFeatures.GwDockerSupportFeature)
         }
     }
 
@@ -1083,6 +1094,123 @@ object BuildTypes {
             }
         }
     }
+
+    fun createExportFilesFromXDocsToBitbucketBuildType(): BuildType {
+        return BuildType {
+            name = "Export files from XDocs to Bitbucket"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            maxRunningBuilds = 2
+
+            params {
+                text(
+                    "env.EXPORT_PATH_IDS",
+                    "",
+                    description = "A list of space-separated path IDs from XDocs",
+                    display = ParameterDisplay.PROMPT,
+                    allowEmpty = true
+                )
+                text(
+                    "env.GIT_URL",
+                    "",
+                    description = "The URL of the Bitbucket repository where the files exported from XDocs are added",
+                    display = ParameterDisplay.PROMPT,
+                    allowEmpty = true
+                )
+                text(
+                    "env.GIT_BRANCH",
+                    "",
+                    description = "The branch of the Bitbucket repository where the files exported from XDocs are added",
+                    display = ParameterDisplay.PROMPT,
+                    allowEmpty = true
+                )
+                text(
+                    "env.SOURCES_ROOT",
+                    "src_root",
+                    label = "Git clone directory",
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
+                text(
+                    "env.XDOCS_EXPORT_DIR",
+                    "%system.teamcity.build.tempDir%/xdocs_export_dir",
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
+                text(
+                    "env.SRC_ID",
+                    "",
+                    description = "The ID of the source",
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
+                text(
+                    "env.EXPORT_SERVER",
+                    "",
+                    description = "The export server",
+                    display = ParameterDisplay.HIDDEN,
+                    allowEmpty = false
+                )
+            }
+
+            vcs {
+                GwVcsRoots.XdocsClientVcsRoot
+            }
+
+            steps {
+                script {
+                    name = "Export files from XDocs"
+                    workingDir = "LocalClient/sample/local/bin"
+                    scriptContent = """
+                            #!/bin/bash
+                            sed -i "s/ORP-XDOCS-WDB03/%env.EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
+                            chmod 777 runExport.sh
+                            for path in %env.EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %env.XDOCS_EXPORT_DIR%; done
+                        """.trimIndent()
+                }
+                script {
+                    name = "Add exported files to Bitbucket"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% %env.SOURCES_ROOT%
+                        cp -R %env.XDOCS_EXPORT_DIR%/* %env.SOURCES_ROOT%/
+                        
+                        cd %env.SOURCES_ROOT%
+                        git config --local user.email "doctools@guidewire.com"
+                        git config --local user.name "%serviceAccountUsername%"
+                        
+                        git add -A
+                        if git status | grep "Changes to be committed"
+                        then
+                          git commit -m "[TeamCity][%env.SRC_ID%] Add files exported from XDocs"
+                          git pull
+                          git push
+                        else
+                          echo "No changes to commit"
+                        fi                
+                    """.trimIndent()
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwSshAgentFeature)
+
+        }
+    }
+}
+
+object GwVcsRoots {
+    object XdocsClientVcsRoot : GitVcsRoot({
+        name = "XDocs Client"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        url = "ssh://git@stash.guidewire.com/doctools/xdocs-client.git"
+        branch = "refs/heads/master"
+        authMethod = uploadedKey {
+            uploadedKey = "sys-doc.rsa"
+        }
+
+    })
 }
 
 
