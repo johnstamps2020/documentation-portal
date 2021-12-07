@@ -128,7 +128,8 @@ object Docs {
             )
             docBuildType.steps.step(yarnBuildStep)
             docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
-            docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+            // FIXME: Reenable this line when the refactoring is done
+//            docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
             yarnBuildTypes.add(docBuildType)
         }
         return yarnBuildTypes
@@ -857,8 +858,6 @@ object BuildTriggers {
 
     fun createVcsTriggerForNonDitaBuilds(vcs_root_id: String): VcsTrigger {
         return VcsTrigger({
-            // FIXME: Reenable this line when the refactoring is done
-            enabled = false
             triggerRules = """
                 +:root=${vcs_root_id}:**
                 """.trimIndent()
