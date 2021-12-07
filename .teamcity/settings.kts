@@ -790,6 +790,7 @@ object BuildSteps {
                     #!/bin/bash
                     set -xe
                     
+                    export DEPLOY_ENV="$deploy_env"
                     export GW_DOC_ID="$doc_id"
                     export GW_PRODUCT="$gw_products"
                     export GW_PLATFORM="$gw_platforms"
