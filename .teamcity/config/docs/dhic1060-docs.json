@@ -1,0 +1,275 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dh1060rn",
+      "title": "Release Notes",
+      "url": "self-managed/dh/1060/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1060product",
+      "title": "Product Guide",
+      "url": "self-managed/dh/1060/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1060install",
+      "title": "Installation Guide",
+      "url": "self-managed/dh/1060/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1060upgrade",
+      "title": "Upgrade Guide",
+      "url": "self-managed/dh/1060/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1060config",
+      "title": "Configuration Guide",
+      "url": "self-managed/dh/1060/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1060dataspec",
+      "title": "Data Specifications Guide",
+      "url": "self-managed/dh/1060/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1060admin",
+      "title": "Administration Guide",
+      "url": "self-managed/dh/1060/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dh1060devref",
+      "title": "Developer Reference",
+      "url": "self-managed/dh/1060/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060rn",
+      "title": "Release Notes",
+      "url": "self-managed/ic/1060/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060product",
+      "title": "Product Guide",
+      "url": "self-managed/ic/1060/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060install",
+      "title": "Installation Guide",
+      "url": "self-managed/ic/1060/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060upgrade",
+      "title": "Upgrade Guide",
+      "url": "self-managed/ic/1060/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060config",
+      "title": "Configuration Guide",
+      "url": "self-managed/ic/1060/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060dataspec",
+      "title": "Data Specifications Guide",
+      "url": "self-managed/ic/1060/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060admin",
+      "title": "Administration Guide",
+      "url": "self-managed/ic/1060/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060biapp",
+      "title": "BI Applications Guide",
+      "url": "self-managed/ic/1060/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060reports",
+      "title": "Reports Guide",
+      "url": "self-managed/ic/1060/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "ic1060devref",
+      "title": "Developer Reference",
+      "url": "self-managed/ic/1060/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.6.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
