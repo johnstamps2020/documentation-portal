@@ -1,0 +1,76 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub 10.6.0",
+  "class": "twoColumns",
+  "template": "page",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dh1060rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dh1060product"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dh1060install"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dh1060upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dh1060config"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dh1060dataspec"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dh1060admin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dh1060devref"
+        }
+      ]
+    }
+  ]
+}
