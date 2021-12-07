@@ -70,7 +70,14 @@
       "root": "developer-ref.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060devref",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Dobson-10.6/DataHub/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
     },
     {
       "buildType": "dita",
@@ -157,7 +164,14 @@
       "root": "developer-ref.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060devref",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
     }
   ]
 }
