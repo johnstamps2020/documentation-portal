@@ -3,6 +3,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -20,6 +21,7 @@ project {
 
 
     subProject(Docs.createRootProjectForDocs())
+    subProject(Recommendations.createRootProjectForRecommendations())
 
     features {
         feature {
@@ -33,6 +35,28 @@ project {
 }
 
 object Helpers {
+    fun convertListToLowercase(list_to_convert: List<String>): List<String> {
+        return list_to_convert.map { it.lowercase(Locale.getDefault()) }
+    }
+
+    fun convertJsonArrayToArrayList(json_array: JSONArray): List<String> {
+        return json_array.joinToString(",").split(",")
+    }
+
+    fun generatePlatformProductVersionCombinations(
+        gw_platforms: List<String>, gw_products: List<String>, gw_versions: List<String>
+    ): List<Triple<String, String, String>> {
+        val result = mutableListOf<Triple<String, String, String>>()
+        gw_platforms.forEach { a ->
+            gw_products.forEach { b ->
+                gw_versions.forEach { c ->
+                    result.add(Triple(a, b, c))
+                }
+            }
+        }
+        return result
+    }
+
     private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): JSONArray {
         val allConfigObjects = JSONArray()
         val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }
@@ -71,7 +95,7 @@ object Helpers {
 }
 
 object Docs {
-    fun createYarnBuildTypes(
+    private fun createYarnBuildTypes(
         env_names: List<Any>,
         doc_id: String,
         src_id: String,
@@ -80,20 +104,15 @@ object Docs {
         index_for_search: Boolean,
         build_command: String?,
         node_image_version: String?,
-        gw_products: String,
         gw_platforms: String,
+        gw_products: String,
         gw_versions: String
     ): List<BuildType> {
         val yarnBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
             val envName = env.toString()
             val docBuildType = createInitialDocBuildType(
-                envName,
-                doc_id,
-                src_id,
-                publish_path,
-                working_dir,
-                index_for_search
+                envName, doc_id, src_id, publish_path, working_dir, index_for_search
             )
             val yarnBuildStep = BuildSteps.createBuildYarnProjectStep(
                 envName,
@@ -114,7 +133,7 @@ object Docs {
         return yarnBuildTypes
     }
 
-    fun createDitaBuildTypes(
+    private fun createDitaBuildTypes(
         env_names: List<Any>,
         doc_id: String,
         src_id: String,
@@ -125,8 +144,8 @@ object Docs {
         root_map: String,
         index_redirect: Boolean,
         build_filter: String,
-        gw_products: String,
         gw_platforms: String,
+        gw_products: String,
         gw_versions: String,
         src_url: String,
         src_branch: String,
@@ -136,12 +155,7 @@ object Docs {
         for (env in env_names) {
             val envName = env.toString()
             val docBuildType = createInitialDocBuildType(
-                envName,
-                doc_id,
-                src_id,
-                publish_path,
-                working_dir,
-                index_for_search
+                envName, doc_id, src_id, publish_path, working_dir, index_for_search
             )
             if (envName == "prod") {
                 val copyFromStagingToProdStep = BuildSteps.createCopyFromStagingToProdStep(publish_path)
@@ -169,18 +183,12 @@ object Docs {
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${output_dir}/zip"
                         val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
-                            "webhelp",
-                            root_map,
-                            index_redirect,
-                            working_dir,
-                            localOutputDir,
-                            for_offline_use = true
+                            "webhelp", root_map, index_redirect, working_dir, localOutputDir, for_offline_use = true
                         )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                         docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
                         val zipPackageStep = BuildSteps.createZipPackageStep(
-                            "${working_dir}/${localOutputDir}",
-                            "${working_dir}/${output_dir}"
+                            "${working_dir}/${localOutputDir}", "${working_dir}/${output_dir}"
                         )
                         docBuildType.steps.step(zipPackageStep)
                         docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
@@ -227,8 +235,7 @@ object Docs {
                     }
                     docBuildType.steps {
                         copyResourcesSteps.forEach { step(it) }
-                        stepsOrder.addAll(
-                            stepsOrder.indexOf("UPLOAD_CONTENT_TO_S3_BUCKET"),
+                        stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_S3_BUCKET"),
                             copyResourcesSteps.map { it.id.toString() })
                     }
                     docBuildType.features.feature(BuildFeatures.GwSshAgentFeature)
@@ -255,18 +262,12 @@ object Docs {
             }
             val localOutputDir = "${output_dir}/zip"
             val buildDitaProjectForOfflineUseStep = BuildSteps.createBuildDitaProjectStep(
-                format,
-                root_map,
-                index_redirect,
-                working_dir,
-                localOutputDir,
-                for_offline_use = true
+                format, root_map, index_redirect, working_dir, localOutputDir, for_offline_use = true
             )
             downloadableOutputBuildType.steps.step(buildDitaProjectForOfflineUseStep)
             downloadableOutputBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
             val zipPackageStep = BuildSteps.createZipPackageStep(
-                "${working_dir}/${localOutputDir}",
-                "${working_dir}/${output_dir}"
+                "${working_dir}/${localOutputDir}", "${working_dir}/${output_dir}"
             )
             downloadableOutputBuildType.steps.step(zipPackageStep)
             downloadableOutputBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
@@ -275,7 +276,7 @@ object Docs {
         return ditaBuildTypes
     }
 
-    fun createInitialDocBuildType(
+    private fun createInitialDocBuildType(
         deploy_env: String,
         doc_id: String,
         src_id: String,
@@ -293,12 +294,9 @@ object Docs {
                     root(Helpers.resolveRelativeIdFromIdString(src_id))
                     cleanCheckout = true
                 }
-                val uploadContentToS3BucketStep =
-                    BuildSteps.createUploadContentToS3BucketStep(
-                        deploy_env,
-                        publish_path,
-                        working_dir
-                    )
+                val uploadContentToS3BucketStep = BuildSteps.createUploadContentToS3BucketStep(
+                    deploy_env, publish_path, working_dir
+                )
                 steps.step(uploadContentToS3BucketStep)
                 steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
             }
@@ -320,7 +318,7 @@ object Docs {
 
     }
 
-    fun createDocVcsRoot(src_id: String): GitVcsRoot {
+    private fun createDocVcsRoot(src_id: String): GitVcsRoot {
         val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
         return GitVcsRoot {
             name = src_id
@@ -333,12 +331,13 @@ object Docs {
         }
     }
 
-    fun createDocProject(build_config: JSONObject, src_id: String): Project {
+    private fun createDocProject(build_config: JSONObject, src_id: String): Project {
         val gwBuildType = build_config.getString("buildType")
         val docId = build_config.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
-        val docEnvironments = docConfig.getJSONArray("environments").toList()
+        val docEnvironments = docConfig.getJSONArray("environments")
+        val docEnvironmentsList = Helpers.convertJsonArrayToArrayList(docEnvironments)
         val workingDir = when (build_config.has("workingDir")) {
             false -> {
                 "%teamcity.build.checkoutDir%"
@@ -350,9 +349,12 @@ object Docs {
         val indexForSearch = if (docConfig.has("indexForSearch")) docConfig.getBoolean("indexForSearch") else true
 
         val metadata = docConfig.getJSONObject("metadata")
-        val gwProducts = metadata.getJSONArray("product").joinToString(separator = ",")
-        val gwPlatforms = metadata.getJSONArray("platform").joinToString(separator = ",")
-        val gwVersions = metadata.getJSONArray("version").joinToString(separator = ",")
+        val gwPlatforms = metadata.getJSONArray("platform")
+        val gwProducts = metadata.getJSONArray("product")
+        val gwVersions = metadata.getJSONArray("version")
+        val gwPlatformsString = gwPlatforms.joinToString(",")
+        val gwProductsString = gwProducts.joinToString(",")
+        val gwVersionsString = gwVersions.joinToString(",")
 
         val publishPath = docConfig.getString("url")
 
@@ -363,7 +365,7 @@ object Docs {
             val buildCommand =
                 if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
             docProjectBuildTypes += createYarnBuildTypes(
-                docEnvironments,
+                docEnvironmentsList,
                 docId,
                 src_id,
                 publishPath,
@@ -371,9 +373,9 @@ object Docs {
                 indexForSearch,
                 buildCommand,
                 nodeImageVersion,
-                gwProducts,
-                gwPlatforms,
-                gwVersions
+                gwPlatformsString,
+                gwProductsString,
+                gwVersionsString
             )
         } else if (gwBuildType == "dita") {
             val rootMap = build_config.getString("root")
@@ -402,7 +404,7 @@ object Docs {
                 if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
 
             docProjectBuildTypes += createDitaBuildTypes(
-                docEnvironments,
+                docEnvironmentsList,
                 docId,
                 src_id,
                 publishPath,
@@ -412,9 +414,9 @@ object Docs {
                 rootMap,
                 indexRedirect,
                 buildFilter,
-                gwProducts,
-                gwPlatforms,
-                gwVersions,
+                gwPlatformsString,
+                gwProductsString,
+                gwVersionsString,
                 srcUrl,
                 srcBranch,
                 resourcesToCopy
@@ -435,7 +437,7 @@ object Docs {
     fun createRootProjectForDocs(): Project {
         val mainProject = Project {
             name = "Docs"
-            id = Helpers.resolveRelativeIdFromIdString("Docs")
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
         }
         val srcIds = mutableListOf<String>()
         for (i in 0 until Helpers.buildConfigs.length()) {
@@ -456,6 +458,60 @@ object Docs {
 object Sources {}
 
 object Server {}
+
+object Recommendations {
+    fun createRootProjectForRecommendations(): Project {
+        val mainProject = Project {
+            name = "Recommendations"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        }
+        val envsWithRecommendations = arrayListOf("int")
+
+        for (env in envsWithRecommendations) {
+            val recommendationProject = createRecommendationProject(env)
+            mainProject.subProject(recommendationProject)
+        }
+
+        return mainProject
+    }
+
+    private fun createRecommendationProject(deploy_env: String): Project {
+        val recommendationProjectBuildTypes = mutableListOf<BuildType>()
+        val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deploy_env)
+        for (combination in allPlatformProductVersionCombinations) {
+            val (platform, product, version) = combination
+            val recommendationsForTopicsBuildTypeInt = BuildTypes.createRecommendationsForTopicsBuildType(
+                "int", platform, product, version, "GoogleNews-vectors-negative300.bin"
+            )
+            recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
+        }
+        return Project {
+            name = "Recommendations for $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            recommendationProjectBuildTypes.forEach {
+                buildType(it)
+            }
+        }
+    }
+
+    private fun generatePlatformProductVersionCombinationsForAllDocs(deploy_env: String): List<Triple<String, String, String>> {
+        val result = mutableListOf<Triple<String, String, String>>()
+        for (i in 0 until Helpers.docConfigs.length()) {
+            val doc = Helpers.docConfigs.getJSONObject(i)
+            val docEnvironmentsLower =
+                Helpers.convertListToLowercase(Helpers.convertJsonArrayToArrayList(doc.getJSONArray("environments")))
+            if (docEnvironmentsLower.contains(deploy_env)) {
+                val docMetadata = doc.getJSONObject("metadata")
+                val docPlatforms = Helpers.convertJsonArrayToArrayList(docMetadata.getJSONArray("platform"))
+                val docProducts = Helpers.convertJsonArrayToArrayList(docMetadata.getJSONArray("product"))
+                val docVersions = Helpers.convertJsonArrayToArrayList(docMetadata.getJSONArray("version"))
+                result += Helpers.generatePlatformProductVersionCombinations(docPlatforms, docProducts, docVersions)
+            }
+        }
+        return result.distinct()
+    }
+}
 
 object BuildSteps {
     fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
@@ -562,8 +618,7 @@ object BuildSteps {
     }
 
     fun createZipPackageStep(
-        input_path: String,
-        target_path: String
+        input_path: String, target_path: String
     ): ScriptBuildStep {
 
         val zipPackageName = "docs.zip"
@@ -584,9 +639,7 @@ object BuildSteps {
     }
 
     fun createUploadContentToS3BucketStep(
-        deploy_env: String,
-        publish_path: String,
-        working_dir: String
+        deploy_env: String, publish_path: String, working_dir: String
     ): ScriptBuildStep {
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
         return ScriptBuildStep {
@@ -796,6 +849,59 @@ object BuildTriggers {
                 +:root=${vcs_root_id}:**
                 """.trimIndent()
         })
+    }
+}
+
+object BuildTypes {
+
+    fun createRecommendationsForTopicsBuildType(
+        deploy_env: String, gw_platform: String, gw_product: String, gw_version: String, pretrained_model_file: String
+    ): BuildType {
+        return BuildType {
+            name = "Generate recommendations for $gw_product, $gw_platform, $gw_version"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            steps {
+                script {
+                    name = "Download the pretrained model"
+                    scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            
+                            echo "Setting credentials to access int"
+                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                            export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                            
+                            echo "Downloading the pretrained model from the S3 bucket"
+                            aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrained_model_file} %teamcity.build.workingDir%/
+                        """.trimIndent()
+                }
+                script {
+                    name = "Run the recommendation engine"
+                    scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            
+                            export PLATFORM="$gw_platform"
+                            export PRODUCT="$gw_product"
+                            export VERSION="$gw_version"
+                            export ELASTICSEARCH_URL="https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
+                            export DOCS_INDEX_NAME="gw-docs"
+                            export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
+                            export PRETRAINED_MODEL_FILE="$pretrained_model_file"
+                                                                    
+                            recommendation_engine
+                        """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            features {
+                feature(BuildFeatures.GwDockerSupportFeature)
+            }
+        }
     }
 }
 
