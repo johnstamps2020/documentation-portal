@@ -9,18 +9,11 @@
       "branch": "main"
     },
     {
-      "id": "dm202111src",
-      "title": "DataManagement 2021.11",
+      "id": "dm2021111060src",
+      "title": "DataManagement 2021.11 and 10.6.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "release/2021.11"
-    },
-    {
-      "id": "dm1060src",
-      "title": "DataManagement 10.6.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "release/10.6.0"
+      "branch": "release/2021.11-10.6.0"
     }
   ]
 }
