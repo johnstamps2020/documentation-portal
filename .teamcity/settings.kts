@@ -22,6 +22,7 @@ project {
 
     subProject(Docs.createRootProjectForDocs())
     subProject(Recommendations.createRootProjectForRecommendations())
+    subProject(Content.createRootProjectForContent())
 
     features {
         feature {
@@ -451,6 +452,19 @@ object Docs {
         for (srcId in srcIds.distinct()) {
             mainProject.vcsRoot(createDocVcsRoot(srcId))
         }
+        return mainProject
+    }
+}
+
+object Content {
+    fun createRootProjectForContent(): Project {
+        val mainProject = Project {
+            name = "Content"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        }
+        mainProject.buildType(BuildTypes.createCleanUpIndexBuildType())
+        mainProject.buildType(BuildTypes.createUpdateSearchIndexBuildType())
+
         return mainProject
     }
 }
@@ -898,9 +912,105 @@ object BuildTypes {
                 }
             }
 
-            features {
-                feature(BuildFeatures.GwDockerSupportFeature)
+            features.feature(BuildFeatures.GwDockerSupportFeature)
+        }
+    }
+
+    fun createCleanUpIndexBuildType(): BuildType {
+        return BuildType {
+            name = "Clean up index"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            params {
+                select(
+                    "env.DEPLOY_ENV",
+                    "",
+                    label = "Deployment environment",
+                    description = "Select an environment on which you want clean up the index",
+                    display = ParameterDisplay.PROMPT,
+                    options = listOf("dev", "int", "staging", "prod")
+                )
+                text(
+                    "env.CONFIG_FILE_URL",
+                    "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
+                    allowEmpty = false
+                )
+                text(
+                    "env.CONFIG_FILE_URL_PROD",
+                    "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
+                    allowEmpty = false
+                )
+                text(
+                    "env.ELASTICSEARCH_URLS",
+                    "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+                    allowEmpty = false
+                )
+                text(
+                    "env.ELASTICSEARCH_URLS_PROD",
+                    "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+                    allowEmpty = false
+                )
+
             }
+
+            steps {
+                script {
+                    name = "Run the cleanup script"
+                    scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                                export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                                export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
+                            fi
+                            
+                            export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
+                            curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
+            
+                            index_cleaner
+                        """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            features.feature(BuildFeatures.GwDockerSupportFeature)
+        }
+    }
+
+    fun createUpdateSearchIndexBuildType(): BuildType {
+        return BuildType {
+            name = "Update search index"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            params {
+                select(
+                    "DEPLOY_ENV",
+                    "",
+                    label = "Deployment environment",
+                    description = "The environment on which you want reindex documents",
+                    display = ParameterDisplay.PROMPT,
+                    options = listOf("dev", "int", "staging", "prod", "portal2")
+                )
+                text(
+                    "DOC_ID",
+                    "",
+                    label = "Doc ID",
+                    description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                    display = ParameterDisplay.PROMPT,
+                    allowEmpty = true
+                )
+            }
+
+            val configFile = "%teamcity.build.workingDir%/config.json"
+            val configFileStep = BuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile)
+            steps.step(configFileStep)
+            steps.stepsOrder.add(configFileStep.id.toString())
+            val crawlDocStep = BuildSteps.createCrawlDocStep("%DEPLOY_ENV%", "%DOC_ID%", configFile)
+            steps.step(crawlDocStep)
+            steps.stepsOrder.add(crawlDocStep.id.toString())
+
+            features.feature(BuildFeatures.GwDockerSupportFeature)
         }
     }
 }
