@@ -83,6 +83,30 @@
     },
     {
       "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide1020src",
+      "docId": "selfmanagedbcupgradeguide1020"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-OnPrem-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide1020src",
+      "docId": "selfmanagedccupgradeguide1020"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-OnPrem-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide1020src",
+      "docId": "selfmanagedpcupgradeguide1020"
+    },
+    {
+      "buildType": "dita",
       "filter": "Other/IS-BillingCenter-Self-managed-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
