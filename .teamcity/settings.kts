@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -94,6 +95,7 @@ object Docs {
         src_url: String,
         src_branch: String,
         resources_to_copy: JSONArray,
+        src_is_exported: Boolean,
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val outputDir = "out"
@@ -185,6 +187,14 @@ object Docs {
                     }
                     docBuildType.features.feature(GwBuildFeatures.GwSshAgentFeature)
                 }
+                // FIXME: Reenable this line when the refactoring is done
+//                if (arrayOf("int", "staging").contains(envName) && src_is_exported) {
+//                    docBuildType.triggers.vcs {
+//                        GwBuildTriggers.createVcsTriggerForExportedVcsRoot(
+//                            src_id
+//                        )
+//                    }
+//                }
             }
 
             ditaBuildTypes.add(docBuildType)
@@ -331,6 +341,7 @@ object Docs {
             val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
             val srcUrl = srcConfig.getString("gitUrl")
             val srcBranch = srcConfig.getString("branch")
+            val srcIsExported = srcConfig.has("xdocsPathIds")
             val resourcesToCopy =
                 if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
 
@@ -349,7 +360,8 @@ object Docs {
                 gwVersionsString,
                 srcUrl,
                 srcBranch,
-                resourcesToCopy
+                resourcesToCopy,
+                srcIsExported,
             )
         }
 
@@ -1001,10 +1013,10 @@ object GwBuildFeatures {
 
 object GwBuildTriggers {
 
-    fun createVcsTriggerForExportedVcsRoot(vcs_root_id: String, src_id: String): VcsTrigger {
+    fun createVcsTriggerForExportedVcsRoot(src_id: String): VcsTrigger {
         return VcsTrigger({
             triggerRules = """
-                +:root=${vcs_root_id};comment=\[$src_id\]:**
+                +:root=${Helpers.resolveRelativeIdFromIdString(src_id)};comment=\[$src_id\]:**
                 """.trimIndent()
         })
     }
