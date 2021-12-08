@@ -20,7 +20,9 @@ project {
         param("env.NAMESPACE", "doctools")
     }
 
-
+    GwVcsRoots.createVcsRootsFromConfigFiles().forEach {
+        vcsRoot(it)
+    }
     subProject(Docs.createRootProjectForDocs())
     subProject(Recommendations.createRootProjectForRecommendations())
     subProject(Content.createRootProjectForContent())
@@ -261,19 +263,6 @@ object Docs {
 
     }
 
-    private fun createDocVcsRoot(src_id: String): GitVcsRoot {
-        val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
-        return GitVcsRoot {
-            name = src_id
-            id = Helpers.resolveRelativeIdFromIdString(src_id)
-            url = srcConfig.getString("gitUrl")
-            branch = "refs/heads/${srcConfig.getString("branch")}"
-            authMethod = uploadedKey {
-                uploadedKey = "sys-doc.rsa"
-            }
-        }
-    }
-
     private fun createDocProject(build_config: JSONObject, src_id: String): Project {
         val gwBuildType = build_config.getString("buildType")
         val docId = build_config.getString("docId")
@@ -380,17 +369,13 @@ object Docs {
             name = "Docs"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
         }
-        val srcIds = mutableListOf<String>()
+
         for (buildConfig in Helpers.buildConfigs) {
             val srcId = buildConfig.getString("srcId")
             val docProject = createDocProject(buildConfig, srcId)
             mainProject.subProject(docProject)
+        }
 
-            srcIds.add(srcId)
-        }
-        for (srcId in srcIds.distinct()) {
-            mainProject.vcsRoot(createDocVcsRoot(srcId))
-        }
         return mainProject
     }
 }
@@ -428,8 +413,8 @@ object Exports {
         return mainProject
     }
 
-    fun createExportBuildTypes(): List<BuildType> {
-        val exportBuilds = mutableListOf<BuildType>()
+    private fun createExportBuildTypes(): List<BuildType> {
+        val exportBuildTypes = mutableListOf<BuildType>()
         val exportServers = arrayOf("ORP-XDOCS-WDB03", "ORP-XDOCS-WDB04")
         var exportServerIndex = 0
 
@@ -502,7 +487,7 @@ object Exports {
                     }
                 }
 
-                exportBuilds.add(
+                exportBuildTypes.add(
                     GwBuildTypes.createExportFilesFromXDocsToBitbucketCompositeBuildType(
                         srcTitle,
                         xdocsPathIds,
@@ -517,7 +502,7 @@ object Exports {
                 )
             }
         }
-        return exportBuilds
+        return exportBuildTypes
     }
 }
 
@@ -527,7 +512,15 @@ object BuildListeners {
             name = "Exports"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
         }
+        createBuildListenerBuildTypes().forEach {
+            mainProject.buildType(it)
+        }
         return mainProject
+    }
+
+    private fun createBuildListenerBuildTypes(): List<BuildType> {
+        val buildListenerBuildTypes = mutableListOf<BuildType>()
+        return listOf()
     }
 }
 
@@ -954,6 +947,37 @@ object GwBuildSteps {
             dockerRunParameters = "--user 1000:1000"
         }
     }
+
+    fun createRunBuildManagerStep(
+        teamcity_affected_project: String,
+        teamcity_template: String,
+        vcs_root_id: String,
+        git_branch: String = "",
+    ): ScriptBuildStep {
+        val teamcityBuildBranch = "%teamcity.build.vcs.branch.${vcs_root_id}%"
+        val gitBranch = git_branch.ifEmpty { teamcityBuildBranch }
+        return ScriptBuildStep {
+            name = "Run the build manager"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export CHANGED_FILES_FILE="%system.teamcity.build.changedFiles.file%"
+                export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
+                export TEAMCITY_API_AUTH_TOKEN="credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530"
+                export TEAMCITY_RESOURCES_ARTIFACT_PATH="json/build-data.json"
+                export TEAMCITY_AFFECTED_PROJECT="$teamcity_affected_project"
+                export TEAMCITY_TEMPLATE="$teamcity_template"
+                export GIT_URL="%vcsroot.${vcs_root_id}.url%"
+                export GIT_BRANCH="$gitBranch"
+                export TEAMCITY_BUILD_BRANCH="$teamcityBuildBranch"
+                                                        
+                build_manager
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
 }
 
 object GwBuildFeatures {
@@ -1363,6 +1387,27 @@ object GwBuildTypes {
 
         }
     }
+
+    fun createBuildListenerBuildType(src_id: String): BuildType {
+        return BuildType {
+            name = "$src_id listener"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(Helpers.resolveRelativeIdFromIdString(src_id))
+                cleanCheckout = true
+            }
+
+            steps.step(GwBuildSteps.createRunBuildManagerStep(
+                "DocumentationTools_DocumentationPortal_Docs",
+                "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita",
+                Helpers.resolveRelativeIdFromIdString(src_id).toString()
+
+            ))
+
+            features.feature(GwBuildFeatures.GwDockerSupportFeature)
+        }
+    }
 }
 
 object GwVcsRoots {
@@ -1376,6 +1421,22 @@ object GwVcsRoots {
         }
 
     })
+
+    fun createVcsRootsFromConfigFiles(): List<GitVcsRoot> {
+        val srcIds = Helpers.buildConfigs.map { it.getString("srcId") }.distinct()
+        return srcIds.map {
+            val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", it)
+            GitVcsRoot {
+                name = it
+                id = Helpers.resolveRelativeIdFromIdString(it)
+                url = srcConfig.getString("gitUrl")
+                branch = "refs/heads/${srcConfig.getString("branch")}"
+                authMethod = uploadedKey {
+                    uploadedKey = "sys-doc.rsa"
+                }
+            }
+        }
+    }
 }
 
 
