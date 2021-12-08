@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -532,7 +531,59 @@ object BuildListeners {
 
     private fun createBuildListenerBuildTypes(): List<BuildType> {
         val buildListenerBuildTypes = mutableListOf<BuildType>()
-        return listOf()
+        val sourcesRequiringListeners = mutableListOf<JSONObject>()
+        for (sourceConfig in Helpers.sourceConfigs) {
+            val srcId = sourceConfig.getString("id")
+            if (!sourceConfig.has("xdocsPathIds")) {
+                val ditaBuildsRelatedToSrc =
+                    Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == "dita" }
+                for (ditaBuild in ditaBuildsRelatedToSrc) {
+                    val buildDocId = ditaBuild.getString("docId")
+                    val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
+                    val docEnvironmentsLower =
+                        Helpers.convertJsonArrayToLowercaseList(docConfig.getJSONArray("environments"))
+                    if (arrayListOf("int", "staging").any { docEnvironmentsLower.contains(it) }) {
+                        sourcesRequiringListeners.add(sourceConfig)
+                    }
+                }
+            }
+        }
+        val mergedSourcesRequiringListeners = mutableListOf<JSONObject>()
+        for (sourceConfig in sourcesRequiringListeners.distinct()) {
+            val gitUrl = sourceConfig.getString("gitUrl")
+            val gitBranch = sourceConfig.getString("branch")
+            val existingMergedSource = mergedSourcesRequiringListeners.find { it.getString("gitUrl") == gitUrl }
+            if (existingMergedSource != null && !existingMergedSource.getJSONArray("branches").contains(gitBranch)) {
+                existingMergedSource.getJSONArray("branches").put(gitBranch)
+            } else {
+                mergedSourcesRequiringListeners.add(
+                    JSONObject(
+                        """
+                            {
+                            "gitUrl": "$gitUrl",
+                            "branches": ["$gitBranch"]
+                            }
+                        """.trimIndent()
+                    )
+                )
+            }
+
+        }
+//        val buildListenerBuild = BuildType {
+//            name = "$srcId listener"
+//            id = Helpers.resolveRelativeIdFromIdString(this.name)
+//
+//            vcs {
+//                root(Helpers.resolveRelativeIdFromIdString(src_id))
+//            }
+//            steps.step(GwBuildSteps.createRunBuildManagerStep(
+//                "DocumentationTools_DocumentationPortal_Docs",
+//                GwTemplates.BuildListenerTemplate.id.toString(),
+//                Helpers.resolveRelativeIdFromIdString(srcId).toString()
+//            ))
+//        }
+//        buildListenerBuildTypes.add(buildListenerBuild)
+        return buildListenerBuildTypes
     }
 }
 
@@ -622,12 +673,12 @@ object Helpers {
         return result
     }
 
-    private fun getObjectsFromAllConfigFiles(srcDir: String, objectName: String): List<JSONObject> {
+    private fun getObjectsFromAllConfigFiles(src_dir: String, object_name: String): List<JSONObject> {
         val allConfigObjects = mutableListOf<JSONObject>()
-        val jsonFiles = File(srcDir).walk().filter { File(it.toString()).extension == "json" }
+        val jsonFiles = File(src_dir).walk().filter { File(it.toString()).extension == "json" }
         for (file in jsonFiles) {
             val configFileData = JSONObject(File(file.toString()).readText(Charsets.UTF_8))
-            val configObjects = configFileData.getJSONArray(objectName)
+            val configObjects = configFileData.getJSONArray(object_name)
             configObjects.forEach { allConfigObjects.add(it as JSONObject) }
         }
         return allConfigObjects
@@ -637,18 +688,13 @@ object Helpers {
     val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
     val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
 
-    fun getObjectById(objectList: List<JSONObject>, idName: String, idValue: String): JSONObject {
-        for (obj in objectList) {
-            if (obj.getString(idName) == idValue) {
-                return obj
-            }
-        }
-        return JSONObject()
+    fun getObjectById(objectList: List<JSONObject>, id_name: String, id_value: String): JSONObject {
+        return objectList.find { it.getString(id_name) == id_value } ?: JSONObject()
     }
 
-    private fun removeSpecialCharacters(stringToClean: String): String {
+    private fun removeSpecialCharacters(string_to_clean: String): String {
         val re = Regex("[^A-Za-z0-9]")
-        return re.replace(stringToClean, "")
+        return re.replace(string_to_clean, "")
     }
 
     fun resolveRelativeIdFromIdString(id: String): RelativeId {
@@ -1449,6 +1495,21 @@ object GwVcsRoots {
             }
         }
     }
+}
+
+object GwTemplates {
+    object BuildListenerTemplate : Template({
+        name = "Build listener template"
+        description = "Empty template added to doc builds to make them discoverable by build listener builds"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+    })
+
+    object ValidationListenerTemplate : Template({
+        name = "Validation listener template"
+        description =
+            "Empty template added to validation builds to make them discoverable by validation listener builds"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+    })
 }
 
 
