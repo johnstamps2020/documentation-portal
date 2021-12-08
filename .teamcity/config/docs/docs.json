@@ -485,6 +485,48 @@
       "public": false
     },
     {
+      "id": "bc1020",
+      "title": "BillingCenter",
+      "url": "self-managed/bc/1020",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "cc1020",
+      "title": "ClaimCenter",
+      "url": "self-managed/cc/1020",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "pc1020",
+      "title": "PolicyCenter",
+      "url": "self-managed/pc/1020",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "bc1012",
       "title": "BillingCenter",
       "url": "self-managed/bc/1012",
