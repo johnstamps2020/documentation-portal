@@ -51,7 +51,7 @@
     "resource": {
       "additionalProperties": false,
       "required": ["targetFolder", "sourceFolder", "srcId"],
-      "properties": {
+      "properties": {x
         "targetFolder": {
           "description": "For resources, it is the path where we want to place the resource.",
           "type": "string"

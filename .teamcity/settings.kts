@@ -48,7 +48,7 @@ object Docs {
         node_image_version: String?,
         gw_platforms: String,
         gw_products: String,
-        gw_versions: String
+        gw_versions: String,
     ): List<BuildType> {
         val yarnBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
@@ -92,7 +92,7 @@ object Docs {
         gw_versions: String,
         src_url: String,
         src_branch: String,
-        resources_to_copy: JSONArray
+        resources_to_copy: JSONArray,
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
@@ -225,7 +225,7 @@ object Docs {
         src_id: String,
         publish_path: String,
         working_dir: String,
-        index_for_search: Boolean
+        index_for_search: Boolean,
     ): BuildType {
         return BuildType {
             name = "Publish to $deploy_env"
@@ -280,7 +280,7 @@ object Docs {
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
-        val docEnvironmentsList = Helpers.convertJsonArrayToArrayList(docEnvironments)
+        val docEnvironmentsList = Helpers.convertJsonArrayToList(docEnvironments)
         val workingDir = when (build_config.has("workingDir")) {
             false -> {
                 "%teamcity.build.checkoutDir%"
@@ -427,6 +427,95 @@ object Exports {
         return mainProject
     }
 
+    fun createExportBuildTypes(): List<BuildType> {
+        val exportBuilds = mutableListOf<BuildType>()
+
+        val exportServers = arrayOf("ORP-XDOCS-WDB03", "ORP-XDOCS-WDB04")
+        var exportServerIndex = 0
+
+        var schHourDaily = 0
+        var schMinuteDaily = 0
+        var schHourWeekly = 12
+        var schMinuteWeekly = 0
+        val dailyMinutesOffset = 2
+        val weeklyMinutesOffset = 10
+
+        for (i in 0 until Helpers.sourceConfigs.length()) {
+            val source = Helpers.sourceConfigs.getJSONObject(i)
+            if (source.has("xdocsPathIds")) {
+                var scheduledBuild = false
+                val srcId = source.getString("id")
+                for (j in 0 until Helpers.buildConfigs.length()) {
+                    val buildConfig = Helpers.buildConfigs.getJSONObject(i)
+                    if (buildConfig.getString("srcId") == srcId) {
+                        val doc = Helpers.getObjectById(Helpers.docConfigs, "id", buildConfig.getString("docId"))
+                        val docEnvironmentsLowercaseList =
+                            Helpers.convertJsonArrayToLowercaseList(doc.getJSONArray("environments"))
+                        if (docEnvironmentsLowercaseList.contains("int")) {
+                            scheduledBuild = true
+                        }
+                    }
+                    val gitUrl = source.getString("gitUrl")
+                    val gitBranch = source.getString("branch")
+                    val srcTitle = source.getString("title")
+                    val xdocsPathIds = source.getJSONArray("xdocsPathIds").joinToString(" ")
+                    val exportServer = exportServers[exportServerIndex]
+                    val exportFreq = if (source.has("exportFrequency")) source.getString("exportFrequency") else "daily"
+                    val (scheduleHour, scheduleMinutes) = when (exportFreq) {
+                        "daily" ->
+                            Pair(schHourDaily, schMinuteDaily)
+                        "weekly" ->
+                            Pair(schHourWeekly, schMinuteWeekly)
+                        else -> Pair(null, null)
+                    }
+
+                    exportBuilds.add(
+                        GwBuildTypes.createExportFilesFromXDocsToBitbucketCompositeBuildType(
+                            srcTitle,
+                            xdocsPathIds,
+                            gitUrl,
+                            gitBranch,
+                            srcId,
+                            exportServer,
+                            exportFreq,
+                            scheduleHour,
+                            scheduleMinutes
+                        )
+                    )
+
+                    if (scheduledBuild && exportFreq == "daily") {
+                        schMinuteDaily += dailyMinutesOffset
+                        if (schMinuteDaily >= 60) {
+                            schHourDaily += 1
+                            schMinuteDaily = 0
+                        }
+                        if (schHourDaily >= 24) {
+                            schHourDaily = 0
+                        }
+                        exportServerIndex++
+                        if (exportServerIndex == exportServers.size) {
+                            exportServerIndex = 0
+                        }
+                    }
+                    if (scheduledBuild && exportFreq == "weekly") {
+                        schMinuteWeekly += weeklyMinutesOffset
+
+                        if (schMinuteWeekly >= 60) {
+                            schHourWeekly += 1
+                            schMinuteWeekly = 0
+                        }
+                        if (schHourWeekly >= 24) {
+                            schHourWeekly = 0
+                        }
+                    }
+
+
+                }
+            }
+
+        }
+        return exportBuilds
+    }
 }
 
 object BuildListeners {
@@ -479,13 +568,13 @@ object Recommendations {
         val result = mutableListOf<Triple<String, String, String>>()
         for (i in 0 until Helpers.docConfigs.length()) {
             val doc = Helpers.docConfigs.getJSONObject(i)
-            val docEnvironmentsLower =
-                Helpers.convertListToLowercase(Helpers.convertJsonArrayToArrayList(doc.getJSONArray("environments")))
-            if (docEnvironmentsLower.contains(deploy_env)) {
+            val docEnvironmentsLowercaseList =
+                Helpers.convertJsonArrayToLowercaseList(doc.getJSONArray("environments"))
+            if (docEnvironmentsLowercaseList.contains(deploy_env)) {
                 val docMetadata = doc.getJSONObject("metadata")
-                val docPlatforms = Helpers.convertJsonArrayToArrayList(docMetadata.getJSONArray("platform"))
-                val docProducts = Helpers.convertJsonArrayToArrayList(docMetadata.getJSONArray("product"))
-                val docVersions = Helpers.convertJsonArrayToArrayList(docMetadata.getJSONArray("version"))
+                val docPlatforms = Helpers.convertJsonArrayToList(docMetadata.getJSONArray("platform"))
+                val docProducts = Helpers.convertJsonArrayToList(docMetadata.getJSONArray("product"))
+                val docVersions = Helpers.convertJsonArrayToList(docMetadata.getJSONArray("version"))
                 result += Helpers.generatePlatformProductVersionCombinations(docPlatforms, docProducts, docVersions)
             }
         }
@@ -498,12 +587,16 @@ object Helpers {
         return list_to_convert.map { it.lowercase(Locale.getDefault()) }
     }
 
-    fun convertJsonArrayToArrayList(json_array: JSONArray): List<String> {
+    fun convertJsonArrayToList(json_array: JSONArray): List<String> {
         return json_array.joinToString(",").split(",")
     }
 
+    fun convertJsonArrayToLowercaseList(json_array: JSONArray): List<String> {
+        return convertListToLowercase(convertJsonArrayToList(json_array))
+    }
+
     fun generatePlatformProductVersionCombinations(
-        gw_platforms: List<String>, gw_products: List<String>, gw_versions: List<String>
+        gw_platforms: List<String>, gw_products: List<String>, gw_versions: List<String>,
     ): List<Triple<String, String, String>> {
         val result = mutableListOf<Triple<String, String, String>>()
         gw_platforms.forEach { a ->
@@ -658,7 +751,7 @@ object GwBuildSteps {
     }
 
     fun createZipPackageStep(
-        input_path: String, target_path: String
+        input_path: String, target_path: String,
     ): ScriptBuildStep {
 
         val zipPackageName = "docs.zip"
@@ -679,7 +772,7 @@ object GwBuildSteps {
     }
 
     fun createUploadContentToS3BucketStep(
-        deploy_env: String, publish_path: String, working_dir: String
+        deploy_env: String, publish_path: String, working_dir: String,
     ): ScriptBuildStep {
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
         return ScriptBuildStep {
@@ -711,7 +804,7 @@ object GwBuildSteps {
         resource_src_dir: String,
         resource_target_dir: String,
         resource_src_url: String,
-        resource_src_branch: String
+        resource_src_branch: String,
     ): ScriptBuildStep {
         val resourcesRootDir = "resource$step_id"
         val fullTargetPath = "${working_dir}/${output_dir}/${resource_target_dir}"
@@ -744,7 +837,7 @@ object GwBuildSteps {
         gw_versions: String = "",
         git_url: String = "",
         git_branch: String = "",
-        for_offline_use: Boolean = false
+        for_offline_use: Boolean = false,
     ): ScriptBuildStep {
         var ditaBuildCommand: String = if (for_offline_use) {
             "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params no"
@@ -804,7 +897,7 @@ object GwBuildSteps {
         gw_products: String,
         gw_platforms: String,
         gw_versions: String,
-        working_dir: String
+        working_dir: String,
     ): ScriptBuildStep {
         val nodeImageVersion = node_image_version ?: "12.14.1"
         val buildCommand = build_command ?: "build"
@@ -1153,7 +1246,11 @@ object GwBuildTypes {
     })
 
     fun createRecommendationsForTopicsBuildType(
-        deploy_env: String, gw_platform: String, gw_product: String, gw_version: String, pretrained_model_file: String
+        deploy_env: String,
+        gw_platform: String,
+        gw_product: String,
+        gw_version: String,
+        pretrained_model_file: String,
     ): BuildType {
         return BuildType {
             name = "Generate recommendations for $gw_product, $gw_platform, $gw_version"
@@ -1208,8 +1305,8 @@ object GwBuildTypes {
         src_id: String,
         export_server: String,
         schedule_frequency: String = "",
-        schedule_hours: Int,
-        schedule_minutes: Int
+        schedule_hour: Int?,
+        schedule_minutes: Int?,
     ): BuildType {
         return BuildType {
             name = "Export $src_title from XDocs and add to Bitbucket"
@@ -1236,7 +1333,7 @@ object GwBuildTypes {
                 "daily" -> {
                     triggers.schedule {
                         schedulingPolicy = daily {
-                            hour = schedule_hours
+                            hour = schedule_hour
                             minute = schedule_minutes
                         }
 
@@ -1248,7 +1345,7 @@ object GwBuildTypes {
                     triggers.schedule {
                         schedulingPolicy = weekly {
                             dayOfWeek = ScheduleTrigger.DAY.Saturday
-                            hour = schedule_hours
+                            hour = schedule_hour
                             minute = schedule_minutes
                         }
                         triggerBuild = always()
