@@ -202,7 +202,8 @@
       "buildType": "yarn",
       "docId": "jutro650",
       "srcId": "srcjutro650",
-      "workingDir": "website"
+      "workingDir": "website",
+      "nodeImageVersion": "14.14.0"
     },
     {
       "buildType": "yarn",
@@ -245,7 +246,8 @@
       "buildType": "yarn",
       "docId": "jutronext",
       "srcId": "srcjutronext",
-      "workingDir": "website"
+      "workingDir": "website",
+      "nodeImageVersion": "14.14.0"
     },
     {
       "buildType": "yarn",
