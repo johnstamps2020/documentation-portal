@@ -10,8 +10,8 @@
       "items": [
         {
           "label": "BillingCenter",
-          "id": "bc1012",
-          "env": ["dev", "staging", "prod"]
+          "id": "bc1020",
+          "env": ["staging", "prod"]
         },
         {
           "label": "BillingCenter",
@@ -19,8 +19,8 @@
         },
         {
           "label": "ClaimCenter",
-          "id": "cc1012",
-          "env": ["dev", "staging", "prod"]
+          "id": "cc1020",
+          "env": ["staging", "prod"]
         },
         {
           "label": "ClaimCenter",
@@ -28,8 +28,8 @@
         },
         {
           "label": "PolicyCenter",
-          "id": "pc1012",
-          "env": ["dev", "staging", "prod"]
+          "id": "pc1020",
+          "env": ["staging", "prod"]
         },
         {
           "label": "PolicyCenter",
