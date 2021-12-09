@@ -1,4 +1,4 @@
-import jetbrains.buildServer.configs.kotlin.v10.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
@@ -12,7 +12,7 @@ import org.json.JSONObject
 import java.io.File
 import java.util.*
 
-version = "2020.1"
+version = "2021.2"
 
 project {
 
@@ -1479,7 +1479,7 @@ object GwVcsRoots {
         authMethod = uploadedKey {
             uploadedKey = "sys-doc.rsa"
         }
-
+        checkoutPolicy = AgentCheckoutPolicy.USE_MIRRORS
     })
 
     fun createVcsRootsFromConfigFiles(): List<GitVcsRoot> {
@@ -1494,6 +1494,7 @@ object GwVcsRoots {
                 authMethod = uploadedKey {
                     uploadedKey = "sys-doc.rsa"
                 }
+                checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
             }
         }
     }
