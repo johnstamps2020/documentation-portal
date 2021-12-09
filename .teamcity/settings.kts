@@ -1489,7 +1489,7 @@ object GwVcsRoots {
         val branchNamePrefix = "refs/heads/"
         val defaultBranch = git_branches[0]
         val monitoredBranches =
-            if (git_branches.size > 1) git_branches.slice(1..git_branches.lastIndex) else listOf()
+            if (git_branches.size > 1) git_branches.slice(1..git_branches.lastIndex) else emptyList()
         return GitVcsRoot {
             name = vcs_root_id
             id = Helpers.resolveRelativeIdFromIdString(vcs_root_id)
@@ -1501,8 +1501,9 @@ object GwVcsRoots {
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
             if (monitoredBranches.isNotEmpty()) {
-                monitoredBranches.map {
-                    this.branchSpec += "+:${branchNamePrefix}${it}\n"
+                branchSpec = ""
+                monitoredBranches.forEach {
+                    branchSpec += "+:${branchNamePrefix}${it}\n"
                 }
             }
         }
