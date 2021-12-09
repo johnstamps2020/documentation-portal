@@ -533,7 +533,7 @@ object BuildListeners {
             val srcGitUrl = it.getString("gitUrl")
             val srcGitBranches = Helpers.convertJsonArrayWithStringsToList(it.getJSONArray("branches"))
             mainProject.vcsRoot(GwVcsRoots.createGitVcsRoot("$srcId listener", srcGitUrl, srcGitBranches))
-            mainProject.buildType(createBuildListenerBuildType(srcId))
+            mainProject.buildType(createBuildListenerBuildType("$srcId listener"))
 
         }
 
@@ -584,19 +584,19 @@ object BuildListeners {
         return mergedSourcesRequiringListeners
     }
 
-    private fun createBuildListenerBuildType(src_id: String): BuildType {
+    private fun createBuildListenerBuildType(vcs_root_id: String): BuildType {
         return BuildType {
-            name = "$src_id listener"
+            name = vcs_root_id
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(Helpers.resolveRelativeIdFromIdString(src_id))
+                root(Helpers.resolveRelativeIdFromIdString(vcs_root_id))
                 cleanCheckout = true
             }
             steps.step(GwBuildSteps.createRunBuildManagerStep(
                 Docs.rootProject.id.toString(),
                 GwTemplates.BuildListenerTemplate.id.toString(),
-                Helpers.resolveRelativeIdFromIdString(src_id).toString()
+                Helpers.resolveRelativeIdFromIdString(vcs_root_id).toString()
             ))
 
             triggers.vcs { }
