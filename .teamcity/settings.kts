@@ -598,8 +598,8 @@ object BuildListeners {
                 GwTemplates.BuildListenerTemplate.id.toString(),
                 Helpers.resolveRelativeIdFromIdString(vcs_root_id).toString()
             ))
-
-            triggers.vcs { }
+// FIXME: Reenable this line when the refactoring is done
+//            triggers.vcs { }
         }
     }
 }
