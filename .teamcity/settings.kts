@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -14,25 +15,38 @@ version = "2021.2"
 
 project {
 
-    params {
-        param("env.NAMESPACE", "doctools")
-    }
+    params.text("env.NAMESPACE", "doctools")
 
-    GwVcsRoots.createVcsRootsFromConfigFiles().forEach {
+    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
     }
-    subProject(Docs.createRootProjectForDocs())
-    subProject(Recommendations.createRootProjectForRecommendations())
-    subProject(Content.createRootProjectForContent())
-    subProject(Exports.createRootProjectForExports())
+    subProject(Docs.rootProject)
+    subProject(BuildListeners.rootProject)
+    subProject(Recommendations.rootProject)
+    subProject(Content.rootProject)
+    subProject(Exports.rootProject)
 
-    features {
-        feature {
-            GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature
-        }
-    }
+    features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
 }
+
 object Docs {
+    val rootProject = createRootProjectForDocs()
+
+    private fun createRootProjectForDocs(): Project {
+        val mainProject = Project {
+            name = "Docs"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        }
+
+        for (buildConfig in Helpers.buildConfigs) {
+            val srcId = buildConfig.getString("srcId")
+            val docProject = createDocProject(buildConfig, srcId)
+            mainProject.subProject(docProject)
+        }
+
+        return mainProject
+    }
+
     private fun createYarnBuildTypes(
         env_names: List<Any>,
         doc_id: String,
@@ -371,25 +385,12 @@ object Docs {
             }
         }
     }
-
-    fun createRootProjectForDocs(): Project {
-        val mainProject = Project {
-            name = "Docs"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-        }
-
-        for (buildConfig in Helpers.buildConfigs) {
-            val srcId = buildConfig.getString("srcId")
-            val docProject = createDocProject(buildConfig, srcId)
-            mainProject.subProject(docProject)
-        }
-
-        return mainProject
-    }
 }
 
 object Content {
-    fun createRootProjectForContent(): Project {
+    val rootProject = createRootProjectForContent()
+
+    private fun createRootProjectForContent(): Project {
         val mainProject = Project {
             name = "Content"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -402,18 +403,19 @@ object Content {
     }
 }
 
-object Validations {}
+object Validations
 
-object Server {}
+object Server
 
 object Exports {
+    val rootProject = createRootProjectForExports()
 
-    fun createRootProjectForExports(): Project {
+    private fun createRootProjectForExports(): Project {
         val mainProject = Project {
             name = "Exports"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
         }
-        mainProject.vcsRoot(GwVcsRoots.XdocsClientVcsRoot)
+        mainProject.vcsRoot(GwVcsRoots.xdocsClientGitVcsRoot)
         mainProject.buildType(GwBuildTypes.ExportFilesFromXDocsToBitbucketBuildType)
         createExportBuildTypes().forEach {
             mainProject.buildType(it)
@@ -448,7 +450,7 @@ object Exports {
                 }
 
                 val environmentsFromRelatedDocConfigs =
-                    docConfigsRelatedToSrc.map { Helpers.convertJsonArrayToLowercaseList(it.getJSONArray("environments")) }
+                    docConfigsRelatedToSrc.map { Helpers.convertJsonArrayWithStringsToLowercaseList(it.getJSONArray("environments")) }
                         .flatten().distinct()
 
                 val exportFrequency = when (environmentsFromRelatedDocConfigs.contains("int")) {
@@ -516,19 +518,27 @@ object Exports {
 }
 
 object BuildListeners {
-    fun createRootProjectForExports(): Project {
+    val rootProject = createRootProjectForBuildListeners()
+
+    private fun createRootProjectForBuildListeners(): Project {
         val mainProject = Project {
-            name = "Exports"
+            name = "Build listeners"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
         }
-        createBuildListenerBuildTypes().forEach {
-            mainProject.buildType(it)
+        val buildListenerSources = getSourcesForBuildListenerBuildTypes()
+        buildListenerSources.forEach {
+            val srcId = it.getString("srcId")
+            val srcGitUrl = it.getString("gitUrl")
+            val srcGitBranches = Helpers.convertJsonArrayWithStringsToList(it.getJSONArray("branches"))
+            mainProject.vcsRoot(GwVcsRoots.createGitVcsRoot("$srcId listener", srcGitUrl, srcGitBranches))
+            mainProject.buildType(createBuildListenerBuildType(srcId))
+
         }
+
         return mainProject
     }
 
-    private fun createBuildListenerBuildTypes(): List<BuildType> {
-        val buildListenerBuildTypes = mutableListOf<BuildType>()
+    private fun getSourcesForBuildListenerBuildTypes(): List<JSONObject> {
         val sourcesRequiringListeners = mutableListOf<JSONObject>()
         for (sourceConfig in Helpers.sourceConfigs) {
             val srcId = sourceConfig.getString("id")
@@ -539,7 +549,7 @@ object BuildListeners {
                     val buildDocId = ditaBuild.getString("docId")
                     val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
                     val docEnvironmentsLower =
-                        Helpers.convertJsonArrayToLowercaseList(docConfig.getJSONArray("environments"))
+                        Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
                     if (arrayListOf("int", "staging").any { docEnvironmentsLower.contains(it) }) {
                         sourcesRequiringListeners.add(sourceConfig)
                     }
@@ -548,6 +558,7 @@ object BuildListeners {
         }
         val mergedSourcesRequiringListeners = mutableListOf<JSONObject>()
         for (sourceConfig in sourcesRequiringListeners.distinct()) {
+            val srcId = sourceConfig.getString("id")
             val gitUrl = sourceConfig.getString("gitUrl")
             val gitBranch = sourceConfig.getString("branch")
             val existingMergedSource = mergedSourcesRequiringListeners.find { it.getString("gitUrl") == gitUrl }
@@ -558,6 +569,7 @@ object BuildListeners {
                     JSONObject(
                         """
                             {
+                            "srcId": "$srcId",
                             "gitUrl": "$gitUrl",
                             "branches": ["$gitBranch"]
                             }
@@ -567,26 +579,33 @@ object BuildListeners {
             }
 
         }
-//        val buildListenerBuild = BuildType {
-//            name = "$srcId listener"
-//            id = Helpers.resolveRelativeIdFromIdString(this.name)
-//
-//            vcs {
-//                root(Helpers.resolveRelativeIdFromIdString(src_id))
-//            }
-//            steps.step(GwBuildSteps.createRunBuildManagerStep(
-//                "DocumentationTools_DocumentationPortal_Docs",
-//                GwTemplates.BuildListenerTemplate.id.toString(),
-//                Helpers.resolveRelativeIdFromIdString(srcId).toString()
-//            ))
-//        }
-//        buildListenerBuildTypes.add(buildListenerBuild)
-        return buildListenerBuildTypes
+        return mergedSourcesRequiringListeners
+    }
+
+    private fun createBuildListenerBuildType(src_id: String): BuildType {
+        return BuildType {
+            name = "$src_id listener"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(Helpers.resolveRelativeIdFromIdString(src_id))
+                cleanCheckout = true
+            }
+            steps.step(GwBuildSteps.createRunBuildManagerStep(
+                Docs.rootProject.id.toString(),
+                GwTemplates.BuildListenerTemplate.id.toString(),
+                Helpers.resolveRelativeIdFromIdString(src_id).toString()
+            ))
+
+            triggers.vcs { }
+        }
     }
 }
 
 object Recommendations {
-    fun createRootProjectForRecommendations(): Project {
+    val rootProject = createRootProjectForRecommendations()
+
+    private fun createRootProjectForRecommendations(): Project {
         val mainProject = Project {
             name = "Recommendations"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -625,7 +644,7 @@ object Recommendations {
         val result = mutableListOf<Triple<String, String, String>>()
         for (docConfig in Helpers.docConfigs) {
             val docEnvironmentsLowercaseList =
-                Helpers.convertJsonArrayToLowercaseList(docConfig.getJSONArray("environments"))
+                Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
             if (docEnvironmentsLowercaseList.contains(deploy_env)) {
                 val docMetadata = docConfig.getJSONObject("metadata")
                 val docPlatforms =
@@ -653,7 +672,7 @@ object Helpers {
         return list_to_convert.map { it.lowercase(Locale.getDefault()) }
     }
 
-    fun convertJsonArrayToLowercaseList(json_array: JSONArray): List<String> {
+    fun convertJsonArrayWithStringsToLowercaseList(json_array: JSONArray): List<String> {
         return convertListToLowercase(convertJsonArrayWithStringsToList(json_array))
     }
 
@@ -1068,19 +1087,19 @@ object GwBuildFeatures {
 object GwBuildTriggers {
 
     fun createVcsTriggerForExportedVcsRoot(src_id: String): VcsTrigger {
-        return VcsTrigger({
+        return VcsTrigger {
             triggerRules = """
                 +:root=${Helpers.resolveRelativeIdFromIdString(src_id)};comment=\[$src_id\]:**
                 """.trimIndent()
-        })
+        }
     }
 
     fun createVcsTriggerForNonDitaBuilds(vcs_root_id: String): VcsTrigger {
-        return VcsTrigger({
+        return VcsTrigger {
             triggerRules = """
                 +:root=${vcs_root_id}:**
                 """.trimIndent()
-        })
+        }
     }
 }
 
@@ -1137,7 +1156,7 @@ object GwBuildTypes {
         }
 
         vcs {
-            root(GwVcsRoots.XdocsClientVcsRoot)
+            root(GwVcsRoots.xdocsClientGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -1455,56 +1474,49 @@ object GwBuildTypes {
         }
     }
 
-    fun createBuildListenerBuildType(src_id: String): BuildType {
-        return BuildType {
-            name = "$src_id listener"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(Helpers.resolveRelativeIdFromIdString(src_id))
-                cleanCheckout = true
-            }
-
-            steps.step(
-                GwBuildSteps.createRunBuildManagerStep(
-                    "DocumentationTools_DocumentationPortal_Docs",
-                    "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita",
-                    Helpers.resolveRelativeIdFromIdString(src_id).toString()
-
-                )
-            )
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-    }
 }
 
 object GwVcsRoots {
-    object XdocsClientVcsRoot : GitVcsRoot({
-        name = "XDocs Client"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-        url = "ssh://git@stash.guidewire.com/doctools/xdocs-client.git"
-        branch = "refs/heads/master"
-        authMethod = uploadedKey {
-            uploadedKey = "sys-doc.rsa"
-        }
-        checkoutPolicy = AgentCheckoutPolicy.USE_MIRRORS
-    })
+    val xdocsClientGitVcsRoot = createGitVcsRoot(
+        "XDocs Client",
+        "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
+        listOf("master")
+    )
 
-    fun createVcsRootsFromConfigFiles(): List<GitVcsRoot> {
+    fun createGitVcsRoot(vcs_root_id: String, git_url: String, git_branches: List<String>): GitVcsRoot {
+        val branchNamePrefix = "refs/heads/"
+        val defaultBranch = git_branches[0]
+        val monitoredBranches =
+            if (git_branches.size > 1) git_branches.slice(1..git_branches.lastIndex) else listOf()
+        return GitVcsRoot {
+            name = vcs_root_id
+            id = Helpers.resolveRelativeIdFromIdString(vcs_root_id)
+            url = git_url
+            branch = "${branchNamePrefix}${defaultBranch}"
+            authMethod = uploadedKey {
+                uploadedKey = "sys-doc.rsa"
+            }
+            checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
+
+            if (monitoredBranches.isNotEmpty()) {
+                monitoredBranches.map {
+                    this.branchSpec += "+:${branchNamePrefix}${it}\n"
+                }
+            }
+        }
+    }
+
+    fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
         val srcIds = Helpers.buildConfigs.map { it.getString("srcId") }.distinct()
         return srcIds.map {
             val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", it)
-            GitVcsRoot {
-                name = it
-                id = Helpers.resolveRelativeIdFromIdString(it)
-                url = srcConfig.getString("gitUrl")
-                branch = "refs/heads/${srcConfig.getString("branch")}"
-                authMethod = uploadedKey {
-                    uploadedKey = "sys-doc.rsa"
-                }
-                checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
-            }
+            val srcGitUrl = srcConfig.getString("gitUrl")
+            val srcGitBranches = listOf(srcConfig.getString("branch"))
+            createGitVcsRoot(
+                it,
+                srcGitUrl,
+                srcGitBranches
+            )
         }
     }
 }
