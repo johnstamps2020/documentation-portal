@@ -36,6 +36,8 @@ object Docs {
         val mainProject = Project {
             name = "Docs"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            template(GwTemplates.BuildListenerTemplate)
         }
 
         for (buildConfig in Helpers.buildConfigs) {
