@@ -4,7 +4,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -532,7 +531,7 @@ object BuildListeners {
             val srcId = it.getString("srcId")
             val srcGitUrl = it.getString("gitUrl")
             val srcGitBranches = Helpers.convertJsonArrayWithStringsToList(it.getJSONArray("branches"))
-            mainProject.vcsRoot(GwVcsRoots.createGitVcsRoot("$srcId listener", srcGitUrl, srcGitBranches))
+//            mainProject.vcsRoot(GwVcsRoots.createGitVcsRoot("$srcId listener", srcGitUrl, srcGitBranches))
             mainProject.buildType(createBuildListenerBuildType("$srcId listener"))
 
         }
@@ -711,13 +710,17 @@ object Helpers {
         return objectList.find { it.getString(id_name) == id_value } ?: JSONObject()
     }
 
-    private fun removeSpecialCharacters(string_to_clean: String): String {
+    fun removeSpecialCharacters(string_to_clean: String): String {
         val re = Regex("[^A-Za-z0-9]")
         return re.replace(string_to_clean, "")
     }
 
     fun resolveRelativeIdFromIdString(id: String): RelativeId {
         return RelativeId(removeSpecialCharacters(id))
+    }
+
+    fun createSrcIdFromGitUrl(git_url: String): String {
+        return removeSpecialCharacters(git_url.substringAfterLast("/"))
     }
 
 
@@ -1500,7 +1503,9 @@ object GwVcsRoots {
             }
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
-            if (monitoredBranches.isNotEmpty()) {
+            if (monitoredBranches.isEmpty()) {
+                branchSpec = "+:*"
+            } else {
                 branchSpec = ""
                 monitoredBranches.forEach {
                     branchSpec += "+:${branchNamePrefix}${it}\n"
@@ -1511,14 +1516,49 @@ object GwVcsRoots {
 
     fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
         val srcIds = Helpers.buildConfigs.map { it.getString("srcId") }.distinct()
-        return srcIds.map {
-            val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", it)
-            val srcGitUrl = srcConfig.getString("gitUrl")
-            val srcGitBranches = listOf(srcConfig.getString("branch"))
+        val mergedSources = mutableListOf<JSONObject>()
+        for (srcId in srcIds) {
+            val sourceConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", srcId)
+            val gitUrl = sourceConfig.getString("gitUrl")
+            val gitBranch = sourceConfig.getString("branch")
+
+            val existingMergedSource = mergedSources.find { it.getString("gitUrl") == gitUrl }
+            if (existingMergedSource == null) {
+                mergedSources.add(
+                    JSONObject(
+                        """
+                            {
+                            "gitUrl": "$gitUrl",
+                            "branches": ["$gitBranch"]
+                            }
+                        """.trimIndent()
+                    )
+                )
+            } else if (!existingMergedSource.getJSONArray("branches").contains(gitBranch)) {
+                existingMergedSource.getJSONArray("branches").put(gitBranch)
+            }
+        }
+
+        return mergedSources.map {
+            val gitUrl = it.getString("gitUrl")
+            val srcId = Helpers.createSrcIdFromGitUrl(gitUrl)
+            val gitBranches = Helpers.convertJsonArrayWithStringsToLowercaseList(it.getJSONArray("branches"))
+            val mainBranch = gitBranches.find { b -> b.contains("main") }
+            val masterBranch = gitBranches.find { b -> b.contains("master") }
+            val releaseBranch = gitBranches.find { b -> b.contains("release") }
+            val defaultBranch = if (!mainBranch.isNullOrEmpty()) {
+                mainBranch
+            } else if (!masterBranch.isNullOrEmpty()) {
+                masterBranch
+            } else if (!releaseBranch.isNullOrEmpty()) {
+                releaseBranch
+            } else {
+                gitBranches[0]
+            }
             createGitVcsRoot(
-                it,
-                srcGitUrl,
-                srcGitBranches
+                srcId,
+                gitUrl,
+                listOf(defaultBranch)
             )
         }
     }
