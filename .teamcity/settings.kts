@@ -4,8 +4,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportF
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -30,11 +28,7 @@ project {
 
     features {
         feature {
-            type = "JetBrains.SharedResources"
-            id = "OXYGEN_WEBHELP_LICENSE"
-            param("quota", "3")
-            param("name", "OxygenWebhelpLicense")
-            param("type", "quoted")
+            GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature
         }
     }
 }
@@ -109,7 +103,7 @@ object Docs {
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
                 docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
-                docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseFeature)
+                docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
                 if (envName == "staging") {
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep(
@@ -184,7 +178,7 @@ object Docs {
                         stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_S3_BUCKET"),
                             copyResourcesSteps.map { it.id.toString() })
                     }
-                    docBuildType.features.feature(GwBuildFeatures.GwSshAgentFeature)
+                    docBuildType.features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
                 }
                 // FIXME: Reenable this line when the refactoring is done
 //                if (arrayOf("int", "staging").contains(envName) && src_is_exported) {
@@ -211,7 +205,7 @@ object Docs {
                 }
 
                 features {
-                    feature(GwBuildFeatures.GwDockerSupportFeature)
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 }
             }
             val localOutputDir = "${outputDir}/zip"
@@ -266,7 +260,7 @@ object Docs {
             }
 
             features {
-                feature(GwBuildFeatures.GwDockerSupportFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             }
         }
 
@@ -1039,19 +1033,29 @@ object GwBuildSteps {
     }
 }
 
+object GwProjectFeatures {
+    object GwOxygenWebhelpLicenseProjectFeature: ProjectFeature({
+        type = "JetBrains.SharedResources"
+        id = "OXYGEN_WEBHELP_LICENSE"
+        param("quota", "3")
+        param("name", "OxygenWebhelpLicense")
+        param("type", "quoted")
+    })
+}
+
 object GwBuildFeatures {
-    object GwDockerSupportFeature : DockerSupportFeature({
+    object GwDockerSupportBuildFeature: DockerSupportFeature({
         id = "DockerSupport"
         loginToRegistry = on {
             dockerRegistryId = "PROJECT_EXT_155"
         }
     })
 
-    object GwSshAgentFeature : SshAgent({
+    object GwSshAgentBuildFeature: SshAgent({
         teamcitySshKey = "sys-doc.rsa"
     })
 
-    object GwOxygenWebhelpLicenseFeature : BuildFeature({
+    object GwOxygenWebhelpLicenseBuildFeature: BuildFeature({
         id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
         type = "JetBrains.SharedResources"
         param("locks-param", "OxygenWebhelpLicense readLock")
@@ -1079,7 +1083,7 @@ object GwBuildTriggers {
 
 object GwBuildTypes {
 
-    object ExportFilesFromXDocsToBitbucketBuildType : BuildType({
+    object ExportFilesFromXDocsToBitbucketBuildType: BuildType({
         name = "Export files from XDocs to Bitbucket"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1173,11 +1177,11 @@ object GwBuildTypes {
             }
         }
 
-        features.feature(GwBuildFeatures.GwSshAgentFeature)
+        features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
 
     })
 
-    object CleanUpIndexBuildType : BuildType({
+    object CleanUpIndexBuildType: BuildType({
         name = "Clean up index"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1234,10 +1238,10 @@ object GwBuildTypes {
             }
         }
 
-        features.feature(GwBuildFeatures.GwDockerSupportFeature)
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
-    object UpdateSearchIndexBuildType : BuildType({
+    object UpdateSearchIndexBuildType: BuildType({
         name = "Update search index"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1268,10 +1272,10 @@ object GwBuildTypes {
         steps.step(crawlDocStep)
         steps.stepsOrder.add(crawlDocStep.id.toString())
 
-        features.feature(GwBuildFeatures.GwDockerSupportFeature)
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
-    object UploadPdfsForEscrowBuildType : BuildType({
+    object UploadPdfsForEscrowBuildType: BuildType({
         name = "Upload PDFs for Escrow"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1384,7 +1388,7 @@ object GwBuildTypes {
                 }
             }
 
-            features.feature(GwBuildFeatures.GwDockerSupportFeature)
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
 
@@ -1465,13 +1469,13 @@ object GwBuildTypes {
 
             ))
 
-            features.feature(GwBuildFeatures.GwDockerSupportFeature)
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
 }
 
 object GwVcsRoots {
-    object XdocsClientVcsRoot : GitVcsRoot({
+    object XdocsClientVcsRoot: GitVcsRoot({
         name = "XDocs Client"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
         url = "ssh://git@stash.guidewire.com/doctools/xdocs-client.git"
@@ -1501,13 +1505,13 @@ object GwVcsRoots {
 }
 
 object GwTemplates {
-    object BuildListenerTemplate : Template({
+    object BuildListenerTemplate: Template({
         name = "Build listener template"
         description = "Empty template added to doc builds to make them discoverable by build listener builds"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
     })
 
-    object ValidationListenerTemplate : Template({
+    object ValidationListenerTemplate: Template({
         name = "Validation listener template"
         description =
             "Empty template added to validation builds to make them discoverable by validation listener builds"
