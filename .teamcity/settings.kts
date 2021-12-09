@@ -1129,7 +1129,8 @@ object GwBuildTypes {
         }
 
         vcs {
-            GwVcsRoots.XdocsClientVcsRoot
+            root(GwVcsRoots.XdocsClientVcsRoot)
+            cleanCheckout = true
         }
 
         steps {
