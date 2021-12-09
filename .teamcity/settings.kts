@@ -1417,31 +1417,31 @@ object GwBuildTypes {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
-
-            when (export_frequency) {
-                "daily" -> {
-                    triggers.schedule {
-                        schedulingPolicy = daily {
-                            hour = export_hour
-                            minute = export_minute
-                        }
-
-                        triggerBuild = always()
-                        withPendingChangesOnly = false
-                    }
-                }
-                "weekly" -> {
-                    triggers.schedule {
-                        schedulingPolicy = weekly {
-                            dayOfWeek = ScheduleTrigger.DAY.Saturday
-                            hour = export_hour
-                            minute = export_minute
-                        }
-                        triggerBuild = always()
-                        withPendingChangesOnly = false
-                    }
-                }
-            }
+            // FIXME: Reenable this line when the refactoring is done
+//            when (export_frequency) {
+//                "daily" -> {
+//                    triggers.schedule {
+//                        schedulingPolicy = daily {
+//                            hour = export_hour
+//                            minute = export_minute
+//                        }
+//
+//                        triggerBuild = always()
+//                        withPendingChangesOnly = false
+//                    }
+//                }
+//                "weekly" -> {
+//                    triggers.schedule {
+//                        schedulingPolicy = weekly {
+//                            dayOfWeek = ScheduleTrigger.DAY.Saturday
+//                            hour = export_hour
+//                            minute = export_minute
+//                        }
+//                        triggerBuild = always()
+//                        withPendingChangesOnly = false
+//                    }
+//                }
+//            }
 
         }
     }
