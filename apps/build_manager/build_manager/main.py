@@ -189,11 +189,12 @@ def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[li
     # In the future, we may need to add a parameter to the build manager to be able to use different locators
     # for different categories of builds.
     property_locator = 'property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal)'
+    branch_locator = f'branch:{app_config.teamcity_build_branch}'
     default_filter_locator = 'defaultFilter:false'
     status_locator = 'status:success'
-    lookup_limit_locator = 'lookupLimit:1'
+    count_locator = 'count:1'
     builds_response = requests.get(
-        f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={property_locator},{default_filter_locator},{status_locator},{lookup_limit_locator}',
+        f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={property_locator},{branch_locator},{default_filter_locator},{status_locator},{count_locator}',
         headers=app_config.teamcity_api_headers)
     builds = builds_response.json()['build']
     if builds:
