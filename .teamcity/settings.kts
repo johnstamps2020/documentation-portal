@@ -1,9 +1,9 @@
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -236,8 +236,11 @@ object Docs {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("$doc_id$deploy_env")
 
+            if (arrayOf("int", "staging").contains(deploy_env)) {
+                templates(GwTemplates.BuildListenerTemplate)
+            }
 
-            if (deploy_env != "prod") {
+            if (arrayOf("dev", "int", "staging").contains(deploy_env)) {
                 vcs {
                     root(Helpers.resolveRelativeIdFromIdString(src_id))
                     cleanCheckout = true
@@ -1034,7 +1037,7 @@ object GwBuildSteps {
 }
 
 object GwProjectFeatures {
-    object GwOxygenWebhelpLicenseProjectFeature: ProjectFeature({
+    object GwOxygenWebhelpLicenseProjectFeature : ProjectFeature({
         type = "JetBrains.SharedResources"
         id = "OXYGEN_WEBHELP_LICENSE"
         param("quota", "3")
@@ -1044,18 +1047,18 @@ object GwProjectFeatures {
 }
 
 object GwBuildFeatures {
-    object GwDockerSupportBuildFeature: DockerSupportFeature({
+    object GwDockerSupportBuildFeature : DockerSupportFeature({
         id = "DockerSupport"
         loginToRegistry = on {
             dockerRegistryId = "PROJECT_EXT_155"
         }
     })
 
-    object GwSshAgentBuildFeature: SshAgent({
+    object GwSshAgentBuildFeature : SshAgent({
         teamcitySshKey = "sys-doc.rsa"
     })
 
-    object GwOxygenWebhelpLicenseBuildFeature: BuildFeature({
+    object GwOxygenWebhelpLicenseBuildFeature : BuildFeature({
         id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
         type = "JetBrains.SharedResources"
         param("locks-param", "OxygenWebhelpLicense readLock")
@@ -1083,7 +1086,7 @@ object GwBuildTriggers {
 
 object GwBuildTypes {
 
-    object ExportFilesFromXDocsToBitbucketBuildType: BuildType({
+    object ExportFilesFromXDocsToBitbucketBuildType : BuildType({
         name = "Export files from XDocs to Bitbucket"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1181,7 +1184,7 @@ object GwBuildTypes {
 
     })
 
-    object CleanUpIndexBuildType: BuildType({
+    object CleanUpIndexBuildType : BuildType({
         name = "Clean up index"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1241,7 +1244,7 @@ object GwBuildTypes {
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
-    object UpdateSearchIndexBuildType: BuildType({
+    object UpdateSearchIndexBuildType : BuildType({
         name = "Update search index"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1275,7 +1278,7 @@ object GwBuildTypes {
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
-    object UploadPdfsForEscrowBuildType: BuildType({
+    object UploadPdfsForEscrowBuildType : BuildType({
         name = "Upload PDFs for Escrow"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1462,12 +1465,14 @@ object GwBuildTypes {
                 cleanCheckout = true
             }
 
-            steps.step(GwBuildSteps.createRunBuildManagerStep(
-                "DocumentationTools_DocumentationPortal_Docs",
-                "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita",
-                Helpers.resolveRelativeIdFromIdString(src_id).toString()
+            steps.step(
+                GwBuildSteps.createRunBuildManagerStep(
+                    "DocumentationTools_DocumentationPortal_Docs",
+                    "DocumentationTools_DocumentationPortal_BuildDocSiteOutputFromDita",
+                    Helpers.resolveRelativeIdFromIdString(src_id).toString()
 
-            ))
+                )
+            )
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
@@ -1475,7 +1480,7 @@ object GwBuildTypes {
 }
 
 object GwVcsRoots {
-    object XdocsClientVcsRoot: GitVcsRoot({
+    object XdocsClientVcsRoot : GitVcsRoot({
         name = "XDocs Client"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
         url = "ssh://git@stash.guidewire.com/doctools/xdocs-client.git"
@@ -1505,13 +1510,13 @@ object GwVcsRoots {
 }
 
 object GwTemplates {
-    object BuildListenerTemplate: Template({
+    object BuildListenerTemplate : Template({
         name = "Build listener template"
         description = "Empty template added to doc builds to make them discoverable by build listener builds"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
     })
 
-    object ValidationListenerTemplate: Template({
+    object ValidationListenerTemplate : Template({
         name = "Validation listener template"
         description =
             "Empty template added to validation builds to make them discoverable by validation listener builds"
