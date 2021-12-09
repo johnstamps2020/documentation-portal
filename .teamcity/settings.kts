@@ -416,6 +416,7 @@ object Exports {
             name = "Exports"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
         }
+        mainProject.vcsRoot(GwVcsRoots.XdocsClientVcsRoot)
         mainProject.buildType(GwBuildTypes.ExportFilesFromXDocsToBitbucketBuildType)
         createExportBuildTypes().forEach {
             mainProject.buildType(it)
