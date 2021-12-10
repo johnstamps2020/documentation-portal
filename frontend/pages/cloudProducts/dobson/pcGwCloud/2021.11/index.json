@@ -3,6 +3,24 @@
   "title": "PolicyCenter for Guidewire Cloud 2021.11",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Dobson (2021.11)",
+    "items": [
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/policyCenterCloud/pcGwCloud"
+      },
+      {
+        "label": "Banff",
+        "page": "../../../banff/policyCenterCloud/pcGwCloud"
+      },
+      {
+        "label": "Aspen",
+        "page": "../../../aspen/policyCenterCloud"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
