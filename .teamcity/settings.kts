@@ -51,7 +51,8 @@ object Docs {
     private fun createYarnBuildTypes(
         env_names: List<Any>,
         doc_id: String,
-        src_id: String,
+        git_repo_id: String,
+        git_branch: String,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
@@ -64,11 +65,14 @@ object Docs {
         val yarnBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
             val envName = env.toString()
-            val docBuildType = createInitialDocBuildType(
-                envName, doc_id, src_id, publish_path, working_dir, index_for_search
-            )
-            val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(
-                envName,
+            val docBuildType = createInitialDocBuildType(envName,
+                doc_id,
+                git_repo_id,
+                git_branch,
+                publish_path,
+                working_dir,
+                index_for_search)
+            val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(envName,
                 publish_path,
                 build_command,
                 node_image_version,
@@ -76,8 +80,7 @@ object Docs {
                 gw_products,
                 gw_platforms,
                 gw_versions,
-                working_dir
-            )
+                working_dir)
             docBuildType.steps.step(yarnBuildStep)
             docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
             // FIXME: Reenable this line when the refactoring is done
@@ -90,7 +93,10 @@ object Docs {
     private fun createDitaBuildTypes(
         env_names: List<Any>,
         doc_id: String,
-        src_id: String,
+        git_repo_id: String,
+        git_url: String,
+        git_branch: String,
+        src_is_exported: Boolean,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
@@ -100,18 +106,19 @@ object Docs {
         gw_platforms: String,
         gw_products: String,
         gw_versions: String,
-        src_url: String,
-        src_branch: String,
         resources_to_copy: JSONArray,
-        src_is_exported: Boolean,
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val outputDir = "out"
         for (env in env_names) {
             val envName = env.toString()
-            val docBuildType = createInitialDocBuildType(
-                envName, doc_id, src_id, publish_path, working_dir, index_for_search
-            )
+            val docBuildType = createInitialDocBuildType(envName,
+                doc_id,
+                git_repo_id,
+                git_branch,
+                publish_path,
+                working_dir,
+                index_for_search)
             if (envName == "prod") {
                 val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
                 docBuildType.steps.step(copyFromStagingToProdStep)
@@ -121,8 +128,7 @@ object Docs {
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
                 if (envName == "staging") {
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep(
-                        "webhelp_with_pdf",
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep("webhelp_with_pdf",
                         root_map,
                         index_redirect,
                         working_dir,
@@ -132,25 +138,25 @@ object Docs {
                         gw_products,
                         gw_platforms,
                         gw_versions,
-                        src_url,
-                        src_branch
-                    )
+                        git_url,
+                        git_branch)
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${outputDir}/zip"
-                        val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep(
-                            "webhelp", root_map, index_redirect, working_dir, localOutputDir, for_offline_use = true
-                        )
+                        val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep("webhelp",
+                            root_map,
+                            index_redirect,
+                            working_dir,
+                            localOutputDir,
+                            for_offline_use = true)
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                         docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-                        val zipPackageStep = GwBuildSteps.createZipPackageStep(
-                            "${working_dir}/${localOutputDir}", "${working_dir}/${outputDir}"
-                        )
+                        val zipPackageStep = GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
+                            "${working_dir}/${outputDir}")
                         docBuildType.steps.step(zipPackageStep)
                         docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
                     }
                 } else {
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep(
-                        "webhelp",
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep("webhelp",
                         root_map,
                         index_redirect,
                         working_dir,
@@ -160,9 +166,8 @@ object Docs {
                         gw_products,
                         gw_platforms,
                         gw_versions,
-                        src_url,
-                        src_branch
-                    )
+                        git_url,
+                        git_branch)
                 }
                 docBuildType.steps.step(buildDitaProjectStep)
                 docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
@@ -177,15 +182,13 @@ object Docs {
                         val resourceSrcBranch = resourceSrcConfig.getString("branch")
 
                         val resourceTargetDir = resourceObject.getString("targetFolder")
-                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
-                            stepId,
+                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(stepId,
                             working_dir,
                             outputDir,
                             resourceSrcDir,
                             resourceTargetDir,
                             resourceSrcUrl,
-                            resourceSrcBranch
-                        )
+                            resourceSrcBranch)
                         copyResourcesSteps.add(copyResourcesStep)
                     }
                     docBuildType.steps {
@@ -199,7 +202,7 @@ object Docs {
 //                if (arrayOf("int", "staging").contains(envName) && src_is_exported) {
 //                    docBuildType.triggers.vcs {
 //                        GwBuildTriggers.createVcsTriggerForExportedVcsRoot(
-//                            src_id
+//                            Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()
 //                        )
 //                    }
 //                }
@@ -215,7 +218,7 @@ object Docs {
                 artifactRules = "${working_dir}/${outputDir} => /"
 
                 vcs {
-                    root(Helpers.resolveRelativeIdFromIdString(src_id))
+                    root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
                     cleanCheckout = true
                 }
 
@@ -224,14 +227,17 @@ object Docs {
                 }
             }
             val localOutputDir = "${outputDir}/zip"
-            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep(
-                format, root_map, index_redirect, working_dir, localOutputDir, build_filter, for_offline_use = true
-            )
+            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep(format,
+                root_map,
+                index_redirect,
+                working_dir,
+                localOutputDir,
+                build_filter,
+                for_offline_use = true)
             downloadableOutputBuildType.steps.step(buildDitaProjectForOfflineUseStep)
             downloadableOutputBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-            val zipPackageStep = GwBuildSteps.createZipPackageStep(
-                "${working_dir}/${localOutputDir}", "${working_dir}/${outputDir}"
-            )
+            val zipPackageStep =
+                GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}", "${working_dir}/${outputDir}")
             downloadableOutputBuildType.steps.step(zipPackageStep)
             downloadableOutputBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
             ditaBuildTypes.add(downloadableOutputBuildType)
@@ -242,7 +248,8 @@ object Docs {
     private fun createInitialDocBuildType(
         deploy_env: String,
         doc_id: String,
-        src_id: String,
+        git_repo_id: String,
+        git_branch: String,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
@@ -257,12 +264,12 @@ object Docs {
 
             if (arrayOf("dev", "int", "staging").contains(deploy_env)) {
                 vcs {
-                    root(Helpers.resolveRelativeIdFromIdString(src_id))
+                    root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                    branchFilter = "+:${Helpers.createFullGitBranchName(git_branch)}"
                     cleanCheckout = true
                 }
-                val uploadContentToS3BucketStep = GwBuildSteps.createUploadContentToS3BucketStep(
-                    deploy_env, publish_path, working_dir
-                )
+                val uploadContentToS3BucketStep =
+                    GwBuildSteps.createUploadContentToS3BucketStep(deploy_env, publish_path, working_dir)
                 steps.step(uploadContentToS3BucketStep)
                 steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
             }
@@ -311,16 +318,21 @@ object Docs {
 
         val publishPath = docConfig.getString("url")
 
+        val (gitRepoConfig, src) = Helpers.getGitRepoAndSrcBySrcId(src_id)
+        val gitRepoId = gitRepoConfig.getString("id").ifEmpty { "" }
+        val gitUrl = gitRepoConfig.getString("gitUrl")
+        val gitBranch = src.getString("branch")
+
         val docProjectBuildTypes = mutableListOf<BuildType>()
         if (gwBuildType == "yarn") {
             val nodeImageVersion =
                 if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
             val buildCommand =
                 if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
-            docProjectBuildTypes += createYarnBuildTypes(
-                docEnvironmentsList,
+            docProjectBuildTypes += createYarnBuildTypes(docEnvironmentsList,
                 docId,
-                src_id,
+                gitRepoId,
+                gitBranch,
                 publishPath,
                 workingDir,
                 indexForSearch,
@@ -328,8 +340,7 @@ object Docs {
                 nodeImageVersion,
                 gwPlatformsString,
                 gwProductsString,
-                gwVersionsString
-            )
+                gwVersionsString)
         } else if (gwBuildType == "dita") {
             val rootMap = build_config.getString("root")
             val indexRedirect = when (build_config.has("indexRedirect")) {
@@ -349,17 +360,18 @@ object Docs {
                     ""
                 }
             }
-            val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id)
-            val srcUrl = srcConfig.getString("gitUrl")
-            val srcBranch = srcConfig.getString("branch")
-            val srcIsExported = srcConfig.has("xdocsPathIds")
             val resourcesToCopy =
                 if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
+
+            val srcIsExported = src.getBoolean("isExported")
 
             docProjectBuildTypes += createDitaBuildTypes(
                 docEnvironmentsList,
                 docId,
-                src_id,
+                gitRepoId,
+                gitUrl,
+                gitBranch,
+                srcIsExported,
                 publishPath,
                 workingDir,
                 indexForSearch,
@@ -369,11 +381,9 @@ object Docs {
                 gwPlatformsString,
                 gwProductsString,
                 gwVersionsString,
-                srcUrl,
-                srcBranch,
-                resourcesToCopy,
-                srcIsExported,
+                resourcesToCopy
             )
+
         }
 
         return Project {
@@ -386,6 +396,7 @@ object Docs {
             }
         }
     }
+
 }
 
 object Content {
@@ -499,19 +510,15 @@ object Exports {
                     }
                 }
 
-                exportBuildTypes.add(
-                    GwBuildTypes.createExportFilesFromXDocsToBitbucketCompositeBuildType(
-                        srcTitle,
-                        xdocsPathIds,
-                        gitUrl,
-                        gitBranch,
-                        srcId,
-                        exportServer,
-                        exportFrequency,
-                        scheduleHour,
-                        scheduleMinute
-                    )
-                )
+                exportBuildTypes.add(GwBuildTypes.createExportFilesFromXDocsToBitbucketCompositeBuildType(srcTitle,
+                    xdocsPathIds,
+                    gitUrl,
+                    gitBranch,
+                    srcId,
+                    exportServer,
+                    exportFrequency,
+                    scheduleHour,
+                    scheduleMinute))
             }
         }
         return exportBuildTypes
@@ -566,17 +573,13 @@ object BuildListeners {
             if (existingMergedSource != null && !existingMergedSource.getJSONArray("branches").contains(gitBranch)) {
                 existingMergedSource.getJSONArray("branches").put(gitBranch)
             } else {
-                mergedSourcesRequiringListeners.add(
-                    JSONObject(
-                        """
+                mergedSourcesRequiringListeners.add(JSONObject("""
                             {
                             "srcId": "$srcId",
                             "gitUrl": "$gitUrl",
                             "branches": ["$gitBranch"]
                             }
-                        """.trimIndent()
-                    )
-                )
+                        """.trimIndent()))
             }
 
         }
@@ -592,13 +595,9 @@ object BuildListeners {
                 root(Helpers.resolveRelativeIdFromIdString(vcs_root_id))
                 cleanCheckout = true
             }
-            steps.step(
-                GwBuildSteps.createRunBuildManagerStep(
-                    Docs.rootProject.id.toString(),
-                    GwTemplates.BuildListenerTemplate.id.toString(),
-                    Helpers.resolveRelativeIdFromIdString(vcs_root_id).toString()
-                )
-            )
+            steps.step(GwBuildSteps.createRunBuildManagerStep(Docs.rootProject.id.toString(),
+                GwTemplates.BuildListenerTemplate.id.toString(),
+                Helpers.resolveRelativeIdFromIdString(vcs_root_id).toString()))
 // FIXME: Reenable this line when the refactoring is done
 //            triggers.vcs { }
         }
@@ -628,9 +627,11 @@ object Recommendations {
         val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deploy_env)
         for (combination in allPlatformProductVersionCombinations) {
             val (platform, product, version) = combination
-            val recommendationsForTopicsBuildTypeInt = GwBuildTypes.createRecommendationsForTopicsBuildType(
-                "int", platform, product, version, "GoogleNews-vectors-negative300.bin"
-            )
+            val recommendationsForTopicsBuildTypeInt = GwBuildTypes.createRecommendationsForTopicsBuildType("int",
+                platform,
+                product,
+                version,
+                "GoogleNews-vectors-negative300.bin")
             recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
         }
         return Project {
@@ -650,12 +651,9 @@ object Recommendations {
                 Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
             if (docEnvironmentsLowercaseList.contains(deploy_env)) {
                 val docMetadata = docConfig.getJSONObject("metadata")
-                val docPlatforms =
-                    Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("platform"))
-                val docProducts =
-                    Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("product"))
-                val docVersions =
-                    Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("version"))
+                val docPlatforms = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("platform"))
+                val docProducts = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("product"))
+                val docVersions = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("version"))
                 result += Helpers.generatePlatformProductVersionCombinations(docPlatforms, docProducts, docVersions)
             }
         }
@@ -704,21 +702,19 @@ object Helpers {
         return allConfigObjects
     }
 
-    private fun groupBuildSourceConfigsByGitUrl(): MutableList<JSONObject> {
+    private fun groupBuildSourceConfigsByGitUrl(): List<JSONObject> {
         val srcIds = buildConfigs.map { it.getString("srcId") }.distinct()
         val groupedSources = mutableListOf<JSONObject>()
         for (srcId in srcIds) {
             val srcConfig = getObjectById(sourceConfigs, "id", srcId)
             val gitUrl = srcConfig.getString("gitUrl")
-            val id = createSrcIdFromGitUrl(gitUrl)
+            val id = createIdStringFromGitUrl(gitUrl)
             val gitBranch = srcConfig.getString("branch")
             val isExported = srcConfig.has("xdocsPathIds")
 
             val existingGroupedSource = groupedSources.find { it.getString("gitUrl") == gitUrl }
             if (existingGroupedSource == null) {
-                groupedSources.add(
-                    JSONObject(
-                        """
+                groupedSources.add(JSONObject("""
                             {
                             "id": "$id",
                             "gitUrl": "$gitUrl",
@@ -730,24 +726,18 @@ object Helpers {
                                     }
                                 ]
                             }
-                        """.trimIndent()
-                    )
-                )
+                        """.trimIndent()))
             } else {
-                val existingGroupedSourceHasSrcId = existingGroupedSource.getJSONArray("sources")
-                    .any { (it as JSONObject).getString("srcId") == srcId }
+                val existingGroupedSourceHasSrcId =
+                    existingGroupedSource.getJSONArray("sources").any { (it as JSONObject).getString("srcId") == srcId }
                 if (!existingGroupedSourceHasSrcId) {
-                    existingGroupedSource.getJSONArray("sources").put(
-                        JSONObject(
-                            """
+                    existingGroupedSource.getJSONArray("sources").put(JSONObject("""
                                 {
                                 "srcId": "$srcId",
                                 "branch": "$gitBranch",
                                 "isExported": "$isExported"
                                 }
-                            """.trimIndent()
-                        )
-                    )
+                            """.trimIndent()))
                 }
             }
         }
@@ -757,10 +747,24 @@ object Helpers {
     val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
     val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
     val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
-    val buildSourceConfigsGroupedByGitUrl = groupBuildSourceConfigsByGitUrl()
+    val gitRepoConfigs = groupBuildSourceConfigsByGitUrl()
 
     fun getObjectById(objectList: List<JSONObject>, id_name: String, id_value: String): JSONObject {
         return objectList.find { it.getString(id_name) == id_value } ?: JSONObject()
+    }
+
+    fun getGitRepoAndSrcBySrcId(src_id: String): Pair<JSONObject, JSONObject> {
+        val gitRepoConfig = gitRepoConfigs.find {
+            it.getJSONArray("sources").any { s -> (s as JSONObject).getString("srcId") == src_id }
+        }
+        return if (gitRepoConfig == null) {
+            Pair(JSONObject(), JSONObject())
+        } else {
+            val src =
+                gitRepoConfig.getJSONArray("sources")
+                    .find { (it as JSONObject).getString("srcId") == src_id } as JSONObject
+            Pair(gitRepoConfig, src)
+        }
     }
 
     private fun removeSpecialCharacters(string_to_clean: String): String {
@@ -772,8 +776,16 @@ object Helpers {
         return RelativeId(removeSpecialCharacters(id))
     }
 
-    fun createSrcIdFromGitUrl(git_url: String): String {
+    private fun createIdStringFromGitUrl(git_url: String): String {
         return removeSpecialCharacters(git_url.substringAfterLast("/"))
+    }
+
+    fun createFullGitBranchName(branch_name: String, prefix: String = "refs/heads/"): String {
+        return if (branch_name.startsWith(prefix)) {
+            branch_name
+        } else {
+            "${prefix}${branch_name}"
+        }
     }
 
 
@@ -1144,10 +1156,10 @@ object GwBuildFeatures {
 
 object GwBuildTriggers {
 
-    fun createVcsTriggerForExportedVcsRoot(src_id: String): VcsTrigger {
+    fun createVcsTriggerForExportedVcsRoot(vcs_root_id: String): VcsTrigger {
         return VcsTrigger {
             triggerRules = """
-                +:root=${Helpers.resolveRelativeIdFromIdString(src_id)};comment=\[$src_id\]:**
+                +:root=${vcs_root_id};comment=\[$vcs_root_id\]:**
                 """.trimIndent()
         }
     }
@@ -1170,47 +1182,35 @@ object GwBuildTypes {
         maxRunningBuilds = 2
 
         params {
-            text(
-                "EXPORT_PATH_IDS",
+            text("EXPORT_PATH_IDS",
                 "",
                 description = "A list of space-separated path IDs from XDocs",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
-            text(
-                "GIT_URL",
+                allowEmpty = true)
+            text("GIT_URL",
                 "",
                 description = "The URL of the Bitbucket repository where the files exported from XDocs are added",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
-            text(
-                "GIT_BRANCH",
+                allowEmpty = true)
+            text("GIT_BRANCH",
                 "",
                 description = "The branch of the Bitbucket repository where the files exported from XDocs are added",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
-            text(
-                "XDOCS_EXPORT_DIR",
+                allowEmpty = true)
+            text("XDOCS_EXPORT_DIR",
                 "%system.teamcity.build.tempDir%/xdocs_export_dir",
                 display = ParameterDisplay.HIDDEN,
-                allowEmpty = false
-            )
-            text(
-                "SRC_ID",
+                allowEmpty = false)
+            text("SRC_ID",
                 "",
                 description = "The ID of the source",
                 display = ParameterDisplay.HIDDEN,
-                allowEmpty = false
-            )
-            text(
-                "EXPORT_SERVER",
+                allowEmpty = false)
+            text("EXPORT_SERVER",
                 "",
                 description = "The export server",
                 display = ParameterDisplay.HIDDEN,
-                allowEmpty = false
-            )
+                allowEmpty = false)
         }
 
         vcs {
@@ -1266,34 +1266,24 @@ object GwBuildTypes {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
-            select(
-                "env.DEPLOY_ENV",
+            select("env.DEPLOY_ENV",
                 "",
                 label = "Deployment environment",
                 description = "Select an environment on which you want clean up the index",
                 display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod")
-            )
-            text(
-                "env.CONFIG_FILE_URL",
+                options = listOf("dev", "int", "staging", "prod"))
+            text("env.CONFIG_FILE_URL",
                 "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
-                allowEmpty = false
-            )
-            text(
-                "env.CONFIG_FILE_URL_PROD",
+                allowEmpty = false)
+            text("env.CONFIG_FILE_URL_PROD",
                 "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
-                allowEmpty = false
-            )
-            text(
-                "env.ELASTICSEARCH_URLS",
+                allowEmpty = false)
+            text("env.ELASTICSEARCH_URLS",
                 "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
-                allowEmpty = false
-            )
-            text(
-                "env.ELASTICSEARCH_URLS_PROD",
+                allowEmpty = false)
+            text("env.ELASTICSEARCH_URLS_PROD",
                 "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
-                allowEmpty = false
-            )
+                allowEmpty = false)
 
         }
 
@@ -1326,22 +1316,18 @@ object GwBuildTypes {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
-            select(
-                "DEPLOY_ENV",
+            select("DEPLOY_ENV",
                 "",
                 label = "Deployment environment",
                 description = "The environment on which you want reindex documents",
                 display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod", "portal2")
-            )
-            text(
-                "DOC_ID",
+                options = listOf("dev", "int", "staging", "prod", "portal2"))
+            text("DOC_ID",
                 "",
                 label = "Doc ID",
                 description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
+                allowEmpty = true)
         }
 
         val configFile = "%teamcity.build.workingDir%/config.json"
@@ -1360,20 +1346,16 @@ object GwBuildTypes {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
-            text(
-                "env.RELEASE_NAME",
+            text("env.RELEASE_NAME",
                 "",
                 label = "Release name",
                 description = "For example, Banff or Cortina",
-                display = ParameterDisplay.PROMPT
-            )
-            text(
-                "env.RELEASE_NUMBER",
+                display = ParameterDisplay.PROMPT)
+            text("env.RELEASE_NUMBER",
                 "",
                 label = "Release number",
                 description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
-                display = ParameterDisplay.PROMPT
-            )
+                display = ParameterDisplay.PROMPT)
         }
 
         vcs {
@@ -1535,14 +1517,10 @@ object GwBuildTypes {
 }
 
 object GwVcsRoots {
-    val xdocsClientGitVcsRoot = createGitVcsRoot(
-        "XDocs Client",
-        "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
-        listOf("master")
-    )
+    val xdocsClientGitVcsRoot =
+        createGitVcsRoot("XDocs Client", "ssh://git@stash.guidewire.com/doctools/xdocs-client.git", listOf("master"))
 
-    fun createGitVcsRoot(vcs_root_id: String, git_url: String, git_branches: List<String>): GitVcsRoot {
-        val branchNamePrefix = "refs/heads/"
+    private fun createGitVcsRoot(vcs_root_id: String, git_url: String, git_branches: List<String>): GitVcsRoot {
         val defaultBranch = git_branches[0]
         val monitoredBranches =
             if (git_branches.size > 1) git_branches.slice(1..git_branches.lastIndex) else emptyList()
@@ -1550,7 +1528,7 @@ object GwVcsRoots {
             name = vcs_root_id
             id = Helpers.resolveRelativeIdFromIdString(vcs_root_id)
             url = git_url
-            branch = "${branchNamePrefix}${defaultBranch}"
+            branch = Helpers.createFullGitBranchName(defaultBranch)
             authMethod = uploadedKey {
                 uploadedKey = "sys-doc.rsa"
             }
@@ -1561,14 +1539,14 @@ object GwVcsRoots {
             } else {
                 branchSpec = ""
                 monitoredBranches.forEach {
-                    branchSpec += "+:${branchNamePrefix}${it}\n"
+                    branchSpec += "+:${Helpers.createFullGitBranchName(it)}\n"
                 }
             }
         }
     }
 
     fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
-        return Helpers.buildSourceConfigsGroupedByGitUrl.map {
+        return Helpers.gitRepoConfigs.map {
             val gitUrl = it.getString("gitUrl")
             val id = it.getString("id")
             val gitBranches = it.getJSONArray("sources").map { b -> (b as JSONObject).getString("branch") }
@@ -1584,11 +1562,7 @@ object GwVcsRoots {
             } else {
                 gitBranches[0]
             }
-            createGitVcsRoot(
-                id,
-                gitUrl,
-                listOf(defaultBranch)
-            )
+            createGitVcsRoot(id, gitUrl, listOf(defaultBranch))
         }
     }
 }
