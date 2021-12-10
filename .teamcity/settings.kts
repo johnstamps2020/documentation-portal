@@ -535,69 +535,65 @@ object BuildListeners {
         }
         val buildListenerSources = getSourcesForBuildListenerBuildTypes()
         buildListenerSources.forEach {
-            val srcId = it.getString("srcId")
-            val srcGitUrl = it.getString("gitUrl")
-            val srcGitBranches = Helpers.convertJsonArrayWithStringsToList(it.getJSONArray("branches"))
-//            mainProject.vcsRoot(GwVcsRoots.createGitVcsRoot("$srcId listener", srcGitUrl, srcGitBranches))
-            mainProject.buildType(createBuildListenerBuildType("$srcId listener"))
-
+            val (gitRepoId, gitRepoSources) = it
+            val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
+            mainProject.buildType(createBuildListenerBuildType(gitRepoId, uniqueGitRepoBranches))
         }
 
         return mainProject
     }
 
-    private fun getSourcesForBuildListenerBuildTypes(): List<JSONObject> {
-        val sourcesRequiringListeners = mutableListOf<JSONObject>()
-        for (sourceConfig in Helpers.sourceConfigs) {
-            val srcId = sourceConfig.getString("id")
-            if (!sourceConfig.has("xdocsPathIds")) {
+    private fun getSourcesForBuildListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
+        val gitNativeRepos = Helpers.gitRepoConfigs.map {
+            val filteredSources = it.getJSONArray("sources").filter { s ->
+                !(s as JSONObject).getBoolean("isExported")
+            }
+            it.put("sources", filteredSources)
+        }.filter { r -> !r.getJSONArray("sources").isEmpty }
+
+        val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
+        for (gitRepo in gitNativeRepos) {
+            val gitRepoSources = (gitRepo as JSONObject).getJSONArray("sources")
+            val sourcesToMonitor = mutableListOf<JSONObject>()
+            for (src in gitRepoSources) {
+                val srcId = (src as JSONObject).getString("srcId")
                 val ditaBuildsRelatedToSrc =
                     Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == "dita" }
-                for (ditaBuild in ditaBuildsRelatedToSrc) {
-                    val buildDocId = ditaBuild.getString("docId")
+                val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
+                    val buildDocId = it.getString("docId")
                     val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
-                    val docEnvironmentsLower =
-                        Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
-                    if (arrayListOf("int", "staging").any { docEnvironmentsLower.contains(it) }) {
-                        sourcesRequiringListeners.add(sourceConfig)
-                    }
+                    Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
+                }.flatten().distinct()
+
+                if (arrayListOf("int", "staging").any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }) {
+                    sourcesToMonitor.add(src)
                 }
             }
+            sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), sourcesToMonitor))
         }
-        val mergedSourcesRequiringListeners = mutableListOf<JSONObject>()
-        for (sourceConfig in sourcesRequiringListeners.distinct()) {
-            val srcId = sourceConfig.getString("id")
-            val gitUrl = sourceConfig.getString("gitUrl")
-            val gitBranch = sourceConfig.getString("branch")
-            val existingMergedSource = mergedSourcesRequiringListeners.find { it.getString("gitUrl") == gitUrl }
-            if (existingMergedSource != null && !existingMergedSource.getJSONArray("branches").contains(gitBranch)) {
-                existingMergedSource.getJSONArray("branches").put(gitBranch)
-            } else {
-                mergedSourcesRequiringListeners.add(JSONObject("""
-                            {
-                            "srcId": "$srcId",
-                            "gitUrl": "$gitUrl",
-                            "branches": ["$gitBranch"]
-                            }
-                        """.trimIndent()))
-            }
-
-        }
-        return mergedSourcesRequiringListeners
+        return sourcesRequiringListeners
     }
 
-    private fun createBuildListenerBuildType(vcs_root_id: String): BuildType {
+    private fun createBuildListenerBuildType(git_repo_id: String, git_branches: List<String>): BuildType {
         return BuildType {
-            name = vcs_root_id
+            name = git_repo_id
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(Helpers.resolveRelativeIdFromIdString(vcs_root_id))
+                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                if (git_branches.isEmpty()) {
+                    branchFilter = "+:*"
+                } else {
+                    branchFilter = ""
+                    git_branches.forEach {
+                        branchFilter += "+:${Helpers.createFullGitBranchName(it)}\n"
+                    }
+                }
                 cleanCheckout = true
             }
             steps.step(GwBuildSteps.createRunBuildManagerStep(Docs.rootProject.id.toString(),
                 GwTemplates.BuildListenerTemplate.id.toString(),
-                Helpers.resolveRelativeIdFromIdString(vcs_root_id).toString()))
+                Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()))
 // FIXME: Reenable this line when the refactoring is done
 //            triggers.vcs { }
         }
