@@ -3,6 +3,24 @@
   "title": "BillingCenter for Guidewire Cloud 2021.11",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Dobson (2021.11)",
+    "items": [
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/billingCenterCloud/bcGwCloud"
+      },
+      {
+        "label": "Banff",
+        "page": "../../../banff/billingCenterCloud/bcGwCloud"
+      },
+      {
+        "label": "Aspen",
+        "page": "../../../aspen/billingCenterCloud"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
