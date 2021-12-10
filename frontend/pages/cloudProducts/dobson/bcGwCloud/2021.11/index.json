@@ -12,11 +12,11 @@
         "page": "../../../cortina/billingCenterCloud/bcGwCloud"
       },
       {
-        "label": "Banff",
+        "label": "Banff (2020.11)",
         "page": "../../../banff/billingCenterCloud/bcGwCloud"
       },
       {
-        "label": "Aspen",
+        "label": "Aspen (2020.05)",
         "page": "../../../aspen/billingCenterCloud"
       }
     ]
