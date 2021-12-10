@@ -434,12 +434,38 @@ object Validations {
         return BuildType {
             name = "Validate $doc_title"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
-
+//            FIXME: It's just an outline of steps to get the idea what the build needs to do
             steps.step(GwBuildSteps.createMakeDirectoriesStep(
                 listOf("%teamcity.build.checkoutDir%/normalized_dita",
                     "%teamcity.build.checkoutDir%/dita_ot_logs",
                     "%teamcity.build.checkoutDir%/schematron_reports")
             ))
+            steps.step(GwBuildSteps.createBuildDitaProjectStep(
+                "webhelp",
+                "root_map",
+                true,
+                "working_dir",
+                "output_dir"))
+            steps.step(GwBuildSteps.createUploadContentToS3BucketStep("int", "preview/...", "working_dir"))
+//            TODO: Add support for the DITA output in the build dita project step
+            steps.step(GwBuildSteps.createBuildDitaProjectStep(
+                "dita",
+                "root_map",
+                true,
+                "working_dir",
+                "output_dir"))
+//            TODO: Add support for the validate plugin in the build dita project step OR create a separate step for it
+            steps.step(GwBuildSteps.createBuildDitaProjectStep(
+                "validate",
+                "root_map",
+                true,
+                "working_dir",
+                "output_dir"))
+//            TODO: Create a step for it
+            steps.step(ScriptBuildStep {
+                name = "Run the doc validator"
+                id = "RUN_DOC_VALIDATOR"
+            })
         }
     }
 }
