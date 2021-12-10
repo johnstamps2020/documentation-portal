@@ -12,11 +12,11 @@
         "page": "../../../cortina/policyCenterCloud/pcGwCloud"
       },
       {
-        "label": "Banff",
+        "label": "Banff (2020.11)",
         "page": "../../../banff/policyCenterCloud/pcGwCloud"
       },
       {
-        "label": "Aspen",
+        "label": "Aspen (2020.05)",
         "page": "../../../aspen/policyCenterCloud"
       }
     ]
