@@ -23,6 +23,7 @@ project {
     subProject(BuildListeners.rootProject)
     subProject(Recommendations.rootProject)
     subProject(Content.rootProject)
+    subProject(Validations.rootProject)
     subProject(Exports.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
@@ -390,7 +391,6 @@ object Docs {
 
         return Project {
             name = "$docTitle ($docId)"
-            description = "$gwPlatforms; $gwProducts; $gwVersions"
             id = Helpers.resolveRelativeIdFromIdString(docId)
 
             docProjectBuildTypes.forEach {
@@ -417,7 +417,32 @@ object Content {
     }
 }
 
-object Validations
+object Validations {
+    val rootProject = createRootProjectForValidations()
+
+    private fun createRootProjectForValidations(): Project {
+        val mainProject = Project {
+            name = "Validations"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            buildType(createValidationBuildType("Test build"))
+        }
+        return mainProject
+    }
+
+    private fun createValidationBuildType(doc_title: String): BuildType {
+        return BuildType {
+            name = "Validate $doc_title"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            steps.step(GwBuildSteps.createMakeDirectoriesStep(
+                listOf("%teamcity.build.checkoutDir%/normalized_dita",
+                    "%teamcity.build.checkoutDir%/dita_ot_logs",
+                    "%teamcity.build.checkoutDir%/schematron_reports")
+            ))
+        }
+    }
+}
 
 object Server
 
@@ -785,6 +810,21 @@ object Helpers {
 }
 
 object GwBuildSteps {
+    fun createMakeDirectoriesStep(dir_paths: List<String>): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Make directories"
+            id = "MAKE_DIRECTORIES"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+            """.trimIndent()
+
+            dir_paths.map {
+                scriptContent += "\nmkdir -p $it"
+            }
+        }
+    }
+
     fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
             "prod" -> {
