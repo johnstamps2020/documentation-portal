@@ -569,7 +569,9 @@ object BuildListeners {
                     sourcesToMonitor.add(src)
                 }
             }
-            sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), sourcesToMonitor))
+            if (sourcesToMonitor.isNotEmpty()) {
+                sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), sourcesToMonitor))
+            }
         }
         return sourcesRequiringListeners
     }
