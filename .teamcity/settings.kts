@@ -219,8 +219,10 @@ object Docs {
 
                 vcs {
                     root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                    branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
                     cleanCheckout = true
                 }
+
 
                 features {
                     feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -265,7 +267,7 @@ object Docs {
             if (arrayOf("dev", "int", "staging").contains(deploy_env)) {
                 vcs {
                     root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                    branchFilter = "+:${Helpers.createFullGitBranchName(git_branch)}"
+                    branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
                     cleanCheckout = true
                 }
                 val uploadContentToS3BucketStep =
@@ -583,14 +585,7 @@ object BuildListeners {
 
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                if (git_branches.isEmpty()) {
-                    branchFilter = "+:*"
-                } else {
-                    branchFilter = ""
-                    git_branches.forEach {
-                        branchFilter += "+:${Helpers.createFullGitBranchName(it)}\n"
-                    }
-                }
+                branchFilter = GwVcsSettings.createBranchFilter(git_branches)
                 cleanCheckout = true
             }
             steps.step(GwBuildSteps.createRunBuildManagerStep(Docs.rootProject.id.toString(),
@@ -1565,6 +1560,22 @@ object GwVcsRoots {
     }
 }
 
+object GwVcsSettings {
+    fun createBranchFilter(git_branches: List<String>): String {
+        var branchFilter = ""
+        if (git_branches.isEmpty()) {
+            branchFilter = "+:*"
+        } else if (git_branches.size == 1) {
+            branchFilter = "+:${Helpers.createFullGitBranchName(git_branches[0])}"
+        } else {
+            git_branches.forEach {
+                branchFilter += "+:${Helpers.createFullGitBranchName(it)}\n"
+            }
+        }
+        return branchFilter
+    }
+}
+
 object GwTemplates {
     object BuildListenerTemplate : Template({
         name = "Build listener template"
@@ -1579,5 +1590,4 @@ object GwTemplates {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
     })
 }
-
 
