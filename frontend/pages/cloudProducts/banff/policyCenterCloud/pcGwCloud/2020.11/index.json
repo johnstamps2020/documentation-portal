@@ -3,6 +3,24 @@
   "title": "PolicyCenter for Guidewire Cloud 2020.11",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Banff (2020.11)",
+    "items": [
+      {
+        "label": "Dobson (2021.11)",
+        "page": "../../../../dobson/pcGwCloud/2021.11"
+      },
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../../cortina/policyCenterCloud/pcGwCloud/2021.04"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../../aspen/policyCenterCloud"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
