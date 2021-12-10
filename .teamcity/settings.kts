@@ -592,11 +592,13 @@ object BuildListeners {
                 root(Helpers.resolveRelativeIdFromIdString(vcs_root_id))
                 cleanCheckout = true
             }
-            steps.step(GwBuildSteps.createRunBuildManagerStep(
-                Docs.rootProject.id.toString(),
-                GwTemplates.BuildListenerTemplate.id.toString(),
-                Helpers.resolveRelativeIdFromIdString(vcs_root_id).toString()
-            ))
+            steps.step(
+                GwBuildSteps.createRunBuildManagerStep(
+                    Docs.rootProject.id.toString(),
+                    GwTemplates.BuildListenerTemplate.id.toString(),
+                    Helpers.resolveRelativeIdFromIdString(vcs_root_id).toString()
+                )
+            )
 // FIXME: Reenable this line when the refactoring is done
 //            triggers.vcs { }
         }
@@ -702,15 +704,66 @@ object Helpers {
         return allConfigObjects
     }
 
+    private fun groupBuildSourceConfigsByGitUrl(): MutableList<JSONObject> {
+        val srcIds = buildConfigs.map { it.getString("srcId") }.distinct()
+        val groupedSources = mutableListOf<JSONObject>()
+        for (srcId in srcIds) {
+            val srcConfig = getObjectById(sourceConfigs, "id", srcId)
+            val gitUrl = srcConfig.getString("gitUrl")
+            val id = createSrcIdFromGitUrl(gitUrl)
+            val gitBranch = srcConfig.getString("branch")
+            val isExported = srcConfig.has("xdocsPathIds")
+
+            val existingGroupedSource = groupedSources.find { it.getString("gitUrl") == gitUrl }
+            if (existingGroupedSource == null) {
+                groupedSources.add(
+                    JSONObject(
+                        """
+                            {
+                            "id": "$id",
+                            "gitUrl": "$gitUrl",
+                            "sources": [
+                                    {
+                                    "srcId": "$srcId",
+                                    "branch": "$gitBranch",
+                                    "isExported": "$isExported"
+                                    }
+                                ]
+                            }
+                        """.trimIndent()
+                    )
+                )
+            } else {
+                val existingGroupedSourceHasSrcId = existingGroupedSource.getJSONArray("sources")
+                    .any { (it as JSONObject).getString("srcId") == srcId }
+                if (!existingGroupedSourceHasSrcId) {
+                    existingGroupedSource.getJSONArray("sources").put(
+                        JSONObject(
+                            """
+                                {
+                                "srcId": "$srcId",
+                                "branch": "$gitBranch",
+                                "isExported": "$isExported"
+                                }
+                            """.trimIndent()
+                        )
+                    )
+                }
+            }
+        }
+        return groupedSources
+    }
+
     val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
     val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
     val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
+    val buildSourceConfigsGroupedByGitUrl = groupBuildSourceConfigsByGitUrl()
 
     fun getObjectById(objectList: List<JSONObject>, id_name: String, id_value: String): JSONObject {
         return objectList.find { it.getString(id_name) == id_value } ?: JSONObject()
     }
 
-    fun removeSpecialCharacters(string_to_clean: String): String {
+    private fun removeSpecialCharacters(string_to_clean: String): String {
         val re = Regex("[^A-Za-z0-9]")
         return re.replace(string_to_clean, "")
     }
@@ -1515,34 +1568,10 @@ object GwVcsRoots {
     }
 
     fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
-        val srcIds = Helpers.buildConfigs.map { it.getString("srcId") }.distinct()
-        val mergedSources = mutableListOf<JSONObject>()
-        for (srcId in srcIds) {
-            val sourceConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", srcId)
-            val gitUrl = sourceConfig.getString("gitUrl")
-            val gitBranch = sourceConfig.getString("branch")
-
-            val existingMergedSource = mergedSources.find { it.getString("gitUrl") == gitUrl }
-            if (existingMergedSource == null) {
-                mergedSources.add(
-                    JSONObject(
-                        """
-                            {
-                            "gitUrl": "$gitUrl",
-                            "branches": ["$gitBranch"]
-                            }
-                        """.trimIndent()
-                    )
-                )
-            } else if (!existingMergedSource.getJSONArray("branches").contains(gitBranch)) {
-                existingMergedSource.getJSONArray("branches").put(gitBranch)
-            }
-        }
-
-        return mergedSources.map {
+        return Helpers.buildSourceConfigsGroupedByGitUrl.map {
             val gitUrl = it.getString("gitUrl")
-            val srcId = Helpers.createSrcIdFromGitUrl(gitUrl)
-            val gitBranches = Helpers.convertJsonArrayWithStringsToLowercaseList(it.getJSONArray("branches"))
+            val id = it.getString("id")
+            val gitBranches = it.getJSONArray("sources").map { b -> (b as JSONObject).getString("branch") }
             val mainBranch = gitBranches.find { b -> b.contains("main") }
             val masterBranch = gitBranches.find { b -> b.contains("master") }
             val releaseBranch = gitBranches.find { b -> b.contains("release") }
@@ -1556,7 +1585,7 @@ object GwVcsRoots {
                 gitBranches[0]
             }
             createGitVcsRoot(
-                srcId,
+                id,
                 gitUrl,
                 listOf(defaultBranch)
             )
