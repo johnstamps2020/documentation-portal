@@ -9,11 +9,11 @@
     "items": [
       {
         "label": "Cortina (2021.04)",
-        "page": "../../../cortina/policyCenterCloud/pcGwCloud"
+        "page": "../../../cortina/policyCenterCloud/pcGwCloud/2021.04"
       },
       {
         "label": "Banff (2020.11)",
-        "page": "../../../banff/policyCenterCloud/pcGwCloud"
+        "page": "../../../banff/policyCenterCloud/pcGwCloud/2020.11"
       },
       {
         "label": "Aspen (2020.05)",
