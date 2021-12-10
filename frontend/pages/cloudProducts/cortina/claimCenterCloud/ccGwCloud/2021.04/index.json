@@ -3,6 +3,24 @@
   "title": "ClaimCenter for Guidewire Cloud 2021.04",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Cortina (2021.04)",
+    "items": [
+      {
+        "label": "Dobson (2021.11)",
+        "page": "../../../../dobson/ccGwCloud/2021.11"
+      },
+      {
+        "label": "Banff (2020.11)",
+        "page": "../../../../banff/claimCenterCloud/ccGwCloud/2020.11"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../../aspen/claimCenterCloud"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
