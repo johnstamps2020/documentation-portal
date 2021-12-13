@@ -129,7 +129,7 @@ object Docs {
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
                 if (envName == "staging") {
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep("webhelp_with_pdf",
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep("webhelp_with_pdf",
                         root_map,
                         index_redirect,
                         working_dir,
@@ -143,12 +143,13 @@ object Docs {
                         git_branch)
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${outputDir}/zip"
-                        val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep("webhelp",
-                            root_map,
-                            index_redirect,
-                            working_dir,
-                            localOutputDir,
-                            for_offline_use = true)
+                        val buildDitaProjectForOfflineUseStep =
+                            GwBuildSteps.createBuildDitaProjectForBuildsStep("webhelp",
+                                root_map,
+                                index_redirect,
+                                working_dir,
+                                localOutputDir,
+                                for_offline_use = true)
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                         docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
                         val zipPackageStep = GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
@@ -157,7 +158,7 @@ object Docs {
                         docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
                     }
                 } else {
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectStep("webhelp",
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep("webhelp",
                         root_map,
                         index_redirect,
                         working_dir,
@@ -230,7 +231,7 @@ object Docs {
                 }
             }
             val localOutputDir = "${outputDir}/zip"
-            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectStep(format,
+            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(format,
                 root_map,
                 index_redirect,
                 working_dir,
@@ -434,31 +435,22 @@ object Validations {
         return BuildType {
             name = "Validate $doc_title"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
-//            FIXME: It's just an outline of steps to get the idea what the build needs to do
-            steps.step(GwBuildSteps.createMakeDirectoriesStep(
-                listOf("%teamcity.build.checkoutDir%/normalized_dita",
-                    "%teamcity.build.checkoutDir%/dita_ot_logs",
-                    "%teamcity.build.checkoutDir%/schematron_reports")
-            ))
-            steps.step(GwBuildSteps.createBuildDitaProjectStep(
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
                 "webhelp",
                 "root_map",
-                true,
                 "working_dir",
-                "output_dir"))
+                "output_dir",
+                build_filter = "",
+                index_redirect = true))
             steps.step(GwBuildSteps.createUploadContentToS3BucketStep("int", "preview/...", "working_dir"))
-//            TODO: Add support for the DITA output in the build dita project step
-            steps.step(GwBuildSteps.createBuildDitaProjectStep(
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
                 "dita",
                 "root_map",
-                true,
                 "working_dir",
-                "output_dir"))
-//            TODO: Add support for the validate plugin in the build dita project step OR create a separate step for it
-            steps.step(GwBuildSteps.createBuildDitaProjectStep(
+                "output_dir",
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
                 "validate",
                 "root_map",
-                true,
                 "working_dir",
                 "output_dir"))
 //            TODO: Create a step for it
@@ -836,21 +828,6 @@ object Helpers {
 }
 
 object GwBuildSteps {
-    fun createMakeDirectoriesStep(dir_paths: List<String>): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Make directories"
-            id = "MAKE_DIRECTORIES"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-            """.trimIndent()
-
-            dir_paths.map {
-                scriptContent += "\nmkdir -p $it"
-            }
-        }
-    }
-
     fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
             "prod" -> {
@@ -1028,7 +1005,67 @@ object GwBuildSteps {
         }
     }
 
-    fun createBuildDitaProjectStep(
+    fun createBuildDitaProjectForValidationsStep(
+        output_format: String,
+        root_map: String,
+        working_dir: String,
+        output_dir: String,
+        build_filter: String = "",
+        index_redirect: Boolean = false,
+    ): ScriptBuildStep {
+        val logFile = "${output_format}_build.log"
+        var ditaBuildCommand =
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" -l \"${working_dir}/${logFile}\""
+        var resourcesCopyCommand = ""
+
+        if (build_filter.isNotEmpty()) {
+            ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
+        }
+
+        when (output_format) {
+            "webhelp" -> {
+                ditaBuildCommand += " -f webhelp_Guidewire"
+                if (index_redirect) {
+                    ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
+                }
+            }
+            "dita" -> {
+                val normalizedDitaDir = "normalized_dita"
+                ditaBuildCommand += " -f gw_dita"
+                resourcesCopyCommand =
+                    "&& mkdir -p \"${working_dir}/${normalizedDitaDir}\" && cp -R \"${working_dir}/${output_dir}/*\" \"${working_dir}/${normalizedDitaDir}/\""
+            }
+            "validate" -> {
+                val tempDir = "tmp/validate"
+                val schematronReportsDir = "schematron_reports"
+                ditaBuildCommand += " -f validate --clean.temp no --temp \"${working_dir}/${tempDir}\""
+                resourcesCopyCommand =
+                    "&& mkdir -p \"${working_dir}/${schematronReportsDir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematronReportsDir}/\""
+            }
+        }
+
+        return ScriptBuildStep {
+            name = "Build the ${output_format.replace("_", "")} output"
+            id = this.name.uppercase(Locale.getDefault()).replace(" ", "_")
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                
+                SECONDS=0
+
+                echo "Building output"
+                $ditaBuildCommand $resourcesCopyCommand || EXIT_CODE=${'$'}?
+                cp "${working_dir}/${logFile}" ${working_dir}/dita_ot_logs/ || EXIT_CODE=${'$'}?
+                
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createBuildDitaProjectForBuildsStep(
         output_format: String,
         root_map: String,
         index_redirect: Boolean,
@@ -1043,7 +1080,7 @@ object GwBuildSteps {
         git_branch: String = "",
         for_offline_use: Boolean = false,
     ): ScriptBuildStep {
-        var ditaBuildCommand: String = if (for_offline_use) {
+        var ditaBuildCommand = if (for_offline_use) {
             "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params no"
         } else {
             "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes"
@@ -1073,8 +1110,8 @@ object GwBuildSteps {
         }
 
         return ScriptBuildStep {
-            name = if (for_offline_use) "Build the DITA project for offline use" else "Build the DITA project"
-            id = if (for_offline_use) "BUILD_DITA_PROJECT_FOR_OFFLINE_USE" else "BUILD_DITA_PROJECT"
+            name = "Build the ${output_format.replace("_", "")} output"
+            id = this.name.uppercase(Locale.getDefault()).replace(" ", "_")
             scriptContent = """
                 #!/bin/bash
                 set -xe
