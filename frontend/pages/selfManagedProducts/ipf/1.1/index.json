@@ -11,15 +11,9 @@
         {
           "label": "Release Notes",
           "id": "midipfrn11"
-        }
-      ]
-    },
-    {
-      "label": "Release Notes (French)",
-      "class": "subject releaseNotes",
-      "items": [
+        },
         {
-          "label": "Release Notes",
+          "label": "Release Notes (French)",
           "id": "midipfrnfrFR11"
         }
       ]
