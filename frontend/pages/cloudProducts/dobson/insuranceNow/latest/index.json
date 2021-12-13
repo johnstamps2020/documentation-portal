@@ -79,7 +79,7 @@
           "id": "inbillrefdraft"
         },
         {
-          "label": "Core Configuration Guide",
+          "label": "Core Configuration",
           "id": "in20212xconfigdraft"
         },
         {
@@ -87,15 +87,15 @@
           "id": "in20212xcommonconfigdraft"
         },
         {
-          "label": "Consumer Sales Portal Configuration Guide (Internal)",
+          "label": "Consumer Sales Portal Configuration (Internal)",
           "id": "in20212xcsalespconfigdraft"
         },
         {
-          "label": "Consumer Service Portal Configuration Guide (Internal)",
+          "label": "Consumer Service Portal Configuration (Internal)",
           "id": "in20212xcservicepconfigdraft"
         },
         {
-          "label": "Studio Configuration Guide",
+          "label": "Studio Configuration",
           "id": "in20212xstudiodraft"
         },
         {
@@ -103,7 +103,7 @@
           "id": "in20212xprovportaldraft"
         },
         {
-          "label": "Portal Development Guide",
+          "label": "Portal Development",
           "id": "in20212xportaldevdraft"
         },
         {
@@ -129,11 +129,11 @@
           "id": "ininstallassistdraft"
         },
         {
-          "label": "Developers Setup (Internal)",
+          "label": "Developer Setup (Internal)",
           "id": "indevguidejava11draft"
         },
         {
-          "label": "Developers Setup",
+          "label": "Developer Setup",
           "id": "indevguidejava11draftext"
         },
         {

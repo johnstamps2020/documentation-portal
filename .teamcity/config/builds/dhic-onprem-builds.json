@@ -10,7 +10,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Banff-10.4/DataHub",
+          "sourceFolder": "Dobson-10.6/DataHub",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
@@ -81,7 +81,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Banff-10.4/DataHub",
+          "sourceFolder": "Dobson-10.6/InfoCenter",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }

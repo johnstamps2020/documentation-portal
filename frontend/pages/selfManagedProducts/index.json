@@ -10,8 +10,13 @@
       "items": [
         {
           "label": "BillingCenter",
+          "id": "bc1020",
+          "env": ["staging"]
+        },
+        {
+          "label": "BillingCenter",
           "id": "bc1012",
-          "env": ["dev", "staging", "prod"]
+          "env": ["prod"]
         },
         {
           "label": "BillingCenter",
@@ -19,8 +24,13 @@
         },
         {
           "label": "ClaimCenter",
+          "id": "cc1020",
+          "env": ["staging"]
+        },
+        {
+          "label": "ClaimCenter",
           "id": "cc1012",
-          "env": ["dev", "staging", "prod"]
+          "env": ["prod"]
         },
         {
           "label": "ClaimCenter",
@@ -28,8 +38,13 @@
         },
         {
           "label": "PolicyCenter",
+          "id": "pc1020",
+          "env": ["staging"]
+        },
+        {
+          "label": "PolicyCenter",
           "id": "pc1012",
-          "env": ["dev", "staging", "prod"]
+          "env": ["prod"]
         },
         {
           "label": "PolicyCenter",
@@ -65,8 +80,8 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.5.0",
-          "env": ["dev", "staging", "prod"]
+          "page": "dh/10.6.0",
+          "env": ["staging", "prod"]
         },
         {
           "label": "DataHub",
@@ -75,8 +90,8 @@
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.5.0",
-          "env": ["dev", "staging", "prod"]
+          "page": "ic/10.6.0",
+          "env": ["staging", "prod"]
         },
         {
           "label": "InfoCenter",
@@ -103,7 +118,7 @@
         },
         {
           "label": "Jutro Design System",
-          "page": "../jutroDesignSystem/6.5.0",
+          "page": "../jutroDesignSystem/5.3.1",
           "env": ["dev", "staging", "prod", "int"]
         },
         {

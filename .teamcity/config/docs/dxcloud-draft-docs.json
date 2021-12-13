@@ -35,7 +35,7 @@
     },
     {
       "id": "dxclouddraftceamdev",
-      "title": "Developer's Guide",
+      "title": "Development Guide",
       "url": "cloud/dx/ce-am/latest/dev",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -115,7 +115,7 @@
     },
     {
       "id": "dxclouddraftceclaimsdev",
-      "title": "Developer's Guide",
+      "title": "Development Guide",
       "url": "cloud/dx/ce-claims/latest/dev",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -195,7 +195,7 @@
     },
     {
       "id": "dxclouddraftceqbdev",
-      "title": "Developer's Guide",
+      "title": "Development Guide",
       "url": "cloud/dx/ce-qb/latest/dev",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -275,7 +275,7 @@
     },
     {
       "id": "dxclouddraftpedev",
-      "title": "Developer's Guide",
+      "title": "Development Guide",
       "url": "cloud/dx/pe/latest/dev",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -355,7 +355,7 @@
     },
     {
       "id": "dxclouddraftpeclaimsdev",
-      "title": "Developer's Guide",
+      "title": "Development Guide",
       "url": "cloud/dx/pe-claims/latest/dev",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -435,7 +435,7 @@
     },
     {
       "id": "dxclouddraftsredev",
-      "title": "Developer's Guide",
+      "title": "Development Guide",
       "url": "cloud/dx/sre/latest/dev",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -515,7 +515,7 @@
     },
     {
       "id": "dxclouddraftvedev",
-      "title": "Developer's Guide",
+      "title": "Development Guide",
       "url": "cloud/dx/ve/latest/dev",
       "metadata": {
         "product": ["VendorEngage"],

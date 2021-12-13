@@ -6,21 +6,57 @@
       "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedbcxufesxuwl"
+      "docId": "selfmanagedbcxufesxuwl",
+      "resources": [
+        {
+          "targetFolder": "extras/ReleaseNotes-files/bc/10.x",
+          "sourceFolder": "ReleaseNotes-files/bc/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedccxbvqtoakg"
+      "docId": "selfmanagedccxbvqtoakg",
+      "resources": [
+        {
+          "targetFolder": "extras/ReleaseNotes-files/cc/10.x",
+          "sourceFolder": "ReleaseNotes-files/cc/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedpcxrwjcdamu"
+      "docId": "selfmanagedpcxrwjcdamu",
+      "resources": [
+        {
+          "targetFolder": "extras/ReleaseNotes-files/pc/10.x",
+          "sourceFolder": "ReleaseNotes-files/pc/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
     },
     {
       "buildType": "dita",

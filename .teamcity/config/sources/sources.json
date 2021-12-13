@@ -29,6 +29,13 @@
       ]
     },
     {
+      "id": "isupgradeguide1020src",
+      "title": "InsuranceSuite Upgrade Guide 10.2.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/10.2.0"
+    },
+    {
       "id": "isupgradeguide1012src",
       "title": "InsuranceSuite Upgrade Guide 10.1.2",
       "sourceType": "git",
