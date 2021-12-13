@@ -21,7 +21,7 @@ project {
         vcsRoot(it)
     }
     subProject(Docs.rootProject)
-    subProject(BuildListeners.rootProject)
+    subProject(Listeners.rootProject)
     subProject(Recommendations.rootProject)
     subProject(Content.rootProject)
     subProject(Validations.rootProject)
@@ -427,29 +427,8 @@ object Validations {
             name = "Validations"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            val validationListenerSources = getSourcesForValidationListenerBuildTypes()
-            validationListenerSources.forEach {
-                val (gitRepoId, gitRepoSources) = it
-                val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
-                buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
-                    uniqueGitRepoBranches,
-                    rootProject.id.toString(),
-                    GwTemplates.ValidationListenerTemplate.id.toString()))
-            }
-
         }
         return mainProject
-    }
-
-    private fun getSourcesForValidationListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
-        val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
-        for (gitRepo in Helpers.gitNativeRepos) {
-            val gitRepoSourcesList = (gitRepo as JSONObject).getJSONArray("sources").map { it as JSONObject }
-            if (gitRepoSourcesList.isNotEmpty()) {
-                sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), gitRepoSourcesList))
-            }
-        }
-        return sourcesRequiringListeners
     }
 
     private fun createValidationBuildType(doc_title: String): BuildType {
@@ -657,25 +636,55 @@ object Exports {
     }
 }
 
-object BuildListeners {
-    val rootProject = createRootProjectForBuildListeners()
+object Listeners {
+    val rootProject = createRootProjectForListeners()
 
-    private fun createRootProjectForBuildListeners(): Project {
+    private fun createRootProjectForListeners(): Project {
         val mainProject = Project {
-            name = "Build listeners"
+            name = "Listeners"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            subProject(createBuildListenersProject())
+            subProject(createValidationListenersProject())
         }
-        val buildListenerSources = getSourcesForBuildListenerBuildTypes()
-        buildListenerSources.forEach {
-            val (gitRepoId, gitRepoSources) = it
-            val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
-            mainProject.buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
-                uniqueGitRepoBranches,
-                Docs.rootProject.id.toString(),
-                GwTemplates.BuildListenerTemplate.id.toString()))
-        }
+
 
         return mainProject
+    }
+
+    private fun createBuildListenersProject(): Project {
+        return Project {
+            name = "Build listeners"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            val buildListenerSources = getSourcesForBuildListenerBuildTypes()
+            buildListenerSources.forEach {
+                val (gitRepoId, gitRepoSources) = it
+                val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
+                buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
+                    uniqueGitRepoBranches,
+                    Docs.rootProject.id.toString(),
+                    GwTemplates.BuildListenerTemplate))
+            }
+        }
+    }
+
+    private fun createValidationListenersProject(): Project {
+        return Project {
+            name = "Validation listeners"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            val validationListenerSources = getSourcesForValidationListenerBuildTypes()
+            validationListenerSources.forEach {
+                val (gitRepoId, gitRepoSources) = it
+                val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
+                buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
+                    uniqueGitRepoBranches,
+                    this.id.toString(),
+                    GwTemplates.ValidationListenerTemplate
+                ))
+            }
+        }
     }
 
     private fun getSourcesForBuildListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
@@ -699,6 +708,17 @@ object BuildListeners {
             }
             if (sourcesToMonitor.isNotEmpty()) {
                 sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), sourcesToMonitor))
+            }
+        }
+        return sourcesRequiringListeners
+    }
+
+    private fun getSourcesForValidationListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
+        val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
+        for (gitRepo in Helpers.gitNativeRepos) {
+            val gitRepoSourcesList = (gitRepo as JSONObject).getJSONArray("sources").map { it as JSONObject }
+            if (gitRepoSourcesList.isNotEmpty()) {
+                sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), gitRepoSourcesList))
             }
         }
         return sourcesRequiringListeners
@@ -803,7 +823,7 @@ object Helpers {
         return allConfigObjects
     }
 
-    private fun groupBuildSourceConfigsByGitUrl(): List<JSONObject> {
+    fun groupBuildSourceConfigsByGitUrl(): List<JSONObject> {
         val srcIds = buildConfigs.map { it.getString("srcId") }.distinct()
         val groupedSources = mutableListOf<JSONObject>()
         for (srcId in srcIds) {
@@ -848,8 +868,7 @@ object Helpers {
     val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
     val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
     val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
-    val gitRepoConfigs = groupBuildSourceConfigsByGitUrl()
-    val gitNativeRepos = gitRepoConfigs.map {
+    val gitNativeRepos = groupBuildSourceConfigsByGitUrl().map {
         val filteredSources = it.getJSONArray("sources").filter { s ->
             !(s as JSONObject).getBoolean("isExported")
         }
@@ -861,7 +880,7 @@ object Helpers {
     }
 
     fun getGitRepoAndSrcBySrcId(src_id: String): Pair<JSONObject, JSONObject> {
-        val gitRepoConfig = gitRepoConfigs.find {
+        val gitRepoConfig = groupBuildSourceConfigsByGitUrl().find {
             it.getJSONArray("sources").any { s -> (s as JSONObject).getString("srcId") == src_id }
         }
         return if (gitRepoConfig == null) {
@@ -1624,11 +1643,11 @@ object GwBuildTypes {
     fun createListenerBuildType(
         git_repo_id: String,
         git_branches: List<String>,
-        teamcity_affected_project: String,
-        teamcity_template: String,
+        teamcity_affected_project_id: String,
+        teamcity_template: Template,
     ): BuildType {
         return BuildType {
-            name = git_repo_id
+            name = "$git_repo_id ${teamcity_template.name.lowercase(Locale.getDefault())}"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -1636,8 +1655,8 @@ object GwBuildTypes {
                 branchFilter = GwVcsSettings.createBranchFilter(git_branches)
                 cleanCheckout = true
             }
-            steps.step(GwBuildSteps.createRunBuildManagerStep(teamcity_affected_project,
-                teamcity_template,
+            steps.step(GwBuildSteps.createRunBuildManagerStep(teamcity_affected_project_id,
+                teamcity_template.id.toString(),
                 Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()))
 // FIXME: Reenable this line when the refactoring is done
 //            triggers.vcs { }
@@ -1788,7 +1807,7 @@ object GwVcsRoots {
     }
 
     fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
-        return Helpers.gitRepoConfigs.map {
+        return Helpers.groupBuildSourceConfigsByGitUrl().map {
             val gitUrl = it.getString("gitUrl")
             val id = it.getString("id")
             val gitBranches = it.getJSONArray("sources").map { b -> (b as JSONObject).getString("branch") }
@@ -1827,13 +1846,13 @@ object GwVcsSettings {
 
 object GwTemplates {
     object BuildListenerTemplate : Template({
-        name = "Build listener template"
+        name = "Build listener"
         description = "Empty template added to doc builds to make them discoverable by build listener builds"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
     })
 
     object ValidationListenerTemplate : Template({
-        name = "Validation listener template"
+        name = "Validation listener"
         description =
             "Empty template added to validation builds to make them discoverable by validation listener builds"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
