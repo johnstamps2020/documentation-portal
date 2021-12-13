@@ -1096,7 +1096,7 @@ object GwBuildSteps {
                     $doc_config
                     EOF
                  
-                    cat %env.DOC_INFO%
+                    cat $doc_info_file
                 """.trimIndent()
         }
     }
@@ -1451,10 +1451,10 @@ object GwBuildSteps {
                 export ELASTICSEARCH_URLS="https://docsearch-doctools.int.ccs.guidewire.net"
                 
                 doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "${working_dir}/${doc_info_file}" validators "${working_dir}/${normalized_dita_dir}" dita \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" images \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" files \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" validators "${working_dir}/${normalized_dita_dir}" images \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" validators "${working_dir}/${normalized_dita_dir}" files \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
