@@ -74,6 +74,36 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false
+    },
+    {
+      "id": "midipfadjusterfrFR11",
+      "title": "Adjuster Guide",
+      "url": "self-managed/ipf/fr-FR/1.1/adjuster",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["1.1"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "midipfrnfrFR11",
+      "title": "Release Notes",
+      "url": "self-managed/ipf/fr-FR/1.1/releasenotes",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["1.1"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
