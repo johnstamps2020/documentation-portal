@@ -714,7 +714,7 @@ object Sources {
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
                 branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch,
-                    Helpers.createFullGitBranchName("*/from", prefix = "refs/pull-requests/")))
+                    Helpers.createFullGitBranchName("*/from", prefix = "refs/pull-requests/"))) //FIXME: Different prefix doesn't work
                 cleanCheckout = true
             }
 
