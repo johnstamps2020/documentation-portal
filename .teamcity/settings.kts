@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -426,9 +427,29 @@ object Validations {
             name = "Validations"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            buildType(createValidationBuildType("Test build"))
+            val validationListenerSources = getSourcesForValidationListenerBuildTypes()
+            validationListenerSources.forEach {
+                val (gitRepoId, gitRepoSources) = it
+                val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
+                buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
+                    uniqueGitRepoBranches,
+                    rootProject.id.toString(),
+                    GwTemplates.ValidationListenerTemplate.id.toString()))
+            }
+
         }
         return mainProject
+    }
+
+    private fun getSourcesForValidationListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
+        val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
+        for (gitRepo in Helpers.gitNativeRepos) {
+            val gitRepoSourcesList = (gitRepo as JSONObject).getJSONArray("sources").map { it as JSONObject }
+            if (gitRepoSourcesList.isNotEmpty()) {
+                sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), gitRepoSourcesList))
+            }
+        }
+        return sourcesRequiringListeners
     }
 
     private fun createValidationBuildType(doc_title: String): BuildType {
@@ -439,6 +460,7 @@ object Validations {
         return BuildType {
             name = "Validate $doc_title"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
+            templates(GwTemplates.ValidationListenerTemplate)
             steps.step(GwBuildSteps.createGetDocumentDetailsStep("build_branch", "src_id", docInfoFile, JSONObject()))
             steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
                 "webhelp",
@@ -481,8 +503,41 @@ object Validations {
         }
     }
 
-    fun createCleanValidationResultsBuildType(): BuildType {
+    fun createCleanValidationResultsBuildType(
+        src_id: String,
+        git_repo_id: String,
+        git_branch: String,
+        git_url: String,
+    ): BuildType {
         return BuildType {
+            name = "Clean validation results for $src_id"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Run the results cleaner"
+                    id = "RUN_RESULTS_CLEANER"
+                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        results_cleaner --elasticsearch-urls "https://docsearch-doctools.int.ccs.guidewire.net"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
+                    """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            triggers.vcs { }
 
         }
     }
@@ -614,22 +669,18 @@ object BuildListeners {
         buildListenerSources.forEach {
             val (gitRepoId, gitRepoSources) = it
             val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
-            mainProject.buildType(createBuildListenerBuildType(gitRepoId, uniqueGitRepoBranches))
+            mainProject.buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
+                uniqueGitRepoBranches,
+                Docs.rootProject.id.toString(),
+                GwTemplates.BuildListenerTemplate.id.toString()))
         }
 
         return mainProject
     }
 
     private fun getSourcesForBuildListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
-        val gitNativeRepos = Helpers.gitRepoConfigs.map {
-            val filteredSources = it.getJSONArray("sources").filter { s ->
-                !(s as JSONObject).getBoolean("isExported")
-            }
-            it.put("sources", filteredSources)
-        }.filter { r -> !r.getJSONArray("sources").isEmpty }
-
         val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
-        for (gitRepo in gitNativeRepos) {
+        for (gitRepo in Helpers.gitNativeRepos) {
             val gitRepoSources = (gitRepo as JSONObject).getJSONArray("sources")
             val sourcesToMonitor = mutableListOf<JSONObject>()
             for (src in gitRepoSources) {
@@ -651,24 +702,6 @@ object BuildListeners {
             }
         }
         return sourcesRequiringListeners
-    }
-
-    private fun createBuildListenerBuildType(git_repo_id: String, git_branches: List<String>): BuildType {
-        return BuildType {
-            name = git_repo_id
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                branchFilter = GwVcsSettings.createBranchFilter(git_branches)
-                cleanCheckout = true
-            }
-            steps.step(GwBuildSteps.createRunBuildManagerStep(Docs.rootProject.id.toString(),
-                GwTemplates.BuildListenerTemplate.id.toString(),
-                Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()))
-// FIXME: Reenable this line when the refactoring is done
-//            triggers.vcs { }
-        }
     }
 }
 
@@ -816,6 +849,12 @@ object Helpers {
     val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
     val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
     val gitRepoConfigs = groupBuildSourceConfigsByGitUrl()
+    val gitNativeRepos = gitRepoConfigs.map {
+        val filteredSources = it.getJSONArray("sources").filter { s ->
+            !(s as JSONObject).getBoolean("isExported")
+        }
+        it.put("sources", filteredSources)
+    }.filter { r -> !r.getJSONArray("sources").isEmpty }
 
     fun getObjectById(objectList: List<JSONObject>, id_name: String, id_value: String): JSONObject {
         return objectList.find { it.getString(id_name) == id_value } ?: JSONObject()
@@ -1581,6 +1620,29 @@ object GwBuildTypes {
             }
         }
     })
+
+    fun createListenerBuildType(
+        git_repo_id: String,
+        git_branches: List<String>,
+        teamcity_affected_project: String,
+        teamcity_template: String,
+    ): BuildType {
+        return BuildType {
+            name = git_repo_id
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                branchFilter = GwVcsSettings.createBranchFilter(git_branches)
+                cleanCheckout = true
+            }
+            steps.step(GwBuildSteps.createRunBuildManagerStep(teamcity_affected_project,
+                teamcity_template,
+                Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()))
+// FIXME: Reenable this line when the refactoring is done
+//            triggers.vcs { }
+        }
+    }
 
     fun createRecommendationsForTopicsBuildType(
         deploy_env: String,
