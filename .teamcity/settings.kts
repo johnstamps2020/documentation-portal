@@ -605,55 +605,91 @@ object GitRepos {
         return mainProject
     }
 
-    private fun createValidationBuildType(doc_title: String): BuildType {
+    private fun createValidationBuildType(build_config: JSONObject): BuildType {
         val ditaOtLogsDir = "dita_ot_logs"
         val normalizedDitaDir = "normalized_dita_dir"
         val schematronReportsDir = "schematron_reports_dir"
         val docInfoFile = "doc-info.json"
-        return BuildType {
-            name = "Validate $doc_title"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-            templates(GwTemplates.ValidationListenerTemplate)
-            steps.step(GwBuildSteps.createGetDocumentDetailsStep("build_branch", "src_id", docInfoFile, JSONObject()))
-            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                "webhelp",
-                "root_map",
-                "working_dir",
-                "output_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir,
-                build_filter = "",
-                index_redirect = true))
-            steps.step(GwBuildSteps.createUploadContentToS3BucketStep("int", "preview/...", "working_dir"))
-            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                "dita",
-                "root_map",
-                "working_dir",
-                "output_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir
-            ))
-            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                "validate",
-                "root_map",
-                "working_dir",
-                "output_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir
-            ))
-//            TODO: Create a step for it
-            steps.step(GwBuildSteps.createRunDocValidatorStep(
-                "elasticsearch_urls",
-                "working_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir,
-                docInfoFile
-            ))
+
+        val gwBuildType = build_config.getString("buildType")
+        val docId = build_config.getString("docId")
+        val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
+        val docTitle = docConfig.getString("title")
+        val workingDir = when (build_config.has("workingDir")) {
+            false -> {
+                "%teamcity.build.checkoutDir%"
+            }
+            true -> {
+                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
+            }
         }
+        var validationBuildType = BuildType()
+        if (gwBuildType == "dita") {
+            val rootMap = build_config.getString("root")
+            val indexRedirect = when (build_config.has("indexRedirect")) {
+                true -> {
+                    build_config.getBoolean("indexRedirect")
+                }
+                else -> {
+                    false
+                }
+
+            }
+            val buildFilter = when (build_config.has("filter")) {
+                true -> {
+                    build_config.getString("filter")
+                }
+                else -> {
+                    ""
+                }
+            }
+
+            validationBuildType = BuildType {
+                name = "Validate $docTitle"
+                id = Helpers.resolveRelativeIdFromIdString(this.name)
+                templates(GwTemplates.ValidationListenerTemplate)
+                steps.step(GwBuildSteps.createGetDocumentDetailsStep("build_branch",
+                    "src_id",
+                    docInfoFile,
+                    org.json.JSONObject()))
+                steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                    "webhelp",
+                    rootMap,
+                    workingDir,
+                    ditaOtLogsDir,
+                    normalizedDitaDir,
+                    schematronReportsDir,
+                    buildFilter,
+                    indexRedirect))
+                steps.step(GwBuildSteps.createUploadContentPreviewToS3BucketStep(docInfoFile,
+                    "${workingDir}/out/webhelp"))
+                steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                    "dita",
+                    rootMap,
+                    workingDir,
+                    ditaOtLogsDir,
+                    normalizedDitaDir,
+                    schematronReportsDir
+                ))
+                steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                    "validate",
+                    rootMap,
+                    workingDir,
+                    ditaOtLogsDir,
+                    normalizedDitaDir,
+                    schematronReportsDir
+                ))
+                steps.step(GwBuildSteps.createRunDocValidatorStep(
+                    workingDir,
+                    ditaOtLogsDir,
+                    normalizedDitaDir,
+                    schematronReportsDir,
+                    docInfoFile
+                ))
+            }
+        }
+
+        return validationBuildType
     }
 
     fun createCleanValidationResultsBuildType(
@@ -1100,6 +1136,26 @@ object GwBuildSteps {
         }
     }
 
+    fun createUploadContentPreviewToS3BucketStep(
+        doc_info_file: String, src_dir: String,
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Upload the content preview output to S3"
+            id = "UPLOAD_CONTENT_PREVIEW_TO_S3"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export GIT_SOURCE_ID=${'$'}(jq -r .gitSourceId "$doc_info_file")
+                export GIT_BUILD_BRANCH=${'$'}(jq -r .gitBuildBranch "$doc_info_file")
+                export DOC_ID=${'$'}(jq -r .id "$doc_info_file"
+                
+                aws s3 sync "$src_dir" "s3://tenant-doctools-int-builds/preview/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/${'$'}DOC_ID" --delete
+                echo "Output preview available at https://docs.int.ccs.guidewire.net/preview/${'$'}GIT_SOURCE_ID/${'$'}GIT_BUILD_BRANCH/${'$'}DOC_ID" > preview_url.txt
+            """.trimIndent()
+        }
+    }
+
     fun createCopyResourcesStep(
         step_id: Int,
         working_dir: String,
@@ -1131,7 +1187,6 @@ object GwBuildSteps {
         output_format: String,
         root_map: String,
         working_dir: String,
-        output_dir: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
@@ -1139,8 +1194,9 @@ object GwBuildSteps {
         index_redirect: Boolean = false,
     ): ScriptBuildStep {
         val logFile = "${output_format}_build.log"
+        val outputDir = "out/${output_format}"
         var ditaBuildCommand =
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" -l \"${working_dir}/${logFile}\""
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${outputDir}\" -l \"${working_dir}/${logFile}\""
         var resourcesCopyCommand = ""
 
         if (build_filter.isNotEmpty()) {
@@ -1157,7 +1213,7 @@ object GwBuildSteps {
             "dita" -> {
                 ditaBuildCommand += " -f gw_dita"
                 resourcesCopyCommand =
-                    "&& mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${output_dir}/*\" \"${working_dir}/${normalized_dita_dir}/\""
+                    "&& mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${outputDir}/*\" \"${working_dir}/${normalized_dita_dir}/\""
             }
             "validate" -> {
                 val tempDir = "tmp/validate"
@@ -1344,7 +1400,6 @@ object GwBuildSteps {
     }
 
     fun createRunDocValidatorStep(
-        elasticsearch_urls: String,
         working_dir: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
@@ -1359,11 +1414,13 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "${working_dir}/${doc_info_file}" validators "${working_dir}/${normalized_dita_dir}" dita \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" images \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" files \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
+                export ELASTICSEARCH_URLS="https://docsearch-doctools.int.ccs.guidewire.net"
+                
+                doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "${working_dir}/${doc_info_file}" validators "${working_dir}/${normalized_dita_dir}" dita \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" images \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" files \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
