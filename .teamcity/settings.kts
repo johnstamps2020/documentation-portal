@@ -432,14 +432,21 @@ object Validations {
     }
 
     private fun createValidationBuildType(doc_title: String): BuildType {
+        val ditaOtLogsDir = "dita_ot_logs"
+        val normalizedDitaDir = "normalized_dita_dir"
+        val schematronReportsDir = "schematron_reports_dir"
         return BuildType {
             name = "Validate $doc_title"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
+//            TODO: Add the get document details step
             steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
                 "webhelp",
                 "root_map",
                 "working_dir",
                 "output_dir",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir,
                 build_filter = "",
                 index_redirect = true))
             steps.step(GwBuildSteps.createUploadContentToS3BucketStep("int", "preview/...", "working_dir"))
@@ -448,16 +455,38 @@ object Validations {
                 "root_map",
                 "working_dir",
                 "output_dir",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir
+            ))
             steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
                 "validate",
                 "root_map",
                 "working_dir",
-                "output_dir"))
+                "output_dir",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir
+            ))
 //            TODO: Create a step for it
-            steps.step(ScriptBuildStep {
-                name = "Run the doc validator"
-                id = "RUN_DOC_VALIDATOR"
-            })
+            steps.step(GwBuildSteps.createRunDocValidatorStep(
+                "elasticsearch_urls",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir
+            ))
+        }
+    }
+
+    fun createCleanValidationResultsBuildType(): BuildType {
+        return BuildType {
+
+        }
+    }
+
+    fun createValidationListenerBuildType(): BuildType {
+        return BuildType {
+
         }
     }
 }
@@ -1010,6 +1039,9 @@ object GwBuildSteps {
         root_map: String,
         working_dir: String,
         output_dir: String,
+        dita_ot_logs_dir: String,
+        normalized_dita_dir: String,
+        schematron_reports_dir: String,
         build_filter: String = "",
         index_redirect: Boolean = false,
     ): ScriptBuildStep {
@@ -1030,17 +1062,15 @@ object GwBuildSteps {
                 }
             }
             "dita" -> {
-                val normalizedDitaDir = "normalized_dita"
                 ditaBuildCommand += " -f gw_dita"
                 resourcesCopyCommand =
-                    "&& mkdir -p \"${working_dir}/${normalizedDitaDir}\" && cp -R \"${working_dir}/${output_dir}/*\" \"${working_dir}/${normalizedDitaDir}/\""
+                    "&& mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${output_dir}/*\" \"${working_dir}/${normalized_dita_dir}/\""
             }
             "validate" -> {
                 val tempDir = "tmp/validate"
-                val schematronReportsDir = "schematron_reports"
                 ditaBuildCommand += " -f validate --clean.temp no --temp \"${working_dir}/${tempDir}\""
                 resourcesCopyCommand =
-                    "&& mkdir -p \"${working_dir}/${schematronReportsDir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematronReportsDir}/\""
+                    "&& mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
             }
         }
 
@@ -1055,7 +1085,7 @@ object GwBuildSteps {
 
                 echo "Building output"
                 $ditaBuildCommand $resourcesCopyCommand || EXIT_CODE=${'$'}?
-                cp "${working_dir}/${logFile}" ${working_dir}/dita_ot_logs/ || EXIT_CODE=${'$'}?
+                cp "${working_dir}/${logFile}" ${working_dir}/${dita_ot_logs_dir}/ || EXIT_CODE=${'$'}?
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
@@ -1216,6 +1246,31 @@ object GwBuildSteps {
                 build_manager
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createRunDocValidatorStep(
+        elasticsearch_urls: String,
+        dita_ot_logs_dir: String,
+        normalized_dita_dir: String,
+        schematron_reports_dir: String,
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Run the doc validator"
+            id = "RUN_DOC_VALIDATOR"
+            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "$normalized_dita_dir" dita \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "$normalized_dita_dir" images \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "$normalized_dita_dir" files \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "$dita_ot_logs_dir" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "$schematron_reports_dir" schematron-reports
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
