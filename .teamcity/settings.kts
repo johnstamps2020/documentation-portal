@@ -1,5 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
@@ -21,9 +23,10 @@ project {
         vcsRoot(it)
     }
     subProject(Docs.rootProject)
-    subProject(GitRepos.rootProject)
+    subProject(Sources.rootProject)
     subProject(Recommendations.rootProject)
     subProject(Content.rootProject)
+    subProject(BuildListeners.rootProject)
     subProject(Exports.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
@@ -526,21 +529,33 @@ object Exports {
     }
 }
 
-object GitRepos {
-    val rootProject = createRootProjectForGitRepos()
+object BuildListeners {
+    val rootProject = createBuildListenersProject()
 
-    private fun createRootProjectForGitRepos(): Project {
-        val mainProject = Project {
-            name = "Git repos"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+    private fun getSourcesForBuildListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
+        val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
+        for (gitRepo in Helpers.gitNativeRepos) {
+            val gitRepoSources = (gitRepo as JSONObject).getJSONArray("sources")
+            val sourcesToMonitor = mutableListOf<JSONObject>()
+            for (src in gitRepoSources) {
+                val srcId = (src as JSONObject).getString("srcId")
+                val ditaBuildsRelatedToSrc =
+                    Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == "dita" }
+                val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
+                    val buildDocId = it.getString("docId")
+                    val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
+                    Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
+                }.flatten().distinct()
 
-            subProject(createBuildListenersProject())
-            subProject(createValidationListenersProject())
-            subProject(createValidationsProject())
+                if (arrayListOf("int", "staging").any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }) {
+                    sourcesToMonitor.add(src)
+                }
+            }
+            if (sourcesToMonitor.isNotEmpty()) {
+                sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), sourcesToMonitor))
+            }
         }
-
-
-        return mainProject
+        return sourcesRequiringListeners
     }
 
     private fun createBuildListenersProject(): Project {
@@ -559,59 +574,108 @@ object GitRepos {
             }
         }
     }
+}
 
-    private fun createValidationListenersProject(): Project {
-        return Project {
-            name = "Validation listeners"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+object Sources {
+    val rootProject = createRootProjectForSources()
 
-            val validationListenerGitRepos = getSourcesForValidationListenerBuildTypes()
-            validationListenerGitRepos.forEach {
-                val (gitRepoId, gitRepoSources) = it
-                val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
-                buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
-                    uniqueGitRepoBranches,
-                    this.id.toString(),
-                    GwTemplates.ValidationListenerTemplate
-                ))
-            }
-        }
-    }
-
-    private fun createValidationsProject(): Project {
+    private fun createRootProjectForSources(): Project {
         val mainProject = Project {
-            name = "Validations"
+            name = "Sources"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            template(GwTemplates.ValidationListenerTemplate)
         }
 
-        val validationListenerGitRepos = getSourcesForValidationListenerBuildTypes()
-        validationListenerGitRepos.forEach {
-            val (gitRepoId, gitRepoSources) = it
-            val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
-            mainProject.subProject(
-                Project {
-                    name = gitRepoId
-                    id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-                    uniqueGitRepoBranches.forEach {
-                        subProject {
-                            name = it
-                            id = Helpers.resolveRelativeIdFromIdString("$gitRepoId$it")
-                        }
-                    }
+        for (gitRepo in Helpers.gitNativeRepos) {
+            val gitRepoId = gitRepo.getString("id")
+            val gitRepoUrl = gitRepo.getString("gitUrl")
+            val gitRepoSourcesList = (gitRepo as JSONObject).getJSONArray("sources")
+            for (src in gitRepoSourcesList) {
+                val srcId = (src as JSONObject).getString("srcId")
+                val ditaBuildsRelatedToSrc =
+                    Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == "dita" }
+                if (ditaBuildsRelatedToSrc.isNotEmpty()) {
+                    val gitBranch = src.getString("branch")
+                    val sourceValidationProject = createSourceValidationProject(srcId, gitRepoId, gitRepoUrl, gitBranch)
+                    val validationBuildsProject =
+                        createValidationBuildsProject(srcId, gitRepoId, gitBranch, ditaBuildsRelatedToSrc)
+                    sourceValidationProject.subProject(validationBuildsProject)
+                    mainProject.subProject(sourceValidationProject)
                 }
-            )
+            }
         }
         return mainProject
     }
 
-    private fun createValidationBuildType(build_config: JSONObject): BuildType {
+    private fun createSourceValidationProject(
+        src_id: String,
+        git_repo_id: String,
+        git_url: String,
+        git_branch: String,
+    ): Project {
+        return Project {
+            name = src_id
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            buildType(createCleanValidationResultsBuildType(src_id, git_repo_id, git_branch, git_url))
+            val validationListenerBuildType = GwBuildTypes.createListenerBuildType(
+                git_repo_id,
+                listOf(git_branch),
+                "Sources", // FIXME: Figure out how to get this name from the root project
+                GwTemplates.ValidationListenerTemplate,
+                git_branch
+            )
+            validationListenerBuildType.triggers.vcs {
+                branchFilter = """
+                    +:*
+                    -:<default>
+                    -:${Helpers.createFullGitBranchName(git_branch)}
+                """.trimIndent()
+            }
+
+            validationListenerBuildType.features {
+                GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
+                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()
+                )
+                GwBuildFeatures.createGwPullRequestsBuildFeature(
+                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString(),
+                    git_branch
+                )
+            }
+            buildType(validationListenerBuildType)
+        }
+    }
+
+    private fun createValidationBuildsProject(
+        src_id: String,
+        git_repo_id: String,
+        git_branch: String,
+        dita_build_configs: List<JSONObject>,
+    ): Project {
+
+        return Project {
+            name = "Validation builds"
+            id = Helpers.resolveRelativeIdFromIdString("${src_id}${this.name}")
+
+            dita_build_configs.map {
+                buildType(createValidationBuildType(
+                    src_id, git_repo_id, git_branch, it))
+            }
+        }
+    }
+
+    private fun createValidationBuildType(
+        src_id: String,
+        git_repo_id: String,
+        git_branch: String,
+        build_config: JSONObject,
+    ): BuildType {
         val ditaOtLogsDir = "dita_ot_logs"
         val normalizedDitaDir = "normalized_dita_dir"
         val schematronReportsDir = "schematron_reports_dir"
         val docInfoFile = "doc-info.json"
 
-        val gwBuildType = build_config.getString("buildType")
         val docId = build_config.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
@@ -623,76 +687,82 @@ object GitRepos {
                 "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
             }
         }
-        var validationBuildType = BuildType()
-        if (gwBuildType == "dita") {
-            val rootMap = build_config.getString("root")
-            val indexRedirect = when (build_config.has("indexRedirect")) {
-                true -> {
-                    build_config.getBoolean("indexRedirect")
-                }
-                else -> {
-                    false
-                }
-
+        val rootMap = build_config.getString("root")
+        val indexRedirect = when (build_config.has("indexRedirect")) {
+            true -> {
+                build_config.getBoolean("indexRedirect")
             }
-            val buildFilter = when (build_config.has("filter")) {
-                true -> {
-                    build_config.getString("filter")
-                }
-                else -> {
-                    ""
-                }
+            else -> {
+                false
             }
 
-            validationBuildType = BuildType {
-                name = "Validate $docTitle"
-                id = Helpers.resolveRelativeIdFromIdString(this.name)
-                templates(GwTemplates.ValidationListenerTemplate)
-                steps.step(GwBuildSteps.createGetDocumentDetailsStep("build_branch",
-                    "src_id",
-                    docInfoFile,
-                    org.json.JSONObject()))
-                steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                    "webhelp",
-                    rootMap,
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir,
-                    buildFilter,
-                    indexRedirect))
-                steps.step(GwBuildSteps.createUploadContentPreviewToS3BucketStep(docInfoFile,
-                    "${workingDir}/out/webhelp"))
-                steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                    "dita",
-                    rootMap,
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir
-                ))
-                steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                    "validate",
-                    rootMap,
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir
-                ))
-                steps.step(GwBuildSteps.createRunDocValidatorStep(
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir,
-                    docInfoFile
-                ))
+        }
+        val buildFilter = when (build_config.has("filter")) {
+            true -> {
+                build_config.getString("filter")
             }
+            else -> {
+                ""
+            }
+        }
+
+        val validationBuildType = BuildType {
+            name = "Validate $docTitle ($docId)"
+            id = Helpers.resolveRelativeIdFromIdString("${src_id}${this.name}")
+            templates(GwTemplates.ValidationListenerTemplate)
+
+            vcs {
+                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch,
+                    Helpers.createFullGitBranchName("*/from", prefix = "refs/pull-requests/")))
+                cleanCheckout = true
+            }
+
+            steps.step(GwBuildSteps.createGetDocumentDetailsStep(
+                git_branch,
+                src_id,
+                docInfoFile,
+                org.json.JSONObject()))
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                "webhelp",
+                rootMap,
+                workingDir,
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir,
+                buildFilter,
+                indexRedirect))
+            steps.step(GwBuildSteps.createUploadContentPreviewToS3BucketStep(docInfoFile,
+                "${workingDir}/out/webhelp"))
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                "dita",
+                rootMap,
+                workingDir,
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir
+            ))
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                "validate",
+                rootMap,
+                workingDir,
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir
+            ))
+            steps.step(GwBuildSteps.createRunDocValidatorStep(
+                workingDir,
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir,
+                docInfoFile
+            ))
         }
 
         return validationBuildType
     }
 
-    fun createCleanValidationResultsBuildType(
+    private fun createCleanValidationResultsBuildType(
         src_id: String,
         git_repo_id: String,
         git_branch: String,
@@ -725,48 +795,12 @@ object GitRepos {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            triggers.vcs { }
+// FIXME: Reenable this line when the refactoring is done
+//            triggers.vcs { branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch)) }
 
         }
     }
 
-    private fun getSourcesForBuildListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
-        val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
-        for (gitRepo in Helpers.gitNativeRepos) {
-            val gitRepoSources = (gitRepo as JSONObject).getJSONArray("sources")
-            val sourcesToMonitor = mutableListOf<JSONObject>()
-            for (src in gitRepoSources) {
-                val srcId = (src as JSONObject).getString("srcId")
-                val ditaBuildsRelatedToSrc =
-                    Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == "dita" }
-                val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
-                    val buildDocId = it.getString("docId")
-                    val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
-                    Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
-                }.flatten().distinct()
-
-                if (arrayListOf("int", "staging").any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }) {
-                    sourcesToMonitor.add(src)
-                }
-            }
-            if (sourcesToMonitor.isNotEmpty()) {
-                sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), sourcesToMonitor))
-            }
-        }
-        return sourcesRequiringListeners
-    }
-
-    private fun getSourcesForValidationListenerBuildTypes(): List<Pair<String, List<JSONObject>>> {
-        val sourcesRequiringListeners = mutableListOf<Pair<String, List<JSONObject>>>()
-        for (gitRepo in Helpers.gitNativeRepos) {
-            val gitRepoSourcesList = (gitRepo as JSONObject).getJSONArray("sources").map { it as JSONObject }
-            if (gitRepoSourcesList.isNotEmpty()) {
-                sourcesRequiringListeners.add(Pair(gitRepo.getString("id"), gitRepoSourcesList))
-            }
-        }
-        return sourcesRequiringListeners
-    }
 }
 
 object Recommendations {
@@ -1455,6 +1489,33 @@ object GwBuildFeatures {
         type = "JetBrains.SharedResources"
         param("locks-param", "OxygenWebhelpLicense readLock")
     })
+
+    fun createGwCommitStatusPublisherBuildFeature(vcs_root_it: String): CommitStatusPublisher {
+        return CommitStatusPublisher {
+            vcsRootExtId = vcs_root_it
+            publisher = bitbucketServer {
+                url = "https://stash.guidewire.com"
+                userName = "%serviceAccountUsername%"
+                password =
+                    "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+            }
+        }
+    }
+
+    fun createGwPullRequestsBuildFeature(vcs_root_id: String, target_git_branch: String): PullRequests {
+        return PullRequests {
+            vcsRootExtId = vcs_root_id
+            provider = bitbucketServer {
+                serverUrl = "https://stash.guidewire.com"
+                authType = password {
+                    username = "%serviceAccountUsername%"
+                    password =
+                        "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                }
+                filterTargetBranch = target_git_branch
+            }
+        }
+    }
 }
 
 object GwBuildTriggers {
@@ -1704,16 +1765,17 @@ object GwBuildTypes {
             }
         }
     })
-
+//TODO: Create two separate functions for creating build listener and validation listener
     fun createListenerBuildType(
         git_repo_id: String,
         git_branches: List<String>,
         teamcity_affected_project_id: String,
         teamcity_template: Template,
+        build_manager_git_branch: String = "",
     ): BuildType {
         return BuildType {
             name = "$git_repo_id ${teamcity_template.name.lowercase(Locale.getDefault())}"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${git_branches[0]}")
 
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
@@ -1722,7 +1784,9 @@ object GwBuildTypes {
             }
             steps.step(GwBuildSteps.createRunBuildManagerStep(teamcity_affected_project_id,
                 teamcity_template.id.toString(),
-                Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()))
+                Helpers.resolveRelativeIdFromIdString(git_repo_id).toString(),
+                build_manager_git_branch)
+            )
 // FIXME: Reenable this line when the refactoring is done
 //            triggers.vcs { }
         }
