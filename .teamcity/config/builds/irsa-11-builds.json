@@ -40,6 +40,22 @@
       "srcId": "irsa11src",
       "docId": "midipfsupermap11",
       "indexRedirect": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "IRSAAdjusterGuide.ditamap",
+      "srcId": "irsafrFR11src",
+      "docId": "midipfadjusterfrFR11",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "IRSAReleaseNotes.ditamap",
+      "srcId": "irsafrFR11src",
+      "docId": "midipfrnfrFR11",
+      "indexRedirect": true
     }
   ]
 }
