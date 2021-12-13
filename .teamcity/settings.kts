@@ -21,10 +21,9 @@ project {
         vcsRoot(it)
     }
     subProject(Docs.rootProject)
-    subProject(Listeners.rootProject)
+    subProject(GitRepos.rootProject)
     subProject(Recommendations.rootProject)
     subProject(Content.rootProject)
-    subProject(Validations.rootProject)
     subProject(Exports.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
@@ -419,115 +418,6 @@ object Content {
     }
 }
 
-object Validations {
-    val rootProject = createRootProjectForValidations()
-
-    private fun createRootProjectForValidations(): Project {
-        val mainProject = Project {
-            name = "Validations"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        }
-        return mainProject
-    }
-
-    private fun createValidationBuildType(doc_title: String): BuildType {
-        val ditaOtLogsDir = "dita_ot_logs"
-        val normalizedDitaDir = "normalized_dita_dir"
-        val schematronReportsDir = "schematron_reports_dir"
-        val docInfoFile = "doc-info.json"
-        return BuildType {
-            name = "Validate $doc_title"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-            templates(GwTemplates.ValidationListenerTemplate)
-            steps.step(GwBuildSteps.createGetDocumentDetailsStep("build_branch", "src_id", docInfoFile, JSONObject()))
-            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                "webhelp",
-                "root_map",
-                "working_dir",
-                "output_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir,
-                build_filter = "",
-                index_redirect = true))
-            steps.step(GwBuildSteps.createUploadContentToS3BucketStep("int", "preview/...", "working_dir"))
-            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                "dita",
-                "root_map",
-                "working_dir",
-                "output_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir
-            ))
-            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                "validate",
-                "root_map",
-                "working_dir",
-                "output_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir
-            ))
-//            TODO: Create a step for it
-            steps.step(GwBuildSteps.createRunDocValidatorStep(
-                "elasticsearch_urls",
-                "working_dir",
-                ditaOtLogsDir,
-                normalizedDitaDir,
-                schematronReportsDir,
-                docInfoFile
-            ))
-        }
-    }
-
-    fun createCleanValidationResultsBuildType(
-        src_id: String,
-        git_repo_id: String,
-        git_branch: String,
-        git_url: String,
-    ): BuildType {
-        return BuildType {
-            name = "Clean validation results for $src_id"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Run the results cleaner"
-                    id = "RUN_RESULTS_CLEANER"
-                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                    scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        results_cleaner --elasticsearch-urls "https://docsearch-doctools.int.ccs.guidewire.net"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
-                    """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            triggers.vcs { }
-
-        }
-    }
-
-    fun createValidationListenerBuildType(): BuildType {
-        return BuildType {
-
-        }
-    }
-}
-
 object Server
 
 object Exports {
@@ -636,16 +526,17 @@ object Exports {
     }
 }
 
-object Listeners {
-    val rootProject = createRootProjectForListeners()
+object GitRepos {
+    val rootProject = createRootProjectForGitRepos()
 
-    private fun createRootProjectForListeners(): Project {
+    private fun createRootProjectForGitRepos(): Project {
         val mainProject = Project {
-            name = "Listeners"
+            name = "Git repos"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             subProject(createBuildListenersProject())
             subProject(createValidationListenersProject())
+            subProject(createValidationsProject())
         }
 
 
@@ -657,8 +548,8 @@ object Listeners {
             name = "Build listeners"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            val buildListenerSources = getSourcesForBuildListenerBuildTypes()
-            buildListenerSources.forEach {
+            val buildListenerGitRepos = getSourcesForBuildListenerBuildTypes()
+            buildListenerGitRepos.forEach {
                 val (gitRepoId, gitRepoSources) = it
                 val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
                 buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
@@ -674,8 +565,8 @@ object Listeners {
             name = "Validation listeners"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            val validationListenerSources = getSourcesForValidationListenerBuildTypes()
-            validationListenerSources.forEach {
+            val validationListenerGitRepos = getSourcesForValidationListenerBuildTypes()
+            validationListenerGitRepos.forEach {
                 val (gitRepoId, gitRepoSources) = it
                 val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
                 buildType(GwBuildTypes.createListenerBuildType(gitRepoId,
@@ -684,6 +575,123 @@ object Listeners {
                     GwTemplates.ValidationListenerTemplate
                 ))
             }
+        }
+    }
+
+    private fun createValidationsProject(): Project {
+        val mainProject = Project {
+            name = "Validations"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        }
+
+        val validationListenerGitRepos = getSourcesForValidationListenerBuildTypes()
+        validationListenerGitRepos.forEach {
+            val (gitRepoId, gitRepoSources) = it
+            val uniqueGitRepoBranches = gitRepoSources.map { s -> s.getString("branch") }.distinct()
+            mainProject.subProject(
+                Project {
+                    name = gitRepoId
+                    id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+                    uniqueGitRepoBranches.forEach {
+                        subProject {
+                            name = it
+                            id = Helpers.resolveRelativeIdFromIdString("$gitRepoId$it")
+                        }
+                    }
+                }
+            )
+        }
+        return mainProject
+    }
+
+    private fun createValidationBuildType(doc_title: String): BuildType {
+        val ditaOtLogsDir = "dita_ot_logs"
+        val normalizedDitaDir = "normalized_dita_dir"
+        val schematronReportsDir = "schematron_reports_dir"
+        val docInfoFile = "doc-info.json"
+        return BuildType {
+            name = "Validate $doc_title"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            templates(GwTemplates.ValidationListenerTemplate)
+            steps.step(GwBuildSteps.createGetDocumentDetailsStep("build_branch", "src_id", docInfoFile, JSONObject()))
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                "webhelp",
+                "root_map",
+                "working_dir",
+                "output_dir",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir,
+                build_filter = "",
+                index_redirect = true))
+            steps.step(GwBuildSteps.createUploadContentToS3BucketStep("int", "preview/...", "working_dir"))
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                "dita",
+                "root_map",
+                "working_dir",
+                "output_dir",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir
+            ))
+            steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                "validate",
+                "root_map",
+                "working_dir",
+                "output_dir",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir
+            ))
+//            TODO: Create a step for it
+            steps.step(GwBuildSteps.createRunDocValidatorStep(
+                "elasticsearch_urls",
+                "working_dir",
+                ditaOtLogsDir,
+                normalizedDitaDir,
+                schematronReportsDir,
+                docInfoFile
+            ))
+        }
+    }
+
+    fun createCleanValidationResultsBuildType(
+        src_id: String,
+        git_repo_id: String,
+        git_branch: String,
+        git_url: String,
+    ): BuildType {
+        return BuildType {
+            name = "Clean validation results for $src_id"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Run the results cleaner"
+                    id = "RUN_RESULTS_CLEANER"
+                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        results_cleaner --elasticsearch-urls "https://docsearch-doctools.int.ccs.guidewire.net"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
+                    """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            triggers.vcs { }
+
         }
     }
 
