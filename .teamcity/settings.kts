@@ -435,10 +435,11 @@ object Validations {
         val ditaOtLogsDir = "dita_ot_logs"
         val normalizedDitaDir = "normalized_dita_dir"
         val schematronReportsDir = "schematron_reports_dir"
+        val docInfoFile = "doc-info.json"
         return BuildType {
             name = "Validate $doc_title"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
-//            TODO: Add the get document details step
+            steps.step(GwBuildSteps.createGetDocumentDetailsStep("build_branch", "src_id", docInfoFile, JSONObject()))
             steps.step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
                 "webhelp",
                 "root_map",
@@ -471,9 +472,11 @@ object Validations {
 //            TODO: Create a step for it
             steps.step(GwBuildSteps.createRunDocValidatorStep(
                 "elasticsearch_urls",
+                "working_dir",
                 ditaOtLogsDir,
                 normalizedDitaDir,
-                schematronReportsDir
+                schematronReportsDir,
+                docInfoFile
             ))
         }
     }
@@ -938,6 +941,30 @@ object GwBuildSteps {
         }
     }
 
+    fun createGetDocumentDetailsStep(
+        build_branch: String,
+        src_id: String,
+        doc_info_file: String,
+        doc_config: JSONObject,
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Get document details"
+            id = "GET_DOCUMENT_DETAILS"
+
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    
+                    cat << EOF | jq '. += {"gitBuildBranch": "$build_branch", "gitSourceId": "$src_id"}' > "$doc_info_file" | jq .
+                    $doc_config
+                    EOF
+                 
+                    cat %env.DOC_INFO%
+                """.trimIndent()
+        }
+    }
+
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Copy from S3 on staging to S3 on Prod"
@@ -1252,9 +1279,11 @@ object GwBuildSteps {
 
     fun createRunDocValidatorStep(
         elasticsearch_urls: String,
+        working_dir: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
+        doc_info_file: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Run the doc validator"
@@ -1264,11 +1293,11 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "$normalized_dita_dir" dita \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "$normalized_dita_dir" images \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "$normalized_dita_dir" files \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "$dita_ot_logs_dir" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "$schematron_reports_dir" schematron-reports
+                doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "${working_dir}/${doc_info_file}" validators "${working_dir}/${normalized_dita_dir}" dita \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" images \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" validators "${working_dir}/${normalized_dita_dir}" files \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "$elasticsearch_urls" --doc-info "%env.DOC_INFO%" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
