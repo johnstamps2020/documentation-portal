@@ -77,7 +77,7 @@
     },
     {
       "id": "midipfadjusterfrFR11",
-      "title": "Adjuster Guide",
+      "title": "Adjuster Guide (French)",
       "url": "self-managed/ipf/fr-FR/1.1/adjuster",
       "metadata": {
         "product": ["IRSA Integration for ClaimCenter"],
@@ -92,7 +92,7 @@
     },
     {
       "id": "midipfrnfrFR11",
-      "title": "Release Notes",
+      "title": "Release Notes (French)",
       "url": "self-managed/ipf/fr-FR/1.1/releasenotes",
       "metadata": {
         "product": ["IRSA Integration for ClaimCenter"],
