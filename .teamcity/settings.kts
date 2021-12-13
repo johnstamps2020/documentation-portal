@@ -635,13 +635,13 @@ object Sources {
             }
 
             validationListenerBuildType.features {
-                GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
-                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()
+                feature(GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
+                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString())
                 )
-                GwBuildFeatures.createGwPullRequestsBuildFeature(
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(
                     Helpers.resolveRelativeIdFromIdString(git_repo_id).toString(),
                     git_branch
-                )
+                ))
             }
             buildType(validationListenerBuildType)
         }
@@ -1765,7 +1765,8 @@ object GwBuildTypes {
             }
         }
     })
-//TODO: Create two separate functions for creating build listener and validation listener
+
+    //TODO: Create two separate functions for creating build listener and validation listener
     fun createListenerBuildType(
         git_repo_id: String,
         git_branches: List<String>,
