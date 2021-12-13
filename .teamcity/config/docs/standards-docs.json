@@ -12,7 +12,7 @@
         "release": ["Aspen", "Banff", "Cortina"]
       },
       "displayOnLandingPages": true,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "environments": ["dev", "staging", "prod"],
       "public": false
     },
