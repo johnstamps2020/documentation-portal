@@ -713,8 +713,7 @@ object Sources {
 
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch,
-                    Helpers.createFullGitBranchName("*/from", prefix = "refs/pull-requests/"))) //FIXME: Different prefix doesn't work
+                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch, "refs/pull-requests/*/from"))
                 cleanCheckout = true
             }
 
@@ -984,11 +983,11 @@ object Helpers {
         return removeSpecialCharacters(git_url.substringAfterLast("/"))
     }
 
-    fun createFullGitBranchName(branch_name: String, prefix: String = "refs/heads/"): String {
-        return if (branch_name.startsWith(prefix)) {
+    fun createFullGitBranchName(branch_name: String): String {
+        return if (branch_name.startsWith("refs/")) {
             branch_name
         } else {
-            "${prefix}${branch_name}"
+            "refs/heads/${branch_name}"
         }
     }
 
