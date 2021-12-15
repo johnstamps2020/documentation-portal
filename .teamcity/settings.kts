@@ -732,7 +732,7 @@ object Sources {
             }
         }
 
-        val buildBranch = "%teamcity.build.vcs.branch.${git_repo_id}%"
+        val buildBranch = "%teamcity.build.vcs.branch.${Helpers.resolveRelativeIdFromIdString(git_repo_id)}%"
         val publishPath = "preview/${src_id}/${buildBranch}/${docId}"
         val previewUrlFile = "preview_url.txt"
 
