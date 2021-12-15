@@ -719,6 +719,7 @@ object Sources {
         build_config: JSONObject,
         gw_build_type: String,
     ): BuildType {
+        val vcsRootId = Helpers.resolveRelativeIdFromIdString(git_repo_id)
         val docId = build_config.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
@@ -732,7 +733,7 @@ object Sources {
             }
         }
 
-        val buildBranch = "%teamcity.build.vcs.branch.${Helpers.resolveRelativeIdFromIdString(git_repo_id)}%"
+        val buildBranch = "%teamcity.build.vcs.branch.${vcsRootId}%"
         val publishPath = "preview/${src_id}/${buildBranch}/${docId}"
         val previewUrlFile = "preview_url.txt"
 
@@ -741,8 +742,12 @@ object Sources {
             id = Helpers.resolveRelativeIdFromIdString("${src_id}${this.name}")
             templates(GwTemplates.ValidationListenerTemplate)
 
+            artifactRules = """
+                $previewUrlFile
+            """.trimIndent()
+
             vcs {
-                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                root(vcsRootId)
                 branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch, "refs/pull-requests/*/from"))
                 cleanCheckout = true
             }
@@ -772,9 +777,8 @@ object Sources {
                 }
             }
 
-            validationBuildType.artifactRules = """
+            validationBuildType.artifactRules += """
                 $ditaOtLogsDir => logs
-                $previewUrlFile
                 ${workingDir}/out/webhelp/build-data.json => json
             """.trimIndent()
 
@@ -852,6 +856,9 @@ object Sources {
                     previewUrlFile)
                 )
             }
+            validationBuildType.features.feature(GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
+                vcsRootId.toString())
+            )
         }
         return validationBuildType
     }
