@@ -699,9 +699,7 @@ object Sources {
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
-                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString())
-                )
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.createGwPullRequestsBuildFeature(
                     Helpers.resolveRelativeIdFromIdString(git_repo_id).toString(),
                     git_branch
@@ -860,9 +858,7 @@ object Sources {
             }
 
             validationBuildType.features {
-                feature(GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
-                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString())
-                )
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.createGwPullRequestsBuildFeature(
                     vcsRootId.toString(),
                     Helpers.createFullGitBranchName(git_branch)
@@ -984,26 +980,107 @@ object Apps {
     }
 
     private fun createAppProjects(): List<Project> {
-        return arrayOf("Config deployer", "Build manager").map {
+        return arrayOf("Config deployer",
+            "Doc crawler",
+            "Index cleaner",
+            "Build manager",
+            "Recommendation engine",
+            "Flail SSG",
+            "Lion pkg builder",
+            "Lion page builder",
+            "Upgrade diffs page builder",
+            "Sitemap generator").map {
             Project {
                 name = it
                 id = Helpers.resolveRelativeIdFromIdString(this.name)
+                val appDir = it.replace(" ", "_").lowercase(Locale.getDefault())
+                val testAppBuildType = createTestAppBuildType(appDir)
+                val publishAppDockerImageBuildType = createPublishAppDockerImageBuildType(appDir, testAppBuildType)
+                buildType(testAppBuildType)
+                buildType(publishAppDockerImageBuildType)
             }
         }
     }
 
-    private fun createPublishAppDockerImageBuildType(): BuildType {
+    private fun createPublishAppDockerImageBuildType(app_dir: String, dependent_build_type: BuildType): BuildType {
         return BuildType {
+            name = "Publish Docker image"
 
+            vcs {
+                root(DslContext.settingsRoot)
+            }
+
+            steps {
+                script {
+                    name = "Publish Docker image to Artifactory"
+                    scriptContent = """
+                        set -xe
+                        cd apps/${app_dir}
+                        ./publish_docker.sh latest       
+                    """.trimIndent()
+                }
+            }
+
+            triggers {
+                vcs {
+                    branchFilter = "+:<default>"
+                    triggerRules = """
+                        +:apps/${app_dir}/**
+                        -:user=doctools:**
+                    """.trimIndent()
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshot(dependent_build_type) {
+                    reuseBuilds = ReuseBuilds.SUCCESSFUL
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
         }
     }
 
-    private fun createTestAppBuildType(): BuildType {
+    private fun createTestAppBuildType(app_dir: String): BuildType {
         return BuildType {
+            name = "Test app"
 
+            vcs {
+                root(DslContext.settingsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Run tests"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        cd apps/${app_dir}
+                        ./test_config_deployer.sh
+                    """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:apps/${app_dir}/**
+                        -:user=doctools:**
+                    """.trimIndent()
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
     }
-
 }
 
 object Helpers {
@@ -1632,17 +1709,14 @@ object GwBuildFeatures {
         param("locks-param", "OxygenWebhelpLicense readLock")
     })
 
-    fun createGwCommitStatusPublisherBuildFeature(vcs_root_it: String): CommitStatusPublisher {
-        return CommitStatusPublisher {
-            vcsRootExtId = vcs_root_it
-            publisher = bitbucketServer {
-                url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password =
-                    "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
-            }
+    object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
+        publisher = bitbucketServer {
+            url = "https://stash.guidewire.com"
+            userName = "%serviceAccountUsername%"
+            password =
+                "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
         }
-    }
+    })
 
     fun createGwPullRequestsBuildFeature(vcs_root_id: String, target_git_branch: String): PullRequests {
         return PullRequests {
