@@ -28,6 +28,7 @@ project {
     subProject(Content.rootProject)
     subProject(BuildListeners.rootProject)
     subProject(Exports.rootProject)
+    subProject(Apps.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
 }
@@ -693,7 +694,7 @@ object Sources {
 
 
             triggers.vcs {
-                GwBuildTriggers.createVcsTriggerForValidationBuilds(git_branch)
+                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
             }
 
             features {
@@ -855,7 +856,7 @@ object Sources {
             }
 
             validationBuildType.triggers.vcs {
-                GwBuildTriggers.createVcsTriggerForValidationBuilds(git_branch)
+                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
             }
 
             validationBuildType.features {
@@ -864,7 +865,7 @@ object Sources {
                 )
                 feature(GwBuildFeatures.createGwPullRequestsBuildFeature(
                     vcsRootId.toString(),
-                    git_branch
+                    Helpers.createFullGitBranchName(git_branch)
                 ))
             }
 
@@ -968,6 +969,41 @@ object Recommendations {
         }
         return result.distinct()
     }
+}
+
+object Apps {
+    val rootProject = createRootProjectForApps()
+
+    private fun createRootProjectForApps(): Project {
+        return Project {
+            name = "Apps"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            createAppProjects()
+        }
+    }
+
+    private fun createAppProjects(): List<Project> {
+        return arrayOf("Config deployer", "Build manager").map {
+            Project {
+                name = it
+                id = Helpers.resolveRelativeIdFromIdString(this.name)
+            }
+        }
+    }
+
+    private fun createPublishAppDockerImageBuildType(): BuildType {
+        return BuildType {
+
+        }
+    }
+
+    private fun createTestAppBuildType(): BuildType {
+        return BuildType {
+
+        }
+    }
+
 }
 
 object Helpers {
@@ -1642,14 +1678,12 @@ object GwBuildTriggers {
         }
     }
 
-    fun createVcsTriggerForValidationBuilds(git_branch: String): VcsTrigger {
-        return VcsTrigger {
-            branchFilter = """
-                +:*
-                -:<default>
-                -:${Helpers.createFullGitBranchName(git_branch)}
-            """.trimIndent()
-        }
+    fun createBranchFilterForValidationBuilds(git_branch: String): String {
+        return """
+            +:*
+            -:<default>
+            -:${Helpers.createFullGitBranchName(git_branch)}
+        """.trimIndent()
     }
 }
 
