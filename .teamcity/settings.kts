@@ -29,6 +29,7 @@ project {
     subProject(BuildListeners.rootProject)
     subProject(Exports.rootProject)
     subProject(Apps.rootProject)
+    subProject(Server.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
 }
@@ -37,20 +38,18 @@ object Docs {
     val rootProject = createRootProjectForDocs()
 
     private fun createRootProjectForDocs(): Project {
-        val mainProject = Project {
+        return Project {
             name = "Docs"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             template(GwTemplates.BuildListenerTemplate)
-        }
 
-        for (buildConfig in Helpers.buildConfigs) {
-            val srcId = buildConfig.getString("srcId")
-            val docProject = createDocProject(buildConfig, srcId)
-            mainProject.subProject(docProject)
+            for (buildConfig in Helpers.buildConfigs) {
+                val srcId = buildConfig.getString("srcId")
+                val docProject = createDocProject(buildConfig, srcId)
+                subProject(docProject)
+            }
         }
-
-        return mainProject
     }
 
     private fun createYarnBuildTypes(
@@ -414,35 +413,42 @@ object Content {
     val rootProject = createRootProjectForContent()
 
     private fun createRootProjectForContent(): Project {
-        val mainProject = Project {
+        return Project {
             name = "Content"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
-        }
-        mainProject.buildType(GwBuildTypes.CleanUpIndexBuildType)
-        mainProject.buildType(GwBuildTypes.UpdateSearchIndexBuildType)
-        mainProject.buildType(GwBuildTypes.UploadPdfsForEscrowBuildType)
 
-        return mainProject
+            buildType(GwBuildTypes.CleanUpIndexBuildType)
+            buildType(GwBuildTypes.UpdateSearchIndexBuildType)
+            buildType(GwBuildTypes.UploadPdfsForEscrowBuildType)
+        }
     }
 }
 
-object Server
+object Server {
+    val rootProject = createRootProjectForServer()
+
+    private fun createRootProjectForServer(): Project {
+        return Project {
+            name = "Server"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        }
+    }
+}
 
 object Exports {
     val rootProject = createRootProjectForExports()
 
     private fun createRootProjectForExports(): Project {
-        val mainProject = Project {
+        return Project {
             name = "Exports"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
-        }
-        mainProject.vcsRoot(GwVcsRoots.xdocsClientGitVcsRoot)
-        mainProject.buildType(GwBuildTypes.ExportFilesFromXDocsToBitbucketBuildType)
-        createExportBuildTypes().forEach {
-            mainProject.buildType(it)
-        }
 
-        return mainProject
+            vcsRoot(GwVcsRoots.xdocsClientGitVcsRoot)
+            buildType(GwBuildTypes.ExportFilesFromXDocsToBitbucketBuildType)
+            createExportBuildTypes().forEach {
+                buildType(it)
+            }
+        }
     }
 
     private fun createExportBuildTypes(): List<BuildType> {
@@ -908,18 +914,15 @@ object Recommendations {
     val rootProject = createRootProjectForRecommendations()
 
     private fun createRootProjectForRecommendations(): Project {
-        val mainProject = Project {
+        return Project {
             name = "Recommendations"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
-        }
-        val envsWithRecommendations = arrayListOf("int")
 
-        for (env in envsWithRecommendations) {
-            val recommendationProject = createRecommendationProject(env)
-            mainProject.subProject(recommendationProject)
+            for (env in arrayOf("int")) {
+                val recommendationProject = createRecommendationProject(env)
+                subProject(recommendationProject)
+            }
         }
-
-        return mainProject
     }
 
     private fun createRecommendationProject(deploy_env: String): Project {
@@ -2138,7 +2141,9 @@ object GwBuildTypes {
 
 object GwVcsRoots {
     val xdocsClientGitVcsRoot =
-        createGitVcsRoot(Helpers.resolveRelativeIdFromIdString("XDocs Client"), "ssh://git@stash.guidewire.com/doctools/xdocs-client.git", listOf("master"))
+        createGitVcsRoot(Helpers.resolveRelativeIdFromIdString("XDocs Client"),
+            "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
+            listOf("master"))
 
     private fun createGitVcsRoot(vcs_root_id: RelativeId, git_url: String, git_branches: List<String>): GitVcsRoot {
         val defaultBranch = git_branches[0]
