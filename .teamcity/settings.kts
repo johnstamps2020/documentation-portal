@@ -1,4 +1,3 @@
-//TODO: Unify the vcs root id param - make it the RelativeId type in all places?
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -94,7 +93,7 @@ object Docs {
             docBuildType.steps.step(yarnBuildStep)
             docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
             // FIXME: Reenable this line when the refactoring is done
-//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(Helpers.resolveRelativeIdFromIdString(git_repo_id)) }
             yarnBuildTypes.add(docBuildType)
         }
         return yarnBuildTypes
@@ -213,7 +212,7 @@ object Docs {
 //                if (arrayOf("int", "staging").contains(envName) && src_is_exported) {
 //                    docBuildType.triggers.vcs {
 //                        GwBuildTriggers.createVcsTriggerForExportedVcsRoot(
-//                            Helpers.resolveRelativeIdFromIdString(git_repo_id).toString()
+//                            Helpers.resolveRelativeIdFromIdString(git_repo_id)
 //                        )
 //                    }
 //                }
@@ -585,7 +584,7 @@ object BuildListeners {
                     steps.step(GwBuildSteps.createRunBuildManagerStep(
                         Docs.rootProject.id.toString(),
                         GwTemplates.BuildListenerTemplate.id.toString(),
-                        Helpers.resolveRelativeIdFromIdString(gitRepoId).toString(),
+                        Helpers.resolveRelativeIdFromIdString(gitRepoId),
                         "")
                     )
 // FIXME: Reenable this line when the refactoring is done
@@ -689,7 +688,7 @@ object Sources {
             steps.step(GwBuildSteps.createRunBuildManagerStep(
                 teamcity_affected_project_id,
                 GwTemplates.ValidationListenerTemplate.id.toString(),
-                Helpers.resolveRelativeIdFromIdString(git_repo_id).toString(),
+                Helpers.resolveRelativeIdFromIdString(git_repo_id),
                 git_branch)
             )
 
@@ -701,10 +700,7 @@ object Sources {
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(
-                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString(),
-                    git_branch
-                ))
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(git_branch)))
             }
         }
     }
@@ -860,10 +856,7 @@ object Sources {
 
             validationBuildType.features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(
-                    vcsRootId.toString(),
-                    Helpers.createFullGitBranchName(git_branch)
-                ))
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(git_branch)))
             }
 
         }
@@ -1233,7 +1226,12 @@ object GwBuildSteps {
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
     })
 
-    fun createBuildPagesStep(): ScriptBuildStep {
+    fun createBuildPagesStep(
+        pages_dir: String,
+        output_dir: String,
+        docs_config_file: String,
+        deploy_env: String,
+    ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build pages"
             id = "BUILD_PAGES"
@@ -1246,11 +1244,7 @@ object GwBuildSteps {
                 export DOCS_CONFIG_FILE="$docs_config_file"
                 export DEPLOY_ENV="$deploy_env"
                 export SEND_BOUNCER_HOME="no"
-                
-                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
-                    export DEPLOY_ENV=prod
-                fi
-                
+                                
                 flail_ssg
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
@@ -1663,7 +1657,7 @@ object GwBuildSteps {
     fun createRunBuildManagerStep(
         teamcity_affected_project: String,
         teamcity_template: String,
-        vcs_root_id: String,
+        vcs_root_id: RelativeId,
         git_branch: String = "",
     ): ScriptBuildStep {
         val teamcityBuildBranch = "%teamcity.build.vcs.branch.${vcs_root_id}%"
@@ -1757,9 +1751,8 @@ object GwBuildFeatures {
         }
     })
 
-    fun createGwPullRequestsBuildFeature(vcs_root_id: String, target_git_branch: String): PullRequests {
+    fun createGwPullRequestsBuildFeature(target_git_branch: String): PullRequests {
         return PullRequests {
-            vcsRootExtId = vcs_root_id
             provider = bitbucketServer {
                 serverUrl = "https://stash.guidewire.com"
                 authType = password {
@@ -1775,7 +1768,7 @@ object GwBuildFeatures {
 
 object GwBuildTriggers {
 
-    fun createVcsTriggerForExportedVcsRoot(vcs_root_id: String): VcsTrigger {
+    fun createVcsTriggerForExportedVcsRoot(vcs_root_id: RelativeId): VcsTrigger {
         return VcsTrigger {
             triggerRules = """
                 +:root=${vcs_root_id};comment=\[$vcs_root_id\]:**
@@ -1783,7 +1776,7 @@ object GwBuildTriggers {
         }
     }
 
-    fun createVcsTriggerForNonDitaBuilds(vcs_root_id: String): VcsTrigger {
+    fun createVcsTriggerForNonDitaBuilds(vcs_root_id: RelativeId): VcsTrigger {
         return VcsTrigger {
             triggerRules = """
                 +:root=${vcs_root_id}:**
@@ -2145,15 +2138,15 @@ object GwBuildTypes {
 
 object GwVcsRoots {
     val xdocsClientGitVcsRoot =
-        createGitVcsRoot("XDocs Client", "ssh://git@stash.guidewire.com/doctools/xdocs-client.git", listOf("master"))
+        createGitVcsRoot(Helpers.resolveRelativeIdFromIdString("XDocs Client"), "ssh://git@stash.guidewire.com/doctools/xdocs-client.git", listOf("master"))
 
-    private fun createGitVcsRoot(vcs_root_id: String, git_url: String, git_branches: List<String>): GitVcsRoot {
+    private fun createGitVcsRoot(vcs_root_id: RelativeId, git_url: String, git_branches: List<String>): GitVcsRoot {
         val defaultBranch = git_branches[0]
         val monitoredBranches =
             if (git_branches.size > 1) git_branches.slice(1..git_branches.lastIndex) else emptyList()
         return GitVcsRoot {
-            name = vcs_root_id
-            id = Helpers.resolveRelativeIdFromIdString(vcs_root_id)
+            name = vcs_root_id.toString().substringAfterLast("_")
+            id = vcs_root_id
             url = git_url
             branch = Helpers.createFullGitBranchName(defaultBranch)
             authMethod = uploadedKey {
@@ -2175,7 +2168,7 @@ object GwVcsRoots {
     fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
         return Helpers.groupBuildSourceConfigsByGitUrl().map {
             val gitUrl = it.getString("gitUrl")
-            val id = it.getString("id")
+            val id = Helpers.resolveRelativeIdFromIdString(it.getString("id"))
             val gitBranches = it.getJSONArray("sources").map { b -> (b as JSONObject).getString("branch") }
             val mainBranch = gitBranches.find { b -> b.contains("main") }
             val masterBranch = gitBranches.find { b -> b.contains("master") }
