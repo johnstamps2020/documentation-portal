@@ -92,7 +92,7 @@ object Docs {
             docBuildType.steps.step(yarnBuildStep)
             docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
             // FIXME: Reenable this line when the refactoring is done
-//            docBuildType.triggers.vcs { BuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
+//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(src_id) }
             yarnBuildTypes.add(docBuildType)
         }
         return yarnBuildTypes
@@ -693,11 +693,7 @@ object Sources {
 
 
             triggers.vcs {
-                branchFilter = """
-                    +:*
-                    -:<default>
-                    -:${Helpers.createFullGitBranchName(git_branch)}
-                """.trimIndent()
+                GwBuildTriggers.createVcsTriggerForValidationBuilds(git_branch)
             }
 
             features {
@@ -857,12 +853,9 @@ object Sources {
                     previewUrlFile)
                 )
             }
+
             validationBuildType.triggers.vcs {
-                branchFilter = """
-                    +:*
-                    -:<default>
-                    -:${Helpers.createFullGitBranchName(git_branch)}
-                """.trimIndent()
+                GwBuildTriggers.createVcsTriggerForValidationBuilds(git_branch)
             }
 
             validationBuildType.features {
@@ -1646,6 +1639,16 @@ object GwBuildTriggers {
             triggerRules = """
                 +:root=${vcs_root_id}:**
                 """.trimIndent()
+        }
+    }
+
+    fun createVcsTriggerForValidationBuilds(git_branch: String): VcsTrigger {
+        return VcsTrigger {
+            branchFilter = """
+                +:*
+                -:<default>
+                -:${Helpers.createFullGitBranchName(git_branch)}
+            """.trimIndent()
         }
     }
 }
