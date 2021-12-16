@@ -2110,7 +2110,7 @@ object GwBuildFeatures {
             url = "https://stash.guidewire.com"
             userName = "%env.SERVICE_ACCOUNT_USERNAME%"
             password =
-                "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                "%env.BITBUCKET_ACCESS_TOKEN%"
         }
     })
 
@@ -2121,7 +2121,7 @@ object GwBuildFeatures {
                 authType = password {
                     username = "%env.SERVICE_ACCOUNT_USERNAME%"
                     password =
-                        "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                        "%env.BITBUCKET_ACCESS_TOKEN%"
                 }
                 filterTargetBranch = target_git_branch
             }
