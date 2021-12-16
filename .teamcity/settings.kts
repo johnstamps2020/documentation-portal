@@ -1598,8 +1598,8 @@ object TestLionPageBuilder : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password = "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -4103,7 +4103,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 
                 cd %env.SOURCES_ROOT%
                 git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%serviceAccountUsername%"
+                git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
                 
                 git add -A
                 if git status | grep "Changes to be committed"
@@ -4169,7 +4169,7 @@ object CreateReleaseTag : BuildType({
                 
                 cd %env.SOURCES_ROOT%
                 git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%serviceAccountUsername%"
+                git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
                 
                 git tag -a "${'$'}TAG_NAME" -m "Documentation ${'$'}TAG_VERSION"
                 echo "Created tag ${'$'}TAG_NAME"
