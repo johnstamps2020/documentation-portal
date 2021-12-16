@@ -1131,7 +1131,7 @@ object Helpers {
     }
 
     fun createFullGitBranchName(branch_name: String): String {
-        return if (branch_name.startsWith("refs/")) {
+        return if (branch_name.contains("refs/")) {
             branch_name
         } else {
             "refs/heads/${branch_name}"
