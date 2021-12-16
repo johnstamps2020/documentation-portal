@@ -1376,16 +1376,16 @@ object Apps {
                     """.trimIndent()
                 }
             }
-
-            triggers {
-                vcs {
-                    branchFilter = "+:<default>"
-                    triggerRules = """
-                        +:apps/${app_dir}/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
-            }
+// FIXME: Reenable this line when the refactoring is done
+//            triggers {
+//                vcs {
+//                    branchFilter = "+:<default>"
+//                    triggerRules = """
+//                        +:apps/${app_dir}/**
+//                        -:user=doctools:**
+//                    """.trimIndent()
+//                }
+//            }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
@@ -1422,15 +1422,15 @@ object Apps {
                 }
 
             }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                        +:apps/${app_dir}/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
-            }
+// FIXME: Reenable this line when the refactoring is done
+//            triggers {
+//                vcs {
+//                    triggerRules = """
+//                        +:apps/${app_dir}/**
+//                        -:user=doctools:**
+//                    """.trimIndent()
+//                }
+//            }
 
             features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
