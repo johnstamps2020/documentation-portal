@@ -76,8 +76,7 @@
         },
         {
           "label": "Claims Configuration Reference",
-          "id": "in20212claimsconfig",
-          "env": ["staging"]
+          "id": "in20212claimsconfig"
         },
         {
           "label": "Studio Configuration",
