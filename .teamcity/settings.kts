@@ -566,7 +566,7 @@ object Server {
         features {
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            }
+        }
     })
 
     private object TestConfig : BuildType({
@@ -649,6 +649,7 @@ object Server {
 
     private fun createDeployServerBuildType(deploy_env: String, tag_version: String): BuildType {
         val deployEnvLowercase = deploy_env.lowercase(Locale.getDefault())
+        val buildTypeName = if (deployEnvLowercase == "us-east-2") "Deploy to prod" else "Deploy to $deploy_env"
         var awsAccessKeyId = "${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
         var awsSecretAccessKey = "${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
         var awsDefaultRegion = "${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
@@ -659,18 +660,17 @@ object Server {
         }
         val setTagVersionCommand = if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
             """
-                    export TAG_VERSION="$tag_version"
-                    if [[ "%teamcity.build.branch%" != "master" ]] || [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
-                        export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${deploy_env}
-                    fi
-                """.trimIndent()
-
+                export TAG_VERSION="$tag_version"
+                if [[ "%teamcity.build.branch%" != "master" ]] || [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
+                    export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${deploy_env}
+                fi
+            """.trimIndent()
         } else {
-            "v$tag_version"
+            "export TAG_VERSION=\"v$tag_version\""
         }
 
-        var partnersLoginUrl = ""
-        var customersLoginUrl = ""
+        var partnersLoginUrl: String
+        var customersLoginUrl: String
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
             partnersLoginUrl = "https://qaint-guidewire.cs170.force.com/partners/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://qaint-guidewire.cs170.force.com/customers/idp/endpoint/HttpRedirect"
@@ -683,7 +683,7 @@ object Server {
         }
 
         val deployServerBuildType = BuildType {
-            name = "Deploy to $deploy_env"
+            name = buildTypeName
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -752,6 +752,12 @@ object Server {
         }
 
         if (arrayOf("staging", "us-east-2").contains(deployEnvLowercase)) {
+            deployServerBuildType.params.text("TAG_VERSION",
+                "",
+                label = "Deploy Version",
+                display = ParameterDisplay.PROMPT,
+                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
+                validationMessage = "Invalid SemVer Format")
             deployServerBuildType.vcs.branchFilter = "+:${Helpers.createFullGitBranchName("master")}"
         }
 
