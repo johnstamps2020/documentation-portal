@@ -1988,21 +1988,21 @@ object GwBuildSteps {
                     export TARGET_URL="$targetUrl"
                     
                     # legacy Jutro repos
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
+                    npm-cli-login -u "${'$'}{SERVICE_ACCOUNT_USERNAME}" -p "${'$'}{ARTIFACTORY_API_KEY}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
                     npm config set @jutro:registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/globalization-npm-release -s @gwre-g11n
+                    npm-cli-login -u "${'$'}{SERVICE_ACCOUNT_USERNAME}" -p "${'$'}{ARTIFACTORY_API_KEY}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/globalization-npm-release -s @gwre-g11n
                     npm config set @gwre-g11n:registry https://artifactory.guidewire.com/api/npm/globalization-npm-release/
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/elixir -s @elixir
+                    npm-cli-login -u "${'$'}{SERVICE_ACCOUNT_USERNAME}" -p "${'$'}{ARTIFACTORY_API_KEY}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/elixir -s @elixir
                     npm config set @elixir:registry https://artifactory.guidewire.com/api/npm/elixir/
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev -s @gtui
+                    npm-cli-login -u "${'$'}{SERVICE_ACCOUNT_USERNAME}" -p "${'$'}{ARTIFACTORY_API_KEY}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev -s @gtui
                     npm config set @gtui:registry https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev/
                                         
                     # new Jutro proxy repo
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
+                    npm-cli-login -u "${'$'}{SERVICE_ACCOUNT_USERNAME}" -p "${'$'}{ARTIFACTORY_API_KEY}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
                     npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
 
                     # Doctools repo
-                    npm-cli-login -u "${'$'}{ARTIFACTORY_USERNAME}" -p "${'$'}{ARTIFACTORY_PASSWORD}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
+                    npm-cli-login -u "${'$'}{SERVICE_ACCOUNT_USERNAME}" -p "${'$'}{ARTIFACTORY_API_KEY}" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                                         
                     export BASE_URL=/${publish_path}/
@@ -2104,11 +2104,11 @@ object GwBuildFeatures {
         type = "JetBrains.SharedResources"
         param("locks-param", "OxygenWebhelpLicense readLock")
     })
-
+    //FIXME: Create a new key/token for bitbucket, add a new password variable to the Documentation Tools projects and use it for features below
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
         publisher = bitbucketServer {
             url = "https://stash.guidewire.com"
-            userName = "%serviceAccountUsername%"
+            userName = "%env.SERVICE_ACCOUNT_USERNAME%"
             password =
                 "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
         }
@@ -2119,7 +2119,7 @@ object GwBuildFeatures {
             provider = bitbucketServer {
                 serverUrl = "https://stash.guidewire.com"
                 authType = password {
-                    username = "%serviceAccountUsername%"
+                    username = "%env.SERVICE_ACCOUNT_USERNAME%"
                     password =
                         "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
                 }
@@ -2225,7 +2225,7 @@ object GwBuildTypes {
                         
                         cd ${'$'}GIT_CLONE_DIR
                         git config --local user.email "doctools@guidewire.com"
-                        git config --local user.name "%serviceAccountUsername%"
+                        git config --local user.name "${'$'}SERVICE_ACCOUNT_USERNAME"
                         
                         git add -A
                         if git status | grep "Changes to be committed"
