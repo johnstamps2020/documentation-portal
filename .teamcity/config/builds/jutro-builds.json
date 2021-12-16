@@ -263,26 +263,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "storybooklearningmissions",
-      "srcId": "srcjutrostorybooknext",
-      "workingDir": "storybook",
-      "customEnv": [
-        {
-          "name": "STORYBOOK_GA_ID",
-          "value": "UA-129148666-1"
-        }
-      ]
-    },
-    {
-      "buildType": "yarn",
       "docId": "jutrohackathon",
       "srcId": "srcjutrohackathon",
-      "workingDir": "website"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "jutrolearningmissions",
-      "srcId": "srcjutrolearningmissions",
       "workingDir": "website"
     },
     {

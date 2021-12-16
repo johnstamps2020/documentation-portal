@@ -427,8 +427,9 @@ object TestDocPortalServer : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
     }
@@ -469,8 +470,9 @@ object TestSettingsKts : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
     }
@@ -962,8 +964,9 @@ object TestDocCrawler : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
         sshAgent {
@@ -1064,8 +1067,9 @@ object TestConfigDeployer : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -1165,8 +1169,9 @@ object TestBuildManager : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -1269,8 +1274,9 @@ object TestLionPackageBuilder : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -1369,8 +1375,9 @@ object TestRecommendationEngine : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -1490,8 +1497,9 @@ object TestFlailSsg : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -1590,8 +1598,8 @@ object TestLionPageBuilder : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password = "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -1694,8 +1702,9 @@ object TestUpgradeDiffsPageBuilder : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
 
@@ -2241,8 +2250,9 @@ object TestConfig : BuildType({
         commitStatusPublisher {
             publisher = bitbucketServer {
                 url = "https://stash.guidewire.com"
-                userName = "%serviceAccountUsername%"
-                password = "credentialsJSON:01a9d262-c4a1-4c6a-9341-70e3999e329b"
+                userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+                password =
+                    "%env.BITBUCKET_ACCESS_TOKEN%"
             }
         }
         sshAgent {
@@ -3957,9 +3967,9 @@ object HelperObjects {
                                                 vcsRootExtId = sourceVcsRootId.toString()
                                                 publisher = bitbucketServer {
                                                     url = "https://stash.guidewire.com"
-                                                    userName = "%serviceAccountUsername%"
+                                                    userName = "%env.SERVICE_ACCOUNT_USERNAME%"
                                                     password =
-                                                        "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                                                        "%env.BITBUCKET_ACCESS_TOKEN%"
                                                 }
                                             }
 
@@ -3968,9 +3978,9 @@ object HelperObjects {
                                                 provider = bitbucketServer {
                                                     serverUrl = "https://stash.guidewire.com"
                                                     authType = password {
-                                                        username = "%serviceAccountUsername%"
+                                                        username = "%env.SERVICE_ACCOUNT_USERNAME%"
                                                         password =
-                                                            "credentialsJSON:b7b14424-8c90-42fa-9cb0-f957d89453ab"
+                                                            "%env.BITBUCKET_ACCESS_TOKEN%"
                                                     }
                                                     filterTargetBranch = "refs/heads/${sourceGitBranch}"
                                                 }
@@ -4093,7 +4103,7 @@ object ExportFilesFromXDocsToBitbucket : BuildType({
                 
                 cd %env.SOURCES_ROOT%
                 git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%serviceAccountUsername%"
+                git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
                 
                 git add -A
                 if git status | grep "Changes to be committed"
@@ -4159,7 +4169,7 @@ object CreateReleaseTag : BuildType({
                 
                 cd %env.SOURCES_ROOT%
                 git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%serviceAccountUsername%"
+                git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
                 
                 git tag -a "${'$'}TAG_NAME" -m "Documentation ${'$'}TAG_VERSION"
                 echo "Created tag ${'$'}TAG_NAME"
