@@ -1322,7 +1322,9 @@ object Apps {
             name = "Apps"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            createAppProjects()
+            createAppProjects().forEach {
+                subProject(it)
+            }
         }
     }
 
@@ -1352,6 +1354,7 @@ object Apps {
     private fun createPublishAppDockerImageBuildType(app_dir: String, dependent_build_type: BuildType): BuildType {
         return BuildType {
             name = "Publish Docker image"
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${app_dir}")
 
             vcs {
                 root(DslContext.settingsRoot)
@@ -1392,6 +1395,7 @@ object Apps {
     private fun createTestAppBuildType(app_dir: String): BuildType {
         return BuildType {
             name = "Test app"
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${app_dir}")
 
             vcs {
                 root(DslContext.settingsRoot)
