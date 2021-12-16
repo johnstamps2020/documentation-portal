@@ -177,13 +177,6 @@
       "branch": "hackathon-2021"
     },
     {
-      "id": "srcjutrolearningmissions",
-      "title": "Jutro Design System Learning Missions Preview",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "design-focused-learning-mission"
-    },
-    {
       "id": "srcjutrostorybooknext",
       "title": "Jutro Storybook Next",
       "sourceType": "git",
