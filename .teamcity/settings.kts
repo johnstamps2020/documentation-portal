@@ -1219,6 +1219,19 @@ object Helpers {
 }
 
 object GwBuildSteps {
+    object MergeDocsConfigFilesStep : ScriptBuildStep({
+        name = "Merge docs config files"
+        id = "MERGE_DOCS_CONFIG_FILES"
+        scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                config_deployer merge "%teamcity.build.checkoutDir%/.teamcity/config/docs" -o "%teamcity.build.checkoutDir%/.teamcity/config/out"
+            """.trimIndent()
+        dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+    })
+
     fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
             "prod" -> {
