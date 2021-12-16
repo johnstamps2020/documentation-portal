@@ -434,6 +434,8 @@ object Server {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             buildType(Checkmarx)
+            buildType(TestDocPortalServer)
+            buildType(TestConfig)
             buildType(createDeployServerBuildType("dev", "latest"))
             buildType(createDeployServerBuildType("int", "latest-int"))
             buildType(createDeployServerBuildType("staging", "%TAG_VERSION%"))
@@ -469,11 +471,12 @@ object Server {
             root(DslContext.settingsRoot)
             cleanCheckout = true
         }
+// FIXME: Reenable this line when the refactoring is done
 
-        triggers {
-            vcs {
-            }
-        }
+//        triggers {
+//            vcs {
+//            }
+//        }
     })
 
     private object TestDocPortalServer : BuildType({
@@ -553,15 +556,16 @@ object Server {
             """.trimIndent()
             }
         }
+// FIXME: Reenable this line when the refactoring is done
 
-        triggers {
-            vcs {
-                triggerRules = """
-                +:server/**
-                -:user=doctools:**
-            """.trimIndent()
-            }
-        }
+//        triggers {
+//            vcs {
+//                triggerRules = """
+//                +:server/**
+//                -:user=doctools:**
+//            """.trimIndent()
+//            }
+//        }
 
         features {
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -630,15 +634,16 @@ object Server {
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
+// FIXME: Reenable this line when the refactoring is done
 
-        triggers {
-            vcs {
-                triggerRules = """
-                +:.teamcity/**/*.*
-                -:user=doctools:**
-            """.trimIndent()
-            }
-        }
+//        triggers {
+//            vcs {
+//                triggerRules = """
+//                +:.teamcity/**/*.*
+//                -:user=doctools:**
+//            """.trimIndent()
+//            }
+//        }
 
         features {
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
@@ -774,11 +779,12 @@ object Server {
                 }
             }
             if (deployEnvLowercase == "dev") {
-                deployServerBuildType.triggers.finishBuildTrigger {
-                    id = "TRIGGER_1"
-                    buildType = "${TestDocPortalServer.id}"
-                    successfulOnly = true
-                }
+                // FIXME: Reenable this line when the refactoring is done
+//                deployServerBuildType.triggers.finishBuildTrigger {
+//                    id = "TRIGGER_1"
+//                    buildType = "${TestDocPortalServer.id}"
+//                    successfulOnly = true
+//                }
             }
         }
         return deployServerBuildType
