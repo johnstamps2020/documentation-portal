@@ -1,3 +1,4 @@
+//TODO: Unify the vcs root id param - make it the RelativeId type in all places?
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -1231,6 +1232,31 @@ object GwBuildSteps {
         dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
     })
+
+    fun createBuildPagesStep(): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Build pages"
+            id = "BUILD_PAGES"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export PAGES_DIR="$pages_dir"
+                export OUTPUT_DIR="$output_dir"
+                export DOCS_CONFIG_FILE="$docs_config_file"
+                export DEPLOY_ENV="$deploy_env"
+                export SEND_BOUNCER_HOME="no"
+                
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export DEPLOY_ENV=prod
+                fi
+                
+                flail_ssg
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
 
     fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
