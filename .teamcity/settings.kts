@@ -701,6 +701,7 @@ object Sources {
             }
 
             features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
                     Helpers.resolveRelativeIdFromIdString(git_repo_id).toString())
                 )
@@ -742,15 +743,15 @@ object Sources {
             id = Helpers.resolveRelativeIdFromIdString("${src_id}${this.name}")
             templates(GwTemplates.ValidationListenerTemplate)
 
-            artifactRules = """
-                $previewUrlFile
-            """.trimIndent()
+            artifactRules = "$previewUrlFile\n"
 
             vcs {
                 root(vcsRootId)
-                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch, "refs/pull-requests/*/from"))
+                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch, "(refs/pull-requests/*/from)"))
                 cleanCheckout = true
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
         if (gw_build_type == "dita") {
@@ -856,9 +857,24 @@ object Sources {
                     previewUrlFile)
                 )
             }
-            validationBuildType.features.feature(GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
-                vcsRootId.toString())
-            )
+            validationBuildType.triggers.vcs {
+                branchFilter = """
+                    +:*
+                    -:<default>
+                    -:${Helpers.createFullGitBranchName(git_branch)}
+                """.trimIndent()
+            }
+
+            validationBuildType.features {
+                feature(GwBuildFeatures.createGwCommitStatusPublisherBuildFeature(
+                    Helpers.resolveRelativeIdFromIdString(git_repo_id).toString())
+                )
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(
+                    vcsRootId.toString(),
+                    git_branch
+                ))
+            }
+
         }
         return validationBuildType
     }
