@@ -3,10 +3,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
@@ -437,6 +434,7 @@ object Server {
             buildType(Checkmarx)
             buildType(TestDocSiteServerApp)
             buildType(TestConfig)
+            buildType(TestSettingsKts)
             buildType(createDeployServerBuildType("dev", "latest"))
             buildType(createDeployServerBuildType("int", "latest-int"))
             buildType(createDeployServerBuildType("staging", "%TAG_VERSION%"))
@@ -481,7 +479,33 @@ object Server {
 //        }
     })
 
-    //    FIXME: Tests are disabled
+    private object TestSettingsKts: BuildType({
+        name = "Test settings.kts"
+
+        vcs {
+            root(DslContext.settingsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            maven {
+                goals = "teamcity-configs:generate"
+                workingDir = ".teamcity"
+            }
+        }
+// FIXME: Reenable this line when the refactoring is done
+//        triggers {
+//            vcs {
+//                triggerRules = """
+//                +:.teamcity/settings.kts
+//                -:user=doctools:**
+//            """.trimIndent()
+//            }
+//        }
+
+        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+    })
+
     private object TestDocSiteServerApp : BuildType({
         name = "Test doc site server app"
 
