@@ -15,7 +15,7 @@ else
  echo "Version set to: $IMAGE_VERSION"
 fi
 
-docker login -u $ARTIFACTORY_USERNAME --password $ARTIFACTORY_PASSWORD artifactory.guidewire.com
+docker login -u $SERVICE_ACCOUNT_USERNAME --password $ARTIFACTORY_API_KEY artifactory.guidewire.com
 
 docker tag doc-crawler artifactory.guidewire.com/doctools-docker-dev/doc-crawler:$IMAGE_VERSION
 docker push artifactory.guidewire.com/doctools-docker-dev/doc-crawler:$IMAGE_VERSION
