@@ -16,7 +16,7 @@ describe(`Search for phrase ${queryPhrase}`, async function() {
         query: {
           q: queryPhrase,
         },
-        isAuthenticated: () => true,
+        session: { requestIsAuthenticated: () => true },
       });
       response = httpMocks.createResponse();
       await searchController(request, response);
@@ -26,16 +26,23 @@ describe(`Search for phrase ${queryPhrase}`, async function() {
     }
   });
 
+  async function getResultsFromSecondPage() {
+    request.query.page = 2;
+    await searchController(request, response);
+    const results = response._getRenderData();
+    return results;
+  }
+
   it('Should return more than 0 results', async () => {
     assert(results.totalNumOfResults > 0 && results.searchResults.length > 0);
 
     if (results.pages > 1) {
+      const resultsFromSecondPage = await getResultsFromSecondPage();
       describe('If the results contain more then one page', async () => {
         it('a request for the second page should return different results', async () => {
-          request.query.page = 2;
-          await searchController(request, response);
-          const results2 = response._getRenderData();
-          assert(results.searchResults[0] !== results2.searchResults[0]);
+          assert(
+            results.searchResults[0] !== resultsFromSecondPage.searchResults[0]
+          );
         });
       });
     }
