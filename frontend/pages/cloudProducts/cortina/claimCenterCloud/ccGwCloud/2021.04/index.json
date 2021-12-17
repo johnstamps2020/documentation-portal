@@ -37,6 +37,10 @@
         {
           "label": "REST API Client Release Notes",
           "id": "isrestapiclientrn"
+        },
+        {
+          "label": "Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrncortina"
         }
       ]
     },

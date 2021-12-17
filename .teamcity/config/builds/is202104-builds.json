@@ -444,6 +444,14 @@
       "srcId": "testingframeworksuicortinasrc",
       "docId": "testingframeworksuicortina",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Guidewire_Testing_Framework_202104_ReleaseNotes.ditamap",
+      "srcId": "testingframeworksrncortinasrc",
+      "docId": "testingframeworksrncortina",
+      "indexRedirect": true
     }
   ]
 }
