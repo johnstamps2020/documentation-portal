@@ -563,13 +563,13 @@ object Server {
 
             script {
                 name = "Test the doc site server"
+                workingDir = "server"
                 scriptContent = """
                     #!/bin/bash
                     set -e
                     export APP_BASE_URL="http://localhost:8081"
                     export ELASTICSEARCH_URL="http://localhost:9200"
                     
-                    cd %teamcity.build.checkoutDir%/server
                     npm install
                     npm test
                 """.trimIndent()
