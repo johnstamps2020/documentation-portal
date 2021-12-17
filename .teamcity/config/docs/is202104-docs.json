@@ -819,8 +819,8 @@
     },
     {
       "id": "testingframeworksrncortina",
-      "title": "User Interface Testing",
-      "url": "cloud/testingframeworks/202104/rleasenotes",
+      "title": "Guidewire Testing Framework Release Notes",
+      "url": "cloud/testingframeworks/202104/releasenotes",
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
