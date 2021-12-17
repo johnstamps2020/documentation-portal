@@ -576,31 +576,6 @@ object Server {
     private object TestConfig : BuildType({
         name = "Test config files"
 
-        params {
-            text("env.DOCS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/docs")
-            text("env.SOURCES_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/sources")
-            text("env.BUILDS_INPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/builds")
-            text("env.DOCS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/docs")
-            text("env.SOURCES_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/sources")
-            text("env.BUILDS_OUTPUT_DIR", "%teamcity.build.checkoutDir%/.teamcity/config/out/builds")
-            text(
-                "env.DOCS_CONFIG_FILE",
-                "%env.DOCS_OUTPUT_DIR%/merge-all.json",
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "env.SOURCES_CONFIG_FILE",
-                "%env.SOURCES_OUTPUT_DIR%/merge-all.json",
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "env.BUILDS_CONFIG_FILE",
-                "%env.BUILDS_OUTPUT_DIR%/merge-all.json",
-                display = ParameterDisplay.HIDDEN
-            )
-            text("env.SCHEMA_PATH", "%teamcity.build.checkoutDir%/.teamcity/config/config-schema.json")
-        }
-
         vcs {
             root(DslContext.settingsRoot)
             cleanCheckout = true
@@ -608,27 +583,30 @@ object Server {
 
         steps {
             script {
-                name = "Merge config files"
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                config_deployer merge %env.DOCS_INPUT_DIR% -o %env.DOCS_OUTPUT_DIR%
-                config_deployer merge %env.SOURCES_INPUT_DIR% -o %env.SOURCES_OUTPUT_DIR%
-                config_deployer merge %env.BUILDS_INPUT_DIR% -o %env.BUILDS_OUTPUT_DIR%
-            """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            script {
                 name = "Run tests for config files"
                 scriptContent = """
                 #!/bin/bash
                 set -xe
                 
-                config_deployer test %env.DOCS_CONFIG_FILE% --schema-path %env.SCHEMA_PATH%
-                config_deployer test %env.SOURCES_CONFIG_FILE% --schema-path %env.SCHEMA_PATH%
-                config_deployer test %env.BUILDS_CONFIG_FILE% --sources-path %env.SOURCES_CONFIG_FILE% --docs-path %env.DOCS_CONFIG_FILE% --schema-path %env.SCHEMA_PATH%  
+                export ROOT_CONFIG_DIR="%teamcity.build.checkoutDir%/.teamcity/config"
+                export DOCS_OUTPUT_DIR="${'$'}{ROOT_CONFIG_DIR}/out/docs"
+                export SOURCES_OUTPUT_DIR="${'$'}{ROOT_CONFIG_DIR}/out/sources"
+                export BUILDS_OUTPUT_DIR="${'$'}{ROOT_CONFIG_DIR}/out/builds"
+                
+                # Merge config files
+                
+                config_deployer merge "${'$'}{ROOT_CONFIG_DIR}/docs" -o "${'$'}DOCS_OUTPUT_DIR"
+                config_deployer merge "${'$'}{ROOT_CONFIG_DIR}/sources" -o "${'$'}SOURCES_OUTPUT_DIR"
+                config_deployer merge "${'$'}{ROOT_CONFIG_DIR}/builds" -o "${'$'}BUILDS_OUTPUT_DIR"
+             
+                export MERGED_CONFIG_FILE="merge-all.json"
+                export SCHEMA_PATH="${'$'}{ROOT_CONFIG_DIR}/config-schema.json"
+                
+                # Test merged config files
+                
+                config_deployer test "${'$'}{DOCS_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --schema-path ${'$'}SCHEMA_PATH
+                config_deployer test "${'$'}{SOURCES_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --schema-path ${'$'}SCHEMA_PATH
+                config_deployer test "${'$'}{BUILDS_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --sources-path "${'$'}{SOURCES_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --docs-path "${'$'}{DOCS_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --schema-path ${'$'}SCHEMA_PATH  
             """.trimIndent()
                 dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
