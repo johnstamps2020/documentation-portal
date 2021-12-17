@@ -439,6 +439,7 @@ object Server {
             buildType(createDeployServerBuildType("int", "latest-int"))
             buildType(createDeployServerBuildType("staging", "%TAG_VERSION%"))
             buildType(createDeployServerBuildType("us-east-2", "%TAG_VERSION%"))
+            buildType(ReleaseNewVersion)
         }
     }
 
@@ -626,6 +627,60 @@ object Server {
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
             feature(GwBuildFeatures.GwSshAgentBuildFeature)
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    })
+
+    object ReleaseNewVersion : BuildType({
+        name = "Release new version"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        maxRunningBuilds = 1
+
+        params {
+            select(
+                "semver-scope", "patch", label = "Version Scope", display = ParameterDisplay.PROMPT,
+                options = listOf("Patch" to "patch", "Minor" to "minor", "Major" to "major")
+            )
+        }
+
+        vcs {
+            root(DslContext.settingsRoot)
+            cleanCheckout = true
+            branchFilter = Helpers.createFullGitBranchName("master")
+        }
+
+        steps {
+            script {
+                name = "Bump and tag version"
+                scriptContent = """
+                set -xe
+                git config --local user.email "doctools@guidewire.com"
+                git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
+                git fetch --tags
+
+                cd server/
+                export TAG_VERSION=${'$'}(npm version %semver-scope%)
+                git add .
+                git commit -m "push changes to ${'$'}{TAG_VERSION}"
+                git tag -a ${'$'}{TAG_VERSION} -m "create new %semver-scope% version ${'$'}{TAG_VERSION}"
+                git push
+                git push --tags
+                
+                export PACKAGE_NAME=artifactory.guidewire.com/doctools-docker-dev/docportal
+                
+                docker build -t ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION} . --build-arg tag_version=${'$'}{TAG_VERSION}
+                docker push ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION}
+            """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerPull = true
+                dockerRunParameters =
+                    "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+            }
+        }
+
+        features {
+            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            feature(GwBuildFeatures.GwSshAgentBuildFeature)
         }
     })
 
