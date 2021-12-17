@@ -568,7 +568,7 @@ object Server {
                     export APP_BASE_URL="http://localhost:8081"
                     export ELASTICSEARCH_URL="http://localhost:9200"
                     
-                    cd server/
+                    cd %teamcity.build.checkoutDir%/server
                     npm install
                     npm test
                 """.trimIndent()
