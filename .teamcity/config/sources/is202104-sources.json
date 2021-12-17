@@ -319,6 +319,17 @@
         "/Content/doc/testing_frameworks/2021.04/GT-UI.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
       ]
+    },
+    {
+      "id": "testingframeworksrncortinasrc",
+      "title": "User Interface Testing Cortina",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "branch": "Cortina",
+      "xdocsPathIds": [
+        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Testing_Framework_202104_ReleaseNotes.ditamap",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
+      ]
     }
   ]
 }

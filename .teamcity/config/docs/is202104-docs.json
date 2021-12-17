@@ -816,6 +816,22 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "testingframeworksrncortina",
+      "title": "User Interface Testing",
+      "url": "cloud/testingframeworks/202104/rleasenotes",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
