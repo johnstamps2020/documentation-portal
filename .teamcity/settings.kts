@@ -490,7 +490,8 @@ object Server {
         steps {
             maven {
                 goals = "teamcity-configs:generate"
-                workingDir = ".teamcity"
+                pomLocation = ".teamcity/pom.xml"
+                workingDir = ""
             }
         }
 // FIXME: Reenable this line when the refactoring is done
