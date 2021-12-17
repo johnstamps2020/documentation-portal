@@ -11,6 +11,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.util.*
+import kotlin.collections.ArrayList
 
 version = "2021.2"
 
@@ -803,6 +804,8 @@ object Server {
                     dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
+
+                stepsOrder = this.items.map {it.id.toString()} as ArrayList<String>
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
