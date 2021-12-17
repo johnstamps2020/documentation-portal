@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -652,8 +651,8 @@ object Server {
             "export TAG_VERSION=\"v$tag_version\""
         }
 
-        var partnersLoginUrl: String
-        var customersLoginUrl: String
+        val partnersLoginUrl: String
+        val customersLoginUrl: String
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
             partnersLoginUrl = "https://qaint-guidewire.cs170.force.com/partners/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://qaint-guidewire.cs170.force.com/customers/idp/endpoint/HttpRedirect"
@@ -742,9 +741,21 @@ object Server {
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
                 validationMessage = "Invalid SemVer Format")
             deployServerBuildType.vcs.branchFilter = "+:${Helpers.createFullGitBranchName("master")}"
+            if (deployEnvLowercase == "us-east-2") {
+//            FIXME: Unify the usage of the tag version variable among the build steps
+                val publishServerDockerImageToEcrStep =
+                    GwBuildSteps.createPublishServerDockerImageToEcrStep(tag_version)
+                deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
+                deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
+            }
         }
 
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
+//            FIXME: Unify the usage of the tag version variable among the build steps
+            val buildAndPublishServerDockerImageStep =
+                GwBuildSteps.createBuildAndPublishServerDockerImageStep(deploy_env, tag_version)
+            deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
+            deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.dependencies {
                 snapshot(Checkmarx) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
@@ -1567,6 +1578,51 @@ object GwBuildSteps {
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
     })
 
+    fun createPublishServerDockerImageToEcrStep(tag_version: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Publish server Docker Image to ECR"
+            id = "PUBLISH_SERVER_DOCKER_IMAGE_TO_ECR"
+            scriptContent = """
+                set -xe
+                docker pull artifactory.guidewire.com/doctools-docker-dev/docportal:v${tag_version}
+                docker tag artifactory.guidewire.com/doctools-docker-dev/docportal:v${tag_version} 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v${tag_version}
+                eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
+                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v${tag_version}
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters =
+                "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+        }
+    }
+
+    fun createBuildAndPublishServerDockerImageStep(deploy_env: String, tag_version: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Build and publish server Docker Image"
+            id = "BUILD_PUBLISH_SERVER_DOCKER_IMAGE"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
+                    export TAG_VERSION="$tag_version"
+                else 
+                    export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${deploy_env}
+                fi
+                
+                export PACKAGE_NAME=artifactory.guidewire.com/doctools-docker-dev/docportal
+                
+                docker build -t ${'$'}{PACKAGE_NAME}:${tag_version} ./server --build-arg tag_version=${tag_version}
+                docker push ${'$'}{PACKAGE_NAME}:${tag_version}
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters =
+                "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+        }
+    }
+
     fun createBuildPagesStep(
         pages_dir: String,
         output_dir: String,
@@ -2082,6 +2138,7 @@ object GwBuildFeatures {
         type = "JetBrains.SharedResources"
         param("locks-param", "OxygenWebhelpLicense readLock")
     })
+
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
         publisher = bitbucketServer {
             url = "https://stash.guidewire.com"
@@ -2445,7 +2502,7 @@ object GwBuildTypes {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
-            // FIXME: Reenable this line when the refactoring is done
+// FIXME: Reenable this line when the refactoring is done
 //            when (export_frequency) {
 //                "daily" -> {
 //                    triggers.schedule {
