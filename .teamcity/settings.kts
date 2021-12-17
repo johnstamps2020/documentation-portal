@@ -4425,7 +4425,6 @@ object BuildStorybook : Template({
                 set -xe
                 
                 if [[ -f "ci/npmLogin.sh" ]]; then
-                    export ARTIFACTORY_PASSWORD_BASE64=${'$'}(echo -n "${'$'}{ARTIFACTORY_PASSWORD}" | base64)
                     sh ci/npmLogin.sh
                 fi
                 
