@@ -1121,10 +1121,11 @@ object Sources {
                 git_branch)
             )
 
+            // FIXME: Reenable this line when the refactoring is done
 
-            triggers.vcs {
-                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
-            }
+//            triggers.vcs {
+//                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
+//            }
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1278,10 +1279,11 @@ object Sources {
                     previewUrlFile)
                 )
             }
+            // FIXME: Reenable this line when the refactoring is done
 
-            validationBuildType.triggers.vcs {
-                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
-            }
+//            validationBuildType.triggers.vcs {
+//                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
+//            }
 
             validationBuildType.features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
