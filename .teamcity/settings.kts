@@ -4,6 +4,8 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportF
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCompose
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
@@ -433,7 +435,7 @@ object Server {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             buildType(Checkmarx)
-            buildType(TestDocPortalServer)
+            buildType(TestDocSiteServerApp)
             buildType(TestConfig)
             buildType(createDeployServerBuildType("dev", "latest"))
             buildType(createDeployServerBuildType("int", "latest-int"))
@@ -479,81 +481,74 @@ object Server {
 //        }
     })
 
-    private object TestDocPortalServer : BuildType({
-        name = "Test Doc Portal server app"
+    //    FIXME: Tests are disabled
+    private object TestDocSiteServerApp : BuildType({
+        name = "Test doc site server app"
 
         params {
-            text("env.APP_BASE_URL", "http://localhost/", allowEmpty = false)
-            text("env.INDEX_NAME", "gw-docs", allowEmpty = false)
-            text("env.ELASTICSEARCH_URLS", "http://localhost:9200")
-            text("env.ELASTIC_SEARCH_URL", "http://localhost:9200")
-            text("env.DOC_S3_URL", "http://localhost/")
-            text(
-                "env.CONFIG_FILE",
-                "%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json"
-            )
             text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
         }
 
         vcs {
             root(DslContext.settingsRoot)
-
             cleanCheckout = true
         }
 
         steps {
-//        dockerCompose {
-//            name = "Compose services"
-//            file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
-//        }
-//
-//        dockerCommand {
-//            name = "Build the Doc Crawler Docker image locally"
-//            commandType = build {
-//                source = file {
-//                    path = "apps/doc_crawler/Dockerfile"
-//                }
-//                namesAndTags = "doc-crawler:local"
-//                commandArgs = "--pull"
-//            }
-//            param("dockerImage.platform", "linux")
-//        }
-//
-//        script {
-//            name = "Crawl the document and update the local index"
-//            id = "CRAWL_DOC"
-//            scriptContent = """
-//                #!/bin/bash
-//                set -xe
-//
-//                cat > scrapy.cfg <<- EOM
-//                [settings]
-//                default = doc_crawler.settings
-//                EOM
-//
-//                doc_crawler
-//            """.trimIndent()
-//            dockerImage = "doc-crawler:local"
-//            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-//        }
-//
-//        script {
-//            name = "Test the Node.js server app"
-//            scriptContent = """
-//                set -e
-//                export APP_BASE_URL=http://localhost:8081
-//                cd server/
-//                npm install
-//                npm test
-//            """.trimIndent()
-//            dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:14-alpine"
-//            dockerPull = true
-//        }
+            dockerCompose {
+                name = "Compose services"
+                file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
+            }
+
+            dockerCommand {
+                name = "Build the doc crawler Docker image locally"
+                commandType = build {
+                    source = file {
+                        path = "apps/doc_crawler/Dockerfile"
+                    }
+                    namesAndTags = "doc-crawler:local"
+                    commandArgs = "--pull"
+                }
+                param("dockerImage.platform", "linux")
+            }
+
             script {
-                name = "Disable temporarily"
+                name = "Crawl the document and update the local index"
                 scriptContent = """
-                echo Tests are acting weird so we disabled them.
-            """.trimIndent()
+                    #!/bin/bash
+                    set -xe
+                    
+                    export APP_BASE_URL="http://localhost/"
+                    export INDEX_NAME="gw-docs"
+                    export ELASTICSEARCH_URLS="http://localhost:9200"
+                    export DOC_S3_URL="http://localhost/"
+                    export CONFIG_FILE="%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json"
+    
+                    cat > scrapy.cfg <<- EOM
+                    [settings]
+                    default = doc_crawler.settings
+                    EOM
+    
+                    doc_crawler
+                """.trimIndent()
+                dockerImage = "doc-crawler:local"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+
+            script {
+                name = "Test the doc site server"
+                scriptContent = """
+                    #!/bin/bash
+                    set -e
+                    export APP_BASE_URL="http://localhost:8081"
+                    export ELASTICSEARCH_URL="http://localhost:9200"
+                    
+                    cd server/
+                    npm install
+                    npm test
+                """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:14-alpine"
+                dockerPull = true
             }
         }
 // FIXME: Reenable this line when the refactoring is done
@@ -815,7 +810,7 @@ object Server {
                 snapshot(Checkmarx) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                snapshot(TestDocPortalServer) {
+                snapshot(TestDocSiteServerApp) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 snapshot(TestConfig) {
