@@ -828,7 +828,7 @@ object Server {
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
 //            FIXME: Unify the usage of the tag version variable among the build steps
             val buildAndPublishServerDockerImageStep =
-                GwBuildSteps.createBuildAndPublishServerDockerImageStep(deploy_env, tag_version)
+                GwBuildSteps.createBuildAndPublishServerDockerImageStep(setTagVersionCommand)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.dependencies {
@@ -1672,23 +1672,21 @@ object GwBuildSteps {
         }
     }
 
-    fun createBuildAndPublishServerDockerImageStep(deploy_env: String, tag_version: String): ScriptBuildStep {
+    fun createBuildAndPublishServerDockerImageStep(
+        set_tag_version_command: String
+    ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build and publish server Docker Image"
             id = "BUILD_PUBLISH_SERVER_DOCKER_IMAGE"
             scriptContent = """
                 #!/bin/bash 
                 set -xe
-                if [[ "%teamcity.build.branch%" == "master" ]] || [[ "%teamcity.build.branch%" == "refs/heads/master" ]]; then
-                    export TAG_VERSION="$tag_version"
-                else 
-                    export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${deploy_env}
-                fi
+                $set_tag_version_command
                 
                 export PACKAGE_NAME=artifactory.guidewire.com/doctools-docker-dev/docportal
                 
-                docker build -t ${'$'}{PACKAGE_NAME}:${tag_version} ./server --build-arg tag_version=${tag_version}
-                docker push ${'$'}{PACKAGE_NAME}:${tag_version}
+                docker build -t ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION} ./server --build-arg tag_version=${'$'}TAG_VERSION
+                docker push ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
