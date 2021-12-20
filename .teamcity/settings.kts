@@ -15,8 +15,6 @@ version = "2021.2"
 
 project {
 
-    params.text("env.NAMESPACE", "doctools")
-
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
     }
@@ -28,6 +26,7 @@ project {
     subProject(Exports.rootProject)
     subProject(Apps.rootProject)
     subProject(Server.rootProject)
+    subProject(Frontend.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
 }
@@ -684,6 +683,17 @@ object Content {
             }
         }
     })
+}
+
+object Frontend {
+    val rootProject = createRootProjectForFrontend()
+
+    private fun createRootProjectForFrontend(): Project {
+        return Project {
+            name = "Frontend"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        }
+    }
 }
 
 object Server {
