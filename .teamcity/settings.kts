@@ -1,3 +1,4 @@
+//TODO: Change static IDs to Helpers.resolve....(this.name)
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -685,6 +686,7 @@ object Content {
     })
 }
 
+//FIXME: Unify usage of deploy env names - issue with prod/us-east-2, lowercase, etc.
 object Frontend {
     val rootProject = createRootProjectForFrontend()
 
@@ -695,6 +697,7 @@ object Frontend {
 
             subProject(createDeployLandingPagesProject())
             subProject(createDeployLocalizedPagesProject())
+            subProject(createDeployUpgradeDiffsProject())
         }
     }
 
@@ -703,17 +706,15 @@ object Frontend {
             name = "Deploy landing pages"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            arrayOf("dev", "int", "staging", "us-east-2").forEach {
+            arrayOf("dev", "int", "staging", "prod").forEach {
                 buildType(createDeployLandingPagesBuildType(it))
             }
         }
     }
 
     private fun createDeployLandingPagesBuildType(deploy_env: String): BuildType {
-        val buildTypeName =
-            if (deploy_env == "us-east-2") "Deploy landing pages to prod" else "Deploy landing pages to $deploy_env"
         return BuildType {
-            name = buildTypeName
+            name = "Deploy landing pages to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -752,21 +753,19 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcsRoot(GwVcsRoots.LocalizedPdfsGitVcsRoot)
-            arrayOf("dev", "int", "staging", "us-east-2").forEach {
+            arrayOf("dev", "int", "staging", "prod").forEach {
                 buildType(createDeployLocalizedPagesBuildType(it))
             }
         }
     }
 
     private fun createDeployLocalizedPagesBuildType(deploy_env: String): BuildType {
-        val buildTypeName =
-            if (deploy_env == "us-east-2") "Deploy localized pages to prod" else "Deploy localized pages to $deploy_env"
         val lionSourcesRoot = "pdf-src"
         val pagesDir = "%teamcity.build.checkoutDir%/build"
         val locDocsSrc = "%teamcity.build.checkoutDir%/${lionSourcesRoot}"
         val locDocsOut = "${pagesDir}/l10n"
         return BuildType {
-            name = buildTypeName
+            name = "Deploy localized pages to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -807,135 +806,65 @@ object Frontend {
         }
     }
 
-    object DeployUpgradeDiffs : BuildType({
-        name = "Deploy upgrade diffs"
+    private fun createDeployUpgradeDiffsProject(): Project {
+        return Project {
+            name = "Deploy upgrade diffs"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        params {
-            text(
-                "PAGES_DIR",
-                "%teamcity.build.checkoutDir%/build",
-                description = "Flail SSG input dir",
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "OUTPUT_DIR",
-                "%teamcity.build.checkoutDir%/output",
-                description = "Flail SSG output dir",
-                display = ParameterDisplay.HIDDEN
-            )
-            text(
-                "DOCS_CONFIG_FILE",
-                "%env.CONFIG_FILES_OUTPUT_DIR%/merge-all.json",
-                display = ParameterDisplay.HIDDEN
-            )
-            text("UPGRADEDIFFS_SOURCES_ROOT", "upgradediffs-src", display = ParameterDisplay.HIDDEN)
-            text(
-                "env.UPGRADEDIFFS_DOCS_SRC",
-                "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%/src",
-                display = ParameterDisplay.HIDDEN
-            )
-            text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
-            select(
-                "DEPLOY_ENV",
-                "dev",
-                label = "Deployment environment",
-                description = "Select an environment on which you want deploy the config",
-                display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod" to "us-east-2")
-            )
+            vcsRoot(GwVcsRoots.UpgradeDiffsGitVcsRoot)
+            arrayOf("dev", "int", "staging", "prod").forEach {
+                buildType(createDeployUpgradeDiffsBuildType(it))
+            }
         }
+    }
 
-//        vcs {
-//            root(UpgradeDiffs, "+:. => %UPGRADEDIFFS_SOURCES_ROOT%")
-//            cleanCheckout = true
-//        }
+    private fun createDeployUpgradeDiffsBuildType(deploy_env: String): BuildType {
+        val upgradeDiffsSourcesRoot = "upgradediffs-src"
+        val pagesDir = "%teamcity.build.checkoutDir%/build"
+        val upgradeDiffsDocsSrc = "%teamcity.build.checkoutDir%/${upgradeDiffsSourcesRoot}/src"
+        val upgradeDiffsDocsOut = "${pagesDir}/upgradediffs"
+        return BuildType {
+            name = "Deploy upgrade diffs to $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-
-        steps {
-            script {
-                name = "Generate upgrade diffs page configurations"
-                id = "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS"
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-
-                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
-                  export DEPLOY_ENV=prod
-                fi
-                upgradediffs_page_builder
-            """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            script {
-                name = "Copy upgrade diffs to the S3 bucket"
-                id = "COPY_UPGRADE_DIFFS_TO_S3_BUCKET"
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
-                  export DEPLOY_ENV=prod
-                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                  aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs --exclude "*/*-rc/*" --delete
-                else
-                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"	
-                  if [[ %env.DEPLOY_ENV% == "staging" ]]; then
-                    aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs --exclude "*/*-rc/*" --delete
-                  else
-                    aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs --delete
-                  fi		
-                fi
-                
-            """.trimIndent()
-            }
-            script {
-                name = "Deploy to Kubernetes"
-                id = "DEPLOY_TO_KUBERNETES"
-                scriptContent = """
-                #!/bin/bash 
-                set -xe
-                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                else
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
-                fi
-                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh upgradeDiffs
-            """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerPull = true
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            vcs {
+                root(DslContext.settingsRoot)
+                root(GwVcsRoots.UpgradeDiffsGitVcsRoot, "+:. => $upgradeDiffsSourcesRoot")
+                branchFilter = GwVcsSettings.createBranchFilter(listOf("master", "main"))
+                cleanCheckout = true
             }
 
-            stepsOrder = arrayListOf(
-                "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS",
-                "COPY_UPGRADE_DIFFS_TO_S3_BUCKET",
-                "MERGE_DOCS_CONFIG_FILES",
-                "BUILD_PAGES",
-                "DEPLOY_TO_KUBERNETES"
-            )
-        }
-
+            steps {
+                step(
+                    GwBuildSteps.createGenerateUpgradeDiffsPageConfigurationsStep(
+                        deploy_env,
+                        upgradeDiffsDocsSrc,
+                        upgradeDiffsDocsOut
+                    )
+                )
+                step(GwBuildSteps.createCopyUpgradeDiffsToS3BucketStep(deploy_env, upgradeDiffsDocsSrc))
+                step(GwBuildSteps.MergeDocsConfigFilesStep)
+                step(
+                    GwBuildSteps.createBuildPagesStep(
+                        pagesDir,
+                        "%teamcity.build.checkoutDir%/output",
+                        "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
+                        deploy_env
+                    )
+                )
+                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "upgradeDiffs"))
+            }
+// FIXME: Reenable this line when the refactoring is done
 //        triggers {
 //            vcs {
-//                branchFilter = "+:<default>"
 //                triggerRules = """
-//                +:root=${UpgradeDiffs.id}:**
+//                +:root=${GwVcsRoots.UpgradeDiffsGitVcsRoot.id}:**
 //                -:user=doctools:**
 //            """.trimIndent()
 //            }
-//
 //        }
-    })
+        }
+    }
 }
 
 object Server {
@@ -2512,6 +2441,52 @@ object GwBuildSteps {
                 export AWS_DEFAULT_REGION="$awsDefaultRegion"
                         
                 aws s3 sync "$loc_docs_src" s3://tenant-doctools-${deploy_env}-builds/l10n --exclude ".git/*" --delete
+            """.trimIndent()
+        }
+    }
+
+    fun createGenerateUpgradeDiffsPageConfigurationsStep(
+        deploy_env: String,
+        upgrade_diffs_docs_src: String,
+        upgrade_diffs_docs_out: String
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Generate upgrade diffs page configurations"
+            id = "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export UPGRADEDIFFS_DOCS_SRC="$upgrade_diffs_docs_src"
+                export UPGRADEDIFFS_DOCS_OUT="$upgrade_diffs_docs_out"
+                export DEPLOY_ENV="$deploy_env"
+                
+                upgradediffs_page_builder
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createCopyUpgradeDiffsToS3BucketStep(deploy_env: String, upgrade_diffs_docs_src: String): ScriptBuildStep {
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        var awsS3SyncCommand =
+            "aws s3 sync \"${upgrade_diffs_docs_src}\" s3://tenant-doctools-${deploy_env}-builds/upgradediffs --delete"
+        if (arrayOf("staging", "prod").contains(deploy_env.lowercase(Locale.getDefault()))) {
+            awsS3SyncCommand += " --exclude \"*/*-rc/*\""
+        }
+        return ScriptBuildStep {
+            name = "Copy upgrade diffs to the S3 bucket"
+            id = "COPY_UPGRADE_DIFFS_TO_S3_BUCKET"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                        
+                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                        
+                $awsS3SyncCommand
             """.trimIndent()
         }
     }
