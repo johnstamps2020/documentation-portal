@@ -3,6 +3,28 @@
   "title": "InfoCenter 10.6.0",
   "class": "twoColumns",
   "template": "page",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.6.0",
+    "items": [
+      {
+        "label": "10.5.0",
+        "page": "../10.5.0"
+      },
+      {
+        "label": "10.4.0",
+        "id": "ic1040"
+      },
+      {
+        "label": "10.3.0",
+        "id": "ic1030"
+      },
+      {
+        "label": "10.2.0",
+        "id": "ic1020"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
