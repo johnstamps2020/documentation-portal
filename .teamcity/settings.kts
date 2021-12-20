@@ -526,6 +526,18 @@ object Server {
                 file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
             }
 
+            dockerCommand {
+                name = "Build the doc crawler Docker image locally"
+                commandType = build {
+                    source = file {
+                        path = "apps/doc_crawler/Dockerfile"
+                    }
+                    namesAndTags = "doc-crawler:local"
+                    commandArgs = "--pull"
+                }
+                param("dockerImage.platform", "linux")
+            }
+
             script {
                 name = "Crawl the document and update the local index"
                 scriptContent = """
@@ -545,7 +557,7 @@ object Server {
     
                     doc_crawler
                 """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"
+                dockerImage = "doc-crawler:local"
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
 
