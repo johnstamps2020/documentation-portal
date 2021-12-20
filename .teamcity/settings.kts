@@ -994,6 +994,7 @@ object Server {
                         export AWS_DEFAULT_REGION="$awsDefaultRegion"
                         export PARTNERS_LOGIN_URL="$partnersLoginUrl"
                         export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
+                        export DEPLOY_ENV="$deploy_env"
                         export NAMESPACE="doctools"
                         
                         $setTagVersionCommand
