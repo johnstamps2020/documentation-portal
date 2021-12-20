@@ -10,7 +10,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.util.*
-import kotlin.collections.ArrayList
 
 version = "2021.2"
 
@@ -119,13 +118,15 @@ object Docs {
         val outputDir = "out"
         for (env in env_names) {
             val envName = env.toString()
-            val docBuildType = createInitialDocBuildType(envName,
+            val docBuildType = createInitialDocBuildType(
+                envName,
                 doc_id,
                 git_repo_id,
                 git_branch,
                 publish_path,
                 working_dir,
-                index_for_search)
+                index_for_search
+            )
             if (envName == "prod") {
                 val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
                 docBuildType.steps.step(copyFromStagingToProdStep)
@@ -135,7 +136,8 @@ object Docs {
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
                 if (envName == "staging") {
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep("webhelp_with_pdf",
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                        "webhelp_with_pdf",
                         root_map,
                         index_redirect,
                         working_dir,
@@ -146,25 +148,31 @@ object Docs {
                         gw_platforms,
                         gw_versions,
                         git_url,
-                        git_branch)
+                        git_branch
+                    )
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${outputDir}/zip"
                         val buildDitaProjectForOfflineUseStep =
-                            GwBuildSteps.createBuildDitaProjectForBuildsStep("webhelp",
+                            GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                                "webhelp",
                                 root_map,
                                 index_redirect,
                                 working_dir,
                                 localOutputDir,
-                                for_offline_use = true)
+                                for_offline_use = true
+                            )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                         docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-                        val zipPackageStep = GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
-                            "${working_dir}/${outputDir}")
+                        val zipPackageStep = GwBuildSteps.createZipPackageStep(
+                            "${working_dir}/${localOutputDir}",
+                            "${working_dir}/${outputDir}"
+                        )
                         docBuildType.steps.step(zipPackageStep)
                         docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
                     }
                 } else {
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep("webhelp",
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                        "webhelp",
                         root_map,
                         index_redirect,
                         working_dir,
@@ -175,7 +183,8 @@ object Docs {
                         gw_platforms,
                         gw_versions,
                         git_url,
-                        git_branch)
+                        git_branch
+                    )
                 }
                 docBuildType.steps.step(buildDitaProjectStep)
                 docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
@@ -190,13 +199,15 @@ object Docs {
                         val resourceSrcBranch = resourceSrcConfig.getString("branch")
 
                         val resourceTargetDir = resourceObject.getString("targetFolder")
-                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(stepId,
+                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
+                            stepId,
                             working_dir,
                             outputDir,
                             resourceSrcDir,
                             resourceTargetDir,
                             resourceSrcUrl,
-                            resourceSrcBranch)
+                            resourceSrcBranch
+                        )
                         copyResourcesSteps.add(copyResourcesStep)
                     }
                     docBuildType.steps {
@@ -237,13 +248,15 @@ object Docs {
                 }
             }
             val localOutputDir = "${outputDir}/zip"
-            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(format,
+            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                format,
                 root_map,
                 index_redirect,
                 working_dir,
                 localOutputDir,
                 build_filter,
-                for_offline_use = true)
+                for_offline_use = true
+            )
             downloadableOutputBuildType.steps.step(buildDitaProjectForOfflineUseStep)
             downloadableOutputBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
             val zipPackageStep =
@@ -339,7 +352,8 @@ object Docs {
                 if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
             val buildCommand =
                 if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
-            docProjectBuildTypes += createYarnBuildTypes(docEnvironmentsList,
+            docProjectBuildTypes += createYarnBuildTypes(
+                docEnvironmentsList,
                 docId,
                 gitRepoId,
                 gitBranch,
@@ -350,7 +364,8 @@ object Docs {
                 nodeImageVersion,
                 gwPlatformsString,
                 gwProductsString,
-                gwVersionsString)
+                gwVersionsString
+            )
         } else if (gwBuildType == "dita") {
             val rootMap = build_config.getString("root")
             val indexRedirect = when (build_config.has("indexRedirect")) {
@@ -516,24 +531,34 @@ object Content {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
-            select("env.DEPLOY_ENV",
+            select(
+                "env.DEPLOY_ENV",
                 "",
                 label = "Deployment environment",
                 description = "Select an environment on which you want clean up the index",
                 display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod"))
-            text("env.CONFIG_FILE_URL",
+                options = listOf("dev", "int", "staging", "prod")
+            )
+            text(
+                "env.CONFIG_FILE_URL",
                 "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
-                allowEmpty = false)
-            text("env.CONFIG_FILE_URL_PROD",
+                allowEmpty = false
+            )
+            text(
+                "env.CONFIG_FILE_URL_PROD",
                 "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
-                allowEmpty = false)
-            text("env.ELASTICSEARCH_URLS",
+                allowEmpty = false
+            )
+            text(
+                "env.ELASTICSEARCH_URLS",
                 "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
-                allowEmpty = false)
-            text("env.ELASTICSEARCH_URLS_PROD",
+                allowEmpty = false
+            )
+            text(
+                "env.ELASTICSEARCH_URLS_PROD",
                 "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
-                allowEmpty = false)
+                allowEmpty = false
+            )
 
         }
 
@@ -566,18 +591,22 @@ object Content {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
-            select("DEPLOY_ENV",
+            select(
+                "DEPLOY_ENV",
                 "",
                 label = "Deployment environment",
                 description = "The environment on which you want reindex documents",
                 display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod", "portal2"))
-            text("DOC_ID",
+                options = listOf("dev", "int", "staging", "prod", "portal2")
+            )
+            text(
+                "DOC_ID",
                 "",
                 label = "Doc ID",
                 description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
+                allowEmpty = true
+            )
         }
 
         val configFile = "%teamcity.build.workingDir%/config.json"
@@ -596,16 +625,20 @@ object Content {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
-            text("env.RELEASE_NAME",
+            text(
+                "env.RELEASE_NAME",
                 "",
                 label = "Release name",
                 description = "For example, Banff or Cortina",
-                display = ParameterDisplay.PROMPT)
-            text("env.RELEASE_NUMBER",
+                display = ParameterDisplay.PROMPT
+            )
+            text(
+                "env.RELEASE_NUMBER",
                 "",
                 label = "Release number",
                 description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
-                display = ParameterDisplay.PROMPT)
+                display = ParameterDisplay.PROMPT
+            )
         }
 
         vcs {
@@ -709,7 +742,7 @@ object Server {
 //        }
     })
 
-    private object TestSettingsKts: BuildType({
+    private object TestSettingsKts : BuildType({
         name = "Test settings.kts"
 
         vcs {
@@ -936,6 +969,7 @@ object Server {
     })
 
     private fun createDeployServerBuildType(deploy_env: String, tag_version: String): BuildType {
+        val namespace = "doctools"
         val deployEnvLowercase = deploy_env.lowercase(Locale.getDefault())
         val buildTypeName = if (deployEnvLowercase == "us-east-2") "Deploy to prod" else "Deploy to $deploy_env"
         var awsAccessKeyId = "${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
@@ -972,6 +1006,16 @@ object Server {
             customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
         }
 
+        val deploymentFile: String
+        val ingressFile: String
+        if (deployEnvLowercase == "us-east-2") {
+            deploymentFile = "deployment-prod.yml"
+            ingressFile = "ingress-prod.yml"
+        } else {
+            deploymentFile = "deployment.yml"
+            ingressFile = "ingress.yml"
+        }
+
         val deployServerBuildType = BuildType {
             name = buildTypeName
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -987,19 +1031,34 @@ object Server {
                     id = "DEPLOY_TO_KUBERNETES"
                     scriptContent = """
                         #!/bin/bash 
-                        set -xe
-                        
+                        set -eux
+                                              
                         export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
                         export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
                         export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                        
+                        # Environment variables needed for deployment.yaml
                         export PARTNERS_LOGIN_URL="$partnersLoginUrl"
                         export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
-                        export DEPLOY_ENV="$deploy_env"
-                        export NAMESPACE="doctools"
+                        ###
                         
                         $setTagVersionCommand
                         
-                        sh server/ci/deployKubernetes.sh
+                        aws eks update-kubeconfig --name atmos-${deployEnvLowercase}
+                        
+                        echo ${'$'}(kubectl get pods --namespace=${namespace})
+                        
+                        eval "echo \"${'$'}(cat server/kube/${deploymentFile})\"" > deployment.yml
+                        eval "echo \"${'$'}(cat server/kube/${ingressFile})\"" > ingress.yml
+                        eval "echo \"${'$'}(cat server/kube/service.yml)\"" > service.yml
+                        
+                        kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
+                        kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=%env.SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
+                        
+                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" deployment.yml
+                        kubectl apply -f deployment.yml --namespace=${namespace}
+                        kubectl apply -f service.yml --namespace=${namespace}
+                        kubectl apply -f ingress.yml --namespace=${namespace}                    
                     """.trimIndent()
                     dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1039,19 +1098,21 @@ object Server {
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
 
-                stepsOrder = this.items.map {it.id.toString()} as ArrayList<String>
+                stepsOrder = this.items.map { it.id.toString() } as ArrayList<String>
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
         if (arrayOf("staging", "us-east-2").contains(deployEnvLowercase)) {
-            deployServerBuildType.params.text("TAG_VERSION",
+            deployServerBuildType.params.text(
+                "TAG_VERSION",
                 "",
                 label = "Deploy Version",
                 display = ParameterDisplay.PROMPT,
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
-                validationMessage = "Invalid SemVer Format")
+                validationMessage = "Invalid SemVer Format"
+            )
             deployServerBuildType.vcs.branchFilter = "+:${Helpers.createFullGitBranchName("master")}"
             if (deployEnvLowercase == "us-east-2") {
 //            FIXME: Unify the usage of the tag version variable among the build steps
@@ -1182,15 +1243,19 @@ object Exports {
                     }
                 }
 
-                exportBuildTypes.add(createExportFilesFromXDocsToBitbucketCompositeBuildType(srcTitle,
-                    xdocsPathIds,
-                    gitUrl,
-                    gitBranch,
-                    srcId,
-                    exportServer,
-                    exportFrequency,
-                    scheduleHour,
-                    scheduleMinute))
+                exportBuildTypes.add(
+                    createExportFilesFromXDocsToBitbucketCompositeBuildType(
+                        srcTitle,
+                        xdocsPathIds,
+                        gitUrl,
+                        gitBranch,
+                        srcId,
+                        exportServer,
+                        exportFrequency,
+                        scheduleHour,
+                        scheduleMinute
+                    )
+                )
             }
         }
         return exportBuildTypes
@@ -1263,35 +1328,47 @@ object Exports {
         maxRunningBuilds = 2
 
         params {
-            text("EXPORT_PATH_IDS",
+            text(
+                "EXPORT_PATH_IDS",
                 "",
                 description = "A list of space-separated path IDs from XDocs",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
-            text("GIT_URL",
+                allowEmpty = true
+            )
+            text(
+                "GIT_URL",
                 "",
                 description = "The URL of the Bitbucket repository where the files exported from XDocs are added",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
-            text("GIT_BRANCH",
+                allowEmpty = true
+            )
+            text(
+                "GIT_BRANCH",
                 "",
                 description = "The branch of the Bitbucket repository where the files exported from XDocs are added",
                 display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
-            text("XDOCS_EXPORT_DIR",
+                allowEmpty = true
+            )
+            text(
+                "XDOCS_EXPORT_DIR",
                 "%system.teamcity.build.tempDir%/xdocs_export_dir",
                 display = ParameterDisplay.HIDDEN,
-                allowEmpty = false)
-            text("SRC_ID",
+                allowEmpty = false
+            )
+            text(
+                "SRC_ID",
                 "",
                 description = "The ID of the source",
                 display = ParameterDisplay.HIDDEN,
-                allowEmpty = false)
-            text("EXPORT_SERVER",
+                allowEmpty = false
+            )
+            text(
+                "EXPORT_SERVER",
                 "",
                 description = "The export server",
                 display = ParameterDisplay.HIDDEN,
-                allowEmpty = false)
+                allowEmpty = false
+            )
         }
 
         vcs {
@@ -1390,11 +1467,13 @@ object BuildListeners {
                         branchFilter = GwVcsSettings.createBranchFilter(uniqueGitRepoBranches)
                         cleanCheckout = true
                     }
-                    steps.step(GwBuildSteps.createRunBuildManagerStep(
-                        Docs.rootProject.id.toString(),
-                        GwTemplates.BuildListenerTemplate.id.toString(),
-                        Helpers.resolveRelativeIdFromIdString(gitRepoId),
-                        "")
+                    steps.step(
+                        GwBuildSteps.createRunBuildManagerStep(
+                            Docs.rootProject.id.toString(),
+                            GwTemplates.BuildListenerTemplate.id.toString(),
+                            Helpers.resolveRelativeIdFromIdString(gitRepoId),
+                            ""
+                        )
                     )
 // FIXME: Reenable this line when the refactoring is done
 //            triggers.vcs { }
@@ -1431,11 +1510,13 @@ object Sources {
                     Helpers.buildConfigs.filter { it.getString("srcId") == srcId }
                 if (buildsRelatedToSrc.isNotEmpty()) {
                     val gitBranch = src.getString("branch")
-                    val validationProject = createValidationProject(srcId,
+                    val validationProject = createValidationProject(
+                        srcId,
                         gitRepoId,
                         gitRepoUrl,
                         gitBranch,
-                        buildsRelatedToSrc)
+                        buildsRelatedToSrc
+                    )
                     validationProjects.add(validationProject)
                 }
             }
@@ -1494,11 +1575,13 @@ object Sources {
                 branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
                 cleanCheckout = true
             }
-            steps.step(GwBuildSteps.createRunBuildManagerStep(
-                teamcity_affected_project_id,
-                GwTemplates.ValidationListenerTemplate.id.toString(),
-                Helpers.resolveRelativeIdFromIdString(git_repo_id),
-                git_branch)
+            steps.step(
+                GwBuildSteps.createRunBuildManagerStep(
+                    teamcity_affected_project_id,
+                    GwTemplates.ValidationListenerTemplate.id.toString(),
+                    Helpers.resolveRelativeIdFromIdString(git_repo_id),
+                    git_branch
+                )
             )
 
             // FIXME: Reenable this line when the refactoring is done
@@ -1586,47 +1669,62 @@ object Sources {
             """.trimIndent()
 
             validationBuildType.steps {
-                step(GwBuildSteps.createGetDocumentDetailsStep(
-                    buildBranch,
-                    src_id,
-                    docInfoFile,
-                    org.json.JSONObject()))
-                step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                    "webhelp",
-                    rootMap,
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir,
-                    buildFilter,
-                    indexRedirect))
-                step(GwBuildSteps.createUploadContentPreviewToS3BucketStep(
-                    "${workingDir}/out/webhelp",
-                    publishPath,
-                    previewUrlFile))
-                step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                    "dita",
-                    rootMap,
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir
-                ))
-                step(GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                    "validate",
-                    rootMap,
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir
-                ))
-                step(GwBuildSteps.createRunDocValidatorStep(
-                    workingDir,
-                    ditaOtLogsDir,
-                    normalizedDitaDir,
-                    schematronReportsDir,
-                    docInfoFile
-                ))
+                step(
+                    GwBuildSteps.createGetDocumentDetailsStep(
+                        buildBranch,
+                        src_id,
+                        docInfoFile,
+                        org.json.JSONObject()
+                    )
+                )
+                step(
+                    GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                        "webhelp",
+                        rootMap,
+                        workingDir,
+                        ditaOtLogsDir,
+                        normalizedDitaDir,
+                        schematronReportsDir,
+                        buildFilter,
+                        indexRedirect
+                    )
+                )
+                step(
+                    GwBuildSteps.createUploadContentPreviewToS3BucketStep(
+                        "${workingDir}/out/webhelp",
+                        publishPath,
+                        previewUrlFile
+                    )
+                )
+                step(
+                    GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                        "dita",
+                        rootMap,
+                        workingDir,
+                        ditaOtLogsDir,
+                        normalizedDitaDir,
+                        schematronReportsDir
+                    )
+                )
+                step(
+                    GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                        "validate",
+                        rootMap,
+                        workingDir,
+                        ditaOtLogsDir,
+                        normalizedDitaDir,
+                        schematronReportsDir
+                    )
+                )
+                step(
+                    GwBuildSteps.createRunDocValidatorStep(
+                        workingDir,
+                        ditaOtLogsDir,
+                        normalizedDitaDir,
+                        schematronReportsDir,
+                        docInfoFile
+                    )
+                )
             }
         } else if (gw_build_type == "yarn") {
             val metadata = docConfig.getJSONObject("metadata")
@@ -1652,11 +1750,14 @@ object Sources {
                         gwPlatformsString,
                         gwVersionsString,
                         workingDir
-                    ))
-                step(GwBuildSteps.createUploadContentPreviewToS3BucketStep(
-                    "${workingDir}/out/webhelp",
-                    publishPath,
-                    previewUrlFile)
+                    )
+                )
+                step(
+                    GwBuildSteps.createUploadContentPreviewToS3BucketStep(
+                        "${workingDir}/out/webhelp",
+                        publishPath,
+                        previewUrlFile
+                    )
                 )
             }
             // FIXME: Reenable this line when the refactoring is done
@@ -1735,11 +1836,13 @@ object Recommendations {
         val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deploy_env)
         for (combination in allPlatformProductVersionCombinations) {
             val (platform, product, version) = combination
-            val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType("int",
+            val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType(
+                "int",
                 platform,
                 product,
                 version,
-                "GoogleNews-vectors-negative300.bin")
+                "GoogleNews-vectors-negative300.bin"
+            )
             recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
         }
         return Project {
@@ -1836,7 +1939,8 @@ object Apps {
     }
 
     private fun createAppProjects(): List<Project> {
-        return arrayOf("Config deployer",
+        return arrayOf(
+            "Config deployer",
             "Doc crawler",
             "Index cleaner",
             "Build manager",
@@ -1845,7 +1949,8 @@ object Apps {
             "Lion pkg builder",
             "Lion page builder",
             "Upgrade diffs page builder",
-            "Sitemap generator").map {
+            "Sitemap generator"
+        ).map {
             Project {
                 name = it
                 id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1994,7 +2099,9 @@ object Helpers {
 
             val existingGroupedSource = groupedSources.find { it.getString("gitUrl") == gitUrl }
             if (existingGroupedSource == null) {
-                groupedSources.add(JSONObject("""
+                groupedSources.add(
+                    JSONObject(
+                        """
                             {
                             "id": "$id",
                             "gitUrl": "$gitUrl",
@@ -2006,18 +2113,24 @@ object Helpers {
                                     }
                                 ]
                             }
-                        """.trimIndent()))
+                        """.trimIndent()
+                    )
+                )
             } else {
                 val existingGroupedSourceHasSrcId =
                     existingGroupedSource.getJSONArray("sources").any { (it as JSONObject).getString("srcId") == srcId }
                 if (!existingGroupedSourceHasSrcId) {
-                    existingGroupedSource.getJSONArray("sources").put(JSONObject("""
+                    existingGroupedSource.getJSONArray("sources").put(
+                        JSONObject(
+                            """
                                 {
                                 "srcId": "$srcId",
                                 "branch": "$gitBranch",
                                 "isExported": "$isExported"
                                 }
-                            """.trimIndent()))
+                            """.trimIndent()
+                        )
+                    )
                 }
             }
         }
@@ -2702,9 +2815,11 @@ object GwBuildTriggers {
 
 object GwVcsRoots {
     val xdocsClientGitVcsRoot =
-        createGitVcsRoot(Helpers.resolveRelativeIdFromIdString("XDocs Client"),
+        createGitVcsRoot(
+            Helpers.resolveRelativeIdFromIdString("XDocs Client"),
             "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
-            listOf("master"))
+            listOf("master")
+        )
 
     private fun createGitVcsRoot(vcs_root_id: RelativeId, git_url: String, git_branches: List<String>): GitVcsRoot {
         val defaultBranch = git_branches[0]
