@@ -698,10 +698,10 @@ object Server {
             buildType(TestDocSiteServerApp)
             buildType(TestConfig)
             buildType(TestSettingsKts)
-            buildType(createDeployServerBuildType("dev", "latest"))
-            buildType(createDeployServerBuildType("int", "latest-int"))
-            buildType(createDeployServerBuildType("staging", "%TAG_VERSION%"))
-            buildType(createDeployServerBuildType("us-east-2", "%TAG_VERSION%"))
+            buildType(createDeployServerBuildType("dev"))
+            buildType(createDeployServerBuildType("int"))
+            buildType(createDeployServerBuildType("staging"))
+            buildType(createDeployServerBuildType("us-east-2"))
             buildType(ReleaseNewVersion)
         }
     }
@@ -968,9 +968,15 @@ object Server {
         }
     })
 
-    private fun createDeployServerBuildType(deploy_env: String, tag_version: String): BuildType {
-        val namespace = "doctools"
+    private fun createDeployServerBuildType(deploy_env: String): BuildType {
         val deployEnvLowercase = deploy_env.lowercase(Locale.getDefault())
+        val namespace = "doctools"
+        val packageName = "artifactory.guidewire.com/doctools-docker-dev/docportal"
+        val tagVersion = when (deployEnvLowercase) {
+            "dev" -> "latest"
+            "int" -> "latest-int"
+            else -> "v%TAG_VERSION%"
+        }
         val buildTypeName = if (deployEnvLowercase == "us-east-2") "Deploy to prod" else "Deploy to $deploy_env"
         var awsAccessKeyId = "${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
         var awsSecretAccessKey = "${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
@@ -980,19 +986,6 @@ object Server {
             awsSecretAccessKey = "${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
             awsDefaultRegion = "${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
         }
-        val buildBranch = "%teamcity.build.vcs.branch.${DslContext.settingsRoot.id}%"
-        val setTagVersionCommand = if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
-            """
-                export TAG_VERSION="$tag_version"
-                
-                if [[ "$buildBranch" != "master" ]] || [[ "$buildBranch" != "refs/heads/master" ]]; then
-                    export TAG_VERSION=${'$'}(echo "$buildBranch" | tr -d /)-${deploy_env}
-                fi
-            """.trimIndent()
-        } else {
-            "export TAG_VERSION=\"v$tag_version\""
-        }
-
         val partnersLoginUrl: String
         val customersLoginUrl: String
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
@@ -1022,6 +1015,7 @@ object Server {
 
             vcs {
                 root(DslContext.settingsRoot)
+                branchFilter = Helpers.createFullGitBranchName("master")
                 cleanCheckout = true
             }
 
@@ -1037,12 +1031,12 @@ object Server {
                         export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
                         export AWS_DEFAULT_REGION="$awsDefaultRegion"
                         
-                        # Environment variables needed for deployment.yaml
+                        # Environment variables needed for Kubernetes config files
                         export PARTNERS_LOGIN_URL="$partnersLoginUrl"
                         export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
+                        export DEPLOY_ENV="$deployEnvLowercase"
+                        export TAG_VERSION="$tagVersion"
                         ###
-                        
-                        $setTagVersionCommand
                         
                         aws eks update-kubeconfig --name atmos-${deployEnvLowercase}
                         
@@ -1115,18 +1109,16 @@ object Server {
             )
             deployServerBuildType.vcs.branchFilter = "+:${Helpers.createFullGitBranchName("master")}"
             if (deployEnvLowercase == "us-east-2") {
-//            FIXME: Unify the usage of the tag version variable among the build steps
                 val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToEcrStep(tag_version)
+                    GwBuildSteps.createPublishServerDockerImageToEcrStep(packageName, tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
                 deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
             }
         }
 
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
-//            FIXME: Unify the usage of the tag version variable among the build steps
             val buildAndPublishServerDockerImageStep =
-                GwBuildSteps.createBuildAndPublishServerDockerImageStep(setTagVersionCommand)
+                GwBuildSteps.createBuildAndPublishServerDockerImageStep(packageName, tagVersion)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.dependencies {
@@ -2203,16 +2195,18 @@ object GwBuildSteps {
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
     })
 
-    fun createPublishServerDockerImageToEcrStep(tag_version: String): ScriptBuildStep {
+    fun createPublishServerDockerImageToEcrStep(package_name: String, tag_version: String): ScriptBuildStep {
+        val ecrPackageName = "710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
         return ScriptBuildStep {
             name = "Publish server Docker Image to ECR"
             id = "PUBLISH_SERVER_DOCKER_IMAGE_TO_ECR"
             scriptContent = """
                 set -xe
-                docker pull artifactory.guidewire.com/doctools-docker-dev/docportal:v${tag_version}
-                docker tag artifactory.guidewire.com/doctools-docker-dev/docportal:v${tag_version} 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v${tag_version}
+                
+                docker pull ${package_name}:${tag_version}
+                docker tag ${package_name}:${tag_version} ${ecrPackageName}:${tag_version}
                 eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
-                docker push 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:v${tag_version}
+                docker push ${ecrPackageName}:${tag_version}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2223,7 +2217,8 @@ object GwBuildSteps {
     }
 
     fun createBuildAndPublishServerDockerImageStep(
-        set_tag_version_command: String
+        package_name: String,
+        tag_version: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build and publish server Docker Image"
@@ -2231,12 +2226,9 @@ object GwBuildSteps {
             scriptContent = """
                 #!/bin/bash 
                 set -xe
-                $set_tag_version_command
                 
-                export PACKAGE_NAME=artifactory.guidewire.com/doctools-docker-dev/docportal
-                
-                docker build -t ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION} ./server --build-arg tag_version=${'$'}TAG_VERSION
-                docker push ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION}
+                docker build -t ${package_name}:${tag_version} ./server --build-arg tag_version=${tag_version}
+                docker push ${package_name}:${tag_version}
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
