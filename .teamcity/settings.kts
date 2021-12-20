@@ -717,11 +717,13 @@ object Server {
             awsSecretAccessKey = "${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
             awsDefaultRegion = "${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
         }
+        val buildBranch = "%teamcity.build.vcs.branch.${DslContext.settingsRoot.id}%"
         val setTagVersionCommand = if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
             """
                 export TAG_VERSION="$tag_version"
-                if [[ "%teamcity.build.branch%" != "master" ]] || [[ "%teamcity.build.branch%" != "refs/heads/master" ]]; then
-                    export TAG_VERSION=${'$'}(echo "%teamcity.build.branch%" | tr -d /)-${deploy_env}
+                
+                if [[ "$buildBranch" != "master" ]] || [[ "$buildBranch" != "refs/heads/master" ]]; then
+                    export TAG_VERSION=${'$'}(echo "$buildBranch" | tr -d /)-${deploy_env}
                 fi
             """.trimIndent()
         } else {
