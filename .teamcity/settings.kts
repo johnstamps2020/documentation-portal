@@ -469,7 +469,7 @@ object Content {
         vcs {
             root(DslContext.settingsRoot)
             cleanCheckout = true
-            branchFilter = Helpers.createFullGitBranchName("master")
+            branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
         }
 
         steps {
@@ -718,7 +718,7 @@ object Frontend {
 
             vcs {
                 root(DslContext.settingsRoot)
-                branchFilter = Helpers.createFullGitBranchName("master")
+                branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
                 cleanCheckout = true
             }
 
@@ -771,13 +771,8 @@ object Frontend {
 
             vcs {
                 root(DslContext.settingsRoot)
-                branchFilter = Helpers.createFullGitBranchName("master")
-                cleanCheckout = true
-            }
-
-            vcs {
                 root(GwVcsRoots.LocalizedPdfsGitVcsRoot, "+:. => $lionSourcesRoot")
-                branchFilter = Helpers.createFullGitBranchName("main")
+                branchFilter = GwVcsSettings.createBranchFilter(listOf("master", "main"))
                 cleanCheckout = true
             }
 
@@ -1186,7 +1181,7 @@ object Server {
         vcs {
             root(DslContext.settingsRoot)
             cleanCheckout = true
-            branchFilter = Helpers.createFullGitBranchName("master")
+            branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
         }
 
         steps {
@@ -1351,7 +1346,7 @@ object Server {
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
                 validationMessage = "Invalid SemVer Format"
             )
-            deployServerBuildType.vcs.branchFilter = "+:${Helpers.createFullGitBranchName("master")}"
+            deployServerBuildType.vcs.branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
             if (deployEnvLowercase == "us-east-2") {
                 val publishServerDockerImageToEcrStep =
                     GwBuildSteps.createPublishServerDockerImageToEcrStep(packageName, tagVersion)
@@ -1363,7 +1358,7 @@ object Server {
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
             deployServerBuildType.vcs {
                 root(DslContext.settingsRoot)
-                branchFilter = Helpers.createFullGitBranchName("master")
+                branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
                 cleanCheckout = true
             }
             val buildAndPublishServerDockerImageStep =
