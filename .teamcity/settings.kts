@@ -1013,12 +1013,6 @@ object Server {
             name = buildTypeName
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            vcs {
-                root(DslContext.settingsRoot)
-                branchFilter = Helpers.createFullGitBranchName("master")
-                cleanCheckout = true
-            }
-
             steps {
                 script {
                     name = "Deploy to Kubernetes"
@@ -1117,6 +1111,11 @@ object Server {
         }
 
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
+            deployServerBuildType.vcs {
+                root(DslContext.settingsRoot)
+                branchFilter = Helpers.createFullGitBranchName("master")
+                cleanCheckout = true
+            }
             val buildAndPublishServerDockerImageStep =
                 GwBuildSteps.createBuildAndPublishServerDockerImageStep(packageName, tagVersion)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
