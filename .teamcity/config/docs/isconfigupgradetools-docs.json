@@ -1,0 +1,80 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isconfigupgradetools3x",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/3x",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["3.x.x"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isconfigupgradetools320jaJP",
+      "title": "InsuranceSuite Configuration Upgrade Tools ja-JP",
+      "url": "isconfigupgradetools/ja-JP/320",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["3.2.0"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isconfigupgradetools330",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/330",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["3.3.0"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isconfigupgradetools310",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/310",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["3.1.0"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "isconfigupgradetools300",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/300",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["3.0.0"],
+        "release": ["Aspen"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
