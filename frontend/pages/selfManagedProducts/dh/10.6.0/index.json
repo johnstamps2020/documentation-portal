@@ -13,15 +13,15 @@
       },
       {
         "label": "10.4.0",
-        "page": "/self-managed/dh/1040"
+        "id": "dh1040"
       },
       {
         "label": "10.3.0",
-        "page": "/self-managed/dh/1030"
+        "id": "dh1030"
       },
       {
         "label": "10.2.0",
-        "page": "/self-managed/dh/1020"
+        "id": "dh1020"
       }
     ]
   },

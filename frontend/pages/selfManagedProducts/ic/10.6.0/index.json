@@ -13,15 +13,15 @@
       },
       {
         "label": "10.4.0",
-        "page": "/self-managed/ic/1040"
+        "id": "ic1040"
       },
       {
         "label": "10.3.0",
-        "page": "/self-managed/ic/1030"
+        "id": "ic1030"
       },
       {
         "label": "10.2.0",
-        "page": "/self-managed/ic/1020"
+        "id": "ic1020"
       }
     ]
   },
