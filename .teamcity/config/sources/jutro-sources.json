@@ -240,7 +240,7 @@
       "branch": "release/7.1.1"
     },
     {
-      "id": "srcjutrostorybook710",
+      "id": "srcjutrostorybook711",
       "title": "Jutro Storybook 7.1.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
