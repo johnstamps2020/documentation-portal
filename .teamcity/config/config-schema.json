@@ -17,13 +17,6 @@
         "$ref": "#/definitions/source"
       }
     },
-    "productFamilies": {
-      "description": "A list of available product families, and the products that belong to them",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/productFamily"
-      }
-    },
     "docs": {
       "description": "A list of available docs, along with urls and metadata",
       "type": "array",
@@ -158,33 +151,6 @@
           "type": "integer"
         }
       }
-    },
-    "productFamily": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["productFamilyName", "product"],
-      "properties": {
-        "productFamilyName": {
-          "$ref": "#/definitions/productFamilyName"
-        },
-        "product": {
-          "$ref": "#/definitions/product"
-        }
-      }
-    },
-    "productFamilyName": {
-      "description": "The name of the product family, for cloud docs only.",
-      "type": "string",
-      "enum": [
-        "BillingCenter Cloud",
-        "ClaimCenter Cloud",
-        "PolicyCenter Cloud",
-        "InsuranceNow",
-        "Guidewire Cloud Platform",
-        "Feature Preview",
-        "Integration Framework",
-        "Guidewire Cloud Standards"
-      ]
     },
     "product": {
       "description": "The name of the product",
