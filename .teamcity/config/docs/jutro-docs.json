@@ -590,13 +590,13 @@
       "public": false
     },
     {
-      "id": "jutro710",
+      "id": "jutro711",
       "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/7.1.0",
+      "url": "jutro/documentation/7.1.1",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["7.1.0"],
+        "version": ["7.1.1"],
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
@@ -605,13 +605,13 @@
       "public": false
     },
     {
-      "id": "storybook710",
+      "id": "storybook711",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/7.1.0",
+      "url": "jutro/storybook/7.1.1",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["7.1.0"],
+        "version": ["7.1.1"],
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
