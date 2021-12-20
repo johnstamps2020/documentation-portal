@@ -1163,11 +1163,11 @@ object Server {
         val partnersLoginUrl: String
         val customersLoginUrl: String
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
-            partnersLoginUrl = "https://qaint-guidewire.cs170.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://qaint-guidewire.cs170.force.com/customers/idp/endpoint/HttpRedirect"
+            partnersLoginUrl = "https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect"
         } else if (deployEnvLowercase == "staging") {
-            partnersLoginUrl = "https://uat-guidewire.cs218.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://uat-guidewire.cs218.force.com/customers/idp/endpoint/HttpRedirect"
+            partnersLoginUrl = "https://uat-guidewire.cs166.force.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://uat-guidewire.cs166.force.com/customers/idp/endpoint/HttpRedirect"
         } else {
             partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
