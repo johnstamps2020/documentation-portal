@@ -6,8 +6,8 @@
       "filter": "Other/GW-Generic-Draft.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
-      "srcId": "isconfigupgradetools3xsrc",
-      "docId": "isconfigupgradetools3x"
+      "srcId": "isconfigupgradetoolsdraftsrc",
+      "docId": "isconfigupgradetoolsdraft"
     },
     {
       "buildType": "dita",

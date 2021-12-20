@@ -2,13 +2,13 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "isconfigupgradetools3x",
+      "id": "isconfigupgradetoolsdraft",
       "title": "InsuranceSuite Configuration Upgrade Tools",
-      "url": "isconfigupgradetools/3x",
+      "url": "isconfigupgradetools/draft",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["3.x.x"],
+        "version": ["4.x.x"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["int"],
