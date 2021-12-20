@@ -692,8 +692,304 @@ object Frontend {
         return Project {
             name = "Frontend"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            subProject(createDeployLandingPagesProject())
         }
     }
+
+    private fun createDeployLandingPagesProject(): Project {
+        return Project {
+            name = "Deploy landing pages"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf("dev", "int", "staging", "us-east-2").forEach {
+                buildType(createDeployLandingPagesBuildType(it))
+            }
+        }
+    }
+
+    private fun createDeployLandingPagesBuildType(deploy_env: String): BuildType {
+        return BuildType {
+            name = "Deploy landing pages to $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(DslContext.settingsRoot)
+                branchFilter = Helpers.createFullGitBranchName("master")
+                cleanCheckout = true
+            }
+
+            steps {
+                step(GwBuildSteps.MergeDocsConfigFilesStep)
+                step(GwBuildSteps.createBuildPagesStep(
+                    "%teamcity.build.checkoutDir%/frontend/pages",
+                    "%teamcity.build.checkoutDir%/output",
+                    "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
+                    deploy_env
+                ))
+                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "frontend"))
+            }
+// FIXME: Reenable this line when the refactoring is done
+//        triggers {
+//            vcs {
+//                triggerRules = """
+//                +:root=${DslContext.settingsRoot}:frontend/pages/**
+//                -:user=doctools:**
+//            """.trimIndent()
+//            }
+//        }
+        }
+    }
+
+    object DeployLocalizedPages : BuildType({
+        name = "Deploy localized pages"
+
+        params {
+            text(
+                "PAGES_DIR",
+                "%teamcity.build.checkoutDir%/build",
+                description = "Flail SSG input dir",
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "OUTPUT_DIR",
+                "%teamcity.build.checkoutDir%/output",
+                description = "Flail SSG output dir",
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "DOCS_CONFIG_FILE",
+                "%env.CONFIG_FILES_OUTPUT_DIR%/merge-all.json",
+                display = ParameterDisplay.HIDDEN
+            )
+            text("LION_SOURCES_ROOT", "pdf-src", display = ParameterDisplay.HIDDEN)
+            text(
+                "env.LOC_DOCS_SRC",
+                "%teamcity.build.checkoutDir%/%LION_SOURCES_ROOT%",
+                display = ParameterDisplay.HIDDEN
+            )
+            text("env.LOC_DOCS_OUT", "%env.PAGES_DIR%/l10n", display = ParameterDisplay.HIDDEN)
+            select(
+                "DEPLOY_ENV",
+                "dev",
+                label = "Deployment environment",
+                description = "Select an environment on which you want deploy the config",
+                display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod" to "us-east-2")
+            )
+        }
+
+//        vcs {
+//            root(LocalizedPDFs, "+:. => %LION_SOURCES_ROOT%")
+//            cleanCheckout = true
+//        }
+
+
+        steps {
+            script {
+                name = "Generate localization page configurations"
+                id = "GENERATE_LOCALIZATION_PAGE_CONFIGURATIONS"
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+                lion_page_builder
+            """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            script {
+                name = "Copy localized PDFs to the S3 bucket"
+                id = "COPY_LOCALIZED_PDFS_TO_S3_BUCKET"
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
+                  export DEPLOY_ENV=prod
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"					
+                fi
+                
+                aws s3 sync %env.LOC_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/l10n --exclude ".git/*" --delete
+            """.trimIndent()
+            }
+            script {
+                name = "Deploy to Kubernetes"
+                id = "DEPLOY_TO_KUBERNETES"
+                scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                fi
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh localizedPages
+            """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerPull = true
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            }
+
+            stepsOrder = arrayListOf(
+                "GENERATE_LOCALIZATION_PAGE_CONFIGURATIONS",
+                "COPY_LOCALIZED_PDFS_TO_S3_BUCKET",
+                "MERGE_DOCS_CONFIG_FILES",
+                "BUILD_PAGES",
+                "DEPLOY_TO_KUBERNETES"
+            )
+        }
+
+//        triggers {
+//            vcs {
+//                branchFilter = "+:<default>"
+//                triggerRules = """
+//                +:root=${LocalizedPDFs.id}:**
+//                -:user=doctools:**
+//            """.trimIndent()
+//            }
+//        }
+    })
+
+    object DeployUpgradeDiffs : BuildType({
+        name = "Deploy upgrade diffs"
+
+        params {
+            text(
+                "PAGES_DIR",
+                "%teamcity.build.checkoutDir%/build",
+                description = "Flail SSG input dir",
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "OUTPUT_DIR",
+                "%teamcity.build.checkoutDir%/output",
+                description = "Flail SSG output dir",
+                display = ParameterDisplay.HIDDEN
+            )
+            text(
+                "DOCS_CONFIG_FILE",
+                "%env.CONFIG_FILES_OUTPUT_DIR%/merge-all.json",
+                display = ParameterDisplay.HIDDEN
+            )
+            text("UPGRADEDIFFS_SOURCES_ROOT", "upgradediffs-src", display = ParameterDisplay.HIDDEN)
+            text(
+                "env.UPGRADEDIFFS_DOCS_SRC",
+                "%teamcity.build.checkoutDir%/%UPGRADEDIFFS_SOURCES_ROOT%/src",
+                display = ParameterDisplay.HIDDEN
+            )
+            text("env.UPGRADEDIFFS_DOCS_OUT", "%env.PAGES_DIR%/upgradediffs", display = ParameterDisplay.HIDDEN)
+            select(
+                "DEPLOY_ENV",
+                "dev",
+                label = "Deployment environment",
+                description = "Select an environment on which you want deploy the config",
+                display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod" to "us-east-2")
+            )
+        }
+
+//        vcs {
+//            root(UpgradeDiffs, "+:. => %UPGRADEDIFFS_SOURCES_ROOT%")
+//            cleanCheckout = true
+//        }
+
+
+        steps {
+            script {
+                name = "Generate upgrade diffs page configurations"
+                id = "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS"
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+
+                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
+                  export DEPLOY_ENV=prod
+                fi
+                upgradediffs_page_builder
+            """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            script {
+                name = "Copy upgrade diffs to the S3 bucket"
+                id = "COPY_UPGRADE_DIFFS_TO_S3_BUCKET"
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                if [[ %env.DEPLOY_ENV% == "us-east-2" ]]; then
+                  export DEPLOY_ENV=prod
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                  aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs --exclude "*/*-rc/*" --delete
+                else
+                  export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                  export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                  export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"	
+                  if [[ %env.DEPLOY_ENV% == "staging" ]]; then
+                    aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs --exclude "*/*-rc/*" --delete
+                  else
+                    aws s3 sync %env.UPGRADEDIFFS_DOCS_SRC% s3://tenant-doctools-${'$'}DEPLOY_ENV-builds/upgradediffs --delete
+                  fi		
+                fi
+                
+            """.trimIndent()
+            }
+            script {
+                name = "Deploy to Kubernetes"
+                id = "DEPLOY_TO_KUBERNETES"
+                scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                fi
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh upgradeDiffs
+            """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerPull = true
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            }
+
+            stepsOrder = arrayListOf(
+                "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS",
+                "COPY_UPGRADE_DIFFS_TO_S3_BUCKET",
+                "MERGE_DOCS_CONFIG_FILES",
+                "BUILD_PAGES",
+                "DEPLOY_TO_KUBERNETES"
+            )
+        }
+
+//        triggers {
+//            vcs {
+//                branchFilter = "+:<default>"
+//                triggerRules = """
+//                +:root=${UpgradeDiffs.id}:**
+//                -:user=doctools:**
+//            """.trimIndent()
+//            }
+//
+//        }
+    })
 }
 
 object Server {
@@ -988,14 +1284,7 @@ object Server {
             else -> "v%TAG_VERSION%"
         }
         val buildTypeName = if (deployEnvLowercase == "us-east-2") "Deploy to prod" else "Deploy to $deploy_env"
-        var awsAccessKeyId = "${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-        var awsSecretAccessKey = "${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-        var awsDefaultRegion = "${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
-        if (deploy_env.lowercase(Locale.getDefault()) == "us-east-2") {
-            awsAccessKeyId = "${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-            awsSecretAccessKey = "${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-            awsDefaultRegion = "${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-        }
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deployEnvLowercase)
         val partnersLoginUrl: String
         val customersLoginUrl: String
         if (arrayOf("dev", "int").contains(deployEnvLowercase)) {
@@ -1841,8 +2130,8 @@ object Recommendations {
                 "int",
                 platform,
                 product,
-                version,
-                "GoogleNews-vectors-negative300.bin"
+                version
+
             )
             recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
         }
@@ -1877,8 +2166,8 @@ object Recommendations {
         gw_platform: String,
         gw_product: String,
         gw_version: String,
-        pretrained_model_file: String,
     ): BuildType {
+        val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
         return BuildType {
             name = "Generate recommendations for $gw_product, $gw_platform, $gw_version"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1896,7 +2185,7 @@ object Recommendations {
                             export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
                             
                             echo "Downloading the pretrained model from the S3 bucket"
-                            aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrained_model_file} %teamcity.build.workingDir%/
+                            aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
                         """.trimIndent()
                 }
                 script {
@@ -1911,7 +2200,7 @@ object Recommendations {
                             export ELASTICSEARCH_URL="https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
                             export DOCS_INDEX_NAME="gw-docs"
                             export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
-                            export PRETRAINED_MODEL_FILE="$pretrained_model_file"
+                            export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
                                                                     
                             recommendation_engine
                         """.trimIndent()
@@ -2187,6 +2476,21 @@ object Helpers {
         }
     }
 
+    fun getAwsSettings(deploy_env: String): Triple<String, String, String> {
+        return when (deploy_env.lowercase(Locale.getDefault())) {
+            "us-east-2" -> Triple(
+                "${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID",
+                "${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY",
+                "${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+            )
+            else -> Triple(
+                "${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID",
+                "${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY",
+                "${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+            )
+        }
+    }
+
 
 }
 
@@ -2203,6 +2507,32 @@ object GwBuildSteps {
         dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
     })
+
+    fun createBuildPagesStep(
+        pages_dir: String,
+        output_dir: String,
+        docs_config_file: String,
+        deploy_env: String,
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Build pages"
+            id = "BUILD_PAGES"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export PAGES_DIR="$pages_dir"
+                export OUTPUT_DIR="$output_dir"
+                export DOCS_CONFIG_FILE="$docs_config_file"
+                export DEPLOY_ENV="$deploy_env"
+                export SEND_BOUNCER_HOME="no"
+                                
+                flail_ssg
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
 
     fun createPublishServerDockerImageToEcrStep(package_name: String, tag_version: String): ScriptBuildStep {
         val ecrPackageName = "710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
@@ -2244,32 +2574,6 @@ object GwBuildSteps {
             dockerPull = true
             dockerRunParameters =
                 "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-        }
-    }
-
-    fun createBuildPagesStep(
-        pages_dir: String,
-        output_dir: String,
-        docs_config_file: String,
-        deploy_env: String,
-    ): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Build pages"
-            id = "BUILD_PAGES"
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export PAGES_DIR="$pages_dir"
-                export OUTPUT_DIR="$output_dir"
-                export DOCS_CONFIG_FILE="$docs_config_file"
-                export DEPLOY_ENV="$deploy_env"
-                export SEND_BOUNCER_HOME="no"
-                                
-                flail_ssg
-            """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
 
@@ -2731,6 +3035,28 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createDeployFilesToPersistentVolumeStep(deploy_env: String, deployment_mode: String): ScriptBuildStep {
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        return ScriptBuildStep {
+            name = "Deploy files to persistent volume"
+            id = "DEPLOY_FILES_TO_PERSISTENT_VOLUME"
+            scriptContent = """
+                #!/bin/bash 
+                set -xe
+                
+                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh ${deployment_mode}
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 }
