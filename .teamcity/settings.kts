@@ -709,8 +709,9 @@ object Frontend {
     }
 
     private fun createDeployLandingPagesBuildType(deploy_env: String): BuildType {
+        val buildTypeName = if (deploy_env == "us-east-2") "Deploy landing pages to prod" else "Deploy landing pages to $deploy_env"
         return BuildType {
-            name = "Deploy landing pages to $deploy_env"
+            name = buildTypeName
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
