@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -417,11 +416,241 @@ object Content {
             name = "Content"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            buildType(GwBuildTypes.CleanUpIndexBuildType)
-            buildType(GwBuildTypes.UpdateSearchIndexBuildType)
-            buildType(GwBuildTypes.UploadPdfsForEscrowBuildType)
+            buildType(CleanUpIndexBuildType)
+            buildType(UpdateSearchIndexBuildType)
+            buildType(UploadPdfsForEscrowBuildType)
+            buildType(GenerateSitemapBuildType)
         }
     }
+
+    object GenerateSitemapBuildType : BuildType({
+        name = "Generate sitemap.xml"
+        description = "Create a sitemap based on the search index"
+
+        params {
+            select(
+                "env.DEPLOY_ENV",
+                "us-east-2",
+                label = "Deployment environment",
+                description = "Select an environment on which you want clean up the index",
+                display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod" to "us-east-2")
+            )
+            text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/build", allowEmpty = false)
+            text(
+                "env.ELASTICSEARCH_URLS",
+                "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+                allowEmpty = false
+            )
+            text(
+                "env.ELASTICSEARCH_URLS_PROD",
+                "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+                allowEmpty = false
+            )
+            text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
+            text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
+
+        }
+
+        vcs {
+            root(DslContext.settingsRoot)
+            cleanCheckout = true
+            branchFilter = Helpers.createFullGitBranchName("master")
+        }
+
+        steps {
+            script {
+                name = "Run the script which generates the sitemap"
+                scriptContent = """
+                #!/bin/bash
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                    export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
+                fi
+                
+                sitemap_generator
+            """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            script {
+                name = "Deploy sitemap to Kubernetes"
+                id = "DEPLOY_TO_K8S"
+                scriptContent = """
+                #!/bin/bash 
+                set -xe
+                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                else
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                fi
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh sitemap
+            """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerPull = true
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            }
+        }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+        // FIXME: Reenable this line when the refactoring is done
+//        triggers {
+//            schedule {
+//                schedulingPolicy = daily {
+//                    hour = 1
+//                    minute = 1
+//                }
+//            }
+//        }
+    })
+
+    object CleanUpIndexBuildType : BuildType({
+        name = "Clean up index"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        params {
+            select("env.DEPLOY_ENV",
+                "",
+                label = "Deployment environment",
+                description = "Select an environment on which you want clean up the index",
+                display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod"))
+            text("env.CONFIG_FILE_URL",
+                "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
+                allowEmpty = false)
+            text("env.CONFIG_FILE_URL_PROD",
+                "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
+                allowEmpty = false)
+            text("env.ELASTICSEARCH_URLS",
+                "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
+                allowEmpty = false)
+            text("env.ELASTICSEARCH_URLS_PROD",
+                "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
+                allowEmpty = false)
+
+        }
+
+        steps {
+            script {
+                name = "Run the cleanup script"
+                scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
+                                export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
+                                export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
+                            fi
+                            
+                            export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
+                            curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
+            
+                            index_cleaner
+                        """.trimIndent()
+                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+        }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+    })
+
+    object UpdateSearchIndexBuildType : BuildType({
+        name = "Update search index"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        params {
+            select("DEPLOY_ENV",
+                "",
+                label = "Deployment environment",
+                description = "The environment on which you want reindex documents",
+                display = ParameterDisplay.PROMPT,
+                options = listOf("dev", "int", "staging", "prod", "portal2"))
+            text("DOC_ID",
+                "",
+                label = "Doc ID",
+                description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                display = ParameterDisplay.PROMPT,
+                allowEmpty = true)
+        }
+
+        val configFile = "%teamcity.build.workingDir%/config.json"
+        val configFileStep = GwBuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile)
+        steps.step(configFileStep)
+        steps.stepsOrder.add(configFileStep.id.toString())
+        val crawlDocStep = GwBuildSteps.createCrawlDocStep("%DEPLOY_ENV%", "%DOC_ID%", configFile)
+        steps.step(crawlDocStep)
+        steps.stepsOrder.add(crawlDocStep.id.toString())
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+    })
+
+    object UploadPdfsForEscrowBuildType : BuildType({
+        name = "Upload PDFs for Escrow"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        params {
+            text("env.RELEASE_NAME",
+                "",
+                label = "Release name",
+                description = "For example, Banff or Cortina",
+                display = ParameterDisplay.PROMPT)
+            text("env.RELEASE_NUMBER",
+                "",
+                label = "Release number",
+                description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
+                display = ParameterDisplay.PROMPT)
+        }
+
+        vcs {
+            root(DslContext.settingsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            script {
+                id = "DOWNLOAD_AND_ZIP_PDFS"
+                name = "Download and zip PDF files"
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    export TMP_DIR="%teamcity.build.checkoutDir%/ci/pdfs"
+                    export ZIP_ARCHIVE_NAME="%env.RELEASE_NAME%_pdfs.zip"
+                    
+                    echo "Setting credentials to access prod"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    
+                    cd %teamcity.build.checkoutDir%/ci
+                    ./downloadPdfsForEscrow.sh
+                """.trimIndent()
+            }
+            script {
+                id = "UPLOAD_ZIP_TO_S3"
+                name = "Upload the ZIP archive to S3"
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Setting credentials to access int"
+                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                    
+                    echo "Uploading the ZIP archive to the S3 bucket"
+                    aws s3 cp "%env.TMP_DIR%/%env.ZIP_ARCHIVE_NAME%" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
+            """.trimIndent()
+            }
+        }
+    })
 }
 
 object Server {
@@ -766,6 +995,7 @@ object Server {
                         export PARTNERS_LOGIN_URL="$partnersLoginUrl"
                         export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
                         export NAMESPACE="doctools"
+                        
                         $setTagVersionCommand
                         
                         sh server/ci/deployKubernetes.sh
@@ -870,7 +1100,7 @@ object Exports {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcsRoot(GwVcsRoots.xdocsClientGitVcsRoot)
-            buildType(GwBuildTypes.ExportFilesFromXDocsToBitbucketBuildType)
+            buildType(ExportFilesFromXDocsToBitbucketBuildType)
             createExportBuildTypes().forEach {
                 buildType(it)
             }
@@ -951,7 +1181,7 @@ object Exports {
                     }
                 }
 
-                exportBuildTypes.add(GwBuildTypes.createExportFilesFromXDocsToBitbucketCompositeBuildType(srcTitle,
+                exportBuildTypes.add(createExportFilesFromXDocsToBitbucketCompositeBuildType(srcTitle,
                     xdocsPathIds,
                     gitUrl,
                     gitBranch,
@@ -964,6 +1194,152 @@ object Exports {
         }
         return exportBuildTypes
     }
+
+    private fun createExportFilesFromXDocsToBitbucketCompositeBuildType(
+        src_title: String,
+        export_path_ids: String,
+        git_url: String,
+        git_branch: String,
+        src_id: String,
+        export_server: String,
+        export_frequency: String,
+        export_hour: Int,
+        export_minute: Int,
+    ): BuildType {
+        return BuildType {
+            name = "Export $src_title from XDocs and add to Bitbucket"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            type = BuildTypeSettings.Type.COMPOSITE
+
+            params {
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.EXPORT_PATH_IDS", export_path_ids)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.GIT_URL", git_url)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.GIT_BRANCH", git_branch)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.SRC_ID", src_id)
+                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.EXPORT_SERVER", export_server)
+            }
+
+            dependencies {
+                snapshot(ExportFilesFromXDocsToBitbucketBuildType) {
+                    reuseBuilds = ReuseBuilds.NO
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+// FIXME: Reenable this line when the refactoring is done
+//            when (export_frequency) {
+//                "daily" -> {
+//                    triggers.schedule {
+//                        schedulingPolicy = daily {
+//                            hour = export_hour
+//                            minute = export_minute
+//                        }
+//
+//                        triggerBuild = always()
+//                        withPendingChangesOnly = false
+//                    }
+//                }
+//                "weekly" -> {
+//                    triggers.schedule {
+//                        schedulingPolicy = weekly {
+//                            dayOfWeek = ScheduleTrigger.DAY.Saturday
+//                            hour = export_hour
+//                            minute = export_minute
+//                        }
+//                        triggerBuild = always()
+//                        withPendingChangesOnly = false
+//                    }
+//                }
+//            }
+
+        }
+    }
+
+    private object ExportFilesFromXDocsToBitbucketBuildType : BuildType({
+        name = "Export files from XDocs to Bitbucket"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        maxRunningBuilds = 2
+
+        params {
+            text("EXPORT_PATH_IDS",
+                "",
+                description = "A list of space-separated path IDs from XDocs",
+                display = ParameterDisplay.PROMPT,
+                allowEmpty = true)
+            text("GIT_URL",
+                "",
+                description = "The URL of the Bitbucket repository where the files exported from XDocs are added",
+                display = ParameterDisplay.PROMPT,
+                allowEmpty = true)
+            text("GIT_BRANCH",
+                "",
+                description = "The branch of the Bitbucket repository where the files exported from XDocs are added",
+                display = ParameterDisplay.PROMPT,
+                allowEmpty = true)
+            text("XDOCS_EXPORT_DIR",
+                "%system.teamcity.build.tempDir%/xdocs_export_dir",
+                display = ParameterDisplay.HIDDEN,
+                allowEmpty = false)
+            text("SRC_ID",
+                "",
+                description = "The ID of the source",
+                display = ParameterDisplay.HIDDEN,
+                allowEmpty = false)
+            text("EXPORT_SERVER",
+                "",
+                description = "The export server",
+                display = ParameterDisplay.HIDDEN,
+                allowEmpty = false)
+        }
+
+        vcs {
+            root(GwVcsRoots.xdocsClientGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            script {
+                name = "Export files from XDocs"
+                workingDir = "LocalClient/sample/local/bin"
+                scriptContent = """
+                            #!/bin/bash
+                            sed -i "s/ORP-XDOCS-WDB03/%EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
+                            chmod 777 runExport.sh
+                            for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR%; done
+                        """.trimIndent()
+            }
+            script {
+                name = "Add exported files to Bitbucket"
+                scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export GIT_CLONE_DIR="git_clone_dir"
+                        
+                        git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}GIT_CLONE_DIR
+                        cp -R %XDOCS_EXPORT_DIR%/* ${'$'}GIT_CLONE_DIR/
+                        
+                        cd ${'$'}GIT_CLONE_DIR
+                        git config --local user.email "doctools@guidewire.com"
+                        git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
+                        
+                        git add -A
+                        if git status | grep "Changes to be committed"
+                        then
+                          git commit -m "[TeamCity][%SRC_ID%] Add files exported from XDocs"
+                          git pull
+                          git push
+                        else
+                          echo "No changes to commit"
+                        fi                
+                    """.trimIndent()
+            }
+        }
+
+        features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
+
+    })
 }
 
 object BuildListeners {
@@ -1358,7 +1734,7 @@ object Recommendations {
         val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deploy_env)
         for (combination in allPlatformProductVersionCombinations) {
             val (platform, product, version) = combination
-            val recommendationsForTopicsBuildTypeInt = GwBuildTypes.createRecommendationsForTopicsBuildType("int",
+            val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType("int",
                 platform,
                 product,
                 version,
@@ -1389,6 +1765,58 @@ object Recommendations {
             }
         }
         return result.distinct()
+    }
+
+    private fun createRecommendationsForTopicsBuildType(
+        deploy_env: String,
+        gw_platform: String,
+        gw_product: String,
+        gw_version: String,
+        pretrained_model_file: String,
+    ): BuildType {
+        return BuildType {
+            name = "Generate recommendations for $gw_product, $gw_platform, $gw_version"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            steps {
+                script {
+                    name = "Download the pretrained model"
+                    scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            
+                            echo "Setting credentials to access int"
+                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
+                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
+                            export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                            
+                            echo "Downloading the pretrained model from the S3 bucket"
+                            aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrained_model_file} %teamcity.build.workingDir%/
+                        """.trimIndent()
+                }
+                script {
+                    name = "Run the recommendation engine"
+                    scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            
+                            export PLATFORM="$gw_platform"
+                            export PRODUCT="$gw_product"
+                            export VERSION="$gw_version"
+                            export ELASTICSEARCH_URL="https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
+                            export DOCS_INDEX_NAME="gw-docs"
+                            export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
+                            export PRETRAINED_MODEL_FILE="$pretrained_model_file"
+                                                                    
+                            recommendation_engine
+                        """.trimIndent()
+                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
     }
 }
 
@@ -2269,349 +2697,6 @@ object GwBuildTriggers {
             -:${Helpers.createFullGitBranchName(git_branch)}
         """.trimIndent()
     }
-}
-
-object GwBuildTypes {
-
-    object ExportFilesFromXDocsToBitbucketBuildType : BuildType({
-        name = "Export files from XDocs to Bitbucket"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        maxRunningBuilds = 2
-
-        params {
-            text("EXPORT_PATH_IDS",
-                "",
-                description = "A list of space-separated path IDs from XDocs",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
-            text("GIT_URL",
-                "",
-                description = "The URL of the Bitbucket repository where the files exported from XDocs are added",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
-            text("GIT_BRANCH",
-                "",
-                description = "The branch of the Bitbucket repository where the files exported from XDocs are added",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
-            text("XDOCS_EXPORT_DIR",
-                "%system.teamcity.build.tempDir%/xdocs_export_dir",
-                display = ParameterDisplay.HIDDEN,
-                allowEmpty = false)
-            text("SRC_ID",
-                "",
-                description = "The ID of the source",
-                display = ParameterDisplay.HIDDEN,
-                allowEmpty = false)
-            text("EXPORT_SERVER",
-                "",
-                description = "The export server",
-                display = ParameterDisplay.HIDDEN,
-                allowEmpty = false)
-        }
-
-        vcs {
-            root(GwVcsRoots.xdocsClientGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            script {
-                name = "Export files from XDocs"
-                workingDir = "LocalClient/sample/local/bin"
-                scriptContent = """
-                            #!/bin/bash
-                            sed -i "s/ORP-XDOCS-WDB03/%EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
-                            chmod 777 runExport.sh
-                            for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR%; done
-                        """.trimIndent()
-            }
-            script {
-                name = "Add exported files to Bitbucket"
-                scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        export GIT_CLONE_DIR="git_clone_dir"
-                        
-                        git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}GIT_CLONE_DIR
-                        cp -R %XDOCS_EXPORT_DIR%/* ${'$'}GIT_CLONE_DIR/
-                        
-                        cd ${'$'}GIT_CLONE_DIR
-                        git config --local user.email "doctools@guidewire.com"
-                        git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
-                        
-                        git add -A
-                        if git status | grep "Changes to be committed"
-                        then
-                          git commit -m "[TeamCity][%SRC_ID%] Add files exported from XDocs"
-                          git pull
-                          git push
-                        else
-                          echo "No changes to commit"
-                        fi                
-                    """.trimIndent()
-            }
-        }
-
-        features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
-
-    })
-
-    object CleanUpIndexBuildType : BuildType({
-        name = "Clean up index"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        params {
-            select("env.DEPLOY_ENV",
-                "",
-                label = "Deployment environment",
-                description = "Select an environment on which you want clean up the index",
-                display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod"))
-            text("env.CONFIG_FILE_URL",
-                "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
-                allowEmpty = false)
-            text("env.CONFIG_FILE_URL_PROD",
-                "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
-                allowEmpty = false)
-            text("env.ELASTICSEARCH_URLS",
-                "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
-                allowEmpty = false)
-            text("env.ELASTICSEARCH_URLS_PROD",
-                "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
-                allowEmpty = false)
-
-        }
-
-        steps {
-            script {
-                name = "Run the cleanup script"
-                scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                                export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
-                                export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
-                            fi
-                            
-                            export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
-                            curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
-            
-                            index_cleaner
-                        """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
-
-    object UpdateSearchIndexBuildType : BuildType({
-        name = "Update search index"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        params {
-            select("DEPLOY_ENV",
-                "",
-                label = "Deployment environment",
-                description = "The environment on which you want reindex documents",
-                display = ParameterDisplay.PROMPT,
-                options = listOf("dev", "int", "staging", "prod", "portal2"))
-            text("DOC_ID",
-                "",
-                label = "Doc ID",
-                description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true)
-        }
-
-        val configFile = "%teamcity.build.workingDir%/config.json"
-        val configFileStep = GwBuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile)
-        steps.step(configFileStep)
-        steps.stepsOrder.add(configFileStep.id.toString())
-        val crawlDocStep = GwBuildSteps.createCrawlDocStep("%DEPLOY_ENV%", "%DOC_ID%", configFile)
-        steps.step(crawlDocStep)
-        steps.stepsOrder.add(crawlDocStep.id.toString())
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
-
-    object UploadPdfsForEscrowBuildType : BuildType({
-        name = "Upload PDFs for Escrow"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        params {
-            text("env.RELEASE_NAME",
-                "",
-                label = "Release name",
-                description = "For example, Banff or Cortina",
-                display = ParameterDisplay.PROMPT)
-            text("env.RELEASE_NUMBER",
-                "",
-                label = "Release number",
-                description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
-                display = ParameterDisplay.PROMPT)
-        }
-
-        vcs {
-            root(DslContext.settingsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            script {
-                id = "DOWNLOAD_AND_ZIP_PDFS"
-                name = "Download and zip PDF files"
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    export TMP_DIR="%teamcity.build.checkoutDir%/ci/pdfs"
-                    export ZIP_ARCHIVE_NAME="%env.RELEASE_NAME%_pdfs.zip"
-                    
-                    echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                    
-                    cd %teamcity.build.checkoutDir%/ci
-                    ./downloadPdfsForEscrow.sh
-                """.trimIndent()
-            }
-            script {
-                id = "UPLOAD_ZIP_TO_S3"
-                name = "Upload the ZIP archive to S3"
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    echo "Setting credentials to access int"
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
-                    
-                    echo "Uploading the ZIP archive to the S3 bucket"
-                    aws s3 cp "%env.TMP_DIR%/%env.ZIP_ARCHIVE_NAME%" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
-            """.trimIndent()
-            }
-        }
-    })
-
-    fun createRecommendationsForTopicsBuildType(
-        deploy_env: String,
-        gw_platform: String,
-        gw_product: String,
-        gw_version: String,
-        pretrained_model_file: String,
-    ): BuildType {
-        return BuildType {
-            name = "Generate recommendations for $gw_product, $gw_platform, $gw_version"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            steps {
-                script {
-                    name = "Download the pretrained model"
-                    scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            echo "Setting credentials to access int"
-                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                            export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
-                            
-                            echo "Downloading the pretrained model from the S3 bucket"
-                            aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrained_model_file} %teamcity.build.workingDir%/
-                        """.trimIndent()
-                }
-                script {
-                    name = "Run the recommendation engine"
-                    scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            export PLATFORM="$gw_platform"
-                            export PRODUCT="$gw_product"
-                            export VERSION="$gw_version"
-                            export ELASTICSEARCH_URL="https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
-                            export DOCS_INDEX_NAME="gw-docs"
-                            export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
-                            export PRETRAINED_MODEL_FILE="$pretrained_model_file"
-                                                                    
-                            recommendation_engine
-                        """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-    }
-
-    fun createExportFilesFromXDocsToBitbucketCompositeBuildType(
-        src_title: String,
-        export_path_ids: String,
-        git_url: String,
-        git_branch: String,
-        src_id: String,
-        export_server: String,
-        export_frequency: String,
-        export_hour: Int,
-        export_minute: Int,
-    ): BuildType {
-        return BuildType {
-            name = "Export $src_title from XDocs and add to Bitbucket"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            type = BuildTypeSettings.Type.COMPOSITE
-
-            params {
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.EXPORT_PATH_IDS", export_path_ids)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.GIT_URL", git_url)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.GIT_BRANCH", git_branch)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.SRC_ID", src_id)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.EXPORT_SERVER", export_server)
-            }
-
-            dependencies {
-                snapshot(ExportFilesFromXDocsToBitbucketBuildType) {
-                    reuseBuilds = ReuseBuilds.NO
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-// FIXME: Reenable this line when the refactoring is done
-//            when (export_frequency) {
-//                "daily" -> {
-//                    triggers.schedule {
-//                        schedulingPolicy = daily {
-//                            hour = export_hour
-//                            minute = export_minute
-//                        }
-//
-//                        triggerBuild = always()
-//                        withPendingChangesOnly = false
-//                    }
-//                }
-//                "weekly" -> {
-//                    triggers.schedule {
-//                        schedulingPolicy = weekly {
-//                            dayOfWeek = ScheduleTrigger.DAY.Saturday
-//                            hour = export_hour
-//                            minute = export_minute
-//                        }
-//                        triggerBuild = always()
-//                        withPendingChangesOnly = false
-//                    }
-//                }
-//            }
-
-        }
-    }
-
 }
 
 object GwVcsRoots {
