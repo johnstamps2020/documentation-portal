@@ -557,6 +557,7 @@ object Server {
                     set -e
                     export APP_BASE_URL="http://localhost:8081"
                     export ELASTIC_SEARCH_URL="http://localhost:9200"
+                    export DOC_S3_URL="http://localhost/"
                     
                     npm install
                     npm test
