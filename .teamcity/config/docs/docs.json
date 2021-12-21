@@ -2,36 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "isconfigupgradetools3x",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
-      "url": "isconfigupgradetools/3x",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["3.x.x"],
-        "release": ["Aspen", "Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "isconfigupgradetools320jaJP",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0 ja-JP",
-      "url": "isconfigupgradetools/ja-JP/320",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["3.2.0"],
-        "release": ["Aspen", "Banff", "Cortina"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "guidewireidentityfederationhubdraft",
       "title": "Authentication with Guidewire Identity Federation Hub Draft",
       "url": "cloud/auth/latest",
@@ -1409,36 +1379,6 @@
         "version": ["10.0.2"]
       },
       "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "isconfigupgradetools310",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.1.0",
-      "url": "isconfigupgradetools/310",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["3.1.0"],
-        "release": ["Aspen", "Banff", "Cortina"]
-      },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "isconfigupgradetools300",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.0.0",
-      "url": "isconfigupgradetools/300",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["3.0.0"],
-        "release": ["Aspen"]
-      },
-      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

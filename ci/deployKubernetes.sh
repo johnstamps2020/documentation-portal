@@ -6,7 +6,7 @@ aws eks update-kubeconfig --name atmos-${DEPLOY_ENV}
 echo $(kubectl get pods --namespace=${NAMESPACE})
 
 kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${NAMESPACE} ||
-  kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=${ARTIFACTORY_USERNAME} --docker-password=${ARTIFACTORY_PASSWORD} --namespace=${NAMESPACE}
+  kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=${SERVICE_ACCOUNT_USERNAME} --docker-password=${ARTIFACTORY_API_KEY} --namespace=${NAMESPACE}
 
 sed -ie "s/\${DEPLOY_ENV}/${DEPLOY_ENV}/g" ${KUBE_FILE}
 

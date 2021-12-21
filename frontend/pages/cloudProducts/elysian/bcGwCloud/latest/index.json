@@ -55,6 +55,10 @@
         {
           "label": "Upgrade (Internal only)",
           "id": "isbccloudgwupgrade"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetoolsdraft"
         }
       ]
     },

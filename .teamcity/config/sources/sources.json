@@ -2,33 +2,6 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "isconfigupgradetools3xsrc",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.x.x",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
-      "branch": "master"
-    },
-    {
-      "id": "isconfigupgradetools320jaJPsrc",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0 ja-JP",
-      "sourceType": "git",
-      "branch": "release/ja-JP/3.2.0",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
-    },
-    {
-      "id": "isconfigupgradetools1450src",
-      "title": "InsuranceSuite Upgrade Tools 1.45.0",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
-      "branch": "release/1.45.0-9.0.10",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
-      ]
-    },
-    {
       "id": "isupgradeguide1020src",
       "title": "InsuranceSuite Upgrade Guide 10.2.0",
       "sourceType": "git",

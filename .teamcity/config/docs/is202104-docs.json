@@ -816,6 +816,22 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "testingframeworksrncortina",
+      "title": "Guidewire Testing Framework Release Notes",
+      "url": "cloud/testingframeworks/202104/releasenotes",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }

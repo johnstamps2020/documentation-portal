@@ -49,10 +49,6 @@
         {
           "label": "Guidewire for Salesforce",
           "page": "gwsf"
-        },
-        {
-          "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools310"
         }
       ]
     },
@@ -144,7 +140,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../jutroDesignSystem/6.5.0"
+              "page": "../../jutroDesignSystem/6.5.1"
             }
           ]
         },

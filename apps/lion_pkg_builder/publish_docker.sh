@@ -16,8 +16,6 @@ else
  echo "Version set to: $IMAGE_VERSION"
 fi
 
-docker login -u $ARTIFACTORY_USERNAME --password $ARTIFACTORY_PASSWORD artifactory.guidewire.com
-
 docker tag lion-pkg-builder artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:$IMAGE_VERSION
 docker push artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:$IMAGE_VERSION
 

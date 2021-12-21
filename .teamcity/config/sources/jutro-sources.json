@@ -163,6 +163,20 @@
       "branch": "release/6.5.0"
     },
     {
+      "id": "srcjutro651",
+      "title": "Jutro Design System 6.5.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/6.5.1"
+    },
+    {
+      "id": "srcjutrostorybook651",
+      "title": "Jutro Storybook 6.5.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/6.5.1"
+    },
+    {
       "id": "srcjutronext",
       "title": "Jutro Design System Next",
       "sourceType": "git",
@@ -177,13 +191,6 @@
       "branch": "hackathon-2021"
     },
     {
-      "id": "srcjutrolearningmissions",
-      "title": "Jutro Design System Learning Missions Preview",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "design-focused-learning-mission"
-    },
-    {
       "id": "srcjutrostorybooknext",
       "title": "Jutro Storybook Next",
       "sourceType": "git",
@@ -191,22 +198,22 @@
       "branch": "main"
     },
     {
-      "id": "srcjutrosbbizpatterns650",
-      "title": "Jutro Storybook Business Patterns 6.5.0",
+      "id": "srcjutrosbbizpatterns651",
+      "title": "Jutro Storybook Business Patterns 6.5.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
       "branch": "release/6.5.0"
     },
     {
-      "id": "srcjutrosbbizpatterns650downloadable",
-      "title": "Jutro Storybook Business Patterns 6.5.0",
+      "id": "srcjutrosbbizpatterns651downloadable",
+      "title": "Jutro Storybook Business Patterns 6.5.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/storybook-business-patterns-downloadable.git",
       "branch": "main"
     },
     {
-      "id": "srcjutroapptemplatesampleapp650",
-      "title": "Jutro App Template Sample App 6.5.0",
+      "id": "srcjutroapptemplatesampleapp651",
+      "title": "Jutro App Template Sample App 6.5.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-app-template-sampleapp.git",
       "branch": "master"
@@ -240,18 +247,18 @@
       "branch": "release/7.0.0"
     },
     {
-      "id": "srcjutro710",
-      "title": "Jutro Design System 7.1.0",
+      "id": "srcjutro711",
+      "title": "Jutro Design System 7.1.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "release/7.1.0"
+      "branch": "release/7.1.1"
     },
     {
-      "id": "srcjutrostorybook710",
-      "title": "Jutro Storybook 7.1.0",
+      "id": "srcjutrostorybook711",
+      "title": "Jutro Storybook 7.1.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "release/7.1.0"
+      "branch": "release/7.1.1"
     }
   ]
 }

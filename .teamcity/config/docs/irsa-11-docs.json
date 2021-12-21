@@ -11,7 +11,7 @@
         "version": ["1.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -26,7 +26,7 @@
         "version": ["1.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -41,7 +41,7 @@
         "version": ["1.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -56,7 +56,7 @@
         "version": ["1.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -73,6 +73,36 @@
       "environments": ["dev"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "midipfadjusterfrFR11",
+      "title": "Adjuster Guide (French)",
+      "url": "self-managed/ipf/fr-FR/1.1/adjuster",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["1.1"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "midipfrnfrFR11",
+      "title": "Release Notes (French)",
+      "url": "self-managed/ipf/fr-FR/1.1/releasenotes",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["1.1"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false
     }
   ]

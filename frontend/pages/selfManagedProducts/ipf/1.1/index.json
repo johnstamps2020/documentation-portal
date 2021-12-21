@@ -11,6 +11,11 @@
         {
           "label": "Release Notes",
           "id": "midipfrn11"
+        },
+        {
+          "label": "Release Notes (French)",
+          "id": "midipfrnfrFR11",
+          "env": ["staging"]
         }
       ]
     },
@@ -25,6 +30,11 @@
         {
           "label": "Adjuster Guide",
           "id": "midipfadjuster11"
+        },
+        {
+          "label": "Adjuster Guide (French)",
+          "id": "midipfadjusterfrFR11",
+          "env": ["staging"]
         }
       ]
     },
