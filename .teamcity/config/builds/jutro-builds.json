@@ -219,15 +219,15 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutro652",
-      "srcId": "srcjutro652",
+      "docId": "jutro651",
+      "srcId": "srcjutro651",
       "workingDir": "website",
       "nodeImageVersion": "14.14.0"
     },
     {
       "buildType": "yarn",
-      "docId": "storybook652",
-      "srcId": "srcjutrostorybook652",
+      "docId": "storybook651",
+      "srcId": "srcjutrostorybook651",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -238,8 +238,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "storyboobizpatterns650",
-      "srcId": "srcjutrosbbizpatterns650",
+      "docId": "storyboobizpatterns651",
+      "srcId": "srcjutrosbbizpatterns651",
       "nodeImageVersion": "14.14.0",
       "outputPath": "storybook-static",
       "yarnBuildCustomCommand": "build-storybook",
@@ -252,13 +252,13 @@
     },
     {
       "buildType": "yarn",
-      "docId": "storyboobizpatterns650zip",
-      "srcId": "srcjutrosbbizpatterns650downloadable"
+      "docId": "storyboobizpatterns651zip",
+      "srcId": "srcjutrosbbizpatterns651downloadable"
     },
     {
       "buildType": "source-zip",
-      "docId": "jutroapptemplatesampleapp650zip",
-      "srcId": "srcjutroapptemplatesampleapp650",
+      "docId": "jutroapptemplatesampleapp651zip",
+      "srcId": "srcjutroapptemplatesampleapp651",
       "zipFilename": "jutro-app-template-sampleapp"
     },
     {
