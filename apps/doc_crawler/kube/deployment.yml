@@ -34,8 +34,6 @@ spec:
     matchLabels:
       app: docsearch-${DEPLOY_ENV}
   replicas: 1
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
