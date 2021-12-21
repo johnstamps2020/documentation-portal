@@ -227,7 +227,7 @@
     },
     {
       "id": "isbc202111apibf",
-      "title": "Cloud API Business Flows",
+      "title": "Cloud API Business Flows and Configuration",
       "url": "cloud/bc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -467,7 +467,7 @@
     },
     {
       "id": "iscc202111apibf",
-      "title": "Cloud API Business Flows",
+      "title": "Cloud API Business Flows and Configuration",
       "url": "cloud/cc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -755,7 +755,7 @@
     },
     {
       "id": "ispc202111apibf",
-      "title": "Cloud API Business Flows",
+      "title": "Cloud API Business Flows and Configuration",
       "url": "cloud/pc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
