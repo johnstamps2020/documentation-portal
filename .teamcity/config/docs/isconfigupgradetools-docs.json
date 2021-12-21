@@ -41,7 +41,7 @@
         "version": ["4.0.0"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
