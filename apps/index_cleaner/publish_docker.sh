@@ -16,8 +16,6 @@ else
  echo "Version set to: $IMAGE_VERSION"
 fi
 
-docker login -u $SERVICE_ACCOUNT_USERNAME --password $ARTIFACTORY_API_KEY artifactory.guidewire.com
-
 docker tag index-cleaner artifactory.guidewire.com/doctools-docker-dev/index-cleaner:$IMAGE_VERSION
 docker push artifactory.guidewire.com/doctools-docker-dev/index-cleaner:$IMAGE_VERSION
 
