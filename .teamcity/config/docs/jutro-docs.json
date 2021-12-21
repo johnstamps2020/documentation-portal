@@ -205,7 +205,22 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.0 LTS"],
+        "version": ["6.5.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "jutro652",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/6.5.2",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.2 LTS"],
         "subject": ["Best practices"],
         "release": ["Dobson"]
       },
@@ -461,8 +476,24 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.0 LTS"],
+        "version": ["6.5.0"],
         "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook652",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/6.5.2",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.2 LTS"],
+        "subject": ["Development"],
+        "release": ["Dobson"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": false,
