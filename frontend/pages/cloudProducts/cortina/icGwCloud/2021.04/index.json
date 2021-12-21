@@ -21,6 +21,10 @@
         {
           "label": "Release Notes",
           "id": "iccloudrncortina"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "link": "/dm/ic/log4jPatchReleaseNotes.html"
         }
       ]
     },

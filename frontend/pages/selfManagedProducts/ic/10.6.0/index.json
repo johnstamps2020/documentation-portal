@@ -33,6 +33,10 @@
         {
           "label": "Release Notes",
           "id": "ic1060rn"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "link": "/dm/ic/log4jPatchReleaseNotes.html"
         }
       ]
     },
