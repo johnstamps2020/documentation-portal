@@ -16,8 +16,6 @@ else
  echo "Version set to: $IMAGE_VERSION"
 fi
 
-docker login -u $SERVICE_ACCOUNT_USERNAME --password $ARTIFACTORY_API_KEY artifactory.guidewire.com
-
 docker tag config-deployer artifactory.guidewire.com/doctools-docker-dev/config-deployer:$IMAGE_VERSION
 docker push artifactory.guidewire.com/doctools-docker-dev/config-deployer:$IMAGE_VERSION
 
