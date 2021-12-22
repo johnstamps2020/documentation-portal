@@ -5,7 +5,8 @@
       "id": "isconfigupgradetoolsdraftsrc",
       "title": "InsuranceSuite Configuration Upgrade Tools Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
+      "branch": "master"
     },
     {
       "id": "isconfigupgradetools400src",
@@ -33,6 +34,7 @@
       "title": "InsuranceSuite Upgrade Tools 1x",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
+      "branch": "master",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/upgrade/1.x/active/upgrade-guide/_superbook.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
