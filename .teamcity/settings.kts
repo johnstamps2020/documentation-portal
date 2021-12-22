@@ -1,4 +1,3 @@
-//TODO: Change static IDs to Helpers.resolve....(this.name)
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -506,7 +505,7 @@ object Content {
             }
             script {
                 name = "Deploy sitemap to Kubernetes"
-                id = "DEPLOY_TO_K8S"
+                id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                 #!/bin/bash 
                 set -xe
@@ -673,8 +672,8 @@ object Content {
 
         steps {
             script {
-                id = "DOWNLOAD_AND_ZIP_PDFS"
                 name = "Download and zip PDF files"
+                id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -692,8 +691,8 @@ object Content {
                 """.trimIndent()
             }
             script {
-                id = "UPLOAD_ZIP_TO_S3"
                 name = "Upload the ZIP archive to S3"
+                id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -711,9 +710,6 @@ object Content {
     })
 }
 
-//FIXME: Unify usage of deploy env names - issue with prod/us-east-2, lowercase, etc.
-// Use "dev", "int", "staging", "prod" as the baseline, convert to us-east-2 where needed
-// Reduce the usage of lowercase function
 object Frontend {
     val rootProject = createRootProjectForFrontend()
 
@@ -1228,7 +1224,7 @@ object Server {
             steps {
                 script {
                     name = "Deploy to Kubernetes"
-                    id = "DEPLOY_TO_KUBERNETES"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash 
                         set -eux
@@ -1266,7 +1262,7 @@ object Server {
                 }
                 script {
                     name = "Check new Pods Status"
-                    id = "CHECK_PODS_STATUS"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash
                         set -e
@@ -1996,7 +1992,7 @@ object Sources {
             steps {
                 script {
                     name = "Run the results cleaner"
-                    id = "RUN_RESULTS_CLEANER"
+                    id = Helpers.createIdStringFromName(this.name)
                     executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
                     scriptContent = """
                         #!/bin/bash
@@ -2376,6 +2372,10 @@ object Helpers {
         return RelativeId(removeSpecialCharacters(id))
     }
 
+    fun createIdStringFromName(name: String): String {
+        return name.uppercase(Locale.getDefault()).replace(" ", "_")
+    }
+
     private fun createIdStringFromGitUrl(git_url: String): String {
         return removeSpecialCharacters(git_url.substringAfterLast("/"))
     }
@@ -2409,7 +2409,7 @@ object Helpers {
 object GwBuildSteps {
     object MergeDocsConfigFilesStep : ScriptBuildStep({
         name = "Merge docs config files"
-        id = "MERGE_DOCS_CONFIG_FILES"
+        id = Helpers.createIdStringFromName(this.name)
         scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2428,7 +2428,7 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build pages"
-            id = "BUILD_PAGES"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2449,7 +2449,7 @@ object GwBuildSteps {
     fun createGenerateLocalizationPageConfigurationsStep(loc_docs_src: String, loc_docs_out: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Generate localization page configurations"
-            id = "GENERATE_LOCALIZATION_PAGE_CONFIGURATIONS"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2468,7 +2468,7 @@ object GwBuildSteps {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
             name = "Copy localized PDFs to the S3 bucket"
-            id = "COPY_LOCALIZED_PDFS_TO_S3_BUCKET"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2489,7 +2489,7 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Generate upgrade diffs page configurations"
-            id = "GENERATE_UPGRADE_DIFFS_PAGE_CONFIGURATIONS"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2514,7 +2514,7 @@ object GwBuildSteps {
         }
         return ScriptBuildStep {
             name = "Copy upgrade diffs to the S3 bucket"
-            id = "COPY_UPGRADE_DIFFS_TO_S3_BUCKET"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2532,7 +2532,7 @@ object GwBuildSteps {
         val ecrPackageName = "710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
         return ScriptBuildStep {
             name = "Publish server Docker Image to ECR"
-            id = "PUBLISH_SERVER_DOCKER_IMAGE_TO_ECR"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 set -xe
                 
@@ -2555,7 +2555,7 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Build and publish server Docker Image"
-            id = "BUILD_PUBLISH_SERVER_DOCKER_IMAGE"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash 
                 set -xe
@@ -2596,7 +2596,7 @@ object GwBuildSteps {
 
         return ScriptBuildStep {
             name = "Crawl the document and update the index"
-            id = "CRAWL_DOCUMENT_UPDATE_INDEX"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2630,7 +2630,7 @@ object GwBuildSteps {
 
         return ScriptBuildStep {
             name = "Get config file"
-            id = "GET_CONFIG_FILE"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2660,7 +2660,7 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Get document details"
-            id = "GET_DOCUMENT_DETAILS"
+            id = Helpers.createIdStringFromName(this.name)
 
             scriptContent = """
                     #!/bin/bash
@@ -2679,7 +2679,7 @@ object GwBuildSteps {
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Copy from S3 on staging to S3 on Prod"
-            id = "COPY_FROM_STAGING_TO_PROD"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -2706,7 +2706,7 @@ object GwBuildSteps {
 
         return ScriptBuildStep {
             name = "Build a ZIP package"
-            id = "BUILD_ZIP_PACKAGE"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2725,7 +2725,7 @@ object GwBuildSteps {
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
         return ScriptBuildStep {
             name = "Upload content to the S3 bucket"
-            id = "UPLOAD_CONTENT_TO_S3_BUCKET"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -2750,7 +2750,7 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Upload the content preview output to S3"
-            id = "UPLOAD_CONTENT_PREVIEW_TO_S3"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2774,7 +2774,7 @@ object GwBuildSteps {
         val fullTargetPath = "${working_dir}/${output_dir}/${resource_target_dir}"
         return ScriptBuildStep {
             name = "Copy resources from git to the doc output dir ($step_id)"
-            id = "COPY_RESOURCES_FROM_GIT_TO_DOC_OUTPUT_DIR_${step_id}"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -2931,7 +2931,7 @@ object GwBuildSteps {
 
         return ScriptBuildStep {
             name = "Build the yarn project"
-            id = "BUILD_YARN_PROJECT"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -3013,7 +3013,7 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Run the doc validator"
-            id = "RUN_DOC_VALIDATOR"
+            id = Helpers.createIdStringFromName(this.name)
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             scriptContent = """
                 #!/bin/bash
@@ -3036,7 +3036,7 @@ object GwBuildSteps {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
             name = "Deploy files to persistent volume"
-            id = "DEPLOY_FILES_TO_PERSISTENT_VOLUME"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash 
                 set -xe
@@ -3058,7 +3058,7 @@ object GwBuildSteps {
 object GwProjectFeatures {
     object GwOxygenWebhelpLicenseProjectFeature : ProjectFeature({
         type = "JetBrains.SharedResources"
-        id = "OXYGEN_WEBHELP_LICENSE"
+        id = Helpers.createIdStringFromName(this.name)
         param("quota", "3")
         param("name", "OxygenWebhelpLicense")
         param("type", "quoted")
@@ -3067,7 +3067,7 @@ object GwProjectFeatures {
 
 object GwBuildFeatures {
     object GwDockerSupportBuildFeature : DockerSupportFeature({
-        id = "DockerSupport"
+        id = "GW_DOCKER_SUPPORT"
         loginToRegistry = on {
             dockerRegistryId = "PROJECT_EXT_155"
         }
@@ -3078,7 +3078,7 @@ object GwBuildFeatures {
     })
 
     object GwOxygenWebhelpLicenseBuildFeature : BuildFeature({
-        id = "OXYGEN_WEBHELP_LICENSE_READ_LOCK"
+        id = "GW_OXYGEN_WEBHELP_LICENSE_READ_LOCK"
         type = "JetBrains.SharedResources"
         param("locks-param", "OxygenWebhelpLicense readLock")
     })
