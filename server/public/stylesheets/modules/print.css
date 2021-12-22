@@ -1,0 +1,49 @@
+@media print {
+  body {
+    display: block !important;
+  }
+
+  header,
+  .navbar,
+  nav[role='toc'],
+  footer,
+  .feedback,
+  .thanksMessage,
+  .miniToc,
+  button.copyToClipboardButton {
+    display: none;
+  }
+
+  main[role='main'] {
+    grid-area: none;
+    height: fit-content;
+    width: 100%;
+    overflow-y: auto;
+    padding: 16px;
+  }
+
+  main[role='main']::before,
+  main[role='main']::after {
+    display: block;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  main[role='main']::before {
+    content: 'Copyright © Guidewire Software, Inc., confidential and proprietary. Latest documentation at docs.guidewire.com.';
+  }
+
+  main[role='main']::after {
+    margin-top: 32px;
+    content: 'Legal information at https://www.guidewire.com/legal-notices/';
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+
+  .filepath {
+    word-wrap: break-word;
+  }
+}

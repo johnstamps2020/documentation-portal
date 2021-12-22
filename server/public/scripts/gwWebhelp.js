@@ -264,29 +264,46 @@ async function addPublicationDate() {
   }
 }
 
+function showAvatarMenu(event) {
+  if (event.target.id === 'avatarButton') {
+    const avatarMenu = document.getElementById('avatarMenu');
+    avatarMenu.classList.toggle('show');
+  }
+}
+
+function closeAvatarMenu(event) {
+  if (!event.target.closest('#avatarButton')) {
+    const avatarMenu = document.getElementById('avatarMenu');
+    if (avatarMenu.classList.contains('show')) {
+      avatarMenu.classList.remove('show');
+    }
+  }
+}
+
 function createAvatarButton(fullName, username) {
+  const button = document.createElement('button');
+  button.setAttribute('id', 'avatarButton');
+  button.setAttribute('aria-label', 'user information');
+  button.addEventListener('click', showAvatarMenu);
+  window.addEventListener('click', closeAvatarMenu);
+  button.innerHTML = `
+    <div class="avatarMenu" id="avatarMenu">
+        <div class="avatarMenuHeader">
+        <div class="avatarMenuIcon">&nbsp;</div>
+        <div class="avatarMenuInfo">
+            <div class="avatarMenuName">${fullName}</div>
+            <div class="avatarMenuEmail">${username}</div>
+        </div>
+        </div>
+        <div class="avatarMenuDivider"></div>
+        <div class="avatarMenuActions">
+        <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+        </div>
+    </div>`;
+
   const avatar = document.createElement('div');
   avatar.setAttribute('id', 'avatar');
-  avatar.innerHTML = `
-        <button 
-          id="avatarButton" 
-          aria-label="user information"
-        >
-          <div class="avatarMenu">
-            <div class="avatarMenuHeader">
-              <div class="avatarMenuIcon">&nbsp;</div>
-              <div class="avatarMenuInfo">
-                <div class="avatarMenuName">${fullName}</div>
-                <div class="avatarMenuEmail">${username}</div>
-              </div>
-            </div>
-            <div class="avatarMenuDivider"></div>
-            <div class="avatarMenuActions">
-              <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
-            </div>
-          </div>
-        </button>
-      `;
+  avatar.appendChild(button);
   return avatar;
 }
 

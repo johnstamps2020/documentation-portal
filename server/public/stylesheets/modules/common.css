@@ -40,6 +40,7 @@ body {
   --GW-COLOR-BKGD-2: #e9f9ff;
   --GW-BOX-SHADOW-OUTER-2: rgba(40, 51, 63, 0.16) 0px 2px 4px 0px;
   --GW-BOX-SHADOW-OUTER-3: rgba(40, 51, 63, 0.16) 0px 4px 8px;
+  --GW-BOX-SHADOW-DIAGONAL-3: 4px 4px 6px 0px rgba(66, 68, 90, 0.24);
   /* SPACING */
   --GW-SPACING-XXS: 0.25rem;
   --GW-SPACING-XS: 0.5rem;
@@ -60,10 +61,6 @@ body {
 
 .pageHeader div.col-sm {
   padding: 0;
-}
-
-.logoWrapper {
-  margin-top: 16px;
 }
 
 .pageLogo {

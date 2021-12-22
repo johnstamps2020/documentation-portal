@@ -37,3 +37,17 @@ This is a simple Node.js app which enforces Okta authentication.
 ## Keti
 
 The attached `keti.json` contains application configuration. Use if if you want to make changes to Keti. Make sure you commit your changes to this repository.
+
+## HTML5 webpack
+
+To build the webpack bundle, run:
+
+```
+npm run build-html5-dependencies
+```
+
+To develop the HTML5 plugin, run:
+
+```
+npm run html5-watch
+```
