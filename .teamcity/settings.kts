@@ -558,7 +558,7 @@ object Content {
             }
 
             steps {
-                step(GwBuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile))
+                step(GwBuildSteps.createGetConfigFileStep(deploy_env, configFile))
                 step(GwBuildSteps.createRunDocCrawlerStep(deploy_env, "%DOC_ID%", configFile))
             }
 
