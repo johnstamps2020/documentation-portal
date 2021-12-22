@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -621,15 +620,15 @@ object Content {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            triggers {
-                schedule {
-                    schedulingPolicy = daily {
-                        hour = 1
-                        minute = 1
-                    }
-                }
-            }
+// FIXME: Reenable this line when the refactoring is done
+//            triggers {
+//                schedule {
+//                    schedulingPolicy = daily {
+//                        hour = 1
+//                        minute = 1
+//                    }
+//                }
+//            }
         }
     }
 
@@ -986,7 +985,6 @@ object Server {
             cleanCheckout = true
         }
 // FIXME: Reenable this line when the refactoring is done
-
 //        triggers {
 //            vcs {
 //            }
@@ -1092,7 +1090,6 @@ object Server {
             }
         }
 // FIXME: Reenable this line when the refactoring is done
-
 //        triggers {
 //            vcs {
 //                triggerRules = """
@@ -1148,7 +1145,6 @@ object Server {
             }
         }
 // FIXME: Reenable this line when the refactoring is done
-
 //        triggers {
 //            vcs {
 //                triggerRules = """
@@ -1375,7 +1371,7 @@ object Server {
                 }
             }
             if (deploy_env == DeployEnvs.DEV.env_name) {
-                // FIXME: Reenable this line when the refactoring is done
+// FIXME: Reenable this line when the refactoring is done
 //                deployServerBuildType.triggers.finishBuildTrigger {
 //                    id = "TRIGGER_1"
 //                    buildType = "${TestDocPortalServer.id}"
@@ -1820,8 +1816,7 @@ object Sources {
                 )
             )
 
-            // FIXME: Reenable this line when the refactoring is done
-
+// FIXME: Reenable this line when the refactoring is done
 //            triggers.vcs {
 //                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
 //            }
@@ -1996,8 +1991,7 @@ object Sources {
                     )
                 )
             }
-            // FIXME: Reenable this line when the refactoring is done
-
+// FIXME: Reenable this line when the refactoring is done
 //            validationBuildType.triggers.vcs {
 //                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
 //            }
