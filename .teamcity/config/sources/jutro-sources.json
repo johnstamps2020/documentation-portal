@@ -51,18 +51,18 @@
       "branch": "release/5.2.0"
     },
     {
-      "id": "srcjutro531",
-      "title": "Jutro Design System 5.3.1",
+      "id": "srcjutro532",
+      "title": "Jutro Design System 5.3.2",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "release/5.3.1"
+      "branch": "release/5.3.2"
     },
     {
-      "id": "srcjutrostorybook531",
-      "title": "Jutro Storybook 5.3.1",
+      "id": "srcjutrostorybook532",
+      "title": "Jutro Storybook 5.3.2",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "release/5.3.1"
+      "branch": "release/5.3.2"
     },
     {
       "id": "srcjutro540",

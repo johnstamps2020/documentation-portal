@@ -93,13 +93,13 @@
       "public": false
     },
     {
-      "id": "jutro531",
+      "id": "jutro532",
       "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/5.3.1",
+      "url": "jutro/documentation/5.3.2",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["5.3.1 LTS"],
+        "version": ["5.3.2 LTS"],
         "subject": ["Best practices"],
         "release": ["Cortina"]
       },
@@ -365,13 +365,13 @@
       "public": false
     },
     {
-      "id": "storybook531",
+      "id": "storybook532",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/5.3.1",
+      "url": "jutro/storybook/5.3.2",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["5.3.1 LTS"],
+        "version": ["5.3.2 LTS"],
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
