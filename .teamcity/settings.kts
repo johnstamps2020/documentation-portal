@@ -5,6 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -220,7 +221,7 @@ object Docs {
                     }
                     docBuildType.steps {
                         copyResourcesSteps.forEach { step(it) }
-                        stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_S3_BUCKET"),
+                        stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_THE_S3_BUCKET"),
                             copyResourcesSteps.map { it.id.toString() })
                     }
                     docBuildType.features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
@@ -312,7 +313,7 @@ object Docs {
                 val configFileStep = GwBuildSteps.createGetConfigFileStep(deploy_env, configFile)
                 steps.step(configFileStep)
                 steps.stepsOrder.add(configFileStep.id.toString())
-                val crawlDocStep = GwBuildSteps.createCrawlDocStep(deploy_env, doc_id, configFile)
+                val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deploy_env, doc_id, configFile)
                 steps.step(crawlDocStep)
                 steps.stepsOrder.add(crawlDocStep.id.toString())
             }
@@ -441,96 +442,43 @@ object Content {
             name = "Content"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            buildType(CleanUpIndexBuildType)
-            buildType(UpdateSearchIndexBuildType)
+            subProject(createUpdateSearchIndexProject())
+            subProject(createCleanUpSearchIndexProject())
+            subProject(createGenerateSitemapProject())
             buildType(UploadPdfsForEscrowBuildType)
-            buildType(GenerateSitemapBuildType)
         }
     }
 
-    //TODO: Remove params, shorten scripts
-    object GenerateSitemapBuildType : BuildType({
-        name = "Generate sitemap.xml"
-        description = "Create a sitemap based on the search index"
+    private fun createGenerateSitemapProject(): Project {
+        return Project {
+            name = "Generate sitemap"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        params {
-            select(
-                "env.DEPLOY_ENV",
-                DeployEnvs.PROD.env_name,
-                label = "Deployment environment",
-                description = "Select an environment for which you want to generate the sitemap",
-                display = ParameterDisplay.PROMPT,
-                options = listOf(DeployEnvs.DEV.env_name,
-                    DeployEnvs.INT.env_name,
-                    DeployEnvs.STAGING.env_name,
-                    DeployEnvs.PROD.env_name)
-            )
-            text("env.OUTPUT_DIR", "%teamcity.build.checkoutDir%/build", allowEmpty = false)
-            text(
-                "env.ELASTICSEARCH_URLS",
-                "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
-                allowEmpty = false
-            )
-            text(
-                "env.ELASTICSEARCH_URLS_PROD",
-                "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
-                allowEmpty = false
-            )
-            text("env.APP_BASE_URL", "https://docs.%env.DEPLOY_ENV%.ccs.guidewire.net", allowEmpty = false)
-            text("env.APP_BASE_URL_PROD", "https://docs.guidewire.com", allowEmpty = false)
-
-        }
-
-        vcs {
-            root(DslContext.settingsRoot)
-            cleanCheckout = true
-            branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
-        }
-
-        steps {
-            script {
-                name = "Run the script which generates the sitemap"
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
-                    export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
-                    export APP_BASE_URL="%env.APP_BASE_URL_PROD%"
-                fi
-                
-                sitemap_generator
-            """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            script {
-                name = "Deploy sitemap to Kubernetes"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                #!/bin/bash 
-                set -xe
-                if [[ "%env.DEPLOY_ENV%" == "us-east-2" ]]; then
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
-                else
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
-                fi
-                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh sitemap
-            """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerPull = true
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            arrayOf(DeployEnvs.DEV,
+                DeployEnvs.INT,
+                DeployEnvs.STAGING,
+                DeployEnvs.PROD).forEach {
+                buildType(createGenerateSitemapBuildType(it.env_name))
             }
         }
+    }
 
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+    private fun createGenerateSitemapBuildType(deploy_env: String): BuildType {
+        val outputDir = "%teamcity.build.checkoutDir%/build"
+        return BuildType {
+            name = "Generate sitemap for $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        // FIXME: Reenable this line when the refactoring is done
-//        triggers {
+            steps {
+                step(GwBuildSteps.createRunSitemapGeneratorStep(deploy_env, outputDir))
+                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "sitemap", outputDir))
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            // FIXME: Reenable this line when the refactoring is done
+//        if (deploy_env == DeployEnvs.PROD.env_name) {
+//           triggers {
 //            schedule {
 //                schedulingPolicy = daily {
 //                    hour = 1
@@ -538,108 +486,85 @@ object Content {
 //                }
 //            }
 //        }
-    })
-    //TODO: Remove params, shorten scripts
-    object CleanUpIndexBuildType : BuildType({
-        name = "Clean up index"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        params {
-            select(
-                "env.DEPLOY_ENV",
-                "",
-                label = "Deployment environment",
-                description = "Select an environment on which you want clean up the index",
-                display = ParameterDisplay.PROMPT,
-                options = listOf(DeployEnvs.DEV.env_name,
-                    DeployEnvs.INT.env_name,
-                    DeployEnvs.STAGING.env_name,
-                    DeployEnvs.PROD.env_name)
-            )
-            text(
-                "env.CONFIG_FILE_URL",
-                "https://ditaot.internal.%env.DEPLOY_ENV%.ccs.guidewire.net/portal-config/config.json",
-                allowEmpty = false
-            )
-            text(
-                "env.CONFIG_FILE_URL_PROD",
-                "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json",
-                allowEmpty = false
-            )
-            text(
-                "env.ELASTICSEARCH_URLS",
-                "https://docsearch-doctools.%env.DEPLOY_ENV%.ccs.guidewire.net",
-                allowEmpty = false
-            )
-            text(
-                "env.ELASTICSEARCH_URLS_PROD",
-                "https://docsearch-doctools.internal.us-east-2.service.guidewire.net",
-                allowEmpty = false
-            )
-
         }
+    }
 
-        steps {
-            script {
-                name = "Run the cleanup script"
-                scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            if [[ "%env.DEPLOY_ENV%" == "prod" ]]; then
-                                export ELASTICSEARCH_URLS="%env.ELASTICSEARCH_URLS_PROD%"
-                                export CONFIG_FILE_URL="%env.CONFIG_FILE_URL_PROD%"
-                            fi
-                            
-                            export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
-                            curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
-            
-                            index_cleaner
-                        """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+    private fun createCleanUpSearchIndexProject(): Project {
+        return Project {
+            name = "Clean up search index"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(DeployEnvs.DEV,
+                DeployEnvs.INT,
+                DeployEnvs.STAGING,
+                DeployEnvs.PROD).forEach {
+                buildType(createCleanUpSearchIndexBuildType(it.env_name))
             }
         }
+    }
 
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
-    //TODO: Remove params, shorten scripts
-    object UpdateSearchIndexBuildType : BuildType({
-        name = "Update search index"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+    private fun createCleanUpSearchIndexBuildType(deploy_env: String): BuildType {
+        return BuildType {
+            name = "Clean up search index on $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        params {
-            select(
-                "DEPLOY_ENV",
-                "",
-                label = "Deployment environment",
-                description = "Select an environment on which you want reindex documents",
-                display = ParameterDisplay.PROMPT,
-                options = listOf(DeployEnvs.DEV.env_name,
-                    DeployEnvs.INT.env_name,
-                    DeployEnvs.STAGING.env_name,
-                    DeployEnvs.PROD.env_name,
-                    DeployEnvs.PORTAL2.env_name)
-            )
-            text(
-                "DOC_ID",
-                "",
-                label = "Doc ID",
-                description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
+            steps {
+                step(GwBuildSteps.createRunIndexCleanerStep(deploy_env))
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            triggers {
+                schedule {
+                    schedulingPolicy = daily {
+                        hour = 1
+                        minute = 1
+                    }
+                }
+            }
         }
+    }
 
+    private fun createUpdateSearchIndexProject(): Project {
+        return Project {
+            name = "Update search index"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(DeployEnvs.DEV,
+                DeployEnvs.INT,
+                DeployEnvs.STAGING,
+                DeployEnvs.PROD,
+                DeployEnvs.PORTAL2).forEach {
+                buildType(createUpdateSearchIndexBuildType(it.env_name))
+            }
+        }
+    }
+
+    private fun createUpdateSearchIndexBuildType(deploy_env: String): BuildType {
         val configFile = "%teamcity.build.workingDir%/config.json"
-        val configFileStep = GwBuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile)
-        steps.step(configFileStep)
-        steps.stepsOrder.add(configFileStep.id.toString())
-        val crawlDocStep = GwBuildSteps.createCrawlDocStep("%DEPLOY_ENV%", "%DOC_ID%", configFile)
-        steps.step(crawlDocStep)
-        steps.stepsOrder.add(crawlDocStep.id.toString())
+        return BuildType {
+            name = "Update search index on $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
+            params {
+                text(
+                    "DOC_ID",
+                    "",
+                    label = "Doc ID",
+                    description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                    display = ParameterDisplay.PROMPT,
+                    allowEmpty = true
+                )
+            }
+
+            steps {
+                step(GwBuildSteps.createGetConfigFileStep("%DEPLOY_ENV%", configFile))
+                step(GwBuildSteps.createRunDocCrawlerStep(deploy_env, "%DOC_ID%", configFile))
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    }
 
     object UploadPdfsForEscrowBuildType : BuildType({
         name = "Upload PDFs for Escrow"
@@ -739,6 +664,7 @@ object Frontend {
     }
 
     private fun createDeployLandingPagesBuildType(deploy_env: String): BuildType {
+        val outputDir = "%teamcity.build.checkoutDir%/output"
         return BuildType {
             name = "Deploy landing pages to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -752,14 +678,14 @@ object Frontend {
             steps {
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
-                    GwBuildSteps.createBuildPagesStep(
+                    GwBuildSteps.createRunFlailSsgStep(
                         "%teamcity.build.checkoutDir%/frontend/pages",
-                        "%teamcity.build.checkoutDir%/output",
+                        outputDir,
                         "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
                         deploy_env
                     )
                 )
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "frontend"))
+                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "frontend", outputDir))
             }
 // FIXME: Reenable this line when the refactoring is done
 //        triggers {
@@ -793,6 +719,7 @@ object Frontend {
         val pagesDir = "%teamcity.build.checkoutDir%/build"
         val locDocsSrc = "%teamcity.build.checkoutDir%/${lionSourcesRoot}"
         val locDocsOut = "${pagesDir}/l10n"
+        val outputDir = "%teamcity.build.checkoutDir%/output"
         return BuildType {
             name = "Deploy localized pages to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -806,7 +733,7 @@ object Frontend {
 
             steps {
                 step(
-                    GwBuildSteps.createGenerateLocalizationPageConfigurationsStep(
+                    GwBuildSteps.createRunLionPageBuilderStep(
                         locDocsSrc,
                         locDocsOut
                     )
@@ -814,14 +741,14 @@ object Frontend {
                 step(GwBuildSteps.createCopyLocalizedPdfsToS3BucketStep(deploy_env, locDocsSrc))
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
-                    GwBuildSteps.createBuildPagesStep(
+                    GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
-                        "%teamcity.build.checkoutDir%/output",
+                        outputDir,
                         "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
                         deploy_env
                     )
                 )
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "localizedPages"))
+                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "localizedPages", outputDir))
             }
 // FIXME: Reenable this line when the refactoring is done
 //        triggers {
@@ -855,6 +782,7 @@ object Frontend {
         val pagesDir = "%teamcity.build.checkoutDir%/build"
         val upgradeDiffsDocsSrc = "%teamcity.build.checkoutDir%/${upgradeDiffsSourcesRoot}/src"
         val upgradeDiffsDocsOut = "${pagesDir}/upgradediffs"
+        val outputDir = "%teamcity.build.checkoutDir%/output"
         return BuildType {
             name = "Deploy upgrade diffs to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -868,7 +796,7 @@ object Frontend {
 
             steps {
                 step(
-                    GwBuildSteps.createGenerateUpgradeDiffsPageConfigurationsStep(
+                    GwBuildSteps.createRunUpgradeDiffsPageBuilderStep(
                         deploy_env,
                         upgradeDiffsDocsSrc,
                         upgradeDiffsDocsOut
@@ -877,14 +805,14 @@ object Frontend {
                 step(GwBuildSteps.createCopyUpgradeDiffsToS3BucketStep(deploy_env, upgradeDiffsDocsSrc))
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
-                    GwBuildSteps.createBuildPagesStep(
+                    GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
-                        "%teamcity.build.checkoutDir%/output",
+                        outputDir,
                         "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
                         deploy_env
                     )
                 )
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "upgradeDiffs"))
+                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "upgradeDiffs", outputDir))
             }
 // FIXME: Reenable this line when the refactoring is done
 //        triggers {
@@ -1636,7 +1564,9 @@ object BuildListeners {
                     Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
                 }.flatten().distinct()
 
-                if (arrayListOf(DeployEnvs.INT.env_name, DeployEnvs.STAGING.env_name).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }) {
+                if (arrayListOf(DeployEnvs.INT.env_name,
+                        DeployEnvs.STAGING.env_name).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
+                ) {
                     sourcesToMonitor.add(src)
                 }
             }
@@ -1872,7 +1802,7 @@ object Sources {
                         buildBranch,
                         src_id,
                         docInfoFile,
-                        org.json.JSONObject()
+                        JSONObject()
                     )
                 )
                 step(
@@ -2403,6 +2333,15 @@ object Helpers {
         }
     }
 
+    fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
+        return if (arrayOf(DeployEnvs.PROD.env_name, DeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+            Pair("https://docs.guidewire.com", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net")
+        } else {
+            Pair("https://docs.${deploy_env}.ccs.guidewire.net",
+                "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net")
+        }
+    }
+
 
 }
 
@@ -2417,17 +2356,17 @@ object GwBuildSteps {
                 config_deployer merge "%teamcity.build.checkoutDir%/.teamcity/config/docs" -o "%teamcity.build.checkoutDir%/.teamcity/config/out"
             """.trimIndent()
         dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
-        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerImagePlatform = ImagePlatform.Linux
     })
 
-    fun createBuildPagesStep(
+    fun createRunFlailSsgStep(
         pages_dir: String,
         output_dir: String,
         docs_config_file: String,
         deploy_env: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
-            name = "Build pages"
+            name = "Run Flail SSG"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -2446,9 +2385,9 @@ object GwBuildSteps {
         }
     }
 
-    fun createGenerateLocalizationPageConfigurationsStep(loc_docs_src: String, loc_docs_out: String): ScriptBuildStep {
+    fun createRunLionPageBuilderStep(loc_docs_src: String, loc_docs_out: String): ScriptBuildStep {
         return ScriptBuildStep {
-            name = "Generate localization page configurations"
+            name = "Run the lion page builder"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -2482,13 +2421,13 @@ object GwBuildSteps {
         }
     }
 
-    fun createGenerateUpgradeDiffsPageConfigurationsStep(
+    fun createRunUpgradeDiffsPageBuilderStep(
         deploy_env: String,
         upgrade_diffs_docs_src: String,
         upgrade_diffs_docs_out: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
-            name = "Generate upgrade diffs page configurations"
+            name = "Run the upgrade diffs page builder"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -2525,6 +2464,51 @@ object GwBuildSteps {
                         
                 $awsS3SyncCommand
             """.trimIndent()
+        }
+    }
+
+    fun createRunSitemapGeneratorStep(deploy_env: String, output_dir: String): ScriptBuildStep {
+        val (appBaseUrl, elasticsearchUrls) = Helpers.getAppBaseAndElasticsearchUrls(deploy_env)
+        return ScriptBuildStep {
+            name = "Run the sitemap generator"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export OUTPUT_DIR="$output_dir"
+                export APP_BASE_URL="$appBaseUrl"
+                export ELASTICSEARCH_URLS="$elasticsearchUrls"
+                
+                sitemap_generator
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createRunIndexCleanerStep(deploy_env: String): ScriptBuildStep {
+        val (_, elasticsearchUrls) = Helpers.getAppBaseAndElasticsearchUrls(deploy_env)
+        val configFileUrl = when (deploy_env) {
+            DeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+            else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+        }
+        return ScriptBuildStep {
+            name = "Run index cleaner"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export ELASTICSEARCH_URLS="$elasticsearchUrls"
+                export CONFIG_FILE_URL="$configFileUrl"
+                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
+                
+                curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
+
+                index_cleaner
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
 
@@ -2571,7 +2555,7 @@ object GwBuildSteps {
         }
     }
 
-    fun createCrawlDocStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
+    fun createRunDocCrawlerStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
             DeployEnvs.PROD.env_name -> {
                 "https://ditaot.internal.us-east-2.service.guidewire.net"
@@ -2583,19 +2567,10 @@ object GwBuildSteps {
                 "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
             }
         }
-        val elasticsearchUrls: String
-        val appBaseUrl: String
-        if (arrayListOf(DeployEnvs.PROD.env_name, DeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            elasticsearchUrls = "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
-            appBaseUrl = "https://docs.guidewire.com"
-        } else {
-            elasticsearchUrls = "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
-            appBaseUrl = "https://docs.${deploy_env}.ccs.guidewire.net"
-        }
-
+        val (appBaseUrl, elasticsearchUrls) = Helpers.getAppBaseAndElasticsearchUrls(deploy_env)
 
         return ScriptBuildStep {
-            name = "Crawl the document and update the index"
+            name = "Run the doc crawler"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -2622,11 +2597,12 @@ object GwBuildSteps {
 
     fun createGetConfigFileStep(deploy_env: String, config_file: String): ScriptBuildStep {
 
-        val configFileUrl = if (arrayListOf(DeployEnvs.PROD.env_name, DeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
-        } else {
-            "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
-        }
+        val configFileUrl =
+            if (arrayListOf(DeployEnvs.PROD.env_name, DeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+                "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+            } else {
+                "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+            }
 
         return ScriptBuildStep {
             name = "Get config file"
@@ -2983,6 +2959,7 @@ object GwBuildSteps {
         val gitBranch = git_branch.ifEmpty { teamcityBuildBranch }
         return ScriptBuildStep {
             name = "Run the build manager"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -3032,7 +3009,11 @@ object GwBuildSteps {
         }
     }
 
-    fun createDeployFilesToPersistentVolumeStep(deploy_env: String, deployment_mode: String): ScriptBuildStep {
+    fun createDeployFilesToPersistentVolumeStep(
+        deploy_env: String,
+        deployment_mode: String,
+        output_dir: String,
+    ): ScriptBuildStep {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
             name = "Deploy files to persistent volume"
@@ -3045,7 +3026,7 @@ object GwBuildSteps {
                 export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
                 export AWS_DEFAULT_REGION="$awsDefaultRegion"
                 
-                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh ${deployment_mode}
+                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh $deployment_mode "$output_dir"
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3058,7 +3039,7 @@ object GwBuildSteps {
 object GwProjectFeatures {
     object GwOxygenWebhelpLicenseProjectFeature : ProjectFeature({
         type = "JetBrains.SharedResources"
-        id = Helpers.createIdStringFromName(this.name)
+        id = "GW_OXYGEN_WEBHELP_LICENSE"
         param("quota", "3")
         param("name", "OxygenWebhelpLicense")
         param("type", "quoted")
