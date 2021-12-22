@@ -105,6 +105,84 @@ object Docs {
         return yarnBuildTypes
     }
 
+    private fun createStorybookBuildTypes(
+        env_names: List<Any>,
+        doc_id: String,
+        git_repo_id: String,
+        git_branch: String,
+        publish_path: String,
+        working_dir: String,
+        index_for_search: Boolean,
+        gw_platforms: String,
+        gw_products: String,
+        gw_versions: String,
+    ): List<BuildType> {
+        val storybookBuildTypes = mutableListOf<BuildType>()
+        for (env in env_names) {
+            val envName = env.toString()
+            val docBuildType = createInitialDocBuildType(
+                envName,
+                doc_id,
+                git_repo_id,
+                git_branch,
+                publish_path,
+                working_dir,
+                index_for_search
+            )
+            val storybookBuildStep = GwBuildSteps.createBuildStorybookProjectStep(
+                envName,
+                publish_path,
+                doc_id,
+                gw_products,
+                gw_platforms,
+                gw_versions,
+                working_dir
+            )
+            docBuildType.steps.step(storybookBuildStep)
+            docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
+            // FIXME: Reenable this line when the refactoring is done
+//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(Helpers.resolveRelativeIdFromIdString(git_repo_id)) }
+            storybookBuildTypes.add(docBuildType)
+        }
+        return storybookBuildTypes
+    }
+
+    private fun createSourceZipBuildTypes(
+        env_names: List<Any>,
+        doc_id: String,
+        git_repo_id: String,
+        git_branch: String,
+        publish_path: String,
+        working_dir: String,
+        index_for_search: Boolean,
+        zip_filename: String,
+    ): List<BuildType> {
+        val sourceZipBuildTypes = mutableListOf<BuildType>()
+        for (env in env_names) {
+            val envName = env.toString()
+            val docBuildType = createInitialDocBuildType(
+                envName,
+                doc_id,
+                git_repo_id,
+                git_branch,
+                publish_path,
+                working_dir,
+                index_for_search
+            )
+            val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
+                working_dir,
+                zip_filename
+            )
+            docBuildType.steps.step(zipUpSourcesBuildStep)
+            docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
+            // FIXME: Reenable this line when the refactoring is done
+//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(Helpers.resolveRelativeIdFromIdString(git_repo_id)) }
+            sourceZipBuildTypes.add(docBuildType)
+        }
+        return sourceZipBuildTypes
+    }
+
+
     private fun createDitaBuildTypes(
         env_names: List<Any>,
         doc_id: String,
@@ -322,7 +400,6 @@ object Docs {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             }
         }
-
     }
 
     private fun createDocProject(build_config: JSONObject, src_id: String): Project {
@@ -358,68 +435,99 @@ object Docs {
         val gitBranch = src.getString("branch")
 
         val docProjectBuildTypes = mutableListOf<BuildType>()
-        if (gwBuildType == "yarn") {
-            val nodeImageVersion =
-                if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
-            val buildCommand =
-                if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
-            docProjectBuildTypes += createYarnBuildTypes(
-                docEnvironmentsList,
-                docId,
-                gitRepoId,
-                gitBranch,
-                publishPath,
-                workingDir,
-                indexForSearch,
-                buildCommand,
-                nodeImageVersion,
-                gwPlatformsString,
-                gwProductsString,
-                gwVersionsString
-            )
-        } else if (gwBuildType == "dita") {
-            val rootMap = build_config.getString("root")
-            val indexRedirect = when (build_config.has("indexRedirect")) {
-                true -> {
-                    build_config.getBoolean("indexRedirect")
+
+        when (gwBuildType) {
+            "yarn" -> {
+                val nodeImageVersion =
+                    if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
+                val buildCommand =
+                    if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
+                docProjectBuildTypes += createYarnBuildTypes(
+                    docEnvironmentsList,
+                    docId,
+                    gitRepoId,
+                    gitBranch,
+                    publishPath,
+                    workingDir,
+                    indexForSearch,
+                    buildCommand,
+                    nodeImageVersion,
+                    gwPlatformsString,
+                    gwProductsString,
+                    gwVersionsString
+                )
+            }
+            "storybook" -> {
+                docProjectBuildTypes += createStorybookBuildTypes(
+                    docEnvironmentsList,
+                    docId,
+                    gitRepoId,
+                    gitBranch,
+                    publishPath,
+                    workingDir,
+                    indexForSearch,
+                    gwPlatformsString,
+                    gwProductsString,
+                    gwVersionsString
+                )
+            }
+            "dita" -> {
+                val rootMap = build_config.getString("root")
+                val indexRedirect = when (build_config.has("indexRedirect")) {
+                    true -> {
+                        build_config.getBoolean("indexRedirect")
+                    }
+                    else -> {
+                        false
+                    }
+
                 }
-                else -> {
-                    false
+                val buildFilter = when (build_config.has("filter")) {
+                    true -> {
+                        build_config.getString("filter")
+                    }
+                    else -> {
+                        ""
+                    }
                 }
+                val resourcesToCopy =
+                    if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
+
+                val srcIsExported = src.getBoolean("isExported")
+
+                docProjectBuildTypes += createDitaBuildTypes(
+                    docEnvironmentsList,
+                    docId,
+                    gitRepoId,
+                    gitUrl,
+                    gitBranch,
+                    srcIsExported,
+                    publishPath,
+                    workingDir,
+                    indexForSearch,
+                    rootMap,
+                    indexRedirect,
+                    buildFilter,
+                    gwPlatformsString,
+                    gwProductsString,
+                    gwVersionsString,
+                    resourcesToCopy
+                )
 
             }
-            val buildFilter = when (build_config.has("filter")) {
-                true -> {
-                    build_config.getString("filter")
-                }
-                else -> {
-                    ""
-                }
+            "source-zip" -> {
+                val zipFilename = build_config.getString("zipFilename")
+                docProjectBuildTypes += createSourceZipBuildTypes(
+                    docEnvironmentsList,
+                    docId,
+                    gitRepoId,
+                    gitBranch,
+                    publishPath,
+                    workingDir,
+                    indexForSearch,
+                    zipFilename
+                )
             }
-            val resourcesToCopy =
-                if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
-
-            val srcIsExported = src.getBoolean("isExported")
-
-            docProjectBuildTypes += createDitaBuildTypes(
-                docEnvironmentsList,
-                docId,
-                gitRepoId,
-                gitUrl,
-                gitBranch,
-                srcIsExported,
-                publishPath,
-                workingDir,
-                indexForSearch,
-                rootMap,
-                indexRedirect,
-                buildFilter,
-                gwPlatformsString,
-                gwProductsString,
-                gwVersionsString,
-                resourcesToCopy
-            )
-
         }
 
         return Project {
@@ -2678,7 +2786,6 @@ object GwBuildSteps {
     fun createZipPackageStep(
         input_path: String, target_path: String,
     ): ScriptBuildStep {
-
         val zipPackageName = "docs.zip"
 
         return ScriptBuildStep {
@@ -2947,6 +3054,82 @@ object GwBuildSteps {
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "--user 1000:1000"
+        }
+    }
+
+    fun createBuildStorybookProjectStep(
+        deploy_env: String,
+        publish_path: String,
+        doc_id: String,
+        gw_products: String,
+        gw_platforms: String,
+        gw_versions: String,
+        working_dir: String,
+    ): ScriptBuildStep {
+        val targetUrl =
+            if (deploy_env == DeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
+
+        return ScriptBuildStep {
+            name = "Build the Storybook project"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    export DEPLOY_ENV="$deploy_env"
+                    export GW_DOC_ID="$doc_id"
+                    export GW_PRODUCT="$gw_products"
+                    export GW_PLATFORM="$gw_platforms"
+                    export JUTRO_VERSION="$gw_versions"
+                    export TARGET_URL="$targetUrl"
+                    
+                    # legacy Jutro repos
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
+                    npm config set @jutro:registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/globalization-npm-release -s @gwre-g11n
+                    npm config set @gwre-g11n:registry https://artifactory.guidewire.com/api/npm/globalization-npm-release/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/elixir -s @elixir
+                    npm config set @elixir:registry https://artifactory.guidewire.com/api/npm/elixir/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev -s @gtui
+                    npm config set @gtui:registry https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev/
+                                        
+                    # new Jutro proxy repo
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
+                    npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
+
+                    # Doctools repo
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
+                    npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
+                                        
+                    export BASE_URL=/${publish_path}/
+                    cd "$working_dir"
+                    yarn
+                    NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
+                """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+        }
+    }
+
+    //    TODO: Maybe this function could be merged with the createZipPackageStep function
+    fun createZipUpSourcesStep(input_path: String, zip_filename: String): ScriptBuildStep {
+        val zipPackageName = "${zip_filename}.zip"
+        val targetPath = "out"
+
+        return ScriptBuildStep {
+            name = "Zip up sources"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                cd "$input_path" || exit
+                zip -r "$zipPackageName" . -x '*.git*'
+                zip -r "$zipPackageName" .gitignore
+                mkdir "$targetPath"
+                mv "$zipPackageName" "${targetPath}/${zipPackageName}"
+            """.trimIndent()
         }
     }
 
