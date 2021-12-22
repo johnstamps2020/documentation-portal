@@ -1,3 +1,5 @@
+//TODO: Add custom envs for yarn and storybook builds
+//TODO: Add builds for localization packages
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
