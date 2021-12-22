@@ -668,6 +668,9 @@ object Content {
             cleanCheckout = true
         }
 
+        val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
+        val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
+
         steps {
             script {
                 id = "DOWNLOAD_AND_ZIP_PDFS"
@@ -676,8 +679,8 @@ object Content {
                     #!/bin/bash
                     set -xe
                     
-                    export TMP_DIR="%teamcity.build.checkoutDir%/ci/pdfs"
-                    export ZIP_ARCHIVE_NAME="%env.RELEASE_NAME%_pdfs.zip"
+                    export TMP_DIR="$tmpDir"
+                    export ZIP_ARCHIVE_NAME="$zipArchiveName"
                     
                     echo "Setting credentials to access prod"
                     export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
@@ -701,7 +704,7 @@ object Content {
                     export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
                     
                     echo "Uploading the ZIP archive to the S3 bucket"
-                    aws s3 cp "%env.TMP_DIR%/%env.ZIP_ARCHIVE_NAME%" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
+                    aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
             """.trimIndent()
             }
         }
