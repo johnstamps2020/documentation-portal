@@ -2494,7 +2494,8 @@ object GwBuildSteps {
             else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
         }
         return ScriptBuildStep {
-            name = "Run index cleaner"
+            name = "Run the index cleaner"
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
