@@ -80,6 +80,18 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro531",
+      "srcId": "srcjutro531",
+      "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook531",
+      "srcId": "srcjutrostorybook531",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutro532",
       "srcId": "srcjutro532",
       "workingDir": "website"
