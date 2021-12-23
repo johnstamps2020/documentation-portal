@@ -1,4 +1,5 @@
 // TODO: When the refactoring is done, remove the teamcity access token from mskowron account
+// TODO: When the refactoring is done, clean up AWS and ATMOS envs in the Documentation Tools project
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -730,6 +731,8 @@ object Content {
 
         val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
         val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
+        val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(DeployEnvs.PROD.env_name)
+        val (awsAccessKeyIdInt, awsSecretAccessKeyInt, awsDefaultRegionInt) = Helpers.getAwsSettings(DeployEnvs.INT.env_name)
 
         steps {
             script {
@@ -743,9 +746,9 @@ object Content {
                     export ZIP_ARCHIVE_NAME="$zipArchiveName"
                     
                     echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%"
-                    export AWS_SECRET_ACCESS_KEY="%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%"
-                    export AWS_DEFAULT_REGION="%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
+                    export AWS_ACCESS_KEY_ID="$awsAccessKeyIdProd"
+                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyProd"
+                    export AWS_DEFAULT_REGION="$awsDefaultRegionProd"
                     
                     cd %teamcity.build.checkoutDir%/ci
                     ./downloadPdfsForEscrow.sh
@@ -759,9 +762,9 @@ object Content {
                     set -xe
                     
                     echo "Setting credentials to access int"
-                    export AWS_ACCESS_KEY_ID="%env.ATMOS_DEV_AWS_ACCESS_KEY_ID%"
-                    export AWS_SECRET_ACCESS_KEY="%env.ATMOS_DEV_AWS_SECRET_ACCESS_KEY%"
-                    export AWS_DEFAULT_REGION="%env.ATMOS_DEV_AWS_DEFAULT_REGION%"                    
+                    export AWS_ACCESS_KEY_ID="$awsAccessKeyIdInt"
+                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyInt"
+                    export AWS_DEFAULT_REGION="$awsDefaultRegionInt"
                     
                     echo "Uploading the ZIP archive to the S3 bucket"
                     aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
@@ -2139,6 +2142,8 @@ object Recommendations {
         gw_version: String,
     ): BuildType {
         val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+
         return BuildType {
             name = "Generate recommendations for $gw_product, $gw_platform, $gw_version"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2151,9 +2156,9 @@ object Recommendations {
                             set -xe
                             
                             echo "Setting credentials to access int"
-                            export AWS_ACCESS_KEY_ID="%env.ATMOS_DEV_AWS_ACCESS_KEY_ID%"
-                            export AWS_SECRET_ACCESS_KEY="%env.ATMOS_DEV_AWS_SECRET_ACCESS_KEY%"
-                            export AWS_DEFAULT_REGION="%env.ATMOS_DEV_AWS_DEFAULT_REGION%"                    
+                            export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                            export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                            export AWS_DEFAULT_REGION="$awsDefaultRegion"
                             
                             echo "Downloading the pretrained model from the S3 bucket"
                             aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
@@ -2814,6 +2819,7 @@ object GwBuildSteps {
     }
 
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(DeployEnvs.PROD.env_name)
         return ScriptBuildStep {
             name = "Copy from S3 on staging to S3 on Prod"
             id = Helpers.createIdStringFromName(this.name)
@@ -2825,9 +2831,9 @@ object GwBuildSteps {
                     aws s3 sync s3://tenant-doctools-staging-builds/${publish_path} ${publish_path}/ --delete
                     
                     echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%"
-                    export AWS_SECRET_ACCESS_KEY="%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%"
-                    export AWS_DEFAULT_REGION="%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
+                    export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                    export AWS_DEFAULT_REGION="$awsDefaultRegion"
                     
                     echo "Uploading from Teamcity to prod"
                     aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
