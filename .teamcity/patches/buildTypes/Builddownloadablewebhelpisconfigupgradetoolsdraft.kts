@@ -14,6 +14,6 @@ changeBuildType(RelativeId("Builddownloadablewebhelpisconfigupgradetoolsdraft"))
         check(branchFilter == "+:refs/heads/master") {
             "Unexpected option value: branchFilter = $branchFilter"
         }
-        branchFilter = "+:refs/heads/*"
+        branchFilter = "+:*"
     }
 }
