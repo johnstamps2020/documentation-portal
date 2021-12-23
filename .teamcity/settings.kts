@@ -352,6 +352,33 @@ object Docs {
             }
             ditaBuildTypes.add(downloadableOutputBuildType)
         }
+        if (env_names.contains(DeployEnvs.STAGING.env_name)) {
+            val stagingBuildTypeIdString =
+                Helpers.resolveRelativeIdFromIdString("$doc_id${DeployEnvs.STAGING.env_name}").toString()
+            val localizationPackageBuildType = BuildType {
+                name = "Build localization package"
+                id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
+
+                artifactRules = """
+                    ${working_dir}/${outputDir} => /
+                """.trimIndent()
+
+                vcs {
+                    root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                    branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
+                    cleanCheckout = true
+                }
+
+                steps.step(GwBuildSteps.createRunLionPkgBuilderStep(working_dir,
+                    outputDir,
+                    stagingBuildTypeIdString))
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                }
+            }
+            ditaBuildTypes.add(localizationPackageBuildType)
+        }
         return ditaBuildTypes
     }
 
@@ -2526,6 +2553,33 @@ object GwBuildSteps {
                         
                 aws s3 sync "$loc_docs_src" s3://tenant-doctools-${deploy_env}-builds/l10n --exclude ".git/*" --delete
             """.trimIndent()
+        }
+    }
+
+    fun createRunLionPkgBuilderStep(
+        working_dir: String,
+        output_dir: String,
+        tc_build_type_id: String,
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Run the lion pkg builder"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
+                export TEAMCITY_API_AUTH_TOKEN="credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530"
+                export TEAMCITY_RESOURCES_ARTIFACT_PATH="json/build-data.json"
+                export ZIP_SRC_DIR="zip"
+                export OUTPUT_PATH="$output_dir"
+                export WORKING_DIR="$working_dir"
+                export TC_BUILD_TYPE_ID="$tc_build_type_id"
+                
+                lion_pkg_builder
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
 
