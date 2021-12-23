@@ -1,5 +1,6 @@
 // TODO: When the refactoring is done, remove the teamcity access token from mskowron account
 // TODO: When the refactoring is done, clean up AWS and ATMOS envs in the Documentation Tools project
+// TODO: Review VCS settings, especially the use of the default branch
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -3393,7 +3394,12 @@ object GwVcsRoots {
         "main",
     )
 
-    private fun createGitVcsRoot(vcs_root_id: RelativeId, git_url: String, default_branch: String, monitored_branches: List<String> = emptyList()): GitVcsRoot {
+    private fun createGitVcsRoot(
+        vcs_root_id: RelativeId,
+        git_url: String,
+        default_branch: String,
+        monitored_branches: List<String> = emptyList(),
+    ): GitVcsRoot {
         return GitVcsRoot {
             name = vcs_root_id.toString().substringAfterLast("_")
             id = vcs_root_id
@@ -3411,7 +3417,8 @@ object GwVcsRoots {
                 monitored_branches.forEach {
                     branchSpec += "+:${Helpers.createFullGitBranchName(it)}\n"
                 }
-            }        }
+            }
+        }
     }
 
     fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
@@ -3438,17 +3445,12 @@ object GwVcsRoots {
 
 object GwVcsSettings {
     fun createBranchFilter(git_branches: List<String>): String {
-        var branchFilter = ""
-        if (git_branches.isEmpty()) {
-            branchFilter = "+:*"
-        } else if (git_branches.size == 1) {
-            branchFilter = "+:${Helpers.createFullGitBranchName(git_branches[0])}"
-        } else {
-            git_branches.forEach {
-                branchFilter += "+:${Helpers.createFullGitBranchName(it)}\n"
-            }
+        val gitBranchesEntries = mutableListOf<String>()
+        gitBranchesEntries.add("+:<default>")
+        git_branches.forEach {
+            gitBranchesEntries.add("+:${Helpers.createFullGitBranchName(it)}")
         }
-        return branchFilter
+        return gitBranchesEntries.joinToString("\n")
     }
 }
 
