@@ -1,4 +1,6 @@
 //TODO: Add builds for localization packages
+//TODO: Replace all ${'$'}ATMOS refs with %env.ATMOS% refs
+//TODO: Move the TeamCity API Auth Token to an env in Documentation Tools
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -60,7 +62,7 @@ object Docs {
     }
 
     private fun createYarnBuildTypes(
-        env_names: List<Any>,
+        env_names: List<String>,
         doc_id: String,
         git_repo_id: String,
         git_branch: String,
@@ -76,9 +78,8 @@ object Docs {
     ): List<BuildType> {
         val yarnBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
-            val envName = env.toString()
             val docBuildType = createInitialDocBuildType(
-                envName,
+                env,
                 doc_id,
                 git_repo_id,
                 git_branch,
@@ -87,7 +88,7 @@ object Docs {
                 index_for_search
             )
             val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(
-                envName,
+                env,
                 publish_path,
                 build_command,
                 node_image_version,
@@ -108,7 +109,7 @@ object Docs {
     }
 
     private fun createStorybookBuildTypes(
-        env_names: List<Any>,
+        env_names: List<String>,
         doc_id: String,
         git_repo_id: String,
         git_branch: String,
@@ -122,9 +123,8 @@ object Docs {
     ): List<BuildType> {
         val storybookBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
-            val envName = env.toString()
             val docBuildType = createInitialDocBuildType(
-                envName,
+                env,
                 doc_id,
                 git_repo_id,
                 git_branch,
@@ -133,7 +133,7 @@ object Docs {
                 index_for_search
             )
             val storybookBuildStep = GwBuildSteps.createBuildStorybookProjectStep(
-                envName,
+                env,
                 publish_path,
                 doc_id,
                 gw_products,
@@ -152,7 +152,7 @@ object Docs {
     }
 
     private fun createSourceZipBuildTypes(
-        env_names: List<Any>,
+        env_names: List<String>,
         doc_id: String,
         git_repo_id: String,
         git_branch: String,
@@ -163,9 +163,8 @@ object Docs {
     ): List<BuildType> {
         val sourceZipBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
-            val envName = env.toString()
             val docBuildType = createInitialDocBuildType(
-                envName,
+                env,
                 doc_id,
                 git_repo_id,
                 git_branch,
@@ -188,7 +187,7 @@ object Docs {
 
 
     private fun createDitaBuildTypes(
-        env_names: List<Any>,
+        env_names: List<String>,
         doc_id: String,
         git_repo_id: String,
         git_url: String,
@@ -208,9 +207,8 @@ object Docs {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val outputDir = "out"
         for (env in env_names) {
-            val envName = env.toString()
             val docBuildType = createInitialDocBuildType(
-                envName,
+                env,
                 doc_id,
                 git_repo_id,
                 git_branch,
@@ -218,7 +216,7 @@ object Docs {
                 working_dir,
                 index_for_search
             )
-            if (envName == DeployEnvs.PROD.env_name) {
+            if (env == DeployEnvs.PROD.env_name) {
                 val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
                 docBuildType.steps.step(copyFromStagingToProdStep)
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
@@ -226,7 +224,7 @@ object Docs {
                 docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
-                if (envName == DeployEnvs.STAGING.env_name) {
+                if (env == DeployEnvs.STAGING.env_name) {
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         "webhelp_with_pdf",
                         root_map,
@@ -321,6 +319,7 @@ object Docs {
             ditaBuildTypes.add(docBuildType)
         }
         for (format in arrayListOf("webhelp", "pdf", "webhelp_with_pdf")) {
+            val localOutputDir = "${outputDir}/zip"
             val downloadableOutputBuildType = BuildType {
                 name = "Build downloadable ${format.replace("_", " ")}"
                 id = Helpers.resolveRelativeIdFromIdString("$doc_id$format")
@@ -333,27 +332,24 @@ object Docs {
                     cleanCheckout = true
                 }
 
+                steps {
+                    step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                        format,
+                        root_map,
+                        index_redirect,
+                        working_dir,
+                        localOutputDir,
+                        build_filter,
+                        for_offline_use = true
+                    ))
+                    step(GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
+                        "${working_dir}/${outputDir}"))
+                }
 
                 features {
                     feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 }
             }
-            val localOutputDir = "${outputDir}/zip"
-            val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                format,
-                root_map,
-                index_redirect,
-                working_dir,
-                localOutputDir,
-                build_filter,
-                for_offline_use = true
-            )
-            downloadableOutputBuildType.steps.step(buildDitaProjectForOfflineUseStep)
-            downloadableOutputBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-            val zipPackageStep =
-                GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}", "${working_dir}/${outputDir}")
-            downloadableOutputBuildType.steps.step(zipPackageStep)
-            downloadableOutputBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
             ditaBuildTypes.add(downloadableOutputBuildType)
         }
         return ditaBuildTypes
