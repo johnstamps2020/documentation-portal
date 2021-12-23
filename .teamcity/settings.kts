@@ -1,5 +1,3 @@
-//TODO: Add builds for localization packages
-//TODO: Replace all ${'$'}ATMOS refs with %env.ATMOS% refs
 //TODO: Move the TeamCity API Auth Token to an env in Documentation Tools
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
@@ -745,9 +743,9 @@ object Content {
                     export ZIP_ARCHIVE_NAME="$zipArchiveName"
                     
                     echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    export AWS_ACCESS_KEY_ID="%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%"
+                    export AWS_SECRET_ACCESS_KEY="%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%"
+                    export AWS_DEFAULT_REGION="%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
                     
                     cd %teamcity.build.checkoutDir%/ci
                     ./downloadPdfsForEscrow.sh
@@ -761,9 +759,9 @@ object Content {
                     set -xe
                     
                     echo "Setting credentials to access int"
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                    export AWS_ACCESS_KEY_ID="%env.ATMOS_DEV_AWS_ACCESS_KEY_ID%"
+                    export AWS_SECRET_ACCESS_KEY="%env.ATMOS_DEV_AWS_SECRET_ACCESS_KEY%"
+                    export AWS_DEFAULT_REGION="%env.ATMOS_DEV_AWS_DEFAULT_REGION%"                    
                     
                     echo "Uploading the ZIP archive to the S3 bucket"
                     aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
@@ -2153,9 +2151,9 @@ object Recommendations {
                             set -xe
                             
                             echo "Setting credentials to access int"
-                            export AWS_ACCESS_KEY_ID="${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID"
-                            export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY"
-                            export AWS_DEFAULT_REGION="${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"                    
+                            export AWS_ACCESS_KEY_ID="%env.ATMOS_DEV_AWS_ACCESS_KEY_ID%"
+                            export AWS_SECRET_ACCESS_KEY="%env.ATMOS_DEV_AWS_SECRET_ACCESS_KEY%"
+                            export AWS_DEFAULT_REGION="%env.ATMOS_DEV_AWS_DEFAULT_REGION%"                    
                             
                             echo "Downloading the pretrained model from the S3 bucket"
                             aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
@@ -2456,14 +2454,14 @@ object Helpers {
     fun getAwsSettings(deploy_env: String): Triple<String, String, String> {
         return when (deploy_env) {
             DeployEnvs.PROD.env_name -> Triple(
-                "${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID",
-                "${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY",
-                "${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%",
+                "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%",
+                "%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
             )
             else -> Triple(
-                "${'$'}ATMOS_DEV_AWS_ACCESS_KEY_ID",
-                "${'$'}ATMOS_DEV_AWS_SECRET_ACCESS_KEY",
-                "${'$'}ATMOS_DEV_AWS_DEFAULT_REGION"
+                "%env.ATMOS_DEV_AWS_ACCESS_KEY_ID%",
+                "%env.ATMOS_DEV_AWS_SECRET_ACCESS_KEY%",
+                "%env.ATMOS_DEV_AWS_DEFAULT_REGION%"
             )
         }
     }
@@ -2827,9 +2825,9 @@ object GwBuildSteps {
                     aws s3 sync s3://tenant-doctools-staging-builds/${publish_path} ${publish_path}/ --delete
                     
                     echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="${'$'}ATMOS_PROD_AWS_ACCESS_KEY_ID"
-                    export AWS_SECRET_ACCESS_KEY="${'$'}ATMOS_PROD_AWS_SECRET_ACCESS_KEY"
-                    export AWS_DEFAULT_REGION="${'$'}ATMOS_PROD_AWS_DEFAULT_REGION"
+                    export AWS_ACCESS_KEY_ID="%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%"
+                    export AWS_SECRET_ACCESS_KEY="%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%"
+                    export AWS_DEFAULT_REGION="%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
                     
                     echo "Uploading from Teamcity to prod"
                     aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
