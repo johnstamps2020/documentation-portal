@@ -322,7 +322,7 @@ object Docs {
             val localOutputDir = "${outputDir}/zip"
             val downloadableOutputBuildType = BuildType {
                 name = "Build downloadable ${format.replace("_", " ")}"
-                id = Helpers.resolveRelativeIdFromIdString("$doc_id$format")
+                id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
                 artifactRules = "${working_dir}/${outputDir} => /"
 
@@ -393,7 +393,7 @@ object Docs {
     ): BuildType {
         return BuildType {
             name = "Publish to $deploy_env"
-            id = Helpers.resolveRelativeIdFromIdString("$doc_id$deploy_env")
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
             if (arrayOf(DeployEnvs.INT.env_name, DeployEnvs.STAGING.env_name).contains(deploy_env)) {
                 templates(GwTemplates.BuildListenerTemplate)
@@ -1887,7 +1887,7 @@ object Sources {
 
         val validationBuildType = BuildType {
             name = "Validate $docTitle ($docId)"
-            id = Helpers.resolveRelativeIdFromIdString("${src_id}${this.name}")
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${src_id}")
             templates(GwTemplates.ValidationListenerTemplate)
 
             artifactRules = "$previewUrlFile\n"
