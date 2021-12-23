@@ -27,7 +27,7 @@ changeVcsRoot(RelativeId("insurancesuiteconfigurationupgradetools3xgit")) {
     }
 
     (this as GitVcsRoot).apply {
-        branchSpec = "+:refs/heads/(master)"
+        branchSpec = "+:(*)"
     }
 
 }
