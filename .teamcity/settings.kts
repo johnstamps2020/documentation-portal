@@ -1,4 +1,3 @@
-//TODO: Add custom envs for yarn and storybook builds
 //TODO: Add builds for localization packages
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
@@ -73,6 +72,7 @@ object Docs {
         gw_platforms: String,
         gw_products: String,
         gw_versions: String,
+        custom_env: JSONArray?,
     ): List<BuildType> {
         val yarnBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
@@ -95,7 +95,8 @@ object Docs {
                 gw_products,
                 gw_platforms,
                 gw_versions,
-                working_dir
+                working_dir,
+                custom_env
             )
             docBuildType.steps.step(yarnBuildStep)
             docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
@@ -117,6 +118,7 @@ object Docs {
         gw_platforms: String,
         gw_products: String,
         gw_versions: String,
+        custom_env: JSONArray?,
     ): List<BuildType> {
         val storybookBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
@@ -137,7 +139,8 @@ object Docs {
                 gw_products,
                 gw_platforms,
                 gw_versions,
-                working_dir
+                working_dir,
+                custom_env
             )
             docBuildType.steps.step(storybookBuildStep)
             docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
@@ -436,6 +439,7 @@ object Docs {
         val gitBranch = src.getString("branch")
 
         val docProjectBuildTypes = mutableListOf<BuildType>()
+        val customEnv = if (build_config.has("customEnv")) build_config.getJSONArray("customEnv") else null
 
         when (gwBuildType) {
             "yarn" -> {
@@ -455,7 +459,8 @@ object Docs {
                     nodeImageVersion,
                     gwPlatformsString,
                     gwProductsString,
-                    gwVersionsString
+                    gwVersionsString,
+                    customEnv
                 )
             }
             "storybook" -> {
@@ -469,7 +474,8 @@ object Docs {
                     indexForSearch,
                     gwPlatformsString,
                     gwProductsString,
-                    gwVersionsString
+                    gwVersionsString,
+                    customEnv
                 )
             }
             "dita" -> {
@@ -1971,6 +1977,7 @@ object Sources {
                 if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
             val buildCommand =
                 if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
+            val customEnv = if (build_config.has("customEnv")) build_config.getJSONArray("customEnv") else null
             validationBuildType.steps {
                 step(
                     GwBuildSteps.createBuildYarnProjectStep(
@@ -1982,7 +1989,8 @@ object Sources {
                         gwProductsString,
                         gwPlatformsString,
                         gwVersionsString,
-                        workingDir
+                        workingDir,
+                        customEnv
                     )
                 )
                 step(
@@ -3003,11 +3011,18 @@ object GwBuildSteps {
         gw_platforms: String,
         gw_versions: String,
         working_dir: String,
+        custom_env: JSONArray?,
     ): ScriptBuildStep {
         val nodeImageVersion = node_image_version ?: "12.14.1"
         val buildCommand = build_command ?: "build"
         val targetUrl =
             if (deploy_env == DeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
+
+        var customEnvExportVars = ""
+        custom_env?.forEach {
+            it as JSONObject
+            customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\"\n"
+        }
 
         return ScriptBuildStep {
             name = "Build the yarn project"
@@ -3022,6 +3037,7 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gw_platforms"
                     export GW_VERSION="$gw_versions"
                     export TARGET_URL="$targetUrl"
+                    $customEnvExportVars
                     
                     # legacy Jutro repos
                     npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
@@ -3061,9 +3077,16 @@ object GwBuildSteps {
         gw_platforms: String,
         gw_versions: String,
         working_dir: String,
+        custom_env: JSONArray?,
     ): ScriptBuildStep {
         val targetUrl =
             if (deploy_env == DeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
+
+        var customEnvExportVars = ""
+        custom_env?.forEach {
+            it as JSONObject
+            customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\"\n"
+        }
 
         return ScriptBuildStep {
             name = "Build the Storybook project"
@@ -3078,6 +3101,7 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gw_platforms"
                     export JUTRO_VERSION="$gw_versions"
                     export TARGET_URL="$targetUrl"
+                    $customEnvExportVars
                     
                     # legacy Jutro repos
                     npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
