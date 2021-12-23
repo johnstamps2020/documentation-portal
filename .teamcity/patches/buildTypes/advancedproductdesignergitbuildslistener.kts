@@ -19,7 +19,7 @@ changeBuildType(RelativeId("advancedproductdesignergitbuildslistener")) {
             "Unexpected option value: branchFilter = $branchFilter"
         }
         branchFilter = """
-            +:refs/heads/main
+            +:<default>
             +:refs/heads/*
         """.trimIndent()
     }
