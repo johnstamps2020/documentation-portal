@@ -3404,13 +3404,14 @@ object GwVcsRoots {
             }
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
-            if (monitored_branches.isNotEmpty()) {
+            if (monitored_branches.isEmpty()) {
+                branchSpec = "+:*"
+            } else {
                 branchSpec = ""
                 monitored_branches.forEach {
                     branchSpec += "+:${Helpers.createFullGitBranchName(it)}\n"
                 }
-            }
-        }
+            }        }
     }
 
     fun createGitVcsRootsFromConfigFiles(): List<GitVcsRoot> {
