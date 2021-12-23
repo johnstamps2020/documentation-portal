@@ -1301,6 +1301,7 @@ object Server {
                         export PARTNERS_LOGIN_URL="$partnersLoginUrl"
                         export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
                         export TAG_VERSION="$tagVersion"
+                        export DEPLOY_ENV="$serverBuildTypeDeployEnv"
                         ###
                         
                         aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
@@ -2479,7 +2480,6 @@ object Helpers {
                 "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net")
         }
     }
-
 
 }
 
