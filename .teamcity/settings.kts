@@ -3378,40 +3378,35 @@ object GwVcsRoots {
         createGitVcsRoot(
             Helpers.resolveRelativeIdFromIdString("XDocs Client"),
             "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
-            listOf("master")
+            "master"
         )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString("Localized PDFs"),
         "ssh://git@stash.guidewire.com/docsources/localization-pdfs.git",
-        listOf("main")
+        "main"
     )
 
     val UpgradeDiffsGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString("Upgrade diffs"),
         "ssh://git@stash.guidewire.com/docsources/upgradediffs.git",
-        listOf("main")
+        "main",
     )
 
-    private fun createGitVcsRoot(vcs_root_id: RelativeId, git_url: String, git_branches: List<String>): GitVcsRoot {
-        val defaultBranch = git_branches[0]
-        val monitoredBranches =
-            if (git_branches.size > 1) git_branches.slice(1..git_branches.lastIndex) else emptyList()
+    private fun createGitVcsRoot(vcs_root_id: RelativeId, git_url: String, default_branch: String, monitored_branches: List<String> = emptyList()): GitVcsRoot {
         return GitVcsRoot {
             name = vcs_root_id.toString().substringAfterLast("_")
             id = vcs_root_id
             url = git_url
-            branch = Helpers.createFullGitBranchName(defaultBranch)
+            branch = Helpers.createFullGitBranchName(default_branch)
             authMethod = uploadedKey {
                 uploadedKey = "sys-doc.rsa"
             }
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
-            if (monitoredBranches.isEmpty()) {
-                branchSpec = "+:*"
-            } else {
+            if (monitored_branches.isNotEmpty()) {
                 branchSpec = ""
-                monitoredBranches.forEach {
+                monitored_branches.forEach {
                     branchSpec += "+:${Helpers.createFullGitBranchName(it)}\n"
                 }
             }
@@ -3435,7 +3430,7 @@ object GwVcsRoots {
             } else {
                 gitBranches[0]
             }
-            createGitVcsRoot(id, gitUrl, listOf(defaultBranch))
+            createGitVcsRoot(id, gitUrl, defaultBranch)
         }
     }
 }
