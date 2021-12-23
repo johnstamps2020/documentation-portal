@@ -1,4 +1,4 @@
-//TODO: Move the TeamCity API Auth Token to an env in Documentation Tools
+// TODO: When the refactoring is done, remove the teamcity access token from mskowron account
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -2567,7 +2567,7 @@ object GwBuildSteps {
                 set -xe
                 
                 export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
-                export TEAMCITY_API_AUTH_TOKEN="credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530"
+                export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
                 export TEAMCITY_RESOURCES_ARTIFACT_PATH="json/build-data.json"
                 export ZIP_SRC_DIR="zip"
                 export OUTPUT_PATH="$output_dir"
@@ -3218,7 +3218,7 @@ object GwBuildSteps {
                 
                 export CHANGED_FILES_FILE="%system.teamcity.build.changedFiles.file%"
                 export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
-                export TEAMCITY_API_AUTH_TOKEN="credentialsJSON:202f4911-8170-40c3-bdc9-3d28603a1530"
+                export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
                 export TEAMCITY_RESOURCES_ARTIFACT_PATH="json/build-data.json"
                 export TEAMCITY_AFFECTED_PROJECT="$teamcity_affected_project"
                 export TEAMCITY_TEMPLATE="$teamcity_template"
