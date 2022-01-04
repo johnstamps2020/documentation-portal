@@ -3039,7 +3039,7 @@ object GwBuildSteps {
                 ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate"
             }
             "webhelp_with_pdf" -> {
-                ditaBuildCommand += " -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire\""
+                ditaBuildCommand += " -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
             }
             "pdf" -> {
                 ditaBuildCommand += " -f pdf_Guidewire_remote"
