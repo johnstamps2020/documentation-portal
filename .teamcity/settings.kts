@@ -349,6 +349,8 @@ object Docs {
                         working_dir,
                         localOutputDir,
                         build_filter,
+                        git_url = git_url,
+                        git_branch = git_branch,
                         for_offline_use = true
                     ))
                     step(GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
