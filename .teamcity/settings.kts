@@ -1,6 +1,7 @@
 // TODO: When the refactoring is done, remove the teamcity access token from mskowron account
 // TODO: When the refactoring is done, clean up AWS and ATMOS envs in the Documentation Tools project
 // TODO: Review VCS settings, especially the use of the default branch
+import Settings.Content.UploadPdfsForEscrowBuildType.triggers
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -8,6 +9,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -34,13 +36,20 @@ project {
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
 }
 
-enum class DeployEnvs(val env_name: String) {
+enum class GwDeployEnvs(val env_name: String) {
     DEV("dev"),
     INT("int"),
     STAGING("staging"),
     PROD("prod"),
     US_EAST_2("us-east-2"),
     PORTAL2("portal2")
+}
+
+enum class GwBuildTypes(val build_type_name: String) {
+    DITA("dita"),
+    YARN("yarn"),
+    STORYBOOK("storybook"),
+    SOURCE_ZIP("source-zip")
 }
 
 object Docs {
@@ -216,7 +225,7 @@ object Docs {
                 working_dir,
                 index_for_search
             )
-            if (env == DeployEnvs.PROD.env_name) {
+            if (env == GwDeployEnvs.PROD.env_name) {
                 val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
                 docBuildType.steps.step(copyFromStagingToProdStep)
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
@@ -224,7 +233,7 @@ object Docs {
                 docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
-                if (env == DeployEnvs.STAGING.env_name) {
+                if (env == GwDeployEnvs.STAGING.env_name) {
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         "webhelp_with_pdf",
                         root_map,
@@ -352,9 +361,9 @@ object Docs {
             }
             ditaBuildTypes.add(downloadableOutputBuildType)
         }
-        if (env_names.contains(DeployEnvs.STAGING.env_name)) {
+        if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
             val stagingBuildTypeIdString =
-                Helpers.resolveRelativeIdFromIdString("$doc_id${DeployEnvs.STAGING.env_name}").toString()
+                Helpers.resolveRelativeIdFromIdString("$doc_id${GwDeployEnvs.STAGING.env_name}").toString()
             val localizationPackageBuildType = BuildType {
                 name = "Build localization package"
                 id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
@@ -395,11 +404,11 @@ object Docs {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
-            if (arrayOf(DeployEnvs.INT.env_name, DeployEnvs.STAGING.env_name).contains(deploy_env)) {
+            if (arrayOf(GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(deploy_env)) {
                 templates(GwTemplates.BuildListenerTemplate)
             }
 
-            if (arrayOf(DeployEnvs.DEV.env_name, DeployEnvs.INT.env_name, DeployEnvs.STAGING.env_name).contains(
+            if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(
                     deploy_env)
             ) {
                 vcs {
@@ -465,7 +474,7 @@ object Docs {
         val customEnv = if (build_config.has("customEnv")) build_config.getJSONArray("customEnv") else null
 
         when (gwBuildType) {
-            "yarn" -> {
+            GwBuildTypes.YARN.build_type_name -> {
                 val nodeImageVersion =
                     if (build_config.has("nodeImageVersion")) build_config.getString("nodeImageVersion") else null
                 val buildCommand =
@@ -486,7 +495,7 @@ object Docs {
                     customEnv
                 )
             }
-            "storybook" -> {
+            GwBuildTypes.STORYBOOK.build_type_name -> {
                 docProjectBuildTypes += createStorybookBuildTypes(
                     docEnvironmentsList,
                     docId,
@@ -501,7 +510,7 @@ object Docs {
                     customEnv
                 )
             }
-            "dita" -> {
+            GwBuildTypes.DITA.build_type_name -> {
                 val rootMap = build_config.getString("root")
                 val indexRedirect = when (build_config.has("indexRedirect")) {
                     true -> {
@@ -545,7 +554,7 @@ object Docs {
                 )
 
             }
-            "source-zip" -> {
+            GwBuildTypes.SOURCE_ZIP.build_type_name -> {
                 val zipFilename = build_config.getString("zipFilename")
                 docProjectBuildTypes += createSourceZipBuildTypes(
                     docEnvironmentsList,
@@ -592,10 +601,10 @@ object Content {
             name = "Generate sitemap"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            arrayOf(DeployEnvs.DEV,
-                DeployEnvs.INT,
-                DeployEnvs.STAGING,
-                DeployEnvs.PROD).forEach {
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
                 buildType(createGenerateSitemapBuildType(it.env_name))
             }
         }
@@ -632,10 +641,10 @@ object Content {
             name = "Clean up search index"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            arrayOf(DeployEnvs.DEV,
-                DeployEnvs.INT,
-                DeployEnvs.STAGING,
-                DeployEnvs.PROD).forEach {
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
                 buildType(createCleanUpSearchIndexBuildType(it.env_name))
             }
         }
@@ -668,11 +677,11 @@ object Content {
             name = "Update search index"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            arrayOf(DeployEnvs.DEV,
-                DeployEnvs.INT,
-                DeployEnvs.STAGING,
-                DeployEnvs.PROD,
-                DeployEnvs.PORTAL2).forEach {
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.PORTAL2).forEach {
                 buildType(createUpdateSearchIndexBuildType(it.env_name))
             }
         }
@@ -732,8 +741,8 @@ object Content {
 
         val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
         val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
-        val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(DeployEnvs.PROD.env_name)
-        val (awsAccessKeyIdInt, awsSecretAccessKeyInt, awsDefaultRegionInt) = Helpers.getAwsSettings(DeployEnvs.INT.env_name)
+        val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
+        val (awsAccessKeyIdInt, awsSecretAccessKeyInt, awsDefaultRegionInt) = Helpers.getAwsSettings(GwDeployEnvs.INT.env_name)
 
         steps {
             script {
@@ -794,10 +803,10 @@ object Frontend {
             name = "Deploy landing pages"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            arrayOf(DeployEnvs.DEV,
-                DeployEnvs.INT,
-                DeployEnvs.STAGING,
-                DeployEnvs.PROD).forEach {
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployLandingPagesBuildType(it.env_name))
             }
         }
@@ -845,10 +854,10 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcsRoot(GwVcsRoots.LocalizedPdfsGitVcsRoot)
-            arrayOf(DeployEnvs.DEV,
-                DeployEnvs.INT,
-                DeployEnvs.STAGING,
-                DeployEnvs.PROD).forEach {
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployLocalizedPagesBuildType(it.env_name))
             }
         }
@@ -908,10 +917,10 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcsRoot(GwVcsRoots.UpgradeDiffsGitVcsRoot)
-            arrayOf(DeployEnvs.DEV,
-                DeployEnvs.INT,
-                DeployEnvs.STAGING,
-                DeployEnvs.PROD).forEach {
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployUpgradeDiffsBuildType(it.env_name))
             }
         }
@@ -979,10 +988,10 @@ object Server {
             buildType(TestDocSiteServerApp)
             buildType(TestConfig)
             buildType(TestSettingsKts)
-            arrayOf(DeployEnvs.DEV,
-                DeployEnvs.INT,
-                DeployEnvs.STAGING,
-                DeployEnvs.PROD).forEach {
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployServerBuildType(it.env_name))
             }
             buildType(ReleaseNewVersion)
@@ -1252,17 +1261,17 @@ object Server {
         val namespace = "doctools"
         val packageName = "artifactory.guidewire.com/doctools-docker-dev/docportal"
         val tagVersion = when (deploy_env) {
-            DeployEnvs.DEV.env_name -> "latest"
-            DeployEnvs.INT.env_name -> "latest-int"
+            GwDeployEnvs.DEV.env_name -> "latest"
+            GwDeployEnvs.INT.env_name -> "latest-int"
             else -> "v%TAG_VERSION%"
         }
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         val partnersLoginUrl: String
         val customersLoginUrl: String
-        if (arrayOf(DeployEnvs.DEV.env_name, DeployEnvs.INT.env_name).contains(deploy_env)) {
+        if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
             partnersLoginUrl = "https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect"
-        } else if (deploy_env == DeployEnvs.STAGING.env_name) {
+        } else if (deploy_env == GwDeployEnvs.STAGING.env_name) {
             partnersLoginUrl = "https://uat-guidewire.cs166.force.com/partners/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://uat-guidewire.cs166.force.com/customers/idp/endpoint/HttpRedirect"
         } else {
@@ -1272,7 +1281,7 @@ object Server {
 
         val deploymentFile: String
         val ingressFile: String
-        if (deploy_env == DeployEnvs.PROD.env_name) {
+        if (deploy_env == GwDeployEnvs.PROD.env_name) {
             deploymentFile = "deployment-prod.yml"
             ingressFile = "ingress-prod.yml"
         } else {
@@ -1281,7 +1290,7 @@ object Server {
         }
 
         val serverBuildTypeDeployEnv =
-            if (deploy_env == DeployEnvs.PROD.env_name) DeployEnvs.US_EAST_2.env_name else deploy_env
+            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
         val deployServerBuildType = BuildType {
             name = "Deploy to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1365,7 +1374,7 @@ object Server {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
-        if (arrayOf(DeployEnvs.STAGING.env_name, DeployEnvs.PROD.env_name).contains(deploy_env)) {
+        if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
             deployServerBuildType.params.text(
                 "TAG_VERSION",
                 "",
@@ -1375,7 +1384,7 @@ object Server {
                 validationMessage = "Invalid SemVer Format"
             )
             deployServerBuildType.vcs.branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
-            if (deploy_env == DeployEnvs.PROD.env_name) {
+            if (deploy_env == GwDeployEnvs.PROD.env_name) {
                 val publishServerDockerImageToEcrStep =
                     GwBuildSteps.createPublishServerDockerImageToEcrStep(packageName, tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
@@ -1383,7 +1392,7 @@ object Server {
             }
         }
 
-        if (arrayOf(DeployEnvs.DEV.env_name, DeployEnvs.INT.env_name).contains(deploy_env)) {
+        if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
             deployServerBuildType.vcs {
                 root(DslContext.settingsRoot)
                 branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
@@ -1404,7 +1413,7 @@ object Server {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
-            if (deploy_env == DeployEnvs.DEV.env_name) {
+            if (deploy_env == GwDeployEnvs.DEV.env_name) {
 // FIXME: Reenable this line when the refactoring is done
 //                deployServerBuildType.triggers.finishBuildTrigger {
 //                    id = "TRIGGER_1"
@@ -1462,7 +1471,7 @@ object Exports {
                     docConfigsRelatedToSrc.map { Helpers.convertJsonArrayWithStringsToLowercaseList(it.getJSONArray("environments")) }
                         .flatten().distinct()
 
-                val exportFrequency = when (environmentsFromRelatedDocConfigs.contains(DeployEnvs.INT.env_name)) {
+                val exportFrequency = when (environmentsFromRelatedDocConfigs.contains(GwDeployEnvs.INT.env_name)) {
                     true -> {
                         if (sourceConfig.has("exportFrequency")) sourceConfig.getString("exportFrequency") else "daily"
                     }
@@ -1695,15 +1704,15 @@ object BuildListeners {
             for (src in gitRepoSources) {
                 val srcId = (src as JSONObject).getString("srcId")
                 val ditaBuildsRelatedToSrc =
-                    Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == "dita" }
+                    Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == GwBuildTypes.DITA.build_type_name }
                 val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
                     val buildDocId = it.getString("docId")
                     val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
                     Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
                 }.flatten().distinct()
 
-                if (arrayListOf(DeployEnvs.INT.env_name,
-                        DeployEnvs.STAGING.env_name).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
+                if (arrayListOf(GwDeployEnvs.INT.env_name,
+                        GwDeployEnvs.STAGING.env_name).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
                 ) {
                     sourcesToMonitor.add(src)
                 }
@@ -1809,7 +1818,7 @@ object Sources {
 
             buildType(createCleanValidationResultsBuildType(src_id, git_repo_id, git_branch, git_url))
 
-            if (uniqueGwBuildTypesForAllBuilds.contains("dita")) {
+            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name)) {
                 validationBuildsSubProject.buildType(
                     createValidationListenerBuildType(src_id, git_repo_id, git_branch, this.id.toString())
                 )
@@ -1838,7 +1847,10 @@ object Sources {
 
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
+                branchFilter = """
+                    -:<default>
+                    -:${Helpers.createFullGitBranchName(git_branch)}
+                """.trimIndent()
                 cleanCheckout = true
             }
             steps.step(
@@ -1851,9 +1863,7 @@ object Sources {
             )
 
 // FIXME: Reenable this line when the refactoring is done
-//            triggers.vcs {
-//                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
-//            }
+//            triggers.vcs {}
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1897,14 +1907,18 @@ object Sources {
 
             vcs {
                 root(vcsRootId)
-                branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch, "(refs/pull-requests/*/from)"))
+                branchFilter = """
+                    -:<default>
+                    -:${Helpers.createFullGitBranchName(git_branch)}
+                    +:(refs/pull-requests/*/from)
+                """.trimIndent()
                 cleanCheckout = true
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
-        if (gw_build_type == "dita") {
+        if (gw_build_type == GwBuildTypes.DITA.build_type_name) {
             val ditaOtLogsDir = "dita_ot_logs"
             val normalizedDitaDir = "normalized_dita_dir"
             val schematronReportsDir = "schematron_reports_dir"
@@ -1991,7 +2005,7 @@ object Sources {
                     )
                 )
             }
-        } else if (gw_build_type == "yarn") {
+        } else if (gw_build_type == GwBuildTypes.YARN.build_type_name) {
             val metadata = docConfig.getJSONObject("metadata")
             val gwPlatforms = metadata.getJSONArray("platform")
             val gwProducts = metadata.getJSONArray("product")
@@ -2007,7 +2021,7 @@ object Sources {
             validationBuildType.steps {
                 step(
                     GwBuildSteps.createBuildYarnProjectStep(
-                        DeployEnvs.INT.env_name,
+                        GwDeployEnvs.INT.env_name,
                         publishPath,
                         buildCommand,
                         nodeImageVersion,
@@ -2028,8 +2042,8 @@ object Sources {
                 )
             }
 // FIXME: Reenable this line when the refactoring is done
-//            validationBuildType.triggers.vcs {
-//                branchFilter = GwBuildTriggers.createBranchFilterForValidationBuilds(git_branch)
+//            if (gw_build_type == GwBuildTypes.YARN.build_type_name) {
+//                triggers.vcs {}
 //            }
 
             validationBuildType.features {
@@ -2075,8 +2089,7 @@ object Sources {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 // FIXME: Reenable this line when the refactoring is done
-//            triggers.vcs { branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch)) }
-
+//            triggers.vcs {}
         }
     }
 
@@ -2090,7 +2103,7 @@ object Recommendations {
             name = "Recommendations"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            for (env in arrayOf(DeployEnvs.INT)) {
+            for (env in arrayOf(GwDeployEnvs.INT)) {
                 val recommendationProject = createRecommendationProject(env.env_name)
                 subProject(recommendationProject)
             }
@@ -2103,7 +2116,7 @@ object Recommendations {
         for (combination in allPlatformProductVersionCombinations) {
             val (platform, product, version) = combination
             val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType(
-                DeployEnvs.INT.env_name,
+                GwDeployEnvs.INT.env_name,
                 platform,
                 product,
                 version
@@ -2460,7 +2473,7 @@ object Helpers {
 
     fun getAwsSettings(deploy_env: String): Triple<String, String, String> {
         return when (deploy_env) {
-            DeployEnvs.PROD.env_name -> Triple(
+            GwDeployEnvs.PROD.env_name -> Triple(
                 "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%",
                 "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%",
                 "%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
@@ -2474,7 +2487,7 @@ object Helpers {
     }
 
     fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
-        return if (arrayOf(DeployEnvs.PROD.env_name, DeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+        return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
             Pair("https://docs.guidewire.com", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net")
         } else {
             Pair("https://docs.${deploy_env}.ccs.guidewire.net",
@@ -2614,7 +2627,7 @@ object GwBuildSteps {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         var awsS3SyncCommand =
             "aws s3 sync \"${upgrade_diffs_docs_src}\" s3://tenant-doctools-${deploy_env}-builds/upgradediffs --delete"
-        if (arrayOf(DeployEnvs.STAGING.env_name, DeployEnvs.PROD.env_name).contains(deploy_env)) {
+        if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
             awsS3SyncCommand += " --exclude \"*/*-rc/*\""
         }
         return ScriptBuildStep {
@@ -2656,7 +2669,7 @@ object GwBuildSteps {
     fun createRunIndexCleanerStep(deploy_env: String): ScriptBuildStep {
         val (_, elasticsearchUrls) = Helpers.getAppBaseAndElasticsearchUrls(deploy_env)
         val configFileUrl = when (deploy_env) {
-            DeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+            GwDeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
             else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
         }
         return ScriptBuildStep {
@@ -2724,10 +2737,10 @@ object GwBuildSteps {
 
     fun createRunDocCrawlerStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
         val docS3Url: String = when (deploy_env) {
-            DeployEnvs.PROD.env_name -> {
+            GwDeployEnvs.PROD.env_name -> {
                 "https://ditaot.internal.us-east-2.service.guidewire.net"
             }
-            DeployEnvs.PORTAL2.env_name -> {
+            GwDeployEnvs.PORTAL2.env_name -> {
                 "https://portal2.internal.us-east-2.service.guidewire.net"
             }
             else -> {
@@ -2765,7 +2778,7 @@ object GwBuildSteps {
     fun createGetConfigFileStep(deploy_env: String, config_file: String): ScriptBuildStep {
 
         val configFileUrl =
-            if (arrayListOf(DeployEnvs.PROD.env_name, DeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+            if (arrayListOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
                 "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
             } else {
                 "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
@@ -2784,9 +2797,9 @@ object GwBuildSteps {
                 
                 curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
                 
-                if [[ "$deploy_env" == "${DeployEnvs.PROD.env_name}" ]]; then
+                if [[ "$deploy_env" == "${GwDeployEnvs.PROD.env_name}" ]]; then
                     cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}CONFIG_FILE                 
-                elif [[ "$deploy_env" == "${DeployEnvs.PORTAL2.env_name}" ]]; then
+                elif [[ "$deploy_env" == "${GwDeployEnvs.PORTAL2.env_name}" ]]; then
                     cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}CONFIG_FILE
                 else
                     cat ${'$'}TMP_CONFIG_FILE > ${'$'}CONFIG_FILE
@@ -2820,7 +2833,7 @@ object GwBuildSteps {
     }
 
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(DeployEnvs.PROD.env_name)
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
             name = "Copy from S3 on staging to S3 on Prod"
             id = Helpers.createIdStringFromName(this.name)
@@ -3071,7 +3084,7 @@ object GwBuildSteps {
         val nodeImageVersion = node_image_version ?: "12.14.1"
         val buildCommand = build_command ?: "build"
         val targetUrl =
-            if (deploy_env == DeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
+            if (deploy_env == GwDeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
 
         var customEnvExportVars = ""
         custom_env?.forEach {
@@ -3135,7 +3148,7 @@ object GwBuildSteps {
         custom_env: JSONArray?,
     ): ScriptBuildStep {
         val targetUrl =
-            if (deploy_env == DeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
+            if (deploy_env == GwDeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
 
         var customEnvExportVars = ""
         custom_env?.forEach {
