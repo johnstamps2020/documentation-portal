@@ -1864,13 +1864,14 @@ object Sources {
                     git_branch
                 )
             )
-
-            triggers.vcs {
-                branchFilter = """
-                    -:<default>
-                    -:${Helpers.createFullGitBranchName(git_branch)}
-                """.trimIndent()
-            }
+// FIXME: Reenable this line when refactoring is done
+//            triggers.vcs {
+//                branchFilter = """
+//                    +:*
+//                    -:<default>
+//                    -:${Helpers.createFullGitBranchName(git_branch)}
+//                """.trimIndent()
+//            }
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
