@@ -1,7 +1,6 @@
 // TODO: When the refactoring is done, remove the teamcity access token from mskowron account
 // TODO: When the refactoring is done, clean up AWS and ATMOS envs in the Documentation Tools project
 // TODO: Review VCS settings, especially the use of the default branch
-import Settings.Content.UploadPdfsForEscrowBuildType.triggers
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -9,7 +8,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -617,6 +615,11 @@ object Content {
         return BuildType {
             name = "Generate sitemap for $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(DslContext.settingsRoot)
+                cleanCheckout = true
+            }
 
             steps {
                 step(GwBuildSteps.createRunSitemapGeneratorStep(deploy_env, outputDir))
