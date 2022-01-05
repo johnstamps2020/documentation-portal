@@ -1854,10 +1854,6 @@ object Sources {
 
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                branchFilter = """
-                    +:*
-                    -:<default>
-                """.trimIndent()
                 cleanCheckout = true
             }
             steps.step(
@@ -1869,7 +1865,12 @@ object Sources {
                 )
             )
 
-            triggers.vcs {}
+            triggers.vcs {
+                branchFilter = """
+                    -:<default>
+                    -:${Helpers.createFullGitBranchName(git_branch)}
+                """.trimIndent()
+            }
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -3362,7 +3363,7 @@ object GwBuildFeatures {
                     password =
                         "%env.BITBUCKET_ACCESS_TOKEN%"
                 }
-                filterTargetBranch = target_git_branch
+                filterTargetBranch = "+:${target_git_branch}"
             }
         }
     }
