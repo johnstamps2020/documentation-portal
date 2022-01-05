@@ -5,18 +5,10 @@
       "id": "cloudisrnsrc",
       "title": "IS Cloud Release Notes",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-release-notes.git",
+      "branch": "main",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-dobson.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-EA.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-EA.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-EA.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-dobson.ditamap"
       ]
     }
   ]
