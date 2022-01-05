@@ -841,6 +841,8 @@ object Frontend {
                 )
                 step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "frontend", outputDir))
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 // FIXME: Reenable this line when the refactoring is done
 //        triggers {
 //            vcs {
@@ -904,6 +906,8 @@ object Frontend {
                 )
                 step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "localizedPages", outputDir))
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 // FIXME: Reenable this line when the refactoring is done
 //        triggers {
 //            vcs {
@@ -968,6 +972,8 @@ object Frontend {
                 )
                 step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "upgradeDiffs", outputDir))
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 // FIXME: Reenable this line when the refactoring is done
 //        triggers {
 //            vcs {
