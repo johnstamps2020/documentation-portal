@@ -1855,8 +1855,8 @@ object Sources {
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
                 branchFilter = """
+                    +:*
                     -:<default>
-                    -:${Helpers.createFullGitBranchName(git_branch)}
                 """.trimIndent()
                 cleanCheckout = true
             }
