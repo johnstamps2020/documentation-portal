@@ -33,6 +33,10 @@
         {
           "label": "Release Notes",
           "id": "dh1050rn"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "link": "/dm/dh/DH1050Patch3_ReleaseNotes.html"
         }
       ]
     },

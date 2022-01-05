@@ -92,6 +92,18 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro532",
+      "srcId": "srcjutro532",
+      "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook532",
+      "srcId": "srcjutrostorybook532",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutro540",
       "srcId": "srcjutro540",
       "workingDir": "website"
