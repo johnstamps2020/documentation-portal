@@ -3302,6 +3302,7 @@ object GwBuildSteps {
                 export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
                 export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
                 export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                export DEPLOY_ENV="$deploy_env"
                 
                 sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh $deployment_mode "$output_dir"
             """.trimIndent()
