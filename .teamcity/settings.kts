@@ -1,6 +1,5 @@
 // TODO: When the refactoring is done, remove the teamcity access token from mskowron account
 // TODO: When the refactoring is done, clean up AWS and ATMOS envs in the Documentation Tools project
-// TODO: Review VCS settings, especially the use of the default branch
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -8,6 +7,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -1059,15 +1059,13 @@ object Server {
                 workingDir = ""
             }
         }
-// FIXME: Reenable this line when the refactoring is done
-//        triggers {
-//            vcs {
-//                triggerRules = """
-//                +:.teamcity/settings.kts
-//                -:user=doctools:**
-//            """.trimIndent()
-//            }
-//        }
+
+        triggers.vcs {
+            triggerRules = """
+                +:.teamcity/settings.kts
+                -:user=doctools:**
+            """.trimIndent()
+        }
 
         features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
     })
@@ -1197,15 +1195,13 @@ object Server {
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
-// FIXME: Reenable this line when the refactoring is done
-//        triggers {
-//            vcs {
-//                triggerRules = """
-//                +:.teamcity/**/*.*
-//                -:user=doctools:**
-//            """.trimIndent()
-//            }
-//        }
+
+        triggers.vcs {
+            triggerRules = """
+                +:.teamcity/**/*.*
+                -:user=doctools:**
+            """.trimIndent()
+        }
 
         features {
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
@@ -1873,8 +1869,7 @@ object Sources {
                 )
             )
 
-// FIXME: Reenable this line when the refactoring is done
-//            triggers.vcs {}
+            triggers.vcs {}
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -2262,6 +2257,8 @@ object Apps {
 
             vcs {
                 root(DslContext.settingsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
             }
 
             steps {
@@ -2277,7 +2274,6 @@ object Apps {
 // FIXME: Reenable this line when the refactoring is done
 //            triggers {
 //                vcs {
-//                    branchFilter = "+:<default>"
 //                    triggerRules = """
 //                        +:apps/${app_dir}/**
 //                        -:user=doctools:**
