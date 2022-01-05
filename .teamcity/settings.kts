@@ -246,6 +246,7 @@ object Docs {
                         git_url,
                         git_branch
                     )
+//                    FIXME: Make sure the PDF is copied to the local output folder
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${outputDir}/zip"
                         val buildDitaProjectForOfflineUseStep =
@@ -1868,8 +1869,7 @@ object Sources {
 //            triggers.vcs {
 //                branchFilter = """
 //                    +:*
-//                    -:<default>
-//                    -:${Helpers.createFullGitBranchName(git_branch)}
+//                    -:refs/heads/*
 //                """.trimIndent()
 //            }
 
@@ -3434,7 +3434,7 @@ object GwVcsRoots {
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
             if (monitored_branches.isEmpty()) {
-                branchSpec = "+:*"
+                branchSpec = "+:(refs/heads/*)"
             } else {
                 branchSpec = ""
                 monitored_branches.forEach {
