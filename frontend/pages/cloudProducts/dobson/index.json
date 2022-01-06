@@ -101,12 +101,16 @@
           "env": ["int"]
         },
         {
-          "label": "Live",
+          "label": "Guidewire Live",
           "class": "group",
           "items": [
             {
               "label": "Assess",
               "page": "assess"
+            },
+            {
+              "label": "Canvas",
+              "id": "canvas"
             },
             {
               "label": "Compare",
@@ -119,10 +123,6 @@
             {
               "label": "Predict",
               "id": "livepredictlatest"
-            },
-            {
-              "label": "Canvas",
-              "id": "canvas"
             }
           ]
         }
