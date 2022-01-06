@@ -12,7 +12,7 @@
         "release": ["Dobson"],
         "subject": ["Configuration"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
