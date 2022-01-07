@@ -1855,6 +1855,7 @@ object Sources {
 
             vcs {
                 root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                branchFilter = GwVcsSettings.branchFilterForValidationBuilds
                 cleanCheckout = true
             }
             steps.step(
@@ -1869,7 +1870,6 @@ object Sources {
 //            triggers.vcs {
 //                branchFilter = """
 //                    +:*
-//                    -:refs/heads/*
 //                """.trimIndent()
 //            }
 
@@ -1915,15 +1915,12 @@ object Sources {
 
             vcs {
                 root(vcsRootId)
-                branchFilter = """
-                    -:<default>
-                    -:${Helpers.createFullGitBranchName(git_branch)}
-                    +:(refs/pull-requests/*/from)
-                """.trimIndent()
+                branchFilter = GwVcsSettings.branchFilterForValidationBuilds
                 cleanCheckout = true
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            features.feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(git_branch)))
         }
 
         if (gw_build_type == GwBuildTypes.DITA.build_type_name) {
@@ -3387,14 +3384,6 @@ object GwBuildTriggers {
                 """.trimIndent()
         }
     }
-
-    fun createBranchFilterForValidationBuilds(git_branch: String): String {
-        return """
-            +:*
-            -:<default>
-            -:${Helpers.createFullGitBranchName(git_branch)}
-        """.trimIndent()
-    }
 }
 
 object GwVcsRoots {
@@ -3475,6 +3464,13 @@ object GwVcsSettings {
         }
         return gitBranchesEntries.joinToString("\n")
     }
+
+    // TODO: Verify if we should trigger builds in the source branch as well
+    val branchFilterForValidationBuilds = """
+        +:*
+        -:<default>
+        -:refs/heads/*
+        """.trimIndent()
 }
 
 object GwTemplates {
