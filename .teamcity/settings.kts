@@ -2962,7 +2962,7 @@ object GwBuildSteps {
         val logFile = "${output_format}_build.log"
         val outputDir = "out/${output_format}"
         var ditaBuildCommand =
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${outputDir}\" -l \"${working_dir}/${logFile}\" --generate.build.data yes"
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${outputDir}\" -l \"${working_dir}/${logFile}\""
         var resourcesCopyCommand = ""
 
         if (build_filter.isNotEmpty()) {
@@ -2971,7 +2971,7 @@ object GwBuildSteps {
 
         when (output_format) {
             "webhelp" -> {
-                ditaBuildCommand += " -f webhelp_Guidewire"
+                ditaBuildCommand += " -f webhelp_Guidewire --generate.build.data yes"
                 if (index_redirect) {
                     ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
                 }
