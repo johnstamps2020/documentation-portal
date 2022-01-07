@@ -2970,8 +2970,10 @@ object GwBuildSteps {
         }
 
         when (output_format) {
+            // --git-url and --git-branch are required by the DITA OT plugin to generate build data.
+            // There are not needed in this build, so they have fake values
             "webhelp" -> {
-                ditaBuildCommand += " -f webhelp_Guidewire --generate.build.data yes"
+                ditaBuildCommand += " -f webhelp_Guidewire --generate.build.data yes --git.url gitUrl --git.branch gitBranch"
                 if (index_redirect) {
                     ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
                 }
