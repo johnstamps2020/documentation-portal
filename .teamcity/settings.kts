@@ -1926,7 +1926,7 @@ object Sources {
             val ditaOtLogsDir = "dita_ot_logs"
             val normalizedDitaDir = "normalized_dita_dir"
             val schematronReportsDir = "schematron_reports_dir"
-            val docInfoFile = "doc-info.json"
+            val docInfoFile = "%teamcity.build.workingDir%/doc-info.json"
             val rootMap = build_config.getString("root")
             val indexRedirect = when (build_config.has("indexRedirect")) {
                 true -> {
