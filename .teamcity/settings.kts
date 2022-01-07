@@ -2962,7 +2962,7 @@ object GwBuildSteps {
         val logFile = "${output_format}_build.log"
         val outputDir = "out/${output_format}"
         var ditaBuildCommand =
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${outputDir}\" -l \"${working_dir}/${logFile}\""
+            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${outputDir}\" -l \"${working_dir}/${logFile}\" --generate.build.data yes"
         var resourcesCopyCommand = ""
 
         if (build_filter.isNotEmpty()) {
