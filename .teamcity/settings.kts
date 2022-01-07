@@ -414,7 +414,7 @@ object Docs {
             ) {
                 vcs {
                     root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
-                    branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch), add_default_branch = false)
+                    branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch), add_default_branch = true)
                     cleanCheckout = true
                 }
                 val uploadContentToS3BucketStep =
