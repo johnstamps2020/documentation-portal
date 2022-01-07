@@ -1947,7 +1947,7 @@ object Sources {
             }
 
             validationBuildType.artifactRules += """
-                $ditaOtLogsDir => logs
+                ${workingDir}/${ditaOtLogsDir} => logs
                 ${workingDir}/out/webhelp/build-data.json => json
             """.trimIndent()
 
