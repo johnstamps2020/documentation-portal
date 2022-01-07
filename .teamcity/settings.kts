@@ -1926,7 +1926,7 @@ object Sources {
             val ditaOtLogsDir = "dita_ot_logs"
             val normalizedDitaDir = "normalized_dita_dir"
             val schematronReportsDir = "schematron_reports_dir"
-            val docInfoFile = "%teamcity.build.workingDir%/doc-info.json"
+            val docInfoFile = "doc-info.json"
             val rootMap = build_config.getString("root")
             val indexRedirect = when (build_config.has("indexRedirect")) {
                 true -> {
@@ -2058,7 +2058,7 @@ object Sources {
         }
         return validationBuildType
     }
-
+//FIXME: The results cleaner uses the refs/pull-requests/prNumber/from pattern for finding paths. Update it to use the pull-requests/prNumber pattern
     private fun createCleanValidationResultsBuildType(
         src_id: String,
         git_repo_id: String,
@@ -3265,6 +3265,7 @@ object GwBuildSteps {
         schematron_reports_dir: String,
         doc_info_file: String,
     ): ScriptBuildStep {
+        val docInfoFileFullPath = "${working_dir}/${doc_info_file}"
         return ScriptBuildStep {
             name = "Run the doc validator"
             id = Helpers.createIdStringFromName(this.name)
@@ -3275,11 +3276,11 @@ object GwBuildSteps {
                 
                 export ELASTICSEARCH_URLS="https://docsearch-doctools.int.ccs.guidewire.net"
                 
-                doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "${working_dir}/${doc_info_file}" validators "${working_dir}/${normalized_dita_dir}" dita \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" validators "${working_dir}/${normalized_dita_dir}" images \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" validators "${working_dir}/${normalized_dita_dir}" files \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$doc_info_file" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
+                doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" dita \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" images \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" files \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
