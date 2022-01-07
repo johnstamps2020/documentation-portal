@@ -1888,7 +1888,6 @@ object Sources {
         build_config: JSONObject,
         gw_build_type: String,
     ): BuildType {
-        val vcsRootId = Helpers.resolveRelativeIdFromIdString(git_repo_id)
         val docId = build_config.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
@@ -1902,7 +1901,7 @@ object Sources {
             }
         }
 
-        val buildBranch = "%teamcity.build.vcs.branch.${vcsRootId}%"
+        val buildBranch = "%teamcity.build.branch%"
         val publishPath = "preview/${src_id}/${buildBranch}/${docId}"
         val previewUrlFile = "preview_url.txt"
 
@@ -1914,7 +1913,7 @@ object Sources {
             artifactRules = "$previewUrlFile\n"
 
             vcs {
-                root(vcsRootId)
+                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
                 branchFilter = GwVcsSettings.branchFilterForValidationBuilds
                 cleanCheckout = true
             }
@@ -1958,7 +1957,7 @@ object Sources {
                         buildBranch,
                         src_id,
                         docInfoFile,
-                        JSONObject()
+                        docConfig
                     )
                 )
                 step(
