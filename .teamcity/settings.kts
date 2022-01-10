@@ -229,6 +229,10 @@ object Docs {
                 docBuildType.steps.step(copyFromStagingToProdStep)
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
+                if (arrayOf(GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(env)) {
+                    docBuildType.templates(GwTemplates.BuildListenerTemplate)
+                    docBuildType.params.text("GIT_BRANCH", Helpers.createFullGitBranchName(git_branch))
+                }
                 docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
@@ -405,10 +409,6 @@ object Docs {
         return BuildType {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
-
-            if (arrayOf(GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(deploy_env)) {
-                templates(GwTemplates.BuildListenerTemplate)
-            }
 
             if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(
                     deploy_env)
@@ -1921,7 +1921,6 @@ object Sources {
         val validationBuildType = BuildType {
             name = "Validate $docTitle ($docId)"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${src_id}")
-            templates(GwTemplates.ValidationListenerTemplate)
 
             artifactRules = "$previewUrlFile\n"
 
@@ -1936,6 +1935,8 @@ object Sources {
         }
 
         if (gw_build_type == GwBuildTypes.DITA.build_type_name) {
+            validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
+            validationBuildType.params.text("GIT_BRANCH", Helpers.createFullGitBranchName(git_branch))
             val ditaOtLogsDir = "dita_ot_logs"
             val normalizedDitaDir = "normalized_dita_dir"
             val schematronReportsDir = "schematron_reports_dir"
