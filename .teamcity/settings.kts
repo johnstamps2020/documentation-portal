@@ -3002,7 +3002,8 @@ object GwBuildSteps {
 
                 echo "Building output"
                 $ditaBuildCommand $resourcesCopyCommand || EXIT_CODE=${'$'}?
-                cp "${working_dir}/${logFile}" ${working_dir}/${dita_ot_logs_dir}/ || EXIT_CODE=${'$'}?
+                mkdir -p "${working_dir}/${dita_ot_logs_dir}"
+                cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/" || EXIT_CODE=${'$'}?
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
