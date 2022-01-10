@@ -25,7 +25,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "NewAndChangedGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftnewandchanged",
       "indexRedirect": true
     },
@@ -41,7 +41,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "BC-AppGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftapp",
       "indexRedirect": true
     },
@@ -49,7 +49,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftadmin",
       "indexRedirect": true
     },
@@ -57,7 +57,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "ConfigGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftconfig",
       "indexRedirect": true
     },
@@ -65,7 +65,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "DataArchiving.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftdataarchiving",
       "indexRedirect": true
     },
@@ -73,7 +73,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "GlobalizationGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftglobal",
       "indexRedirect": true
     },
@@ -81,7 +81,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "GosuRules.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftrules",
       "indexRedirect": true
     },
@@ -89,7 +89,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "IntegrationGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftinteg",
       "indexRedirect": true
     },
@@ -97,7 +97,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftapibf",
       "indexRedirect": true
     },
@@ -105,7 +105,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "TestingGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddrafttesting",
       "indexRedirect": true
     },
@@ -113,7 +113,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "RESTAPIFramework.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftrestapifw",
       "indexRedirect": true
     },
@@ -121,7 +121,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbcclouddraftdevsetup",
       "indexRedirect": true
     },
@@ -149,7 +149,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "NewAndChangedGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftnewandchanged",
       "indexRedirect": true
     },
@@ -165,7 +165,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "CC-AppGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftapp",
       "indexRedirect": true
     },
@@ -173,7 +173,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftadmin",
       "indexRedirect": true
     },
@@ -181,7 +181,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "ConfigGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftconfig",
       "indexRedirect": true
     },
@@ -189,7 +189,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "DataArchiving.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftdataarchiving",
       "indexRedirect": true
     },
@@ -197,7 +197,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "GlobalizationGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftglobal",
       "indexRedirect": true
     },
@@ -205,7 +205,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "GosuRules.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftrules",
       "indexRedirect": true
     },
@@ -213,7 +213,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "IntegrationGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftinteg",
       "indexRedirect": true
     },
@@ -221,7 +221,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftapibf",
       "indexRedirect": true
     },
@@ -229,7 +229,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-Auth.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftapica",
       "indexRedirect": true
     },
@@ -237,7 +237,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-ContactManager.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftapicm",
       "indexRedirect": true
     },
@@ -245,7 +245,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "TestingGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddrafttesting",
       "indexRedirect": true
     },
@@ -253,7 +253,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "RESTAPIFramework.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftrestapifw",
       "indexRedirect": true
     },
@@ -261,7 +261,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isccclouddraftdevsetup",
       "indexRedirect": true
     },
@@ -289,7 +289,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "NewAndChangedGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftnewandchanged",
       "indexRedirect": true
     },
@@ -305,7 +305,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "PC-AppGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftapp",
       "indexRedirect": true
     },
@@ -313,7 +313,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftadmin",
       "indexRedirect": true
     },
@@ -321,7 +321,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "ConfigGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftconfig",
       "indexRedirect": true
     },
@@ -329,7 +329,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "DataArchiving.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftdataarchiving",
       "indexRedirect": true
     },
@@ -337,7 +337,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "GlobalizationGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftglobal",
       "indexRedirect": true
     },
@@ -345,7 +345,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "GosuRules.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftrules",
       "indexRedirect": true
     },
@@ -353,7 +353,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "ProductDesignerGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftpd",
       "indexRedirect": true
     },
@@ -361,7 +361,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "ProductModelGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftpm",
       "indexRedirect": true
     },
@@ -369,7 +369,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "IntegrationGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftinteg",
       "indexRedirect": true
     },
@@ -377,7 +377,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftapibf",
       "indexRedirect": true
     },
@@ -385,7 +385,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-Auth.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftapica",
       "indexRedirect": true
     },
@@ -393,7 +393,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-ContactManager.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftapicm",
       "indexRedirect": true
     },
@@ -401,7 +401,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "TestingGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddrafttesting",
       "indexRedirect": true
     },
@@ -409,7 +409,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "RESTAPIFramework.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftrestapifw",
       "indexRedirect": true
     },
@@ -417,7 +417,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispcclouddraftdevsetup",
       "indexRedirect": true
     },
@@ -425,7 +425,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CM-Cloud-Draft.ditaval",
       "root": "ContactMgmtGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isclouddraftcontact",
       "indexRedirect": true
     },
@@ -433,7 +433,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "GosuRefGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isclouddraftgosu",
       "indexRedirect": true
     },
@@ -441,7 +441,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "OverviewCloudIntegration.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isclouddraftintegoverview",
       "indexRedirect": true
     }
