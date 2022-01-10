@@ -2981,7 +2981,7 @@ object GwBuildSteps {
             "dita" -> {
                 ditaBuildCommand += " -f gw_dita"
                 resourcesCopyCommand =
-                    "&& mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${outputDir}/*\" \"${working_dir}/${normalized_dita_dir}/\""
+                    "&& mkdir -p \"${working_dir}/${normalized_dita_dir}\" && ls \"${working_dir}/${outputDir}/*\" && cp -R \"${working_dir}/${outputDir}/*\" \"${working_dir}/${normalized_dita_dir}/\""
             }
             "validate" -> {
                 val tempDir = "tmp/validate"
