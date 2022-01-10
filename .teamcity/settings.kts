@@ -2968,7 +2968,7 @@ object GwBuildSteps {
         if (build_filter.isNotEmpty()) {
             ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
         }
-        // FIXME: Copying of build logs is broken. A step to create the dita ot logs dir may be missing and some paths may not be correct.
+
         when (output_format) {
             // --git-url and --git-branch are required by the DITA OT plugin to generate build data.
             // There are not needed in this build, so they have fake values
