@@ -213,6 +213,7 @@ object Docs {
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val outputDir = "out"
+        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(git_repo_id)
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
                 env,
@@ -335,7 +336,7 @@ object Docs {
                 artifactRules = "${working_dir}/${outputDir} => /"
 
                 vcs {
-                    root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                    root(teamcityGitRepoId)
                     branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
                     cleanCheckout = true
                 }
@@ -374,7 +375,7 @@ object Docs {
                 """.trimIndent()
 
                 vcs {
-                    root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                    root(teamcityGitRepoId)
                     branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
                     cleanCheckout = true
                 }
@@ -1755,7 +1756,6 @@ object BuildListeners {
                             Docs.rootProject.id.toString(),
                             GwTemplates.BuildListenerTemplate.id.toString(),
                             Helpers.resolveRelativeIdFromIdString(gitRepoId),
-                            ""
                         )
                     )
 // FIXME: Reenable this line when the refactoring is done
@@ -1838,7 +1838,12 @@ object Sources {
             }
             build_configs.forEach {
                 validationBuildsSubProject.buildType(
-                    createValidationBuildType(src_id, git_repo_id, git_branch, teamcityBuildBranch, it, it.getString("buildType"))
+                    createValidationBuildType(src_id,
+                        git_repo_id,
+                        git_branch,
+                        teamcityBuildBranch,
+                        it,
+                        it.getString("buildType"))
                 )
             }
             subProject(validationBuildsSubProject)
@@ -1911,6 +1916,7 @@ object Sources {
 
         val publishPath = "preview/${src_id}/${teamcity_build_branch}/${docId}"
         val previewUrlFile = "preview_url.txt"
+        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(git_repo_id)
 
         val validationBuildType = BuildType {
             name = "Validate $docTitle ($docId)"
@@ -1920,7 +1926,7 @@ object Sources {
             artifactRules = "$previewUrlFile\n"
 
             vcs {
-                root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                root(teamcityGitRepoId)
                 branchFilter = GwVcsSettings.branchFilterForValidationBuilds
                 cleanCheckout = true
             }
@@ -3245,7 +3251,8 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         val gitUrl = "%vcsroot.${vcs_root_id}.url%"
         val teamcityBuildBranch = teamcity_build_branch.ifEmpty { "%teamcity.build.vcs.branch.${vcs_root_id}%" }
-        val gitBranch = if (git_branch.isNotEmpty()) Helpers.createFullGitBranchName(git_branch) else teamcityBuildBranch
+        val gitBranch =
+            if (git_branch.isNotEmpty()) Helpers.createFullGitBranchName(git_branch) else teamcityBuildBranch
         return ScriptBuildStep {
             name = "Run the build manager"
             id = Helpers.createIdStringFromName(this.name)

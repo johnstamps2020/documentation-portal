@@ -159,7 +159,7 @@ def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecor
 
 @check_processing_result
 def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    vcs_root_instance_locator = f'vcsRootInstance:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_branch}))'
+    vcs_root_instance_locator = f'vcsRootInstance:(property:(name:url,value:{app_config.git_url}))'
     template_locator = f'template:(id:{app_config.teamcity_template})'
     affected_project_locator = f'affectedProject:(id:{app_config.teamcity_affected_project})'
     payload = {
@@ -184,17 +184,11 @@ def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]
 @check_processing_result
 def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[list[str], ProcessingRecord]:
     def run_request(branch_locator: str):
-        # Validation builds use the DEPLOY_ENV config parameter and regular builds use the env.DEPLOY_ENV env variable.
-        # It means that the property locator doesn't have any effect on the validation builds.
-        # For now, it is ok because some validation builds use the dev deploy env and we still want to find them.
-        # In the future, we may need to add a parameter to the build manager to be able to use different locators
-        # for different categories of builds.
-        property_locator = 'property:(name:env.DEPLOY_ENV,value:dev,matchType:does-not-equal)'
         default_filter_locator = 'defaultFilter:false'
         status_locator = 'status:success'
         count_locator = 'count:1'
         builds_response = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={property_locator},{branch_locator},{default_filter_locator},{status_locator},{count_locator}',
+            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={branch_locator},{default_filter_locator},{status_locator},{count_locator}',
             headers=app_config.teamcity_api_headers)
         return builds_response.json()['build']
 
@@ -202,8 +196,8 @@ def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[li
     if builds_for_build_branch:
         return builds_for_build_branch
     else:
-        builds_for_default_branch = run_request(f'branch:default:true')
-        return builds_for_default_branch or ProcessingRecord(
+        builds_for_source_branch = run_request(f'branch:{app_config.git_branch}')
+        return builds_for_source_branch or ProcessingRecord(
             type=logging.INFO,
             message=f'No successful builds found for {build_type_id}'
         )
