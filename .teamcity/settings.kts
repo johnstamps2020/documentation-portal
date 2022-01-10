@@ -231,7 +231,7 @@ object Docs {
             } else {
                 if (arrayOf(GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(env)) {
                     docBuildType.templates(GwTemplates.BuildListenerTemplate)
-                    docBuildType.uuid = "${docBuildType.id}_branch:${Helpers.createFullGitBranchName(git_branch)}"
+                    docBuildType.params.text("GIT_BRANCH", Helpers.createFullGitBranchName(git_branch))
                 }
                 docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
@@ -1920,7 +1920,7 @@ object Sources {
 
         val validationBuildType = BuildType {
             name = "Validate $docTitle ($docId)"
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${src_id}_branch:${Helpers.createFullGitBranchName(git_branch)}")
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${src_id}")
 
             artifactRules = "$previewUrlFile\n"
 
@@ -1936,7 +1936,7 @@ object Sources {
 
         if (gw_build_type == GwBuildTypes.DITA.build_type_name) {
             validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
-            validationBuildType.uuid = "${validationBuildType.id}_branch:${Helpers.createFullGitBranchName(git_branch)}"
+            validationBuildType.params.text("GIT_BRANCH", Helpers.createFullGitBranchName(git_branch))
             val ditaOtLogsDir = "dita_ot_logs"
             val normalizedDitaDir = "normalized_dita_dir"
             val schematronReportsDir = "schematron_reports_dir"
