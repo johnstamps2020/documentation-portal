@@ -2921,12 +2921,14 @@ object GwBuildSteps {
                 SECONDS=0
 
                 echo "Building output"
+                export EXIT_CODE=0
                 $ditaBuildCommand $resourcesCopyCommand || EXIT_CODE=${'$'}?
-                mkdir -p "${working_dir}/${dita_ot_logs_dir}"
+                mkdir -p "${working_dir}/${dita_ot_logs_dir}" || EXIT_CODE=${'$'}?
                 cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/" || EXIT_CODE=${'$'}?
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
