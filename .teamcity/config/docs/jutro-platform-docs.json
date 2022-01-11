@@ -1,0 +1,20 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "jutroplatformnext",
+      "title": "Jutro Platform",
+      "url": "jutro/platform/next",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["next"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
