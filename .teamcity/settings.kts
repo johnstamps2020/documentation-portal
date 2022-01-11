@@ -1738,6 +1738,7 @@ object BuildListeners {
                         GwBuildSteps.createRunBuildManagerStep(
                             Docs.rootProject.id.toString(),
                             GwTemplates.BuildListenerTemplate.id.toString(),
+                            it
                         )
                     )
 // FIXME: Reenable this line when the refactoring is done
@@ -1791,7 +1792,6 @@ object Sources {
         build_configs: List<JSONObject>,
     ): Project {
         val uniqueGwBuildTypesForAllBuilds = build_configs.map { it.getString("buildType") }.distinct()
-        val teamcityBuildBranch = "%teamcity.build.branch%"
         return Project {
             name = src_id
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1806,8 +1806,8 @@ object Sources {
             if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name)) {
                 validationBuildsSubProject.buildType(
                     createValidationListenerBuildType(src_id,
+                        git_url,
                         git_branch,
-                        teamcityBuildBranch,
                         this.id.toString())
                 )
             }
@@ -1815,7 +1815,6 @@ object Sources {
                 validationBuildsSubProject.buildType(
                     createValidationBuildType(src_id,
                         git_branch,
-                        teamcityBuildBranch,
                         it,
                         it.getString("buildType"))
                 )
@@ -1829,8 +1828,8 @@ object Sources {
 
     private fun createValidationListenerBuildType(
         src_id: String,
+        git_url: String,
         git_branch: String,
-        teamcity_build_branch: String,
         teamcity_affected_project_id: String,
     ): BuildType {
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
@@ -1847,8 +1846,8 @@ object Sources {
                 GwBuildSteps.createRunBuildManagerStep(
                     teamcity_affected_project_id,
                     GwTemplates.ValidationListenerTemplate.id.toString(),
-                    teamcity_build_branch = teamcity_build_branch,
-                    git_branch = git_branch
+                    git_url,
+                    git_branch
                 )
             )
 // FIXME: Reenable this line when refactoring is done
@@ -1869,7 +1868,6 @@ object Sources {
     private fun createValidationBuildType(
         src_id: String,
         git_branch: String,
-        teamcity_build_branch: String,
         build_config: JSONObject,
         gw_build_type: String,
     ): BuildType {
@@ -1886,9 +1884,10 @@ object Sources {
             }
         }
 
-        val publishPath = "preview/${src_id}/${teamcity_build_branch}/${docId}"
-        val previewUrlFile = "preview_url.txt"
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
+        val teamcityBuildBranch = "%teamcity.build.branch%"
+        val publishPath = "preview/${src_id}/${teamcityBuildBranch}/${docId}"
+        val previewUrlFile = "preview_url.txt"
 
         val validationBuildType = BuildType {
             name = "Validate $docTitle ($docId)"
@@ -1940,7 +1939,7 @@ object Sources {
             validationBuildType.steps {
                 step(
                     GwBuildSteps.createGetDocumentDetailsStep(
-                        teamcity_build_branch,
+                        teamcityBuildBranch,
                         src_id,
                         docInfoFile,
                         docConfig
@@ -3149,11 +3148,10 @@ object GwBuildSteps {
     fun createRunBuildManagerStep(
         teamcity_affected_project: String,
         teamcity_template: String,
-        teamcity_build_branch: String = "",
+        git_url: String,
         git_branch: String = "",
     ): ScriptBuildStep {
-        val gitUrl = "%vcsroot.url%"
-        val teamcityBuildBranch = teamcity_build_branch.ifEmpty { "%vcsroot.branch%" }
+        val teamcityBuildBranch = "%teamcity.build.branch%"
         val gitBranch =
             if (git_branch.isNotEmpty()) Helpers.createFullGitBranchName(git_branch) else teamcityBuildBranch
         return ScriptBuildStep {
@@ -3169,7 +3167,7 @@ object GwBuildSteps {
                 export TEAMCITY_RESOURCES_ARTIFACT_PATH="json/build-data.json"
                 export TEAMCITY_AFFECTED_PROJECT="$teamcity_affected_project"
                 export TEAMCITY_TEMPLATE="$teamcity_template"
-                export GIT_URL="$gitUrl"
+                export GIT_URL="$git_url"
                 export GIT_BRANCH="$gitBranch"
                 export TEAMCITY_BUILD_BRANCH="$teamcityBuildBranch"
                                                         
