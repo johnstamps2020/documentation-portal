@@ -2080,7 +2080,9 @@ object Sources {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 // FIXME: Reenable this line when the refactoring is done
-//            triggers.vcs {}
+            if (src_id == "writingwithgitsrc") {
+                triggers.vcs {}
+            }
         }
     }
 
