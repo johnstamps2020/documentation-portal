@@ -1724,6 +1724,8 @@ object BuildListeners {
                 val srcGitUrlName = Helpers.removeSpecialCharacters(it.substringAfterLast("/"))
                 val allSourceIdsRelatedToGitUrl =
                     buildListenerSources.filter { x -> x.first == it }.map { y -> y.second }
+
+                val branchName = if (allSourceIdsRelatedToGitUrl.size <= 1) "%vcsroot.branch%" else "%teamcity.build.branch%"
                 buildType {
                     name = "$srcGitUrlName builds listener"
                     id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1738,7 +1740,9 @@ object BuildListeners {
                         GwBuildSteps.createRunBuildManagerStep(
                             Docs.rootProject.id.toString(),
                             GwTemplates.BuildListenerTemplate.id.toString(),
-                            it
+                            it,
+                            git_branch = branchName,
+                            teamcity_build_branch = branchName
                         )
                     )
 // FIXME: Reenable this line when the refactoring is done
@@ -1850,7 +1854,8 @@ object Sources {
                     teamcity_affected_project_id,
                     GwTemplates.ValidationListenerTemplate.id.toString(),
                     git_url,
-                    git_branch
+                    Helpers.createFullGitBranchName(git_branch),
+                    "%teamcity.build.branch%"
                 )
             )
 // FIXME: Reenable this line when refactoring is done
@@ -3158,11 +3163,9 @@ object GwBuildSteps {
         teamcity_affected_project: String,
         teamcity_template: String,
         git_url: String,
-        git_branch: String = "",
+        git_branch: String,
+        teamcity_build_branch: String,
     ): ScriptBuildStep {
-        val teamcityBuildBranch = "%teamcity.build.branch%"
-        val gitBranch =
-            if (git_branch.isNotEmpty()) Helpers.createFullGitBranchName(git_branch) else teamcityBuildBranch
         return ScriptBuildStep {
             name = "Run the build manager"
             id = Helpers.createIdStringFromName(this.name)
@@ -3177,8 +3180,8 @@ object GwBuildSteps {
                 export TEAMCITY_AFFECTED_PROJECT="$teamcity_affected_project"
                 export TEAMCITY_TEMPLATE="$teamcity_template"
                 export GIT_URL="$git_url"
-                export GIT_BRANCH="$gitBranch"
-                export TEAMCITY_BUILD_BRANCH="$teamcityBuildBranch"
+                export GIT_BRANCH="$git_branch"
+                export TEAMCITY_BUILD_BRANCH="$teamcity_build_branch"
                                                         
                 build_manager
             """.trimIndent()
