@@ -1742,7 +1742,9 @@ object BuildListeners {
                         )
                     )
 // FIXME: Reenable this line when the refactoring is done
-//            triggers.vcs { }
+                    if (it == "ssh://git@stash.guidewire.com/docsources/writing-with-git.git") {
+                        triggers.vcs {}
+                    }
                 }
             }
         }
@@ -1851,11 +1853,13 @@ object Sources {
                 )
             )
 // FIXME: Reenable this line when refactoring is done
-//            triggers.vcs {
-//                branchFilter = """
-//                    +:*
-//                """.trimIndent()
-//            }
+            if (src_id == "writingwithgitsrc") {
+                triggers.vcs {
+                    branchFilter = """
+                    +:*
+                """.trimIndent()
+                }
+            }
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
