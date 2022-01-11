@@ -159,7 +159,7 @@ def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecor
 
 @check_processing_result
 def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    vcs_root_instance_locator = f'vcsRootInstance:(property:(name:url,value:{app_config.git_url}))'
+    vcs_root_instance_locator = f'vcsRootInstance:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_branch}))'
     template_locator = f'template:(id:{app_config.teamcity_template})'
     affected_project_locator = f'affectedProject:(id:{app_config.teamcity_affected_project})'
     payload = {
@@ -196,8 +196,8 @@ def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[li
     if builds_for_build_branch:
         return builds_for_build_branch
     else:
-        builds_for_source_branch = run_request(f'branch:{app_config.git_branch}')
-        return builds_for_source_branch or ProcessingRecord(
+        builds_for_default_branch = run_request(f'branch:default:true')
+        return builds_for_default_branch or ProcessingRecord(
             type=logging.INFO,
             message=f'No successful builds found for {build_type_id}'
         )
