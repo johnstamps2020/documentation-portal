@@ -21,6 +21,7 @@ project {
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
     }
+    vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
     subProject(Docs.rootProject)
     subProject(Sources.rootProject)
     subProject(Recommendations.rootProject)
@@ -619,7 +620,8 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(DslContext.settingsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -742,7 +744,8 @@ object Content {
         }
 
         vcs {
-            root(DslContext.settingsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            branchFilter = "+:<default>"
             cleanCheckout = true
         }
 
@@ -826,8 +829,8 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(DslContext.settingsRoot)
-                branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -849,7 +852,7 @@ object Frontend {
 //        triggers {
 //            vcs {
 //                triggerRules = """
-//                +:root=${DslContext.settingsRoot}:frontend/pages/**
+//                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot}:frontend/pages/**
 //                -:user=doctools:**
 //            """.trimIndent()
 //            }
@@ -883,9 +886,9 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(DslContext.settingsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 root(GwVcsRoots.LocalizedPdfsGitVcsRoot, "+:. => $lionSourcesRoot")
-                branchFilter = GwVcsSettings.createBranchFilter(listOf("master", "main"))
+                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -948,9 +951,9 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(DslContext.settingsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 root(GwVcsRoots.UpgradeDiffsGitVcsRoot, "+:. => $upgradeDiffsSourcesRoot")
-                branchFilter = GwVcsSettings.createBranchFilter(listOf("master", "main"))
+                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -1036,7 +1039,7 @@ object Server {
         }
 
         vcs {
-            root(DslContext.settingsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 // FIXME: Reenable this line when the refactoring is done
@@ -1050,7 +1053,7 @@ object Server {
         name = "Test settings.kts"
 
         vcs {
-            root(DslContext.settingsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -1080,7 +1083,7 @@ object Server {
         }
 
         vcs {
-            root(DslContext.settingsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -1162,7 +1165,7 @@ object Server {
         name = "Test config files"
 
         vcs {
-            root(DslContext.settingsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -1225,7 +1228,8 @@ object Server {
         }
 
         vcs {
-            root(DslContext.settingsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            branchFilter = "+:<default>"
             cleanCheckout = true
             branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
         }
@@ -1403,8 +1407,7 @@ object Server {
 
         if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
             deployServerBuildType.vcs {
-                root(DslContext.settingsRoot)
-                branchFilter = GwVcsSettings.createBranchFilter(listOf("master"))
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
             }
             val buildAndPublishServerDockerImageStep =
@@ -2268,7 +2271,7 @@ object Apps {
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${app_dir}")
 
             vcs {
-                root(DslContext.settingsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 branchFilter = "+:<default>"
                 cleanCheckout = true
             }
@@ -2310,7 +2313,7 @@ object Apps {
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${app_dir}")
 
             vcs {
-                root(DslContext.settingsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -3407,7 +3410,16 @@ object GwBuildTriggers {
 }
 
 object GwVcsRoots {
-    val xdocsClientGitVcsRoot =
+    val DocumentationPortalGitVcsRoot =
+        createGitVcsRoot(
+            Helpers.resolveRelativeIdFromIdString("Documentation Portal"),
+            "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+            "master",
+            listOf("(refs/heads/*)")
+
+        )
+
+    val XdocsClientGitVcsRoot =
         createGitVcsRoot(
             Helpers.resolveRelativeIdFromIdString("XDocs Client"),
             "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
