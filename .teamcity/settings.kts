@@ -1745,6 +1745,7 @@ object BuildListeners {
                     if (it == "ssh://git@stash.guidewire.com/docsources/writing-with-git.git") {
                         triggers.vcs {}
                     }
+                    features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 }
             }
         }
