@@ -2106,7 +2106,7 @@ object Sources {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 // FIXME: Reenable this line when the refactoring is done
-            if (src_id == "writingwithgitsrc") {
+            if (arrayOf("writingwithgitsrc", "isupgradeguidesrc").contains(src_id)) {
                 triggers.vcs {}
             }
         }
