@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportF
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -72,7 +71,7 @@ object Docs {
     private fun createYarnBuildTypes(
         env_names: List<String>,
         doc_id: String,
-        git_repo_id: String,
+        src_id: String,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
@@ -86,9 +85,10 @@ object Docs {
         val yarnBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
+                GwBuildTypes.YARN.build_type_name,
                 env,
                 doc_id,
-                git_repo_id,
+                src_id,
                 publish_path,
                 working_dir,
                 index_for_search
@@ -107,8 +107,6 @@ object Docs {
             )
             docBuildType.steps.step(yarnBuildStep)
             docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
-            // FIXME: Reenable this line when the refactoring is done
-//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(Helpers.resolveRelativeIdFromIdString(git_repo_id)) }
             yarnBuildTypes.add(docBuildType)
         }
         return yarnBuildTypes
@@ -117,7 +115,7 @@ object Docs {
     private fun createStorybookBuildTypes(
         env_names: List<String>,
         doc_id: String,
-        git_repo_id: String,
+        src_id: String,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
@@ -129,9 +127,10 @@ object Docs {
         val storybookBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
+                GwBuildTypes.STORYBOOK.build_type_name,
                 env,
                 doc_id,
-                git_repo_id,
+                src_id,
                 publish_path,
                 working_dir,
                 index_for_search
@@ -148,8 +147,6 @@ object Docs {
             )
             docBuildType.steps.step(storybookBuildStep)
             docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
-            // FIXME: Reenable this line when the refactoring is done
-//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(Helpers.resolveRelativeIdFromIdString(git_repo_id)) }
             storybookBuildTypes.add(docBuildType)
         }
         return storybookBuildTypes
@@ -158,7 +155,7 @@ object Docs {
     private fun createSourceZipBuildTypes(
         env_names: List<String>,
         doc_id: String,
-        git_repo_id: String,
+        src_id: String,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
@@ -167,9 +164,10 @@ object Docs {
         val sourceZipBuildTypes = mutableListOf<BuildType>()
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
+                GwBuildTypes.SOURCE_ZIP.build_type_name,
                 env,
                 doc_id,
-                git_repo_id,
+                src_id,
                 publish_path,
                 working_dir,
                 index_for_search
@@ -180,8 +178,6 @@ object Docs {
             )
             docBuildType.steps.step(zipUpSourcesBuildStep)
             docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
-            // FIXME: Reenable this line when the refactoring is done
-//            docBuildType.triggers.vcs { GwBuildTriggers.createVcsTriggerForNonDitaBuilds(Helpers.resolveRelativeIdFromIdString(git_repo_id)) }
             sourceZipBuildTypes.add(docBuildType)
         }
         return sourceZipBuildTypes
@@ -191,10 +187,9 @@ object Docs {
     private fun createDitaBuildTypes(
         env_names: List<String>,
         doc_id: String,
-        git_repo_id: String,
+        src_id: String,
         git_url: String,
         git_branch: String,
-        src_is_exported: Boolean,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
@@ -208,12 +203,13 @@ object Docs {
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val outputDir = "out"
-        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(git_repo_id)
+        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
+                GwBuildTypes.DITA.build_type_name,
                 env,
                 doc_id,
-                git_repo_id,
+                src_id,
                 publish_path,
                 working_dir,
                 index_for_search
@@ -223,9 +219,6 @@ object Docs {
                 docBuildType.steps.step(copyFromStagingToProdStep)
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
-                if (arrayOf(GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(env)) {
-                    docBuildType.templates(GwTemplates.BuildListenerTemplate)
-                }
                 docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
                 docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
@@ -312,14 +305,6 @@ object Docs {
                     }
                     docBuildType.features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
                 }
-                // FIXME: Reenable this line when the refactoring is done
-//                if (arrayOf(DeployEnvs.INT.env_name, DeployEnvs.STAGING.env_name).contains(envName) && src_is_exported) {
-//                    docBuildType.triggers.vcs {
-//                        GwBuildTriggers.createVcsTriggerForExportedVcsRoot(
-//                            Helpers.resolveRelativeIdFromIdString(git_repo_id)
-//                        )
-//                    }
-//                }
             }
 
             ditaBuildTypes.add(docBuildType)
@@ -390,13 +375,15 @@ object Docs {
     }
 
     private fun createInitialDocBuildType(
+        gw_build_type: String,
         deploy_env: String,
         doc_id: String,
-        git_repo_id: String,
+        src_id: String,
         publish_path: String,
         working_dir: String,
         index_for_search: Boolean,
     ): BuildType {
+        val srcIsExported = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id).has("xdocsPathIds")
         return BuildType {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
@@ -405,7 +392,7 @@ object Docs {
                     deploy_env)
             ) {
                 vcs {
-                    root(Helpers.resolveRelativeIdFromIdString(git_repo_id))
+                    root(Helpers.resolveRelativeIdFromIdString(src_id))
                     cleanCheckout = true
                 }
                 val uploadContentToS3BucketStep =
@@ -422,6 +409,32 @@ object Docs {
                 val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deploy_env, doc_id, configFile)
                 steps.step(crawlDocStep)
                 steps.stepsOrder.add(crawlDocStep.id.toString())
+            }
+// FIXME: Remove the src_id condition when the refactoring is done
+            // Publishing builds for INT and STAGING are triggered automatically.
+            // DITA publishing builds are triggered by build listener builds. Additionally, DITA publishing builds
+            // that use sources exported from XDocs, use a regular TeamCity VCS trigger with a comment rule.
+            // The reference to the build listener template is one of the criteria used by the build manager app
+            // to identify builds that must be triggered.
+            // Yarn validation builds are triggered by regular TeamCity VCS triggers.
+            if (arrayOf(GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(deploy_env)) {
+                when (gw_build_type) {
+                    GwBuildTypes.DITA.build_type_name -> {
+                        templates(GwTemplates.BuildListenerTemplate)
+                        if (srcIsExported) {
+                            triggers.vcs {
+                                triggerRules = """
+                                    +:comment=\[$src_id\]:**
+                                    """.trimIndent()
+                            }
+                        }
+                    }
+                    else -> {
+                        if (src_id == "assesssrc") {
+                            triggers.vcs {}
+                        }
+                    }
+                }
             }
 
             features {
@@ -521,15 +534,12 @@ object Docs {
                 val resourcesToCopy =
                     if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
 
-                val srcIsExported = srcConfig.has("xdocsPathIds")
-
                 docProjectBuildTypes += createDitaBuildTypes(
                     docEnvironmentsList,
                     docId,
                     src_id,
                     gitUrl,
                     gitBranch,
-                    srcIsExported,
                     publishPath,
                     workingDir,
                     indexForSearch,
@@ -1725,7 +1735,8 @@ object BuildListeners {
                 val allSourceIdsRelatedToGitUrl =
                     buildListenerSources.filter { x -> x.first == it }.map { y -> y.second }
 
-                val branchName = if (allSourceIdsRelatedToGitUrl.size <= 1) "%vcsroot.branch%" else "%teamcity.build.branch%"
+                val branchName =
+                    if (allSourceIdsRelatedToGitUrl.size <= 1) "%vcsroot.branch%" else "%teamcity.build.branch%"
                 buildType {
                     name = "$srcGitUrlName builds listener"
                     id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1746,7 +1757,9 @@ object BuildListeners {
                         )
                     )
 // FIXME: Reenable this line when the refactoring is done
-                    if (it == "ssh://git@stash.guidewire.com/docsources/writing-with-git.git") {
+                    if (arrayOf("ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
+                            "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git").contains(it)
+                    ) {
                         triggers.vcs {}
                     }
                     features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1858,13 +1871,9 @@ object Sources {
                     "%teamcity.build.branch%"
                 )
             )
-// FIXME: Reenable this line when refactoring is done
-            if (src_id == "writingwithgitsrc") {
-                triggers.vcs {
-                    branchFilter = """
-                    +:*
-                """.trimIndent()
-                }
+// FIXME: Remove the src_id condition when the refactoring is done
+            if (arrayOf("writingwithgitsrc", "isupgradeguidesrc").contains(src_id)) {
+                triggers.vcs {}
             }
 
             features {
@@ -1916,7 +1925,6 @@ object Sources {
         }
 
         if (gw_build_type == GwBuildTypes.DITA.build_type_name) {
-            validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             validationBuildType.params.text("GIT_BRANCH", Helpers.createFullGitBranchName(git_branch))
             val ditaOtLogsDir = "dita_ot_logs"
             val normalizedDitaDir = "normalized_dita_dir"
@@ -2040,10 +2048,6 @@ object Sources {
                     )
                 )
             }
-// FIXME: Reenable this line when the refactoring is done
-//            if (gw_build_type == GwBuildTypes.YARN.build_type_name) {
-//                triggers.vcs {}
-//            }
 
             validationBuildType.features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
@@ -2051,6 +2055,23 @@ object Sources {
             }
 
         }
+
+        // FIXME: Remove the src_id condition when the refactoring is done
+        // DITA validation builds are triggered by validation listener builds.
+        // The reference to the validation listener template is one of the criteria used by the build manager app
+        // to identify builds that must be triggered.
+        // Yarn validation builds are triggered by regular TeamCity VCS triggers.
+        when (gw_build_type) {
+            GwBuildTypes.DITA.build_type_name -> {
+                validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
+            }
+            GwBuildTypes.YARN.build_type_name -> {
+                if (src_id == "assesssrc") {
+                    validationBuildType.triggers.vcs {}
+                }
+            }
+        }
+
         return validationBuildType
     }
 
@@ -3295,25 +3316,6 @@ object GwBuildFeatures {
                 }
                 filterTargetBranch = "+:${target_git_branch}"
             }
-        }
-    }
-}
-
-object GwBuildTriggers {
-
-    fun createVcsTriggerForExportedVcsRoot(vcs_root_id: RelativeId): VcsTrigger {
-        return VcsTrigger {
-            triggerRules = """
-                +:root=${vcs_root_id};comment=\[$vcs_root_id\]:**
-                """.trimIndent()
-        }
-    }
-
-    fun createVcsTriggerForNonDitaBuilds(vcs_root_id: RelativeId): VcsTrigger {
-        return VcsTrigger {
-            triggerRules = """
-                +:root=${vcs_root_id}:**
-                """.trimIndent()
         }
     }
 }
