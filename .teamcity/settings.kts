@@ -1852,7 +1852,6 @@ object Sources {
 
             vcs {
                 root(teamcityGitRepoId)
-                branchFilter = GwVcsSettings.branchFilterForValidationBuilds
                 cleanCheckout = true
             }
             steps.step(
@@ -1909,7 +1908,6 @@ object Sources {
 
             vcs {
                 root(teamcityGitRepoId)
-                branchFilter = GwVcsSettings.branchFilterForValidationBuilds
                 cleanCheckout = true
             }
 
@@ -3385,12 +3383,6 @@ object GwVcsSettings {
         }
         return gitBranchesEntries.joinToString("\n")
     }
-
-    // TODO: Verify if we should trigger builds in the source branch as well
-    val branchFilterForValidationBuilds = """
-        +:*
-        -:<default>
-        """.trimIndent()
 }
 
 object GwTemplates {
