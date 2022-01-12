@@ -32,7 +32,7 @@
       ]
     },
     {
-      "id": "isupgradeguidesrc",
+      "id": "isupgradeguide202011src",
       "title": "InsuranceSuite Upgrade Guide",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
