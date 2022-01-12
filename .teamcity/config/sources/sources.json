@@ -1596,6 +1596,17 @@
       ]
     },
     {
+      "id": "inpaymentservicemigrationsrc",
+      "title": "InsuranceNow Payment Service Migration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "xdocsPathIds": [
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
+        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
+        "/Content/doc/insuranceNow/PaymentServiceMigration.ditamap"
+      ]
+    },
+    {
       "id": "in20202xstudiorndraftsrc",
       "title": "InsuranceNow 2020.2 Studio Release Notes Draft",
       "sourceType": "xdocs",
