@@ -30,13 +30,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
       ]
-    },
-    {
-      "id": "isupgradeguidesrc",
-      "title": "InsuranceSuite Upgrade Guide",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "main"
     }
   ]
 }

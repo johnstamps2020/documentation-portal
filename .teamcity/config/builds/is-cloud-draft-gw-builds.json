@@ -22,7 +22,7 @@
       "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
+      "srcId": "isupgradeguide202111src",
       "docId": "isbccloudgwupgrade"
     },
     {
@@ -46,7 +46,7 @@
       "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
+      "srcId": "isupgradeguide202111src",
       "docId": "iscccloudgwupgrade"
     },
     {
@@ -70,7 +70,7 @@
       "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguidesrc",
+      "srcId": "isupgradeguide202111src",
       "docId": "ispccloudgwupgrade"
     }
   ]
