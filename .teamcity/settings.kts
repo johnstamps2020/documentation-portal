@@ -431,7 +431,7 @@ object Docs {
                         }
                     }
                     else -> {
-                        if (src_id == "srcjutronext") {
+                        if (src_id == "srcjutro711") {
                             triggers.vcs {}
                         }
                     }
@@ -2044,7 +2044,6 @@ object Sources {
 
             validationBuildType.features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(git_branch)))
             }
 
         }
@@ -2059,7 +2058,7 @@ object Sources {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
-                if (src_id == "srcjutronext") {
+                if (src_id == "srcjutro711") {
                     validationBuildType.triggers.vcs {}
                 }
             }
