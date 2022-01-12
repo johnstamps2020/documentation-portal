@@ -5,7 +5,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbccloudgwadmin",
       "indexRedirect": true
     },
@@ -13,7 +13,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "isbccloudgwdevsetup",
       "indexRedirect": true
     },
@@ -29,7 +29,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "iscccloudgwadmin",
       "indexRedirect": true
     },
@@ -37,7 +37,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "iscccloudgwdevsetup",
       "indexRedirect": true
     },
@@ -53,7 +53,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispccloudgwadmin",
       "indexRedirect": true
     },
@@ -61,7 +61,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
-      "srcId": "is2021111src",
+      "srcId": "is2021112src",
       "docId": "ispccloudgwdevsetup",
       "indexRedirect": true
     },

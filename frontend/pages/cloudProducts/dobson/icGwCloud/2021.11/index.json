@@ -21,10 +21,6 @@
         {
           "label": "Release Notes",
           "id": "icrn202111"
-        },
-        {
-          "label": "Log4j Patch Release Notes",
-          "link": "/dm/ic/log4jPatchReleaseNotes.html"
         }
       ]
     },

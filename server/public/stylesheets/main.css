@@ -385,6 +385,10 @@ div.items {
   padding: 0.5rem 0;
 }
 
+div.group > div:not(.label) {
+  margin-left: 0.5rem;
+}
+
 .categoryCard a {
   display: inline-block;
   padding: 4px 0;

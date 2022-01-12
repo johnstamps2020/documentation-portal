@@ -2,12 +2,12 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "respond",
-      "title": "Respond",
-      "url": "cloud/respond/latest",
+      "id": "canvas",
+      "title": "Canvas",
+      "url": "cloud/canvas/latest",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
-        "product": ["Respond"],
+        "product": ["Canvas"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
