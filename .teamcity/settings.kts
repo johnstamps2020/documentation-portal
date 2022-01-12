@@ -431,7 +431,7 @@ object Docs {
                         }
                     }
                     else -> {
-                        if (src_id == "assesssrc") {
+                        if (src_id == "srcjutronext") {
                             triggers.vcs {}
                         }
                     }
@@ -1751,8 +1751,7 @@ object BuildListeners {
                         )
                     )
 // FIXME: Reenable this line when the refactoring is done
-                    if (arrayOf("ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
-                            "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git").contains(gitUrl)
+                    if (arrayOf("writingwithgitsrc", "isupgradeguidesrc").contains(srcId)
                     ) {
                         triggers.vcs {}
                     }
@@ -2060,7 +2059,7 @@ object Sources {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
-                if (src_id == "assesssrc") {
+                if (src_id == "srcjutronext") {
                     validationBuildType.triggers.vcs {}
                 }
             }
