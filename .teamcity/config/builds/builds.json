@@ -1780,6 +1780,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
+      "root": "PaymentServiceMigration.ditamap",
+      "srcId": "inpaymentservicemigrationsrc",
+      "docId": "inpaymentservicemigrationdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20211.ditamap",
       "srcId": "in20211xrndraftsrc",
       "docId": "in20211xrndraft",
