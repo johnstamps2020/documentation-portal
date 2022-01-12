@@ -1,5 +1,6 @@
-// TODO: When the refactoring is done, remove the teamcity access token from mskowron account
-// TODO: When the refactoring is done, clean up AWS and ATMOS envs in the Documentation Tools project
+// TODO: When changes are merged, remove the teamcity access token from mskowron account
+// TODO: When changes are merged, clean up AWS and ATMOS envs in the Documentation Tools project
+// TODO: When changes are merged, verify that the results cleaner app works as expected for validation builds
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -2035,7 +2036,7 @@ object Sources {
                 )
                 step(
                     GwBuildSteps.createUploadContentPreviewToS3BucketStep(
-                        "${workingDir}/out/webhelp",
+                        "${workingDir}/build",
                         publishPath,
                         previewUrlFile
                     )
