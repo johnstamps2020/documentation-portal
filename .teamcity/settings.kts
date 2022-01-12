@@ -1701,11 +1701,10 @@ object Exports {
 object BuildListeners {
     val rootProject = createBuildListenersProject()
 
-    private fun getSourcesForBuildListenerBuildTypes(): List<Pair<String, String>> {
-        val sourcesRequiringListeners = mutableListOf<Pair<String, String>>()
+    private fun getSourcesForBuildListenerBuildTypes(): List<JSONObject> {
+        val sourcesRequiringListeners = mutableListOf<JSONObject>()
         for (src in Helpers.gitNativeSources) {
             val srcId = src.getString("id")
-            val srcGitUrl = src.getString("gitUrl")
             val ditaBuildsRelatedToSrc =
                 Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == GwBuildTypes.DITA.build_type_name }
             val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
@@ -1717,7 +1716,7 @@ object BuildListeners {
             if (arrayListOf(GwDeployEnvs.INT.env_name,
                     GwDeployEnvs.STAGING.env_name).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
             ) {
-                sourcesRequiringListeners.add(Pair(srcGitUrl, srcId))
+                sourcesRequiringListeners.add(src)
             }
         }
         return sourcesRequiringListeners
@@ -1729,36 +1728,30 @@ object BuildListeners {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             val buildListenerSources = getSourcesForBuildListenerBuildTypes()
-            val uniqueSourceGitUrls = buildListenerSources.map { it.first }.distinct()
-            uniqueSourceGitUrls.forEach {
-                val srcGitUrlName = Helpers.removeSpecialCharacters(it.substringAfterLast("/"))
-                val allSourceIdsRelatedToGitUrl =
-                    buildListenerSources.filter { x -> x.first == it }.map { y -> y.second }
-
-                val branchName =
-                    if (allSourceIdsRelatedToGitUrl.size <= 1) "%vcsroot.branch%" else "%teamcity.build.branch%"
+            buildListenerSources.forEach {
+                val srcId = it.getString("id")
+                val gitUrl = it.getString("gitUrl")
+                val gitBranch = Helpers.createFullGitBranchName(it.getString("branch"))
                 buildType {
-                    name = "$srcGitUrlName builds listener"
+                    name = "$srcId builds listener"
                     id = Helpers.resolveRelativeIdFromIdString(this.name)
 
                     vcs {
-                        allSourceIdsRelatedToGitUrl.forEach { z ->
-                            root(Helpers.resolveRelativeIdFromIdString(z))
-                        }
+                        root(Helpers.resolveRelativeIdFromIdString(srcId))
                         cleanCheckout = true
                     }
                     steps.step(
                         GwBuildSteps.createRunBuildManagerStep(
                             Docs.rootProject.id.toString(),
                             GwTemplates.BuildListenerTemplate.id.toString(),
-                            it,
-                            git_branch = branchName,
-                            teamcity_build_branch = branchName
+                            gitUrl,
+                            git_branch = gitBranch,
+                            teamcity_build_branch = gitBranch
                         )
                     )
 // FIXME: Reenable this line when the refactoring is done
                     if (arrayOf("ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
-                            "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git").contains(it)
+                            "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git").contains(gitUrl)
                     ) {
                         triggers.vcs {}
                     }
