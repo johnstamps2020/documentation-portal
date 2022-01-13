@@ -1,5 +1,6 @@
 // TODO: When changes are merged, remove the teamcity access token from mskowron account
 // TODO: When changes are merged, clean up AWS and ATMOS envs in the Documentation Tools project
+// FIXME: Add a build for deploying server config!!!
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -631,6 +632,7 @@ object Content {
             subProject(createUpdateSearchIndexProject())
             subProject(createCleanUpSearchIndexProject())
             subProject(createGenerateSitemapProject())
+            subProject(createDeployServerConfigProject())
             buildType(UploadPdfsForEscrowBuildType)
         }
     }
@@ -752,6 +754,43 @@ object Content {
             steps {
                 step(GwBuildSteps.createGetConfigFileStep(deploy_env, configFile))
                 step(GwBuildSteps.createRunDocCrawlerStep(deploy_env, "%DOC_ID%", configFile))
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    }
+
+    private fun createDeployServerConfigProject(): Project {
+        return Project {
+            name = "Deploy server config"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
+                buildType(createDeployServerConfigBuildType(it.env_name))
+            }
+        }
+    }
+
+    private fun createDeployServerConfigBuildType(deploy_env: String): BuildType {
+        return BuildType {
+            name = "Deploy server config to $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+            // TODO: Create ENUM for root config location? And subdirs as well?
+            steps {
+                step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(deploy_env))
+                step(GwBuildSteps.createUploadContentToS3BucketStep(
+                    deploy_env,
+                    "portal-config",
+                    "%teamcity.build.checkoutDir%/.teamcity/config"))
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -2497,6 +2536,21 @@ object GwBuildSteps {
         dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
         dockerImagePlatform = ImagePlatform.Linux
     })
+
+    fun createGenerateDocsConfigFilesForEnvStep(deploy_env: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Generate config file for $deploy_env"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                config_deployer deploy %teamcity.build.checkoutDir%/.teamcity/config/docs --deploy-env $deploy_env -o %teamcity.build.checkoutDir%/.teamcity/config/out
+            """.trimIndent()
+            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
 
     fun createRunFlailSsgStep(
         pages_dir: String,
