@@ -1896,7 +1896,11 @@ object Sources {
         }
 
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
-        val teamcityBuildBranch = "%teamcity.build.branch%"
+        // For the preview URL and doc validator data uploaded to Elasticsearch, we cannot use the teamcity.build.branch
+        // variable because for the default branch it resolves to "<default>". We need the full branch name so we use
+        // the teamcity.build.vcs.branch.<VCS_root_ID> variable. For validation listeners and builds, we use
+        // the teamcity.build.branch variable because it's more flexible (we don't need to provide the VCS Root ID).
+        val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
         val publishPath = "preview/${src_id}/${teamcityBuildBranch}/${docId}"
         val previewUrlFile = "preview_url.txt"
 
@@ -1916,7 +1920,6 @@ object Sources {
         }
 
         if (gw_build_type == GwBuildTypes.DITA.build_type_name) {
-            validationBuildType.params.text("GIT_BRANCH", Helpers.createFullGitBranchName(git_branch))
             val ditaOtLogsDir = "dita_ot_logs"
             val normalizedDitaDir = "normalized_dita_dir"
             val schematronReportsDir = "schematron_reports_dir"
