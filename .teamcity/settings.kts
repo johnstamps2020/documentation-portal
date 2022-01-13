@@ -3204,7 +3204,6 @@ object GwBuildSteps {
         }
     }
 
-    //    TODO: Maybe this function could be merged with the createZipPackageStep function
     fun createZipUpSourcesStep(input_path: String, zip_filename: String): ScriptBuildStep {
         val zipPackageName = "${zip_filename}.zip"
         val targetPath = "out"
@@ -3216,7 +3215,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                cd "$input_path" || exit
+                cd "$input_path"
                 zip -r "$zipPackageName" . -x '*.git*'
                 zip -r "$zipPackageName" .gitignore
                 mkdir "$targetPath"
