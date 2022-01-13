@@ -1,6 +1,5 @@
 // TODO: When changes are merged, remove the teamcity access token from mskowron account
 // TODO: When changes are merged, clean up AWS and ATMOS envs in the Documentation Tools project
-// TODO: When changes are merged, verify that the results cleaner app works as expected for validation builds
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -238,7 +237,6 @@ object Docs {
                         git_url,
                         git_branch
                     )
-//                    FIXME: Make sure the PDF is copied to the local output folder
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${outputDir}/zip"
                         val buildDitaProjectForOfflineUseStep =
@@ -252,12 +250,18 @@ object Docs {
                             )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                         docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
+                        val copyPdfToOfflineOutputStep = GwBuildSteps.createCopyPdfFromOnlineToOfflineOutputStep(
+                            "${working_dir}/${outputDir}",
+                            "${working_dir}/${localOutputDir}"
+                        )
+                        docBuildType.steps.step(copyPdfToOfflineOutputStep)
+                        docBuildType.steps.stepsOrder.add(1, copyPdfToOfflineOutputStep.id.toString())
                         val zipPackageStep = GwBuildSteps.createZipPackageStep(
                             "${working_dir}/${localOutputDir}",
                             "${working_dir}/${outputDir}"
                         )
                         docBuildType.steps.step(zipPackageStep)
-                        docBuildType.steps.stepsOrder.add(1, zipPackageStep.id.toString())
+                        docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                     }
                 } else {
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
@@ -2802,6 +2806,15 @@ object GwBuildSteps {
         }
     }
 
+    fun createCopyPdfFromOnlineToOfflineOutputStep(online_output_path: String, offline_output_path: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Copy PDF from online to offline output"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent =
+                "cp -avR \"${online_output_path}/pdf\" \"$offline_output_path\""
+        }
+    }
+
     fun createZipPackageStep(
         input_path: String, target_path: String,
     ): ScriptBuildStep {
@@ -2815,7 +2828,7 @@ object GwBuildSteps {
                 set -xe
                 
                 echo "Creating a ZIP package"
-                cd "$input_path" || exit
+                cd "$input_path"
                 zip -r "${target_path}/${zipPackageName}" * &&
                 rm -rf "$input_path"
             """.trimIndent()
