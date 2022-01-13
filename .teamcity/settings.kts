@@ -68,6 +68,38 @@ object Docs {
         }
     }
 
+    private fun createBuildAndPublishDockerImageWithGccContent(src_id: String): BuildType {
+        return BuildType {
+            name = "Build and publish Docker image with GCC content"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            params {
+                text(
+                    "DOC_VERSION",
+                    "",
+                    label = "Doc version",
+                    display = ParameterDisplay.PROMPT,
+                    allowEmpty = false
+                )
+                text("env.GA4_ID", "G-6XJD083TC6", allowEmpty = false)
+            }
+            vcs {
+                root(Helpers.resolveRelativeIdFromIdString(src_id))
+            }
+            steps {
+                script {
+                    scriptContent = "./build_standalone.sh"
+                }
+                script {
+                    scriptContent = """
+                        docker build -t gccwebhelp .
+                        docker tag gccwebhelp artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:%DOC_VERSION%
+                        docker push artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:%DOC_VERSION%
+                        """.trimIndent()
+                }
+            }
+        }
+    }
+
     private fun createYarnBuildTypes(
         env_names: List<String>,
         doc_id: String,
@@ -570,6 +602,10 @@ object Docs {
                     zipFilename
                 )
             }
+        }
+
+        if (arrayOf("guidewirecloudconsolerootinsurerdev").contains(docId)) {
+            docProjectBuildTypes.add(createBuildAndPublishDockerImageWithGccContent(src_id))
         }
 
         return Project {
@@ -2806,7 +2842,10 @@ object GwBuildSteps {
         }
     }
 
-    fun createCopyPdfFromOnlineToOfflineOutputStep(online_output_path: String, offline_output_path: String): ScriptBuildStep {
+    fun createCopyPdfFromOnlineToOfflineOutputStep(
+        online_output_path: String,
+        offline_output_path: String,
+    ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Copy PDF from online to offline output"
             id = Helpers.createIdStringFromName(this.name)
