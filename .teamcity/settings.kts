@@ -133,7 +133,12 @@ object Docs {
             }
             steps {
                 script {
-                    scriptContent = "./build_standalone.sh"
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        ./build_standalone.sh
+                        """.trimIndent()
                 }
                 script {
                     scriptContent = """
@@ -1794,36 +1799,35 @@ object Exports {
                 name = "Export files from XDocs"
                 workingDir = "LocalClient/sample/local/bin"
                 scriptContent = """
-                            #!/bin/bash
-                            sed -i "s/ORP-XDOCS-WDB03/%EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
-                            chmod 777 runExport.sh
-                            for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR%; done
-                        """.trimIndent()
+                    #!/bin/bash
+                    sed -i "s/ORP-XDOCS-WDB03/%EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
+                    chmod 777 runExport.sh
+                    for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR%; done
+                    """.trimIndent()
             }
             script {
                 name = "Add exported files to Bitbucket"
                 scriptContent = """
-                        #!/bin/bash
-                        set -xe
+                    #!/bin/bash
+                    set -xe
+                    
+                    export GIT_CLONE_DIR="git_clone_dir"
+                    git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}GIT_CLONE_DIR
+                    cp -R %XDOCS_EXPORT_DIR%/* ${'$'}GIT_CLONE_DIR/
                         
-                        export GIT_CLONE_DIR="git_clone_dir"
+                    cd ${'$'}GIT_CLONE_DIR
+                    git config --local user.email "doctools@guidewire.com"
+                    git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
                         
-                        git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}GIT_CLONE_DIR
-                        cp -R %XDOCS_EXPORT_DIR%/* ${'$'}GIT_CLONE_DIR/
-                        
-                        cd ${'$'}GIT_CLONE_DIR
-                        git config --local user.email "doctools@guidewire.com"
-                        git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
-                        
-                        git add -A
-                        if git status | grep "Changes to be committed"
-                        then
-                          git commit -m "[TeamCity][%SRC_ID%] Add files exported from XDocs"
-                          git pull
-                          git push
-                        else
-                          echo "No changes to commit"
-                        fi                
+                    git add -A
+                    if git status | grep "Changes to be committed"
+                    then
+                      git commit -m "[TeamCity][%SRC_ID%] Add files exported from XDocs"
+                      git pull
+                      git push
+                    else
+                      echo "No changes to commit"
+                    fi
                     """.trimIndent()
             }
         }
@@ -2418,7 +2422,9 @@ object Apps {
                 script {
                     name = "Publish Docker image to Artifactory"
                     scriptContent = """
+                        #!/bin/bash                        
                         set -xe
+                        
                         cd apps/${app_dir}
                         ./publish_docker.sh latest       
                     """.trimIndent()
@@ -2461,6 +2467,7 @@ object Apps {
                     scriptContent = """
                         #!/bin/bash
                         set -xe
+
                         cd apps/${app_dir}
                         ./test_config_deployer.sh
                     """.trimIndent()
@@ -2974,8 +2981,12 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Copy PDF from online to offline output"
             id = Helpers.createIdStringFromName(this.name)
-            scriptContent =
-                "cp -avR \"${online_output_path}/pdf\" \"$offline_output_path\""
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                cp -avR "${online_output_path}/pdf" "$offline_output_path"
+                """.trimIndent()
         }
     }
 
