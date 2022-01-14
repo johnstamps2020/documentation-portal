@@ -253,9 +253,9 @@ object Docs {
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
                 docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
-                docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                 val buildDitaProjectStep: ScriptBuildStep
                 if (env == GwDeployEnvs.STAGING.env_name) {
+                    docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         "webhelp_with_pdf",
                         root_map,
