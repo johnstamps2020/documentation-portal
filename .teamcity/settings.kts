@@ -1,6 +1,5 @@
 // TODO: When changes are merged, remove the teamcity access token from mskowron account
 // TODO: When changes are merged, clean up AWS and ATMOS envs in the Documentation Tools project
-// FIXME: Add a build for deploying server config!!!
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -63,6 +62,26 @@ enum class GwConfigParams(val param_value: String) {
     SOURCES_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/sources"),
 }
 
+enum class GwDockerImages(val image_url: String) {
+    DOC_PORTAL("artifactory.guidewire.com/doctools-docker-dev/docportal"),
+    DITA_OT_LATEST("artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"),
+    ATMOS_DEPLOY_0_12_24("artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"),
+    CONFIG_DEPLOYER_LATEST("artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"),
+    DOC_CRAWLER_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"),
+    INDEX_CLEANER_LATEST("artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"),
+    BUILD_MANAGER_LATEST("artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"),
+    RECOMMENDATION_ENGINE_LATEST("artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"),
+    FLAIL_SSG_LATEST("artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"),
+    LION_PKG_BUILDER_LATEST("artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:latest"),
+    LION_PAGE_BUILDER_LATEST("artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:latest"),
+    UPGRADE_DIFFS_PAGE_BUILDER_LATEST("artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"),
+    SITEMAP_GENERATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"),
+    DOC_VALIDATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"),
+    PYTHON_3_8_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"),
+    NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
+    GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
+}
+
 object Docs {
     val rootProject = createRootProjectForDocs()
 
@@ -104,9 +123,15 @@ object Docs {
                 }
                 script {
                     scriptContent = """
-                        docker build -t gccwebhelp .
-                        docker tag gccwebhelp artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:%DOC_VERSION%
-                        docker push artifactory.guidewire.com/doctools-docker-dev/gccwebhelp:%DOC_VERSION%
+                        #!/bin/bash
+                        set -xe
+                        
+                        export PACKAGE_NAME="gccwebhelp"
+                        export IMAGE_URL="artifactory.guidewire.com/doctools-docker-dev/${'$'}PACKAGE_NAME:%DOC_VERSION%"
+                        
+                        docker build -t ${'$'}PACKAGE_NAME .
+                        docker tag ${'$'}PACKAGE_NAME ${'$'}IMAGE_URL
+                        docker push ${'$'}IMAGE_URL
                         """.trimIndent()
                 }
             }
@@ -1224,7 +1249,7 @@ object Server {
                     npm install
                     npm test
                 """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:14-alpine"
+                dockerImage = GwDockerImages.NODE_14_ALPINE.image_url
                 dockerPull = true
             }
         }
@@ -1276,7 +1301,7 @@ object Server {
                 --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
                 --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"  
             """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+                dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
@@ -1330,12 +1355,10 @@ object Server {
                 git push
                 git push --tags
                 
-                export PACKAGE_NAME=artifactory.guidewire.com/doctools-docker-dev/docportal
-                
-                docker build -t ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION} . --build-arg tag_version=${'$'}{TAG_VERSION}
-                docker push ${'$'}{PACKAGE_NAME}:${'$'}{TAG_VERSION}
+                docker build -t ${GwDockerImages.DOC_PORTAL.image_url}:${'$'}{TAG_VERSION} . --build-arg tag_version=${'$'}{TAG_VERSION}
+                docker push ${GwDockerImages.DOC_PORTAL.image_url}:${'$'}{TAG_VERSION}
             """.trimIndent()
-                dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerPull = true
                 dockerRunParameters =
@@ -1351,7 +1374,6 @@ object Server {
 
     private fun createDeployServerBuildType(deploy_env: String): BuildType {
         val namespace = "doctools"
-        val packageName = "artifactory.guidewire.com/doctools-docker-dev/docportal"
         val tagVersion = when (deploy_env) {
             GwDeployEnvs.DEV.env_name -> "latest"
             GwDeployEnvs.INT.env_name -> "latest-int"
@@ -1422,7 +1444,7 @@ object Server {
                         kubectl apply -f service.yml --namespace=${namespace}
                         kubectl apply -f ingress.yml --namespace=${namespace}                    
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -1454,7 +1476,7 @@ object Server {
                             TIME=${'$'}[${'$'}TIME+1]
                         done
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -1477,7 +1499,8 @@ object Server {
             )
             if (deploy_env == GwDeployEnvs.PROD.env_name) {
                 val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToEcrStep(packageName, tagVersion)
+                    GwBuildSteps.createPublishServerDockerImageToEcrStep(GwDockerImages.DOC_PORTAL.image_url,
+                        tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
                 deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
             }
@@ -1489,7 +1512,7 @@ object Server {
                 cleanCheckout = true
             }
             val buildAndPublishServerDockerImageStep =
-                GwBuildSteps.createBuildAndPublishServerDockerImageStep(packageName, tagVersion)
+                GwBuildSteps.createBuildAndPublishServerDockerImageStep(GwDockerImages.DOC_PORTAL.image_url, tagVersion)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.dependencies {
@@ -2176,7 +2199,7 @@ object Sources {
                         
                         results_cleaner --elasticsearch-urls "https://docsearch-doctools.int.ccs.guidewire.net"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+                    dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
             }
@@ -2291,7 +2314,7 @@ object Recommendations {
                                                                     
                             recommendation_engine
                         """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"
+                    dockerImage = GwDockerImages.RECOMMENDATION_ENGINE_LATEST.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
             }
@@ -2401,7 +2424,7 @@ object Apps {
                         cd apps/${app_dir}
                         ./test_config_deployer.sh
                     """.trimIndent()
-                    dockerImage = "artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"
+                    dockerImage = GwDockerImages.PYTHON_3_8_SLIM_BUSTER.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
 
@@ -2538,7 +2561,7 @@ object GwBuildSteps {
                 
                 config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
             """.trimIndent()
-        dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
         dockerImagePlatform = ImagePlatform.Linux
     })
 
@@ -2552,7 +2575,7 @@ object GwBuildSteps {
                 
                 config_deployer deploy "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}" --deploy-env $deploy_env
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
+            dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -2577,7 +2600,7 @@ object GwBuildSteps {
                                 
                 flail_ssg
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"
+            dockerImage = GwDockerImages.FLAIL_SSG_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -2595,7 +2618,7 @@ object GwBuildSteps {
                 
                 lion_page_builder
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:latest"
+            dockerImage = GwDockerImages.LION_PAGE_BUILDER_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -2640,7 +2663,7 @@ object GwBuildSteps {
                 
                 lion_pkg_builder
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:latest"
+            dockerImage = GwDockerImages.LION_PKG_BUILDER_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -2663,7 +2686,7 @@ object GwBuildSteps {
                 
                 upgradediffs_page_builder
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"
+            dockerImage = GwDockerImages.UPGRADE_DIFFS_PAGE_BUILDER_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -2706,7 +2729,7 @@ object GwBuildSteps {
                 
                 sitemap_generator
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"
+            dockerImage = GwDockerImages.SITEMAP_GENERATOR_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -2732,7 +2755,7 @@ object GwBuildSteps {
 
                 index_cleaner
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"
+            dockerImage = GwDockerImages.INDEX_CLEANER_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -2750,7 +2773,7 @@ object GwBuildSteps {
                 eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
                 docker push ${ecrPackageName}:${tag_version}
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters =
@@ -2772,7 +2795,7 @@ object GwBuildSteps {
                 docker build -t ${package_name}:${tag_version} ./server --build-arg tag_version=${tag_version}
                 docker push ${package_name}:${tag_version}
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters =
@@ -2815,7 +2838,7 @@ object GwBuildSteps {
 
                 doc_crawler
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"
+            dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -3062,7 +3085,7 @@ object GwBuildSteps {
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -3126,7 +3149,7 @@ object GwBuildSteps {
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"
+            dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -3256,7 +3279,7 @@ object GwBuildSteps {
                     yarn
                     NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
                 """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome"
+            dockerImage = GwDockerImages.GENERIC_14_14_0_YARN_CHROME.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
@@ -3308,7 +3331,7 @@ object GwBuildSteps {
                                                         
                 build_manager
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"
+            dockerImage = GwDockerImages.BUILD_MANAGER_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -3337,7 +3360,7 @@ object GwBuildSteps {
                   && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
                   && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"
+            dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
@@ -3362,7 +3385,7 @@ object GwBuildSteps {
                 
                 sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh $deployment_mode "$output_dir"
             """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
