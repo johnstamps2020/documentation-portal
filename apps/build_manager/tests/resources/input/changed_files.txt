@@ -10,5 +10,4 @@ admin/common_files/guide_intro.dita:ADDED:a1778ea980781f80e5c3faf3188b8ee626faeb
 admin/topics/c_hv1199521-1.dita:ADDED:a1778ea980781f80e5c3faf3188b8ee626faebd6
 admin/topics/c_hv1199521.dita:CHANGED:a1778ea980781f80e5c3faf3188b8ee626faebd6
 admin/topics/c_hv1615492.dita:REMOVED:a1778ea980781f80e5c3faf3188b8ee626faebd6
-WritingWithGit2.ditamap:CHANGED:a1778ea980781f80e5c3faf3188b8ee626faebd6
 README.md:MODIFIED:a1778ea980781f80e5c3faf3188b8ee626faebd6
