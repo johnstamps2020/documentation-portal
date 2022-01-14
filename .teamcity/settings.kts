@@ -2469,7 +2469,7 @@ object Apps {
                         set -xe
 
                         cd apps/${app_dir}
-                        ./test_config_deployer.sh
+                        ./test_${app_dir}.sh
                     """.trimIndent()
                     dockerImage = GwDockerImages.PYTHON_3_8_SLIM_BUSTER.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
