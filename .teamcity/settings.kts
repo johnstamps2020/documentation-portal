@@ -51,6 +51,18 @@ enum class GwBuildTypes(val build_type_name: String) {
     SOURCE_ZIP("source-zip")
 }
 
+enum class GwConfigParams(val param_value: String) {
+    CONFIG_FILES_ROOT_DIR("%teamcity.build.checkoutDir%/.teamcity/config"),
+    CONFIG_SCHEMA_FILE_PATH("${CONFIG_FILES_ROOT_DIR.param_value}/config-schema.json"),
+    BUILDS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/builds"),
+    DOCS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/docs"),
+    SOURCES_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/sources"),
+    MERGED_CONFIG_FILE_NAME("merge-all.json"),
+    DOCS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/docs"),
+    BUILDS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/builds"),
+    SOURCES_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/sources"),
+}
+
 object Docs {
     val rootProject = createRootProjectForDocs()
 
@@ -784,13 +796,12 @@ object Content {
                 branchFilter = "+:<default>"
                 cleanCheckout = true
             }
-            // TODO: Create ENUM for root config location? And subdirs as well?
             steps {
                 step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(deploy_env))
                 step(GwBuildSteps.createUploadContentToS3BucketStep(
                     deploy_env,
                     "portal-config",
-                    "%teamcity.build.checkoutDir%/.teamcity/config"))
+                    GwConfigParams.CONFIG_FILES_ROOT_DIR.param_value))
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -915,7 +926,6 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         "%teamcity.build.checkoutDir%/frontend/pages",
                         outputDir,
-                        "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
                         deploy_env
                     )
                 )
@@ -980,7 +990,6 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
                         deploy_env
                     )
                 )
@@ -1046,7 +1055,6 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        "%teamcity.build.checkoutDir%/.teamcity/config/out/merge-all.json",
                         deploy_env
                     )
                 )
@@ -1251,25 +1259,22 @@ object Server {
                 #!/bin/bash
                 set -xe
                 
-                export ROOT_CONFIG_DIR="%teamcity.build.checkoutDir%/.teamcity/config"
-                export DOCS_OUTPUT_DIR="${'$'}{ROOT_CONFIG_DIR}/out/docs"
-                export SOURCES_OUTPUT_DIR="${'$'}{ROOT_CONFIG_DIR}/out/sources"
-                export BUILDS_OUTPUT_DIR="${'$'}{ROOT_CONFIG_DIR}/out/builds"
-                
                 # Merge config files
                 
-                config_deployer merge "${'$'}{ROOT_CONFIG_DIR}/docs" -o "${'$'}DOCS_OUTPUT_DIR"
-                config_deployer merge "${'$'}{ROOT_CONFIG_DIR}/sources" -o "${'$'}SOURCES_OUTPUT_DIR"
-                config_deployer merge "${'$'}{ROOT_CONFIG_DIR}/builds" -o "${'$'}BUILDS_OUTPUT_DIR"
+                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
+                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}"
+                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}"
              
-                export MERGED_CONFIG_FILE="merge-all.json"
-                export SCHEMA_PATH="${'$'}{ROOT_CONFIG_DIR}/config-schema.json"
-                
                 # Test merged config files
                 
-                config_deployer test "${'$'}{DOCS_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --schema-path ${'$'}SCHEMA_PATH
-                config_deployer test "${'$'}{SOURCES_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --schema-path ${'$'}SCHEMA_PATH
-                config_deployer test "${'$'}{BUILDS_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --sources-path "${'$'}{SOURCES_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --docs-path "${'$'}{DOCS_OUTPUT_DIR}/${'$'}{MERGED_CONFIG_FILE}" --schema-path ${'$'}SCHEMA_PATH  
+                config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
+                config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
+                config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"  
             """.trimIndent()
                 dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2531,7 +2536,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                config_deployer merge "%teamcity.build.checkoutDir%/.teamcity/config/docs" -o "%teamcity.build.checkoutDir%/.teamcity/config/out"
+                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
             """.trimIndent()
         dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
         dockerImagePlatform = ImagePlatform.Linux
@@ -2545,7 +2550,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                config_deployer deploy %teamcity.build.checkoutDir%/.teamcity/config/docs --deploy-env $deploy_env -o %teamcity.build.checkoutDir%/.teamcity/config/out
+                config_deployer deploy "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}" --deploy-env $deploy_env
             """.trimIndent()
             dockerImage = "artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2555,7 +2560,6 @@ object GwBuildSteps {
     fun createRunFlailSsgStep(
         pages_dir: String,
         output_dir: String,
-        docs_config_file: String,
         deploy_env: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
@@ -2567,7 +2571,7 @@ object GwBuildSteps {
                 
                 export PAGES_DIR="$pages_dir"
                 export OUTPUT_DIR="$output_dir"
-                export DOCS_CONFIG_FILE="$docs_config_file"
+                export DOCS_CONFIG_FILE="${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}"
                 export DEPLOY_ENV="$deploy_env"
                 export SEND_BOUNCER_HOME="no"
                                 
