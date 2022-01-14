@@ -3220,7 +3220,7 @@ object GwBuildSteps {
         var customEnvExportVars = ""
         custom_env?.forEach {
             it as JSONObject
-            customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\"\n"
+            customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\" # Custom env from the build config file\n"
         }
 
         return ScriptBuildStep {
@@ -3284,7 +3284,7 @@ object GwBuildSteps {
         var customEnvExportVars = ""
         custom_env?.forEach {
             it as JSONObject
-            customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\"\n"
+            customEnvExportVars += "export ${it.getString("name")}=\"${it.getString("value")}\" # Custom env from the build config file\n"
         }
 
         return ScriptBuildStep {
