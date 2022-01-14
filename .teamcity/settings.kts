@@ -3236,6 +3236,7 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gw_platforms"
                     export GW_VERSION="$gw_versions"
                     export TARGET_URL="$targetUrl"
+                    export BASE_URL="/${publish_path}/"
                     $customEnvExportVars
                     
                     # legacy Jutro repos
@@ -3256,7 +3257,6 @@ object GwBuildSteps {
                     npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                                         
-                    export BASE_URL=/${publish_path}/
                     cd "$working_dir"
                     yarn
                     yarn $buildCommand
@@ -3300,6 +3300,7 @@ object GwBuildSteps {
                     export GW_PLATFORM="$gw_platforms"
                     export JUTRO_VERSION="$gw_versions"
                     export TARGET_URL="$targetUrl"
+                    export BASE_URL="/${publish_path}/"
                     $customEnvExportVars
                     
                     # legacy Jutro repos
@@ -3320,7 +3321,6 @@ object GwBuildSteps {
                     npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                                         
-                    export BASE_URL=/${publish_path}/
                     cd "$working_dir"
                     yarn
                     NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
