@@ -91,7 +91,7 @@ enum class GwDockerImages(val image_url: String) {
     UPGRADE_DIFFS_PAGE_BUILDER_LATEST("artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"),
     SITEMAP_GENERATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"),
     DOC_VALIDATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"),
-    PYTHON_3_8_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.8-slim-buster"),
+    PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
     NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
     GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
 }
@@ -2471,7 +2471,7 @@ object Apps {
                         cd apps/${app_dir}
                         ./test_${app_dir}.sh
                     """.trimIndent()
-                    dockerImage = GwDockerImages.PYTHON_3_8_SLIM_BUSTER.image_url
+                    dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
 
