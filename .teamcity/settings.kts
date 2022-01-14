@@ -50,16 +50,30 @@ enum class GwBuildTypes(val build_type_name: String) {
     SOURCE_ZIP("source-zip")
 }
 
+enum class GwDitaOutputFormats(val format_name: String) {
+    WEBHELP("webhelp"),
+    PDF("pdf"),
+    WEBHELP_WITH_PDF("webhelp_with_pdf"),
+    DITA("dita"),
+    VALIDATE("validate")
+}
+
 enum class GwConfigParams(val param_value: String) {
     CONFIG_FILES_ROOT_DIR("%teamcity.build.checkoutDir%/.teamcity/config"),
     CONFIG_SCHEMA_FILE_PATH("${CONFIG_FILES_ROOT_DIR.param_value}/config-schema.json"),
     BUILDS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/builds"),
     DOCS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/docs"),
     SOURCES_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/sources"),
-    MERGED_CONFIG_FILE_NAME("merge-all.json"),
+    MERGED_CONFIG_FILE("merge-all.json"),
     DOCS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/docs"),
     BUILDS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/builds"),
     SOURCES_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/sources"),
+    DITA_BUILD_OUT_DIR("out"),
+    YARN_BUILD_OUT_DIR("build"),
+    STORYBOOK_BUILD_OUT_DIR("dist"),
+    SOURCE_ZIP_BUILD_OUT_DIR("out"),
+    BUILD_DATA_DIR("json"),
+    BUILD_DATA_FILE("build-data.json")
 }
 
 enum class GwDockerImages(val image_url: String) {
@@ -272,7 +286,6 @@ object Docs {
         resources_to_copy: JSONArray,
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
-        val outputDir = "out"
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
@@ -289,16 +302,17 @@ object Docs {
                 docBuildType.steps.step(copyFromStagingToProdStep)
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
-                docBuildType.artifactRules = "${working_dir}/${outputDir}/build-data.json => json"
+                docBuildType.artifactRules =
+                    "${working_dir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}"
                 val buildDitaProjectStep: ScriptBuildStep
                 if (env == GwDeployEnvs.STAGING.env_name) {
                     docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                        "webhelp_with_pdf",
+                        GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
                         root_map,
                         index_redirect,
                         working_dir,
-                        outputDir,
+                        GwConfigParams.DITA_BUILD_OUT_DIR.param_value,
                         build_filter,
                         doc_id,
                         gw_products,
@@ -308,10 +322,10 @@ object Docs {
                         git_branch
                     )
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
-                        val localOutputDir = "${outputDir}/zip"
+                        val localOutputDir = "${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}/zip"
                         val buildDitaProjectForOfflineUseStep =
                             GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                                "webhelp",
+                                GwDitaOutputFormats.WEBHELP.format_name,
                                 root_map,
                                 index_redirect,
                                 working_dir,
@@ -321,25 +335,25 @@ object Docs {
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                         docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
                         val copyPdfToOfflineOutputStep = GwBuildSteps.createCopyPdfFromOnlineToOfflineOutputStep(
-                            "${working_dir}/${outputDir}",
+                            "${working_dir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}",
                             "${working_dir}/${localOutputDir}"
                         )
                         docBuildType.steps.step(copyPdfToOfflineOutputStep)
                         docBuildType.steps.stepsOrder.add(1, copyPdfToOfflineOutputStep.id.toString())
                         val zipPackageStep = GwBuildSteps.createZipPackageStep(
                             "${working_dir}/${localOutputDir}",
-                            "${working_dir}/${outputDir}"
+                            "${working_dir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}"
                         )
                         docBuildType.steps.step(zipPackageStep)
                         docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                     }
                 } else {
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                        "webhelp",
+                        GwDitaOutputFormats.WEBHELP.format_name,
                         root_map,
                         index_redirect,
                         working_dir,
-                        outputDir,
+                        GwConfigParams.DITA_BUILD_OUT_DIR.param_value,
                         build_filter,
                         doc_id,
                         gw_products,
@@ -365,7 +379,7 @@ object Docs {
                         val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
                             stepId,
                             working_dir,
-                            outputDir,
+                            GwConfigParams.DITA_BUILD_OUT_DIR.param_value,
                             resourceSrcDir,
                             resourceTargetDir,
                             resourceSrcUrl,
@@ -384,13 +398,15 @@ object Docs {
 
             ditaBuildTypes.add(docBuildType)
         }
-        for (format in arrayListOf("webhelp", "pdf", "webhelp_with_pdf")) {
-            val localOutputDir = "${outputDir}/zip"
+        for (format in arrayListOf(GwDitaOutputFormats.WEBHELP.format_name,
+            GwDitaOutputFormats.PDF.format_name,
+            GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name)) {
+            val localOutputDir = "${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}/zip"
             val downloadableOutputBuildType = BuildType {
                 name = "Build downloadable ${format.replace("_", " ")}"
                 id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
-                artifactRules = "${working_dir}/${outputDir} => /"
+                artifactRules = "${working_dir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value} => /"
 
                 vcs {
                     root(teamcityGitRepoId)
@@ -410,7 +426,7 @@ object Docs {
                         for_offline_use = true
                     ))
                     step(GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
-                        "${working_dir}/${outputDir}"))
+                        "${working_dir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}"))
                 }
 
                 features {
@@ -427,7 +443,7 @@ object Docs {
                 id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
                 artifactRules = """
-                    ${working_dir}/${outputDir} => /
+                    ${working_dir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value} => /
                 """.trimIndent()
 
                 vcs {
@@ -437,7 +453,7 @@ object Docs {
                 }
 
                 steps.step(GwBuildSteps.createRunLionPkgBuilderStep(working_dir,
-                    outputDir,
+                    GwConfigParams.DITA_BUILD_OUT_DIR.param_value,
                     stagingBuildTypeIdString))
 
                 features {
@@ -459,6 +475,12 @@ object Docs {
         index_for_search: Boolean,
     ): BuildType {
         val srcIsExported = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id).has("xdocsPathIds")
+        val outputDir = when (gw_build_type) {
+            GwBuildTypes.YARN.build_type_name -> GwConfigParams.YARN_BUILD_OUT_DIR.param_value
+            GwBuildTypes.STORYBOOK.build_type_name -> GwConfigParams.STORYBOOK_BUILD_OUT_DIR.param_value
+            GwBuildTypes.SOURCE_ZIP.build_type_name -> GwConfigParams.SOURCE_ZIP_BUILD_OUT_DIR.param_value
+            else -> GwConfigParams.DITA_BUILD_OUT_DIR.param_value
+        }
         return BuildType {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
@@ -471,7 +493,11 @@ object Docs {
                     cleanCheckout = true
                 }
                 val uploadContentToS3BucketStep =
-                    GwBuildSteps.createUploadContentToS3BucketStep(deploy_env, publish_path, working_dir)
+                    GwBuildSteps.createUploadContentToS3BucketStep(
+                        deploy_env,
+                        "${working_dir}/${outputDir}",
+                        publish_path
+                    )
                 steps.step(uploadContentToS3BucketStep)
                 steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
             }
@@ -825,8 +851,9 @@ object Content {
                 step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(deploy_env))
                 step(GwBuildSteps.createUploadContentToS3BucketStep(
                     deploy_env,
-                    "portal-config",
-                    GwConfigParams.CONFIG_FILES_ROOT_DIR.param_value))
+                    GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value,
+                    "portal-config")
+                )
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1292,13 +1319,13 @@ object Server {
              
                 # Test merged config files
                 
-                config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
                 --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
-                config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
                 --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
-                config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
-                --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
-                --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}" \
+                config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
                 --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"  
             """.trimIndent()
                 dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
@@ -2052,7 +2079,7 @@ object Sources {
 
             validationBuildType.artifactRules += """
                 ${workingDir}/${ditaOtLogsDir} => logs
-                ${workingDir}/out/webhelp/build-data.json => json
+                ${workingDir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
             """.trimIndent()
 
             validationBuildType.steps {
@@ -2066,7 +2093,7 @@ object Sources {
                 )
                 step(
                     GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                        "webhelp",
+                        GwDitaOutputFormats.WEBHELP.format_name,
                         rootMap,
                         workingDir,
                         ditaOtLogsDir,
@@ -2077,15 +2104,21 @@ object Sources {
                     )
                 )
                 step(
-                    GwBuildSteps.createUploadContentPreviewToS3BucketStep(
-                        "${workingDir}/out/webhelp",
+                    GwBuildSteps.createUploadContentToS3BucketStep(
+                        GwDeployEnvs.INT.env_name,
+                        "${workingDir}/${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}/${GwDitaOutputFormats.WEBHELP.format_name}",
+                        publishPath,
+                    )
+                )
+                step(
+                    GwBuildSteps.createPreviewUrlFile(
                         publishPath,
                         previewUrlFile
                     )
                 )
                 step(
                     GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                        "dita",
+                        GwDitaOutputFormats.DITA.format_name,
                         rootMap,
                         workingDir,
                         ditaOtLogsDir,
@@ -2095,7 +2128,7 @@ object Sources {
                 )
                 step(
                     GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                        "validate",
+                        GwDitaOutputFormats.VALIDATE.format_name,
                         rootMap,
                         workingDir,
                         ditaOtLogsDir,
@@ -2142,12 +2175,19 @@ object Sources {
                     )
                 )
                 step(
-                    GwBuildSteps.createUploadContentPreviewToS3BucketStep(
-                        "${workingDir}/build",
+                    GwBuildSteps.createUploadContentToS3BucketStep(
+                        GwDeployEnvs.INT.env_name,
+                        "${workingDir}/${GwConfigParams.YARN_BUILD_OUT_DIR.param_value}",
+                        publishPath,
+                    )
+                )
+                step(
+                    GwBuildSteps.createPreviewUrlFile(
                         publishPath,
                         previewUrlFile
                     )
                 )
+
             }
 
             validationBuildType.features {
@@ -2540,6 +2580,10 @@ object Helpers {
         }
     }
 
+    fun getS3BucketName(deploy_env: String): String {
+        return "tenant-doctools-${deploy_env}-builds"
+    }
+
     fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
         return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
             Pair("https://docs.guidewire.com", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net")
@@ -2594,7 +2638,7 @@ object GwBuildSteps {
                 
                 export PAGES_DIR="$pages_dir"
                 export OUTPUT_DIR="$output_dir"
-                export DOCS_CONFIG_FILE="${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE_NAME.param_value}"
+                export DOCS_CONFIG_FILE="${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}"
                 export DEPLOY_ENV="$deploy_env"
                 export SEND_BOUNCER_HOME="no"
                                 
@@ -2655,7 +2699,7 @@ object GwBuildSteps {
                 
                 export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
                 export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
-                export TEAMCITY_RESOURCES_ARTIFACT_PATH="json/build-data.json"
+                export TEAMCITY_RESOURCES_ARTIFACT_PATH="${GwConfigParams.BUILD_DATA_DIR.param_value}/${GwConfigParams.BUILD_DATA_FILE.param_value}"
                 export ZIP_SRC_DIR="zip"
                 export OUTPUT_PATH="$output_dir"
                 export WORKING_DIR="$working_dir"
@@ -2956,7 +3000,7 @@ object GwBuildSteps {
     }
 
     fun createUploadContentToS3BucketStep(
-        deploy_env: String, publish_path: String, working_dir: String,
+        deploy_env: String, output_path: String, publish_path: String,
     ): ScriptBuildStep {
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
         return ScriptBuildStep {
@@ -2966,32 +3010,21 @@ object GwBuildSteps {
                     #!/bin/bash
                     set -xe
                     
-                    if [[ -d "${working_dir}/out" ]]; then
-                        export OUTPUT_PATH="out"
-                    elif [[ -d "${working_dir}/dist" ]]; then
-                        export OUTPUT_PATH="dist"
-                    elif [[ -d "${working_dir}/build" ]]; then
-                        export OUTPUT_PATH="build"
-                    fi
-                    
-                    echo "Output path set to ${'$'}OUTPUT_PATH"
-
-                    aws s3 sync ${working_dir}/${'$'}OUTPUT_PATH s3://${s3BucketName}/${publish_path} --delete
+                    aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
         }
     }
 
-    fun createUploadContentPreviewToS3BucketStep(
-        src_path: String, publish_path: String, preview_url_file: String,
+    fun createPreviewUrlFile(
+        publish_path: String, preview_url_file: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
-            name = "Upload the content preview output to S3"
+            name = "Create preview URL file"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
                 
-                aws s3 sync "$src_path" "s3://tenant-doctools-int-builds/${publish_path}" --delete
                 echo "Output preview available at https://docs.int.ccs.guidewire.net/${publish_path}" > $preview_url_file
             """.trimIndent()
         }
@@ -3035,7 +3068,7 @@ object GwBuildSteps {
         index_redirect: Boolean = false,
     ): ScriptBuildStep {
         val logFile = "${output_format}_build.log"
-        val outputDir = "out/${output_format}"
+        val outputDir = "${GwConfigParams.DITA_BUILD_OUT_DIR.param_value}/${output_format}"
         var ditaBuildCommand =
             "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${outputDir}\" -l \"${working_dir}/${logFile}\""
         var resourcesCopyCommand = ""
@@ -3047,19 +3080,19 @@ object GwBuildSteps {
         when (output_format) {
             // --git-url and --git-branch are required by the DITA OT plugin to generate build data.
             // There are not needed in this build, so they have fake values
-            "webhelp" -> {
+            GwDitaOutputFormats.WEBHELP.format_name -> {
                 ditaBuildCommand += " -f webhelp_Guidewire --generate.build.data yes --git.url gitUrl --git.branch gitBranch"
                 if (index_redirect) {
                     ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
                 }
             }
-            "dita" -> {
+            GwDitaOutputFormats.DITA.format_name -> {
                 ditaBuildCommand += " -f gw_dita"
                 resourcesCopyCommand =
                     "&& mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${outputDir}/\"* \"${working_dir}/${normalized_dita_dir}/\""
             }
-            "validate" -> {
-                val tempDir = "tmp/validate"
+            GwDitaOutputFormats.VALIDATE.format_name -> {
+                val tempDir = "tmp/${output_format}"
                 ditaBuildCommand += " -f validate --clean.temp no --temp \"${working_dir}/${tempDir}\""
                 resourcesCopyCommand =
                     "&& mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
@@ -3118,19 +3151,21 @@ object GwBuildSteps {
         }
 
         when (output_format) {
-            "webhelp" -> {
+            GwDitaOutputFormats.WEBHELP.format_name -> {
                 ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate"
             }
-            "webhelp_with_pdf" -> {
+            GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name -> {
                 ditaBuildCommand += " -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
             }
-            "pdf" -> {
+            GwDitaOutputFormats.PDF.format_name -> {
                 ditaBuildCommand += " -f pdf_Guidewire_remote"
             }
         }
 
 
-        if (output_format.contains("webhelp") && index_redirect) {
+        if (arrayOf(GwDitaOutputFormats.WEBHELP.format_name, GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name).contains(
+                output_format) && index_redirect
+        ) {
             ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
         }
 
@@ -3287,8 +3322,6 @@ object GwBuildSteps {
 
     fun createZipUpSourcesStep(input_path: String, zip_filename: String): ScriptBuildStep {
         val zipPackageName = "${zip_filename}.zip"
-        val targetPath = "out"
-
         return ScriptBuildStep {
             name = "Zip up sources"
             id = Helpers.createIdStringFromName(this.name)
@@ -3299,8 +3332,8 @@ object GwBuildSteps {
                 cd "$input_path"
                 zip -r "$zipPackageName" . -x '*.git*'
                 zip -r "$zipPackageName" .gitignore
-                mkdir "$targetPath"
-                mv "$zipPackageName" "${targetPath}/${zipPackageName}"
+                mkdir "${GwConfigParams.SOURCE_ZIP_BUILD_OUT_DIR.param_value}"
+                mv "$zipPackageName" "${GwConfigParams.SOURCE_ZIP_BUILD_OUT_DIR.param_value}/${zipPackageName}"
             """.trimIndent()
         }
     }
@@ -3322,7 +3355,7 @@ object GwBuildSteps {
                 export CHANGED_FILES_FILE="%system.teamcity.build.changedFiles.file%"
                 export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
                 export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
-                export TEAMCITY_RESOURCES_ARTIFACT_PATH="json/build-data.json"
+                export TEAMCITY_RESOURCES_ARTIFACT_PATH="${GwConfigParams.BUILD_DATA_DIR.param_value}/${GwConfigParams.BUILD_DATA_FILE.param_value}"
                 export TEAMCITY_AFFECTED_PROJECT="$teamcity_affected_project"
                 export TEAMCITY_TEMPLATE="$teamcity_template"
                 export GIT_URL="$git_url"
