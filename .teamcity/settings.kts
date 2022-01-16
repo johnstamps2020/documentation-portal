@@ -480,6 +480,8 @@ object Docs {
         index_for_search: Boolean,
     ): BuildType {
         val srcIsExported = Helpers.getObjectById(Helpers.sourceConfigs, "id", src_id).has("xdocsPathIds")
+        // FIXME: Output dir can be configured in the config file using the outputPath prop. Add support for this prop!
+        // Rethink where the info about the outputpath should be resolved
         val outputDir = when (gw_build_type) {
             GwBuildTypes.YARN.build_type_name -> GwConfigParams.YARN_BUILD_OUT_DIR.param_value
             GwBuildTypes.STORYBOOK.build_type_name -> GwConfigParams.STORYBOOK_BUILD_OUT_DIR.param_value
@@ -2384,33 +2386,45 @@ object Apps {
 
     private fun createAppProjects(): List<Project> {
         return arrayOf(
-            "Config deployer",
-            "Doc crawler",
-            "Index cleaner",
-            "Build manager",
-            "Recommendation engine",
-            "Flail SSG",
-            "Lion pkg builder",
-            "Lion page builder",
-            "Upgrade diffs page builder",
-            "Sitemap generator"
+            Triple("Flail SSG", "frontend/flail_ssg/", true),
+            Triple("Config deployer", "apps/config_deployer", true),
+            Triple("Doc crawler", "apps/doc_crawler", true),
+            Triple("Index cleaner", "apps/index_cleaner", false),
+            Triple("Build manager", "apps/build_manager", true),
+            Triple("Recommendation engine", "apps/recommendation_engine", false),
+            Triple("Lion pkg builder", "apps/lion_pkg_builder", false),
+            Triple("Lion page builder", "apps/lion_page_builder", false),
+            Triple("Upgrade diffs page builder", "apps/upgradediffs_page_builder", false),
+            Triple("Sitemap generator", "apps/sitemap_generator", false)
         ).map {
+            val appName = it.first
+            val appDir = it.second
+            val createTestBuild = it.third
             Project {
-                name = it
+                name = appName
                 id = Helpers.resolveRelativeIdFromIdString(this.name)
-                val appDir = it.replace(" ", "_").lowercase(Locale.getDefault())
-                val testAppBuildType = createTestAppBuildType(appDir)
-                val publishAppDockerImageBuildType = createPublishAppDockerImageBuildType(appDir, testAppBuildType)
-                buildType(testAppBuildType)
-                buildType(publishAppDockerImageBuildType)
+
+                if (createTestBuild) {
+                    val testAppBuildType = createTestAppBuildType(appName, appDir)
+                    val publishAppDockerImageBuildType =
+                        createPublishAppDockerImageBuildType(appName, appDir, testAppBuildType)
+                    buildType(publishAppDockerImageBuildType)
+                    buildType(testAppBuildType)
+                } else {
+                    buildType(createPublishAppDockerImageBuildType(appName, appDir))
+                }
             }
         }
     }
 
-    private fun createPublishAppDockerImageBuildType(app_dir: String, dependent_build_type: BuildType): BuildType {
+    private fun createPublishAppDockerImageBuildType(
+        app_name: String,
+        app_dir: String,
+        dependent_build_type: BuildType? = null,
+    ): BuildType {
         return BuildType {
-            name = "Publish Docker image"
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${app_dir}")
+            name = "Publish Docker image for $app_name"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2425,7 +2439,7 @@ object Apps {
                         #!/bin/bash                        
                         set -xe
                         
-                        cd apps/${app_dir}
+                        cd $app_dir
                         ./publish_docker.sh latest       
                     """.trimIndent()
                 }
@@ -2434,7 +2448,7 @@ object Apps {
 //            triggers {
 //                vcs {
 //                    triggerRules = """
-//                        +:apps/${app_dir}/**
+//                        +:${app_dir}/**
 //                        -:user=doctools:**
 //                    """.trimIndent()
 //                }
@@ -2442,19 +2456,21 @@ object Apps {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            dependencies {
-                snapshot(dependent_build_type) {
-                    reuseBuilds = ReuseBuilds.SUCCESSFUL
-                    onDependencyFailure = FailureAction.FAIL_TO_START
+            if (dependent_build_type != null) {
+                dependencies {
+                    snapshot(dependent_build_type) {
+                        reuseBuilds = ReuseBuilds.SUCCESSFUL
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
                 }
             }
         }
     }
 
-    private fun createTestAppBuildType(app_dir: String): BuildType {
+    private fun createTestAppBuildType(app_name: String, app_dir: String): BuildType {
         return BuildType {
-            name = "Test app"
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${app_dir}")
+            name = "Test $app_name"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2468,8 +2484,8 @@ object Apps {
                         #!/bin/bash
                         set -xe
 
-                        cd apps/${app_dir}
-                        ./test_${app_dir}.sh
+                        cd $app_dir
+                        ./run_tests.sh
                     """.trimIndent()
                     dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2480,7 +2496,7 @@ object Apps {
 //            triggers {
 //                vcs {
 //                    triggerRules = """
-//                        +:apps/${app_dir}/**
+//                        +:${app_dir}/**
 //                        -:user=doctools:**
 //                    """.trimIndent()
 //                }
