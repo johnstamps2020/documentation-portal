@@ -3546,6 +3546,8 @@ object GwBuildSteps {
         output_dir: String,
     ): ScriptBuildStep {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val atmosDeployEnv =
+            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
         return ScriptBuildStep {
             name = "Deploy files to persistent volume"
             id = Helpers.createIdStringFromName(this.name)
@@ -3556,7 +3558,7 @@ object GwBuildSteps {
                 export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
                 export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
                 export AWS_DEFAULT_REGION="$awsDefaultRegion"
-                export DEPLOY_ENV="$deploy_env"
+                export DEPLOY_ENV="$atmosDeployEnv"
                 
                 sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh $deployment_mode "$output_dir"
             """.trimIndent()
