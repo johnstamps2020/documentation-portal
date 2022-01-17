@@ -112,7 +112,7 @@
       "description": "A source where we can get files from, for example Git, XDocs, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "title", "sourceType", "gitUrl"],
+      "required": ["id", "title", "sourceType", "gitUrl", "branch"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
