@@ -2583,7 +2583,7 @@ object Apps {
                     dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
-
+                stepsOrder.add(this.items[0].id.toString())
             }
 
             triggers {
