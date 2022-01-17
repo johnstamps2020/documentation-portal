@@ -83,8 +83,8 @@ class DocPortalSpider(scrapy.Spider):
                 'webworks_selector': response.xpath('//body/*[div[@class="B_-_Body"]]'),
                 'docusaurus_selector': response.xpath(
                     '//div[@class = "markdown"]'),
-                'sphinx_selector': response.xpath(
-                    '//div[@itemprop = "articleBody"]')
+                'main_selector': response.xpath(
+                    '//main')
             }
 
             body_elements = next((exp for exp in selectors.values() if exp), '')
