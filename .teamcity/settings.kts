@@ -139,6 +139,8 @@ object Docs {
             }
             steps {
                 script {
+                    name = "Build standalone output"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash
                         set -xe
@@ -147,6 +149,8 @@ object Docs {
                         """.trimIndent()
                 }
                 script {
+                    name = "Build and publish Docker image"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash
                         set -xe
@@ -1287,7 +1291,7 @@ object Server {
         }
 
         steps {
-            step(GwBuildSteps.CreateTestEnvInDockerComposeStep)
+            step(GwBuildSteps.ComposeElasticsearchAndHttpServerStep)
 
             dockerCommand {
                 name = "Build the doc crawler Docker image locally"
@@ -1303,6 +1307,7 @@ object Server {
 
             script {
                 name = "Crawl the document and update the local index"
+                id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -1326,6 +1331,7 @@ object Server {
 
             script {
                 name = "Test the doc site server"
+                id = Helpers.createIdStringFromName(this.name)
                 workingDir = "server"
                 scriptContent = """
                     #!/bin/sh
@@ -1369,6 +1375,7 @@ object Server {
         steps {
             script {
                 name = "Run tests for config files"
+                id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -1430,6 +1437,7 @@ object Server {
         steps {
             script {
                 name = "Bump and tag version"
+                id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                 set -xe
                 git config --local user.email "doctools@guidewire.com"
@@ -1852,6 +1860,7 @@ object Exports {
         steps {
             script {
                 name = "Export files from XDocs"
+                id = Helpers.createIdStringFromName(this.name)
                 workingDir = "LocalClient/sample/local/bin"
                 scriptContent = """
                     #!/bin/bash
@@ -1862,6 +1871,7 @@ object Exports {
             }
             script {
                 name = "Add exported files to Bitbucket"
+                id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -2389,6 +2399,7 @@ object Recommendations {
             steps {
                 script {
                     name = "Download the pretrained model"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                             #!/bin/bash
                             set -xe
@@ -2404,6 +2415,7 @@ object Recommendations {
                 }
                 script {
                     name = "Run the recommendation engine"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                             #!/bin/bash
                             set -xe
@@ -2466,6 +2478,27 @@ object Apps {
                     val testAppBuildType = createTestAppBuildType(appName, appDir)
                     val publishAppDockerImageBuildType =
                         createPublishAppDockerImageBuildType(appName, appDir, testAppBuildType)
+                    when (appName) {
+                        "Doc crawler" -> {
+                            testAppBuildType.params.text("env.TEST_ENVIRONMENT_DOCKER_NETWORK",
+                                "host",
+                                allowEmpty = false)
+                            val composeElasticsearchAndHttpServerStep =
+                                GwBuildSteps.ComposeElasticsearchAndHttpServerStep
+                            testAppBuildType.steps.step(composeElasticsearchAndHttpServerStep)
+                            testAppBuildType.steps.stepsOrder.add(0,
+                                composeElasticsearchAndHttpServerStep.id.toString())
+                        }
+                        "Flail SSG" -> {
+                            testAppBuildType.params.text("env.DOCS_CONFIG_FILE",
+                                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR}/${GwConfigParams.MERGED_CONFIG_FILE}",
+                                display = ParameterDisplay.HIDDEN)
+                            val mergeDocsConfigFilesStep = GwBuildSteps.MergeDocsConfigFilesStep
+                            testAppBuildType.steps.step(mergeDocsConfigFilesStep)
+                            testAppBuildType.steps.stepsOrder.add(0, mergeDocsConfigFilesStep.id.toString())
+
+                        }
+                    }
                     buildType(publishAppDockerImageBuildType)
                     buildType(testAppBuildType)
                 } else {
@@ -2493,6 +2526,7 @@ object Apps {
             steps {
                 script {
                     name = "Publish Docker image to Artifactory"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash                        
                         set -xe
@@ -2538,6 +2572,7 @@ object Apps {
             steps {
                 script {
                     name = "Run tests"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash
                         set -xe
@@ -2673,8 +2708,9 @@ object Helpers {
 }
 
 object GwBuildSteps {
-    object CreateTestEnvInDockerComposeStep : DockerComposeStep({
-        name = "Compose services"
+    object ComposeElasticsearchAndHttpServerStep : DockerComposeStep({
+        name = "Compose Elasticsearch and HTTP server"
+        id = Helpers.createIdStringFromName(this.name)
         file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
     })
 
@@ -3011,7 +3047,6 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Get document details"
             id = Helpers.createIdStringFromName(this.name)
-
             scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -3208,7 +3243,7 @@ object GwBuildSteps {
 
         return ScriptBuildStep {
             name = "Build the ${output_format.replace("_", "")} output"
-            id = this.name.uppercase(Locale.getDefault()).replace(" ", "_")
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -3278,7 +3313,7 @@ object GwBuildSteps {
 
         return ScriptBuildStep {
             name = "Build the ${output_format.replace("_", "")} output"
-            id = this.name.uppercase(Locale.getDefault()).replace(" ", "_")
+            id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
                 set -xe
