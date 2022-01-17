@@ -6986,6 +6986,22 @@
       "public": false
     },
     {
+      "id": "inpaymentservicemigrationdraft",
+      "title": "Payment Service Migration Draft",
+      "url": "cloud/in/paymentservicemigration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.05"],
+        "subject": ["Release notes"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "inexcelrating30draft",
       "title": "Excel Designed Rating Draft",
       "url": "cloud/in/excelrating30",

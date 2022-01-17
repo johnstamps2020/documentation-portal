@@ -85,6 +85,10 @@
         {
           "label": "Integration Gateway for Developers",
           "id": "integgatewaydevdraft"
+        },
+        {
+          "label": "Subscription API",
+          "id": "subscriptionapinext"
         }
       ]
     }
