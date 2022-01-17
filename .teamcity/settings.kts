@@ -886,6 +886,15 @@ object Content {
                 )
             }
 
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**/*.*
+                        -:user=doctools:**
+                        """.trimIndent()
+                }
+            }
+
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
@@ -1244,7 +1253,7 @@ object Server {
 
         triggers.vcs {
             triggerRules = """
-                +:.teamcity/settings.kts
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -1379,7 +1388,7 @@ object Server {
 
         triggers.vcs {
             triggerRules = """
-                +:.teamcity/**/*.*
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**/*.*
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -2488,7 +2497,7 @@ object Apps {
             triggers {
                 vcs {
                     triggerRules = """
-                        +:${app_dir}/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${app_dir}/**
                         -:user=doctools:**
                     """.trimIndent()
                 }
@@ -2536,7 +2545,7 @@ object Apps {
             triggers {
                 vcs {
                     triggerRules = """
-                        +:${app_dir}/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${app_dir}/**
                         -:user=doctools:**
                     """.trimIndent()
                 }
