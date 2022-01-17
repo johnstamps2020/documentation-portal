@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportF
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
@@ -96,6 +97,11 @@ enum class GwDockerImages(val image_url: String) {
     PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
     NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
     GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
+}
+
+enum class GwExportFrequencies(val param_value: String) {
+    DAILY("daily"),
+    WEEKLY("weekly")
 }
 
 object Docs {
@@ -1646,7 +1652,7 @@ object Exports {
 
                 val exportFrequency = when (environmentsFromRelatedDocConfigs.contains(GwDeployEnvs.INT.env_name)) {
                     true -> {
-                        if (sourceConfig.has("exportFrequency")) sourceConfig.getString("exportFrequency") else "daily"
+                        if (sourceConfig.has("exportFrequency")) sourceConfig.getString("exportFrequency") else GwExportFrequencies.DAILY.param_value
                     }
                     else -> ""
                 }
@@ -1655,7 +1661,7 @@ object Exports {
                 var scheduleHour: Int
                 var scheduleMinute: Int
                 when (exportFrequency) {
-                    "daily" -> {
+                    GwExportFrequencies.DAILY.param_value -> {
                         scheduleHour = scheduleHourDaily
                         scheduleMinute = scheduleMinuteDaily
                         scheduleMinuteDaily += 2
@@ -1671,7 +1677,7 @@ object Exports {
                             else -> +1
                         }
                     }
-                    "weekly" -> {
+                    GwExportFrequencies.WEEKLY.param_value -> {
                         scheduleHour = scheduleHourWeekly
                         scheduleMinute = scheduleMinuteWeekly
                         scheduleMinuteWeekly += 10
@@ -1738,31 +1744,31 @@ object Exports {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
-// FIXME: Reenable this line when the refactoring is done
-//            when (export_frequency) {
-//                "daily" -> {
-//                    triggers.schedule {
-//                        schedulingPolicy = daily {
-//                            hour = export_hour
-//                            minute = export_minute
-//                        }
-//
-//                        triggerBuild = always()
-//                        withPendingChangesOnly = false
-//                    }
-//                }
-//                "weekly" -> {
-//                    triggers.schedule {
-//                        schedulingPolicy = weekly {
-//                            dayOfWeek = ScheduleTrigger.DAY.Saturday
-//                            hour = export_hour
-//                            minute = export_minute
-//                        }
-//                        triggerBuild = always()
-//                        withPendingChangesOnly = false
-//                    }
-//                }
-//            }
+
+            when (export_frequency) {
+                GwExportFrequencies.DAILY.param_value -> {
+                    triggers.schedule {
+                        schedulingPolicy = daily {
+                            hour = export_hour
+                            minute = export_minute
+                        }
+
+                        triggerBuild = always()
+                        withPendingChangesOnly = false
+                    }
+                }
+                GwExportFrequencies.WEEKLY.param_value -> {
+                    triggers.schedule {
+                        schedulingPolicy = weekly {
+                            dayOfWeek = ScheduleTrigger.DAY.Saturday
+                            hour = export_hour
+                            minute = export_minute
+                        }
+                        triggerBuild = always()
+                        withPendingChangesOnly = false
+                    }
+                }
+            }
 
         }
     }
@@ -2599,7 +2605,7 @@ object Helpers {
         return objectList.find { it.getString(id_name) == id_value } ?: JSONObject()
     }
 
-    fun removeSpecialCharacters(string_to_clean: String): String {
+    private fun removeSpecialCharacters(string_to_clean: String): String {
         val re = Regex("[^A-Za-z0-9]")
         return re.replace(string_to_clean, "")
     }
@@ -2633,10 +2639,6 @@ object Helpers {
                 "%env.ATMOS_DEV_AWS_DEFAULT_REGION%"
             )
         }
-    }
-
-    fun getS3BucketName(deploy_env: String): String {
-        return "tenant-doctools-${deploy_env}-builds"
     }
 
     fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
