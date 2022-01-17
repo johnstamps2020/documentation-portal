@@ -1216,7 +1216,12 @@ object Server {
         }
 
         triggers {
-            vcs {}
+            vcs {
+                triggerRules = """
+                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
+                    -:user=doctools:**
+                    """.trimIndent()
+            }
         }
     })
 
