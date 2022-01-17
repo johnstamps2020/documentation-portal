@@ -1506,6 +1506,11 @@ object Server {
             name = "Deploy to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
             steps {
                 script {
                     name = "Deploy to Kubernetes"
@@ -1586,6 +1591,7 @@ object Server {
         }
 
         if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
+            deployServerBuildType.vcs.branchFilter = "+:<default>"
             deployServerBuildType.params.text(
                 "TAG_VERSION",
                 "",
@@ -1604,10 +1610,6 @@ object Server {
         }
 
         if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
-            deployServerBuildType.vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
             val buildAndPublishServerDockerImageStep =
                 GwBuildSteps.createBuildAndPublishServerDockerImageStep(GwDockerImages.DOC_PORTAL.image_url, tagVersion)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
