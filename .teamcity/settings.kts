@@ -521,7 +521,7 @@ object Docs {
                 steps.step(crawlDocStep)
                 steps.stepsOrder.add(crawlDocStep.id.toString())
             }
-// FIXME: Remove the src_id condition when the refactoring is done
+
             // Publishing builds for INT and STAGING are triggered automatically.
             // DITA publishing builds are triggered by build listener builds. Additionally, DITA publishing builds
             // that use sources exported from XDocs, use a regular TeamCity VCS trigger with a comment rule.
@@ -541,9 +541,7 @@ object Docs {
                         }
                     }
                     else -> {
-                        if (src_id == "srcjutro711") {
-                            triggers.vcs {}
-                        }
+                        triggers.vcs {}
                     }
                 }
             }
@@ -1916,11 +1914,9 @@ object BuildListeners {
                             teamcity_build_branch = gitBranch
                         )
                     )
-// FIXME: Reenable this line when the refactoring is done
-                    if (arrayOf("writingwithgitsrc", "isupgradeguidesrc").contains(srcId)
-                    ) {
-                        triggers.vcs {}
-                    }
+
+                    triggers.vcs {}
+
                     features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 }
             }
@@ -2029,10 +2025,8 @@ object Sources {
                     "%teamcity.build.branch%"
                 )
             )
-// FIXME: Remove the src_id condition when the refactoring is done
-            if (arrayOf("writingwithgitsrc", "isupgradeguidesrc").contains(src_id)) {
-                triggers.vcs {}
-            }
+
+            triggers.vcs {}
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -2242,7 +2236,6 @@ object Sources {
 
         }
 
-        // FIXME: Remove the src_id condition when the refactoring is done
         // DITA validation builds are triggered by validation listener builds.
         // The reference to the validation listener template is one of the criteria used by the build manager app
         // to identify builds that must be triggered.
@@ -2252,9 +2245,7 @@ object Sources {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
-                if (src_id == "srcjutro711") {
-                    validationBuildType.triggers.vcs {}
-                }
+                validationBuildType.triggers.vcs {}
             }
         }
 
@@ -2291,10 +2282,8 @@ object Sources {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-// FIXME: Reenable this line when the refactoring is done
-            if (arrayOf("writingwithgitsrc", "isupgradeguidesrc", "srcjutro711").contains(src_id)) {
-                triggers.vcs {}
-            }
+
+            triggers.vcs {}
         }
     }
 
@@ -2485,15 +2474,15 @@ object Apps {
                     """.trimIndent()
                 }
             }
-// FIXME: Reenable this line when the refactoring is done
-//            triggers {
-//                vcs {
-//                    triggerRules = """
-//                        +:${app_dir}/**
-//                        -:user=doctools:**
-//                    """.trimIndent()
-//                }
-//            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:${app_dir}/**
+                        -:user=doctools:**
+                    """.trimIndent()
+                }
+            }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
@@ -2533,15 +2522,15 @@ object Apps {
                 }
 
             }
-// FIXME: Reenable this line when the refactoring is done
-//            triggers {
-//                vcs {
-//                    triggerRules = """
-//                        +:${app_dir}/**
-//                        -:user=doctools:**
-//                    """.trimIndent()
-//                }
-//            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:${app_dir}/**
+                        -:user=doctools:**
+                    """.trimIndent()
+                }
+            }
 
             features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
