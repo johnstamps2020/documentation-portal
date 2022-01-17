@@ -1275,10 +1275,7 @@ object Server {
         }
 
         steps {
-            dockerCompose {
-                name = "Compose services"
-                file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
-            }
+            step(GwBuildSteps.CreateTestEnvInDockerComposeStep)
 
             dockerCommand {
                 name = "Build the doc crawler Docker image locally"
@@ -2664,6 +2661,11 @@ object Helpers {
 }
 
 object GwBuildSteps {
+    object CreateTestEnvInDockerComposeStep : DockerComposeStep({
+        name = "Compose services"
+        file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
+    })
+
     object MergeDocsConfigFilesStep : ScriptBuildStep({
         name = "Merge docs config files"
         id = Helpers.createIdStringFromName(this.name)
@@ -3081,7 +3083,8 @@ object GwBuildSteps {
         }
         when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> {
-                val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
+                val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(
+                    GwDeployEnvs.PROD.env_name)
                 scriptBuildStep.scriptContent = """
                     #!/bin/bash
                     set -xe
