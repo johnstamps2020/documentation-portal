@@ -3075,16 +3075,35 @@ object GwBuildSteps {
         deploy_env: String, output_path: String, publish_path: String,
     ): ScriptBuildStep {
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
-        return ScriptBuildStep {
+        val scriptBuildStep = ScriptBuildStep {
             name = "Upload content to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
+        }
+        when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> {
+                val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
+                scriptBuildStep.scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    export AWS_ACCESS_KEY_ID="$awsAccessKeyIdProd"
+                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyProd"
+                    export AWS_DEFAULT_REGION="$awsDefaultRegionProd"
+                    
+                    aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
+                """.trimIndent()
+            }
+            else -> {
+                scriptBuildStep.scriptContent = """
                     #!/bin/bash
                     set -xe
                     
                     aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
+            }
         }
+
+        return scriptBuildStep
     }
 
     fun createPreviewUrlFile(
