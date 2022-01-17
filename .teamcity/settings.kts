@@ -1287,7 +1287,7 @@ object Server {
         }
 
         steps {
-            step(GwBuildSteps.CreateTestEnvInDockerComposeStep)
+            step(GwBuildSteps.ComposeElasticsearchAndHttpServerStep)
 
             dockerCommand {
                 name = "Build the doc crawler Docker image locally"
@@ -2466,6 +2466,27 @@ object Apps {
                     val testAppBuildType = createTestAppBuildType(appName, appDir)
                     val publishAppDockerImageBuildType =
                         createPublishAppDockerImageBuildType(appName, appDir, testAppBuildType)
+                    when (appName) {
+                        "Doc crawler" -> {
+                            testAppBuildType.params.text("env.TEST_ENVIRONMENT_DOCKER_NETWORK",
+                                "host",
+                                allowEmpty = false)
+                            val composeElasticsearchAndHttpServerStep =
+                                GwBuildSteps.ComposeElasticsearchAndHttpServerStep
+                            testAppBuildType.steps.step(composeElasticsearchAndHttpServerStep)
+                            testAppBuildType.steps.stepsOrder.add(0,
+                                composeElasticsearchAndHttpServerStep.id.toString())
+                        }
+                        "Flail SSG" -> {
+                            testAppBuildType.params.text("env.DOCS_CONFIG_FILE",
+                                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR}/${GwConfigParams.MERGED_CONFIG_FILE}",
+                                display = ParameterDisplay.HIDDEN)
+                            val mergeDocsConfigFilesStep = GwBuildSteps.MergeDocsConfigFilesStep
+                            testAppBuildType.steps.step(mergeDocsConfigFilesStep)
+                            testAppBuildType.steps.stepsOrder.add(0, mergeDocsConfigFilesStep.id.toString())
+
+                        }
+                    }
                     buildType(publishAppDockerImageBuildType)
                     buildType(testAppBuildType)
                 } else {
@@ -2673,8 +2694,9 @@ object Helpers {
 }
 
 object GwBuildSteps {
-    object CreateTestEnvInDockerComposeStep : DockerComposeStep({
-        name = "Compose services"
+    object ComposeElasticsearchAndHttpServerStep : DockerComposeStep({
+        name = "Compose Elasticsearch and HTTP server"
+        id = Helpers.createIdStringFromName(this.name)
         file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
     })
 
