@@ -1,5 +1,3 @@
-// TODO: When changes are merged, remove the teamcity access token from mskowron account
-// TODO: When changes are merged, clean up AWS and ATMOS envs in the Documentation Tools project
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
@@ -2421,7 +2419,6 @@ object Apps {
         }
     }
 
-    // TODO: Test these builds after merge to master
     private fun createAppProjects(): List<Project> {
         return arrayOf(
             Triple("Flail SSG", "frontend/flail_ssg/", true),
