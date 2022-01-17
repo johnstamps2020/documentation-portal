@@ -473,7 +473,7 @@ object Docs {
         }
         if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
             val stagingBuildTypeIdString =
-                Helpers.resolveRelativeIdFromIdString("$doc_id${GwDeployEnvs.STAGING.env_name}").toString()
+                Helpers.resolveRelativeIdFromIdString("Publish to ${GwDeployEnvs.STAGING.env_name}${doc_id}").toString()
             val localizationPackageBuildType = BuildType {
                 name = "Build localization package"
                 id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
