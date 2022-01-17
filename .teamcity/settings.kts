@@ -3540,7 +3540,7 @@ object GwBuildFeatures {
 object GwVcsRoots {
     val DocumentationPortalGitVcsRoot =
         createGitVcsRoot(
-            Helpers.resolveRelativeIdFromIdString("Documentation Portal"),
+            Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
             "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
             "master",
             listOf("(refs/heads/*)")
@@ -3549,19 +3549,19 @@ object GwVcsRoots {
 
     val XdocsClientGitVcsRoot =
         createGitVcsRoot(
-            Helpers.resolveRelativeIdFromIdString("XDocs Client"),
+            Helpers.resolveRelativeIdFromIdString("XDocs Client git repo"),
             "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
             "master"
         )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("Localized PDFs"),
+        Helpers.resolveRelativeIdFromIdString("Localized PDFs git repo"),
         "ssh://git@stash.guidewire.com/docsources/localization-pdfs.git",
         "main"
     )
 
     val UpgradeDiffsGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("Upgrade diffs"),
+        Helpers.resolveRelativeIdFromIdString("Upgrade diffs git repo"),
         "ssh://git@stash.guidewire.com/docsources/upgradediffs.git",
         "main",
     )
