@@ -355,6 +355,25 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro720",
+      "srcId": "srcjutro720",
+      "workingDir": "website",
+      "nodeImageVersion": "14.14.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook720",
+      "srcId": "srcjutrostorybook720",
+      "workingDir": "storybook",
+      "customEnv": [
+        {
+          "name": "STORYBOOK_GA_ID",
+          "value": "UA-129148666-1"
+        }
+      ]
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrolatest",
       "srcId": "srcjutro711",
       "workingDir": "website",

@@ -685,6 +685,36 @@
       "public": false
     },
     {
+      "id": "jutro720",
+      "title": "Jutro Design System and UI Framework Internal",
+      "url": "jutro/documentation/7.2.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["7.2.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook720",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/7.2.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["7.2.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "jutrolatest",
       "title": "Jutro Design System and UI Framework Internal",
       "url": "jutro/documentation/latest",
