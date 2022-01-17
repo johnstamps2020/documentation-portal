@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportF
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
@@ -757,16 +758,17 @@ object Content {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            // FIXME: Reenable this line when the refactoring is done
-//        if (deploy_env == DeployEnvs.PROD.env_name) {
-//           triggers {
-//            schedule {
-//                schedulingPolicy = daily {
-//                    hour = 1
-//                    minute = 1
-//                }
-//            }
-//        }
+            if (deploy_env == GwDeployEnvs.PROD.env_name) {
+                triggers {
+                    schedule {
+                        schedulingPolicy = daily {
+                            hour = 1
+                            minute = 1
+                        }
+                        triggerBuild = always()
+                    }
+                }
+            }
         }
     }
 
@@ -794,15 +796,16 @@ object Content {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-// FIXME: Reenable this line when the refactoring is done
-//            triggers {
-//                schedule {
-//                    schedulingPolicy = daily {
-//                        hour = 1
-//                        minute = 1
-//                    }
-//                }
-//            }
+
+            triggers {
+                schedule {
+                    schedulingPolicy = daily {
+                        hour = 1
+                        minute = 1
+                    }
+                    triggerBuild = always()
+                }
+            }
         }
     }
 
@@ -1009,15 +1012,17 @@ object Frontend {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-// FIXME: Reenable this line when the refactoring is done
-//        triggers {
-//            vcs {
-//                triggerRules = """
-//                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot}:frontend/pages/**
-//                -:user=doctools:**
-//            """.trimIndent()
-//            }
-//        }
+
+            if (deploy_env == GwDeployEnvs.DEV.env_name) {
+                triggers {
+                    vcs {
+                        triggerRules = """
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/pages/**
+                            -:user=doctools:**
+                            """.trimIndent()
+                    }
+                }
+            }
         }
     }
 
@@ -1073,15 +1078,17 @@ object Frontend {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-// FIXME: Reenable this line when the refactoring is done
-//        triggers {
-//            vcs {
-//                triggerRules = """
-//                +:root=${GwVcsRoots.LocalizedPdfsGitVcsRoot.id}:**
-//                -:user=doctools:**
-//            """.trimIndent()
-//            }
-//        }
+
+            if (deploy_env == GwDeployEnvs.DEV.env_name) {
+                triggers {
+                    vcs {
+                        triggerRules = """
+                            +:root=${GwVcsRoots.LocalizedPdfsGitVcsRoot.id}:**
+                            -:user=doctools:**
+                            """.trimIndent()
+                    }
+                }
+            }
         }
     }
 
@@ -1138,15 +1145,17 @@ object Frontend {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-// FIXME: Reenable this line when the refactoring is done
-//        triggers {
-//            vcs {
-//                triggerRules = """
-//                +:root=${GwVcsRoots.UpgradeDiffsGitVcsRoot.id}:**
-//                -:user=doctools:**
-//            """.trimIndent()
-//            }
-//        }
+
+            if (deploy_env == GwDeployEnvs.DEV.env_name) {
+                triggers {
+                    vcs {
+                        triggerRules = """
+                            +:root=${GwVcsRoots.UpgradeDiffsGitVcsRoot.id}:**
+                            -:user=doctools:**
+                            """.trimIndent()
+                    }
+                }
+            }
         }
     }
 }
@@ -2414,6 +2423,7 @@ object Apps {
             }
         }
     }
+
     // TODO: Test these builds after merge to master
     private fun createAppProjects(): List<Project> {
         return arrayOf(
