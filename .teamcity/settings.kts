@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportF
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
@@ -1183,6 +1184,7 @@ object Server {
     private object Checkmarx : BuildType({
         templates(AbsoluteId("CheckmarxSastScan"))
         name = "Checkmarx"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
             text("checkmarx.project.name", "doctools")
@@ -1208,15 +1210,15 @@ object Server {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
-// FIXME: Reenable this line when the refactoring is done
-//        triggers {
-//            vcs {
-//            }
-//        }
+
+        triggers {
+            vcs {}
+        }
     })
 
     private object TestSettingsKts : BuildType({
         name = "Test settings.kts"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -1243,6 +1245,7 @@ object Server {
 
     private object TestDocSiteServerApp : BuildType({
         name = "Test doc site server app"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         params {
             text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
@@ -1311,15 +1314,15 @@ object Server {
                 dockerPull = true
             }
         }
-// FIXME: Reenable this line when the refactoring is done
-//        triggers {
-//            vcs {
-//                triggerRules = """
-//                +:server/**
-//                -:user=doctools:**
-//            """.trimIndent()
-//            }
-//        }
+
+        triggers {
+            vcs {
+                triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
+                -:user=doctools:**
+            """.trimIndent()
+            }
+        }
 
         features {
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1329,6 +1332,7 @@ object Server {
 
     private object TestConfig : BuildType({
         name = "Test config files"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -1585,12 +1589,10 @@ object Server {
                 }
             }
             if (deploy_env == GwDeployEnvs.DEV.env_name) {
-// FIXME: Reenable this line when the refactoring is done
-//                deployServerBuildType.triggers.finishBuildTrigger {
-//                    id = "TRIGGER_1"
-//                    buildType = "${TestDocPortalServer.id}"
-//                    successfulOnly = true
-//                }
+                deployServerBuildType.triggers.finishBuildTrigger {
+                    buildType = "${TestDocSiteServerApp.id}"
+                    successfulOnly = true
+                }
             }
         }
         return deployServerBuildType
