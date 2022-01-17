@@ -104,6 +104,12 @@
       "srcId": "submissionintakesrc",
       "docId": "submissionintakedraft",
       "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "docId": "subscriptionapinext",
+      "srcId": "subscriptionapinextsrc",
+      "nodeImageVersion": "14.14.0"
     }
   ]
 }
