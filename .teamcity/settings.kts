@@ -2491,7 +2491,7 @@ object Apps {
                         }
                         "Flail SSG" -> {
                             testAppBuildType.params.text("env.DOCS_CONFIG_FILE",
-                                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR}/${GwConfigParams.MERGED_CONFIG_FILE}",
+                                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}",
                                 display = ParameterDisplay.HIDDEN)
                             val mergeDocsConfigFilesStep = GwBuildSteps.MergeDocsConfigFilesStep
                             testAppBuildType.steps.step(mergeDocsConfigFilesStep)
