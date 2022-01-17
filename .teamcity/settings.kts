@@ -190,20 +190,26 @@ object Docs {
                 output_dir,
                 index_for_search
             )
-            val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(
-                env,
-                publish_path,
-                build_command,
-                node_image_version,
-                doc_id,
-                gw_products,
-                gw_platforms,
-                gw_versions,
-                working_dir,
-                custom_env
-            )
-            docBuildType.steps.step(yarnBuildStep)
-            docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
+            if (env == GwDeployEnvs.PROD.env_name) {
+                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
+                docBuildType.steps.step(copyFromStagingToProdStep)
+                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+            } else {
+                val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(
+                    env,
+                    publish_path,
+                    build_command,
+                    node_image_version,
+                    doc_id,
+                    gw_products,
+                    gw_platforms,
+                    gw_versions,
+                    working_dir,
+                    custom_env
+                )
+                docBuildType.steps.step(yarnBuildStep)
+                docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
+            }
             yarnBuildTypes.add(docBuildType)
         }
         return yarnBuildTypes
@@ -234,18 +240,24 @@ object Docs {
                 output_dir,
                 index_for_search
             )
-            val storybookBuildStep = GwBuildSteps.createBuildStorybookProjectStep(
-                env,
-                publish_path,
-                doc_id,
-                gw_products,
-                gw_platforms,
-                gw_versions,
-                working_dir,
-                custom_env
-            )
-            docBuildType.steps.step(storybookBuildStep)
-            docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
+            if (env == GwDeployEnvs.PROD.env_name) {
+                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
+                docBuildType.steps.step(copyFromStagingToProdStep)
+                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+            } else {
+                val storybookBuildStep = GwBuildSteps.createBuildStorybookProjectStep(
+                    env,
+                    publish_path,
+                    doc_id,
+                    gw_products,
+                    gw_platforms,
+                    gw_versions,
+                    working_dir,
+                    custom_env
+                )
+                docBuildType.steps.step(storybookBuildStep)
+                docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
+            }
             storybookBuildTypes.add(docBuildType)
         }
         return storybookBuildTypes
