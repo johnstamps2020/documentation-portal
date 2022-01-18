@@ -93,6 +93,8 @@ enum class GwDockerImages(val image_url: String) {
     SITEMAP_GENERATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"),
     DOC_VALIDATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"),
     PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
+    NODE_DEVEX_BASE("artifactory.guidewire.com/devex-docker-dev/node"),
+    NODE_12_14_1("${NODE_DEVEX_BASE.image_url}:12.14.1"),
     NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
     GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
 }
@@ -2296,6 +2298,7 @@ object Sources {
         src_id: String,
         git_url: String,
     ): BuildType {
+        val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.env_name)
         return BuildType {
             name = "Clean validation results for $src_id"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2314,7 +2317,7 @@ object Sources {
                         #!/bin/bash
                         set -xe
                         
-                        results_cleaner --elasticsearch-urls "https://docsearch-doctools.int.ccs.guidewire.net"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
+                        results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
                     """.trimIndent()
                     dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2392,6 +2395,7 @@ object Recommendations {
     ): BuildType {
         val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val elasticsearchUrl = Helpers.getElasticsearchUrl(deploy_env)
 
         return BuildType {
             name = "Generate recommendations for $gw_product, $gw_platform, $gw_version"
@@ -2424,7 +2428,7 @@ object Recommendations {
                             export PLATFORM="$gw_platform"
                             export PRODUCT="$gw_product"
                             export VERSION="$gw_version"
-                            export ELASTICSEARCH_URL="https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
+                            export ELASTICSEARCH_URL="$elasticsearchUrl"
                             export DOCS_INDEX_NAME="gw-docs"
                             export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
                             export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
@@ -2457,7 +2461,7 @@ object Apps {
 
     private fun createAppProjects(): List<Project> {
         return arrayOf(
-            Triple("Flail SSG", "frontend", true),
+            Triple("Flail SSG", "frontend/flail_ssg", true),
             Triple("Config deployer", "apps/config_deployer", true),
             Triple("Doc crawler", "apps/doc_crawler", true),
             Triple("Index cleaner", "apps/index_cleaner", false),
@@ -2697,13 +2701,24 @@ object Helpers {
         }
     }
 
-    fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
-        return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            Pair("https://docs.guidewire.com", "https://docsearch-doctools.internal.us-east-2.service.guidewire.net")
+    fun getTargetUrl(deploy_env: String): String {
+        if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+            return "https://docs.guidewire.com"
         } else {
-            Pair("https://docs.${deploy_env}.ccs.guidewire.net",
-                "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net")
+            return "https://docs.${deploy_env}.ccs.guidewire.net"
         }
+    }
+
+    fun getElasticsearchUrl(deploy_env: String): String {
+        if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+            return "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+        } else {
+            return "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
+        }
+    }
+
+    fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
+        return Pair(getTargetUrl(deploy_env), getElasticsearchUrl(deploy_env))
     }
 
 }
@@ -3344,11 +3359,12 @@ object GwBuildSteps {
         working_dir: String,
         custom_env: JSONArray?,
     ): ScriptBuildStep {
-        val nodeImageVersion = node_image_version ?: "12.14.1"
+        val nodeImage = when (node_image_version) {
+            null -> GwDockerImages.NODE_12_14_1.image_url
+            else -> "${GwDockerImages.NODE_DEVEX_BASE.image_url}:${node_image_version}"
+        }
         val buildCommand = build_command ?: "build"
-        val targetUrl =
-            if (deploy_env == GwDeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
-
+        val targetUrl = Helpers.getTargetUrl(deploy_env)
         var customEnvExportVars = ""
         custom_env?.forEach {
             it as JSONObject
@@ -3393,7 +3409,7 @@ object GwBuildSteps {
                     yarn
                     yarn $buildCommand
                 """.trimIndent()
-            dockerImage = "artifactory.guidewire.com/devex-docker-dev/node:${nodeImageVersion}"
+            dockerImage = nodeImage
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "--user 1000:1000"
@@ -3410,9 +3426,7 @@ object GwBuildSteps {
         working_dir: String,
         custom_env: JSONArray?,
     ): ScriptBuildStep {
-        val targetUrl =
-            if (deploy_env == GwDeployEnvs.PROD.env_name) "https://docs.guidewire.com" else "https://docs.${deploy_env}.ccs.guidewire.net"
-
+        val targetUrl = Helpers.getTargetUrl(deploy_env)
         var customEnvExportVars = ""
         custom_env?.forEach {
             it as JSONObject
@@ -3520,6 +3534,7 @@ object GwBuildSteps {
         doc_info_file: String,
     ): ScriptBuildStep {
         val docInfoFileFullPath = "${working_dir}/${doc_info_file}"
+        val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.env_name)
         return ScriptBuildStep {
             name = "Run the doc validator"
             id = Helpers.createIdStringFromName(this.name)
@@ -3528,7 +3543,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                export ELASTICSEARCH_URLS="https://docsearch-doctools.int.ccs.guidewire.net"
+                export ELASTICSEARCH_URLS="$elasticsearchUrl"
                 
                 doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" dita \
                   && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" images \
