@@ -48,7 +48,8 @@ enum class GwBuildTypes(val build_type_name: String) {
     DITA("dita"),
     YARN("yarn"),
     STORYBOOK("storybook"),
-    SOURCE_ZIP("source-zip")
+    SOURCE_ZIP("source-zip"),
+    HTML5("html5")
 }
 
 enum class GwDitaOutputFormats(val format_name: String) {
@@ -501,6 +502,113 @@ object Docs {
         return ditaBuildTypes
     }
 
+    private fun createHtml5BuildTypes(
+        env_names: List<String>,
+        doc_id: String,
+        src_id: String,
+        git_branch: String,
+        publish_path: String,
+        working_dir: String,
+        output_dir: String,
+        index_for_search: Boolean,
+        root_map: String,
+        build_filter: String,
+        resources_to_copy: JSONArray,
+    ): List<BuildType> {
+        val html5BuildTypes = mutableListOf<BuildType>()
+        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
+        for (env in env_names) {
+            val docBuildType = createInitialDocBuildType(
+                GwBuildTypes.HTML5.build_type_name,
+                env,
+                doc_id,
+                src_id,
+                publish_path,
+                working_dir,
+                output_dir,
+                index_for_search
+            )
+            if (env == GwDeployEnvs.PROD.env_name) {
+                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
+                docBuildType.steps.step(copyFromStagingToProdStep)
+                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+            } else {
+                docBuildType.artifactRules =
+                    "${working_dir}/${output_dir}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}"
+                val buildDitaProjectStep = GwBuildSteps.getBuildHtml5ProjectForBuildsStep(root_map,
+                    working_dir,
+                    output_dir,
+                    build_filter,
+                    doc_id,
+                    publish_path)
+                docBuildType.steps.step(buildDitaProjectStep)
+                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
+
+                if (!resources_to_copy.isEmpty) {
+                    val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
+                    for (stepId in 0 until resources_to_copy.length()) {
+                        val resourceObject = resources_to_copy.getJSONObject(stepId)
+                        val resourceSrcDir = resourceObject.getString("sourceFolder")
+                        val resourceSrcId = resourceObject.getString("srcId")
+                        val resourceSrcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", resourceSrcId)
+                        val resourceSrcUrl = resourceSrcConfig.getString("gitUrl")
+                        val resourceSrcBranch = resourceSrcConfig.getString("branch")
+
+                        val resourceTargetDir = resourceObject.getString("targetFolder")
+                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
+                            stepId,
+                            working_dir,
+                            output_dir,
+                            resourceSrcDir,
+                            resourceTargetDir,
+                            resourceSrcUrl,
+                            resourceSrcBranch
+                        )
+                        copyResourcesSteps.add(copyResourcesStep)
+                    }
+                    docBuildType.steps {
+                        copyResourcesSteps.forEach { step(it) }
+                        stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_THE_S3_BUCKET"),
+                            copyResourcesSteps.map { it.id.toString() })
+                    }
+                    docBuildType.features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                }
+            }
+
+            html5BuildTypes.add(docBuildType)
+        }
+
+        if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
+            val stagingBuildTypeIdString =
+                Helpers.resolveRelativeIdFromIdString("Publish to ${GwDeployEnvs.STAGING.env_name}${doc_id}").toString()
+            val localizationPackageBuildType = BuildType {
+                name = "Build localization package"
+                id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
+
+                artifactRules = """
+                    ${working_dir}/${output_dir} => /
+                """.trimIndent()
+
+                vcs {
+                    root(teamcityGitRepoId)
+                    branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
+                    cleanCheckout = true
+                }
+
+                steps.step(GwBuildSteps.createRunLionPkgBuilderStep(working_dir,
+                    output_dir,
+                    stagingBuildTypeIdString))
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                }
+            }
+            html5BuildTypes.add(localizationPackageBuildType)
+        }
+
+        return html5BuildTypes
+    }
+
     private fun createInitialDocBuildType(
         gw_build_type: String,
         deploy_env: String,
@@ -696,6 +804,31 @@ object Docs {
                     resourcesToCopy
                 )
 
+            }
+            GwBuildTypes.HTML5.build_type_name -> {
+                val rootMap = build_config.getString("root")
+                val buildFilter = when (build_config.has("filter")) {
+                    true -> {
+                        build_config.getString("filter")
+                    }
+                    else -> {
+                        ""
+                    }
+                }
+                val resourcesToCopy =
+                    if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
+
+                docProjectBuildTypes += createHtml5BuildTypes(docEnvironmentsList,
+                    docId,
+                    src_id,
+                    gitBranch,
+                    publishPath,
+                    workingDir,
+                    outputDir,
+                    indexForSearch,
+                    rootMap,
+                    buildFilter,
+                    resourcesToCopy)
             }
             GwBuildTypes.SOURCE_ZIP.build_type_name -> {
                 val zipFilename = build_config.getString("zipFilename")
@@ -3260,6 +3393,62 @@ object GwBuildSteps {
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
                 exit ${'$'}EXIT_CODE
+            """.trimIndent()
+            dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    private fun getCommandString(command: String, params: List<Pair<String, String>>): String {
+        val commandStringBuilder = StringBuilder()
+        commandStringBuilder.append(command)
+        val commandIterator = params.iterator()
+        while (commandIterator.hasNext()) {
+            val nextPair = commandIterator.next()
+            val param = nextPair.first
+            val value = nextPair.second
+            if (value.isNotEmpty()) {
+                commandStringBuilder.append(" $param \"$value\"")
+            }
+        }
+
+        return commandStringBuilder.toString()
+    }
+
+    fun getBuildHtml5ProjectForBuildsStep(
+        root_map: String,
+        working_dir: String,
+        output_dir: String,
+        build_filter: String,
+        doc_id: String,
+        publish_path: String,
+    ): ScriptBuildStep {
+        val commandParams = listOf(
+            Pair("-i", "$working_dir/$root_map"),
+            Pair("-o", "$working_dir/$output_dir"),
+            Pair("-f", "html5-Guidewire"),
+            Pair("--filter", build_filter),
+            Pair("--gw-doc-id", doc_id),
+            Pair("--gw-base-url", publish_path),
+            Pair("--generate.build.data", "yes"))
+
+        val ditaBuildCommand = getCommandString("dita", commandParams)
+
+        return ScriptBuildStep {
+            name = "Build the HTML5 output"
+            id = Helpers.createIdStringFromName(this.name)
+
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                
+                SECONDS=0
+
+                echo "Building output"
+                $ditaBuildCommand
+                
+                duration=${'$'}SECONDS
+                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
             dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
