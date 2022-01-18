@@ -2480,9 +2480,7 @@ object Apps {
                 id = Helpers.resolveRelativeIdFromIdString(this.name)
 
                 if (createTestBuild) {
-                    val testAppBuildType = createTestAppBuildType(appName, appDir)
-                    val publishAppDockerImageBuildType =
-                        createPublishAppDockerImageBuildType(appName, appDir, testAppBuildType)
+                    var testAppBuildType = createTestAppBuildType(appName, appDir)
                     when (appName) {
                         "Doc crawler" -> {
                             testAppBuildType.params.text("env.TEST_ENVIRONMENT_DOCKER_NETWORK",
@@ -2495,15 +2493,17 @@ object Apps {
                                 composeElasticsearchAndHttpServerStep.id.toString())
                         }
                         "Flail SSG" -> {
+                            testAppBuildType = createTestAppBuildType(appName, appDir, "frontend")
                             testAppBuildType.params.text("env.DOCS_CONFIG_FILE",
                                 "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}",
                                 display = ParameterDisplay.HIDDEN)
                             val mergeDocsConfigFilesStep = GwBuildSteps.MergeDocsConfigFilesStep
                             testAppBuildType.steps.step(mergeDocsConfigFilesStep)
                             testAppBuildType.steps.stepsOrder.add(0, mergeDocsConfigFilesStep.id.toString())
-
                         }
                     }
+                    val publishAppDockerImageBuildType =
+                        createPublishAppDockerImageBuildType(appName, appDir, testAppBuildType)
                     buildType(publishAppDockerImageBuildType)
                     buildType(testAppBuildType)
                 } else {
@@ -2564,7 +2564,8 @@ object Apps {
         }
     }
 
-    private fun createTestAppBuildType(app_name: String, app_dir: String): BuildType {
+    private fun createTestAppBuildType(app_name: String, app_dir: String, vcs_trigger_dir: String = ""): BuildType {
+        val vcsTriggerDir = vcs_trigger_dir.ifEmpty { app_dir }
         return BuildType {
             name = "Test $app_name"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2594,7 +2595,7 @@ object Apps {
             triggers {
                 vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${app_dir}/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${vcsTriggerDir}/**
                         -:user=doctools:**
                     """.trimIndent()
                 }
