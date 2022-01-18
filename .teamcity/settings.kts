@@ -905,7 +905,7 @@ object Content {
             triggers {
                 vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**/*.*
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
                         -:user=doctools:**
                         """.trimIndent()
                 }
@@ -1041,14 +1041,13 @@ object Frontend {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            if (deploy_env == GwDeployEnvs.DEV.env_name) {
-                triggers {
-                    vcs {
-                        triggerRules = """
+            triggers {
+                vcs {
+                    triggerRules = """
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/pages/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
                             -:user=doctools:**
                             """.trimIndent()
-                    }
                 }
             }
         }
@@ -2458,7 +2457,7 @@ object Apps {
 
     private fun createAppProjects(): List<Project> {
         return arrayOf(
-            Triple("Flail SSG", "frontend/flail_ssg/", true),
+            Triple("Flail SSG", "frontend", true),
             Triple("Config deployer", "apps/config_deployer", true),
             Triple("Doc crawler", "apps/doc_crawler", true),
             Triple("Index cleaner", "apps/index_cleaner", false),
