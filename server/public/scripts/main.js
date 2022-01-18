@@ -1,28 +1,4 @@
-function createAvatarButton(fullName, username) {
-  const avatar = document.createElement('div');
-  avatar.setAttribute('id', 'avatar');
-  avatar.innerHTML = `
-        <button 
-          id="avatarButton" 
-          aria-label="user information"
-        >
-          <div class="avatarMenu">
-            <div class="avatarMenuHeader">
-              <div class="avatarMenuIcon">&nbsp;</div>
-              <div class="avatarMenuInfo">
-                <div class="avatarMenuName">${fullName}</div>
-                <div class="avatarMenuEmail">${username}</div>
-              </div>
-            </div>
-            <div class="avatarMenuDivider"></div>
-            <div class="avatarMenuActions">
-              <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
-            </div>
-          </div>
-        </button>
-      `;
-  return avatar;
-}
+import { createAvatarButton } from './modules/avatar.js';
 
 async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
@@ -124,25 +100,42 @@ function markDocsAsNotPrivate() {
 }
 
 function setSearchFilterCSS() {
-  if(window.location.pathname.startsWith('/search')) {
+  if (window.location.pathname.startsWith('/search')) {
     const header = document.querySelector('.header-search');
-    const filter = document.querySelector('.filterSearchResults')
+    const filter = document.querySelector('.filterSearchResults');
     const resizeObserver = new ResizeObserver(entries => {
-    for(let entry of entries) {
-      const headerPaddingTop = window.getComputedStyle(header).getPropertyValue('padding-top');
-      const headerPaddingBottom = window.getComputedStyle(header).getPropertyValue('padding-bottom');
-      let headerContentSize;
-      if(entry.contentBoxSize) {
-        headerContentSize = entry.contentBoxSize[0].blockSize + 'px';
+      for (let entry of entries) {
+        const headerPaddingTop = window
+          .getComputedStyle(header)
+          .getPropertyValue('padding-top');
+        const headerPaddingBottom = window
+          .getComputedStyle(header)
+          .getPropertyValue('padding-bottom');
+        let headerContentSize;
+        if (entry.contentBoxSize) {
+          headerContentSize = entry.contentBoxSize[0].blockSize + 'px';
+        } else {
+          headerContentSize = entry.contentRect[0].height + 'px';
+        }
+        filter.style.top =
+          'calc(' +
+          headerContentSize +
+          ' + ' +
+          headerPaddingTop +
+          ' + ' +
+          headerPaddingBottom +
+          ')';
+        filter.style.height =
+          'calc(100% - ' +
+          headerContentSize +
+          ' - ' +
+          headerPaddingTop +
+          ' - ' +
+          headerPaddingBottom +
+          ')';
       }
-      else {
-        headerContentSize = entry.contentRect[0].height + 'px';
-      }
-      filter.style.top = 'calc(' + headerContentSize + ' + ' + headerPaddingTop + ' + ' + headerPaddingBottom + ')';
-      filter.style.height = 'calc(100% - ' + headerContentSize + ' - ' + headerPaddingTop + ' - ' + headerPaddingBottom + ')';
-    }
-  })
-  resizeObserver.observe(header);
+    });
+    resizeObserver.observe(header);
   }
 }
 

@@ -106,6 +106,7 @@ app.use('/authorization-code', oidcLoginRouter);
 // serve static assets from the public folder
 app.use(express.static(path.join(__dirname, 'public'), options));
 app.use(express.static(path.join(__dirname, 'static', 'sitemap')));
+app.use(express.static(path.join(__dirname, 'static', 'html5')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const authGateway = require('./controllers/authController').authGateway;

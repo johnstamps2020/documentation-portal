@@ -1,0 +1,173 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sectiontitle {
+  font-weight: 500 !important;
+  padding-top: 16px;
+}
+
+h1.topictitle1,
+h1.sectiontitle {
+  font-size: 36px;
+}
+
+h2.topictitle2,
+h2.sectiontitle {
+  font-size: 24px;
+}
+
+h3.topictitle3,
+h3.sectiontitle {
+  font-size: 24px;
+}
+
+h4.topictitle4,
+h4.sectiontitle,
+h5.topictitle5,
+h5.sectiontitle,
+h6.topictitle6,
+h6.sectiontitle {
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: var(--GW-COLOR-LINK-1);
+}
+
+a:hover {
+  color: var(--GW-COLOR-LINK-1-HOVER);
+}
+
+a:active {
+  color: var(--GW-COLOR-LINK-1-ACTIVE);
+}
+
+.dt.dlterm {
+  font-weight: 700;
+}
+
+.dd {
+  margin-bottom: 0.5em;
+  margin-left: 40px;
+}
+
+.note {
+  padding: 16px;
+  margin: 15px auto;
+  border-radius: 16px;
+  box-shadow: var(--GW-BOX-SHADOW-DIAGONAL-3);
+}
+
+.note_note {
+  border-left: 5px solid #d4d5d8;
+  background-color: #fdfdfe;
+}
+
+.note_important {
+  border-left: 5px solid #e6a700;
+  background-color: #fff8ef;
+}
+
+.note_warning {
+  border-left: 5px solid #e13238;
+  background-color: #ffebec;
+}
+
+span.note__title {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border-bottom: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+th {
+  border-bottom: 2px solid #999;
+  font-weight: 600;
+}
+
+.choicetable {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.choicetableborder th {
+  border-right: 1px solid #999;
+}
+
+ul.col2 {
+  column-count: 2;
+}
+
+ul.col3 {
+  column-count: 3;
+}
+
+ul.sl {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.pdf-only {
+  display: none;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.varname {
+  word-break: keep-all;
+  font-style: italic;
+}
+
+dl ul,
+dl ol {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.ph.yes-in-table {
+  color: #f06611;
+  font-size: 2em;
+}
+
+iframe {
+  border: none;
+}
+
+.hashLink {
+  opacity: 0;
+  padding-left: 0.5rem;
+  transition: opacity 0.5s;
+}
+
+.hashLink::before {
+  content: '#';
+}
+
+*:hover > .hashLink,
+.hashLink:focus {
+  opacity: 1;
+}

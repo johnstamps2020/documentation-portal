@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-ExtraLight.ttf') format('ttf');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-ExtraLightItalic.ttf') format('ttf');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-Light.ttf') format('ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-LightItalic.ttf') format('ttf');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-Regular.ttf') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-Italic.ttf') format('ttf');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-SemiBold.ttf') format('ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-SemiBoldItalic.ttf') format('ttf');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-Bold.ttf') format('ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-BoldItalic.ttf') format('ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-Black.ttf') format('ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../../fonts/SourceSansPro-BlackItalic.ttf') format('ttf');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('../../fonts/SourceCodePro-VariableFont_wght.ttf') format('ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('../../fonts/SourceCodePro-Italic-VariableFont_wght.ttf')
+    format('ttf');
+  font-style: italic;
+}
