@@ -53,20 +53,20 @@
           "id": "apddraft"
         },
         {
+          "label": "Experience Manager",
+          "id": "experiencemgrdraft"
+        },
+        {
           "label": "Rules (Early Access)",
           "id": "rulesea"
         },
         {
+          "label": "String Manager (for PolicyCenter)",
+          "id": "stringmanagerpcdraft"
+        },
+        {
           "label": "Workset Manager",
           "id": "worksetmgrdraft"
-        },
-        {
-          "label": "String Manager",
-          "id": "stringmanagerlatest"
-        },
-        {
-          "label": "Experience Manager",
-          "id": "experiencemgrdraft"
         }
       ]
     },
