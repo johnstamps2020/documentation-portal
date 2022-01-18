@@ -14,7 +14,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: docportal-app-deployment
-  namespace: ${NAMESPACE}
+  namespace: doctools
 spec:
   selector:
     matchLabels:

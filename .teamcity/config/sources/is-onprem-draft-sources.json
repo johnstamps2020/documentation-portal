@@ -6,6 +6,7 @@
       "title": "InsuranceSuite 10",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "master",
       "exportFrequency": "daily",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
@@ -30,13 +31,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
       ]
-    },
-    {
-      "id": "isupgradeguidesrc",
-      "title": "InsuranceSuite Upgrade Guide",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "main"
     }
   ]
 }

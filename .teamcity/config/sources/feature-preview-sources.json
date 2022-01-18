@@ -13,6 +13,7 @@
       "title": "Claims Autopilot Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/claims-autopilot.git",
+      "branch": "master",
       "xdocsPathIds": [
         "/Content/doc/cloud-services/Autopilot.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval"
@@ -23,6 +24,7 @@
       "title": "Cloud Rating Guide Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rating.git",
+      "branch": "master",
       "xdocsPathIds": [
         "/Content/doc/cloud-services/CloudRating.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
@@ -40,6 +42,7 @@
       "title": "Experience Manager Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/experience-manager.git",
+      "branch": "master",
       "xdocsPathIds": [
         "/Content/doc/cloud-services/ExperienceManager.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
@@ -49,13 +52,21 @@
       "id": "stringmanagerlatestsrc",
       "title": "String Manager",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git",
+      "branch": "master"
     },
     {
       "id": "submissionintakesrc",
       "title": "Submission Intake Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
+      "branch": "main"
+    },
+    {
+      "id": "subscriptionapinextsrc",
+      "title": "Subscription API",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/app-events-api.git",
       "branch": "main"
     }
   ]

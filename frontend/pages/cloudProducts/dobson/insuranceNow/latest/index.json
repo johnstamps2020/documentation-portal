@@ -83,7 +83,7 @@
           "id": "in20212xconfigdraft"
         },
         {
-          "label": "Common Functionality Configuration Reference",
+          "label": "Common Functionality Configuration Reference (Internal)",
           "id": "in20212xcommonconfigdraft"
         },
         {
@@ -135,6 +135,10 @@
         {
           "label": "Developer Setup",
           "id": "indevguidejava11draftext"
+        },
+        {
+          "label": "Payment Service Migration (Internal)",
+          "id": "inpaymentservicemigrationdraft"
         },
         {
           "label": "Upgrade Tools (Internal)",

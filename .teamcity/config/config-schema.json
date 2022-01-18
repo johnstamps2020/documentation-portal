@@ -112,7 +112,7 @@
       "description": "A source where we can get files from, for example Git, XDocs, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "title", "sourceType", "gitUrl"],
+      "required": ["id", "title", "sourceType", "gitUrl", "branch"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -216,6 +216,7 @@
           "InsuranceNow 2020.2x - External Audience",
           "REST API Client",
           "Jutro Design System",
+          "Jutro Platform",
           "PolicyCenter API",
           "BillingCenter API",
           "ClaimCenter API",
@@ -228,10 +229,10 @@
           "DocTools",
           "LRS",
           "Workset Manager",
+          "Canvas",
           "Cyence",
           "Assess",
           "Underwriting Management",
-          "Respond",
           "Portfolio Assembly"
         ]
       }

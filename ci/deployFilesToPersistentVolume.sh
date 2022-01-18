@@ -1,7 +1,9 @@
 #!/bin/bash
 set -eux
 
+NAMESPACE="doctools"
 DEPLOYMENT_MODE=$1
+OUTPUT_DIR=$2
 
 aws eks update-kubeconfig --name atmos-${DEPLOY_ENV}
 

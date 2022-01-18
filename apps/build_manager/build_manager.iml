@@ -5,6 +5,9 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../../frontend/flail_ssg">
+      <sourceFolder url="file://$MODULE_DIR$/../../frontend/flail_ssg" isTestSource="false" />
+    </content>
     <orderEntry type="jdk" jdkName="build-manager" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

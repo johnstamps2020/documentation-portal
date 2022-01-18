@@ -208,6 +208,22 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "subscriptionapinext",
+      "title": "Subscription API",
+      "url": "cloud/gw-feature-preview/subscriptionapi",
+      "metadata": {
+        "product": ["Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }

@@ -1,15 +1,11 @@
 const authGateway = require('../controllers/authController').authGateway;
 const httpMocks = require('node-mocks-http');
 const assert = require('assert');
-const sinon = require('sinon');
 
 describe('OKTA authentication', () => {
-  const targetRoute = '/some/route';
-  const loginGatewayRoute = require('../controllers/authController')
-    .loginGatewayRoute;
   const request = httpMocks.createRequest({
     method: 'GET',
-    url: targetRoute,
+    url: `${process.env.APP_BASE_URL}/some/route`,
     isAuthenticated: () => false,
     session: {},
   });

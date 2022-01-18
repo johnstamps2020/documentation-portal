@@ -96,7 +96,8 @@
       "id": "standardsdraftsrc",
       "title": "Standards Draft",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git",
+      "branch": "master"
     }
   ]
 }
