@@ -53,7 +53,7 @@
       "title": "String Manager",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git",
-      "branch": "master"
+      "branch": "main"
     },
     {
       "id": "submissionintakesrc",
