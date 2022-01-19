@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20212.ditamap",
       "srcId": "in20212xrndraftsrc",
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BillingConfigurationReference2021x.ditamap",
       "srcId": "inbillrefsrc",
@@ -25,7 +25,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20212.ditamap",
       "srcId": "in20212xstudiorndraftsrc",
@@ -33,7 +33,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20212x.ditamap",
       "srcId": "in20212xappdraftsrc",
@@ -41,7 +41,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumersSalesPortalConfig20212x.ditamap",
       "srcId": "in20212xcsalespconfigdraftsrc",
@@ -49,7 +49,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerSalesPortalFeatures20212x.ditamap",
       "srcId": "in20212xcsalespdraftsrc",
@@ -57,7 +57,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalFeatures20212x.ditamap",
       "srcId": "in20212xcservicepdraftsrc",
@@ -65,7 +65,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV4.ditamap",
       "srcId": "in20212xcsprndraftsrc",
@@ -73,7 +73,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "LivePredictIntegration20212.ditamap",
       "srcId": "in20212xpadraftsrc",
@@ -81,7 +81,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "AppReaderIntegrationGuide20212x.ditamap",
       "srcId": "in20212xappreaderintegdraftsrc",
@@ -89,7 +89,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20212x.ditamap",
       "srcId": "in20212xbiintegdraftsrc",
@@ -97,7 +97,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "Configuration20212x.ditamap",
       "srcId": "in20212xconfigdraftsrc",
@@ -105,7 +105,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "CommonFunctionalityConfigurationReference20212x.ditamap",
       "srcId": "in20212xcommonconfigdraftsrc",
@@ -113,7 +113,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20212x.ditamap",
       "srcId": "in20212xcservicepconfigdraftsrc",
@@ -121,7 +121,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "Studio20212x.ditamap",
       "srcId": "in20212xstudiodraftsrc",
@@ -129,7 +129,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ProvisioningPortal20212x.ditamap",
       "srcId": "in20212xprovportaldraftsrc",
@@ -137,7 +137,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PortalDevelopment20212x.ditamap",
       "srcId": "in20212xportaldevdraftsrc",
@@ -145,7 +145,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ProductAttributeReference20212.ditamap",
       "srcId": "in20212xprodattrefdraftsrc",
@@ -153,7 +153,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "UnderwritingConfigurationReference20212x.ditamap",
       "srcId": "in20212xuwconfigdraftsrc",
@@ -161,7 +161,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ClaimsConfigurationReference20212x.ditamap",
       "srcId": "in20212xclaimsconfigdraftsrc",

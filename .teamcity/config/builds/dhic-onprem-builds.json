@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dmdraftsrc",
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "product.ditamap",
       "srcId": "dmdraftsrc",
@@ -25,7 +25,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "install.ditamap",
       "srcId": "dmdraftsrc",
@@ -33,7 +33,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dmdraftsrc",
@@ -41,7 +41,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "config.ditamap",
       "srcId": "dmdraftsrc",
@@ -49,7 +49,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dmdraftsrc",
@@ -57,7 +57,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "admin.ditamap",
       "srcId": "dmdraftsrc",
@@ -65,7 +65,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/DataHub-DRAFT.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dmdraftsrc",
@@ -73,7 +73,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dmdraftsrc",
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "product.ditamap",
       "srcId": "dmdraftsrc",
@@ -96,7 +96,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "install.ditamap",
       "srcId": "dmdraftsrc",
@@ -104,7 +104,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dmdraftsrc",
@@ -112,7 +112,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "config.ditamap",
       "srcId": "dmdraftsrc",
@@ -120,7 +120,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dmdraftsrc",
@@ -128,7 +128,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "admin.ditamap",
       "srcId": "dmdraftsrc",
@@ -136,7 +136,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "bi-applications.ditamap",
       "srcId": "dmdraftsrc",
@@ -144,7 +144,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "reports.ditamap",
       "srcId": "dmdraftsrc",
@@ -152,7 +152,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/InfoCenter-DRAFT.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dmdraftsrc",

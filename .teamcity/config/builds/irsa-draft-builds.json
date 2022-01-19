@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "IRSAOverview.ditamap",
       "srcId": "irsadraftsrc",
@@ -10,7 +10,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "IRSAAdjusterGuide.ditamap",
       "srcId": "irsadraftsrc",
@@ -18,7 +18,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "IRSAAdministrationGuide.ditamap",
       "srcId": "irsadraftsrc",
@@ -26,7 +26,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "IRSAReleaseNotes.ditamap",
       "srcId": "irsadraftsrc",
@@ -34,7 +34,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "srcId": "irsadraftsrc",

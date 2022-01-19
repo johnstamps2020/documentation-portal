@@ -34,7 +34,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "srcId": "irsa11src",

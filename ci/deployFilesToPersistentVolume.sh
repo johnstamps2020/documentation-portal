@@ -15,6 +15,8 @@ elif [[ "$DEPLOYMENT_MODE" == "upgradeDiffs" ]]; then
   export DEPLOYMENT_COMMAND="rm -rf /usr/src/app/static/pages/upgradediffs && cp -R /tmp/out/* /usr/src/app/static/pages/ && rm -rf /tmp/out"
 elif [[ "$DEPLOYMENT_MODE" == "sitemap" ]]; then
   export DEPLOYMENT_COMMAND="rm -rf /usr/src/app/static/sitemap && mkdir /usr/src/app/static/sitemap && cp -R /tmp/out/* /usr/src/app/static/sitemap/ && rm -rf /tmp/out"
+elif [[ "$DEPLOYMENT_MODE" == "html5" ]]; then
+  export DEPLOYMENT_COMMAND="rm -rf /usr/src/app/static/html5 && mkdir /usr/src/app/static/html5 && cp -R /tmp/out/* /usr/src/app/static/html5/ && rm -rf /tmp/out"
 else
   echo "Incorrect deployment mode."
   exit 1

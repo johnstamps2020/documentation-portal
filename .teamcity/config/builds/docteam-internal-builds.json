@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Release.ditaval",
       "root": "DitaDocGuide.ditamap",
       "srcId": "docguidesrc",
@@ -10,7 +10,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Release.ditaval",
       "root": "DocToolsAdminGuide.ditamap",
       "srcId": "doctoolsadminsrc",
@@ -18,7 +18,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Release.ditaval",
       "root": "WritingWithGit.ditamap",
       "srcId": "writingwithgitsrc",
