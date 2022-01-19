@@ -20,7 +20,7 @@ function getNodeByTitle() {
   const navLinks = document.querySelectorAll("nav[role='toc'] a");
   for (var i = 0, len = navLinks.length; i < len; i++) {
     const a = navLinks[i];
-    if (a.textContent === pageTitle) {
+    if (a.textContent.trim() === pageTitle) {
       return a;
     }
   }
@@ -42,7 +42,8 @@ function expandCurrent() {
   const currentNode =
     document.querySelector(fullPathQuery) ||
     document.querySelector(filenameQuery) ||
-    getNodeByTitle();
+    getNodeByTitle() ||
+    document.querySelector('.active a');
 
   if (currentNode) {
     currentNode.classList.add('current');
