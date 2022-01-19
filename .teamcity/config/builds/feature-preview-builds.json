@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "apddraftsrc",
@@ -10,7 +10,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "IS-CC-Cloud-Draft.ditaval",
       "root": "Autopilot.ditamap",
       "srcId": "claimsautopilotdraftsrc",
@@ -18,7 +18,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "CloudRating.ditamap",
       "srcId": "cloudratingdraftsrc",
@@ -26,7 +26,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
       "root": "Rules.ditamap",
       "srcId": "rulessrc",
@@ -34,7 +34,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "b_data-studio.ditamap",
       "srcId": "datastudiodraftsrc",
@@ -42,7 +42,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "ExperienceManager.ditamap",
       "srcId": "experiencemgrdraftsrc",
@@ -50,7 +50,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "appevents-releasenotes-cc.ditamap",
       "indexRedirect": true,
@@ -58,7 +58,7 @@
       "docId": "appeventsccrndraft"
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
@@ -66,7 +66,7 @@
       "docId": "ccappeventsdevdraft"
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
@@ -74,7 +74,7 @@
       "docId": "pcappeventsdevdraft"
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "IntegrationGatewayForDevelopers.ditamap",
       "indexRedirect": true,
@@ -82,7 +82,7 @@
       "docId": "integgatewaydevdraft"
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "IntegrationGatewayReleaseNotes.ditamap",
       "indexRedirect": true,
@@ -90,7 +90,7 @@
       "docId": "integgatewayrndraft"
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
       "root": "StringManager.ditamap",
       "srcId": "stringmanagerlatestsrc",
@@ -98,7 +98,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "SubmissionIntake.ditamap",
       "srcId": "submissionintakesrc",

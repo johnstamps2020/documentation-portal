@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is2021112src",
@@ -10,7 +10,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is2021112src",
@@ -18,7 +18,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
@@ -26,7 +26,7 @@
       "docId": "isbccloudgwupgrade"
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is2021112src",
@@ -34,7 +34,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is2021112src",
@@ -42,7 +42,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
@@ -50,7 +50,7 @@
       "docId": "iscccloudgwupgrade"
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is2021112src",
@@ -58,7 +58,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is2021112src",
@@ -66,7 +66,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,

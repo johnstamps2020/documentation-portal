@@ -114,7 +114,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "dita",
+      "buildType": "html5",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "surepath.ditamap",
       "srcId": "standardsdraftsrc",
