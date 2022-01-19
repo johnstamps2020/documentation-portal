@@ -91,8 +91,8 @@
           "id": "integgatewaydevdraft"
         },
         {
-          "label": "Subscription API",
-          "id": "subscriptionapinext"
+          "label": "WebHooks API",
+          "id": "webhooksapinext"
         }
       ]
     }
