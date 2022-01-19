@@ -1193,6 +1193,10 @@ object Frontend {
                             """.trimIndent()
                 }
             }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
     }
 
@@ -3633,6 +3637,8 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_DEVEX_BASE.image_url}:14.14.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "--user 1000:1000"
         }
     }
 
