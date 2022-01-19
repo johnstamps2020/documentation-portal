@@ -227,7 +227,7 @@
     },
     {
       "id": "webhooksapinext",
-      "title": "WebHooks API",
+      "title": "Webhooks API Reference",
       "url": "cloud/gw-feature-preview/webhooksapi",
       "metadata": {
         "product": ["Feature Preview"],
