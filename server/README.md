@@ -51,3 +51,26 @@ To develop the HTML5 plugin, run:
 ```
 npm run html5-watch
 ```
+
+## Local preview of webhelp
+
+1. Put a webhelp in a folder somewhere.
+1. Run this command to serve the folder on localhost:5000:
+   ```
+   npx serve ./
+   ```
+1. Add this you your server `.env`:
+   ```
+   DOC_S3_URL=http://localhost:5000/
+   ```
+1. In a separate terminal, run the Webpack watch script:
+   ```
+   cd server
+   npm run html5-watch
+   ```
+1. In a separate terminal, run the server:
+   ```
+   cd server
+   npm run start:dev
+   ```
+1. Go to `http://localhost:8081/something.html` to preview your webhelp
