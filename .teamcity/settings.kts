@@ -2097,7 +2097,7 @@ object BuildListeners {
         for (src in Helpers.gitNativeSources) {
             val srcId = src.getString("id")
             val ditaBuildsRelatedToSrc =
-                Helpers.buildConfigs.filter { it.getString("srcId") == srcId && it.getString("buildType") == GwBuildTypes.DITA.build_type_name }
+                Helpers.buildConfigs.filter { it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.build_type_name || it.getString("buildType") == GwBuildTypes.HTML5.build_type_name)}
             val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
                 val buildDocId = it.getString("docId")
                 val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
