@@ -153,6 +153,7 @@
   height: var(--feedback-button-size);
   background-position: 50% 50%;
   background-size: cover;
+  cursor: pointer;
 }
 
 .feedbackButton:hover {
