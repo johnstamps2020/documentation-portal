@@ -42,7 +42,8 @@ function expandCurrent() {
   const currentNode =
     document.querySelector(fullPathQuery) ||
     document.querySelector(filenameQuery) ||
-    getNodeByTitle();
+    getNodeByTitle() ||
+    document.querySelector('.active a');
 
   if (currentNode) {
     currentNode.classList.add('current');
