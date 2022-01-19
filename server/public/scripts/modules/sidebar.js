@@ -20,7 +20,7 @@ function getNodeByTitle() {
   const navLinks = document.querySelectorAll("nav[role='toc'] a");
   for (var i = 0, len = navLinks.length; i < len; i++) {
     const a = navLinks[i];
-    if (a.textContent === pageTitle) {
+    if (a.textContent.trim() === pageTitle) {
       return a;
     }
   }
