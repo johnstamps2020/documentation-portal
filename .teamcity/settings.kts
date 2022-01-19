@@ -1186,9 +1186,9 @@ object Frontend {
             triggers {
                 vcs {
                     triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:public/scripts/**
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:public/stylesheets/**
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:public/fonts/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/scripts/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/stylesheets/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/fonts/**
                             -:user=doctools:**
                             """.trimIndent()
                 }
