@@ -63,8 +63,8 @@
       "branch": "main"
     },
     {
-      "id": "subscriptionapinextsrc",
-      "title": "Subscription API",
+      "id": "webhooksapinextsrc",
+      "title": "WebHooks API",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/app-events-api.git",
       "branch": "main"
