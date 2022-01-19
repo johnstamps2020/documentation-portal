@@ -1176,7 +1176,7 @@ object Frontend {
                 cleanCheckout = true
             }
 
-            val outputDir = "%teamcity.build.checkoutDir%/static/html5"
+            val outputDir = "%teamcity.build.checkoutDir%/server/static/html5"
 
             steps {
                 step(GwBuildSteps.createBuildHtml5DependenciesStep())
@@ -3628,6 +3628,7 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Build HTML5 dependencies"
             id = Helpers.createIdStringFromName(this.name)
+            workingDir = "server"
             scriptContent = """
                 #!/bin/bash
                 set -xe
