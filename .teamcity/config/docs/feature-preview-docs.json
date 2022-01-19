@@ -178,9 +178,9 @@
       "public": false
     },
     {
-      "id": "stringmanagerlatest",
-      "title": "String Manager Draft",
-      "url": "cloud/gw-feature-preview/stringmanager/latest",
+      "id": "stringmanagerpcdraft",
+      "title": "String Manager Draft PolicyCenter",
+      "url": "cloud/gw-feature-preview/stringmanager/pc/latest",
       "metadata": {
         "product": ["Feature Preview"],
         "platform": ["Cloud"],

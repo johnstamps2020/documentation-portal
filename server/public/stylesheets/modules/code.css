@@ -1,0 +1,135 @@
+body {
+  --code-font-family: 'Source Code Pro', monospace;
+  --code-text-color: black;
+  --code-background-color: #f5f2f0;
+}
+
+.codeBlockWrapper {
+  position: relative;
+}
+
+pre.pre {
+  padding: 38px 16px !important;
+  font-size: 14px !important;
+  font-family: var(--code-font-family) !important;
+  text-shadow: none !important;
+}
+
+.copyToClipboardButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: 1px solid var(--code-text-color);
+  color: var(--code-text-color);
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--code-font-family);
+}
+
+.copyToClipboardButton:hover,
+.copyToClipboardButton:focus {
+  background-color: var(--code-text-color);
+  color: var(--code-background-color);
+}
+
+.copyToClipboardButton:active,
+.copyToClipboardButton.active {
+  transform: scale(1.1);
+}
+
+.varname,
+.apiname,
+.userinput,
+.option,
+.parmname,
+.msgph,
+.codeph,
+.cmdname,
+.codeblock,
+.pre .tt,
+.filepath {
+  font-family: var(--code-font-family);
+  font-size: 14px;
+  background-color: var(--code-background-color);
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.codeblock .codeph,
+.codeblock .userinput,
+.codeblock .filepath,
+.codeblock .apiname,
+.codeblock .cmdname,
+.codeblock .varname,
+.codeblock .parmname,
+.codeblock .option {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* Syntax highlights */
+.hl-json_key {
+	color: #7263B9
+}
+
+.hl-keyword {
+	color: #7f0055
+}
+
+.hl-string {
+	color: #2a00ff
+}
+
+.hl-comment {
+	color: #006400
+}
+
+.hl-directive {
+	color: #8b26c9
+}
+
+.hl-tag {
+	color: #000096
+}
+
+.hl-attribute {
+	color: #ff7935
+}
+
+.hl-value {
+	color: #993300
+}
+
+.hl-html {
+	color: navy;
+	font-weight: bold
+}
+
+.hl-xsl {
+	color: #0066FF
+}
+
+.hl-section {
+	
+}
+
+.hl-number {
+	
+}
+
+.hl-annotation {
+	color: gray
+}
+
+.hl-tag-doctype-comment {
+	color: #3f5fbf
+}
+
+.hl-tag-doctype {
+	color: #0000ff
+}
