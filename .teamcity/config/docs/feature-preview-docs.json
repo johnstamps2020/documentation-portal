@@ -226,7 +226,7 @@
       "public": false
     },
     {
-      "id": "webhooksnext",
+      "id": "webhooksapinext",
       "title": "WebHooks API",
       "url": "cloud/gw-feature-preview/webhooksapi",
       "metadata": {
