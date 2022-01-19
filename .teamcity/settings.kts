@@ -537,7 +537,7 @@ object Docs {
             } else {
                 docBuildType.artifactRules =
                     "${working_dir}/${output_dir}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}"
-                val buildDitaProjectStep = GwBuildSteps.getBuildHtml5ProjectForBuildsStep(root_map,
+                val buildDitaProjectStep = GwBuildSteps.createBuildHtml5ProjectsStep(root_map,
                     working_dir,
                     output_dir,
                     build_filter,
@@ -1133,6 +1133,21 @@ object Frontend {
             subProject(createDeployLandingPagesProject())
             subProject(createDeployLocalizedPagesProject())
             subProject(createDeployUpgradeDiffsProject())
+            subProject(createDeployHtml5DependenciesProject())
+        }
+    }
+
+    private fun createDeployHtml5DependenciesProject(): Project {
+        return Project {
+            name = "Deploy HTML5 dependencies"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
+                buildType(createDeployHtml5DependenciesBuildType(it.env_name))
+            }
         }
     }
 
@@ -1146,6 +1161,37 @@ object Frontend {
                 GwDeployEnvs.STAGING,
                 GwDeployEnvs.PROD).forEach {
                 buildType(createDeployLandingPagesBuildType(it.env_name))
+            }
+        }
+    }
+
+    private fun createDeployHtml5DependenciesBuildType(deploy_env: String): BuildType {
+        return BuildType {
+            name = "Deploy HTML5 dependencies to $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            val outputDir = "%teamcity.build.checkoutDir%/static/html5"
+
+            steps {
+                step(GwBuildSteps.createBuildHtml5DependenciesStep())
+                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "html5", outputDir))
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:public/scripts/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:public/stylesheets/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:public/fonts/**
+                            -:user=doctools:**
+                            """.trimIndent()
+                }
             }
         }
     }
@@ -2424,7 +2470,7 @@ object Sources {
                 }
                 validationBuildType.steps {
                     step(
-                        GwBuildSteps.getBuildHtml5ProjectForBuildsStep(rootMap,
+                        GwBuildSteps.createBuildHtml5ProjectsStep(rootMap,
                             workingDir,
                             outputDir,
                             buildFilter,
@@ -3468,7 +3514,7 @@ object GwBuildSteps {
         return commandStringBuilder.toString()
     }
 
-    fun getBuildHtml5ProjectForBuildsStep(
+    fun createBuildHtml5ProjectsStep(
         root_map: String,
         working_dir: String,
         output_dir: String,
@@ -3571,6 +3617,20 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createBuildHtml5DependenciesStep(): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Build HTML5 dependencies"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                npm i
+                npm run build-html5-dependencies
+            """.trimIndent()
         }
     }
 
