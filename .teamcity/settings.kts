@@ -3631,7 +3631,7 @@ object GwBuildSteps {
                 npm i
                 npm run build-html5-dependencies
             """.trimIndent()
-            dockerImage = GwDockerImages.NODE_14_ALPINE.image_url
+            dockerImage = "${GwDockerImages.NODE_DEVEX_BASE.image_url}:14.14.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
