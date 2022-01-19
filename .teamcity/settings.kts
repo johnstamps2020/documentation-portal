@@ -81,6 +81,7 @@ enum class GwConfigParams(val param_value: String) {
 enum class GwDockerImages(val image_url: String) {
     DOC_PORTAL("artifactory.guidewire.com/doctools-docker-dev/docportal"),
     DITA_OT_LATEST("artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"),
+    DITA_OT_3_6_1("artifactory.guidewire.com/doctools-docker-dev/dita-ot:3.6.1"),
     ATMOS_DEPLOY_0_12_24("artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"),
     CONFIG_DEPLOYER_LATEST("artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"),
     DOC_CRAWLER_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"),
@@ -3553,7 +3554,7 @@ object GwBuildSteps {
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
-            dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
+            dockerImage = GwDockerImages.DITA_OT_3_6_1.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
