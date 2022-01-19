@@ -210,6 +210,22 @@
       "public": false
     },
     {
+      "id": "submissionintakeconfigdraft",
+      "title": "Submission Intake Configuration",
+      "url": "cloud/gw-feature-preview/subintakeconfig",
+      "metadata": {
+        "product": ["Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "subscriptionapinext",
       "title": "Subscription API",
       "url": "cloud/gw-feature-preview/subscriptionapi",

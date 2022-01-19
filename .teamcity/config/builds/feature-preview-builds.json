@@ -99,10 +99,18 @@
     },
     {
       "buildType": "html5",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "SubmissionIntake.ditamap",
       "srcId": "submissionintakesrc",
       "docId": "submissionintakedraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "html5",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
+      "root": "SubmissionIntakeConfiguration.ditamap",
+      "srcId": "submissionintakesrc",
+      "docId": "submissionintakeconfigdraft",
       "indexRedirect": true
     },
     {
