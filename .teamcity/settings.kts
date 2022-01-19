@@ -1193,6 +1193,10 @@ object Frontend {
                             """.trimIndent()
                 }
             }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
     }
 
