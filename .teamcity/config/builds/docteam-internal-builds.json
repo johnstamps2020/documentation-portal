@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "html5",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "DitaDocGuide.ditamap",
       "srcId": "docguidesrc",
       "docId": "docguide",
