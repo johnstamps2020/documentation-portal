@@ -2319,7 +2319,7 @@ object Sources {
         }
 
         when (gw_build_type) {
-            GwBuildTypes.DITA.build_type_name -> {
+            (GwBuildTypes.DITA.build_type_name || GwBuildTypes.HTML5.build_type_name) -> {
                 val ditaOtLogsDir = "dita_ot_logs"
                 val normalizedDitaDir = "normalized_dita_dir"
                 val schematronReportsDir = "schematron_reports_dir"
@@ -2465,6 +2465,7 @@ object Sources {
                 }
 
             }
+            /*
             GwBuildTypes.HTML5.build_type_name -> {
                 val rootMap = build_config.getString("root")
                 val buildFilter = when (build_config.has("filter")) {
@@ -2498,7 +2499,7 @@ object Sources {
                         )
                     )
                 }
-            }
+            }*/
         }
 
         // DITA validation builds are triggered by validation listener builds.
@@ -2507,6 +2508,9 @@ object Sources {
         // Yarn validation builds are triggered by regular TeamCity VCS triggers.
         when (gw_build_type) {
             GwBuildTypes.DITA.build_type_name -> {
+                validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
+            }
+            GwBuildTypes.HTML5.build_type_name -> {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
