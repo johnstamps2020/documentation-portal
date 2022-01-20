@@ -56,6 +56,7 @@ enum class GwDitaOutputFormats(val format_name: String) {
     WEBHELP("webhelp"),
     PDF("pdf"),
     WEBHELP_WITH_PDF("webhelp_with_pdf"),
+    SINGLEHTML("singlehtml"),
     DITA("dita"),
     VALIDATE("validate")
 }
@@ -440,7 +441,8 @@ object Docs {
         }
         for (format in arrayListOf(GwDitaOutputFormats.WEBHELP.format_name,
             GwDitaOutputFormats.PDF.format_name,
-            GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name)) {
+            GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+            GwDitaOutputFormats.SINGLEHTML.format_name)) {
             val localOutputDir = "${output_dir}/zip"
             val downloadableOutputBuildType = BuildType {
                 name = "Build downloadable ${format.replace("_", " ")}"
@@ -3595,6 +3597,9 @@ object GwBuildSteps {
             }
             GwDitaOutputFormats.PDF.format_name -> {
                 ditaBuildCommand += " -f pdf_Guidewire_remote"
+            }
+            GwDitaOutputFormats.SINGLEHTML.format_name -> {
+                ditaBuildCommand += " -f singlehtml"
             }
         }
 
