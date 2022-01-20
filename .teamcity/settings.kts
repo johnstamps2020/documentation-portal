@@ -3597,7 +3597,7 @@ object GwBuildSteps {
             }
             GwDitaOutputFormats.PDF.format_name -> {
                 ditaBuildCommand += " -f pdf_Guidewire_remote"
-            },
+            }
             GwDitaOutputFormats.SINGLEHTML.format_name -> {
                 ditaBuildCommand += " -f singlehtml"
             }
