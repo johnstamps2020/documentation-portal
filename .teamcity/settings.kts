@@ -2416,6 +2416,103 @@ object Sources {
                     )
                 }
             }
+            GwBuildTypes.HTML5.build_type_name -> {
+                val ditaOtLogsDir = "dita_ot_logs"
+                val normalizedDitaDir = "normalized_dita_dir"
+                val schematronReportsDir = "schematron_reports_dir"
+                val docInfoFile = "doc-info.json"
+                val rootMap = build_config.getString("root")
+                val indexRedirect = when (build_config.has("indexRedirect")) {
+                    true -> {
+                        build_config.getBoolean("indexRedirect")
+                    }
+                    else -> {
+                        false
+                    }
+
+                }
+                val buildFilter = when (build_config.has("filter")) {
+                    true -> {
+                        build_config.getString("filter")
+                    }
+                    else -> {
+                        ""
+                    }
+                }
+
+                validationBuildType.artifactRules += """
+                    ${workingDir}/${ditaOtLogsDir} => logs
+                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
+                """.trimIndent()
+
+                validationBuildType.steps {
+                    step(
+                        GwBuildSteps.createGetDocumentDetailsStep(
+                            teamcityBuildBranch,
+                            src_id,
+                            docInfoFile,
+                            docConfig
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                            GwDitaOutputFormats.WEBHELP.format_name,
+                            rootMap,
+                            workingDir,
+                            outputDir,
+                            ditaOtLogsDir,
+                            normalizedDitaDir,
+                            schematronReportsDir,
+                            buildFilter,
+                            indexRedirect
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createUploadContentToS3BucketStep(
+                            GwDeployEnvs.INT.env_name,
+                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}",
+                            publishPath,
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createPreviewUrlFile(
+                            publishPath,
+                            previewUrlFile
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                            GwDitaOutputFormats.DITA.format_name,
+                            rootMap,
+                            workingDir,
+                            outputDir,
+                            ditaOtLogsDir,
+                            normalizedDitaDir,
+                            schematronReportsDir
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                            GwDitaOutputFormats.VALIDATE.format_name,
+                            rootMap,
+                            workingDir,
+                            outputDir,
+                            ditaOtLogsDir,
+                            normalizedDitaDir,
+                            schematronReportsDir
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createRunDocValidatorStep(
+                            workingDir,
+                            ditaOtLogsDir,
+                            normalizedDitaDir,
+                            schematronReportsDir,
+                            docInfoFile
+                        )
+                    )
+                }
+            }
             GwBuildTypes.YARN.build_type_name -> {
                 val metadata = docConfig.getJSONObject("metadata")
                 val gwPlatforms = metadata.getJSONArray("platform")
@@ -2465,6 +2562,7 @@ object Sources {
                 }
 
             }
+            /*
             GwBuildTypes.HTML5.build_type_name -> {
                 val rootMap = build_config.getString("root")
                 val buildFilter = when (build_config.has("filter")) {
@@ -2498,7 +2596,7 @@ object Sources {
                         )
                     )
                 }
-            }
+            }*/
         }
 
         // DITA validation builds are triggered by validation listener builds.
@@ -2507,6 +2605,9 @@ object Sources {
         // Yarn validation builds are triggered by regular TeamCity VCS triggers.
         when (gw_build_type) {
             GwBuildTypes.DITA.build_type_name -> {
+                validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
+            }
+            GwBuildTypes.HTML5.build_type_name -> {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
