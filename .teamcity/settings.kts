@@ -2206,7 +2206,7 @@ object Sources {
 
             buildType(createCleanValidationResultsBuildType(src_id, git_url))
 
-            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name)) {
+            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name) || uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.HTML5.build_type_name)) {
                 validationBuildsSubProject.buildType(
                     createValidationListenerBuildType(src_id,
                         git_url,
