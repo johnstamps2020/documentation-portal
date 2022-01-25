@@ -173,12 +173,14 @@ object Runners {
                     val gwProduct = pp.name
                     val gwVersion = vp.name
                     val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
-                    val publishAllDocsBuildType = createRunnerBuildType(
-                        deploy_env,
-                        matchingDocIds, "Publish all docs",
-                        gwProduct,
-                        gwVersion)
-                    vp.buildType(publishAllDocsBuildType)
+                    if (matchingDocIds.size > 1) {
+                        val publishAllDocsBuildType = createRunnerBuildType(
+                            deploy_env,
+                            matchingDocIds, "Publish all docs",
+                            gwProduct,
+                            gwVersion)
+                        vp.buildType(publishAllDocsBuildType)
+                    }
                 }
                 subProject(pp)
             }
