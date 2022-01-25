@@ -205,13 +205,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "_superbook.ditamap",
-      "srcId": "midipgsrc",
-      "docId": "midipg"
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1020src",

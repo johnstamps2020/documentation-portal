@@ -54,7 +54,7 @@
         },
         {
           "label": "Guidewire InsuranceSuite Package for Germany",
-          "id": "midipg"
+          "page": "ipg/latest"
         }
       ]
     },

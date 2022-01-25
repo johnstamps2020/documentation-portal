@@ -209,20 +209,6 @@
       "public": false
     },
     {
-      "id": "midipg",
-      "title": "InsuranceSuite Package for Germany",
-      "url": "self-managed/ipg/latest",
-      "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
-        "platform": ["Cloud"],
-        "version": ["3.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "guidewirecloudconsoleguideinsurerdev",
       "title": "Cloud Console Guide",
       "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",

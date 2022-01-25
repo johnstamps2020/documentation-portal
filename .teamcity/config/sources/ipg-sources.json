@@ -1,0 +1,65 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "midipgimplsrc",
+      "title": "InsuranceSuite Package for Germany Implementation",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/ImplementationGuide.ditamap"
+      ]
+    },
+    {
+      "id": "midipgappsrc",
+      "title": "InsuranceSuite Package for Germany Application",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/IPGApplicationGuide.ditamap"
+      ]
+    },
+    {
+      "id": "midipginstallsrc",
+      "title": "InsuranceSuite Package for Germany Installation",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/InstallGuide.ditamap"
+      ]
+    },
+    {
+      "id": "midipgglossarysrc",
+      "title": "InsuranceSuite Package for Germany Glossary",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/IPGGlossary.ditamap"
+      ]
+    },
+    {
+      "id": "midipgrnensrc",
+      "title": "InsuranceSuite Package for Germany Release Notes - English",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/IPGReleaseNotes.ditamap"
+      ]
+    },
+    {
+      "id": "midipgrndesrc",
+      "title": "InsuranceSuite Package for Germany Release Notes - German",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
+      "branch": "master",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/IPGReleaseNotesDE.ditamap"
+      ]
+    }
+  ]
+}
