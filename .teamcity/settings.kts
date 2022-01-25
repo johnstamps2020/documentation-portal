@@ -3511,6 +3511,11 @@ object GwBuildSteps {
             ditaBuildCommand
         }
 
+        val dockerImageName = when (output_format) {
+            GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
+            else -> GwDockerImages.DITA_OT_LATEST.image_url
+        }
+
         return ScriptBuildStep {
             name = "Build the ${output_format.replace("_", "")} output"
             id = Helpers.createIdStringFromName(this.name)
@@ -3530,7 +3535,7 @@ object GwBuildSteps {
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
+            dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }
