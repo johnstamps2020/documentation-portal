@@ -3590,6 +3590,8 @@ object GwBuildSteps {
             GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name -> {
                 commandParams.add(Pair("-f", "wh-pdf"))
                 commandParams.add(Pair("--dita.ot.pdf.format", "pdf5_Guidewire"))
+                commandParams.add(Pair("--use-doc-portal-params", "yes"))
+                commandParams.add(Pair("--gw-doc-id", doc_id))
                 commandParams.add(Pair("--generate.build.data", "yes"))
                 commandParams.add(Pair("--git.url", git_url))
                 commandParams.add(Pair("--git.branch", git_branch))
