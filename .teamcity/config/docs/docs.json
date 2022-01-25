@@ -215,10 +215,9 @@
       "metadata": {
         "product": ["Guidewire InsuranceSuite Package for Germany"],
         "platform": ["Cloud"],
-        "version": ["3.x"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "version": ["3.x"]
       },
-      "environments": ["dev", "int"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

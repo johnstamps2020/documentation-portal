@@ -51,6 +51,10 @@
         {
           "label": "IRSA Integration for ClaimCenter (version 1.1)",
           "page": "ipf/latest"
+        },
+        {
+          "label": "Guidewire InsuranceSuite Package for Germany",
+          "id": "midipg"
         }
       ]
     },
