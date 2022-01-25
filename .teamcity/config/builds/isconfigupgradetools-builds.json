@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "Other/GW-Generic-Draft.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
@@ -26,7 +26,7 @@
       "docId": "isconfigupgradetools330"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "Other/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
@@ -34,7 +34,7 @@
       "docId": "isconfigupgradetools320jaJP"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_superbook.ditamap",
       "indexRedirect": true,
@@ -42,7 +42,7 @@
       "docId": "selfmanagedbcupgradetools1x"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "IS-CC-OnPrem-Draft.ditaval",
       "root": "_superbook.ditamap",
       "indexRedirect": true,
@@ -50,7 +50,7 @@
       "docId": "selfmanagedccupgradetools1x"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "IS-PC-OnPrem-Draft.ditaval",
       "root": "_superbook.ditamap",
       "indexRedirect": true,
