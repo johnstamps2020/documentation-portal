@@ -22,6 +22,7 @@ project {
         vcsRoot(it)
     }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
+    subProject(Runners.rootProject)
     subProject(Docs.rootProject)
     subProject(Sources.rootProject)
     subProject(Recommendations.rootProject)
@@ -105,6 +106,156 @@ enum class GwDockerImages(val image_url: String) {
 enum class GwExportFrequencies(val param_value: String) {
     DAILY("daily"),
     WEEKLY("weekly")
+}
+
+object Runners {
+    val rootProject = createRootProjectForRunners()
+
+    private fun getDocConfigsFromBuildConfigsForEnv(deploy_env: String): List<JSONObject> {
+        val docConfigsForEnv = mutableListOf<JSONObject>()
+        Helpers.buildConfigs.forEach {
+            val docId = it.getString("docId")
+            val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
+            val docEnvironments = docConfig.getJSONArray("environments")
+            if (docEnvironments.contains(deploy_env)) {
+                docConfigsForEnv.add(docConfig)
+            }
+        }
+        return docConfigsForEnv
+    }
+
+    private fun getDocIdsForProductAndVersion(
+        doc_configs: List<JSONObject>,
+        gw_product: String,
+        gw_version: String,
+    ): List<String> {
+        val matchingDocIds = mutableListOf<String>()
+        doc_configs.forEach {
+            val docId = it.getString("id")
+            val metadata = it.getJSONObject("metadata")
+            val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
+            val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
+            val docConfigMatchesProductAndVersion =
+                gwProducts.any { p -> p == gw_product } && gwVersions.any { v -> v == gw_version }
+            if (docConfigMatchesProductAndVersion) {
+                matchingDocIds.add(docId)
+            }
+        }
+        return matchingDocIds
+    }
+
+
+    private fun createRootProjectForRunners(): Project {
+        return Project {
+            name = "Runners"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(
+                GwDeployEnvs.DEV.env_name,
+                GwDeployEnvs.INT.env_name,
+                GwDeployEnvs.STAGING.env_name,
+                GwDeployEnvs.PROD.env_name
+            ).map {
+                subProject(createRunnersProjectForEnv(it))
+            }
+        }
+    }
+
+    private fun createRunnersProjectForEnv(deploy_env: String): Project {
+        val docConfigsForEnv = getDocConfigsFromBuildConfigsForEnv(deploy_env)
+        val productProjects = generateProductProjects(deploy_env, docConfigsForEnv)
+        return Project {
+            name = "Runners for $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            productProjects.forEach { pp ->
+                pp.subProjects.forEach { vp ->
+                    val gwProduct = pp.name
+                    val gwVersion = vp.name
+                    val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
+                    val publishAllDocsBuildType = createRunnerBuildType(
+                        deploy_env,
+                        matchingDocIds, "Publish all docs",
+                        gwProduct,
+                        gwVersion)
+                    vp.buildType(publishAllDocsBuildType)
+                }
+                subProject(pp)
+            }
+        }
+    }
+
+    private fun generateProductProjects(deploy_env: String, doc_configs: List<JSONObject>): List<Project> {
+        val productProjects = mutableListOf<Project>()
+        for (docConfig in doc_configs) {
+            val docId = docConfig.getString("id")
+            val docTitle = docConfig.getString("title")
+            val metadata = docConfig.getJSONObject("metadata")
+            val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
+            val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
+            for (gwProduct in gwProducts) {
+                val existingProductProject = productProjects.find { it.name == gwProduct }
+                if (existingProductProject == null) {
+                    productProjects.add(Project {
+                        name = gwProduct
+                        id = Helpers.resolveRelativeIdFromIdString("${this.name}${deploy_env}")
+
+                        gwVersions.forEach {
+                            subProject {
+                                name = it
+                                id = Helpers.resolveRelativeIdFromIdString("${this.name}${gwProduct}${deploy_env}")
+
+                                buildType(createRunnerBuildType(deploy_env, listOf(docId), docTitle, gwProduct, it))
+                            }
+                        }
+                    })
+                } else {
+                    for (gwVersion in gwVersions) {
+                        val runnerBuildType =
+                            createRunnerBuildType(deploy_env, listOf(docId), docTitle, gwProduct, gwVersion)
+                        val existingVersionSubproject =
+                            existingProductProject.subProjects.find { it.name == gwVersion }
+                        if (existingVersionSubproject == null) {
+                            existingProductProject.subProject {
+                                name = gwVersion
+                                id = Helpers.resolveRelativeIdFromIdString("${this.name}${gwProduct}${deploy_env}")
+
+                                buildType(runnerBuildType)
+                            }
+                        } else {
+                            existingVersionSubproject.buildType(runnerBuildType)
+                        }
+                    }
+                }
+            }
+        }
+        return productProjects
+    }
+
+    private fun createRunnerBuildType(
+        deploy_env: String,
+        doc_ids: List<String>,
+        doc_title: String,
+        gw_product: String,
+        gw_version: String,
+    ): BuildType {
+        return BuildType {
+            name = doc_title
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${deploy_env}${gw_product}${gw_version}")
+
+            type = BuildTypeSettings.Type.COMPOSITE
+
+            dependencies {
+                doc_ids.forEach {
+                    snapshot(Helpers.resolveRelativeIdFromIdString("Publish to ${deploy_env}${it}")) {
+                        reuseBuilds = ReuseBuilds.NO
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 object Docs {
@@ -2099,7 +2250,10 @@ object BuildListeners {
         for (src in Helpers.gitNativeSources) {
             val srcId = src.getString("id")
             val ditaBuildsRelatedToSrc =
-                Helpers.buildConfigs.filter { it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.build_type_name || it.getString("buildType") == GwBuildTypes.HTML5.build_type_name)}
+                Helpers.buildConfigs.filter {
+                    it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.build_type_name || it.getString(
+                        "buildType") == GwBuildTypes.HTML5.build_type_name)
+                }
             val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
                 val buildDocId = it.getString("docId")
                 val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
@@ -2206,7 +2360,9 @@ object Sources {
 
             buildType(createCleanValidationResultsBuildType(src_id, git_url))
 
-            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name) || uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.HTML5.build_type_name)) {
+            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name) || uniqueGwBuildTypesForAllBuilds.contains(
+                    GwBuildTypes.HTML5.build_type_name)
+            ) {
                 validationBuildsSubProject.buildType(
                     createValidationListenerBuildType(src_id,
                         git_url,
@@ -3027,18 +3183,18 @@ object Helpers {
     }
 
     fun getTargetUrl(deploy_env: String): String {
-        if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            return "https://docs.guidewire.com"
+        return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+            "https://docs.guidewire.com"
         } else {
-            return "https://docs.${deploy_env}.ccs.guidewire.net"
+            "https://docs.${deploy_env}.ccs.guidewire.net"
         }
     }
 
     fun getElasticsearchUrl(deploy_env: String): String {
-        if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            return "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+        return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
         } else {
-            return "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
+            "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
         }
     }
 
