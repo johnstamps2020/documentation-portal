@@ -250,7 +250,6 @@ object Runners {
             dependencies {
                 doc_ids.forEach {
                     snapshot(Helpers.resolveRelativeIdFromIdString("Publish to ${deploy_env}${it}")) {
-                        reuseBuilds = ReuseBuilds.NO
                         onDependencyFailure = FailureAction.FAIL_TO_START
                     }
                 }
@@ -781,6 +780,7 @@ object Docs {
         return BuildType {
             name = "Publish to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
+            maxRunningBuilds = 1
 
             if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name).contains(
                     deploy_env)
