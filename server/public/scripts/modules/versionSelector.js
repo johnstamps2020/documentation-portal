@@ -1,7 +1,7 @@
 export async function addVersionSelector() {
   try {
     const matchingVersionSelector = window.matchingVersionSelector;
-    if (matchingVersionSelector?.otherVersions.length > 0) {
+    if (matchingVersionSelector?.otherVersions?.length > 0) {
       const currentlySelectedVersion = {
         label: matchingVersionSelector.version,
         currentlySelected: true,
