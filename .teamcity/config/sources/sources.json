@@ -2205,17 +2205,6 @@
       ]
     },
     {
-      "id": "midipgsrc",
-      "title": "InsuranceSuite Package for Germany",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipg.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/mid/ipg/3.x/active/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
       "id": "livepredictsrc",
       "title": "Live Predict",
       "sourceType": "git",

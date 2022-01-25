@@ -1,0 +1,95 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "midipgimpl",
+      "title": "Implementation",
+      "url": "self-managed/ipg/latest/impl",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "midipgapp",
+      "title": "Application Guide",
+      "url": "self-managed/ipg/latest/app",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "midipginstall",
+      "title": "Installation",
+      "url": "self-managed/ipg/latest/install",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "midipgrnen",
+      "title": "Release Notes",
+      "url": "self-managed/ipg/latest/releasenotes",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "midipgrnde",
+      "title": "Release Notes (German)",
+      "url": "self-managed/ipg/latest/releasenotesde",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "midipgglossary",
+      "title": "Glossary",
+      "url": "self-managed/ipg/latest/glossary",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Glossary"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false
+    }
+  ]
+}
