@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "AppReaderReleaseNotes.ditamap",
       "srcId": "um1447src",
@@ -10,7 +10,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "um1447src",
@@ -18,7 +18,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "UM-Agent-Release.ditaval",
       "root": "UMAgentUserGuide.ditamap",
       "srcId": "um1447src",
@@ -26,7 +26,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "UMOutlookAddinGuide.ditamap",
       "srcId": "um1447src",
@@ -34,7 +34,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "UM-Not-Agent-Release.ditaval",
       "root": "UMStudioHelp.ditamap",
       "srcId": "um1447src",
@@ -42,7 +42,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "UM-Not-Agent-Release.ditaval",
       "root": "UserGuide.ditamap",
       "srcId": "um1447src",

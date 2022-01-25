@@ -50,7 +50,6 @@ enum class GwBuildTypes(val build_type_name: String) {
     YARN("yarn"),
     STORYBOOK("storybook"),
     SOURCE_ZIP("source-zip"),
-    HTML5("html5")
 }
 
 enum class GwDitaOutputFormats(val format_name: String) {
@@ -59,7 +58,8 @@ enum class GwDitaOutputFormats(val format_name: String) {
     WEBHELP_WITH_PDF("webhelp_with_pdf"),
     SINGLEHTML("singlehtml"),
     DITA("dita"),
-    VALIDATE("validate")
+    VALIDATE("validate"),
+    HTML5("html5")
 }
 
 enum class GwConfigParams(val param_value: String) {
@@ -473,8 +473,6 @@ object Docs {
         index_redirect: Boolean,
         build_filter: String,
         gw_platforms: String,
-        gw_products: String,
-        gw_versions: String,
         resources_to_copy: JSONArray,
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
@@ -506,11 +504,9 @@ object Docs {
                         index_redirect,
                         working_dir,
                         output_dir,
+                        publish_path,
                         build_filter,
                         doc_id,
-                        gw_products,
-                        gw_platforms,
-                        gw_versions,
                         git_url,
                         git_branch
                     )
@@ -523,6 +519,7 @@ object Docs {
                                 index_redirect,
                                 working_dir,
                                 localOutputDir,
+                                publish_path,
                                 for_offline_use = true
                             )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
@@ -541,17 +538,19 @@ object Docs {
                         docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                     }
                 } else {
+                    val outputFormat = when (env) {
+                        GwDeployEnvs.INT.env_name -> GwDitaOutputFormats.HTML5.format_name
+                        else -> GwDitaOutputFormats.WEBHELP.format_name
+                    }
                     buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                        GwDitaOutputFormats.WEBHELP.format_name,
+                        outputFormat,
                         root_map,
                         index_redirect,
                         working_dir,
                         output_dir,
+                        publish_path,
                         build_filter,
                         doc_id,
-                        gw_products,
-                        gw_platforms,
-                        gw_versions,
                         git_url,
                         git_branch
                     )
@@ -657,113 +656,6 @@ object Docs {
             ditaBuildTypes.add(localizationPackageBuildType)
         }
         return ditaBuildTypes
-    }
-
-    private fun createHtml5BuildTypes(
-        env_names: List<String>,
-        doc_id: String,
-        src_id: String,
-        git_branch: String,
-        publish_path: String,
-        working_dir: String,
-        output_dir: String,
-        index_for_search: Boolean,
-        root_map: String,
-        build_filter: String,
-        resources_to_copy: JSONArray,
-    ): List<BuildType> {
-        val html5BuildTypes = mutableListOf<BuildType>()
-        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
-        for (env in env_names) {
-            val docBuildType = createInitialDocBuildType(
-                GwBuildTypes.HTML5.build_type_name,
-                env,
-                doc_id,
-                src_id,
-                publish_path,
-                working_dir,
-                output_dir,
-                index_for_search
-            )
-            if (env == GwDeployEnvs.PROD.env_name) {
-                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
-                docBuildType.steps.step(copyFromStagingToProdStep)
-                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
-            } else {
-                docBuildType.artifactRules =
-                    "${working_dir}/${output_dir}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}"
-                val buildDitaProjectStep = GwBuildSteps.createBuildHtml5ProjectsStep(root_map,
-                    working_dir,
-                    output_dir,
-                    build_filter,
-                    doc_id,
-                    publish_path)
-                docBuildType.steps.step(buildDitaProjectStep)
-                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
-
-                if (!resources_to_copy.isEmpty) {
-                    val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
-                    for (stepId in 0 until resources_to_copy.length()) {
-                        val resourceObject = resources_to_copy.getJSONObject(stepId)
-                        val resourceSrcDir = resourceObject.getString("sourceFolder")
-                        val resourceSrcId = resourceObject.getString("srcId")
-                        val resourceSrcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", resourceSrcId)
-                        val resourceSrcUrl = resourceSrcConfig.getString("gitUrl")
-                        val resourceSrcBranch = resourceSrcConfig.getString("branch")
-
-                        val resourceTargetDir = resourceObject.getString("targetFolder")
-                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
-                            stepId,
-                            working_dir,
-                            output_dir,
-                            resourceSrcDir,
-                            resourceTargetDir,
-                            resourceSrcUrl,
-                            resourceSrcBranch
-                        )
-                        copyResourcesSteps.add(copyResourcesStep)
-                    }
-                    docBuildType.steps {
-                        copyResourcesSteps.forEach { step(it) }
-                        stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_THE_S3_BUCKET"),
-                            copyResourcesSteps.map { it.id.toString() })
-                    }
-                    docBuildType.features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
-                }
-            }
-
-            html5BuildTypes.add(docBuildType)
-        }
-
-        if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
-            val stagingBuildTypeIdString =
-                Helpers.resolveRelativeIdFromIdString("Publish to ${GwDeployEnvs.STAGING.env_name}${doc_id}").toString()
-            val localizationPackageBuildType = BuildType {
-                name = "Build localization package"
-                id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
-
-                artifactRules = """
-                    ${working_dir}/${output_dir} => /
-                """.trimIndent()
-
-                vcs {
-                    root(teamcityGitRepoId)
-                    branchFilter = GwVcsSettings.createBranchFilter(listOf(git_branch))
-                    cleanCheckout = true
-                }
-
-                steps.step(GwBuildSteps.createRunLionPkgBuilderStep(working_dir,
-                    output_dir,
-                    stagingBuildTypeIdString))
-
-                features {
-                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                }
-            }
-            html5BuildTypes.add(localizationPackageBuildType)
-        }
-
-        return html5BuildTypes
     }
 
     private fun createInitialDocBuildType(
@@ -957,36 +849,9 @@ object Docs {
                     indexRedirect,
                     buildFilter,
                     gwPlatformsString,
-                    gwProductsString,
-                    gwVersionsString,
                     resourcesToCopy
                 )
 
-            }
-            GwBuildTypes.HTML5.build_type_name -> {
-                val rootMap = build_config.getString("root")
-                val buildFilter = when (build_config.has("filter")) {
-                    true -> {
-                        build_config.getString("filter")
-                    }
-                    else -> {
-                        ""
-                    }
-                }
-                val resourcesToCopy =
-                    if (build_config.has("resources")) build_config.getJSONArray("resources") else JSONArray()
-
-                docProjectBuildTypes += createHtml5BuildTypes(docEnvironmentsList,
-                    docId,
-                    src_id,
-                    gitBranch,
-                    publishPath,
-                    workingDir,
-                    outputDir,
-                    indexForSearch,
-                    rootMap,
-                    buildFilter,
-                    resourcesToCopy)
             }
             GwBuildTypes.SOURCE_ZIP.build_type_name -> {
                 val zipFilename = build_config.getString("zipFilename")
@@ -2253,8 +2118,7 @@ object BuildListeners {
             val srcId = src.getString("id")
             val ditaBuildsRelatedToSrc =
                 Helpers.buildConfigs.filter {
-                    it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.build_type_name || it.getString(
-                        "buildType") == GwBuildTypes.HTML5.build_type_name)
+                    it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.build_type_name)
                 }
             val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
                 val buildDocId = it.getString("docId")
@@ -2362,9 +2226,7 @@ object Sources {
 
             buildType(createCleanValidationResultsBuildType(src_id, git_url))
 
-            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name) || uniqueGwBuildTypesForAllBuilds.contains(
-                    GwBuildTypes.HTML5.build_type_name)
-            ) {
+            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name)) {
                 validationBuildsSubProject.buildType(
                     createValidationListenerBuildType(src_id,
                         git_url,
@@ -2521,6 +2383,7 @@ object Sources {
                             rootMap,
                             workingDir,
                             outputDir,
+                            publishPath,
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir,
@@ -2543,81 +2406,11 @@ object Sources {
                     )
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.DITA.format_name,
+                            GwDitaOutputFormats.HTML5.format_name,
                             rootMap,
                             workingDir,
                             outputDir,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.VALIDATE.format_name,
-                            rootMap,
-                            workingDir,
-                            outputDir,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createRunDocValidatorStep(
-                            workingDir,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir,
-                            docInfoFile
-                        )
-                    )
-                }
-            }
-            GwBuildTypes.HTML5.build_type_name -> {
-                val ditaOtLogsDir = "dita_ot_logs"
-                val normalizedDitaDir = "normalized_dita_dir"
-                val schematronReportsDir = "schematron_reports_dir"
-                val docInfoFile = "doc-info.json"
-                val rootMap = build_config.getString("root")
-                val indexRedirect = when (build_config.has("indexRedirect")) {
-                    true -> {
-                        build_config.getBoolean("indexRedirect")
-                    }
-                    else -> {
-                        false
-                    }
-
-                }
-                val buildFilter = when (build_config.has("filter")) {
-                    true -> {
-                        build_config.getString("filter")
-                    }
-                    else -> {
-                        ""
-                    }
-                }
-
-                validationBuildType.artifactRules += """
-                    ${workingDir}/${ditaOtLogsDir} => logs
-                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
-                """.trimIndent()
-
-                validationBuildType.steps {
-                    step(
-                        GwBuildSteps.createGetDocumentDetailsStep(
-                            teamcityBuildBranch,
-                            src_id,
-                            docInfoFile,
-                            docConfig
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.WEBHELP.format_name,
-                            rootMap,
-                            workingDir,
-                            outputDir,
+                            publishPath,
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir,
@@ -2626,24 +2419,12 @@ object Sources {
                         )
                     )
                     step(
-                        GwBuildSteps.createUploadContentToS3BucketStep(
-                            GwDeployEnvs.INT.env_name,
-                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}",
-                            publishPath,
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createPreviewUrlFile(
-                            publishPath,
-                            previewUrlFile
-                        )
-                    )
-                    step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.DITA.format_name,
                             rootMap,
                             workingDir,
                             outputDir,
+                            publishPath,
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir
@@ -2655,6 +2436,7 @@ object Sources {
                             rootMap,
                             workingDir,
                             outputDir,
+                            publishPath,
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir
@@ -2720,41 +2502,6 @@ object Sources {
                 }
 
             }
-            /*
-            GwBuildTypes.HTML5.build_type_name -> {
-                val rootMap = build_config.getString("root")
-                val buildFilter = when (build_config.has("filter")) {
-                    true -> {
-                        build_config.getString("filter")
-                    }
-                    else -> {
-                        ""
-                    }
-                }
-                validationBuildType.steps {
-                    step(
-                        GwBuildSteps.createBuildHtml5ProjectsStep(rootMap,
-                            workingDir,
-                            outputDir,
-                            buildFilter,
-                            docId,
-                            publishPath)
-                    )
-                    step(
-                        GwBuildSteps.createUploadContentToS3BucketStep(
-                            GwDeployEnvs.INT.env_name,
-                            "${workingDir}/${outputDir}/${GwBuildTypes.HTML5.build_type_name}",
-                            publishPath,
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createPreviewUrlFile(
-                            publishPath,
-                            previewUrlFile
-                        )
-                    )
-                }
-            }*/
         }
 
         // DITA validation builds are triggered by validation listener builds.
@@ -2763,9 +2510,6 @@ object Sources {
         // Yarn validation builds are triggered by regular TeamCity VCS triggers.
         when (gw_build_type) {
             GwBuildTypes.DITA.build_type_name -> {
-                validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
-            }
-            GwBuildTypes.HTML5.build_type_name -> {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
@@ -3702,6 +3446,7 @@ object GwBuildSteps {
         root_map: String,
         working_dir: String,
         output_dir: String,
+        publish_path: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
@@ -3710,34 +3455,60 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         val logFile = "${output_format}_build.log"
         val fullOutputPath = "${output_dir}/${output_format}"
-        var ditaBuildCommand =
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${fullOutputPath}\" -l \"${working_dir}/${logFile}\""
-        var resourcesCopyCommand = ""
+
+        val ditaCommandParams = mutableListOf(
+            Pair("-i", "${working_dir}/${root_map}"),
+        Pair("-o", "${working_dir}/${fullOutputPath}"),
+            Pair("-l", "${working_dir}/${logFile}")
+        )
 
         if (build_filter.isNotEmpty()) {
-            ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
+            ditaCommandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
         }
+
+        var resourcesCopyCommand = ""
 
         when (output_format) {
             // --git-url and --git-branch are required by the DITA OT plugin to generate build data.
             // There are not needed in this build, so they have fake values
             GwDitaOutputFormats.WEBHELP.format_name -> {
-                ditaBuildCommand += " -f webhelp_Guidewire --generate.build.data yes --git.url gitUrl --git.branch gitBranch"
+                ditaCommandParams.add(Pair("-f", "webhelp_Guidewire"))
+                ditaCommandParams.add(Pair("--generate.build.data", "yes"))
+                ditaCommandParams.add(Pair("--git.url", "gitUrl"))
+                ditaCommandParams.add(Pair("--git.branch", "gitBranch"))
                 if (index_redirect) {
-                    ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
+                    ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
+                    ditaCommandParams.add(Pair("--webhelp.publication.toc.links", "all"))
                 }
             }
+            GwDitaOutputFormats.HTML5.format_name -> {
+                ditaCommandParams.add(Pair("-f", "html5-Guidewire"))
+                ditaCommandParams.add(Pair("--generate.build.data", "yes"))
+                ditaCommandParams.add(Pair("--git.url", "gitUrl"))
+                ditaCommandParams.add(Pair("--git.branch", "gitBranch"))
+                ditaCommandParams.add(Pair("--gw-base-url", publish_path))
+            }
             GwDitaOutputFormats.DITA.format_name -> {
-                ditaBuildCommand += " -f gw_dita"
+                ditaCommandParams.add(Pair("-f", "gw_dita"))
                 resourcesCopyCommand =
-                    "&& mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${fullOutputPath}/\"* \"${working_dir}/${normalized_dita_dir}/\""
+                    "mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${fullOutputPath}/\"* \"${working_dir}/${normalized_dita_dir}/\""
             }
             GwDitaOutputFormats.VALIDATE.format_name -> {
                 val tempDir = "tmp/${output_format}"
-                ditaBuildCommand += " -f validate --clean.temp no --temp \"${working_dir}/${tempDir}\""
+                ditaCommandParams.add(Pair("-f", "validate"))
+                ditaCommandParams.add(Pair("--clean.temp", "no"))
+                ditaCommandParams.add(Pair("--temp", "${working_dir}/${tempDir}"))
                 resourcesCopyCommand =
-                    "&& mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
+                    "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
             }
+        }
+
+        val ditaBuildCommand = getCommandString("dita", ditaCommandParams)
+
+        val buildCommand = if (resourcesCopyCommand.isNotEmpty()) {
+            "$ditaBuildCommand && $resourcesCopyCommand"
+        } else {
+            ditaBuildCommand
         }
 
         return ScriptBuildStep {
@@ -3751,7 +3522,7 @@ object GwBuildSteps {
 
                 echo "Building output"
                 export EXIT_CODE=0
-                $ditaBuildCommand $resourcesCopyCommand || EXIT_CODE=${'$'}?
+                $buildCommand || EXIT_CODE=${'$'}?
                 mkdir -p "${working_dir}/${dita_ot_logs_dir}" || EXIT_CODE=${'$'}?
                 cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/" || EXIT_CODE=${'$'}?
                 
@@ -3780,93 +3551,80 @@ object GwBuildSteps {
         return commandStringBuilder.toString()
     }
 
-    fun createBuildHtml5ProjectsStep(
-        root_map: String,
-        working_dir: String,
-        output_dir: String,
-        build_filter: String,
-        doc_id: String,
-        publish_path: String,
-    ): ScriptBuildStep {
-        val commandParams = listOf(
-            Pair("-i", "$working_dir/$root_map"),
-            Pair("-o", "$working_dir/$output_dir"),
-            Pair("-f", "html5-Guidewire"),
-            Pair("--filter", build_filter),
-            Pair("--gw-doc-id", doc_id),
-            Pair("--gw-base-url", publish_path),
-            Pair("--generate.build.data", "yes"))
-
-        val ditaBuildCommand = getCommandString("dita", commandParams)
-
-        return ScriptBuildStep {
-            name = "Build the HTML5 output"
-            id = Helpers.createIdStringFromName(this.name)
-
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                                
-                SECONDS=0
-
-                echo "Building output"
-                $ditaBuildCommand
-                
-                duration=${'$'}SECONDS
-                echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-            """.trimIndent()
-            dockerImage = GwDockerImages.DITA_OT_3_6_1.image_url
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
     fun createBuildDitaProjectForBuildsStep(
         output_format: String,
         root_map: String,
         index_redirect: Boolean,
         working_dir: String,
         output_dir: String,
+        publish_path: String,
         build_filter: String = "",
         doc_id: String = "",
-        gw_products: String = "",
-        gw_platforms: String = "",
-        gw_versions: String = "",
         git_url: String = "",
         git_branch: String = "",
         for_offline_use: Boolean = false,
     ): ScriptBuildStep {
-        var ditaBuildCommand = if (for_offline_use) {
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params no"
-        } else {
-            "dita -i \"${working_dir}/${root_map}\" -o \"${working_dir}/${output_dir}\" --use-doc-portal-params yes --gw-doc-id \"${doc_id}\" --gw-product \"$gw_products\" --gw-platform \"$gw_platforms\" --gw-version \"$gw_versions\" --generate.build.data yes"
-        }
-
-        ditaBuildCommand += " --git.url \"$git_url\" --git.branch \"$git_branch\""
+        val commandParams = mutableListOf(
+            Pair("-i", "${working_dir}/${root_map}"),
+            Pair("-o", "${working_dir}/${output_dir}"),
+        )
 
         if (build_filter.isNotEmpty()) {
-            ditaBuildCommand += " --filter \"${working_dir}/${build_filter}\""
+            commandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
         }
 
         when (output_format) {
             GwDitaOutputFormats.WEBHELP.format_name -> {
-                ditaBuildCommand += if (for_offline_use) " -f webhelp_Guidewire" else " -f webhelp_Guidewire_validate"
+                if (for_offline_use) {
+                    commandParams.add(Pair("--use-doc-portal-params", "no"))
+                    commandParams.add(Pair("-f", "webhelp_Guidewire"))
+                } else {
+                    commandParams.add(Pair("--use-doc-portal-params", "yes"))
+                    commandParams.add(Pair("--gw-doc-id", doc_id))
+                    commandParams.add(Pair("--generate.build.data", "yes"))
+                    commandParams.add(Pair("--git.url", git_url))
+                    commandParams.add(Pair("--git.branch", git_branch))
+                    commandParams.add(Pair("-f", "webhelp_Guidewire_validate"))
+                }
             }
             GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name -> {
-                ditaBuildCommand += " -f wh-pdf --dita.ot.pdf.format pdf5_Guidewire"
+                commandParams.add(Pair("-f", "wh-pdf"))
+                commandParams.add(Pair("--dita.ot.pdf.format", "pdf5_Guidewire"))
+                commandParams.add(Pair("--generate.build.data", "yes"))
+                commandParams.add(Pair("--git.url", git_url))
+                commandParams.add(Pair("--git.branch", git_branch))
             }
             GwDitaOutputFormats.PDF.format_name -> {
-                ditaBuildCommand += " -f pdf_Guidewire_remote"
+                commandParams.add(Pair("-f", "pdf_Guidewire_remote"))
+                commandParams.add(Pair("--git.url", git_url))
+                commandParams.add(Pair("--git.branch", git_branch))
             }
             GwDitaOutputFormats.SINGLEHTML.format_name -> {
-                ditaBuildCommand += " -f singlehtml"
+                commandParams.add(Pair("-f", "singlehtml"))
+            }
+            GwDitaOutputFormats.HTML5.format_name -> {
+                commandParams.add(Pair("--gw-base-url", publish_path))
+                commandParams.add(Pair("--gw-doc-id", doc_id))
+                commandParams.add(Pair("--generate.build.data", "yes"))
+                commandParams.add(Pair("--git.url", git_url))
+                commandParams.add(Pair("--git.branch", git_branch))
+                commandParams.add(Pair("-f", "html5-Guidewire"))
+
             }
         }
-
 
         if (arrayOf(GwDitaOutputFormats.WEBHELP.format_name, GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name).contains(
                 output_format) && index_redirect
         ) {
-            ditaBuildCommand += " --create-index-redirect yes --webhelp.publication.toc.links all"
+            commandParams.add(Pair("--create-index-redirect", "yes"))
+            commandParams.add(Pair("--webhelp.publication.toc.links", "all"))
+        }
+
+        val ditaBuildCommand = getCommandString("dita", commandParams)
+
+        val dockerImageName = when (output_format) {
+            GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
+            else -> GwDockerImages.DITA_OT_LATEST.image_url
         }
 
         return ScriptBuildStep {
@@ -3884,7 +3642,7 @@ object GwBuildSteps {
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
             """.trimIndent()
-            dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
+            dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
     }

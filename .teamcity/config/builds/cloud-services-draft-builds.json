@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "Rules.ditamap",
       "srcId": "rulessrc",
@@ -10,7 +10,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "RulesReleaseNotes.ditamap",
       "srcId": "rulessrc",
@@ -18,7 +18,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "WorksetManager.ditamap",
       "srcId": "worksetmgrdraftsrc",

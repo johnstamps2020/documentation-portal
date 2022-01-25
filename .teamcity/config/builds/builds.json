@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "builds": [
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "root": "GuidewireHub.ditamap",
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
@@ -18,7 +18,7 @@
       "docId": "guidewireidentityfederationhub"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "root": "CloudPlatform.ditamap",
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
@@ -34,7 +34,7 @@
       "docId": "cloudplatformrelease"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "root": "GWCP-ReleaseNotes.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
@@ -50,7 +50,7 @@
       "docId": "guidewirecloudconsolerootinsurerdev"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "root": "guidewire_cloud_platform_guide.ditamap",
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,
@@ -58,7 +58,7 @@
       "docId": "guidewirecloudconsolerootinsurerdevdraft"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "root": "guidewire_cloud_platform_guide.ditamap",
       "filter": "assets/gw-admin.ditaval",
       "indexRedirect": true,
@@ -204,7 +204,7 @@
       ]
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "midipgsrc",
@@ -911,7 +911,7 @@
       "docId": "dxsre1120onpremstaging"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "gchhelpsrc",
@@ -1118,7 +1118,7 @@
       "docId": "selfmanagedpchmmjfhlm"
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguidebanffsrc",
@@ -1126,7 +1126,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnbanffsrc",
@@ -1134,7 +1134,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-gl-9x-1003.ditamap",
       "srcId": "lobglguidebanffsrc",
@@ -1142,7 +1142,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
       "srcId": "lobglsbtrnbanffsrc",
@@ -1150,7 +1150,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-ca-10x.ditamap",
       "srcId": "lobcaguidebanffsrc",
@@ -1158,7 +1158,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
       "srcId": "lobcasbtrnbanffsrc",
@@ -1166,7 +1166,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-crime.ditamap",
       "srcId": "lobcrimeguidebanffsrc",
@@ -1174,7 +1174,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "Crime_SBT_ReleaseNotes.ditamap",
       "srcId": "lobcrimesbtrnbanffsrc",
@@ -1182,7 +1182,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-wc.ditamap",
       "srcId": "lobwcguidebanffsrc",
@@ -1190,7 +1190,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "WC_SBT_ReleaseNotes.ditamap",
       "srcId": "lobwcsbtrnbanffsrc",
@@ -1642,7 +1642,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "cloudiscloudapibf202011src",
@@ -1650,7 +1650,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-ConfigAuth.ditamap",
       "srcId": "cloudiscloudapica202011src",
@@ -1698,7 +1698,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "restapisrc",
@@ -1706,7 +1706,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "restapisrc",
@@ -1714,7 +1714,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV326.ditamap",
       "srcId": "incsp326rnsrc",
@@ -1730,7 +1730,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
       "srcId": "incsp325rnsrc",
@@ -1746,7 +1746,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
       "srcId": "incsp324rnsrc",
@@ -1762,7 +1762,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalReleaseNotesV323.ditamap",
       "srcId": "incsp323rnsrc",
@@ -1778,7 +1778,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PaymentServiceMigration.ditamap",
       "srcId": "inpaymentservicemigrationsrc",
@@ -1786,7 +1786,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20211.ditamap",
       "srcId": "in20211xrndraftsrc",
@@ -1801,7 +1801,7 @@
       ]
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20211.ditamap",
       "srcId": "in20211xstudiorndraftsrc",
@@ -1809,7 +1809,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20211x.ditamap",
       "srcId": "in20211xappdraftsrc",
@@ -1817,7 +1817,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20211x.ditamap",
       "srcId": "in20211xbidraftsrc",
@@ -1825,7 +1825,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerSalesPortalFeatures20211x.ditamap",
       "srcId": "in20211xcsalespdraftsrc",
@@ -1833,7 +1833,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalFeatures20211x.ditamap",
       "srcId": "in20211xcservicepdraftsrc",
@@ -1841,7 +1841,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PredictiveAnalyticsIntegration20211.ditamap",
       "srcId": "in20211xpadraftsrc",
@@ -1849,7 +1849,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "AppReaderIntegrationGuide20211x.ditamap",
       "srcId": "in20211xappreaderintegdraftsrc",
@@ -1857,7 +1857,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20211x.ditamap",
       "srcId": "in20211xbiintegdraftsrc",
@@ -1865,7 +1865,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "Configuration20211x.ditamap",
       "srcId": "in20211xconfigdraftsrc",
@@ -1873,7 +1873,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "CommonFunctionalityConfigurationReference20211x.ditamap",
       "srcId": "in20211xcommonconfigdraftsrc",
@@ -1881,7 +1881,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20211x.ditamap",
       "srcId": "in20211xcservicepconfigdraftsrc",
@@ -1889,7 +1889,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "Studio20211x.ditamap",
       "srcId": "in20211xstudiodraftsrc",
@@ -1897,7 +1897,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ProvisioningPortal20211x.ditamap",
       "srcId": "in20211xprovportaldraftsrc",
@@ -1905,7 +1905,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PortalDevelopment20211x.ditamap",
       "srcId": "in20211xportaldevdraftsrc",
@@ -1913,7 +1913,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ProductAttributeReference20211.ditamap",
       "srcId": "in20211xprodattrefdraftsrc",
@@ -1921,7 +1921,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "UnderwritingConfigurationReference20211x.ditamap",
       "srcId": "in20211xuwconfigdraftsrc",
@@ -1929,7 +1929,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ClaimsConfigurationReference20211x.ditamap",
       "srcId": "in20211xclaimsconfigdraftsrc",
@@ -1937,7 +1937,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20202.ditamap",
       "srcId": "in20202xrndraftsrc",
@@ -1952,7 +1952,7 @@
       ]
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20202.ditamap",
       "srcId": "in20202xstudiorndraftsrc",
@@ -1960,7 +1960,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20202x.ditamap",
       "srcId": "in20202xappdraftsrc",
@@ -1968,7 +1968,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20202x.ditamap",
       "srcId": "in20202xbidraftsrc",
@@ -1976,7 +1976,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerSalesPortalFeatures20202x.ditamap",
       "srcId": "in20202xcsalespdraftsrc",
@@ -1984,7 +1984,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalFeatures20202x.ditamap",
       "srcId": "in20202xcservicepdraftsrc",
@@ -1992,7 +1992,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PredictiveAnalyticsIntegration20202.ditamap",
       "srcId": "in20202xpadraftsrc",
@@ -2000,7 +2000,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "AppReaderIntegrationGuide20202x.ditamap",
       "srcId": "in20202xappreaderintegdraftsrc",
@@ -2008,7 +2008,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20202x.ditamap",
       "srcId": "in20202xbiintegdraftsrc",
@@ -2016,7 +2016,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "Configuration20202x.ditamap",
       "srcId": "in20202xconfigdraftsrc",
@@ -2024,7 +2024,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20202x.ditamap",
       "srcId": "in20202xcservicepconfigdraftsrc",
@@ -2032,7 +2032,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "Studio20202x.ditamap",
       "srcId": "in20202xstudiodraftsrc",
@@ -2040,7 +2040,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ProvisioningPortal20202x.ditamap",
       "srcId": "in20202xprovportaldraftsrc",
@@ -2048,7 +2048,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PortalDevelopment20202x.ditamap",
       "srcId": "in20202xportaldevdraftsrc",
@@ -2056,7 +2056,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ProductAttributeReference20202.ditamap",
       "srcId": "in20202xprodattrefdraftsrc",
@@ -2064,7 +2064,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "UnderwritingProductConfigGuide20202x.ditamap",
       "srcId": "in20202xuwconfigdraftsrc",
@@ -2072,7 +2072,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ClaimsProductConfigGuide20202x.ditamap",
       "srcId": "in20202xclaimsconfigdraftsrc",
@@ -2080,7 +2080,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "UpgradeTools.ditamap",
       "srcId": "inupgradetoolsdraftsrc",
@@ -2088,7 +2088,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "ininstallassistdraftsrc",
@@ -2096,7 +2096,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "DevelopersGuide_Java8.ditamap",
       "srcId": "indevguidejava8draftsrc",
@@ -2104,7 +2104,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft-Guidewire.ditaval",
       "root": "DevelopersGuide_Java11.ditamap",
       "srcId": "indevguidejava11draftsrc",
@@ -2112,7 +2112,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft-External.ditaval",
       "root": "DevelopersGuide_Java11.ditamap",
       "srcId": "indevguidejava11draftsrc",
@@ -2128,7 +2128,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNowReleaseNotes20201.ditamap",
       "srcId": "in20201xrndraftsrc",
@@ -2143,7 +2143,7 @@
       ]
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "INStudioReleaseNotes20201.ditamap",
       "srcId": "in20201xstudiorndraftsrc",
@@ -2151,7 +2151,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20201x.ditamap",
       "srcId": "in20201xappdraftsrc",
@@ -2159,7 +2159,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20201x.ditamap",
       "srcId": "in20201xbidraftsrc",
@@ -2167,7 +2167,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalFeatures20201x.ditamap",
       "srcId": "in20201xcservicepdraftsrc",
@@ -2175,7 +2175,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "AppReaderIntegrationGuide20201x.ditamap",
       "srcId": "in20201xappreaderintegdraftsrc",
@@ -2183,7 +2183,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20201x.ditamap",
       "srcId": "in20201xbiintegdraftsrc",
@@ -2191,7 +2191,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "GuidewirePaymentsAPIIntegrationGuide20201x.ditamap",
       "srcId": "in20201xpaymentapiintegdraftsrc",
@@ -2199,7 +2199,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PredictiveAnalyticsIntegration20201.ditamap",
       "srcId": "in20201xpadraftsrc",
@@ -2207,7 +2207,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "Configuration20201x.ditamap",
       "srcId": "in20201xconfigdraftsrc",
@@ -2215,7 +2215,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "StudioConfigurationGuide20201x.ditamap",
       "srcId": "in20201xstudiodraftsrc",
@@ -2223,7 +2223,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "PortalDevelopment20201x.ditamap",
       "srcId": "in20201xportaldevdraftsrc",
@@ -2231,7 +2231,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "UnderwritingProductConfigGuide20201x.ditamap",
       "srcId": "in20201xuwconfigdraftsrc",
@@ -2540,7 +2540,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ExcelDesignedRating23.ditamap",
       "srcId": "inexcelrating23draftsrc",
@@ -2548,7 +2548,7 @@
       "indexRedirect": true
     },
     {
-      "buildType": "html5",
+      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ExcelDesignedRating30.ditamap",
       "srcId": "inexcelrating30draftsrc",
