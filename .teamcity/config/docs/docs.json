@@ -211,7 +211,7 @@
     {
       "id": "midipg",
       "title": "InsuranceSuite Package for Germany",
-      "url": "cloud/ipg/latest",
+      "url": "self-managed/ipg/latest",
       "metadata": {
         "product": ["Guidewire InsuranceSuite Package for Germany"],
         "platform": ["Cloud"],
