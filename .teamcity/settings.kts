@@ -613,7 +613,8 @@ object Docs {
                         index_redirect,
                         working_dir,
                         localOutputDir,
-                        build_filter,
+                        publish_path= "",
+                        build_filter = build_filter,
                         git_url = git_url,
                         git_branch = git_branch,
                         for_offline_use = true
