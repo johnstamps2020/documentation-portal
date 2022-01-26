@@ -314,6 +314,21 @@
       "public": false
     },
     {
+      "id": "guidewirecloudconsolerootearlyaccess",
+      "title": "Cloud Console Root Doc Early Access",
+      "url": "cloud/gcc-guide/early-access/latest",
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "public": false
+    },
+    {
       "id": "selfmanagedbcupgradeguide1020",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1020",

@@ -67,6 +67,14 @@
     },
     {
       "buildType": "dita",
+      "root": "guidewire_cloud_platform_guide.ditamap",
+      "filter": "assets/early-access.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestsrc",
+      "docId": "guidewirecloudconsolerootearlyaccess"
+    },
+    {
+      "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
