@@ -613,7 +613,7 @@ object Docs {
                         index_redirect,
                         working_dir,
                         localOutputDir,
-                        publish_path= "",
+                        publish_path = "",
                         build_filter = build_filter,
                         git_url = git_url,
                         git_branch = git_branch,
@@ -3459,8 +3459,9 @@ object GwBuildSteps {
 
         val ditaCommandParams = mutableListOf(
             Pair("-i", "${working_dir}/${root_map}"),
-        Pair("-o", "${working_dir}/${fullOutputPath}"),
-            Pair("-l", "${working_dir}/${logFile}")
+            Pair("-o", "${working_dir}/${fullOutputPath}"),
+            Pair("-l", "${working_dir}/${logFile}"),
+            Pair("--processing-mode", "strict")
         )
 
         if (build_filter.isNotEmpty()) {
