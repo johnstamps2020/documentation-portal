@@ -33,7 +33,8 @@
     "serve-favicon": "^2.5.0",
     "sinon": "^9.0.0",
     "supertest": "^4.0.2",
-    "tap": "^14.10.6"
+    "tap": "^14.10.6",
+    "winston": "^3.4.0"
   },
   "devDependencies": {
     "css-loader": "^6.5.1",

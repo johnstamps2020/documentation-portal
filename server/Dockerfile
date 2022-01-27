@@ -8,6 +8,7 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+COPY ./datadog-agent-conf.yaml /etc/conf.d/nodejs.d/conf.yaml
 
 EXPOSE 8081
 ARG tag_version

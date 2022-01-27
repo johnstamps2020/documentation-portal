@@ -26,6 +26,11 @@ app.use(function(req, res, next) {
   }
 });
 
+const loggerControllerLogger = require('./controllers/loggerController').logger;
+// Example logs
+loggerControllerLogger.log('info', 'Hello simple log!');
+loggerControllerLogger.info('Hello log with metas', { color: 'blue' });
+
 const options = {
   etag: true,
   maxAge: 3600000,
