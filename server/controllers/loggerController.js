@@ -1,13 +1,36 @@
-const { createLogger, format, transports } = require('winston');
+const winston = require('winston');
 const path = require('path');
 
-const logFilePath = path.resolve(`${__dirname}/../logs/datadog.log`);
+const loggerOptions = {
+  file: {
+    level: 'warn',
+    filename: path.resolve(`${__dirname}/../logs/datadog.log`),
+    handleExceptions: true,
+    json: true,
+    maxsize: 5242880, //5MB
+    maxFiles: 5,
+    colorize: false,
+  },
+  console: {
+    level: 'warn',
+    handleExceptions: true,
+    json: false,
+    colorize: true,
+  },
+};
 
-const logger = createLogger({
-  level: 'info',
+const winstonLogger = winston.createLogger({
   exitOnError: false,
-  format: format.json(),
-  transports: [new transports.File({ filename: logFilePath })],
+  transports: [
+    new winston.transports.File(loggerOptions.file),
+    new winston.transports.Console(loggerOptions.console),
+  ],
 });
 
-module.exports = { logger };
+winstonLogger.stream = {
+  write: function(message, encoding) {
+    winstonLogger.info(message);
+  },
+};
+
+module.exports = winstonLogger;

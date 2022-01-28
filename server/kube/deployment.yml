@@ -116,21 +116,16 @@ spec:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
             - name: DD_HTTP_CLIENT_TAG_QUERY_STRING
               value: "true"
-            # DD_SERVICE_MAPPING - Remap services datadog identified to an user-friendly name.
             - name: DD_SERVICE_MAPPING
-              value: "apache:{{ENV_NAME}}-cc-jdbc"
-            # DD_LOGS_INJECTION - Injects trace & span Id
+              value: "nodejs:atmos-${DEPLOY_ENV}-docportal-app"
             - name: DD_LOGS_INJECTION
               value: "true"
-            # DD_PROFILING_ENABLED - Required
             - name: DD_PROFILING_ENABLED
               value: "true"
-            # DD_TAGS - Add tags to profile, span, and JMX metrics.
             - name: DD_TAGS
-              value: layer:middleware, team:bolinas
+              value: layer:webapp, team:doctools
             - name: DD_TRACE_ANALYTICS_ENABLED
               value: "true"
-            # DD_AGENT_HOST - Datadog node agent listens on node port. Tracing data have to use node IP to connected to it.
             - name: DD_AGENT_HOST
               valueFrom:
                 fieldRef:

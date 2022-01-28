@@ -1,9 +1,12 @@
 process.on('unhandledRejection', function(reason, p) {
-  console.log(reason, p);
+  loggerController.info(reason, p);
   process.exit(1);
 });
 
 require('dotenv').config();
+const tracer = require('dd-trace').init();
+const morgan = require('morgan');
+const loggerController = require('./controllers/loggerController');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -16,6 +19,7 @@ const httpContext = require('express-http-context');
 const port = process.env.PORT || 8081;
 const app = express();
 
+app.use(morgan('combined', { stream: loggerController.stream }));
 app.use(function(req, res, next) {
   const hostnamesToReplace = ['portal2.guidewire.com'];
   if (hostnamesToReplace.includes(req.hostname)) {
@@ -25,11 +29,6 @@ app.use(function(req, res, next) {
     next();
   }
 });
-
-const loggerControllerLogger = require('./controllers/loggerController').logger;
-// Example logs
-loggerControllerLogger.log('info', 'Hello simple log!');
-loggerControllerLogger.info('Hello log with metas', { color: 'blue' });
 
 const options = {
   etag: true,
