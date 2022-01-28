@@ -1,9 +1,10 @@
-const winston = require('winston');
+const { createLogger, format, config, transports } = require('winston');
+const { combine, timestamp, label, printf, json, transform } = format;
 const path = require('path');
 
 const loggerOptions = {
   file: {
-    level: 'warn',
+    level: 'info',
     filename: path.resolve(`${__dirname}/../logs/datadog.log`),
     handleExceptions: true,
     json: true,
@@ -12,18 +13,30 @@ const loggerOptions = {
     colorize: false,
   },
   console: {
-    level: 'warn',
+    level: 'info',
     handleExceptions: true,
     json: false,
     colorize: true,
   },
 };
 
-const winstonLogger = winston.createLogger({
+const myFormatter = format(info => {
+  info.contextMap = {
+    'X-B3-ParentSpanId': 'TBD',
+    'X-B3-SpanId': 'TBD',
+    'X-B3-TraceId': 'TBD',
+    'X-B3-Sampled': 'false',
+  };
+  return info;
+});
+
+const winstonLogger = createLogger({
+  levels: config.syslog.levels,
+  format: combine(timestamp(), myFormatter(), json()),
   exitOnError: false,
   transports: [
-    new winston.transports.File(loggerOptions.file),
-    new winston.transports.Console(loggerOptions.console),
+    new transports.File(loggerOptions.file),
+    new transports.Console(loggerOptions.console),
   ],
 });
 

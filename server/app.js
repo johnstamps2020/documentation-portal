@@ -19,7 +19,7 @@ const httpContext = require('express-http-context');
 const port = process.env.PORT || 8081;
 const app = express();
 
-app.use(morgan('combined', { stream: loggerController.stream }));
+app.use(morgan(':method :url', { stream: loggerController.stream }));
 app.use(function(req, res, next) {
   const hostnamesToReplace = ['portal2.guidewire.com'];
   if (hostnamesToReplace.includes(req.hostname)) {
