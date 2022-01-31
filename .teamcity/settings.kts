@@ -722,7 +722,10 @@ object Docs {
                     }
                     else -> {
                         triggers.vcs {
-                            triggerRules = "+:$working_dir/**"
+                            triggerRules = """
+                                +:$working_dir/**
+                                -:user=doctools:**
+                            """.trimIndent()
                         }
                     }
                 }
@@ -2521,7 +2524,10 @@ object Sources {
             }
             GwBuildTypes.YARN.build_type_name -> {
                 validationBuildType.triggers.vcs {
-                    triggerRules = "+:$workingDir/**"
+                    triggerRules = """
+                        +:$workingDir/**
+                        -:user=doctools:**
+                    """.trimIndent()
                 }
             }
         }
