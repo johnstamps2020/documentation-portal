@@ -2520,7 +2520,9 @@ object Sources {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
-                validationBuildType.triggers.vcs {}
+                validationBuildType.triggers.vcs {
+                    triggerRules = "+:$workingDir/**"
+                }
             }
         }
 
