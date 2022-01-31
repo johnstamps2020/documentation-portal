@@ -2838,7 +2838,8 @@ object Helpers {
             }
             true -> {
                 return build_config.getString("workingDir")
-            }}
+            }
+        }
     }
 
     fun convertJsonArrayWithStringsToList(json_array: JSONArray): List<String> {
@@ -3872,7 +3873,11 @@ object GwBuildSteps {
         schematron_reports_dir: String,
         doc_info_file: String,
     ): ScriptBuildStep {
-        val docInfoFileFullPath = "${working_dir}/${doc_info_file}"
+        val workingDirAbsPath = when (working_dir) {
+            "." -> "%teamcity.build.checkoutDir%"
+            else -> "%teamcity.build.checkoutDir%/${working_dir}"
+        }
+        val docInfoFileFullPath = "${workingDirAbsPath}/${doc_info_file}"
         val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.env_name)
         return ScriptBuildStep {
             name = "Run the doc validator"
@@ -3884,11 +3889,11 @@ object GwBuildSteps {
                 
                 export ELASTICSEARCH_URLS="$elasticsearchUrl"
                 
-                doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" dita \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" images \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" files \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
+                doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${workingDirAbsPath}/${normalized_dita_dir}" dita \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${workingDirAbsPath}/${normalized_dita_dir}" images \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${workingDirAbsPath}/${normalized_dita_dir}" files \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${workingDirAbsPath}/${dita_ot_logs_dir}" dita-ot-logs \
+                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${workingDirAbsPath}/${schematron_reports_dir}" schematron-reports
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
