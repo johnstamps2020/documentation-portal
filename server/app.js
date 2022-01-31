@@ -15,10 +15,25 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const httpContext = require('express-http-context');
-
 const port = process.env.PORT || 8081;
-const app = express();
 
+const app = express();
+app.use((req, res, next) => {
+  const span = tracer
+    .scope()
+    .active()
+    .context();
+  const { _parentId, _spanId, _traceId } = span;
+  const parentIdString = Buffer.from(_parentId._buffer).readBigUInt64BE();
+  const spanIdString = Buffer.from(_spanId._buffer)
+    .readBigUInt64BE()
+    .toString();
+  const traceIdString = Buffer.from(_traceId._buffer)
+    .readBigUInt64BE()
+    .toString();
+  console.log(span);
+  next();
+});
 app.use(morgan(':method :url', { stream: loggerController.stream }));
 app.use(function(req, res, next) {
   const hostnamesToReplace = ['portal2.guidewire.com'];
