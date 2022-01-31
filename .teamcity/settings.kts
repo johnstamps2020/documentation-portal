@@ -2074,7 +2074,11 @@ object Exports {
                     #!/bin/bash
                     sed -i "s/ORP-XDOCS-WDB03/%EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
                     chmod 777 runExport.sh
-                    for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR%; done
+                    export EXIT_CODE=0                    
+                    
+                    for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR% || EXIT_CODE=${'$'}?; done
+                    
+                    exit ${'$'}EXIT_CODE
                     """.trimIndent()
             }
             script {
