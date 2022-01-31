@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "selfmanagedbcxufesxuwl",
+      "id": "bc10xdraft",
       "title": "BillingCenter",
       "url": "self-managed/bc/10x",
       "metadata": {
@@ -16,7 +16,7 @@
       "public": false
     },
     {
-      "id": "selfmanagedccxbvqtoakg",
+      "id": "cc10xdraft",
       "title": "ClaimCenter",
       "url": "self-managed/cc/10x",
       "metadata": {
@@ -30,7 +30,7 @@
       "public": false
     },
     {
-      "id": "selfmanagedpcxrwjcdamu",
+      "id": "pc10xdraft",
       "title": "PolicyCenter",
       "url": "self-managed/pc/10x",
       "metadata": {
