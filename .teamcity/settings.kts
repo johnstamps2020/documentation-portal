@@ -722,7 +722,7 @@ object Docs {
                     }
                     else -> {
                         triggers.vcs {
-                            triggerRules = Helpers.getYarnVcsTriggerRules(working_dir)
+                            triggerRules = Helpers.getYarnVcsTriggerRules(src_id, working_dir)
                         }
                     }
                 }
@@ -2521,7 +2521,7 @@ object Sources {
             }
             GwBuildTypes.YARN.build_type_name -> {
                 validationBuildType.triggers.vcs {
-                    triggerRules = Helpers.getYarnVcsTriggerRules(workingDir)
+                    triggerRules = Helpers.getYarnVcsTriggerRules(src_id, workingDir)
                 }
             }
         }
@@ -2957,9 +2957,9 @@ object Helpers {
         return Pair(getTargetUrl(deploy_env), getElasticsearchUrl(deploy_env))
     }
 
-    fun getYarnVcsTriggerRules(workingDir: String): String {
+    fun getYarnVcsTriggerRules(srcId: String, workingDir: String): String {
         return """
-            +:$workingDir/**
+            +:root=$srcId:$workingDir/**
             -:user=doctools:**
         """.trimIndent()
     }
