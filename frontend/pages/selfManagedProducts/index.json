@@ -14,7 +14,7 @@
         },
         {
           "label": "BillingCenter",
-          "id": "selfmanagedbcxufesxuwl"
+          "id": "bc10xdraft"
         },
         {
           "label": "ClaimCenter",
@@ -22,7 +22,7 @@
         },
         {
           "label": "ClaimCenter",
-          "id": "selfmanagedccxbvqtoakg"
+          "id": "cc10xdraft"
         },
         {
           "label": "PolicyCenter",
@@ -30,7 +30,7 @@
         },
         {
           "label": "PolicyCenter",
-          "id": "selfmanagedpcxrwjcdamu"
+          "id": "pc10xdraft"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",

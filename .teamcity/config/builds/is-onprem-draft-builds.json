@@ -6,7 +6,7 @@
       "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedbcxufesxuwl",
+      "docId": "bc10xdraft",
       "resources": [
         {
           "targetFolder": "extras/ReleaseNotes-files/bc/10.x",
@@ -25,7 +25,7 @@
       "filter": "IS-CC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedccxbvqtoakg",
+      "docId": "cc10xdraft",
       "resources": [
         {
           "targetFolder": "extras/ReleaseNotes-files/cc/10.x",
@@ -44,7 +44,7 @@
       "filter": "IS-PC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
-      "docId": "selfmanagedpcxrwjcdamu",
+      "docId": "pc10xdraft",
       "resources": [
         {
           "targetFolder": "extras/ReleaseNotes-files/pc/10.x",
