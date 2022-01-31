@@ -741,14 +741,7 @@ object Docs {
         val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
         val docEnvironmentsList = Helpers.convertJsonArrayWithStringsToList(docEnvironments)
-        val workingDir = when (build_config.has("workingDir")) {
-            false -> {
-                "%teamcity.build.checkoutDir%"
-            }
-            true -> {
-                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
-            }
-        }
+        val workingDir = Helpers.getWorkingDir(build_config)
         val outputDir = when (build_config.has("outputPath")) {
             true -> build_config.getString("outputPath")
             false -> {
@@ -2297,14 +2290,7 @@ object Sources {
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
 
-        val workingDir = when (build_config.has("workingDir")) {
-            false -> {
-                "%teamcity.build.checkoutDir%"
-            }
-            true -> {
-                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
-            }
-        }
+        val workingDir = Helpers.getWorkingDir(build_config)
         val outputDir = when (build_config.has("outputPath")) {
             true -> build_config.getString("outputPath")
             false -> {
@@ -2841,6 +2827,16 @@ object Apps {
 }
 
 object Helpers {
+    fun getWorkingDir(build_config: JSONObject): String {
+        when (build_config.has("workingDir")) {
+            false -> {
+                return "."
+            }
+            true -> {
+                return build_config.getString("workingDir")
+            }}
+    }
+
     fun convertJsonArrayWithStringsToList(json_array: JSONArray): List<String> {
         if (json_array.all { it is String }) {
             return json_array.joinToString(",").split(",")
