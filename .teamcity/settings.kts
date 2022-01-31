@@ -721,7 +721,9 @@ object Docs {
                         }
                     }
                     else -> {
-                        triggers.vcs {}
+                        triggers.vcs {
+                            triggerRules = "+:$working_dir/**"
+                        }
                     }
                 }
             }
