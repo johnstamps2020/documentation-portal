@@ -1,4 +1,5 @@
 import { createAvatarButton } from './modules/avatar.js';
+import { addTranslatedDocs } from './modules/translatedDocs.js';
 
 async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
@@ -30,6 +31,16 @@ async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
       async () => setLogInButton(attemptNumber, retryTimeout),
       retryTimeout
     );
+  }
+}
+
+async function setTranslatedDocsButton() {
+  try {
+    const response = await fetch('/translatedDocs');
+    const responseJson = await response.json();
+    return addTranslatedDocs(responseJson);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -142,6 +153,7 @@ function setSearchFilterCSS() {
 window.onload = function() {
   // markDocsAsNotPrivate();
   setLogInButton();
+  setTranslatedDocsButton();
   selectToggleButton();
   addReleaseBadge();
   setSearchFilterCSS();
