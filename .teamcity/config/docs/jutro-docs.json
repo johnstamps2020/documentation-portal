@@ -235,7 +235,23 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.1 LTS"],
+        "version": ["6.5.1"],
+        "subject": ["Best practices"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "jutro652",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/6.5.2",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.2 LTS"],
         "subject": ["Best practices"],
         "release": ["Dobson"]
       },
@@ -522,7 +538,23 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.1 LTS"],
+        "version": ["6.5.1"],
+        "subject": ["Development"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storybook652",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/6.5.2",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.2 LTS"],
         "subject": ["Development"],
         "release": ["Dobson"]
       },
@@ -553,7 +585,23 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.1 LTS"],
+        "version": ["6.5.1"],
+        "subject": ["Development"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "storyboobizpatterns652",
+      "title": "Jutro Storybook Business Patterns",
+      "url": "jutro/storybook-business-patterns/6.5.2",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.2 LTS"],
         "subject": ["Development"],
         "release": ["Dobson"]
       },
@@ -569,7 +617,23 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.1 LTS"],
+        "version": ["6.5.1"],
+        "subject": ["Development"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "storyboobizpatterns652zip",
+      "title": "Jutro Storybook Business Patterns Zip",
+      "url": "jutro/storybook-business-patterns-download/6.5.2",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.2 LTS"],
         "subject": ["Development"],
         "release": ["Dobson"]
       },
@@ -585,7 +649,23 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["6.5.1 LTS"],
+        "version": ["6.5.1"],
+        "subject": ["Development"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false
+    },
+    {
+      "id": "jutroapptemplatesampleapp652zip",
+      "title": "Jutro App Template Sample App Zip",
+      "url": "jutro/app-template-sampleapp-download/6.5.2",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["6.5.2 LTS"],
         "subject": ["Development"],
         "release": ["Dobson"]
       },
