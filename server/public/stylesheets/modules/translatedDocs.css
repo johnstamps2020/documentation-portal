@@ -1,6 +1,6 @@
 #translatedDocs {
   --clr-GW-WHITE: #fafafa;
-  margin-left: auto;
+  margin: auto;
 }
 
 #translatedDocsButton {
@@ -33,16 +33,12 @@
   border: 1px solid lightgray;
 }
 
-.translatedDocsMenuDivider {
-  width: 100%;
-  border-bottom: 1px solid var(--clr-GW-HEADER-BORDER);
-}
-
 .translatedDocsMenuActions {
   padding: 8px 6px;
+  line-height: 1.5rem;
 }
 
 #translatedDocsContainer {
   display: flex;
-  width: 70px;
+  width: 25px;
 }

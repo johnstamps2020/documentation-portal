@@ -90,7 +90,7 @@ function getTranslatedPages() {
   return fileContentsJson.items.map(o => {
     return {
       label: o.label,
-      page: o.page,
+      pageUrl: `/l10n/${o.page}`,
     };
   });
 }

@@ -14,20 +14,14 @@ function closeTranslatedDocsMenu(event) {
   }
 }
 
-export function createTranslatedDocsButton(availableTranslatedPages) {
-  const button = document.createElement('button');
-  button.setAttribute('id', 'translatedDocsButton');
-  button.setAttribute('aria-label', 'translated documentation');
-  button.addEventListener('click', showTranslatedDocsMenu);
-  window.addEventListener('click', closeTranslatedDocsMenu);
-
+export function createTranslatedDocs(availableTranslatedPages) {
   const translatedDocsMenuActions = document.createElement('div');
   translatedDocsMenuActions.setAttribute('class', 'translatedDocsMenuActions');
   availableTranslatedPages.forEach(p => {
     const translatedPage = document.createElement('div');
     translatedPage.setAttribute('class', 'translatedPage');
     const translatedPageLink = document.createElement('a');
-    translatedPageLink.setAttribute('href', `/l10n/${p.page}`);
+    translatedPageLink.setAttribute('href', p.pageUrl);
     translatedPageLink.innerHTML = p.label;
     translatedPage.appendChild(translatedPageLink);
     translatedDocsMenuActions.appendChild(translatedPage);
@@ -37,29 +31,19 @@ export function createTranslatedDocsButton(availableTranslatedPages) {
   translatedDocsMenu.setAttribute('class', 'translatedDocsMenu');
   translatedDocsMenu.setAttribute('id', 'translatedDocsMenu');
   translatedDocsMenu.appendChild(translatedDocsMenuActions);
-  button.appendChild(translatedDocsMenu);
+
+  const translatedDocsButton = document.createElement('button');
+  translatedDocsButton.setAttribute('id', 'translatedDocsButton');
+  translatedDocsButton.setAttribute('aria-label', 'translated documentation');
+  translatedDocsButton.addEventListener('click', showTranslatedDocsMenu);
+  window.addEventListener('click', closeTranslatedDocsMenu);
+  translatedDocsButton.appendChild(translatedDocsMenu);
 
   const translatedDocs = document.createElement('div');
   translatedDocs.setAttribute('id', 'translatedDocs');
-  translatedDocs.appendChild(button);
-  return translatedDocs;
-}
+  translatedDocs.appendChild(translatedDocsButton);
 
-export function addTranslatedDocs(availableTranslatedPages) {
-  try {
-    const translatedDocsButtonWrapper = document.createElement('div');
-    translatedDocsButtonWrapper.setAttribute(
-      'class',
-      'translatedDocsButtonWrapper'
-    );
-    const translatedDocsButton = createTranslatedDocsButton(
-      availableTranslatedPages
-    );
-    translatedDocsButtonWrapper.appendChild(translatedDocsButton);
-    document
-      .getElementById('translatedDocsContainer')
-      .appendChild(translatedDocsButtonWrapper);
-  } catch (error) {
-    console.log(error);
-  }
+  document
+    .getElementById('translatedDocsContainer')
+    .appendChild(translatedDocs);
 }

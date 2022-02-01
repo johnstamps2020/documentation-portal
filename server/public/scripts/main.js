@@ -1,5 +1,5 @@
 import { createAvatarButton } from './modules/avatar.js';
-import { addTranslatedDocs } from './modules/translatedDocs.js';
+import { createTranslatedDocs } from './modules/translatedDocs.js';
 
 async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
@@ -38,7 +38,7 @@ async function setTranslatedDocsButton() {
   try {
     const response = await fetch('/translatedDocs');
     const responseJson = await response.json();
-    return addTranslatedDocs(responseJson);
+    return createTranslatedDocs(responseJson);
   } catch (error) {
     console.log(error);
   }
