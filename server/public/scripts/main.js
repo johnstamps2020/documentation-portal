@@ -1,5 +1,6 @@
 import { createAvatarButton } from './modules/avatar.js';
 import { createTranslatedDocs } from './modules/translatedDocs.js';
+import { createExternalSites } from './modules/externalSites.js';
 
 async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
   const retryAttempts = 5;
@@ -154,6 +155,7 @@ window.onload = function() {
   // markDocsAsNotPrivate();
   setLogInButton();
   setTranslatedDocsButton();
+  createExternalSites();
   selectToggleButton();
   addReleaseBadge();
   setSearchFilterCSS();

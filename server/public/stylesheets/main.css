@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 @import 'modules/avatar.css';
 @import 'modules/translatedDocs.css';
+@import 'modules/externalSites.css';
 @import 'modules/searchBox.css';
 @import 'modules/highlight.css';
 
@@ -81,7 +82,7 @@ header.header-search {
 
 #headerRight {
   flex: 1;
-  display: flex;
+  display: inline-flex;
   justify-content: flex-end;
   align-items: center;
 }
@@ -902,124 +903,6 @@ main.support h2 {
 
 .dropdownOption:hover {
   background-color: var(--clr-GW-BLUE-LIGHTEST);
-}
-
-/* External site navigation */
-
-.externalSitesMenu {
-  width: auto;
-  position: relative;
-  padding: 3px 40px;
-}
-
-.externalSitesItemWrapper {
-  border: none;
-  background-color: transparent;
-  display: flex;
-  cursor: pointer;
-}
-
-.externalSitesItemWrapper svg {
-  fill: hsl(0, 0%, 100%);
-}
-
-.externalSitesItemWrapper:hover svg,
-.externalSitesMenu:focus-within svg {
-  fill: var(--clr-GW-BLUE-LIGHTER-HOVER);
-}
-
-@supports (-webkit-touch-callout: none) {
-  .externalSitesMenu {
-    margin-bottom: 70px;
-  }
-}
-
-.externalSitesMenu:focus-within .externalSitesSubNavigation,
-.externalSitesItemWrapper:hover .externalSitesSubNavigation {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0%);
-}
-
-.externalSitesSubNavigation {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  /* min-width: 200px; */
-  display: flex;
-  flex-direction: column;
-  top: 25px;
-  right: 40px;
-  padding: 44px 20px 20px 20px;
-  background: linear-gradient(
-    180deg,
-    transparent 23px,
-    var(--clr-GW-WHITE) 23px 100%
-  );
-  border-radius: 4px;
-  list-style: none;
-  box-shadow: var(--bs-GW-HEADER-FOOTER);
-  cursor: default;
-  transform: translateY(-100px);
-  transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
-}
-
-.externalSitesHasSubmenu {
-  margin-left: 0;
-  margin-top: 0;
-  list-style: none;
-  text-align: left;
-}
-
-.externalSitesFirstLevelLink {
-  color: var(--clr-GW-BLACKISH);
-  letter-spacing: -0.43px;
-  font-size: 1rem;
-  text-decoration: none;
-  height: 54px;
-}
-
-.externalSitesSecondLevelLink {
-  color: var(--clr-GW-BLUE);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.28px;
-  margin-bottom: 5px !important;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.externalSitesThirdLevelLink {
-  color: var(--clr-GW-BLACK);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: -0.22px;
-  margin-bottom: 5px;
-  padding-left: 8px;
-  text-decoration: none;
-}
-
-.externalSitesThirdLevelLink:before {
-  content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApLS0+PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIuNCAxOC43IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMi40IDE4LjciIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIGZpbGw9IiMxZWI3ZGYiIHBvaW50cz0iMTIuNCw5LjMgOS4zLDEyLjQgOS4zLDEyLjQgMy4xLDE4LjcgMCwxNS42IDYuMiw5LjMgMCwzLjEgMy4xLDAgIi8+PC9zdmc+);
-  width: 8px;
-  display: inline-block;
-  position: relative;
-  left: -8px;
-  top: 1px;
-  transition: left 0.1s ease;
-}
-
-.externalSitesThirdLevelLink:hover:before {
-  left: -3px;
-}
-
-.externalSitesMainItem {
-  color: var(--clr-GW-BLUE);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.43px;
-  line-height: 1.6875;
-  white-space: nowrap;
 }
 
 .expandableSection {

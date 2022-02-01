@@ -31,6 +31,7 @@
   box-shadow: var(--GW-BOX-SHADOW-DIAGONAL-3);
   cursor: default;
   border: 1px solid lightgray;
+  width: max-content;
 }
 
 .translatedDocsMenuActions {
@@ -40,5 +41,6 @@
 
 #translatedDocsContainer {
   display: flex;
-  width: 25px;
+  width: 30px;
+  margin-right: 16px;
 }

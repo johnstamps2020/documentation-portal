@@ -86,7 +86,7 @@
 
 #loginContainer {
   display: flex;
-  width: 70px;
+  width: 30px;
 }
 
 #loginButton.invisible {
