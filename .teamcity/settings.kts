@@ -722,7 +722,7 @@ object Docs {
                     }
                     else -> {
                         triggers.vcs {
-                            triggerRules = Helpers.getYarnVcsTriggerRules(working_dir)
+                            triggerRules = Helpers.getNonDitaTriggerRules(working_dir)
                         }
                     }
                 }
@@ -2507,7 +2507,7 @@ object Sources {
             }
             GwBuildTypes.YARN.build_type_name -> {
                 validationBuildType.triggers.vcs {
-                    triggerRules = Helpers.getYarnVcsTriggerRules(workingDir)
+                    triggerRules = Helpers.getNonDitaTriggerRules(workingDir)
                 }
             }
         }
@@ -2954,11 +2954,21 @@ object Helpers {
         return Pair(getTargetUrl(deploy_env), getElasticsearchUrl(deploy_env))
     }
 
-    fun getYarnVcsTriggerRules(workingDir: String): String {
-        return """
-            +:$workingDir/**
-            -:user=doctools:**
-        """.trimIndent()
+    fun getNonDitaTriggerRules(workingDir: String): String {
+
+        return when(workingDir) {
+            "%teamcity.build.checkoutDir%" -> {
+                """
+                    -:user=doctools:**
+                """.trimIndent()
+            }
+            else -> {
+                """
+                    +:${workingDir.replace("%teamcity.build.checkoutDir%/", "")}/**
+                    -:user=doctools:**
+                """.trimIndent()
+            }
+        }
     }
 
 }
