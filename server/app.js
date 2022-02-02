@@ -82,7 +82,6 @@ const unauthorizedRouter = require('./routes/unauthorized');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
 const userRouter = require('./routes/user');
-const translatedDocsRouter = require('./routes/translated-docs');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
@@ -97,7 +96,6 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
-app.use('/support', supportRouter);
 app.use('/gw-login', gwLoginRouter);
 app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
@@ -142,11 +140,11 @@ app.use('/unauthorized', unauthorizedRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
-app.use('/translatedDocs', translatedDocsRouter);
 app.use('/safeConfig', configRouter);
 app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
+app.use('/support', supportRouter);
 
 const portal2ProxyOptions = {
   target: `${process.env.PORTAL2_S3_URL}`,

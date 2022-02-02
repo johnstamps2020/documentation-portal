@@ -11,11 +11,7 @@
   width: 28px;
   cursor: pointer;
   z-index: 10;
-  display: inherit;
-}
-
-#guidewireGlossaryButton svg {
-  fill: white;
+  display: block;
 }
 
 #guidewireGlossaryContainer {

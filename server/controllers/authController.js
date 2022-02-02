@@ -1,7 +1,8 @@
 require('dotenv').config();
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
-const { isPublicDoc } = require('../controllers/configController');
+const { isPublicDoc } = require('./configController');
+const { addCommonDataToSessionLocals } = require('./localsController');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
@@ -107,7 +108,7 @@ const majorOpenRoutes = [
   '/userInformation',
   '/safeConfig',
   '/search',
-  '/developerResources',
+  '/apiReferences',
   '/recommendations',
 ];
 
@@ -160,6 +161,7 @@ const authGateway = async (req, res, next) => {
     const requestIsAuthenticated =
       authenticationIsDisabled || loggedInOrHasValidToken;
     req.session.requestIsAuthenticated = requestIsAuthenticated;
+    addCommonDataToSessionLocals(req, res);
     const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
 
     if (requestIsAuthenticated) {

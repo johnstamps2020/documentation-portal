@@ -1,0 +1,113 @@
+<div id="headerButtons">
+    <% const loginButton = typeof showLoginButton !== 'undefined' ? showLoginButton : true %>
+    <% const localUserInfo = typeof userInfo !== 'undefined' ? userInfo : {isLoggedIn: false} %>
+    <button id="externalSitesButton" aria-label="external sites">
+        <div class="externalSitesMenu" id="externalSitesMenu">
+            <div class="externalSitesHeader">Guidewire Sites</div>
+            <hr class="externalSitesDivider">
+            <div class="externalSitesMenuActions">
+                <%
+                const availableExternalSites = [
+                    {
+                        label: 'Customer Community',
+                        url: 'https://community.guidewire.com/s/login',
+                    },
+                    {
+                        label: 'Partner Portal',
+                        url: 'https://partner.guidewire.com/s/login',
+                    },
+                    {
+                        label: 'Developer',
+                        url: 'https://developer.guidewire.com',
+                    },
+                    {
+                        label: 'Education',
+                        url: 'https://ilearning.seertechsolutions.com/lmt/xlr8login.login?site=guidewire',
+                    },
+                    {
+                        label: 'Guidewire Website',
+                        url: 'https://www.guidewire.com',
+                    },
+                ];
+                availableExternalSites.forEach(s => { %>
+                    <div class="externalSite">
+                        <a href="<%= s.url %>" rel="noopener noreferrer"
+                           target="_blank"><%= s.label %></a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </button>
+    <% if (localUserInfo.isLoggedIn) { %>
+        <a id="guidewireGlossaryButton" href="/glossary" target="_blank" role="button" tabindex="0"></a>
+        <button id="translatedDocsButton" aria-label="translated documentation" role="button">
+            <div class="translatedDocsMenu" id="translatedDocsMenu">
+                <div class="translatedDocsMenuActions">
+                    <% translatedPages.forEach(p => { %>
+                        <div class="translatedPage"><a href="<%= p.pageUrl %>"><%= p.label %></a></div>
+                    <% }) %>
+                </div>
+            </div>
+        </button>
+        <button id="avatarButton" aria-label="user information">
+            <div id="avatarMenu" class="avatarMenu">
+                <div class="avatarMenuHeader">
+                    <div class="avatarMenuIcon">&nbsp;</div>
+                    <div class="avatarMenuInfo">
+                        <div class="avatarMenuName"><%= userInfo.name %></div>
+                        <div class="avatarMenuEmail"><%= userInfo.preferred_username %></div>
+                    </div>
+                </div>
+                <div class="avatarMenuDivider"></div>
+                <div class="avatarMenuActions">
+                    <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+                </div>
+            </div>
+        </button>
+    <% } else if (loginButton) { %>
+        <a class="button" id="loginButton" href="/gw-login">Log in</a>
+    <% } %>
+    <script>
+        function showMenu(event, buttonId, menuId) {
+            if (event.target.id === buttonId) {
+                const menuElement = document.getElementById(menuId);
+                menuElement.classList.toggle('show');
+            }
+        }
+
+        function closeMenu(event, buttonId, menuId) {
+            if (!event.target.closest(`#${buttonId}`)) {
+                const menuElement = document.getElementById(menuId);
+                if (menuElement.classList.contains('show')) {
+                    menuElement.classList.remove('show');
+                }
+            }
+        }
+
+        [
+            {
+                buttonId: 'translatedDocsButton',
+                menuId: 'translatedDocsMenu'
+            },
+            {
+                buttonId: 'externalSitesButton',
+                menuId: 'externalSitesMenu'
+            },
+            {
+                buttonId: 'avatarButton',
+                menuId: 'avatarMenu'
+            }
+        ].forEach(o => {
+            const buttonElement = document.getElementById(o.buttonId);
+            if (buttonElement) {
+                window.addEventListener('click', function (event) {
+                    closeMenu(event, o.buttonId, o.menuId)
+                });
+                buttonElement.addEventListener('click', function (event) {
+                    showMenu(event, o.buttonId, o.menuId)
+                })
+            }
+        })
+
+    </script>
+</div>
