@@ -2,6 +2,7 @@
 @import 'modules/avatar.css';
 @import 'modules/translatedDocs.css';
 @import 'modules/externalSites.css';
+@import 'modules/guidewireGlossary.css';
 @import 'modules/searchBox.css';
 @import 'modules/highlight.css';
 
@@ -11,7 +12,7 @@
   --clr-GW-BLUE: hsl(196, 100%, 31%);
   --clr-GW-BLUE-HOVER: hsl(196, 100%, 26%);
   /* --clr-GW-BLUE-LIGHTER and --clr-GW-BLUE-LIGHTER-HOVER are not approved colors,
-              but are derived from GW Blue. */
+                  but are derived from GW Blue. */
   --clr-GW-BLUE-LIGHTER: hsl(196, 100%, 60%);
   --clr-GW-BLUE-LIGHTER-HOVER: hsl(196, 100%, 45%);
   --clr-GW-BLUE-LIGHTEST: hsl(196, 100%, 90%);
@@ -128,6 +129,11 @@ main.fullWidth > .sidebar {
   display: none;
 }
 
+.sidebar {
+  padding-top: 260px;
+  padding-bottom: 32px;
+}
+
 main.blue-theme {
   background-image: url(/images/background-gradient.svg);
   background-repeat: no-repeat;
@@ -181,18 +187,6 @@ main.blue-theme .docBreadcrumb a {
 }
 
 main.blue-theme .docBreadcrumb a:hover {
-  color: var(--clr-GW-BLUE-LIGHTER-HOVER);
-}
-
-main.blue-theme .usefulLinks,
-main.self-managed .usefulLinks {
-  background-color: hsl(0, 0%, 100%);
-  box-shadow: var(--bs-GW-HEADER-FOOTER);
-  border-radius: 4px;
-  display: block;
-}
-
-main.blue-theme .usefulLinks a:hover {
   color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
@@ -519,17 +513,6 @@ div.pageHero {
 #platformToggle > .selected:hover {
   outline: none;
   box-shadow: 0 0 0 2px hsla(198, 75%, 46%, 0.4) !important;
-}
-
-.usefulLinks {
-  display: none;
-  padding: 0.75rem;
-  margin: 3rem 0 0 0;
-}
-
-.usefulLinks > a {
-  display: block;
-  padding: 6px 0;
 }
 
 .button {
